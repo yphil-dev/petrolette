@@ -3,7 +3,7 @@
 NWS is a php CMS to manage various XML (RSS, aTom, etc) news feeds
 and present them in a nice, ergonomic fashion. I made it to replace the online
 news services that I use up until around 2007, when they became bloated and
-crippled with spyware. It's really a [barebones](https://github.com/xaccrocheur/nws/blob/master/screenshot.png) system, but I've
+crippled with spyware. It's really a [barebones](https://bitbucket.org/xaccrocheur/nws/raw/master/screenshot.png) system, but I've
 been using it for <del>weeks</del> years now, and it basically does what I want.
 
 ### Features
@@ -14,7 +14,7 @@ been using it for <del>weeks</del> years now, and it basically does what I want.
 -   Does its best to parse any given feed and identify it w/o questions
 -   Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
 -   Directly links to any included image (and sound file)
--   If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog - set those up [here](https://github.com/xaccrocheur/nws/blob/master/nws-load-feed.php))
+-   If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog - set those up directly in the RSS [feeds.xml](http://bitbucket.org/xaccrocheur/nws/raw/master/feeds.xml) file)
 -   Totally self-contained. No linked librairies, online commodities or, heaven forbid, "statistics" trackers
 -   Lightweight and standard (valid HTML5 code)
 
@@ -43,7 +43,7 @@ been using it for <del>weeks</del> years now, and it basically does what I want.
     -   Use the "change this feed's tab" menu to re-categorize the feed
     -   Use the "promote this feed" (^) link to bump up a feed as 1st of its tab
     -   Use the "delete this feed" (x) link to delete a feed
--   Or directly edit [feeds.xml](https://github.com/xaccrocheur/nws/blob/master/feeds.xml) (way faster).
+-   Or directly edit [feeds.xml](http://bitbucket.org/xaccrocheur/nws/raw/master/feeds.xml) (way faster).
 -   Use "Pin tab" in your browser to prevent tab clutter
 -   Use [Back is close](http://www.firefoxfacts.com/2013/08/14/back-is-close/) to quickly go back to where you were
 
