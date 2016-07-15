@@ -1,3 +1,7 @@
+## NWS est un lecteur de flux RSS/Atom en ligne. Auto-hébergé, if you will.
+
+Description [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
+
 ## NWS is an online news reader
 
 NWS is a php CMS to manage various XML (RSS, aTom, etc) news feeds
