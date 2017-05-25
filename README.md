@@ -2,7 +2,8 @@
 
 Description [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
 
-## NWS is an online news reader
+## NWS is a personal track-free online RSS news reader
+
 
 NWS is a php CMS to manage various XML (RSS, aTom, etc) news feeds
 and present them in a nice, ergonomic fashion. I made it to replace the online
@@ -18,7 +19,7 @@ been using it for <del>weeks</del> years now, and it basically does what I want.
 -   Does its best to parse any given feed and identify it w/o questions
 -   Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
 -   Directly links to any included image (and sound file)
--   If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog - set those up directly in the RSS [feeds.xml](http://bitbucket.org/xaccrocheur/nws/raw/master/feeds.xml) file)
+-   If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog - set those up directly in the RSS [feeds.xml](https://bitbucket.org/yassinphilip/nws/src/a7f3a6fc895795e68619e374e3cb54e78caea472/feeds.xml) file)
 -   Totally self-contained. No linked librairies, online commodities or, heaven forbid, "statistics" trackers
 -   Lightweight and standard (valid HTML5 code)
 
