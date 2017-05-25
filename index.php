@@ -473,6 +473,7 @@ if (empty($urls)) {
 }
 // Version Control
 
+/*
 $opts = array(
     'http'=>array(
         'method'=>"GET",
@@ -503,11 +504,13 @@ if ($current_commits !== false) {
     $version_class = "unknown";
     $version_message = "Can't read NWS version status";
 }
-
+*/
 ?>
+<!--
     <div id="overlay"> </div>
     <span id="version" onClick="document.location.href='https://github.com/xaccrocheur/nws'" title="<?php echo $version_message ?>">
     <span class="<?php echo $version_class ?>">♼</span>
     </span>
+    -->
 </body>
 </html>
