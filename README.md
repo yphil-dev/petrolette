@@ -28,7 +28,7 @@ NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, 
 -   Copy the files in a directory within a webserver root, or just a directory on your local machine
 -   Point your browser to that directory. That's it.
 -   Oh, if you want to use the favicon caching feature (those favicons can take a loong time to get) make sure that the web server has the right to write to our directory:
-    -   On the average web server (Debian / Apache) it's generally just a matter of, in the root folder: `sudo chown .www-data .`
+    -   On the average web server (Debian / Apache) it's generally just a matter of, in the `nws` folder: `sudo chown .www-data .`
 -   Recommended in installed online : Protect (restrict access to) the back-office / feeds file:
     -   Use [a trusted online htpassword generator](https://duckduckgo.com/?q%3Dhtpassword%2Bgenerator) (You can also create user/password pair(s) directly on the server with the command `htpasswd -b .access username password`)
     -   Paste this user/password pair in a file, and point to it from the [.htaccess](http://bitbucket.org/yassinphilip/nws/src/master/.htaccess) file
