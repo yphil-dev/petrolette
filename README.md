@@ -11,6 +11,8 @@ news services that I use up until around 2007, when they became bloated and
 crippled with spyware. It's really a [barebones](https://bitbucket.org/xaccrocheur/nws/raw/master/screenshot.png) system, but I've
 been using it for <del>weeks</del> years now, and it basically does what I want.
 
+![NWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/screenshot.png)
+
 ### Features
 
 -   AJAX (asynchronous) loading of the feeds (ie reload one single feed w/o reloading the whole page)
