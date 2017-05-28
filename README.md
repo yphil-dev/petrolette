@@ -9,7 +9,7 @@ NWS is a php CMS to manage various XML (RSS, aTom, etc) news feeds
 and present them in a nice, ergonomic fashion. I made it to replace the online
 news services that I use up until around 2007, when they became bloated and
 crippled with spyware. It's really a [barebones](https://bitbucket.org/xaccrocheur/nws/raw/master/screenshot.png) system, but I've
-been using it for <del>weeks</del> years now, and it basically does what I want.
+been using it for ~weeks~ years now, and it basically does what I want.
 
 ![NWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/screenshot.png)
 
