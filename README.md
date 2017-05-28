@@ -6,7 +6,7 @@ Description [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-
 
 ## NWS is a personal track-free online RSS news reader
 
-NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now, and it does what I want from a no-nonsense, every-morning-every-day news reader.
+NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now ; It does what I want from a no-nonsense, every-morning-every-day news reader.
 
 ![NWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/screenshot.png)
 
