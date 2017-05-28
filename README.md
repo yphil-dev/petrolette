@@ -41,7 +41,7 @@ NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, 
 -   Click the big "►" to view all the tab/category images in a gallery
 -   Click the small, feed item's "►" to view all feed's images in a gallery
     -   Navigate the gallery's images with < left and > right arrow keys
-    -   Exit the gallery by clicking outside it, or pressing the ESC key
+    -   Exit the gallery by clicking outside it, or pressing the <kbd>ESC</kbd> key
 -   Use the "Manage feeds" link to access the "back office"
     -   Use the "add a new feed" text entry field at the bottom to enter a new feed
     -   Use the "new tab" text entry field to create a new category
