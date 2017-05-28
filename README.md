@@ -31,9 +31,8 @@ NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, 
     -   On the average web server (Debian / Apache) it's generally just a matter of, in the root folder: 'sudo chown .www-data .'
 -   or create it yourself : sudo mkdir favicon<sub>cache</sub>/ (NWS works perfectly w/o caching, only a little less fast)
 -   Recommended : Protect (restrict access to) the back-office
-    -   Use [a trusted online htpassword generator](https://duckduckgo.com/?q%3Dhtpassword%2Bgenerator) (You can also create user/password pair(s) directly on the server with the command "htpasswd -b .access username password")
-    -   Paste this user/password pair in a file, and upload it as nws/.access (or another - secure - location, see below)
-    -   Optional : Move the .access out of the http server root, and edit .htaccess to reflect this change.
+    -   Use [a trusted online htpassword generator](https://duckduckgo.com/?q%3Dhtpassword%2Bgenerator) (You can also create user/password pair(s) directly on the server with the command `htpasswd -b .access username password`)
+    -   Paste this user/password pair in a file, and upload it as `nws/.access` (or another - secure - location, see below)
 
 ### Usage
 
@@ -41,7 +40,7 @@ NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, 
 -   Click the big "►" to view all the tab/category images in a gallery
 -   Click the small, feed item's "►" to view all feed's images in a gallery
     -   Navigate the gallery's images with < left and > right arrow keys
-    -   Exit the gallery by clicking outside it, or pressing the <kbd>ESC</kbd> key
+    -   Exit the gallery by clicking outside it, or pressing the ESC key
 -   Use the "Manage feeds" link to access the "back office"
     -   Use the "add a new feed" text entry field at the bottom to enter a new feed
     -   Use the "new tab" text entry field to create a new category
