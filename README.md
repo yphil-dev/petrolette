@@ -1,6 +1,6 @@
 # NWS
 
-NWS est un lecteur de flux RSS/Atom en ligne. Auto-hébergé, if you will.
+NWS est un lecteur de flux RSS/Atom en ligne, ou local. Auto-hébergé, if you will.
 
 Description [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
 
