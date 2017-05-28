@@ -19,7 +19,7 @@ NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, 
 -   Does its best to parse any given feed and identify it w/o questions
 -   Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
 -   Directly links to any included image (and sound file)
--   If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog - set those up directly in the RSS [feeds.xml](https://bitbucket.org/yassinphilip/nws/src/a7f3a6fc895795e68619e374e3cb54e78caea472/feeds.xml) file)
+-   If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog) 
 -   Totally self-contained. No linked librairies, online commodities or, heaven forbid, "statistics" trackers
 -   Lightweight and standard (valid HTML5 code)
 
@@ -48,9 +48,7 @@ NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, 
     -   Use the "change this feed's tab" menu to re-categorize the feed
     -   Use the "promote this feed" (^) link to bump up a feed as 1st of its tab
     -   Use the "delete this feed" (x) link to delete a feed
--   Or directly edit [feeds.xml](http://bitbucket.org/xaccrocheur/nws/raw/master/feeds.xml) (way faster).
--   Use "Pin tab" in your browser to prevent tab clutter
--   Use [Back is close](http://www.firefoxfacts.com/2013/08/14/back-is-close/) to quickly go back to where you were
+-   Or directly edit [feeds.xml](http://bitbucket.org/yassinphilip/nws/raw/master/feeds.xml) (way faster).
 
 ### LICENSE
 
