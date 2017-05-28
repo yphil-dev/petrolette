@@ -7,11 +7,8 @@ Description [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-
 ## NWS is a personal track-free online RSS news reader
 
 
-NWS is a php CMS to manage various XML (RSS, aTom, etc) news feeds
-and present them in a nice, ergonomic fashion. I made it to replace the online
-news services that I use up until around 2007, when they became bloated and
-crippled with spyware. It's really a [barebones](https://bitbucket.org/xaccrocheur/nws/raw/master/screenshot.png) system, but I've
-been using it for ~~weeks~~ years now, and it basically does what I want.
+NWS is a simple webb app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online
+news services that I use up until around 2007, when they became bloated and **crippled with spyware**. It's really a barebones, simple and light system, and I've been using it for ~~weeks~~ years now, and it basically does what I want.
 
 ![NWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/screenshot.png)
 
@@ -29,8 +26,8 @@ been using it for ~~weeks~~ years now, and it basically does what I want.
 
 ### Installation
 
--   Copy the files in a directory within a webserver root.
--   Point your browser to that webserver's directory. That's it.
+-   Copy the files in a directory within a webserver root, or just a directory on your local machine
+-   Point your browser to that directory. That's it.
 -   Oh, if you want to use the favicon caching feature (those favicons can take a loong time to get) make sure that the web server has the right to write to our directory:
     -   On the average web server (Debian / Apache) it's generally just a matter of, in the root folder: 'sudo chown .www-data .'
 -   or create it yourself : sudo mkdir favicon<sub>cache</sub>/ (NWS works perfectly w/o caching, only a little less fast)
