@@ -6,9 +6,7 @@ Description [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-
 
 ## NWS is a personal track-free online RSS news reader
 
-
-NWS is a simple webb app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online
-news services that I use up until around 2007, when they became bloated and **crippled with spyware**. It's really a barebones, simple and light system, and I've been using it for ~~weeks~~ years now, and it basically does what I want.
+NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now, and it does what I want from a no-nonsense, every-morning-every-day news reader.
 
 ![NWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/screenshot.png)
 
@@ -17,6 +15,7 @@ news services that I use up until around 2007, when they became bloated and **cr
 -   AJAX (asynchronous) loading of the feeds (ie reload one single feed w/o reloading the whole page)
 -   Handles any charset encoding/langage
 -   Grabs the most out of the description text and displays it as standard tooltip on mouse hover
+-   Built-in image gallery (to view all the images in a feed, or in a category)
 -   Does its best to parse any given feed and identify it w/o questions
 -   Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
 -   Directly links to any included image (and sound file)
@@ -38,9 +37,9 @@ news services that I use up until around 2007, when they became bloated and **cr
 
 ### Usage
 
--   Navigate the tabs with < left and > right arrow keys (and r & t)
--   Click the big "►" to view all tabs's images in a gallery
--   Click the small, item's "►" to view all feed's images in a gallery
+-   Navigate the tabs with < left and > right arrow keys (and `r` & `t`)
+-   Click the big "►" to view all the tab/category images in a gallery
+-   Click the small, feed item's "►" to view all feed's images in a gallery
     -   Navigate the gallery's images with < left and > right arrow keys
     -   Exit the gallery by clicking outside it, or pressing the ESC key
 -   Use the "Manage feeds" link to access the "back office"
