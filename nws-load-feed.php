@@ -73,7 +73,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
     $rssfeed = file_get_contents($u) or die("File Load / read error");
 
-    $feedRss = simplexml_load_string($rssfeed) or die("Feed Load / read error");
+    $feedRss = simplexml_load_string($rssfeed) or die($u." :error");
 
     $i = 0;
     $url = parse_url($u);
@@ -119,7 +119,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
              <div class="feed" title ="'.$feedLink.'">
                  <div class="'.$title_class.'">
                      <span class="favicon">
-                         <a href="'.$u.'"><img src="'.$favicon.'" /></a>&nbsp;<a href="'.$feedLink.'" title="'.$title_link.' plop">'.$feedTitle.'</a>
+                         <a href="'.$u.'"><img src="'.$favicon.'" /></a>&nbsp;<a href="'.$feedLink.'" title="'.$title_link.'">'.$feedTitle.'</a>
                      </span>
 
                  </div>

@@ -14,7 +14,7 @@ $feeds = 'feeds.xml';
 <!DOCTYPE html>
 <html>
 <head>
-<title>NWZ</title>
+<title>NeWS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex,nofollow">
     <link rel="shortcut icon" type="image/x-icon" href="img/nws.png" />
