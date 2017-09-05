@@ -13,13 +13,13 @@ $feeds = 'feeds.xml';
 
 <!DOCTYPE html>
 <html>
-<head>
-<title>NeWS</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="robots" content="noindex,nofollow">
-    <link rel="shortcut icon" type="image/x-icon" href="img/nws.png" />
+    <head>
+        <title>NeWS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="robots" content="noindex,nofollow">
+        <link rel="shortcut icon" type="image/x-icon" href="img/nws.png" />
 
-    <!-- <link href="libs/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
+        <link href="https://code.jquery.com/ui/1.12.1/themes/eggplant/jquery-ui.css" rel="stylesheet" type="text/css" />
     
     <style type="text/css" media="screen">@import "nws-style.css";</style>
 <base target='_blank' />
