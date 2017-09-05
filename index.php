@@ -144,7 +144,7 @@ $feeds = 'feeds.xml';
 
 
              $("#tabs").bind("tabsactivate", function (event, ui) {
-                 document.title = "NWS : " + ui.newTab.text()
+                 document.title = "NeWS : " + ui.newTab.text()
              });
 
 
