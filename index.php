@@ -18,15 +18,29 @@ $feeds = 'feeds.xml';
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex,nofollow">
     <link rel="shortcut icon" type="image/x-icon" href="img/nws.png" />
-    <link href="libs/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <!-- <link href="libs/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
+    
     <style type="text/css" media="screen">@import "nws-style.css";</style>
 <base target='_blank' />
     </head>
     <body>
 
-    <script src="libs/jquery.min.js"></script>
-    <script src="libs/jquery-ui.min.js"></script>
+        <script
+	    src="https://code.jquery.com/jquery-3.2.1.min.js"
+	    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	    crossorigin="anonymous"></script>
+        
+        <script
+	    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+	    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+	    crossorigin="anonymous"></script>
+        
+        <!-- <script src="libs/jquery.min.js"></script> -->
+        <!-- <script src="libs/jquery-ui.min.js"></script> -->
 
+
+        
     <script>
 
 $(document).ready(function() {
