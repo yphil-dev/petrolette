@@ -71,9 +71,9 @@ function get_link($links) {
 
 
 function var_dump_pre($mixed = null) {
-//    echo '<pre>';
+    echo '<pre>';
     var_dump($mixed);
-//    echo '</pre><br />';
+    echo '</pre><br />';
     return null;
 }
 
@@ -82,7 +82,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
     $rssfeed = file_get_contents($u) or die("<a href='".$u."'>Error</a>");
     
-    var_dump_pre($u);
+    /* var_dump_pre($u);*/
     
     $feedRss = simplexml_load_string($rssfeed) or die("<a href='".$u."'>Error</a>");
 
