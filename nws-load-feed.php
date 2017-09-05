@@ -82,8 +82,9 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
     $rssfeed = file_get_contents($u) or die("File Load / read error");
     
-    var_dump_pre($rssfeed);
-
+    /* var_dump_pre($rssfeed);
+     */
+    
     $feedRss = simplexml_load_string($rssfeed) or die("<a href='".$u."'>error</a>");
 
     $i = 0;
