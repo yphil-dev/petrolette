@@ -119,7 +119,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
              <div class="feed" title ="'.$feedLink.'">
                  <div class="'.$title_class.'">
                      <span class="favicon">
-                         <a href="'.$u.'"><img src="'.$favicon.'" /></a>&nbsp;<a href="'.$feedLink.'" title="'.$title_link.'">'.$feedTitle.'</a>
+                         <a href="'.$u.'"><img src="'.$favicon.'" /></a>&nbsp;<a href="'.$feedLink.'" title="'.$title_link.' plop">'.$feedTitle.'</a>
                      </span>
 
                  </div>
