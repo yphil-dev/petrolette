@@ -80,12 +80,11 @@ function var_dump_pre($mixed = null) {
 function reparse($u, $numItems, $imgMode, $photoblog) {
 
 
-    $rssfeed = file_get_contents($u) or die("File Load / read error");
+    $rssfeed = file_get_contents($u) or die("<a href='".$u."'>Error</a>");
     
-    /* var_dump_pre($rssfeed);
-     */
+    var_dump_pre($u);
     
-    $feedRss = simplexml_load_string($rssfeed) or die("<a href='".$u."'>error</a>");
+    $feedRss = simplexml_load_string($rssfeed) or die("<a href='".$u."'>Error</a>");
 
     $i = 0;
     $url = parse_url($u);
