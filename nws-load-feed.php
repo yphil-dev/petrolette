@@ -73,7 +73,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
     $rssfeed = file_get_contents($u) or die("File Load / read error");
 
-    $feedRss = simplexml_load_string($rssfeed) or die("<a href='"$u."'>error</a>");
+    $feedRss = simplexml_load_string($rssfeed) or die("<a href='".$u."'>error</a>");
 
     $i = 0;
     $url = parse_url($u);
