@@ -20,7 +20,6 @@ NWS is a simple but powerful web app to view and manage various XML (RSS, aTom, 
 -   Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
 -   Directly links to any included image (and sound file)
 -   If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog) 
--   Totally self-contained. No linked librairies, online commodities or, heaven forbid, "statistics" trackers
 -   Lightweight and standard (valid HTML5 code)
 
 ### Installation
