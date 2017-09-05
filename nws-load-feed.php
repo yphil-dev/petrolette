@@ -73,7 +73,7 @@ function get_link($links) {
 function var_dump_pre($mixed = null) {
     echo '<pre>';
     var_dump($mixed);
-    echo '</pre>';
+    echo '</pre><br />';
     return null;
 }
 
