@@ -79,9 +79,10 @@ function var_dump_pre($mixed = null) {
 
 function reparse($u, $numItems, $imgMode, $photoblog) {
 
-    var_dump_pre($u);
 
     $rssfeed = file_get_contents($u) or die("File Load / read error");
+    
+    var_dump_pre($rssfeed);
 
     $feedRss = simplexml_load_string($rssfeed) or die("<a href='".$u."'>error</a>");
 
