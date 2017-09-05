@@ -1,11 +1,11 @@
 <?php
 /*
-  nws-reload-feed : Reload one feed
+   nws-reload-feed : Reload one feed
 
-  This script is part of NWS
-  https://github.com/xaccrocheur/nws/
+   This script is part of NWS
+   https://github.com/xaccrocheur/nws/
 
-*/
+ */
 
 ini_set('display_errors', 'Off');
 
@@ -26,7 +26,7 @@ function str_img_src($html) {
         else
             return false;
     } else
-        return false;
+    return false;
 }
 
 function get_link($links) {
@@ -69,7 +69,17 @@ function get_link($links) {
     }
 }
 
+
+function var_dump_pre($mixed = null) {
+    echo '<pre>';
+    var_dump($mixed);
+    echo '</pre>';
+    return null;
+}
+
 function reparse($u, $numItems, $imgMode, $photoblog) {
+
+    var_dump_pre($u);
 
     $rssfeed = file_get_contents($u) or die("File Load / read error");
 
@@ -148,9 +158,9 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
                     if (isset($media->thumbnail))
                         $mediaImg = $media->thumbnail->attributes()->url;
                     elseif (    isset($media->content)
-                    &&  isset($media->content->attributes()->medium)
-                    && ($media->content->attributes()->medium == 'image'))
-                        $mediaImg = $media->content->attributes()->url;
+                            &&  isset($media->content->attributes()->medium)
+                             && ($media->content->attributes()->medium == 'image'))
+                    $mediaImg = $media->content->attributes()->url;
                 }
 
                 if (!empty($elseSrc)) {
@@ -158,7 +168,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
                         $elseSrc = 'http:'.$elseSrc;
                     }
                     elseif ((substr($elseSrc, 0, strlen('http://')) != 'http://')
-                    &&  (substr($elseSrc, 0, strlen('https://')) != 'https://')
+                            &&  (substr($elseSrc, 0, strlen('https://')) != 'https://')
                     ) {
                         $elseSrc = 'http://'.$domain.$elseSrc;
                     }
