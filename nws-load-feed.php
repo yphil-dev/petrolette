@@ -85,7 +85,17 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
     /* var_dump_pre($rssfeed);
      */
     
-    $feedRss = simplexml_load_string($rssfeed) or die("<a href='".$u."'>error</a>");
+    $ch = curl_init(); 
+    curl_setopt($ch, CURLOPT_URL, $u); 
+    curl_setopt($ch, CURLOPT_HEADER, FALSE); 
+    curl_setopt($ch, CURLOPT_NOBODY, FALSE); 
+    curl_setopt($s,CURLOPT_TIMEOUT,5); // TIME OUT is 5 seconds
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
+    $response = curl_exec($ch); 
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+    curl_close($ch); 
+
+    $feedRss = simplexml_load_string($response) or die("<a href='".$u."'>error</a>");
 
     $i = 0;
     $url = parse_url($u);
