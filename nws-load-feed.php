@@ -84,7 +84,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
     
     /* var_dump_pre($u);*/
     
-    $feedRss = simplexml_load_string($rssfeed) or die("<a href='".$u."'>Error</a>");
+    $feedRss = simplexml_load_string($rssfeed) or die("<a title='".$u." is malformed (try wgetting it)' href='".$u."'>Error</a>");
 
     $i = 0;
     $url = parse_url($u);
