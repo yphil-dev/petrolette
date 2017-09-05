@@ -35,6 +35,11 @@ $feeds = 'feeds.xml';
 	    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
 	    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 	    crossorigin="anonymous"></script>
+
+        <script
+	    src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"
+	    integrity="sha256-JklDYODbg0X+8sPiKkcFURb5z7RvlNMIaE3RA2z97vw="
+	    crossorigin="anonymous"></script>
         
         <!-- <script src="libs/jquery.min.js"></script> -->
         <!-- <script src="libs/jquery-ui.min.js"></script> -->
