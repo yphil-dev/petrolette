@@ -2,8 +2,8 @@
 /*
    nws-reload-feed : Reload one feed
 
-   This script is part of NWS
-   https://github.com/xaccrocheur/nws/
+   This script is part of NeWS
+   https://bitbucket.org/yassinphilip/nws
 
  */
 

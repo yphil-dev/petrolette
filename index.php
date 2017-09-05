@@ -2,8 +2,8 @@
 /*
    index : View all feeds
 
-   This script is part of NWS
-   https://github.com/xaccrocheur/nws/
+   This script is part of NeWS
+   https://bitbucket.org/yassinphilip/nws
 
  */
 
@@ -46,8 +46,6 @@ $feeds = 'feeds.xml';
 
          $(document).ready(function() {
 
-             // var overlay = jQuery('<div id="overlay"> </div>');
-
              $.ajaxSetup ({ cache: true })
 
              $( "#tabs" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" })
@@ -58,38 +56,18 @@ $feeds = 'feeds.xml';
              var feed_max_age = 3600;
              var ajax_spinner = '<img src="img/loading.gif" class="loading" alt="loading..." />'
 
-             // $('body').keydown(function(e) {
-             //     if (e.keyCode == 32) {
-             //         e.preventDefault()
-             //     }
-             // });
-
              $('body').keyup(function(e) {
-
-                 // alert(e.keyCode + direction)
 
                  direction = null;
 
                  if (e.keyCode == 71) {
                      if( $("#viewer").is(':visible') ) {
                          $("#img-name a").trigger('click')
-                         // alert($("#img-name a").attr('href'))
-                         // $("#img-name a").click()
-                         // $("#img-name a").css('border', '1px solid red')
                          window.location = $("#img-name a").attr('href');
                      } else {
                          alert("plop")
                      }
                  }
-
-                 // if (e.keyCode == 37) {
-                 //     direction = 'prev';
-                 // } else if (e.keyCode == 39) {
-                 //     direction = 'next'
-                 // } else {
-                 //     direction = null;
-                 // }
-
 
                  if (e.keyCode == 37)
                      if( $("#viewer").is(':visible') ) {
@@ -112,25 +90,10 @@ $feeds = 'feeds.xml';
                      close_viewer()
                  }
 
-                 // if (e.keyCode == 32) {
-                 //     e.preventDefault()
-                 //     if ($("#play").is(':visible'))
-                 //         $("#play").trigger('click')
-                 //     else
-                 //         $("#pause").trigger('click')
-                 // }
-
-                 // $(document).keydown(function (e) {
-                 //     var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-                 //     if ((key == 32) && (e.target.className != null) && (e.target.className.indexOf("ui-button") != -1))
-                 // });
-
-
                  var active_tab = $("#tabs").tabs("option", "active")
 
                  if (direction != null)
                      if (direction == 'next')
-                         // $("#tabs").tabs("option", "active").find(".gallery-tab").show()
                          if (active_tab < totaltabs -1)
                              $("#tabs").tabs("option", "active", active_tab + 1)
                  else
@@ -273,8 +236,6 @@ $feeds = 'feeds.xml';
                      $("#viewer-img").css("max-width", (viewport_width - 2) + "px")
                      $("#viewer-img").css("height", "")
                  }
-
-                 // msg = msg + "W: " + curr_img_width + " / " + viewport_width + " H: " + curr_img_height + " / " + viewport_height + " - "
 
                  $("#viewer").css("display", "block")
                  $("#viewer-img").attr("src", current_img.attr("src"))
@@ -486,46 +447,6 @@ $feeds = 'feeds.xml';
 ';
 
             }
-            // Version Control
-
-            /*
-               $opts = array(
-               'http'=>array(
-               'method'=>"GET",
-               'header'=>"User-Agent: nws"
-               )
-               );
-
-               $context = stream_context_create($opts);
-
-               $current_commits = file_get_contents("https://api.github.com/repos/xaccrocheur/nws/commits", false, $context);
-
-               if ($current_commits !== false) {
-               $commits = json_decode($current_commits);
-
-               $ref_commit = "9c1428ed5e006ff117a3db699ed88b71023ad7d6";
-
-               $current_commit_minus1 = $commits[1]->sha;
-               $commit_message = "last message : ".$commits[0]->commit->message;
-
-               if (!strcmp($current_commit_minus1, $ref_commit)) {
-               $version_class = "unmoved";
-               $version_message = "NWS version is up-to-date : (".$commit_message.")";
-               } else {
-               $version_class = "moved";
-               $version_message = "New version available : (".$commit_message.")";
-               }
-               } else {
-               $version_class = "unknown";
-               $version_message = "Can't read NWS version status";
-               }
-             */
             ?>
-            <!--
-                 <div id="overlay"> </div>
-                 <span id="version" onClick="document.location.href='https://github.com/xaccrocheur/nws'" title="<?php echo $version_message ?>">
-                 <span class="<?php echo $version_class ?>">♼</span>
-                 </span>
-               -->
     </body>
 </html>
