@@ -36,13 +36,14 @@ $feeds = 'feeds.xml';
 	    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 	    crossorigin="anonymous"></script>
 
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"</script>
+
         <script
 	    src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"
 	    integrity="sha256-JklDYODbg0X+8sPiKkcFURb5z7RvlNMIaE3RA2z97vw="
 	    crossorigin="anonymous"></script>
         
 
-        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"</script>
         
         <script>
 
