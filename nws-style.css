@@ -1,3 +1,10 @@
+:root {
+  --main-color-level-1: #03688a;
+  --main-color-level-2: #03688a;
+  --main-color-level-3: #03688a;
+  --main-color-level-4: #f00;
+}
+
 body {
     background:#2e3436;
     color:#eeeeec;
@@ -44,6 +51,10 @@ h1 {
     margin:0 0 .2em 0;
 }
 
+span.nws-error {
+    color: var(--main-color-level-4);
+}
+
 /* Feed Item */
 
 /* .outerContainer { */
@@ -80,10 +91,6 @@ div.listing article:nth-child(odd) {
 
 /* End */
 
-:root {
-  --main-color-level-3: #03688a;
-}
-
 
 .feedTitle {
     height:1.5em;
@@ -114,11 +121,7 @@ div.listing article:nth-child(odd) {
     background:var(--main-color-level-3);
 }
 
-.feed.nws-feed-title {
-    vertical-align:top;
-    margin: 0 1% .5em 0;
-    font-size:.7em;
-    border: gray 1px solid;
+.feed .nws-feed-title {
     background:var(--main-color-level-3);
 }
 
