@@ -66,21 +66,6 @@ div.nws-tab-feeds {
     column-gap: .5em;
 }
 
-/* div.outerContainer { */
-/*     /\* -webkit-column-break-inside: avoid; *\/ */
-/*     page-break-inside: avoid; */
-/*     /\* Firefox is dumb *\/ */
-/*     break-inside: avoid; */
-/* } */
-
-div.listing article:first-child {
-    margin-top: 0;
-}
-
-div.listing article:nth-child(odd) {
-    background-color: #ffff99;
-}
-
 .feedTitle {
     height:1.5em;
     overflow:hidden;
