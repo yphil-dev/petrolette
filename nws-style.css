@@ -57,14 +57,6 @@ span.nws-error {
 
 /* Feed Item */
 
-/* .outerContainer { */
-/*     width:24%; */
-/*     display:inline-block; */
-/*     vertical-align:top; */
-/* } */
-
-/* Masonry */
-
 div.nws-tab-feeds {
     /* -moz-columns: 18em; */
     /* -webkit-columns: 18em; */
@@ -74,12 +66,12 @@ div.nws-tab-feeds {
     column-gap: .5em;
 }
 
-div.outerContainer {
-    /* -webkit-column-break-inside: avoid; */
-    page-break-inside: avoid;
-    /* Firefox is dumb */
-    break-inside: avoid;
-}
+/* div.outerContainer { */
+/*     /\* -webkit-column-break-inside: avoid; *\/ */
+/*     page-break-inside: avoid; */
+/*     /\* Firefox is dumb *\/ */
+/*     break-inside: avoid; */
+/* } */
 
 div.listing article:first-child {
     margin-top: 0;
@@ -88,9 +80,6 @@ div.listing article:first-child {
 div.listing article:nth-child(odd) {
     background-color: #ffff99;
 }
-
-/* End */
-
 
 .feedTitle {
     height:1.5em;
