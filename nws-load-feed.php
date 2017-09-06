@@ -85,7 +85,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
     $feedRss = simplexml_load_string($rssfeed) or die('<div class="feed">
 <div class="feedTitle">
 <a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'">Error</a></div>
-<a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'"><span class="nws-error">The feed '.$u.' seems to be malformed/invalid</span> ; Try wgetting it to see what is wrong with it.</a></div>');
+<ul><li><a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'"><span class="nws-error">The feed '.$u.' seems to be malformed/invalid</span> ; Try wgetting it to see what is wrong with it.</a></li></ul></div>');
 
 // <div class="feed" title="https://davidlepee.com">
 //                  <div class="feedTitle">
