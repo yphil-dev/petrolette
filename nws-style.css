@@ -66,16 +66,16 @@ span.nws-error {
 /* Masonry */
 
 div.nws-tab-feeds {
-    -moz-columns: 15em;
-    -webkit-columns: 15em;
-    columns: 15em;
-    -moz-column-gap: 1em;
-    -webkit-column-gap: 1em;
-    column-gap: 1em;
+    /* -moz-columns: 18em; */
+    /* -webkit-columns: 18em; */
+    columns: 18em;
+    /* -moz-column-gap: .5em; */
+    /* -webkit-column-gap: .5em; */
+    column-gap: .5em;
 }
 
 div.outerContainer {
-    -webkit-column-break-inside: avoid;
+    /* -webkit-column-break-inside: avoid; */
     page-break-inside: avoid;
     /* Firefox is dumb */
     break-inside: avoid;
