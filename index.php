@@ -80,7 +80,7 @@ $feeds = 'feeds.xml';
               *              }*/
 
 
-             if (detect-mobile) {
+             if (detect-mobile == true) {
                  alert('Mobile!');
              }
                  
