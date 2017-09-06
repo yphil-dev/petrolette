@@ -61,9 +61,11 @@ $feeds = 'feeds.xml';
                   || navigator.userAgent.match(/Windows Phone/i)
                  ){
                      return true;
+                     alert('Mobile!')
                  }
                  else {
                      return false;
+                     alert('Not Mobile!')
                  }
              }
 
