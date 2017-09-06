@@ -79,7 +79,11 @@ $feeds = 'feeds.xml';
               *                  alert('Not Mobile!')
               *              }*/
 
-             detect-mobile;
+
+             if (detect-mobile) {
+                 alert('Mobile!');
+             }
+                 
              
              $.ajaxSetup ({ cache: true })
 
