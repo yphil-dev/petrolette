@@ -55,7 +55,6 @@ $feeds = 'feeds.xml';
              var ajax_loader = 'nws-load-feed.php'
              var feed_max_age = 3600;
              var ajax_spinner = '<img src="img/loading.gif" class="loading" alt="loading..." />'
-
              $('body').keyup(function(e) {
 
                  direction = null;
@@ -421,7 +420,7 @@ $feeds = 'feeds.xml';
 
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
-    <div id="tab-'.$tabName.'">
+    <div id="tab-'.$tabName.'" class="nws-feed">
     <span class="gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
 ';
                     foreach ($tabGroups[$tabName] as $tabUrl)
