@@ -111,6 +111,7 @@ div.listing article:nth-child(odd) {
     margin: 0 1% .5em 0;
     font-size:.7em;
     border: gray 1px solid;
+    background:var(--main-color-level-3);
 }
 
 .feed:hover {
@@ -160,7 +161,6 @@ div.listing article:nth-child(odd) {
     cursor:pointer;
     float:right;
     margin: 0 .5em 0 0;
-    background:var(--main-color-level-3);
     /* line-height:.8em; */
     /* font-size:150%; */
 }
