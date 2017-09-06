@@ -112,15 +112,6 @@ div.listing article:nth-child(odd) {
     border: orange 1px solid;
 }
 
-/* Experimental hack to finally get those outerContainers evenly spanned */
-.ui-tabs-panel > div:nth-child(4n+3) {
-    width:25%;
-}
-
-.ui-tabs-panel > div:nth-child(4n+4) {
-    width:25%;
-}
-
 .feed ul li img.feed {
     width:28%;
     margin: 0 0.5em 0.1em 0;
