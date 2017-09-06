@@ -83,19 +83,6 @@ $feeds = 'feeds.xml';
              $('body').keyup(function(e) {
 
                  direction = null;
-
-
-                 var tabs = jQuery('.tab'),
-                     i = 0;
-
-                 slides
-                     .on('swipeleft', function(e) {
-                         tabs.eq(i + 1).addClass('active');
-                     })
-                     .on('swiperight', function(e) {
-                         tabs.eq(i - 1).addClass('active');
-                     });
-
                  
                  if (e.keyCode == 71) {
                      if( $("#viewer").is(':visible') ) {
