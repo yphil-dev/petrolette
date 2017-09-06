@@ -68,6 +68,8 @@ $feeds = 'feeds.xml';
          
          $(document).ready(function() {
 
+             detectmob
+             
              $.ajaxSetup ({ cache: true })
 
              $( "#tabs" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" })
