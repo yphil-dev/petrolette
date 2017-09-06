@@ -42,8 +42,8 @@ $feeds = 'feeds.xml';
 	    crossorigin="anonymous"></script>
         
 
-        <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"</script>
-       
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"</script>
+        
         <script>
 
          $(document).ready(function() {
@@ -63,7 +63,7 @@ $feeds = 'feeds.xml';
 
 
                  var tabs = jQuery('.tab'),
-                          i = 0;
+                     i = 0;
 
                  slides
                      .on('swipeleft', function(e) {
