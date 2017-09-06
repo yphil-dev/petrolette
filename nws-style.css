@@ -60,10 +60,21 @@ span.nws-error {
 div.nws-tab-feeds {
     /* -moz-columns: 18em; */
     /* -webkit-columns: 18em; */
-    columns: 20em;
+    columns: 18em;
     /* -moz-column-gap: .5em; */
     /* -webkit-column-gap: .5em; */
-    column-gap: .3em;
+    column-gap: .5em;
+}
+
+div.outerContainer {
+    /* -webkit-column-break-inside: avoid; */
+    page-break-inside: avoid;
+    /* Firefox is dumb */
+    break-inside: avoid;
+}
+
+div.listing article:first-child {
+    margin-top: 0;
 }
 
 .feedTitle {
