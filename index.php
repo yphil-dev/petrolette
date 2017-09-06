@@ -31,8 +31,6 @@ $feeds = 'feeds.xml';
 	    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	    crossorigin="anonymous"></script>
         
-        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"</script>
-
         <script
 	    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
 	    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
