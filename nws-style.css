@@ -80,11 +80,16 @@ div.listing article:nth-child(odd) {
 
 /* End */
 
+:root {
+  --main-color-level-3: #03688a;
+}
+
+
 .feedTitle {
     height:1.5em;
     overflow:hidden;
     color:#CD9E3F;
-    background:#2e3436;
+    background:var(--main-color-level-3);
     padding:.2em .2em 0;
     white-space:nowrap;
     text-overflow: ellipsis;
