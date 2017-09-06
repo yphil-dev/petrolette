@@ -84,18 +84,33 @@ $feeds = 'feeds.xml';
              var ajax_loader = 'nws-load-feed.php'
              var feed_max_age = 3600;
              var ajax_spinner = '<img src="img/loading.gif" class="loading" alt="loading..." />'
+             
              $('body').keyup(function(e) {
 
+                 // alert(e.keyCode + direction)
+
                  direction = null;
-                 
+
                  if (e.keyCode == 71) {
                      if( $("#viewer").is(':visible') ) {
                          $("#img-name a").trigger('click')
+                         // alert($("#img-name a").attr('href'))
+                         // $("#img-name a").click()
+                         // $("#img-name a").css('border', '1px solid red')
                          window.location = $("#img-name a").attr('href');
                      } else {
                          alert("plop")
                      }
                  }
+
+                 // if (e.keyCode == 37) {
+                 //     direction = 'prev';
+                 // } else if (e.keyCode == 39) {
+                 //     direction = 'next'
+                 // } else {
+                 //     direction = null;
+                 // }
+
 
                  if (e.keyCode == 37)
                      if( $("#viewer").is(':visible') ) {
@@ -118,10 +133,25 @@ $feeds = 'feeds.xml';
                      close_viewer()
                  }
 
+                 // if (e.keyCode == 32) {
+                 //     e.preventDefault()
+                 //     if ($("#play").is(':visible'))
+                 //         $("#play").trigger('click')
+                 //     else
+                 //         $("#pause").trigger('click')
+                 // }
+
+                 // $(document).keydown(function (e) {
+                 //     var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+                 //     if ((key == 32) && (e.target.className != null) && (e.target.className.indexOf("ui-button") != -1))
+                 // });
+
+
                  var active_tab = $("#tabs").tabs("option", "active")
 
                  if (direction != null)
                      if (direction == 'next')
+                         // $("#tabs").tabs("option", "active").find(".gallery-tab").show()
                          if (active_tab < totaltabs -1)
                              $("#tabs").tabs("option", "active", active_tab + 1)
                  else
