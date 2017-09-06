@@ -69,7 +69,6 @@ function get_link($links) {
     }
 }
 
-
 function var_dump_pre($mixed = null) {
     echo '<pre>';
     var_dump($mixed);
@@ -79,13 +78,23 @@ function var_dump_pre($mixed = null) {
 
 function reparse($u, $numItems, $imgMode, $photoblog) {
 
-
     $rssfeed = file_get_contents($u) or die("<a href='".$u."'>Error</a>");
     
     /* var_dump_pre($u);*/
     
-    $feedRss = simplexml_load_string($rssfeed) or die("<a title='".$u." is malformed (try wgetting it)' href='".$u."'>Error</a>");
+    $feedRss = simplexml_load_string($rssfeed) or die("<div class="feed">
+<div class="feedTitle">
+<a title='".$u." is malformed (try wgetting it)' href='".$u."'>Error</a></div></div>");
 
+// <div class="feed" title="https://davidlepee.com">
+//                  <div class="feedTitle">
+//                      <span class="favicon">
+//                          <a class="nws-feed-title" href="https://davidlepee.com/feed/"><img src="http://davidlepee.com/favicon.ico"></a>&nbsp;<a href="https://davidlepee.com" title="Displaying 10 / 10 items from David L'Epée">David L'Epée</a>
+//                      </span>
+
+//                  </div>
+//                       </div>
+    
     $i = 0;
     $url = parse_url($u);
     $subs = explode( '.', $url['host']);

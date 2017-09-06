@@ -12,15 +12,16 @@ NeWS is a simple but powerful web app to view and manage various XML (RSS, aTom,
 
 ### Features
 
--   AJAX (asynchronous) loading of the feeds (ie reload one single feed w/o reloading the whole page)
--   Handles any charset encoding/langage
--   Grabs the most out of the description text and displays it as standard tooltip on mouse hover
--   Built-in image gallery (to view all the images in a feed, or in a category)
--   Does its best to parse any given feed and identify it w/o questions
--   Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
--   Directly links to any included image (and sound file)
--   If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog) 
--   Lightweight and standard (valid HTML5 code)
+- AJAX (asynchronous) loading of the feeds (ie reload one single feed w/o reloading the whole page)
+- Flexible/Responsive rendering of the feeds wrapping
+- Handles any charset encoding/langage
+- Grabs the most out of the description text and displays it as standard tooltip on mouse hover
+- Built-in image gallery (to view all the images in a feed, or in a category)
+- Does its best to parse any given feed and identify it w/o questions
+- Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
+- Directly links to any included image (and sound file)
+- If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog) 
+- Lightweight and standard (valid HTML5 code)
 
 ### Installation
 
