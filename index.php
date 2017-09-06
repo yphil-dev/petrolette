@@ -41,7 +41,9 @@ $feeds = 'feeds.xml';
 	    integrity="sha256-JklDYODbg0X+8sPiKkcFURb5z7RvlNMIaE3RA2z97vw="
 	    crossorigin="anonymous"></script>
         
-        
+
+        <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"</script>
+       
         <script>
 
          $(document).ready(function() {
@@ -59,6 +61,19 @@ $feeds = 'feeds.xml';
 
                  direction = null;
 
+
+                 var tabs = jQuery('.tab'),
+                          i = 0;
+
+                 slides
+                     .on('swipeleft', function(e) {
+                         tabs.eq(i + 1).addClass('active');
+                     })
+                     .on('swiperight', function(e) {
+                         tabs.eq(i - 1).addClass('active');
+                     });
+
+                 
                  if (e.keyCode == 71) {
                      if( $("#viewer").is(':visible') ) {
                          $("#img-name a").trigger('click')
