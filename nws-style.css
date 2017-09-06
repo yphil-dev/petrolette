@@ -54,7 +54,7 @@ h1 {
 
 /* Masonry */
 
-div.listing {
+div.nws-tab-feeds {
     -moz-columns: 15em;
     -webkit-columns: 15em;
     columns: 15em;
@@ -63,21 +63,11 @@ div.listing {
     column-gap: 1em;
 }
 
-div.listing article {
+div.outerContainer {
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
     /* Firefox is dumb */
     break-inside: avoid;
-}
-
-/* pretty it up! */
-div.listing article {
-    -moz-border-radius: 0.5em;
-    -webkit-border-radius: 0.5em;
-    border-radius: 0.5em;
-    margin: 1em 0;
-    background-color: #CCC;
-    padding: .5em;
 }
 
 div.listing article:first-child {
@@ -86,12 +76,6 @@ div.listing article:first-child {
 
 div.listing article:nth-child(odd) {
     background-color: #ffff99;
-}
-
-.outerContainer {
-    width:24%;
-    display:inline-block;
-    vertical-align:top;
 }
 
 /* End */
