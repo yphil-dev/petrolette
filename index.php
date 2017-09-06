@@ -25,24 +25,29 @@ $feeds = 'feeds.xml';
         <base target='_blank' />
     </head>
     <body>
+        <!-- 
+             <script
+	     src="https://code.jquery.com/jquery-3.2.1.min.js"
+	     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	     crossorigin="anonymous"></script>
+             
 
-        <script
-	    src="https://code.jquery.com/jquery-3.2.1.min.js"
-	    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	    crossorigin="anonymous"></script>
+             <script
+	     src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+	     integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+	     crossorigin="anonymous"></script>
+
+
+             <script
+	     src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"
+	     integrity="sha256-JklDYODbg0X+8sPiKkcFURb5z7RvlNMIaE3RA2z97vw="
+	     crossorigin="anonymous"></script> -->
         
-        <script
-	    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-	    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-	    crossorigin="anonymous"></script>
 
-
-        <script
-	    src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"
-	    integrity="sha256-JklDYODbg0X+8sPiKkcFURb5z7RvlNMIaE3RA2z97vw="
-	    crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         
-
         
         <script>
 
