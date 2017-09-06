@@ -68,7 +68,8 @@ $feeds = 'feeds.xml';
          
          $(document).ready(function() {
 
-             detectmob
+
+             alert(navigator.userAgent)
              
              $.ajaxSetup ({ cache: true })
 
