@@ -60,10 +60,10 @@ span.nws-error {
 div.nws-tab-feeds {
     /* -moz-columns: 18em; */
     /* -webkit-columns: 18em; */
-    columns: 18em;
+    columns: 20em;
     /* -moz-column-gap: .5em; */
     /* -webkit-column-gap: .5em; */
-    column-gap: .5em;
+    column-gap: .3em;
 }
 
 .feedTitle {
