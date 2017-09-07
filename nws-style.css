@@ -1,8 +1,8 @@
 :root {
-  --main-color-level-1: #03688a;
-  --main-color-level-2: #03688a;
+  --main-color-level-1: #eee;
+  --main-color-level-2: #fd0;
   --main-color-level-3: #03688a;
-  --main-color-level-4: #a00;
+  --main-color-level-4: #700;
 }
 
 body {
@@ -53,6 +53,11 @@ h1 {
 
 span.nws-error {
     color: var(--main-color-level-4);
+}
+
+div.nws-error {
+    background-color: var(--main-color-level-4);
+    color: var(--main-color-level-2);
 }
 
 /* Feed Item */
