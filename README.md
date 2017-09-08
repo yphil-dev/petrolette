@@ -1,8 +1,8 @@
 # NeWS
 
-NeWS est un lecteur de flux RSS/Atom en ligne, ou local. Auto-hébergé, if you will.
+RSS/Atom morning news reader ; Works at night too.
 
-Description [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
+Read about it in French [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
 
 ## NeWS is a personal track-free online RSS news reader
 
@@ -25,7 +25,7 @@ NeWS is a simple but powerful web app to view and manage various XML (RSS, aTom,
 
 ### Installation
 
--   Copy the files in a directory within a webserver root, or just a directory on your local machine
+-   Copy the files in a directory within a webserver root, or just a directory on your local machine (but remember to install PHP)
 -   Point your browser to that directory. That's it.
 -   Oh, if you want to use the favicon caching feature (those favicons can take a loong time to get) make sure that the web server has the right to write to our directory:
     -   On the average web server (Debian / Apache) it's generally just a matter of, in the `nws` folder: `sudo chown .www-data .`
@@ -46,7 +46,7 @@ NeWS is a simple but powerful web app to view and manage various XML (RSS, aTom,
     -   Use the "change this feed's tab" menu to re-categorize the feed
     -   Use the "promote this feed" (^) link to bump up a feed as 1st of its tab
     -   Use the "delete this feed" (x) link to delete a feed
--   Or directly edit [feeds.xml](http://bitbucket.org/yassinphilip/nws/raw/master/feeds.xml) (way faster).
+-   Or directly edit [feeds.xml](http://bitbucket.org/yassinphilip/nws/raw/master/feeds.xml) (way **faster & safer**).
 
 ### LICENSE
 
