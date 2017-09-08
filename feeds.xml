@@ -7,7 +7,8 @@
 
   <url tab="news">http://www.futura-sciences.com/rss/actualites.xml</url>
   <url tab="news" img="none">http://www.pcinpact.com/rss/news.xml</url>
-  
+  <url tab="news">https://news.google.com/news?cf=all&amp;hl=en&amp;pz=1&amp;ned=us&amp;output=rss</url>
+
   <url tab="example" photo="true" numItems="1">http://xkcd.com/rss.xml</url>
   <url tab="example" numItems="10">http://feeds.bbci.co.uk/news/world/rss.xml</url>
   <url tab="example" numItems="8">http://feeds.bbci.co.uk/news/world/africa/rss.xml</url>
