@@ -196,7 +196,10 @@ div.nws-tab-feeds {
     right:3em;
 }
 
-.reload:hover, .gallery-feed:hover, .gallery-tab:hover {
+.reload:hover,
+.gallery-feed:hover,
+.gallery-tab:hover,
+.nws-col-wrapping {
     color:orange;
 }
 
