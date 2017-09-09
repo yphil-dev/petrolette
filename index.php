@@ -50,6 +50,7 @@ $feeds = 'feeds.xml';
                // alert('plop');
                // $('.nws-tab-feeds').addClass('nws-tab-feeds-cols');
                $(this).parent().addClass('plop-red');
+               $(this).parent().removeClass('plop');
            });
                
            /* 
@@ -482,7 +483,7 @@ $feeds = 'feeds.xml';
 
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
-    <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-cols">
+    <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-cols plop">
     <span class="nws-col-wrapping" id="nws-col-wrapping" title="Change the column flowing style">&#128462;</span>
     <span class="gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
 ';
