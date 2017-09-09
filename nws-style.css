@@ -65,11 +65,11 @@ div.nws-error {
 div.nws-tab-feeds {
 }
 
-.plopRed {
+.plop-red {
     background-color: yellow;
 }
 
-.nwsTabFeedsCols {
+.nws-tab-feeds-cols {
     /* -moz-columns: 18em; */
     /* -webkit-columns: 18em; */
     columns: 15em;
