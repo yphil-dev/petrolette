@@ -44,7 +44,13 @@ $feeds = 'feeds.xml';
        <script>
          
        $(document).ready(function() {
-             
+
+
+           $('#nws-col-wrapping').click(function() {
+               alert('plop');
+               $('#foo').addClass('myClass');
+           });
+               
            /* 
             *              if (navigator.userAgent.match(/Android/i)
             *                  || navigator.userAgent.match(/webOS/i)
@@ -476,7 +482,7 @@ $feeds = 'feeds.xml';
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
     <div id="tab-'.$tabName.'" class="nws-tab-feeds">
-    <span class="nws-col-wrapping" title="Change the column flowing style">&#128462;</span>
+    <span class="nws-col-wrapping" id="nws-col-wrapping" title="Change the column flowing style">&#128462;</span>
     <span class="gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
 ';
                     foreach ($tabGroups[$tabName] as $tabUrl)
