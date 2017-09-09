@@ -171,6 +171,13 @@ div.nws-tab-feeds {
     /* font-size:150%; */
 }
 
+.nws-col-wrapping {
+    font-size:150%;
+    position:absolute;
+    top:.3em;
+    right:.6em;
+}
+
 .gallery-tab {
     font-size:150%;
     position:absolute;
