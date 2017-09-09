@@ -69,7 +69,7 @@ div.nws-tab-feeds {
     background-color: yellow;
 }
 
-.nws-tab-feeds-cols {
+.nwsTabFeedsCols {
     /* -moz-columns: 18em; */
     /* -webkit-columns: 18em; */
     columns: 15em;
