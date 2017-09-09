@@ -48,7 +48,7 @@ $feeds = 'feeds.xml';
 
            $('#nws-col-wrapping').click(function() {
                alert('plop');
-               $('#foo').addClass('myClass');
+               $('div.nws-tab-feeds').addClass('nws-tab-feeds-cols');
            });
                
            /* 
