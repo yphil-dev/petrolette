@@ -169,8 +169,8 @@ div.nws-tab-feeds {
 .gallery-tab2,
 .nws-col-wrapping {
     cursor:pointer;
-    /* float:right; */
-    /* margin: 0 .5em 0 0; */
+    float:right;
+    margin: 0 .5em 0 0;
     /* line-height:.8em; */
     /* font-size:150%; */
 }
