@@ -63,6 +63,9 @@ div.nws-error {
 /* Feed Item */
 
 div.nws-tab-feeds {
+}
+
+.nws-tab-flowing {
     /* -moz-columns: 18em; */
     /* -webkit-columns: 18em; */
     columns: 15em;
@@ -76,10 +79,6 @@ div.outerContainer {
     page-break-inside: avoid;
     /* Firefox is dumb */
     break-inside: avoid;
-}
-
-div.listing article:first-child {
-    margin-top: 0;
 }
 
 .feedTitle {
