@@ -65,7 +65,7 @@ div.nws-error {
 div.nws-tab-feeds {
 }
 
-.nws-tab-flowing {
+.nws-tab-cols {
     /* -moz-columns: 18em; */
     /* -webkit-columns: 18em; */
     columns: 15em;
@@ -74,12 +74,12 @@ div.nws-tab-feeds {
     column-gap: .3em;
 }
 
-/* div.outerContainer { */
-/*     /\* -webkit-column-break-inside: avoid; *\/ */
-/*     page-break-inside: avoid; */
-/*     /\* Firefox is dumb *\/ */
-/*     break-inside: avoid; */
-/* } */
+.outerContainer-cols {
+    /* -webkit-column-break-inside: avoid; */
+    page-break-inside: avoid;
+    /* Firefox is dumb */
+    break-inside: avoid;
+}
 
 .outerContainer {
     width:24%;
