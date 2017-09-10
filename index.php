@@ -90,7 +90,6 @@ $feeds = 'feeds.xml';
                            direction = 'next';
                        };
 
-
                    if (e.keyCode == 27) {
                        close_viewer();
                    };
@@ -108,12 +107,12 @@ $feeds = 'feeds.xml';
                                $("#tabs").tabs("option", "active", active_tab - 1);
                            else
                                $("#tabs").tabs("option", "active", totaltabs - 1);
-               })
+               });
 
 
-                        $("#tabs").bind("tabsactivate", function (event, ui) {
-                            document.title = ui.newTab.text() + " | NeWS"
-                                    });
+               $("#tabs").bind("tabsactivate", function (event, ui) {
+                   document.title = ui.newTab.text() + " | NeWS";
+               });
 
 
                function pulse() {
@@ -123,40 +122,40 @@ $feeds = 'feeds.xml';
                setInterval(pulse, 150);
 
                $('.nws-button-reload').click(function(){
-                   var div_to_reload = $(this).parent()
-                                     var feed_url = encodeURIComponent(div_to_reload.attr('title'))
-                                     var feed_num_item = div_to_reload.attr('data-numItems')
-                                     var feed_img_mode = div_to_reload.attr('data-img')
-                                     var feed_photo_mode = div_to_reload.attr('data-photo')
-                                     div_to_reload.children('div.innerContainer')
-                                     .html(ajax_spinner)
-                                     .load(ajax_loader, "n=" + feed_num_item + "&i="+feed_img_mode+"&p="+feed_photo_mode+"&age="+feed_max_age+"&z=" + feed_url)
-                                     })
-
+                   var div_to_reload = $(this).parent();
+                   var feed_url = encodeURIComponent(div_to_reload.attr('title'));
+                   var feed_num_item = div_to_reload.attr('data-numItems');
+                   var feed_img_mode = div_to_reload.attr('data-img');
+                   var feed_photo_mode = div_to_reload.attr('data-photo');
+                   div_to_reload.children('div.innerContainer');
+                   .html(ajax_spinner);
+                   .load(ajax_loader, "n=" + feed_num_item + "&i="+feed_img_mode+"&p="+feed_photo_mode+"&age="+feed_max_age+"&z=" + feed_url);;
+               });
+               
                // GALLERY
 
-               var viewport_width = $(window).width()
-               var viewport_height = $(window).height()
-               var i
-               var timeOut = null
-               var msg = "empty"
-
-               $("#viewer").css("top", ((viewport_height / 2) - 150) + "px")
-               $("#viewer").css("left", ((viewport_width / 2) - 250) + "px")
-
+               var viewport_width = $(window).width();
+               var viewport_height = $(window).height();
+               var i;
+               var timeOut = null;
+               var msg = "empty";
+               
+               $("#viewer").css("top", ((viewport_height / 2) - 150) + "px");
+               $("#viewer").css("left", ((viewport_width / 2) - 250) + "px");
+               
                $('#play').click(function (e, simulated) {
                    if (!simulated) {
-                       auto_play()
-                           $("#pause").css("display", "block")
-                           $("#play").css("display", "none")
-                           }
-               })
-
+                       auto_play();
+                       $("#pause").css("display", "block");
+                       $("#play").css("display", "none");
+                   };
+               });
+               
                function auto_play() {
                    $('#next').trigger('click', [true]);
-               timeOut = setTimeout(auto_play, 3000);
-               }
-
+                   timeOut = setTimeout(auto_play, 3000);
+               };
+               
                $('#pause, #prev, #next, #cross').click(function (e, simulated) {
                    if (!simulated) {
                        clearTimeout(timeOut);
@@ -183,10 +182,7 @@ $feeds = 'feeds.xml';
 
                    if (!count) {
                        $("#overlay").html('<div id="error">☹ No images ☹</div>');
-                       $('#overlay #error').css({position:'absolute',
-                                           left: ($(window).width() - $('#error').outerWidth())/2,
-                                           top: ($(window).height() - $('#error').outerHeight())/2
-                                           });
+                       $('#overlay #error').css({position:'absolute', left: ($(window).width() - $('#error').outerWidth())/2, top: ($(window).height() - $('#error').outerHeight())/2});
                        exit;
                    };
 
