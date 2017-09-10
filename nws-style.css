@@ -16,7 +16,7 @@ body {
 
 .outerContainer {
     /* min-height:50vh; */
-    min-height:50px;
+    min-height:100px;
 }
 
 form {
