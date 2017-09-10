@@ -46,13 +46,9 @@ $feeds = 'feeds.xml';
        $(document).ready(function() {
 
 
-           $('#nws-col-wrapping').click(function() {
-               // alert('plop');
+           $('#nws-button-col-wrapping').click(function() {
                $('.nws-tab-feeds').removeClass('nws-tab-feeds-cols');
                $('.outerContainer').removeClass('outerContainer-cols').addClass('outerContainer-block');
-               // $(this).parent().removeClass('plop');
-               // $(this).parent().removeClass('nws-tab-feeds-cols');
-
            });
                
            /* 
@@ -509,7 +505,7 @@ $feeds = 'feeds.xml';
 </div>
 <a href="nws-manage.php"><img src="img/nws.png" alt="manage" style="margin-top:.5em" /> Manage feeds</a>
 
-<span class="nws-col-wrapping" id="nws-col-wrapping" title="Change the column flowing style">&#128462;</span>
+<span class="nws-button-col-wrapping" id="nws-col-wrapping" title="Change the column flowing style">&#128462;</span>
 ';
 
             }
