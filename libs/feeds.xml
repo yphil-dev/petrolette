@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feeds>
-<!--
-    img can be either { none first all }
-    photo can be either {true false}
--->
-
+  <url tab="news">http://cabinporn.com/rss/</url>
   <url tab="news">http://www.futura-sciences.com/rss/actualites.xml</url>
-  <url tab="news" img="none">http://www.pcinpact.com/rss/news.xml</url>
+  <url tab="news">http://www.pcinpact.com/rss/news.xml</url>
   <url tab="news">https://news.google.com/news?cf=all&amp;hl=en&amp;pz=1&amp;ned=us&amp;output=rss</url>
-
-  <url tab="example" photo="true" numItems="1">http://xkcd.com/rss.xml</url>
-  <url tab="example" numItems="10">http://feeds.bbci.co.uk/news/world/rss.xml</url>
-  <url tab="example" numItems="8">http://feeds.bbci.co.uk/news/world/africa/rss.xml</url>
-
-  <url tab="example" photo="true" numItems="3">http://beautiful-wildlife.tumblr.com/rss/</url>
-  <url tab="example" numItems="6" photo="true">http://cabinporn.com/rss/</url>
+  <url tab="example">http://xkcd.com/rss.xml</url>
+  <url tab="example">http://feeds.bbci.co.uk/news/world/rss.xml</url>
+  <url tab="example">http://feeds.bbci.co.uk/news/world/africa/rss.xml</url>
+  <url tab="example">http://beautiful-wildlife.tumblr.com/rss/</url>
   <url tab="example">http://www.premierguitar.com/rss/1</url>
-  <url tab="example" numItems="1" photo="true">http://what-if.xkcd.com/feed.atom</url>
-  <url tab="example" photo="true" numItems="6">http://comicfeeds.chrisbenard.net/view/dilbert/default</url>
-
-  <!-- disabled feeds
-       <url tab="snd">http://planet.linuxaudio.org/rss20.xml</url>
-       <url tab="snd">http://feeds2.feedburner.com/PitchforkAlbumReviews/</url>
-       <url tab="snd">http://feeds.feedburner.com/LinuxJournalAudioVideo/</url>
-       Remember to encode & with $amp; in your feed's URI
-  -->
+  <url tab="example">http://what-if.xkcd.com/feed.atom</url>
+  <url tab="example">http://comicfeeds.chrisbenard.net/view/dilbert/default</url>
 </feeds>

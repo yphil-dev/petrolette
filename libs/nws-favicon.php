@@ -17,7 +17,7 @@ function removeslashes($string) {
     return stripslashes(trim($string));
 }
 
-$fallback_favicon = "img/rss.png";
+$fallback_favicon = "../img/rss.png";
 
 // 7889400 secs is a quarter
 
