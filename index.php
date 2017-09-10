@@ -45,310 +45,320 @@ $feeds = 'feeds.xml';
          
        $(document).ready(function() {
 
-           $('.nws-button-col-wrapping').click(function() {
-               $(this).parent().removeClass('nws-tab-feeds-cols').addClass('nws-tab-feeds-cols-block');
-               $(this).parent().children('.outerContainer').removeClass('outerContainer-cols').addClass('outerContainer-block');
+           $('.nws-button-col-wrapping-block').click(function() {
+               $(this).parent().removeClass('nws-tab-feeds-col').addClass('nws-tab-feeds-block');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-col outerContainer-phone').addClass('outerContainer-block');
            });
+
+           $('.nws-button-col-wrapping-col').click(function() {
+               $(this).parent().removeClass('nws-tab-feeds-block').addClass('nws-tab-feeds-col');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-block outerContainer-phone').addClass('outerContainer-col');
+           });
+          
+           $('.nws-button-col-wrapping-phone').click(function() {
+               $(this).parent().removeClass('nws-tab-feeds-col');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-block outerContainer-col').addClass('outerContainer-phone');
+           });
+
+           $.ajaxSetup ({ cache: true });
+
+           $( "#tabs" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" });
+
+           var totaltabs = $(".tabulators").find( "li" ).size();
+           var direction = null;
+           var ajax_loader = 'nws-load-feed.php';
+           var feed_max_age = 3600;
+           var ajax_spinner = '<img src="img/ellipsis.svg" class="loading" alt="loading..." />';
              
-               $.ajaxSetup ({ cache: true });
+           $('body').keyup(function(e) {
 
-               $( "#tabs" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" });
+               direction = null;
 
-               var totaltabs = $(".tabulators").find( "li" ).size();
-               var direction = null;
-               var ajax_loader = 'nws-load-feed.php';
-               var feed_max_age = 3600;
-               var ajax_spinner = '<img src="img/ellipsis.svg" class="loading" alt="loading..." />';
-             
-               $('body').keyup(function(e) {
-
-                   direction = null;
-
-                   if (e.keyCode == 71) {
-                       if( $("#viewer").is(':visible') ) {
-                           $("#img-name a").trigger('click');
-                           
-                           window.location = $("#img-name a").attr('href');
+               if (e.keyCode == 71) {
+                   if( $("#viewer").is(':visible') ) {
+                       $("#img-name a").trigger('click');
+                       window.location = $("#img-name a").attr('href');
                        } else {
                            alert("plop");
                        };
                    };
-
-                   if (e.keyCode == 37)
-                       if( $("#viewer").is(':visible') ) {
-                           $("#prev").trigger('click');
-                           direction = null;
-                       } else {
-                           direction = 'prev';
-                       };
-
-                   if (e.keyCode == 39)
-                       if( $("#viewer").is(':visible') ) {
-                           $("#next").trigger('click');
-                           direction = null;
-                       } else {
-                           direction = 'next';
-                       };
-
-
-                   if (e.keyCode == 27) {
-                       close_viewer();
+               
+               if (e.keyCode == 37) {
+                   if( $("#viewer").is(':visible') ) {
+                       $("#prev").trigger('click');
+                       direction = null;
+                   } else {
+                       direction = 'prev';
                    };
-
-                   var active_tab = $("#tabs").tabs("option", "active");
-                                               
-                   if (direction != null)
-                       if (direction == 'next')
-                           if (active_tab < totaltabs -1)
-                               $("#tabs").tabs("option", "active", active_tab + 1);
-                           else
-                               $("#tabs").tabs("option", "active", 0);
-                       else
-                           if (active_tab != 0)
-                               $("#tabs").tabs("option", "active", active_tab - 1);
-                           else
-                               $("#tabs").tabs("option", "active", totaltabs - 1);
-               })
+               }
 
 
-                        $("#tabs").bind("tabsactivate", function (event, ui) {
-                            document.title = ui.newTab.text() + " | NeWS"
-                                    });
+               if (e.keyCode == 39) {
+                   if( $("#viewer").is(':visible') ) {
+                       $("#next").trigger('click');
+                       direction = null;
+                   } else {
+                       direction = 'next';
+                   };
+               }
 
-
-               function pulse() {
-                   $('.mns-vc-moved').fadeIn(8000);
-                   $('.mns-vc-moved').fadeOut(200);
+               if (e.keyCode == 27) {
+                   close_viewer();
                };
-               setInterval(pulse, 150);
 
-               $('.nws-button-reload').click(function(){
-                   var div_to_reload = $(this).parent();
-                   var feed_url = encodeURIComponent(div_to_reload.attr('title'));
-                   var feed_num_item = div_to_reload.attr('data-numItems');
-                   var feed_img_mode = div_to_reload.attr('data-img');
-                   var feed_photo_mode = div_to_reload.attr('data-photo');
-                   div_to_reload.children('div.innerContainer')
-                                .html(ajax_spinner)
-                                .load(ajax_loader, "n="
-                                      + feed_num_item
-                                      + "&i="
-                                      + feed_img_mode
-                                      + "&p="
-                                      + feed_photo_mode
-                                      + "&age="
-                                      + feed_max_age
-                                      + "&z="
-                                      + feed_url);
-               });
+               var active_tab = $("#tabs").tabs("option", "active");
+                                               
+               if (direction != null)
+                   if (direction == 'next')
+                       if (active_tab < totaltabs -1)
+                           $("#tabs").tabs("option", "active", active_tab + 1);
+               else
+                   $("#tabs").tabs("option", "active", 0);
+               else
+                   if (active_tab != 0)
+                       $("#tabs").tabs("option", "active", active_tab - 1);
+               else
+                   $("#tabs").tabs("option", "active", totaltabs - 1);
+           });
+
+           
+           $("#tabs").bind("tabsactivate", function (event, ui) {
+               document.title = ui.newTab.text() + " | NeWS"
+           });
+
+           function pulse() {
+               $('.mns-vc-moved').fadeIn(8000);
+               $('.mns-vc-moved').fadeOut(200);
+           };
+           setInterval(pulse, 150);
+
+           $('.nws-button-reload').click(function(){
+               var div_to_reload = $(this).parent();
+               var feed_url = encodeURIComponent(div_to_reload.attr('title'));
+               var feed_num_item = div_to_reload.attr('data-numItems');
+               var feed_img_mode = div_to_reload.attr('data-img');
+               var feed_photo_mode = div_to_reload.attr('data-photo');
+               div_to_reload.children('div.innerContainer')
+                   .html(ajax_spinner)
+                   .load(ajax_loader, "n="
+                         + feed_num_item
+                         + "&i="
+                         + feed_img_mode
+                         + "&p="
+                         + feed_photo_mode
+                         + "&age="
+                         + feed_max_age
+                         + "&z="
+                         + feed_url);
+           });
 
                // GALLERY
 
-               var viewport_width = $(window).width()
-               var viewport_height = $(window).height()
-               var i
-               var timeOut = null
-               var msg = "empty"
+           var viewport_width = $(window).width()
+           var viewport_height = $(window).height()
+           var i
+           var timeOut = null
+           var msg = "empty"
 
-               $("#viewer").css("top", ((viewport_height / 2) - 150) + "px")
-               $("#viewer").css("left", ((viewport_width / 2) - 250) + "px")
+           $("#viewer").css("top", ((viewport_height / 2) - 150) + "px")
+           $("#viewer").css("left", ((viewport_width / 2) - 250) + "px")
 
-               $('#play').click(function (e, simulated) {
-                   if (!simulated) {
-                       auto_play()
-                           $("#pause").css("display", "block")
-                           $("#play").css("display", "none")
-                           }
-               })
-
-               function auto_play() {
-                   $('#next').trigger('click', [true]);
-               timeOut = setTimeout(auto_play, 3000);
+           $('#play').click(function (e, simulated) {
+               if (!simulated) {
+                   auto_play()
+                   $("#pause").css("display", "block")
+                   $("#play").css("display", "none")
                }
+           })
 
-               $('#pause, #prev, #next, #cross').click(function (e, simulated) {
-                   if (!simulated) {
-                       clearTimeout(timeOut);
-                       $("#pause").css("display", "none");
-                       $("#play").css("display", "block");
-                   };
-               });
+           function auto_play() {
+               $('#next').trigger('click', [true]);
+               timeOut = setTimeout(auto_play, 3000);
+           }
 
-               function img_gallery(i, div_id, tab_id) {
-
-                   viewport_width = $(window).width();
-                   viewport_height = $(window).height();
-
-                   msg = "";
-
-                   if (!tab_id == '') {
-                       var images = $( "#" + tab_id).find('img').not('.favicon img');
-                       $("#viewer-img").attr("data-tab", tab_id);
-                   } else {
-                       var images = $( "#" + div_id).find('img').not('.favicon img');
-                   };
-
-                   var count = images.length;
-
-                   if (!count) {
-                       $("#overlay").html('<div id="error">☹ No images ☹</div>');
-                       $('#overlay #error').css({position:'absolute',
-                                           left: ($(window).width() - $('#error').outerWidth())/2,
-                                           top: ($(window).height() - $('#error').outerHeight())/2
-                                           });
-                       exit;
-                   };
-
-                   var current_img = images.eq(i);
-
-                   var site_url = current_img.attr("data-link").substring(7, current_img.attr("data-link").length);
-                   var first_slash = site_url.indexOf("/");
-
-                   var img = new Image();
-                   img.src = current_img.attr("src");
-
-                   var curr_img_width = img.width;
-                   var curr_img_height = img.height;
-
-                   $("#viewer-img").fadeOut(0);
-
-                   if (curr_img_width > curr_img_height)
-                       var acceptable_min_width = 320;
-                   else
-                       var acceptable_min_width = 230;
-                   
-                   if (curr_img_width < acceptable_min_width) {
-                       $("#viewer").css("width", acceptable_min_width + "px");
-                       $("#viewer").css("height", 240 + "px");
-                       $("#viewer-img").css("width", acceptable_min_width + "px");
-                       $("#viewer-img").css("height", 240 + "px");
-                       $("#viewer-img").css("height", "");
-                   } else {
-                       $("#viewer").css("width", (curr_img_width - 5) + "px");
-                       $("#viewer").css("height", (curr_img_height - 5) + "px");
-                       $("#viewer-img").css("width", (curr_img_width - 5) + "px");
-                       $("#viewer-img").css("height", (curr_img_height - 5) + "px");
-                   };
-
-                   if (curr_img_height > viewport_height) {
-                       $("#viewer").css("max-height", viewport_height + "px");
-                       $("#viewer-img").css("height", (viewport_height - 5) + "px" + "!important");
-                       $("#viewer-img").css("max-height", (viewport_height - 2) + "px");
-                       $("#viewer-img").css("width", "");
-                   };
-
-                   if (curr_img_width > viewport_width) {
-                       $("#viewer").css("max-width", viewport_width + "px");
-                       $("#viewer-img").css("width", (viewport_width - 5) + "px" + "!important");
-                       $("#viewer-img").css("max-width", (viewport_width - 2) + "px");
-                       $("#viewer-img").css("height", "");
-                   };
-
-                   $("#viewer").css("display", "block");
-                   $("#viewer-img").attr("src", current_img.attr("src"));
-                   $("#viewer-img").attr("data-index", i);
-                   $("#viewer-img").attr("data-count", count);
-                   $("#viewer-img").attr("data-id", div_id);
-                   $("#img-name a").text(msg + "[#" + i + " of " + count + "] " + current_img.attr("alt"));
-                   $("#buttons").text("[#" + i + " of " + count + "] ");
-                   $("#img-name a").attr("href", current_img.attr("data-link"));
-                   $("#img-name a").attr("title", current_img.attr("alt"));
-                   $("#link-img").attr("href", current_img.attr("src"));
-
-                   $("#viewer-img").fadeIn(400);
-               };
-
-               $('.nws-button-gallery-feed').click(function(){
-                   $("#overlay").show();
-                       var div_id = $(this).parent().attr("id");
-                       var tab_id = '';
-                       img_gallery(0, div_id, tab_id);
-               });
-
-               $('.nws-button-gallery-tab').click(function(){
-                   $("#overlay").show();
-                       var div_id = $(this).parent().children("div").first().attr("id");
-                       var tab_id = $(this).parent().attr("id");
-                       img_gallery(0, div_id, tab_id);
-               });
-
-               // Reposition and resize the image according to viewport
-               $(window).resize(function () {
-                   viewport_width = $(window).width();
-                   viewport_height = $(window).height();
-
-                   $("#viewer").css("top", ((viewport_height / 2) - 150) + "px");
-                   $("#viewer").css("left", ((viewport_width / 2) - 250) + "px");
-
-                   if (viewport_width < 500) {
-                       $("#viewer").css("left", "0px");
-                       $("#viewer").css("width", viewport_width + "px");
-                       $("#viewer-img").css("width", (viewport_width - 10) + "px");
-                   };
-               });
-
-               $("#prev").click(function () {
-
-                   var myindex = $(this).parent().find("img").attr("data-index");
-                   var mycount = $(this).parent().find("img").attr("data-count");
-                   var mytab = $(this).parent().find("img").attr("data-tab");
-                   var mydiv_id = $("#viewer-img").attr("data-id");
-                   myindex = parseInt(myindex);
-                   mycount = parseInt(mycount);
-                   
-                   if (myindex > mycount) {
-                       myindex = mycount;
-                   } else {
-                       if (myindex > 0) {
-                           myindex = (myindex - 1);
-                       } else {
-                           myindex = (mycount - 1);
-                       };
-                   };
-                   img_gallery(myindex, mydiv_id, mytab);
-               });
-               
-               $("#next").click(function () {
-
-                   var myindex = $(this).parent().find("img").attr("data-index");
-                   var mycount = $(this).parent().find("img").attr("data-count");
-                   var mytab = $(this).parent().find("img").attr("data-tab");
-                   var mydiv_id = $("#viewer-img").attr("data-id");
-                   myindex = parseInt(myindex);
-
-                   if (myindex < (mycount -1)) {
-                       myindex = (myindex + 1);
-                   } else {
-                       myindex = 0;
-                   };
-
-                   // msg = " tab: (" + mytab + ")" + " div: (" + mydiv_id + ")"
-
-                   // alert(msg)
-
-                   img_gallery(myindex, mydiv_id, mytab);
-               });
-
-               $("#cross").click(function () {
-                   close_viewer();
-               });
-               
-               $("#overlay").click(function () {
-                   close_viewer();
-               });
-               
-               function close_viewer() {
+           $('#pause, #prev, #next, #cross').click(function (e, simulated) {
+               if (!simulated) {
                    clearTimeout(timeOut);
                    $("#pause").css("display", "none");
                    $("#play").css("display", "block");
-                   $("#viewer").css("display", "none");
-                   $("#overlay").hide();
-                   $("#overlay").html('');
-                   images = null;
                };
+           });
+
+           function img_gallery(i, div_id, tab_id) {
+
+               viewport_width = $(window).width();
+               viewport_height = $(window).height();
+
+               msg = "";
+
+               if (!tab_id == '') {
+                   var images = $( "#" + tab_id).find('img').not('.favicon img');
+                   $("#viewer-img").attr("data-tab", tab_id);
+               } else {
+                   var images = $( "#" + div_id).find('img').not('.favicon img');
+               };
+
+               var count = images.length;
+
+               if (!count) {
+                   $("#overlay").html('<div id="error">☹ No images ☹</div>');
+                   $('#overlay #error').css({position:'absolute',
+                                             left: ($(window).width() - $('#error').outerWidth())/2,
+                                             top: ($(window).height() - $('#error').outerHeight())/2
+                                            });
+                   exit;
+               };
+
+               var current_img = images.eq(i);
+
+               var site_url = current_img.attr("data-link").substring(7, current_img.attr("data-link").length);
+               var first_slash = site_url.indexOf("/");
+
+               var img = new Image();
+               img.src = current_img.attr("src");
+
+               var curr_img_width = img.width;
+               var curr_img_height = img.height;
+
+               $("#viewer-img").fadeOut(0);
+
+               if (curr_img_width > curr_img_height)
+                   var acceptable_min_width = 320;
+               else
+                   var acceptable_min_width = 230;
                
-               $('.nws-button-reload').trigger('click');
-               feed_max_age = 10; // allow to force reloading the feed
+               if (curr_img_width < acceptable_min_width) {
+                   $("#viewer").css("width", acceptable_min_width + "px");
+                   $("#viewer").css("height", 240 + "px");
+                   $("#viewer-img").css("width", acceptable_min_width + "px");
+                   $("#viewer-img").css("height", 240 + "px");
+                   $("#viewer-img").css("height", "");
+               } else {
+                   $("#viewer").css("width", (curr_img_width - 5) + "px");
+                   $("#viewer").css("height", (curr_img_height - 5) + "px");
+                   $("#viewer-img").css("width", (curr_img_width - 5) + "px");
+                   $("#viewer-img").css("height", (curr_img_height - 5) + "px");
+               };
+
+               if (curr_img_height > viewport_height) {
+                   $("#viewer").css("max-height", viewport_height + "px");
+                   $("#viewer-img").css("height", (viewport_height - 5) + "px" + "!important");
+                   $("#viewer-img").css("max-height", (viewport_height - 2) + "px");
+                   $("#viewer-img").css("width", "");
+               };
+
+               if (curr_img_width > viewport_width) {
+                   $("#viewer").css("max-width", viewport_width + "px");
+                   $("#viewer-img").css("width", (viewport_width - 5) + "px" + "!important");
+                   $("#viewer-img").css("max-width", (viewport_width - 2) + "px");
+                   $("#viewer-img").css("height", "");
+               };
+
+               $("#viewer").css("display", "block");
+               $("#viewer-img").attr("src", current_img.attr("src"));
+               $("#viewer-img").attr("data-index", i);
+               $("#viewer-img").attr("data-count", count);
+               $("#viewer-img").attr("data-id", div_id);
+               $("#img-name a").text(msg + "[#" + i + " of " + count + "] " + current_img.attr("alt"));
+               $("#buttons").text("[#" + i + " of " + count + "] ");
+               $("#img-name a").attr("href", current_img.attr("data-link"));
+               $("#img-name a").attr("title", current_img.attr("alt"));
+               $("#link-img").attr("href", current_img.attr("src"));
+
+               $("#viewer-img").fadeIn(400);
+           };
+
+           $('.nws-button-gallery-feed').click(function(){
+               $("#overlay").show();
+               var div_id = $(this).parent().attr("id");
+               var tab_id = '';
+               img_gallery(0, div_id, tab_id);
+           });
+
+           $('.nws-button-gallery-tab').click(function(){
+               $("#overlay").show();
+               var div_id = $(this).parent().children("div").first().attr("id");
+               var tab_id = $(this).parent().attr("id");
+               img_gallery(0, div_id, tab_id);
+           });
+
+           // Reposition and resize the image according to viewport
+           $(window).resize(function () {
+               viewport_width = $(window).width();
+               viewport_height = $(window).height();
+
+               $("#viewer").css("top", ((viewport_height / 2) - 150) + "px");
+               $("#viewer").css("left", ((viewport_width / 2) - 250) + "px");
+
+               if (viewport_width < 500) {
+                   $("#viewer").css("left", "0px");
+                   $("#viewer").css("width", viewport_width + "px");
+                   $("#viewer-img").css("width", (viewport_width - 10) + "px");
+               };
+           });
+
+           $("#prev").click(function () {
+
+               var myindex = $(this).parent().find("img").attr("data-index");
+               var mycount = $(this).parent().find("img").attr("data-count");
+               var mytab = $(this).parent().find("img").attr("data-tab");
+               var mydiv_id = $("#viewer-img").attr("data-id");
+               myindex = parseInt(myindex);
+               mycount = parseInt(mycount);
+               
+               if (myindex > mycount) {
+                   myindex = mycount;
+               } else {
+                   if (myindex > 0) {
+                       myindex = (myindex - 1);
+                   } else {
+                       myindex = (mycount - 1);
+                   };
+               };
+               img_gallery(myindex, mydiv_id, mytab);
+           });
+           
+           $("#next").click(function () {
+
+               var myindex = $(this).parent().find("img").attr("data-index");
+               var mycount = $(this).parent().find("img").attr("data-count");
+               var mytab = $(this).parent().find("img").attr("data-tab");
+               var mydiv_id = $("#viewer-img").attr("data-id");
+               myindex = parseInt(myindex);
+
+               if (myindex < (mycount -1)) {
+                   myindex = (myindex + 1);
+               } else {
+                   myindex = 0;
+               };
+
+               // msg = " tab: (" + mytab + ")" + " div: (" + mydiv_id + ")"
+
+               // alert(msg)
+
+               img_gallery(myindex, mydiv_id, mytab);
+           });
+
+           $("#cross").click(function () {
+               close_viewer();
+           });
+           
+           $("#overlay").click(function () {
+               close_viewer();
+           });
+           
+           function close_viewer() {
+               clearTimeout(timeOut);
+               $("#pause").css("display", "none");
+               $("#play").css("display", "block");
+               $("#viewer").css("display", "none");
+               $("#overlay").hide();
+               $("#overlay").html('');
+               images = null;
+           };
+           
+           $('.nws-button-reload').trigger('click');
+           feed_max_age = 10; // allow to force reloading the feed
        });
 
        </script>
@@ -373,7 +383,7 @@ $feeds = 'feeds.xml';
                 $div_id = htmlspecialchars(str_replace($illegal_chars, "", substr($div_id, 0, $pos)), ENT_QUOTES);
 
                 echo '
-        <div class="outerContainer outerContainer-cols" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
+        <div class="outerContainer outerContainer-col" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
             <span class="nws-button-reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
             <span class="nws-button-gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
             <div class="innerContainer"></div>
@@ -423,9 +433,10 @@ $feeds = 'feeds.xml';
 
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
-    <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-cols">
-    <span class="nws-button-col-wrapping" title="Change the column flowing style">&#128462;</span>
-    <span class="nws-button-col-wrapping-phone" title="Change the column flowing style">&#128442;</span>
+    <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-col">
+    <span class="nws-button-col-wrapping-block" title="Set ['.$tabName.'] flowing style to block">&#128441;</span>
+    <span class="nws-button-col-wrapping-col" title="Set ['.$tabName.'] flowing style to column">&#128442;</span>
+    <span class="nws-button-col-wrapping-phone" title="Set ['.$tabName.'] column flowing style to phone">&#128443;</span>
     <span class="nws-button-gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
 ';
                     foreach ($tabGroups[$tabName] as $tabUrl)

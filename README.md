@@ -33,6 +33,14 @@ NeWS is a simple but powerful web app to view and manage various XML (RSS, aTom,
     -   Use [a trusted online htpassword generator](https://duckduckgo.com/?q%3Dhtpassword%2Bgenerator) (You can also create user/password pair(s) directly on the server with the command `htpasswd -b .access username password`)
     -   Paste this user/password pair in a file, and point to it from the [.htaccess](http://bitbucket.org/yassinphilip/nws/src/master/.htaccess) file
 
+#### Annex: A simple local server
+
+To run NWS locally, simply install a basic LAMP server:
+
+- Install the server components: `sudo apt install apache2 php7.0 php7.0-xml libapache2-mod-php7.0` (you may have to log in and out)
+- Copy NeWS to the HTML root: `cp -r nws /var/www/html/`
+- Point your browser to http://localhost/nws
+
 ### Usage
 
 -   Navigate the tabs with < left and > right arrow keys (and `r` & `t`)
