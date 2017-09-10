@@ -27,7 +27,7 @@ if (isset($_GET['all'])) {
 <head>
 <title>nws</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="shortcut icon" type="image/x-icon" href="img/nws.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/rss.png" />
     <style type="text/css" media="screen">@import "nws-style.css";</style>
 </head>
 <body>
@@ -91,7 +91,7 @@ function delTree($dir) {
 echo '<a href='.__FILE__.'?all>DELETE CACHE DIR</a>';
 
 ?>
-<a href="./"><img src="img/nws.png" alt="NWS" style="margin-top:.5em" /> NWS</a> | <a href="./nws-manage.php">Manage feeds</a>
+<a href="./"><img src="img/rss.png" alt="NWS" style="margin-top:.5em" /> NWS</a> | <a href="./nws-manage.php">Manage feeds</a>
 </body>
 </html>
 
