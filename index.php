@@ -117,8 +117,8 @@ $feeds = 'feeds.xml';
 
 
                function pulse() {
-                   $('.moved').fadeIn(8000);
-                   $('.moved').fadeOut(200);
+                   $('.mns-vc-moved').fadeIn(8000);
+                   $('.mns-vc-moved').fadeOut(200);
                };
                setInterval(pulse, 150);
 
@@ -330,26 +330,26 @@ $feeds = 'feeds.xml';
                });
 
                $("#cross").click(function () {
-                   close_viewer()
-                       })
-
+                   close_viewer();
+               });
+               
                $("#overlay").click(function () {
-                   close_viewer()
-                       })
-
+                   close_viewer();
+               });
+               
                function close_viewer() {
                    clearTimeout(timeOut);
-                   $("#pause").css("display", "none")
-                              $("#play").css("display", "block")
-                              $("#viewer").css("display", "none");
-                   $("#overlay").hide()
-                                $("#overlay").html('')
-                                images = null
-                                }
-
-               $('.nws-button-reload').trigger('click')
+                   $("#pause").css("display", "none");
+                   $("#play").css("display", "block");
+                   $("#viewer").css("display", "none");
+                   $("#overlay").hide();
+                   $("#overlay").html('');
+                   images = null;
+               };
+               
+               $('.nws-button-reload').trigger('click');
                feed_max_age = 10; // allow to force reloading the feed
-       })
+       });
 
        </script>
 
@@ -382,7 +382,7 @@ $feeds = 'feeds.xml';
             }
 
             if (empty($urls)) {
-                echo '<p class="moved">No feeds found in ' . getcwd() . "/" . $feeds . '</p>';
+                echo '<p>No feeds found in ' . getcwd() . "/" . $feeds . '</p>';
             } else {
 
                 foreach ($urls->url as $url) {
