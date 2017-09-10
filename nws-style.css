@@ -187,7 +187,8 @@ div.nws-tab-feeds {
 .nws-button-reload,
 .nws-button-gallery-feed,
 .nws-button-gallery-tab,
-.nws-button-col-wrapping,
+.nws-button-col-wrapping-col,
+.nws-button-col-wrapping-block,
 .nws-button-col-wrapping-phone {
     color: var(--main-color-level-5);
     cursor: pointer;
@@ -196,7 +197,8 @@ div.nws-tab-feeds {
 }
 
 .nws-button-gallery-tab,
-.nws-button-col-wrapping,
+.nws-button-col-wrapping-col,
+.nws-button-col-wrapping-block,
 .nws-button-col-wrapping-phone {
     color: var(--main-color-level-3);
 }
@@ -204,19 +206,27 @@ div.nws-tab-feeds {
 .nws-button-reload:hover,
 .nws-button-gallery-feed:hover,
 .nws-button-gallery-tab:hover,
-.nws-button-col-wrapping:hover,
+.nws-button-col-wrapping-col:hover,
+.nws-button-col-wrapping-block:hover,
 .nws-button-col-wrapping-phone:hover {
     color:var(--main-color-level-7);
 }
 
-.nws-button-col-wrapping-phone {
+.nws-button-col-wrapping-block {
+    font-size:150%;
+    position:absolute;
+    top:.4em;
+    right:3em;
+}
+
+.nws-button-col-wrapping-col {
     font-size:150%;
     position:absolute;
     top:.4em;
     right:2em;
 }
 
-.nws-button-col-wrapping {
+.nws-button-col-wrapping-phone {
     font-size:150%;
     position:absolute;
     top:.4em;
