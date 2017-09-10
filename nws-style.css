@@ -78,11 +78,18 @@ div.nws-tab-feeds {
     column-gap: .3em;
 }
 
+.nws-tab-feeds-block {
+}
+
 .outerContainer-cols {
-    /* -webkit-column-break-inside: avoid; */
     page-break-inside: avoid;
-    /* Firefox is dumb */
     break-inside: avoid;
+}
+
+.outerContainer-block {
+    width:24%;
+    display:inline-block;
+    vertical-align:top;
 }
 
 .outerContainer {

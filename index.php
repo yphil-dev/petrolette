@@ -49,6 +49,7 @@ $feeds = 'feeds.xml';
            $('#nws-col-wrapping').click(function() {
                // alert('plop');
                $('.nws-tab-feeds').removeClass('nws-tab-feeds-cols');
+               $('.outerContainer').removeClass('outerContainer-cols').addClass('outerContainer-block');
                // $(this).parent().removeClass('plop');
                // $(this).parent().removeClass('nws-tab-feeds-cols');
 
@@ -434,7 +435,7 @@ $feeds = 'feeds.xml';
                 $div_id = htmlspecialchars(str_replace($illegal_chars, "", substr($div_id, 0, $pos)), ENT_QUOTES);
 
                 echo '
-        <div class="outerContainer" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
+        <div class="outerContainer outerContainer-cols" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
             <span class="reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
             <span class="gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
             <div class="innerContainer"></div>
