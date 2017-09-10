@@ -197,21 +197,21 @@ div.nws-tab-feeds {
     font-size:150%;
     position:absolute;
     top:.4em;
-    right:2em;
+    right:1.5em;
 }
 
 .nws-button-col-wrapping-phone {
-    font-size:150%;
+    font-size:140%;
     position:absolute;
     top:.4em;
-    right:4em;
+    right:3em;
 }
 
 .nws-button-gallery-tab {
     font-size:150%;
     position:absolute;
     top:.3em;
-    right:.3em;
+    right:.2em;
 }
 
 .nws-button-reload:hover,
