@@ -65,16 +65,8 @@ div.nws-error {
 div.nws-tab-feeds {
 }
 
-.plop-red {
-    background-color: yellow;
-}
-
 .nws-tab-feeds-cols {
-    /* -moz-columns: 18em; */
-    /* -webkit-columns: 18em; */
     columns: 15em;
-    /* -moz-column-gap: .5em; */
-    /* -webkit-column-gap: .5em; */
     column-gap: .3em;
 }
 
