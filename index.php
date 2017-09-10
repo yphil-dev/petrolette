@@ -312,7 +312,7 @@ $feeds = 'feeds.xml';
                                $("#viewer-img").fadeIn(400)
                                }
 
-               $('.gallery-feed').click(function(){
+               $('.nws-button-gallery-feed').click(function(){
                    $("#overlay").show()
                                  var div_id = $(this).parent().attr("id")
                                  var tab_id = ''
@@ -433,7 +433,7 @@ $feeds = 'feeds.xml';
                 echo '
         <div class="outerContainer outerContainer-cols" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
             <span class="reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
-            <span class="gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
+            <span class="nws-button-gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
             <div class="innerContainer"></div>
         </div>
 ';
