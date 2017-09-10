@@ -62,7 +62,7 @@ To run NWS locally, simply install a basic LAMP server:
     -   Use the "change this feed's tab" menu to re-categorize the feed
     -   Use the "promote this feed" (^) link to bump up a feed as 1st of its tab
     -   Use the "delete this feed" (x) link to delete a feed
--   Or directly edit [feeds.xml](http://bitbucket.org/yassinphilip/nws/src/master/feeds.xml) (way **faster & safer**).
+-   Or directly edit [libs/feeds.xml](http://bitbucket.org/yassinphilip/nws/src/master/libs/feeds.xml) (way **faster & safer**).
 
 ### LICENSE
 
