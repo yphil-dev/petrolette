@@ -37,9 +37,13 @@ img.thumb {
 }
 
 a.nws-feed-title:link {
-    color:var(--main-color-level-6);
+    color:var(--main-color-level-5);
     font-weight:bold;
     text-decoration:none;
+}
+
+a.nws-feed-title:visited {
+    color:var(--main-color-level-5);
 }
 
 a:link {
