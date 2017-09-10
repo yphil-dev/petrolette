@@ -486,7 +486,6 @@ $feeds = 'feeds.xml';
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
     <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-cols plop">
-    <span class="nws-col-wrapping" id="nws-col-wrapping" title="Change the column flowing style">&#128462;</span>
     <span class="gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
 ';
                     foreach ($tabGroups[$tabName] as $tabUrl)
@@ -510,7 +509,7 @@ $feeds = 'feeds.xml';
 </div>
 <a href="nws-manage.php"><img src="img/nws.png" alt="manage" style="margin-top:.5em" /> Manage feeds</a>
 
-<h2>texte plop</h2>
+<span class="nws-col-wrapping" id="nws-col-wrapping" title="Change the column flowing style">&#128462;</span>
 ';
 
             }
