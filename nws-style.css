@@ -293,11 +293,11 @@ img.full {
     color:orange;
 }
 
-#version .unmoved {
+#version .mns-vc-unmoved {
     color:green;
 }
 
-#version .moved {
+#version .mns-vc-moved {
     color:red;
     display:invisible;
 }
