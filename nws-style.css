@@ -1,12 +1,15 @@
 :root {
   --main-color-level-1: #eeeeec;
-  --main-color-level-2: #fd0;
+  --main-color-level-2: #abbd81;
   --main-color-level-3: #3B1E2D;
   --main-color-level-4: #700;
   --main-color-level-5: #FF7F00;
   --main-color-level-6: #3d3644;
   --main-color-level-7: #FF5400;
   --main-color-level-8: #bbb; 
+  --main-color-level-9: #333; 
+  --main-color-level-10: #444; 
+
 }
 
 body {
@@ -39,7 +42,7 @@ img.thumb {
 }
 
 a.nws-feed-title:link {
-    color:var(--main-color-level-5);
+    color:var(--main-color-level-2);
     font-weight:bold;
     text-decoration:none;
 }
@@ -71,7 +74,7 @@ h1 {
 }
 
 span.nws-error {
-    color: var(--main-color-level-2);
+    color: var(--main-color-level-1);
 }
 
 div.nws-error {
@@ -83,7 +86,10 @@ div.nws-error {
 div.nws-tab-feeds {
 }
 
-.nws-tab-feeds-cols {
+.outerContainer {
+}
+
+.nws-tab-feeds-col {
     columns: 15em;
     column-gap: .3em;
 }
@@ -91,7 +97,7 @@ div.nws-tab-feeds {
 .nws-tab-feeds-block {
 }
 
-.outerContainer-cols {
+.outerContainer-col {
     page-break-inside: avoid;
     break-inside: avoid;
 }
@@ -102,44 +108,33 @@ div.nws-tab-feeds {
     vertical-align:top;
 }
 
-.outerContainer {
+.outerContainer-phone {
+    width:100%;
 }
 
 .feedTitle {
     height:1.5em;
     overflow:hidden;
-    color:#CD9E3F;
     background:var(--main-color-level-3);
     padding:.2em .2em 0;
     white-space:nowrap;
     text-overflow: ellipsis;
-}
-
-.feedTitleCached {
-    height:1.5em;
-    overflow:hidden;
-    color:#CD9E3F;
-    background:#2e3436;
-    padding:.2em .2em 0;
-    white-space:nowrap;
-    text-overflow: ellipsis;
-    font-style: italic;
 }
 
 .feed {
     vertical-align:top;
     margin: 0 1% .5em 0;
     font-size:.7em;
-    border: gray 1px solid;
-    background:var(--main-color-level-3);
+    border: var(--main-color-level-10) 1px solid;
+    background: var(--main-color-level-3);
 }
 
 .feed .nws-feed-icon {
-    background:var(--main-color-level-3);
+    background: var(--main-color-level-3);
 }
 
 .feed:hover {
-    border: orange 1px solid;
+    border: var(--main-color-level-5) 1px solid;
 }
 
 .feed ul li img.feed {
@@ -165,42 +160,65 @@ div.nws-tab-feeds {
 .feed ul li {
     margin:0;
     padding: .3em;
-    background: #555;
+    background: var(--main-color-level-9);
     line-height:1em;
 }
 
 .feed ul li:nth-child(even) {
-    background: #444;
+    background: var(--main-color-level-10);
 }
 
 .feed ul li:first-child {
-    border-top: 1px solid #2E3436;
+    border-top: 1px solid var(--main-color-level-6);
 }
 
 .feed ul li:hover {
-    background: #333;
+    background: var(--main-color-level-9);
 }
 
 .nws-button-reload,
 .nws-button-gallery-feed,
 .nws-button-gallery-tab,
-.nws-button-col-wrapping {
-    color:var(--main-color-level-5);
-    cursor:pointer;
-    float:right;
+.nws-button-col-wrapping-col,
+.nws-button-col-wrapping-block,
+.nws-button-col-wrapping-phone {
+    color: var(--main-color-level-5);
+    cursor: pointer;
+    float: right;
     margin: 0 .5em 0 0;
-    /* line-height:.8em; */
-    /* font-size:150%; */
+}
+
+.nws-button-gallery-tab,
+.nws-button-col-wrapping-col,
+.nws-button-col-wrapping-block,
+.nws-button-col-wrapping-phone {
+    color: var(--main-color-level-3);
+}
+
+.nws-button-reload:hover,
+.nws-button-gallery-feed:hover,
+.nws-button-gallery-tab:hover,
+.nws-button-col-wrapping-col:hover,
+.nws-button-col-wrapping-block:hover,
+.nws-button-col-wrapping-phone:hover {
+    color:var(--main-color-level-7);
+}
+
+.nws-button-col-wrapping-block {
+    font-size:150%;
+    position:absolute;
+    top:.4em;
+    right:3em;
+}
+
+.nws-button-col-wrapping-col {
+    font-size:150%;
+    position:absolute;
+    top:.4em;
+    right:2em;
 }
 
 .nws-button-col-wrapping-phone {
-    font-size:140%;
-    position:absolute;
-    top:.4em;
-    right:2.5em;
-}
-
-.nws-button-col-wrapping {
     font-size:150%;
     position:absolute;
     top:.4em;
@@ -211,14 +229,7 @@ div.nws-tab-feeds {
     font-size:150%;
     position:absolute;
     top:.3em;
-    right:.1em;
-}
-
-.nws-button-reload:hover,
-.nws-button-gallery-feed:hover,
-.nws-button-gallery-tab:hover,
-.nws-button-col-wrapping:hover {
-    color:var(--main-color-level-7);
+    right:0;
 }
 
 /* Images */
