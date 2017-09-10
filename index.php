@@ -130,7 +130,16 @@ $feeds = 'feeds.xml';
                    var feed_photo_mode = div_to_reload.attr('data-photo');
                    div_to_reload.children('div.innerContainer')
                                 .html(ajax_spinner)
-                                .load(ajax_loader, "n=" + feed_num_item + "&i="+feed_img_mode+"&p="+feed_photo_mode+"&age="+feed_max_age+"&z=" + feed_url);
+                                .load(ajax_loader, "n="
+                                      + feed_num_item
+                                      + "&i="
+                                      + feed_img_mode
+                                      + "&p="
+                                      + feed_photo_mode
+                                      + "&age="
+                                      + feed_max_age
+                                      + "&z="
+                                      + feed_url);
                });
 
                // GALLERY
