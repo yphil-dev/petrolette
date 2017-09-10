@@ -249,7 +249,7 @@ img.full {
 }
 
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
-    color: red;
+    color:var(--main-color-level-5);
 }
 
 .ui-widget-header {
