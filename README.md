@@ -24,7 +24,7 @@ Make the page your home page, and read it every morning. You know instantly what
     - Full block mode (for phones and small screens)
 - Handles any charset encoding/langage
 - Grabs the most out of the description text and displays it as standard tooltip on mouse hover
-- Built-in image gallery (to view all the images in a feed, or in a category)
+- Built-in **image gallery** (to view all the images in a feed, or in a category)
 - Does its best to parse any given feed and identify it w/o questions
 - Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
 - Directly links to any included image (and sound file)

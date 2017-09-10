@@ -7,7 +7,7 @@
 
 */
 
-$feeds = 'feeds.xml';
+$feeds = 'libs/feeds.xml';
 
 ?>
 
