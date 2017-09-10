@@ -123,10 +123,10 @@ $feeds = 'feeds.xml';
                setInterval(pulse, 150);
 
                $('.nws-button-reload').click(function(){
-                   var div_to_reload = $(this).parent()
-                                     var feed_url = encodeURIComponent(div_to_reload.attr('title'))
-                                     var feed_num_item = div_to_reload.attr('data-numItems')
-                                     var feed_img_mode = div_to_reload.attr('data-img')
+                   var div_to_reload = $(this).parent();
+                   var feed_url = encodeURIComponent(div_to_reload.attr('title'));
+                   var feed_num_item = div_to_reload.attr('data-numItems');
+                   var feed_img_mode = div_to_reload.attr('data-img');
                                      var feed_photo_mode = div_to_reload.attr('data-photo')
                                      div_to_reload.children('div.innerContainer')
                                      .html(ajax_spinner)
