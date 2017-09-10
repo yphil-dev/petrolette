@@ -240,10 +240,11 @@ img.full {
 
 .ui-widget-content {
     color: var(--main-color-level-5);
+    background: var(--main-color-level-6) !important;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active a:visited {
-    background: var(--main-color-level-4) !important;
+    background: var(--main-color-level-6) !important;
     border: 1px solid #AAAAAA;
     font-weight: normal;
 }
