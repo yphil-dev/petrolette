@@ -49,7 +49,7 @@ $feeds = 'feeds.xml';
            $('.nws-button-col-wrapping').click(function() {
                $(this).parent().removeClass('nws-tab-feeds-cols').addClass('nws-tab-feeds-cols-block');
                // $('.nws-tab-feeds').removeClass('nws-tab-feeds-cols');
-               $(this).parent().children('div.innerContainer').removeClass('outerContainer-cols').addClass('outerContainer-block');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-cols').addClass('outerContainer-block');
            });
                
            /* 
