@@ -6,6 +6,10 @@
   --main-color-level-5: orange;
 }
 
+.ui-widget-content {
+    color: var(--main-color-level-5);
+}
+
 body {
     background:#2e3436;
     color:#eeeeec;
