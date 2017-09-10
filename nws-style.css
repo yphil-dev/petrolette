@@ -1,11 +1,12 @@
 :root {
-  --main-color-level-1: #eee;
+  --main-color-level-1: #eeeeec;
   --main-color-level-2: #fd0;
   --main-color-level-3: #3B1E2D;
   --main-color-level-4: #700;
-  --main-color-level-5: #f8b26a;
+  --main-color-level-5: #FF7F00;
   --main-color-level-6: #3d3644;
- 
+  --main-color-level-7: #FF5400;
+  --main-color-level-8: #bbb; 
 }
 
 body {
@@ -48,21 +49,21 @@ a.nws-feed-title:visited {
 }
 
 a:link {
-    color:#eeeeec;
+    color:var(--main-color-level-1);
     font-weight:bold;
     text-decoration:none;
 }
 
 a:visited {
-    color:#bbbbbc;
+    color:var(--main-color-level-8);
 }
 
 a:hover {
-    color:#eeeeec;
+    color:var(--main-color-level-1);
 }
 
 a:active {
-    color:orange;
+    color:var(--main-color-level-7);
 }
 
 h1 {
@@ -185,6 +186,7 @@ div.nws-tab-feeds {
 .nws-button-gallery-feed,
 .nws-button-gallery-tab,
 .nws-button-col-wrapping {
+    color:var(--main-color-level-5);
     cursor:pointer;
     float:right;
     margin: 0 .5em 0 0;
@@ -210,7 +212,7 @@ div.nws-tab-feeds {
 .nws-button-gallery-feed:hover,
 .nws-button-gallery-tab:hover,
 .nws-button-col-wrapping:hover {
-    color:var(--main-color-level-5);
+    color:var(--main-color-level-7);
 }
 
 /* Images */
