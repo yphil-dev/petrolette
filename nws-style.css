@@ -172,7 +172,7 @@ div.nws-tab-feeds {
 }
 
 .reload,
-.gallery-feed,
+.nws-button-gallery-feed,
 .nws-button-gallery-tab,
 .nws-button-col-wrapping {
     cursor:pointer;
@@ -197,7 +197,7 @@ div.nws-tab-feeds {
 }
 
 .reload:hover,
-.gallery-feed:hover,
+.nws-button-gallery-feed:hover,
 .nws-button-gallery-tab:hover,
 .nws-button-col-wrapping:hover {
     color:orange;
