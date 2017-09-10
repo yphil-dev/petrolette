@@ -4,6 +4,8 @@
   --main-color-level-3: RGB(57, 0, 66);
   --main-color-level-4: #700;
   --main-color-level-5: orange;
+  --main-color-level-6: #406150;
+ 
 }
 
 body {
@@ -34,8 +36,8 @@ img.thumb {
     content: attr(data-tooltip);
 }
 
-a.feedTitle:link {
-    color:var(--main-color-level-4);
+a.nws-feed-title:link {
+    color:var(--main-color-level-6);
     font-weight:bold;
     text-decoration:none;
 }
