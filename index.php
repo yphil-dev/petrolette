@@ -47,8 +47,9 @@ $feeds = 'feeds.xml';
 
 
            $('#nws-button-col-wrapping').click(function() {
-               $('.nws-tab-feeds').removeClass('nws-tab-feeds-cols');
-               $('.outerContainer').removeClass('outerContainer-cols').addClass('outerContainer-block');
+               $(this).parent().removeClass('nws-tab-feeds-cols').addClass('nws-tab-feeds-cols-block');
+               // $('.nws-tab-feeds').removeClass('nws-tab-feeds-cols');
+               $(this).parent().children('div.innerContainer').removeClass('outerContainer-cols').addClass('outerContainer-block');
            });
                
            /* 
@@ -433,6 +434,7 @@ $feeds = 'feeds.xml';
                 echo '
         <div class="outerContainer outerContainer-cols" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
             <span class="nws-button-reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
+<span class="nws-button-col-wrapping" title="Change the column flowing style">&#128462;</span>
             <span class="nws-button-gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
             <div class="innerContainer"></div>
         </div>
@@ -505,7 +507,6 @@ $feeds = 'feeds.xml';
 </div>
 <a href="nws-manage.php"><img src="img/nws.png" alt="manage" style="margin-top:.5em" /> Manage feeds</a>
 
-<span class="nws-button-col-wrapping" id="nws-col-wrapping" title="Change the column flowing style">&#128462;</span>
 ';
 
             }
