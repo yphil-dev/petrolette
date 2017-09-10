@@ -8,7 +8,7 @@ Read about it in French [ici](http://linuxfr.org/users/philippemc/journaux/avec-
 
 NeWS is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now ; It does what I want from a no-nonsense, every-morning-every-day news reader.
 
-![NeWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/screenshot.png)
+![NeWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/img/screenshot.png)
 
 ### Features
 
@@ -29,7 +29,7 @@ NeWS is a simple but powerful web app to view and manage various XML (RSS, aTom,
 -   Point your browser to that directory. That's it.
 -   Oh, if you want to use the favicon caching feature (those favicons can take a loong time to get) make sure that the web server has the right to write to our directory:
     -   On the average web server (Debian / Apache) it's generally just a matter of, in the `nws` folder: `sudo chown .www-data .`
--   Recommended in installed online : Protect (restrict access to) the back-office / feeds file:
+-   Recommended if installed online : Protect (restrict access to) the back-office / feeds file:
     -   Use [a trusted online htpassword generator](https://duckduckgo.com/?q%3Dhtpassword%2Bgenerator) (You can also create user/password pair(s) directly on the server with the command `htpasswd -b .access username password`)
     -   Paste this user/password pair in a file, and point to it from the [.htaccess](http://bitbucket.org/yassinphilip/nws/src/master/.htaccess) file
 
@@ -70,3 +70,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*Icon by [Buuf](https://mattahan.deviantart.com/art/Buuf-37966044)*
+
+---

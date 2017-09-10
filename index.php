@@ -17,11 +17,11 @@ $feeds = 'feeds.xml';
 <title>NeWS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
        <meta name="robots" content="noindex,nofollow">
-       <link rel="shortcut icon" type="image/x-icon" href="img/nws.png" />
+       <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
 
        <link href="https://code.jquery.com/ui/1.12.1/themes/eggplant/jquery-ui.css" rel="stylesheet" type="text/css" />
         
-       <style type="text/css" media="screen">@import "nws-style.css";</style>
+       <style type="text/css" media="screen">@import "libs/nws-style.css";</style>
 <base target='_blank' />
        </head>
        <body>
@@ -66,7 +66,7 @@ $feeds = 'feeds.xml';
 
            var totaltabs = $(".tabulators").find( "li" ).size();
            var direction = null;
-           var ajax_loader = 'nws-load-feed.php';
+           var ajax_loader = 'libs/nws-load-feed.php';
            var feed_max_age = 3600;
            var ajax_spinner = '<img src="img/ellipsis.svg" class="loading" alt="loading..." />';
              
@@ -458,7 +458,7 @@ $feeds = 'feeds.xml';
         <span id="play" title="Start Slideshow" aria-hidden="true" class="icon-play playpause"></span>
     </div>
 </div>
-<a href="nws-manage.php"><img src="img/nws.png" alt="manage" style="margin-top:.5em" /> Manage feeds</a>
+<a href="libs/nws-manage.php"><img src="img/nws.png" alt="Manage feeds link" style="margin-top:.5em" /> Manage feeds</a>
 
 ';
 
