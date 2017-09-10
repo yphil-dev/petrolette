@@ -10,10 +10,18 @@ NeWS is a simple but powerful web app to view and manage various XML (RSS, aTom,
 
 ![NeWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/img/screenshot.png)
 
-### Features
+### Practical Features
+
+Make the page your home page, and read it every morning. You know instantly what article you've read ; We're already on the web, right? Just click and read the article. This is *so much better than TV*.
+
+### Technical Features
 
 - AJAX (asynchronous) loading of the feeds (ie reload one single feed w/o reloading the whole page)
 - Flexible/Responsive rendering of the feeds wrapping
+- Additionnaly, per tab/category:
+    - Column mode
+    - Block mode
+    - Full block mode (for phones and small screens)
 - Handles any charset encoding/langage
 - Grabs the most out of the description text and displays it as standard tooltip on mouse hover
 - Built-in image gallery (to view all the images in a feed, or in a category)
