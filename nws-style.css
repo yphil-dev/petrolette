@@ -18,6 +18,9 @@ body {
     min-height:100%;
 }
 
+#tabs {
+    min-height:50vh;
+}
 
 form {
     margin:0;
