@@ -200,6 +200,13 @@ div.nws-tab-feeds {
     right:2em;
 }
 
+.nws-button-col-wrapping-phone {
+    font-size:150%;
+    position:absolute;
+    top:.4em;
+    right:4em;
+}
+
 .nws-button-gallery-tab {
     font-size:150%;
     position:absolute;
