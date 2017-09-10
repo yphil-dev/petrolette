@@ -86,7 +86,10 @@ div.nws-error {
 div.nws-tab-feeds {
 }
 
-.nws-tab-feeds-cols {
+.outerContainer {
+}
+
+.nws-tab-feeds-col {
     columns: 15em;
     column-gap: .3em;
 }
@@ -94,7 +97,7 @@ div.nws-tab-feeds {
 .nws-tab-feeds-block {
 }
 
-.outerContainer-cols {
+.outerContainer-col {
     page-break-inside: avoid;
     break-inside: avoid;
 }
@@ -103,9 +106,6 @@ div.nws-tab-feeds {
     width:24%;
     display:inline-block;
     vertical-align:top;
-}
-
-.outerContainer {
 }
 
 .feedTitle {

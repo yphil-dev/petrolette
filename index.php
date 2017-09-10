@@ -46,8 +46,13 @@ $feeds = 'feeds.xml';
        $(document).ready(function() {
 
            $('.nws-button-col-wrapping-block').click(function() {
-               $(this).parent().removeClass('nws-tab-feeds-cols').addClass('nws-tab-feeds-cols-block');
-               $(this).parent().children('.outerContainer').removeClass('outerContainer-cols').addClass('outerContainer-block');
+               $(this).parent().removeClass('nws-tab-feeds-col').addClass('nws-tab-feeds-block');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-col').addClass('outerContainer-block');
+           });
+
+           $('.nws-button-col-wrapping-col').click(function() {
+               $(this).parent().removeClass('nws-tab-feeds-block').addClass('nws-tab-feeds-col');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-block').addClass('outerContainer-col');
            });
              
            $.ajaxSetup ({ cache: true });
@@ -373,7 +378,7 @@ $feeds = 'feeds.xml';
                 $div_id = htmlspecialchars(str_replace($illegal_chars, "", substr($div_id, 0, $pos)), ENT_QUOTES);
 
                 echo '
-        <div class="outerContainer outerContainer-cols" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
+        <div class="outerContainer outerContainer-col" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
             <span class="nws-button-reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
             <span class="nws-button-gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
             <div class="innerContainer"></div>
@@ -423,7 +428,7 @@ $feeds = 'feeds.xml';
 
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
-    <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-cols">
+    <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-col">
     <span class="nws-button-col-wrapping-block" title="Set ['.$tabName.'] flowing style to block">&#128441;</span>
     <span class="nws-button-col-wrapping-col" title="Set ['.$tabName.'] flowing style to column">&#128442;</span>
     <span class="nws-button-col-wrapping-phone" title="Set ['.$tabName.'] column flowing style to phone">&#128443;</span>
