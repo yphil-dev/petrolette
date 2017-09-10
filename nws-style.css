@@ -111,38 +111,26 @@ div.nws-tab-feeds {
 .feedTitle {
     height:1.5em;
     overflow:hidden;
-    color:#CD9E3F;
     background:var(--main-color-level-3);
     padding:.2em .2em 0;
     white-space:nowrap;
     text-overflow: ellipsis;
-}
-
-.feedTitleCached {
-    height:1.5em;
-    overflow:hidden;
-    color:#CD9E3F;
-    background:#2e3436;
-    padding:.2em .2em 0;
-    white-space:nowrap;
-    text-overflow: ellipsis;
-    font-style: italic;
 }
 
 .feed {
     vertical-align:top;
     margin: 0 1% .5em 0;
     font-size:.7em;
-    border: gray 1px solid;
-    background:var(--main-color-level-3);
+    border: var(--main-color-level-10) 1px solid;
+    background: var(--main-color-level-3);
 }
 
 .feed .nws-feed-icon {
-    background:var(--main-color-level-3);
+    background: var(--main-color-level-3);
 }
 
 .feed:hover {
-    border: orange 1px solid;
+    border: var(--main-color-level-5) 1px solid;
 }
 
 .feed ul li img.feed {
