@@ -319,7 +319,7 @@ $feeds = 'feeds.xml';
                                  img_gallery(0, div_id, tab_id)
                                  })
 
-               $('.gallery-tab').click(function(){
+               $('.nws-button-gallery-tab').click(function(){
                    $("#overlay").show()
                                 var div_id = $(this).parent().children("div").first().attr("id")
                                 // var div_id = ''
@@ -482,7 +482,7 @@ $feeds = 'feeds.xml';
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
     <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-cols plop">
-    <span class="gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
+    <span class="nws-button-gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
 ';
                     foreach ($tabGroups[$tabName] as $tabUrl)
                     outerContainer($tabUrl['url'],$tabUrl['numItems'],$tabUrl['img'],$tabUrl['photo']);
