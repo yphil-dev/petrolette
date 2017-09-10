@@ -6,10 +6,6 @@
   --main-color-level-5: orange;
 }
 
-.ui-widget-content {
-    color: var(--main-color-level-5);
-}
-
 body {
     background:#2e3436;
     color:#eeeeec;
@@ -237,9 +233,7 @@ img.full {
 }
 
 .ui-widget-content {
-    background: #555;
-    border: 1px solid #AAAAAA;
-    color: #222222;
+    color: var(--main-color-level-5);
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active a:visited {
