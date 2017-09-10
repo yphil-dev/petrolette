@@ -177,7 +177,7 @@ $feeds = 'feeds.xml';
                    }
                setInterval(pulse, 150)
 
-               $('.reload').click(function(){
+               $('.nws-button-reload').click(function(){
                    var div_to_reload = $(this).parent()
                                      var feed_url = encodeURIComponent(div_to_reload.attr('title'))
                                      var feed_num_item = div_to_reload.attr('data-numItems')
@@ -405,7 +405,7 @@ $feeds = 'feeds.xml';
                                 images = null
                                 }
 
-               $('.reload').trigger('click')
+               $('.nws-button-reload').trigger('click')
                feed_max_age = 10; // allow to force reloading the feed
        })
 
@@ -432,7 +432,7 @@ $feeds = 'feeds.xml';
 
                 echo '
         <div class="outerContainer outerContainer-cols" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
-            <span class="reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
+            <span class="nws-button-reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
             <span class="nws-button-gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
             <div class="innerContainer"></div>
         </div>
