@@ -434,7 +434,6 @@ $feeds = 'feeds.xml';
                 echo '
         <div class="outerContainer outerContainer-cols" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
             <span class="nws-button-reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
-<span class="nws-button-col-wrapping" title="Change the column flowing style">&#128462;</span>
             <span class="nws-button-gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
             <div class="innerContainer"></div>
         </div>
@@ -484,6 +483,8 @@ $feeds = 'feeds.xml';
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
     <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-cols plop">
+    <span class="nws-button-col-wrapping" title="Change the column flowing style">&#128462;</span>
+
     <span class="nws-button-gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
 ';
                     foreach ($tabGroups[$tabName] as $tabUrl)
