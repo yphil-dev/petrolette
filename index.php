@@ -58,7 +58,7 @@ $feeds = 'feeds.xml';
                var direction = null;
                var ajax_loader = 'nws-load-feed.php';
                var feed_max_age = 3600;
-               var ajax_spinner = '<img src="img/loading.gif" class="loading" alt="loading..." />';
+               var ajax_spinner = '<img src="img/ellipsis.svg" class="loading" alt="loading..." />';
              
                $('body').keyup(function(e) {
 
