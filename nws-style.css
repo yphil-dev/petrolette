@@ -195,11 +195,25 @@ div.nws-tab-feeds {
     margin: 0 .5em 0 0;
 }
 
+.nws-button-gallery-tab,
+.nws-button-col-wrapping,
 .nws-button-col-wrapping-phone {
-    font-size:130%;
+    color: var(--main-color-level-3);
+}
+
+.nws-button-reload:hover,
+.nws-button-gallery-feed:hover,
+.nws-button-gallery-tab:hover,
+.nws-button-col-wrapping:hover,
+.nws-button-col-wrapping-phone:hover {
+    color:var(--main-color-level-7);
+}
+
+.nws-button-col-wrapping-phone {
+    font-size:150%;
     position:absolute;
     top:.4em;
-    right:2.5em;
+    right:2em;
 }
 
 .nws-button-col-wrapping {
@@ -213,15 +227,7 @@ div.nws-tab-feeds {
     font-size:150%;
     position:absolute;
     top:.3em;
-    right:.1em;
-}
-
-.nws-button-reload:hover,
-.nws-button-gallery-feed:hover,
-.nws-button-gallery-tab:hover,
-.nws-button-col-wrapping:hover,
-.nws-button-col-wrapping-phone:hover {
-    color:var(--main-color-level-7);
+    right:0;
 }
 
 /* Images */

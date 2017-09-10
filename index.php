@@ -424,8 +424,8 @@ $feeds = 'feeds.xml';
                 foreach (array_keys($tabGroups) as $tabName) {
                     echo '
     <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-cols">
-    <span class="nws-button-col-wrapping" title="Change the column flowing style">&#128462;</span>
-    <span class="nws-button-col-wrapping-phone" title="Change the column flowing style">&#128442;</span>
+    <span class="nws-button-col-wrapping" title="Toggle ['.$tabName.'] column flowing style">&#128441;</span>
+    <span class="nws-button-col-wrapping-phone" title="Change the column flowing style">&#128443;</span>
     <span class="nws-button-gallery-tab" title="View all images in the ['.$tabName.'] tab">►</span>
 ';
                     foreach ($tabGroups[$tabName] as $tabUrl)
