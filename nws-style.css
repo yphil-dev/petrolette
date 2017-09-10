@@ -210,7 +210,7 @@ div.nws-tab-feeds {
 .nws-button-gallery-feed:hover,
 .nws-button-gallery-tab:hover,
 .nws-button-col-wrapping:hover {
-    color:orange;
+    color:var(--main-color-level-5);
 }
 
 /* Images */
