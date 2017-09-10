@@ -175,7 +175,7 @@ div.nws-tab-feeds {
 .gallery-feed,
 .gallery-tab,
 .gallery-tab2,
-.nws-col-wrapping {
+.nws-button-col-wrapping {
     cursor:pointer;
     float:right;
     margin: 0 .5em 0 0;
@@ -183,7 +183,7 @@ div.nws-tab-feeds {
     /* font-size:150%; */
 }
 
-.nws-col-wrapping {
+.nws-button-col-wrapping {
     font-size:150%;
     position:absolute;
     top:.4em;
@@ -207,7 +207,7 @@ div.nws-tab-feeds {
 .reload:hover,
 .gallery-feed:hover,
 .gallery-tab:hover,
-.nws-col-wrapping:hover {
+.nws-button-col-wrapping:hover {
     color:orange;
 }
 
