@@ -1,6 +1,6 @@
 :root {
   --main-color-level-1: #eeeeec;
-  --main-color-level-2: #fd0;
+  --main-color-level-2: #abbd81;
   --main-color-level-3: #3B1E2D;
   --main-color-level-4: #700;
   --main-color-level-5: #FF7F00;
@@ -42,7 +42,7 @@ img.thumb {
 }
 
 a.nws-feed-title:link {
-    color:var(--main-color-level-5);
+    color:var(--main-color-level-2);
     font-weight:bold;
     text-decoration:none;
 }
@@ -74,7 +74,7 @@ h1 {
 }
 
 span.nws-error {
-    color: var(--main-color-level-2);
+    color: var(--main-color-level-1);
 }
 
 div.nws-error {
