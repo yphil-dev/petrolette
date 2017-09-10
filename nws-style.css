@@ -173,8 +173,7 @@ div.nws-tab-feeds {
 
 .reload,
 .gallery-feed,
-.gallery-tab,
-.gallery-tab2,
+.nws-button-gallery-tab,
 .nws-button-col-wrapping {
     cursor:pointer;
     float:right;
@@ -186,27 +185,20 @@ div.nws-tab-feeds {
 .nws-button-col-wrapping {
     font-size:150%;
     position:absolute;
-    top:.4em;
+    top:.8em;
     right:2em;
 }
 
-.gallery-tab {
+.nws-button-gallery-tab {
     font-size:150%;
     position:absolute;
     top:.3em;
     right:.3em;
 }
 
-.gallery-tab2 {
-    font-size:150%;
-    position:absolute;
-    top:.3em;
-    right:3em;
-}
-
 .reload:hover,
 .gallery-feed:hover,
-.gallery-tab:hover,
+.nws-button-gallery-tab:hover,
 .nws-button-col-wrapping:hover {
     color:orange;
 }
