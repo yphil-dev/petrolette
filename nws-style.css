@@ -194,7 +194,7 @@ div.nws-tab-feeds {
 }
 
 .nws-button-col-wrapping-phone {
-    font-size:140%;
+    font-size:130%;
     position:absolute;
     top:.4em;
     right:2.5em;
@@ -217,7 +217,8 @@ div.nws-tab-feeds {
 .nws-button-reload:hover,
 .nws-button-gallery-feed:hover,
 .nws-button-gallery-tab:hover,
-.nws-button-col-wrapping:hover {
+.nws-button-col-wrapping:hover,
+.nws-button-col-wrapping-phone:hover {
     color:var(--main-color-level-7);
 }
 
