@@ -47,14 +47,19 @@ $feeds = 'feeds.xml';
 
            $('.nws-button-col-wrapping-block').click(function() {
                $(this).parent().removeClass('nws-tab-feeds-col').addClass('nws-tab-feeds-block');
-               $(this).parent().children('.outerContainer').removeClass('outerContainer-col').addClass('outerContainer-block');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-col outerContainer-phone').addClass('outerContainer-block');
            });
 
            $('.nws-button-col-wrapping-col').click(function() {
                $(this).parent().removeClass('nws-tab-feeds-block').addClass('nws-tab-feeds-col');
-               $(this).parent().children('.outerContainer').removeClass('outerContainer-block').addClass('outerContainer-col');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-block outerContainer-phone').addClass('outerContainer-col');
            });
-             
+          
+           $('.nws-button-col-wrapping-phone').click(function() {
+               $(this).parent().removeClass('nws-tab-feeds-col');
+               $(this).parent().children('.outerContainer').removeClass('outerContainer-block outerContainer-col').addClass('outerContainer-phone');
+           });
+
            $.ajaxSetup ({ cache: true });
 
            $( "#tabs" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" });

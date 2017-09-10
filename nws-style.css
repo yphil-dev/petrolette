@@ -108,6 +108,10 @@ div.nws-tab-feeds {
     vertical-align:top;
 }
 
+.outerContainer-phone {
+    width:100%;
+}
+
 .feedTitle {
     height:1.5em;
     overflow:hidden;
