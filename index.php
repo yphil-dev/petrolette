@@ -51,6 +51,18 @@ $feeds = 'libs/feeds2.xml';
 
          $(document).ready(function() {
 
+             $('.expose').click(function(e){
+                 $(this).css('z-index','99999');
+                 $('#overlay').fadeIn(300);
+             });
+
+             $('#overlay').click(function(e){
+                 $('#overlay').fadeOut(300, function(){
+                     $('.expose').css('z-index','1');
+                 });
+             });
+             
+             
              $('.innerContainer').on({
                  mouseenter: function () {
                      $(this).addClass('ui-state-hover');
@@ -478,7 +490,7 @@ $feeds = 'libs/feeds2.xml';
                 }
 
                 echo '
-    <div id="viewer">
+    <div id="viewer" class="expose">
       <a id="link-img">
         <img id="viewer-img" alt="Gallery viewer" src="#" />
       </a>
@@ -495,5 +507,6 @@ $feeds = 'libs/feeds2.xml';
 
             }
             ?>
+            <div id="overlay"></div>
     </body>
 </html>

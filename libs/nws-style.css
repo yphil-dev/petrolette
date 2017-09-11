@@ -34,6 +34,17 @@ body,
     /* font-family: Arial, helvetica, sans-serif; */
 }
 
+.expose {
+    position:relative;
+}
+
+#overlay {
+    background:rgba(50,50,50,0.8);
+    display:none;
+    width:100%; height:100%;
+    position:absolute; top:0; left:0; z-index:99998;
+}
+
 img.nws-loading-anim {
     margin: 0 0 0 .2em;
 }
