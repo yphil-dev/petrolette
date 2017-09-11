@@ -223,7 +223,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
                 echo '
                           <li title="'.$description.'" data-url="'.$link.'" class="nws-feed-link ui-widget-content ui-state-default">
-                              <div>'.$img.'<span class="nws-feed-text">'.$title.'</span>
+                              <div class="nws-feed-text">'.$img.' '.$title.'
                                   <br style="clear:both;"/>
                               </div>
                           </li>';
