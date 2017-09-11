@@ -87,14 +87,14 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 <a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'">Error</a></div>
 <ul><li><a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'">The feed (<span class="nws-error">'.$u.'</span>) seems to be malformed/invalid ; Try wgetting it to see what is wrong with it.</a></li></ul></div>');
 
-// <div class="feed" title="https://davidlepee.com">
-//                  <div class="feedTitle">
-//                      <span class="favicon">
-//                          <a class="nws-feed-title" href="https://davidlepee.com/feed/"><img src="http://davidlepee.com/favicon.ico"></a>&nbsp;<a href="https://davidlepee.com" title="Displaying 10 / 10 items from David L'Epée">David L'Epée</a>
-//                      </span>
+    // <div class="feed" title="https://davidlepee.com">
+    //                  <div class="feedTitle">
+    //                      <span class="favicon">
+    //                          <a class="nws-feed-title" href="https://davidlepee.com/feed/"><img src="http://davidlepee.com/favicon.ico"></a>&nbsp;<a href="https://davidlepee.com" title="Displaying 10 / 10 items from David L'Epée">David L'Epée</a>
+    //                      </span>
 
-//                  </div>
-//                       </div>
+    //                  </div>
+    //                       </div>
     
     $i = 0;
     $url = parse_url($u);
@@ -140,7 +140,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
              <div class="feed" title ="'.$feedLink.'">
                  <div class="'.$title_class.'">
                      <span class="favicon">
-                         <a class="nws-feed-icon" href="'.$u.'"><img src="libs/'.$favicon.'" /></a>&nbsp;<a class="nws-feed-title" href="'.$feedLink.'" title="'.$title_link.'">'.$feedTitle.'</a>
+                         <a class="nws-feed-icon" href="'.$u.'"><img src="libs/'.$favicon.'" /></a>&nbsp;<h3 title="'.$title_link.'">'.$feedTitle.'</h3>
                      </span>
 
                  </div>
@@ -198,13 +198,13 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
                     if ($ext == "mp3" || $ext == "ogg")
                         $img = '<a href="'.$atomImg.'"><span class="audio-note" title="Audio content">♫</span></a>';
                     else
-                        $img = '<a href="'.$atomImg.'"><img class="'.$img_class.'" data-link="'.$link.'" alt="'.$title.'" src="'.$atomImg.'" /></a>';
+                        $img = '<img class="'.$img_class.' nws-feed-link-img" data-url="'.$atomImg.'" alt="'.$title.'" src="'.$atomImg.'" />';
                 } elseif (!empty($mediaImg)) {
-                    $img = '<a href="'.$mediaImg.'"><img class="'.$img_class.'" data-link="'.$link.'" alt="'.$title.'" src="'.$mediaImg.'" /></a>';
+                    $img = '<img class="'.$img_class.' nws-feed-link-img" data-url="'.$mediaImg.'" alt="'.$title.'" src="'.$mediaImg.'" />';
                 } elseif (!empty($imgSrc)) {
                     list($width, $height) = getimagesize($imgSrc);
                     if (isset($width) && $width > 2) {
-                        $img = '<a href="'.$imgSrc.'"><img class="'.$img_class.'" data-link="'.$link.'" alt="'.$title.'" src="'.$imgSrc.'" /></a>';
+                        $img = '<img class="'.$img_class.' nws-feed-link-img" data-url="'.$imgSrc.'" alt="'.$title.'" src="'.$imgSrc.'" />';
                     }
                     else $img = '';
                 } else {
@@ -222,8 +222,8 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
 
                 echo '
-                          <li title="'.$description.'">
-                              <div>'.$img.'<a target="_blank" href="'.$link.'">'.$title.'</a>
+                          <li title="'.$description.'" data-url="'.$link.'" class="nws-feed-link ui-widget-content ui-helper-reset ui-accordion-content-active">
+                              <div class="nw-feed-link">'.$img.'<span class="nws-feed-text">'.$title.'</span>
                                   <br style="clear:both;"/>
                               </div>
                           </li>';
