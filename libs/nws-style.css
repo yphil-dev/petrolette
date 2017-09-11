@@ -35,7 +35,7 @@ body,
 }
 
 .nws-feed-text {
-    font-weight: 900;
+    /* font-weight: 900; */
 }
 
 .outerContainer {
@@ -135,19 +135,19 @@ div.nws-tab-feeds {
 }
 
 .feedTitle {
-    height:1.5em;
+    /* height:1.5em; */
     overflow:hidden;
     /* background:var(--main-color-level-3); */
-    padding:.2em .2em 0;
+    /* padding:.2em .2em 0; */
     white-space:nowrap;
     text-overflow: ellipsis;
 }
 
 .feed {
-    vertical-align:top;
-    margin: 0 1% .5em 0;
-    font-size:.7em;
-    border: var(--main-color-level-10) 1px solid;
+    /* vertical-align:top; */
+    /* margin: 0 1% .5em 0; */
+    /* font-size:.7em; */
+    /* border: var(--main-color-level-10) 1px solid; */
     /* background: var(--main-color-level-3); */
 }
 
@@ -155,9 +155,9 @@ div.nws-tab-feeds {
     /* background: var(--main-color-level-3); */
 }
 
-.feed:hover {
-    border: var(--main-color-level-5) 1px solid;
-}
+/* .feed:hover { */
+/*     border: var(--main-color-level-5) 1px solid; */
+/* } */
 
 .feed ul li img.feed {
     width:28%;
@@ -179,12 +179,12 @@ div.nws-tab-feeds {
     padding: 0;
 }
 
-.feed ul li {
-    margin:0;
-    padding: .3em;
-    /* background: var(--main-color-level-9); */
-    line-height:1em;
-}
+/* .feed ul li { */
+/*     margin:0; */
+/*     padding: .3em; */
+/*     /\* background: var(--main-color-level-9); *\/ */
+/*     line-height:1em; */
+/* } */
 
 .feed ul li:nth-child(even) {
     /* background: var(--main-color-level-10); */

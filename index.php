@@ -24,7 +24,7 @@ $feeds = 'libs/feeds2.xml';
        <style type="text/css" media="screen">@import "libs/nws-style.css";</style>
 <base target='_blank' />
        </head>
-       <body class="ui-state-default">
+       <body class="default">
 
        <script
        src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -53,6 +53,7 @@ $(document).ready(function() {
             $(this).removeClass('ui-state-hover');
         }
     }, ".nws-feed-link");
+
     
     $('.nws-button-col-wrapping-block').click(function() {
         $(this).parent().removeClass('nws-tab-feeds-col').addClass('nws-tab-feeds-block');

@@ -140,7 +140,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
              <div class="feed" title ="'.$feedLink.'">
                  <div class="'.$title_class.'">
                      <span class="favicon">
-                         <a class="nws-feed-icon" href="'.$u.'"><img src="libs/'.$favicon.'" /></a>&nbsp;<h3 title="'.$title_link.'">'.$feedTitle.'</h3>
+                         <a class="nws-feed-icon" href="'.$u.'"><img src="libs/'.$favicon.'" /></a>&nbsp;<strong class="nws-feed-link" data-url="'.$feedLink.'" title="'.$title_link.'">'.$feedTitle.'</strong>
                      </span>
 
                  </div>
@@ -222,8 +222,8 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
 
                 echo '
-                          <li title="'.$description.'" data-url="'.$link.'" class="nws-feed-link ui-widget-content ui-helper-reset ui-accordion-content-active">
-                              <div class="nw-feed-link">'.$img.'<span class="nws-feed-text">'.$title.'</span>
+                          <li title="'.$description.'" data-url="'.$link.'" class="nws-feed-link ui-widget-content ui-state-default">
+                              <div>'.$img.'<span class="nws-feed-text">'.$title.'</span>
                                   <br style="clear:both;"/>
                               </div>
                           </li>';
