@@ -36,6 +36,17 @@ body,
 
 .nws-feed-text {
     /* font-weight: 900; */
+    font-weight: normal;
+    font-size: .8em;
+}
+
+
+.nws-feed-link {
+    cursor: pointer;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding: .5em;
 }
 
 .outerContainer {
@@ -135,7 +146,7 @@ div.nws-tab-feeds {
 }
 
 .feedTitle {
-    /* height:1.5em; */
+    height:1.2em;
     overflow:hidden;
     /* background:var(--main-color-level-3); */
     /* padding:.2em .2em 0; */
@@ -190,8 +201,8 @@ div.nws-tab-feeds {
     /* background: var(--main-color-level-10); */
 }
 
-.feed ul li:first-child {
-    /* border-top: 1px solid var(--main-color-level-6); */
+span.nws-feed-link {
+    font-size:1em;
 }
 
 /* .feed ul li:hover { */
@@ -260,7 +271,7 @@ div.nws-tab-feeds {
     /* color:none; */
     /* font-weight:normal; */
     /* text-decoration:none; */
-    /* margin:.1em; */
+    margin:.1em;
     width:16px;
     vertical-align: text-top;
 }

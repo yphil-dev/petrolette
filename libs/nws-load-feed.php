@@ -140,8 +140,8 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
              <div class="feed" title ="'.$feedLink.'">
                  <div class="'.$title_class.'">
                      <span class="favicon">
-                         <a class="nws-feed-icon" href="'.$u.'"><img src="libs/'.$favicon.'" /></a>&nbsp;<strong class="nws-feed-link" data-url="'.$feedLink.'" title="'.$title_link.'">'.$feedTitle.'</strong>
-                     </span>
+                         <a class="nws-feed-icon" href="'.$u.'"><img src="libs/'.$favicon.'" /></a></span>&nbsp;
+<span class="nws-feed-link" data-url="'.$feedLink.'" title="'.$title_link.'">'.$feedTitle.'</span>
 
                  </div>
                  <ul>';

@@ -52,7 +52,11 @@ $(document).ready(function() {
         mouseleave: function () {
             $(this).removeClass('ui-state-hover');
         }
-    }, ".nws-feed-link");
+    }, "li.nws-feed-link");
+
+    $('button').click(function() {
+        window.open($(this).data("url"));
+    });
 
     
     $('.nws-button-col-wrapping-block').click(function() {
@@ -405,7 +409,7 @@ $(document).ready(function() {
                 $div_id = htmlspecialchars(str_replace($illegal_chars, "", substr($div_id, 0, $pos)), ENT_QUOTES);
 
                 echo '
-        <div class="outerContainer outerContainer-col" style="" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
+        <div class="outerContainer outerContainer-col ui-corner-top ui-widget-content" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
             <span class="nws-button-reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
             <span class="nws-button-gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
             <div class="innerContainer"></div>
@@ -479,8 +483,10 @@ $(document).ready(function() {
         <span id="pause" title="Pause Slideshow" aria-hidden="true" class="icon-pause playpause"></span>
         <span id="play" title="Start Slideshow" aria-hidden="true" class="icon-play playpause"></span>
     </div>
+<button data-url="libs/nws-manage.php" id="button" class="ui-button ui-corner-all ui-widget"><img src="img/nws.png" alt="Manage feeds link" style="margin-top:.5em" /> Feeds</button>
 </div>
 <a href="libs/nws-manage.php"><img src="img/nws.png" alt="Manage feeds link" style="margin-top:.5em" /> Manage feeds</a>
+
 
 ';
 
