@@ -27,7 +27,7 @@
 
 body,
 .ui-widget {
-    font-family: "system" !important;
+    /* font-family: "system" !important; */
     /* background:var(--main-color-level-9); */
     /* color:var(--main-color-level-1); */
     /* color:#eeeeec; */
@@ -43,7 +43,7 @@ label {
 
 .ui-tooltip,
 .arrow:after {
-    /* background: black; */
+    background: black;
     border: 2px solid white;
 }
 
@@ -137,7 +137,7 @@ li.nws-feed-link {
 
 .outerContainer {
     /* min-height:50vh; */
-    min-height:100px;
+    /* min-height:100px; */
     margin: 0 0 .5em 0;
 }
 
@@ -233,15 +233,18 @@ div.nws-tab-feeds {
 }
 
 .feedTitle {
-    height:1.2em;
+    /* height:1.2em; */
     font-size:.8em !important;
-    font-variant: small-caps;
+    /* font-variant: small-caps; */
+    padding:.2em;
     overflow:hidden;
     /* background:var(--main-color-level-3); */
     /* padding:.2em .2em 0; */
     white-space:nowrap;
     text-overflow: ellipsis;
 }
+
+.ui-menu { width: 150px; }
 
 .feedTitle:hover {
     filter: brightness(175%);
@@ -295,8 +298,8 @@ div.nws-tab-feeds {
 }
 
 .fa-fw {
-    font-size: .5em !important;
-    margin: .2 0 0 0;
+    font-size: .7em !important;
+    margin: .3em .3em 0 0;
 }
 
 
@@ -310,7 +313,7 @@ div.nws-tab-feeds {
     /* color: var(--main-color-level-5); */
     cursor: pointer;
     float: right;
-    margin: .5em 0 0 0;
+    /* margin: .5em 0 0 0; */
 }
 
 .nws-button-gallery-tab,
@@ -377,9 +380,8 @@ i:hover {
     /* color:none; */
     /* font-weight:normal; */
     /* text-decoration:none; */
-    margin:.1em;
+    /* margin:.1em; */
     width:16px;
-    vertical-align: text-top;
 }
 
 img.full {

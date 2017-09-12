@@ -31,7 +31,7 @@ $feeds = 'libs/feeds2.xml';
         <style type="text/css" media="screen">@import "libs/nws-style.css";</style>
         <base target='_blank' />
     </head>
-    <body class="ui-state-default">
+    <body class="nws-page">
 
         <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -52,6 +52,8 @@ $feeds = 'libs/feeds2.xml';
 
          $(document).ready(function() {
 
+             $( "#theme-menu" ).menu();
+             
              $( document ).tooltip({
                  position: {
                      my: "center bottom-20",
@@ -67,20 +69,10 @@ $feeds = 'libs/feeds2.xml';
                  }
              });
              
-             /* 
-              *              $('.expose').click(function(e){
-              *                  $(this).css('z-index','99999');
-              *                  $('#overlay').fadeIn(300);
-              *              });
-              * 
-              *              $('#overlay').click(function(e){
-              *                  $('#overlay').fadeOut(300, function(){
-              *                      $('.expose').css('z-index','1');
-              *                  });
-              *              });*/
-
              $("#nav li a").click(function() { 
 		 $("link#jquery-ui-css").attr("href",$(this).attr('rel'));
+                 $('body').css("background-color", "#333")
+                 /* alert($('.ui-widget-content').css("color"))*/
 		 return false;
 	     });
              
@@ -501,7 +493,7 @@ $feeds = 'libs/feeds2.xml';
     <div id="tab-'.$tabName.'" class="nws-tab-feeds nws-tab-feeds-col">
 <i class="nws-button-col-wrapping-block fa fa-columns" title="Set ['.$tabName.'] flowing style to block" aria-hidden="true"></i>
 <i class="nws-button-col-wrapping-col fa fa-newspaper-o" title="Set ['.$tabName.'] flowing style to column" aria-hidden="true"></i>
-<i class="nws-button-col-wrapping-phone fa fa-mobile" title="Set ['.$tabName.'] flowing style to phone" aria-hidden="true"></i>
+<i class="nws-button-col-wrapping-phone fa fa-tablet" title="Set ['.$tabName.'] flowing style to phone" aria-hidden="true"></i>
 <i class="nws-button-gallery-tab fa fa-picture-o" title="View all images in the ['.$tabName.'] tab" aria-hidden="true"></i>
 ';
                     foreach ($tabGroups[$tabName] as $tabUrl)
@@ -528,6 +520,42 @@ $feeds = 'libs/feeds2.xml';
 
             }
             ?>
+
+            <ul id="theme-menu">
+                <li class="ui-state-disabled"><div>Toys (n/a)</div></li>
+                <li><div>Books</div></li>
+                <li><div>Clothing</div></li>
+                <li><div>Electronics</div>
+                    <ul>
+                        <li class="ui-state-disabled"><div>Home Entertainment</div></li>
+                        <li><div>Car Hifi</div></li>
+                        <li><div>Utilities</div></li>
+                    </ul>
+                </li>
+                <li><div>Movies</div></li>
+                <li><div>Music</div>
+                    <ul>
+                        <li><div>Rock</div>
+                            <ul>
+                                <li><div>Alternative</div></li>
+                                <li><div>Classic</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Jazz</div>
+                            <ul>
+                                <li><div>Freejazz</div></li>
+                                <li><div>Big Band</div></li>
+                                <li><div>Modern</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Pop</div></li>
+                    </ul>
+                </li>
+                <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
+            </ul>
+
+            <span id="result"></span>
+            
             <ul id="nav">
 	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">base</a></li>
 	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css">black-tie</a></li>
@@ -555,9 +583,8 @@ $feeds = 'libs/feeds2.xml';
                 <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/trontastic/jquery-ui.css">trontastic</a></li>
                 <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css">ui-darkness</a></li>
                 <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">ui-lightness</a></li>
-                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/vader/jquery-ui.css"></a></li>
             </ul>
-            
+          
             <div id="overlay"></div>
     </body>
 </html>

@@ -47,7 +47,7 @@ To run NWS locally, simply install a basic PHP server:
 
 - Install the server components: `sudo apt install php7.0 php7.0-xml` (you may have to log in and out)
 - Start the server in the NWS directory : `php -S localhost:8000`
-- Point your browser to http://localhost:8000/nws
+- Point your browser to http://localhost:8000
 
 ### Usage
 
