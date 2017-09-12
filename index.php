@@ -25,8 +25,8 @@ $feeds = 'libs/feeds2.xml';
         <link href="https://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css" rel="stylesheet" type="text/css" />
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/excite-bike/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
-        <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" rel="stylesheet" type="text/css" />
-           -->
+        <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
+        
         <style type="text/css" media="screen">@import "libs/nws-style.css";</style>
         <base target='_blank' />
     </head>
@@ -46,22 +46,26 @@ $feeds = 'libs/feeds2.xml';
             src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"
             integrity="sha256-JklDYODbg0X+8sPiKkcFURb5z7RvlNMIaE3RA2z97vw="
             crossorigin="anonymous"></script>
-        
+
         <script>
 
          $(document).ready(function() {
+             /* 
+              *              $('.expose').click(function(e){
+              *                  $(this).css('z-index','99999');
+              *                  $('#overlay').fadeIn(300);
+              *              });
+              * 
+              *              $('#overlay').click(function(e){
+              *                  $('#overlay').fadeOut(300, function(){
+              *                      $('.expose').css('z-index','1');
+              *                  });
+              *              });*/
 
-             $('.expose').click(function(e){
-                 $(this).css('z-index','99999');
-                 $('#overlay').fadeIn(300);
-             });
-
-             $('#overlay').click(function(e){
-                 $('#overlay').fadeOut(300, function(){
-                     $('.expose').css('z-index','1');
-                 });
-             });
-             
+             $("#nav li a").click(function() { 
+		 $("link").attr("href",$(this).attr('rel'));
+		 return false;
+	     });
              
              $('.innerContainer').on({
                  mouseenter: function () {
@@ -245,7 +249,7 @@ $feeds = 'libs/feeds2.xml';
                  var count = images.length;
 
                  if (!count) {
-                     $("#overlay").html('<div id="error">☹ No images ☹</div>');
+                     $("#overlay").html('<div id="error"><i class="fa fa-ambulance" aria-hidden="true"></i> No images</div>');
                      $('#overlay #error').css({position:'absolute',
                                                left: ($(window).width() - $('#error').outerWidth())/2,
                                                top: ($(window).height() - $('#error').outerHeight())/2
@@ -428,8 +432,8 @@ $feeds = 'libs/feeds2.xml';
 
                 echo '
         <div class="outerContainer outerContainer-col ui-corner-top ui-widget-content" title ="'.htmlspecialchars($u, ENT_QUOTES).'" data-numItems="'.$numItems.'" data-img="'.$img.'" data-photo="'.$photo.'" id="'.$div_id.'">
-            <span class="nws-button-reload" title="Reload '.htmlspecialchars($u).'">&#9889;</span>
-            <span class="nws-button-gallery-feed" title="View '.htmlspecialchars($u).' images">►</span>
+<i class="nws-button-reload fa fa-refresh fa-fw" title="Reload '.htmlspecialchars($u).'" aria-hidden="true"></i>
+<i class="nws-button-gallery-feed fa fa-file-image-o fa-fw" title="View '.htmlspecialchars($u).' images" aria-hidden="true"></i>
             <div class="innerContainer"></div>
         </div>
 ';
@@ -507,6 +511,12 @@ $feeds = 'libs/feeds2.xml';
 
             }
             ?>
+            <ul id="nav">
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">Default CSS</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css">Larger Text</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css">Something Different</a></li>
+            </ul>
+            
             <div id="overlay"></div>
     </body>
 </html>
