@@ -54,7 +54,7 @@ label {
     /* font: bold 14px "Helvetica Neue", Sans-Serif; */
     /* text-transform: uppercase; */
     box-shadow: 0 0 7px black;
-    font-size:.8em;
+    font-size:75%;
 }
 
 .arrow {

@@ -22,7 +22,7 @@ $feeds = 'libs/feeds2.xml';
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/eggplant/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
-        <link href="https://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <link id="jquery-ui-css" href="https://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css" rel="stylesheet" type="text/css" />
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/excite-bike/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
@@ -80,7 +80,7 @@ $feeds = 'libs/feeds2.xml';
               *              });*/
 
              $("#nav li a").click(function() { 
-		 $("link").attr("href",$(this).attr('rel'));
+		 $("link#jquery-ui-css").attr("href",$(this).attr('rel'));
 		 return false;
 	     });
              
