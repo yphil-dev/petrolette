@@ -51,6 +51,22 @@ $feeds = 'libs/feeds2.xml';
         <script>
 
          $(document).ready(function() {
+
+             $( document ).tooltip({
+                 position: {
+                     my: "center bottom-20",
+                     at: "center top",
+                     using: function( position, feedback ) {
+                         $( this ).css( position );
+                         $( "<div>" )
+                             .addClass( "arrow" )
+                             .addClass( feedback.vertical )
+                             .addClass( feedback.horizontal )
+                             .appendTo( this );
+                     }
+                 }
+             });
+             
              /* 
               *              $('.expose').click(function(e){
               *                  $(this).css('z-index','99999');
