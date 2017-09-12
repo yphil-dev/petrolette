@@ -673,3 +673,26 @@ img.full {
     padding : .5em .5em .5em 0;
     border-top : 1px solid red;
 }
+
+/* Experiments */
+.elements {
+  margin: 4px;
+  padding: 10px 5px;
+}
+
+.element {
+  padding: 4px 8px;
+  cursor: move;
+}
+
+.element:hover {
+  background-color: #f1f1f1;
+}
+
+.elements.can-drop {
+  outline: 1px dashed #ccc;
+}
+
+.elements.drop-here {
+  outline: 1px solid #999;
+}
