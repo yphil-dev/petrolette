@@ -80,7 +80,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
     $rssfeed = file_get_contents($u) or die('<div class="feed">
 <div class="feedTitle">
-<a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'">Error</a></div>
+<a title="'.$u.' URL error" href="'.$u.'"> Error</a></div>
 <ul><li class="nws-feed-link ui-widget-content ui-state-error" data-url="'.$u.'">
 
 <div class="nws-feed-text ui-helper-clearfix"><a title="'.$u.' URL error" href="'.$u.'">No valid RSS feed found at URL ('.$u.').</a></div>
@@ -91,7 +91,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
     
     $feedRss = simplexml_load_string($rssfeed) or die('<div class="feed">
 <div class="feedTitle ui-state-error">
-<a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'">Error</a></div>
+<a title="'.$u.' is malformed (try wgetting it)" href="'.$u.'">Error</a></div>
 <ul><li class="nws-feed-link ui-widget-content ui-state-default" data-url="'.$u.'><a title="'.$u.' is malformed (try wgetting it)" href="'.$u.'">The feed ('.$u.') seems to be malformed/invalid ; Try wgetting it to see what is wrong with it.</a></li></ul></div>');
 
     // <div class="feed" title="https://davidlepee.com">
