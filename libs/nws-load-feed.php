@@ -78,14 +78,17 @@ function var_dump_pre($mixed = null) {
 
 function reparse($u, $numItems, $imgMode, $photoblog) {
 
-    $rssfeed = file_get_contents($u) or die("<a href='".$u."'>Error</a>");
+    $rssfeed = file_get_contents($u) or die('<div class="feed">
+<div class="feedTitle ui-state-error">
+<a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'">Error</a></div>
+<ul><li><a title="'.$u.' URL error" href="'.$u.'">No valid RSS feed found at URL (<span class="nws-error">'.$u.'</span>).</a></li></ul></div>');
     
     /* var_dump_pre($u);*/
     
     $feedRss = simplexml_load_string($rssfeed) or die('<div class="feed">
-<div class="feedTitle nws-error">
+<div class="feedTitle ui-state-error">
 <a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'">Error</a></div>
-<ul><li><a title="'.$u.' is malformed (try wgetting it)\" href="'.$u.'">The feed (<span class="nws-error">'.$u.'</span>) seems to be malformed/invalid ; Try wgetting it to see what is wrong with it.</a></li></ul></div>');
+<ul><li><a title="'.$u.' is malformed (try wgetting it)" href="'.$u.'">The feed (<span class="nws-error">'.$u.'</span>) seems to be malformed/invalid ; Try wgetting it to see what is wrong with it.</a></li></ul></div>');
 
     // <div class="feed" title="https://davidlepee.com">
     //                  <div class="feedTitle">
@@ -221,9 +224,7 @@ function reparse($u, $numItems, $imgMode, $photoblog) {
 
 
                 echo '
-                          <li title="'.$description.'" data-url="'.$link.'" class="nws-feed-link ui-widget-content ui-state-default">
-                              <div class="nws-feed-text">'.$img.' '.$title.'
-                                  <br style="clear:both;"/>
+                          <li title="'.$description.'" data-url="'.$link.'" class="nws-feed-link ui-widget-content ui-state-default">'.$img.'<div class="nws-feed-text ui-helper-clearfix">'.$title.'
                               </div>
                           </li>';
             }

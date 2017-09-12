@@ -23,6 +23,7 @@ $feeds = 'libs/feeds2.xml';
 
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/eggplant/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
         <link href="https://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/excite-bike/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
         <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
@@ -512,9 +513,33 @@ $feeds = 'libs/feeds2.xml';
             }
             ?>
             <ul id="nav">
-	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">Default CSS</a></li>
-	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css">Larger Text</a></li>
-	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css">Something Different</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">base</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css">black-tie</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css">blitzer</a></li>
+
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.css">cupertino</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/dark-hive/jquery-ui.css">dark-hive</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css">dot-luv</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/eggplant/jquery-ui.css">eggplant</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/excite-bike/jquery-ui.css">excite-bike</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">flick</a></li>
+	        <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">hot-sneaks</a></li>
+
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/humanity/jquery-ui.css">humanity</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/le-frog/jquery-ui.css">le-frog</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/mint-choc/jquery-ui.css">mint-choc</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/overcast/jquery-ui.css">overcast</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/pepper-grinder/jquery-ui.css">pepper-grinder</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/redmond/jquery-ui.css">redmond</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">smoothness</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/south-street/jquery-ui.css">south-street</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">start</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">sunny</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/swanky-purse/jquery-ui.css">swanky-purse</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/trontastic/jquery-ui.css">trontastic</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css">ui-darkness</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">ui-lightness</a></li>
+                <li><a href="#" rel="https://code.jquery.com/ui/1.12.1/themes/vader/jquery-ui.css"></a></li>
             </ul>
             
             <div id="overlay"></div>
