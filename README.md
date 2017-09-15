@@ -1,5 +1,5 @@
 # NeWS
-[![Gratipay](https://img.shields.io/gratipay/yassinphilip/shields.svg)](https://img.shields.io/gratipay/yassinphilip/shields.svg)
+[![Gratipay](http://img.shields.io/gratipay/yassinphilip.svg)](https://www.gratipay.com/yassinphilip/)
 ---
 RSS/Atom morning news reader ; Works at night too.
 
