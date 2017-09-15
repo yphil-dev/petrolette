@@ -1,5 +1,6 @@
 # NeWS
-
+![Example individual](https://img.shields.io/gratipay/joeyespo.svg)
+---
 RSS/Atom morning news reader ; Works at night too.
 
 Read about it in French [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
