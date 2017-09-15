@@ -1,5 +1,6 @@
 # NeWS
-
+[![Gratipay](http://img.shields.io/gratipay/yassinphilip.svg)](https://www.gratipay.com/yassinphilip/)
+---
 RSS/Atom morning news reader ; Works at night too.
 
 Read about it in French [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
