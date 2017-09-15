@@ -1,5 +1,5 @@
 # NeWS
-![Example individual](https://img.shields.io/gratipay/faustine.svg)
+[![Gratipay](https://img.shields.io/gratipay/news/shields.svg)](https://img.shields.io/gratipay/news/shields.svg)
 ---
 RSS/Atom morning news reader ; Works at night too.
 
