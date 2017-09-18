@@ -27,7 +27,9 @@
 
         <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
         <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
-        
+
+        <script src="ls.js"></script>
+
         <script>
 
          $(document).ready(function() {
@@ -118,6 +120,8 @@
                  hoverClass: "drop-here",
                  drop: function(event, ui) {
                      $(this).append(ui.draggable[0]);
+                     // var count = $("#tabs-1 div").length;
+                     console.log('l: ' + $(this).children().length);
                  }
              });
 
@@ -155,15 +159,15 @@
             </ul>
             <div id="tabs-1">
                 <div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content">
-                    <div class="element grid-item outerContainer-col outerContainer">Element 1:plip</div>
-                    <div class="element grid-item outerContainer-col outerContainer">Element 2:plop</div>
-                    <div class="element grid-item outerContainer-col outerContainer">Element 3:zob</div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 1:plip</div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 2:plop</div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 3:zob</div>
                 </div>
             </div>
             <div id="tabs-2">
                 <div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content">
-                    <div class="element grid-item outerContainer-col outerContainer">Element 11:foo</div>
-                    <div class="element grid-item outerContainer-col outerContainer">Element 12:bar</div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 11:foo</div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 12:bar</div>
                 </div>
             </div>
         </div>
