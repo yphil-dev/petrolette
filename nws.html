@@ -34,12 +34,14 @@
 
          $(document).ready(function() {
 
-             var tabTitle = $( "#tab_title" ),
-                 tabContent = $( "#tab_content" ),
-                 tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
-                 tabCounter = $( '#tabs' ).children('div').length + 1;
+             var tabTitle = $('#tab_title'),
+                 tabContent = $('#tab_content'),
+                 tabTemplate = '<li><a href="#{href}">#{label}</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>',
+                 tabCounter = $('#tabs').children('div').length + 1,
+                 feedTemplate = '';
              
-             var tabs = $( "#tabs" ).tabs();
+             var tabs = $('#tabs').tabs();
+             var feeds = $('#tabs').children('div');
              
              // Modal dialog init: custom buttons and a "close" callback resetting the form inside
              var dialog = $( "#dialog" ).dialog({
@@ -94,6 +96,11 @@
                  var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
                  $( "#" + panelId ).remove();
                  tabs.tabs( "refresh" );
+             });
+
+             // Close icon: removing the feed on click
+             feeds.on( "click", "span.ui-icon-close", function() {
+                 $(this).remove();
              });
              
              tabs.on( "keyup", function( event ) {
@@ -157,8 +164,8 @@
 
         <div id="tabs">
             <ul>
-                <li><a href="#tabs-1">plip</a></li>
-                <li><a href="#tabs-2">plop</a></li>
+                <li><a href="#tabs-1">plip</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
+                <li><a href="#tabs-2">plop</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
             </ul>
             <div id="tabs-1">
                 <div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content">
