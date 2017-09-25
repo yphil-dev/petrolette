@@ -76,22 +76,28 @@
                      tabContentHtml = tabContent.val() || 'Plop Tab ' + tabCounter + ' contentz.';
                  
                  tabs.find( '.ui-tabs-nav' ).append( li );
-                 tabs.append( '<div class="ui-tabs-panel ui-corner-bottom ui-widget-content" id="' + id + '"><div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content ui-droppable"><div class="element grid-item outerContainer-col outerContainer ui-draggable ui-draggable-handle">' + tabContentHtml + '<span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div></div></div>' );
+                 tabs.append( '<div class="ui-tabs-panel ui-corner-bottom ui-widget-content" id="' + id + '"><div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content"><div class="element grid-item outerContainer-col outerContainer">' + tabContentHtml + '<span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div></div></div>' );
 
-                 tabCounter++;
 
                  tabs.droppable({
                      accept: '.element',
                      tolerance: 'pointer',
                      activeClass: "can-drop",
                      hoverClass: "drop-here",
+                     over: function(event, ui) {
+                         $("#tabs").tabs("option", "active", $(event.target).index());
+                         console.log('plop: ' + $(event.target).index());
+
+                         $.ui.ddmanager.prepareOffsets(ui.draggable.draggable('instance'));
+                     },                 
                      drop: function(event, ui) {
-                         $(this).append(ui.draggable[0]);
+                         $(this).find('.elements').append(ui.draggable[0]);
                          // var count = $("#tabs-1 div").length;
                          console.log('l: ' + $(this).children().length);
                      }
                  });
-
+                 
+                 tabCounter++;
                  tabs.tabs( "refresh" );
 
              }
