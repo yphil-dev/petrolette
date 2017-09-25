@@ -12,7 +12,9 @@
 }
 
 .ui-icon-close {
-    cursor: pointer;   
+    cursor: pointer;
+    float:right;
+    margin:2px;
 }
 
 @font-face {

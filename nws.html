@@ -36,7 +36,7 @@
 
              var tabTitle = $('#tab_title'),
                  tabContent = $('#tab_content'),
-                 tabTemplate = '<li><a href="#{href}">#{label}</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>',
+                 tabTemplate = '<li class="ui-droppable ui-state-default"><a href="#{href}">#{label}</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>',
                  tabCounter = $('#tabs').children('div').length + 1,
                  feedTemplate = '';
              
@@ -70,18 +70,30 @@
              
              // Actual addTab function: adds new tab using the input from the form above
              function addTab() {
-                 var label = tabTitle.val() || "Tab " + tabCounter++,
-                     id = "tabs-" + tabCounter,
-                     li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
-                     tabContentHtml = tabContent.val() || "Plop Tab " + tabCounter + " contentz.";
+                 var label = tabTitle.val() || 'Tab ' + tabCounter,
+                     id = 'tabs-' + tabCounter,
+                     li = $( tabTemplate.replace( /#\{href\}/g, '#' + id ).replace( /#\{label\}/g, label ) ),
+                     tabContentHtml = tabContent.val() || 'Plop Tab ' + tabCounter + ' contentz.';
                  
-                 tabs.find( ".ui-tabs-nav" ).append( li );
-                 tabs.append( '<div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content" id="' + id + '"><div class="element grid-item outerContainer-col outerContainer">' + tabContentHtml + '</div></div>' );
+                 tabs.find( '.ui-tabs-nav' ).append( li );
+                 tabs.append( '<div class="ui-tabs-panel ui-corner-bottom ui-widget-content" id="' + id + '"><div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content ui-droppable"><div class="element grid-item outerContainer-col outerContainer ui-draggable ui-draggable-handle">' + tabContentHtml + '<span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div></div></div>' );
 
-                 
-                 
-                 tabs.tabs( "refresh" );
                  tabCounter++;
+
+                 tabs.droppable({
+                     accept: '.element',
+                     tolerance: 'pointer',
+                     activeClass: "can-drop",
+                     hoverClass: "drop-here",
+                     drop: function(event, ui) {
+                         $(this).append(ui.draggable[0]);
+                         // var count = $("#tabs-1 div").length;
+                         console.log('l: ' + $(this).children().length);
+                     }
+                 });
+
+                 tabs.tabs( "refresh" );
+
              }
              
              // AddTab button: just opens the dialog
@@ -136,11 +148,12 @@
              });
 
              // drop
-             $('.ui-tabs-nav').children().droppable({
+             $('ul.ui-tabs-nav').children().droppable({
                  accept: '.element',
                  tolerance: 'pointer',
                  over: function(event, ui) {
                      $("#tabs").tabs("option", "active", $(event.target).index());
+                     console.log('plop: ' + $(event.target).index());
 
                      $.ui.ddmanager.prepareOffsets(ui.draggable.draggable('instance'));
                  }
@@ -170,18 +183,21 @@
             <div id="tabs-1">
                 <div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content">
                     <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 1:plip <span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div>
-                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 2:plop</div>
-                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 3:zob</div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 2:plop <span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 3:zob <span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div>
                 </div>
             </div>
             <div id="tabs-2">
                 <div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content">
-                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 11:foo</div>
-                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 12:bar</div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 11:foo <span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 12:bar <span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div>
                 </div>
             </div>
         </div>
         <button id="add_tab">Add Tab</button>
         
+        <div id="trash" class="ui-widget-content ui-state-default">
+            <h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> Trash</h4>
+        </div>
     </body>
 </html>
