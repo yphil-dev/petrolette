@@ -11,6 +11,10 @@
   --main-color-level-10: #444; 
 }
 
+.ui-icon-close {
+    cursor: pointer;   
+}
+
 @font-face {
     font-family: system;
     font-style: normal;

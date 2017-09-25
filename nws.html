@@ -100,7 +100,7 @@
 
              // Close icon: removing the feed on click
              feeds.on( "click", "span.ui-icon-close", function() {
-                 $(this).remove();
+                 $(this).parent().remove();
              });
              
              tabs.on( "keyup", function( event ) {
@@ -169,7 +169,7 @@
             </ul>
             <div id="tabs-1">
                 <div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content">
-                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 1:plip</div>
+                    <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 1:plip <span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div>
                     <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 2:plop</div>
                     <div data-index="" class="element grid-item outerContainer-col outerContainer">Element 3:zob</div>
                 </div>
