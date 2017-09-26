@@ -36,7 +36,7 @@
 
              var tabTitle = $('#tab_title'),
                  tabContent = $('#tab_content'),
-                 tabTemplate = '<li class="ui-droppable ui-state-default"><a href="#{href}">#{label}</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>',
+                 tabTemplate = '<li><a href="#{href}">#{label}</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>',
                  tabCounter = $('#tabs').children('div').length + 1,
                  feedTemplate = '';
              
@@ -77,8 +77,7 @@
                  
                  tabs.find( '.ui-tabs-nav' ).append( li );
                  tabs.append( '<div class="ui-tabs-panel ui-corner-bottom ui-widget-content" id="' + id + '"><div class="elements grid nws-tab-feeds nws-tab-feeds-col ui-tabs-panel ui-corner-bottom ui-widget-content"><div class="element grid-item outerContainer-col outerContainer">' + tabContentHtml + '<span class="ui-icon ui-icon-close" role="presentation">Remove feed</span></div></div></div>' );
-
-
+                 
                  tabs.droppable({
                      accept: '.element',
                      tolerance: 'pointer',
@@ -86,20 +85,21 @@
                      hoverClass: "drop-here",
                      over: function(event, ui) {
                          $("#tabs").tabs("option", "active", $(event.target).index());
-                         console.log('plop: ' + $(event.target).index());
-
+                         console.log('ploup: ' + $(event.target).index());
+                         
                          $.ui.ddmanager.prepareOffsets(ui.draggable.draggable('instance'));
                      },                 
                      drop: function(event, ui) {
                          $(this).find('.elements').append(ui.draggable[0]);
-                         // var count = $("#tabs-1 div").length;
+                         var count = $("#tabs-1 div").length;
                          console.log('l: ' + $(this).children().length);
                      }
                  });
                  
+                 // tabs.droppable( "instance" );
+                 
                  tabCounter++;
                  tabs.tabs( "refresh" );
-
              }
              
              // AddTab button: just opens the dialog
