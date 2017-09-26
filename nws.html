@@ -11,19 +11,18 @@
 
          function newTab () {
              var tabIndex = $('#tabs ul').length;
-
-             // var tabTemplate = 
              
              $('#tabs ul').append('<li><a href="#tab-' + tabIndex  + '">Tab ' + tabIndex + '</a></li>');
              
              $('#tabs').append('<div id="tab-' + tabIndex + '"><p> I am tab number ' + tabIndex + '</p></div>');
+
              $( "#tabs" ).tabs();
 
          }
 
          $( function() {
-             // $( "#tabs" ).tabs();
              newTab();
+             // newTab();
          });
 
          
