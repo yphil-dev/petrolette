@@ -7,28 +7,6 @@
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-        <script>
-         $(document).ready(function(){
-             $("#input_open").change(onOpenChange);
-         })
-
-         function onOpenChange(e) {
-             var filname = $("#input_open").val();
-             var fileContent = getTxt();
-             var jsonData = JSON.parse(fileContent);
-         }
-         getTxt = function (){
-
-             $.ajax({
-                 url:'text.json',
-                 success: function (data){
-                     fileContent =data;           
-                     return data 
-                 }
-             });
-         }
-        </script>
-        
     </head>
 
     <style>
