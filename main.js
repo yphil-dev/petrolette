@@ -1,27 +1,3 @@
-// var thePets = [
-//     {
-//         "name": "Meowsalot",
-//         "species": "cat",
-//         "favFood": "tuna"
-//     },
-//     {
-//         "name": "Barky",
-//         "species": "dog",
-//         "favFood": "carrots"
-//     }
-// ]
-// 
-// console.log(thePets[1].favFood);
-
-// 
-// var btn = document.getElementById("btn");
-// 
-// btn.addEventListener('click', function (){
-// 
-// })
-// 
-
-
 var pageCounter = 1;
 var animalContainer = document.getElementById('animal-info');
 var btn = document.getElementById('btn');
