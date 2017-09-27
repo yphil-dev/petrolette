@@ -4,7 +4,6 @@ var btn = document.getElementById('btn');
 
 console.log('plop');
 
-
 btn.addEventListener('click', function() {
 
 
