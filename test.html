@@ -5,8 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>NWS reboot</title>
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
-        <script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
+        <script>
+         $(document).ready(function(){
+             $("#input_open").change(onOpenChange);
+         })
+
+         function onOpenChange(e) {
+             var filname = $("#input_open").val();
+             var fileContent = getTxt();
+             var jsonData = JSON.parse(fileContent);
+         }
+         getTxt = function (){
+
+             $.ajax({
+                 url:'text.json',
+                 success: function (data){
+                     fileContent =data;           
+                     return data 
+                 }
+             });
+         }
         </script>
         
     </head>
@@ -28,6 +48,11 @@
 
         <div id="animal-info"></div>
 
+        <div id="button_open" class="button">
+            <span>Open a JSON file</span>
+            <input id="input_open" class="input_file" type="file">
+        </div>
+        
         <script src="main.js"></script>
         
     </body>

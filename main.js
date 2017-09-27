@@ -31,6 +31,20 @@ console.log('plop');
 
 btn.addEventListener('click', function() {
 
+
+    var a = new XMLHttpRequest();
+    a.open("GET","animals-1.json",true);
+    a.onreadystatechange = function() {
+        if( this.readyState == 4) {
+            if( this.status == 200) {
+                var json = window.JSON ? JSON.parse(this.responseText) : eval("("+this.responseText+")");
+                // do something with json
+            }
+            else alert("HTTP error "+this.status+" "+this.statusText);
+        }
+    }
+    a.send();
+    
     var ourRequest = new XMLHttpRequest();
     ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-' + pageCounter + '.json');
     ourRequest.onload = function() {
