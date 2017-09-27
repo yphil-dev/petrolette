@@ -1,0 +1,30 @@
+{
+  "tab" : "tab2",
+  "feeds" : [
+    {
+      "url" : "//url5",
+      "limit" : 4,
+      "type" : "normal"
+    },
+    {
+      "url" : "//url20",
+      "limit" : 50,
+      "type" : "photo"
+    }
+  ]
+},
+{
+  "tab" : "tab2",
+  "feeds" : [
+    {
+      "url" : "//url12",
+      "limit" : 40,
+      "type" : "normal"
+    },
+    {
+      "url" : "//url22",
+      "limit" : 50,
+      "type" : "photo"
+    }
+  ]
+}
