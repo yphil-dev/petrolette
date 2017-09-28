@@ -2,16 +2,24 @@ var pageCounter = 1;
 var animalContainer = document.getElementById('animal-info');
 var btn = document.getElementById('btn');
 
-console.log('plop');
+console.log('ploup');
 
 btn.addEventListener('click', function() {
-
     
     $.getJSON('animals-1.json', function(data){
-        // I have placed alert here previously and realized it doesn't go into here
-        $.each(data.foo, function(i,s){
-            alert(s);
+
+        console.log('plup: ' + data[0].name);
+
+        var items = [];
+        var sitems = [];
+
+        $.each(data, function( key, val ) {
+            items += ' : ' + val.name
+            // items.push( "<li id='" + key + "'>" + val + "</li>" );
         });
+
+        console.log('zob: ' + items);
+
     }).error(function(jqXhr, textStatus, error) {
         alert("ERROR: " + textStatus + ", " + error);
     });

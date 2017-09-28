@@ -1,7 +1,7 @@
 [
   {
-    "name": "Meowsy",
-    "species" : "cat",
+    "name": "Meowsky",
+    "species": "cat",
     "foods": {
       "likes": ["tuna", "catnip"],
       "dislikes": ["ham", "zucchini"]
@@ -9,7 +9,7 @@
   },
   {
     "name": "Barky",
-    "species" : "dog",
+    "species": "dog",
     "foods": {
       "likes": ["bones", "carrots"],
       "dislikes": ["tuna"]
@@ -17,7 +17,7 @@
   },
   {
     "name": "Purrpaws",
-    "species" : "cat",
+    "species": "cat",
     "foods": {
       "likes": ["mice"],
       "dislikes": ["cookies"]
