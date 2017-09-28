@@ -6,19 +6,14 @@ console.log('plop');
 
 btn.addEventListener('click', function() {
 
-
-    var a = new XMLHttpRequest();
-    a.open("GET","animals-1.json",true);
-    a.onreadystatechange = function() {
-        if( this.readyState == 4) {
-            if( this.status == 200) {
-                var json = window.JSON ? JSON.parse(this.responseText) : eval("("+this.responseText+")");
-                // do something with json
-            }
-            else alert("HTTP error "+this.status+" "+this.statusText);
-        }
-    }
-    a.send();
+    $.getJSON('animals-1.json', function(data){
+        // I have placed alert here previously and realized it doesn't go into here
+        $.each(data.foo, function(i,s){
+            alert(s);
+        });
+    }).error(function(jqXhr, textStatus, error) {
+        alert("ERROR: " + textStatus + ", " + error);
+    });
     
     var ourRequest = new XMLHttpRequest();
     ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-' + pageCounter + '.json');
