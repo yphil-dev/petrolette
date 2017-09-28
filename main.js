@@ -8,17 +8,22 @@ btn.addEventListener('click', function() {
     
     $.getJSON('animals-1.json', function(data){
 
-        console.log('plup: ' + data[0].name);
+        console.log('plup: ' + data[0].name.species);
 
         var items = [];
-        var sitems = [];
 
         $.each(data, function( key, val ) {
-            items += ' : ' + val.name
+            var sitems = [];
+            items += ' : ' + val.name;
+            console.log(val)
+            // $.each(val.name, function( keyz, valz ) {
+            //     sitems += ' : ' + valz.url
+            // });
             // items.push( "<li id='" + key + "'>" + val + "</li>" );
         });
 
-        console.log('zob: ' + items);
+        console.log('names: ' + items);
+        console.log('urls: ' + sitems);
 
     }).error(function(jqXhr, textStatus, error) {
         alert("ERROR: " + textStatus + ", " + error);

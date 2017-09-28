@@ -5,33 +5,69 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>NWS reboot</title>
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     </head>
 
-    <style>
+    <script>
 
-     .add-me {
-         display:none;
-     }
+     $(document).ready(function() {
+
+         $("#tabs").tabs();
+         
+         var tabIndex = $('#tabs ul').length;
+
+         function newFeed(tab, url, type, limit) {
+             // tab.append('plop');
+             console.log('tab: ' + tab);
+
+             $('#' + tab).append('<div>I am ' + url + '</div>');
+         }
+         
+         function newTab(name, feeds) {
+
+             $('#tabs ul').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
+             $('#tabs').append('<div id="tab-' + tabIndex + '"></div>');
+
+             feeds.forEach(function(feed) {
+                 newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
+                 console.log(feed.url + ': ' + feed.type);
+             });
+             
+             console.log(name + ': ' + feeds.url);
+             $("#tabs").tabs("refresh");
+             tabIndex++;
+         }
+         
+         var tabs =
+             [{"name":"plop",
+               "feeds":[
+                   {"url":"//url9","type":"photo","limit":16},
+                   {"url":"//url1","type":"photo","limit":16},
+                   {"url":"//url3","type":"text","limit":16}
+               ]},
+              {"name":"plip",
+               "feeds": [
+                   {"url":"//url5","type":"text","limit": 12},
+                   {"url":"//url4","type":"mixed","limit": 8}
+               ]}
+             ];
+         
+         tabs.forEach(function(tab) {
+             newTab(tab.name, tab.feeds);
+         });
+
+     });
      
-    </style>
+    </script>
     
     <body>
 
-        <header>
-            <h1>JSON and AJAX</h1>
-            <button id="btn">Fetch info for 3 new animals</button>
-        </header>
-
-        <div id="animal-info"></div>
-
-        <div id="button_open" class="button">
-            <span>Open a JSON file</span>
-            <input id="input_open" class="input_file" type="file">
+        <div id="tabs">
+            <ul></ul>
         </div>
-        
-        <script src="main.js"></script>
         
     </body>
 </html>
