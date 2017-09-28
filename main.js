@@ -6,6 +6,7 @@ console.log('plop');
 
 btn.addEventListener('click', function() {
 
+    
     $.getJSON('animals-1.json', function(data){
         // I have placed alert here previously and realized it doesn't go into here
         $.each(data.foo, function(i,s){
