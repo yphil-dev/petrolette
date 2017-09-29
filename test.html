@@ -6,40 +6,50 @@
         <title>NWS reboot</title>
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="libs/nws-style.css">
+
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <style type="text/css" media="screen">@import "libs/nws-style.css";</style>
-        <style type="text/css" media="screen">@import "libs/nws-style.css";</style>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 
+        
     </head>
 
     <script>
+     
+     $(document).bind('DOMNodeInserted', function(e) {
+         var element = e.target;
+         // console.log('elt: ' + element.attr('id'));
+     });
+     
 
      $(document).ready(function() {
-
-         $("#tabs").tabs();
          
          var tabIndex = $('#tabs ul').length;
 
          function newFeed(tab, url, type, limit) {
              // tab.append('plop');
-             console.log('tab: ' + tab);
+             // console.log('tab: ' + tab);
 
-             $('#' + tab + ' ul').append('<li>I am ' + url + '</li>');
+             $('#' + tab + ' ul').append('<li class="ui-state-default"><input class="chbox" type="checkbox" />' + url + '</li>');
          }
          
          function newTab(name, feeds) {
 
-             $('#tabs ul').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
+             var mySortable = '';
+             
              $('#tabs').append('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul></div>');
+             $('#tabs ul').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
 
              feeds.forEach(function(feed) {
                  newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
-                 console.log(feed.url + ': ' + feed.type);
+                 // console.log(feed.url + ': ' + feed.type);
              });
              
-             console.log(name + ': ' + feeds.url);
+             // console.log(name + ': ' + feeds.url);
+             $("#tabs").tabs();
+
              $("#tabs").tabs("refresh");
              tabIndex++;
          }
@@ -60,6 +70,55 @@
          
          tabs.forEach(function(tab) {
              newTab(tab.name, tab.feeds);
+         });
+         
+         $("#sortable1, #sortable2").sortable({
+             revert:0,
+             helper: function (e, item) { //create custom helper
+                 if (!item.hasClass('selected')) item.addClass('selected');
+                 // clone selected items before hiding
+                 var elements = $('.selected').not('.ui-sortable-placeholder').clone();
+                 //hide selected items
+                 item.siblings('.selected').addClass('hidden');
+                 var helper = $('<ul/>');
+                 return helper.append(elements);
+             },
+             start: function (e, ui) {
+                 var elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
+                 //store the selected items to item being dragged
+                 ui.item.data('items', elements);
+             },
+             update: function (e, ui) {
+                 //manually add the selected items before the one actually being dragged
+                 ui.item.before(ui.item.data('items'));
+             },
+             stop: function (e, ui) {
+                 //show the selected items after the operation
+                 ui.item.siblings('.selected').removeClass('hidden');
+                 //unselect since the operation is complete
+                 $('.selected').removeClass('selected');
+                 $(this).find('input:checked').prop('checked',false);
+             }
+
+         }).disableSelection();
+         
+         var $tabs = $("#tabs").tabs();
+         var $tab_items = $("ul:first li", $tabs).droppable({
+             accept: "ul, .connectedSortable li",
+             hoverClass: "ui-state-hover",
+             drop: function (event, ui) {
+                 console.log(ui.draggable.data('items'));
+                 var $item = $(this);
+                 var $elements = ui.draggable.data('items');
+                 var $list = $($item.find("a").attr("href"))
+                     .find(".connectedSortable");
+                 $elements.show().hide('slow');
+                 ui.draggable.show().hide("slow", function () {
+                     $tabs.tabs("option", "active", $tab_items.index($item));
+                     $(this).appendTo($list).show("slow").before($elements.show("slow"));
+                     
+                 });
+             }
          });
 
      });
