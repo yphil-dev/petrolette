@@ -61,7 +61,6 @@
 
      $(document).ready(function() {
          
-         var tabIndex = $('#tabs ul').length;
 
          function newFeed(tab, url, type, limit) {
 
@@ -70,11 +69,13 @@
          
          function newTab(name, feeds) {
 
-             var $allTabs = $('#tabs');
-             
-             var $thisTab = $('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>').appendTo($allTabs);
+             var tabIndex = $('#tabs ul').length;
 
-             // var $allTabs = $thisTab.parent();
+             // var $allTabs = $('#tabs');
+             
+             var $thisTab = $('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>').appendTo('#tabs');
+
+             var $allTabs = $thisTab.parent('#tabs');
 
              $('#tabs ul#theTabs').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
 
