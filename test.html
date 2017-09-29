@@ -65,6 +65,11 @@
            "feeds": [
                {"url":"//url5","type":"text","limit": 12},
                {"url":"//url4","type":"mixed","limit": 8}
+           ]},
+          {"name":"plup",
+           "feeds": [
+               {"url":"//url50","type":"text","limit": 12},
+               {"url":"//url14","type":"mixed","limit": 8}
            ]}
          ];
 
@@ -80,26 +85,34 @@
 
              var tabIndex = $('#tabs ul').length;
 
+             console.log('index: ' + tabIndex);
+
              // var $allTabs = $('#tabs');
              
-             var $thisTab = $('<div class="tab" id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>').appendTo('#tabs');
+             var $thisTab = $('<div class="tab" id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>').appendTo($tabs);
 
-             var $allTabs = $thisTab.parent('#tabs');
+             // $('#tabs ul#theTabs').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
 
-             $('#tabs ul#theTabs').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
-
+             var $thisUl = $('#tabs ul#theTabs');
+             
+             var $thisItem = $('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>').appendTo('#tabs ul#theTabs');
+             
              if(typeof feeds != 'undefined') {
                  feeds.forEach(function(feed) {
                      newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
                  });
              }
              
-             $("#tabs").tabs('refresh');
+             $tabs.tabs('refresh');
 
              // $allTabs.tabs().tabs("refresh");
              // $("#tabs").tabs('refresh');
              $( "#tabs" ).tabs( "option", "active", tabIndex - 1 );
              tabIndex++;
+             $thisItem.droppable();
+             $thisUl.sortable();
+
+             // $("ul:last li", $tabs).droppable();
          }
          
          var $tabs = $("#tabs").tabs();
@@ -113,7 +126,7 @@
          });
 
          $('#addTab').click(function () {
-             newTab('plup');
+             newTab('plap');
          });
 
 
