@@ -42,9 +42,16 @@
      
      $(document).bind('DOMNodeInserted', function(e) {
          var element = e.target;
-         console.log('elt: ' + $(element).attr('class'));
-         $("#tabs").tabs('refresh');
 
+         // console.log('NEW: ' + $(element).attr('class'));
+
+         // $("#tabs").tabs('refresh');
+         
+
+         if ($(element).attr('class') == 'tab') {
+             console.log('TAB!');
+         }
+         
      });
      
      var tabList =
@@ -84,16 +91,19 @@
              if(typeof feeds != 'undefined') {
                  feeds.forEach(function(feed) {
                      newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
-                     console.log('ELT ADDED');
                  });
              }
              
+             $("#tabs").tabs('refresh');
+
              // $allTabs.tabs().tabs("refresh");
              // $("#tabs").tabs('refresh');
-
+             $( "#tabs" ).tabs( "option", "active", tabIndex - 1 );
              tabIndex++;
          }
          
+         var $tabs = $("#tabs").tabs();
+
          tabList.forEach(function(tab) {
              newTab(tab.name, tab.feeds);
          });
@@ -103,12 +113,9 @@
          });
 
          $('#addTab').click(function () {
-             newTab('//plop');
-             $("#tabs").tabs();
-
+             newTab('plup');
          });
 
-         var $tabs = $("#tabs").tabs();
 
          $(".connectedSortable").sortable({
              revert:0,
