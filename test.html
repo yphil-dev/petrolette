@@ -6,7 +6,6 @@
         <title>NWS reboot</title>
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="libs/nws-style.css">
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -14,6 +13,31 @@
         
     </head>
 
+    <style>
+     
+     .connectedSortable li {
+         cursor:grab;
+         margin: 0 5px 5px 5px;
+         padding: 5px;
+         font-size: 1.2em;
+         width: 120px;
+     }
+     .chbox {
+         margin-right:10px;
+     }
+     .selected {
+         background:red !important;
+     }
+     .hidden {
+         display:none;
+     }
+
+     .ui-tabs-panel {
+         padding:.4em .1em !important;
+     }
+     
+    </style>
+    
     <script>
      
      $(document).bind('DOMNodeInserted', function(e) {
