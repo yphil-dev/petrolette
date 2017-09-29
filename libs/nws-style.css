@@ -704,7 +704,8 @@ img.full {
   outline: 1px solid #999;
 }
 
-#sortable1 li, #sortable2 li {
+.connectedSortable li {
+    cursor:grab;
     margin: 0 5px 5px 5px;
     padding: 5px;
     font-size: 1.2em;

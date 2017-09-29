@@ -11,8 +11,6 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-
         
     </head>
 
@@ -23,14 +21,25 @@
          // console.log('elt: ' + element.attr('id'));
      });
      
+     var tabs =
+         [{"name":"plop",
+           "feeds":[
+               {"url":"//url9","type":"photo","limit":16},
+               {"url":"//url1","type":"photo","limit":16},
+               {"url":"//url3","type":"text","limit":16}
+           ]},
+          {"name":"plip",
+           "feeds": [
+               {"url":"//url5","type":"text","limit": 12},
+               {"url":"//url4","type":"mixed","limit": 8}
+           ]}
+         ];
 
      $(document).ready(function() {
          
          var tabIndex = $('#tabs ul').length;
 
          function newFeed(tab, url, type, limit) {
-             // tab.append('plop');
-             // console.log('tab: ' + tab);
 
              $('#' + tab + ' ul').append('<li class="ui-state-default"><input class="chbox" type="checkbox" />' + url + '</li>');
          }
@@ -50,23 +59,8 @@
              
              $("#tabs").tabs().tabs("refresh");
 
-             // $("#tabs")
              tabIndex++;
          }
-         
-         var tabs =
-             [{"name":"plop",
-               "feeds":[
-                   {"url":"//url9","type":"photo","limit":16},
-                   {"url":"//url1","type":"photo","limit":16},
-                   {"url":"//url3","type":"text","limit":16}
-               ]},
-              {"name":"plip",
-               "feeds": [
-                   {"url":"//url5","type":"text","limit": 12},
-                   {"url":"//url4","type":"mixed","limit": 8}
-               ]}
-             ];
          
          tabs.forEach(function(tab) {
              newTab(tab.name, tab.feeds);
