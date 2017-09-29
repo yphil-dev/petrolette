@@ -46,7 +46,9 @@
          
          function newTab(name, feeds) {
 
-             $('#tabs').append('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>');
+             var $allTabs = $('#tabs');
+             
+             var $thisTab = $('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>').appendTo($allTabs);
              
              $('#tabs ul#theTabs').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
 
@@ -57,7 +59,7 @@
 
              });
              
-             $("#tabs").tabs().tabs("refresh");
+             $allTabs.tabs().tabs("refresh");
 
              tabIndex++;
          }
@@ -71,8 +73,8 @@
              $(this).parent().toggleClass('selected');
          });
 
-         $('#addTab').on('click', 'input', function () {
-             $(this).parent().toggleClass('selected');
+         $('#addTab').click(function () {
+             newTab('//plop');
          });
          
          $(".connectedSortable").sortable({
