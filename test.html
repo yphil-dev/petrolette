@@ -46,7 +46,7 @@
          
          function newTab(name, feeds) {
 
-             $('#tabs').append('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul></div>');
+             $('#tabs').append('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>');
              
              $('#tabs ul#theTabs').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
 
@@ -68,6 +68,10 @@
 
 
          $('.connectedSortable').on('click', 'input', function () {
+             $(this).parent().toggleClass('selected');
+         });
+
+         $('#addTab').on('click', 'input', function () {
              $(this).parent().toggleClass('selected');
          });
          
@@ -106,7 +110,6 @@
              accept: "ul, .connectedSortable li",
              hoverClass: "ui-state-hover",
              drop: function (event, ui) {
-                 console.log(ui.draggable.data('items'));
                  var $item = $(this);
                  var $elements = ui.draggable.data('items');
                  var $list = $($item.find("a").attr("href"))
@@ -129,6 +132,7 @@
         <div id="tabs">
             <ul id="theTabs"></ul>
         </div>
+        <button id="addTab">Add Tab</button>
         
     </body>
 </html>
