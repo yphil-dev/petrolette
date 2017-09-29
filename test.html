@@ -73,13 +73,14 @@
              var $allTabs = $('#tabs');
              
              var $thisTab = $('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>').appendTo($allTabs);
-             
+
+             // var $allTabs = $thisTab.parent();
+
              $('#tabs ul#theTabs').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
 
              feeds.forEach(function(feed) {
-                 // console.log('yo: ' + )
                  newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
-                 console.log('ELT');
+                 console.log('ELT ADDED');
 
              });
              
