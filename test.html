@@ -37,20 +37,20 @@
          
          function newTab(name, feeds) {
 
-             var mySortable = '';
-             
              $('#tabs').append('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul></div>');
-             $('#tabs ul').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
+             
+             $('#tabs ul#theTabs').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
 
              feeds.forEach(function(feed) {
+                 // console.log('yo: ' + )
                  newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
-                 // console.log(feed.url + ': ' + feed.type);
+                 console.log('ELT');
+
              });
              
-             // console.log(name + ': ' + feeds.url);
-             $("#tabs").tabs();
+             $("#tabs").tabs().tabs("refresh");
 
-             $("#tabs").tabs("refresh");
+             // $("#tabs")
              tabIndex++;
          }
          
@@ -71,8 +71,13 @@
          tabs.forEach(function(tab) {
              newTab(tab.name, tab.feeds);
          });
+
+
+         $('.connectedSortable').on('click', 'input', function () {
+             $(this).parent().toggleClass('selected');
+         });
          
-         $("#sortable1, #sortable2").sortable({
+         $(".connectedSortable").sortable({
              revert:0,
              helper: function (e, item) { //create custom helper
                  if (!item.hasClass('selected')) item.addClass('selected');
@@ -128,7 +133,7 @@
     <body>
 
         <div id="tabs">
-            <ul></ul>
+            <ul id="theTabs"></ul>
         </div>
         
     </body>
