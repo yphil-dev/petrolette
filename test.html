@@ -42,10 +42,12 @@
      
      $(document).bind('DOMNodeInserted', function(e) {
          var element = e.target;
-         // console.log('elt: ' + element.attr('id'));
+         console.log('elt: ' + $(element).attr('class'));
+         $("#tabs").tabs('refresh');
+
      });
      
-     var tabs =
+     var tabList =
          [{"name":"plop",
            "feeds":[
                {"url":"//url9","type":"photo","limit":16},
@@ -73,27 +75,28 @@
 
              // var $allTabs = $('#tabs');
              
-             var $thisTab = $('<div id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>').appendTo('#tabs');
+             var $thisTab = $('<div class="tab" id="tab-' + tabIndex + '"><ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul><button class="addFeed">Add Feed</button></div>').appendTo('#tabs');
 
              var $allTabs = $thisTab.parent('#tabs');
 
              $('#tabs ul#theTabs').append('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>');
 
-             feeds.forEach(function(feed) {
-                 newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
-                 console.log('ELT ADDED');
-
-             });
+             if(typeof feeds != 'undefined') {
+                 feeds.forEach(function(feed) {
+                     newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
+                     console.log('ELT ADDED');
+                 });
+             }
              
-             $allTabs.tabs().tabs("refresh");
+             // $allTabs.tabs().tabs("refresh");
+             // $("#tabs").tabs('refresh');
 
              tabIndex++;
          }
          
-         tabs.forEach(function(tab) {
+         tabList.forEach(function(tab) {
              newTab(tab.name, tab.feeds);
          });
-
 
          $('.connectedSortable').on('click', 'input', function () {
              $(this).parent().toggleClass('selected');
@@ -101,8 +104,12 @@
 
          $('#addTab').click(function () {
              newTab('//plop');
+             $("#tabs").tabs();
+
          });
-         
+
+         var $tabs = $("#tabs").tabs();
+
          $(".connectedSortable").sortable({
              revert:0,
              helper: function (e, item) { //create custom helper
@@ -133,7 +140,6 @@
 
          }).disableSelection();
          
-         var $tabs = $("#tabs").tabs();
          var $tab_items = $("ul:first li", $tabs).droppable({
              accept: "ul, .connectedSortable li",
              hoverClass: "ui-state-hover",
