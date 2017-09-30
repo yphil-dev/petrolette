@@ -95,7 +95,22 @@
 
              var $thisUl = $('#tabs ul#theTabs');
              
-             var $thisItem = $('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>').appendTo('#tabs ul#theTabs');
+             var $thisItem = $('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>').droppable({
+                 accept: "ul, .connectedSortable li",
+                 hoverClass: "ui-state-hover",
+                 drop: function (event, ui) {
+                     var $item = $(this);
+                     var $elements = ui.draggable.data('items');
+                     var $list = $($item.find("a").attr("href"))
+                         .find(".connectedSortable");
+                     $elements.show().hide('slow');
+                     ui.draggable.show().hide("slow", function () {
+                         $tabs.tabs("option", "active", $tab_items.index($item));
+                         $(this).appendTo($list).show("slow").before($elements.show("slow"));
+                         
+                     });
+                 }
+             }).appendTo('#tabs ul#theTabs');
              
              if(typeof feeds != 'undefined') {
                  feeds.forEach(function(feed) {
@@ -129,6 +144,26 @@
              newTab('plap');
          });
 
+         function makeSortable(element) {
+             $(element).sortable({
+                 connectWith: "ul",
+                 receive: function(event, ui) {
+                     var $newEle;
+                     if($(this).is('.empty')) {
+                         $newEle = $(this).clone();
+                         $newEle.insertAfter(this).empty();
+                         $(this).removeClass("empty");
+                         makeSortable($newEle);
+                     }              
+                 },
+                 remove : function(event, ui) {            
+                     // remove stack if empty
+                     if (!$(this).children('li').length)
+                         $(this).remove();
+                 }
+             }).disableSelection();
+             
+         }
 
          $(".connectedSortable").sortable({
              revert:0,
