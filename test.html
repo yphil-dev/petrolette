@@ -40,20 +40,6 @@
     
     <script>
      
-     $(document).bind('DOMNodeInserted', function(e) {
-         var element = e.target;
-
-         // console.log('NEW: ' + $(element).attr('class'));
-
-         // $("#tabs").tabs('refresh');
-         
-
-         if ($(element).attr('class') == 'tab') {
-             console.log('TAB!');
-         }
-         
-     });
-     
      var tabList =
          [{"name":"plop",
            "feeds":[
@@ -85,13 +71,8 @@
          function newTab(name, feeds) {
 
              var tabIndex = $('#tabs ul').length;
-
-             console.log('index: ' + tabIndex);
-
              var $thisSortable = $('<ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul>');
-
              var $thisButton = $('<button class="addFeed">Add Feed</button>')
-
              var $thisTab = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
              
              $thisSortable.on('click', 'input', function () {
@@ -126,12 +107,10 @@
                      $(this).find('input:checked').prop('checked',false);
                  }
              }).disableSelection();
-
              
              $thisSortable.appendTo($thisTab);
              $thisButton.appendTo($thisTab);
              $thisTab.appendTo($tabs);
-
              
              var $thisItem = $('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>').droppable({
                  accept: "ul, .connectedSortable li",
@@ -145,7 +124,6 @@
                      ui.draggable.show().hide("slow", function () {
                          $tabs.tabs("option", "active", $thisItem.index($item));
                          $(this).appendTo($list).show("slow").before($elements.show("slow"));
-                         
                      });
                  }
              }).appendTo('#tabs ul#theTabs');
@@ -154,7 +132,7 @@
                  feeds.forEach(function(feed) {
                      newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
                  });
-             }
+             };
              
              $tabs.tabs('refresh');
              $( "#tabs" ).tabs( "option", "active", tabIndex - 1 );
