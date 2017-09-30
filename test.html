@@ -105,7 +105,7 @@
                          .find(".connectedSortable");
                      $elements.show().hide('slow');
                      ui.draggable.show().hide("slow", function () {
-                         $tabs.tabs("option", "active", $tab_items.index($item));
+                         $tabs.tabs("option", "active", $thisItem.index($item));
                          $(this).appendTo($list).show("slow").before($elements.show("slow"));
                          
                      });
@@ -144,27 +144,6 @@
              newTab('plap');
          });
 
-         function makeSortable(element) {
-             $(element).sortable({
-                 connectWith: "ul",
-                 receive: function(event, ui) {
-                     var $newEle;
-                     if($(this).is('.empty')) {
-                         $newEle = $(this).clone();
-                         $newEle.insertAfter(this).empty();
-                         $(this).removeClass("empty");
-                         makeSortable($newEle);
-                     }              
-                 },
-                 remove : function(event, ui) {            
-                     // remove stack if empty
-                     if (!$(this).children('li').length)
-                         $(this).remove();
-                 }
-             }).disableSelection();
-             
-         }
-
          $(".connectedSortable").sortable({
              revert:0,
              helper: function (e, item) { //create custom helper
@@ -195,22 +174,22 @@
 
          }).disableSelection();
          
-         var $tab_items = $("ul:first li", $tabs).droppable({
-             accept: "ul, .connectedSortable li",
-             hoverClass: "ui-state-hover",
-             drop: function (event, ui) {
-                 var $item = $(this);
-                 var $elements = ui.draggable.data('items');
-                 var $list = $($item.find("a").attr("href"))
-                     .find(".connectedSortable");
-                 $elements.show().hide('slow');
-                 ui.draggable.show().hide("slow", function () {
-                     $tabs.tabs("option", "active", $tab_items.index($item));
-                     $(this).appendTo($list).show("slow").before($elements.show("slow"));
-                     
-                 });
-             }
-         });
+         // var $tab_items = $("ul:first li", $tabs).droppable({
+         //     accept: "ul, .connectedSortable li",
+         //     hoverClass: "ui-state-hover",
+         //     drop: function (event, ui) {
+         //         var $item = $(this);
+         //         var $elements = ui.draggable.data('items');
+         //         var $list = $($item.find("a").attr("href"))
+         //             .find(".connectedSortable");
+         //         $elements.show().hide('slow');
+         //         ui.draggable.show().hide("slow", function () {
+         //             $tabs.tabs("option", "active", $tab_items.index($item));
+         //             $(this).appendTo($list).show("slow").before($elements.show("slow"));
+         //             
+         //         });
+         //     }
+         // });
 
      });
      
