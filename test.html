@@ -11,6 +11,10 @@
     </head>
 
     <style>
+
+     ul {
+         list-style-type: none;
+     }
      
      .connectedSortable li {
          cursor:grab;
@@ -62,7 +66,8 @@
      $(document).ready(function() {
 
          function newFeed(tab, url, type, limit) {
-             $('#' + tab + ' ul').append('<li class="ui-state-default"><input class="chbox" type="checkbox" />' + url + '</li>');
+             $('#' + tab + ' ul')
+                 .append('<li class="ui-state-default"><input class="chbox" type="checkbox" />' + url + '</li>')
          }
          
          function newTab(name, feeds) {
@@ -74,23 +79,23 @@
              
              $thisSortable.on('click', 'input', function () {
                  $(this).parent().toggleClass('selected');
-             })
+             });
 
              $thisSortable.sortable({
                  revert:0,
                  helper: function (e, item) { //create custom helper
                      if (!item.hasClass('selected')) item.addClass('selected');
                      // clone selected items before hiding
-                     var elements = $('.selected').not('.ui-sortable-placeholder').clone();
+                     var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
                      //hide selected items
                      item.siblings('.selected').addClass('hidden');
                      var helper = $('<ul/>');
-                     return helper.append(elements);
+                     return helper.append($elements);
                  },
                  start: function (e, ui) {
-                     var elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
+                     var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
                      //store the selected items to item being dragged
-                     ui.item.data('items', elements);
+                     ui.item.data('items', $elements);
                  },
                  update: function (e, ui) {
                      //manually add the selected items before the one actually being dragged
@@ -109,17 +114,19 @@
              $thisButton.appendTo($thisTab);
              $thisTab.appendTo($tabs);
              
-             var $thisItem = $('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>').droppable({
+             var $thisFeed = $('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>').droppable({
                  accept: "ul, .connectedSortable li",
                  hoverClass: "ui-state-hover",
                  drop: function (event, ui) {
                      var $item = $(this);
+                     var $index = $( "li" ).index( this );
+                     console.log('elt: ' + $index);
                      var $elements = ui.draggable.data('items');
                      var $list = $($item.find("a").attr("href"))
                          .find(".connectedSortable");
                      $elements.show().hide('slow');
                      ui.draggable.show().hide("slow", function () {
-                         $tabs.tabs("option", "active", $thisItem.index($item));
+                         $tabs.tabs("option", "active", $index);
                          $(this).appendTo($list).show("slow").before($elements.show("slow"));
                      });
                  }
@@ -132,7 +139,7 @@
              };
              
              $tabs.tabs('refresh');
-             $( "#tabs" ).tabs( "option", "active", tabIndex - 1 );
+             $tabs.tabs( "option", "active", tabIndex - 1);
              tabIndex++;
          }
          
@@ -146,6 +153,12 @@
              newTab('plap');
          });
          
+         $tabs.find( ".ui-tabs-nav" ).sortable({
+             axis: "x",
+             stop: function() {
+                 $tabs.tabs( "refresh" );
+             }
+         });         
      });
      
     </script>
