@@ -65,9 +65,8 @@
 
      $(document).ready(function() {
 
-         function newFeed(tab, url, type, limit) {
-             $('#' + tab + ' ul')
-                 .append('<li class="ui-state-default"><input class="chbox" type="checkbox" />' + url + '</li>')
+         function newFeed($tab, url, type, limit) {
+             $tab.append('<li class="ui-state-default"><input class="chbox" type="checkbox" />' + url + '</li>')
          }
 
          function newTab(name, feeds) {
@@ -138,7 +137,7 @@
 
              if(typeof feeds != 'undefined') {
                  feeds.forEach(function(feed) {
-                     newFeed('tab-' + tabIndex, feed.url, feed.type, feed.limit);
+                     newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
                  });
              };
 
@@ -154,7 +153,11 @@
          });
 
          $('#addTab').click(function () {
-             newTab('plap');
+             newTab('New tab');
+         });
+
+         $('.addFeed').click(function () {
+             newFeed($(this).prev(), '//url100', 'photo', 8);
          });
 
          $tabs.find( ".ui-tabs-nav" ).sortable({
@@ -174,8 +177,8 @@
             <ul id="theTabs"></ul>
         </div>
         <button id="addTab">Add Tab</button>
+        <button id="saveTabs">Save Tabs</button>
         Activate tab on feed drop <input id="tabDropActivate" type="checkbox" value="">
-
 
         <div class="wrapper">
             <p>This example is designed to demonstrate usage of the <a href="http://dev.w3.org/html5/webstorage/">W3C Web Storage API</a>.</p>
