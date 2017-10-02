@@ -160,6 +160,15 @@
              newFeed($(this).prev(), '//url100', 'photo', 8);
          });
 
+         $('#saveTabs').click(function () {
+             $( '#theTabs li' ).each(function(i) {
+                 console.log(i + ' : ' + $(this).text() + ' ID: ' + $(this).children().attr('href'));
+                 $($(this).children().attr('href')).each(function(i) {
+                     console.log(i + ' : ' + $(this).text());
+                 });
+             });
+         });
+
          $tabs.find( ".ui-tabs-nav" ).sortable({
              axis: "x",
              stop: function() {
