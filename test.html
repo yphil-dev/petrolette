@@ -43,6 +43,8 @@
     </style>
     
     <script>
+
+     var config = {"tabDropActivate": false};
      
      var tabList =
          [{"name":"plop",
@@ -126,7 +128,10 @@
                          .find(".connectedSortable");
                      $elements.show().hide('slow');
                      ui.draggable.show().hide("slow", function () {
-                         $tabs.tabs("option", "active", $index);
+
+                         if (config.tabDropActivate)
+                             $tabs.tabs("option", "active", $index);
+                         
                          $(this).appendTo($list).show("slow").before($elements.show("slow"));
                      });
                  }
@@ -158,7 +163,20 @@
              stop: function() {
                  $tabs.tabs( "refresh" );
              }
-         });         
+         });
+
+         var storedConfig = GetFromLocalStorage("config");
+         
+         if (storedConfig.tabDropActivate)
+             $('#chbox1').prop('checked', true);
+         
+         $('#chbox1').change(function() {
+             if($(this).is(":checked")) {
+                 var returnVal = localStorage.setItem('config', AddToLocalStorage($(this).is(':checked')));
+                 $(this).attr("checked", returnVal);
+             }
+         });
+         
      });
      
     </script>
@@ -169,6 +187,6 @@
             <ul id="theTabs"></ul>
         </div>
         <button id="addTab">Add Tab</button>
-        
+        Activate tab on feed drop <input id="chbox1" type="checkbox" value="">
     </body>
 </html>
