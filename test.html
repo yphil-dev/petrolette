@@ -66,7 +66,7 @@
      $(document).ready(function() {
 
          function newFeed($tab, url, type, limit) {
-             $tab.append('<li class="ui-state-default"><input class="chbox" type="checkbox" />' + url + '</li>')
+             $tab.append('<li class="ui-state-default" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"><input class="chbox" type="checkbox" />' + url + '</li>')
          }
 
          function newTab(name, feeds) {
@@ -146,6 +146,23 @@
              tabIndex++;
          }
 
+         function createJSON() {
+             jsonObj = [];
+             $("input[class=email]").each(function() {
+
+                 var id = $(this).attr("title");
+                 var email = $(this).val();
+
+                 item = {}
+                 item ["title"] = id;
+                 item ["email"] = email;
+
+                 jsonObj.push(item);
+             });
+
+             console.log(jsonObj);
+         }
+
          var $tabs = $("#tabs").tabs();
 
          tabList.forEach(function(tab) {
@@ -161,12 +178,26 @@
          });
 
          $('#saveTabs').click(function () {
+             var myTabs = [];
+
              $( '#theTabs li' ).each(function(i) {
-                 console.log(i + ' : ' + $(this).text() + ' ID: ' + $(this).children().attr('href'));
-                 $($(this).children().attr('href')).each(function(i) {
-                     console.log(i + ' : ' + $(this).text());
+                 var myFeeds = [];
+                 var myTab = {};
+
+                 myTab["name"] = $(this).children().attr('href');
+
+                 // myTabs
+                 $($(this).children().attr('href') + ' ul li').each(function(i) {
+                     var myFeed = {};
+                     myFeed["url"] = $(this).data('url');
+                     myFeed["type"] = $(this).data('type');
+                     myFeed["limit"] = $(this).data('limit');
+                     myFeeds.push(myFeed);
                  });
+                 myTab["feeds"] = myFeeds;
+                 myTabs.push(myTab)
              });
+             console.log(JSON.stringify(myTabs));
          });
 
          $tabs.find( ".ui-tabs-nav" ).sortable({
