@@ -14,9 +14,11 @@
 
      ul {
          list-style-type: none;
+         margin:0;
+         padding:0;
      }
 
-     .connectedSortable li {
+     .tabSort li {
          cursor:grab;
          margin: 0 5px 5px 5px;
          padding: 5px;
@@ -39,6 +41,10 @@
      .ui-tabs-panel {
          padding:.4em .1em !important;
      }
+
+     label, input { display:block; }
+     input.text { margin-bottom:12px; width:95%; padding: .4em; }
+     fieldset { padding:0; border:0; margin-top:25px; }
 
     </style>
 
@@ -73,22 +79,25 @@
 
              $chbox.appendTo($li);
              $li.appendTo($tab);
-
-             // $tab.append('<li class="ui-state-default" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"><input class="chbox" type="checkbox" />' + url + '</li>');
-
          }
 
          function newTab(name, feeds) {
 
              var tabIndex = $('#tabs ul').length;
-             var $thisSortable = $('<ul id="sortable' + tabIndex + '" class="connectedSortable ui-helper-reset"></ul>');
-             var $thisButton = $('<button class="addFeed">Add Feed</button>').on( "click", function() {
-                 console.log('this: ' + $(this).prev().get())
-                 console.log( $( this ).text() );
+
+             if (!name) {
+                 var name = 'Tab ' + tabIndex;
+             }
+
+             var $thisSortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
+
+             var $thisButton = $('<button class="addFeed">Add Feed</button>');
+
+             $thisButton.on( "click", function() {
                  newFeed($(this).prev(), '//url100', 'photo', 8);
              });
 
-             var $thisTab = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
+             var $thisTabPane = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
 
              $thisSortable.on('click', 'input', function () {
                  $(this).parent().toggleClass('selected');
@@ -123,12 +132,20 @@
                  }
              }).disableSelection();
 
-             $thisSortable.appendTo($thisTab);
-             $thisButton.appendTo($thisTab);
-             $thisTab.appendTo($tabs);
+             $thisSortable.appendTo($thisTabPane);
+             $thisButton.appendTo($thisTabPane);
+             $thisTabPane.appendTo($tabs);
 
-             var $thisFeed = $('<li><a href="#tab-' + tabIndex  + '">' + name + '</a></li>').droppable({
-                 accept: "ul, .connectedSortable li",
+             var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>')
+
+             var $thisTab = $('<li class="modal"></li>');
+
+             $thisTabLink.appendTo($thisTab);
+
+             var $thisSelectedTab = $("#tabs div.ui-tabs-panel:not(.ui-tabs-hide)");
+
+             $thisTab.droppable({
+                 accept: "ul, .tabSort li",
                  hoverClass: "ui-state-hover",
                  drop: function (event, ui) {
                      var $item = $(this);
@@ -136,7 +153,7 @@
                      console.log('elt: ' + $index);
                      var $elements = ui.draggable.data('items');
                      var $list = $($item.find("a").attr("href"))
-                         .find(".connectedSortable");
+                         .find(".tabSort");
                      $elements.show().hide('slow');
                      ui.draggable.show().hide("slow", function () {
 
@@ -160,39 +177,18 @@
              tabIndex++;
          }
 
-         function createJSON() {
-             jsonObj = [];
-             $("input[class=email]").each(function() {
-
-                 var id = $(this).attr("title");
-                 var email = $(this).val();
-
-                 item = {}
-                 item ["title"] = id;
-                 item ["email"] = email;
-
-                 jsonObj.push(item);
-             });
-
-             console.log(jsonObj);
-         }
-
-         var $tabs = $("#tabs").tabs();
+         var $tabs = $("#tabs").tabs({
+             heightStyle: "fill"
+         });
 
          tabList.forEach(function(tab) {
              newTab(tab.name, tab.feeds);
          });
 
          $('#addTab').click(function () {
-             newTab('New tab');
+             newTab();
          });
-         //
-         //          $( ".addFeed" ).on( "click", function() {
-         //              console.log('this: ' + $(this).prev().get())
-         //              console.log( $( this ).text() );
-         //              newFeed($(this).prev(), '//url100', 'photo', 8);
-         //          });
-         //
+
          $('#saveTabs').click(function () {
              var myTabs = [];
 
@@ -200,7 +196,7 @@
                  var myFeeds = [];
                  var myTab = {};
 
-                 myTab["name"] = $(this).children().attr('href');
+                 myTab["name"] = $(this).children().text();
 
                  // myTabs
                  $($(this).children().attr('href') + ' ul li').each(function(i) {
@@ -221,6 +217,42 @@
              stop: function() {
                  $tabs.tabs( "refresh" );
              }
+         });
+
+         $( "#opener" ).on( "click", function() {
+             $( "#tabDialog" ).dialog( "open" );
+         });
+
+         var spinner = $('#tabLimit').spinner();
+
+         $( ".radio" ).checkboxradio();
+
+         $( '#tabDialog' ).dialog({
+             autoOpen: false,
+             resizable: false,
+             height: 'auto',
+             width: 400,
+             modal: true,
+             buttons: {
+                 'Tab name': function() {
+                     $( this ).dialog( 'close' );
+                 },
+                 Cancel: function() {
+                     $( this ).dialog( 'close' );
+                 }
+             },
+             open: function( event, ui ) {
+                 console.log('plop! ' + $(this).data('tabName'));
+                 $('#tabName').val($(this).data('tabName'));
+             }
+         });
+
+         $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
+             console.log('plop! ' + $(this).text());
+             e.preventDefault();
+             $( '#tabDialog' )
+                 .data('tabName', $(this).text())
+                 .dialog('open');
          });
 
      });
@@ -256,6 +288,31 @@
 
             <footer></footer>
         </div>
+
+        <div id="tabDialog" title="Rename tab">
+            <form>
+                <fieldset>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="tabName" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+                    <label for="email">Type</label>
+
+                    <label for="radio-1">New York</label>
+                    <input class="radio" type="radio" name="radio-1" id="radio-1">
+                    <label for="radio-2">Paris</label>
+                    <input class="radio" type="radio" name="radio-1" id="radio-2">
+                    <label for="radio-3">London</label>
+                    <input class="radio" type="radio" name="radio-1" id="radio-3">
+
+                    <label for="password">Limit</label>
+                    <input id="tabLimit" name="spinner" value="8">
+
+                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
+
+        <button id="opener">Open Dialog</button>
 
     </body>
     <script src="lib/js/jscolor/jscolor.js"></script>
