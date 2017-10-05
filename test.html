@@ -296,25 +296,18 @@
 
          console.log('---- CONSOLE LOGGING OK ----');
 
-         var feed = "http://feeds.feedburner.com/raymondcamdensblog?format=xml";
-
-         $.ajax(feed, {
-             accepts:{
-                 xml:"application/rss+xml"
-             },
-             dataType:"xml",
-             success:function(data) {
-                 //Credit: http://stackoverflow.com/questions/10943544/how-to-parse-an-rss-feed-using-javascript
-
-                 $(data).find("item").each(function () { // or "item" or whatever suits your feed
-                     var el = $(this);
-                     console.log("------------------------");
-                     console.log("title      : " + el.find("title").text());
-                     console.log("link       : " + el.find("link").text());
-                     console.log("description: " + el.find("description").text());
-                 });
-
-
+         $.ajax({
+             url: 'http://www.google.com'
+         }).done(function(data, status, obj) {
+             console.log('Ajax status: ' + status);
+             console.log('Ajax object: ' + obj);
+             console.log('Ajax data: ' + data);
+         }).always(function() {
+             console.log('This code will always run');
+         }).fail(function(data) {
+             switch (data.status) {
+                 case 500:
+                     alert('Server error');
              }
          });
 
