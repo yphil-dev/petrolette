@@ -296,12 +296,27 @@
 
          console.log('---- CONSOLE LOGGING OK ----');
 
-         function parseData(data){
-             //do something with the data
-             alert("data is: " + data);
-         }
+         var feed = "http://feeds.feedburner.com/raymondcamdensblog?format=xml";
 
-         $.get("https://stackoverflow.com/feeds/question/10943544",parseData);
+         $.ajax(feed, {
+             accepts:{
+                 xml:"application/rss+xml"
+             },
+             dataType:"xml",
+             success:function(data) {
+                 //Credit: http://stackoverflow.com/questions/10943544/how-to-parse-an-rss-feed-using-javascript
+
+                 $(data).find("item").each(function () { // or "item" or whatever suits your feed
+                     var el = $(this);
+                     console.log("------------------------");
+                     console.log("title      : " + el.find("title").text());
+                     console.log("link       : " + el.find("link").text());
+                     console.log("description: " + el.find("description").text());
+                 });
+
+
+             }
+         });
 
      });
 
