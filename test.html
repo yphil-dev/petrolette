@@ -274,24 +274,34 @@
              $("#stylesheet").attr({href : $('#themes').find(":selected").val()});
          });
 
+         //
+         //          $.get('https://stackoverflow.com/feeds/question/10943544', function(data) {
+         //              var $xml = $(data);
+         //              $xml.find("entry").each(function() {
+         //                  console.log('title: ' + $(this).find("title").text());
+         //
+         //                  var $this = $(this),
+         //                      item = {
+         //                          title: $this.find("title").text(),
+         //                          link: $this.find("link").text(),
+         //                          description: $this.find("description").text(),
+         //                          pubDate: $this.find("pubDate").text(),
+         //                          author: $this.find("author").text()
+         //                      }
+         //                  console.log('title: ' + item.title);
+         //              });
+         //          });
+         //          console.log('---- CONSOLE LOGGING OK ----');
+         //
 
-         $.get('https://stackoverflow.com/feeds/question/10943544', function(data) {
-             var $xml = $(data);
-             $xml.find("entry").each(function() {
-                 console.log('title: ' + $(this).find("title").text());
-
-                 var $this = $(this),
-                     item = {
-                         title: $this.find("title").text(),
-                         link: $this.find("link").text(),
-                         description: $this.find("description").text(),
-                         pubDate: $this.find("pubDate").text(),
-                         author: $this.find("author").text()
-                     }
-                 console.log('title: ' + item.title);
-             });
-         });
          console.log('---- CONSOLE LOGGING OK ----');
+
+         function parseData(data){
+             //do something with the data
+             alert("data is: " + data);
+         }
+
+         $.get("https://stackoverflow.com/feeds/question/10943544",parseData);
 
      });
 
