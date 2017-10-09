@@ -83,6 +83,10 @@
 
      $(document).ready(function() {
 
+         $.get("https://mobylette-feedr.herokuapp.com?q=http://www.ebaytechblog.com/feed/", function(data, status){
+         alert("Data: " + data + "\nStatus: " + status);
+     });
+
          var $tabs = $("#tabs").tabs({
              heightStyle: "fill"
          });
