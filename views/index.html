@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>NWS reboot</title>
+        <!-- <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
+        <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="lib/jQuery-ColorPicker/css/colorpicker.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+
+    <style>
+
+     ul {
+         list-style-type: none;
+         margin:0;
+         padding:0;
+     }
+
+     .tabSort li {
+         cursor:grab;
+         margin: 0 5px 5px 5px;
+         padding: 5px;
+         font-size: 1.2em;
+         width: 120px;
+     }
+
+     .chbox {
+         margin-right:10px;
+     }
+
+     .selected {
+         /* background:red !important; */
+     }
+
+     .hidden {
+         display:none;
+     }
+
+     .ui-tabs-panel {
+         padding:.4em .1em !important;
+     }
+
+     label { display:block; }
+     input.text { margin-bottom:12px; width:95%; padding: .4em; }
+     fieldset { padding:0; border:0; margin-top:25px; }
+
+     .small-button {
+         font-size: .2em !important;
+         margin:0;
+         /* display: table-cell; */
+         vertical-align: top;
+     }
+
+     .feed {
+         /* width:25% !important; */
+     }
+
+    </style>
+
+    <script>
+
+     var tabList =
+         [{"name":"plop",
+           "feeds":[
+               {"url":"//url9","type":"photo","limit":16},
+               {"url":"//url1","type":"photo","limit":16},
+               {"url":"//url3","type":"text","limit":16}
+           ]},
+          {"name":"plip",
+           "feeds": [
+               {"url":"//url5","type":"text","limit": 12},
+               {"url":"//url4","type":"mixed","limit": 8}
+           ]},
+          {"name":"plup",
+           "feeds": [
+               {"url":"//url50","type":"text","limit": 12},
+               {"url":"//url14","type":"mixed","limit": 8}
+           ]}
+         ];
+
+     $(document).ready(function() {
+
+         var $tabs = $("#tabs").tabs({
+             heightStyle: "fill"
+         });
+
+         tabList.forEach(function(tab) {
+             Tab.newTab($tabs, tab.name, tab.feeds);
+         });
+
+         $('#addTab').click(function () {
+             Tab.newTab($tabs);
+         });
+
+         $('#saveTabs').click(function () {
+             var myTabs = [];
+
+             $( '#theTabs li' ).each(function(i) {
+                 var myFeeds = [];
+                 var myTab = {};
+
+                 myTab["name"] = $(this).children().text();
+
+                 // myTabs
+                 $($(this).children().attr('href') + ' ul li').each(function(i) {
+                     var myFeed = {};
+                     myFeed["url"] = $(this).data('url');
+                     myFeed["type"] = $(this).data('type');
+                     myFeed["limit"] = $(this).data('limit');
+                     myFeeds.push(myFeed);
+                 });
+                 myTab["feeds"] = myFeeds;
+                 myTabs.push(myTab)
+             });
+             console.log(JSON.stringify(myTabs));
+         });
+
+         $tabs.find( ".ui-tabs-nav" ).sortable({
+             axis: "x",
+             stop: function() {
+                 $tabs.tabs( "refresh" );
+             }
+         });
+
+         $('#tabLimit').spinner();
+
+         $( 'button' ).button();
+
+         $( ".radio" ).checkboxradio();
+         $('#tabDropActivate').checkboxradio();
+
+         $( '#tabDialog' ).dialog({
+             autoOpen: false,
+             resizable: false,
+             height: 'auto',
+             width: 400,
+             modal: true,
+             buttons: {
+                 Cancel: function() {
+                     $( this ).dialog( 'close' );
+                 },
+                 'OK': function() {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $( this ).dialog( 'close' );
+                 }
+             },
+             open: function( event, ui ) {
+                 console.log('plop! ' + $(this).data('tabId'));
+                 $('#tabName').val($(this).data('tabName'));
+             }
+         });
+
+         $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
+             e.preventDefault();
+             $( '#tabDialog' )
+                 .data('tabName', $(this).text())
+                 .data('tabId', $(this).children('a').prop('id'))
+                 .dialog('open');
+         });
+
+         console.log('---- CONSOLE LOGGING OK ----');
+
+
+         // Prefs
+
+         $('#themes').selectmenu({
+             change: function( event, data ) {
+
+                 Prefs.writeConfig('theme', data.item.value);
+
+                 $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+             }
+         });
+
+         $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+         $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
+
+         $('#tabDropActivate').val(Prefs.readConfig('tabDropActivate'));
+
+         $('#tabDropActivate').change(function() {
+             Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
+         });
+
+         $('#colorselector2').ColorPicker({
+             color: '#EFEFEF',
+             onShow: function (colpkr) {
+                 $(colpkr).fadeIn(500);
+                 return false;
+             },
+             onHide: function (colpkr) {
+                 $(colpkr).fadeOut(500);
+                 return false;
+             },
+             onChange: function (hsb, hex, rgb) {
+                 $('#colorSelector div').css('backgroundColor', '#' + hex);
+                 Prefs.writeConfig('background-color', hex);
+
+                 $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
+
+             }
+         });
+
+     });
+
+    </script>
+
+    <body>
+
+        <div id="tabs">
+            <ul id="theTabs"></ul>
+        </div>
+
+        <fieldset id="prefsForm">
+            <button id="addTab">Add Tab</button>
+            <button id="saveTabs">Save Tabs</button>
+            <label for="tabDropActivate">Open tab on feed drop</label>
+            <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
+            <button id="colorselector2">Color</button>
+
+            <select id="themes">
+                <option value="base">Base</option>
+                <option value="black-tie">Black-Tie</option>
+                <option value="blitzer">Blitzer</option>
+                <option value="cupertino">Cupertino</option>
+                <option value="dark-hive">Dark-hive</option>
+                <option value="dot-luv">Dot-luv</option>
+                <option value="eggplant">Eggplant</option>
+                <option value="excite-bike">Excite-bike</option>
+                <option value="flick">Flick</option>
+                <option value="hot-sneaks">Hot-sneaks</option>
+                <option value="humanity">Humanity</option>
+                <option value="le-frog">Le-frog</option>
+                <option value="mint-choc">Mint-choc</option>
+                <option value="overcast">Overcast</option>
+                <option value="pepper-grinder">Pepper-grinder</option>
+                <option value="redmond">Redmond</option>
+                <option value="smoothness">Smoothness</option>
+                <option value="south-street">South-street</option>
+                <option value="start">Start</option>
+                <option value="sunny">Sunny</option>
+                <option value="swanky-purse">Swanky-purse</option>
+                <option value="trontastic">Trontastic</option>
+                <option value="ui-darkness">Ui-darkness</option>
+                <option value="ui-lightness">Ui-lightness</option>
+                <option value="vader">Vader</option>
+            </select>
+        </fieldset>
+
+        <div id="tabDialog" title="Rename tab">
+            <form>
+                <fieldset>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="tabName" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
+
+    </body>
+    <script src="lib/js/tab.js"></script>
+    <script src="lib/js/feed.js"></script>
+    <script src="lib/jQuery-ColorPicker/colorpicker.js"></script>
+    <script src="lib/js/prefs.js"></script>
+</html>
