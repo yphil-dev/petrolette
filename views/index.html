@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="lib/jQuery-ColorPicker/css/colorpicker.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="lib/jQuery-ColorPicker/colorpicker.js"></script>
     </head>
 
     <style>
@@ -84,8 +85,8 @@
      $(document).ready(function() {
 
          $.get("https://mobylette-feedr.herokuapp.com?q=http://www.ebaytechblog.com/feed/", function(data, status){
-         alert("Data: " + data + "\nStatus: " + status);
-     });
+             alert("Data: " + data + "\nStatus: " + status);
+         });
 
          var $tabs = $("#tabs").tabs({
              heightStyle: "fill"
@@ -269,6 +270,5 @@
     </body>
     <script src="lib/js/tab.js"></script>
     <script src="lib/js/feed.js"></script>
-    <script src="lib/jQuery-ColorPicker/colorpicker.js"></script>
     <script src="lib/js/prefs.js"></script>
 </html>
