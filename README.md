@@ -1,4 +1,4 @@
-# NeWS
+# Mobylette
 
 *RSS/Atom morning news reader ; Works at night too.*
 
@@ -8,11 +8,9 @@
 
 Read about it in French [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
 
-## NeWS is a personal track-free online RSS news reader
+## Mobylette is a personal track-free online RSS news reader
 
-NeWS is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now ; It does what I want from a no-nonsense, every-morning-every-day news reader.
-
-![NeWS screenshot](https://bitbucket.org/yassinphilip/nws/raw/master/img/screenshot.png)
+Mobylette is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now ; It does what I want from a no-nonsense, every-morning-every-day news reader.
 
 ### Practical Features
 
@@ -32,7 +30,7 @@ Make the page your home page, and read it every morning. You know instantly what
 - Does its best to parse any given feed and identify it w/o questions
 - Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
 - Directly links to any included image (and sound file)
-- If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog) 
+- If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog)
 - Lightweight and standard (valid HTML5 code)
 
 ### Installation
