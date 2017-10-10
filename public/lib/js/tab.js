@@ -23,18 +23,35 @@ var Tab = (function() {
                 $(this).parent().toggleClass('selected ui-state-hover');
             });
 
+
+
             $thisSortable.sortable({
                 revert:0,
+                receive: function(e, ui) {
+                    ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
+                },
                 helper: function (e, item) { //create custom helper
                     if (!item.hasClass('selected')) item.addClass('selected');
                     // clone selected items before hiding
+
+                    var w = $('.selected').width();
+
                     var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
+
+
+                    console.log('w: ' + w);
+                    // $elements.css({'width': $(this).first().width(), 'height': $(this).first().height()});
+
                     //hide selected items
                     item.siblings('.selected').addClass('hidden');
                     var helper = $('<ul/>');
                     return helper.append($elements);
                 },
                 start: function (e, ui) {
+                    console.log('yow!');
+
+                    // ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
+
                     var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
                     //store the selected items to item being dragged
                     ui.item.data('items', $elements);
@@ -97,6 +114,10 @@ var Tab = (function() {
             $tabs.tabs( "option", "active", tabIndex - 1);
             tabIndex++;
 
+            // console.log('---- TAB OK ----');
         }
+
+
     };
+
 }());

@@ -1,0 +1,23 @@
+{
+  "name": "mobylette",
+  "description": "fly by night RSS feed reader",
+  "main": "",
+  "authors": [
+    "yassinphilip <xaccrocheur@gmail.com>"
+  ],
+  "license": "GPLv3",
+  "keywords": [
+    "rss"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "slidereveal": "^1.1.2"
+  }
+}

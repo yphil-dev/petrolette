@@ -6,7 +6,7 @@ var Feed = (function() {
             var $chbox = $('<input class="chbox" type="checkbox" />');
             var $feedToggle = $('<button class="feedToggle small-button"><span class="ui-icon ui-icon-triangle-1-s"></span></button>').button();
 
-            var $li = $('<li class="feed ui-state-default" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '">' + url + '</li>')
+            var $li = $('<li class="feed ui-state-default" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '">' + url + '<div>plop</div></li>')
 
             $chbox.prependTo($li);
             $feedToggle.prependTo($li);
