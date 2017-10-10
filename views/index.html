@@ -6,10 +6,10 @@
         <title>Mobylette</title>
         <!-- <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
         <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="lib/jQuery-ColorPicker/css/colorpicker.css">
+        <link rel="stylesheet" href="/static/lib/jQuery-ColorPicker/css/colorpicker.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="lib/jQuery-ColorPicker/colorpicker.js"></script>
+        <script src="/static/lib/jQuery-ColorPicker/colorpicker.js"></script>
     </head>
 
     <style>
@@ -83,10 +83,6 @@
          ];
 
      $(document).ready(function() {
-
-         $.get("https://mobylette-feedr.herokuapp.com?q=http://www.ebaytechblog.com/feed/", function(data, status){
-             alert("Data: " + data + "\nStatus: " + status);
-         });
 
          var $tabs = $("#tabs").tabs({
              heightStyle: "fill"
@@ -268,7 +264,7 @@
         </div>
 
     </body>
-    <script src="lib/js/tab.js"></script>
-    <script src="lib/js/feed.js"></script>
-    <script src="lib/js/prefs.js"></script>
+    <script src="/static/lib/js/tab.js"></script>
+    <script src="/static/lib/js/feed.js"></script>
+    <script src="/static/lib/js/prefs.js"></script>
 </html>
