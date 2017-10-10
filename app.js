@@ -15,7 +15,7 @@ app.set('view engine', 'html');
 app.use('/static', express.static(__dirname + '/public'));
 
 app.use('/', index);
-app.use('/feed', feed);
-
+// app.use('/feed', feed);
+//
 
 module.exports = app;

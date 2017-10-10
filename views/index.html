@@ -84,6 +84,10 @@
 
      $(document).ready(function() {
 
+         $.get("/feed", function(data, status){
+             alert("Data: " + data + "\nStatus: " + status);
+         });
+
          var $tabs = $("#tabs").tabs({
              heightStyle: "fill"
          });
