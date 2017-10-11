@@ -20,7 +20,7 @@ var Tab = (function() {
             var $thisTabPane = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
 
             $thisSortable.on('click', 'input', function () {
-                $(this).parent().toggleClass('selected ui-state-hover');
+                $(this).parent().parent().parent().toggleClass('selected ui-state-hover');
             });
 
 
@@ -37,7 +37,6 @@ var Tab = (function() {
                     var w = $('.selected').width();
 
                     var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
-
 
                     console.log('w: ' + w);
                     // $elements.css({'width': $(this).first().width(), 'height': $(this).first().height()});
