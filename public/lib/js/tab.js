@@ -11,7 +11,7 @@ var Tab = (function() {
 
             var $thisSortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
-            var $thisButton = $('<button class="addFeed">Add Feed</button>').button();
+            var $thisButton = $('<button class="addFeed"><i class="fa fa-plus" aria-hidden="true"></i> Add Feed</button>').button();
 
             $thisButton.on( "click", function() {
                 Feed.newFeed($(this).prev(), '//url100', 'photo', 8);
