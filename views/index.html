@@ -7,10 +7,9 @@
         <!-- <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
         <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/static/lib/jQuery-ColorPicker/css/colorpicker.css">
+        <link rel="stylesheet" href="bower/components-font-awesome/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="/static/lib/jQuery-ColorPicker/colorpicker.js"></script>
-
         <script src="/static/lib/jQuery-ColorPicker/colorpicker.js"></script>
 
         <script src="/static/lib/jQuery-ColorPicker/colorpicker.js"></script>
@@ -20,6 +19,44 @@
     </head>
 
     <style>
+
+     body {
+         background-color: #3e3e3e;
+     }
+
+     div.mobylette {
+         background-color: #3e3e3e;
+         border-right: #2e2e2e solid 1px;
+         padding:.5em;
+     }
+
+     button.mobylette {
+         margin-top: .5em;
+     }
+
+     .mobylette h1 {
+         color: #fc6a10;
+     }
+
+     .mobylette h1 span {
+         font-size:1.4em;
+         color: orange;
+         text-shadow: 1px 1px #111111;
+     }
+
+     fieldset label,
+     button {
+         margin: 0 .5em .5em 0;
+     }
+
+     h1, h2, h3, h4, h5, h6 {
+         font-weight: 700;
+         font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
+     }
+
+     h1 {
+         margin: .5em .5em;
+     }
 
      ul {
          list-style-type: none;
@@ -90,19 +127,11 @@
            ]}
          ];
 
-     /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-     function openNav() {
-         document.getElementById("mySidenav").style.width = "250px";
-         document.getElementById("main").style.marginLeft = "250px";
-     }
-
-     /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-     function closeNav() {
-         document.getElementById("mySidenav").style.width = "0";
-         document.getElementById("main").style.marginLeft = "0";
-     }
-
      $(document).ready(function() {
+
+         $('#slider').slideReveal({
+             trigger: $("#trigger")
+         });
 
          //          $.get("/feed", function(data, status){
          //              alert("Data: " + data + "\nStatus: " + status);
@@ -173,7 +202,6 @@
                  }
              },
              open: function( event, ui ) {
-                 console.log('plop! ' + $(this).data('tabId'));
                  $('#tabName').val($(this).data('tabName'));
              }
          });
@@ -192,6 +220,7 @@
          // Prefs
 
          $('#themes').selectmenu({
+             width: 232,
              change: function( event, data ) {
 
                  Prefs.writeConfig('theme', data.item.value);
@@ -203,7 +232,7 @@
 
          $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
 
-         $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
+         // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
 
          $('#tabDropActivate').val(Prefs.readConfig('tabDropActivate'));
 
@@ -240,42 +269,6 @@
             <ul id="theTabs"></ul>
         </div>
 
-        <fieldset id="prefsForm">
-            <button id="addTab">Add Tab</button>
-            <button id="saveTabs">Save Tabs</button>
-            <label for="tabDropActivate">Open tab on feed drop</label>
-            <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
-            <button id="colorselector2">Color</button>
-
-            <select id="themes">
-                <option value="base">Base</option>
-                <option value="black-tie">Black-Tie</option>
-                <option value="blitzer">Blitzer</option>
-                <option value="cupertino">Cupertino</option>
-                <option value="dark-hive">Dark-hive</option>
-                <option value="dot-luv">Dot-luv</option>
-                <option value="eggplant">Eggplant</option>
-                <option value="excite-bike">Excite-bike</option>
-                <option value="flick">Flick</option>
-                <option value="hot-sneaks">Hot-sneaks</option>
-                <option value="humanity">Humanity</option>
-                <option value="le-frog">Le-frog</option>
-                <option value="mint-choc">Mint-choc</option>
-                <option value="overcast">Overcast</option>
-                <option value="pepper-grinder">Pepper-grinder</option>
-                <option value="redmond">Redmond</option>
-                <option value="smoothness">Smoothness</option>
-                <option value="south-street">South-street</option>
-                <option value="start">Start</option>
-                <option value="sunny">Sunny</option>
-                <option value="swanky-purse">Swanky-purse</option>
-                <option value="trontastic">Trontastic</option>
-                <option value="ui-darkness">Ui-darkness</option>
-                <option value="ui-lightness">Ui-lightness</option>
-                <option value="vader">Vader</option>
-            </select>
-        </fieldset>
-
         <div id="tabDialog" title="Rename tab">
             <form>
                 <fieldset>
@@ -286,7 +279,52 @@
                 </fieldset>
             </form>
         </div>
-        <span onclick="openNav()">open</span>
+        <div id="slider" class="mobylette">
+
+            <h1>
+                <i class="fa fa-motorcycle fa-5x" aria-hidden="true"></i>
+                <span>Mobylette</span>
+            </h1>
+
+            <fieldset id="prefsForm">
+                <button id="saveTabs"><i class="fa fa-cog" aria-hidden="true"></i> Save Tabs</button>
+
+                <label for="tabDropActivate">Open tab on feed drop</label>
+                <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
+                <button id="colorselector2">Color</button>
+
+                <select id="themes">
+                    <option value="base">Base</option>
+                    <option value="black-tie">Black-Tie</option>
+                    <option value="blitzer">Blitzer</option>
+                    <option value="cupertino">Cupertino</option>
+                    <option value="dark-hive">Dark-hive</option>
+                    <option value="dot-luv">Dot-luv</option>
+                    <option value="eggplant">Eggplant</option>
+                    <option value="excite-bike">Excite-bike</option>
+                    <option value="flick">Flick</option>
+                    <option value="hot-sneaks">Hot-sneaks</option>
+                    <option value="humanity">Humanity</option>
+                    <option value="le-frog">Le-frog</option>
+                    <option value="mint-choc">Mint-choc</option>
+                    <option value="overcast">Overcast</option>
+                    <option value="pepper-grinder">Pepper-grinder</option>
+                    <option value="redmond">Redmond</option>
+                    <option value="smoothness">Smoothness</option>
+                    <option value="south-street">South-street</option>
+                    <option value="start">Start</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="swanky-purse">Swanky-purse</option>
+                    <option value="trontastic">Trontastic</option>
+                    <option value="ui-darkness">Ui-darkness</option>
+                    <option value="ui-lightness">Ui-lightness</option>
+                    <option value="vader">Vader</option>
+                </select>
+            </fieldset>
+
+        </div>
+        <button id="addTab" class="mobylette"><i class="fa fa-plus" aria-hidden="true"></i> Add Tab</button>
+        <button id="trigger" class="mobylette"><i class="fa fa-cog" aria-hidden="true"></i> Preferences</button>
     </body>
     <script src="/static/lib/js/tab.js"></script>
     <script src="/static/lib/js/feed.js"></script>

@@ -1,7 +1,7 @@
 {
   "name": "mobylette",
   "version": "0.4.5",
-  "description": "fly by night RSS feed reader",
+  "description": "Fly by night RSS feed reader",
   "main": "",
   "authors": [
     "yassinphilip <xaccrocheur@gmail.com>"
@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "slidereveal": "^1.1.2",
-    "bootstrap": "3.0.3"
+    "bootstrap": "3.0.3",
+    "components-font-awesome": "^4.7.0"
   }
 }
