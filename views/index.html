@@ -6,7 +6,7 @@
         <title>Mobylette</title>
         <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
         <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/static/lib/jQuery-ColorPicker/css/colorpicker.css">
+        <link rel="stylesheet" href="/static/css/mobylette.css">
         <link rel="stylesheet" href="bower/components-font-awesome/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -14,146 +14,6 @@
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
 
     </head>
-
-    <style>
-
-     body {
-         background-color: #3e3e3e;
-     }
-
-     div.mobylette {
-         background-color: #3e3e3e;
-         border-right: #2e2e2e solid 1px;
-         padding:.5em;
-     }
-
-     button.mobylette {
-         margin-top: .5em;
-     }
-
-     .mobylette h1 {
-         color: #fc6a10;
-     }
-
-     .mobylette h1 span {
-         font-size:1.4em;
-         color: orange;
-         text-shadow: 1px 1px #5e354a;
-     }
-
-     fieldset label,
-     button {
-         margin: 0 .5em .5em 0;
-     }
-
-     h1, h2, h3, h4, h5, h6 {
-         font-weight: 700;
-         font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
-     }
-
-     h1 {
-         margin: .5em .5em;
-     }
-
-     ul {
-         list-style-type: none;
-         margin:0;
-         padding:0;
-     }
-
-     .tabSort li,
-     .selected {
-         cursor:grab;
-         margin: 0 5px 5px 5px;
-         padding: 5px;
-         font-size: 1.2em;
-         width: 25%;
-     }
-
-     .chbox {
-         margin-right:10px;
-     }
-
-     .selected,
-     .feed {
-         width:250px !important;
-     }
-
-     .mobHeader {
-         display: flex;
-         justify-content: space-between;
-     }
-
-     .mobHeader div {
-         /* white-space:nowrap; */
-         /* display:inline-block; */
-     }
-
-     .mobHeader .title {
-         width:70%;
-     }
-
-     .truncate {
-         width: 250px;
-         white-space: nowrap;
-         overflow: hidden;
-         text-overflow: ellipsis;
-     }
-
-     .selected {
-         opacity: 0.5;
-     }
-
-     .hidden {
-         display:none;
-     }
-
-     .ui-tabs-panel {
-         padding:.4em .1em !important;
-     }
-
-     label { display:block; }
-     input.text { margin-bottom:12px; width:95%; padding: .4em; }
-     fieldset { padding:0; border:0; margin-top:25px; }
-
-     .small-button {
-         font-size: .2em !important;
-         margin:0;
-         /* display: table-cell; */
-         vertical-align: top;
-     }
-
-     .headerItem {
-         display:inline-block;
-     }
-
-     .ui-button {
-         text-align: left !important;
-     }
-
-     /* Spinner */
-
-     @keyframes spinner {
-         to {transform: rotate(360deg);}
-     }
-
-     .spinner:after {
-         content: '';
-         box-sizing: border-box;
-         position: absolute;
-         top: 50%;
-         left: 50%;
-         width: 20px;
-         height: 20px;
-         margin-top: -10px;
-         margin-left: -10px;
-         border-radius: 50%;
-         border: 2px solid #ccc;
-         border-top-color: #333;
-         animation: spinner .6s linear infinite;
-     }
-
-    </style>
 
     <script>
 
@@ -185,20 +45,7 @@
          });
 
          $( "#tabs" ).on( "click", ".mobFeedRefresh", function() {
-
-             var $button = $(this);
-             $button.css("color", "transparent").addClass('spinner');
-
-             var feedUrl = $(this).parent().parent().parent().data('url');
-             var $feedTitleDiv = $(this).parent().prev();
-
-             $.get("/feed", {
-                 "feedurl": feedUrl
-             }, function(data, status){
-                 $button.css("color", "#3e3e3e").removeClass('spinner');
-                 $feedTitleDiv.text(data.title);
-             });
-
+             Feed.populateFeed($(this));
          });
 
          var $tabs = $("#tabs").tabs({
@@ -353,7 +200,7 @@
             <fieldset id="prefsForm">
                 <button id="saveTabs"><i class="fa fa-save" aria-hidden="true"></i> Save Tabs</button>
 
-                <label for="tabDropActivate">Open tab on feed drop</label>
+                <label class="tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
                 <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
                 <button id="colorselector2"><i class="fa fa-cube" aria-hidden="true"></i> Color</button>
 

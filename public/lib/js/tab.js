@@ -20,10 +20,8 @@ var Tab = (function() {
             var $thisTabPane = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
 
             $thisSortable.on('click', 'input', function () {
-                $(this).parent().parent().parent().toggleClass('selected ui-state-hover');
+                $(this).parent().parent().parent().parent().parent().toggleClass('selected ui-state-hover');
             });
-
-
 
             $thisSortable.sortable({
                 revert:0,
@@ -115,8 +113,6 @@ var Tab = (function() {
 
             // console.log('---- TAB OK ----');
         }
-
-
     };
 
 }());
