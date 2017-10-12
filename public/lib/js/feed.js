@@ -14,7 +14,7 @@ var Feed = (function() {
 
             var $li = $('<li class="feed ui-state-default" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
-            var $header = $('<div class="header"></div>');
+            var $header = $('<div class="mobHeader"></div>');
             var $toggleDiv = $('<div class="toggle"></div>');
             var $selectDiv = $('<div class="TabSelect"></div>');
             var $titleDiv = $('<div class="title truncate"></div>');

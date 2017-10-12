@@ -82,11 +82,29 @@
          width:250px !important;
      }
 
-     .selected {
-         opacity: 0.5;
+     .mobHeader {
+         display: flex;
+         justify-content: space-between;
      }
 
-     .feed {
+     .mobHeader div {
+         /* white-space:nowrap; */
+         /* display:inline-block; */
+     }
+
+     .mobHeader .title {
+         width:70%;
+     }
+
+     .truncate {
+         width: 250px;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+     }
+
+     .selected {
+         opacity: 0.5;
      }
 
      .hidden {
