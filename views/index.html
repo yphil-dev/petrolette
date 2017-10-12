@@ -4,15 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mobylette</title>
-        <!-- <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
+        <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
         <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/static/lib/jQuery-ColorPicker/css/colorpicker.css">
         <link rel="stylesheet" href="bower/components-font-awesome/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="/static/lib/jQuery-ColorPicker/colorpicker.js"></script>
-
-        <script src="/static/lib/jQuery-ColorPicker/colorpicker.js"></script>
 
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
 
@@ -136,10 +133,6 @@
 
      /* Spinner */
 
-     .mobFeedRefresh {
-         position: relative
-     }
-
      @keyframes spinner {
          to {transform: rotate(360deg);}
      }
@@ -199,20 +192,13 @@
              var feedUrl = $(this).parent().parent().parent().data('url');
              var $feedTitleDiv = $(this).parent().prev();
 
-             $(".sk-folding-cube").show();
-
              $.get("/feed", {
                  "feedurl": feedUrl
              }, function(data, status){
                  $button.css("color", "#3e3e3e").removeClass('spinner');
-                 // alert("Data: " + JSON.stringify(data.title) + "\nStatus: " + status + '\nTitleDiv:' + $feedTitleDiv.text());
                  $feedTitleDiv.text(data.title);
              });
 
-             //              $.ajax({url: "/feed", "feedurl": feedUrl, success: function(result){
-             //                  $feedTitleDiv.text(data.title);
-             //              }});
-             //
          });
 
          var $tabs = $("#tabs").tabs({
@@ -317,23 +303,23 @@
              Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
          });
 
-         $('#colorselector2').ColorPicker({
-             color: '#EFEFEF',
-             onShow: function (colpkr) {
-                 $(colpkr).fadeIn(500);
-                 return false;
-             },
-             onHide: function (colpkr) {
-                 $(colpkr).fadeOut(500);
-                 return false;
-             },
-             onChange: function (hsb, hex, rgb) {
-                 $('#colorSelector div').css('backgroundColor', '#' + hex);
-                 Prefs.writeConfig('background-color', hex);
+         // $('#colorselector2').ColorPicker({
+         //     color: '#EFEFEF',
+         //     onShow: function (colpkr) {
+         //         $(colpkr).fadeIn(500);
+         //         return false;
+         //     },
+         //     onHide: function (colpkr) {
+         //         $(colpkr).fadeOut(500);
+         //         return false;
+         //     },
+         //     onChange: function (hsb, hex, rgb) {
+         //         $('#colorSelector div').css('backgroundColor', '#' + hex);
+         //         Prefs.writeConfig('background-color', hex);
 
-                 $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
-             }
-         });
+         //         $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
+         //     }
+         // });
 
          $('#tabs').find('.mobFeedRefresh').click();
 
@@ -404,13 +390,6 @@
         </div>
         <button id="addTab" class="mobylette"><i class="fa fa-plus" aria-hidden="true"></i> Add Tab</button>
         <button id="trigger" class="mobylette"><i class="fa fa-cogs" aria-hidden="true"></i> Preferences</button>
-
-        <div class="sk-folding-cube">
-            <div class="sk-cube1 sk-cube"></div>
-            <div class="sk-cube2 sk-cube"></div>
-            <div class="sk-cube4 sk-cube"></div>
-            <div class="sk-cube3 sk-cube"></div>
-        </div>
 
     </body>
     <script src="/static/lib/js/tab.js"></script>
