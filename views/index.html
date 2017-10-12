@@ -172,7 +172,7 @@
              $.get("/feed", {
                  "feedurl": feedUrl
              }, function(data, status){
-                 alert("Data: " + JSON.stringify(data.title) + "\nStatus: " + status + '\nTitleDiv:' + $feedTitleDiv.text());
+                 // alert("Data: " + JSON.stringify(data.title) + "\nStatus: " + status + '\nTitleDiv:' + $feedTitleDiv.text());
                  $feedTitleDiv.text(data.title);
              });
 
@@ -298,6 +298,8 @@
                  $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
              }
          });
+
+         $('#tabs').find('.mobFeedRefresh').click();
 
      });
 
