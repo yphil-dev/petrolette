@@ -141,19 +141,21 @@
      var tabList =
          [{"name":"plop",
            "feeds":[
-               {"url":"//url9","type":"photo","limit":16},
+               {"url":"http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml","type":"photo","limit":16},
                {"url":"http://feeds.bbci.co.uk/news/rss.xml?edition=int","type":"photo","limit":16},
-               {"url":"//url3","type":"text","limit":16}
+               {"url":"http://feeds.reuters.com/reuters/environment","type":"text","limit":16}
            ]},
           {"name":"plip",
            "feeds": [
-               {"url":"//url5","type":"text","limit": 12},
-               {"url":"//url4","type":"mixed","limit": 8}
+               {"url":"http://feeds.reuters.com/news/artsculture","type":"text","limit": 12},
+               {"url":"http://feeds.reuters.com/reuters/businessNews","type":"mixed","limit": 8}
            ]},
           {"name":"plup",
            "feeds": [
-               {"url":"//url50","type":"text","limit": 12},
-               {"url":"//url14","type":"mixed","limit": 8}
+               {"url":"https://www.sciencedaily.com/rss/matter_energy/engineering.xml","type":"text","limit": 12},
+               {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
+               {"url":"https://www.reddit.com/r/nsfw/.rss","type":"mixed","limit": 8},
+               {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 8}
            ]}
          ];
 
@@ -163,19 +165,15 @@
              trigger: $("#trigger")
          });
 
-         $.get("/feed", {
-             "feedurl": "https://www.reddit.com/.rss"
-         }, function(data, status){
-             alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);;
-         });
-
          $( "#tabs" ).on( "click", ".mobFeedRefresh", function() {
-             // alert('plop: ' +  $(this).parent().parent().parent().data('url'));
 
+             var feedUrl = $(this).parent().parent().parent().data('url');
+             var $feedTitleDiv = $(this).parent().prev();
              $.get("/feed", {
-                 "feedurl": $(this).parent().parent().parent().data('url')
+                 "feedurl": feedUrl
              }, function(data, status){
-                 alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);;
+                 alert("Data: " + JSON.stringify(data.title) + "\nStatus: " + status + '\nTitleDiv:' + $feedTitleDiv.text());
+                 $feedTitleDiv.text(data.title);
              });
 
 
