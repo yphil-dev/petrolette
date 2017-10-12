@@ -134,6 +134,32 @@
          text-align: left !important;
      }
 
+     /* Spinner */
+
+     .mobFeedRefresh {
+         position: relative
+     }
+
+     @keyframes spinner {
+         to {transform: rotate(360deg);}
+     }
+
+     .spinner:after {
+         content: '';
+         box-sizing: border-box;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         width: 20px;
+         height: 20px;
+         margin-top: -10px;
+         margin-left: -10px;
+         border-radius: 50%;
+         border: 2px solid #ccc;
+         border-top-color: #333;
+         animation: spinner .6s linear infinite;
+     }
+
     </style>
 
     <script>
@@ -167,16 +193,26 @@
 
          $( "#tabs" ).on( "click", ".mobFeedRefresh", function() {
 
+             var $button = $(this);
+             $button.css("color", "transparent").addClass('spinner');
+
              var feedUrl = $(this).parent().parent().parent().data('url');
              var $feedTitleDiv = $(this).parent().prev();
+
+             $(".sk-folding-cube").show();
+
              $.get("/feed", {
                  "feedurl": feedUrl
              }, function(data, status){
+                 $button.css("color", "#3e3e3e").removeClass('spinner');
                  // alert("Data: " + JSON.stringify(data.title) + "\nStatus: " + status + '\nTitleDiv:' + $feedTitleDiv.text());
                  $feedTitleDiv.text(data.title);
              });
 
-
+             //              $.ajax({url: "/feed", "feedurl": feedUrl, success: function(result){
+             //                  $feedTitleDiv.text(data.title);
+             //              }});
+             //
          });
 
          var $tabs = $("#tabs").tabs({
@@ -368,6 +404,14 @@
         </div>
         <button id="addTab" class="mobylette"><i class="fa fa-plus" aria-hidden="true"></i> Add Tab</button>
         <button id="trigger" class="mobylette"><i class="fa fa-cogs" aria-hidden="true"></i> Preferences</button>
+
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+
     </body>
     <script src="/static/lib/js/tab.js"></script>
     <script src="/static/lib/js/feed.js"></script>
