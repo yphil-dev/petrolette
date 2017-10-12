@@ -86,7 +86,7 @@ var Tab = (function() {
                 drop: function (event, ui) {
                     var $item = $(this);
                     var $index = $( "li" ).index( this );
-                    console.log('elt: ' + $index);
+                    console.log('elt: ' +  $(this).get());
                     var $elements = ui.draggable.data('items');
                     var $list = $($item.find("a").attr("href"))
                         .find(".tabSort");

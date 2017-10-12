@@ -1,26 +1,3 @@
-// var Feed = (function() {
-//
-//     return {
-//         newFeed:function($tab, url, type, limit) {
-//
-//             var $chbox = $('<input class="chbox headerItem" type="checkbox" />');
-//             var $feedToggle = $('<button class="feedToggle small-button headerItem"><span class="ui-icon ui-icon-triangle-1-s"></span></button>').button();
-//             var $title = $('<span class="truncate headerItem">' + url + '<span>');
-//             var $body = $('<div>plop</div>');
-//
-//             var $li = $('<li class="feed ui-state-default" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>')
-//
-//             $feedToggle.appendTo($li);
-//             $chbox.appendTo($li);
-//             $title.appendTo($li);
-//             $body.appendTo($li);
-//
-//             $li.appendTo($tab);
-//
-//         }
-//     };
-// }());
-
 var Feed = (function() {
 
     return {

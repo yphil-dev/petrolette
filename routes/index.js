@@ -10,11 +10,11 @@ router.get('/', function(req, res, next) {
 
 router.get('/feed', function(req, res, next) {
     // res.send('plop!');
-    // console.log('im the feed!');
+    console.log('req:' + JSON.stringify(req.param('feedurl')));
 
-    parser.parseURL('https://www.reddit.com/.rss', function(err, parsed) {
+    parser.parseURL(req.param('feedurl'), function(err, parsed) {
         console.log(parsed.feed.title);
-        res.send(parsed.feed.title);
+        res.send(parsed.feed);
 
         // parsed.feed.entries.forEach(function(entry) {
         // console.log(entry.title + ':' + entry.link);
