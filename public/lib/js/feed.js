@@ -8,7 +8,7 @@ var Feed = (function() {
 
             var $title = $('<span class="truncate">' + url + '<span>');
 
-            var $feedReload = $('<i class="fa fa-refresh fa-1 fa-pull-right fa-border" aria-hidden="true"></i>').button();
+            var $feedReload = $('<i class="fa fa-refresh fa-1 fa-pull-right fa-border mobFeedRefresh" aria-hidden="true"></i>').button();
 
             var $body = $('<div>plop</div>');
 

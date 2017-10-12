@@ -124,7 +124,7 @@
          [{"name":"plop",
            "feeds":[
                {"url":"//url9","type":"photo","limit":16},
-               {"url":"//url1","type":"photo","limit":16},
+               {"url":"http://feeds.bbci.co.uk/news/rss.xml?edition=int","type":"photo","limit":16},
                {"url":"//url3","type":"text","limit":16}
            ]},
           {"name":"plip",
@@ -149,6 +149,18 @@
              "feedurl": "https://www.reddit.com/.rss"
          }, function(data, status){
              alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);;
+         });
+
+         $( "#tabs" ).on( "click", ".mobFeedRefresh", function() {
+             // alert('plop: ' +  $(this).parent().parent().parent().data('url'));
+
+             $.get("/feed", {
+                 "feedurl": $(this).parent().parent().parent().data('url')
+             }, function(data, status){
+                 alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);;
+             });
+
+
          });
 
          var $tabs = $("#tabs").tabs({
