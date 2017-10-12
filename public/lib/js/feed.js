@@ -3,11 +3,11 @@ var Feed = (function() {
     return {
         newFeed:function($tab, url, type, limit) {
 
-            var $feedToggle = $('<i class="fa fa-caret-down fa-1 fa-pull-left fa-border rotate" aria-hidden="true"></i>').button().click(function() {
+            var $feedToggle = $('<i class="fa fa-caret-down fa-1 fa-border rotate" aria-hidden="true"></i>').button().click(function() {
 
                 $(this).toggleClass("down")
                 $(this).parent().parent().parent().children('.feedBody').toggle(300);
-            });;
+            });
 
             var $feedSelect = $('<label class="feedSelect"><input class="chbox" type="checkbox" /></label>').button();
 
@@ -15,9 +15,13 @@ var Feed = (function() {
 
             var $feedControls = $('<div class="feedControls"></div>');
 
-            var $feedPrefs = $('<i class="fa fa-cog fa-1 fa-pull-right fa-border mobFeedPrefs" aria-hidden="true"></i>').button();
+            var $feedPrefs = $('<i class="fa fa-cog fa-1 fa-border mobFeedPrefs" aria-hidden="true"></i>').button().click(function() {
+                $('#feedDialog')
+                    .data('feedUrl', $(this).parent().parent().parent().parent().data('url'))
+                    .dialog('open');
+            });
 
-            var $feedReload = $('<i class="fa fa-refresh fa-1 fa-pull-right fa-border mobFeedRefresh" aria-hidden="true"></i>').button();
+            var $feedReload = $('<i class="fa fa-refresh fa-1 fa-border mobFeedRefresh" aria-hidden="true"></i>').button();
 
             var $body = $('<div class="feedBody ui-widget-content">plop</div>');
 

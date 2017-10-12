@@ -94,7 +94,7 @@
 
          $( 'button' ).button();
 
-         $( ".radio" ).checkboxradio();
+         $( 'input[type=radio]' ).checkboxradio();
          $('#tabDropActivate').checkboxradio();
 
          $( '#tabDialog' ).dialog({
@@ -113,13 +113,46 @@
                  }
              },
              open: function( event, ui ) {
+
+                 $(this).on('submit', function () {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $(this).dialog('close');
+                     return false;
+                 });
                  $('#tabName').val($(this).data('tabName'));
              }
          });
 
+         $( '#feedDialog' ).dialog({
+             autoOpen: false,
+             resizable: false,
+             height: 'auto',
+             width: 400,
+             modal: true,
+             buttons: {
+                 Cancel: function() {
+                     $( this ).dialog( 'close' );
+                 },
+                 'OK': function() {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $( this ).dialog( 'close' );
+                 }
+             },
+             open: function( event, ui ) {
+
+                 $(this).on('submit', function () {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $(this).dialog('close');
+                     return false;
+                 });
+                 $('#feedUrl').val($(this).data('feedUrl'));
+             }
+         });
+
+
          $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
              e.preventDefault();
-             $( '#tabDialog' )
+             $('#tabDialog')
                  .data('tabName', $(this).text())
                  .data('tabId', $(this).children('a').prop('id'))
                  .dialog('open');
@@ -150,24 +183,6 @@
              Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
          });
 
-         // $('#colorselector2').ColorPicker({
-         //     color: '#EFEFEF',
-         //     onShow: function (colpkr) {
-         //         $(colpkr).fadeIn(500);
-         //         return false;
-         //     },
-         //     onHide: function (colpkr) {
-         //         $(colpkr).fadeOut(500);
-         //         return false;
-         //     },
-         //     onChange: function (hsb, hex, rgb) {
-         //         $('#colorSelector div').css('backgroundColor', '#' + hex);
-         //         Prefs.writeConfig('background-color', hex);
-
-         //         $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
-         //     }
-         // });
-
          $('#tabs').find('.mobFeedRefresh').click();
 
      });
@@ -185,11 +200,29 @@
                 <fieldset>
                     <label for="name">Name</label>
                     <input type="text" name="name" id="tabName" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
                 </fieldset>
             </form>
         </div>
+
+        <div id="feedDialog" title="Feed parameters">
+            <form>
+                <fieldset>
+                    <label for="name">URL</label>
+                    <input type="text" name="url" id="feedUrl" value="" class="text ui-widget-content ui-corner-all">
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                    <legend>Select a Location: </legend>
+                    <label for="radio-1">Mixed</label>
+                    <input type="radio" name="radio-1" id="radio-1">
+                    <label for="radio-2">Photo</label>
+                    <input type="radio" name="radio-1" id="radio-2">
+                    <label for="radio-3">Text</label>
+                    <input type="radio" name="radio-1" id="radio-3">
+
+                </fieldset>
+            </form>
+        </div>
+
         <div id="slider" class="mobylette">
 
             <h1>
@@ -202,8 +235,8 @@
 
                 <label class="tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
                 <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
-                <button id="colorselector2"><i class="fa fa-cube" aria-hidden="true"></i> Color</button>
-
+                <!-- <button id="colorselector2"><i class="fa fa-cube" aria-hidden="true"></i> Color</button>
+                   -->
                 <select id="themes">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     <option value="base">Base</option>

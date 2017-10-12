@@ -75,7 +75,7 @@ ul {
     /* background-color:red; */
 }
 
-.mobHeader div {
+.mobHeader > div {
     flex: auto;
     /* width: 10rem; */
     /* white-space:nowrap; */
@@ -93,8 +93,12 @@ ul {
 
 .mobHeader .feedControls {
     display: flex;
+    justify-content: flex-end;
 }
 
+.mobHeader .feedControls div {
+  flex: 1 100%;
+}
 
 .selected {
     opacity: 0.5;
