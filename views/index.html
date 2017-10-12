@@ -177,7 +177,15 @@
 
          // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
 
-         $('#tabDropActivate').val(Prefs.readConfig('tabDropActivate'));
+
+         if (Prefs.readConfig('tabDropActivate')) {
+             console.log('True: ' + Prefs.readConfig('tabDropActivate'));
+         } else {
+             console.log('False: ' + Prefs.readConfig('tabDropActivate'));
+         }
+
+         $('#tabDropActivate').prop('checked', Prefs.readConfig('tabDropActivate'))
+                              .checkboxradio('refresh');
 
          $('#tabDropActivate').change(function() {
              Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
