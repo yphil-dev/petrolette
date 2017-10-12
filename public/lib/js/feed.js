@@ -3,7 +3,7 @@ var Feed = (function() {
     return {
         newFeed:function($tab, url, type, limit) {
 
-            var $feedToggle = $('<i class="fa fa-caret-down fa-1 fa-border rotate" aria-hidden="true"></i>').button().click(function() {
+            var $feedToggle = $('<i class="fa fa-caret-down fa-1 fa-border rotate"></i>').button().click(function() {
 
                 $(this).toggleClass("down")
                 $(this).parent().parent().parent().children('.feedBody').toggle(300);
@@ -15,7 +15,7 @@ var Feed = (function() {
 
             var $feedControls = $('<div class="feedControls"></div>');
 
-            var $feedPrefs = $('<i class="fa fa-cog fa-1 fa-border mobFeedPrefs" aria-hidden="true"></i>').button().click(function() {
+            var $feedPrefs = $('<i class="fa fa-cog fa-1 fa-border mobFeedPrefs"></i>').button().click(function() {
                 $('#feedDialog')
                     .data('feedUrl', $(this).parent().parent().parent().parent().data('url'))
                     .dialog('open');
@@ -81,7 +81,6 @@ var Feed = (function() {
                 $button.css("color", "#3e3e3e").removeClass('spinner');
                 $feedTitleDiv.text(data.title);
             });
-
         }
         };
 }());
