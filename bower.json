@@ -19,8 +19,6 @@
     "tests"
   ],
   "dependencies": {
-    "slidereveal": "^1.1.2",
-    "bootstrap": "3.0.3",
-    "components-font-awesome": "^4.7.0"
+    "slidereveal": "^1.1.2"
   }
 }
