@@ -37,7 +37,6 @@ var Tab = (function() {
                     var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
 
                     console.log('w: ' + w);
-                    // $elements.css({'width': $(this).first().width(), 'height': $(this).first().height()});
 
                     //hide selected items
                     item.siblings('.selected').addClass('hidden');
@@ -46,8 +45,6 @@ var Tab = (function() {
                 },
                 start: function (e, ui) {
                     console.log('yow!');
-
-                    // ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
 
                     var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
                     //store the selected items to item being dragged
@@ -72,38 +69,36 @@ var Tab = (function() {
 
             var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>')
 
-            var $thisTab = $('<li class="modal"></li>');
+            var $thisTab = $('<li class="modal mobTab"></li>');
 
             $thisTabLink.appendTo($thisTab);
 
-            var $thisSelectedTab = $("#tabs div.ui-tabs-panel:not(.ui-tabs-hide)");
+            var $thisSelectedTab = $('#tabs div.ui-tabs-panel:not(.ui-tabs-hide)');
 
             $thisTab.droppable({
-                accept: "ul, .tabSort li.feed",
-                hoverClass: "ui-state-hover",
+                accept: 'ul, .tabSort li.feed',
+                hoverClass: 'ui-state-hover',
                 drop: function (event, ui) {
                     var $item = $(this);
-                    var $index = $( "li" ).index( this );
+                    var $index = $('li.mobTab').index(this);
                     console.log('elt: ' +  $(this).get());
                     var $elements = ui.draggable.data('items');
-                    var $list = $($item.find("a").attr("href"))
-                        .find(".tabSort");
+                    var $list = $($item.find('a').attr('href'))
+                        .find('.tabSort');
                     $elements.show().hide('slow');
-                    ui.draggable.show().hide("slow", function () {
+                    ui.draggable.show().hide('slow', function () {
 
                         if ($('#tabDropActivate').prop('checked')) {
-                            $tabs.tabs("option", "active", $index);
+                            $tabs.tabs('option', 'active', $index);
                         }
 
-                        $(this).appendTo($list).show("slow").before($elements.show("slow"));
+                        $(this).appendTo($list).show('slow').before($elements.show('slow'));
                     });
                 }
-            }).appendTo('#tabs ul#theTabs');
+            }).appendTo('#tabs ul#tabUl');
 
             if(typeof feeds != 'undefined') {
                 feeds.forEach(function(feed) {
-                    // console.log('feed!' + feed.url)
-                    // newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
                     Feed.newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
                 });
             };
@@ -114,9 +109,9 @@ var Tab = (function() {
 
             // console.log('---- TAB OK ----');
         },
-        populateTabs:function($theTabs, tabList, $tabs) {
+        populateTabs:function($tabUl, tabList, $tabs) {
 
-            $theTabs.empty();
+            $tabUl.empty();
 
             tabList.forEach(function(tab) {
                 Tab.newTab($tabs, tab.name, tab.feeds);

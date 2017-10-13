@@ -17,28 +17,28 @@
     </head>
 
     <script>
-
-     var myTabList =
-         [{"name":"Actu",
-           "feeds":[
-               {"url":"http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml","type":"photo","limit":16},
-               {"url":"http://feeds.bbci.co.uk/news/rss.xml?edition=int","type":"photo","limit":16},
-               {"url":"http://feeds.reuters.com/reuters/environment","type":"text","limit":16}
-           ]},
-          {"name":"News",
-           "feeds": [
-               {"url":"http://feeds.reuters.com/news/artsculture","type":"text","limit": 12},
-               {"url":"http://feeds.reuters.com/reuters/businessNews","type":"mixed","limit": 8}
-           ]},
-          {"name":"plup",
-           "feeds": [
-               {"url":"https://www.sciencedaily.com/rss/matter_energy/engineering.xml","type":"text","limit": 12},
-               {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
-               {"url":"https://www.reddit.com/r/nsfw/.rss","type":"mixed","limit": 8},
-               {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 8}
-           ]}
-         ];
-
+     //
+     //      var myTabList =
+     //          [{"name":"Actu",
+     //            "feeds":[
+     //                {"url":"http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml","type":"photo","limit":16},
+     //                {"url":"http://feeds.bbci.co.uk/news/rss.xml?edition=int","type":"photo","limit":16},
+     //                {"url":"http://feeds.reuters.com/reuters/environment","type":"text","limit":16}
+     //            ]},
+     //           {"name":"News",
+     //            "feeds": [
+     //                {"url":"http://feeds.reuters.com/news/artsculture","type":"text","limit": 12},
+     //                {"url":"http://feeds.reuters.com/reuters/businessNews","type":"mixed","limit": 8}
+     //            ]},
+     //           {"name":"plup",
+     //            "feeds": [
+     //                {"url":"https://www.sciencedaily.com/rss/matter_energy/engineering.xml","type":"text","limit": 12},
+     //                {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
+     //                {"url":"https://www.reddit.com/r/nsfw/.rss","type":"mixed","limit": 8},
+     //                {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 8}
+     //            ]}
+     //          ];
+     //
      $(document).ready(function() {
 
          $('#slider').slideReveal({
@@ -53,21 +53,21 @@
              heightStyle: "content"
          });
 
-         var $theTabs = $('#theTabs');
+         var $tabUl = $('#tabUl');
          var savedTabList = Prefs.readConfig('tabs');
          // var tabList = $savedTabList;
-         var tabList = myTabList;
+         // var tabList = myTabList;
 
          function isArray(obj) {
              return Object.prototype.toString.call(obj) === '[object Array]';
          }
 
-         var stringed = JSON.stringify(tabList);
+         // var stringed = JSON.stringify(tabList);
          var parsed = JSON.parse(savedTabList);
 
          console.log('Parsed: ' + parsed)
 
-         // Tab.populateTabs($theTabs, JSON.stringify($tabList), $tabs);
+         // Tab.populateTabs($tabUl, JSON.stringify($tabList), $tabs);
 
          parsed.forEach(function(tab) {
              Tab.newTab($tabs, tab.name, tab.feeds);
@@ -78,14 +78,14 @@
          });
 
          $('#loadTabs').click(function () {
-             Tab.populateTabs($theTabs, parsed, $tabs);
+             Tab.populateTabs($tabUl, parsed, $tabs);
              $('#tabs').find('.mobFeedRefresh').click();
          });
 
          $('#saveTabs').click(function () {
              var myTabs = [];
 
-             $( '#theTabs li' ).each(function(i) {
+             $( '#tabUl li' ).each(function(i) {
                  var myFeeds = [];
                  var myTab = {};
 
@@ -222,7 +222,7 @@
     <body>
 
         <div id="tabs">
-            <ul id="theTabs"></ul>
+            <ul id="tabUl"></ul>
         </div>
 
         <div id="tabDialog" title="Rename tab">

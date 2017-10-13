@@ -88,16 +88,18 @@ var Feed = (function() {
             }, function(data, status){
                 $button.css("color", "#3e3e3e").removeClass('spinner');
                 $feedTitleDiv.text(data.title);
+
                 // console.log('ARR: ' + JSON.stringify(data));
-                //
-                //                 data.entries.forEach(function(entry) {
-                //                     if($.type(entry.title) === 'string') {
-                //                         console.log(entry.title + ':' + entry.link);
-                //                     }
-                //                 })
-                //
+
+                data.entries.forEach(function(entry) {
+                    if($.type(entry.title) === 'string') {
+                        console.log(entry.title + ':' + entry.link);
+                    }
+                })
+
                 // $.each(data.entries, function(entry) {
                 // });
+
             });
         }
     };
