@@ -10,12 +10,14 @@ router.get('/', function(req, res, next) {
 
 router.get('/feed', function(req, res, next) {
     // res.send('plop!');
-    console.log('req:' + JSON.stringify(req.param('feedurl')));
+    console.log('req:' + JSON.stringify(req.query.feedurl));
 
-    parser.parseURL(req.param('feedurl'), function(err, parsed) {
-        console.log(parsed.feed.title);
-        res.send(parsed.feed);
+    parser.parseURL(req.query.feedurl, function(err, parsed) {
+        // console.log(parsed.feed.title);
 
+        if(typeof parsed != 'undefined') {
+            res.send(parsed.feed);
+        }
         // parsed.feed.entries.forEach(function(entry) {
         // console.log(entry.title + ':' + entry.link);
         // })

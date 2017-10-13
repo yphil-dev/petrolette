@@ -30,6 +30,8 @@ var Feed = (function() {
             var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh"></i>').button();
 
             var $body = $('<div class="feedBody ui-widget-content">plop</div>');
+            var $bodyUl = $('<ul></ul>');
+            var $dumbLi = $('<li></li>');
 
             var $li = $('<li class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
@@ -86,6 +88,16 @@ var Feed = (function() {
             }, function(data, status){
                 $button.css("color", "#3e3e3e").removeClass('spinner');
                 $feedTitleDiv.text(data.title);
+                // console.log('ARR: ' + JSON.stringify(data));
+                //
+                //                 data.entries.forEach(function(entry) {
+                //                     if($.type(entry.title) === 'string') {
+                //                         console.log(entry.title + ':' + entry.link);
+                //                     }
+                //                 })
+                //
+                // $.each(data.entries, function(entry) {
+                // });
             });
         }
     };

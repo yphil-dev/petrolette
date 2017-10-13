@@ -18,14 +18,14 @@
 
     <script>
 
-     var tabList =
-         [{"name":"plop",
+     var myTabList =
+         [{"name":"Actu",
            "feeds":[
                {"url":"http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml","type":"photo","limit":16},
                {"url":"http://feeds.bbci.co.uk/news/rss.xml?edition=int","type":"photo","limit":16},
                {"url":"http://feeds.reuters.com/reuters/environment","type":"text","limit":16}
            ]},
-          {"name":"plip",
+          {"name":"News",
            "feeds": [
                {"url":"http://feeds.reuters.com/news/artsculture","type":"text","limit": 12},
                {"url":"http://feeds.reuters.com/reuters/businessNews","type":"mixed","limit": 8}
@@ -53,7 +53,23 @@
              heightStyle: "content"
          });
 
-         tabList.forEach(function(tab) {
+         var $theTabs = $('#theTabs');
+         var savedTabList = Prefs.readConfig('tabs');
+         // var tabList = $savedTabList;
+         var tabList = myTabList;
+
+         function isArray(obj) {
+             return Object.prototype.toString.call(obj) === '[object Array]';
+         }
+
+         var stringed = JSON.stringify(tabList);
+         var parsed = JSON.parse(savedTabList);
+
+         console.log('Parsed: ' + parsed)
+
+         // Tab.populateTabs($theTabs, JSON.stringify($tabList), $tabs);
+
+         parsed.forEach(function(tab) {
              Tab.newTab($tabs, tab.name, tab.feeds);
          });
 
@@ -61,11 +77,8 @@
              Tab.newTab($tabs);
          });
 
-         var $theTabs = $('#theTabs');
-
          $('#loadTabs').click(function () {
-             Tab.populateTabs($theTabs, tabList, $tabs);
-             // $tabs.tabs('refresh');
+             Tab.populateTabs($theTabs, $tabList, $tabs);
              $('#tabs').find('.mobFeedRefresh').click();
          });
 
@@ -90,12 +103,13 @@
                  myTabs.push(myTab)
              });
              console.log(JSON.stringify(myTabs));
+             Prefs.writeConfig('tabs', myTabs);
          });
 
-         $tabs.find( ".ui-tabs-nav" ).sortable({
-             axis: "x",
+         $tabs.find('.ui-tabs-nav').sortable({
+             axis: 'x',
              stop: function() {
-                 $tabs.tabs( "refresh" );
+                 $tabs.tabs('refresh');
              }
          });
 
@@ -106,7 +120,7 @@
          $( 'input[type=radio]' ).checkboxradio();
          $('#tabDropActivate').checkboxradio();
 
-         $( '#tabDialog' ).dialog({
+         $('#tabDialog').dialog({
              autoOpen: false,
              resizable: false,
              height: 'auto',

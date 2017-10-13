@@ -79,7 +79,7 @@ var Tab = (function() {
             var $thisSelectedTab = $("#tabs div.ui-tabs-panel:not(.ui-tabs-hide)");
 
             $thisTab.droppable({
-                accept: "ul, .tabSort li",
+                accept: "ul, .tabSort li.feed",
                 hoverClass: "ui-state-hover",
                 drop: function (event, ui) {
                     var $item = $(this);
@@ -102,7 +102,7 @@ var Tab = (function() {
 
             if(typeof feeds != 'undefined') {
                 feeds.forEach(function(feed) {
-                    console.log('feed!' + feed.url)
+                    // console.log('feed!' + feed.url)
                     // newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
                     Feed.newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
                 });
