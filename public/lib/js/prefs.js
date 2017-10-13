@@ -21,27 +21,26 @@ var Prefs = (function() {
           ]}
         ];
 
-    var newTabList = jQuery.extend(true, {}, tabList);
+    // var newTabList = jQuery.extend(true, {}, tabList);
 
-    var defaults = {'background-color':'#333333', 'tabDropActivate': 'true', 'theme': 'base', 'tabs': newTabList};
+    var defaults = {'background-color':'#333333', 'tabDropActivate': true, 'theme': 'base', 'tabs': JSON.stringify(tabList)};
 
     return {
         readConfig:function(key) {
 
 
-            defaults.tab = {}; jQuery.extend( true, defaults.tab, tabList );
-            console.log('Key: ' + defaults[key]);
+            // defaults.tab = {}; jQuery.extend( true, defaults.tab, tabList );
 
             if(typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
 
-                return mydefaults[key];
+                return defaults[key];
             } else {
                 return localStorage.getItem(key);
             }
 
         },
         writeConfig:function(key, val) {
-            localStorage.setItem(key, JSON.stringify(val));
+            localStorage.setItem(key, val);
         }
     };
 }());

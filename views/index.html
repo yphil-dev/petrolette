@@ -78,7 +78,7 @@
          });
 
          $('#loadTabs').click(function () {
-             Tab.populateTabs($theTabs, $tabList, $tabs);
+             Tab.populateTabs($theTabs, parsed, $tabs);
              $('#tabs').find('.mobFeedRefresh').click();
          });
 
@@ -102,118 +102,118 @@
                  myTab["feeds"] = myFeeds;
                  myTabs.push(myTab)
              });
-             console.log(JSON.stringify(myTabs));
-             Prefs.writeConfig('tabs', myTabs);
+             // console.log(JSON.stringify(myTabs));
+             Prefs.writeConfig('tabs', JSON.stringify(myTabs));
          });
 
-         $tabs.find('.ui-tabs-nav').sortable({
-             axis: 'x',
-             stop: function() {
-                 $tabs.tabs('refresh');
-             }
-         });
-
-         $('#tabLimit').spinner();
-
-         $( 'button' ).button();
-
-         $( 'input[type=radio]' ).checkboxradio();
-         $('#tabDropActivate').checkboxradio();
-
-         $('#tabDialog').dialog({
-             autoOpen: false,
-             resizable: false,
-             height: 'auto',
-             width: 400,
-             modal: true,
-             buttons: {
-                 Cancel: function() {
-                     $( this ).dialog( 'close' );
-                 },
-                 'OK': function() {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
-                     $( this ).dialog( 'close' );
+             $tabs.find('.ui-tabs-nav').sortable({
+                 axis: 'x',
+                 stop: function() {
+                     $tabs.tabs('refresh');
                  }
-             },
-             open: function( event, ui ) {
+             });
 
-                 $(this).on('submit', function () {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
-                     $(this).dialog('close');
-                     return false;
-                 });
-                 $('#tabName').val($(this).data('tabName'));
-             }
-         });
+             $('#tabLimit').spinner();
 
-         $( '#feedDialog' ).dialog({
-             autoOpen: false,
-             resizable: false,
-             height: 'auto',
-             width: 400,
-             modal: true,
-             buttons: {
-                 Cancel: function() {
-                     $( this ).dialog( 'close' );
+             $( 'button' ).button();
+
+             $( 'input[type=radio]' ).checkboxradio();
+             $('#tabDropActivate').checkboxradio();
+
+             $('#tabDialog').dialog({
+                 autoOpen: false,
+                 resizable: false,
+                 height: 'auto',
+                 width: 400,
+                 modal: true,
+                 buttons: {
+                     Cancel: function() {
+                         $( this ).dialog( 'close' );
+                     },
+                     'OK': function() {
+                         $('#' + $(this).data('tabId')).text($('#tabName').val());
+                         $( this ).dialog( 'close' );
+                     }
                  },
-                 'OK': function() {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
-                     $( this ).dialog( 'close' );
+                 open: function( event, ui ) {
+
+                     $(this).on('submit', function () {
+                         $('#' + $(this).data('tabId')).text($('#tabName').val());
+                         $(this).dialog('close');
+                         return false;
+                     });
+                     $('#tabName').val($(this).data('tabName'));
                  }
-             },
-             open: function( event, ui ) {
+             });
 
-                 $(this).on('submit', function () {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
-                     $(this).dialog('close');
-                     return false;
-                 });
-                 $('#feedUrl').val($(this).data('feedUrl'));
+             $( '#feedDialog' ).dialog({
+                 autoOpen: false,
+                 resizable: false,
+                 height: 'auto',
+                 width: 400,
+                 modal: true,
+                 buttons: {
+                     Cancel: function() {
+                         $( this ).dialog( 'close' );
+                     },
+                     'OK': function() {
+                         $('#' + $(this).data('tabId')).text($('#tabName').val());
+                         $( this ).dialog( 'close' );
+                     }
+                 },
+                 open: function( event, ui ) {
+
+                     $(this).on('submit', function () {
+                         $('#' + $(this).data('tabId')).text($('#tabName').val());
+                         $(this).dialog('close');
+                         return false;
+                     });
+                     $('#feedUrl').val($(this).data('feedUrl'));
+                 }
+             });
+
+
+             $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
+                 e.preventDefault();
+                 $('#tabDialog')
+                     .data('tabName', $(this).text())
+                     .data('tabId', $(this).children('a').prop('id'))
+                     .dialog('open');
+             });
+
+             console.log('---- INDEX OK ----');
+
+             // Prefs
+             $('#themes').selectmenu({
+                 width: 232,
+                 change: function( event, data ) {
+
+                     Prefs.writeConfig('theme', data.item.value);
+
+                     $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+                 }
+             });
+
+             $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+             // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
+
+             console.log('Type: ' + typeof(Prefs.readConfig('tabDropActivate')));
+
+             if (Prefs.readConfig('tabDropActivate') === 'true') {
+                 $('#tabDropActivate').prop('checked', true)
+                                      .checkboxradio('refresh');
+             } else {
+                 $('#tabDropActivate').prop('checked', false)
+                                      .checkboxradio('refresh');
              }
-         });
 
+             $('#tabDropActivate').change(function() {
+                 Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
+             });
 
-         $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
-             e.preventDefault();
-             $('#tabDialog')
-                 .data('tabName', $(this).text())
-                 .data('tabId', $(this).children('a').prop('id'))
-                 .dialog('open');
-         });
-
-         console.log('---- INDEX OK ----');
-
-         // Prefs
-         $('#themes').selectmenu({
-             width: 232,
-             change: function( event, data ) {
-
-                 Prefs.writeConfig('theme', data.item.value);
-
-                 $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-             }
-         });
-
-         $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-         // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
-
-         console.log('Type: ' + typeof(Prefs.readConfig('tabDropActivate')));
-
-         if (Prefs.readConfig('tabDropActivate') === 'true') {
-             $('#tabDropActivate').prop('checked', true)
-                                  .checkboxradio('refresh');
-         } else {
-             $('#tabDropActivate').prop('checked', false)
-                                  .checkboxradio('refresh');
-         }
-
-         $('#tabDropActivate').change(function() {
-             Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
-         });
-
-         $('#tabs').find('.mobFeedRefresh').click();
+             $('#tabs').find('.mobFeedRefresh').click();
 
      });
 
