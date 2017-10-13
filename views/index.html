@@ -6,7 +6,9 @@
         <title>Mobylette</title>
         <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
         <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/static/css/fontello.css">
         <link rel="stylesheet" href="/static/css/mobylette.css">
+
         <link rel="stylesheet" href="bower/components-font-awesome/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -160,7 +162,6 @@
 
          console.log('---- INDEX OK ----');
 
-
          // Prefs
          $('#themes').selectmenu({
              width: 232,
@@ -177,15 +178,15 @@
 
          // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
 
+         console.log('Type: ' + typeof(Prefs.readConfig('tabDropActivate')));
 
-         if (Prefs.readConfig('tabDropActivate')) {
-             console.log('True: ' + Prefs.readConfig('tabDropActivate'));
+         if (Prefs.readConfig('tabDropActivate') === 'true') {
+             $('#tabDropActivate').prop('checked', true)
+                                  .checkboxradio('refresh');
          } else {
-             console.log('False: ' + Prefs.readConfig('tabDropActivate'));
+             $('#tabDropActivate').prop('checked', false)
+                                  .checkboxradio('refresh');
          }
-
-         $('#tabDropActivate').prop('checked', Prefs.readConfig('tabDropActivate'))
-                              .checkboxradio('refresh');
 
          $('#tabDropActivate').change(function() {
              Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
@@ -234,19 +235,19 @@
         <div id="slider" class="mobylette">
 
             <h1>
-                <i class="fa fa-motorcycle fa-5x" aria-hidden="true"></i>
+                <i class="icon-motorcycle" aria-hidden="true"></i>
                 <span>Mobylette</span>
             </h1>
 
             <fieldset id="prefsForm">
-                <button id="saveTabs"><i class="fa fa-save" aria-hidden="true"></i> Save Tabs</button>
+                <button id="saveTabs"><i class="icon-download"></i> Save Tabs</button>
+                <button id="saveTabs"><i class="icon-upload"></i> Load Tabs</button>
 
                 <label class="tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
                 <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
                 <!-- <button id="colorselector2"><i class="fa fa-cube" aria-hidden="true"></i> Color</button>
                    -->
                 <select id="themes">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
                     <option value="base">Base</option>
                     <option value="black-tie">Black-Tie</option>
                     <option value="blitzer">Blitzer</option>
@@ -276,8 +277,8 @@
             </fieldset>
 
         </div>
-        <button id="addTab" class="mobylette"><i class="fa fa-plus" aria-hidden="true"></i> Add Tab</button>
-        <button id="trigger" class="mobylette"><i class="fa fa-cogs" aria-hidden="true"></i> Preferences</button>
+        <button id="addTab" class="mobylette"><i class="icon-plus"></i> Tab</button>
+        <button id="trigger" class="mobylette"><i class="icon-cogs"></i> Preferences</button>
 
     </body>
     <script src="/static/lib/js/tab.js"></script>

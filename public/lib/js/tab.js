@@ -19,8 +19,8 @@ var Tab = (function() {
 
             var $thisTabPane = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
 
-            $thisSortable.on('click', 'input', function () {
-                $(this).parent().parent().parent().parent().parent().toggleClass('selected ui-state-hover');
+            $thisSortable.on('click', 'i.feedSelect', function () {
+                $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
             });
 
             $thisSortable.sortable({
@@ -62,7 +62,7 @@ var Tab = (function() {
                     ui.item.siblings('.selected').removeClass('hidden');
                     //unselect since the operation is complete
                     $('.selected').removeClass('selected ui-state-hover');
-                    $(this).find('input:checked').prop('checked',false);
+                    $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
                 }
             }).disableSelection();
 
