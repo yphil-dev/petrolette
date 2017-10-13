@@ -50,7 +50,7 @@
          });
 
          var $tabs = $("#tabs").tabs({
-             heightStyle: "fill"
+             heightStyle: "content"
          });
 
          tabList.forEach(function(tab) {
@@ -59,6 +59,14 @@
 
          $('#addTab').click(function () {
              Tab.newTab($tabs);
+         });
+
+         var $theTabs = $('#theTabs');
+
+         $('#loadTabs').click(function () {
+             Tab.populateTabs($theTabs, tabList, $tabs);
+             // $tabs.tabs('refresh');
+             $('#tabs').find('.mobFeedRefresh').click();
          });
 
          $('#saveTabs').click(function () {
@@ -240,7 +248,7 @@
 
             <fieldset id="prefsForm">
                 <button id="saveTabs"><i class="icon-download"></i> Save Tabs</button>
-                <button id="saveTabs"><i class="icon-upload"></i> Load Tabs</button>
+                <button id="loadTabs"><i class="icon-upload"></i> Load Tabs</button>
 
                 <label class="tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
                 <input type="checkbox" name="tabDropActivate" id="tabDropActivate">

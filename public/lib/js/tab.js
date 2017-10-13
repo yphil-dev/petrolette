@@ -102,6 +102,7 @@ var Tab = (function() {
 
             if(typeof feeds != 'undefined') {
                 feeds.forEach(function(feed) {
+                    console.log('feed!' + feed.url)
                     // newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
                     Feed.newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
                 });
@@ -112,6 +113,15 @@ var Tab = (function() {
             tabIndex++;
 
             // console.log('---- TAB OK ----');
+        },
+        populateTabs:function($theTabs, tabList, $tabs) {
+
+            $theTabs.empty();
+
+            tabList.forEach(function(tab) {
+                Tab.newTab($tabs, tab.name, tab.feeds);
+            });
+
         }
     };
 
