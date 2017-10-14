@@ -17,36 +17,13 @@
     </head>
 
     <script>
-     //
-     //      var myTabList =
-     //          [{"name":"Actu",
-     //            "feeds":[
-     //                {"url":"http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml","type":"photo","limit":16},
-     //                {"url":"http://feeds.bbci.co.uk/news/rss.xml?edition=int","type":"photo","limit":16},
-     //                {"url":"http://feeds.reuters.com/reuters/environment","type":"text","limit":16}
-     //            ]},
-     //           {"name":"News",
-     //            "feeds": [
-     //                {"url":"http://feeds.reuters.com/news/artsculture","type":"text","limit": 12},
-     //                {"url":"http://feeds.reuters.com/reuters/businessNews","type":"mixed","limit": 8}
-     //            ]},
-     //           {"name":"plup",
-     //            "feeds": [
-     //                {"url":"https://www.sciencedaily.com/rss/matter_energy/engineering.xml","type":"text","limit": 12},
-     //                {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
-     //                {"url":"https://www.reddit.com/r/nsfw/.rss","type":"mixed","limit": 8},
-     //                {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 8}
-     //            ]}
-     //          ];
-     //
+
      $(document).ready(function() {
 
          $('#slider').slideReveal({
-             trigger: $("#trigger")
-         });
-
-         $( "#tabs" ).on( "click", ".mobFeedRefresh", function() {
-             Feed.populateFeed($(this));
+             trigger: $("#trigger"),
+             push: false,
+             overlay: true
          });
 
          var $tabs = $("#tabs").tabs({
@@ -54,20 +31,14 @@
          });
 
          var $tabUl = $('#tabUl');
-         var savedTabList = Prefs.readConfig('tabs');
-         // var tabList = $savedTabList;
-         // var tabList = myTabList;
+         var tabList = Prefs.readConfig('tabs');
 
-         function isArray(obj) {
-             return Object.prototype.toString.call(obj) === '[object Array]';
-         }
+         $tabs.on( "click", ".mobFeedRefresh", function() {
+             Feed.populateFeed($(this));
+         });
 
          // var stringed = JSON.stringify(tabList);
-         var parsed = JSON.parse(savedTabList);
-
-         console.log('Parsed: ' + parsed)
-
-         // Tab.populateTabs($tabUl, JSON.stringify($tabList), $tabs);
+         var parsed = JSON.parse(tabList);
 
          parsed.forEach(function(tab) {
              Tab.newTab($tabs, tab.name, tab.feeds);
@@ -83,137 +54,163 @@
          });
 
          $('#saveTabs').click(function () {
-             var myTabs = [];
-
-             $( '#tabUl li' ).each(function(i) {
-                 var myFeeds = [];
-                 var myTab = {};
-
-                 myTab["name"] = $(this).children().text();
-
-                 // myTabs
-                 $($(this).children().attr('href') + ' ul li').each(function(i) {
-                     var myFeed = {};
-                     myFeed["url"] = $(this).data('url');
-                     myFeed["type"] = $(this).data('type');
-                     myFeed["limit"] = $(this).data('limit');
-                     myFeeds.push(myFeed);
-                 });
-                 myTab["feeds"] = myFeeds;
-                 myTabs.push(myTab)
-             });
-             // console.log(JSON.stringify(myTabs));
-             Prefs.writeConfig('tabs', JSON.stringify(myTabs));
+             var allTabs = Tab.getTabs()
+             Prefs.writeConfig('tabs', JSON.stringify(allTabs));
          });
 
-             $tabs.find('.ui-tabs-nav').sortable({
-                 axis: 'x',
-                 stop: function() {
-                     $tabs.tabs('refresh');
+         $tabs.find('.ui-tabs-nav').sortable({
+             axis: 'x',
+             stop: function() {
+                 $tabs.tabs('refresh');
+             }
+         });
+
+         $('#tabLimit').spinner();
+
+         $( 'button' ).button();
+
+         $( 'input[type=radio]' ).checkboxradio();
+         $('#tabDropActivate').checkboxradio();
+
+         $( "#feedLimit" ).spinner({
+             spin: function( event, ui ) {
+                 if ( ui.value > 64 ) {
+                     $( this ).spinner( "value", 0 );
+                     return false;
+                 } else if ( ui.value < 0 ) {
+                     $( this ).spinner( "value", 64 );
+                     return false;
                  }
-             });
+             }
+         });
 
-             $('#tabLimit').spinner();
-
-             $( 'button' ).button();
-
-             $( 'input[type=radio]' ).checkboxradio();
-             $('#tabDropActivate').checkboxradio();
-
-             $('#tabDialog').dialog({
-                 autoOpen: false,
-                 resizable: false,
-                 height: 'auto',
-                 width: 400,
-                 modal: true,
-                 buttons: {
-                     Cancel: function() {
-                         $( this ).dialog( 'close' );
-                     },
-                     'OK': function() {
-                         $('#' + $(this).data('tabId')).text($('#tabName').val());
-                         $( this ).dialog( 'close' );
-                     }
+         $('#tabDialog').dialog({
+             autoOpen: false,
+             resizable: false,
+             height: 'auto',
+             width: 400,
+             modal: true,
+             buttons: {
+                 Cancel: function() {
+                     $( this ).dialog( 'close' );
                  },
-                 open: function( event, ui ) {
-
-                     $(this).on('submit', function () {
-                         $('#' + $(this).data('tabId')).text($('#tabName').val());
-                         $(this).dialog('close');
-                         return false;
-                     });
-                     $('#tabName').val($(this).data('tabName'));
+                 'OK': function() {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $( this ).dialog( 'close' );
                  }
-             });
+             },
+             open: function( event, ui ) {
 
-             $( '#feedDialog' ).dialog({
-                 autoOpen: false,
-                 resizable: false,
-                 height: 'auto',
-                 width: 400,
-                 modal: true,
-                 buttons: {
-                     Cancel: function() {
-                         $( this ).dialog( 'close' );
-                     },
-                     'OK': function() {
-                         $('#' + $(this).data('tabId')).text($('#tabName').val());
-                         $( this ).dialog( 'close' );
-                     }
+                 $(this).on('submit', function () {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $(this).dialog('close');
+                     return false;
+                 });
+                 $('#tabName').val($(this).data('tabName'));
+             }
+         });
+
+         $('#feedDialog').dialog({
+             autoOpen: false,
+             resizable: false,
+             height: 'auto',
+             width: 400,
+             modal: true,
+             buttons: {
+                 Cancel: function() {
+                     $( this ).dialog( 'close' );
                  },
-                 open: function( event, ui ) {
-
-                     $(this).on('submit', function () {
-                         $('#' + $(this).data('tabId')).text($('#tabName').val());
-                         $(this).dialog('close');
-                         return false;
-                     });
-                     $('#feedUrl').val($(this).data('feedUrl'));
+                 'OK': function() {
+                     $('#' + $(this).data('feedUrl')).text($('#feedUrl').val());
+                     $( this ).dialog( 'close' );
                  }
-             });
+             },
+             open: function( event, ui ) {
 
+                 $('#feedUrl').val($(this).data('feedUrl'));
+                 $('#feedLimit').val($(this).data('feedLimit'));
+                 $('.inlineButtons input').prop('checked',false).change();
+                 $('#type-' + $(this).data('feedType')).prop('checked',true).checkboxradio('refresh')
 
-             $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
-                 e.preventDefault();
+                 $(this).on('submit', function () {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $(this).dialog('close');
+                     return false;
+                 });
+
+             }
+         });
+
+         $( "#killDialog" ).dialog({
+             autoOpen: false,
+             resizable: false,
+             height: "auto",
+             width: 400,
+             modal: true,
+             buttons: {
+                 "Delete all feeds": function() {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $( this ).dialog( "close" );
+                 },
+                 Cancel: function() {
+                     $( this ).dialog( "close" );
+                 }
+             }
+         });
+
+         $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
+             console.log('e: ' + JSON.stringify(e.which))
+             e.preventDefault();
+
+             if (e.which === 1) {
                  $('#tabDialog')
                      .data('tabName', $(this).text())
                      .data('tabId', $(this).children('a').prop('id'))
                      .dialog('open');
-             });
-
-             console.log('---- INDEX OK ----');
-
-             // Prefs
-             $('#themes').selectmenu({
-                 width: 232,
-                 change: function( event, data ) {
-
-                     Prefs.writeConfig('theme', data.item.value);
-
-                     $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-                 }
-             });
-
-             $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-             // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
-
-             console.log('Type: ' + typeof(Prefs.readConfig('tabDropActivate')));
-
-             if (Prefs.readConfig('tabDropActivate') === 'true') {
-                 $('#tabDropActivate').prop('checked', true)
-                                      .checkboxradio('refresh');
-             } else {
-                 $('#tabDropActivate').prop('checked', false)
-                                      .checkboxradio('refresh');
+             } else if (e.which === 2) {
+                 $( "#killDialog" )
+                     .data('tabName', $(this).text())
+                     .data('tabId', $(this).children('a').prop('id'))
+                     .dialog('open')
+                 $( "#killDialog" ).dialog( "option", "title", 'Kill the ' + $(this).text()  + ' tab?');
              }
 
-             $('#tabDropActivate').change(function() {
-                 Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
-             });
 
-             $('#tabs').find('.mobFeedRefresh').click();
+         });
+
+         console.log('---- INDEX OK ----');
+
+         // Prefs
+         $('#themes').selectmenu({
+             width: 232,
+             change: function( event, data ) {
+
+                 Prefs.writeConfig('theme', data.item.value);
+
+                 $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+             }
+         });
+
+         $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+         // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
+
+         // console.log('Type: ' + typeof(Prefs.readConfig('tabDropActivate')));
+
+         if (Prefs.readConfig('tabDropActivate') === 'true') {
+             $('#tabDropActivate').prop('checked', true)
+                                  .checkboxradio('refresh');
+         } else {
+             $('#tabDropActivate').prop('checked', false)
+                                  .checkboxradio('refresh');
+         }
+
+         $('#tabDropActivate').change(function() {
+             Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
+         });
+
+         $('#tabs').find('.mobFeedRefresh').click();
 
      });
 
@@ -225,12 +222,21 @@
             <ul id="tabUl"></ul>
         </div>
 
+        <button id="addTab" class="mobylette"><i class="icon-plus"></i> Tab</button>
+        <button id="trigger" class="mobylette"><i class="icon-cogs"></i> Preferences</button>
+
+        <i id="savingIcon" class="icon-download"></i>
+
+        <div id="killDialog" title="">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+        </div>
+
         <div id="tabDialog" title="Rename tab">
             <form>
                 <fieldset>
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="tabName" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                    <input type="text" name="name" id="tabName" value="" />
+                    <input type="submit" />
                 </fieldset>
             </form>
         </div>
@@ -241,14 +247,16 @@
                     <label for="name">URL</label>
                     <input type="text" name="url" id="feedUrl" value="" class="text ui-widget-content ui-corner-all">
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                    <legend>Select a Location: </legend>
-                    <label for="radio-1">Mixed</label>
-                    <input type="radio" name="radio-1" id="radio-1">
-                    <label for="radio-2">Photo</label>
-                    <input type="radio" name="radio-1" id="radio-2">
-                    <label for="radio-3">Text</label>
-                    <input type="radio" name="radio-1" id="radio-3">
-
+                    <div class="inlineButtons">
+                        <label for="type-mixed">Mixed</label>
+                        <input type="radio" name="radio-1" id="type-mixed">
+                        <label for="type-photo">Photo</label>
+                        <input type="radio" name="radio-1" id="type-photo">
+                        <label for="type-text">Text</label>
+                        <input type="radio" name="radio-1" id="type-text">
+                    </div>
+                    <label for="feedLimit">Limit # of items</label>
+                    <input id="feedLimit" name="feedLimit">
                 </fieldset>
             </form>
         </div>
@@ -298,8 +306,6 @@
             </fieldset>
 
         </div>
-        <button id="addTab" class="mobylette"><i class="icon-plus"></i> Tab</button>
-        <button id="trigger" class="mobylette"><i class="icon-cogs"></i> Preferences</button>
 
     </body>
     <script src="/static/lib/js/tab.js"></script>

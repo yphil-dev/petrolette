@@ -19,6 +19,12 @@ button.mobylette {
     color: #fc6a10;
 }
 
+
+.mobylette h1 i {
+    font-size: 10rem;
+}
+
+
 .mobylette h1 span {
     font-size:1.4em;
     color: orange;
@@ -178,4 +184,22 @@ label.feedSelect {
 /* Fontello */
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
   margin: 0;
+}
+
+.inlineButtons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.inlineButtons *  {
+    flex-grow: 1;
+}
+
+#savingIcon {
+    font-size: 2rem;
+    position:absolute;
+    top: .4em;
+    right: .6em;
+    display:none;
 }

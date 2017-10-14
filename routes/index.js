@@ -10,17 +10,19 @@ router.get('/', function(req, res, next) {
 
 router.get('/feed', function(req, res, next) {
     // res.send('plop!');
-    console.log('req:' + JSON.stringify(req.query.feedurl));
+    // console.log('req:' + JSON.stringify(req.query.feedurl));
 
     parser.parseURL(req.query.feedurl, function(err, parsed) {
-        // console.log(parsed.feed.title);
+
+
+        if(err !== null) {
+            console.log('EROOR: ' + err);
+            res.send(err.code);
+        }
 
         if(typeof parsed != 'undefined') {
             res.send(parsed.feed);
         }
-        // parsed.feed.entries.forEach(function(entry) {
-        // console.log(entry.title + ':' + entry.link);
-        // })
     });
 
 

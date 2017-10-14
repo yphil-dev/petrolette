@@ -117,6 +117,31 @@ var Tab = (function() {
                 Tab.newTab($tabs, tab.name, tab.feeds);
             });
 
+        },
+        getTabs:function() {
+            var myTabs = [];
+            var $allTabs = $( '#tabUl li.mobTab' );
+
+            $allTabs.each(function(i) {
+                var myFeeds = [];
+                var myTab = {};
+                var $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
+
+                myTab["name"] = $(this).children().text();
+
+                $allFeeds.each(function(i) {
+                    var myFeed = {};
+                    myFeed["url"] = $(this).data('url');
+                    myFeed["type"] = $(this).data('type');
+                    myFeed["limit"] = $(this).data('limit');
+                    myFeeds.push(myFeed);
+                });
+                myTab["feeds"] = myFeeds;
+                myTabs.push(myTab)
+            });
+
+            return myTabs;
+
         }
     };
 

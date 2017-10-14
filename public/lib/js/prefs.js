@@ -17,7 +17,7 @@ var Prefs = (function() {
               {"url":"https://www.sciencedaily.com/rss/matter_energy/engineering.xml","type":"text","limit": 12},
               {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
               {"url":"https://www.reddit.com/r/nsfw/.rss","type":"mixed","limit": 8},
-              {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 8}
+              {"url":"https://www.reddit.com/.rss","type":"text","limit": 8}
           ]}
         ];
 
@@ -40,7 +40,9 @@ var Prefs = (function() {
 
         },
         writeConfig:function(key, val) {
+            $('#savingIcon').fadeToggle('fast');
             localStorage.setItem(key, val);
+            $('#savingIcon').fadeToggle('slow');
         }
     };
 }());

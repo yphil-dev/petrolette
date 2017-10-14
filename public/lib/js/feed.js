@@ -3,6 +3,36 @@ var Feed = (function() {
     return {
         newFeed:function($tab, url, type, limit) {
 
+            var $feedDialog = $('#feedDialog').dialog({
+                autoOpen: false,
+                resizable: false,
+                height: 'auto',
+                width: 400,
+                modal: true,
+                buttons: {
+                    Cancel: function() {
+                        $( this ).dialog( 'close' );
+                    },
+                    'OK': function() {
+                        $('#' + $(this).data('feedUrl')).text($('#feedUrl').val());
+                        $( this ).dialog( 'close' );
+                    }
+                },
+                open: function( event, ui ) {
+
+                    $('#feedUrl').val($(this).data('feedUrl'));
+                    $('#feedLimit').val($(this).data('feedLimit'));
+                    $('.inlineButtons input').prop('checked',false).change();
+                    $('#type-' + $(this).data('feedType')).prop('checked',true).checkboxradio('refresh')
+
+                    $(this).on('submit', function () {
+                        $('#' + $(this).data('tabId')).text($('#tabName').val());
+                        $(this).dialog('close');
+                        return false;
+                    });
+                }
+            });
+
             var $feedToggle = $('<i class="icon-down-dir rotate"></i>').click(function() {
 
                 $(this).toggleClass("down")
@@ -22,8 +52,11 @@ var Feed = (function() {
             var $feedControls = $('<div class="feedControls"></div>');
 
             var $feedPrefs = $('<i class="icon-cog mobFeedPrefs"></i>').button().click(function() {
+                var $feedContainer = $(this).parent().parent().parent().parent();
                 $('#feedDialog')
-                    .data('feedUrl', $(this).parent().parent().parent().parent().data('url'))
+                    .data('feedUrl', $feedContainer.data('url'))
+                    .data('feedLimit', $feedContainer.data('limit'))
+                    .data('feedType', $feedContainer.data('type'))
                     .dialog('open');
             });
 
@@ -80,25 +113,31 @@ var Feed = (function() {
 
             $button.css("color", "transparent").addClass('spinner');
 
-            var feedUrl = $button.parent().parent().parent().parent().data('url');
-            var $feedTitleDiv = $button.parent().parent().parent().children('.feedTitle');
+            var $feedDiv = $button.parent().parent().parent();
+
+            var feedUrl = $feedDiv.parent().data('url');
 
             $.get("/feed", {
                 "feedurl": feedUrl
             }, function(data, status){
+                // console.log('DATA: ' + JSON.stringify(status));
+
                 $button.css("color", "#3e3e3e").removeClass('spinner');
-                $feedTitleDiv.text(data.title);
 
-                // console.log('ARR: ' + JSON.stringify(data));
+                if (typeof data.entries !== 'undefined') {
+                    $feedDiv.children('.feedTitle').text(data.title);
 
-                data.entries.forEach(function(entry) {
-                    if($.type(entry.title) === 'string') {
-                        console.log(entry.title + ':' + entry.link);
-                    }
-                })
+                    data.entries.forEach(function(entry) {
+                        if($.type(entry.title) === 'string') {
+                            // console.log(entry.title + ':' + entry.link);
+                        }
+                    })
 
-                // $.each(data.entries, function(entry) {
-                // });
+                } else {
+                    $feedDiv.parent().addClass('ui-state-error');
+                    $feedDiv.children('.feedTitle').text('Error');
+                    $feedDiv.parent().children('.feedBody').text('Feed Error: ' + feedUrl);
+                }
 
             });
         }
