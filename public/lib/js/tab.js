@@ -130,7 +130,9 @@ var Tab = (function() {
                 var myTab = {};
                 var $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
 
-                myTab["name"] = $(this).children().text();
+                console.log('name: ' + $(this).children('a').text())
+
+                myTab["name"] = $(this).children('a').text();
 
                 $allFeeds.each(function(i) {
                     var myFeed = {};

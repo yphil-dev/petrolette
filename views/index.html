@@ -56,6 +56,7 @@
          $('#saveTabs').click(function () {
              var allTabs = Tab.getTabs()
              Prefs.writeConfig('tabs', JSON.stringify(allTabs));
+             // console.log('tabs: ' + JSON.stringify(allTabs))
          });
 
          $tabs.find('.ui-tabs-nav').sortable({
@@ -95,7 +96,7 @@
                      $( this ).dialog( 'close' );
                  },
                  'OK': function() {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $('#' + $(this).data('aId')).text($('#tabName').val());
                      $( this ).dialog( 'close' );
                  }
              },
@@ -149,8 +150,20 @@
              modal: true,
              buttons: {
                  "Delete all feeds": function() {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
-                     $( this ).dialog( "close" );
+
+                     console.log('id: ' + $(this).attr('href'))
+
+                     var $thisTabLink = $('#' + $(this).data('tabId'))
+                     $(this).dialog( "close" );
+
+
+                     $thisTabLink.parent().remove().attr( "aria-controls" );
+
+                     $thisTabLink.parent().remove()
+
+                     $thisTabLink.parent().remove()
+                     console.log('id: ' + $(this).data('tabId'))
+
                  },
                  Cancel: function() {
                      $( this ).dialog( "close" );
@@ -158,14 +171,14 @@
              }
          });
 
-         $tabs.on('click', '.ui-tabs-active a', function(e){
-             console.log('e: ' + JSON.stringify(e.which))
+         $tabs.on('mouseup', '.ui-tabs-active', function(e){
+             console.log('e!: ' + JSON.stringify(e.which))
              e.preventDefault();
 
              if (e.which === 1) {
                  $('#tabDialog')
-                     .data('tabName', $(this).parent().text())
-                     .data('tabId', $(this).prop('id'))
+                     .data('tabName', $(this).children('a').text())
+                     .data('aId', $(this).children('a').attr('id'))
                      .dialog('open');
                  return;
              }
@@ -177,11 +190,14 @@
              // var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
              // $( "#" + panelId ).remove();
 
+             var $a = $(this).prev('a.ui-tabs-anchor')
+
+
              $( "#killDialog" )
-                 .data('tabName', $(this).text())
-                 .data('tabId', $(this).children('a').prop('id'))
-                 .dialog('open')
-             $( "#killDialog" ).dialog('option', 'title', 'Kill the ' + $(this).text() + ' tab?');
+                             .data('tabName', $a.text())
+                             .data('tabId', $a.prop('id'))
+                             .dialog('open')
+             $( "#killDialog" ).dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
 
              // tabs.tabs( "refresh" );
          });

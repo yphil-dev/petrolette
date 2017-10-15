@@ -203,3 +203,9 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
     right: .6em;
     display:none;
 }
+
+#tabs li .ui-icon-close {
+    /* float: left; */
+    /* margin: 0.4em 0.2em 0 0; */
+    cursor: pointer;
+}
