@@ -132,6 +132,7 @@ var Feed = (function() {
                     data.entries.forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
                             // console.log(entry.title + ':' + entry.link);
+                            $feedDiv.parent().children('.feedBody')
                         }
                     })
 
