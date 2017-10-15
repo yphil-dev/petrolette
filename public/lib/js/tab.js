@@ -102,7 +102,7 @@ var Tab = (function() {
 
             if(typeof feeds != 'undefined') {
                 feeds.forEach(function(feed) {
-                    Feed.newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
+                    Feed.newFeed($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit);
                 });
             };
 

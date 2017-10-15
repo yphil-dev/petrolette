@@ -52,7 +52,7 @@ var Feed = (function() {
             var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl"></i>').button();
 
             var $body = $('<div class="feedBody ui-widget-content"></div>');
-            var $bodyUl = $('<ol></ol>');
+            var $bodyUl = $('<ul></ul>');
             var $dumbLi = $('<li>plop</li>');
 
             var $li = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
