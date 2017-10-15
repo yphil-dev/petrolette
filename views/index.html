@@ -158,24 +158,32 @@
              }
          });
 
-         $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
+         $tabs.on('click', '.ui-tabs-active a', function(e){
              console.log('e: ' + JSON.stringify(e.which))
              e.preventDefault();
 
              if (e.which === 1) {
                  $('#tabDialog')
-                     .data('tabName', $(this).text())
-                     .data('tabId', $(this).children('a').prop('id'))
+                     .data('tabName', $(this).parent().text())
+                     .data('tabId', $(this).prop('id'))
                      .dialog('open');
-             } else if (e.which === 2) {
-                 $( "#killDialog" )
-                     .data('tabName', $(this).text())
-                     .data('tabId', $(this).children('a').prop('id'))
-                     .dialog('open')
-                 $( "#killDialog" ).dialog( "option", "title", 'Kill the ' + $(this).text()  + ' tab?');
+                 return;
              }
 
+         });
 
+         // Close icon: removing the tab on click
+         $tabs.on("click", "span.ui-icon-close", function() {
+             // var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+             // $( "#" + panelId ).remove();
+
+             $( "#killDialog" )
+                 .data('tabName', $(this).text())
+                 .data('tabId', $(this).children('a').prop('id'))
+                 .dialog('open')
+             $( "#killDialog" ).dialog('option', 'title', 'Kill the ' + $(this).text() + ' tab?');
+
+             // tabs.tabs( "refresh" );
          });
 
          console.log('---- INDEX OK ----');

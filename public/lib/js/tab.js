@@ -71,7 +71,10 @@ var Tab = (function() {
 
             var $thisTab = $('<li class="modal mobTab"></li>');
 
+            var $thisCloseTabLink = $('<span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span>')
+
             $thisTabLink.appendTo($thisTab);
+            $thisCloseTabLink.appendTo($thisTab);
 
             var $thisSelectedTab = $('#tabs div.ui-tabs-panel:not(.ui-tabs-hide)');
 
