@@ -151,18 +151,17 @@
              buttons: {
                  "Delete all feeds": function() {
 
-                     console.log('id: ' + $(this).attr('href'))
+                     var $tabLinkId = $('#' + $(this).data('tabLinkId'))
 
-                     var $thisTabLink = $('#' + $(this).data('tabId'))
+                     var $thisPanel = $($(this).data('panelId'))
+
+                     $thisPanel.remove()
+
+                     $tabLinkId.parent('li').remove()
+
+                     $tabs.tabs('refresh');
+
                      $(this).dialog( "close" );
-
-
-                     $thisTabLink.parent().remove().attr( "aria-controls" );
-
-                     $thisTabLink.parent().remove()
-
-                     $thisTabLink.parent().remove()
-                     console.log('id: ' + $(this).data('tabId'))
 
                  },
                  Cancel: function() {
@@ -171,19 +170,19 @@
              }
          });
 
-         $tabs.on('mouseup', '.ui-tabs-active', function(e){
-             console.log('e!: ' + JSON.stringify(e.which))
-             e.preventDefault();
+         // $tabs.on('mouseup', '.ui-tabs-active', function(e){
+         //     console.log('e!: ' + JSON.stringify(e.which))
+         //     e.preventDefault();
 
-             if (e.which === 1) {
-                 $('#tabDialog')
-                     .data('tabName', $(this).children('a').text())
-                     .data('aId', $(this).children('a').attr('id'))
-                     .dialog('open');
-                 return;
-             }
+         //     if (e.which === 1) {
+         //         $('#tabDialog')
+         //             .data('tabName', $(this).children('a').text())
+         //             .data('aId', $(this).children('a').attr('id'))
+         //             .dialog('open');
+         //         return;
+         //     }
 
-         });
+         // });
 
          // Close icon: removing the tab on click
          $tabs.on("click", "span.ui-icon-close", function() {
@@ -192,10 +191,12 @@
 
              var $a = $(this).prev('a.ui-tabs-anchor')
 
+             console.log('zob: ' + $a.attr('href'))
 
              $( "#killDialog" )
                              .data('tabName', $a.text())
-                             .data('tabId', $a.prop('id'))
+                             .data('panelId', $a.attr('href'))
+                             .data('tabLinkId', $a.prop('id'))
                              .dialog('open')
              $( "#killDialog" ).dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
 
