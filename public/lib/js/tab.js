@@ -40,7 +40,7 @@ var Tab = (function() {
 
                     //hide selected items
                     item.siblings('.selected').addClass('hidden');
-                    var helper = $('<ul/>');
+                    var helper = $('<ul class="feedHelper"><ul/>');
                     return helper.append($elements);
                 },
                 start: function (e, ui) {

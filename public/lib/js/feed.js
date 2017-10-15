@@ -51,9 +51,9 @@ var Feed = (function() {
 
             var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl"></i>').button();
 
-            var $body = $('<div class="feedBody ui-widget-content">plop</div>');
-            var $bodyUl = $('<ul></ul>');
-            var $dumbLi = $('<li></li>');
+            var $body = $('<div class="feedBody ui-widget-content"></div>');
+            var $bodyUl = $('<ol></ol>');
+            var $dumbLi = $('<li>plop</li>');
 
             var $li = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
@@ -90,6 +90,9 @@ var Feed = (function() {
             $reloadDiv.appendTo($feedControls);
 
             $feedControls.appendTo($header);
+
+            $dumbLi.appendTo($bodyUl)
+            $bodyUl.appendTo($body)
 
             $header.appendTo($li);
             $body.appendTo($li);
