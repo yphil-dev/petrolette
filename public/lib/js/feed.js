@@ -129,9 +129,13 @@ var Feed = (function() {
                         if($.type(entry.title) === 'string') {
 
                             var $feedItem = $('<li class="feedItem"></li>')
-                            var $feedDiv = $('<div class="feedItem">' + entry.title  + '</div>')
+                            var $itemDiv = $('<div class="feedItem"></div>')
 
-                            $feedDiv.appendTo($feedItem)
+                            var $itemLink = $('<a></a>').attr('href', entry.link).append(entry.title)
+
+                            $itemLink.appendTo($itemDiv)
+
+                            $itemDiv.appendTo($feedItem)
                             $feedItem.appendTo($feedBody)
 
                             // console.log(entry.title + ':' + entry.link);
