@@ -55,7 +55,7 @@ ul {
 .selected {
     cursor:grab;
     margin: 0 5px 5px 5px;
-    padding: 5px;
+    padding: 2px;
     font-size: 1.2em;
     width: 25%;
 }
@@ -63,6 +63,10 @@ ul {
 .selected,
 .feed {
     width:250px !important;
+}
+
+.feedBody {
+    margin: 2px 0 0 0;
 }
 
 .truncate {
@@ -75,6 +79,7 @@ ul {
 .mobHeader {
     /* text-align:left; */
     max-width:100%;
+    min-height:22px;
     display: flex;
     /* flex-flow: row; */
     justify-content: space-around;
@@ -98,6 +103,11 @@ ul {
 
 
 .mobHeader .feedControls {
+    z-index:5;
+    min-width:80px;
+    /* position:absolute; */
+    /* right:0; */
+    /* float: right; */
     display: flex;
     justify-content: flex-end;
 }
@@ -106,6 +116,9 @@ ul {
   flex: 1 100%;
 }
 
+.feedControl {
+    font-size: .8em !important;
+}
 
 .mobHeader .feedControls div i.ui-button {
     padding: 0 !important;
@@ -149,10 +162,10 @@ label.feedSelect {
     content: '';
     box-sizing: border-box;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
+    top: 65%;
+    left: 65%;
+    width: 15px;
+    height: 15px;
     margin-top: -10px;
     margin-left: -10px;
     border-radius: 50%;

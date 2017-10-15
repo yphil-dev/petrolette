@@ -142,7 +142,7 @@
              }
          });
 
-         $( "#killDialog" ).dialog({
+         $( "#killTabDialog" ).dialog({
              autoOpen: false,
              resizable: false,
              height: "auto",
@@ -163,6 +163,28 @@
 
                      $(this).dialog( "close" );
                      return;
+
+                 },
+                 Cancel: function() {
+                     $( this ).dialog( "close" );
+                 }
+             }
+         });
+
+         $( "#killFeedDialog" ).dialog({
+             autoOpen: false,
+             resizable: false,
+             height: "auto",
+             width: 400,
+             modal: true,
+             buttons: {
+                 "Delete feed": function() {
+
+                     var $tabFeedId = $('#' + $(this).data('feedId'))
+
+                     $tabFeedId.remove()
+
+                     $(this).dialog( "close" );
 
                  },
                  Cancel: function() {
@@ -194,12 +216,11 @@
 
              console.log('zob: ' + $a.attr('href'))
 
-             $( "#killDialog" )
-                             .data('tabName', $a.text())
+             $('#killTabDialog').data('tabName', $a.text())
                              .data('panelId', $a.attr('href'))
                              .data('tabLinkId', $a.prop('id'))
                              .dialog('open')
-             $( "#killDialog" ).dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
+             $('#killTabDialog').dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
 
              // tabs.tabs( "refresh" );
          });
@@ -238,6 +259,8 @@
 
          $('#tabs').find('.mobFeedRefresh').click();
 
+         // $(".feedControls").slideUp();
+
      });
 
     </script>
@@ -253,7 +276,11 @@
 
         <i id="savingIcon" class="icon-download"></i>
 
-        <div id="killDialog" title="">
+        <div id="killTabDialog" title="">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+        </div>
+
+        <div id="killFeedDialog" title="">
             <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
         </div>
 

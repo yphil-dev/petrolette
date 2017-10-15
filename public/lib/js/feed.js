@@ -3,6 +3,8 @@ var Feed = (function() {
     return {
         newFeed:function($tab, url, type, limit) {
 
+            var feedIndex = $('.feed').length;
+
             var $feedDialog = $('#feedDialog').dialog({
                 autoOpen: false,
                 resizable: false,
@@ -39,9 +41,19 @@ var Feed = (function() {
                 $(this).parent().parent().parent().children('.feedBody').toggle(300);
             });
 
-            // var $feedSelect = $('<label class="feedSelect"><input class="chbox" type="checkbox" /></label>').button();
 
-            var $feedSelect = $('<i class="icon-check-empty-1 feedSelect"></i>').button();
+            var $feedSelect = $('<i class="icon-check-empty-1 feedSelect feedControl"></i>').button();
+            var $feedDelete = $('<i class="icon-trash feedDelete feedControl"></i>').button();
+
+            $feedDelete.click(function() {
+
+                var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
+
+                $('#killFeedDialog').data('feedId', $thisFeedId)
+                                         .dialog('open')
+                $('#killFeedDialog').dialog('option', 'title', 'Kill the ' + $(this).parent().parent().prev().text() + ' feed?');
+
+            });
 
             $feedSelect.click(function() {
                 $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1')
@@ -51,7 +63,7 @@ var Feed = (function() {
 
             var $feedControls = $('<div class="feedControls"></div>');
 
-            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs"></i>').button().click(function() {
+            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl"></i>').button().click(function() {
                 var $feedContainer = $(this).parent().parent().parent().parent();
                 $('#feedDialog')
                     .data('feedUrl', $feedContainer.data('url'))
@@ -60,25 +72,35 @@ var Feed = (function() {
                     .dialog('open');
             });
 
-            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh"></i>').button();
+            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl"></i>').button();
 
             var $body = $('<div class="feedBody ui-widget-content">plop</div>');
             var $bodyUl = $('<ul></ul>');
             var $dumbLi = $('<li></li>');
 
-            var $li = $('<li class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
+            var $li = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
+
+            $li.hover(
+                function() {
+                    $(this).find('.feedControls').slideDown();
+                }, function() {
+                    $(this).find('.feedControls').slideUp();
+                }
+            );
 
             var $header = $('<div class="mobHeader"></div>');
             var $feedIcon = $('<div class="feedIcon"></div>');
 
             var $toggleDiv = $('<div class="toggle hiddeable"></div>');
             var $selectDiv = $('<div class="TabSelect hiddeable"></div>');
+            var $deleteDiv = $('<div class="TabDelete hiddeable"></div>');
             var $titleDiv = $('<div class="feedTitle truncate"></div>');
             var $prefsDiv = $('<div class="prefs hiddeable"></div>');
             var $reloadDiv = $('<div class="reload hiddeable"></div>');
 
             $feedToggle.appendTo($toggleDiv);
             $feedSelect.appendTo($selectDiv);
+            $feedDelete.appendTo($deleteDiv);
             $titleDiv.html(url);
             $feedPrefs.appendTo($prefsDiv);
             $feedReload.appendTo($reloadDiv);
@@ -86,6 +108,7 @@ var Feed = (function() {
             $toggleDiv.appendTo($header);
             $titleDiv.appendTo($header);
             $selectDiv.appendTo($feedControls);
+            $deleteDiv.appendTo($feedControls);
             $prefsDiv.appendTo($feedControls);
             $reloadDiv.appendTo($feedControls);
 
