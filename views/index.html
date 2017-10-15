@@ -122,11 +122,27 @@
                      $( this ).dialog( 'close' );
                  },
                  'OK': function() {
-                     $('#' + $(this).data('feedUrl')).text($('#feedUrl').val());
+
+                     var $tabFeedId = $('#' + $(this).data('feedId'))
+
+                     var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
+
+                     console.log('i: ' + $tabFeedId.data('url'))
+
+                     console.log('data: ' + $('#feedUrl').val())
+
+                     $tabFeedId.data('url', $('#feedUrl').val())
+                     $tabFeedId.data('limit', $('#feedLimit').val())
+                     // $tabFeedId.data('type', $(this).data('feedType'))
+
+                     Feed.populateFeed($mobFeedRefresh);
+
                      $( this ).dialog( 'close' );
                  }
              },
              open: function( event, ui ) {
+
+                 $(this).data('feedId');
 
                  $('#feedUrl').val($(this).data('feedUrl'));
                  $('#feedLimit').val($(this).data('feedLimit'));
@@ -181,6 +197,8 @@
                  "Delete feed": function() {
 
                      var $tabFeedId = $('#' + $(this).data('feedId'))
+
+                     console.log('data: ' + $tabFeedId.text())
 
                      $tabFeedId.remove()
 

@@ -5,36 +5,6 @@ var Feed = (function() {
 
             var feedIndex = $('.feed').length;
 
-            var $feedDialog = $('#feedDialog').dialog({
-                autoOpen: false,
-                resizable: false,
-                height: 'auto',
-                width: 400,
-                modal: true,
-                buttons: {
-                    Cancel: function() {
-                        $( this ).dialog( 'close' );
-                    },
-                    'OK': function() {
-                        $('#' + $(this).data('feedUrl')).text($('#feedUrl').val());
-                        $( this ).dialog( 'close' );
-                    }
-                },
-                open: function( event, ui ) {
-
-                    $('#feedUrl').val($(this).data('feedUrl'));
-                    $('#feedLimit').val($(this).data('feedLimit'));
-                    $('.inlineButtons input').prop('checked',false).change();
-                    $('#type-' + $(this).data('feedType')).prop('checked',true).checkboxradio('refresh')
-
-                    $(this).on('submit', function () {
-                        $('#' + $(this).data('tabId')).text($('#tabName').val());
-                        $(this).dialog('close');
-                        return false;
-                    });
-                }
-            });
-
             var $feedToggle = $('<i class="icon-down-dir rotate"></i>').click(function() {
 
                 $(this).toggleClass("down")
@@ -63,9 +33,16 @@ var Feed = (function() {
 
             var $feedControls = $('<div class="feedControls"></div>');
 
-            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl"></i>').button().click(function() {
+            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl"></i>').button()
+
+            $feedPrefs.click(function() {
+
+                var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
+
                 var $feedContainer = $(this).parent().parent().parent().parent();
+
                 $('#feedDialog')
+                    .data('feedId', $thisFeedId)
                     .data('feedUrl', $feedContainer.data('url'))
                     .data('feedLimit', $feedContainer.data('limit'))
                     .data('feedType', $feedContainer.data('type'))
@@ -138,6 +115,8 @@ var Feed = (function() {
 
             var $feedDiv = $button.parent().parent().parent();
 
+            $feedDiv.parent().removeClass('ui-state-error');
+
             var feedUrl = $feedDiv.parent().data('url');
 
             $.get("/feed", {
@@ -155,6 +134,7 @@ var Feed = (function() {
                             // console.log(entry.title + ':' + entry.link);
                         }
                     })
+
 
                 } else {
                     $feedDiv.parent().addClass('ui-state-error');
