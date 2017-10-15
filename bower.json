@@ -19,6 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "slidereveal": "^1.1.2"
+    "slidereveal": "^1.1.2",
+    "jquery-ui": "^1.12.1"
   }
 }

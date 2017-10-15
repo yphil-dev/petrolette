@@ -162,6 +162,7 @@
                      $tabs.tabs('refresh');
 
                      $(this).dialog( "close" );
+                     return;
 
                  },
                  Cancel: function() {
@@ -170,19 +171,19 @@
              }
          });
 
-         // $tabs.on('mouseup', '.ui-tabs-active', function(e){
-         //     console.log('e!: ' + JSON.stringify(e.which))
-         //     e.preventDefault();
+         $tabs.on('mouseup', '.ui-tabs-active a', function(e){
+             console.log('e!: ' + JSON.stringify(e.which))
+             e.preventDefault();
 
-         //     if (e.which === 1) {
-         //         $('#tabDialog')
-         //             .data('tabName', $(this).children('a').text())
-         //             .data('aId', $(this).children('a').attr('id'))
-         //             .dialog('open');
-         //         return;
-         //     }
+             if (e.which === 1) {
+                 $('#tabDialog')
+                     .data('tabName', $(this).children('a').text())
+                     .data('aId', $(this).children('a').attr('id'))
+                     .dialog('open');
+                 return;
+             }
 
-         // });
+         });
 
          // Close icon: removing the tab on click
          $tabs.on("click", "span.ui-icon-close", function() {
