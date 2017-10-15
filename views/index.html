@@ -14,274 +14,275 @@
 
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
 
-    </head>
 
-    <script>
+        <script>
 
-     $(document).ready(function() {
+         $(document).ready(function() {
 
-         $('#slider').slideReveal({
-             trigger: $("#trigger"),
-             push: false,
-             overlay: true
-         });
+             $('#slider').slideReveal({
+                 trigger: $("#trigger"),
+                 push: false,
+                 overlay: true
+             });
 
-         var $tabs = $("#tabs").tabs({
-             heightStyle: "content"
-         });
+             var $tabs = $("#tabs").tabs({
+                 heightStyle: "content"
+             });
 
-         var $tabUl = $('#tabUl');
-         var tabList = Prefs.readConfig('tabs');
+             var $tabUl = $('#tabUl');
+             var tabList = Prefs.readConfig('tabs');
 
-         $tabs.on( "click", ".mobFeedRefresh", function() {
-             Feed.populateFeed($(this));
-         });
+             $tabs.on( "click", ".mobFeedRefresh", function() {
+                 Feed.populateFeed($(this));
+             });
 
-         // var stringed = JSON.stringify(tabList);
-         var parsed = JSON.parse(tabList);
+             // var stringed = JSON.stringify(tabList);
+             var parsed = JSON.parse(tabList);
 
-         parsed.forEach(function(tab) {
-             Tab.newTab($tabs, tab.name, tab.feeds);
-         });
+             parsed.forEach(function(tab) {
+                 Tab.newTab($tabs, tab.name, tab.feeds);
+             });
 
-         $('#addTab').click(function () {
-             Tab.newTab($tabs);
-         });
+             $('#addTab').click(function () {
+                 Tab.newTab($tabs);
+             });
 
-         $('#loadTabs').click(function () {
-             Tab.populateTabs($tabUl, parsed, $tabs);
-             $('#tabs').find('.mobFeedRefresh').click();
-         });
+             $('#loadTabs').click(function () {
+                 Tab.populateTabs($tabUl, parsed, $tabs);
+                 $('#tabs').find('.mobFeedRefresh').click();
+             });
 
-         $('#saveTabs').click(function () {
-             var allTabs = Tab.getTabs()
-             Prefs.writeConfig('tabs', JSON.stringify(allTabs));
-             // console.log('tabs: ' + JSON.stringify(allTabs))
-         });
+             $('#saveTabs').click(function () {
+                 var allTabs = Tab.getTabs()
+                 Prefs.writeConfig('tabs', JSON.stringify(allTabs));
+                 // console.log('tabs: ' + JSON.stringify(allTabs))
+             });
 
-         $tabs.find('.ui-tabs-nav').sortable({
-             axis: 'x',
-             stop: function() {
-                 $tabs.tabs('refresh');
-             }
-         });
-
-         $('#tabLimit').spinner();
-
-         $( 'button' ).button();
-
-         $( 'input[type=radio]' ).checkboxradio();
-         $('#tabDropActivate').checkboxradio();
-
-         $( "#feedLimit" ).spinner({
-             spin: function( event, ui ) {
-                 if ( ui.value > 64 ) {
-                     $( this ).spinner( "value", 0 );
-                     return false;
-                 } else if ( ui.value < 0 ) {
-                     $( this ).spinner( "value", 64 );
-                     return false;
-                 }
-             }
-         });
-
-         $('#tabDialog').dialog({
-             autoOpen: false,
-             resizable: false,
-             height: 'auto',
-             width: 400,
-             modal: true,
-             buttons: {
-                 Cancel: function() {
-                     $( this ).dialog( 'close' );
-                 },
-                 'OK': function() {
-                     $('#' + $(this).data('aId')).text($('#tabName').val());
-                     $( this ).dialog( 'close' );
-                 }
-             },
-             open: function( event, ui ) {
-
-                 $(this).on('submit', function () {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
-                     $(this).dialog('close');
-                     return false;
-                 });
-                 $('#tabName').val($(this).data('tabName'));
-             }
-         });
-
-         $('#feedDialog').dialog({
-             autoOpen: false,
-             resizable: false,
-             height: 'auto',
-             width: 400,
-             modal: true,
-             buttons: {
-                 Cancel: function() {
-                     $( this ).dialog( 'close' );
-                 },
-                 'OK': function() {
-
-                     var $tabFeedId = $('#' + $(this).data('feedId'))
-
-                     var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
-
-                     console.log('i: ' + $tabFeedId.data('url'))
-
-                     console.log('data: ' + $('#feedUrl').val())
-
-                     $tabFeedId.data('url', $('#feedUrl').val())
-                     $tabFeedId.data('limit', $('#feedLimit').val())
-                     // $tabFeedId.data('type', $(this).data('feedType'))
-
-                     Feed.populateFeed($mobFeedRefresh);
-
-                     $( this ).dialog( 'close' );
-                 }
-             },
-             open: function( event, ui ) {
-
-                 $(this).data('feedId');
-
-                 $('#feedUrl').val($(this).data('feedUrl'));
-                 $('#feedLimit').val($(this).data('feedLimit'));
-                 $('.inlineButtons input').prop('checked',false).change();
-                 $('#type-' + $(this).data('feedType')).prop('checked',true).checkboxradio('refresh')
-
-                 $(this).on('submit', function () {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
-                     $(this).dialog('close');
-                     return false;
-                 });
-
-             }
-         });
-
-         $( "#killTabDialog" ).dialog({
-             autoOpen: false,
-             resizable: false,
-             height: "auto",
-             width: 400,
-             modal: true,
-             buttons: {
-                 "Delete all feeds": function() {
-
-                     var $tabLinkId = $('#' + $(this).data('tabLinkId'))
-
-                     var $thisPanel = $($(this).data('panelId'))
-
-                     $thisPanel.remove()
-
-                     $tabLinkId.parent('li').remove()
-
+             $tabs.find('.ui-tabs-nav').sortable({
+                 axis: 'x',
+                 stop: function() {
                      $tabs.tabs('refresh');
+                 }
+             });
 
-                     $(this).dialog( "close" );
+             $('#tabLimit').spinner();
+
+             $( 'button' ).button();
+
+             $( 'input[type=radio]' ).checkboxradio();
+             $('#tabDropActivate').checkboxradio();
+
+             $( "#feedLimit" ).spinner({
+                 spin: function( event, ui ) {
+                     if ( ui.value > 64 ) {
+                         $( this ).spinner( "value", 0 );
+                         return false;
+                     } else if ( ui.value < 0 ) {
+                         $( this ).spinner( "value", 64 );
+                         return false;
+                     }
+                 }
+             });
+
+             $('#tabDialog').dialog({
+                 autoOpen: false,
+                 resizable: false,
+                 height: 'auto',
+                 width: 400,
+                 modal: true,
+                 buttons: {
+                     Cancel: function() {
+                         $( this ).dialog( 'close' );
+                     },
+                     'OK': function() {
+                         $('#' + $(this).data('aId')).text($('#tabName').val());
+                         $( this ).dialog( 'close' );
+                     }
+                 },
+                 open: function( event, ui ) {
+
+                     $(this).on('submit', function () {
+                         $('#' + $(this).data('tabId')).text($('#tabName').val());
+                         $(this).dialog('close');
+                         return false;
+                     });
+                     $('#tabName').val($(this).data('tabName'));
+                 }
+             });
+
+             $('#feedDialog').dialog({
+                 autoOpen: false,
+                 resizable: false,
+                 height: 'auto',
+                 width: 400,
+                 modal: true,
+                 buttons: {
+                     Cancel: function() {
+                         $( this ).dialog( 'close' );
+                     },
+                     'OK': function() {
+
+                         var $tabFeedId = $('#' + $(this).data('feedId'))
+
+                         var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
+
+                         console.log('i: ' + $tabFeedId.data('url'))
+
+                         console.log('data: ' + $('#feedUrl').val())
+
+                         $tabFeedId.data('url', $('#feedUrl').val())
+                         $tabFeedId.data('limit', $('#feedLimit').val())
+                         // $tabFeedId.data('type', $(this).data('feedType'))
+
+                         Feed.populateFeed($mobFeedRefresh);
+
+                         $( this ).dialog( 'close' );
+                     }
+                 },
+                 open: function( event, ui ) {
+
+                     $(this).data('feedId');
+
+                     $('#feedUrl').val($(this).data('feedUrl'));
+                     $('#feedLimit').val($(this).data('feedLimit'));
+                     $('.inlineButtons input').prop('checked',false).change();
+                     $('#type-' + $(this).data('feedType')).prop('checked',true).checkboxradio('refresh')
+
+                     $(this).on('submit', function () {
+                         $('#' + $(this).data('tabId')).text($('#tabName').val());
+                         $(this).dialog('close');
+                         return false;
+                     });
+
+                 }
+             });
+
+             $( "#killTabDialog" ).dialog({
+                 autoOpen: false,
+                 resizable: false,
+                 height: "auto",
+                 width: 400,
+                 modal: true,
+                 buttons: {
+                     "Delete all feeds": function() {
+
+                         var $tabLinkId = $('#' + $(this).data('tabLinkId'))
+
+                         var $thisPanel = $($(this).data('panelId'))
+
+                         $thisPanel.remove()
+
+                         $tabLinkId.parent('li').remove()
+
+                         $tabs.tabs('refresh');
+
+                         $(this).dialog( "close" );
+                         return;
+
+                     },
+                     Cancel: function() {
+                         $( this ).dialog( "close" );
+                     }
+                 }
+             });
+
+             $( "#killFeedDialog" ).dialog({
+                 autoOpen: false,
+                 resizable: false,
+                 height: "auto",
+                 width: 400,
+                 modal: true,
+                 buttons: {
+                     "Delete feed": function() {
+
+                         var $tabFeedId = $('#' + $(this).data('feedId'))
+
+                         console.log('data: ' + $tabFeedId.text())
+
+                         $tabFeedId.remove()
+
+                         $(this).dialog( "close" );
+
+                     },
+                     Cancel: function() {
+                         $( this ).dialog( "close" );
+                     }
+                 }
+             });
+
+             $tabs.on('mouseup', '.ui-tabs-active a', function(e){
+                 console.log('e!: ' + JSON.stringify(e.which))
+                 e.preventDefault();
+
+                 if (e.which === 1) {
+                     $('#tabDialog')
+                         .data('tabName', $(this).children('a').text())
+                         .data('aId', $(this).children('a').attr('id'))
+                         .dialog('open');
                      return;
-
-                 },
-                 Cancel: function() {
-                     $( this ).dialog( "close" );
                  }
-             }
-         });
 
-         $( "#killFeedDialog" ).dialog({
-             autoOpen: false,
-             resizable: false,
-             height: "auto",
-             width: 400,
-             modal: true,
-             buttons: {
-                 "Delete feed": function() {
+             });
 
-                     var $tabFeedId = $('#' + $(this).data('feedId'))
+             // Close icon: removing the tab on click
+             $tabs.on("click", "span.ui-icon-close", function() {
+                 // var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+                 // $( "#" + panelId ).remove();
 
-                     console.log('data: ' + $tabFeedId.text())
+                 var $a = $(this).prev('a.ui-tabs-anchor')
 
-                     $tabFeedId.remove()
+                 console.log('zob: ' + $a.attr('href'))
 
-                     $(this).dialog( "close" );
+                 $('#killTabDialog').data('tabName', $a.text())
+                                 .data('panelId', $a.attr('href'))
+                                 .data('tabLinkId', $a.prop('id'))
+                                 .dialog('open')
+                 $('#killTabDialog').dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
 
-                 },
-                 Cancel: function() {
-                     $( this ).dialog( "close" );
+                 // tabs.tabs( "refresh" );
+             });
+
+             console.log('---- INDEX OK ----');
+
+             // Prefs
+             $('#themes').selectmenu({
+                 width: 232,
+                 change: function( event, data ) {
+
+                     Prefs.writeConfig('theme', data.item.value);
+
+                     $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
                  }
+             });
+
+             $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+             // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
+
+             // console.log('Type: ' + typeof(Prefs.readConfig('tabDropActivate')));
+
+             if (Prefs.readConfig('tabDropActivate') === 'true') {
+                 $('#tabDropActivate').prop('checked', true)
+                                      .checkboxradio('refresh');
+             } else {
+                 $('#tabDropActivate').prop('checked', false)
+                                      .checkboxradio('refresh');
              }
-         });
 
-         $tabs.on('mouseup', '.ui-tabs-active a', function(e){
-             console.log('e!: ' + JSON.stringify(e.which))
-             e.preventDefault();
+             $('#tabDropActivate').change(function() {
+                 Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
+             });
 
-             if (e.which === 1) {
-                 $('#tabDialog')
-                     .data('tabName', $(this).children('a').text())
-                     .data('aId', $(this).children('a').attr('id'))
-                     .dialog('open');
-                 return;
-             }
+             $('#tabs').find('.mobFeedRefresh').click();
+
+             // $(".feedControls").slideUp();
 
          });
 
-         // Close icon: removing the tab on click
-         $tabs.on("click", "span.ui-icon-close", function() {
-             // var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
-             // $( "#" + panelId ).remove();
+        </script>
 
-             var $a = $(this).prev('a.ui-tabs-anchor')
-
-             console.log('zob: ' + $a.attr('href'))
-
-             $('#killTabDialog').data('tabName', $a.text())
-                             .data('panelId', $a.attr('href'))
-                             .data('tabLinkId', $a.prop('id'))
-                             .dialog('open')
-             $('#killTabDialog').dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
-
-             // tabs.tabs( "refresh" );
-         });
-
-         console.log('---- INDEX OK ----');
-
-         // Prefs
-         $('#themes').selectmenu({
-             width: 232,
-             change: function( event, data ) {
-
-                 Prefs.writeConfig('theme', data.item.value);
-
-                 $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-             }
-         });
-
-         $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-         // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
-
-         // console.log('Type: ' + typeof(Prefs.readConfig('tabDropActivate')));
-
-         if (Prefs.readConfig('tabDropActivate') === 'true') {
-             $('#tabDropActivate').prop('checked', true)
-                                  .checkboxradio('refresh');
-         } else {
-             $('#tabDropActivate').prop('checked', false)
-                                  .checkboxradio('refresh');
-         }
-
-         $('#tabDropActivate').change(function() {
-             Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
-         });
-
-         $('#tabs').find('.mobFeedRefresh').click();
-
-         // $(".feedControls").slideUp();
-
-     });
-
-    </script>
+    </head>
 
     <body>
 
