@@ -3,6 +3,21 @@ body {
     /* font-size:.8em !important; */
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
+}
+
+h1 {
+    margin: .5em .5em;
+}
+
+ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+
 .flip { transform: rotate(-180deg);}
 
 div.mobylette {
@@ -36,24 +51,8 @@ button {
     margin: 0 .5em .5em 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
-}
-
-h1 {
-    margin: .5em .5em;
-}
-
-ul {
-    list-style-type: none;
-    margin:0;
-    padding:0;
-}
-
-.tabSort li,
+.tabSort li.feed,
 .selected {
-    cursor:grab;
     margin: 0 5px 5px 5px;
     padding: 2px;
     font-size: 1.2em;
@@ -77,8 +76,9 @@ ul {
 }
 
 .mobHeader {
+    cursor:grab;
     /* text-align:left; */
-    max-width:100%;
+    min-width:100%;
     min-height:22px;
     display: flex;
     /* flex-flow: row; */
@@ -222,3 +222,11 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
     /* margin: 0.4em 0.2em 0 0; */
     cursor: pointer;
 }
+
+/* Feed */
+
+li.feedItem {
+    background: #D3D3D3;
+}
+
+li.feedItem:nth-child(odd) { background: #A9A9A9; }

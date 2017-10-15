@@ -6,21 +6,23 @@ var Feed = (function() {
             var feedIndex = $('.feed').length;
 
             var $feedToggle = $('<i class="icon-down-dir rotate"></i>').click(function() {
-
                 $(this).toggleClass("down")
                 $(this).parent().parent().parent().children('.feedBody').toggle(300);
             });
 
-
             var $feedSelect = $('<i class="icon-check-empty-1 feedSelect feedControl"></i>').button();
             var $feedDelete = $('<i class="icon-trash feedDelete feedControl"></i>').button();
+            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl"></i>').button()
+            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl"></i>').button();
+
+            var $title = $('<span class="truncate">' + url + '<span>');
+            var $feedControls = $('<div class="feedControls"></div>');
 
             $feedDelete.click(function() {
 
                 var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
 
-                $('#killFeedDialog').data('feedId', $thisFeedId)
-                                         .dialog('open')
+                $('#killFeedDialog').data('feedId', $thisFeedId).dialog('open')
                 $('#killFeedDialog').dialog('option', 'title', 'Kill the ' + $(this).parent().parent().prev().text() + ' feed?');
 
             });
@@ -28,12 +30,6 @@ var Feed = (function() {
             $feedSelect.click(function() {
                 $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1')
             });
-
-            var $title = $('<span class="truncate">' + url + '<span>');
-
-            var $feedControls = $('<div class="feedControls"></div>');
-
-            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl"></i>').button()
 
             $feedPrefs.click(function() {
 
@@ -49,20 +45,16 @@ var Feed = (function() {
                     .dialog('open');
             });
 
-            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl"></i>').button();
 
-            var $body = $('<div class="feedBody ui-widget-content"></div>');
-            var $bodyUl = $('<ul></ul>');
+            var $feedBody = $('<div class="feedBody ui-widget-content"></div>');
+            var $feedBodyUl = $('<ul class="feedBody"></ul>');
             var $dumbLi = $('<li>plop</li>');
 
             var $li = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
-            $li.hover(
-                function() {
-                    $(this).find('.feedControls').slideDown();
-                }, function() {
-                    $(this).find('.feedControls').slideUp();
-                }
+            $li.hover (
+                function() {$(this).find('.feedControls').slideDown();},
+                function() {$(this).find('.feedControls').slideUp();}
             );
 
             var $header = $('<div class="mobHeader"></div>');
@@ -91,11 +83,11 @@ var Feed = (function() {
 
             $feedControls.appendTo($header);
 
-            $dumbLi.appendTo($bodyUl)
-            $bodyUl.appendTo($body)
+            // $dumbLi.appendTo($feedBodyUl)
+            $feedBodyUl.appendTo($feedBody)
 
             $header.appendTo($li);
-            $body.appendTo($li);
+            $feedBody.appendTo($li);
 
             $li.appendTo($tab);
 
@@ -114,36 +106,44 @@ var Feed = (function() {
         },
         populateFeed:function($button) {
 
-            $button.css("color", "transparent").addClass('spinner');
+            $button.css("color", "transparent").addClass('spinner')
 
-            var $feedDiv = $button.parent().parent().parent();
+            var $feed = $button.parent().parent().parent().parent()
+            var $feedTitle = $feed.children().children('.feedTitle')
+            var $feedBody = $feed.children().children('ul.feedBody')
+            var feedUrl = $feed.data('url')
 
-            $feedDiv.parent().removeClass('ui-state-error');
 
-            var feedUrl = $feedDiv.parent().data('url');
+            $feed.removeClass('ui-state-error')
 
             $.get("/feed", {
                 "feedurl": feedUrl
-            }, function(data, status){
-                // console.log('DATA: ' + JSON.stringify(status));
+            }, function(data, status) {
 
                 $button.css("color", "#3e3e3e").removeClass('spinner');
 
                 if (typeof data.entries !== 'undefined') {
-                    $feedDiv.children('.feedTitle').text(data.title);
+                    $feedTitle.text(data.title);
 
                     data.entries.forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
+
+                            var $feedItem = $('<li class="feedItem"></li>')
+                            var $feedDiv = $('<div class="feedItem">' + entry.title  + '</div>')
+
+                            $feedDiv.appendTo($feedItem)
+                            $feedItem.appendTo($feedBody)
+
                             // console.log(entry.title + ':' + entry.link);
-                            $feedDiv.parent().children('.feedBody')
+                            // $feedDiv.parent().children('.feedBody')
                         }
                     })
 
 
                 } else {
-                    $feedDiv.parent().addClass('ui-state-error');
-                    $feedDiv.children('.feedTitle').text('Error');
-                    $feedDiv.parent().children('.feedBody').text('Feed Error: ' + feedUrl);
+                    $feed.addClass('ui-state-error');
+                    $feedTitle.text('Error');
+                    $feedBody.html('<li class="feedItem">Feed Error: ' + feedUrl + '</li>');
                 }
 
             });
