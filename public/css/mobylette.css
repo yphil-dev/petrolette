@@ -139,7 +139,7 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 
 #savingIcon {
     font-size: 2rem;
-    position:absolute;
+    position:fixed;
     top: .4em;
     right: .6em;
     display:none;
@@ -162,8 +162,8 @@ ul.tabSort {
     /* display: inline; */
     display: flex;
     flex-flow: row wrap;
-    max-height: 800px;
-    max-width: 100%;
+    /* max-height: 800px; */
+    /* max-width: 100%; */
     align-items:flex-start;
     align-content:flex-start;
     /* margin-left: -8px; /\* Adjustment for the gutter *\/ */
@@ -181,11 +181,16 @@ li.feed {
 }
 
 li.feed {
-  flex: auto;
-  align-self:stretch;
-  min-width: 150px;
-  margin: .5rem; /* Some gutter */
-  transition: width 0.7s ease-out;
+    /* flex: auto; */
+
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis: content;
+
+    /* align-self:stretch; */
+    /* min-width: 150px; */
+    margin: .5rem; /* Some gutter */
+  /* transition: width 0.7s ease-out; */
 }
 
 div.feedItem {
@@ -261,6 +266,8 @@ div.feedItem img.full {
     flex: 3 0 auto;
     z-index:5;
     min-width:80px;
+    align-items:flex-start;
+    align-content:flex-start;
     /* position:absolute; */
     /* right:0; */
     /* float: right; */
@@ -316,5 +323,6 @@ li.feedItem:hover {
 }
 
 .ui-sortable-placeholder {
-    border: 5px dotted red;
+    visibility: visible !important;
+    border: 5px dashed !important;
 }

@@ -155,10 +155,10 @@ var Feed = (function() {
                             if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
 
                                 var $imgUrl = $tempDom.find('img').attr('src')
-                                //
-                                //                                 if (!r.test($imgUrl))
-                                //                                     $imgUrl = $protocol + '//' + $hostName + $imgUrl
-                                //
+
+                                if (!r.test($imgUrl))
+                                    $imgUrl = $protocol + '' + $hostName + $imgUrl
+
                                 console.log('S: ' + $imgUrl)
 
                                 var $itemImg = $('<img src="' + $imgUrl + '" />')
