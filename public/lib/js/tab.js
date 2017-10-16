@@ -44,8 +44,7 @@ var Tab = (function() {
                     return $helper.append($elements);
                 },
                 start: function (e, ui) {
-                    console.log('yow!');
-
+                    // Drag begins
                     var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
                     //store the selected items to item being dragged
                     ui.item.data('items', $elements);
@@ -60,6 +59,8 @@ var Tab = (function() {
                     //unselect since the operation is complete
                     $('.selected').removeClass('selected ui-state-hover');
                     $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
+                    Tab.saveTabs()
+
                 }
             }).disableSelection();
 
@@ -96,7 +97,6 @@ var Tab = (function() {
 
                         $(this).appendTo($list).show('slow').before($elements.show('slow'))
 
-                        Tab.saveTabs()
 
                     });
                 }

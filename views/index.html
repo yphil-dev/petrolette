@@ -115,18 +115,23 @@
                          $( this ).dialog( 'close' );
                      },
                      'OK': function() {
-                         $('#' + $(this).data('aId')).text($('#tabName').val());
+
+                         console.log('yp: ' + $('#tabName'))
+
+                         $('#' + $(this).data('tabId')).text($('#tabName').val());
                          $( this ).dialog( 'close' );
+                         Tab.saveTabs();
                      }
                  },
                  open: function( event, ui ) {
 
+                     $('#tabName').val($(this).data('tabName'));
+
                      $(this).on('submit', function () {
                          $('#' + $(this).data('tabId')).text($('#tabName').val());
                          $(this).dialog('close');
-                         return false;
+                         Tab.saveTabs();
                      });
-                     $('#tabName').val($(this).data('tabName'));
                  }
              });
 
@@ -242,10 +247,13 @@
                  e.preventDefault();
 
                  if (e.which === 1) {
+
+                     console.log('ALL: ' + $(this).attr('id'))
+
                      $('#tabDialog')
-                         .data('tabName', $(this).children('a').text())
-                         .data('aId', $(this).children('a').attr('id'))
-                         .dialog('open');
+                            .data('tabName', $(this).text())
+                            .data('tabId', $(this).attr('id'))
+                            .dialog('open');
                      return;
                  }
 

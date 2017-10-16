@@ -137,7 +137,7 @@ var Feed = (function() {
                     data.entries.slice(0, parseInt(feedLimit)).forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
 
-                            console.log('ALL: ' + JSON.stringify(entry))
+                            // console.log('ALL: ' + JSON.stringify(entry))
 
                             var content = $.parseHTML(entry.content)
                             // console.log('CONTENT: ' + content)
@@ -150,7 +150,7 @@ var Feed = (function() {
 
                             var $hostName = $itemLink.prop('hostname')
                             var $protocol = $itemLink.prop('protocol')
-                            console.log('P: ' + $protocol)
+                            // console.log('P: ' + $protocol)
 
                             if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
 
@@ -159,7 +159,7 @@ var Feed = (function() {
                                 if (!r.test($imgUrl))
                                     $imgUrl = $protocol + '' + $hostName + $imgUrl
 
-                                console.log('S: ' + $imgUrl)
+                                // console.log('S: ' + $imgUrl)
 
                                 var $itemImg = $('<img src="' + $imgUrl + '" />')
 
