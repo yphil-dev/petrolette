@@ -45,7 +45,6 @@ var Feed = (function() {
                     .dialog('open');
             });
 
-
             var $feedBody = $('<div class="feedBody ui-widget-content"></div>');
             var $feedBodyUl = $('<ul class="feedBody"></ul>');
             var $dumbLi = $('<li>plop</li>');
@@ -91,18 +90,6 @@ var Feed = (function() {
 
             $li.appendTo($tab);
 
-            //             $li.hover(function() {
-            //
-            //                 console.log('hover! ' + $(this).children('.mobHeader').children('.hiddeable').get());
-            //
-            //                 $(this).children('.mobHeader').children('.hiddeable')
-            //                        .toggleClass("hidden")
-            //                        .next()
-            //                        .stop( true, true )
-            //                        .slideToggle();
-            //
-            //             });
-            //
         },
         populateFeed:function($button) {
 
@@ -127,13 +114,15 @@ var Feed = (function() {
                     data.entries.forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
 
+
                             var $feedItem = $('<li class="feedItem">')
                             var $itemDiv = $('<div class="feedItem">')
                             var $itemLink = $('<a>').attr('href', entry.link).append(entry.title)
+                            console.log('description: ' + JSON.stringify(entry.content))
 
                             $itemLink.appendTo($itemDiv)
                             $itemDiv.appendTo($feedItem)
-                            $feedItem.appendTo($feedBody)
+                            $feedItem.prependTo($feedBody)
                         }
                     })
 

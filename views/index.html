@@ -226,8 +226,6 @@
 
              // Close icon: removing the tab on click
              $tabs.on("click", "span.ui-icon-close", function() {
-                 // var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
-                 // $( "#" + panelId ).remove();
 
                  var $a = $(this).prev('a.ui-tabs-anchor')
 
@@ -238,8 +236,6 @@
                                  .data('tabLinkId', $a.prop('id'))
                                  .dialog('open')
                  $('#killTabDialog').dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
-
-                 // tabs.tabs( "refresh" );
              });
 
              console.log('---- INDEX OK ----');
@@ -258,25 +254,16 @@
 
              $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
 
-             // $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
-
-             // console.log('Type: ' + typeof(Prefs.readConfig('tabDropActivate')));
-
-             if (Prefs.readConfig('tabDropActivate') === 'true') {
-                 $('#tabDropActivate').prop('checked', true)
-                                      .checkboxradio('refresh');
-             } else {
-                 $('#tabDropActivate').prop('checked', false)
-                                      .checkboxradio('refresh');
-             }
+             if (Prefs.readConfig('tabDropActivate') === 'true')
+                 $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
+             else
+                 $('#tabDropActivate').prop('checked', false).checkboxradio('refresh')
 
              $('#tabDropActivate').change(function() {
                  Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
              });
 
              $('#tabs').find('.mobFeedRefresh').click();
-
-             // $(".feedControls").slideUp();
 
          });
 
