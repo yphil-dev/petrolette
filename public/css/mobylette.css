@@ -160,13 +160,13 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 
 ul.tabSort {
     /* display: inline; */
-    display: inline-flex;
-    flex-flow: row wrap;
+    display: flex;
+    flex-flow: column wrap;
+    max-height: 800px;
     align-items:flex-start;
     align-content:flex-start;
     /* margin-left: -8px; /\* Adjustment for the gutter *\/ */
 }
-
 
 .tabSort li.feed,
 .selected {
@@ -180,7 +180,7 @@ li.feed {
 }
 
 li.feed {
-  flex: auto;
+  /* flex: auto; */
   /* align-self:stretch; */
   min-width: 150px;
   margin: .5rem; /* Some gutter */
@@ -200,7 +200,6 @@ div.feedItem img {
 div.feedItem img.full {
     min-width:100%;
 }
-
 
 /* li.feed { */
 /*   &:nth-child(4n+1){ */
@@ -313,4 +312,8 @@ li.feedItem:nth-child(odd) { background: slategray; }
 
 li.feedItem:hover {
     background: darkslategray;
+}
+
+.ui-sortable-placeholder {
+    border: 5px dotted red;
 }

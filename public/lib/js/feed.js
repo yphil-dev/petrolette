@@ -111,6 +111,7 @@ var Feed = (function() {
         },
         populateFeed:function($button) {
 
+            var r = new RegExp('^(?:[a-z]+:)?//', 'i');
 
             var $feed = $button.parent().parent().parent().parent()
             var $feedTitle = $feed.children().children('.feedTitle')
@@ -118,8 +119,6 @@ var Feed = (function() {
             var feedUrl = $feed.data('url')
             var feedLimit = $feed.data('limit')
             var feedType = $feed.data('type')
-
-            console.log('Ftype: ' + feedType)
 
             $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
@@ -135,7 +134,6 @@ var Feed = (function() {
                 if (typeof data.entries !== 'undefined') {
                     $feedTitle.text(data.title);
 
-
                     data.entries.slice(0, parseInt(feedLimit)).forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
 
@@ -146,16 +144,25 @@ var Feed = (function() {
 
                             var $tempDom = $('<output>').append(content);
 
-                            var $content = $(content)
-
-                            // console.log('D: ' + $tempDom.find('img').attr('src'))
-
                             var $feedItem = $('<li class="feedItem">')
                             var $itemDiv = $('<div class="feedItem">')
                             var $itemLink = $('<a class="ui-helper-clearfix">').attr('href', entry.link).append(entry.title)
 
+                            var $hostName = $itemLink.prop('hostname')
+                            var $protocol = $itemLink.prop('protocol')
+                            console.log('P: ' + $protocol)
+
                             if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
-                                var $itemImg = $('<img src="' + $tempDom.find('img').attr('src') + '" />')
+
+                                var $imgUrl = $tempDom.find('img').attr('src')
+
+
+                                if (!r.test($imgUrl))
+                                    $imgUrl = $protocol + '//' + $hostName + $imgUrl
+
+                                console.log('S: ' + $imgUrl)
+
+                                var $itemImg = $('<img src="' + $imgUrl + '" />')
 
                                 if (feedType == 'photo')
                                     $itemImg.addClass('full')

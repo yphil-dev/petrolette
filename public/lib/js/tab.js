@@ -9,21 +9,21 @@ var Tab = (function() {
                 var name = 'Tab ' + tabIndex;
             }
 
-            var $thisSortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
+            var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
-            var $thisButton = $('<button class="addFeed"><i class="icon-plus"></i> Feed</button>').button();
+            var $addFeed = $('<button class="addFeed"><i class="icon-plus"></i> Feed</button>').button();
 
-            $thisButton.on( "click", function() {
+            $addFeed.on( "click", function() {
                 Feed.newFeed($(this).prev(), '//url100', 'photo', 8);
             });
 
-            var $thisTabPane = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
+            var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
 
-            $thisSortable.on('click', 'i.feedSelect', function () {
+            $sortable.on('click', 'i.feedSelect', function () {
                 $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
             });
 
-            $thisSortable.sortable({
+            $sortable.sortable({
                 revert:0,
                 receive: function(e, ui) {
                     ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
@@ -40,8 +40,8 @@ var Tab = (function() {
 
                     //hide selected items
                     item.siblings('.selected').addClass('hidden');
-                    var helper = $('<ul class="feedHelper"><ul/>');
-                    return helper.append($elements);
+                    var $helper = $('<ul class="feedHelper"><ul/>');
+                    return $helper.append($elements);
                 },
                 start: function (e, ui) {
                     console.log('yow!');
@@ -63,9 +63,9 @@ var Tab = (function() {
                 }
             }).disableSelection();
 
-            $thisSortable.appendTo($thisTabPane);
-            $thisButton.appendTo($thisTabPane);
-            $thisTabPane.appendTo($tabs);
+            $sortable.appendTo($tabPanel);
+            $addFeed.appendTo($tabPanel);
+            $tabPanel.appendTo($tabs);
 
             var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>')
 
