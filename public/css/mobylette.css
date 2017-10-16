@@ -183,7 +183,7 @@ li.feed {
 
 li.feed {
   flex: auto;
-  align-self:stretch;
+  /* align-self:stretch; */
   min-width: 150px;
   margin: .5rem; /* Some gutter */
   transition: width 0.7s ease-out;
