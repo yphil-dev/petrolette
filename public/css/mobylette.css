@@ -187,10 +187,14 @@ li.feed {
   transition: width 0.7s ease-out;
 }
 
+div.feedItem {
+    padding: .5rem;
+}
+
 div.feedItem img {
     vertical-align: text-top;
     float:left;
-    padding: 5px;
+    margin: 0 .5rem .5rem 0; /* Some gutter */
 }
 
 
