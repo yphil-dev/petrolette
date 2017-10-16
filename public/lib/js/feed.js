@@ -133,15 +133,25 @@ var Feed = (function() {
                 if (typeof data.entries !== 'undefined') {
                     $feedTitle.text(data.title);
 
-                    console.log('L: ' + JSON.stringify(data.entries))
 
                     data.entries.slice(0, parseInt(feedLimit)).forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
 
+                            // var $FeedContent = $(JSON.stringify(entry.content))
+
+                            var content = $.parseHTML(entry.content)
+                            var $content = $(content)
+
+                            console.log('D: ' + $content.find('img').attr('src'))
+
                             var $feedItem = $('<li class="feedItem">')
                             var $itemDiv = $('<div class="feedItem">')
-                            var $itemLink = $('<a>').attr('href', entry.link).append(entry.title)
-                            // console.log('description: ' + JSON.stringify(entry.content))
+                            var $itemLink = $('<a class="ui-helper-clearfix">').attr('href', entry.link).append(entry.title)
+
+                            if (typeof $content.find('img').attr('src') !== 'undefined') {
+                                var $itemImg = $('<img src="' + $content.find('img').attr('src') + '" />')
+                                $itemImg.prependTo($itemLink)
+                            }
 
                             $itemLink.appendTo($itemDiv)
                             $itemDiv.appendTo($feedItem)

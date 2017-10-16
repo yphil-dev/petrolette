@@ -170,9 +170,7 @@ ul.tabSort {
 
 .tabSort li.feed,
 .selected {
-    /* margin: 0 5px 5px 5px; */
     padding: 2px;
-    font-size: 1.2em;
     width: 25%;
 }
 
@@ -188,6 +186,13 @@ li.feed {
   margin: .5rem; /* Some gutter */
   transition: width 0.7s ease-out;
 }
+
+div.feedItem img {
+    vertical-align: text-top;
+    float:left;
+    padding: 5px;
+}
+
 
 /* li.feed { */
 /*   &:nth-child(4n+1){ */
