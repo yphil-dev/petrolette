@@ -137,7 +137,7 @@ var Feed = (function() {
                     data.entries.slice(0, parseInt(feedLimit)).forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
 
-                            // console.log('ALL: ' + JSON.stringify(entry))
+                            console.log('ALL: ' + JSON.stringify(entry))
 
                             var content = $.parseHTML(entry.content)
                             // console.log('CONTENT: ' + content)
@@ -155,11 +155,10 @@ var Feed = (function() {
                             if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
 
                                 var $imgUrl = $tempDom.find('img').attr('src')
-
-
-                                if (!r.test($imgUrl))
-                                    $imgUrl = $protocol + '//' + $hostName + $imgUrl
-
+                                //
+                                //                                 if (!r.test($imgUrl))
+                                //                                     $imgUrl = $protocol + '//' + $hostName + $imgUrl
+                                //
                                 console.log('S: ' + $imgUrl)
 
                                 var $itemImg = $('<img src="' + $imgUrl + '" />')
