@@ -51,84 +51,6 @@ button {
     margin: 0 .5em .5em 0;
 }
 
-.tabSort li.feed,
-.selected {
-    margin: 0 5px 5px 5px;
-    padding: 2px;
-    font-size: 1.2em;
-    width: 25%;
-}
-
-.selected,
-.feed {
-    width:250px !important;
-}
-
-.feedBody {
-    margin: 2px 0 0 0;
-}
-
-.truncate {
-    width: 250px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.mobHeader {
-    cursor:grab;
-    /* text-align:left; */
-    min-width:100%;
-    min-height:22px;
-    display: flex;
-    /* flex-flow: row; */
-    justify-content: space-around;
-    /* background-color:red; */
-}
-
-.mobHeader > div {
-    flex: auto;
-    /* width: 10rem; */
-    /* white-space:nowrap; */
-    /* display:inline-block; */
-    /* display:none; */
-}
-
-.mobHeader .feedTitle {
-    flex: initial;
-    /* width:50%; */
-    font-size:.8em;
-    /* display: inline; */
-}
-
-
-.mobHeader .feedControls {
-    z-index:5;
-    min-width:80px;
-    /* position:absolute; */
-    /* right:0; */
-    /* float: right; */
-    display: flex;
-    justify-content: flex-end;
-}
-
-.mobHeader .feedControls div {
-  flex: 1 100%;
-}
-
-.feedControl {
-    font-size: .8em !important;
-}
-
-.mobHeader .feedControls div i.ui-button {
-    padding: 0 !important;
-}
-
-
-.selected {
-    opacity: 0.5;
-}
-
 /* .hidden { */
 /*     display:none; */
 /* } */
@@ -225,8 +147,115 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 
 /* Feed */
 
-li.feedItem {
-    background: #D3D3D3;
+ul.tabSort {
+     /* display: inline; */
 }
 
-li.feedItem:nth-child(odd) { background: #A9A9A9; }
+
+.tabSort li.feed,
+.selected {
+    /* margin: 0 5px 5px 5px; */
+    padding: 2px;
+    font-size: 1.2em;
+    width: 25%;
+}
+
+.selected,
+.feed {
+    width:250px !important;
+}
+
+.feedBody {
+    margin: 2px 0 0 0;
+}
+
+.truncate {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mobHeader {
+    cursor:grab;
+    /* text-align:left; */
+    min-width:100%;
+    min-height:22px;
+    display: flex;
+    /* flex-flow: row; */
+    justify-content: space-around;
+    /* background-color:red; */
+}
+
+.mobHeader > div {
+    flex: auto;
+    /* width: 10rem; */
+    /* white-space:nowrap; */
+    /* display:inline-block; */
+    /* display:none; */
+}
+
+.mobHeader .feedTitle {
+    flex: initial;
+    /* width:50%; */
+    font-size:.8em;
+    /* display: inline; */
+}
+
+
+.mobHeader .feedControls {
+    z-index:5;
+    min-width:80px;
+    /* position:absolute; */
+    /* right:0; */
+    /* float: right; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mobHeader .feedControls div {
+  flex: 1 100%;
+}
+
+.feedControl {
+    font-size: .8em !important;
+}
+
+.mobHeader .feedControls div i.ui-button {
+    padding: 0 !important;
+}
+
+
+.selected {
+    opacity: 0.5;
+}
+
+/* Item */
+li.feedItem {
+    background: dimgray;
+}
+
+.feedItem a:link {
+    color: white;
+}
+
+/* visited link */
+.feedItem a:visited {
+    color: lightgray;
+}
+
+/* /\* mouse over link *\/ */
+/* .feedItem a:hover { */
+/*     color: hotpink; */
+/* } */
+
+/* selected link */
+.feedItem a:active {
+    color: blue;
+}
+
+li.feedItem:nth-child(odd) { background: slategray; }
+
+li.feedItem:hover {
+    background: darkslategray;
+}

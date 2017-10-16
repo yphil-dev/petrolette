@@ -5,18 +5,18 @@ var Feed = (function() {
 
             var feedIndex = $('.feed').length;
 
-            var $feedToggle = $('<i class="icon-down-dir rotate"></i>').click(function() {
+            var $feedToggle = $('<i class="icon-down-dir rotate">').click(function() {
                 $(this).toggleClass("down")
                 $(this).parent().parent().parent().children('.feedBody').toggle(300);
             });
 
-            var $feedSelect = $('<i class="icon-check-empty-1 feedSelect feedControl"></i>').button();
-            var $feedDelete = $('<i class="icon-trash feedDelete feedControl"></i>').button();
-            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl"></i>').button()
-            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl"></i>').button();
+            var $feedSelect = $('<i class="icon-check-empty-1 feedSelect feedControl">').button();
+            var $feedDelete = $('<i class="icon-trash feedDelete feedControl">').button();
+            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl">').button()
+            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl">').button();
 
             var $title = $('<span class="truncate">' + url + '<span>');
-            var $feedControls = $('<div class="feedControls"></div>');
+            var $feedControls = $('<div class="feedControls">');
 
             $feedDelete.click(function() {
 
@@ -106,14 +106,13 @@ var Feed = (function() {
         },
         populateFeed:function($button) {
 
-            $button.css("color", "transparent").addClass('spinner')
 
             var $feed = $button.parent().parent().parent().parent()
             var $feedTitle = $feed.children().children('.feedTitle')
             var $feedBody = $feed.children().children('ul.feedBody')
             var feedUrl = $feed.data('url')
 
-
+            $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
 
             $.get("/feed", {
@@ -128,28 +127,21 @@ var Feed = (function() {
                     data.entries.forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
 
-                            var $feedItem = $('<li class="feedItem"></li>')
-                            var $itemDiv = $('<div class="feedItem"></div>')
-
-                            var $itemLink = $('<a></a>').attr('href', entry.link).append(entry.title)
+                            var $feedItem = $('<li class="feedItem">')
+                            var $itemDiv = $('<div class="feedItem">')
+                            var $itemLink = $('<a>').attr('href', entry.link).append(entry.title)
 
                             $itemLink.appendTo($itemDiv)
-
                             $itemDiv.appendTo($feedItem)
                             $feedItem.appendTo($feedBody)
-
-                            // console.log(entry.title + ':' + entry.link);
-                            // $feedDiv.parent().children('.feedBody')
                         }
                     })
-
 
                 } else {
                     $feed.addClass('ui-state-error');
                     $feedTitle.text('Error');
                     $feedBody.html('<li class="feedItem">Feed Error: ' + feedUrl + '</li>');
                 }
-
             });
         }
     };
