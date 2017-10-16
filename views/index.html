@@ -122,34 +122,39 @@
                      },
                      'OK': function() {
 
-                         var $tabFeedId = $('#' + $(this).data('feedId'))
+                         var $tabFeedId = $('li#' + $(this).data('feedId'))
 
                          var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
 
-                         console.log('i: ' + $tabFeedId.data('url'))
-
-                         console.log('data: ' + $('#feedUrl').val())
+                         console.log('id: ' + $(this).data('feedId'))
 
                          $tabFeedId.data('url', $('#feedUrl').val())
                          $tabFeedId.data('limit', $('#feedLimit').val())
+
+                         $('.feedType').children('input').each(function () {
+                             if ($(this).is(':checked')) {
+                                 console.log('type: ' + $(this).attr('id')); // "this" is the current element in the loop
+                                 $tabFeedId.data('type', $(this).attr('id'))
+                             }
+
+                         });
+
                          // $tabFeedId.data('type', $(this).data('feedType'))
 
                          Feed.populateFeed($mobFeedRefresh);
+                         Tab.saveTabs();
 
-                         $( this ).dialog( 'close' );
+                         $(this).dialog( 'close' );
                      }
                  },
                  open: function( event, ui ) {
 
-                     $(this).data('feedId');
-
                      $('#feedUrl').val($(this).data('feedUrl'));
                      $('#feedLimit').val($(this).data('feedLimit'));
-                     $('.inlineButtons input').prop('checked',false).change();
-                     $('#type-' + $(this).data('feedType')).prop('checked',true).checkboxradio('refresh')
+                     $('.feedType #' + $(this).data('feedType')).prop('checked',true).change();
 
                      $(this).on('submit', function () {
-                         $('#' + $(this).data('tabId')).text($('#tabName').val());
+                         Feed.populateFeed($mobFeedRefresh);
                          $(this).dialog('close');
                          return false;
                      });
@@ -306,13 +311,13 @@
                     <label for="feedUrl">URL</label>
                     <input type="text" name="url" id="feedUrl" value="" class="text ui-widget-content ui-corner-all">
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                    <div class="inlineButtons">
-                        <label for="type-mixed">Mixed</label>
-                        <input type="radio" name="radio-1" id="type-mixed">
-                        <label for="type-photo">Photo</label>
-                        <input type="radio" name="radio-1" id="type-photo">
-                        <label for="type-text">Text</label>
-                        <input type="radio" name="radio-1" id="type-text">
+                    <div class="feedType">
+                        <label for="mixed">Mixed</label>
+                        <input type="radio" name="radio-1" id="mixed">
+                        <label for="photo">Photo</label>
+                        <input type="radio" name="radio-1" id="photo">
+                        <label for="text">Text</label>
+                        <input type="radio" name="radio-1" id="text">
                     </div>
                     <label for="feedLimit">Limit # of items</label>
                     <input id="feedLimit" name="feedLimit">

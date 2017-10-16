@@ -147,6 +147,10 @@ var Tab = (function() {
 
             return myTabs;
 
+        },
+        saveTabs:function() {
+            var allTabs = Tab.getTabs()
+            Prefs.writeConfig('tabs', JSON.stringify(allTabs));
         }
     };
 

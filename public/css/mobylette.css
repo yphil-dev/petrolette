@@ -188,13 +188,17 @@ li.feed {
 }
 
 div.feedItem {
-    padding: .5rem;
+    padding: .2rem;
 }
 
 div.feedItem img {
-    vertical-align: text-top;
+    max-width:50%;
     float:left;
-    margin: 0 .5rem .5rem 0; /* Some gutter */
+    margin: 0 .2rem .2rem 0; /* Some gutter */
+}
+
+div.feedItem img.full {
+    min-width:100%;
 }
 
 

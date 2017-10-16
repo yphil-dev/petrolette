@@ -7,7 +7,7 @@ var Feed = (function() {
 
             var $feedToggle = $('<i class="icon-down-dir rotate">').click(function() {
                 $(this).toggleClass("down")
-                $(this).parent().parent().parent().children('.feedBody').toggle(300);
+                $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
             });
 
             var $feedSelect = $('<i class="icon-check-empty-1 feedSelect feedControl">').button();
@@ -117,7 +117,9 @@ var Feed = (function() {
             var $feedBody = $feed.children().children('ul.feedBody')
             var feedUrl = $feed.data('url')
             var feedLimit = $feed.data('limit')
+            var feedType = $feed.data('type')
 
+            console.log('Ftype: ' + feedType)
 
             $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
@@ -137,16 +139,16 @@ var Feed = (function() {
                     data.entries.slice(0, parseInt(feedLimit)).forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
 
-                            console.log('ALL: ' + JSON.stringify(entry))
+                            // console.log('ALL: ' + JSON.stringify(entry))
 
                             var content = $.parseHTML(entry.content)
-                            console.log('CONTENT: ' + content)
+                            // console.log('CONTENT: ' + content)
 
                             var $tempDom = $('<output>').append(content);
 
                             var $content = $(content)
 
-                            console.log('D: ' + $tempDom.find('img').attr('src'))
+                            // console.log('D: ' + $tempDom.find('img').attr('src'))
 
                             var $feedItem = $('<li class="feedItem">')
                             var $itemDiv = $('<div class="feedItem">')
@@ -154,7 +156,12 @@ var Feed = (function() {
 
                             if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
                                 var $itemImg = $('<img src="' + $tempDom.find('img').attr('src') + '" />')
-                                $itemImg.prependTo($itemLink)
+
+                                if (feedType == 'photo')
+                                    $itemImg.addClass('full')
+
+                                if (feedType !== 'text')
+                                    $itemImg.prependTo($itemLink)
                             }
 
                             $itemLink.appendTo($itemDiv)
