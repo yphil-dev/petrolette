@@ -74,6 +74,12 @@ label.feedSelect {
     padding: 0 !important;
 }
 
+button.addFeed {
+  position: absolute;
+  bottom: 0;
+  /* left: 0; */
+}
+
 /* Spinner */
 
 @keyframes spinner {
@@ -139,6 +145,11 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
     display:none;
 }
 
+
+.tab  {
+    min-height:100%;
+}
+
 #tabs li .ui-icon-close {
     /* float: left; */
     /* margin: 0.4em 0.2em 0 0; */
@@ -149,9 +160,11 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 
 ul.tabSort {
     /* display: inline; */
-    display: flex;
+    display: inline-flex;
     flex-flow: row wrap;
-    margin-left: -8px; /* Adjustment for the gutter */
+    align-items:flex-start;
+    align-content:flex-start;
+    /* margin-left: -8px; /\* Adjustment for the gutter *\/ */
 }
 
 
@@ -170,25 +183,26 @@ li.feed {
 
 li.feed {
   flex: auto;
-  height: 250px;
+  align-self:stretch;
   min-width: 150px;
-  margin: 0 8px 8px 0; /* Some gutter */
+  margin: .5rem; /* Some gutter */
+  transition: width 0.7s ease-out;
 }
 
-li.feed {
-  &:nth-child(4n+1){
-     width: 250px;
-  }
-  &:nth-child(4n+2){
-     width: 325px;
-  }
-  &:nth-child(4n+3){
-     width: 180px;
-  }
-  &:nth-child(4n+4){
-     width: 380px;
-  }
-}
+/* li.feed { */
+/*   &:nth-child(4n+1){ */
+/*      width: 250px; */
+/*   } */
+/*   &:nth-child(4n+2){ */
+/*      width: 325px; */
+/*   } */
+/*   &:nth-child(4n+3){ */
+/*      width: 180px; */
+/*   } */
+/*   &:nth-child(4n+4){ */
+/*      width: 380px; */
+/*   } */
+/* } */
 
 .feedBody {
     margin: 0;
@@ -203,32 +217,35 @@ li.feed {
 
 .mobHeader {
     cursor:grab;
-    /* text-align:left; */
     min-width:100%;
     min-height:22px;
     display: flex;
-    /* flex-flow: row; */
-    justify-content: space-around;
-    /* background-color:red; */
 }
 
 .mobHeader > div {
-    flex: auto;
+    flex: 0 0 auto;
     /* width: 10rem; */
     /* white-space:nowrap; */
     /* display:inline-block; */
     /* display:none; */
 }
 
-.mobHeader .feedTitle {
+.mobHeader .feedToggle {
+    flex: 3 0 auto;
     flex: initial;
+    flex-shrink: 3;
+}
+
+.mobHeader .feedTitle {
+    flex: 0 3 auto;
+    flex-shrink: 3;
     /* width:50%; */
     font-size:.8em;
     /* display: inline; */
 }
 
-
 .mobHeader .feedControls {
+    flex: 3 0 auto;
     z-index:5;
     min-width:80px;
     /* position:absolute; */

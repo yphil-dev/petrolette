@@ -49,9 +49,9 @@ var Feed = (function() {
             var $feedBodyUl = $('<ul class="feedBody"></ul>');
             var $dumbLi = $('<li>plop</li>');
 
-            var $li = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
+            var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
-            $li.hover (
+            $feed.hover (
                 function() {$(this).find('.feedControls').slideDown();},
                 function() {$(this).find('.feedControls').slideUp();}
             );
@@ -59,12 +59,29 @@ var Feed = (function() {
             var $header = $('<div class="mobHeader"></div>');
             var $feedIcon = $('<div class="feedIcon"></div>');
 
-            var $toggleDiv = $('<div class="toggle hiddeable"></div>');
-            var $selectDiv = $('<div class="TabSelect hiddeable"></div>');
-            var $deleteDiv = $('<div class="TabDelete hiddeable"></div>');
+            var $toggleDiv = $('<div class="feedToggle hiddeable"></div>');
+            var $selectDiv = $('<div class="feedSelect hiddeable"></div>');
+            var $deleteDiv = $('<div class="feedDelete hiddeable"></div>');
             var $titleDiv = $('<div class="feedTitle truncate"></div>');
             var $prefsDiv = $('<div class="prefs hiddeable"></div>');
             var $reloadDiv = $('<div class="reload hiddeable"></div>');
+
+            //
+            //             $feedToggle.appendTo($toggleDiv);
+            //             $feedSelect.appendTo($selectDiv);
+            //             $feedDelete.appendTo($deleteDiv);
+            //             $titleDiv.html(url);
+            //             $feedPrefs.appendTo($prefsDiv);
+            //             $feedReload.appendTo($reloadDiv);
+            //
+            //             $toggleDiv.appendTo($header);
+            //             $titleDiv.appendTo($header);
+            //             $selectDiv.appendTo($feedControls);
+            //             $deleteDiv.appendTo($feedControls);
+            //             $prefsDiv.appendTo($feedControls);
+            //             $reloadDiv.appendTo($feedControls);
+            //
+
 
             $feedToggle.appendTo($toggleDiv);
             $feedSelect.appendTo($selectDiv);
@@ -80,15 +97,16 @@ var Feed = (function() {
             $prefsDiv.appendTo($feedControls);
             $reloadDiv.appendTo($feedControls);
 
+
             $feedControls.appendTo($header);
 
             // $dumbLi.appendTo($feedBodyUl)
             $feedBodyUl.appendTo($feedBody)
 
-            $header.appendTo($li);
-            $feedBody.appendTo($li);
+            $header.appendTo($feed);
+            $feedBody.appendTo($feed);
 
-            $li.appendTo($tab);
+            $feed.appendTo($tab);
 
         },
         populateFeed:function($button) {
@@ -98,6 +116,9 @@ var Feed = (function() {
             var $feedTitle = $feed.children().children('.feedTitle')
             var $feedBody = $feed.children().children('ul.feedBody')
             var feedUrl = $feed.data('url')
+            var feedLimit = $feed.data('limit')
+
+            console.log('L: ' + feedLimit)
 
             $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
@@ -111,14 +132,13 @@ var Feed = (function() {
                 if (typeof data.entries !== 'undefined') {
                     $feedTitle.text(data.title);
 
-                    data.entries.forEach(function(entry) {
+                    data.entries.slice(0, parseInt(feedLimit)).forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
-
 
                             var $feedItem = $('<li class="feedItem">')
                             var $itemDiv = $('<div class="feedItem">')
                             var $itemLink = $('<a>').attr('href', entry.link).append(entry.title)
-                            console.log('description: ' + JSON.stringify(entry.content))
+                            // console.log('description: ' + JSON.stringify(entry.content))
 
                             $itemLink.appendTo($itemDiv)
                             $itemDiv.appendTo($feedItem)
