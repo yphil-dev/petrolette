@@ -159,15 +159,17 @@ var Feed = (function() {
                                 if (!r.test($imgUrl))
                                     $imgUrl = $protocol + '' + $hostName + $imgUrl
 
+                                var $imgLink = $('<a data-fancybox="gallery">').attr('href', $imgUrl)
                                 // console.log('S: ' + $imgUrl)
 
                                 var $itemImg = $('<img src="' + $imgUrl + '" />')
+                                    .appendTo($imgLink)
 
                                 if (feedType == 'photo')
                                     $itemImg.addClass('full')
 
                                 if (feedType !== 'text')
-                                    $itemImg.prependTo($itemLink)
+                                    $imgLink.appendTo($itemDiv)
                             }
 
                             $itemLink.appendTo($itemDiv)
