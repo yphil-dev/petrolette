@@ -137,19 +137,23 @@ var Feed = (function() {
                     data.entries.slice(0, parseInt(feedLimit)).forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
 
-                            // var $FeedContent = $(JSON.stringify(entry.content))
+                            console.log('ALL: ' + JSON.stringify(entry))
 
                             var content = $.parseHTML(entry.content)
+                            console.log('CONTENT: ' + content)
+
+                            var $tempDom = $('<output>').append(content);
+
                             var $content = $(content)
 
-                            console.log('D: ' + $content.find('img').attr('src'))
+                            console.log('D: ' + $tempDom.find('img').attr('src'))
 
                             var $feedItem = $('<li class="feedItem">')
                             var $itemDiv = $('<div class="feedItem">')
                             var $itemLink = $('<a class="ui-helper-clearfix">').attr('href', entry.link).append(entry.title)
 
-                            if (typeof $content.find('img').attr('src') !== 'undefined') {
-                                var $itemImg = $('<img src="' + $content.find('img').attr('src') + '" />')
+                            if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
+                                var $itemImg = $('<img src="' + $tempDom.find('img').attr('src') + '" />')
                                 $itemImg.prependTo($itemLink)
                             }
 
