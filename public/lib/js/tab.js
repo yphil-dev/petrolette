@@ -11,7 +11,7 @@ var Tab = (function() {
 
             var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
-            var $addFeed = $('<button class="addFeed"><i class="icon-plus"></i> Feed</button>').button();
+            var $addFeed = $('<button class="addFeed ui-helper-clearfix"><i class="icon-plus"></i> Feed</button>').button();
 
             $addFeed.on( "click", function() {
                 Feed.newFeed($(this).prev(), 'New Feed', 'mixed', 8);
@@ -79,7 +79,7 @@ var Tab = (function() {
             var $thisSelectedTab = $('#tabs div.ui-tabs-panel:not(.ui-tabs-hide)');
 
             $thisTab.droppable({
-                accept: 'ul, .tabSort li.feed',
+                accept: 'li.feed',
                 hoverClass: 'ui-state-hover',
                 drop: function (event, ui) {
                     var $item = $(this);
@@ -91,11 +91,13 @@ var Tab = (function() {
                     $elements.show().hide('slow');
                     ui.draggable.show().hide('slow', function () {
 
-                        if ($('#tabDropActivate').prop('checked')) {
-                            $tabs.tabs('option', 'active', $index);
-                        }
+                        if ($('#tabDropActivate').prop('checked'))
+                            $tabs.tabs('option', 'active', $index)
 
-                        $(this).appendTo($list).show('slow').before($elements.show('slow'));
+                        $(this).appendTo($list).show('slow').before($elements.show('slow'))
+
+                        Tab.saveTabs()
+
                     });
                 }
             }).appendTo('#tabs ul#tabUl');

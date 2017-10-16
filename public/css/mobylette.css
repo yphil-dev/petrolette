@@ -21,26 +21,38 @@ ul {
 .flip { transform: rotate(-180deg);}
 
 div.mobylette {
-    background-color: #3e3e3e;
-    border-right: #2e2e2e solid 1px;
+    /* background-color: #3e3e3e; */
+    /* border-right: #2e2e2e solid 1px; */
     padding:.5em;
+    border: none !important;
 }
 
 button.mobylette {
     margin-top: .5em;
 }
 
-.mobylette h1 {
+.mobylette > h1 {
     color: #fc6a10;
 }
 
+.mobylette > .handle {
+    font-size: 2rem;
+    background-color: #3e3e3e;
+    position:absolute;
+    left:265px;
+    bottom:50px;
+}
+
+.mobylette > .handle > i {
+    border: none !important;
+}
 
 .mobylette h1 i {
     font-size: 10rem;
 }
 
 
-.mobylette h1 span {
+.mobylette > h1 > span {
     font-size:1.4em;
     color: orange;
     text-shadow: 1px 1px #5e354a;
@@ -51,12 +63,8 @@ button {
     margin: 0 .5em .5em 0;
 }
 
-/* .hidden { */
-/*     display:none; */
-/* } */
-
 .ui-tabs-panel {
-    padding:.4em .1em !important;
+    padding:0 !important;
 }
 
 label { display:block; }
@@ -92,8 +100,8 @@ button.addFeed {
     position: absolute;
     top: 65%;
     left: 65%;
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     margin-top: -10px;
     margin-left: -10px;
     border-radius: 50%;
@@ -109,17 +117,15 @@ button.addFeed {
 .rotate {
     display:inline-block;
     cursor:pointer;
-
-    /* -moz-transition: all 2s linear; */
-    /* -webkit-transition: all 2s linear; */
     transition: all .2s linear;
 }
 
 .rotate.down {
-    /* -ms-transform: rotate(-90deg); */
-    /* -moz-transform: rotate(-90deg); */
-    /* -webkit-transform: rotate(-90deg); */
     transform: rotate(-90deg);
+}
+
+.rotate.other {
+    transform: rotate(-180deg);
 }
 
 /* Fontello */
@@ -127,13 +133,13 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
   margin: 0;
 }
 
-.inlineButtons {
+.feedType {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-.inlineButtons *  {
+.feedType *  {
     flex-grow: 1;
 }
 
