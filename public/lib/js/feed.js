@@ -118,7 +118,6 @@ var Feed = (function() {
             var feedUrl = $feed.data('url')
             var feedLimit = $feed.data('limit')
 
-            console.log('L: ' + feedLimit)
 
             $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
@@ -129,8 +128,12 @@ var Feed = (function() {
 
                 $button.css("color", "#3e3e3e").removeClass('spinner');
 
+                $feedBody.empty()
+
                 if (typeof data.entries !== 'undefined') {
                     $feedTitle.text(data.title);
+
+                    console.log('L: ' + JSON.stringify(data.entries))
 
                     data.entries.slice(0, parseInt(feedLimit)).forEach(function(entry) {
                         if($.type(entry.title) === 'string') {
@@ -142,7 +145,7 @@ var Feed = (function() {
 
                             $itemLink.appendTo($itemDiv)
                             $itemDiv.appendTo($feedItem)
-                            $feedItem.prependTo($feedBody)
+                            $feedItem.appendTo($feedBody)
                         }
                     })
 
