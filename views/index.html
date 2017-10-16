@@ -21,6 +21,13 @@
 
          $(document).ready(function() {
 
+             $('img').fancybox({
+                 helpers: {
+                     overlay: {
+                         locked: false
+                     }
+                 }
+             });
 
              var $handle = $('.mobylette > .handle')
              var $slider = $('#slider')
@@ -37,15 +44,13 @@
 
              $handle.click
 
-             // $('body').mouseenter(function() {
-             //     $handle.toggle('slide', 'right', 500);
-             //     console.log('enter')
-             // })
-
-             // $('#tabs').mouseenter(function() {
-             //     console.log('leave')
-             //     $handle.toggle('slide', 'left', 500);
-             // });
+             $('#tabUl').mouseenter(function() {
+                 // $handle.toggle('slide', 'right', 500);
+                 console.log('enter')
+             }).mouseleave(function() {
+                 console.log('leave')
+                 // $handle.toggle('slide', 'left', 500);
+             });
 
              var $tabs = $("#tabs").tabs({
                  // heightStyle: "fill"
@@ -234,6 +239,8 @@
                          console.log('data: ' + $tabFeedId.text())
 
                          $tabFeedId.remove()
+
+                         Tab.saveTabs()
 
                          $(this).dialog( "close" );
 

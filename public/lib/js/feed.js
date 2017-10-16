@@ -25,6 +25,7 @@ var Feed = (function() {
                 $('#killFeedDialog').data('feedId', $thisFeedId).dialog('open')
                 $('#killFeedDialog').dialog('option', 'title', 'Kill the ' + $(this).parent().parent().prev().text() + ' feed?');
 
+
             });
 
             $feedSelect.click(function() {
