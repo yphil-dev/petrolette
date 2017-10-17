@@ -23,6 +23,13 @@
 
         <script>
 
+
+         if (window.File && window.FileReader && window.FileList && window.Blob) {
+             // Great success! All the File APIs are supported.
+         } else {
+             alert('The File APIs are not fully supported in this browser.');
+         }
+
          $(document).ready(function() {
 
              var $tabs = $("#tabs").tabs({
@@ -30,10 +37,11 @@
              });
 
              var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
-             console.log('Speed: ' + gallerySlideshowSpeed)
+             var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
 
-             // $.fancybox.defaults.animationEffect = "fade";
-             $.fancybox.defaults.transitionEffect = "slide";
+             console.log('gallerySlideTransition: ' + gallerySlideTransition)
+
+             $.fancybox.defaults.transitionEffect = gallerySlideTransition
              $.fancybox.defaults.slideShow = {
                  autoStart : false,
                  speed     : gallerySlideshowSpeed
@@ -164,7 +172,6 @@
 
                          var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
 
-                         console.log('id: ' + $(this).data('feedId'))
 
                          $tabFeedId.data('url', $('#feedUrl').val())
                          $tabFeedId.data('limit', $('#feedLimit').val())
@@ -221,6 +228,8 @@
 
                          $tabs.tabs('refresh');
 
+                         Tab.saveTabs();
+
                          $(this).dialog( "close" );
                          return;
 
@@ -228,6 +237,11 @@
                      Cancel: function() {
                          $( this ).dialog( "close" );
                      }
+                 },
+                 open: function () {
+                     $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');
+
+                     // .addClass("custom");
                  }
              });
 
@@ -253,6 +267,13 @@
                      },
                      Cancel: function() {
                          $( this ).dialog( "close" );
+                     },
+                     open: function () {
+
+                         console.log('this: ' + $(this).get())
+
+
+                         // .addClass("custom");
                      }
                  }
              });
@@ -302,6 +323,24 @@
                  }
              });
 
+
+             $('#gallerySlideTransition').selectmenu({
+                 width: 252,
+                 change: function( event, data ) {
+
+                     console.log('Value: ' + data.item.value)
+                     $.fancybox.defaults.transitionEffect = data.item.value
+                     Prefs.writeConfig('gallerySlideTransition', data.item.value);
+
+                     // Prefs.writeConfig('gallerySlideTransition', data.item.value);
+
+                     // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+                 }
+             });
+
+             $('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
+
              $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
 
              if (Prefs.readConfig('tabDropActivate') === 'true')
@@ -313,13 +352,13 @@
                  Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
              });
 
-             $( "#sslider" ).slider({
+             $('#sslider').slider({
                  value: gallerySlideshowSpeed,
                  min: 0,
                  max: 10000,
                  step: 100,
                  slide: function( event, ui ) {
-                     $( "#amount" ).val(ui.value + 'ms' );
+                     $('#amount').val(ui.value + 'ms');
                  },
                  change: function( event, ui ) {
                      Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
@@ -329,7 +368,7 @@
 
                  }
              });
-             $( "#amount" ).val($( "#sslider" ).slider( "value" ) + 'ms' );
+             $('#amount').val($('#sslider').slider('value') + 'ms');
 
              $('#tabs').find('.mobFeedRefresh').click();
 
@@ -372,7 +411,7 @@
 
         <div id="feedDialog" title="Feed parameters" class="mobDOM">
             <form>
-                <fieldset>
+                <fieldset class="mobDialog">
                     <label for="feedUrl">URL</label>
                     <input type="text" name="url" id="feedUrl" value="" class="text ui-widget-content ui-corner-all">
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
@@ -409,6 +448,7 @@
                 <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
                 <!-- <button id="colorselector2"><i class="fa fa-cube" aria-hidden="true"></i> Color</button>
                    -->
+                <label for="themes">Theme</label>
                 <select id="themes">
                     <option value="base">Base</option>
                     <option value="black-tie">Black-Tie</option>
@@ -441,12 +481,46 @@
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
                 <legend>Image gallery</legend>
-                <label for="amount">Slideshow speed:</label>
-                <input type="text" id="amount" readonly style="border:0; font-weight:bold;">
+                <label for="amount">Slideshow speed&nbsp;<input type="text" id="amount" readonly style="border:0; font-weight:bold;">
+                </label>
                 <div id="sslider"></div>
+
+                <label for="gallerySlideTransition">Slide transition</label>
+                <select id="gallerySlideTransition">
+                    <option value="false">None</option>
+                    <option value="fade">Fade</option>
+                    <option value="slide">Slide</option>
+                    <option value="circular">Circular</option>
+                    <option value="tube">Tube</option>
+                    <option value="zoom-in-out">Zoom-in-out</option>
+                    <option value="rotate">Rotate</option>
+
+                </select>
+
             </fieldset>
 
         </div>
+
+        <input type="file" id="files" name="files[]" multiple />
+        <output id="list"></output>
+
+        <script>
+         function handleFileSelect(evt) {
+             var files = evt.target.files; // FileList object
+
+             // files is a FileList of File objects. List some properties.
+             var output = [];
+             for (var i = 0, f; f = files[i]; i++) {
+                 output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                             f.size, ' bytes, last modified: ',
+                             f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                             '</li>');
+             }
+             document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+         }
+
+         document.getElementById('files').addEventListener('change', handleFileSelect, false);
+        </script>
 
         <script src="/static/lib/js/tab.js"></script>
         <script src="/static/lib/js/feed.js"></script>

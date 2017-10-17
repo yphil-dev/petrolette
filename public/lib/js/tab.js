@@ -3,7 +3,9 @@ var Tab = (function() {
     return {
         newTab:function($tabs, name, feeds) {
 
-            var tabIndex = $('#tabs ul').length;
+            var tabIndex = $('ul#tabUl li.mobTab').length + 1;
+
+            console.log('L: ' + $('ul#tabUl li.mobTab').length)
 
             if (!name) {
                 var name = 'Tab ' + tabIndex;
