@@ -23,7 +23,7 @@ var Prefs = (function() {
 
     // var newTabList = jQuery.extend(true, {}, tabList);
 
-    var defaults = {'background-color':'#333333', 'tabDropActivate': true, 'theme': 'base', 'tabs': JSON.stringify(tabList)};
+    var defaults = {'gallerySlideshowSpeed': 3000, 'tabDropActivate': true, 'theme': 'base', 'tabs': JSON.stringify(tabList)};
 
     return {
         readConfig:function(key) {

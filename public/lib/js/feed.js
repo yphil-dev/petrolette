@@ -141,7 +141,9 @@ var Feed = (function() {
                             // console.log('ALL: ' + JSON.stringify(entry))
 
                             var content = $.parseHTML(entry.content)
-                            // console.log('CONTENT: ' + content)
+                            var $entry = $(entry)
+
+                            // console.log('Enclosure: ' + $entry.find("enclosure").attr('url'))
 
                             var $tempDom = $('<output>').append(content);
 

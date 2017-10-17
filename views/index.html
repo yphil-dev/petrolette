@@ -7,27 +7,37 @@
         <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
         <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/static/css/fontello.css">
-        <link rel="stylesheet" href="/static/css/mobylette.css">
 
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+        <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+        <script src="/bower/jquery/dist/jquery.js"></script>
+        <script src="/bower/jquery-ui/jquery-ui.js"></script>
 
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
 
         <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
         <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
 
+        <link rel="stylesheet" href="/static/css/mobylette.css">
+
         <script>
 
          $(document).ready(function() {
 
-             $('img').fancybox({
-                 helpers: {
-                     overlay: {
-                         locked: false
-                     }
-                 }
+             var $tabs = $("#tabs").tabs({
+                 // heightStyle: "fill"
              });
+
+             var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
+             console.log('Speed: ' + gallerySlideshowSpeed)
+
+             // $.fancybox.defaults.animationEffect = "fade";
+             // $.fancybox.defaults.transitionEffect = "tube";
+             $.fancybox.defaults.slideShow = {
+                 autoStart : false,
+                 speed     : gallerySlideshowSpeed
+             }
 
              var $handle = $('.mobylette > .handle')
              var $slider = $('#slider')
@@ -42,18 +52,12 @@
                  $(this).children('i').toggleClass('other')
              });
 
-             $handle.click
-
              $('#tabUl').mouseenter(function() {
                  // $handle.toggle('slide', 'right', 500);
                  console.log('enter')
              }).mouseleave(function() {
                  console.log('leave')
                  // $handle.toggle('slide', 'left', 500);
-             });
-
-             var $tabs = $("#tabs").tabs({
-                 // heightStyle: "fill"
              });
 
              var $tabUl = $('#tabUl');
@@ -89,6 +93,7 @@
                  axis: 'x',
                  stop: function() {
                      $tabs.tabs('refresh');
+                     Tab.saveTabs()
                  }
              });
 
@@ -286,7 +291,7 @@
 
              // Prefs
              $('#themes').selectmenu({
-                 width: 232,
+                 width: 200,
                  change: function( event, data ) {
 
                      Prefs.writeConfig('theme', data.item.value);
@@ -307,7 +312,20 @@
                  Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
              });
 
+             $( "#sslider" ).slider({
+                 value: gallerySlideshowSpeed,
+                 min: 0,
+                 max: 10000,
+                 step: 100,
+                 slide: function( event, ui ) {
+                     $( "#amount" ).val(ui.value + 'ms' );
+                 }
+             });
+             $( "#amount" ).val($( "#sslider" ).slider( "value" ) + 'ms' );
+
              $('#tabs').find('.mobFeedRefresh').click();
+
+             $('.mobDOM').show('slow')
 
          });
 
@@ -321,20 +339,20 @@
             <ul id="tabUl"></ul>
         </div>
 
-        <button id="addTab" class="mobylette"><i class="icon-plus"></i> Tab</button>
-        <button id="trigger" class="mobylette"><i class="icon-cogs"></i> Preferences</button>
+        <button id="addTab" class="mobylette mobDOM"><i class="icon-plus"></i> Tab</button>
+        <button id="trigger" class="mobylette mobDOM"><i class="icon-cogs"></i> Preferences</button>
 
         <i id="savingIcon" class="icon-download"></i>
 
-        <div id="killTabDialog" title="">
+        <div id="killTabDialog" title="" class="mobDOM">
             <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
         </div>
 
-        <div id="killFeedDialog" title="">
+        <div id="killFeedDialog" title="" class="mobDOM">
             <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
         </div>
 
-        <div id="tabDialog" title="Rename tab">
+        <div id="tabDialog" title="Rename tab" class="mobDOM">
             <form>
                 <fieldset>
                     <label for="tabName">Name</label>
@@ -344,7 +362,7 @@
             </form>
         </div>
 
-        <div id="feedDialog" title="Feed parameters">
+        <div id="feedDialog" title="Feed parameters" class="mobDOM">
             <form>
                 <fieldset>
                     <label for="feedUrl">URL</label>
@@ -364,7 +382,7 @@
             </form>
         </div>
 
-        <div id="slider" class="mobylette ui-state-default">
+        <div id="slider" class="mobylette ui-state-default mobDOM">
             <div class="handle">
                 <i class="icon-right-open ui-state-default rotate"></i>
             </div>
@@ -373,7 +391,9 @@
                 <span>Mobylette</span>
             </h1>
 
-            <fieldset id="prefsForm">
+            <fieldset class="prefsForm ui-widget ui-widget-content">
+                <legend>Tabs</legend>
+
                 <button id="saveTabs"><i class="icon-download"></i> Save Tabs</button>
                 <button id="loadTabs"><i class="icon-upload"></i> Load Tabs</button>
 
@@ -408,6 +428,14 @@
                     <option value="ui-lightness">Ui-lightness</option>
                     <option value="vader">Vader</option>
                 </select>
+
+            </fieldset>
+
+            <fieldset class="prefsForm ui-widget ui-widget-content">
+                <legend>Image gallery</legend>
+                <label for="amount">Slideshow speed:</label>
+                <input type="text" id="amount" readonly style="border:0; font-weight:bold;">
+                <div id="sslider"></div>
             </fieldset>
 
         </div>
