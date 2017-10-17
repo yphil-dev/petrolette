@@ -114,6 +114,12 @@ var Feed = (function() {
 
             var r = new RegExp('^(?:[a-z]+:)?//', 'i');
 
+            var getLocation = function(href) {
+                var l = document.createElement("a")
+                l.href = href
+                return l
+            }
+
             var $feed = $button.parent().parent().parent().parent()
             var $feedTitle = $feed.children().children('.feedTitle')
             var $feedBody = $feed.children().children('ul.feedBody')
@@ -121,10 +127,25 @@ var Feed = (function() {
             var feedLimit = $feed.data('limit')
             var feedType = $feed.data('type')
 
+            var $feedToggle = $feed.find('.feedToggle')
+
+            var l = getLocation(feedUrl)
+            console.debug('$feedToggle: ' + $feedToggle.attr('class'))
+
             $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
 
-            $.get("/feed", {
+            $.get("/feedicon", {
+                "feedhost": l.protocol + '//' + l.hostname
+            }, function(data, status) {
+                var $favicon = $('<img class="ui-icon">').attr('src', data)
+                $feedToggle.html($favicon)
+                console.log('FAVICON: ' + data)
+                // console.log('STATUS: ' + JSON.stringify(status))
+
+            })
+
+                $.get("/feed", {
                 "feedurl": feedUrl
             }, function(data, status) {
 

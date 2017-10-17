@@ -32,6 +32,11 @@
 
          $(document).ready(function() {
 
+             var $addtext = $('<ol>\
+                 <li>Item1</li>\
+                 <li>Item2</li>\
+                 </ol>');
+
              var $tabs = $("#tabs").tabs({
                  // heightStyle: "fill"
              });
@@ -370,10 +375,14 @@
              });
              $('#amount').val($('#sslider').slider('value') + 'ms');
 
-             $('#tabs').find('.mobFeedRefresh').click();
+             // $('#tabs').find('.mobFeedRefresh').click();
 
              $('.mobDOM').show('slow')
-
+             //
+             //              $('#tabs').find('.mobFeedRefresh').each(function( index ) {
+             //                  console.log( index + ": " + $(this).delay( 8000 ).click() );
+             //              });
+             //
          });
 
         </script>

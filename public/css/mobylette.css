@@ -361,3 +361,7 @@ li.feedItem:hover {
 .mobDOM {
     display: none;
 }
+
+.ui-icon {
+    margin-right: .2rem;
+}
