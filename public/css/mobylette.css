@@ -206,8 +206,12 @@ li.feed {
 
     /* align-self:stretch; */
     /* min-width: 150px; */
-    margin: .5rem; /* Some gutter */
+    margin: .5rem 0 0 .5rem; /* Some gutter */
   /* transition: width 0.7s ease-out; */
+}
+
+li.feed:first-child {
+    margin-left: 0; /* Some gutter */
 }
 
 div.feedItem {
