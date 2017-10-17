@@ -45,6 +45,7 @@
 
              $slider.slideReveal({
                  trigger: $("#trigger"),
+                 width: 275
              });
 
              $handle.click(function () {
@@ -291,7 +292,7 @@
 
              // Prefs
              $('#themes').selectmenu({
-                 width: 200,
+                 width: 252,
                  change: function( event, data ) {
 
                      Prefs.writeConfig('theme', data.item.value);
@@ -319,6 +320,13 @@
                  step: 100,
                  slide: function( event, ui ) {
                      $( "#amount" ).val(ui.value + 'ms' );
+                 },
+                 change: function( event, ui ) {
+                     Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
+                     $.fancybox.defaults.slideShow = {
+                         speed     : ui.value
+                     }
+
                  }
              });
              $( "#amount" ).val($( "#sslider" ).slider( "value" ) + 'ms' );

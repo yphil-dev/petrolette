@@ -45,7 +45,7 @@ button.mobylette {
     font-size: 2rem;
     background-color: #3e3e3e;
     position:absolute;
-    left:265px;
+    left:290px;
     bottom:50px;
 }
 
@@ -68,9 +68,14 @@ fieldset {
     margin: 0 0 .5em 0;
 }
 
+fieldset > button {
+    width:100%;
+}
+
 fieldset.prefsForm > label,
 button {
     margin: 0 0 .5em 0;
+    width:220px;
 }
 
 .ui-tabs-panel {
