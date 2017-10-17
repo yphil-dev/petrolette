@@ -51,12 +51,12 @@ var Feed = (function() {
             var $dumbLi = $('<li>plop</li>');
 
             var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
-
-            $feed.hover (
-                function() {$(this).find('.feedControls').slideDown();},
-                function() {$(this).find('.feedControls').slideUp();}
-            );
-
+            //
+            //             $feed.hover (
+            //                 function() {$(this).find('.feedControls').slideDown();},
+            //                 function() {$(this).find('.feedControls').slideUp();}
+            //             );
+            //
             var $header = $('<div class="mobHeader"></div>');
             var $feedIcon = $('<div class="feedIcon"></div>');
 

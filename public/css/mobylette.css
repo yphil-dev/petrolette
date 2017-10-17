@@ -269,6 +269,7 @@ div.feedItem img.full {
     min-width:100%;
     min-height:22px;
     display: flex;
+    align-content: stretch;
 }
 
 .mobHeader > div {
@@ -280,22 +281,19 @@ div.feedItem img.full {
 }
 
 .mobHeader .feedToggle {
-    flex: 3 0 auto;
-    flex: initial;
-    flex-shrink: 3;
+    flex: 0 0 auto;
 }
 
 .mobHeader .feedTitle {
-    flex: 0 3 auto;
-    flex-shrink: 3;
+    flex: 3 3 auto;
     /* width:50%; */
     font-size:.8em;
     /* display: inline; */
 }
 
 .mobHeader .feedControls {
-    flex: 3 0 auto;
-    z-index:5;
+    flex: 0 0 auto;
+    z-index:50;
     min-width:80px;
     align-items:flex-start;
     align-content:flex-start;
