@@ -66,13 +66,14 @@
                  $(this).children('i').toggleClass('other')
              });
 
-             $('#tabUl').mouseenter(function() {
-                 // $handle.toggle('slide', 'right', 500);
-                 console.log('enter')
-             }).mouseleave(function() {
-                 console.log('leave')
-                 // $handle.toggle('slide', 'left', 500);
-             });
+
+             // $('#tabUl').mouseenter(function() {
+             //     // $handle.toggle('slide', 'right', 500);
+             //     console.log('enter')
+             // }).mouseleave(function() {
+             //     console.log('leave')
+             //     // $handle.toggle('slide', 'left', 500);
+             // });
 
              var $tabUl = $('#tabUl');
              var tabList = Prefs.readConfig('tabs');
@@ -113,7 +114,8 @@
 
              $('#tabLimit').spinner();
 
-             $( 'button' ).button();
+             $('button').button();
+             $('#files').button();
 
              $( 'input[type=radio]' ).checkboxradio();
              $('#tabDropActivate').checkboxradio();
@@ -375,9 +377,12 @@
              });
              $('#amount').val($('#sslider').slider('value') + 'ms');
 
-             // $('#tabs').find('.mobFeedRefresh').click();
+             $('#tabs').find('.mobFeedRefresh').click();
+
+             // $('#tabs').find('div.feedControls').slideUp()
 
              $('.mobDOM').fadeIn('slow')
+
              //
              //              $('#tabs').find('.mobFeedRefresh').each(function( index ) {
              //                  console.log( index + ": " + $(this).delay( 8000 ).click() );
@@ -510,8 +515,8 @@
 
         </div>
 
-        <input type="file" id="files" name="files[]" multiple />
-        <output id="list"></output>
+        <input class="mobDOM" type="file" id="files" name="files[]" multiple />
+        <output class="mobDOM" id="list"></output>
 
         <script>
          function handleFileSelect(evt) {

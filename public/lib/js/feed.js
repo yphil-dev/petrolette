@@ -46,17 +46,17 @@ var Feed = (function() {
                     .dialog('open');
             });
 
-            var $feedBody = $('<div class="feedBody ui-widget-content"></div>');
-            var $feedBodyUl = $('<ul class="feedBody"></ul>');
+            var $feedBody = $('<div class="feedBody"></div>');
+            var $feedBodyUl = $('<ul class="feedBody ui-widget-content"></ul>');
             var $dumbLi = $('<li>plop</li>');
 
             var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
-            //
-            //             $feed.hover (
-            //                 function() {$(this).find('.feedControls').slideDown();},
-            //                 function() {$(this).find('.feedControls').slideUp();}
-            //             );
-            //
+
+            // $feed.hover (
+            //     function() {$(this).find('div.feedControls').slideDown();},
+            //     function() {$(this).find('div.feedControls').slideUp();}
+            // );
+
             var $header = $('<div class="mobHeader"></div>');
             var $feedIcon = $('<div class="feedIcon"></div>');
 
@@ -139,13 +139,13 @@ var Feed = (function() {
                 "feedhost": l.protocol + '//' + l.hostname
             }, function(data, status) {
                 var $favicon = $('<img class="ui-icon">').attr('src', data)
-                $feedToggle.html($favicon)
+                // $feedToggle.html($favicon)
                 console.log('FAVICON: ' + data)
                 // console.log('STATUS: ' + JSON.stringify(status))
 
             })
 
-                $.get("/feed", {
+            $.get("/feed", {
                 "feedurl": feedUrl
             }, function(data, status) {
 
