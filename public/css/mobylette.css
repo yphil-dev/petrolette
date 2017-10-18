@@ -274,7 +274,7 @@ div.feedItem img.full {
 .mobHeader {
     cursor:grab;
     /* min-width:100%; */
-    /* min-height:22px; */
+    min-height:20px;
     display: flex;
     /* align-content: stretch; */
     padding:.2rem;
@@ -290,6 +290,7 @@ div.feedItem img.full {
 
 .mobHeader .feedToggle {
     flex: 0 0 auto;
+    margin: 0 .2rem 0 0;
 }
 
 .mobHeader .feedTitle {
@@ -344,6 +345,14 @@ li.feedItem {
     color: lightgray;
 }
 
+.ico-generic-rss {
+    width: 16px;
+    height: 16px;
+    background-image: url("/static/images/generic-rss-32.png");
+    background-size: 16px;
+    background-repeat: no-repeat;
+}
+
 /* /\* mouse over link *\/ */
 /* .feedItem a:hover { */
 /*     color: hotpink; */
@@ -371,4 +380,8 @@ li.feedItem:hover {
 
 .feedToggle > .ui-icon {
     margin: .1rem .2rem 0 .1rem;
+}
+
+.icon-down-dir {
+    background: 0 !important;
 }

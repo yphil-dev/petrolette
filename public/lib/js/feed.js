@@ -5,7 +5,7 @@ var Feed = (function() {
 
             var feedIndex = $('.feed').length;
 
-            var $feedToggle = $('<i class="icon-down-dir rotate">').click(function() {
+            var $feedToggle = $('<i class="ico-generic-rss rotate">').click(function() {
                 $(this).toggleClass("down")
                 $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
             });
@@ -15,8 +15,10 @@ var Feed = (function() {
             var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl">').button()
             var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl">').button();
 
+            var $feedIcon = $('<i class="icon-generic-rss feedControl">').button();
+
             var $title = $('<span class="truncate">' + url + '<span>');
-            var $feedControls = $('<div class="feedControls">');
+            var $feedControls = $('<div class="feedControls hiddeable">');
 
             $feedDelete.click(function() {
 
@@ -52,39 +54,35 @@ var Feed = (function() {
 
             var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
-            // $feed.hover (
-            //     function() {$(this).find('div.feedControls').slideDown();},
-            //     function() {$(this).find('div.feedControls').slideUp();}
-            // );
-
             var $header = $('<div class="mobHeader"></div>');
             var $feedIcon = $('<div class="feedIcon"></div>');
 
-            var $toggleDiv = $('<div class="feedToggle hiddeable"></div>');
-            var $selectDiv = $('<div class="feedSelect hiddeable"></div>');
-            var $deleteDiv = $('<div class="feedDelete hiddeable"></div>');
+            var $toggleDiv = $('<div class="feedToggle"></div>');
+            var $selectDiv = $('<div class="feedSelect"></div>');
+            var $deleteDiv = $('<div class="feedDelete"></div>');
             var $titleDiv = $('<div class="feedTitle truncate"></div>');
-            var $prefsDiv = $('<div class="prefs hiddeable"></div>');
-            var $reloadDiv = $('<div class="reload hiddeable"></div>');
-
-            //
-            //             $feedToggle.appendTo($toggleDiv);
-            //             $feedSelect.appendTo($selectDiv);
-            //             $feedDelete.appendTo($deleteDiv);
-            //             $titleDiv.html(url);
-            //             $feedPrefs.appendTo($prefsDiv);
-            //             $feedReload.appendTo($reloadDiv);
-            //
-            //             $toggleDiv.appendTo($header);
-            //             $titleDiv.appendTo($header);
-            //             $selectDiv.appendTo($feedControls);
-            //             $deleteDiv.appendTo($feedControls);
-            //             $prefsDiv.appendTo($feedControls);
-            //             $reloadDiv.appendTo($feedControls);
-            //
-
+            var $prefsDiv = $('<div class="prefs"></div>');
+            var $reloadDiv = $('<div class="reload"></div>');
 
             $feedToggle.appendTo($toggleDiv);
+
+            $feed.hover (
+                function() {
+                    var iconImg = $feedToggle.css('background-image')
+
+                    $(this).find('.hiddeable').slideDown()
+                    $feedToggle.removeClass('ico-generic-rss')
+                                             .addClass('icon-down-dir')
+                    // .css('background-image', 'none')
+                },
+                function() {
+                    $(this).find('.hiddeable').slideUp()
+                    $feedToggle.removeClass('icon-down-dir')
+                           .addClass('ico-generic-rss')
+                    // .css('background-image', iconImg)
+                }
+            );
+
             $feedSelect.appendTo($selectDiv);
             $feedDelete.appendTo($deleteDiv);
             $titleDiv.html(url);
@@ -127,10 +125,10 @@ var Feed = (function() {
             var feedLimit = $feed.data('limit')
             var feedType = $feed.data('type')
 
-            var $feedToggle = $feed.find('.feedToggle')
+            var $feedIcon = $feed.find('.feedToggle > i')
 
             var l = getLocation(feedUrl)
-            console.debug('$feedToggle: ' + $feedToggle.attr('class'))
+            // console.debug('$feedToggle: ' + $toggleDiv.attr('class'))
 
             $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
@@ -138,8 +136,8 @@ var Feed = (function() {
             $.get("/feedicon", {
                 "feedhost": l.protocol + '//' + l.hostname
             }, function(data, status) {
-                var $favicon = $('<img class="ui-icon">').attr('src', data)
-                // $feedToggle.html($favicon)
+                $feedIcon.removeClass('icon-down-dir')
+                         .css('background-image','url(' + data + ')')
                 console.log('FAVICON: ' + data)
                 // console.log('STATUS: ' + JSON.stringify(status))
 
