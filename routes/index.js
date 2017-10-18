@@ -9,15 +9,27 @@ router.get('/', function(req, res, next) {
 
 router.get('/feedicon', function(req, res, next) {
 
+    console.log('Url: ' + req.query.feedhost)
+
+    res.send('favicon_url')
+
+
     favicon(req.query.feedhost, function(err, favicon_url) {
 
-        if(typeof favicon_url != 'undefined') {
-            res.send(favicon_url)
-        } else {
-            console.log('Err: ' + JSON.stringify(err))
-            res.send(err.code);
-        }
+        console.log('Url: ' + req.query.feedhost)
+
+        // if (typeof favicon_url != 'undefined') {
+        //     console.log('Url: ' + req.query.feedhost + '\nFavicon: ' + favicon_url)
+        //     res.send(favicon_url)
+        // } else {
+        //     console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
+        //     console.log('Err: ' + JSON.stringify(err))
+        //     res.send(err.code);
+        // }
+        //
     });
+
+
 });
 
 router.get('/feed', function(req, res, next) {
@@ -25,7 +37,7 @@ router.get('/feed', function(req, res, next) {
     parser.parseURL(req.query.feedurl, function(err, parsed) {
 
         if(err !== null) {
-            console.log('ERROR: ' + err);
+            console.log('## Feed ERROR: ' + err + ' (' + req.query.feedurl + ')');
             res.send(err.code);
         }
 

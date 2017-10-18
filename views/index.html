@@ -66,13 +66,49 @@
                  $(this).children('i').toggleClass('other')
              });
 
+             //
+             //              $('#tabUl').on("focus",function(e){
+             //                  console.log(e);
+             //              });
+             //
 
-             // $('#tabUl').mouseenter(function() {
-             //     // $handle.toggle('slide', 'right', 500);
-             //     console.log('enter')
-             // }).mouseleave(function() {
-             //     console.log('leave')
-             //     // $handle.toggle('slide', 'left', 500);
+             $('#tabUl').hover(
+                 function(e) {
+                     // console.log(e);
+                     console.log('Related: ' + e.relatedTarget.nodeName);
+
+                     if (e.relatedTarget.nodeName === 'BUTTON') {
+                         return false;
+                     } else {
+                         $('#addTab, .addFeed').fadeIn('fast');
+                     }
+
+
+                 },
+                 function(e) {
+                     console.log('Related: ' + e.relatedTarget.nodeName);
+
+                     if (e.relatedTarget.nodeName === 'BUTTON')
+                         return false;
+                     else
+                         $('#addTab, .addFeed').fadeOut('slow');
+
+                 }
+             );
+
+             // $('#tabUl').not('#addTab').mouseenter(function(e) {
+
+             //     $('#addTab').css("background-color", "red");
+             //     console.log('enter: ' + e)
+             // }).mouseleave(function(e) {
+
+             //     // e.stopImmediatePropogation();
+
+             //     // e.stopPropagation();
+
+             //     // console.log('leave: ' + JSON.stringify(e))
+
+             //     $('#addTab').css("background-color", "blue");
              // });
 
              var $tabUl = $('#tabUl');
@@ -381,7 +417,10 @@
 
              // $('#tabs').find('div.feedControls').slideUp()
 
+
              $('.mobDOM').fadeIn('slow')
+             $('#addTab').fadeOut(2000);
+             $('.addFeed').fadeOut(2000);
 
              //
              //              $('#tabs').find('.mobFeedRefresh').each(function( index ) {
@@ -400,8 +439,8 @@
             <ul id="tabUl"></ul>
         </div>
 
-        <button id="addTab" class="mobylette mobDOM"><i class="icon-plus"></i> Tab</button>
-        <button id="trigger" class="mobylette mobDOM"><i class="icon-cogs"></i> Preferences</button>
+        <button id="addTab" class="mobDOM"><i class="icon-plus"></i> Tab</button>
+        <button id="trigger" class="mobDOM"><i class="icon-cogs"></i> Preferences</button>
 
         <i id="savingIcon" class="icon-download"></i>
 

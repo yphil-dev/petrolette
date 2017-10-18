@@ -128,18 +128,20 @@ var Feed = (function() {
             var $feedIcon = $feed.find('.feedToggle > i')
 
             var l = getLocation(feedUrl)
+
+            var feedHost = l.protocol + '//' + l.hostname
             // console.debug('$feedToggle: ' + $toggleDiv.attr('class'))
 
             $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
 
             $.get("/feedicon", {
-                "feedhost": l.protocol + '//' + l.hostname
+                "feedhost": decodeURI(feedHost)
             }, function(data, status) {
                 $feedIcon.removeClass('icon-down-dir')
                          .css('background-image','url(' + data + ')')
-                console.log('FAVICON: ' + data)
-                // console.log('STATUS: ' + JSON.stringify(status))
+                // console.log('FAVICON: ' + data)
+                console.log('STATUS: ' + JSON.stringify(status))
 
             })
 

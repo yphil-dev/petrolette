@@ -103,13 +103,11 @@ label.feedSelect {
     padding: 0 !important;
 }
 
-button.addFeed {
-  position: absolute;
-  bottom: .2em;
-  /* left: 0; */
+.tab {
+    /* text-align: right; */
+    /* Spinner */
 }
 
-/* Spinner */
 
 @keyframes spinner {
     to {transform: rotate(360deg);}
@@ -182,6 +180,10 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
     cursor: pointer;
 }
 
+#tabs {
+    min-height:80px;
+}
+
 /* Feed */
 
 ul.tabSort {
@@ -204,7 +206,7 @@ li.feed {
 
     /* align-self:stretch; */
     /* min-width: 150px; */
-    margin: .5rem .2rem 0 .2rem; /* Some gutter */
+    margin: .2rem .2rem 0 .2rem; /* Some gutter */
   /* transition: width 0.7s ease-out; */
 }
 
@@ -384,4 +386,15 @@ li.feedItem:hover {
 
 .icon-down-dir {
     background: 0 !important;
+}
+
+button#addTab,
+button.addFeed {
+    position: absolute;
+    top: .6em;
+    right: .5em;
+}
+
+button.addFeed {
+    right: 6em;
 }
