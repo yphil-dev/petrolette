@@ -137,7 +137,7 @@ var Feed = (function() {
 
             var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
 
-            console.log('## Sending: ' + decodeURI(cleanUrl))
+            // console.log('## Sending: ' + decodeURI(cleanUrl))
 
 
             $.get("/feedicon", {
@@ -146,7 +146,7 @@ var Feed = (function() {
                 if ( !icon || icon.length === 0) icon = "/static/images/generic-rss-32.png";
                 $feedIcon.removeClass('icon-down-dir')
                          .css('background-image','url(' + icon + ')')
-                console.log('FAVICON: (' + icon + ')')
+                // console.log('URL: ' + decodeURI(cleanUrl) + ' FAVICON: (' + icon + ')')
             })
 
             $.get("/feed", {
