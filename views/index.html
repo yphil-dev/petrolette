@@ -51,7 +51,6 @@
 
              });
 
-
              var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
              var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
 
@@ -74,20 +73,16 @@
                  $(this).children('i').toggleClass('other')
              });
 
-             //
-             //              $('#tabUl').on("focus",function(e){
-             //                  console.log(e);
-             //              });
-             //
+             var $tabUl = $('#tabUl');
 
-             $('#tabUl').hover(
+             $tabUl.hover(
                  function(e) {
 
-                     if (e.relatedTarget && e.relatedTarget.nodeName === 'BUTTON') {
+                     if (e.relatedTarget && e.relatedTarget.nodeName === 'BUTTON')
                          return false
-                     } else {
+                     else
                          $('#addTab, .addFeed').fadeIn('fast')
-                     }
+
                  },
                  function(e) {
 
@@ -95,26 +90,9 @@
                          return false;
                      else
                          $('#addTab, .addFeed').fadeOut('slow');
-
                  }
              );
 
-             // $('#tabUl').not('#addTab').mouseenter(function(e) {
-
-             //     $('#addTab').css("background-color", "red");
-             //     console.log('enter: ' + e)
-             // }).mouseleave(function(e) {
-
-             //     // e.stopImmediatePropogation();
-
-             //     // e.stopPropagation();
-
-             //     // console.log('leave: ' + JSON.stringify(e))
-
-             //     $('#addTab').css("background-color", "blue");
-             // });
-
-             var $tabUl = $('#tabUl');
              var tabList = Prefs.readConfig('tabs');
 
              $tabs.on( "click", ".mobFeedRefresh", function() {
@@ -151,15 +129,13 @@
                  }
              });
 
-             $('#tabLimit').spinner();
-
              $('button').button();
              $('#files').button();
 
              $( 'input[type=radio]' ).checkboxradio();
              $('#tabDropActivate').checkboxradio();
 
-             $( "#feedLimit" ).spinner({
+             $('#feedLimit').spinner({
                  spin: function( event, ui ) {
                      if ( ui.value > 64 ) {
                          $( this ).spinner( "value", 0 );
@@ -210,7 +186,6 @@
 
                  }
              });
-
 
              $('#gallerySlideTransition').selectmenu({
                  width: 252,
@@ -267,25 +242,16 @@
              $('#addTab').fadeOut(2000);
              $('.addFeed').fadeOut(2000);
 
-             //
-             //              $('#tabs').find('.mobFeedRefresh').each(function( index ) {
-             //                  console.log( index + ": " + $(this).delay( 8000 ).click() );
-             //              });
-             //
-
              var tdata = {
                  title: "Constructing HTML Elements"
              }
-             //
-             //              var template = $("#template").html();
-             //              var html = Mustache.render(template, tdata);
-             //              $("body").append(html);
-             //
-             //
-             // $.get("/static/templates/dialog-renameTab.js", function(template) {
-             //     var rendered = Mustache.render(template, tdata);
-             //     $("body").append(rendered);
-             // });
+
+
+             $.get("/static/templates/dialog-renameTab.mst", function(template) {
+                 var rendered = Mustache.render(template, tdata);
+                 var $rendered = $(rendered)
+                 $("body").append(rendered);
+             });
 
          });
 

@@ -1,7 +1,7 @@
 var Feed = (function() {
 
     return {
-        newFeed:function($tab, url, type, limit) {
+        newFeed:function($tab, url, type, limit, clickNew) {
 
             var feedIndex = $('.feed').length;
 
@@ -105,7 +105,10 @@ var Feed = (function() {
             $header.appendTo($feed);
             $feedBody.appendTo($feed);
 
-            $feed.appendTo($tab);
+            if (clickNew)
+                $feed.prependTo($tab);
+            else
+                $feed.appendTo($tab);
 
         },
         populateFeed:function($button) {
