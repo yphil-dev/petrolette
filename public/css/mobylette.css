@@ -398,3 +398,9 @@ button.addFeed {
 button.addFeed {
     right: 6em;
 }
+
+.tabCloser {
+    font-size:.8rem;
+    margin: .2rem .2rem 0 0;
+    cursor:pointer;
+}

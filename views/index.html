@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mobylette</title>
         <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
-        <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link id="stylesheet" rel="stylesheet" href="/static/css/themes/light/jquery-ui.css">
         <link rel="stylesheet" href="/static/css/fontello.css">
 
         <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
@@ -23,14 +23,30 @@
 
         <script>
 
+         // function handleFileSelect(evt) {
+         //     var files = evt.target.files; // FileList object
 
-         if (window.File && window.FileReader && window.FileList && window.Blob) {
-             // Great success! All the File APIs are supported.
-         } else {
-             alert('The File APIs are not fully supported in this browser.');
-         }
+         //     // files is a FileList of File objects. List some properties.
+         //     var output = [];
+         //     for (var i = 0, f; f = files[i]; i++) {
+         //         output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+         //                     f.size, ' bytes, last modified: ',
+         //                     f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+         //                     '</li>');
+         //     }
+         //     document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+         // }
+
+         // document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
 
          $(document).ready(function() {
+
+             var $jsonUpload = $('#jsonUpload').button()
+
+             $jsonUpload.change(function(){
+                 console.log(this.value || 'Nothing selected')
+             });
 
              var $addtext = $('<ol>\
                  <li>Item1</li>\
@@ -38,13 +54,19 @@
                  </ol>');
 
              var $tabs = $("#tabs").tabs({
-                 // heightStyle: "fill"
+                 activate: function(event ,ui){
+                     //console.log(event);
+                     $('.ui-tabs-tab i').remove()
+                     var $activeTab = $('#ui-id-' + (ui.newTab.index() + 1)).parent()
+                     console.log('This: ' + $activeTab.text() + ' id: ' + (ui.newTab.index() + 1));
+                     $activeTab.append('<i class="icon-cancel-circled tabCloser"></i>')
+
+                 }
              });
+
 
              var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
              var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
-
-             console.log('gallerySlideTransition: ' + gallerySlideTransition)
 
              $.fancybox.defaults.transitionEffect = gallerySlideTransition
              $.fancybox.defaults.slideShow = {
@@ -73,19 +95,14 @@
 
              $('#tabUl').hover(
                  function(e) {
-                     // console.log(e);
-                     console.log('Related: ' + e.relatedTarget.nodeName);
 
                      if (e.relatedTarget.nodeName === 'BUTTON') {
-                         return false;
+                         return false
                      } else {
-                         $('#addTab, .addFeed').fadeIn('fast');
+                         $('#addTab, .addFeed').fadeIn('fast')
                      }
-
-
                  },
                  function(e) {
-                     console.log('Related: ' + e.relatedTarget.nodeName);
 
                      if (e.relatedTarget.nodeName === 'BUTTON')
                          return false;
@@ -338,7 +355,7 @@
              });
 
              // Close icon: removing the tab on click
-             $tabs.on("click", "span.ui-icon-close", function() {
+             $tabs.on("click", "i.tabCloser", function() {
 
                  var $a = $(this).prev('a.ui-tabs-anchor')
 
@@ -383,7 +400,7 @@
 
              $('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
 
-             $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+             // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
 
              if (Prefs.readConfig('tabDropActivate') === 'true')
                  $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
@@ -552,30 +569,36 @@
 
         </div>
 
-        <input class="mobDOM" type="file" id="files" name="files[]" multiple />
-        <output class="mobDOM" id="list"></output>
-
-        <script>
-         function handleFileSelect(evt) {
+        <!-- <input class="mobDOM" type="file" id="files" name="files[]"  /> -->
+        <!-- <output class="mobDOM" id="list"></output> -->
+        <!--
+             <script>
+             function handleFileSelect(evt) {
              var files = evt.target.files; // FileList object
 
              // files is a FileList of File objects. List some properties.
              var output = [];
              for (var i = 0, f; f = files[i]; i++) {
-                 output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                             f.size, ' bytes, last modified: ',
-                             f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                             '</li>');
+             output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+             f.size, ' bytes, last modified: ',
+             f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+             '</li>');
              }
              document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-         }
+             }
 
-         document.getElementById('files').addEventListener('change', handleFileSelect, false);
-        </script>
-
+             document.getElementById('files').addEventListener('change', handleFileSelect, false);
+             </script>
+           -->
         <script src="/static/lib/js/tab.js"></script>
         <script src="/static/lib/js/feed.js"></script>
         <script src="/static/lib/js/prefs.js"></script>
+
+        <div class="jsonUpload">
+            <span class="text">Nothing selected</span>
+            <span class="button">Choose a file</span>
+            <input type="file" id="file" />
+        </div>
 
     </body>
 </html>

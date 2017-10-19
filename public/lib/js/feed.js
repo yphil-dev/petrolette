@@ -135,14 +135,18 @@ var Feed = (function() {
             $button.css("color", "transparent").addClass('spinner')
             $feed.removeClass('ui-state-error')
 
-            $.get("/feedicon", {
-                "feedhost": decodeURI(feedHost)
-            }, function(data, status) {
-                $feedIcon.removeClass('icon-down-dir')
-                         .css('background-image','url(' + data + ')')
-                // console.log('FAVICON: ' + data)
-                console.log('STATUS: ' + JSON.stringify(status))
+            var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
 
+            console.log('## Sending: ' + decodeURI(cleanUrl))
+
+
+            $.get("/feedicon", {
+                "feedhost": decodeURI(cleanUrl)
+            }, function(icon, status) {
+                if ( !icon || icon.length === 0) icon = "/static/images/generic-rss-32.png";
+                $feedIcon.removeClass('icon-down-dir')
+                         .css('background-image','url(' + icon + ')')
+                console.log('FAVICON: (' + icon + ')')
             })
 
             $.get("/feed", {

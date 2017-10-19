@@ -5,8 +5,6 @@ var Tab = (function() {
 
             var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
-            console.log('L: ' + $('ul#tabUl li.mobTab').length)
-
             if (!name) {
                 var name = 'Tab ' + tabIndex;
             }
@@ -74,7 +72,7 @@ var Tab = (function() {
 
             var $thisTab = $('<li class="modal mobTab"></li>');
 
-            var $thisCloseTabLink = $('<span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span>')
+            var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser"></i>')
 
             $thisTabLink.appendTo($thisTab);
             $thisCloseTabLink.appendTo($thisTab);
@@ -133,8 +131,6 @@ var Tab = (function() {
                 var myFeeds = [];
                 var myTab = {};
                 var $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
-
-                console.log('name: ' + $(this).children('a').text())
 
                 myTab["name"] = $(this).children('a').text();
 
