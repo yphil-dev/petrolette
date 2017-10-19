@@ -41,12 +41,13 @@
 
              var $tabs = $("#tabs").tabs({
 
-                 // activate: function(event ,ui){
-                 //     //console.log(event);
-                 //     $('.ui-tabs-tab i').remove()
-                 //     var $activeTab = $('#ui-id-' + (ui.newTab.index() + 1)).parent()
-                 //     $activeTab.append('<i class="icon-cancel-circled tabCloser"></i>')
-                 // }
+                 activate: function(event, ui){
+                     var $activeTabLink = $('a[href="#tab-' + (ui.newTab.index() + 1) + '"]');
+                     console.log('$activeTabLink-' + $activeTabLink.text());
+                     $('.ui-tabs-tab i').remove()
+                     var $activeTab = $activeTabLink.parent()
+                     $activeTab.append('<i class="icon-cancel-circled tabCloser"></i>')
+                 }
 
              });
 
