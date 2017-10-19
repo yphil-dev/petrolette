@@ -12,6 +12,8 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 app.use('/static', express.static(__dirname + '/public'));
+app.use('/tmp', express.static(__dirname + '/tmp'));
+
 app.use('/bower', express.static(__dirname + '/bower_components'));
 app.use('/', index);
 
