@@ -142,18 +142,37 @@ var Feed = (function() {
 
             // console.log('## Sending: ' + decodeURI(cleanUrl))
 
-
             $.get("/feedicon", {
-                "feedhost": decodeURI(cleanUrl)
+                url: decodeURI(feedHost),
+                dataType: "json",
+                timeout: 3000
             }, function(icon, status) {
                 if ( !icon || icon.length === 0) icon = "/static/images/generic-rss-32.png";
-                $feedIcon.removeClass('icon-down-dir')
-                         .css('background-image','url(' + icon + ')')
-                // console.log('URL: ' + decodeURI(cleanUrl) + ' FAVICON: (' + icon + ')')
+                // $feedIcon.removeClass('icon-down-dir')
+                // .css('background-image','url(' + icon + ')')
+                // console.log('U: ' + decodeURI(cleanUrl) + ' I: (' + icon + ')' + 'S: ' + status)
             })
 
+            // var jqxhr = $.get( "/feedicon", {
+            //     url: decodeURI(feedHost),
+            //     dataType: "json",
+            //     timeout: 3000
+            // }, function() {
+            //     console.log( "success" );
+            // })
+            //              .done(function() {
+            //                  console.log( "second success" );
+            //              })
+            //              .fail(function() {
+            //                  console.log( "error" );
+            //              })
+            //              .always(function() {
+            //                  console.log( "finished" );
+            //              });
+
+
             $.get("/feed", {
-                "feedurl": feedUrl
+                feedurl: feedUrl
             }, function(data, status) {
 
                 $button.css("color", "#3e3e3e").removeClass('spinner');

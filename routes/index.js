@@ -9,22 +9,20 @@ router.get('/', function(req, res, next) {
 
 router.get('/feedicon', function(req, res, next) {
 
-    favicon(req.query.feedhost, function(err, favicon_url) {
+    favicon(req.query.url, function(err, u) {
 
-        // console.log('Url: ' + req.query.feedhost)
+        console.log('Url: ' + req.query.url + ' Got: (' + u + ') (' + typeof u + ')')
 
-        if (typeof favicon_url != 'undefined') {
-            res.send(favicon_url)
+        if (typeof u === 'undefined' || !u) {
             // console.log('Url: ' + req.query.feedhost + '\nFavicon: ' + favicon_url)
+            // res.send(err.code);
+            console.log('Err: ' + JSON.stringify(err))
         } else {
             // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
+            res.send(u)
             // console.log('Err: ' + JSON.stringify(err))
-            res.send(err.code);
         }
-
     });
-
-
 });
 
 router.get('/feed', function(req, res, next) {

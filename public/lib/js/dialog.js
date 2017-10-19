@@ -10,11 +10,9 @@ $('#tabDialog').dialog({
         },
         'OK': function() {
 
-            console.log('yp: ' + $('#tabName'))
-
             $('#' + $(this).data('tabId')).text($('#tabName').val());
-            $( this ).dialog( 'close' );
             Tab.saveTabs();
+            $( this ).dialog( 'close' );
         }
     },
     open: function( event, ui ) {
@@ -23,8 +21,9 @@ $('#tabDialog').dialog({
 
         $(this).on('submit', function () {
             $('#' + $(this).data('tabId')).text($('#tabName').val());
-            $(this).dialog('close');
             Tab.saveTabs();
+            $(this).dialog('close');
+            return false;
         });
     }
 });
@@ -42,26 +41,18 @@ $('#feedDialog').dialog({
         'OK': function() {
 
             var $tabFeedId = $('li#' + $(this).data('feedId'))
-
             var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
-
 
             $tabFeedId.data('url', $('#feedUrl').val())
             $tabFeedId.data('limit', $('#feedLimit').val())
 
             $('.feedType').children('input').each(function () {
-                if ($(this).is(':checked')) {
-                    console.log('type: ' + $(this).attr('id')); // "this" is the current element in the loop
+                if ($(this).is(':checked'))
                     $tabFeedId.data('type', $(this).attr('id'))
-                }
-
             });
-
-            // $tabFeedId.data('type', $(this).data('feedType'))
 
             Feed.populateFeed($mobFeedRefresh);
             Tab.saveTabs();
-
             $(this).dialog( 'close' );
         }
     },
@@ -96,11 +87,8 @@ $( "#killTabDialog" ).dialog({
             var $thisPanel = $($(this).data('panelId'))
 
             $thisPanel.remove()
-
             $tabLinkId.parent('li').remove()
-
             $tabs.tabs('refresh');
-
             Tab.saveTabs();
 
             $(this).dialog( "close" );
@@ -127,12 +115,8 @@ $( "#killFeedDialog" ).dialog({
 
             var $tabFeedId = $('#' + $(this).data('feedId'))
 
-            console.log('data: ' + $tabFeedId.text())
-
             $tabFeedId.remove()
-
             Tab.saveTabs()
-
             $(this).dialog( "close" );
 
         },

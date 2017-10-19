@@ -20,6 +20,7 @@
         <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
         <!-- <script src="/bower/mustache.js/mustache.js"></script>
         -->
+
         <link rel="stylesheet" href="/static/css/mobylette.css">
 
         </script>
@@ -28,22 +29,10 @@
 
          $(document).ready(function() {
 
-             var $jsonUpload = $('#jsonUpload').button()
-
-             $jsonUpload.change(function(){
-                 console.log(this.value || 'Nothing selected')
-             });
-
-             var $addtext = $('<ol>\
-                 <li>Item1</li>\
-                 <li>Item2</li>\
-                 </ol>');
-
              var $tabs = $("#tabs").tabs({
 
                  activate: function(event, ui){
                      var $activeTabLink = $('a[href="#tab-' + (ui.newTab.index() + 1) + '"]');
-                     console.log('$activeTabLink-' + $activeTabLink.text());
                      $('.ui-tabs-tab i').remove()
                      var $activeTab = $activeTabLink.parent()
                      $activeTab.append('<i class="icon-cancel-circled tabCloser"></i>')
@@ -246,14 +235,70 @@
                  title: "Constructing HTML Elements"
              }
 
+             //
+             //              $.get("/static/templates/dialog-renameTab.mst", function(template) {
+             //                  var rendered = Mustache.render(template, tdata);
+             //                  var $rendered = $(rendered)
+             //                  $("body").append(rendered);
+             //              });
+             //
 
-             $.get("/static/templates/dialog-renameTab.mst", function(template) {
-                 var rendered = Mustache.render(template, tdata);
-                 var $rendered = $(rendered)
-                 $("body").append(rendered);
+
+             // var $jsonUpload = $('#jsonUpload').button()
+             //
+             //              $jsonUpload.change(function(){
+             //                  // console.log(this.value || 'Nothing selected')
+             //              });
+             //
+             //
+
+             // $('#jsonUpload').fileUpload();
+
+             $('#jsonUpload').fileUpload({
+                 uploadData    : { 'extra_data' : 'blah' }, // Append POST data to the upload
+                 submitData    : { 'moar_extra_data' : 'blah' }, // Append POST data to the form submit
+                 uploadOptions : { dataType : 'json' }, // Customise the parameters passed to the $.ajax() call on uploads. You can use any of the normal $.ajax() params
+                 submitOptions : { dataType : 'json' }, // Customise the parameters passed to the $.ajax() call on the form submit. You can use any of the normal $.ajax() params
+                 before       : function(){
+                     console.log('plop!')
+                 }, // Run stuff before the upload happens
+                 beforeSubmit  : function(uploadData){ console.log(uploadData); return true; }, // access the data returned by the upload return false to stop the submit ajax call
+                 success       : function(data, textStatus, jqXHR){ console.log(data); }, // Callback for the submit success ajax call
+                 error        : function(jqXHR, textStatus, errorThrown){ console.log(jqXHR); }, // Callback if an error happens with your upload call or the submit call
+                 complete      : function(jqXHR, textStatus){ console.log(jqXHR); } // Callback on completion
              });
 
          });
+
+         function myFunction(){
+             var x = document.getElementById("myFile");
+             var txt = "";
+             if ('files' in x) {
+                 if (x.files.length == 0) {
+                     txt = "Select one or more files.";
+                 } else {
+                     for (var i = 0; i < x.files.length; i++) {
+                         txt += "<br><strong>" + (i+1) + ". file</strong><br>";
+                         var file = x.files[i];
+                         if ('name' in file) {
+                             txt += "name: " + file.name + "<br>";
+                         }
+                         if ('size' in file) {
+                             txt += "size: " + file.size + " bytes <br>";
+                         }
+                     }
+                 }
+             }
+             else {
+                 if (x.value == "") {
+                     txt += "Select one or more files.";
+                 } else {
+                     txt += "The files property is not supported by your browser!";
+                     txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead.
+                 }
+             }
+             document.getElementById("demo").innerHTML = txt;
+         }
 
         </script>
 
@@ -317,7 +362,20 @@
             </h1>
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
+
+                <input type="file" id="myFile" size="50" onchange="myFunction()">
+                <p id="demo"></p>
+
+                <!-- <progress></progress> -->
+                <!--
+                     <div class="jsonUpload">
+                     <span class="text">Nothing selected</span>
+                     <span class="button">Choose a file</span>
+                     <input type="file" id="plop" />
+                     </div>
+                -->
                 <legend>Tabs</legend>
+
 
                 <button id="saveTabs"><i class="icon-download"></i> Save Tabs</button>
                 <button id="loadTabs"><i class="icon-upload"></i> Load Tabs</button>
@@ -403,13 +461,7 @@
         <script src="/static/lib/js/tab.js"></script>
         <script src="/static/lib/js/feed.js"></script>
         <script src="/static/lib/js/prefs.js"></script>
-
-        <div class="jsonUpload">
-            <span class="text">Nothing selected</span>
-            <span class="button">Choose a file</span>
-            <input type="file" id="file" />
-            <script src="/static/lib/js/dialog.js"></script>
-        </div>
+        <script src="/static/lib/js/dialog.js"></script>
 
     </body>
 </html>
