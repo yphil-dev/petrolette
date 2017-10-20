@@ -213,7 +213,6 @@
 
              $('#amount').val($('#sslider').slider('value') + 'ms');
 
-
              var feedLimit
 
              $('div#feedLimitSlider').slider({
@@ -223,12 +222,6 @@
                  step: 1,
                  slide: function( event, ui ) {
                      $('input#feedLimitSlider').val(ui.value + ' items');
-                 },
-                 change: function( event, ui ) {
-
-                 },
-                 create: function( event, ui ) {
-                     console.log('Create!')
                  }
              });
 
