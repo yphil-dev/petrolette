@@ -89,17 +89,12 @@ $( "#killTabDialog" ).dialog({
         "Delete all feeds": function() {
 
             var $tabLinkId = $('#' + $(this).data('tabLinkId'))
-
             var $thisPanel = $($(this).data('panelId'))
 
             $thisPanel.remove()
             $tabLinkId.parent('li').remove()
-            $tabs.tabs('refresh');
             Tab.saveTabs();
-
             $(this).dialog( "close" );
-            return;
-
         },
         Cancel: function() {
             $( this ).dialog( "close" );
@@ -124,7 +119,6 @@ $( "#killFeedDialog" ).dialog({
             $tabFeedId.remove()
             Tab.saveTabs()
             $(this).dialog( "close" );
-
         },
         Cancel: function() {
             $( this ).dialog( "close" );
