@@ -80,30 +80,49 @@ fieldset.prefsForm {
     align-items: stretch;
 }
 
-fieldset.prefsForm > .twin {
+.twin {
     /* width:49%; */
     flex: 1;
 }
 
-fieldset.prefsForm > .unique {
+.unique {
     /* width:49%; */
     flex: 1 100%;
 }
 
-button.twin:nth-child(odd) {
-    margin-right:.2em;
+.grow {
+    flex-grow: 3;
 }
 
-button.twin:nth-child(even) {
-    margin-left:.2em;
+.shrink {
+    flex-shrink: 3;
 }
 
+.left {
+    margin-right:.2em !important;
+}
+
+.right {
+    margin-left:.2em !important;
+}
 
 fieldset.prefsForm > label,
 fieldset.prefsForm > button,
 .ui-slider {
     margin: 0 0 .5em 0;
     /* width:220px; */
+}
+
+.noBottom,
+fieldset.prefsForm > button:last-child,
+fieldset.prefsForm > label:last-child {
+    margin: 0 !important;
+}
+
+.ui-selectmenu-button.ui-button {
+    text-align: left;
+    white-space: nowrap;
+    width: 100% !important;
 }
 
 .ui-tabs-panel {
@@ -149,10 +168,6 @@ label.feedSelect {
     border: 2px solid #ccc;
     border-top-color: #333;
     animation: spinner .6s linear infinite;
-}
-
-#tabDropActivate {
-    width:100%;
 }
 
 .rotate {
@@ -431,19 +446,4 @@ button.addFeed {
     font-size:.8rem;
     margin: .2rem .2rem 0 0;
     cursor:pointer;
-}
-
-/* Prefs */
-.InputAddOn {
-    display: flex;
-    margin-bottom:.5rem;
-}
-
-.InputAddOn-field {
-  flex: 1;
-  /* field styles */
-}
-
-.InputAddOn-item {
-  /* item styles */
 }

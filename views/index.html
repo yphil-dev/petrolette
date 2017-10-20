@@ -121,8 +121,9 @@
              $('button, .button').button();
              $('#files').button();
 
-             $( 'input[type=radio]' ).checkboxradio();
-             $('#tabDropActivate').checkboxradio();
+             $('#tabDropActivate').checkboxradio({
+                 icon: true
+             });
 
              $tabs.on('mouseup', '.ui-tabs-active a', function(e){
                  e.preventDefault();
@@ -377,16 +378,24 @@
                 <legend>Tabs</legend>
 
                 <input type="file" id="imgInp" style="display: none;" />
-                <button class="twin button icon-upload" onclick="document.getElementById('imgInp').click();">Import</button>
-                <button class="twin button icon-download" id="saveTabs"> Export</button>
+                <button class="twin left noBottom button icon-upload" onclick="document.getElementById('imgInp').click();">Import</button>
+                <button class="twin right noBottom button icon-download" id="saveTabs"> Export</button>
 
+            </fieldset>
+
+            <fieldset class="prefsForm ui-widget ui-widget-content">
+                <legend>Theme</legend>
+
+                <button type="radio" id="themeLight" class="twin left checkboxradio icon-sun-1">Light</button>
+                <button type="radio" id="themeDark" class="twin right checkboxradio icon-moon">Dark</button>
+
+                <input class="ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
                 <label class="unique tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
-                <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
             </fieldset>
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
                 <legend>Image gallery</legend>
-                <label class="twin" for="amount">Slideshow speed: </label>
+                <label class="twin grow" for="amount">Slideshow speed: </label>
                 <span id="gallerySlideshowSpeedValue" class="twin"></span>
                 <div class="unique" id="sslider"></div>
 
