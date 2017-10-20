@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mobylette</title>
         <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
-        <link id="stylesheet" rel="stylesheet" href="/static/css/themes/light/jquery-ui.css">
+        <link rel="stylesheet" href="/static/css/themes/light/jquery-ui.css">
+
         <link rel="stylesheet" href="/static/css/fontello.css">
 
         <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
@@ -22,6 +23,7 @@
         -->
 
         <link rel="stylesheet" href="/static/css/mobylette.css">
+        <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/mobylette-light.css">
 
         </script>
 
@@ -119,11 +121,8 @@
              });
 
              $('button, .button').button();
-             $('#files').button();
 
-             $('#tabDropActivate').checkboxradio({
-                 icon: true
-             });
+             $( ".checkboxradio" ).checkboxradio();
 
              $tabs.on('mouseup', '.ui-tabs-active a', function(e){
                  e.preventDefault();
@@ -182,6 +181,12 @@
              $('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
 
              // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+             $('.themeSwitcher').change(function() {
+                 console.log('Theme: ' + $(this).attr('value'))
+                 $("#mobylette-theme").attr({href : '/static/css/themes/mobylette-' + $(this).attr('value') + '.css'});
+
+             });
 
              if (Prefs.readConfig('tabDropActivate') === 'true')
                  $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
@@ -378,19 +383,21 @@
                 <legend>Tabs</legend>
 
                 <input type="file" id="imgInp" style="display: none;" />
-                <button class="twin left noBottom button icon-upload" onclick="document.getElementById('imgInp').click();">Import</button>
-                <button class="twin right noBottom button icon-download" id="saveTabs"> Export</button>
+                <button class="twin left button icon-upload" onclick="document.getElementById('imgInp').click();">Import</button>
+                <button class="twin right button icon-download" id="saveTabs"> Export</button>
 
+                <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
+                <label class="unique noBottom" for="tabDropActivate">Open tab on feed drop</label>
             </fieldset>
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
                 <legend>Theme</legend>
 
-                <button type="radio" id="themeLight" class="twin left checkboxradio icon-sun-1">Light</button>
-                <button type="radio" id="themeDark" class="twin right checkboxradio icon-moon">Dark</button>
+                <label class="twin left" for="themeLight">Light</label>
+                <input class="themeSwitcher checkboxradio" type="radio" name="radio-1" id="themeLight" value="light">
+                <label class="twin right" for="themeDark">Dark</label>
+                <input class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" id="themeDark" value="dark">
 
-                <input class="ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
-                <label class="unique tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
             </fieldset>
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
