@@ -53,10 +53,6 @@ button.mobylette {
     border: none !important;
 }
 
-.mobylette h1 i {
-    font-size: 10rem;
-}
-
 
 .mobylette > h1 > span {
     font-size:1.4em;
@@ -66,10 +62,6 @@ button.mobylette {
 
 fieldset {
     margin: 0 0 .5em 0;
-}
-
-fieldset > button {
-    width:100%;
 }
 
 /* JQ UI Defaults */
@@ -90,6 +82,11 @@ fieldset.prefsForm > button,
 
 .ui-tabs-panel {
     padding:0 !important;
+}
+
+.ui-widget input,
+.ui-spinner {
+    width: 95%
 }
 
 .small-button {
@@ -404,3 +401,5 @@ button.addFeed {
     margin: .2rem .2rem 0 0;
     cursor:pointer;
 }
+
+/* Prefs */

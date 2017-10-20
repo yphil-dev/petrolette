@@ -45,11 +45,13 @@ $('#feedDialog').dialog({
 
             $tabFeedId.data('url', $('#feedUrl').val())
             $tabFeedId.data('limit', $('#feedLimit').val())
+            $tabFeedId.data('limit', $('#feedLimitSlider').val())
 
             $('.feedType').children('input').each(function () {
                 if ($(this).is(':checked'))
                     $tabFeedId.data('type', $(this).attr('id'))
             });
+
 
             Feed.populateFeed($mobFeedRefresh);
             Tab.saveTabs();
@@ -58,8 +60,12 @@ $('#feedDialog').dialog({
     },
     open: function( event, ui ) {
 
-        $('#feedUrl').val($(this).data('feedUrl'));
-        $('#feedLimit').val($(this).data('feedLimit'));
+        $('input#feedUrl').select()
+
+        $('input#feedUrl').val($(this).data('feedUrl'));
+        $('input#feedLimit').val(feedLimit);
+        $('input#feedLimit').val($(this).data('feedLimit'));
+        $('input#feedLimitSlider').val($(this).data('feedLimit'));
         $('.feedType #' + $(this).data('feedType')).prop('checked',true).change();
 
         $(this).on('submit', function () {

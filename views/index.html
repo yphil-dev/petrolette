@@ -118,23 +118,11 @@
                  }
              });
 
-             $('button').button();
+             $('button, .button').button();
              $('#files').button();
 
              $( 'input[type=radio]' ).checkboxradio();
              $('#tabDropActivate').checkboxradio();
-
-             $('#feedLimit').spinner({
-                 spin: function( event, ui ) {
-                     if ( ui.value > 64 ) {
-                         $( this ).spinner( "value", 0 );
-                         return false;
-                     } else if ( ui.value < 0 ) {
-                         $( this ).spinner( "value", 64 );
-                         return false;
-                     }
-                 }
-             });
 
              $tabs.on('mouseup', '.ui-tabs-active a', function(e){
                  e.preventDefault();
@@ -166,7 +154,7 @@
 
              // Prefs
              $('#themes').selectmenu({
-                 width: 252,
+                 width: 200,
                  change: function( event, data ) {
 
                      Prefs.writeConfig('theme', data.item.value);
@@ -177,7 +165,7 @@
              });
 
              $('#gallerySlideTransition').selectmenu({
-                 width: 252,
+                 width: 200,
                  change: function( event, data ) {
 
                      console.log('Value: ' + data.item.value)
@@ -204,9 +192,11 @@
                  Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
              });
 
+             $('.controlGroup').controlgroup();
+
              $('#sslider').slider({
                  value: gallerySlideshowSpeed,
-                 min: 0,
+                 min: 1,
                  max: 10000,
                  step: 100,
                  slide: function( event, ui ) {
@@ -220,7 +210,30 @@
 
                  }
              });
+
              $('#amount').val($('#sslider').slider('value') + 'ms');
+
+
+             var feedLimit
+
+             $('div#feedLimitSlider').slider({
+                 value: feedLimit,
+                 min: 1,
+                 max: 128,
+                 step: 1,
+                 slide: function( event, ui ) {
+                     $('input#feedLimitSlider').val(ui.value + ' items');
+                 },
+                 change: function( event, ui ) {
+
+                 },
+                 create: function( event, ui ) {
+                     console.log('Create!')
+                 }
+             });
+
+             $('input#feedLimitSlider').val($('div#feedLimitSlider').slider('value') + ' items');
+
 
              $('#tabs').find('.mobFeedRefresh').click();
 
@@ -324,11 +337,17 @@
 
         <div id="feedDialog" title="Feed parameters" class="mobDOM">
             <form>
-                <fieldset class="mobDialog">
-                    <label for="feedUrl">URL</label>
-                    <input type="text" name="url" id="feedUrl" value="" class="text ui-widget-content ui-corner-all">
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                    <div class="feedType">
+
+                <fieldset>
+                    <legend>URL</legend>
+                    <div class="feedUrl">
+                        <input type="text" name="url" id="feedUrl" autofocus placeholder="Feed URL (https://reddit.com/.rss)" value="" class="text ui-widget-content ui-corner-all" />
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Display Type</legend>
+                    <div class="feedType controlGroup">
                         <label for="mixed">Mixed</label>
                         <input type="radio" name="radio-1" id="mixed">
                         <label for="photo">Photo</label>
@@ -336,9 +355,21 @@
                         <label for="text">Text</label>
                         <input type="radio" name="radio-1" id="text">
                     </div>
-                    <label for="feedLimit">Limit # of items</label>
-                    <input id="feedLimit" name="feedLimit">
                 </fieldset>
+
+                <fieldset>
+                    <legend>Limit # of items</legend>
+                    <div class="feedLimit">
+                        <label for="feedLimitSlider">
+                            <input type="text" id="feedLimitSlider" readonly style="border:0; font-weight:bold;">
+                        </label>
+
+                        <div id="feedLimitSlider"></div>
+
+                    </div>
+
+                </fieldset>
+
             </form>
         </div>
 
@@ -351,34 +382,33 @@
                 <span>Mobylette</span>
             </h1>
 
+            <!-- <input type="file" id="myFile" size="50" onchange="myFunction()"> -->
+            <!-- <p id="demo"></p>
+            -->
+
+            <form ref='uploadForm'
+                  id='uploadForm'
+                  action='http://maw:3000/upload'
+                  method='post'
+                  encType="multipart/form-data">
+                <input class="button" type="file" name="sampleFile" />
+                <input class="button" type='submit' value='Upload!' />
+            </form>
+
+            <!-- <progress></progress> -->
+            <!--
+                 <div class="jsonUpload">
+                 <span class="text">Nothing selected</span>
+                 <span class="button">Choose a file</span>
+                 <input type="file" id="plop" />
+                 </div>
+            -->
             <fieldset class="prefsForm ui-widget ui-widget-content">
-
-                <!-- <input type="file" id="myFile" size="50" onchange="myFunction()"> -->
-                <!-- <p id="demo"></p>
-                -->
-
-                <form ref='uploadForm'
-                      id='uploadForm'
-                      action='http://maw:3000/upload'
-                      method='post'
-                      encType="multipart/form-data">
-                    <input type="file" name="sampleFile" />
-                    <input type='submit' value='Upload!' />
-                </form>
-
-                <!-- <progress></progress> -->
-                <!--
-                     <div class="jsonUpload">
-                     <span class="text">Nothing selected</span>
-                     <span class="button">Choose a file</span>
-                     <input type="file" id="plop" />
-                     </div>
-                -->
                 <legend>Tabs</legend>
 
 
-                <button id="saveTabs"><i class="icon-download"></i> Save Tabs</button>
-                <button id="loadTabs"><i class="icon-upload"></i> Load Tabs</button>
+                <button id="saveTabs"><i class="icon-download"></i> Save</button>
+                <button id="loadTabs"><i class="icon-upload"></i> Load</button>
 
                 <label class="tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
                 <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
