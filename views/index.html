@@ -165,7 +165,6 @@
              });
 
              $('#gallerySlideTransition').selectmenu({
-                 width: 200,
                  change: function( event, data ) {
 
                      console.log('Value: ' + data.item.value)
@@ -201,6 +200,8 @@
                  step: 100,
                  slide: function( event, ui ) {
                      $('#amount').val(ui.value + 'ms');
+                     $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
+
                  },
                  change: function( event, ui ) {
                      Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
@@ -212,6 +213,7 @@
              });
 
              $('#amount').val($('#sslider').slider('value') + 'ms');
+             $('#gallerySlideshowSpeedValue').text($('#sslider').slider('value') + 'ms');
 
              var feedLimit
 
@@ -280,7 +282,7 @@
                  reader.readAsText(f);
              }
              document.getElementById('imgInp').addEventListener('change', handleFileSelect, false);
-             //
+
              // $("#imgInp").change(function(){
              //     readURL(this);
              // });
@@ -366,65 +368,30 @@
                 <span>Mobylette</span>
             </h1>
 
-            <form id="form1" class="fileUpload">
-                <input type="file" class="upload" id="imgInp" />
-            </form>
-
-            <div class="InputAddOn">
-                <span class="InputAddOn-item">…</span>
-                <input class="InputAddOn-field">
-            </div>
+            <!-- <form id="form1" class="fileUpload">
+                 <input type="file" class="upload" id="imgInp" />
+                 </form>
+            -->
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
                 <legend>Tabs</legend>
 
+                <input type="file" id="imgInp" style="display: none;" />
+                <button class="twin button icon-upload" onclick="document.getElementById('imgInp').click();">Import</button>
+                <button class="twin button icon-download" id="saveTabs"> Export</button>
 
-                <button id="saveTabs"><i class="icon-download"></i> Save</button>
-                <button id="loadTabs"><i class="icon-upload"></i> Load</button>
-
-                <label class="tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
+                <label class="unique tabDropActivate" for="tabDropActivate">Open tab on feed drop</label>
                 <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
-                <!-- <button id="colorselector2"><i class="fa fa-cube" aria-hidden="true"></i> Color</button>
-                -->
-                <label for="themes">Theme</label>
-                <select id="themes">
-                    <option value="base">Base</option>
-                    <option value="black-tie">Black-Tie</option>
-                    <option value="blitzer">Blitzer</option>
-                    <option value="cupertino">Cupertino</option>
-                    <option value="dark-hive">Dark-hive</option>
-                    <option value="dot-luv">Dot-luv</option>
-                    <option value="eggplant">Eggplant</option>
-                    <option value="excite-bike">Excite-bike</option>
-                    <option value="flick">Flick</option>
-                    <option value="hot-sneaks">Hot-sneaks</option>
-                    <option value="humanity">Humanity</option>
-                    <option value="le-frog">Le-frog</option>
-                    <option value="mint-choc">Mint-choc</option>
-                    <option value="overcast">Overcast</option>
-                    <option value="pepper-grinder">Pepper-grinder</option>
-                    <option value="redmond">Redmond</option>
-                    <option value="smoothness">Smoothness</option>
-                    <option value="south-street">South-street</option>
-                    <option value="start">Start</option>
-                    <option value="sunny">Sunny</option>
-                    <option value="swanky-purse">Swanky-purse</option>
-                    <option value="trontastic">Trontastic</option>
-                    <option value="ui-darkness">Ui-darkness</option>
-                    <option value="ui-lightness">Ui-lightness</option>
-                    <option value="vader">Vader</option>
-                </select>
-
             </fieldset>
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
                 <legend>Image gallery</legend>
-                <label for="amount">Slideshow speed&nbsp;<input type="text" id="amount" readonly style="border:0; font-weight:bold;">
-                </label>
-                <div id="sslider"></div>
+                <label class="twin" for="amount">Slideshow speed: </label>
+                <span id="gallerySlideshowSpeedValue" class="twin"></span>
+                <div class="unique" id="sslider"></div>
 
-                <label for="gallerySlideTransition">Slide transition</label>
-                <select id="gallerySlideTransition">
+                <label class="unique" for="gallerySlideTransition">Slide transition</label>
+                <select class="unique" id="gallerySlideTransition">
                     <option value="false">None</option>
                     <option value="fade">Fade</option>
                     <option value="slide">Slide</option>

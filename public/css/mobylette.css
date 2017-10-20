@@ -73,6 +73,32 @@ fieldset.mobDialog input {
 input.text { margin-bottom:12px; width:95%; padding: .4em; }
 fieldset.mobDialog { padding:0; border:0; margin-top:25px; }
 
+fieldset.prefsForm {
+    display:flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: stretch;
+}
+
+fieldset.prefsForm > .twin {
+    /* width:49%; */
+    flex: 1;
+}
+
+fieldset.prefsForm > .unique {
+    /* width:49%; */
+    flex: 1 100%;
+}
+
+button.twin:nth-child(odd) {
+    margin-right:.2em;
+}
+
+button.twin:nth-child(even) {
+    margin-left:.2em;
+}
+
+
 fieldset.prefsForm > label,
 fieldset.prefsForm > button,
 .ui-slider {
@@ -84,9 +110,8 @@ fieldset.prefsForm > button,
     padding:0 !important;
 }
 
-.ui-widget input,
-.ui-spinner {
-    width: 95%
+.noBorder {
+    border: 0 !important;
 }
 
 .small-button {
@@ -410,7 +435,8 @@ button.addFeed {
 
 /* Prefs */
 .InputAddOn {
-  display: flex;
+    display: flex;
+    margin-bottom:.5rem;
 }
 
 .InputAddOn-field {
