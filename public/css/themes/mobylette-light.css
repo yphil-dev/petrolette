@@ -1,0 +1,34 @@
+/* Item */
+li.feedItem a {
+    display: block;
+    width:100%;
+    color: #111;
+}
+
+li.feedItem a:link {
+}
+
+li.feedItem a:visited {
+    color: #777 !important;
+}
+
+li.feedItem a:hover {
+    color: #fff !important;
+}
+
+li.feedItem a:active {
+    /* color: blue; */
+}
+
+li.feedItem {
+    background-color: #eee !important;
+    padding: .2rem;
+}
+
+li.feedItem:nth-child(odd) {
+    background-color: #ddd !important;
+}
+
+li.feedItem:hover {
+    background-color: #aaa !important;
+}
