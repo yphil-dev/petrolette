@@ -32,3 +32,8 @@ li.feedItem:nth-child(odd) {
 li.feedItem:hover {
     background-color: #555 !important;
 }
+
+legend {
+    background-color: #555 !important;
+    color: #e9ce97 !important;
+}

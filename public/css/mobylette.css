@@ -3,64 +3,60 @@
 /*     overflow-y: auto; */
 /* } */
 
-body {
-    background-color: #3e3e3e;
-    /* font-size:.8em !important; */
-    /* margin:0; */
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
-}
-
-h1 {
-    margin: .5em .5em;
-}
-
+/* Bootstrapping */
 ul {
     list-style-type: none;
     margin:0;
     padding:0;
 }
 
+/* Mobylette */
+body {
+    background-color: #3e3e3e;
+    /* font-size:.8em !important; */
+    /* margin:0; */
+}
+
+#slider > h1 {
+    font-family: 'LobsterRegular';
+    font-weight: normal;
+    font-style: normal;
+    font-size:4rem;
+    margin: 0 0 .2em .2em;
+    color:   #336666;
+    text-shadow: 1px 1px #e9ce97;
+}
+
+i.mobylette {
+    font-size:12rem;
+    color:  #e9ce97;
+    margin: -1rem 0 0 .1em !important;
+}
+
 .flip { transform: rotate(-180deg);}
 
-div.mobylette {
-    /* background-color: #3e3e3e; */
+#slider {
+    background-color: #cccc99;
     /* border-right: #2e2e2e solid 1px; */
     padding:.5em;
     border: none !important;
 }
 
-button.mobylette {
-    margin-top: .5em;
-}
-
-.mobylette > h1 {
-    color: #fc6a10;
-}
-
-.mobylette > .handle {
+#slider > .handle {
     font-size: 2rem;
-    background-color: #3e3e3e;
+    background-color: #cccc99;
     position:absolute;
     left:290px;
     bottom:50px;
 }
 
-.mobylette > .handle > i {
+#slider > .handle > i {
     border: none !important;
 }
 
 
-.mobylette > h1 > span {
-    font-size:1.4em;
-    color: orange;
-    text-shadow: 1px 1px #5e354a;
-}
-
 fieldset {
+    background-color: #ffffcc;
     margin: 0 0 .5em 0;
 }
 
@@ -361,18 +357,18 @@ li.feed {
 li.feedItem a {
     display: block;
     width:100%;
-    color: #111;
+    /* color: #111; */
 }
 
 li.feedItem a:link {
 }
 
 li.feedItem a:visited {
-    color: #777 !important;
+    /* color: #777 !important; */
 }
 
 li.feedItem a:hover {
-    color: #fff !important;
+    /* color: #fff !important; */
 }
 
 li.feedItem a:active {
@@ -380,16 +376,16 @@ li.feedItem a:active {
 }
 
 li.feedItem {
-    background-color: #eee !important;
+    /* background-color: #eee !important; */
     padding: .2rem;
 }
 
 li.feedItem:nth-child(odd) {
-    background-color: #ddd !important;
+    /* background-color: #ddd !important; */
 }
 
 li.feedItem:hover {
-    background-color: #aaa !important;
+    /* background-color: #aaa !important; */
 }
 
 div.feedItem {

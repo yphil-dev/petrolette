@@ -48,13 +48,13 @@ var Feed = (function() {
                     .dialog('open');
             });
 
-            var $feedBody = $('<div class="feedBody"></div>');
-            var $feedBodyUl = $('<ul class="feedBody ui-widget-content"></ul>');
+            var $feedBody = $('<div class="feedBody ui-widget-content"></div>');
+            var $feedBodyUl = $('<ul class="feedBody"></ul>');
             var $dumbLi = $('<li>plop</li>');
 
-            var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-state-default ui-widget-header" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
+            var $feed = $('<li id="feed-' + feedIndex + '" class="feed" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
-            var $header = $('<div class="mobHeader"></div>');
+            var $header = $('<div class="mobHeader ui-widget-header"></div>');
             var $feedIcon = $('<div class="feedIcon"></div>');
 
             var $toggleDiv = $('<div class="feedToggle"></div>');
@@ -136,7 +136,7 @@ var Feed = (function() {
             // console.debug('$feedToggle: ' + $toggleDiv.attr('class'))
 
             $button.css("color", "transparent").addClass('spinner')
-            $feed.removeClass('ui-state-error')
+            $feed.children('.mobHeader').removeClass('ui-state-error')
 
             var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
 
@@ -229,7 +229,7 @@ var Feed = (function() {
                     })
 
                 } else {
-                    $feed.addClass('ui-state-error');
+                    $feed.children('.mobHeader').addClass('ui-state-error');
                     $feedTitle.text('Error');
                     $feedBody.html('<li class="feedItem">Feed Error: ' + feedUrl + '</li>');
                 }

@@ -23,7 +23,11 @@
         -->
 
         <link rel="stylesheet" href="/static/css/mobylette.css">
-        <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/mobylette-light.css">
+        <!-- <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/mobylette-light.css"> -->
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lobster" type="text/css"/>
+        <!-- <link id="mobylette-theme" rel="stylesheet" href="/static/css/jquery-ui-1.12.1.custom/jquery-ui.theme.css"> -->
+        <!-- <link id="mobylette-base-theme" rel="stylesheet" href="/static/css/themes/basic/jquery-ui.theme.css"> -->
+        <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/basic/jquery-ui.theme.css">
 
         </script>
 
@@ -51,8 +55,8 @@
                  speed     : gallerySlideshowSpeed
              }
 
-             var $handle = $('.mobylette > .handle')
              var $slider = $('#slider')
+             var $handle = $('#slider > .handle')
              // $handle.hide();
 
              $slider.slideReveal({
@@ -184,7 +188,7 @@
 
              $('.themeSwitcher').change(function() {
                  console.log('Theme: ' + $(this).attr('value'))
-                 $("#mobylette-theme").attr({href : '/static/css/themes/mobylette-' + $(this).attr('value') + '.css'});
+                 $("#mobylette-theme").attr({href : $(this).attr('value')});
 
              });
 
@@ -331,15 +335,15 @@
             <form>
 
                 <fieldset>
-                    <legend>URL</legend>
+                    <legend class="ui-corner-top">URL</legend>
                     <div class="feedUrl">
                         <input type="text" name="url" id="feedUrl" autofocus placeholder="Feed URL (https://reddit.com/.rss)" value="" class="text ui-widget-content ui-corner-all" />
                     </div>
                 </fieldset>
 
                 <fieldset>
-                    <legend>Display Type</legend>
-                    <div class="feedType controlGroup">
+                    <legend class="ui-corner-top">Display Type</legend>
+                    <div class="feedType controlGroup ui-corner-all">
                         <label for="mixed">Mixed</label>
                         <input type="radio" name="radio-1" id="mixed">
                         <label for="photo">Photo</label>
@@ -350,7 +354,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>Limit # of items</legend>
+                    <legend class="ui-corner-top" class="ui-corner-top">Limit # of items</legend>
                     <div class="feedLimit">
                         <label for="feedLimitSlider">
                             <input type="text" id="feedLimitSlider" readonly style="border:0; font-weight:bold;">
@@ -365,22 +369,17 @@
             </form>
         </div>
 
-        <div id="slider" class="mobylette ui-state-default mobDOM">
+        <div id="slider" class="ui-state-default mobDOM">
             <div class="handle">
-                <i class="icon-right-open ui-state-default rotate"></i>
+                <i class="icon-right-open rotate"></i>
             </div>
-            <h1>
-                <i class="icon-motorcycle" aria-hidden="true"></i>
-                <span>Mobylette</span>
-            </h1>
 
-            <!-- <form id="form1" class="fileUpload">
-                 <input type="file" class="upload" id="imgInp" />
-                 </form>
-            -->
+            <i class="mobylette icon-motorcycle" aria-hidden="true"></i>
 
-            <fieldset class="prefsForm ui-widget ui-widget-content">
-                <legend>Tabs</legend>
+            <h1>Mobylette</h1>
+
+            <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+                <legend class="ui-corner-top">Tabs</legend>
 
                 <input type="file" id="imgInp" style="display: none;" />
                 <button class="twin left button icon-upload" onclick="document.getElementById('imgInp').click();">Import</button>
@@ -391,17 +390,17 @@
             </fieldset>
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
-                <legend>Theme</legend>
+                <legend class="ui-corner-top">Theme</legend>
 
                 <label class="twin left" for="themeLight">Light</label>
-                <input class="themeSwitcher checkboxradio" type="radio" name="radio-1" id="themeLight" value="light">
+                <input class="themeSwitcher checkboxradio" type="radio" name="radio-1" id="themeLight" value="/static/css/themes/basic/jquery-ui.theme.css">
                 <label class="twin right" for="themeDark">Dark</label>
-                <input class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" id="themeDark" value="dark">
+                <input class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" id="themeDark" value="/static/css/themes/night/jquery-ui.theme.css">
 
             </fieldset>
 
             <fieldset class="prefsForm ui-widget ui-widget-content">
-                <legend>Image gallery</legend>
+                <legend class="ui-corner-top">Image gallery</legend>
                 <label class="twin grow" for="amount">Slideshow speed: </label>
                 <span id="gallerySlideshowSpeedValue" class="twin"></span>
                 <div class="unique" id="sslider"></div>
