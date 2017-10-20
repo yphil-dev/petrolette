@@ -318,12 +318,17 @@ li.feed {
 
 
 /* Item */
+li.feedItem a {
+    display: block;
+    width:100%;
+    color: #111;
+}
+
 li.feedItem a:link {
-    /* color: white; */
 }
 
 li.feedItem a:visited {
-    /* color: lightgray; */
+    color: #777 !important;
 }
 
 li.feedItem a:hover {
@@ -404,3 +409,15 @@ button.addFeed {
 }
 
 /* Prefs */
+.InputAddOn {
+  display: flex;
+}
+
+.InputAddOn-field {
+  flex: 1;
+  /* field styles */
+}
+
+.InputAddOn-item {
+  /* item styles */
+}
