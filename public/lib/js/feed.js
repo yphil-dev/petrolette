@@ -203,7 +203,7 @@ var Feed = (function() {
             }).done(function(data) {
                 $feedTitle.text(data.feedTitle);
 
-                // console.log( "\nLoaded (%s)", data.feedItems);
+                console.log( "\nLimit: (%s)", feedLimit);
 
                 $.each(data.feedItems, function(index, item) {
 
@@ -211,7 +211,7 @@ var Feed = (function() {
                         return false;
                     }
 
-                    console.log( "\n\nItem (%s)", item.enclosures[0].url);
+                    // console.log( "\n\nItem (%s)", item.enclosures[0].url);
 
                     var $description = $.parseHTML(item.description)
                     // console.log( "Title: (%s)", item.title);
@@ -228,15 +228,28 @@ var Feed = (function() {
                         imageUrl = item.image.url
                     }
 
-                    if (typeof item.enclosures[0].url !== 'undefined') {
+                    if (item.enclosures[0]) {
                         imageUrl = item.enclosures[0].url
                     }
 
-                    var $feedItem = $('<li class="feedItem">')
+                    var $feedItem = $('<li class="feedItem">').attr('title', item.summary)
                     var $itemDiv = $('<div class="feedItem">')
                     var $itemLink = $('<a class="ui-helper-clearfix">')
                         .attr('href', item.link)
                         .append(item.title)
+
+                    if (index % 2 === 0) {
+                        /* we are even */
+                        $feedItem.addClass('ui-state-hover')
+                    }
+
+                    $feedItem.hover(
+                        function() {
+                            $(this).addClass('ui-state-highlight');
+                        }, function() {
+                            $(this).removeClass('ui-state-highlight');
+                        }
+                    );
 
                     if (typeof imageUrl !== 'undefined') {
                         var $imgLink = $('<a data-fancybox="gallery">').attr('href', imageUrl)
