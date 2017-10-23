@@ -211,7 +211,7 @@ var Feed = (function() {
                         return false;
                     }
 
-                    // console.log( "\nItem (%s)", JSON.stringify(item.description));
+                    console.log( "\n\nItem (%s)", item.enclosures[0].url);
 
                     var $description = $.parseHTML(item.description)
                     // console.log( "Title: (%s)", item.title);
@@ -222,10 +222,15 @@ var Feed = (function() {
 
                     if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
                         imageUrl = $tempDom.find('img').attr('src')
-                    } else {
+                    }
+
+                    if (typeof item.image.url !== 'undefined') {
                         imageUrl = item.image.url
                     }
 
+                    if (typeof item.enclosures[0].url !== 'undefined') {
+                        imageUrl = item.enclosures[0].url
+                    }
 
                     var $feedItem = $('<li class="feedItem">')
                     var $itemDiv = $('<div class="feedItem">')

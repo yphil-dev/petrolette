@@ -65,7 +65,7 @@ router.get('/feed', function(req, res, next) {
                 }
                 return (s);
             }
-            console.log ('\nThere are ' + feedItems.length + ' items in the ' + feedTitle + ' feed.');
+            console.log ('There are ' + feedItems.length + ' items in the ' + feedTitle + ' feed.');
             for (var i = 0; i < feedItems.length; i++) {
                 // console.log ("Item #" + pad (i) + ": " + feedItems[i].title + ".\n");
                 // console.log('ALL: ' + JSON.stringify(feedItems[i]))
