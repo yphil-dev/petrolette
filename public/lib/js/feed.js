@@ -40,6 +40,8 @@ var Feed = (function() {
 
                 var $feedContainer = $(this).parent().parent().parent().parent();
 
+                console.log('Ici: ' + $feedContainer.data('limit'))
+
                 $('#feedDialog')
                     .data('feedId', $thisFeedId)
                     .data('feedUrl', $feedContainer.data('url'))
@@ -52,7 +54,7 @@ var Feed = (function() {
             var $feedBodyUl = $('<ul class="feedBody"></ul>');
             var $dumbLi = $('<li>plop</li>');
 
-            var $feed = $('<li id="feed-' + feedIndex + '" class="feed" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
+            var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-widget" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
             var $header = $('<div class="mobHeader ui-widget-header"></div>');
             var $feedIcon = $('<div class="feedIcon"></div>');
@@ -195,6 +197,18 @@ var Feed = (function() {
                             var $tempDom = $('<output>').append(content);
 
                             var $feedItem = $('<li class="feedItem">')
+                                .hover(
+                                    function() {
+                                        $( this ).addClass('ui-state-active')
+                                        // console.log('Elt: ' + LightenColor())
+
+                                        // $( this ).append( $( "<span> ***</span>" ) );
+                                    }, function() {
+                                        // $( this ).find( "span:last" ).remove();
+                                        $( this ).removeClass('ui-state-active')
+                                    }
+                                );
+
                             var $itemDiv = $('<div class="feedItem">')
                             var $itemLink = $('<a class="ui-helper-clearfix">').attr('href', entry.link).append(entry.title)
 

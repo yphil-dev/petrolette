@@ -60,12 +60,32 @@ $('#feedDialog').dialog({
     },
     open: function( event, ui ) {
 
-        $('input#feedUrl').select()
+        console.log('Elt: ' + $(this).attr('id'))
+
+        // $('input#feedUrl').select()
 
         $('input#feedUrl').val($(this).data('feedUrl'));
-        $('input#feedLimit').val(feedLimit);
-        $('input#feedLimit').val($(this).data('feedLimit'));
-        $('input#feedLimitSlider').val($(this).data('feedLimit'));
+        // $('input#feedLimit').val(feedLimit);
+        // $('input#feedLimit').val($(this).data('feedLimit'));
+
+        console.log('L: (' + $(this).data('feedLimit') + ')')
+
+        // $('div#feedLimitSlider').slider({
+        //     value: 0,
+        //     min: 1,
+        //     max: 128,
+        //     step: 1,
+        //     slide: function( event, ui ) {
+        //         console.log('Val: ' + ui.value)
+        //         // $('input#feedLimitSlider').val(ui.value + ' items');
+        //     },
+        //     change: function( event, ui ) {
+        //         console.log('Val: ' + ui.value)
+        //     }
+        // });
+
+        // $('input#feedLimitSlider').val($(this).data('feedLimit'));
+
         $('.feedType #' + $(this).data('feedType')).prop('checked',true).change();
 
         $(this).on('submit', function () {

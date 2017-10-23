@@ -1,0 +1,48 @@
+<div class="handle ui-corner-right">
+    <i class="icon-right-open rotate"></i>
+</div>
+
+<i class="mobylette icon-motorcycle" aria-hidden="true"></i>
+
+<h1>Mobylette</h1>
+
+<fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+    <legend class="ui-corner-top">Tabs</legend>
+
+    <input type="file" id="imgInp" style="display: none;" />
+    <button class="twin left button icon-upload" onclick="document.getElementById('imgInp').click();">Import</button>
+    <button class="twin right button icon-download" id="saveTabs"> Export</button>
+
+    <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
+    <label class="unique noBottom" for="tabDropActivate">Open tab on feed drop</label>
+</fieldset>
+
+<fieldset class="prefsForm ui-widget ui-widget-content">
+    <legend class="ui-corner-top">Theme</legend>
+
+    <label class="twin left" for="themeLight">Light</label>
+    <input class="themeSwitcher checkboxradio" type="radio" name="radio-1" id="themeLight" value="/static/css/themes/basic/jquery-ui.theme.css">
+    <label class="twin right" for="themeDark">Dark</label>
+    <input class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" id="themeDark" value="/static/css/themes/tango/jquery-ui.theme.css">
+
+</fieldset>
+
+<fieldset class="prefsForm ui-widget ui-widget-content">
+    <legend class="ui-corner-top">Image gallery</legend>
+    <label class="twin grow" for="amount">Slideshow speed: </label>
+    <span id="gallerySlideshowSpeedValue" class="twin"></span>
+    <div class="unique" id="sslider"></div>
+
+    <label class="unique" for="gallerySlideTransition">Slide transition</label>
+    <select class="unique" id="gallerySlideTransition">
+        <option value="false">None</option>
+        <option value="fade">Fade</option>
+        <option value="slide">Slide</option>
+        <option value="circular">Circular</option>
+        <option value="tube">Tube</option>
+        <option value="zoom-in-out">Zoom-in-out</option>
+        <option value="rotate">Rotate</option>
+
+    </select>
+
+</fieldset>

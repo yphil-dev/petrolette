@@ -35,6 +35,7 @@
 
          $(document).ready(function() {
 
+
              var $tabs = $("#tabs").tabs({
 
                  activate: function(event, ui){
@@ -44,28 +45,6 @@
                      $activeTab.append('<i class="icon-cancel-circled tabCloser"></i>')
                  }
 
-             });
-
-             var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
-             var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
-
-             $.fancybox.defaults.transitionEffect = gallerySlideTransition
-             $.fancybox.defaults.slideShow = {
-                 autoStart : false,
-                 speed     : gallerySlideshowSpeed
-             }
-
-             var $slider = $('#slider')
-             var $handle = $('#slider > .handle')
-             // $handle.hide();
-
-             $slider.slideReveal({
-                 width: 275
-             });
-
-             $handle.click(function () {
-                 $slider.slideReveal("toggle", false);
-                 $(this).children('i').toggleClass('other')
              });
 
              var $tabUl = $('#tabUl');
@@ -126,7 +105,6 @@
 
              $('button, .button').button();
 
-             $( ".checkboxradio" ).checkboxradio();
 
              $tabs.on('mouseup', '.ui-tabs-active a', function(e){
                  e.preventDefault();
@@ -147,97 +125,42 @@
 
                  var $a = $(this).prev('a.ui-tabs-anchor')
 
+                 var $killTabDialog = $('<div></div>')
+                     .load('/includes/tos.html')
+                     .dialog({
+                         autoOpen: false,
+                         title: 'Policies &amp; Terms of Service',
+                         width: 600,
+                         height: 400,
+                         modal: true
+                     });
+
                  $('#killTabDialog').data('tabName', $a.text())
-                                 .data('panelId', $a.attr('href'))
-                                 .data('tabLinkId', $a.prop('id'))
-                                 .dialog('open')
+                                    .data('panelId', $a.attr('href'))
+                                    .data('tabLinkId', $a.prop('id'))
+                                    .dialog('open')
                  $('#killTabDialog').dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
              });
 
              console.log('---- INDEX OK ----');
 
              // Prefs
-             $('#themes').selectmenu({
-                 width: 200,
-                 change: function( event, data ) {
 
-                     Prefs.writeConfig('theme', data.item.value);
-
-                     $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-                 }
-             });
-
-             $('#gallerySlideTransition').selectmenu({
-                 change: function( event, data ) {
-
-                     console.log('Value: ' + data.item.value)
-                     $.fancybox.defaults.transitionEffect = data.item.value
-                     Prefs.writeConfig('gallerySlideTransition', data.item.value);
-
-                     // Prefs.writeConfig('gallerySlideTransition', data.item.value);
-
-                     // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-                 }
-             });
-
-             $('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
-
-             // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-             $('.themeSwitcher').change(function() {
-                 console.log('Theme: ' + $(this).attr('value'))
-                 $("#mobylette-theme").attr({href : $(this).attr('value')});
-
-             });
-
-             if (Prefs.readConfig('tabDropActivate') === 'true')
-                 $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
-             else
-                 $('#tabDropActivate').prop('checked', false).checkboxradio('refresh')
-
-             $('#tabDropActivate').change(function() {
-                 Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
-             });
-
-             $('.controlGroup').controlgroup();
-
-             $('#sslider').slider({
-                 value: gallerySlideshowSpeed,
-                 min: 1,
-                 max: 10000,
-                 step: 100,
-                 slide: function( event, ui ) {
-                     $('#amount').val(ui.value + 'ms');
-                     $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-
-                 },
-                 change: function( event, ui ) {
-                     Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
-                     $.fancybox.defaults.slideShow = {
-                         speed     : ui.value
-                     }
-
-                 }
-             });
-
-             $('#amount').val($('#sslider').slider('value') + 'ms');
-             $('#gallerySlideshowSpeedValue').text($('#sslider').slider('value') + 'ms');
-
-             var feedLimit
+             var feedLimit = 0;
 
              $('div#feedLimitSlider').slider({
-                 value: feedLimit,
+                 value: 0,
                  min: 1,
                  max: 128,
                  step: 1,
+                 create: function( event, ui ) {
+                     // console.log('Elt: ' + $(this).data('feedLimit'))
+                     // $('input#feedLimitSlider').val($('div#feedLimitSlider').slider('value') + ' items');
+                 },
                  slide: function( event, ui ) {
-                     $('input#feedLimitSlider').val(ui.value + ' items');
+                     $('input#feedLimitSlider').val(ui.value);
                  }
              });
-
-             $('input#feedLimitSlider').val($('div#feedLimitSlider').slider('value') + ' items');
 
 
              $('#tabs').find('.mobFeedRefresh').click();
@@ -245,7 +168,7 @@
              $('#tabs').find('div.feedControls').slideUp()
 
 
-             $('.mobDOM').fadeIn('slow')
+             // $('.mobDOM').fadeIn('slow')
              $('#addTab').fadeOut(2000);
              $('.addFeed').fadeOut(2000);
 
@@ -253,51 +176,44 @@
                  title: "Constructing HTML Elements"
              }
 
-             //
-             //              $.get("/static/templates/dialog-renameTab.mst", function(template) {
-             //                  var rendered = Mustache.render(template, tdata);
-             //                  var $rendered = $(rendered)
-             //                  $("body").append(rendered);
-             //              });
-             //
-
-
-             // var $jsonUpload = $('#jsonUpload').button()
-             //
-             //              $jsonUpload.change(function(){
-             //                  // console.log(this.value || 'Nothing selected')
-             //              });
-             //
-             //
-
-             // $('#jsonUpload').fileUpload();
-
              JsonObj = null
-
-             function handleFileSelect(evt) {
-                 var files = evt.target.files; // FileList object
-                 f = files[0];
-                 var reader = new FileReader();
-
-                 // Closure to capture the file information.
-                 reader.onload = (function(theFile) {
-                     return function(e) {
-                         // Render thumbnail.
-                         JsonObj = JSON.parse(e.target.result);
-                         console.log(JsonObj);
-                     };
-                 })(f);
-
-                 // Read in the image file as a data URL.
-                 reader.readAsText(f);
-             }
-             document.getElementById('imgInp').addEventListener('change', handleFileSelect, false);
-
+             //
+             //              function handleFileSelect(evt) {
+             //                  var files = evt.target.files; // FileList object
+             //                  f = files[0];
+             //                  var reader = new FileReader();
+             //
+             //                  // Closure to capture the file information.
+             //                  reader.onload = (function(theFile) {
+             //                      return function(e) {
+             //                          // Render thumbnail.
+             //                          JsonObj = JSON.parse(e.target.result);
+             //                          console.log(JsonObj);
+             //                      };
+             //                  })(f);
+             //
+             //                  // Read in the image file as a data URL.
+             //                  reader.readAsText(f);
+             //              }
+             //              document.getElementById('imgInp').addEventListener('change', handleFileSelect, false);
+             //
              // $("#imgInp").change(function(){
              //     readURL(this);
              // });
 
+
+
          });
+
+         var LightenColor = function(color, percent) {
+             var num = parseInt(color,16),
+                 amt = Math.round(2.55 * percent),
+                 R = (num >> 16) + amt,
+                 B = (num >> 8 & 0x00FF) + amt,
+                 G = (num & 0x0000FF) + amt;
+
+             return (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
+         };
 
         </script>
 
@@ -308,6 +224,9 @@
         <div id="tabs" class="mobDOM">
             <ul id="tabUl"></ul>
         </div>
+
+        <div id="slidermenu"></div>
+        <div id="mobDialogs" class="mobDOM"></div>
 
         <button id="addTab" class="mobDOM"><i class="icon-plus"></i> Tab</button>
 
@@ -369,58 +288,6 @@
             </form>
         </div>
 
-        <div id="slider" class="ui-state-default mobDOM">
-            <div class="handle">
-                <i class="icon-right-open rotate"></i>
-            </div>
-
-            <i class="mobylette icon-motorcycle" aria-hidden="true"></i>
-
-            <h1>Mobylette</h1>
-
-            <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
-                <legend class="ui-corner-top">Tabs</legend>
-
-                <input type="file" id="imgInp" style="display: none;" />
-                <button class="twin left button icon-upload" onclick="document.getElementById('imgInp').click();">Import</button>
-                <button class="twin right button icon-download" id="saveTabs"> Export</button>
-
-                <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
-                <label class="unique noBottom" for="tabDropActivate">Open tab on feed drop</label>
-            </fieldset>
-
-            <fieldset class="prefsForm ui-widget ui-widget-content">
-                <legend class="ui-corner-top">Theme</legend>
-
-                <label class="twin left" for="themeLight">Light</label>
-                <input class="themeSwitcher checkboxradio" type="radio" name="radio-1" id="themeLight" value="/static/css/themes/basic/jquery-ui.theme.css">
-                <label class="twin right" for="themeDark">Dark</label>
-                <input class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" id="themeDark" value="/static/css/themes/night/jquery-ui.theme.css">
-
-            </fieldset>
-
-            <fieldset class="prefsForm ui-widget ui-widget-content">
-                <legend class="ui-corner-top">Image gallery</legend>
-                <label class="twin grow" for="amount">Slideshow speed: </label>
-                <span id="gallerySlideshowSpeedValue" class="twin"></span>
-                <div class="unique" id="sslider"></div>
-
-                <label class="unique" for="gallerySlideTransition">Slide transition</label>
-                <select class="unique" id="gallerySlideTransition">
-                    <option value="false">None</option>
-                    <option value="fade">Fade</option>
-                    <option value="slide">Slide</option>
-                    <option value="circular">Circular</option>
-                    <option value="tube">Tube</option>
-                    <option value="zoom-in-out">Zoom-in-out</option>
-                    <option value="rotate">Rotate</option>
-
-                </select>
-
-            </fieldset>
-
-        </div>
-
         <!-- <input class="mobDOM" type="file" id="files" name="files[]"  /> -->
         <!-- <output class="mobDOM" id="list"></output> -->
         <!--
@@ -446,6 +313,95 @@
         <script src="/static/lib/js/feed.js"></script>
         <script src="/static/lib/js/prefs.js"></script>
         <script src="/static/lib/js/dialog.js"></script>
+
+        <script>
+         $('#slidermenu').load('/static/templates/slidermenu.html', function() {
+
+             console.log('Yo: ' + $(this).attr('class'))
+
+             var $slider = $(this)
+             var $handle = $slider.find('.handle')
+             // $handle.hide();
+
+             $slider.slideReveal({
+                 width: 275
+             });
+
+             $handle.click(function () {
+                 $slider.slideReveal("toggle", false);
+                 $(this).children('i').toggleClass('other')
+             });
+
+             $( ".checkboxradio" ).checkboxradio();
+
+             $('.themeSwitcher').change(function() {
+                 console.log('Theme: ' + $(this).attr('value'))
+                 $("#mobylette-theme").attr({href : $(this).attr('value')});
+
+             });
+
+             $('#gallerySlideTransition').selectmenu({
+                 change: function( event, data ) {
+
+                     console.log('Value: ' + data.item.value)
+                     $.fancybox.defaults.transitionEffect = data.item.value
+                     Prefs.writeConfig('gallerySlideTransition', data.item.value);
+
+                     // Prefs.writeConfig('gallerySlideTransition', data.item.value);
+
+                     // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+                 }
+             });
+
+             $('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
+
+             // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
+             if (Prefs.readConfig('tabDropActivate') === 'true')
+                 $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
+             else
+                 $('#tabDropActivate').prop('checked', false).checkboxradio('refresh')
+
+             $('#tabDropActivate').change(function() {
+                 Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
+             });
+
+             $('.controlGroup').controlgroup();
+
+             var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
+             var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
+
+             $.fancybox.defaults.transitionEffect = gallerySlideTransition
+             $.fancybox.defaults.slideShow = {
+                 autoStart : false,
+                 speed     : gallerySlideshowSpeed
+             }
+
+             $('#sslider').slider({
+                 value: gallerySlideshowSpeed,
+                 min: 1,
+                 max: 10000,
+                 step: 100,
+                 slide: function( event, ui ) {
+                     $('#amount').val(ui.value + 'ms');
+                     $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
+
+                 },
+                 change: function( event, ui ) {
+                     Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
+                     $.fancybox.defaults.slideShow = {
+                         speed     : ui.value
+                     }
+                 }
+             });
+
+             $('#amount').val($('#sslider').slider('value') + 'ms');
+             $('#gallerySlideshowSpeedValue').text($('#sslider').slider('value') + 'ms');
+
+         });
+
+        </script>
 
     </body>
 </html>
