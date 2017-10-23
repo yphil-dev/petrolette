@@ -176,33 +176,6 @@
                  title: "Constructing HTML Elements"
              }
 
-             JsonObj = null
-             //
-             //              function handleFileSelect(evt) {
-             //                  var files = evt.target.files; // FileList object
-             //                  f = files[0];
-             //                  var reader = new FileReader();
-             //
-             //                  // Closure to capture the file information.
-             //                  reader.onload = (function(theFile) {
-             //                      return function(e) {
-             //                          // Render thumbnail.
-             //                          JsonObj = JSON.parse(e.target.result);
-             //                          console.log(JsonObj);
-             //                      };
-             //                  })(f);
-             //
-             //                  // Read in the image file as a data URL.
-             //                  reader.readAsText(f);
-             //              }
-             //              document.getElementById('imgInp').addEventListener('change', handleFileSelect, false);
-             //
-             // $("#imgInp").change(function(){
-             //     readURL(this);
-             // });
-
-
-
          });
 
          var LightenColor = function(color, percent) {
@@ -398,6 +371,32 @@
 
              $('#amount').val($('#sslider').slider('value') + 'ms');
              $('#gallerySlideshowSpeedValue').text($('#sslider').slider('value') + 'ms');
+
+
+             // File select
+
+             JsonObj = null
+
+             function handleFileSelect(evt) {
+                 var files = evt.target.files
+                 var f = files[0];
+                 var reader = new FileReader();
+
+
+                 reader.onload = (function(theFile) {
+                     return function(e) {
+                         JsonObj = JSON.parse(e.target.result);
+                         console.log(JsonObj);
+                     };
+                 })(f);
+
+                 reader.readAsText(f);
+             }
+             document.getElementById('imgInp').addEventListener('change', handleFileSelect, false);
+
+             // $("#imgInp").change(function(){
+             //     readURL(this);
+             // });
 
          });
 
