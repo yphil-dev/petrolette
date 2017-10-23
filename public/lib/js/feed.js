@@ -203,11 +203,36 @@ var Feed = (function() {
             }).done(function(data) {
                 $feedTitle.text(data.feedTitle);
                 // var jdata = $.parseJSON(data)
-                console.log( "second success: Loaded (%s)", data.feedTitle);
+                // console.log( "\nLoaded (%s)", data.feedItems);
 
-                $.each(data.feedItems, function(index, element) {
+                $.each(data.feedItems, function(index, item) {
 
-                    console.log( "Elt: (%s)", element.title);
+                    console.log( "\nItem (%s)", JSON.stringify(item.image.url));
+
+                    // console.log( "Title: (%s)", item.title);
+                    // console.log( "Link: (%s)", item.link);
+                    // console.log( "Img: (%s)", item.image);
+
+                    var $feedItem = $('<li class="feedItem">')
+                    var $itemDiv = $('<div class="feedItem">')
+                    var $itemLink = $('<a class="ui-helper-clearfix">')
+                        .attr('href', item.link)
+                        .append(item.title)
+
+                    if (typeof item.image.url !== 'undefined') {
+                        var $imgLink = $('<a data-fancybox="gallery">').attr('href', item.image.url)
+                        var $itemImg = $('<img src="' + item.image.url + '" />')
+                            .appendTo($imgLink)
+                        if (feedType == 'photo')
+                            $itemImg.addClass('full')
+
+                        if (feedType !== 'text')
+                            $imgLink.appendTo($itemDiv)
+                    }
+
+                    $itemLink.appendTo($itemDiv)
+                    $itemDiv.appendTo($feedItem)
+                    $feedItem.appendTo($feedBody)
 
                     // $('body').append($('<div>', {
                     //     text: element.name
