@@ -99,32 +99,6 @@ $('#feedDialog').dialog({
     }
 });
 
-$( "#killTabDialog" ).dialog({
-    autoOpen: false,
-    resizable: false,
-    height: "auto",
-    width: 400,
-    modal: true,
-    buttons: {
-        "Delete all feeds": function() {
-
-            var $tabLinkId = $('#' + $(this).data('tabLinkId'))
-            var $thisPanel = $($(this).data('panelId'))
-
-            $thisPanel.remove()
-            $tabLinkId.parent('li').remove()
-            Tab.saveTabs();
-            $(this).dialog( "close" );
-        },
-        Cancel: function() {
-            $( this ).dialog( "close" );
-        }
-    },
-    open: function () {
-        $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');
-    }
-});
-
 $( "#killFeedDialog" ).dialog({
     autoOpen: false,
     resizable: false,
