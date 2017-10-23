@@ -202,16 +202,30 @@ var Feed = (function() {
                 $feedBody.empty()
             }).done(function(data) {
                 $feedTitle.text(data.feedTitle);
-                // var jdata = $.parseJSON(data)
+
                 // console.log( "\nLoaded (%s)", data.feedItems);
 
                 $.each(data.feedItems, function(index, item) {
 
-                    console.log( "\nItem (%s)", JSON.stringify(item.image.url));
+                    if (index == parseInt(feedLimit)) {
+                        return false;
+                    }
 
+                    // console.log( "\nItem (%s)", JSON.stringify(item.description));
+
+                    var $description = $.parseHTML(item.description)
                     // console.log( "Title: (%s)", item.title);
-                    // console.log( "Link: (%s)", item.link);
-                    // console.log( "Img: (%s)", item.image);
+
+                    var $tempDom = $('<output>').append($description);
+
+                    var imageUrl;
+
+                    if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
+                        imageUrl = $tempDom.find('img').attr('src')
+                    } else {
+                        imageUrl = item.image.url
+                    }
+
 
                     var $feedItem = $('<li class="feedItem">')
                     var $itemDiv = $('<div class="feedItem">')
@@ -219,9 +233,9 @@ var Feed = (function() {
                         .attr('href', item.link)
                         .append(item.title)
 
-                    if (typeof item.image.url !== 'undefined') {
-                        var $imgLink = $('<a data-fancybox="gallery">').attr('href', item.image.url)
-                        var $itemImg = $('<img src="' + item.image.url + '" />')
+                    if (typeof imageUrl !== 'undefined') {
+                        var $imgLink = $('<a data-fancybox="gallery">').attr('href', imageUrl)
+                        var $itemImg = $('<img src="' + imageUrl + '" />')
                             .appendTo($imgLink)
                         if (feedType == 'photo')
                             $itemImg.addClass('full')
@@ -233,10 +247,6 @@ var Feed = (function() {
                     $itemLink.appendTo($itemDiv)
                     $itemDiv.appendTo($feedItem)
                     $feedItem.appendTo($feedBody)
-
-                    // $('body').append($('<div>', {
-                    //     text: element.name
-                    // }));
 
                 });
 
