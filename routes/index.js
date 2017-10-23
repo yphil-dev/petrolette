@@ -1,26 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var favicon = require('favicon');
-// var parser = require('rss-parser');
-const fileUpload = require('express-fileupload');
-
-// Exp
 var FeedParser = require('feedparser');
 var request = require('request'); // for fetching the feed
-
-
-// End exp
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
 });
-
-router.use(fileUpload({
-    limits: { fileSize: 50 },
-    safeFileNames: true,
-    preserveExtension: true
-}));
-
 
 function getFeed (urlfeed, callback) {
     var req = request (urlfeed);

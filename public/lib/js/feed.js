@@ -181,16 +181,18 @@ var Feed = (function() {
 
             var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
 
-            // console.log('## Sending: ' + decodeURI(cleanUrl))
-            //
-            //             $.get("/feedicon", {
-            //                 url: decodeURI(feedHost),
-            //                 dataType: "json",
-            //                 timeout: 3000
-            //             }, function(icon, status) {
-            //                 if ( !icon || icon.length === 0) icon = "/static/images/generic-rss-32.png";
-            //             })
-            //
+            console.log('## Sending: ' + decodeURI(cleanUrl))
+
+            $.get("/feedicon", {
+                url: decodeURI(feedHost),
+                dataType: "json",
+                timeout: 3000
+            }, function(icon, status) {
+                if ( !icon || icon.length === 0) icon = "/static/images/generic-rss-32.png";
+                $feedIcon.removeClass('icon-down-dir')
+                         .css('background-image','url(' + icon + ')')
+            })
+
 
             var jqxhr = $.get("/feed", {
                 feedurl: feedUrl,
@@ -210,6 +212,9 @@ var Feed = (function() {
                     if (index == parseInt(feedLimit)) {
                         return false;
                     }
+
+                    if (item.favicon)
+                        console.log('Icon: ' + item.favicon)
 
                     // console.log( "\n\nItem (%s)", item.enclosures[0].url);
 
