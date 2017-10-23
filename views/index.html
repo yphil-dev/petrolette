@@ -29,12 +29,11 @@
         <!-- <link id="mobylette-base-theme" rel="stylesheet" href="/static/css/themes/basic/jquery-ui.theme.css"> -->
         <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/basic/jquery-ui.theme.css">
 
-        </script>
+        <script src="/static/lib/js/globals.js"></script>
 
         <script>
 
          $(document).ready(function() {
-
 
              var $tabs = $("#tabs").tabs({
 
@@ -132,6 +131,7 @@
                          autoOpen: false,
                          resizable: false,
                          height: "auto",
+                         title: 'Kill the ' + $a.text() + ' tab?',
                          width: 400,
                          modal: true,
                          buttons: {
@@ -150,25 +150,20 @@
                              }
                          },
                          open: function () {
+                             var $dialog = $(this)
                              $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');
+                             $dialog.children('p').append('Really delete one tab and N feeds?')
                          }
                      });
 
 
-                     $killTabDialog.dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
+                     // $killTabDialog.dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
 
                      $killTabDialog.data('tabName', $a.text())
                                    .data('panelId', $a.attr('href'))
                                    .data('tabLinkId', $a.prop('id'))
                                    .dialog('open')
-
                  });
-
-                 // $('#killTabDialog').data('tabName', $a.text())
-                 //                    .data('panelId', $a.attr('href'))
-                 //                    .data('tabLinkId', $a.prop('id'))
-                 //                    .dialog('open')
-                 //
              });
 
              console.log('---- INDEX OK ----');
@@ -233,10 +228,6 @@
         <button id="addTab" class="mobDOM"><i class="icon-plus"></i> Tab</button>
 
         <i id="savingIcon" class="icon-download"></i>
-
-        <div id="killTabDialog" title="" class="mobDOM">
-            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
-        </div>
 
         <div id="killFeedDialog" title="" class="mobDOM">
             <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>

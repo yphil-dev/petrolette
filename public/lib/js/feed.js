@@ -24,9 +24,47 @@ var Feed = (function() {
 
                 var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
 
-                $('#killFeedDialog').data('feedId', $thisFeedId).dialog('open')
-                $('#killFeedDialog').dialog('option', 'title', 'Kill the ' + $(this).parent().parent().prev().text() + ' feed?');
+                $('#mobDialogs').load('/static/templates/dialog.html', function() {
+                    var $killFeedDialog = $(this).children('#dialog')
 
+                    $killFeedDialog.dialog({
+                        title: 'Kill the feed?',
+                        autoOpen: false,
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                            "Delete feed": function() {
+
+                                var $tabFeedId = $('#' + $(this).data('feedId'))
+
+                                $tabFeedId.remove()
+                                Tab.saveTabs()
+                                $(this).dialog( "close" );
+                            },
+                            Cancel: function() {
+                                $( this ).dialog( "close" );
+                            }
+                        },
+                        open: function () {
+                            var $dialog = $(this)
+                            $dialog.children('p').append('Really delete this feed?')
+
+                            $('button:contains("Delete")').addClass('ui-state-error');
+                        }
+                    });
+
+                    $killFeedDialog.data('feedId', $thisFeedId).dialog('open')
+                });
+
+                //
+                //                 console.log('globalTest: ' + globalTest)
+                //                 var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
+                //
+                //                 $('#killFeedDialog').data('feedId', $thisFeedId).dialog('open')
+                //                 $('#killFeedDialog').dialog('option', 'title', 'Kill the ' + $(this).parent().parent().prev().text() + ' feed?');
+                //
 
             });
 

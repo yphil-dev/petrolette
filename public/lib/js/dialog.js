@@ -119,6 +119,6 @@ $( "#killFeedDialog" ).dialog({
         }
     },
     open: function () {
-        $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');
+        $('button:contains("Delete")').addClass('ui-state-error');
     }
 });
