@@ -20,13 +20,14 @@
     "express": "~4.15.5",
     "express-fileupload": "0.3.0",
     "favicon": "0.0.2",
+    "feedparser": "2.2.2",
     "fetch-favicon": "0.0.2",
     "hbs": "~4.0.1",
     "himalaya": "0.2.13",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
     "morgan": "~1.9.0",
-    "rss-parser": "2.10.6",
+    "rss-parser": "2.10.8",
     "serve-favicon": "~2.4.5",
     "unfluff": "1.1.0"
   }

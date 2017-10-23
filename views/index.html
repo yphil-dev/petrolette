@@ -156,9 +156,6 @@
                          }
                      });
 
-
-                     // $killTabDialog.dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
-
                      $killTabDialog.data('tabName', $a.text())
                                    .data('panelId', $a.attr('href'))
                                    .data('tabLinkId', $a.prop('id'))
@@ -166,7 +163,6 @@
                  });
              });
 
-             console.log('---- INDEX OK ----');
 
              // Prefs
 
@@ -229,9 +225,6 @@
 
         <i id="savingIcon" class="icon-download"></i>
 
-        <div id="killFeedDialog" title="" class="mobDOM">
-            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
-        </div>
 
         <div id="tabDialog" title="Rename tab" class="mobDOM">
             <form>
@@ -384,6 +377,9 @@
              });
 
          });
+
+         console.log('---- INDEX OK ----');
+
          //
          //          $('#mobDialogs').load('/static/templates/dialog.html', function() {
          //              console.log('Load OK: ' + $(this).get())

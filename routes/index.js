@@ -1,8 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var favicon = require('favicon');
-var parser = require('rss-parser');
+// var parser = require('rss-parser');
 const fileUpload = require('express-fileupload');
+
+// Exp
+var FeedParser = require('feedparser');
+var request = require('request'); // for fetching the feed
+
+
+// End exp
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
@@ -13,6 +20,61 @@ router.use(fileUpload({
     safeFileNames: true,
     preserveExtension: true
 }));
+
+
+function getFeed (urlfeed, callback) {
+    var req = request (urlfeed);
+    var feedparser = new FeedParser ();
+    var feedItems = new Array ();
+    req.on ("response", function (res) {
+        var stream = this;
+        if (res.statusCode == 200) {
+            stream.pipe (feedparser);
+        }
+    });
+    req.on ("error", function (res) {
+        console.log ("getFeed: Error reading feed.");
+    });
+    feedparser.on ("readable", function () {
+        try {
+            var item = this.read (), flnew;
+            if (item !== null) { //2/9/17 by DW
+                feedItems.push (item);
+            }
+        }
+        catch (err) {
+            console.log ("getFeed: err.message == " + err.message);
+        }
+    }).on ("end", function () {
+        var meta = this.meta;
+        callback (undefined, feedItems, meta.title);
+    }).on ("error", function (err) {
+        console.log ("getFeed: Error reading feed.");
+        callback (err);
+    });
+}
+
+router.get('/feed', function(req, res, next) {
+
+    getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
+        if (!err) {
+            function pad (num) {
+                var s = num.toString (), ctplaces = 3;
+                while (s.length < ctplaces) {
+                    s = "0" + s;
+                }
+                return (s);
+            }
+            console.log ("\n\nThere are " + feedTitle + " items in the feed.\n");
+            for (var i = 0; i < feedItems.length; i++) {
+                // console.log ("Item #" + pad (i) + ": " + feedItems[i].title + ".\n");
+                // console.log('ALL: ' + JSON.stringify(feedItems[i]))
+            }
+            res.send(feedTitle, feedItems);
+        }
+    });
+
+});
 
 router.get('/feedicon', function(req, res, next) {
 
@@ -28,21 +90,6 @@ router.get('/feedicon', function(req, res, next) {
             // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
             res.send(u)
             // console.log('Err: ' + JSON.stringify(err))
-        }
-    });
-});
-
-router.get('/feed', function(req, res, next) {
-
-    parser.parseURL(req.query.feedurl, function(err, parsed) {
-
-        if(err !== null) {
-            console.log('## Feed ERROR: ' + err + ' (' + req.query.feedurl + ')');
-            res.send(err.code);
-        }
-
-        if(typeof parsed != 'undefined') {
-            res.send(parsed.feed);
         }
     });
 });
