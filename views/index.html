@@ -124,21 +124,53 @@
 
                  var $a = $(this).prev('a.ui-tabs-anchor')
 
-                 var $killTabDialog = $('<div></div>')
-                     .load('/includes/tos.html')
-                     .dialog({
+                 $('#mobDialogs').load('/static/templates/dialog.html', function() {
+                     console.log('Load OK: ' + $(this).attr('id'))
+
+
+                     var $killTabDialog = $(this).children('#dialog')
+
+                     $killTabDialog.dialog({
                          autoOpen: false,
-                         title: 'Policies &amp; Terms of Service',
-                         width: 600,
-                         height: 400,
-                         modal: true
+                         resizable: false,
+                         height: "auto",
+                         width: 400,
+                         modal: true,
+                         buttons: {
+                             "Delete all feeds": function() {
+
+                                 var $tabLinkId = $('#' + $(this).data('tabLinkId'))
+                                 var $thisPanel = $($(this).data('panelId'))
+
+                                 $thisPanel.remove()
+                                 $tabLinkId.parent('li').remove()
+                                 Tab.saveTabs();
+                                 $(this).dialog( "close" );
+                             },
+                             Cancel: function() {
+                                 $( this ).dialog( "close" );
+                             }
+                         },
+                         open: function () {
+                             $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');
+                         }
                      });
 
-                 $('#killTabDialog').data('tabName', $a.text())
-                                    .data('panelId', $a.attr('href'))
-                                    .data('tabLinkId', $a.prop('id'))
-                                    .dialog('open')
-                 $('#killTabDialog').dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
+
+                     $killTabDialog.dialog('option', 'title', 'Kill the ' + $a.text() + ' tab?');
+
+                     $killTabDialog.data('tabName', $a.text())
+                                   .data('panelId', $a.attr('href'))
+                                   .data('tabLinkId', $a.prop('id'))
+                                   .dialog('open')
+
+                 });
+
+                 // $('#killTabDialog').data('tabName', $a.text())
+                 //                    .data('panelId', $a.attr('href'))
+                 //                    .data('tabLinkId', $a.prop('id'))
+                 //                    .dialog('open')
+                 //
              });
 
              console.log('---- INDEX OK ----');
@@ -198,7 +230,7 @@
         </div>
 
         <div id="slidermenu"></div>
-        <div id="mobDialogs" class="mobDOM"></div>
+        <div id="mobDialogs"></div>
 
         <button id="addTab" class="mobDOM"><i class="icon-plus"></i> Tab</button>
 
@@ -252,35 +284,12 @@
                         </label>
 
                         <div id="feedLimitSlider"></div>
-
                     </div>
-
                 </fieldset>
 
             </form>
         </div>
 
-        <!-- <input class="mobDOM" type="file" id="files" name="files[]"  /> -->
-        <!-- <output class="mobDOM" id="list"></output> -->
-        <!--
-             <script>
-             function handleFileSelect(evt) {
-             var files = evt.target.files; // FileList object
-
-             // files is a FileList of File objects. List some properties.
-             var output = [];
-             for (var i = 0, f; f = files[i]; i++) {
-             output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-             f.size, ' bytes, last modified: ',
-             f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-             '</li>');
-             }
-             document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-             }
-
-             document.getElementById('files').addEventListener('change', handleFileSelect, false);
-             </script>
-        -->
         <script src="/static/lib/js/tab.js"></script>
         <script src="/static/lib/js/feed.js"></script>
         <script src="/static/lib/js/prefs.js"></script>
@@ -289,13 +298,11 @@
         <script>
          $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
-             console.log('Yo: ' + $(this).attr('class'))
 
              $('button, .button').button();
 
              var $slider = $(this)
              var $handle = $slider.find('.handle')
-             // $handle.hide();
 
              $slider.slideReveal({
                  width: 275
@@ -316,15 +323,9 @@
 
              $('#gallerySlideTransition').selectmenu({
                  change: function( event, data ) {
-
                      console.log('Value: ' + data.item.value)
                      $.fancybox.defaults.transitionEffect = data.item.value
                      Prefs.writeConfig('gallerySlideTransition', data.item.value);
-
-                     // Prefs.writeConfig('gallerySlideTransition', data.item.value);
-
-                     // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
                  }
              });
 
@@ -394,6 +395,11 @@
              });
 
          });
+         //
+         //          $('#mobDialogs').load('/static/templates/dialog.html', function() {
+         //              console.log('Load OK: ' + $(this).get())
+         //          });
+         //
 
         </script>
 
