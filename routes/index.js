@@ -70,7 +70,7 @@ router.get('/feed', function(req, res, next) {
                 // console.log ("Item #" + pad (i) + ": " + feedItems[i].title + ".\n");
                 // console.log('ALL: ' + JSON.stringify(feedItems[i]))
             }
-            res.send(feedTitle, feedItems);
+            res.status(200).json({"feedItems": feedItems,"feedTitle": feedTitle});
         }
     });
 

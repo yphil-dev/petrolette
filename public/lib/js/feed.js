@@ -200,11 +200,12 @@ var Feed = (function() {
                 $button.css("color", "#3e3e3e").removeClass('spinner');
 
                 $feedBody.empty()
-            }).done(function(data, title) {
-                var jdata = $.parseJSON(data)
-                console.log( "second success: Loaded (%s)", jdata);
+            }).done(function(data) {
+                $feedTitle.text(data.feedTitle);
+                // var jdata = $.parseJSON(data)
+                console.log( "second success: Loaded (%s)", data.feedTitle);
 
-                $.each(jdata, function(index, element) {
+                $.each(data.feedItems, function(index, element) {
 
                     console.log( "Elt: (%s)", element.title);
 
