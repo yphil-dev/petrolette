@@ -103,7 +103,6 @@
                  }
              });
 
-             $('button, .button').button();
 
 
              $tabs.on('mouseup', '.ui-tabs-active a', function(e){
@@ -292,6 +291,8 @@
 
              console.log('Yo: ' + $(this).attr('class'))
 
+             $('button, .button').button();
+
              var $slider = $(this)
              var $handle = $slider.find('.handle')
              // $handle.hide();
@@ -372,29 +373,10 @@
              $('#amount').val($('#sslider').slider('value') + 'ms');
              $('#gallerySlideshowSpeedValue').text($('#sslider').slider('value') + 'ms');
 
-
              // File select
 
-             JsonObj = null
-
-             function handleFileSelect(evt) {
-                 var files = evt.target.files
-                 var f = files[0];
-                 var reader = new FileReader();
-
-
-                 reader.onload = (function(theFile) {
-                     return function(e) {
-                         JsonObj = JSON.parse(e.target.result);
-                         console.log(JsonObj);
-                     };
-                 })(f);
-
-                 reader.readAsText(f);
-             }
-             // document.getElementById('imgInp').addEventListener('change', handleFileSelect, false);
-
              $("#imgInp").change(function(evt){
+                 var JsonObj = null
                  var files = evt.target.files
                  var f = files[0];
                  var reader = new FileReader();
