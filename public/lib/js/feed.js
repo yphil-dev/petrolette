@@ -25,11 +25,11 @@ var Feed = (function() {
                 var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
                 var thisFeedName = $(this).parent().parent().prev().text()
 
-                $('#mobDialogs').load('/static/templates/dialog.html', function() {
-                    var $killFeedDialog = $(this).children('#dialog')
+                $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
+                    var $killFeedDialog = $(this).children('#killDialog')
 
                     $killFeedDialog.dialog({
-                        title: 'Kill the [' + thisFeedName + '] feed?',
+                        title: 'Kill Feed',
                         autoOpen: false,
                         resizable: false,
                         height: "auto",
@@ -50,7 +50,7 @@ var Feed = (function() {
                         },
                         open: function () {
                             var $dialog = $(this)
-                            $dialog.children('p').append('Really delete this feed?')
+                            $dialog.children('p').append('Really delete the [' + thisFeedName + '] feed?')
 
                             $('button:contains("Delete")').addClass('ui-state-error');
                         }
@@ -78,8 +78,6 @@ var Feed = (function() {
                 var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
 
                 var $feedContainer = $(this).parent().parent().parent().parent();
-
-                console.log('Ici: ' + $feedContainer.data('limit'))
 
                 $('#feedDialog')
                     .data('feedId', $thisFeedId)
@@ -181,8 +179,6 @@ var Feed = (function() {
 
             var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
 
-            console.log('## Sending: ' + decodeURI(cleanUrl))
-
             $.get("/feedicon", {
                 url: decodeURI(feedHost),
                 dataType: "json",
@@ -205,16 +201,13 @@ var Feed = (function() {
             }).done(function(data) {
                 $feedTitle.text(data.feedTitle);
 
-                console.log( "\nLimit: (%s)", feedLimit);
+                // console.log( "\nLimit: (%s)", feedLimit);
 
                 $.each(data.feedItems, function(index, item) {
 
                     if (index == parseInt(feedLimit)) {
                         return false;
                     }
-
-                    if (item.favicon)
-                        console.log('Icon: ' + item.favicon)
 
                     // console.log( "\n\nItem (%s)", item.enclosures[0].url);
 
@@ -275,9 +268,12 @@ var Feed = (function() {
 
 
             }).fail(function() {
-                console.log( "error" );
+                // console.log( "error" );
+                $feed.children('.mobHeader').addClass('ui-state-error');
+                $feedTitle.text('Error');
+                $feedBody.html('<li class="feedItem">Feed Error: ' + feedUrl + '</li>');
             }).always(function() {
-                console.log( "finished" );
+                // console.log( "finished" );
             });;
         }
     };

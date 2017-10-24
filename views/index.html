@@ -16,9 +16,12 @@
         <script src="/bower/jquery-ui/jquery-ui.js"></script>
 
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
+        <script src="/bower/imagesloaded/imagesloaded.pkgd.js"></script>
 
         <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
         <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
+        <script src="/bower/masonry/dist/masonry.pkgd.min.js"></script>
+
         <!-- <script src="/bower/mustache.js/mustache.js"></script>
         -->
 
@@ -47,6 +50,30 @@
              });
 
              var $tabUl = $('#tabUl');
+
+             // var $grid = $tabUl.find('.grid').masonry({
+             //     itemSelector: '.grid-item',
+             //     // use element for option
+             //     columnWidth: '.grid-item',
+             //     percentPosition: true
+             // });
+
+
+             // $tabUl.find('.grid').imagesLoaded()
+             //       .always( function( instance ) {
+             //           console.log('all images loaded');
+             //       })
+             //       .done( function( instance ) {
+             //           console.log('all images successfully loaded');
+             //       })
+             //       .fail( function() {
+             //           console.log('all images loaded, at least one is broken');
+             //       })
+             //       .progress( function( instance, image ) {
+             //           $grid.masonry('layout');
+             //           var result = image.isLoaded ? 'loaded' : 'broken';
+             //           console.log( 'image is ' + result + ' for ' + image.img.src );
+             //       });
 
              $tabUl.hover(
                  function(e) {
@@ -102,8 +129,6 @@
                  }
              });
 
-
-
              $tabs.on('mouseup', '.ui-tabs-active a', function(e){
                  e.preventDefault();
 
@@ -122,16 +147,19 @@
              $tabs.on("click", "i.tabCloser", function() {
 
                  var $a = $(this).prev('a.ui-tabs-anchor')
+                 // var tabLength = $tabs.length;
 
-                 $('#mobDialogs').load('/static/templates/dialog.html', function() {
+                 console.log('L: (%s)', $('.ui-tabs-tab').length)
 
-                     var $killTabDialog = $(this).children('#dialog')
+                 $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
+
+                     var $killTabDialog = $(this).children('#killDialog')
 
                      $killTabDialog.dialog({
                          autoOpen: false,
                          resizable: false,
                          height: "auto",
-                         title: 'Kill the ' + $a.text() + ' tab?',
+                         title: 'Kill Tab',
                          width: 400,
                          modal: true,
                          buttons: {
@@ -144,6 +172,8 @@
                                  $tabLinkId.parent('li').remove()
                                  Tab.saveTabs();
                                  $(this).dialog( "close" );
+                                 console.log('L now: (%s)', $('.ui-tabs-tab').length)
+                                 $tabs.tabs({active: $('.ui-tabs-tab').length})
                              },
                              Cancel: function() {
                                  $( this ).dialog( "close" );
@@ -151,8 +181,7 @@
                          },
                          open: function () {
                              var $dialog = $(this)
-                             $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');
-                             $dialog.children('p').append('Really delete one tab and N feeds?')
+                             $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');                             $dialog.children('p').append('Really delete the [' + $a.text() + '] tab?')
                          }
                      });
 
@@ -224,7 +253,6 @@
         <button id="addTab" class="mobDOM"><i class="icon-plus"></i> Tab</button>
 
         <i id="savingIcon" class="icon-download"></i>
-
 
         <div id="tabDialog" title="Rename tab" class="mobDOM">
             <form>
@@ -378,7 +406,6 @@
 
          });
 
-         console.log('---- INDEX OK ----');
 
          //
          //          $('#mobDialogs').load('/static/templates/dialog.html', function() {
