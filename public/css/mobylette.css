@@ -236,28 +236,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 /* Feed */
 ul.tabSort {
     display: flex;
-    flex-flow: row wrap;
-    /* align-items:flex-start; */
+    flex-wrap: wrap;
+    /* flex-direction: row; */
+
+    align-items:flex-start;
+    /* justify-content: flex-start; */
+    /* justify-content: flex-end; */
+    /* justify-content: center; */
+    /* justify-content: space-between; */
+    /* justify-content: space-around; */
+    /* justify-content: space-evenly; */
+
     /* align-content:flex-start; */
 
     padding-bottom: 0px !important;
 }
 
 li.feed {
-    flex-grow: 2;
-    /* flex-shrink: 1; */
-    flex-basis: content;
 
-    margin: .2rem .2rem 0 .2rem; /* Some gutter */
+    /* flex: 1; */
+
+    flex-basis: 300px;
+
+    flex-grow: 2;
+    flex-shrink: 1;
+    /* flex-basis: 10em; */
+    /* flex-basis: 50% */
+
+    margin: .2rem 0 .2rem .2rem;
 }
 
-/* ul.tabSort--gutters { */
-/*   margin: -1em 0 0 -1em; */
-/* } */
-
-/* ul.tabSort--gutters > li.feed { */
-/*   padding: 1em 0 0 1em; */
-/* } */
+ul.tabSort > li:first-child {
+    border: 1px dashed red;
+    margin-left: 0;
+}
 
 .tabSort li.feed,
 .selected {
@@ -267,9 +279,9 @@ li.feed {
 
 .selected,
 li.feed {
-    width: 25%;
-    min-width:250px !important;
-    max-width:50% !important;
+    /* width: 25%; */
+    /* min-width:250px !important; */
+    max-width:300px !important;
 }
 
 /* li.feed { */
