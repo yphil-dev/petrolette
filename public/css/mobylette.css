@@ -241,26 +241,25 @@ ul.tabSort {
     /* padding-bottom: 0px !important; */
 
     /* column-count: 3; */
-    columns: 15em;
-    column-gap: .3em;
+    /* columns: 15em; */
+    /* column-gap: .3em; */
+  column-count: 3;
+  column-gap: 0;
+
+  /* break-inside: avoid; */
+    break-inside: avoid-column;
+
 }
 
 li.feed {
-    /* flex-basis: 300px; */
-    /* flex-grow: 2; */
-    /* flex-shrink: 1; */
-    margin: .2rem 0 .2rem .2rem;
-
-    /* display: block; */
     display: inline-block;
-    page-break-inside: avoid;
-    width: 300px;
-    transition-property: left,right,top;
-    transition-duration: 0.6s;
+    break-inside: avoid;
+    /* break-inside: avoid-column; */
+    padding: 5px;
 }
 
 ul.tabSort > li:first-child {
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
     margin-left: 0;
 }
 

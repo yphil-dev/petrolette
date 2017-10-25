@@ -118,6 +118,9 @@
              $('#saveTabs').click(function () {
                  var allTabs = Tab.getTabs()
                  Prefs.writeConfig('tabs', JSON.stringify(allTabs));
+
+                 Prefs.exportConfig(allTabs, 'mobylette.json');
+
                  // console.log('tabs: ' + JSON.stringify(allTabs))
              });
 
@@ -172,8 +175,9 @@
                                  $tabLinkId.parent('li').remove()
                                  Tab.saveTabs();
                                  $(this).dialog( "close" );
-                                 console.log('L now: (%s)', $('.ui-tabs-tab').length)
-                                 $tabs.tabs({active: $('.ui-tabs-tab').length})
+                                 console.log('L now: (%s), tabs id: (%s)', $('.ui-tabs-tab').length, $tabs.attr('id'))
+                                 $tabs.tabs('option', 'active', $('.ui-tabs-tab').length - 1)
+
                              },
                              Cancel: function() {
                                  $( this ).dialog( "close" );
