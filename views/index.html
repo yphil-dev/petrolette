@@ -110,20 +110,6 @@
                  Tab.newTab($tabs);
              });
 
-             $('#loadTabs').click(function () {
-                 Tab.populateTabs($tabUl, parsed, $tabs);
-                 $('#tabs').find('.mobFeedRefresh').click();
-             });
-
-             $('#saveTabs').click(function () {
-                 var allTabs = Tab.getTabs()
-                 Prefs.writeConfig('tabs', JSON.stringify(allTabs));
-
-                 Prefs.exportConfig(allTabs, 'mobylette.json');
-
-                 // console.log('tabs: ' + JSON.stringify(allTabs))
-             });
-
              $tabs.find('.ui-tabs-nav').sortable({
                  axis: 'x',
                  stop: function() {
@@ -312,9 +298,6 @@
         <script>
          $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
-
-             $('button, .button').button();
-
              var $slider = $(this)
              var $handle = $slider.find('.handle')
 
@@ -325,6 +308,19 @@
              $handle.click(function () {
                  $slider.slideReveal("toggle", false);
                  $(this).children('i').toggleClass('other')
+             });
+
+             $('button, .button').button();
+
+             $('#saveTabs').click(function () {
+                 var allTabs = Tab.getTabs()
+                 // Prefs.writeConfig('tabs', JSON.stringify(allTabs));
+
+                 Prefs.exportConfig(allTabs, 'mobylette.json');
+
+                 console.log('yoo!')
+
+                 // console.log('tabs: ' + JSON.stringify(allTabs))
              });
 
              $( ".checkboxradio" ).checkboxradio();

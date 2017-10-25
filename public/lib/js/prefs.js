@@ -44,19 +44,18 @@ var Prefs = (function() {
             localStorage.setItem(key, val);
             $('#savingIcon').fadeToggle('slow');
         },
-        exportConfig:function() {
+        exportConfig:function(data, fileName) {
+            console.log('y0o!')
             var a = document.createElement("a");
             document.body.appendChild(a);
             a.style = "display: none";
-            return function (data, fileName) {
-                var json = JSON.stringify(data, null, 2),
-                    blob = new Blob([json], {type: "octet/stream"}),
-                    url = window.URL.createObjectURL(blob);
-                a.href = url;
-                a.download = fileName;
-                a.click();
-                window.URL.revokeObjectURL(url);
-            }
+            var json = JSON.stringify(data, null, 2),
+                blob = new Blob([json], {type: "octet/stream"}),
+                url = window.URL.createObjectURL(blob);
+            a.href = url;
+            a.download = fileName;
+            a.click();
+            window.URL.revokeObjectURL(url);
         }
     };
 }());
