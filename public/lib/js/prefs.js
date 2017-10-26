@@ -28,11 +28,7 @@ var Prefs = (function() {
     return {
         readConfig:function(key) {
 
-
-            // defaults.tab = {}; jQuery.extend( true, defaults.tab, tabList );
-
             if(typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
-
                 return defaults[key];
             } else {
                 return localStorage.getItem(key);
