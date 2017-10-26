@@ -313,14 +313,7 @@
              $('button, .button').button();
 
              $('#saveTabs').click(function () {
-                 var allTabs = Tab.getTabs()
-                 // Prefs.writeConfig('tabs', JSON.stringify(allTabs));
-
-                 Prefs.exportConfig(allTabs, 'mobylette.json');
-
-                 console.log('yoo!')
-
-                 // console.log('tabs: ' + JSON.stringify(allTabs))
+                 Prefs.exportConfig(Tab.getTabs(), 'mobylette.json');
              });
 
              $( ".checkboxradio" ).checkboxradio();
@@ -393,10 +386,31 @@
                  var reader = new FileReader();
 
 
+                 if (f.type.match(/application\/json/)) {
+                     console.log('JSON!')
+                 }
+
+                 console.log('Text!: %s Arr: %s', f.type, $.isArray(f))
+
                  reader.onload = (function(theFile) {
                      return function(e) {
-                         JsonObj = JSON.parse(e.target.result);
-                         console.log(JsonObj);
+
+                         var y = e.target.result
+                         var p = JSON.parse(y);
+
+                         if(Array.isArray(p)){
+                             console.log('Arr')
+                         } else {
+                             console.log('NO Arr')
+                         }
+
+                         let isValid = p.some(obj =>
+                             Array.isArray(obj.feeds) && obj.feeds.some(feed =>
+                                 Object.prototype.hasOwnProperty.call(feed, 'url')
+                             )
+                         )
+
+                         console.log('IsValid: %s', isValid)
                      };
                  })(f);
 
