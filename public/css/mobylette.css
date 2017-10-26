@@ -46,13 +46,14 @@ body {
     color:   #FF851B;
 }
 
-#slidermenu > fieldset {
-    background-color: #AAAAAA;
-}
+/* #slidermenu > fieldset { */
+/*     background-color: #AAAAAA; */
+/* } */
 
 #slidermenu > fieldset > legend {
-    color:   #01FF70;
-    /* background-color: #111111; */
+    color:   #001F3F;
+    padding: .2em .5em;
+    background-color: #fff;
 }
 
 .flip { transform: rotate(-180deg);}
