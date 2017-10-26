@@ -36,12 +36,9 @@ var Tab = (function() {
 
                     var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
 
-                    console.log('w: ' + w);
-
                     //hide selected items
                     item.siblings('.selected').addClass('hidden');
                     var $helper = $('<ul class="feedHelper"><ul/>');
-                    console.log('wh: ' + $helper.width());
 
                     return $helper.append($elements);
                 },
