@@ -343,9 +343,16 @@
              var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
 
              $.fancybox.defaults.transitionEffect = gallerySlideTransition
+             $.fancybox.defaults.clickOutside = 'close'
+             // $.fancybox.defaults.clickSlide = 'zoom'
+
              $.fancybox.defaults.slideShow = {
-                 autoStart : false,
-                 speed     : gallerySlideshowSpeed
+                 autoStart: false,
+                 speed: gallerySlideshowSpeed
+             }
+
+             $.fancybox.defaults = {
+                 clickSlide : 'zoom'
              }
 
              $('#sslider').slider({
