@@ -16,3 +16,39 @@
         </fieldset>
     </form>
 </div>
+
+<div id="feedPrefs" title="Feed parameters" class="mobDOM">
+    <form>
+
+        <fieldset>
+            <legend class="ui-corner-top">URL</legend>
+            <div class="feedUrl">
+                <input type="text" name="url" id="feedUrl" autofocus placeholder="Feed URL (https://reddit.com/.rss)" value="" class="text ui-widget-content ui-corner-all" />
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="ui-corner-top">Display Type</legend>
+            <div class="feedType controlGroup ui-corner-all">
+                <label for="mixed">Mixed</label>
+                <input type="radio" name="radio-1" id="mixed">
+                <label for="photo">Photo</label>
+                <input type="radio" name="radio-1" id="photo">
+                <label for="text">Text</label>
+                <input type="radio" name="radio-1" id="text">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="ui-corner-top" class="ui-corner-top">Limit # of items</legend>
+            <div class="feedLimit">
+                <label for="feedLimitSlider">
+                    <input type="text" id="feedLimitSlider" readonly style="border:0; font-weight:bold;">
+                </label>
+
+                <div id="feedLimitSlider"></div>
+            </div>
+        </fieldset>
+
+    </form>
+</div>

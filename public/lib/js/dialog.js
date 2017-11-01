@@ -58,7 +58,6 @@ var Dialog = (function() {
                 var $thisFeedId = $button.parent().parent().parent().parent().attr('id')
                 var thisFeedName = $button.parent().parent().prev().text()
 
-                console.log('T: %s', thisFeedName)
 
                 $killFeedDialog.dialog({
                     title: 'Kill Feed',
@@ -91,78 +90,77 @@ var Dialog = (function() {
                 $killFeedDialog.data('feedId', $thisFeedId).dialog('open')
             })
 
+        },
+        feedPrefs:function($button) {
+
+            $('#mobDialogs').load('/static/templates/dialog.html #feedPrefs', function() {
+                var $dialog = $('#feedPrefs')
+
+                var $thisFeedId = $button.parent().parent().parent().parent().attr('id')
+
+                var $feedContainer = $button.parent().parent().parent().parent();
+
+                console.log('I: %s', $thisFeedId)
+
+                $dialog.dialog({
+                    autoOpen: false,
+                    resizable: false,
+                    height: 'auto',
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        Cancel: function() {
+                            $( this ).dialog( 'close' );
+                        },
+                        'OK': function() {
+
+                            var $tabFeedId = $('li#' + $(this).data('feedId'))
+                            var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
+
+                            $tabFeedId.data('url', $('#feedUrl').val())
+                            $tabFeedId.data('limit', $('#feedLimit').val())
+                            $tabFeedId.data('limit', $('#feedLimitSlider').val())
+
+                            $('.feedType').children('input').each(function () {
+                                if ($(this).is(':checked'))
+                                    $tabFeedId.data('type', $(this).attr('id'))
+                            });
+
+                            Feed.populateFeed($mobFeedRefresh);
+                            Tab.saveTabs();
+                            $(this).dialog( 'close' );
+                        }
+                    },
+                    open: function( event, ui ) {
+
+                        var $urlInput = $(this).find('input#feedUrl')
+
+                        $urlInput.select()
+
+                        console.log('I: %s', $dialog.data('feedUrl'))
+
+                        $('input#feedUrl').val($(this).data('feedUrl'));
+                        $('.feedType #' + $(this).data('feedType')).prop('checked',true).change();
+
+                        $(this).on('submit', function () {
+                            Feed.populateFeed($mobFeedRefresh);
+                            Tab.saveTabs();
+
+                            $(this).dialog('close');
+                            return false;
+                        });
+                    }
+                });
+
+                $dialog
+                    .data('feedId', $thisFeedId)
+                    .data('feedUrl', $feedContainer.data('url'))
+                    .data('feedLimit', $feedContainer.data('limit'))
+                    .data('feedType', $feedContainer.data('type'))
+                    .dialog('open');
+
+            })
+
         }
     };
 }());
-
-$('#feedDialog').dialog({
-    autoOpen: false,
-    resizable: false,
-    height: 'auto',
-    width: 400,
-    modal: true,
-    buttons: {
-        Cancel: function() {
-            $( this ).dialog( 'close' );
-        },
-        'OK': function() {
-
-            var $tabFeedId = $('li#' + $(this).data('feedId'))
-            var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
-
-            $tabFeedId.data('url', $('#feedUrl').val())
-            $tabFeedId.data('limit', $('#feedLimit').val())
-            $tabFeedId.data('limit', $('#feedLimitSlider').val())
-
-            $('.feedType').children('input').each(function () {
-                if ($(this).is(':checked'))
-                    $tabFeedId.data('type', $(this).attr('id'))
-            });
-
-            Feed.populateFeed($mobFeedRefresh);
-            Tab.saveTabs();
-            $(this).dialog( 'close' );
-        }
-    },
-    open: function( event, ui ) {
-
-        var $urlInput = $(this).find('input#feedUrl')
-
-        $urlInput.select()
-
-        $('input#feedUrl').val($(this).data('feedUrl'));
-        $('.feedType #' + $(this).data('feedType')).prop('checked',true).change();
-
-        $(this).on('submit', function () {
-            Feed.populateFeed($mobFeedRefresh);
-            Tab.saveTabs();
-
-            $(this).dialog('close');
-            return false;
-        });
-    }
-});
-
-$("#killFeedDialog").dialog({
-    autoOpen: false,
-    resizable: false,
-    height: "auto",
-    width: 400,
-    modal: true,
-    buttons: {
-        "Delete feed": function() {
-
-            var $tabFeedId = $('#' + $(this).data('feedId'))
-
-            $tabFeedId.remove()
-            Tab.saveTabs()
-            $(this).dialog( "close" );
-        },
-        Cancel: function() {
-            $( this ).dialog( "close" );
-        }
-    },
-    open: function () {
-        $('button:contains("Delete")').addClass('ui-state-error');
-    }
-});

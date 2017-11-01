@@ -21,44 +21,7 @@ var Feed = (function() {
             var $feedControls = $('<div class="feedControls hiddeable">');
 
             $feedDelete.click(function() {
-
                 Dialog.killFeed($(this))
-
-                // $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
-                //     var $killFeedDialog = $(this).children('#killDialog')
-
-
-                //     $killFeedDialog.dialog({
-                //         title: 'Kill Feed',
-                //         autoOpen: false,
-                //         resizable: false,
-                //         height: "auto",
-                //         width: 400,
-                //         modal: true,
-                //         buttons: {
-                //             "Delete feed": function() {
-
-                //                 var $tabFeedId = $('#' + $(this).data('feedId'))
-
-                //                 $tabFeedId.remove()
-                //                 Tab.saveTabs()
-                //                 $(this).dialog( "close" );
-                //             },
-                //             Cancel: function() {
-                //                 $( this ).dialog( "close" );
-                //             }
-                //         },
-                //         open: function () {
-                //             var $dialog = $(this)
-                //             $dialog.children('p').append('Really delete the [' + thisFeedName + '] feed?')
-
-                //             $('button:contains("Delete")').addClass('ui-state-error');
-                //         }
-                //     });
-
-                //     $killFeedDialog.data('feedId', $thisFeedId).dialog('open')
-                // });
-
             });
 
             $feedSelect.click(function() {
@@ -66,17 +29,7 @@ var Feed = (function() {
             });
 
             $feedPrefs.click(function() {
-
-                var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
-
-                var $feedContainer = $(this).parent().parent().parent().parent();
-
-                $('#feedDialog')
-                    .data('feedId', $thisFeedId)
-                    .data('feedUrl', $feedContainer.data('url'))
-                    .data('feedLimit', $feedContainer.data('limit'))
-                    .data('feedType', $feedContainer.data('type'))
-                    .dialog('open');
+                Dialog.feedPrefs($(this))
             });
 
             var $feedBody = $('<div class="feedBody ui-widget-content"></div>');
