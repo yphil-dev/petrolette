@@ -1,5 +1,11 @@
 var Dialog = (function() {
 
+    var autoOpen = false,
+        resizable = true,
+        height = 'auto',
+        width = 400,
+        modal = true
+
     return {
         renameTab:function($tab) {
 
@@ -9,27 +15,24 @@ var Dialog = (function() {
                 console.log('Imma dialog: %s', $tab.text())
 
                 $dialog.dialog({
-                    autoOpen: false,
-                    resizable: false,
-                    height: 'auto',
-                    width: 400,
-                    modal: true,
+                    autoOpen: autoOpen,
+                    resizable: resizable,
+                    height: height,
+                    width: width,
+                    modal: modal,
                     buttons: {
                         Cancel: function() {
                             $( this ).dialog( 'close' );
                         },
                         'OK': function() {
-
                             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
                             Tab.saveTabs();
                             $(this).dialog('close');
                         }
                     },
                     open: function( event, ui ) {
-
-                        console.log('D: %s', $(this).data('tabId'))
-
-                        $dialog.find('#tabName').val($(this).data('tabName'));
+                        var $tabName = $dialog.find('#tabName')
+                        $tabName.val($(this).data('tabName')).select();
 
                         $(this).on('submit', function () {
                             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
@@ -40,7 +43,6 @@ var Dialog = (function() {
                     }
                 });
 
-
                 $dialog
                     .data('tabName', $tab.text())
                     .data('tabId', $tab.attr('id'))
@@ -48,45 +50,50 @@ var Dialog = (function() {
                 return;
             })
         },
-        kill:function(key, val) {
-            $('#savingIcon').fadeToggle('fast');
-            localStorage.setItem(key, val);
-            $('#savingIcon').fadeToggle('slow');
+        killFeed:function($button) {
+
+            $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
+                var $killFeedDialog = $('#killDialog')
+
+                var $thisFeedId = $button.parent().parent().parent().parent().attr('id')
+                var thisFeedName = $button.parent().parent().prev().text()
+
+                console.log('T: %s', thisFeedName)
+
+                $killFeedDialog.dialog({
+                    title: 'Kill Feed',
+                    autoOpen: false,
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        "Delete feed": function() {
+
+                            var $tabFeedId = $('#' + $(this).data('feedId'))
+
+                            $tabFeedId.remove()
+                            Tab.saveTabs()
+                            $(this).dialog( "close" );
+                        },
+                        Cancel: function() {
+                            $( this ).dialog( "close" );
+                        }
+                    },
+                    open: function () {
+                        var $dialog = $(this)
+                        $dialog.children('p').append('Really delete the [' + thisFeedName + '] feed?')
+
+                        $('button:contains("Delete")').addClass('ui-state-error');
+                    }
+                });
+
+                $killFeedDialog.data('feedId', $thisFeedId).dialog('open')
+            })
+
         }
     };
 }());
-
-$('#renameTabDialog').dialog({
-    autoOpen: false,
-    resizable: false,
-    height: 'auto',
-    width: 400,
-    modal: true,
-    buttons: {
-        Cancel: function() {
-            $( this ).dialog( 'close' );
-        },
-        'OK': function() {
-
-            $('#' + $(this).data('tabId')).text($('#tabName').val());
-            Tab.saveTabs();
-            $( this ).dialog( 'close' );
-        }
-    },
-    open: function( event, ui ) {
-
-        console.log('D:')
-
-        $('#tabName').val($(this).data('tabName'));
-
-        $(this).on('submit', function () {
-            $('#' + $(this).data('tabId')).text($('#tabName').val());
-            Tab.saveTabs();
-            $(this).dialog('close');
-            return false;
-        });
-    }
-});
 
 $('#feedDialog').dialog({
     autoOpen: false,
@@ -136,7 +143,7 @@ $('#feedDialog').dialog({
     }
 });
 
-$( "#killFeedDialog" ).dialog({
+$("#killFeedDialog").dialog({
     autoOpen: false,
     resizable: false,
     height: "auto",

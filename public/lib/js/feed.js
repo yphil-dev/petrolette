@@ -22,50 +22,42 @@ var Feed = (function() {
 
             $feedDelete.click(function() {
 
-                var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
-                var thisFeedName = $(this).parent().parent().prev().text()
+                Dialog.killFeed($(this))
 
-                $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
-                    var $killFeedDialog = $(this).children('#killDialog')
+                // $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
+                //     var $killFeedDialog = $(this).children('#killDialog')
 
-                    $killFeedDialog.dialog({
-                        title: 'Kill Feed',
-                        autoOpen: false,
-                        resizable: false,
-                        height: "auto",
-                        width: 400,
-                        modal: true,
-                        buttons: {
-                            "Delete feed": function() {
 
-                                var $tabFeedId = $('#' + $(this).data('feedId'))
+                //     $killFeedDialog.dialog({
+                //         title: 'Kill Feed',
+                //         autoOpen: false,
+                //         resizable: false,
+                //         height: "auto",
+                //         width: 400,
+                //         modal: true,
+                //         buttons: {
+                //             "Delete feed": function() {
 
-                                $tabFeedId.remove()
-                                Tab.saveTabs()
-                                $(this).dialog( "close" );
-                            },
-                            Cancel: function() {
-                                $( this ).dialog( "close" );
-                            }
-                        },
-                        open: function () {
-                            var $dialog = $(this)
-                            $dialog.children('p').append('Really delete the [' + thisFeedName + '] feed?')
+                //                 var $tabFeedId = $('#' + $(this).data('feedId'))
 
-                            $('button:contains("Delete")').addClass('ui-state-error');
-                        }
-                    });
+                //                 $tabFeedId.remove()
+                //                 Tab.saveTabs()
+                //                 $(this).dialog( "close" );
+                //             },
+                //             Cancel: function() {
+                //                 $( this ).dialog( "close" );
+                //             }
+                //         },
+                //         open: function () {
+                //             var $dialog = $(this)
+                //             $dialog.children('p').append('Really delete the [' + thisFeedName + '] feed?')
 
-                    $killFeedDialog.data('feedId', $thisFeedId).dialog('open')
-                });
+                //             $('button:contains("Delete")').addClass('ui-state-error');
+                //         }
+                //     });
 
-                //
-                //                 console.log('globalTest: ' + globalTest)
-                //                 var $thisFeedId = $(this).parent().parent().parent().parent().attr('id')
-                //
-                //                 $('#killFeedDialog').data('feedId', $thisFeedId).dialog('open')
-                //                 $('#killFeedDialog').dialog('option', 'title', 'Kill the ' + $(this).parent().parent().prev().text() + ' feed?');
-                //
+                //     $killFeedDialog.data('feedId', $thisFeedId).dialog('open')
+                // });
 
             });
 
