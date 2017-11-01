@@ -1,8 +1,8 @@
-<div id="killDialog" title="" class="mobDOM">
+<div id="killDialog">
     <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span></p>
 </div>
 
-<div id="renameTabDialog" title="Rename tab" class="mobDOM">
+<div id="renameTabDialog" title="Rename tab">
     <form>
         <fieldset>
             <legend>Tab Name</legend>
@@ -17,13 +17,13 @@
     </form>
 </div>
 
-<div id="feedPrefs" title="Feed parameters" class="mobDOM">
+<div id="feedPrefs" title="Feed parameters">
     <form>
 
         <fieldset>
             <legend class="ui-corner-top">URL</legend>
             <div class="feedUrl">
-                <input type="text" name="url" id="feedUrl" autofocus placeholder="Feed URL (https://reddit.com/.rss)" value="" class="text ui-widget-content ui-corner-all" />
+                <input type="text" name="url" id="feedUrl" autofocus placeholder="Feed URL (https://reddit.com/.rss)" value="" class="text ui-widget-content ui-corner-all" onclick="select()" />
             </div>
         </fieldset>
 
@@ -43,7 +43,7 @@
             <legend class="ui-corner-top" class="ui-corner-top">Limit # of items</legend>
             <div class="feedLimit">
                 <label for="feedLimitSlider" class="ui-helper-hidden">
-                    <input type="text" id="feedLimitSlider" readonly style="border:0; font-weight:bold;">
+                    <input type="text" id="feedLimitSlider" />
                 </label>
 
                 <div id="feedLimitSlider"></div>

@@ -118,8 +118,7 @@ var Dialog = (function() {
                             var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
 
                             $tabFeedId.data('url', $('#feedUrl').val())
-                            $tabFeedId.data('limit', $('#feedLimit').val())
-                            $tabFeedId.data('limit', $('#feedLimitSlider').val())
+                            $tabFeedId.data('limit', $('input#feedLimitSlider').val())
 
                             $('.feedType').children('input').each(function () {
                                 if ($(this).is(':checked'))
@@ -156,15 +155,15 @@ var Dialog = (function() {
                             create: function( event, ui ) {
                                 console.log('feedLimitSlider')
                                 console.log('Sld: ' + $(this).attr('id'))
-                                $(this).find(".ui-slider-handle").text(ui.value);
-                                // $('input#feedLimitSlider').val($('div#feedLimitSlider').slider('value') + ' items');
+                                $(this).find(".ui-slider-handle").text($feedLimitValue);
                             },
                             slide: function( event, ui ) {
                                 $(this).val(ui.value);
                                 $(this).find(".ui-slider-handle").text(ui.value);
                             },
                             change: function( event, ui ) {
-                                $(this).val(ui.value);
+                                $("input#feedLimitSlider").val(ui.value);
+                                console.log('V: %s', $("input#feedLimitSlider").val())
                             }
                         });
 
@@ -187,6 +186,53 @@ var Dialog = (function() {
 
             })
 
+        },
+        killTab:function($button) {
+
+            var $a = $button.prev('a.ui-tabs-anchor')
+
+            console.log('A: %s', $a.attr('class'))
+
+            $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
+
+                var $killTabDialog = $('#killDialog')
+
+                $killTabDialog.dialog({
+                    autoOpen: false,
+                    resizable: false,
+                    height: "auto",
+                    title: 'Kill Tab',
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        "Delete all feeds": function() {
+
+                            var $tabLinkId = $('#' + $(this).data('tabLinkId'))
+                            var $thisPanel = $($(this).data('panelId'))
+
+                            $thisPanel.remove()
+                            $tabLinkId.parent('li').remove()
+                            Tab.saveTabs();
+                            $(this).dialog( "close" );
+                            console.log('L now: (%s), tabs id: (%s)', $('.ui-tabs-tab').length, $tabs.attr('id'))
+                            $tabs.tabs('option', 'active', $('.ui-tabs-tab').length - 1)
+
+                        },
+                        Cancel: function() {
+                            $( this ).dialog( "close" );
+                        }
+                    },
+                    open: function () {
+                        var $dialog = $(this)
+                        $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');                             $dialog.children('p').append('Really delete the [' + $a.text() + '] tab?')
+                    }
+                });
+
+                $killTabDialog.data('tabName', $a.text())
+                              .data('panelId', $a.attr('href'))
+                              .data('tabLinkId', $a.prop('id'))
+                              .dialog('open')
+            });
         }
-    };
+        };
 }());

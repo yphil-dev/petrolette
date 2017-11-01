@@ -69,12 +69,9 @@ var Tab = (function() {
 
             var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>')
 
-            var $thisTab = $('<li class="modal mobTab"></li>');
-
-            var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser"></i>')
+            var $thisTab = $('<li class="modal mobTab" title="' + name + ' - Click to rename, drag to re-order">');
 
             $thisTabLink.appendTo($thisTab);
-            $thisCloseTabLink.appendTo($thisTab);
 
             var $thisSelectedTab = $('#tabs div.ui-tabs-panel:not(.ui-tabs-hide)');
 

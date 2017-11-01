@@ -9,30 +9,17 @@
 
         <link rel="stylesheet" href="/static/css/fontello.css">
 
-        <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-        <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-
         <script src="/bower/jquery/dist/jquery.js"></script>
         <script src="/bower/jquery-ui/jquery-ui.js"></script>
 
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
-        <script src="/bower/imagesloaded/imagesloaded.pkgd.js"></script>
 
         <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
         <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
-        <script src="/bower/masonry/dist/masonry.pkgd.min.js"></script>
-
-        <!-- <script src="/bower/mustache.js/mustache.js"></script>
-        -->
 
         <link rel="stylesheet" href="/static/css/mobylette.css">
-        <!-- <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/mobylette-light.css"> -->
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lobster" type="text/css"/>
-        <!-- <link id="mobylette-theme" rel="stylesheet" href="/static/css/jquery-ui-1.12.1.custom/jquery-ui.theme.css"> -->
-        <!-- <link id="mobylette-base-theme" rel="stylesheet" href="/static/css/themes/basic/jquery-ui.theme.css"> -->
         <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/basic/jquery-ui.theme.css">
-
-        <script src="/static/lib/js/globals.js"></script>
 
         <script>
 
@@ -44,36 +31,22 @@
                      var $activeTabLink = $('a[href="#tab-' + (ui.newTab.index() + 1) + '"]');
                      $('.ui-tabs-tab i').remove()
                      var $activeTab = $activeTabLink.parent()
-                     $activeTab.append('<i class="icon-cancel-circled tabCloser"></i>')
+                     var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser">')
+
+                     $thisCloseTabLink.hover(
+                         function() {
+                             $(this).addClass('icon-cancel-circled-outline');
+                         }, function() {
+                             $(this).removeClass('icon-cancel-circled-outline');
+                         }
+                     );
+
+                     $activeTab.append($thisCloseTabLink)
                  }
 
              });
 
              var $tabUl = $('#tabUl');
-
-             // var $grid = $tabUl.find('.grid').masonry({
-             //     itemSelector: '.grid-item',
-             //     // use element for option
-             //     columnWidth: '.grid-item',
-             //     percentPosition: true
-             // });
-
-
-             // $tabUl.find('.grid').imagesLoaded()
-             //       .always( function( instance ) {
-             //           console.log('all images loaded');
-             //       })
-             //       .done( function( instance ) {
-             //           console.log('all images successfully loaded');
-             //       })
-             //       .fail( function() {
-             //           console.log('all images loaded, at least one is broken');
-             //       })
-             //       .progress( function( instance, image ) {
-             //           $grid.masonry('layout');
-             //           var result = image.isLoaded ? 'loaded' : 'broken';
-             //           console.log( 'image is ' + result + ' for ' + image.img.src );
-             //       });
 
              $tabUl.hover(
                  function(e) {
@@ -99,7 +72,6 @@
                  Feed.populateFeed($(this));
              });
 
-             // var stringed = JSON.stringify(tabList);
              var parsed = JSON.parse(tabList);
 
              parsed.forEach(function(tab) {
@@ -120,72 +92,13 @@
 
              $tabs.on('mouseup', '.ui-tabs-active a', function(e){
                  e.preventDefault();
-
-                 if (e.which === 1) {
-
+                 if (e.which === 1)
                      Dialog.renameTab($(this))
-
-                     // $('#tabDialog')
-                     //       .data('tabName', $(this).text())
-                     //       .data('tabId', $(this).attr('id'))
-                     //       .dialog('open');
-                     // return;
-                 }
-
              });
 
-             // Close icon: removing the tab on click
              $tabs.on("click", "i.tabCloser", function() {
-
-                 var $a = $(this).prev('a.ui-tabs-anchor')
-                 // var tabLength = $tabs.length;
-
-                 console.log('L: (%s)', $('.ui-tabs-tab').length)
-
-                 $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
-
-                     var $killTabDialog = $(this).children('#killDialog')
-
-                     $killTabDialog.dialog({
-                         autoOpen: false,
-                         resizable: false,
-                         height: "auto",
-                         title: 'Kill Tab',
-                         width: 400,
-                         modal: true,
-                         buttons: {
-                             "Delete all feeds": function() {
-
-                                 var $tabLinkId = $('#' + $(this).data('tabLinkId'))
-                                 var $thisPanel = $($(this).data('panelId'))
-
-                                 $thisPanel.remove()
-                                 $tabLinkId.parent('li').remove()
-                                 Tab.saveTabs();
-                                 $(this).dialog( "close" );
-                                 console.log('L now: (%s), tabs id: (%s)', $('.ui-tabs-tab').length, $tabs.attr('id'))
-                                 $tabs.tabs('option', 'active', $('.ui-tabs-tab').length - 1)
-
-                             },
-                             Cancel: function() {
-                                 $( this ).dialog( "close" );
-                             }
-                         },
-                         open: function () {
-                             var $dialog = $(this)
-                             $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');                             $dialog.children('p').append('Really delete the [' + $a.text() + '] tab?')
-                         }
-                     });
-
-                     $killTabDialog.data('tabName', $a.text())
-                                   .data('panelId', $a.attr('href'))
-                                   .data('tabLinkId', $a.prop('id'))
-                                   .dialog('open')
-                 });
+                 Dialog.killTab($(this))
              });
-
-
-             // Prefs
 
              $('#tabs').find('.mobFeedRefresh').click();
 
@@ -214,161 +127,11 @@
 
         <i id="savingIcon" class="icon-download"></i>
 
-        <div id="fileError" class="ui-widget ui-helper-hidden">
-            <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-                <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-                    <strong>Alert:</strong> File error.</p>
-            </div>
-        </div>
-
         <script src="/static/lib/js/tab.js"></script>
         <script src="/static/lib/js/feed.js"></script>
         <script src="/static/lib/js/prefs.js"></script>
         <script src="/static/lib/js/dialog.js"></script>
-
-        <script>
-         $('#slidermenu').load('/static/templates/slidermenu.html', function() {
-
-             var $slider = $(this)
-             var $handle = $slider.find('.handle')
-
-             $slider.slideReveal({
-                 width: 275
-             });
-
-             $handle.click(function () {
-                 $slider.slideReveal("toggle", false);
-                 $(this).children('i').toggleClass('other')
-             });
-
-             $('button, .button').button();
-
-             $('#saveTabs').click(function () {
-                 Prefs.exportConfig(Tab.getTabs(), 'mobylette.json');
-             });
-
-             $( ".checkboxradio" ).checkboxradio();
-
-             $('.themeSwitcher').change(function() {
-                 console.log('Theme: ' + $(this).attr('value'))
-                 $("#mobylette-theme").attr({href : $(this).attr('value')});
-
-             });
-
-             $('#gallerySlideTransition').selectmenu({
-                 change: function( event, data ) {
-                     console.log('Value: ' + data.item.value)
-                     $.fancybox.defaults.transitionEffect = data.item.value
-                     Prefs.writeConfig('gallerySlideTransition', data.item.value);
-                 }
-             });
-
-             $('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
-
-             // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-             if (Prefs.readConfig('tabDropActivate') === 'true')
-                 $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
-             else
-                 $('#tabDropActivate').prop('checked', false).checkboxradio('refresh')
-
-             $('#tabDropActivate').change(function() {
-                 Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
-             });
-
-             $('.controlGroup').controlgroup();
-
-             var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
-             var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
-
-             $.fancybox.defaults.transitionEffect = gallerySlideTransition
-             $.fancybox.defaults.clickOutside = 'close'
-             // $.fancybox.defaults.clickSlide = 'zoom'
-
-             $.fancybox.defaults.slideShow = {
-                 autoStart: false,
-                 speed: gallerySlideshowSpeed
-             }
-
-             $.fancybox.defaults = {
-                 clickSlide : 'zoom'
-             }
-
-             $('#sslider').slider({
-                 value: gallerySlideshowSpeed,
-                 min: 1,
-                 max: 10000,
-                 step: 100,
-                 slide: function( event, ui ) {
-                     $('#amount').val(ui.value + 'ms');
-                     $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-
-                 },
-                 change: function( event, ui ) {
-                     Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
-                     $.fancybox.defaults.slideShow = {
-                         speed     : ui.value
-                     }
-                 }
-             });
-
-             $('#amount').val($('#sslider').slider('value') + 'ms');
-             $('#gallerySlideshowSpeedValue').text($('#sslider').slider('value') + 'ms');
-
-             // File select
-
-             $("#imgInp").change(function(evt){
-                 var JsonObj = null
-                 var files = evt.target.files
-                 var f = files[0];
-                 var reader = new FileReader();
-
-                 if (f.type.match(/application\/json/)) {
-                     console.log('JSON!')
-                 } else {
-                     $('#fileError').fadeIn('fast').fadeOut(10000)
-                     console.log('Error!')
-                     return
-                 }
-
-                 console.log('Text!: %s Arr: %s', f.type, $.isArray(f))
-
-                 reader.onload = (function(theFile) {
-                     return function(e) {
-
-                         var y = e.target.result
-                         var p = JSON.parse(y);
-
-                         if (Array.isArray(p)){
-                             console.log('Arr')
-                         } else {
-                             console.log('NO Arr')
-                         }
-
-                         let isValid = p.some(obj =>
-                             Array.isArray(obj.feeds) && obj.feeds.some(feed =>
-                                 Object.prototype.hasOwnProperty.call(feed, 'url')
-                             )
-                         )
-
-                         console.log('IsValid: %s', isValid)
-                     };
-                 })(f);
-
-                 reader.readAsText(f);
-
-             });
-
-         });
-
-
-         //
-         //          $('#mobDialogs').load('/static/templates/dialog.html', function() {
-         //              console.log('Load OK: ' + $(this).get())
-         //          });
-         //
-
-        </script>
+        <script src="/static/lib/js/menu.js"></script>
 
     </body>
 </html>
