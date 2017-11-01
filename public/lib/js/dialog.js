@@ -134,10 +134,12 @@ var Dialog = (function() {
                     open: function( event, ui ) {
 
                         var $urlInput = $(this).find('input#feedUrl')
+                        var $feedType = $(this).find('.feedType input')
 
-                        $urlInput.select()
+                        $feedType.checkboxradio()
+                        // $urlInput.select()
 
-                        console.log('I: %s', $dialog.data('feedUrl'))
+                        console.log('I: %s', $urlInput.attr('class'))
 
                         $('input#feedUrl').val($(this).data('feedUrl'));
                         $('.feedType #' + $(this).data('feedType')).prop('checked',true).change();
