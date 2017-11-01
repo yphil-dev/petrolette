@@ -133,18 +133,42 @@ var Dialog = (function() {
                     },
                     open: function( event, ui ) {
 
-                        var $urlInput = $(this).find('input#feedUrl')
-                        var $feedType = $(this).find('.feedType input')
+                        var $dialog = $(this)
 
-                        $feedType.checkboxradio()
-                        // $urlInput.select()
+                        var $urlInput = $dialog.find('input#feedUrl')
+                        var $dialogType = $dialog.find('.feedType input')
 
-                        console.log('I: %s', $urlInput.attr('class'))
+                        var $feedLimitValue = $dialog.data('feedLimit')
 
-                        $('input#feedUrl').val($(this).data('feedUrl'));
-                        $('.feedType #' + $(this).data('feedType')).prop('checked',true).change();
+                        $dialogType.checkboxradio()
+                        // $urlInput.focus().select()
 
-                        $(this).on('submit', function () {
+                        console.log('I: %s', typeof $dialogLimitValue)
+
+                        $('input#feedUrl').val($dialog.data('feedUrl'));
+                        $('.feedType #' + $dialog.data('feedType')).prop('checked',true).change();
+
+                        $dialog.find('div#feedLimitSlider').slider({
+                            value: $feedLimitValue,
+                            min: 1,
+                            max: 128,
+                            step: 1,
+                            create: function( event, ui ) {
+                                console.log('feedLimitSlider')
+                                console.log('Sld: ' + $(this).attr('id'))
+                                $(this).find(".ui-slider-handle").text(ui.value);
+                                // $('input#feedLimitSlider').val($('div#feedLimitSlider').slider('value') + ' items');
+                            },
+                            slide: function( event, ui ) {
+                                $(this).val(ui.value);
+                                $(this).find(".ui-slider-handle").text(ui.value);
+                            },
+                            change: function( event, ui ) {
+                                $(this).val(ui.value);
+                            }
+                        });
+
+                        $dialog.on('submit', function () {
                             Feed.populateFeed($mobFeedRefresh);
                             Tab.saveTabs();
 

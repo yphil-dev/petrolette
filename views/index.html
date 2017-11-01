@@ -187,24 +187,6 @@
 
              // Prefs
 
-             var feedLimit = 0;
-
-             $('div#feedLimitSlider').slider({
-                 value: 0,
-                 min: 1,
-                 max: 128,
-                 step: 1,
-                 create: function( event, ui ) {
-                     console.log('feedLimitSlider')
-                     console.log('Elt: ' + $(this).parent().attr('id'))
-                     // $('input#feedLimitSlider').val($('div#feedLimitSlider').slider('value') + ' items');
-                 },
-                 slide: function( event, ui ) {
-                     $('input#feedLimitSlider').val(ui.value);
-                 }
-             });
-
-
              $('#tabs').find('.mobFeedRefresh').click();
 
              $('#tabs').find('div.feedControls').slideUp()
