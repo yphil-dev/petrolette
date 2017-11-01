@@ -1,4 +1,62 @@
-$('#tabDialog').dialog({
+var Dialog = (function() {
+
+    return {
+        renameTab:function($tab) {
+
+            $('#mobDialogs').load('/static/templates/dialog.html #renameTabDialog', function() {
+                var $dialog = $('#renameTabDialog')
+
+                console.log('Imma dialog: %s', $tab.text())
+
+                $dialog.dialog({
+                    autoOpen: false,
+                    resizable: false,
+                    height: 'auto',
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        Cancel: function() {
+                            $( this ).dialog( 'close' );
+                        },
+                        'OK': function() {
+
+                            $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
+                            Tab.saveTabs();
+                            $(this).dialog('close');
+                        }
+                    },
+                    open: function( event, ui ) {
+
+                        console.log('D: %s', $(this).data('tabId'))
+
+                        $dialog.find('#tabName').val($(this).data('tabName'));
+
+                        $(this).on('submit', function () {
+                            $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
+                            Tab.saveTabs();
+                            $(this).dialog('close');
+                            return false;
+                        });
+                    }
+                });
+
+
+                $dialog
+                    .data('tabName', $tab.text())
+                    .data('tabId', $tab.attr('id'))
+                    .dialog('open');
+                return;
+            })
+        },
+        kill:function(key, val) {
+            $('#savingIcon').fadeToggle('fast');
+            localStorage.setItem(key, val);
+            $('#savingIcon').fadeToggle('slow');
+        }
+    };
+}());
+
+$('#renameTabDialog').dialog({
     autoOpen: false,
     resizable: false,
     height: 'auto',
@@ -16,6 +74,8 @@ $('#tabDialog').dialog({
         }
     },
     open: function( event, ui ) {
+
+        console.log('D:')
 
         $('#tabName').val($(this).data('tabName'));
 

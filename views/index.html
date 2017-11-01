@@ -123,11 +123,13 @@
 
                  if (e.which === 1) {
 
-                     $('#tabDialog')
-                         .data('tabName', $(this).text())
-                         .data('tabId', $(this).attr('id'))
-                         .dialog('open');
-                     return;
+                     Dialog.renameTab($(this))
+
+                     // $('#tabDialog')
+                     //       .data('tabName', $(this).text())
+                     //       .data('tabId', $(this).attr('id'))
+                     //       .dialog('open');
+                     // return;
                  }
 
              });
