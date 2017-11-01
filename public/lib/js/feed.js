@@ -144,10 +144,14 @@ var Feed = (function() {
             $header.appendTo($feed);
             $feedBody.appendTo($feed);
 
-            if (clickNew)
+            if (clickNew) {
                 $feed.prependTo($tab);
-            else
+                $feedPrefs.click()
+            } else {
                 $feed.appendTo($tab);
+            }
+
+
 
         },
         populateFeed:function($button) {

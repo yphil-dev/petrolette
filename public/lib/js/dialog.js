@@ -59,6 +59,10 @@ $('#feedDialog').dialog({
     },
     open: function( event, ui ) {
 
+        var $urlInput = $(this).find('input#feedUrl')
+
+        $urlInput.select()
+
         $('input#feedUrl').val($(this).data('feedUrl'));
         $('.feedType #' + $(this).data('feedType')).prop('checked',true).change();
 
