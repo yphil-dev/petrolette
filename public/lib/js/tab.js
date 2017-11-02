@@ -153,8 +153,6 @@ var Tab = (function() {
             $('div#tabs div').remove();
 
             tabs.forEach(function(tab) {
-                console.log('name: (%s), feeds: (%s)', tab.name, tab.feeds);
-
                 Tab.newTab($('#tabs'), tab.name, tab.feeds);
             });
 

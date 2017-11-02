@@ -26,42 +26,73 @@ body {
 }
 
 #slidermenu {
-    background-color: #001F3F;
     /* border-right: #2e2e2e solid 1px; */
     padding:.5em;
     border: none !important;
-    color: #FF4136 !important;
 }
 
-#slidermenu > h1 {
+#slidermenu,
+.handle {
+    background-color: #4D2E19 !important;
+    color:     #84A6CB !important;
+}
+
+.handle:hover {
+    color:            #F1E5D1 !important;
+}
+
+fieldset,
+legend {
+    background-color: #F1E5D1 !important;
+    color:            #3C2413 !important;
+}
+
+legend {
+    padding: .2em .5em;
+}
+
+#logo > h1 {
     font-family: 'LobsterRegular';
     font-weight: normal;
-    font-style: normal;
-    font-size:4rem;
-    margin: 0 0 .2em .2em;
-    color:   #FF4136;
-    /* text-shadow: 1px 1px #e9ce97; */
+    font-style:  normal;
+    font-size:   38pt;
+    margin:      0 0 .2em .2em;
+    color:       #F1E5D1;
+    text-shadow: 1px 1px #3C2413;
 }
 
-#slidermenu > .mobylette {
-    color:   #FF4136;
-    font-size:12rem;
-    color:  #FF4136;
-    margin: -1rem 0 0 .1em !important;
+#logo > .mobylette,
+.mobDialog .mobylette {
+    color:     #84A6CB;
+    font-size: 3.5rem  !important;
+    margin:    -2px 0 0 0 !important;
 }
 
-#slidermenu > h1 {
-    color:   #FF851B;
+.mobDialog .mobylette {
+    display: inline !important;
+    font-size: 1.5rem !important;
 }
 
-/* #slidermenu > fieldset { */
-/*     background-color: #AAAAAA; */
-/* } */
+.mobDialog p {
+    vertical-align: middle;
+    line-height: normal;
+}
 
-#slidermenu > fieldset > legend {
-    color:   #001F3F;
-    padding: .2em .5em;
-    background-color: #fff;
+#killDialog .mobylette {
+    color:     red;
+    font-size: 3.5rem  !important;
+}
+
+#logo {
+    display: flex;
+}
+
+.logoItem {
+    flex: 1 1 30%;
+}
+
+#slidermenu .ui-state-active {
+    background-color: #84A6CB !important;
 }
 
 .flip { transform: rotate(-180deg);}
