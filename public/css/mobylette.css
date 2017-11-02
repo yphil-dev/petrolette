@@ -17,6 +17,14 @@ body {
     /* margin:0; */
 }
 
+@font-face {
+    font-family: LobsterRegular;
+    src: url('/static/font/Lobster.otf') format("opentype");
+    src: url('/static/font/Lobster.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #slidermenu {
     background-color: #001F3F;
     /* border-right: #2e2e2e solid 1px; */

@@ -18,7 +18,6 @@
         <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
 
         <link rel="stylesheet" href="/static/css/mobylette.css">
-        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lobster" type="text/css"/>
         <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/basic/jquery-ui.theme.css">
 
         <script>
@@ -72,9 +71,7 @@
 
              var parsed = JSON.parse(tabList);
 
-             parsed.forEach(function(tab) {
-                 Tab.newTab($tabs, tab.name, tab.feeds);
-             });
+             Tab.populateTabs(parsed)
 
              $tabs.on( "click", ".mobFeedRefresh", function() {
                  Feed.populateFeed($(this));
