@@ -66,16 +66,18 @@
                  }
              );
 
-             var tabList = Prefs.readConfig('tabs');
+             // INIT
 
-             $tabs.on( "click", ".mobFeedRefresh", function() {
-                 Feed.populateFeed($(this));
-             });
+             var tabList = Prefs.readConfig('tabs');
 
              var parsed = JSON.parse(tabList);
 
              parsed.forEach(function(tab) {
                  Tab.newTab($tabs, tab.name, tab.feeds);
+             });
+
+             $tabs.on( "click", ".mobFeedRefresh", function() {
+                 Feed.populateFeed($(this));
              });
 
              $('#addTab').click(function () {

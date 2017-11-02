@@ -81,7 +81,6 @@ var Tab = (function() {
                 drop: function (event, ui) {
                     var $item = $(this);
                     var $index = $('li.mobTab').index(this);
-                    console.log('elt: ' +  $(this).get());
                     var $elements = ui.draggable.data('items');
                     var $list = $($item.find('a').attr('href'))
                         .find('.tabSort');
@@ -147,6 +146,21 @@ var Tab = (function() {
         saveTabs:function() {
             var allTabs = Tab.getTabs()
             Prefs.writeConfig('tabs', JSON.stringify(allTabs));
+        },
+        populateTabs:function(tabs) {
+
+            $('div#tabs ul li').remove();
+            $('div#tabs div').remove();
+
+            tabs.forEach(function(tab) {
+                console.log('name: (%s), feeds: (%s)', tab.name, tab.feeds);
+
+                Tab.newTab($('#tabs'), tab.name, tab.feeds);
+            });
+
+            $("div#tabs").tabs("refresh");
+            $('#tabs').find('.mobFeedRefresh').click();
+
         }
     };
 

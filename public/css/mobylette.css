@@ -70,6 +70,9 @@ body {
     border: none !important;
 }
 
+.ui-slider-handle {
+    text-align: center !important;
+}
 
 fieldset {
     /* background-color: #ffffcc; */
@@ -95,6 +98,12 @@ fieldset.prefsForm {
 .twin {
     /* width:49%; */
     flex: 1;
+}
+
+.noBottom,
+fieldset.prefsForm > button:last-child,
+fieldset.prefsForm > label:last-child {
+    margin: 0 !important;
 }
 
 .unique {
@@ -123,12 +132,6 @@ fieldset.prefsForm > button,
 .ui-slider {
     margin: 0 0 .5em 0;
     /* width:220px; */
-}
-
-.noBottom,
-fieldset.prefsForm > button:last-child,
-fieldset.prefsForm > label:last-child {
-    margin: 0 !important;
 }
 
 .ui-selectmenu-button.ui-button {

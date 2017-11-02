@@ -32,21 +32,20 @@ var Feed = (function() {
                 Dialog.feedPrefs($(this))
             });
 
-            var $feedBody = $('<div class="feedBody ui-widget-content"></div>');
-            var $feedBodyUl = $('<ul class="feedBody"></ul>');
-            var $dumbLi = $('<li>plop</li>');
+            var $feedBody = $('<div class="feedBody ui-widget-content">');
+            var $feedBodyUl = $('<ul class="feedBody">');
 
             var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-widget" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
-            var $header = $('<div class="mobHeader ui-widget-header"></div>');
-            var $feedIcon = $('<div class="feedIcon"></div>');
+            var $header = $('<div class="mobHeader ui-widget-header">');
+            var $feedIcon = $('<div class="feedIcon">');
 
-            var $toggleDiv = $('<div class="feedToggle"></div>');
-            var $selectDiv = $('<div class="feedSelect"></div>');
-            var $deleteDiv = $('<div class="feedDelete"></div>');
-            var $titleDiv = $('<div class="feedTitle truncate"></div>');
-            var $prefsDiv = $('<div class="prefs"></div>');
-            var $reloadDiv = $('<div class="reload"></div>');
+            var $toggleDiv = $('<div class="feedToggle">');
+            var $selectDiv = $('<div class="feedSelect">');
+            var $deleteDiv = $('<div class="feedDelete">');
+            var $titleDiv = $('<div class="feedTitle truncate">');
+            var $prefsDiv = $('<div class="prefs">');
+            var $reloadDiv = $('<div class="reload">');
 
             $feedToggle.appendTo($toggleDiv);
 
@@ -83,7 +82,6 @@ var Feed = (function() {
 
             $feedControls.appendTo($header);
 
-            // $dumbLi.appendTo($feedBodyUl)
             $feedBodyUl.appendTo($feedBody)
 
             $header.appendTo($feed);
@@ -95,9 +93,6 @@ var Feed = (function() {
             } else {
                 $feed.appendTo($tab);
             }
-
-
-
         },
         populateFeed:function($button) {
 
