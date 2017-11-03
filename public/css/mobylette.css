@@ -32,20 +32,25 @@ body {
 }
 
 #slidermenu,
+div.mobDialog,
 .handle {
     background-color: #4D2E19 !important;
     color:     #84A6CB !important;
+}
+
+.mobFeedEven {
+
 }
 
 .handle:hover {
     color:            #F1E5D1 !important;
 }
 
-/* fieldset, */
-/* legend { */
-/*     background-color: #F1E5D1 !important; */
-/*     color:            #3C2413 !important; */
-/* } */
+fieldset,
+legend {
+    background-color: #F1E5D1 !important;
+    color:            #3C2413 !important;
+}
 
 legend {
     padding: .2em .5em;
@@ -118,12 +123,6 @@ fieldset {
     margin: 0 0 .5em 0;
 }
 
-/* JQ UI Defaults */
-fieldset.mobDialog label,
-fieldset.mobDialog input {
-    display:block;
-}
-
 input.text { margin-bottom:12px; width:95%; padding: .4em; }
 fieldset.mobDialog { padding:0; border:0; margin-top:25px; }
 
@@ -135,14 +134,17 @@ fieldset.prefsForm {
 }
 
 .twin {
-    /* width:49%; */
     flex: 1;
 }
 
-.noBottom,
-fieldset.prefsForm > button:last-child,
-fieldset.prefsForm > label:last-child {
-    margin: 0 !important;
+label {
+    margin: 5px 0;
+}
+
+#feedType label {
+    flex: 1;
+    flex-direction: row;
+    width: 90%;
 }
 
 .unique {
@@ -185,10 +187,6 @@ fieldset.prefsForm > label:last-child {
     margin:0;
     /* display: table-cell; */
     vertical-align: top;
-}
-
-label.feedSelect {
-    padding: 0 !important;
 }
 
 .tab {
@@ -234,12 +232,6 @@ label.feedSelect {
 /* Fontello */
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
   margin: 0;
-}
-
-#feedType label {
-    flex: 1;
-    flex-direction: row;
-    width: 90%;
 }
 
 .feedType *  {

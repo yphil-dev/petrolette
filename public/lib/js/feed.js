@@ -182,7 +182,7 @@ var Feed = (function() {
 
                     if (index % 2 === 0) {
                         /* we are even */
-                        $feedItem.addClass('ui-state-hover')
+                        $feedItem.addClass('mobFeedEven')
                     }
 
                     $feedItem.hover(
