@@ -145,26 +145,23 @@ var Dialog = (function() {
                         var oldType = $dialog.data('feedType')
                         var oldLimit = $dialog.data('feedLimit')
 
-                        $('input#feedUrl').val(oldUrl);
+                        $dialog.find('input#feedUrl').val(oldUrl);
 
-                        console.log('O: %s', oldLimit)
-
-                        $('.feedType').checkboxradio({
+                        $dialog.find('.feedType').checkboxradio({
                             icon: false
                         });
 
-                        $('.feedType').each(function () {
-                            $(this).attr("checked", false).checkboxradio("refresh");
-                            if ($(this).attr('id') === oldType)
-                                $(this).attr("checked", true).checkboxradio("refresh");
-                            else
-                                $(this).attr("checked", false).checkboxradio("refresh");
-                        });
+                        $dialog.find('#' + oldType).attr("checked", true).checkboxradio("refresh");
 
+                        // $(this).attr("checked", true).checkboxradio("refresh");
 
-                        console.log('U: %s', $('#feedUrl').attr('class'))
+                        // $dialog.find('.feedType').each(function () {
 
-                        // $('.feedType #' + $dialog.data('feedType')).prop('checked',true).change();
+                        //     if ($(this).attr('id') === oldType)
+                        //         $(this).attr("checked", true).checkboxradio("refresh");
+                        //     else
+                        //         $(this).attr("checked", false).checkboxradio("refresh");
+                        // });
 
                         $dialog.find('div#feedLimit').slider({
                             value: oldLimit,
