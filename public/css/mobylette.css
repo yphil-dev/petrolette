@@ -41,11 +41,11 @@ body {
     color:            #F1E5D1 !important;
 }
 
-fieldset,
-legend {
-    background-color: #F1E5D1 !important;
-    color:            #3C2413 !important;
-}
+/* fieldset, */
+/* legend { */
+/*     background-color: #F1E5D1 !important; */
+/*     color:            #3C2413 !important; */
+/* } */
 
 legend {
     padding: .2em .5em;
@@ -166,13 +166,6 @@ fieldset.prefsForm > label:last-child {
     margin-left:.2em !important;
 }
 
-fieldset.prefsForm > label,
-fieldset.prefsForm > button,
-.ui-slider {
-    margin: 0 0 .5em 0;
-    /* width:220px; */
-}
-
 .ui-selectmenu-button.ui-button {
     text-align: left;
     white-space: nowrap;
@@ -243,10 +236,10 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
   margin: 0;
 }
 
-.feedType {
-    display: flex;
+#feedType label {
+    flex: 1;
     flex-direction: row;
-    width: 100%;
+    width: 90%;
 }
 
 .feedType *  {

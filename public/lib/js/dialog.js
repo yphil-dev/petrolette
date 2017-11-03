@@ -114,12 +114,18 @@ var Dialog = (function() {
                         },
                         'OK': function() {
 
+                            var newUrl = $dialog.find('#feedUrl').val()
+                            var newType = $dialog.find('#feedType').val()
+                            var newLimit = $dialog.find('#feedLimit').val()
+
+                            console.log('U: %s', newUrl)
+
                             var $tabFeedId = $('li#' + $(this).data('feedId'))
                             var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
 
                             $tabFeedId.data('url', $('#feedUrl').val())
                             $tabFeedId.data('type', $('#feedType').val())
-                            $tabFeedId.data('limit', $('input#feedLimitSlider').val())
+                            $tabFeedId.data('limit', $('input#feedLimit').val())
 
                             $('#feedType').children('input').each(function () {
                                 if ($(this).is(':checked'))
@@ -139,11 +145,14 @@ var Dialog = (function() {
                         var oldType = $dialog.data('feedType')
                         var oldLimit = $dialog.data('feedLimit')
 
+                        $('input#feedUrl').val(oldUrl);
+
                         console.log('O: %s', oldType)
+
+                        $('.feedType').checkboxradio()
 
                         $('.feedType').each(function () {
 
-                            $(this).checkboxradio()
                             $(this).attr("checked", false).checkboxradio("refresh");
 
                             console.log('This: %s (old is %s)', $(this).attr('id'), oldType)
@@ -160,14 +169,9 @@ var Dialog = (function() {
 
                         var $feedLimitValue = $dialog.data('feedLimit')
 
-                        // $urlInput.focus().select()
-
-                        // console.log('I: %s', typeof $dialogLimitValue)
-
-                        $('input#feedUrl').val($dialog.data('feedUrl'));
                         $('.feedType #' + $dialog.data('feedType')).prop('checked',true).change();
 
-                        $dialog.find('div#feedLimitSlider').slider({
+                        $dialog.find('div#feedLimit').slider({
                             value: oldLimit,
                             min: 1,
                             max: 128,
@@ -180,8 +184,8 @@ var Dialog = (function() {
                                 $(this).find(".ui-slider-handle").text(ui.value);
                             },
                             change: function( event, ui ) {
-                                $("input#feedLimitSlider").val(ui.value);
-                                console.log('V: %s', $("input#feedLimitSlider").val())
+                                $("input#feedLimit").val(ui.value);
+                                console.log('V: %s', $("input#feedLimit").val())
                             }
                         });
 

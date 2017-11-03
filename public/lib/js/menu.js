@@ -20,8 +20,8 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
     $( ".checkboxradio" ).checkboxradio();
 
-    $('#css-night').prop('disabled', true)
-    $('#css-day').prop('disabled', false)
+    $('#css-day').prop('disabled', true)
+    $('#css-night').prop('disabled', false)
 
     $('.themeSwitcher').change(function() {
         console.log('Theme: ' + $(this).attr('value'))

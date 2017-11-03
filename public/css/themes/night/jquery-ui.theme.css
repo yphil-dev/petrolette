@@ -8,45 +8,45 @@
  *
  * http://api.jqueryui.com/category/theming/
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=&folderName=custom-theme&bgImgOpacityError=0&bgImgOpacityHighlight=0&bgImgOpacityActive=0&bgImgOpacityHover=0&bgImgOpacityDefault=0&bgImgOpacityContent=0&bgImgOpacityHeader=0&cornerRadiusShadow=8px&offsetLeftShadow=0px&offsetTopShadow=0px&thicknessShadow=5px&opacityShadow=30&bgImgOpacityShadow=0&bgTextureShadow=flat&bgColorShadow=%23666666&opacityOverlay=30&bgImgOpacityOverlay=0&bgTextureOverlay=flat&bgColorOverlay=%23aaaaaa&iconColorError=%23cc0000&fcError=%23ecf3e5&borderColorError=%2366291d&bgTextureError=flat&bgColorError=%23690f0f&iconColorHighlight=%23777620&fcHighlight=%23777620&borderColorHighlight=%23dad55e&bgTextureHighlight=flat&bgColorHighlight=%23fffa90&iconColorActive=%23fafaf8&fcActive=%23bbe197&borderColorActive=%23578248&bgTextureActive=flat&bgColorActive=%23121e33&iconColorHover=%23555555&fcHover=%232b2b2b&borderColorHover=%23c13737&bgTextureHover=flat&bgColorHover=%23ededed&iconColorDefault=%23777777&fcDefault=%23454545&borderColorDefault=%23c5c5c5&bgTextureDefault=flat&bgColorDefault=%23f6f6f6&iconColorContent=%23444444&fcContent=%23e2e2e2&borderColorContent=%23dddddd&bgTextureContent=flat&bgColorContent=%23303030&iconColorHeader=%23444444&fcHeader=%23bbe197&borderColorHeader=%23414141&bgTextureHeader=flat&bgColorHeader=%23242731&cornerRadius=3px&fwDefault=normal&fsDefault=1em&ffDefault=Arial%2CHelvetica%2Csans-serif
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=&folderName=custom-theme&bgImgOpacityHeader=&bgImgOpacityContent=25&bgImgOpacityDefault=35&bgImgOpacityHover=33&bgImgOpacityActive=&bgImgOpacityHighlight=80&bgImgOpacityError=40&cornerRadiusShadow=8px&offsetLeftShadow=-7px&offsetTopShadow=-7px&thicknessShadow=7px&opacityShadow=60&bgImgOpacityShadow=30&bgTextureShadow=flat&bgColorShadow=%23cccccc&opacityOverlay=80&bgImgOpacityOverlay=50&bgTextureOverlay=flat&bgColorOverlay=%235c5c5c&iconColorError=%23a83300&fcError=%23111111&borderColorError=%23ffb73d&bgTextureError=glass&bgColorError=%23ffc73d&iconColorHighlight=%234b8e0b&fcHighlight=%232e7db2&borderColorHighlight=%23cccccc&bgTextureHighlight=highlight_soft&bgColorHighlight=%23eeeeee&iconColorActive=%23222222&fcActive=%23ffffff&borderColorActive=%23001F3F&bgTextureActive=flat&bgColorActive=%23FF4136&iconColorHover=%23ffffff&fcHover=%23111111&borderColorHover=%23FF4136&bgTextureHover=spotlight&bgColorHover=%230074D9&iconColorDefault=%23cccccc&fcDefault=%23dddddd&borderColorDefault=%23444444&bgTextureDefault=flat&bgColorDefault=%23222222&iconColorContent=%23cccccc&fcContent=%23dddddd&borderColorContent=%23555555&bgTextureContent=flat&bgColorContent=%23111111&iconColorHeader=%23ffffff&fcHeader=%23ffffff&borderColorHeader=%23333333&bgTextureHeader=flat&bgColorHeader=%23aaaaaa&cornerRadius=3px&fwDefault=normal&fsDefault=1em&ffDefault=Verdana%2CArial%2Csans-serif
  */
 
 
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-        font-family: Arial,Helvetica,sans-serif;
-        font-size: 1em;
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 1em;
 }
 .ui-widget .ui-widget {
-        font-size: 1em;
+	font-size: 1em;
 }
 .ui-widget input,
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-        font-family: Arial,Helvetica,sans-serif;
-        font-size: 1em;
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
-        border: 1px solid #c5c5c5;
+	border: 1px solid #444444;
 }
 .ui-widget-content {
-        border: 1px solid #dddddd;
-        background: #303030;
-        color: #e2e2e2;
+	border: 1px solid #555555;
+	background: #111111;
+	color: #dddddd;
 }
 .ui-widget-content a {
-        color: #e2e2e2;
+	color: #dddddd;
 }
 .ui-widget-header {
-        border: 1px solid #414141;
-        background: #242731;
-        color: #bbe197;
-        font-weight: bold;
+	border: 1px solid #333333;
+	background: #aaaaaa;
+	color: #ffffff;
+	font-weight: bold;
 }
 .ui-widget-header a {
-        color: #bbe197;
+	color: #ffffff;
 }
 
 /* Interaction states
@@ -60,10 +60,10 @@
 works properly when clicked or hovered */
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
-        border: 1px solid #c5c5c5;
-        background: #f6f6f6;
-        font-weight: normal;
-        color: #454545;
+	border: 1px solid #444444;
+	background: #222222;
+	font-weight: normal;
+	color: #dddddd;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -72,8 +72,8 @@ a.ui-button,
 a:link.ui-button,
 a:visited.ui-button,
 .ui-button {
-        color: #454545;
-        text-decoration: none;
+	color: #dddddd;
+	text-decoration: none;
 }
 .ui-state-hover,
 .ui-widget-content .ui-state-hover,
@@ -83,10 +83,10 @@ a:visited.ui-button,
 .ui-widget-header .ui-state-focus,
 .ui-button:hover,
 .ui-button:focus {
-        border: 1px solid #c13737;
-        background: #ededed;
-        font-weight: normal;
-        color: #2b2b2b;
+	border: 1px solid #FF4136;
+	background: #0074D9 url("images/ui-bg_spotlight_33_0074D9_600x600.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #111111;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,
@@ -98,12 +98,12 @@ a:visited.ui-button,
 .ui-state-focus a:visited,
 a.ui-button:hover,
 a.ui-button:focus {
-        color: #2b2b2b;
-        text-decoration: none;
+	color: #111111;
+	text-decoration: none;
 }
 
 .ui-visual-focus {
-        box-shadow: 0 0 3px 1px rgb(94, 158, 214);
+	box-shadow: 0 0 3px 1px rgb(94, 158, 214);
 }
 .ui-state-active,
 .ui-widget-content .ui-state-active,
@@ -111,21 +111,21 @@ a.ui-button:focus {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-        border: 1px solid #578248;
-        background: #121e33;
-        font-weight: normal;
-        color: #bbe197;
+	border: 1px solid #001F3F;
+	background: #FF4136;
+	font-weight: normal;
+	color: #ffffff;
 }
 .ui-icon-background,
 .ui-state-active .ui-icon-background {
-        border: #578248;
-        background-color: #bbe197;
+	border: #001F3F;
+	background-color: #ffffff;
 }
 .ui-state-active a,
 .ui-state-active a:link,
 .ui-state-active a:visited {
-        color: #bbe197;
-        text-decoration: none;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 /* Interaction Cues
@@ -133,57 +133,57 @@ a.ui-button:active,
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-        border: 1px solid #dad55e;
-        background: #fffa90;
-        color: #777620;
+	border: 1px solid #cccccc;
+	background: #eeeeee url("images/ui-bg_highlight-soft_80_eeeeee_1x100.png") 50% top repeat-x;
+	color: #2e7db2;
 }
 .ui-state-checked {
-        border: 1px solid #dad55e;
-        background: #fffa90;
+	border: 1px solid #cccccc;
+	background: #eeeeee;
 }
 .ui-state-highlight a,
 .ui-widget-content .ui-state-highlight a,
 .ui-widget-header .ui-state-highlight a {
-        color: #777620;
+	color: #2e7db2;
 }
 .ui-state-error,
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
-        border: 1px solid #66291d;
-        background: #690f0f;
-        color: #ecf3e5;
+	border: 1px solid #ffb73d;
+	background: #ffc73d url("images/ui-bg_glass_40_ffc73d_1x400.png") 50% 50% repeat-x;
+	color: #111111;
 }
 .ui-state-error a,
 .ui-widget-content .ui-state-error a,
 .ui-widget-header .ui-state-error a {
-        color: #ecf3e5;
+	color: #111111;
 }
 .ui-state-error-text,
 .ui-widget-content .ui-state-error-text,
 .ui-widget-header .ui-state-error-text {
-        color: #ecf3e5;
+	color: #111111;
 }
 .ui-priority-primary,
 .ui-widget-content .ui-priority-primary,
 .ui-widget-header .ui-priority-primary {
-        font-weight: bold;
+	font-weight: bold;
 }
 .ui-priority-secondary,
 .ui-widget-content .ui-priority-secondary,
 .ui-widget-header .ui-priority-secondary {
-        opacity: .7;
-        filter:Alpha(Opacity=70); /* support: IE8 */
-        font-weight: normal;
+	opacity: .7;
+	filter:Alpha(Opacity=70); /* support: IE8 */
+	font-weight: normal;
 }
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
-        opacity: .35;
-        filter:Alpha(Opacity=35); /* support: IE8 */
-        background-image: none;
+	opacity: .35;
+	filter:Alpha(Opacity=35); /* support: IE8 */
+	background-image: none;
 }
 .ui-state-disabled .ui-icon {
-        filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
+	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
 }
 
 /* Icons
@@ -191,36 +191,36 @@ a.ui-button:active,
 
 /* states and images */
 .ui-icon {
-        width: 16px;
-        height: 16px;
+	width: 16px;
+	height: 16px;
 }
 .ui-icon,
 .ui-widget-content .ui-icon {
-        background-image: url("images/ui-icons_444444_256x240.png");
+	background-image: url("images/ui-icons_cccccc_256x240.png");
 }
 .ui-widget-header .ui-icon {
-        background-image: url("images/ui-icons_444444_256x240.png");
+	background-image: url("images/ui-icons_ffffff_256x240.png");
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon,
 .ui-button:hover .ui-icon,
 .ui-button:focus .ui-icon {
-        background-image: url("images/ui-icons_555555_256x240.png");
+	background-image: url("images/ui-icons_ffffff_256x240.png");
 }
 .ui-state-active .ui-icon,
 .ui-button:active .ui-icon {
-        background-image: url("images/ui-icons_fafaf8_256x240.png");
+	background-image: url("images/ui-icons_222222_256x240.png");
 }
 .ui-state-highlight .ui-icon,
 .ui-button .ui-state-highlight.ui-icon {
-        background-image: url("images/ui-icons_777620_256x240.png");
+	background-image: url("images/ui-icons_4b8e0b_256x240.png");
 }
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-        background-image: url("images/ui-icons_cc0000_256x240.png");
+	background-image: url("images/ui-icons_a83300_256x240.png");
 }
 .ui-button .ui-icon {
-        background-image: url("images/ui-icons_777777_256x240.png");
+	background-image: url("images/ui-icons_cccccc_256x240.png");
 }
 
 /* positioning */
@@ -410,71 +410,34 @@ a.ui-button:active,
 .ui-corner-top,
 .ui-corner-left,
 .ui-corner-tl {
-        border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
 }
 .ui-corner-all,
 .ui-corner-top,
 .ui-corner-right,
 .ui-corner-tr {
-        border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
 }
 .ui-corner-all,
 .ui-corner-bottom,
 .ui-corner-left,
 .ui-corner-bl {
-        border-bottom-left-radius: 3px;
+	border-bottom-left-radius: 3px;
 }
 .ui-corner-all,
 .ui-corner-bottom,
 .ui-corner-right,
 .ui-corner-br {
-        border-bottom-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 /* Overlays */
 .ui-widget-overlay {
-        background: #aaaaaa;
-        opacity: .3;
-        filter: Alpha(Opacity=30); /* support: IE8 */
+	background: #5c5c5c;
+	opacity: .8;
+	filter: Alpha(Opacity=80); /* support: IE8 */
 }
 .ui-widget-shadow {
-        -webkit-box-shadow: 0px 0px 5px #666666;
-        box-shadow: 0px 0px 5px #666666;
-}
-
-/* MOBYLETTE */
-
-legend {
-    padding:.3rem;
-    background-color: #303030 !important;
-    color: #578248 !important;
-}
-
-
-li.feedItem a:link {
-    color: #bbe197;
-}
-
-li.feedItem a:visited {
-    color: #578248;
-}
-
-li.feedItem a:hover {
-    color: #fffa90;
-}
-
-li.feedItem a:active {
-    color: #690f0f;
-}
-
-li.feedItem {
-    background-color: #333 !important;
-}
-
-li.feedItem:nth-child(odd) {
-    background-color: #555 !important;
-}
-
-li.feedItem:hover {
-    background-color: #111 !important;
+	-webkit-box-shadow: -7px -7px 7px #cccccc;
+	box-shadow: -7px -7px 7px #cccccc;
 }
