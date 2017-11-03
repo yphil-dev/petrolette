@@ -18,7 +18,9 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         Prefs.exportConfig(Tab.getTabs(), 'mobylette.json');
     });
 
-    $( ".checkboxradio" ).checkboxradio();
+    $(".checkboxradio").checkboxradio({
+        icon: false
+    });
 
     $('#css-day').prop('disabled', true)
     $('#css-night').prop('disabled', false)
@@ -44,6 +46,7 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
     // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
 
     $('#gallerySlideTransition').selectmenu({
+        width: 250,
         change: function( event, data ) {
             console.log('Value: ' + data.item.value)
             $.fancybox.defaults.transitionEffect = data.item.value

@@ -25,25 +25,49 @@ body {
     font-style: normal;
 }
 
+@font-face {
+    font-family: Ubuntu;
+    src: url('/static/font/ubuntu/Ubuntu-R.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 #slidermenu {
     /* border-right: #2e2e2e solid 1px; */
     padding:.5em;
     border: none !important;
 }
 
+div.mobDialog legend,
+#slidermenu legend {
+    font-family: 'LobsterRegular';
+    /* font-family: 'Ubuntu' !important; */
+}
+
 #slidermenu,
 div.mobDialog,
 .handle {
     background-color: #4D2E19 !important;
-    color:     #84A6CB !important;
+    color:            #F1E5D1 !important;
+}
+
+.handle {
+    opacity: 0.6;
+}
+
+.handle:hover {
+    opacity: 1;
+    color:            #FFDC00 !important;
+}
+
+#slidermenu .ui-state-active,
+#slidermenu .ui-state-hover {
+    background-color: #FFDC00 !important;
+    color: #001F3F !important;
 }
 
 .mobFeedEven {
 
-}
-
-.handle:hover {
-    color:            #F1E5D1 !important;
 }
 
 fieldset,
@@ -94,10 +118,6 @@ legend {
 
 .logoItem {
     flex: 1 1 30%;
-}
-
-#slidermenu .ui-state-active {
-    background-color: #84A6CB !important;
 }
 
 .flip { transform: rotate(-180deg);}
@@ -276,6 +296,7 @@ ul.tabSort {
 }
 
 li.feed {
+    font-family: Verdana, Arial, sans-serif;
     page-break-inside: avoid;
     break-inside: avoid;
     display: inline-block;
