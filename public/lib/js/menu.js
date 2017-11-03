@@ -25,6 +25,8 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         $("#mobylette-theme").attr({href : $(this).attr('value')});
     });
 
+    // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+
     $('#gallerySlideTransition').selectmenu({
         change: function( event, data ) {
             console.log('Value: ' + data.item.value)
@@ -34,8 +36,6 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
     });
 
     $('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
-
-    // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
 
     if (Prefs.readConfig('tabDropActivate') === 'true')
         $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
