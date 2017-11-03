@@ -25,20 +25,27 @@
         <fieldset>
             <legend class="ui-corner-top">URL</legend>
             <div class="feedUrl">
-                <input type="text" name="url" id="feedUrl" autofocus placeholder="Feed URL (https://reddit.com/.rss)" value="" class="text ui-widget-content ui-corner-all" onclick="select()" />
+                <input type="text"
+                       name="url"
+                       id="feedUrl"
+                       placeholder="Feed URL (https://reddit.com/.rss)"
+                       value=""
+                       class="text ui-widget-content ui-corner-all"
+                       onclick="select()"
+                       autofocus
+                />
+
             </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset id="feedType" class="prefsForm ui-widget ui-widget-content ui-corner-all">
             <legend class="ui-corner-top">Display Type</legend>
-            <div class="feedType controlGroup ui-corner-all">
-                <label for="mixed">Mixed</label>
-                <input type="radio" name="radio-1" id="mixed">
-                <label for="photo">Photo</label>
-                <input type="radio" name="radio-1" id="photo">
-                <label for="text">Text</label>
-                <input type="radio" name="radio-1" id="text">
-            </div>
+            <label for="mixed">Mixed</label>
+            <input type="radio" name="radio-1" id="mixed" class="feedType">
+            <label for="photo">Photo</label>
+            <input type="radio" name="radio-1" id="photo" class="feedType">
+            <label for="text">Text</label>
+            <input type="radio" name="radio-1" id="text" class="feedType">
         </fieldset>
 
         <fieldset>

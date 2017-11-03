@@ -20,9 +20,25 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
     $( ".checkboxradio" ).checkboxradio();
 
+    $('#css-night').prop('disabled', true)
+    $('#css-day').prop('disabled', false)
+
     $('.themeSwitcher').change(function() {
         console.log('Theme: ' + $(this).attr('value'))
-        $("#mobylette-theme").attr({href : $(this).attr('value')});
+
+        if ($(this).attr('value') === 'day'){
+            $('#css-day').prop('disabled', false)
+            $('#css-night').prop('disabled', true)
+        } else {
+            $('#css-night').prop('disabled', false)
+            $('#css-day').prop('disabled', true)
+        }
+
+
+        // $("#mobylette-theme").attr({href : '/static/css/themes/'
+        //                                  + $(this).attr('value')
+        //                                  + '/jquery-ui.theme.css'});
+
     });
 
     // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
