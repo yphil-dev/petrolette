@@ -100,8 +100,6 @@ var Dialog = (function() {
 
                 var $feedContainer = $button.parent().parent().parent().parent();
 
-                console.log('I: %s', $thisFeedId)
-
                 $dialog.dialog({
                     autoOpen: false,
                     resizable: false,
@@ -114,20 +112,25 @@ var Dialog = (function() {
                         },
                         'OK': function() {
 
-                            var newUrl = $dialog.find('#feedUrl').val()
-                            var newType = $dialog.find('#feedType').val()
-                            var newLimit = $dialog.find('#feedLimit').val()
+                            console.log('This feed ID: %s', $thisFeedId)
 
-                            console.log('U: %s', newUrl)
+                            var newUrl = $(this).find('input#feedUrl').val()
+                            var newType = $(this).find('#feedType').val()
+                            var newLimit = $(this).find('input#feedLimit').val()
+
+                            console.log('NewU: %s', newUrl)
+                            console.log('NewT: %s', newType)
+                            console.log('NewL: %s', newLimit)
 
                             var $tabFeedId = $('li#' + $(this).data('feedId'))
                             var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
 
-                            $tabFeedId.data('url', $('#feedUrl').val())
-                            $tabFeedId.data('type', $('#feedType').val())
-                            $tabFeedId.data('limit', $('input#feedLimit').val())
+                            $tabFeedId.data('url', newUrl)
+                            $tabFeedId.data('type', newType)
+                            $tabFeedId.data('limit', newLimit)
 
                             $('#feedType').children('input').each(function () {
+                                console.log('ID: %s Ch: %s', $(this).attr('id'), $(this).is(':checked'))
                                 if ($(this).is(':checked'))
                                     $tabFeedId.data('type', $(this).attr('id'))
                             });
@@ -145,6 +148,10 @@ var Dialog = (function() {
                         var oldType = $dialog.data('feedType')
                         var oldLimit = $dialog.data('feedLimit')
 
+                        console.log('OldU: %s', oldUrl)
+                        console.log('OldT: %s', oldType)
+                        console.log('OldL: %s', oldLimit)
+
                         $dialog.find('input#feedUrl').val(oldUrl);
 
                         $dialog.find('.feedType').checkboxradio({
@@ -152,6 +159,13 @@ var Dialog = (function() {
                         });
 
                         $dialog.find('#' + oldType).attr("checked", true).checkboxradio("refresh");
+
+                        $dialog.find('.feedType').on("change", function(event){
+                            $dialog.find('.feedType').prop( "checked", false );
+                            $(this).attr("checked", true).prop( "checked", false );
+                            $dialog.find('.feedType').checkboxradio("refresh");
+                            console.log("CHANGE EVENT!");
+                        });
 
                         // $(this).attr("checked", true).checkboxradio("refresh");
 
@@ -169,6 +183,7 @@ var Dialog = (function() {
                             max: 128,
                             step: 1,
                             create: function( event, ui ) {
+                                $("input#feedLimit").val(oldLimit);
                                 $(this).find(".ui-slider-handle").text(oldLimit);
                             },
                             slide: function( event, ui ) {

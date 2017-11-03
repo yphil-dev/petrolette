@@ -3,7 +3,9 @@ var Feed = (function() {
     return {
         newFeed:function($tab, url, type, limit, clickNew) {
 
-            var feedIndex = $('.feed').length;
+            var feedIndex = $('#tabs').find('.feed').length;
+
+            console.log('WTF: ' + feedIndex)
 
             var $feedToggle = $('<i class="ico-generic-rss rotate">').click(function() {
                 $(this).toggleClass("down")
