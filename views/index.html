@@ -79,7 +79,11 @@
              Tab.populateTabs(parsed)
 
              $tabs.on( "click", ".mobFeedRefresh", function() {
-                 Feed.populateFeed($(this));
+                 Feed.populateFeed($(this)
+                                  ,$(this).data('id')
+                                  ,$(this).data('url')
+                                  ,$(this).data('type')
+                                  ,$(this).data('limit'));
              });
 
              $('#addTab').click(function () {

@@ -14,8 +14,8 @@ var Feed = (function() {
 
             var $feedSelect = $('<i class="icon-check-empty-1 feedSelect feedControl">').button();
             var $feedDelete = $('<i class="icon-trash feedDelete feedControl">').button();
-            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl">').button()
-            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl">').button();
+            var $feedPrefs = $('<i class="icon-cog mobFeedPrefs feedControl" data-id="feed-' + feedIndex + '" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '">').button()
+            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl" data-id="feed-' + feedIndex + '" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '">').button();
 
             var $feedIcon = $('<i class="icon-generic-rss feedControl">').button();
 
@@ -31,7 +31,12 @@ var Feed = (function() {
             });
 
             $feedPrefs.click(function() {
-                Dialog.feedPrefs($(this))
+                Dialog.feedPrefs($(this).data('id')
+                                ,$(this).data('url')
+                                ,$(this).data('type')
+                                ,$(this).data('limit')
+                )
+
             });
 
             var $feedBody = $('<div class="feedBody ui-widget-content">');
@@ -96,7 +101,7 @@ var Feed = (function() {
                 $feed.appendTo($tab);
             }
         },
-        populateFeed:function($button) {
+        populateFeed:function($button, id, url, type, limit) {
 
             var r = new RegExp('^(?:[a-z]+:)?//', 'i');
 
@@ -106,12 +111,16 @@ var Feed = (function() {
                 return l
             }
 
-            var $feed = $button.parent().parent().parent().parent()
-            var $feedTitle = $feed.children().children('.feedTitle')
-            var $feedBody = $feed.children().children('ul.feedBody')
-            var feedUrl = $feed.data('url')
-            var feedLimit = $feed.data('limit')
-            var feedType = $feed.data('type')
+            var $feed = $('#' + id);
+            var $feedTitle = $feed.children().children('.feedTitle');
+            var $feedBody = $feed.children().children('ul.feedBody');
+            var feedUrl = url;
+            var feedType = type;
+            var feedLimit = limit;
+
+            $button.data('url', url)
+            $button.data('type', type)
+            $button.data('limit', limit)
 
             var $feedIcon = $feed.find('.feedToggle > i')
 
