@@ -129,27 +129,23 @@ var Dialog = (function() {
                         var oldType = $dataStore.data('type')
                         var oldLimit = $dataStore.data('limit')
 
-                        console.log('Old URL: %s (type: %s)', oldUrl, typeof oldUrl)
-                        console.log('Old Type: %s (type: %s)', oldType, typeof oldType)
-                        console.log('Old Limit: %s (type: %s)', oldLimit, typeof oldLimit)
-                        console.log('Data type: %s', $dataStore.data('type'))
-
-                        // console.log('OldT: %s', oldType)
+                        console.log('\n\nURL: %s, \nTYPE: %s', oldUrl, oldType)
 
                         $dialog.find('input#feedUrl').val(oldUrl);
 
-                        // $dialog.find('.feedType').checkboxradio({
-                        //     icon: false
-                        // });
+                        $dialog.find('.feedType').checkboxradio({
+                            icon: false
+                        });
 
-                        // $dialog.find('input#' + oldType).attr("checked", true).checkboxradio("refresh");
+                        $dialog.find('input#' + oldType || 'mixed').prop("checked", true).checkboxradio('refresh');
 
                         $dialog.find('.feedType').on("change", function(event){
                             // $dialog.find('.feedType').prop( "checked", false );
                             // $(this).attr("checked", true).prop( "checked", false );
                             // $dialog.find('.feedType').checkboxradio("refresh");
-                            $dataStore.data('type', $(this).attr('id'))
-                            console.log('Type set: %s', $dataStore.data('type'))
+                            $(this).prop("checked", true).checkboxradio('refresh');
+                            $dataStore.data('type', $(this).attr('id'));
+                            console.log('Type set: %s', $dataStore.data('type'));
                         });
 
                         // $(this).attr("checked", true).checkboxradio("refresh");

@@ -36,7 +36,6 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
             $('#css-day').prop('disabled', true)
         }
 
-
         // $("#mobylette-theme").attr({href : '/static/css/themes/'
         //                                  + $(this).attr('value')
         //                                  + '/jquery-ui.theme.css'});
@@ -45,16 +44,33 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
     // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
 
-    $('#gallerySlideTransition').selectmenu({
+    var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
+    var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
+
+    $.fancybox.defaults.thumbs.autoStart = true;
+    $.fancybox.defaults.transitionEffect = gallerySlideTransition;
+    $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
+
+    console.log('gallery AS' + $.fancybox.defaults.thumbs.autoStart);
+
+    $slider.find('#gallerySlideTransition').selectmenu({
         width: 250,
         change: function( event, data ) {
-            console.log('Value: ' + data.item.value)
-            $.fancybox.defaults.transitionEffect = data.item.value
+            // $.fancybox.defaults.transitionEffect = data.item.value
+            console.log('New FX: %s', data.item.value);
+
+            $.fancybox.defaults.transitionEffect = data.item.value;
+
+            // $('#tabs').find("[data-fancybox]").fancybox({
+            //     transitionEffect: data.item.value
+            // });
+
             Prefs.writeConfig('gallerySlideTransition', data.item.value);
         }
     });
 
-    $('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
+    $slider.find('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
+    console.log('FancyBox TRANS: %s', gallerySlideTransition)
 
     if (Prefs.readConfig('tabDropActivate') === 'true')
         $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
@@ -67,42 +83,29 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
     $('.controlGroup').controlgroup();
 
-    var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
-    var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
-
-    $.fancybox.defaults.transitionEffect = gallerySlideTransition
-    $.fancybox.defaults.clickOutside = 'close'
-    // $.fancybox.defaults.clickSlide = 'zoom'
-
-    $.fancybox.defaults.slideShow = {
-        autoStart: false,
-        speed: gallerySlideshowSpeed
-    }
-
-    $.fancybox.defaults = {
-        clickSlide : 'zoom'
-    }
-
-    $('#sslider').slider({
+    $slider.find('#gallerySlideshowSpeed').slider({
         value: gallerySlideshowSpeed,
         min: 1,
         max: 10000,
         step: 100,
-        slide: function( event, ui ) {
+        slide: function(event, ui) {
             $('#amount').val(ui.value + 'ms');
             $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
 
         },
-        change: function( event, ui ) {
+        change: function(event, ui) {
             Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
-            $.fancybox.defaults.slideShow = {
-                speed     : ui.value
-            }
+            $('#tabs').find("[data-fancybox]").fancybox({
+                slideShow: {
+                    speed: ui.value
+                }
+            });
+
         }
     });
 
-    $('#amount').val($('#sslider').slider('value') + 'ms');
-    $('#gallerySlideshowSpeedValue').text($('#sslider').slider('value') + 'ms');
+    $('#amount').val($('#gallerySlideshowSpeed').slider('value') + 'ms');
+    $('#gallerySlideshowSpeedValue').text($('#gallerySlideshowSpeed').slider('value') + 'ms');
 
     // File select
 

@@ -210,7 +210,7 @@ var Feed = (function() {
                     );
 
                     if (typeof imageUrl !== 'undefined') {
-                        var $imgLink = $('<a data-fancybox="gallery">').attr('href', imageUrl)
+                        var $imgLink = $('<a data-fancybox="gallery" data-caption="' + item.title + '">').attr('href', imageUrl)
                         var $itemImg = $('<img src="' + imageUrl + '" />')
                             .appendTo($imgLink)
                         if (feedType == 'photo')
