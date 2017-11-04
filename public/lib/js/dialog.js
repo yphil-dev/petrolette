@@ -91,10 +91,12 @@ var Dialog = (function() {
             })
 
         },
-        feedPrefs:function(id, url, type, limit) {
+        feedPrefs:function($feedPrefsButton) {
 
             $('#mobDialogs').load('/static/templates/dialog.html #feedPrefs', function() {
                 var $dialog = $('#feedPrefs')
+
+                var $dataStore = $feedPrefsButton.parent().parent()
 
                 $dialog.dialog({
                     autoOpen: false,
@@ -108,34 +110,11 @@ var Dialog = (function() {
                         },
                         'OK': function() {
 
-                            console.log('TID: %s', $dialog.data('id'))
-
                             var newUrl = $(this).find('input#feedUrl').val()
-                            var newType = $(this).find('#feedType').val()
-                            var newLimit = $(this).find('input#feedLimit').val()
 
-                            console.log('NewU: %s', newUrl)
-                            // console.log('NewT: %s', newType)
-                            // console.log('NewL: %s', newLimit)
+                            $dataStore.data('url', newUrl)
 
-                            var $tabFeedId = $('li#' + $dialog.data('id'))
-                            var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
-
-                            $tabFeedId.data('url', newUrl)
-                            $tabFeedId.data('type', newType)
-                            $tabFeedId.data('limit', newLimit)
-
-                            $mobFeedRefresh.data('url', newUrl)
-                            $mobFeedRefresh.data('type', newType)
-                            $mobFeedRefresh.data('limit', newLimit)
-
-                            $('#feedType').children('input').each(function () {
-                                // console.log('ID: %s Ch: %s', $(this).attr('id'), $(this).is(':checked'))
-                                if ($(this).is(':checked'))
-                                    $tabFeedId.data('type', $(this).attr('id'))
-                            });
-
-                            Feed.populateFeed($mobFeedRefresh, id, newUrl, newType, newLimit);
+                            Feed.populateFeed($feedPrefsButton);
                             Tab.saveTabs();
                             $(this).dialog( 'close' );
                         }
@@ -146,25 +125,31 @@ var Dialog = (function() {
                         var $tabFeedId = $('li#' + $dialog.data('id'))
                         var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
 
-                        var oldUrl = $mobFeedRefresh.data('url')
-                        var oldType = $dialog.data('type')
-                        var oldLimit = $dialog.data('limit')
+                        var oldUrl = $dataStore.data('url')
+                        var oldType = $dataStore.data('type')
+                        var oldLimit = $dataStore.data('limit')
 
-                        console.log('OldU: %s', oldUrl)
+                        console.log('Old URL: %s (type: %s)', oldUrl, typeof oldUrl)
+                        console.log('Old Type: %s (type: %s)', oldType, typeof oldType)
+                        console.log('Old Limit: %s (type: %s)', oldLimit, typeof oldLimit)
+                        console.log('Data type: %s', $dataStore.data('type'))
+
                         // console.log('OldT: %s', oldType)
 
                         $dialog.find('input#feedUrl').val(oldUrl);
 
-                        $dialog.find('.feedType').checkboxradio({
-                            icon: false
-                        });
+                        // $dialog.find('.feedType').checkboxradio({
+                        //     icon: false
+                        // });
 
-                        $dialog.find('#' + oldType).attr("checked", true).checkboxradio("refresh");
+                        // $dialog.find('input#' + oldType).attr("checked", true).checkboxradio("refresh");
 
                         $dialog.find('.feedType').on("change", function(event){
-                            $dialog.find('.feedType').prop( "checked", false );
-                            $(this).attr("checked", true).prop( "checked", false );
-                            $dialog.find('.feedType').checkboxradio("refresh");
+                            // $dialog.find('.feedType').prop( "checked", false );
+                            // $(this).attr("checked", true).prop( "checked", false );
+                            // $dialog.find('.feedType').checkboxradio("refresh");
+                            $dataStore.data('type', $(this).attr('id'))
+                            console.log('Type set: %s', $dataStore.data('type'))
                         });
 
                         // $(this).attr("checked", true).checkboxradio("refresh");
@@ -192,6 +177,7 @@ var Dialog = (function() {
                             },
                             change: function( event, ui ) {
                                 $("input#feedLimit").val(ui.value);
+                                $dataStore.data('limit', ui.value)
                             }
                         });
 
@@ -209,13 +195,12 @@ var Dialog = (function() {
                 });
 
                 $dialog
-                    .data('id', id)
-                    .data('url', url)
-                    .data('type', type)
-                    .data('limit', limit)
+                    .data('id', $feedPrefsButton.data('id'))
+                    .data('url', $feedPrefsButton.data('url'))
+                    .data('type', $feedPrefsButton.data('type'))
+                    .data('limit', $feedPrefsButton.data('limit'))
                     .dialog('open');
-
-            })
+                        })
 
         },
         killTab:function($button) {

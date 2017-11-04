@@ -109,15 +109,6 @@ var Tab = (function() {
 
             // console.log('---- TAB OK ----');
         },
-        populateTabs:function($tabUl, tabList, $tabs) {
-
-            $tabUl.empty();
-
-            tabList.forEach(function(tab) {
-                Tab.newTab($tabs, tab.name, tab.feeds);
-            });
-
-        },
         getTabs:function() {
             var myTabs = [];
             var $allTabs = $( '#tabUl li.mobTab' );
@@ -130,10 +121,11 @@ var Tab = (function() {
                 myTab["name"] = $(this).children('a').text();
 
                 $allFeeds.each(function(i) {
+                    var $dataStore = $(this).find('.feedControls')
                     var myFeed = {};
-                    myFeed["url"] = $(this).data('url');
-                    myFeed["type"] = $(this).data('type');
-                    myFeed["limit"] = $(this).data('limit');
+                    myFeed["url"] = $dataStore.data('url');
+                    myFeed["type"] = $dataStore.data('type');
+                    myFeed["limit"] = $dataStore.data('limit');
                     myFeeds.push(myFeed);
                 });
                 myTab["feeds"] = myFeeds;
