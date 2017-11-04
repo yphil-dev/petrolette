@@ -51,20 +51,11 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
     $.fancybox.defaults.transitionEffect = gallerySlideTransition;
     $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
 
-    console.log('gallery AS' + $.fancybox.defaults.thumbs.autoStart);
-
     $slider.find('#gallerySlideTransition').selectmenu({
         width: 250,
         change: function( event, data ) {
-            // $.fancybox.defaults.transitionEffect = data.item.value
             console.log('New FX: %s', data.item.value);
-
             $.fancybox.defaults.transitionEffect = data.item.value;
-
-            // $('#tabs').find("[data-fancybox]").fancybox({
-            //     transitionEffect: data.item.value
-            // });
-
             Prefs.writeConfig('gallerySlideTransition', data.item.value);
         }
     });
@@ -80,8 +71,6 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
     $('#tabDropActivate').change(function() {
         Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
     });
-
-    $('.controlGroup').controlgroup();
 
     $slider.find('#gallerySlideshowSpeed').slider({
         value: gallerySlideshowSpeed,
@@ -109,7 +98,7 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
     // File select
 
-    $("#imgInp").change(function(evt){
+    $("#fileImport").change(function(evt){
         var JsonObj = null
         var files = evt.target.files
         var f = files[0];
