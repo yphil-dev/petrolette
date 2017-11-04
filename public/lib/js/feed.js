@@ -8,13 +8,13 @@ var Feed = (function() {
             console.log('WTF: ' + feedIndex)
 
             var $feedToggle = $('<i class="ico-generic-rss rotate">').click(function() {
-                $(this).toggleClass("down")
+                $(this).toggleClass("down");
                 $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
             });
 
             var $feedSelect = $('<i title="Select feed" class="icon-check-empty-1 feedSelect feedControl">').button();
             var $feedDelete = $('<i title="Delete feed" class="icon-trash feedDelete feedControl">').button();
-            var $feedPrefs = $('<i title="Feed preferences" class="icon-cog mobFeedPrefs feedControl">').button()
+            var $feedPrefs = $('<i title="Feed preferences" class="icon-cog mobFeedPrefs feedControl">').button();
             var $feedReload = $('<i title="Reload feed" class="icon-arrows-cw mobFeedRefresh feedControl">').button();
 
             var $feedIcon = $('<i title="Toggle feed" class="icon-generic-rss feedControl">').button();
@@ -26,18 +26,18 @@ var Feed = (function() {
                          .data('id', 'feed-' + feedIndex)
                          .data('url', url)
                          .data('type', type)
-                         .data('limit', limit)
+                         .data('limit', limit);
 
             $feedDelete.click(function() {
-                Dialog.killFeed($(this))
+                Dialog.killFeed($(this));
             });
 
             $feedSelect.click(function() {
-                $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1')
+                $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1');
             });
 
             $feedPrefs.click(function() {
-                Dialog.feedPrefs($(this))
+                Dialog.feedPrefs($(this));
             });
 
             var $feedBody = $('<div class="feedBody ui-widget-content">');
@@ -86,7 +86,6 @@ var Feed = (function() {
             $deleteDiv.appendTo($feedControls);
             $prefsDiv.appendTo($feedControls);
             $reloadDiv.appendTo($feedControls);
-
 
             $feedControls.appendTo($header);
 
@@ -155,7 +154,7 @@ var Feed = (function() {
                 dataType: 'json'
             }, function(data, status) {
 
-                $button.css("color", "#3e3e3e").removeClass('spinner');
+                $button.css("color", "#fff").removeClass('spinner');
 
                 $feedBody.empty()
             }).done(function(data) {
@@ -228,6 +227,8 @@ var Feed = (function() {
 
 
             }).fail(function() {
+                $button.css("color", "#f00").removeClass('spinner');
+
                 // console.log( "error" );
                 $feed.children('.mobHeader').addClass('ui-state-error');
                 $feedTitle.text('Error');

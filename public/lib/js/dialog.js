@@ -137,13 +137,15 @@ var Dialog = (function() {
                             icon: false
                         });
 
-                        $dialog.find('input#' + oldType || 'mixed').prop("checked", true).checkboxradio('refresh');
+                        $dialog.find('input#' + oldType || 'mixed').prop("checked", true)
+                               .checkboxradio('refresh');
 
                         $dialog.find('.feedType').on("change", function(event){
-                            // $dialog.find('.feedType').prop( "checked", false );
+                            $('.feedType').prop( "checked", false );
+
                             // $(this).attr("checked", true).prop( "checked", false );
                             // $dialog.find('.feedType').checkboxradio("refresh");
-                            $(this).prop("checked", true).checkboxradio('refresh');
+                            $(this).prop("checked", true).checkboxradio("refresh");
                             $dataStore.data('type', $(this).attr('id'));
                             console.log('Type set: %s', $dataStore.data('type'));
                         });
