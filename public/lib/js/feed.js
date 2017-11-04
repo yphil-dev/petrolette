@@ -104,6 +104,7 @@ var Feed = (function() {
         populateFeed:function($button) {
 
             var $dataStore = $button.parent().parent()
+            var $refreshButton = $dataStore.find('.mobFeedRefresh')
 
             console.log('This ID: %s', $dataStore.data('id'))
             console.log('This URL: %s', $dataStore.data('url'))
@@ -133,7 +134,7 @@ var Feed = (function() {
             var feedHost = l.protocol + '//' + l.hostname
             // console.debug('$feedToggle: ' + $toggleDiv.attr('class'))
 
-            $button.css("color", "transparent").addClass('spinner')
+            $refreshButton.css("color", "transparent").addClass('spinner')
             $feed.children('.mobHeader').removeClass('ui-state-error')
 
             var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
@@ -154,7 +155,7 @@ var Feed = (function() {
                 dataType: 'json'
             }, function(data, status) {
 
-                $button.css("color", "#fff").removeClass('spinner');
+                $refreshButton.css("color", "#fff").removeClass('spinner');
 
                 $feedBody.empty()
             }).done(function(data) {
@@ -227,7 +228,7 @@ var Feed = (function() {
 
 
             }).fail(function() {
-                $button.css("color", "#f00").removeClass('spinner');
+                $refreshButton.css("color", "#f00").removeClass('spinner');
 
                 // console.log( "error" );
                 $feed.children('.mobHeader').addClass('ui-state-error');

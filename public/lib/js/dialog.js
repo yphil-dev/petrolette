@@ -110,9 +110,13 @@ var Dialog = (function() {
                         },
                         'OK': function() {
 
-                            var newUrl = $(this).find('input#feedUrl').val()
+                            var newUrl = $(this).find('input#feedUrl').val();
+                            var newType = $("#feedType :radio:checked").attr('id');
 
                             $dataStore.data('url', newUrl)
+                            $dataStore.data('type', newType)
+
+                            console.log('RADIO VALUE: %s', $("#feedType :radio:checked").attr('id'))
 
                             Feed.populateFeed($feedPrefsButton);
                             Tab.saveTabs();
@@ -133,22 +137,20 @@ var Dialog = (function() {
 
                         $dialog.find('input#feedUrl').val(oldUrl);
 
-                        $dialog.find('.feedType').checkboxradio({
-                            icon: false
-                        });
+                        // $dialog.find('.feedType').checkboxradio({
+                        //     icon: false
+                        // });
+
 
                         $dialog.find('input#' + oldType || 'mixed').prop("checked", true)
-                               .checkboxradio('refresh');
+                        // .checkboxradio('refresh');
 
-                        $dialog.find('.feedType').on("change", function(event){
-                            $('.feedType').prop( "checked", false );
+                        $dialog.find('#feedType').controlgroup();
 
-                            // $(this).attr("checked", true).prop( "checked", false );
-                            // $dialog.find('.feedType').checkboxradio("refresh");
-                            $(this).prop("checked", true).checkboxradio("refresh");
-                            $dataStore.data('type', $(this).attr('id'));
-                            console.log('Type set: %s', $dataStore.data('type'));
-                        });
+                        // $dialog.find('.feedType').on("change", function(event){
+                        //     $dataStore.data('type', $(this).attr('id'));
+                        //     console.log('Type set: %s', $dataStore.data('type'));
+                        // });
 
                         // $(this).attr("checked", true).checkboxradio("refresh");
 
