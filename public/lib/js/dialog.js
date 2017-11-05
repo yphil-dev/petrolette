@@ -1,11 +1,5 @@
 var Dialog = (function() {
 
-    var autoOpen = false,
-        resizable = true,
-        height = 'auto',
-        width = 400,
-        modal = true
-
     return {
         renameTab:function($tab) {
 
@@ -94,7 +88,7 @@ var Dialog = (function() {
         feedPrefs:function($feedPrefsButton) {
 
             $('#mobDialogs').load('/static/templates/dialog.html #feedPrefs', function() {
-                var $dialog = $('#feedPrefs')
+                var $dialog = $(this).find('#feedPrefs')
 
                 var $dataStore = $feedPrefsButton.parent().parent()
 
@@ -106,7 +100,7 @@ var Dialog = (function() {
                     modal: true,
                     buttons: {
                         Cancel: function() {
-                            $( this ).dialog( 'close' );
+                            $(this).dialog( 'close' );
                         },
                         'OK': function() {
 
@@ -114,52 +108,43 @@ var Dialog = (function() {
                             var newType = $("#feedType :radio:checked").attr('id');
 
                             $dataStore.data('url', newUrl)
-                            $dataStore.data('type', newType)
-
-                            console.log('RADIO VALUE: %s', $("#feedType :radio:checked").attr('id'))
+                                      .data('type', newType)
 
                             Feed.populateFeed($feedPrefsButton);
                             Tab.saveTabs();
+
+                            // $(this).find('.feedType').checkboxradio( "destroy" );
+
                             $(this).dialog( 'close' );
                         }
                     },
-                    open: function( event, ui ) {
+                    open: function(event, ui) {
 
-                        var $dialog = $(this)
-                        var $tabFeedId = $('li#' + $dialog.data('id'))
-                        var $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh')
+                        var $dialog = $(this),
+                            $tabFeedId = $('li#' + $dialog.data('id')),
+                            $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh');
 
-                        var oldUrl = $dataStore.data('url')
-                        var oldType = $dataStore.data('type')
-                        var oldLimit = $dataStore.data('limit')
+                        var oldUrl = $dataStore.data('url'),
+                            oldType = $dataStore.data('type'),
+                            oldLimit = $dataStore.data('limit');
 
-                        console.log('\n\nURL: %s, \nTYPE: %s', oldUrl, oldType)
+                        console.log('\n\nEvent: %s, \nUI: %s', event.name, ui.name);
 
-                        $dialog.find('input#feedUrl').val(oldUrl);
+                        $(this).find('input#feedUrl').val(oldUrl);
 
-                        // $dialog.find('.feedType').checkboxradio({
-                        //     icon: false
+                        // $(this).find('.feedType').checkboxradio({
+                        // icon: false
                         // });
 
-
-                        $dialog.find('input#' + oldType || 'mixed').prop("checked", true)
+                        // $(this).find('input#' + oldType || 'mixed').prop("checked", true)
                         // .checkboxradio('refresh');
 
-                        $dialog.find('#feedType').controlgroup();
+                        $(this).find('#feedType').controlgroup();
 
-                        // $dialog.find('.feedType').on("change", function(event){
-                        //     $dataStore.data('type', $(this).attr('id'));
-                        //     console.log('Type set: %s', $dataStore.data('type'));
-                        // });
-
-                        // $(this).attr("checked", true).checkboxradio("refresh");
-
-                        // $dialog.find('.feedType').each(function () {
-
-                        //     if ($(this).attr('id') === oldType)
-                        //         $(this).attr("checked", true).checkboxradio("refresh");
-                        //     else
-                        //         $(this).attr("checked", false).checkboxradio("refresh");
+                        // $(this).find('.feedType').on("change", function(event){
+                        //     console.log("CHANGE EVENT!", $(this).attr('id'));
+                        //     $dialog.find('#feedType').controlgroup('refresh');
+                        //     $(this).addClass('ui-state-checked ui-state-active');
                         // });
 
                         $dialog.find('div#feedLimit').slider({
@@ -177,17 +162,17 @@ var Dialog = (function() {
                             },
                             change: function( event, ui ) {
                                 $("input#feedLimit").val(ui.value);
-                                $dataStore.data('limit', ui.value)
+                                $dataStore.data('limit', ui.value);
                             }
                         });
 
-                        $dialog.on('submit', function () {
-                            Feed.populateFeed($mobFeedRefresh);
-                            Tab.saveTabs();
+                        // $dialog.on('submit', function () {
+                        //     Feed.populateFeed($mobFeedRefresh);
+                        //     Tab.saveTabs();
 
-                            $(this).dialog('close');
-                            return false;
-                        });
+                        //     $(this).dialog('close');
+                        //     return false;
+                        // });
 
                         $dialog.find('#feedUrl').select()
 
@@ -195,12 +180,12 @@ var Dialog = (function() {
                 });
 
                 $dialog
-                    .data('id', $feedPrefsButton.data('id'))
-                    .data('url', $feedPrefsButton.data('url'))
-                    .data('type', $feedPrefsButton.data('type'))
-                    .data('limit', $feedPrefsButton.data('limit'))
+                    .data('id', $dataStore.data('id'))
+                    .data('url', $dataStore.data('url'))
+                    .data('type', $dataStore.data('type'))
+                    .data('limit', $dataStore.data('limit'))
                     .dialog('open');
-                        })
+            });
 
         },
         killTab:function($button) {
