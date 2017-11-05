@@ -132,20 +132,20 @@ var Dialog = (function() {
 
                         $(this).find('input#feedUrl').val(oldUrl);
 
-                        // $(this).find('.feedType').checkboxradio({
-                        // icon: false
-                        // });
+                        $(this).find('.feedType').checkboxradio({
+                            icon: false
+                        });
 
-                        // $(this).find('input#' + oldType || 'mixed').prop("checked", true)
-                        // .checkboxradio('refresh');
+                        $(this).find('input#' + oldType || 'mixed').prop("checked", true)
+                               .checkboxradio('refresh');
 
                         $(this).find('#feedType').controlgroup();
 
-                        // $(this).find('.feedType').on("change", function(event){
-                        //     console.log("CHANGE EVENT!", $(this).attr('id'));
-                        //     $dialog.find('#feedType').controlgroup('refresh');
-                        //     $(this).addClass('ui-state-checked ui-state-active');
-                        // });
+                        $(this).find('.feedType').on("change", function(event){
+                            console.log("CHANGE EVENT!", $(this).attr('id'));
+                            $dialog.find('#feedType').controlgroup('refresh');
+                            $(this).addClass('ui-state-checked ui-state-active');
+                        });
 
                         $dialog.find('div#feedLimit').slider({
                             value: oldLimit,
@@ -166,13 +166,13 @@ var Dialog = (function() {
                             }
                         });
 
-                        // $dialog.on('submit', function () {
-                        //     Feed.populateFeed($mobFeedRefresh);
-                        //     Tab.saveTabs();
+                        $dialog.on('submit', function () {
+                            Feed.populateFeed($mobFeedRefresh);
+                            Tab.saveTabs();
 
-                        //     $(this).dialog('close');
-                        //     return false;
-                        // });
+                            $(this).dialog('close');
+                            return false;
+                        });
 
                         $dialog.find('#feedUrl').select()
 

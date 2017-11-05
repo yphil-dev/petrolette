@@ -325,7 +325,7 @@ ul.tabSort > li:first-child {
 .selected,
 li.feed {
     width: 100%;
-    min-height:100px !important;
+    min-height:20px !important;
     /* max-width:300px !important; */
 }
 
@@ -507,11 +507,13 @@ li.feedItem {
     border:0 !important;
 }
 
-.grid-item {
-  float: left;
-  width: 20%;
-
+/* Theme Overrides */
+.ui-widget-content,
+.ui-widget-header {
+    border: none !important;
 }
 
-.grid-item--width2 { width: 160px; }
-.grid-item--height2 { height: 140px; }
+.feed {
+    border: #AAAAAA 1px solid !important;
+    padding: 0;
+}

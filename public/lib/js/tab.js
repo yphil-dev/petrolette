@@ -32,21 +32,23 @@ var Tab = (function() {
                     if (!item.hasClass('selected')) item.addClass('selected');
                     // clone selected items before hiding
 
-                    var w = $('.selected').width();
-
                     var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
 
                     //hide selected items
                     item.siblings('.selected').addClass('hidden');
-                    var $helper = $('<ul class="feedHelper"><ul/>');
+                    var $helper = $('<ul class="feedHelper">');
 
                     return $helper.append($elements);
                 },
                 start: function (e, ui) {
                     // Drag begins
                     var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
-                    //store the selected items to item being dragged
+                    // Store the selected items to item being dragged
                     ui.item.data('items', $elements);
+
+                    // Size the placeHolder
+                    $('.ui-sortable-placeholder').css('height', ui.item.height());
+
                 },
                 update: function (e, ui) {
                     //manually add the selected items before the one actually being dragged
