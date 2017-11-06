@@ -9,11 +9,11 @@ var Dialog = (function() {
                 console.log('Imma dialog: %s', $tab.text())
 
                 $dialog.dialog({
-                    autoOpen: autoOpen,
-                    resizable: resizable,
-                    height: height,
-                    width: width,
-                    modal: modal,
+                    autoOpen: false,
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
                     buttons: {
                         Cancel: function() {
                             $( this ).dialog( 'close' );

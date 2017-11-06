@@ -99,6 +99,7 @@ var Tab = (function() {
                 }
             }).appendTo('#tabs ul#tabUl');
 
+
             if(typeof feeds != 'undefined') {
                 feeds.forEach(function(feed) {
                     Feed.newFeed($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit);
@@ -146,9 +147,15 @@ var Tab = (function() {
             $('div#tabs ul li').remove();
             $('div#tabs div').remove();
 
+
+            var totalFeeds = 0
+
             tabs.forEach(function(tab) {
+                totalFeeds += tab.feeds.length;
                 Tab.newTab($('#tabs'), tab.name, tab.feeds);
             });
+
+            console.log('Total: %s', totalFeeds)
 
             $("div#tabs").tabs("refresh");
             $('#tabs').find('.mobFeedRefresh').click();

@@ -475,7 +475,7 @@ div.feedItem img.full {
 
 .tabSort .ui-sortable-placeholder {
     visibility: visible !important;
-    border: 5px dashed !important;
+    border: 3px dashed !important;
 }
 
 .feedToggle > .ui-icon {

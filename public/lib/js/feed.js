@@ -103,18 +103,15 @@ var Feed = (function() {
         },
         populateFeed:function($button) {
 
-            var $dataStore = $button.parent().parent()
-            var $refreshButton = $dataStore.find('.mobFeedRefresh')
-
-            console.log('This ID: %s', $dataStore.data('id'))
-            console.log('This URL: %s', $dataStore.data('url'))
+            var $dataStore = $button.parent().parent();
+            var $refreshButton = $dataStore.find('.mobFeedRefresh');
 
             var r = new RegExp('^(?:[a-z]+:)?//', 'i');
 
             var getLocation = function(href) {
-                var l = document.createElement("a")
-                l.href = href
-                return l
+                var l = document.createElement("a");
+                l.href = href;
+                return l;
             }
 
             // var $feed = $('#' + id);
