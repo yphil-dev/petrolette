@@ -85,10 +85,6 @@
 
              Tab.populateTabs(parsed)
 
-             $tabs.on( "click", ".mobFeedRefresh", function() {
-                 Feed.populateFeed($(this));
-             });
-
              $('#addTab').click(function () {
                  Tab.newTab($tabs);
              });

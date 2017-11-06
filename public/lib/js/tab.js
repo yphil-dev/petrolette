@@ -1,13 +1,15 @@
 var Tab = (function() {
 
     return {
-        newTab:function($tabs, name, feeds) {
+        newTab:function($tabs, name, feeds, totalFeeds) {
 
             var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
             if (!name) {
                 var name = 'Tab ' + tabIndex;
             }
+
+            console.log('T (in tabs): %s', totalFeeds)
 
             var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
@@ -102,7 +104,7 @@ var Tab = (function() {
 
             if(typeof feeds != 'undefined') {
                 feeds.forEach(function(feed) {
-                    Feed.newFeed($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit);
+                    Feed.newFeed($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit, false, totalFeeds);
                 });
             };
 
@@ -152,10 +154,13 @@ var Tab = (function() {
 
             tabs.forEach(function(tab) {
                 totalFeeds += tab.feeds.length;
-                Tab.newTab($('#tabs'), tab.name, tab.feeds);
             });
 
-            console.log('Total: %s', totalFeeds)
+            tabs.forEach(function(tab) {
+                Tab.newTab($('#tabs'), tab.name, tab.feeds, totalFeeds);
+            });
+
+            // console.log('Total: %s', totalFeeds)
 
             $("div#tabs").tabs("refresh");
             $('#tabs').find('.mobFeedRefresh').click();

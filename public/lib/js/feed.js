@@ -1,11 +1,11 @@
 var Feed = (function() {
 
     return {
-        newFeed:function($tab, url, type, limit, clickNew) {
+        newFeed:function($tab, url, type, limit, clickNew, totalFeeds) {
 
             var feedIndex = $('#tabs').find('.feed').length;
 
-            console.log('WTF: ' + feedIndex)
+            console.log('T (in feeds): %s', totalFeeds)
 
             var $feedToggle = $('<i class="ico-generic-rss rotate">').click(function() {
                 $(this).toggleClass("down");
@@ -30,6 +30,10 @@ var Feed = (function() {
 
             $feedDelete.click(function() {
                 Dialog.killFeed($(this));
+            });
+
+            $feedReload.click(function() {
+                Feed.populateFeed($(this), totalFeeds);
             });
 
             $feedSelect.click(function() {
@@ -101,7 +105,9 @@ var Feed = (function() {
                 $feed.appendTo($tab);
             }
         },
-        populateFeed:function($button) {
+        populateFeed:function($button, totalFeeds) {
+
+            console.log('T (in populateFeed): %s', totalFeeds)
 
             var $dataStore = $button.parent().parent();
             var $refreshButton = $dataStore.find('.mobFeedRefresh');
