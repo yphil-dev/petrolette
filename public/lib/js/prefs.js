@@ -36,9 +36,11 @@ var Prefs = (function() {
 
         },
         writeConfig:function(key, val) {
-            $('#savingIcon').fadeToggle('fast');
+            $('#progressBar').fadeToggle('fast');
+            // $('#savingIcon').fadeToggle('fast');
             localStorage.setItem(key, val);
-            $('#savingIcon').fadeToggle('slow');
+            // $('#savingIcon').fadeToggle('slow');
+            $('#progressBar').fadeToggle('slow');
         },
         exportConfig:function(data, fileName) {
             console.log('y0o!')

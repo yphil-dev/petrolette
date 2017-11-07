@@ -108,7 +108,6 @@ var Feed = (function() {
         },
         populateFeed:function($button, progress) {
 
-
             var $dataStore = $button.parent().parent();
             var $refreshButton = $dataStore.find('.mobFeedRefresh');
 

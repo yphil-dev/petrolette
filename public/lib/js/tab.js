@@ -96,6 +96,7 @@ var Tab = (function() {
 
                         $(this).appendTo($list).show('slow').before($elements.show('slow'))
 
+                        Tab.saveTabs()
 
                     });
                 }
@@ -165,8 +166,10 @@ var Tab = (function() {
 
             // console.log('Total: %s', progress)
 
-            $("div#tabs").tabs("refresh");
-            $('#tabs').find('.mobFeedRefresh').click();
+            // $("div#tabs").tabs("refresh");
+            // $('#tabs').find('.mobFeedRefresh').click();
+            $("div#tabs").tabs('option', 'active', 0)
+
 
         }
     };

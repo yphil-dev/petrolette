@@ -18,17 +18,19 @@ body {
 }
 
 #progressBar {
-    position: static;
+    position:absolute;
+    /* float: left; */
+    z-index: 999 !important;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: grey;
+    /* background-color: grey; */
 }
 
 #cursor {
     width: 1%;
-    height: 4px;
-    background-color: red;
+    height: 2px;
+    background-color: #FFDC00;
 }
 
 @font-face {
@@ -274,14 +276,6 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 
 .feedType *  {
     flex-grow: 1;
-}
-
-#savingIcon {
-    font-size: 2rem;
-    position:fixed;
-    top: .4em;
-    right: .6em;
-    display:none;
 }
 
 .tab  {
