@@ -61,7 +61,6 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
     });
 
     $slider.find('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
-    console.log('FancyBox TRANS: %s', gallerySlideTransition)
 
     if (Prefs.readConfig('tabDropActivate') === 'true')
         $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')

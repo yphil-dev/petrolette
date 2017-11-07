@@ -1,11 +1,11 @@
 var Feed = (function() {
 
     return {
-        newFeed:function($tab, url, type, limit, clickNew, totalFeeds) {
+        newFeed:function($tab, url, type, limit, clickNew, progress) {
 
             var feedIndex = $('#tabs').find('.feed').length;
 
-            console.log('T (in feeds): %s', totalFeeds)
+            console.log('T (in feeds): %s', progress)
 
             var $feedToggle = $('<i class="ico-generic-rss rotate">').click(function() {
                 $(this).toggleClass("down");
@@ -24,6 +24,7 @@ var Feed = (function() {
 
             $feedControls.data('test', 'plop')
                          .data('id', 'feed-' + feedIndex)
+                         .data('index', feedIndex)
                          .data('url', url)
                          .data('type', type)
                          .data('limit', limit);
@@ -33,7 +34,7 @@ var Feed = (function() {
             });
 
             $feedReload.click(function() {
-                Feed.populateFeed($(this), totalFeeds);
+                Feed.populateFeed($(this), progress);
             });
 
             $feedSelect.click(function() {
@@ -105,9 +106,8 @@ var Feed = (function() {
                 $feed.appendTo($tab);
             }
         },
-        populateFeed:function($button, totalFeeds) {
+        populateFeed:function($button, progress) {
 
-            console.log('T (in populateFeed): %s', totalFeeds)
 
             var $dataStore = $button.parent().parent();
             var $refreshButton = $dataStore.find('.mobFeedRefresh');
@@ -126,6 +126,7 @@ var Feed = (function() {
             var $feedTitle = $feed.children().children('.feedTitle');
             var $feedBody = $feed.children().children('ul.feedBody');
 
+            var feedIndex = $dataStore.data('index');
             var feedUrl = $dataStore.data('url');
             var feedType = $dataStore.data('type');
             var feedLimit = $dataStore.data('limit');
@@ -157,6 +158,12 @@ var Feed = (function() {
                 feedurl: feedUrl,
                 dataType: 'json'
             }, function(data, status) {
+
+                if( progress ) {
+                    progress.increment();
+                }
+
+                console.log('T (in populateFeed): %s', JSON.stringify(progress))
 
                 $refreshButton.css("color", "#fff").removeClass('spinner');
 
@@ -238,7 +245,7 @@ var Feed = (function() {
                 $feedTitle.text('Error');
                 $feedBody.html('<li class="feedItem">Feed Error: ' + feedUrl + '</li>');
             }).always(function() {
-                // console.log( "finished" );
+                // console.log( "Feed (%s) %s/%s", feedUrl, feedIndex, progress);
             });;
         }
     };
