@@ -330,12 +330,17 @@ ul.tabSort > li:first-child {
     /* width: 25%; */
 }
 
+#tabs .ui-widget-content {
+    /* background: none !important; */
+}
+
 .selected,
 li.feed {
     width: 100%;
     min-height:20px !important;
     /* max-width:300px !important; */
 }
+
 
 /* li.feed { */
 /*   &:nth-child(4n+1){ */

@@ -209,14 +209,6 @@ var Feed = (function() {
                         $feedItem.addClass('mobFeedEven')
                     }
 
-                    $feedItem.hover(
-                        function() {
-                            $(this).addClass('ui-state-highlight');
-                        }, function() {
-                            $(this).removeClass('ui-state-highlight');
-                        }
-                    );
-
                     if (typeof imageUrl !== 'undefined') {
                         var $imgLink = $('<a data-fancybox="gallery" data-caption="' + item.title + '">').attr('href', imageUrl)
                         var $itemImg = $('<img src="' + imageUrl + '" />')
