@@ -5,8 +5,6 @@ var Feed = (function() {
 
             var feedIndex = $('#tabs').find('.feed').length;
 
-            console.log('T (in feeds): %s', progress)
-
             var $feedToggle = $('<i class="ico-generic-rss rotate">').click(function() {
                 $(this).toggleClass("down");
                 $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
@@ -158,11 +156,9 @@ var Feed = (function() {
                 dataType: 'json'
             }, function(data, status) {
 
-                if( progress ) {
+                if(progress) {
                     progress.increment();
                 }
-
-                console.log('T (in populateFeed): %s', JSON.stringify(progress))
 
                 $refreshButton.css("color", "#fff").removeClass('spinner');
 
@@ -199,7 +195,10 @@ var Feed = (function() {
                         imageUrl = item.enclosures[0].url
                     }
 
-                    var $feedItem = $('<li class="feedItem">').attr('title', item.summary)
+                    // console.log('S: %s', item.summary)
+                    var summary = $('<p>').append(item.summary).text()
+
+                    var $feedItem = $('<li class="feedItem">').attr('title', summary)
                     var $itemDiv = $('<div class="feedItem">')
                     var $itemLink = $('<a class="ui-helper-clearfix">')
                         .attr('href', item.link)

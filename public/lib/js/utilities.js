@@ -16,11 +16,7 @@ var Utilities = (function() {
             };
             progress.increment = function() {
                 this.step++;
-                // this.progressElt.css( "width", Math.ceil( 100 * this.step / this.steps ) + "%" );
-
                 this.progressElt.animate({width: Math.ceil(100 * this.step / this.steps) + '%'});
-
-                console.log('Step: %s, Steps: %s', this.step -1, this.steps)
                 if (this.step >= this.steps) this.finish()
 
             };

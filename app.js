@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 
 var index = require('./routes/index');
-var feed = require('./routes/feed');
 
 var app = express();
 
