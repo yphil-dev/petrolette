@@ -31,35 +31,35 @@
 
         <link rel="stylesheet" href="/static/css/mobylette.css">
         <link rel="stylesheet" href="/static/css/themes/night.css">
-
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
 
         <!-- <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/day/jquery-ui.theme.css"> -->
         <script>
 
          $(document).ready(function() {
 
+             $('#addTab').button();
+
              var $tabs = $('#tabs').tabs({
 
                  activate: function(event, ui) {
-                     var $activeTabLink = $(this).find('a[href="#tab-' + (ui.newTab.index() + 1) + '"]');
+
+                     var $activeTab = $tabs.find('.ui-tabs-active');
+
+                     $(document).prop('title', $activeTab.text() + ' | Mobylette');
+
                      $('.ui-tabs-tab i').remove();
 
-                     var $myTab = $tabs.find('.ui-tabs-active');
+                     var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser">')
+                         .hover(
+                             function() {
+                                 $(this).addClass('icon-cancel-circled-outline');
+                             }, function() {
+                                 $(this).removeClass('icon-cancel-circled-outline');
+                             }
+                         );
 
-                     var $activeTab = $activeTabLink.parent();
-                     var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser">');
-
-                     console.log('ATab: %s', $myTab.text());
-
-                     $thisCloseTabLink.hover(
-                         function() {
-                             $(this).addClass('icon-cancel-circled-outline');
-                         }, function() {
-                             $(this).removeClass('icon-cancel-circled-outline');
-                         }
-                     );
-
-                     $myTab.append($thisCloseTabLink);
+                     $activeTab.append($thisCloseTabLink);
                  }
 
              });
@@ -92,9 +92,11 @@
 
              Tab.populateTabs(parsed)
 
+
              $('#addTab').click(function () {
                  Tab.newTab($tabs);
              });
+
 
              $tabs.find('.ui-tabs-nav').sortable({
                  axis: 'x',

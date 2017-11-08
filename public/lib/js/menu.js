@@ -12,8 +12,6 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         $(this).children('i').toggleClass('other')
     });
 
-    $('button, .button').button();
-
     $('#saveTabs').click(function () {
         Prefs.exportConfig(Tab.getTabs(), 'mobylette.json');
     });
@@ -118,10 +116,6 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
         reader.onload = (function(theFile) {
             return function(e) {
-
-                function isArray(what) {
-                    return Object.prototype.toString.call(what) === '[object Array]';
-                }
 
                 function isOk(o) {
                     if (Object.prototype.toString.call(o) === '[object Array]') {

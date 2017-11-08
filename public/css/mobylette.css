@@ -85,7 +85,10 @@ body {
 
 div.mobDialog legend,
 #slidermenu legend {
-    font-family: 'LobsterRegular';
+    font-family: 'GidoleRegular';
+    font-weight: normal;
+    font-style: ;
+    color: #85144B !important;
     /* font-family: 'Ubuntu' !important; */
 }
 

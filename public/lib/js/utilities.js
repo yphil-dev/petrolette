@@ -54,7 +54,7 @@ var Utilities = (function() {
                                      .fadeIn( 1000, function() {
                                          $p.animate({
                                              opacity: 0.1
-                                         }, 1500, function() {
+                                         }, 6500, function() {
                                              $p.slideUp(500, function() {
                                                  $p.animate({opacity: 1}, 1)
                                                  $p.parent().fadeOut('slow')
