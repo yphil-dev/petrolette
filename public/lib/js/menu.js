@@ -106,14 +106,36 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         var f = files[0];
         var reader = new FileReader();
 
+        var $notifyArea = $slider.find('#mobNotify > p');
+
         if (f.type.match(/application\/json/)) {
             console.log('JSON!')
         } else {
-            console.log('Error!')
+            // $notifyArea.find('legend').slideUp()
+            // $notifyArea.slideDown('fast')
+            // .text('Error importing')
+
+
+
+            $notifyArea.text('Error importing')
+                       .fadeIn( 1000, function() {
+                           console.log('Fade complete.')
+
+                           $notifyArea.animate({
+                               opacity: 0.1
+                           }, 1500, function() {
+                               console.log('Animation2 complete.');
+                               $notifyArea.slideUp(500);
+                           });
+
+
+                       });
+            // .fadeOut(9999);
+            console.log('NOT JSON!')
+
             return
         }
 
-        console.log('Text!: %s Arr: %s', f.type, $.isArray(f))
 
         reader.onload = (function(theFile) {
             return function(e) {
@@ -127,8 +149,17 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
                     )
                 )
 
-                if (isValid === true)
-                    Tab.populateTabs(p, true)
+                if (isValid === true){
+                    $('#mobNotify').show('fast');
+                    $('#mobNotify').text('Successful import');
+                    $('#mobNotify').hide('slow');
+                    Tab.populateTabs(p, true);
+                } else {
+                    $('#mobNotify').show('fast');
+                    $('#mobNotify').text('Error importing');
+                    $('#mobNotify').hide('slow');
+                }
+
 
                 // console.log('Is Valid: %s', isValid)
             };

@@ -30,7 +30,6 @@ body {
 #progressBar > #cursor {
     width: 1%;
     height: 2px;
-    background-color: #FFDC00;
 }
 
 @font-face {
@@ -52,6 +51,23 @@ body {
     /* border-right: #2e2e2e solid 1px; */
     padding:.5em;
     border: none !important;
+}
+
+.sticky-bottom {
+    position: absolute !important;
+    /* left: .2em; */
+    bottom: 1em;
+}
+
+#mobNotify {
+    width: 255px;
+    /* height:0; */
+    /* visibility: hidden; */
+    /* display: none; */
+}
+
+#mobNotify > p {
+    margin:0;
 }
 
 div.mobDialog legend,

@@ -9,7 +9,7 @@ var Tab = (function() {
                 var name = 'Tab ' + tabIndex;
             }
 
-            console.log('T (in tabs): %s', progress)
+            // console.log('T (in tabs): %s', progress)
 
             var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
@@ -168,8 +168,10 @@ var Tab = (function() {
 
             // $("div#tabs").tabs("refresh");
 
-            if (clickToRefresh)
+            if (clickToRefresh) {
                 $('#tabs').find('.mobFeedRefresh').click();
+                // Tab.saveTabs()
+            }
 
             $("div#tabs").tabs('option', 'active', 0)
 
