@@ -156,11 +156,6 @@ var Feed = (function() {
                 dataType: 'json'
             }, function(data, status) {
 
-                if(progress) {
-                    progress.increment();
-                }
-
-                $refreshButton.css("color", "#fff").removeClass('spinner');
 
                 $feedBody.empty()
             }).done(function(data) {
@@ -235,7 +230,13 @@ var Feed = (function() {
                 $feedTitle.text('Error');
                 $feedBody.html('<li class="feedItem">Feed Error: ' + feedUrl + '</li>');
             }).always(function() {
-                // console.log( "Feed (%s) %s/%s", feedUrl, feedIndex, progress);
+                console.log('DONE');
+                if(progress) {
+                    progress.increment();
+                }
+
+                $refreshButton.css("color", "#fff").removeClass('spinner');
+
             });;
         }
     };

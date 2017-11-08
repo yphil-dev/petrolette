@@ -145,7 +145,7 @@ var Tab = (function() {
             var allTabs = Tab.getTabs()
             Prefs.writeConfig('tabs', JSON.stringify(allTabs));
         },
-        populateTabs:function(tabs) {
+        populateTabs:function(tabs, clickToRefresh) {
 
             $('div#tabs ul li').remove();
             $('div#tabs div').remove();
@@ -167,7 +167,10 @@ var Tab = (function() {
             // console.log('Total: %s', progress)
 
             // $("div#tabs").tabs("refresh");
-            // $('#tabs').find('.mobFeedRefresh').click();
+
+            if (clickToRefresh)
+                $('#tabs').find('.mobFeedRefresh').click();
+
             $("div#tabs").tabs('option', 'active', 0)
 
 

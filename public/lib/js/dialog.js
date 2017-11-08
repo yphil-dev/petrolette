@@ -225,7 +225,8 @@ var Dialog = (function() {
                     },
                     open: function () {
                         var $dialog = $(this)
-                        $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');                             $dialog.children('p').append('Really delete the [' + $a.text() + '] tab?')
+                        $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');
+                        $dialog.children('p').append('Really delete the [' + $a.text() + '] tab?')
                     }
                 });
 

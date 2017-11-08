@@ -128,7 +128,7 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
                 )
 
                 if (isValid === true)
-                    Tab.populateTabs(p)
+                    Tab.populateTabs(p, true)
 
                 // console.log('Is Valid: %s', isValid)
             };
