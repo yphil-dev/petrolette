@@ -15,9 +15,18 @@ var Utilities = (function() {
                 this.go();
             };
             progress.increment = function() {
+                var newColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+
+                // this.progressElt.animate({'background-color': newColor}, 200);
+
+                console.log('Step: %s/%s, percent: %s', this.step, this.steps, Math.ceil(100 * this.step / this.steps));
+
+                this.progressElt.animate({
+                    width: Math.ceil(100 * this.step + 1 / this.steps) + '%',
+                    'background-color': newColor
+                });
                 this.step++;
-                this.progressElt.animate({width: Math.ceil(100 * this.step / this.steps) + '%'});
-                if (this.step >= this.steps) this.finish()
+                if (this.step + 1 >= this.steps) this.finish()
 
             };
             progress.finish = function() {
