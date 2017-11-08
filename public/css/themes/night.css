@@ -7,7 +7,7 @@ li.feed {
 /* } */
 
 li.feedItem:nth-child(even) {
-    background-color: #141311 !important;
+    background-color: #272727 !important;
 }
 
 li.feedItem:hover {
@@ -20,5 +20,5 @@ li.feedItem:hover {
     width: 1%;
     height: 2px;
     background-color: #FFDC00;
-    box-shadow: 2px 2px 5px white;
+    box-shadow: 0px 4px 16px 8px rgba(255,255,255,.25);
 }
