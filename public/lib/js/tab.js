@@ -170,7 +170,7 @@ var Tab = (function() {
 
             if (clickToRefresh) {
                 $('#tabs').find('.mobFeedRefresh').click();
-                // Tab.saveTabs()
+                Tab.saveTabs();
             }
 
             $("div#tabs").tabs('option', 'active', 0)

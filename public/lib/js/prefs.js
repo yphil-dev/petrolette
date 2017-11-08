@@ -43,7 +43,6 @@ var Prefs = (function() {
             $('#progressBar').fadeToggle('slow');
         },
         exportConfig:function(data, fileName) {
-            console.log('y0o!')
             var a = document.createElement("a");
             document.body.appendChild(a);
             a.style = "display: none";
