@@ -63,11 +63,24 @@ body {
     width: 255px;
     /* height:0; */
     /* visibility: hidden; */
-    /* display: none; */
+    display: none;
 }
 
 #mobNotify > p {
     margin:0;
+
+}
+
+#mobNotify > p > strong {
+    text-transform: uppercase;
+}
+
+#mobNotify > p > strong.error {
+    color: red !important;
+}
+
+#mobNotify > p > strong.success {
+    color: green !important;
 }
 
 div.mobDialog legend,

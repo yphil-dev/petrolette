@@ -111,22 +111,7 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         if (f.type.match(/application\/json/)) {
             console.log('JSON!')
         } else {
-
-            Utilities.notify('Not a Mobylette tab file');
-
-            // $notifyArea.html('<strong>Error</strong> : Not a Mobylette tab file')
-            //            .fadeIn( 1000, function() {
-            //                $(this).animate({
-            //                    opacity: 0.1
-            //                }, 1500, function() {
-            //                    $(this).slideUp(500);
-            //                });
-
-
-            //            });
-
-            console.log('NOT JSON!')
-
+            Utilities.notify('error', 'Not a Mobylette definition file format');
             return
         }
 
@@ -134,26 +119,42 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         reader.onload = (function(theFile) {
             return function(e) {
 
+                function isArray(what) {
+                    return Object.prototype.toString.call(what) === '[object Array]';
+                }
+
+                function isOk(o) {
+                    if (Object.prototype.toString.call(o) === '[object Array]') {
+                        var isValid = o.some(obj =>
+                            Array.isArray(obj.feeds) && obj.feeds.some(feed =>
+                                Object.prototype.hasOwnProperty.call(feed, 'url')
+                            )
+                        )
+                    } else {
+                        var isValid = false;
+                    }
+                    return isValid
+                }
+
                 var y = e.target.result
                 var p = JSON.parse(y);
 
-                let isValid = p.some(obj =>
-                    Array.isArray(obj.feeds) && obj.feeds.some(feed =>
-                        Object.prototype.hasOwnProperty.call(feed, 'url')
-                    )
-                )
+                console.log('p Is array: %s', isOk(p))
 
-                if (isValid === true){
-                    $('#mobNotify').show('fast');
-                    $('#mobNotify').text('Successful import');
-                    $('#mobNotify').hide('slow');
+                // if (isArray(p) === true) {
+                //     let isValid = p.some(obj =>
+                //         Array.isArray(obj.feeds) && obj.feeds.some(feed =>
+                //             Object.prototype.hasOwnProperty.call(feed, 'url')
+                //         )
+                //     )
+                // }
+
+                if (isOk(p) === true){
+                    Utilities.notify('success', 'Successful import');
                     Tab.populateTabs(p, true);
                 } else {
-                    $('#mobNotify').show('fast');
-                    $('#mobNotify').text('Error importing');
-                    $('#mobNotify').hide('slow');
+                    Utilities.notify('error', 'Not a Mobylette definition file');
                 }
-
 
                 // console.log('Is Valid: %s', isValid)
             };
