@@ -111,26 +111,20 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         if (f.type.match(/application\/json/)) {
             console.log('JSON!')
         } else {
-            // $notifyArea.find('legend').slideUp()
-            // $notifyArea.slideDown('fast')
-            // .text('Error importing')
+
+            Utilities.notify('Not a Mobylette tab file');
+
+            // $notifyArea.html('<strong>Error</strong> : Not a Mobylette tab file')
+            //            .fadeIn( 1000, function() {
+            //                $(this).animate({
+            //                    opacity: 0.1
+            //                }, 1500, function() {
+            //                    $(this).slideUp(500);
+            //                });
 
 
+            //            });
 
-            $notifyArea.text('Error importing')
-                       .fadeIn( 1000, function() {
-                           console.log('Fade complete.')
-
-                           $notifyArea.animate({
-                               opacity: 0.1
-                           }, 1500, function() {
-                               console.log('Animation2 complete.');
-                               $notifyArea.slideUp(500);
-                           });
-
-
-                       });
-            // .fadeOut(9999);
             console.log('NOT JSON!')
 
             return

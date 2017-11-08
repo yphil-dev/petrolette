@@ -41,6 +41,17 @@ var Utilities = (function() {
             };
 
             return progress;
+        },
+        notify : function(message) {
+            $('#slidermenu').find('#mobNotify > p')
+                            .html('<strong>Error</strong> :' + message)
+                            .fadeIn( 1000, function() {
+                                $(this).animate({
+                                    opacity: 0.1
+                                }, 1500, function() {
+                                    $(this).slideUp(500);
+                                });
+                            });
         }
     };
 }());
