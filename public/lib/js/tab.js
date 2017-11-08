@@ -15,7 +15,7 @@ var Tab = (function() {
 
             var $addFeed = $('<button class="addFeed ui-helper-clearfix"><i class="icon-plus"></i> Feed</button>').button();
 
-            $addFeed.on( "click", function() {
+            $addFeed.on("click", function() {
                 Feed.newFeed($(this).prev(), 'New Feed', 'mixed', 8, true);
             });
 

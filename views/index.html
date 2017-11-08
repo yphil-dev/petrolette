@@ -38,13 +38,18 @@
 
          $(document).ready(function() {
 
-             var $tabs = $("#tabs").tabs({
+             var $tabs = $('#tabs').tabs({
 
-                 activate: function(event, ui){
-                     var $activeTabLink = $('a[href="#tab-' + (ui.newTab.index() + 1) + '"]');
-                     $('.ui-tabs-tab i').remove()
-                     var $activeTab = $activeTabLink.parent()
-                     var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser">')
+                 activate: function(event, ui) {
+                     var $activeTabLink = $(this).find('a[href="#tab-' + (ui.newTab.index() + 1) + '"]');
+                     $('.ui-tabs-tab i').remove();
+
+                     var $myTab = $tabs.find('.ui-tabs-active');
+
+                     var $activeTab = $activeTabLink.parent();
+                     var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser">');
+
+                     console.log('ATab: %s', $myTab.text());
 
                      $thisCloseTabLink.hover(
                          function() {
@@ -54,7 +59,7 @@
                          }
                      );
 
-                     $activeTab.append($thisCloseTabLink)
+                     $myTab.append($thisCloseTabLink);
                  }
 
              });
@@ -108,8 +113,6 @@
              $tabs.on("click", "i.tabCloser", function() {
                  Dialog.killTab($(this))
              });
-
-             $('#tabs').find('.mobFeedRefresh').click();
 
              $('#tabs').find('div.feedControls').slideUp()
 

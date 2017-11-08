@@ -460,6 +460,9 @@ li.feed {
 
 /* Item */
 
+.feedTitle {
+    font-size: 1em  !important;
+}
 
 li.feedItem {
     font-size: 10pt  !important;

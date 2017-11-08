@@ -99,10 +99,12 @@ var Feed = (function() {
 
             if (clickNew) {
                 $feed.prependTo($tab);
-                $feedPrefs.click()
+                $feedPrefs.click();
             } else {
                 $feed.appendTo($tab);
+                $feedReload.click();
             }
+
         },
         populateFeed:function($button, progress) {
 
@@ -230,7 +232,7 @@ var Feed = (function() {
                 $feedTitle.text('Error');
                 $feedBody.html('<li class="feedItem">Feed Error: ' + feedUrl + '</li>');
             }).always(function() {
-                console.log('DONE');
+
                 if(progress) {
                     progress.increment();
                 }

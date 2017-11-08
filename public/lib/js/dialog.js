@@ -190,9 +190,15 @@ var Dialog = (function() {
         },
         killTab:function($button) {
 
-            var $a = $button.prev('a.ui-tabs-anchor')
+            var $tabs = $('#tabs');
+            var $a = $button.prev('a.ui-tabs-anchor');
+            var tabId = $a.attr('href');
 
-            console.log('A: %s', $a.attr('class'))
+            var $selectedTab = $a.parent();
+            var $selectedPanel = $tabs.find(tabId);
+
+            var selectedTabIndex = $tabs.tabs('option', 'active');
+            var previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
 
             $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
 
@@ -208,32 +214,24 @@ var Dialog = (function() {
                     buttons: {
                         "Delete all feeds": function() {
 
-                            var $tabLinkId = $('#' + $(this).data('tabLinkId'))
-                            var $thisPanel = $($(this).data('panelId'))
+                            $selectedTab.remove();
+                            $selectedPanel.remove();
 
-                            $thisPanel.remove()
-                            $tabLinkId.parent('li').remove()
                             Tab.saveTabs();
                             $(this).dialog( "close" );
-                            console.log('L now: (%s), tabs id: (%s)', $('.ui-tabs-tab').length, $tabs.attr('id'))
-                            $tabs.tabs('option', 'active', $('.ui-tabs-tab').length - 1)
-
+                            $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
                         },
                         Cancel: function() {
-                            $( this ).dialog( "close" );
+                            $(this).dialog( "close" );
                         }
                     },
                     open: function () {
-                        var $dialog = $(this)
-                        $('.ui-dialog-buttonpane').find('button:contains("Delete")').addClass('ui-state-error');
-                        $dialog.children('p').append('Really delete the [' + $a.text() + '] tab?')
+                        $(this).find('button:contains("Delete")').addClass('ui-state-error');
+                        $(this).children('p').append('Really delete the [' + $a.text() + '] tab?')
                     }
                 });
 
-                $killTabDialog.data('tabName', $a.text())
-                              .data('panelId', $a.attr('href'))
-                              .data('tabLinkId', $a.prop('id'))
-                              .dialog('open')
+                $killTabDialog.dialog('open')
             });
         }
         };
