@@ -459,6 +459,12 @@ li.feed {
 
 
 /* Item */
+
+
+li.feedItem {
+    font-size: 10pt  !important;
+}
+
 li.feedItem a {
     display: block;
     width:100%;

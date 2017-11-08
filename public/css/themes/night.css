@@ -1,0 +1,24 @@
+li.feed {
+    background-color: #1c1f24 !important;
+}
+
+/* .feedTitle { */
+/*     color: #d75813 !important; */
+/* } */
+
+li.feedItem:nth-child(even) {
+    background-color: #141311 !important;
+}
+
+li.feedItem:hover {
+    background-color: #586073 !important;
+    color: #141311 !important;
+}
+
+
+#progressBar > #cursor {
+    width: 1%;
+    height: 2px;
+    background-color: #FFDC00;
+    box-shadow: 2px 2px 5px white;
+}
