@@ -16,21 +16,6 @@ body {
     margin:0 !important;
 }
 
-#progressBar {
-    position:absolute;
-    /* float: left; */
-    z-index: 999 !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* background-color: grey; */
-}
-
-#progressBar > #cursor {
-    width: 1%;
-    height: 2px;
-}
-
 @font-face {
     font-family: LobsterRegular;
     src: url('/static/font/Lobster.otf') format("opentype");
@@ -55,136 +40,6 @@ body {
 }
 
 /* FEEDS */
-.mobFeedEven {
-
-}
-
-fieldset,
-legend {
-    background-color: #F1E5D1 !important;
-    color:            #3C2413 !important;
-}
-
-legend {
-    padding: .2em .5em;
-}
-
-#logo > h1 {
-    font-family: 'LobsterRegular';
-    font-weight: normal;
-    font-style:  normal;
-    font-size:   38pt;
-    margin:      0 0 .2em .2em;
-    color:       #F1E5D1;
-    text-shadow: 1px 1px #3C2413;
-}
-
-#logo > .mobylette,
-.mobDialog .mobylette {
-    color:     #84A6CB;
-    font-size: 3.5rem  !important;
-    margin:    -2px 0 0 0 !important;
-}
-
-.mobDialog .mobylette {
-    display: inline !important;
-    font-size: 1.5rem !important;
-}
-
-.mobDialog p {
-    vertical-align: middle;
-    line-height: normal;
-}
-
-#killDialog .mobylette {
-    color:     red;
-    font-size: 3.5rem  !important;
-}
-
-#logo {
-    display: flex;
-}
-
-.logoItem {
-    flex: 1 1 30%;
-}
-
-.flip { transform: rotate(-180deg);}
-
-#slidermenu > .handle {
-    font-size: 2rem;
-    background-color: #001F3F;
-    position:absolute;
-    left:290px;
-    bottom:50px;
-}
-
-#slidermenu > .handle > i {
-    border: none !important;
-}
-
-#slidermenu {
-     opacity: 0;
-}
-
-.ui-slider-handle {
-    text-align: center !important;
-}
-
-fieldset {
-    margin: 0 0 .5em 0;
-}
-
-input {
-    padding: .2em;
-}
-
-fieldset.prefsForm {
-    display:flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-    align-items: stretch;
-}
-
-.twin {
-    flex: 1;
-}
-
-label {
-    margin: 5px 0;
-}
-
-#feedType label,
-#feedUrl {
-    flex: 1;
-}
-
-.unique {
-    /* width:49%; */
-    flex: 1 100%;
-}
-
-.grow {
-    flex-grow: 3;
-}
-
-.shrink {
-    flex-shrink: 3;
-}
-
-.left {
-    margin-right:.2em !important;
-}
-
-.right {
-    margin-left:.2em !important;
-}
-
-.ui-selectmenu-button.ui-button {
-    text-align: left;
-    white-space: nowrap;
-    width: 100% !important;
-}
 
 .ui-tabs-panel {
     padding:0 !important;
@@ -228,12 +83,8 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 
 .tab  {
-
     border: none !important;
     margin:0 !important;
-
-    /* margin-top:5px; */
-    /* min-height:100%; */
 }
 
 #tabs li .ui-icon-close {
@@ -453,10 +304,6 @@ div.feedItem img.full {
 
 .feedToggle > .ui-icon {
     margin: .1rem .2rem 0 .1rem;
-}
-
-.icon-down-dir {
-    background: 0 !important;
 }
 
 button#addTab,
