@@ -37,10 +37,6 @@ li.feed a {
     color: #3C4440 !important;
 }
 
-/* .feedTitle { */
-/*     color: #d75813 !important; */
-/* } */
-
 li.feedItem:nth-child(even) {
     background-color: #dddddd !important;
 }

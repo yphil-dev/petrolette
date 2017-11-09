@@ -19,7 +19,7 @@
 
         <!-- <link rel="stylesheet alternate" href="/static/css/themes/day/jquery-ui.theme.css" id="css-day" title="Day"> -->
 
-        <link id="mobStyle-jqui" rel="stylesheet" href="/static/css/themes/day/jquery-ui.css">
+        <link rel="stylesheet" href="/static/css/themes/day/jquery-ui.css">
 
         <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css">
         -->
@@ -30,13 +30,19 @@
         <link rel="stylesheet" href="/static/css/fontello.css">
 
         <link rel="stylesheet" href="/static/css/mobylette.css">
-        <link id="mobStyle" rel="stylesheet" href="/static/css/themes/day.css">
+
+        <link rel="preload" href="/static/css/themes/day.css">
+        <link rel="preload" href="/static/css/themes/day.css">
+
+        <link id="mobStyle" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
 
         <!-- <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/day/jquery-ui.theme.css"> -->
         <script>
 
          $(document).ready(function() {
+
+             $("#mobStyle").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '.css'});
 
              $('button').button();
 

@@ -1,24 +1,71 @@
-li.feed {
-    background-color: #1c1f24 !important;
+body {
+    background-color: #404552;
 }
 
-/* .feedTitle { */
-/*     color: #d75813 !important; */
-/* } */
+li.mobTab {
+    background-color: #4B5162 !important;
+    box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
+}
+
+li.ui-tabs-active,
+li.mobTab:first-child {
+    box-shadow: none !important;
+}
+
+#tabUl,
+#tabs {
+    background: none;
+    border-radius: 0;
+}
+
+li.ui-tabs-active,
+div.ui-tabs-panel {
+    background-color: #7C818C !important;
+}
+
+i.tabCloser,
+li.ui-tabs-active a:link {
+    color: #eeeeee !important;
+}
+
+i.tabCloser,
+li.ui-tabs-tab a:link {
+    color: #eeeeee !important;
+}
+
+li.feed {
+    background-color: #383C4A !important;
+    color: #eeeeee !important;
+}
+
+li.feed a {
+    color: #3C4440 !important;
+}
 
 li.feedItem:nth-child(even) {
-    background-color: #272727 !important;
+    background-color: #7C818C !important;
 }
 
 li.feedItem:hover {
-    background-color: #586073 !important;
-    color: #141311 !important;
+    background-color: #383C4A !important;
+    color: #000 !important;
 }
 
+li.feedItem a:visited {
+    color: #565 !important;
+}
 
 #progressBar > #cursor {
     width: 1%;
     height: 2px;
-    background-color: #FFDC00;
-    box-shadow: 0px 4px 16px 8px rgba(255,255,255,.25);
+    background-color: #5294E2;
+    box-shadow: 0px 0px 6px 5px rgba(227,239,243,.2);
+}
+
+li.ui-droppable-hover {
+    background: #E3EFF3 !important;
+}
+
+li.ui-droppable-hover a:link {
+    color: #5294E2 !important;
 }
