@@ -262,41 +262,18 @@ label {
     padding:0 !important;
 }
 
-.noBorder {
-    border: 0 !important;
+@keyframes spin-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
 
-.small-button {
-    font-size: .2em !important;
-    margin:0;
-    /* display: table-cell; */
-    vertical-align: top;
-}
-
-.tab {
-    /* text-align: right; */
-    /* Spinner */
-}
-
-
-@keyframes spinner {
-    to {transform: rotate(360deg);}
-}
-
-.spinner:after {
-    content: '';
-    box-sizing: border-box;
-    position: absolute;
-    top: 65%;
-    left: 65%;
-    width: 15px;
-    height: 15px;
-    margin-top: -10px;
-    margin-left: -10px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    border-top-color: #333;
-    animation: spinner .6s linear infinite;
+.spinner {
+  animation: spin-animation 0.5s infinite;
+  display: inline-block;
 }
 
 .rotate {

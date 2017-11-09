@@ -137,7 +137,7 @@ var Feed = (function() {
             var feedHost = l.protocol + '//' + l.hostname
             // console.debug('$feedToggle: ' + $toggleDiv.attr('class'))
 
-            $refreshButton.css("color", "transparent").addClass('spinner')
+            $refreshButton.addClass('spinner')
             $feed.children('.mobHeader').removeClass('ui-state-error')
 
             var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
@@ -237,7 +237,7 @@ var Feed = (function() {
                     progress.increment();
                 }
 
-                $refreshButton.css("color", "#fff").removeClass('spinner');
+                $refreshButton.removeClass('spinner');
 
             });;
         }
