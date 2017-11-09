@@ -12,6 +12,8 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         $(this).children('i').toggleClass('other')
     });
 
+    $('button, .button').button();
+
     $('#saveTabs').click(function () {
         Prefs.exportConfig(Tab.getTabs(), 'mobylette.json');
     });

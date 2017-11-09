@@ -38,10 +38,10 @@
 
          $(document).ready(function() {
 
-             $('#addTab').button();
+             $('button').button();
 
              var $tabs = $('#tabs').tabs({
-
+                 heightStyle: 'content',
                  activate: function(event, ui) {
 
                      var $activeTab = $tabs.find('.ui-tabs-active');

@@ -335,6 +335,7 @@ ul.tabSort {
     /* column-count: 3; */
     /* columns: 15em; */
     /* column-gap: .3em; */
+    padding: 0 2px;
     columns: 15rem;
     column-gap: .3em;
 }
