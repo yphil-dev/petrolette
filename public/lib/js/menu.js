@@ -1,6 +1,8 @@
+$('body').append('<div id="slidermenu">');
+
 $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
-    var $slider = $(this)
+    var $slider = $(this).show('slow')
     var $handle = $slider.find('.handle')
 
     $slider.slideReveal({

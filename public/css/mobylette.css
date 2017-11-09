@@ -12,7 +12,6 @@ ul {
 
 /* Mobylette */
 body {
-    background-color: #3e3e3e;
     /* font-size:.8em !important; */
     margin:0 !important;
 }
@@ -194,6 +193,10 @@ legend {
 
 #slidermenu > .handle > i {
     border: none !important;
+}
+
+#slidermenu {
+    display: hidden;
 }
 
 .ui-slider-handle {
