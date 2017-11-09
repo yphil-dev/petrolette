@@ -119,6 +119,15 @@ div.mobDialog legend,
     color: #001F3F !important;
 }
 
+/* TABS */
+
+.mobTab {
+    margin: 0 0 0 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* FEEDS */
 .mobFeedEven {
 
 }

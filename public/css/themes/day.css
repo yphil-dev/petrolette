@@ -1,0 +1,63 @@
+body {
+    background-color: #dddddd;
+}
+
+
+li.mobTab {
+    background-color: #C3DCD9 !important;
+    box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
+}
+
+li.ui-tabs-active,
+li.mobTab:first-child {
+    box-shadow: none !important;
+}
+
+/* li.ui-tabs-tab:after { */
+/*   box-shadow: 10px 0px 14px 0px rgba(0,0,0,0.75); */
+/*   content: " "; */
+/*   height: 100%; */
+/*   top: 0; */
+/*   left: 0; */
+/*   position: absolute; */
+/*   width: 15px; */
+/* } */
+
+li.ui-tabs-active,
+div.ui-tabs-panel {
+    background-color: #E3EFF3 !important;
+}
+
+li.ui-tabs-active a:link {
+    color: #3C4440 !important;
+}
+
+li.feed {
+    background-color: #ffffff !important;
+    color: #f00 !important;
+}
+
+/* .feedTitle { */
+/*     color: #d75813 !important; */
+/* } */
+
+li.feedItem:nth-child(even) {
+    background-color: #dddddd !important;
+}
+
+li.feedItem:nth-child(even) {
+    background-color: #ffffff !important;
+}
+
+li.feedItem:hover {
+    background-color: #586073 !important;
+    color: #141311 !important;
+}
+
+
+#progressBar > #cursor {
+    width: 1%;
+    height: 2px;
+    background-color: #FFDC00;
+    box-shadow: 0px 4px 16px 8px rgba(255,255,255,.25);
+}

@@ -22,22 +22,24 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
         icon: false
     });
 
-    $("#css-theme").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '/jquery-ui.theme.css'});
+    $("#mobStyle-jqui").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
+    $("#mobStyle").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '.css'});
 
     $('.themeSwitcher').change(function() {
-        console.log('Theme: ' + '/static/css/themes/' + $(this).attr('value') + '/jquery-ui.theme.css')
+        console.log('Theme: ' + '/static/css/themes/' + $(this).attr('value') + '.css')
 
-        $("#css-theme").attr({href : '/static/css/themes/' + $(this).attr('value') + '/jquery-ui.theme.css'});
+        $("#mobStyle-jqui").attr({href : '/static/css/themes/' + $(this).attr('value') + '/jquery-ui.css'});
+        $("#mobStyle").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
 
         Prefs.writeConfig('theme', $(this).attr('value'));
 
-        if ($(this).attr('value') === 'day'){
-            $('#css-day').prop('disabled', false)
-            $('#css-night').prop('disabled', true)
-        } else {
-            $('#css-night').prop('disabled', false)
-            $('#css-day').prop('disabled', true)
-        }
+        // if ($(this).attr('value') === 'day'){
+        //     $('#css-day').prop('disabled', false)
+        //     $('#css-night').prop('disabled', true)
+        // } else {
+        //     $('#css-night').prop('disabled', false)
+        //     $('#css-day').prop('disabled', true)
+        // }
 
         // $("#mobylette-theme").attr({href : '/static/css/themes/'
         //                                  + $(this).attr('value')
