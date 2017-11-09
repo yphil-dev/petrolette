@@ -24,13 +24,12 @@ $menu.load('/static/templates/slidermenu.html', function() {
         icon: false
     });
 
-    $("#mobStyle-jqui").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-    $("#mobStyle").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '.css'});
+    $(this).find('input#' + Prefs.readConfig('theme')).prop("checked", true)
+           .checkboxradio('refresh');
 
     $('.themeSwitcher').change(function() {
         console.log('Theme: ' + '/static/css/themes/' + $(this).attr('value') + '.css')
 
-        $("#mobStyle-jqui").attr({href : '/static/css/themes/' + $(this).attr('value') + '/jquery-ui.css'});
         $("#mobStyle").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
 
         Prefs.writeConfig('theme', $(this).attr('value'));

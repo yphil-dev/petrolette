@@ -19,7 +19,8 @@ li.mobTab:first-child {
 }
 
 li.ui-tabs-active,
-div.ui-tabs-panel {
+div.ui-tabs-panel,
+li.ui-state-hover:not(.ui-tabs-active) {
     background-color: #E3EFF3 !important;
 }
 
@@ -39,10 +40,6 @@ li.feed a {
 
 li.feedItem:nth-child(even) {
     background-color: #dddddd !important;
-}
-
-li.feedItem:nth-child(even) {
-    background-color: #ffffff !important;
 }
 
 li.feedItem:hover {

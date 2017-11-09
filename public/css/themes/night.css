@@ -19,7 +19,8 @@ li.mobTab:first-child {
 }
 
 li.ui-tabs-active,
-div.ui-tabs-panel {
+div.ui-tabs-panel,
+li.ui-state-hover:not(.ui-tabs-active) {
     background-color: #7C818C !important;
 }
 
@@ -39,11 +40,15 @@ li.feed {
 }
 
 li.feed a {
-    color: #3C4440 !important;
+    color: #ffffff !important;
+}
+
+li.feedItem {
+    background-color: #4B5162 !important;
 }
 
 li.feedItem:nth-child(even) {
-    background-color: #7C818C !important;
+    background-color: #404552 !important;
 }
 
 li.feedItem:hover {
@@ -52,7 +57,7 @@ li.feedItem:hover {
 }
 
 li.feedItem a:visited {
-    color: #565 !important;
+    color: #dddddd !important;
 }
 
 #progressBar > #cursor {

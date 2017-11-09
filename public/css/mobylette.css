@@ -487,6 +487,7 @@ li.feedItem {
 li.feedItem a {
     display: block;
     width:100%;
+    font-weight: bold;
     /* color: #111; */
 }
 
