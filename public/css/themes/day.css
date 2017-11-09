@@ -2,7 +2,6 @@ body {
     background-color: #dddddd;
 }
 
-
 li.mobTab {
     background-color: #C3DCD9 !important;
     box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
@@ -65,4 +64,12 @@ li.feedItem a:visited {
     height: 2px;
     background-color: #3C4440;
     box-shadow: 0px 12px 6px 5px rgba(227,239,243,.2);
+}
+
+li.ui-droppable-hover {
+    background: #E3EFF3 !important;
+}
+
+li.ui-droppable-hover a:link {
+    color: red !important;
 }
