@@ -1,6 +1,6 @@
-$('body').append('<div id="slidermenu">');
+var $menu = $('<div id="slidermenu">');
 
-$('#slidermenu').load('/static/templates/slidermenu.html', function() {
+$menu.load('/static/templates/slidermenu.html', function() {
 
     var $slider = $(this).show('slow')
     var $handle = $slider.find('.handle')
@@ -164,4 +164,10 @@ $('#slidermenu').load('/static/templates/slidermenu.html', function() {
 
     });
 
+});
+
+$('body').append($menu);
+
+$menu.fadeTo(2000 , 1, function() {
+    // Animation complete.
 });

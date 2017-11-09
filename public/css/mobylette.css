@@ -196,7 +196,7 @@ legend {
 }
 
 #slidermenu {
-    display: hidden;
+     opacity: 0;
 }
 
 .ui-slider-handle {
