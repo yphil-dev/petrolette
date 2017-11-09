@@ -19,9 +19,12 @@ li.mobTab:first-child {
 }
 
 li.ui-tabs-active,
-div.ui-tabs-panel,
-li.ui-state-hover:not(.ui-tabs-active) {
+div.ui-tabs-panel {
     background-color: #7C818C !important;
+}
+
+li.ui-state-hover:not(.ui-tabs-active) {
+    background-color: #383C4A !important;
 }
 
 i.tabCloser,
@@ -73,4 +76,8 @@ li.ui-droppable-hover {
 
 li.ui-droppable-hover a:link {
     color: #5294E2 !important;
+}
+
+.fancybox-thumbs {
+    background-color: #404552 !important;
 }

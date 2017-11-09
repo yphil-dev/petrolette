@@ -128,7 +128,6 @@ var Dialog = (function() {
                             oldType = $dataStore.data('type'),
                             oldLimit = $dataStore.data('limit');
 
-                        console.log('\n\nEvent: %s, \nUI: %s', event.name, ui.name);
 
                         $(this).find('input#feedUrl').val(oldUrl);
 
