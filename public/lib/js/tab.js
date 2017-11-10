@@ -15,11 +15,38 @@ var Tab = (function() {
 
             var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
-            var $addFeed = $('<button class="addFeed ui-helper-clearfix"><i class="icon-plus"></i> Feed</button>').button();
+            var $newFeedButton = $('<div class="newFeedButton" title="Add a new feed to [' + name + ']"><p><span class="plus">+</span> <span class="text">Feed</span></p></div>');
 
-            $addFeed.on("click", function() {
-                Feed.newFeed($(this).prev(), 'New Feed', 'mixed', 8, true);
+            $newFeedButton.on("click", function() {
+                Feed.newFeed($sortable, 'New Feed', 'mixed', 8, true);
             });
+
+            var thisColor = $newFeedButton.css('color');
+
+            $newFeedButton.hover (
+                function() {
+                    $(this).animate({
+                        width: '200px',
+                        height: '44px'
+                    }, 200, function() {
+                        // Animation complete.
+                    });
+                    $(this).find('span.text').fadeTo('fast', 1);
+                    $(this).find('span.plus').css('color', '#cc0000');
+                },
+                function() {
+                    $(this).animate({
+                        width: '78px',
+                        height: '78px'
+                    }, 500, function() {
+                        // Animation complete.
+                        // $(this).find('span').text('');
+                    });
+                    $(this).find('span.text').fadeTo('fast', 0.1);
+                    $(this).find('span.plus').css('color', thisColor);
+                }
+            );
+
 
             var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
 
@@ -69,8 +96,8 @@ var Tab = (function() {
                 }
             }).disableSelection();
 
+            $newFeedButton.appendTo($tabPanel)
             $sortable.appendTo($tabPanel);
-            $addFeed.appendTo($tabPanel);
             $tabPanel.appendTo($tabs);
 
             var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>')

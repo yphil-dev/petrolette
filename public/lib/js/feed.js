@@ -99,7 +99,8 @@ var Feed = (function() {
 
             if (clickNew) {
                 $feed.prependTo($tab);
-                $feedPrefs.click()
+                // $feedPrefs.click()
+                Dialog.feedPrefs($feedPrefs, true);
             } else {
                 $feed.appendTo($tab);
                 $feedReload.click();

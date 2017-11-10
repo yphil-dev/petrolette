@@ -20,9 +20,7 @@ $menu.load('/static/templates/slidermenu.html', function() {
         Prefs.exportConfig(Tab.getTabs(), 'mobylette.json');
     });
 
-    $(".checkboxradio").checkboxradio({
-        icon: false
-    });
+    $(".checkboxradio").checkboxradio();
 
     $(this).find('input#' + Prefs.readConfig('theme')).prop("checked", true)
            .checkboxradio('refresh');

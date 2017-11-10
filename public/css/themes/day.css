@@ -26,6 +26,17 @@ li.mobTab:first-child {
     box-shadow: none !important;
 }
 
+.newFeedButton:hover {
+    /* background-image: linear-gradient(45deg, transparent 80px, #E3EFF3 80px); */
+}
+
+.newFeedButton {
+    cursor: pointer;
+    border-color: #DDE0FA;
+    color: #454545;
+}
+
+
 li.ui-tabs-active,
 div.ui-tabs-panel {
     background-color: #E3EFF3 !important;

@@ -85,12 +85,18 @@ var Dialog = (function() {
             })
 
         },
-        feedPrefs:function($feedPrefsButton) {
+        feedPrefs:function($feedPrefsButton, isNewFeed) {
 
             $('#mobDialogs').load('/static/templates/dialog.html #feedPrefs', function() {
                 var $dialog = $(this).find('#feedPrefs')
 
                 var $dataStore = $feedPrefsButton.parent().parent()
+
+                var $feed = $dataStore.parent().parent();
+
+                if (isNewFeed === true) {
+                    console.log('NEW!')
+                }
 
                 $dialog.dialog({
                     autoOpen: false,
@@ -101,6 +107,14 @@ var Dialog = (function() {
                     buttons: {
                         Cancel: function() {
                             $(this).dialog( 'close' );
+
+                            if (isNewFeed === true) {
+                                console.log('Still NEW!')
+                                $feed.remove();
+                            }
+                            // $('#mobDialogs').empty();
+
+
                         },
                         'OK': function() {
 
@@ -116,24 +130,23 @@ var Dialog = (function() {
                             // $(this).find('.feedType').checkboxradio( "destroy" );
 
                             $(this).dialog( 'close' );
+
+                            $('#mobDialogs').empty();
                         }
                     },
                     open: function(event, ui) {
 
                         var $dialog = $(this),
-                            $tabFeedId = $('li#' + $dialog.data('id')),
+                            $tabFeedId = $('li#' + $dataStore.data('id')),
                             $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh');
 
                         var oldUrl = $dataStore.data('url'),
                             oldType = $dataStore.data('type'),
                             oldLimit = $dataStore.data('limit');
 
-
                         $(this).find('input#feedUrl').val(oldUrl);
 
-                        $(this).find('.feedType').checkboxradio({
-                            icon: false
-                        });
+                        $(this).find('.feedType').checkboxradio();
 
                         $(this).find('input#' + oldType || 'mixed').prop("checked", true)
                                .checkboxradio('refresh');
@@ -233,5 +246,5 @@ var Dialog = (function() {
                 $killTabDialog.dialog('open')
             });
         }
-        };
+    };
 }());
