@@ -4,6 +4,8 @@ var favicon = require('favicon');
 var FeedParser = require('feedparser');
 var request = require('request'); // for fetching the feed
 
+var cheerio = require('cheerio');
+
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
 });
@@ -16,9 +18,9 @@ function getFeed (urlfeed, callback) {
         var stream = this;
         if (res.statusCode == 200) {
             stream.pipe (feedparser);
-            console.log ("OK: (code %s) reading (%s)", res.statusCode, urlfeed);
+            // console.log ("OK: (code %s) reading (%s)", res.statusCode, urlfeed);
         } else {
-            console.log ("Error (code %s) reading (%s)", res.statusCode, urlfeed);
+            // console.log ("Error (code %s) reading (%s)", res.statusCode, urlfeed);
         }
     });
     req.on ("error", function (res) {
@@ -45,6 +47,7 @@ function getFeed (urlfeed, callback) {
 
 router.get('/feed', function(req, res, next) {
 
+
     getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
         if (!err) {
             function pad (num) {
@@ -62,12 +65,35 @@ router.get('/feed', function(req, res, next) {
 
 router.get('/feedicon', function(req, res, next) {
 
+    request(req.query.url, function(error, response, html) {
+        var $ = cheerio.load(html); // html is the raw response string : "<html><head>.."
+        var data = [];
+        $("link") // find every <tr> in this html
+            .each(function() {
+                var rel = $(this).attr('rel'); // grab the 'name' cell
+
+                if (rel === 'icon')
+                    console.log('Found icon! (href: %s)', $(this).attr('href'))
+
+                if (rel === 'shortcut icon')
+                    console.log('Found shortcut icon! (href: %s/%s)', req.query.url, $(this).attr('href'))
+
+                if (rel === 'apple-touch-icon-precomposed')
+                    console.log('Found apple icon! (href: %s)', $(this).attr('href'))
+
+                console.log('Rel: (%s)', rel)
+                data.push({ rel: rel });
+            });
+
+        // console.log(data);
+    });
+
     favicon(req.query.url, function(err, u) {
 
         if (typeof u === 'undefined' || !u) {
             // console.log('Url: ' + req.query.feedhost + '\nFavicon: ' + favicon_url)
             // res.send(err.code);
-            console.log('Error getting (%s) icon', JSON.stringify(req.query.url))
+            // console.log('Error getting (%s) icon', JSON.stringify(req.query.url))
         } else {
             // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
             res.send(u)
