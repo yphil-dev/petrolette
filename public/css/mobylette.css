@@ -33,11 +33,12 @@ body {
 
 /* TABS */
 
-.mobTab,
+li.mobTab,
 #newTabButton {
     margin: 0 0 0 0 !important;
     border: 0 !important;
     border-radius: 0 !important;
+    box-shadow: inset 4px 0px 6px -4px rgba(0,0,0,0.19) !important;
 }
 
 /* FEEDS */
@@ -104,7 +105,7 @@ ul.tabSort {
     /* column-count: 3; */
     /* columns: 15em; */
     /* column-gap: .3em; */
-    padding: 0 2px;
+    padding: 0 .2em .2em;
     columns: 15rem;
     column-gap: .3em;
     min-height:30px;

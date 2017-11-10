@@ -17,23 +17,18 @@ li.mobTab:first-child {
     border-radius: 0;
 }
 
-li.mobTab,
-#newTabButton {
-    box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
-}
-
 #newTabButton {
     background-color: #DDE0FA !important;
-}
-
-li.ui-tabs-active,
-div.ui-tabs-panel {
-    background-color: #E3EFF3 !important;
 }
 
 #newTabButton:hover {
     background-color: #E3EFF3 !important;
     box-shadow: none !important;
+}
+
+li.ui-tabs-active,
+div.ui-tabs-panel {
+    background-color: #E3EFF3 !important;
 }
 
 li.ui-state-hover:not(.ui-tabs-active) {

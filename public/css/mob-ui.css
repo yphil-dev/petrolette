@@ -56,8 +56,8 @@ div.mobDialog legend,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
-    background-color: #4D2E19 !important;
-    color:            #F1E5D1 !important;
+    background-color: #9099A2 !important;
+    color:            #000000 !important;
 }
 
 .ui-dialog .ui-dialog-buttonpane {
@@ -158,7 +158,7 @@ label {
 
 fieldset,
 legend {
-    background-color: #F1E5D1 !important;
+    background-color: #6E7A94 !important;
     color:            #3C2413 !important;
 }
 

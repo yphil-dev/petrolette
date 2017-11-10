@@ -121,9 +121,11 @@ var Tab = (function() {
             // console.log('---- TAB OK ----');
         },
         makeNewTabButton:function($tabs) {
-            var $newTabButton = $('<li id="newTabButton">').click(function () {
+
+            var $newTabButton = $('<li id="newTabButton" title="New tab">').click(function () {
                 Tab.newTab($tabs);
             });
+
             var $dummyTabLink = $('<a href="#">+</a>').bind('click', function(e){
                 e.preventDefault();
             })
