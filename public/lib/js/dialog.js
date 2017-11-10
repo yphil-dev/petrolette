@@ -108,12 +108,9 @@ var Dialog = (function() {
                         Cancel: function() {
                             $(this).dialog( 'close' );
 
-                            if (isNewFeed === true) {
-                                console.log('Still NEW!')
+                            if (isNewFeed) {
                                 $feed.remove();
                             }
-                            // $('#mobDialogs').empty();
-
 
                         },
                         'OK': function() {

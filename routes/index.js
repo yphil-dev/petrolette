@@ -16,10 +16,13 @@ function getFeed (urlfeed, callback) {
         var stream = this;
         if (res.statusCode == 200) {
             stream.pipe (feedparser);
+            console.log ("OK: (code %s) reading (%s)", res.statusCode, urlfeed);
+        } else {
+            console.log ("Error (code %s) reading (%s)", res.statusCode, urlfeed);
         }
     });
     req.on ("error", function (res) {
-        console.log ("getFeed: Error reading feed.");
+        console.log ("getFeed: Error reading (%s) feed.", urlfeed);
     });
     feedparser.on ("readable", function () {
         try {
@@ -35,7 +38,7 @@ function getFeed (urlfeed, callback) {
         var meta = this.meta;
         callback (undefined, feedItems, meta.title);
     }).on ("error", function (err) {
-        console.log ("getFeed: Error reading feed.");
+        console.log ("getFeed: Error reading (%s) feed.", urlfeed);
         callback (err);
     });
 }
@@ -51,11 +54,6 @@ router.get('/feed', function(req, res, next) {
                 }
                 return (s);
             }
-            console.log ('There are ' + feedItems.length + ' items in the ' + feedTitle + ' feed.');
-            for (var i = 0; i < feedItems.length; i++) {
-                // console.log ("Item #" + pad (i) + ": " + feedItems[i].title + ".\n");
-                // console.log('ALL: ' + JSON.stringify(feedItems[i]))
-            }
             res.status(200).json({"feedItems": feedItems,"feedTitle": feedTitle});
         }
     });
@@ -66,12 +64,10 @@ router.get('/feedicon', function(req, res, next) {
 
     favicon(req.query.url, function(err, u) {
 
-        console.log('Url: ' + req.query.url + ' Got: (' + u + ') (' + typeof u + ')')
-
         if (typeof u === 'undefined' || !u) {
             // console.log('Url: ' + req.query.feedhost + '\nFavicon: ' + favicon_url)
             // res.send(err.code);
-            console.log('Err: ' + JSON.stringify(err))
+            console.log('Error getting (%s) icon', JSON.stringify(req.query.url))
         } else {
             // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
             res.send(u)

@@ -5,7 +5,7 @@ var Feed = (function() {
 
             var feedIndex = $('#tabs').find('.feed').length;
 
-            var $feedToggle = $('<i class="ico-generic-rss rotate">').click(function() {
+            var $feedToggle = $('<i class="feedIcon rotate">').click(function() {
                 $(this).toggleClass("down");
                 $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
             });
@@ -15,10 +15,10 @@ var Feed = (function() {
             var $feedPrefs = $('<i title="Feed preferences" class="icon-cog mobFeedPrefs feedControl">').button();
             var $feedReload = $('<i title="Reload feed" class="icon-arrows-cw mobFeedRefresh feedControl">').button();
 
-            var $feedIcon = $('<i title="Toggle feed" class="icon-generic-rss feedControl">').button();
+            var $feedIcon = $('<i title="Toggle feed" class="feedFavicon feedControl">').button();
 
             var $title = $('<span class="truncate">' + url + '<span>');
-            var $feedControls = $('<div class="feedControls hiddeable">');
+            var $feedControls = $('<div class="feedControls">');
 
             $feedControls.data('test', 'plop')
                          .data('id', 'feed-' + feedIndex)
@@ -60,20 +60,26 @@ var Feed = (function() {
 
             $feedToggle.appendTo($toggleDiv);
 
-            $feed.hover (
+            $header.hover (
                 function() {
-                    var iconImg = $feedToggle.css('background-image')
+                    var iconImg = $feedToggle.css('background-image');
 
-                    $(this).find('.hiddeable').slideDown()
-                    $feedToggle.removeClass('ico-generic-rss')
-                                             .addClass('icon-down-dir')
-                    // .css('background-image', 'none')
+                    console.log('IMG: (%s)', iconImg);
+
+                    $(this).data('img',iconImg);
+
+                    $(this).find('.feedControls').slideDown();
+                    $feedToggle.css('background-image', 'url("/static/images/feed-toggle-triangle.png")')
                 },
                 function() {
-                    $(this).find('.hiddeable').slideUp()
-                    $feedToggle.removeClass('icon-down-dir')
-                           .addClass('ico-generic-rss')
-                    // .css('background-image', iconImg)
+                    $(this).find('.feedControls').slideUp();
+
+                    if (typeof  $(this).data('img') !== 'undefined') {
+                        $feedToggle.css('background-image', $(this).data('img'))
+                    } else {
+                        $feedToggle.css('background-image', 'url("/static/images/feed-generic-rss.png")')
+                    }
+
                 }
             );
 
@@ -148,19 +154,29 @@ var Feed = (function() {
                 dataType: "json",
                 timeout: 3000
             }, function(icon, status) {
-                if ( !icon || icon.length === 0) icon = "/static/images/generic-rss-32.png";
+                if ( !icon || icon.length === 0) icon = '/static/images/generic-rss-32.png';
+
                 $feedIcon.removeClass('icon-down-dir')
-                         .css('background-image','url(' + icon + ')')
+                         .css('background-image','url(' + icon + ')');
             })
+             .done(function(icon, status) {
+                 // console.log( 'FAVICON %s OK (status %s)',  icon, status);
+             })
+             .fail(function(icon, status) {
+                 console.log( 'FAVICON %s ERROR (status %s)',  feedHost, status);
+             })
+             .always(function(icon, status) {
+                 console.log(  'FAVICON %s DONE (status %s)',  icon, status);
+             });
 
 
-            var jqxhr = $.get("/feed", {
+            $.get("/feed", {
                 feedurl: feedUrl,
                 dataType: 'json'
             }, function(data, status) {
 
-
                 $feedBody.empty()
+
             }).done(function(data) {
                 $feedTitle.text(data.feedTitle);
 
@@ -209,7 +225,7 @@ var Feed = (function() {
 
                     if (typeof imageUrl !== 'undefined') {
                         var $imgLink = $('<a data-fancybox="gallery" data-caption="' + item.title + '">').attr('href', imageUrl)
-                        var $itemImg = $('<img src="' + imageUrl + '" />')
+                        var $itemImg = $('<img src="' + imageUrl + '" onError="this.onerror=null;this.src=\'/static/images/broken-image.png\';" />')
                             .appendTo($imgLink)
                         if (feedType == 'photo')
                             $itemImg.addClass('full')

@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mobylette</title>
+
+        <link rel="preload" href="/static/css/themes/day.css">
+        <link rel="preload" href="/static/css/themes/night.css">
+
         <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
 
 
         <script src="/bower/jquery/dist/jquery.js"></script>
         <script src="/bower/jquery-ui/jquery-ui.js"></script>
 
-        <!-- <script src="https://code.jquery.com/ui/jquery-ui-git.js"></script>
-        -->
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
 
         <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
@@ -19,28 +21,15 @@
 
 
         <link rel="stylesheet" href="/static/css/themes/day/jquery-ui.css">
-        <!-- <link rel="stylesheet" href="/static/css/themes/dayy/jquery-ui.theme.css">
-        -->
-        <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css">
-        -->
-
-        <!-- <link rel="stylesheet" id="css-theme" href="/static/css/themes/night/jquery-ui.theme.css">
-        -->
-        <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/sofia" type="text/css"/> -->
 
         <link rel="stylesheet" href="/static/css/mob-ui.css">
         <link rel="stylesheet" href="/static/css/mobylette.css">
-
-        <link rel="preload" href="/static/css/themes/day.css">
-        <link rel="preload" href="/static/css/themes/night.css">
-
-
 
         <link id="mobStyle" rel="stylesheet" href="/static/css/themes/day.css">
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
 
         <link rel="stylesheet" href="/static/css/fontello.css">
-        <!-- <link id="mobylette-theme" rel="stylesheet" href="/static/css/themes/day/jquery-ui.theme.css"> -->
+
         <script>
 
          $(document).ready(function() {
@@ -73,26 +62,6 @@
 
              });
 
-             var $tabUl = $('#tabUl');
-
-             $tabUl.hover(
-                 function(e) {
-
-                     if (e.relatedTarget && e.relatedTarget.nodeName === 'BUTTON')
-                         return false
-                     else
-                         $('#addTab, .addFeed').fadeIn('fast')
-
-                 },
-                 function(e) {
-
-                     if (e.relatedTarget && e.relatedTarget.nodeName === 'BUTTON')
-                         return false;
-                     else
-                         $('#addTab, .addFeed').fadeOut('slow');
-                 }
-             );
-
              // INIT
 
              var tabList = Prefs.readConfig('tabs');
@@ -124,10 +93,6 @@
 
              $('#tabs').find('div.feedControls').slideUp()
 
-             // $('.mobDOM').fadeIn('slow')
-             $('.addFeed').fadeOut(2000);
-
-             // $( document ).tooltip();
          });
 
         </script>

@@ -321,10 +321,9 @@ div.feedItem img.full {
     min-width:100%;
 }
 
-.ico-generic-rss {
+.feedIcon {
     width: 16px;
     height: 16px;
-    background-image: url("/static/images/generic-rss-32.png");
     background-size: 16px;
     background-repeat: no-repeat;
 }

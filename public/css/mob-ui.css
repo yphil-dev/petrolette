@@ -148,6 +148,10 @@ label {
     margin-left:.2em !important;
 }
 
+.twin {
+    flex: 1;
+}
+
 .ui-selectmenu-button.ui-button {
     text-align: left;
     white-space: nowrap;
