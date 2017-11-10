@@ -4,7 +4,20 @@ body {
 
 li.mobTab {
     background-color: #4B5162 !important;
+}
+
+li.mobTab,
+#newTabButton {
     box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
+}
+
+#newTabButton {
+    background-color: #7C818C !important;
+}
+
+#newTabButton:hover {
+    background-color: #383C4A !important;
+    box-shadow: none !important;
 }
 
 li.ui-tabs-active,

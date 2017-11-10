@@ -33,7 +33,8 @@ body {
 
 /* TABS */
 
-.mobTab {
+.mobTab,
+#newTabButton {
     margin: 0 0 0 0 !important;
     border: 0 !important;
     border-radius: 0 !important;
@@ -106,6 +107,7 @@ ul.tabSort {
     padding: 0 2px;
     columns: 15rem;
     column-gap: .3em;
+    min-height:30px;
 }
 
 li.feed {
@@ -306,15 +308,10 @@ div.feedItem img.full {
     margin: .1rem .2rem 0 .1rem;
 }
 
-button#addTab,
 button.addFeed {
     position: absolute;
     top: .6em;
     right: .5em;
-}
-
-button.addFeed {
-    right: 6em;
 }
 
 .tabCloser {

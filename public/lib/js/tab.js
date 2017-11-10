@@ -3,7 +3,7 @@ var Tab = (function() {
     return {
         newTab:function($tabs, name, feeds, progress) {
 
-            var tabIndex = $('ul#tabUl li.mobTab').length + 2;
+            var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
             // var tabIndex = $tabs.length;
 
@@ -81,6 +81,8 @@ var Tab = (function() {
 
             var $thisSelectedTab = $('#tabs div.ui-tabs-panel:not(.ui-tabs-hide)');
 
+            var $tabUl = $('#tabs ul#tabUl');
+
             $thisTab.droppable({
                 accept: 'li.feed',
                 hoverClass: 'ui-state-hover',
@@ -102,8 +104,9 @@ var Tab = (function() {
 
                     });
                 }
-            }).appendTo('#tabs ul#tabUl');
+            }).appendTo($tabUl);
 
+            $tabUl.find('#newTabButton').appendTo($tabUl);
 
             if(typeof feeds != 'undefined') {
                 feeds.forEach(function(feed) {
@@ -116,6 +119,17 @@ var Tab = (function() {
             tabIndex++;
 
             // console.log('---- TAB OK ----');
+        },
+        makeNewTabButton:function($tabs) {
+            var $newTabButton = $('<li id="newTabButton">').click(function () {
+                Tab.newTab($tabs);
+            });
+            var $dummyTabLink = $('<a href="#">+</a>').bind('click', function(e){
+                e.preventDefault();
+            })
+            $dummyTabLink.appendTo($newTabButton);
+            $newTabButton.appendTo($tabs.find('ul#tabUl'));
+            $tabs.tabs('refresh');
         },
         getTabs:function() {
             var myTabs = [];

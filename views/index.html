@@ -101,14 +101,11 @@
 
              Tab.populateTabs(parsed)
 
-
-             $('#addTab').click(function () {
-                 Tab.newTab($tabs);
-             });
-
+             Tab.makeNewTabButton($tabs)
 
              $tabs.find('.ui-tabs-nav').sortable({
                  axis: 'x',
+                 items: '> li:not(#newTabButton)',
                  stop: function() {
                      $tabs.tabs('refresh');
                      Tab.saveTabs()
@@ -128,7 +125,6 @@
              $('#tabs').find('div.feedControls').slideUp()
 
              // $('.mobDOM').fadeIn('slow')
-             $('#addTab').fadeOut(2000);
              $('.addFeed').fadeOut(2000);
 
              // $( document ).tooltip();
@@ -145,8 +141,6 @@
         </div>
 
         <div id="mobDialogs"></div>
-
-        <button id="addTab" class="mobDOM"><i class="icon-plus"></i> Tab</button>
 
         <script src="/static/lib/js/tab.js"></script>
         <script src="/static/lib/js/feed.js"></script>
