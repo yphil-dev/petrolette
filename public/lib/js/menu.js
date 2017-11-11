@@ -138,14 +138,6 @@ $menu.load('/static/templates/slidermenu.html', function() {
 
                 console.log('p Is array: %s', isOk(p))
 
-                // if (isArray(p) === true) {
-                //     let isValid = p.some(obj =>
-                //         Array.isArray(obj.feeds) && obj.feeds.some(feed =>
-                //             Object.prototype.hasOwnProperty.call(feed, 'url')
-                //         )
-                //     )
-                // }
-
                 if (isOk(p) === true){
                     Utilities.notify('success', 'Successful import');
                     Tab.populateTabs(p, true);

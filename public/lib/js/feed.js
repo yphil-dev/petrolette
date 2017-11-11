@@ -186,16 +186,13 @@ var Feed = (function() {
 
                 icon = '/static/images/feed-generic-rss.png';
 
-            })
-             .done(function(icon, status) {
-                 // console.log( 'DONE %s OK (status %s)',  icon, status);
-                 $feedIcon.css('background-image','url("' + icon + '")');
-             })
-             .fail(function(icon, status) {
+            }).done(function(icon, status) {
+                // console.log( 'DONE %s OK (status %s)',  icon, status);
+                $feedIcon.css('background-image','url("' + icon + '")');
+             }).fail(function(icon, status) {
                  console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
                  $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
-             })
-             .always(function(icon, status) {
+             }).always(function(icon, status) {
 
                  console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
              });
@@ -255,7 +252,9 @@ var Feed = (function() {
 
                     if (typeof imageUrl !== 'undefined') {
                         var $imgLink = $('<a data-fancybox="gallery" data-caption="' + item.title + '">').attr('href', imageUrl)
-                        var $itemImg = $('<img src="' + imageUrl + '" onError="this.onerror=null;this.src=\'/static/images/broken-image.png\';" />')
+                        // var $itemImg = $('<img src="' + imageUrl + '" onError="this.onerror=null;this.src=\'/static/images/broken-image.png\';" />')
+                        var $itemImg = $('<img src="' + imageUrl + '" />')
+
                             .appendTo($imgLink)
                         if (feedType == 'photo')
                             $itemImg.addClass('full')

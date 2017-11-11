@@ -195,8 +195,9 @@ var Tab = (function() {
             $('div#tabs ul li').remove();
             $('div#tabs div').remove();
 
-
             var totalFeeds = 0
+
+            Tab.makeNewTabButton($('div#tabs'));
 
             tabs.forEach(function(tab) {
                 totalFeeds += tab.feeds.length;
