@@ -142,31 +142,11 @@ var Feed = (function() {
             var l = getLocation(feedUrl)
 
             var feedHost = l.protocol + '//' + l.hostname
-            // console.debug('$feedToggle: ' + $toggleDiv.attr('class'))
 
             $refreshButton.addClass('spinner')
             $feed.children('.mobHeader').removeClass('ui-state-error')
 
             var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
-
-            // $.get("/favicon", {
-            //     url: decodeURI(feedUrl),
-            //     dataType: "json",
-            //     timeout: 3000
-            // }, function(icon, status) {
-
-            // })
-            //  .done(function(icon, status) {
-            //      console.log( 'FAVICON %s OK (status %s)',  icon, status);
-            //  })
-            //  .fail(function(icon, status) {
-            //      console.log( 'FAVICON %s ERROR (status %s)',  feedHost, status);
-            //  })
-            //  .always(function(icon, status) {
-            //      console.log(  'FAVICON %s DONE (status %s)',  icon, status);
-            //  });
-
-            // console.log('H: (%s)', feedHost);
 
             $.get("/feedicon", {
                 url: decodeURI(feedHost),

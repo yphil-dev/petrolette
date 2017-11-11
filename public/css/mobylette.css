@@ -80,10 +80,6 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
   margin: 0;
 }
 
-.feedType *  {
-    flex-grow: 1;
-}
-
 .tab  {
     border: none !important;
     margin:0 !important;
@@ -336,18 +332,6 @@ div.feedItem img.full {
 
 .feedToggle > .ui-icon {
     margin: .1rem .2rem 0 .1rem;
-}
-
-button.addFeed {
-    position: absolute;
-    top: .6em;
-    right: .5em;
-}
-
-.tabCloser {
-    font-size:.8rem;
-    margin: .2rem .2rem 0 0;
-    cursor:pointer;
 }
 
 li.feedItem {

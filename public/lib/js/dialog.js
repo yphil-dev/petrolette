@@ -3,7 +3,7 @@ var Dialog = (function() {
     return {
         renameTab:function($tab) {
 
-            $('#mobDialogs').load('/static/templates/dialog.html #renameTabDialog', function() {
+            $('#mobDialogs').load('/static/templates/dialogs.html #renameTabDialog', function() {
                 var $dialog = $('#renameTabDialog')
 
                 console.log('Imma dialog: %s', $tab.text())
@@ -46,7 +46,7 @@ var Dialog = (function() {
         },
         killFeed:function($button) {
 
-            $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
+            $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
                 var $killFeedDialog = $('#killDialog')
 
                 var $thisFeedId = $button.parent().parent().parent().parent().attr('id')
@@ -90,8 +90,24 @@ var Dialog = (function() {
         },
         feedPrefs:function($feedPrefsButton, isNewFeed) {
 
-            $('#mobDialogs').load('/static/templates/dialog.html #feedPrefs', function() {
+            $('#mobDialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
                 var $dialog = $(this).find('#feedPrefs')
+
+                var $spinner = $(this).find('#spinner').spinner();
+
+
+                var myVal
+
+                $spinner.on( "spinstart", function(event, ui) {
+                    myVal = $(this).val()
+                });
+
+                $spinner.on( "spinstop", function(event, ui) {
+                    $dialog.find('div#feedLimit').slider( "option", "value", $(this).val());
+                    $dialog.find(".ui-slider-handle").text($(this).val());
+
+                    console.log('Event: %s', JSON.stringify(event))
+                });
 
                 var $dataStore = $feedPrefsButton.parent().parent()
 
@@ -148,6 +164,8 @@ var Dialog = (function() {
                             oldType = $dataStore.data('type'),
                             oldLimit = $dataStore.data('limit');
 
+                        $spinner.spinner( "value", oldLimit);
+
                         $(this).find('input#feedUrl').val(oldUrl);
 
                         $(this).find('.feedType').checkboxradio();
@@ -175,6 +193,7 @@ var Dialog = (function() {
                             slide: function( event, ui ) {
                                 $(this).val(ui.value);
                                 $(this).find(".ui-slider-handle").text(ui.value);
+                                $("input#spinner").val(ui.value);
                             },
                             change: function( event, ui ) {
                                 $("input#feedLimit").val(ui.value);
@@ -216,7 +235,7 @@ var Dialog = (function() {
             var selectedTabIndex = $tabs.tabs('option', 'active');
             var previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
 
-            $('#mobDialogs').load('/static/templates/dialog.html #killDialog', function() {
+            $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
 
                 var $killTabDialog = $('#killDialog')
 

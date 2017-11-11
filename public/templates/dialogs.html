@@ -46,14 +46,20 @@
             <input type="radio" name="radio-1" id="text" class="feedType" />
         </fieldset>
 
-        <fieldset class="ui-widget ui-widget-content ui-corner-all">
+        <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
             <legend class="ui-corner-top" class="ui-corner-top">Limit # of items</legend>
-            <div class="feedLimit">
-                <label for="feedLimit" class="ui-helper-hidden">
-                    <input type="text" id="feedLimit" />
-                </label>
+            <div id="testFlex">
+                <div class="feedLimit grow left twin">
+                    <label for="feedLimit" class="ui-helper-hidden">
+                        <input type="text" id="feedLimit" />
+                    </label>
 
-                <div id="feedLimit"></div>
+                    <div id="feedLimit"></div>
+                </div>
+                <div class="feedLimit limitSpinner shrink twin right">
+                    <label for="spinner" class="ui-helper-hidden">Select a value:</label>
+                    <input id="spinner" name="value">
+                </div>
             </div>
         </fieldset>
     </form>

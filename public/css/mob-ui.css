@@ -83,6 +83,12 @@ div.mobDialog legend,
     flex: 1 1 30%;
 }
 
+.tabCloser {
+    font-size:.8rem;
+    margin: .2rem .2rem 0 0;
+    cursor:pointer;
+}
+
 #tabs .newFeed,
 #slidermenu > .handle {
     font-size: 2rem;
@@ -131,9 +137,18 @@ label {
     margin: 5px 0;
 }
 
-#feedType label,
-#feedUrl {
+#feedUrl,
+div#testFlex div,
+#feedType label {
     flex: 1;
+}
+
+div#testFlex {
+    display:flex;
+}
+
+#spinner {
+    width: 2rem;
 }
 
 .unique {
@@ -141,12 +156,25 @@ label {
     flex: 1 100%;
 }
 
+div#feedLimit {
+    height: 31px !important;
+}
+
+.ui-slider .ui-slider-handle {
+        height: 38px !important;
+        min-width: 30px;
+        /* padding-top: 5px !important; */
+        line-height: 38px !important;
+        vertical-align: middle;
+    /* padding-left: 5px; */
+}
+
 .grow {
-    flex-grow: 3;
+    flex-grow: 3 !important;
 }
 
 .shrink {
-    flex-shrink: 3;
+    flex-shrink: 3 !important;
 }
 
 .left {
