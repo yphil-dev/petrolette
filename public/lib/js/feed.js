@@ -193,8 +193,7 @@ var Feed = (function() {
              })
              .fail(function(icon, status) {
                  console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
-                 // $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
-                 $feedIcon.css('background-color','red');
+                 $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
              })
              .always(function(icon, status) {
 

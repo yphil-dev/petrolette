@@ -324,6 +324,7 @@ div.feedItem img.full {
 .feedIcon {
     width: 16px;
     height: 16px;
+    background-image: url("/static/images/feed-generic-rss.png");
     background-size: 16px;
     background-repeat: no-repeat;
 }
