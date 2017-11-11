@@ -65,7 +65,10 @@ var Dialog = (function() {
 
                             var $tabFeedId = $('#' + $(this).data('feedId'))
 
-                            $tabFeedId.remove()
+                            $tabFeedId.hide('fade', 1000, function() {
+                                $tabFeedId.remove()
+                            });
+
                             Tab.saveTabs()
                             $(this).dialog( "close" );
                         },
@@ -109,7 +112,11 @@ var Dialog = (function() {
                             $(this).dialog( 'close' );
 
                             if (isNewFeed) {
-                                $feed.remove();
+
+                                $feed.hide('slide', 1000, function() {
+                                    $feed.remove();
+                                });
+
                             }
 
                         },
