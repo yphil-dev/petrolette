@@ -17,13 +17,10 @@ var Tab = (function() {
 
             var $newFeedButton = $('<div class="handle newFeed ui-corner-left" title="Add a new feed to [' + name + ']"><i class="icon-plus rotate"></i></div>').on("click", function() {
                 Feed.newFeed($sortable, 'New Feed', 'mixed', 8, true);
+                return false;
             });
 
             var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
-
-            $sortable.on('click', 'i.feedSelect', function () {
-                $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
-            });
 
             $sortable.sortable({
                 revert:0,
@@ -122,11 +119,14 @@ var Tab = (function() {
 
             var $newTabButton = $('<li id="newTabButton" title="New tab">').click(function () {
                 Tab.newTab($tabs);
+                return false;
             });
 
             var $dummyTabLink = $('<a href="#">+</a>').bind('click', function(e){
                 e.preventDefault();
-            })
+                return false;
+            });
+
             $dummyTabLink.appendTo($newTabButton);
             $newTabButton.appendTo($tabs.find('ul#tabUl'));
             $tabs.tabs('refresh');

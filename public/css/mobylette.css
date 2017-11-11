@@ -163,6 +163,10 @@ ul.tabSort > li:first-child {
     /* background: none !important; */
 }
 
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+    cursor: pointer !important;
+}
+
 .selected,
 li.feed {
     width: 100%;

@@ -105,7 +105,6 @@ var Dialog = (function() {
                 $spinner.on( "spinstop", function(event, ui) {
                     $dialog.find('div#feedLimit').slider( "option", "value", $(this).val());
                     $dialog.find(".ui-slider-handle").text($(this).val());
-
                 });
 
                 var $dataStore = $feedPrefsButton.parent().parent()

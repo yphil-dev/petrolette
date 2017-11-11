@@ -8,6 +8,7 @@ var Feed = (function() {
             var $feedToggle = $('<i class="feedIcon rotate">').click(function() {
                 $(this).toggleClass("down");
                 $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
+                return false;
             });
 
             var $feedSelect = $('<i title="Select feed" class="icon-check-empty-1 feedSelect feedControl">').button();
@@ -29,18 +30,23 @@ var Feed = (function() {
 
             $feedDelete.click(function() {
                 Dialog.killFeed($(this));
+                return false;
             });
 
             $feedReload.click(function() {
                 Feed.populateFeed($(this), progress);
+                return false;
             });
 
             $feedSelect.click(function() {
+                $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
                 $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1');
+                return false;
             });
 
             $feedPrefs.click(function() {
                 Dialog.feedPrefs($(this));
+                return false;
             });
 
             var $feedBody = $('<div class="feedBody ui-widget-content">');

@@ -160,7 +160,7 @@ div#feedLimit {
     height: 31px !important;
 }
 
-.ui-slider .ui-slider-handle {
+#feedLimit .ui-slider .ui-slider-handle {
         height: 38px !important;
         min-width: 30px;
         /* padding-top: 5px !important; */
