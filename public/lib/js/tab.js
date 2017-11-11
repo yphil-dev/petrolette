@@ -133,7 +133,7 @@ var Tab = (function() {
         },
         getTabs:function() {
             var myTabs = [];
-            var $allTabs = $( '#tabUl li.mobTab' );
+            var $allTabs = $('#tabUl > li.mobTab');
 
             $allTabs.each(function(i) {
                 var myFeeds = [];

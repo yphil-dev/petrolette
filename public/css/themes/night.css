@@ -15,16 +15,9 @@ li.mobTab,
     background-color: #7395AE !important;
 }
 
-.newFeedButton {
-    background-image: linear-gradient(45deg, transparent 80px, #7395AE 80px);
-}
-
-.newFeedButton > p > span {
-    color: #eeeeee !important;
-}
-
-.newFeedButton:hover {
-    background-image: linear-gradient(45deg, transparent 80px, #383C4A 80px);
+.handle:hover {
+    opacity: 1;
+    color:            #FFDC00 !important;
 }
 
 #newTabButton:hover {

@@ -14,10 +14,17 @@ $menu.load('/static/templates/slidermenu.html', function() {
         $(this).children('i').toggleClass('other')
     });
 
-    $('button, .button').button();
+    var $fileImport = $(".fileImport").button();
+    var $fileExport = $('#saveTabs').button();
 
-    $('#saveTabs').click(function () {
+    $fileImport.click(function () {
+        $("#fileImport").click();
+        return false;
+    });
+
+    $fileExport.click(function () {
         Prefs.exportConfig(Tab.getTabs(), 'mobylette.json');
+        return false;
     });
 
     $(".checkboxradio").checkboxradio();
@@ -101,7 +108,7 @@ $menu.load('/static/templates/slidermenu.html', function() {
 
     // File select
 
-    $("#fileImport").change(function(evt){
+    $fileImport.change(function(evt){
         var JsonObj = null
         var files = evt.target.files
         var f = files[0];
@@ -157,6 +164,6 @@ $menu.load('/static/templates/slidermenu.html', function() {
 
 $('body').append($menu);
 
-$menu.fadeTo(2000 , 1, function() {
-    // Animation complete.
-});
+// $menu.fadeTo(2000 , 1, function() {
+//     // Animation complete.
+// });
