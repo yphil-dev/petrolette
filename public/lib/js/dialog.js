@@ -106,7 +106,6 @@ var Dialog = (function() {
                     $dialog.find('div#feedLimit').slider( "option", "value", $(this).val());
                     $dialog.find(".ui-slider-handle").text($(this).val());
 
-                    console.log('Event: %s', JSON.stringify(event))
                 });
 
                 var $dataStore = $feedPrefsButton.parent().parent()
