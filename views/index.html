@@ -18,16 +18,15 @@
 
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
 
-        <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
         <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
-
+        <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
 
         <link rel="stylesheet" href="/static/css/themes/day/jquery-ui.css">
 
         <link rel="stylesheet" href="/static/css/mob-ui.css">
         <link rel="stylesheet" href="/static/css/mobylette.css">
 
-        <link id="mobStyle" rel="stylesheet" href="/static/css/themes/day.css">
+        <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
 
         <link rel="stylesheet" href="/static/css/fontello.css">
@@ -38,13 +37,9 @@
 
              $("#mobStyle").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '.css'});
 
-             // $('button').button();
-
              var $tabs = $('#tabs').tabs({
                  heightStyle: 'content',
                  activate: function(event, ui) {
-
-                     // console.log('This: (%s)', $(this).text());
 
                      var $activeTab = $tabs.find('.ui-tabs-active');
 
@@ -90,7 +85,7 @@
 
     <body>
 
-        <div id="tabs" class="mobDOM">
+        <div id="tabs">
             <ul id="tabUl"></ul>
         </div>
 

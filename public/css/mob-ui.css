@@ -83,10 +83,19 @@ div.mobDialog legend,
     flex: 1 1 30%;
 }
 
+#tabs .newFeed,
 #slidermenu > .handle {
     font-size: 2rem;
     background-color: #001F3F;
     position:absolute;
+}
+
+#tabs .newFeed {
+    right:0;
+    top:4px;
+}
+
+#slidermenu > .handle {
     left:290px;
     bottom:50px;
 }

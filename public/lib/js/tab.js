@@ -15,38 +15,9 @@ var Tab = (function() {
 
             var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
-            var $newFeedButton = $('<div class="newFeedButton" title="Add a new feed to [' + name + ']"><p><span class="plus">+</span> <span class="text">Feed</span></p></div>');
-
-            $newFeedButton.on("click", function() {
+            var $newFeedButton = $('<div class="handle newFeed ui-corner-left" title="Add a new feed to [' + name + ']"><i class="icon-plus rotate"></i></div>').on("click", function() {
                 Feed.newFeed($sortable, 'New Feed', 'mixed', 8, true);
             });
-
-            var thisColor = $newFeedButton.css('color');
-
-            $newFeedButton.hover (
-                function() {
-                    $(this).animate({
-                        width: '200px',
-                        height: '44px'
-                    }, 200, function() {
-                        // Animation complete.
-                    });
-                    $(this).find('span.text').fadeTo('fast', 1);
-                    $(this).find('span.plus').css('color', '#cc0000');
-                },
-                function() {
-                    $(this).animate({
-                        width: '78px',
-                        height: '78px'
-                    }, 500, function() {
-                        // Animation complete.
-                        // $(this).find('span').text('');
-                    });
-                    $(this).find('span.text').fadeTo('fast', 0.1);
-                    $(this).find('span.plus').css('color', thisColor);
-                }
-            );
-
 
             var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
 
