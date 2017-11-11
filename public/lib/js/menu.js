@@ -109,7 +109,7 @@ $menu.load('/static/templates/slidermenu.html', function() {
 
     // File select
 
-    $fileImport.change(function(evt){
+    $("input#fileImport").change(function(evt){
         var JsonObj = null
         var files = evt.target.files
         var f = files[0];
