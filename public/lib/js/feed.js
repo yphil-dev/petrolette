@@ -189,14 +189,14 @@ var Feed = (function() {
             })
              .done(function(icon, status) {
                  // console.log( 'DONE %s OK (status %s)',  icon, status);
+                 $feedIcon.css('background-image','url("' + icon + '")');
              })
              .fail(function(icon, status) {
                  console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
                  // $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
+                 $feedIcon.css('background-color','red');
              })
              .always(function(icon, status) {
-                 $feedIcon.css('background-image','url("' + icon + '")');
-                 // $feedIcon.css('background-color','red');
 
                  console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
              });
