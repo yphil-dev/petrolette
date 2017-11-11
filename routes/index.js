@@ -47,7 +47,6 @@ function getFeed (urlfeed, callback) {
 
 router.get('/feed', function(req, res, next) {
 
-
     getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
         if (!err) {
             function pad (num) {
@@ -63,35 +62,135 @@ router.get('/feed', function(req, res, next) {
 
 });
 
-router.get('/feedicon', function(req, res, next) {
+function getDomain(url) {
+    var m = url.match(/^http:\/\/[^/]+/);
+    return m ? m[0] : null;
+}
 
-    request(req.query.url, function(error, response, html) {
-        var $ = cheerio.load(html); // html is the raw response string : "<html><head>.."
-        var data = [];
-        $("link") // find every <tr> in this html
-            .each(function() {
-                var rel = $(this).attr('rel'); // grab the 'name' cell
+router.get('/favicon', function(req, res, next) {
 
-                if (rel === 'icon')
-                    console.log('Found icon! (href: %s)', $(this).attr('href'))
+    var thisUri = req.query.url;
+    var req = request(req.query.url, function(error, response, html) {
 
-                if (rel === 'shortcut icon')
-                    console.log('Found shortcut icon! (href: %s/%s)', req.query.url, $(this).attr('href'))
+        var okTypes = [
+            'image/x-icon',
+            'image/png',
+            'image/vnd.microsoft.icon'
+        ];
 
-                if (rel === 'apple-touch-icon-precomposed')
-                    console.log('Found apple icon! (href: %s)', $(this).attr('href'))
+        var $ = cheerio.load(html, {
+            xmlMode: true
+        });
 
-                console.log('Rel: (%s)', rel)
-                data.push({ rel: rel });
-            });
+        $.prototype.exists = function (selector) {
+            return this.find(selector).length > 0;
+        }
 
-        // console.log(data);
+        var $link = $('link');
+
+        if ($link.length !== 0){
+
+            if (thisUri !== null && thisUri !== '') {
+
+                console.log('\nDomain (%s)', getDomain(thisUri));
+
+                var obviousIcon = getDomain(thisUri) + '/favicon.ico';
+                var pngIcon = getDomain(thisUri) + '/favicon.png';
+
+                request
+                    .get(obviousIcon)
+                    .on('response', function(response) {
+
+                        if (response.statusCode == 200) {
+                            console.log('(obvious) ICON! (%s)', obviousIcon)
+                        }
+                    })
+                    .on('error', function(err) {
+                        console.log('NO (obvious) ICON! (%s)', err)
+                    })
+
+                request
+                    .get(pngIcon)
+                    .on('response', function(response) {
+
+                        if (response.statusCode == 200) {
+                            console.log('(png) ICON! (%s)', pngIcon)
+                        }
+                    })
+                    .on('error', function(err) {
+                        console.log('NO (png) ICON! (%s)', err)
+                    })
+
+
+                // if (typeof $link.attr('rel') !== 'undefined' && $link.attr('rel') === 'alternate') {
+                //     // console.log('REL (%s): %s', thisUri, $link.attr('href'));
+
+                //     var altIcon = $link.attr('href') + '/favicon.ico';
+
+                //     request
+                //         .get(altIcon)
+                //         .on('response', function(response) {
+
+                //             if (response.statusCode == 200 && okTypes.indexOf(response.headers['content-type']) >= 0) {
+                //                 console.log('ALT ICON! (%s)', altIcon) // 200
+                //             }
+
+                //         })
+                //         .on('error', function(err) {
+                //             console.log('NO (alt) ICON! (%s)', err)
+                //         })
+
+
+                // }
+
+            }
+
+        }
+
     });
+
+    // req.on('response', function(response) {
+    //     console.log('OK: %s', response.statusCode) // 200
+    //     // console.log(response.headers['content-type']) // 'image/png'
+    // })
+
+    // req.on('error', function(err) {
+    //     console.log('Err: %s', err) // 200
+    // })
+
+    // if (!error && response.statusCode == 200) {
+
+    //     var $ = cheerio.load(html, {
+    //         xmlMode: true
+    //     });
+
+    //     $.prototype.exists = function (selector) {
+    //         return this.find(selector).length > 0;
+    //     }
+
+    //     if ($('link').attr('rel').exists()) {
+    //         console.log('Link: %s', $('link').attr('href'))
+
+    //         if (isValidUri(getDomain($('link').attr('href')) + '/favicon.ico')) {
+    //             console.log('Found VALID alt!');
+    //         } else {
+    //             console.log('bummer! (%s)', isValidUri(getDomain($('link').attr('href')) + '/favicon.ico'));
+    //         }
+    //     }
+
+    // }
+
+
+})
+
+router.get('/feedicon', function(req, res, next) {
 
     favicon(req.query.url, function(err, u) {
 
         if (typeof u === 'undefined' || !u) {
+
             // console.log('Url: ' + req.query.feedhost + '\nFavicon: ' + favicon_url)
+
             // res.send(err.code);
             // console.log('Error getting (%s) icon', JSON.stringify(req.query.url))
         } else {

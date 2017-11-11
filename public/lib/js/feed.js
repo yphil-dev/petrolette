@@ -149,26 +149,57 @@ var Feed = (function() {
 
             var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
 
+            // $.get("/favicon", {
+            //     url: decodeURI(feedUrl),
+            //     dataType: "json",
+            //     timeout: 3000
+            // }, function(icon, status) {
+
+            // })
+            //  .done(function(icon, status) {
+            //      console.log( 'FAVICON %s OK (status %s)',  icon, status);
+            //  })
+            //  .fail(function(icon, status) {
+            //      console.log( 'FAVICON %s ERROR (status %s)',  feedHost, status);
+            //  })
+            //  .always(function(icon, status) {
+            //      console.log(  'FAVICON %s DONE (status %s)',  icon, status);
+            //  });
+
+            console.log('H: (%s)', feedHost);
+
             $.get("/feedicon", {
                 url: decodeURI(feedHost),
                 dataType: "json",
                 timeout: 3000
             }, function(icon, status) {
-                if ( !icon || icon.length === 0) icon = '/static/images/generic-rss-32.png';
 
-                $feedIcon.removeClass('icon-down-dir')
-                         .css('background-image','url(' + icon + ')');
+                console.log( 'GOT for %s: %s (status: %s)', decodeURI(feedHost), JSON.stringify(icon), status);
+
+                if (!icon)
+                    console.log('NULL')
+
+                if (icon.length === 0)
+                    console.log('LENGHT')
+
+                if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
+
+                icon = '/static/images/feed-generic-rss.png';
+
             })
              .done(function(icon, status) {
-                 // console.log( 'FAVICON %s OK (status %s)',  icon, status);
+                 // console.log( 'DONE %s OK (status %s)',  icon, status);
              })
              .fail(function(icon, status) {
-                 console.log( 'FAVICON %s ERROR (status %s)',  feedHost, status);
+                 console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
+                 // $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
              })
              .always(function(icon, status) {
-                 console.log(  'FAVICON %s DONE (status %s)',  icon, status);
-             });
+                 $feedIcon.css('background-image','url("' + icon + '")');
+                 // $feedIcon.css('background-color','red');
 
+                 console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
+             });
 
             $.get("/feed", {
                 feedurl: feedUrl,
