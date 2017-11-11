@@ -166,7 +166,7 @@ var Feed = (function() {
             //      console.log(  'FAVICON %s DONE (status %s)',  icon, status);
             //  });
 
-            console.log('H: (%s)', feedHost);
+            // console.log('H: (%s)', feedHost);
 
             $.get("/feedicon", {
                 url: decodeURI(feedHost),
@@ -194,7 +194,7 @@ var Feed = (function() {
                  $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
              }).always(function(icon, status) {
 
-                 console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
+                 // console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
              });
 
             $.get("/feed", {

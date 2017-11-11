@@ -51,6 +51,10 @@ li.ui-tabs-active a:link {
     color: #3C4440 !important;
 }
 
+i.tabCloser:hover {
+    color: #3C4440 !important;
+}
+
 li.feed {
     background-color: #ffffff !important;
     color: #3C4440 !important;

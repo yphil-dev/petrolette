@@ -14,6 +14,8 @@
         <script src="/bower/jquery/dist/jquery.js"></script>
         <script src="/bower/jquery-ui/jquery-ui.js"></script>
 
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
         <script src="/bower/slidereveal/dist/jquery.slidereveal.js"></script>
 
         <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
@@ -36,7 +38,7 @@
 
              $("#mobStyle").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '.css'});
 
-             $('button').button();
+             // $('button').button();
 
              var $tabs = $('#tabs').tabs({
                  heightStyle: 'content',
@@ -49,13 +51,13 @@
                      $('.ui-tabs-tab i').remove();
 
                      var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser">')
-                         .hover(
-                             function() {
-                                 $(this).addClass('icon-cancel-circled-outline');
-                             }, function() {
-                                 $(this).removeClass('icon-cancel-circled-outline');
-                             }
-                         );
+                     // .hover(
+                     //     function() {
+                     //         $(this).addClass('icon-cancel-circled-outline');
+                     //     }, function() {
+                     //         $(this).removeClass('icon-cancel-circled-outline');
+                     //     }
+                     // );
 
                      $activeTab.append($thisCloseTabLink);
                  }
@@ -64,13 +66,7 @@
 
              // INIT
 
-             var tabList = Prefs.readConfig('tabs');
-
-             var parsed = JSON.parse(tabList);
-
-             Tab.populateTabs(parsed)
-
-             // Tab.makeNewTabButton($tabs)
+             Tab.populateTabs(JSON.parse(Prefs.readConfig('tabs')))
 
              $tabs.find('.ui-tabs-nav').sortable({
                  axis: 'x',
@@ -91,9 +87,13 @@
                  Dialog.killTab($(this))
              });
 
-             $('#tabs').find('div.feedControls').slideUp()
+             $tabs.find('div.feedControls').slideUp()
 
          });
+
+         // $(window).load(function() {
+         //     console.log('LOADING');
+         // });
 
         </script>
 
