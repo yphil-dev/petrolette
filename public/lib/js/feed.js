@@ -243,7 +243,7 @@ var Feed = (function() {
                     // console.log('S: %s', item.summary)
                     var summary = $('<p>').append(item.summary).text()
 
-                    var $feedItem = $('<li class="feedItem">').attr('title', summary)
+                    var $feedItem = $('<li class="feedItem">').attr('title', summary.trim())
                     var $itemDiv = $('<div class="feedItem">')
                     var $itemLink = $('<a class="ui-helper-clearfix">')
                         .attr('href', item.link)
