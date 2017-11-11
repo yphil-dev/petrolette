@@ -174,17 +174,7 @@ var Feed = (function() {
                 timeout: 3000
             }, function(icon, status) {
 
-                console.log( 'GOT for %s: %s (status: %s)', decodeURI(feedHost), JSON.stringify(icon), status);
-
-                if (!icon)
-                    console.log('NULL')
-
-                if (icon.length === 0)
-                    console.log('LENGHT')
-
                 if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
-
-                icon = '/static/images/feed-generic-rss.png';
 
             }).done(function(icon, status) {
                 // console.log( 'DONE %s OK (status %s)',  icon, status);
@@ -271,7 +261,7 @@ var Feed = (function() {
 
 
             }).fail(function() {
-                $refreshButton.css("color", "#f00").removeClass('spinner');
+                $refreshButton.removeClass('spinner');
 
                 // console.log( "error" );
                 $feed.children('.mobHeader').addClass('ui-state-error');

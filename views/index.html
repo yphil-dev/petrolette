@@ -44,22 +44,15 @@
                  heightStyle: 'content',
                  activate: function(event, ui) {
 
+                     // console.log('This: (%s)', $(this).text());
+
                      var $activeTab = $tabs.find('.ui-tabs-active');
 
                      $(document).prop('title', $activeTab.text() + ' | Mobylette');
 
                      $('.ui-tabs-tab i').remove();
 
-                     var $thisCloseTabLink = $('<i class="icon-cancel-circled tabCloser">')
-                     // .hover(
-                     //     function() {
-                     //         $(this).addClass('icon-cancel-circled-outline');
-                     //     }, function() {
-                     //         $(this).removeClass('icon-cancel-circled-outline');
-                     //     }
-                     // );
-
-                     $activeTab.append($thisCloseTabLink);
+                     $activeTab.append($('<i class="icon-cancel-circled tabCloser">'));
                  }
 
              });
@@ -90,10 +83,6 @@
              $tabs.find('div.feedControls').slideUp()
 
          });
-
-         // $(window).load(function() {
-         //     console.log('LOADING');
-         // });
 
         </script>
 
