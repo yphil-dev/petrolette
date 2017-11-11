@@ -124,7 +124,7 @@ var Tab = (function() {
 
             var $dummyTabLink = $('<a href="#">+</a>').bind('click', function(e){
                 e.preventDefault();
-                return false;
+                // return false;
             });
 
             $dummyTabLink.appendTo($newTabButton);

@@ -14,11 +14,12 @@ $menu.load('/static/templates/slidermenu.html', function() {
         $(this).children('i').toggleClass('other')
     });
 
-    var $fileImport = $(".fileImport").button();
+    var $fileImport = $("button#fileImport").button();
     var $fileExport = $('#saveTabs').button();
+    var $donate = $('#donate').button()
 
     $fileImport.click(function () {
-        $("#fileImport").click();
+        $("input#fileImport").click();
         return false;
     });
 
