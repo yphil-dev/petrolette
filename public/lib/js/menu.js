@@ -1,4 +1,4 @@
-$('<div id="menu">').appendTo($('body')).load('/static/templates/mob-menu.html', function() {
+$('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', function() {
 
     var $slider = $(this);
     var $handle = $slider.find('.handle')
