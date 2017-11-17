@@ -64,6 +64,11 @@ li.mobTab,
   display: inline-block;
 }
 
+#waitScreen > .spinner {
+    animation: spin-animation 2s infinite;
+    font-size: 400%;
+}
+
 .rotate {
     display:inline-block;
     cursor:pointer;
@@ -74,7 +79,7 @@ li.mobTab,
     transform: rotate(-90deg);
 }
 
-.rotate.other {
+.rotate.close {
     transform: rotate(-180deg);
 }
 

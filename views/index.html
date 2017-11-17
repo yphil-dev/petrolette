@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mobylette</title>
 
+        <link rel="stylesheet" href="/static/css/fontello.css">
+
         <link rel="preload" href="/static/css/themes/day.css">
         <link rel="preload" href="/static/css/themes/night.css">
 
@@ -22,9 +24,15 @@
         <link rel="stylesheet" href="/static/css/mobylette.css">
 
         <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
-        <link rel="stylesheet" href="/static/css/fontello.css">
 
         <script>
+
+         document.fonts.onloadingdone = function (fontFaceSetEvent) {
+
+             document.getElementById('waitScreen').style.display = 'none';
+
+             // alert('onloadingdone we have ' + fontFaceSetEvent.fontfaces.length + ' font faces loaded');
+         };
 
          $(document).ready(function() {
 
@@ -77,6 +85,8 @@
     </head>
 
     <body>
+
+        <div id='waitScreen' style="text-align:center; vertical-align: middle; width: 100vw;"><i style="line-height: 400px; color:#aaa" class="icon-cog spinner"></i></div>
 
         <div id="tabs">
             <ul id="tabUl"></ul>

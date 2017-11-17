@@ -3,22 +3,17 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     var $slider = $(this);
     var $handle = $slider.find('.handle')
 
-    // $slider.slideReveal({
-    //     width: 275
-    // });
-
     $handle.click(function () {
-
         $slider.toggleClass('expanded');
-
-        // $slider.slideReveal("toggle", false);
-        $(this).children('i').toggleClass('other')
+        $(this).children('i').toggleClass('close')
     });
 
     var $fileImportButton = $("button#fileImport").button();
     var $fileImportInput = $("input#fileImport").button();
     var $fileExport = $('#saveTabs').button();
     var $donate = $('#donate').button()
+
+    $donate.tooltip();
 
     $fileImportButton.click(function () {
         $("input#fileImport").click();
@@ -42,21 +37,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
         Prefs.writeConfig('theme', $(this).attr('value'));
 
-        // if ($(this).attr('value') === 'day'){
-        //     $('#css-day').prop('disabled', false)
-        //     $('#css-night').prop('disabled', true)
-        // } else {
-        //     $('#css-night').prop('disabled', false)
-        //     $('#css-day').prop('disabled', true)
-        // }
-
-        // $("#mobylette-theme").attr({href : '/static/css/themes/'
-        //                                  + $(this).attr('value')
-        //                                  + '/jquery-ui.theme.css'});
-
     });
-
-    // $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
 
     var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
     var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
@@ -64,17 +45,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     $.fancybox.defaults.thumbs.autoStart = true;
     $.fancybox.defaults.transitionEffect = gallerySlideTransition;
     $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
-
-    // $slider.find('select#gallerySlideTransition').selectmenu({
-    //     width: 250,
-    //     change: function( event, data ) {
-    //         console.log('New FX: %s', data.item.value);
-    //         $.fancybox.defaults.transitionEffect = data.item.value;
-    //         Prefs.writeConfig('gallerySlideTransition', data.item.value);
-    //     }
-    // });
-
-    // $slider.find('select#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
 
     $slider.find('select#gallerySlideTransition').change(function() {
         console.log('New FX: %s', $(this).val());
@@ -172,9 +142,3 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     });
 
 });
-
-// $('body').append($menu);
-//
-// $menu.fadeTo(2000 , 1, function() {
-//     // Animation complete.
-// });
