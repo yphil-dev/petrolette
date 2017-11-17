@@ -7,52 +7,54 @@
     <h1 class="logoItem">Mobylette</h1>
 </div>
 
-<fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
-    <legend class="ui-corner-top">Tabs</legend>
+<form>
+    <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+        <legend class="ui-corner-top">Tabs</legend>
 
-    <input type="file" id="fileImport" style="display: none;" />
-    <button id="fileImport" class="twin left button icon-upload">Import</button>
-    <button class="twin right icon-download" id="saveTabs"> Export</button>
+        <input type="file" id="fileImport" style="display: none;" />
+        <button id="fileImport" class="twin left button icon-upload">Import</button>
+        <button class="twin right icon-download" id="saveTabs"> Export</button>
 
-    <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
-    <label class="unique noBottom" for="tabDropActivate">Open tab on feed drop</label>
-</fieldset>
+        <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
+        <label class="unique noBottom" for="tabDropActivate">Open tab on feed drop</label>
+    </fieldset>
 
-<fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
-    <legend class="ui-corner-top">Theme</legend>
+    <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+        <legend class="ui-corner-top">Theme</legend>
 
-    <label class="twin left noBottom" for="day">Day</label>
-    <input class="themeSwitcher checkboxradio" type="radio" name="radio-1" id="day" value="day">
+        <label class="twin left noBottom" for="day">Day</label>
+        <input class="themeSwitcher checkboxradio" type="radio" name="radio-1" id="day" value="day">
 
-    <label class="twin right noBottom" for="night">Night</label>
-    <input class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" id="night" value="night">
-</fieldset>
+        <label class="twin right noBottom" for="night">Night</label>
+        <input class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" id="night" value="night">
+    </fieldset>
 
-<fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
-    <legend class="ui-corner-top">Image gallery</legend>
-    <label class="twin grow" for="amount">Slideshow speed: </label>
-    <span id="gallerySlideshowSpeedValue" class="twin"></span>
-    <div class="unique" id="gallerySlideshowSpeed"></div>
+    <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+        <legend class="ui-corner-top">Image gallery</legend>
+        <label class="twin grow" for="amount">Slideshow speed: </label>
+        <span id="gallerySlideshowSpeedValue" class="twin"></span>
+        <div class="unique" id="gallerySlideshowSpeed"></div>
 
-    <label class="unique" for="gallerySlideTransition">Slide transition</label>
-    <select class="unique" id="gallerySlideTransition">
-        <option value="false">None</option>
-        <option value="fade">Fade</option>
-        <option value="slide">Slide</option>
-        <option value="circular">Circular</option>
-        <option value="tube">Tube</option>
-        <option value="zoom-in-out">Zoom-in-out</option>
-        <option value="rotate">Rotate</option>
-    </select>
+        <label class="unique" for="gallerySlideTransition">Slide transition</label>
+        <select class="unique" id="gallerySlideTransition">
+            <option value="false">None</option>
+            <option value="fade">Fade</option>
+            <option value="slide">Slide</option>
+            <option value="circular">Circular</option>
+            <option value="tube">Tube</option>
+            <option value="zoom-in-out">Zoom-in-out</option>
+            <option value="rotate">Rotate</option>
+        </select>
 
-</fieldset>
+    </fieldset>
 
-<fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
-    <legend class="ui-corner-top">Help</legend>
-    <button id="donate" class="unique icon-heartbeat" onclick="location.href='https://liberapay.com/yassinphilip';"> Donate</button>
-</fieldset>
+    <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+        <legend class="ui-corner-top">Help</legend>
+        <button id="donate" class="unique icon-heartbeat" onclick="location.href='https://liberapay.com/yassinphilip';"> Donate</button>
+    </fieldset>
 
-<fieldset id="mobNotify" class="ui-widget ui-widget-content ui-corner-all">
-    <legend class="ui-corner-top">Notifications</legend>
-    <p></p>
-</fieldset>
+    <fieldset id="mobNotify" class="ui-widget ui-widget-content ui-corner-all">
+        <legend class="ui-corner-top">Notifications</legend>
+        <p></p>
+    </fieldset>
+</form>

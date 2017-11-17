@@ -62,16 +62,24 @@ $('<div id="slidermenu">').appendTo($('body')).load('/static/templates/mob-menu.
     $.fancybox.defaults.transitionEffect = gallerySlideTransition;
     $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
 
-    $slider.find('#gallerySlideTransition').selectmenu({
-        width: 250,
-        change: function( event, data ) {
-            console.log('New FX: %s', data.item.value);
-            $.fancybox.defaults.transitionEffect = data.item.value;
-            Prefs.writeConfig('gallerySlideTransition', data.item.value);
-        }
+    // $slider.find('select#gallerySlideTransition').selectmenu({
+    //     width: 250,
+    //     change: function( event, data ) {
+    //         console.log('New FX: %s', data.item.value);
+    //         $.fancybox.defaults.transitionEffect = data.item.value;
+    //         Prefs.writeConfig('gallerySlideTransition', data.item.value);
+    //     }
+    // });
+
+    // $slider.find('select#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
+
+    $slider.find('select#gallerySlideTransition').change(function() {
+        console.log('New FX: %s', $(this).val());
+        $.fancybox.defaults.transitionEffect = $(this).val();
+        Prefs.writeConfig('gallerySlideTransition', $(this).val());
     });
 
-    $slider.find('#gallerySlideTransition').val(gallerySlideTransition).selectmenu("refresh");
+    $slider.find('select#gallerySlideTransition').val(gallerySlideTransition);
 
     if (Prefs.readConfig('tabDropActivate') === 'true')
         $('#tabDropActivate').prop('checked', true).checkboxradio('refresh')
