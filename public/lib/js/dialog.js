@@ -16,12 +16,15 @@ var Dialog = (function() {
                     modal: true,
                     buttons: {
                         Cancel: function() {
-                            $( this ).dialog( 'close' );
+                            // $( this ).dialog( 'close' );
+                            $(this).dialog('destroy').remove()
                         },
                         'OK': function() {
                             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
                             Tab.saveTabs();
-                            $(this).dialog('close');
+                            // $(this).dialog('close');
+                            $(this).dialog('destroy').remove()
+
                         }
                     },
                     open: function( event, ui ) {
@@ -31,7 +34,8 @@ var Dialog = (function() {
                         $(this).on('submit', function () {
                             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
                             Tab.saveTabs();
-                            $(this).dialog('close');
+                            // $(this).dialog('close');
+                            $(this).dialog('destroy').remove()
                             return false;
                         });
                     }
@@ -70,10 +74,10 @@ var Dialog = (function() {
                             });
 
                             Tab.saveTabs()
-                            $(this).dialog( "close" );
+                            $(this).dialog('destroy').remove()
                         },
                         Cancel: function() {
-                            $( this ).dialog( "close" );
+                            $(this).dialog('destroy').remove()
                         }
                     },
                     open: function () {
@@ -123,15 +127,14 @@ var Dialog = (function() {
                     modal: true,
                     buttons: {
                         Cancel: function() {
-                            $(this).dialog( 'close' );
 
                             if (isNewFeed) {
-
                                 $feed.hide('slide', 1000, function() {
                                     $feed.remove();
                                 });
-
                             }
+
+                            $(this).dialog('destroy').remove()
 
                         },
                         'OK': function() {
@@ -147,7 +150,7 @@ var Dialog = (function() {
 
                             // $(this).find('.feedType').checkboxradio( "destroy" );
 
-                            $(this).dialog( 'close' );
+                            $(this).dialog('destroy').remove()
 
                             $('#mobDialogs').empty();
                         }
@@ -203,7 +206,7 @@ var Dialog = (function() {
                             Feed.populateFeed($mobFeedRefresh);
                             Tab.saveTabs();
 
-                            $(this).dialog('close');
+                            $(this).dialog('destroy').remove()
                             return false;
                         });
 
@@ -251,11 +254,11 @@ var Dialog = (function() {
                             $selectedPanel.remove();
 
                             Tab.saveTabs();
-                            $(this).dialog( "close" );
+                            $(this).dialog('destroy').remove()
                             $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
                         },
                         Cancel: function() {
-                            $(this).dialog( "close" );
+
                         }
                     },
                     open: function () {

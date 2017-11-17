@@ -31,6 +31,13 @@
         -->
         <link rel="stylesheet" href="/static/css/fontello.css">
 
+
+        <script src="/static/lib/js/utilities.js"></script>
+        <script src="/static/lib/js/tab.js"></script>
+        <script src="/static/lib/js/feed.js"></script>
+        <script src="/static/lib/js/prefs.js"></script>
+        <script src="/static/lib/js/dialog.js"></script>
+
         <script>
 
          $(document).ready(function() {
@@ -77,6 +84,20 @@
 
              $tabs.find('div.feedControls').slideUp()
 
+             var $menuHandle = $('<div id="menuHandle" class="handle ui-corner-right" title="Preferences"><i class="icon-right-open rotate"></i></div>');
+
+             $menuHandle.click(function () {
+
+                 $('#mobz div').toggleClass('expanded');
+
+                 // $('#slidermenu').show('slide')
+                 // $slider.slideReveal("toggle", false);
+                 // $(this).children('i').toggleClass('other')
+             });
+
+
+             $('body').append($menuHandle);
+
          });
 
         </script>
@@ -85,18 +106,21 @@
 
     <body>
 
-        <div id="tabs">
-            <ul id="tabUl"></ul>
+        <div id="mobz">
+
+
+            <div id="menu">
+            </div>
+
+            <div id="tabs">
+                <ul id="tabUl"></ul>
+            </div>
+
         </div>
 
         <div id="mobDialogs"></div>
 
         <script src="/static/lib/js/menu.js"></script>
-        <script src="/static/lib/js/tab.js"></script>
-        <script src="/static/lib/js/feed.js"></script>
-        <script src="/static/lib/js/prefs.js"></script>
-        <script src="/static/lib/js/dialog.js"></script>
-        <script src="/static/lib/js/utilities.js"></script>
 
     </body>
 </html>

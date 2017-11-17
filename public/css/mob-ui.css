@@ -13,12 +13,6 @@
     height: 2px;
 }
 
-#slidermenu {
-    /* border-right: #2e2e2e solid 1px; */
-    padding:.5em;
-    border: none !important;
-}
-
 #mobNotify {
     bottom: 1em;
     position: absolute !important;
@@ -79,18 +73,65 @@ div.mobDialog legend,
     color: #001F3F !important;
 }
 
+#mobz {
+    display: flex;
+}
+
+#menu {
+    /* border-right: #2e2e2e solid 1px; */
+    /* padding:.5em; */
+    border: none !important;
+
+    -moz-box-sizing: border-box;
+    width: 0;
+    transition: all 1s;
+    float:left;
+    overflow:hidden;
+    opacity:0;
+
+}
+
+#tabs {
+    width:100%;
+    /* margin: 5px; */
+    transition: all 1s;
+}
+
+#tabs.expanded {
+    display:block !important;
+    width: calc(70% - 5px);
+}
+
+#menu.expanded {
+    width: 30%;
+    opacity:1;
+}
+
 .logoItem {
     flex: 1 1 30%;
 }
 
+li.mobTab,
+#newTabButton {
+    margin: 0 0 0 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: inset 4px 0px 6px -4px rgba(0,0,0,0.19) !important;
+}
+
+.ui-tabs-panel {
+    padding:0 !important;
+}
+
 .tabCloser {
+    display: none;
     font-size:.8rem;
     margin: .2rem .2rem 0 0;
     cursor:pointer;
 }
 
 #tabs .newFeed,
-#slidermenu > .handle {
+#menuHandle {
     font-size: 2rem;
     background-color: #001F3F;
     position:absolute;
@@ -101,12 +142,13 @@ div.mobDialog legend,
     top:4px;
 }
 
-#slidermenu > .handle {
-    left:290px;
+#menuHandle {
+    left:0px;
     bottom:50px;
+    display: block !important;
 }
 
-#slidermenu > .handle > i {
+#menuHandle > i {
     border: none !important;
 }
 

@@ -1,16 +1,7 @@
-$('<div id="slidermenu">').appendTo($('body')).load('/static/templates/mob-menu.html', function() {
+$('#menu').load('/static/templates/mob-menu.html', function() {
 
-    var $slider = $(this).show('slow')
-    var $handle = $slider.find('.handle')
-
-    $slider.slideReveal({
-        width: 275
-    });
-
-    $handle.click(function () {
-        $slider.slideReveal("toggle", false);
-        $(this).children('i').toggleClass('other')
-    });
+    // var $slider = $(this).show('slow');
+    var $slider = $(this);
 
     var $fileImportButton = $("button#fileImport").button();
     var $fileImportInput = $("input#fileImport").button();
