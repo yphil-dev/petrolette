@@ -33,7 +33,22 @@ body {
 
 /* TABS */
 
+li.mobTab,
+#newTabButton {
+    margin: 0 0 0 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: inset 4px 0px 6px -4px rgba(0,0,0,0.19) !important;
+}
+
+.tabCloser {
+    display: none;
+}
 /* FEEDS */
+
+.ui-tabs-panel {
+    padding:0 !important;
+}
 
 @keyframes spin-animation {
   0% {

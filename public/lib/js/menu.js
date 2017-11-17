@@ -1,7 +1,19 @@
-$('#menu').load('/static/templates/mob-menu.html', function() {
+$('<div id="menu">').appendTo($('body')).load('/static/templates/mob-menu.html', function() {
 
-    // var $slider = $(this).show('slow');
     var $slider = $(this);
+    var $handle = $slider.find('.handle')
+
+    // $slider.slideReveal({
+    //     width: 275
+    // });
+
+    $handle.click(function () {
+
+        $slider.toggleClass('expanded');
+
+        // $slider.slideReveal("toggle", false);
+        $(this).children('i').toggleClass('other')
+    });
 
     var $fileImportButton = $("button#fileImport").button();
     var $fileImportInput = $("input#fileImport").button();
