@@ -1,7 +1,9 @@
-/* html { */
-/*     overflow-x: auto; */
-/*     overflow-y: auto; */
-/* } */
+html {
+    font-size: 100%;
+    overflow-y: scroll;
+    /* -webkit-text-size-adjust: 100%; */
+    /* -ms-text-size-adjust: 100%; */
+}
 
 /* Bootstrapping */
 ul {
@@ -240,7 +242,7 @@ li.feed {
 
 .mobHeader .feedControls {
     flex: 0 0 auto;
-    z-index:50;
+    /* z-index:50; */
     min-width:80px;
     align-items:flex-start;
     align-content:flex-start;

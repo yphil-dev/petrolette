@@ -67,10 +67,12 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         value: gallerySlideshowSpeed,
         min: 1,
         max: 10000,
-        step: 100,
+        step: 1,
         slide: function(event, ui) {
             $('#amount').val(ui.value + 'ms');
-            $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
+            // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
+            $('#gallerySlideshowSpeedValue').text(Utilities.milliToSecs(ui.value) + 's');
+
 
         },
         change: function(event, ui) {
@@ -85,7 +87,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     });
 
     $('#amount').val($('#gallerySlideshowSpeed').slider('value') + 'ms');
-    $('#gallerySlideshowSpeedValue').text($('#gallerySlideshowSpeed').slider('value') + 'ms');
+    $('#gallerySlideshowSpeedValue').text(Utilities.milliToSecs($('#gallerySlideshowSpeed').slider('value')) + 's');
 
     // File select
 

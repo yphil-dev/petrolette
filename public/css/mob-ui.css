@@ -1,7 +1,7 @@
 #progressBar {
     position:absolute;
     /* float: left; */
-    z-index: 999 !important;
+    z-index: 9 !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -54,14 +54,20 @@
     color: green !important;
 }
 
-
 div.mobDialog legend,
 #menu legend {
-    font-family: 'GidoleRegular';
+    font-family: 'Ubuntu' !important;
     font-weight: normal;
-    font-style: ;
-    color: #85144B !important;
-    /* font-family: 'Ubuntu' !important; */
+    font-style: italic;
+    /* color: #6E7A94 !important; */
+    /* font-size:100% !important; */
+}
+
+fieldset,
+legend {
+    background-color: #84A6CB !important;
+    /* color:            #3C2413 !important; */
+    /* font-size:76% !important; */
 }
 
 #menu,
@@ -217,12 +223,6 @@ div#feedLimit {
 }
 
 /* WTF */
-
-fieldset,
-legend {
-    background-color: #6E7A94 !important;
-    color:            #3C2413 !important;
-}
 
 legend {
     padding: .2em .5em;
