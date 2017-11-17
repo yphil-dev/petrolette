@@ -45,9 +45,9 @@
 
                      $(document).prop('title', $activeTab.text() + ' | Mobylette');
 
-                     $('.ui-tabs-tab i').remove();
+                     $('.tabCloser').hide();
 
-                     $activeTab.append($('<i class="icon-cancel-circled tabCloser">'));
+                     $activeTab.find('.tabCloser').show();
                  }
 
              });

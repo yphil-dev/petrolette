@@ -41,6 +41,9 @@ li.mobTab,
     box-shadow: inset 4px 0px 6px -4px rgba(0,0,0,0.19) !important;
 }
 
+.tabCloser {
+    display: none;
+}
 /* FEEDS */
 
 .ui-tabs-panel {

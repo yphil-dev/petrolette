@@ -20,6 +20,8 @@ var Tab = (function() {
                 return false;
             });
 
+            var $tabCloser = $('<i class="icon-cancel-circled tabCloser">');
+
             var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
 
             $sortable.sortable({
@@ -73,6 +75,7 @@ var Tab = (function() {
             var $thisTab = $('<li class="modal mobTab" title="' + name + ' - Click to rename, drag to re-order">');
 
             $thisTabLink.appendTo($thisTab);
+            $tabCloser.appendTo($thisTab);
 
             var $thisSelectedTab = $('#tabs div.ui-tabs-panel:not(.ui-tabs-hide)');
 

@@ -14,11 +14,12 @@ $menu.load('/static/templates/slidermenu.html', function() {
         $(this).children('i').toggleClass('other')
     });
 
-    var $fileImport = $("button#fileImport").button();
+    var $fileImportButton = $("button#fileImport").button();
+    var $fileImportInput = $("input#fileImport").button();
     var $fileExport = $('#saveTabs').button();
     var $donate = $('#donate').button()
 
-    $fileImport.click(function () {
+    $fileImportButton.click(function () {
         $("input#fileImport").click();
         return false;
     });
@@ -109,7 +110,7 @@ $menu.load('/static/templates/slidermenu.html', function() {
 
     // File select
 
-    $("input#fileImport").change(function(evt){
+    $fileImportInput.change(function(evt){
         var JsonObj = null
         var files = evt.target.files
         var f = files[0];
