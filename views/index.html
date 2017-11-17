@@ -10,7 +10,6 @@
 
         <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
 
-
         <script src="/bower/jquery/dist/jquery.js"></script>
         <script src="/bower/jquery-ui/jquery-ui.js"></script>
 
@@ -23,8 +22,6 @@
         <link rel="stylesheet" href="/static/css/mobylette.css">
 
         <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
-        <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
-        -->
         <link rel="stylesheet" href="/static/css/fontello.css">
 
         <script>
@@ -48,10 +45,6 @@
 
              });
 
-             // INIT
-
-             Tab.populateTabs(JSON.parse(Prefs.readConfig('tabs')))
-
              $tabs.find('.ui-tabs-nav').sortable({
                  axis: 'x',
                  items: '> li:not(#newTabButton)',
@@ -70,6 +63,10 @@
              $tabs.on("click", "i.tabCloser", function() {
                  Dialog.killTab($(this))
              });
+
+             // INIT
+
+             Tab.populateTabs(JSON.parse(Prefs.readConfig('tabs')))
 
              $tabs.find('div.feedControls').slideUp()
 
