@@ -166,7 +166,7 @@ var Feed = (function() {
                 // console.log( 'DONE %s OK (status %s)',  icon, status);
                 $feedIcon.css('background-image','url("' + icon + '")');
              }).fail(function(icon, status) {
-                 console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
+                 // console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
                  $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
              }).always(function(icon, status) {
 
