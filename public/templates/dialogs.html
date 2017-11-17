@@ -32,6 +32,21 @@
                    onclick="select()"
                    autofocus
             />
+
+            <div id="feedGuess" class="testFlex">
+                <input type="text"
+                       name="guess"
+                       id="feedGuess"
+                       placeholder="URL (https://reddit.com)"
+                       value=""
+                       class="text ui-widget-content grow left twin"
+                       onclick="select()"
+                />
+                <button type="button" id="feedGuess" class="shrink twin right">
+                    <i class="icon-cog"></i>
+                </button>
+            </div>
+
         </fieldset>
 
         <fieldset id="feedType" class="prefsForm ui-widget ui-widget-content ui-corner-all">
@@ -48,7 +63,7 @@
 
         <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
             <legend class="ui-corner-top" class="ui-corner-top">Limit # of items</legend>
-            <div id="testFlex">
+            <div class="testFlex">
                 <div class="feedLimit grow left twin">
                     <label for="feedLimit" class="ui-helper-hidden">
                         <input type="text" id="feedLimit" />

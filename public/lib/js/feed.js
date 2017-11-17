@@ -70,7 +70,7 @@ var Feed = (function() {
                 function() {
                     var iconImg = $feedToggle.css('background-image');
 
-                    console.log('IMG: (%s)', iconImg);
+                    // console.log('IMG: (%s)', iconImg);
 
                     $(this).data('img',iconImg);
 
@@ -157,7 +157,7 @@ var Feed = (function() {
             $.get("/feedicon", {
                 url: decodeURI(feedHost),
                 dataType: "json",
-                timeout: 3000
+                timeout: 2000
             }, function(icon, status) {
 
                 if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
@@ -165,13 +165,13 @@ var Feed = (function() {
             }).done(function(icon, status) {
                 // console.log( 'DONE %s OK (status %s)',  icon, status);
                 $feedIcon.css('background-image','url("' + icon + '")');
-             }).fail(function(icon, status) {
-                 // console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
-                 $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
-             }).always(function(icon, status) {
+            }).fail(function(icon, status) {
+                // console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
+                $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
+            }).always(function(icon, status) {
 
-                 // console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
-             });
+                // console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
+            });
 
             $.get("/feed", {
                 feedurl: feedUrl,

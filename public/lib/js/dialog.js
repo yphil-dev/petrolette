@@ -95,13 +95,6 @@ var Dialog = (function() {
 
                 var $spinner = $(this).find('#spinner').spinner();
 
-
-                var myVal
-
-                $spinner.on( "spinstart", function(event, ui) {
-                    myVal = $(this).val()
-                });
-
                 $spinner.on( "spinstop", function(event, ui) {
                     $dialog.find('div#feedLimit').slider( "option", "value", $(this).val());
                     $dialog.find(".ui-slider-handle").text($(this).val());
@@ -110,10 +103,6 @@ var Dialog = (function() {
                 var $dataStore = $feedPrefsButton.parent().parent()
 
                 var $feed = $dataStore.parent().parent();
-
-                if (isNewFeed === true) {
-                    console.log('NEW!')
-                }
 
                 $dialog.dialog({
                     autoOpen: false,
@@ -126,11 +115,7 @@ var Dialog = (function() {
                             $(this).dialog( 'close' );
 
                             if (isNewFeed) {
-
-                                $feed.hide('slide', 1000, function() {
-                                    $feed.remove();
-                                });
-
+                                $feed.hide('slide', 1000, function() { $feed.remove() });
                             }
 
                         },
@@ -145,8 +130,6 @@ var Dialog = (function() {
                             Feed.populateFeed($feedPrefsButton);
                             Tab.saveTabs();
 
-                            // $(this).find('.feedType').checkboxradio( "destroy" );
-
                             $(this).dialog( 'close' );
 
                             $('#mobDialogs').empty();
@@ -156,11 +139,48 @@ var Dialog = (function() {
 
                         var $dialog = $(this),
                             $tabFeedId = $('li#' + $dataStore.data('id')),
-                            $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh');
+                            $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh'),
+                            $guessButton = $dialog.find('button#feedGuess').button(),
+                            $guessSpinner = $dialog.find('button#feedGuess > i'),
+                            $guessField = $dialog.find('input#feedGuess'),
+                            $guessGroup = $dialog.find('div#feedGuess').controlgroup(),
+                            $urlGroup = $guessGroup.parent(),
+                            $guessCandidate = $('<div id="guessCandidate">');
 
                         var oldUrl = $dataStore.data('url'),
                             oldType = $dataStore.data('type'),
                             oldLimit = $dataStore.data('limit');
+
+                        // $dialog.find('div#feedGuessContainer').controlgroup();
+
+                        $guessField.val(oldUrl);
+                        $guessButton.click(function(event) {
+                            console.log('\nGuess: %s', $guessField.val());
+
+                            $guessSpinner.addClass('spinner');
+
+                            $.get("/discover", {
+                                url: $guessField.val(),
+                                dataType: "json",
+                                timeout: 2000
+                            }, function(feed, status) {
+                                $guessSpinner.removeClass('spinner')
+                                             .removeClass('icon-cog');
+                            }).done(function(feed, status) {
+                                console.log( 'DONE %s OK (status %s)',  feed, status);
+                                // $guessCandidate.append(feed).appendTo($urlGroup);
+                                $guessField.val(feed);
+                                $guessSpinner.addClass('icon-ok');
+
+                            }).fail(function(feed, status) {
+                                console.log( '%s: ERROR (status: %s)',  $guessField.val(), status);
+                                $guessSpinner.addClass('icon-cancel-circled');
+                            }).always(function(feed, status) {
+                                console.log( 'Always %s (status: %s)',  $guessField.val(), status);
+                            });
+
+
+                        });
 
                         $spinner.spinner( "value", oldLimit);
 

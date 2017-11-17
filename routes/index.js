@@ -4,6 +4,8 @@ var favicon = require('favicon');
 var FeedParser = require('feedparser');
 var request = require('request'); // for fetching the feed
 
+var feedrat = require('feedrat');
+
 var cheerio = require('cheerio');
 
 router.get('/', function(req, res, next) {
@@ -67,122 +69,6 @@ function getDomain(url) {
     return m ? m[0] : null;
 }
 
-router.get('/favicon', function(req, res, next) {
-
-    var thisUri = req.query.url;
-    var req = request(req.query.url, function(error, response, html) {
-
-        var okTypes = [
-            'image/x-icon',
-            'image/png',
-            'image/vnd.microsoft.icon'
-        ];
-
-        var $ = cheerio.load(html, {
-            xmlMode: true
-        });
-
-        $.prototype.exists = function (selector) {
-            return this.find(selector).length > 0;
-        }
-
-        var $link = $('link');
-
-        if ($link.length !== 0){
-
-            if (thisUri !== null && thisUri !== '') {
-
-                console.log('\nDomain (%s)', getDomain(thisUri));
-
-                var obviousIcon = getDomain(thisUri) + '/favicon.ico';
-                var pngIcon = getDomain(thisUri) + '/favicon.png';
-
-                request
-                    .get(obviousIcon)
-                    .on('response', function(response) {
-
-                        if (response.statusCode == 200) {
-                            console.log('(obvious) ICON! (%s)', obviousIcon)
-                        }
-                    })
-                    .on('error', function(err) {
-                        console.log('NO (obvious) ICON! (%s)', err)
-                    })
-
-                request
-                    .get(pngIcon)
-                    .on('response', function(response) {
-
-                        if (response.statusCode == 200) {
-                            console.log('(png) ICON! (%s)', pngIcon)
-                        }
-                    })
-                    .on('error', function(err) {
-                        console.log('NO (png) ICON! (%s)', err)
-                    })
-
-
-                // if (typeof $link.attr('rel') !== 'undefined' && $link.attr('rel') === 'alternate') {
-                //     // console.log('REL (%s): %s', thisUri, $link.attr('href'));
-
-                //     var altIcon = $link.attr('href') + '/favicon.ico';
-
-                //     request
-                //         .get(altIcon)
-                //         .on('response', function(response) {
-
-                //             if (response.statusCode == 200 && okTypes.indexOf(response.headers['content-type']) >= 0) {
-                //                 console.log('ALT ICON! (%s)', altIcon) // 200
-                //             }
-
-                //         })
-                //         .on('error', function(err) {
-                //             console.log('NO (alt) ICON! (%s)', err)
-                //         })
-
-
-                // }
-
-            }
-
-        }
-
-    });
-
-    // req.on('response', function(response) {
-    //     console.log('OK: %s', response.statusCode) // 200
-    //     // console.log(response.headers['content-type']) // 'image/png'
-    // })
-
-    // req.on('error', function(err) {
-    //     console.log('Err: %s', err) // 200
-    // })
-
-    // if (!error && response.statusCode == 200) {
-
-    //     var $ = cheerio.load(html, {
-    //         xmlMode: true
-    //     });
-
-    //     $.prototype.exists = function (selector) {
-    //         return this.find(selector).length > 0;
-    //     }
-
-    //     if ($('link').attr('rel').exists()) {
-    //         console.log('Link: %s', $('link').attr('href'))
-
-    //         if (isValidUri(getDomain($('link').attr('href')) + '/favicon.ico')) {
-    //             console.log('Found VALID alt!');
-    //         } else {
-    //             console.log('bummer! (%s)', isValidUri(getDomain($('link').attr('href')) + '/favicon.ico'));
-    //         }
-    //     }
-
-    // }
-
-
-})
-
 router.get('/feedicon', function(req, res, next) {
 
     favicon(req.query.url, function(err, u) {
@@ -200,6 +86,24 @@ router.get('/feedicon', function(req, res, next) {
         }
     });
 });
+
+router.get('/discover', function(req, res, next) {
+
+    feedrat(req.query.url, function(err, u) {
+
+        if (typeof u === 'undefined' || !u) {
+
+            console.log('Url: ' + req.query.url)
+
+            res.send(err);
+        } else {
+            // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
+            res.send(u)
+            // console.log('Err: ' + JSON.stringify(err))
+        }
+    });
+});
+
 
 router.post('/upload', function(req, res) {
     if (!req.files)

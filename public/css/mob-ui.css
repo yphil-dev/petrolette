@@ -164,13 +164,17 @@ label {
     margin: 5px 0;
 }
 
-#feedUrl,
-div#testFlex div,
-#feedType label {
+/* #feedUrl, */
+/* div.testFlex div, */
+/* #feedType label { */
+/*     flex: 1; */
+/* } */
+
+.prefsForm > * {
     flex: 1;
 }
 
-div#testFlex {
+div.testFlex {
     display:flex;
 }
 
