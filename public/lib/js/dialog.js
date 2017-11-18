@@ -121,7 +121,7 @@ var Dialog = (function() {
                         },
                         'OK': function() {
 
-                            var newUrl = $(this).find('input#feedUrl').val();
+                            var newUrl = $(this).find('input#feedGuess').val();
                             var newType = $("#feedType :radio:checked").attr('id');
 
                             $dataStore.data('url', newUrl)
@@ -137,6 +137,7 @@ var Dialog = (function() {
                     },
                     open: function(event, ui) {
 
+
                         var $dialog = $(this),
                             $tabFeedId = $('li#' + $dataStore.data('id')),
                             $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh'),
@@ -145,7 +146,8 @@ var Dialog = (function() {
                             $guessField = $dialog.find('input#feedGuess'),
                             $guessGroup = $dialog.find('div#feedGuess').controlgroup(),
                             $urlGroup = $guessGroup.parent(),
-                            $guessCandidate = $('<div id="guessCandidate">');
+                            $guessCandidate = $('<div id="guessCandidate">'),
+                            $okButton = $('.ui-dialog-buttonpane').find('button:contains("OK")').addClass('okButton');
 
                         var oldUrl = $dataStore.data('url'),
                             oldType = $dataStore.data('type'),
@@ -153,30 +155,36 @@ var Dialog = (function() {
 
                         // $dialog.find('div#feedGuessContainer').controlgroup();
 
-                        $guessField.val(oldUrl);
+                        // $guessField.val(oldUrl);
                         $guessButton.click(function(event) {
                             console.log('\nGuess: %s', $guessField.val());
 
-                            $guessSpinner.addClass('spinner');
+                            $guessSpinner.removeClass('icon-ok icon-cancel-circled icon-flashlight')
+                                         .addClass('spinner icon-cog');
+                            $guessButton.removeClass('ui-state-success ui-state-error');
 
                             $.get("/discover", {
                                 url: $guessField.val(),
                                 dataType: "json",
-                                timeout: 2000
+                                timeout: 1200
                             }, function(feed, status) {
-                                $guessSpinner.removeClass('spinner')
-                                             .removeClass('icon-cog');
+                                $guessSpinner.removeClass('spinner icon-cog');
                             }).done(function(feed, status) {
-                                console.log( 'DONE %s OK (status %s)',  feed, status);
+                                console.log( 'OK %s (status %s)', feed, status);
                                 // $guessCandidate.append(feed).appendTo($urlGroup);
                                 $guessField.val(feed);
                                 $guessSpinner.addClass('icon-ok');
+                                $guessButton.addClass('ui-state-success');
+
+                                $okButton.addClass("ui-state-success");
 
                             }).fail(function(feed, status) {
-                                console.log( '%s: ERROR (status: %s)',  $guessField.val(), status);
-                                $guessSpinner.addClass('icon-cancel-circled');
+                                console.log( 'ERROR %s (status: %s)', $guessField.val(), status);
+                                $guessSpinner.removeClass('icon-cog spinner')
+                                             .addClass('icon-cancel-circled');
+                                $guessButton.addClass('ui-state-error');
                             }).always(function(feed, status) {
-                                console.log( 'Always %s (status: %s)',  $guessField.val(), status);
+                                console.log( 'Always %s (status: %s)', $guessField.val(), status);
                             });
 
 
@@ -184,7 +192,7 @@ var Dialog = (function() {
 
                         $spinner.spinner( "value", oldLimit);
 
-                        $(this).find('input#feedUrl').val(oldUrl);
+                        $(this).find('input#feedGuess').val(oldUrl);
 
                         $(this).find('.feedType').checkboxradio();
 
@@ -227,7 +235,7 @@ var Dialog = (function() {
                             return false;
                         });
 
-                        $dialog.find('#feedUrl').select()
+                        $dialog.find('#feedGuess').select()
 
                     }
                 });

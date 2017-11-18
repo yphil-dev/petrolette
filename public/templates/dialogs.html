@@ -23,27 +23,20 @@
     <form>
         <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
             <legend class="ui-corner-top">URL</legend>
-            <input type="text"
-                   name="url"
-                   id="feedUrl"
-                   placeholder="Feed URL (https://reddit.com/.rss)"
-                   value=""
-                   class="text ui-widget-content ui-corner-all"
-                   onclick="select()"
-                   autofocus
-            />
 
             <div id="feedGuess" class="testFlex">
                 <input type="text"
                        name="guess"
                        id="feedGuess"
                        placeholder="URL (https://reddit.com)"
+                       title="Enter a feed URL, or a website (and hit search)"
                        value=""
                        class="text ui-widget-content grow left twin"
                        onclick="select()"
+                       autofocus
                 />
                 <button type="button" id="feedGuess" class="shrink twin right">
-                    <i class="icon-cog"></i>
+                    <i class="icon-flashlight"></i>
                 </button>
             </div>
 

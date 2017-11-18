@@ -26,7 +26,7 @@ function getFeed (urlfeed, callback) {
         }
     });
     req.on ("error", function (res) {
-        console.log ("getFeed: Error reading (%s) feed.", urlfeed);
+        console.log ("getFeed: Error reading %s (%s) .", urlfeed, res);
     });
     feedparser.on ("readable", function () {
         try {
@@ -95,7 +95,8 @@ router.get('/discover', function(req, res, next) {
 
             console.log('Url: ' + req.query.url)
 
-            res.send(err);
+            // res.send(err);
+            res.status(500).send('Something broke!')
         } else {
             // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
             res.send(u)
