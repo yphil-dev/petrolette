@@ -92,15 +92,9 @@ router.get('/discover', function(req, res, next) {
     feedrat(req.query.url, function(err, u) {
 
         if (typeof u === 'undefined' || !u) {
-
-            console.log('Url: ' + req.query.url)
-
-            // res.send(err);
             res.status(500).send('Something broke!')
         } else {
-            // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
             res.send(u)
-            // console.log('Err: ' + JSON.stringify(err))
         }
     });
 });

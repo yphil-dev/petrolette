@@ -98,7 +98,11 @@ legend {
 }
 
 .ui-state-success {
-    background-color: #88DC00 !important;
+    background-color: #DFF2BF !important;
+}
+
+.ui-state-error {
+    background-color: #FFBABA !important;
 }
 
 .logoItem {

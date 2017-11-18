@@ -146,16 +146,12 @@ var Dialog = (function() {
                             $guessField = $dialog.find('input#feedGuess'),
                             $guessGroup = $dialog.find('div#feedGuess').controlgroup(),
                             $urlGroup = $guessGroup.parent(),
-                            $guessCandidate = $('<div id="guessCandidate">'),
                             $okButton = $('.ui-dialog-buttonpane').find('button:contains("OK")').addClass('okButton');
 
                         var oldUrl = $dataStore.data('url'),
                             oldType = $dataStore.data('type'),
                             oldLimit = $dataStore.data('limit');
 
-                        // $dialog.find('div#feedGuessContainer').controlgroup();
-
-                        // $guessField.val(oldUrl);
                         $guessButton.click(function(event) {
                             console.log('\nGuess: %s', $guessField.val());
 
@@ -171,18 +167,20 @@ var Dialog = (function() {
                                 $guessSpinner.removeClass('spinner icon-cog');
                             }).done(function(feed, status) {
                                 console.log( 'OK %s (status %s)', feed, status);
-                                // $guessCandidate.append(feed).appendTo($urlGroup);
                                 $guessField.val(feed);
                                 $guessSpinner.addClass('icon-ok');
                                 $guessButton.addClass('ui-state-success');
 
-                                $okButton.addClass("ui-state-success");
+                                $okButton.removeClass('ui-state-error')
+                                         .addClass("ui-state-success");
 
                             }).fail(function(feed, status) {
                                 console.log( 'ERROR %s (status: %s)', $guessField.val(), status);
                                 $guessSpinner.removeClass('icon-cog spinner')
                                              .addClass('icon-cancel-circled');
                                 $guessButton.addClass('ui-state-error');
+                                $okButton.addClass("ui-state-error");
+
                             }).always(function(feed, status) {
                                 console.log( 'Always %s (status: %s)', $guessField.val(), status);
                             });

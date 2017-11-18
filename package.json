@@ -21,7 +21,7 @@
     "favicon": "0.0.2",
     "feed-discover": "1.0.6",
     "feedparser": "2.2.2",
-    "feedrat": "^1.0.4",
+    "feedrat": "latest",
     "find-favicon": "0.1.2",
     "hyperquest": "2.1.2",
     "jquery": "^3.2.1",
