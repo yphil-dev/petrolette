@@ -12,20 +12,18 @@
   "dependencies": {
     "body-parser": "~1.18.2",
     "bower": "^1.3.2",
-    "cheerio": "1.0.0-rc.2",
     "cookie-parser": "~1.4.3",
     "cors": "2.8.4",
     "debug": "~2.6.9",
     "ejs": "^2.5.7",
     "express": "~4.15.5",
     "favicon": "0.0.2",
-    "feed-discover": "1.0.6",
     "feedparser": "2.2.2",
     "feedrat": "latest",
     "find-favicon": "0.1.2",
     "hyperquest": "2.1.2",
-    "jquery": "^3.2.1",
-    "jquery-ui": "^1.12.1",
+    "jquery": "latest",
+    "jquery-ui": "latest",
     "parse-favicon": "1.2.8"
   }
 }

@@ -130,13 +130,12 @@ var Dialog = (function() {
                             Feed.populateFeed($feedPrefsButton);
                             Tab.saveTabs();
 
-                            $(this).dialog( 'close' );
+                            $(this).dialog( 'destroy' );
 
                             $('#mobDialogs').empty();
                         }
                     },
                     open: function(event, ui) {
-
 
                         var $dialog = $(this),
                             $tabFeedId = $('li#' + $dataStore.data('id')),
@@ -185,25 +184,32 @@ var Dialog = (function() {
                                 console.log( 'Always %s (status: %s)', $guessField.val(), status);
                             });
 
-
                         });
 
                         $spinner.spinner( "value", oldLimit);
 
-                        $(this).find('input#feedGuess').val(oldUrl);
+                        $dialog.find('input#feedGuess').val(oldUrl);
 
-                        $(this).find('.feedType').checkboxradio();
+                        // $dialog.find('.feedType').checkboxradio();
 
-                        $(this).find('input#' + oldType || 'mixed').prop("checked", true)
+                        $("input:radio, input:checkbox").checkboxradio({
+                            icon: true
+                        });
+
+                        $dialog.find('input#' + oldType || 'mixed').prop("checked", true)
                                .checkboxradio('refresh');
 
-                        $(this).find('#feedType').controlgroup();
+                        $dialog.find('#feedType').controlgroup();
 
-                        $(this).find('.feedType').on("change", function(event){
-                            console.log("CHANGE EVENT!", $(this).attr('id'));
-                            $dialog.find('#feedType').controlgroup('refresh');
-                            $(this).addClass('ui-state-checked ui-state-active');
-                        });
+                        // $dialog.find('.feedType').on("change", function(event){
+                        //     console.log("CHANGE EVENT!", $(this).attr('id'));
+                        //     $(this).attr("checked","checked").change();
+                        // });
+
+                        // $dialog.find('.feedType').click(function(event){
+                        //     console.log("CHANGE EVENT!", $(this).attr('id'));
+                        //     $dialog.find('#feedType').controlgroup('refresh');
+                        // });
 
                         $dialog.find('div#feedLimit').slider({
                             value: oldLimit,

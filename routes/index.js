@@ -6,8 +6,6 @@ var request = require('request'); // for fetching the feed
 
 var feedrat = require('feedrat');
 
-var cheerio = require('cheerio');
-
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
 });

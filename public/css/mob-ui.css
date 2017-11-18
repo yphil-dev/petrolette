@@ -54,19 +54,31 @@
     color: green !important;
 }
 
-div.mobDialog legend,
-#menu legend {
-    font-family: 'Ubuntu' !important;
-    font-weight: normal;
+legend {
+    font-family: 'FyodorBold' !important;
+    font-weight: bold;
     font-style: italic;
     /* color: #6E7A94 !important; */
     /* font-size:100% !important; */
 }
 
+fieldset > p {
+    margin: 0  0 .2em 0;
+}
+
+p, label {
+    font-size:12pt;
+    font-family: 'ArimaKoshiRegular';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.2em;
+    color:            #FFD05B;
+}
+
 fieldset,
 legend {
-    background-color: #84A6CB !important;
-    /* color:            #3C2413 !important; */
+    background-color: #453246 !important;
+    color:            #BFD8D1 !important;
     /* font-size:76% !important; */
 }
 
@@ -74,7 +86,7 @@ legend {
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
-    background-color: #9099A2 !important;
+    background-color: #2B374B !important;
     color:            #000000 !important;
 }
 
@@ -93,7 +105,7 @@ legend {
 
 #menu .ui-state-active,
 #menu .ui-state-hover {
-    background-color: #FFDC00 !important;
+    background-color: #FFD05B !important;
     color: #001F3F !important;
 }
 
@@ -162,7 +174,6 @@ input {
 }
 
 fieldset.prefsForm {
-    text-align:left;
     display:flex;
     flex-flow: row wrap;
 }
@@ -172,10 +183,6 @@ fieldset.menuForm {
     justify-content: space-between;
     flex-flow: row wrap;
     align-items: stretch;
-}
-
-fieldset > p {
-    font-size:12pt;
 }
 
 label {
@@ -264,11 +271,6 @@ legend {
 .mobDialog .mobylette {
     display: inline !important;
     font-size: 1.5rem !important;
-}
-
-.mobDialog p {
-    vertical-align: middle;
-    line-height: normal;
 }
 
 #killDialog .mobylette {
