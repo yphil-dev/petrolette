@@ -162,23 +162,27 @@ input {
 }
 
 fieldset.prefsForm {
+    text-align:left;
+    display:flex;
+    flex-flow: row wrap;
+}
+
+fieldset.menuForm {
     display:flex;
     justify-content: space-between;
     flex-flow: row wrap;
     align-items: stretch;
 }
 
+fieldset > p {
+    font-size:12pt;
+}
+
 label {
     margin: 5px 0;
 }
 
-/* #feedUrl, */
-/* div.testFlex div, */
-/* #feedType label { */
-/*     flex: 1; */
-/* } */
-
-.prefsForm > * {
+.prefsForm > *:not(p) {
     flex: 1;
 }
 
