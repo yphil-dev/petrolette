@@ -74,11 +74,11 @@ var Feed = (function() {
 
                     $(this).data('img',iconImg);
 
-                    $(this).find('.feedControls').slideDown();
+                    $(this).find('.feedControls').slideDown('fast');
                     $feedToggle.css('background-image', 'url("/static/images/feed-toggle-triangle.png")')
                 },
                 function() {
-                    $(this).find('.feedControls').slideUp();
+                    $(this).find('.feedControls').slideUp('slow');
 
                     if (typeof  $(this).data('img') !== 'undefined') {
                         $feedToggle.css('background-image', $(this).data('img'))
