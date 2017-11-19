@@ -1,17 +1,21 @@
 $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', function() {
 
-    var $slider = $(this);
-    var $handle = $slider.find('.handle')
+    var $slider = $(this)
+      , $handle = $slider.find('.handle')
+      , $fileImportButton = $("button#fileImport").button()
+      , $fileImportInput = $("input#fileImport").button()
+      , $fileExport = $('#saveTabs').button()
+      , $donate = $('#donate').button()
+      , $profile = $('#profile').button();
 
     $handle.click(function () {
         $slider.toggleClass('expanded');
         $(this).children('i').toggleClass('close')
     });
 
-    var $fileImportButton = $("button#fileImport").button();
-    var $fileImportInput = $("input#fileImport").button();
-    var $fileExport = $('#saveTabs').button();
-    var $donate = $('#donate').button()
+    $profile.click(function () {
+        Dialog.question("Are you a FASCIST?");
+    });
 
     $donate.tooltip();
 

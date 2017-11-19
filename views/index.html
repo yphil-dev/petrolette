@@ -12,7 +12,6 @@
         <link rel="preload" href="/static/css/themes/day.css">
         <link rel="preload" href="/static/css/themes/night.css">
 
-
         <script src="/bower/jquery/dist/jquery.js"></script>
         <script src="/bower/jquery-ui/jquery-ui.js"></script>
 
@@ -26,13 +25,11 @@
 
         <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
 
-        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/fyodor" type="text/css"/>
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/kaushan-script" type="text/css"/>
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/arima-koshi" type="text/css"/>
         <script>
 
-         document.fonts.onloadingdone = function (fontFaceSetEvent) {
-             document.getElementById('waitScreen').style.display = 'none';
-         };
+         console.log('Lang: (%s)', navigator.language)
 
          $(document).ready(function() {
 
@@ -86,13 +83,25 @@
 
     <body>
 
-        <div id='waitScreen' style="text-align:center; vertical-align: middle; width: 100vw;"><i style="line-height: 400px; color:#aaa" class="icon-cog spinner"></i></div>
+        <div id="waitScreen" style="position: fixed; top:0; width: 100vw; height: 100vh;">
+            <div class="wspinner"></div>
+            <!-- plop -->
+        </div>
 
         <div id="tabs">
             <ul id="tabUl"></ul>
         </div>
 
         <div id="mobDialogs"></div>
+
+        <script>
+
+         document.fonts.ready.then((fontFaceSet) => {
+             console.log(fontFaceSet.size, 'FontFaces loaded.');
+             document.getElementById('waitScreen').style.display = 'none';
+         });
+
+        </script>
 
         <script src="/static/lib/js/menu.js"></script>
         <script src="/static/lib/js/tab.js"></script>

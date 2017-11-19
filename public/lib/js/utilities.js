@@ -17,13 +17,6 @@ var Utilities = (function() {
             progress.increment = function() {
                 var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
 
-                // var colors = ['#f00', '#00f']
-                // var randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-                // this.progressElt.animate({'background-color': newColor}, 200);
-
-                // console.log('Step: %s/%s, percent: %s', this.step + 1, this.steps, Math.ceil(100 * (this.step + 1) / this.steps));
-
                 this.progressElt.animate({
                     width: Math.ceil(100 * (this.step + 1) / this.steps) + '%'
                     // ,'background-color': randomColor

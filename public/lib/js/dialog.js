@@ -1,27 +1,34 @@
 var Dialog = (function() {
 
     return {
+        kill:function($dialog) {
+            $dialog.dialog( 'destroy' );
+            $('#mobDialogs').empty();
+            // return;
+        },
+        question:function(question) {
+            $dialog.dialog('open');
+        },
         renameTab:function($tab) {
 
             $('#mobDialogs').load('/static/templates/dialogs.html #renameTabDialog', function() {
                 var $dialog = $('#renameTabDialog')
 
-                console.log('Imma dialog: %s', $tab.text())
-
                 $dialog.dialog({
                     autoOpen: false,
                     resizable: false,
-                    height: "auto",
+                    height: 'auto',
                     width: 400,
                     modal: true,
                     buttons: {
                         Cancel: function() {
-                            $( this ).dialog( 'close' );
+                            console.info('close!');
+                            Dialog.kill($dialog);
                         },
                         'OK': function() {
                             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
                             Tab.saveTabs();
-                            $(this).dialog('close');
+                            Dialog.kill($dialog);
                         }
                     },
                     open: function( event, ui ) {
@@ -31,8 +38,7 @@ var Dialog = (function() {
                         $(this).on('submit', function () {
                             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
                             Tab.saveTabs();
-                            $(this).dialog('close');
-                            return false;
+                            Dialog.kill($dialog);
                         });
                     }
                 });
@@ -47,21 +53,20 @@ var Dialog = (function() {
         killFeed:function($button) {
 
             $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
-                var $killFeedDialog = $('#killDialog')
+                var $dialog = $('#killDialog')
 
                 var $thisFeedId = $button.parent().parent().parent().parent().attr('id')
                 var thisFeedName = $button.parent().parent().prev().text()
 
-
-                $killFeedDialog.dialog({
+                $dialog.dialog({
                     title: 'Kill Feed',
                     autoOpen: false,
                     resizable: false,
-                    height: "auto",
+                    height: 'auto',
                     width: 400,
                     modal: true,
                     buttons: {
-                        "Delete feed": function() {
+                        'Delete feed': function() {
 
                             var $tabFeedId = $('#' + $(this).data('feedId'))
 
@@ -70,10 +75,10 @@ var Dialog = (function() {
                             });
 
                             Tab.saveTabs()
-                            $(this).dialog( "close" );
+                            Dialog.kill($dialog);
                         },
                         Cancel: function() {
-                            $( this ).dialog( "close" );
+                            Dialog.kill($dialog);
                         }
                     },
                     open: function () {
@@ -84,7 +89,7 @@ var Dialog = (function() {
                     }
                 });
 
-                $killFeedDialog.data('feedId', $thisFeedId).dialog('open')
+                $dialog.data('feedId', $thisFeedId).dialog('open')
             })
 
         },
@@ -95,9 +100,9 @@ var Dialog = (function() {
 
                 var $spinner = $(this).find('#spinner').spinner();
 
-                $spinner.on( "spinstop", function(event, ui) {
-                    $dialog.find('div#feedLimit').slider( "option", "value", $(this).val());
-                    $dialog.find(".ui-slider-handle").text($(this).val());
+                $spinner.on( 'spinstop', function(event, ui) {
+                    $dialog.find('div#feedLimit').slider( 'option', 'value', $(this).val());
+                    $dialog.find('.ui-slider-handle').text($(this).val());
                 });
 
                 var $dataStore = $feedPrefsButton.parent().parent()
@@ -112,7 +117,7 @@ var Dialog = (function() {
                     modal: true,
                     buttons: {
                         Cancel: function() {
-                            $(this).dialog( 'close' );
+                            Dialog.kill($dialog);
 
                             if (isNewFeed) {
                                 $feed.hide('slide', 1000, function() { $feed.remove() });
@@ -122,7 +127,7 @@ var Dialog = (function() {
                         'OK': function() {
 
                             var newUrl = $(this).find('input#feedGuess').val();
-                            var newType = $("#feedType :radio:checked").attr('id');
+                            var newType = $('#feedType :radio:checked').attr('id');
 
                             $dataStore.data('url', newUrl)
                                       .data('type', newType)
@@ -130,7 +135,7 @@ var Dialog = (function() {
                             Feed.populateFeed($feedPrefsButton);
                             Tab.saveTabs();
 
-                            $(this).dialog( 'destroy' );
+                            Dialog.kill($dialog);
 
                             $('#mobDialogs').empty();
                         }
@@ -158,9 +163,9 @@ var Dialog = (function() {
                                          .addClass('spinner icon-cog');
                             $guessButton.removeClass('ui-state-success ui-state-error');
 
-                            $.get("/discover", {
+                            $.get('/discover', {
                                 url: $guessField.val(),
-                                dataType: "json",
+                                dataType: 'json',
                                 timeout: 1200
                             }, function(feed, status) {
                                 $guessSpinner.removeClass('spinner icon-cog');
@@ -171,14 +176,14 @@ var Dialog = (function() {
                                 $guessButton.addClass('ui-state-success');
 
                                 $okButton.removeClass('ui-state-error')
-                                         .addClass("ui-state-success");
+                                         .addClass('ui-state-success');
 
                             }).fail(function(feed, status) {
                                 console.log( 'ERROR %s (status: %s)', $guessField.val(), status);
                                 $guessSpinner.removeClass('icon-cog spinner')
                                              .addClass('icon-cancel-circled');
                                 $guessButton.addClass('ui-state-error');
-                                $okButton.addClass("ui-state-error");
+                                $okButton.addClass('ui-state-error');
 
                             }).always(function(feed, status) {
                                 console.log( 'Always %s (status: %s)', $guessField.val(), status);
@@ -186,17 +191,17 @@ var Dialog = (function() {
 
                         });
 
-                        $spinner.spinner( "value", oldLimit);
+                        $spinner.spinner( 'value', oldLimit);
 
                         $dialog.find('input#feedGuess').val(oldUrl);
 
                         // $dialog.find('.feedType').checkboxradio();
 
-                        $("input:radio, input:checkbox").checkboxradio({
+                        $('input:radio, input:checkbox').checkboxradio({
                             icon: true
                         });
 
-                        $dialog.find('input#' + oldType || 'mixed').prop("checked", true)
+                        $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
                                .checkboxradio('refresh');
 
                         $dialog.find('#feedType').controlgroup();
@@ -217,16 +222,16 @@ var Dialog = (function() {
                             max: 128,
                             step: 1,
                             create: function( event, ui ) {
-                                $("input#feedLimit").val(oldLimit);
-                                $(this).find(".ui-slider-handle").text(oldLimit);
+                                $('input#feedLimit').val(oldLimit);
+                                $(this).find('.ui-slider-handle').text(oldLimit);
                             },
                             slide: function( event, ui ) {
                                 $(this).val(ui.value);
-                                $(this).find(".ui-slider-handle").text(ui.value);
-                                $("input#spinner").val(ui.value);
+                                $(this).find('.ui-slider-handle').text(ui.value);
+                                $('input#spinner').val(ui.value);
                             },
                             change: function( event, ui ) {
-                                $("input#feedLimit").val(ui.value);
+                                $('input#feedLimit').val(ui.value);
                                 $dataStore.data('limit', ui.value);
                             }
                         });
@@ -235,7 +240,7 @@ var Dialog = (function() {
                             Feed.populateFeed($mobFeedRefresh);
                             Tab.saveTabs();
 
-                            $(this).dialog('close');
+                            $(this).dialog('destroy');
                             return false;
                         });
 
@@ -267,27 +272,27 @@ var Dialog = (function() {
 
             $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
 
-                var $killTabDialog = $('#killDialog')
+                var $dialog = $('#killDialog')
 
-                $killTabDialog.dialog({
+                $dialog.dialog({
                     autoOpen: false,
                     resizable: false,
-                    height: "auto",
+                    height: 'auto',
                     title: 'Kill Tab',
                     width: 400,
                     modal: true,
                     buttons: {
-                        "Delete all feeds": function() {
+                        'Delete all feeds': function() {
 
                             $selectedTab.remove();
                             $selectedPanel.remove();
 
                             Tab.saveTabs();
-                            $(this).dialog( "close" );
+                            Dialog.kill($dialog);
                             $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
                         },
                         Cancel: function() {
-                            $(this).dialog( "close" );
+                            Dialog.kill($dialog);
                         }
                     },
                     open: function () {
@@ -296,7 +301,7 @@ var Dialog = (function() {
                     }
                 });
 
-                $killTabDialog.dialog('open')
+                $dialog.dialog('open')
             });
         }
     };

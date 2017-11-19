@@ -55,15 +55,24 @@
 }
 
 legend {
-    font-family: 'FyodorBold' !important;
-    font-weight: bold;
+    font-family: 'KaushanScriptRegular' !important;
+    font-weight: normal;
     font-style: italic;
     /* color: #6E7A94 !important; */
-    /* font-size:100% !important; */
+    font-size:120% !important;
+    padding: .2em .8em .2em .4em;
 }
 
 fieldset > p {
     margin: 0  0 .2em 0;
+}
+
+fieldset a:link {
+    color:            #BFD8D1;
+}
+
+fieldset a:visited {
+    color:            #6E7A94;
 }
 
 p, label {
@@ -89,6 +98,8 @@ legend {
     background-color: #2B374B !important;
     color:            #000000 !important;
 }
+
+.ui-button {text-align: left}
 
 .ui-dialog .ui-dialog-buttonpane {
     margin: 0 !important;
@@ -247,10 +258,6 @@ div#feedLimit {
 
 /* WTF */
 
-legend {
-    padding: .2em .5em;
-}
-
 #logo > h1 {
     font-family: 'LobsterRegular';
     font-weight: normal;
@@ -262,13 +269,13 @@ legend {
 }
 
 #logo > .mobylette,
-.mobDialog .mobylette {
+.ui-dialog-content .mobylette {
     color:     #84A6CB;
     font-size: 3.5rem  !important;
     margin:    -2px 0 0 0 !important;
 }
 
-.mobDialog .mobylette {
+.ui-dialog-content .mobylette {
     display: inline !important;
     font-size: 1.5rem !important;
 }
@@ -280,4 +287,40 @@ legend {
 
 #logo {
     display: flex;
+}
+
+/* Wait screen */
+
+#waitScreen{
+  background-color: #7C818C;
+}
+
+#waitScreen > .wspinner {
+  width: 200px;
+  height: 200px;
+  margin: 30% auto;
+  background-color: #7395AE;
+
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }
