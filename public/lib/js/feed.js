@@ -5,7 +5,7 @@ var Feed = (function() {
 
             var feedIndex = $('#tabs').find('.feed').length;
 
-            var $feedToggle = $('<i class="feedIcon rotate">').click(function() {
+            var $feedToggle = $('<i class="feedIcon rotate" title="Click to fold/unfold">').click(function() {
                 $(this).toggleClass("down");
                 $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
                 return false;
@@ -14,7 +14,7 @@ var Feed = (function() {
             var $feedSelect = $('<i title="Select feed" class="icon-check-empty-1 feedSelect feedControl">').button();
             var $feedDelete = $('<i title="Delete feed" class="icon-trash feedDelete feedControl">').button();
             var $feedPrefs = $('<i title="Feed preferences" class="icon-cog mobFeedPrefs feedControl">').button();
-            var $feedReload = $('<i title="Reload feed" class="icon-arrows-cw mobFeedRefresh feedControl">').button();
+            var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl">').button();
 
             var $feedIcon = $('<i title="Toggle feed" class="feedFavicon feedControl">').button();
 
@@ -62,13 +62,15 @@ var Feed = (function() {
             var $deleteDiv = $('<div class="feedDelete">');
             var $titleDiv = $('<div class="feedTitle truncate">');
             var $prefsDiv = $('<div class="prefs">');
-            var $reloadDiv = $('<div class="reload">');
+            var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
 
             $feedToggle.appendTo($toggleDiv);
 
             $header.hover (
                 function() {
                     var iconImg = $feedToggle.css('background-image');
+
+                    $feedToggle.addClass('arrow');
 
                     $(this).data('img',iconImg);
 
@@ -78,7 +80,9 @@ var Feed = (function() {
                 function() {
                     $(this).find('.feedControls').slideUp('slow');
 
-                    if (typeof  $(this).data('img') !== 'undefined') {
+                    $feedToggle.removeClass('arrow');
+
+                    if (typeof $(this).data('img') !== 'undefined') {
                         $feedToggle.css('background-image', $(this).data('img'))
                     } else {
                         $feedToggle.css('background-image', 'url("/static/images/feed-generic-rss.png")')
@@ -121,7 +125,7 @@ var Feed = (function() {
 
             var $dataStore = $button.parent().parent();
             var $refreshButton = $dataStore.find('.mobFeedRefresh');
-
+            var $header = $dataStore.parent();
             var $panel = $dataStore.parent().parent().parent();
 
             var r = new RegExp('^(?:[a-z]+:)?//', 'i');
@@ -165,6 +169,8 @@ var Feed = (function() {
             }).done(function(icon, status) {
                 // console.log( 'DONE %s OK (status %s)',  icon, status);
                 $feedIcon.css('background-image','url("' + icon + '")');
+                $header.data('img',icon);
+
             }).fail(function(icon, status) {
                 // console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
                 $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
@@ -226,6 +232,10 @@ var Feed = (function() {
                         $feedItem.addClass('mobFeedEven')
                     }
 
+                    if (imageUrl && imageUrl[0] == "/") {
+                        imageUrl = feedHost + imageUrl;
+                    }
+
                     if (typeof imageUrl !== 'undefined') {
                         var $imgLink = $('<a>').attr('href', imageUrl)
                                                .attr('data-fancybox', 'gallery')
@@ -253,9 +263,9 @@ var Feed = (function() {
                 $refreshButton.removeClass('spinner');
 
                 // console.log( "error" );
-                $feed.children('.mobHeader').addClass('ui-state-error');
+                $header.addClass('ui-state-error');
                 $feedTitle.text('Error');
-                $feedBody.html('<li class="feedItem">Feed Error: ' + feedUrl + '</li>');
+                $feedBody.html('<li class="feedItem"><strong>Feed Error</strong> (' + feedUrl + ')</li>');
             }).always(function() {
 
                 if(progress) {

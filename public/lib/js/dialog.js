@@ -24,6 +24,8 @@ var Dialog = (function() {
                     height: 'auto',
                     width: 'auto',
                     modal: false,
+                    show: 'slide',
+                    hide: 'explode',
                     buttons: {
                         'What? No': function() {
                             Dialog.kill($dialog);
@@ -221,10 +223,7 @@ var Dialog = (function() {
 
                             Feed.populateFeed($feedPrefsButton);
                             Tab.saveTabs();
-
                             Dialog.kill($dialog);
-
-                            $('#mobDialogs').empty();
                         }
                     },
                     open: function(event, ui) {

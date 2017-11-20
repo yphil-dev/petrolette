@@ -71,29 +71,40 @@ router.get('/feedicon', function(req, res, next) {
 
     favicon(req.query.url, function(err, u) {
 
-        if (typeof u === 'undefined' || !u) {
+        // if (typeof u === 'undefined' || !u) {
 
-            // console.log('Url: ' + req.query.feedhost + '\nFavicon: ' + favicon_url)
+        //     // console.log('Url: ' + req.query.feedhost + '\nFavicon: ' + favicon_url)
 
-            // res.send(err.code);
-            // console.log('Error getting (%s) icon', JSON.stringify(req.query.url))
-        } else {
-            // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
+        //     // res.send(err.code);
+        //     // console.log('Error getting (%s) icon', JSON.stringify(req.query.url))
+        // } else {
+        //     // console.log('Url: ' + req.query.feedhost + '\nError: ' + JSON.stringify(err))
+        //     res.send(u)
+        //     // console.log('Err: ' + JSON.stringify(err))
+        // }
+
+
+        if (u) {
             res.send(u)
-            // console.log('Err: ' + JSON.stringify(err))
+        } else {
+            res.status(500).send('No icon found')
         }
+
+
+
     });
 });
 
 router.get('/discover', function(req, res, next) {
 
-    feedrat(req.query.url, function(err, u) {
+    feedrat(req.query.url, function(err, feed) {
 
-        if (typeof u === 'undefined' || !u) {
-            res.status(500).send('Something broke!')
+        if (feed && typeof feed !== 'undefined' ) {
+            res.send(feed)
         } else {
-            res.send(u)
+            res.status(500).send('No feed found')
         }
+
     });
 });
 

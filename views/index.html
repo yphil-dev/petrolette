@@ -82,6 +82,19 @@
 
         </script>
 
+        <style>
+
+         div#preloaded-images {
+             position: absolute;
+             overflow: hidden;
+             left: -9999px;
+             top: -9999px;
+             height: 1px;
+             width: 1px;
+         }
+
+        </style>
+
     </head>
 
     <body>
@@ -112,6 +125,10 @@
         <script src="/static/lib/js/prefs.js"></script>
         <script src="/static/lib/js/dialog.js"></script>
         <script src="/static/lib/js/utilities.js"></script>
+
+        <div id="preloaded-images">
+            <img src="/static/images/feed-toggle-triangle.png" width="1" height="1" alt="Image 01" />
+        </div>
 
     </body>
 </html>
