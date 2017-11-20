@@ -99,7 +99,9 @@ legend {
     color:            #000000 !important;
 }
 
-.ui-button {text-align: left}
+.ui-button {
+    text-align: left
+}
 
 .ui-dialog .ui-dialog-buttonpane {
     margin: 0 !important;
@@ -323,4 +325,15 @@ div#feedLimit {
     transform: scale(1.0);
     opacity: 0;
   }
+}
+
+#questionDialog > p {
+    font-family: 'GrobeDeutschmeisterRegular';
+    font-size: 74pt;
+    text-align:center;
+}
+
+.ui-dialog[aria-describedby="questionDialog"] {
+    width: 90vw !important;
+    max-width: 1000px !important;
 }

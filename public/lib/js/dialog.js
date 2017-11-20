@@ -4,10 +4,48 @@ var Dialog = (function() {
         kill:function($dialog) {
             $dialog.dialog( 'destroy' );
             $('#mobDialogs').empty();
-            // return;
         },
-        question:function(question) {
-            $dialog.dialog('open');
+        question:function(qn) {
+
+            var questions = [
+                'a FASCIST?',
+                'a LEFTIST?',
+                'ALL OF THAT?',
+                'NONE OF THAT?'
+            ];
+
+            $('#mobDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+                var $dialog = $('#questionDialog');
+
+                $dialog.dialog({
+                    position: { my: 'center', at: 'center', of: window },
+                    autoOpen: false,
+                    resizable: false,
+                    height: 'auto',
+                    width: 'auto',
+                    modal: false,
+                    buttons: {
+                        'What? No': function() {
+                            Dialog.kill($dialog);
+                            Dialog.question(qn++);
+                        },
+                        'Heck, Yes': function() {
+                            Dialog.kill($dialog);
+                        },
+                        'Huh, Skip': function() {
+                            Dialog.kill($dialog);
+                        }
+                    },
+                    open: function( event, ui ) {
+                        $dialog.find('p').html('Are you<br />' + questions[qn++]);
+                    }
+                });
+
+                $dialog.dialog('open');
+                return;
+
+            });
+
         },
         renameTab:function($tab) {
 
@@ -83,7 +121,7 @@ var Dialog = (function() {
                     },
                     open: function () {
                         var $dialog = $(this)
-                        $dialog.children('p').append('Really delete the [' + thisFeedName + '] feed?')
+                        $dialog.children('p').append('Really delete the <strong>' + thisFeedName + '</strong> feed?')
 
                         $('button:contains("Delete")').addClass('ui-state-error');
                     }
@@ -92,6 +130,55 @@ var Dialog = (function() {
                 $dialog.data('feedId', $thisFeedId).dialog('open')
             })
 
+        },
+        killTab:function($button) {
+
+            var $tabs = $('#tabs');
+            var $a = $button.prev('a.ui-tabs-anchor');
+            var tabId = $a.attr('href');
+
+            var $selectedTab = $a.parent();
+            var $selectedPanel = $tabs.find(tabId);
+
+            var selectedTabIndex = $tabs.tabs('option', 'active');
+            var previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
+
+            $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
+
+                var $dialog = $('#killDialog');
+
+                $dialog.dialog({
+                    autoOpen: false,
+                    resizable: false,
+                    height: 'auto',
+                    title: 'Kill Tab',
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        'Delete all feeds': function() {
+
+                            $selectedTab.remove();
+                            $selectedPanel.remove();
+
+                            Tab.saveTabs();
+                            Dialog.kill($dialog);
+                            $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+
+                        },
+                        Cancel: function() {
+                            Dialog.kill($dialog);
+                        }
+                    },
+                    open: function () {
+
+                        $('button:contains("Delete")').addClass('ui-state-error');
+
+                        $(this).children('p').append('Really delete the <strong>' + $a.text() + '</strong> tab and <strong>' + $selectedPanel.find('li.feed').length + '</strong> feeds in it?')
+                    }
+                });
+
+                $dialog.dialog('open')
+            });
         },
         feedPrefs:function($feedPrefsButton, isNewFeed) {
 
@@ -257,52 +344,6 @@ var Dialog = (function() {
                     .dialog('open');
             });
 
-        },
-        killTab:function($button) {
-
-            var $tabs = $('#tabs');
-            var $a = $button.prev('a.ui-tabs-anchor');
-            var tabId = $a.attr('href');
-
-            var $selectedTab = $a.parent();
-            var $selectedPanel = $tabs.find(tabId);
-
-            var selectedTabIndex = $tabs.tabs('option', 'active');
-            var previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
-
-            $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
-
-                var $dialog = $('#killDialog')
-
-                $dialog.dialog({
-                    autoOpen: false,
-                    resizable: false,
-                    height: 'auto',
-                    title: 'Kill Tab',
-                    width: 400,
-                    modal: true,
-                    buttons: {
-                        'Delete all feeds': function() {
-
-                            $selectedTab.remove();
-                            $selectedPanel.remove();
-
-                            Tab.saveTabs();
-                            Dialog.kill($dialog);
-                            $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
-                        },
-                        Cancel: function() {
-                            Dialog.kill($dialog);
-                        }
-                    },
-                    open: function () {
-                        $(this).find('button:contains("Delete")').addClass('ui-state-error');
-                        $(this).children('p').append('Really delete the [' + $a.text() + '] tab?')
-                    }
-                });
-
-                $dialog.dialog('open')
-            });
         }
     };
 }());

@@ -14,10 +14,9 @@ var Feed = (function() {
             var $feedSelect = $('<i title="Select feed" class="icon-check-empty-1 feedSelect feedControl">').button();
             var $feedDelete = $('<i title="Delete feed" class="icon-trash feedDelete feedControl">').button();
             var $feedPrefs = $('<i title="Feed preferences" class="icon-cog mobFeedPrefs feedControl">').button();
-            var $feedReload = $('<i title="Reload feed" class="icon-arrows-cw mobFeedRefresh feedControl">').button();
+            var $feedReload = $('<i title="Reload ' + url + '" class="icon-arrows-cw mobFeedRefresh feedControl">').button();
 
             var $feedIcon = $('<i title="Toggle feed" class="feedFavicon feedControl">').button();
-
             var $title = $('<span class="truncate">' + url + '<span>');
             var $feedControls = $('<div class="feedControls">');
 
@@ -69,8 +68,6 @@ var Feed = (function() {
             $header.hover (
                 function() {
                     var iconImg = $feedToggle.css('background-image');
-
-                    // console.log('IMG: (%s)', iconImg);
 
                     $(this).data('img',iconImg);
 

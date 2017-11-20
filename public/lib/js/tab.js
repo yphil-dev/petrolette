@@ -96,7 +96,7 @@ var Tab = (function() {
                         if ($('#tabDropActivate').prop('checked'))
                             $tabs.tabs('option', 'active', $index)
 
-                        $(this).appendTo($list).show('slow').before($elements.show('slow'))
+                        $(this).prependTo($list).show('slow').before($elements.show('slow'))
 
                         Tab.saveTabs()
 

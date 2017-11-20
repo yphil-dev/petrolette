@@ -13,8 +13,13 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         $(this).children('i').toggleClass('close')
     });
 
-    $profile.click(function () {
-        Dialog.question("Are you a FASCIST?");
+    $profile.click(function (event) {
+        event.preventDefault();
+        console.log('Click!');
+
+        $handle.click();
+
+        Dialog.question(0);
     });
 
     $donate.tooltip();
@@ -76,8 +81,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
             $('#amount').val(ui.value + 'ms');
             // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
             $('#gallerySlideshowSpeedValue').text(Utilities.milliToSecs(ui.value) + 's');
-
-
         },
         change: function(event, ui) {
             Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
@@ -86,7 +89,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
                     speed: ui.value
                 }
             });
-
         }
     });
 
