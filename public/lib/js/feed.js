@@ -242,6 +242,7 @@ var Feed = (function() {
                                                .attr('data-fancybox-group', $panel.attr('id'))
                                                .attr('data-caption', item.title);
                         // var $itemImg = $('<img src="' + imageUrl + '" onError="this.onerror=null;this.src=\'/static/images/broken-image.png\';" />')
+
                         var $itemImg = $('<img>').attr('src', imageUrl)
                                                  .appendTo($imgLink)
 
