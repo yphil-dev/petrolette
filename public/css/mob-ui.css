@@ -198,7 +198,8 @@ fieldset.menuForm {
     align-items: stretch;
 }
 
-label {
+label,
+button {
     margin: 5px 0;
 }
 

@@ -8,10 +8,10 @@ var Dialog = (function() {
         question:function(qn) {
 
             var questions = [
-                'a FASCIST?',
-                'a LEFTIST?',
-                'ALL OF THAT?',
-                'NONE OF THAT?'
+                'a FASCIST',
+                'a LEFTIST',
+                'ALL OF THAT',
+                'NONE OF THAT'
             ];
 
             $('#mobDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
@@ -37,7 +37,7 @@ var Dialog = (function() {
                         }
                     },
                     open: function( event, ui ) {
-                        $dialog.find('p').html('Are you<br />' + questions[qn++]);
+                        $dialog.find('p').html('Are you<br />' + questions[qn++] + '?');
                     }
                 });
 

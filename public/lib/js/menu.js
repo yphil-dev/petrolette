@@ -5,8 +5,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       , $fileImportButton = $("button#fileImport").button()
       , $fileImportInput = $("input#fileImport").button()
       , $fileExport = $('#saveTabs').button()
-      , $donate = $('#donate').button()
-      , $profile = $('#profile').button();
+      , $donate = $('#donate').button().tooltip()
+      , $profile = $('#profile').button().tooltip();
 
     $handle.click(function () {
         $slider.toggleClass('expanded');
@@ -21,8 +21,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
         Dialog.question(0);
     });
-
-    $donate.tooltip();
 
     $fileImportButton.click(function () {
         $("input#fileImport").click();
@@ -108,6 +106,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         if (f.type.match(/application\/json/)) {
             console.log('JSON!')
         } else {
+            console.log('NOT JSON!')
             Utilities.notify('error', 'Not a Mobylette definition file format');
             return
         }

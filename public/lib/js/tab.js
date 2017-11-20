@@ -5,17 +5,11 @@ var Tab = (function() {
 
             var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
-            // var tabIndex = $tabs.length;
-
-            if (!name) {
-                var name = 'Tab ' + tabIndex;
-            }
-
-            // console.log('Old index: %s New: %s', tabIndex, newIndex)
+            if (!name) var name = 'Tab ' + tabIndex;
 
             var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
-            var $newFeedButton = $('<div class="handle newFeed ui-corner-left" title="Add a new feed to [' + name + ']"><i class="icon-plus rotate"></i></div>').on("click", function() {
+            var $newFeedButton = $('<div class="handle newFeed ui-corner-left" title="Add a new feed to [' + name + ']"><i class="icon-plus-1 rotate"></i></div>').on("click", function() {
                 Feed.newFeed($sortable, 'New Feed', 'mixed', 8, true);
                 return false;
             });

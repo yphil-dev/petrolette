@@ -14,9 +14,10 @@ var Feed = (function() {
             var $feedSelect = $('<i title="Select feed" class="icon-check-empty-1 feedSelect feedControl">').button();
             var $feedDelete = $('<i title="Delete feed" class="icon-trash feedDelete feedControl">').button();
             var $feedPrefs = $('<i title="Feed preferences" class="icon-cog mobFeedPrefs feedControl">').button();
-            var $feedReload = $('<i title="Reload ' + url + '" class="icon-arrows-cw mobFeedRefresh feedControl">').button();
+            var $feedReload = $('<i title="Reload feed" class="icon-arrows-cw mobFeedRefresh feedControl">').button();
 
             var $feedIcon = $('<i title="Toggle feed" class="feedFavicon feedControl">').button();
+
             var $title = $('<span class="truncate">' + url + '<span>');
             var $feedControls = $('<div class="feedControls">');
 
@@ -121,6 +122,8 @@ var Feed = (function() {
             var $dataStore = $button.parent().parent();
             var $refreshButton = $dataStore.find('.mobFeedRefresh');
 
+            var $panel = $dataStore.parent().parent().parent();
+
             var r = new RegExp('^(?:[a-z]+:)?//', 'i');
 
             var getLocation = function(href) {
@@ -224,11 +227,14 @@ var Feed = (function() {
                     }
 
                     if (typeof imageUrl !== 'undefined') {
-                        var $imgLink = $('<a data-fancybox="gallery" data-caption="' + item.title + '">').attr('href', imageUrl)
+                        var $imgLink = $('<a>').attr('href', imageUrl)
+                                               .attr('data-fancybox', 'gallery')
+                                               .attr('data-fancybox-group', $panel.attr('id'))
+                                               .attr('data-caption', item.title);
                         // var $itemImg = $('<img src="' + imageUrl + '" onError="this.onerror=null;this.src=\'/static/images/broken-image.png\';" />')
-                        var $itemImg = $('<img src="' + imageUrl + '" />')
+                        var $itemImg = $('<img>').attr('src', imageUrl)
+                                                 .appendTo($imgLink)
 
-                            .appendTo($imgLink)
                         if (feedType == 'photo')
                             $itemImg.addClass('full')
 

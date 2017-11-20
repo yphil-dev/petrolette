@@ -39,21 +39,21 @@ var Utilities = (function() {
             return progress;
         },
         notify : function(type, message) {
-            var $p = $('#slidermenu').find('#mobNotify > p')
+            var $p = $('#menu').find('#mobNotify > p')
 
             $p.parent().fadeIn('fast')
 
-            $p.html('<strong class="' +  type + '">' + type + '</strong> ' + message)
-                                     .fadeIn( 1000, function() {
-                                         $p.animate({
-                                             opacity: 0.1
-                                         }, 6500, function() {
-                                             $p.slideUp(500, function() {
-                                                 $p.animate({opacity: 1}, 1)
-                                                 $p.parent().fadeOut('slow')
-                                             });
-                                         });
-                                     });
+            $p.html('<strong class="' +  type + '">' + type + '</strong> ' + message);
+            $p.fadeIn( 1000, function() {
+                $p.animate({
+                    opacity: 0.1
+                }, 6500, function() {
+                    $p.slideUp(500, function() {
+                        $p.animate({opacity: 1}, 1)
+                        $p.parent().fadeOut('slow')
+                    });
+                });
+            });
         },
         milliToSecs : function(s) {
             var ms = s % 1000;
