@@ -183,7 +183,11 @@ fieldset {
 }
 
 input {
-    padding: .2em;
+    padding: 0 .2em;
+}
+
+button#feedGuess {
+    margin: 0;
 }
 
 fieldset.prefsForm {
@@ -215,11 +219,6 @@ div.testFlex {
     width: 2rem;
 }
 
-.unique {
-    /* width:49%; */
-    flex: 1 100%;
-}
-
 div#feedLimit {
     height: 31px !important;
 }
@@ -249,8 +248,16 @@ div#feedLimit {
     margin-left:.2em !important;
 }
 
+.unique {
+    flex: 1 100%;
+}
+
 .twin {
     flex: 1;
+}
+
+.noBottom {
+    margin-bottom:0;
 }
 
 .ui-selectmenu-button.ui-button {

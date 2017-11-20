@@ -235,7 +235,7 @@ var Dialog = (function() {
                             $guessButton = $dialog.find('button#feedGuess').button(),
                             $guessSpinner = $dialog.find('button#feedGuess > i'),
                             $guessField = $dialog.find('input#feedGuess'),
-                            $guessGroup = $dialog.find('div#feedGuess').controlgroup(),
+                            $guessGroup = $dialog.find('div#feedGuess'),
                             $urlGroup = $guessGroup.parent(),
                             $okButton = $('.ui-dialog-buttonpane').find('button:contains("OK")').addClass('okButton');
 
