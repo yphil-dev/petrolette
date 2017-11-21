@@ -3,8 +3,7 @@ var Tab = (function () {
     newTab: function ($tabs, name, feeds, progress) {
       var tabIndex = $('ul#tabUl li.mobTab').length + 1
 
-
-      if (!name) var name = 'Tab ' + tabIndex
+      if (!name) name = 'Tab ' + tabIndex
 
       var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>')
 
@@ -67,8 +66,6 @@ var Tab = (function () {
 
       $thisTabLink.appendTo($thisTab)
       $tabCloser.appendTo($thisTab)
-
-      var $thisSelectedTab = $('#tabs div.ui-tabs-panel:not(.ui-tabs-hide)')
 
       var $tabUl = $('#tabs ul#tabUl')
 
@@ -162,7 +159,7 @@ var Tab = (function () {
         totalFeeds += tab.feeds.length
       })
 
-      progress = Utilities.buildProgress()
+      var progress = Utilities.buildProgress()
       progress.init(totalFeeds)
 
       tabs.forEach(function (tab) {
