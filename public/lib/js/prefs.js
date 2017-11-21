@@ -43,9 +43,11 @@ var Prefs = (function () {
       var a = document.createElement('a')
       document.body.appendChild(a)
       a.style = 'display: none'
-      var json = JSON.stringify(data, null, 2),
-        blob = new Blob([json], {type: 'application/json'}),
-        url = window.URL.createObjectURL(blob)
+
+      var json = JSON.stringify(data, null, 2)
+      var blob = new Blob([json], {type: 'application/json'})
+      var url = window.URL.createObjectURL(blob)
+
       a.href = url
       a.download = fileName
       a.click()

@@ -33,6 +33,9 @@
   "standard": {
     "globals": [
       "$",
+      "Blob",
+      "localStorage",
+      "FileReader",
       "Dialog",
       "Feed",
       "Prefs",

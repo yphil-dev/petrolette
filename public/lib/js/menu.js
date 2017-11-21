@@ -1,11 +1,13 @@
 $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', function () {
-  var $slider = $(this),
-    $handle = $slider.find('.handle'),
-    $fileImportButton = $('button#fileImport').button(),
-    $fileImportInput = $('input#fileImport').button(),
-    $fileExport = $('#saveTabs').button(),
-    $donate = $('#donate').button().tooltip(),
-    $profile = $('#profile').button().tooltip()
+  var $slider = $(this)
+  var $handle = $slider.find('.handle')
+  var $fileImportButton = $('button#fileImport').button()
+  var $fileImportInput = $('input#fileImport').button()
+  var $fileExport = $('#saveTabs').button()
+  var $donate = $('#donate')
+  var $profile = $('#profile').button().tooltip()
+
+  $donate.button().tooltip()
 
   $handle.click(function () {
     $slider.toggleClass('expanded')
@@ -91,12 +93,9 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   // File select
 
   $fileImportInput.change(function (evt) {
-    var JsonObj = null
     var files = evt.target.files
     var f = files[0]
     var reader = new FileReader()
-
-    var $notifyArea = $slider.find('#mobNotify > p')
 
     if (f.type.match(/application\/json/)) {
       console.log('JSON!')
@@ -116,7 +115,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
               )
             )
           } else {
-            var isValid = false
+            isValid = false
           }
           return isValid
         }
