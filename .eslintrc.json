@@ -1,0 +1,29 @@
+{
+  "globals": {
+    "Tab": false,
+    "Feed": false
+  },
+  "env": {
+    "browser": true,
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jquery": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": [2, 2, {"MemberExpression": 1}],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ]
+  }
+}
