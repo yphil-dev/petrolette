@@ -24,8 +24,8 @@ var Dialog = (function() {
                     height: 'auto',
                     width: 'auto',
                     modal: false,
+                    hide: 'drop',
                     show: 'slide',
-                    hide: 'explode',
                     buttons: {
                         'What? No': function() {
                             Dialog.kill($dialog);
