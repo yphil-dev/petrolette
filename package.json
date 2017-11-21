@@ -45,7 +45,7 @@
     "ignore": [
       "public/lib/js/jquery.localize.js",
       "test.js",
-      "public/css"
+      "public/css/**/*.js"
     ]
   }
 }
