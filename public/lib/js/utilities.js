@@ -13,7 +13,6 @@ var Utilities = (function () {
         this.go()
       }
       progress.increment = function () {
-
         this.progressElt.animate({
           width: Math.ceil(100 * (this.step + 1) / this.steps) + '%'
         })
@@ -55,8 +54,8 @@ var Utilities = (function () {
       s = (s - ms) / 1000
       var secs = s % 60
       s = (s - secs) / 60
-      var mins = s % 60
-      var hrs = (s - mins) / 60
+      // var mins = s % 60
+      // var hrs = (s - mins) / 60
 
       return secs + '.' + ms
     }
