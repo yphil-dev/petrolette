@@ -1,1 +1,0 @@
-var globalTest = 'plip';
