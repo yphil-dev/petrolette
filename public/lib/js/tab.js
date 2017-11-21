@@ -3,6 +3,7 @@ var Tab = (function () {
     newTab: function ($tabs, name, feeds, progress) {
       var tabIndex = $('ul#tabUl li.mobTab').length + 1
 
+
       if (!name) var name = 'Tab ' + tabIndex
 
       var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>')
