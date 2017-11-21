@@ -1,7 +1,8 @@
 {
   "globals": {
-    "Tab": false,
-    "Feed": false
+    "Dialog": false,
+    "Feed": false,
+    "Tab": false
   },
   "env": {
     "browser": true,
