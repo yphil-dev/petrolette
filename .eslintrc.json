@@ -2,7 +2,9 @@
   "globals": {
     "Dialog": false,
     "Feed": false,
-    "Tab": false
+    "Prefs": false,
+    "Tab": false,
+    "Utilities": false
   },
   "env": {
     "browser": true,
@@ -13,18 +15,10 @@
   },
   "extends": "eslint:recommended",
   "rules": {
+    "one-var": ["error", "initializations"],
     "indent": [2, 2, {"MemberExpression": 1}],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "never"
-    ]
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"]
   }
 }

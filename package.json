@@ -7,6 +7,7 @@
   },
   "scripts": {
     "start": "node ./bin/www",
+    "test": "standard",
     "postinstall": "bower install"
   },
   "dependencies": {
@@ -27,11 +28,13 @@
     "parse-favicon": "1.2.8"
   },
   "devDependencies": {
-    "eslint": "4.11.0",
-    "eslint-config-standard": "10.2.1",
-    "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-node": "5.2.1",
-    "eslint-plugin-promise": "3.6.0",
-    "eslint-plugin-standard": "3.0.1"
-  }
+    "standard": "*"
+  },
+  "standard": {
+  "ignore": [
+    "public/lib/js/jquery.localize.js",
+    "test.js",
+    "public/css"
+  ]
+}
 }
