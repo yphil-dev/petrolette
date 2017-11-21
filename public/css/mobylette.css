@@ -110,7 +110,6 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
     right: .2em;
     width: 78px;
     height: 78px;
-    background-image: linear-gradient(45deg, transparent 80px, #DDE0FA 80px);
 }
 
 .newFeedButton > p {
@@ -141,7 +140,7 @@ ul.tabSort {
     /* columns: 15em; */
     /* column-gap: .3em; */
     padding: 0 .2em .2em;
-    columns: 15rem;
+    columns: 18rem;
     column-gap: .3em;
     min-height:30px;
 }
@@ -158,21 +157,6 @@ li.feed {
     /* padding: 5px; */
 }
 
-ul.tabSort > li:first-child {
-    /* border: 1px dashed red; */
-    /* margin-left: 0; */
-}
-
-.tabSort li.feed,
-.selected {
-    /* padding: 2px; */
-    /* width: 25%; */
-}
-
-#tabs .ui-widget-content {
-    /* background: none !important; */
-}
-
 .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
     cursor: pointer !important;
 }
@@ -181,31 +165,13 @@ ul.tabSort > li:first-child {
 li.feed {
     width: 100%;
     min-height:20px !important;
-    /* max-width:300px !important; */
 }
-
-
-/* li.feed { */
-/*   &:nth-child(4n+1){ */
-/*      width: 250px; */
-/*   } */
-/*   &:nth-child(4n+2){ */
-/*      width: 325px; */
-/*   } */
-/*   &:nth-child(4n+3){ */
-/*      width: 180px; */
-/*   } */
-/*   &:nth-child(4n+4){ */
-/*      width: 380px; */
-/*   } */
-/* } */
 
 .feedBody {
     margin: 0;
 }
 
 .truncate {
-    /* width: 250px; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -213,19 +179,13 @@ li.feed {
 
 .mobHeader {
     cursor:grab;
-    /* min-width:100%; */
     min-height:20px;
     display: flex;
-    /* align-content: stretch; */
     padding:.2rem;
 }
 
 .mobHeader > div {
     flex: 0 0 auto;
-    /* width: 10rem; */
-    /* white-space:nowrap; */
-    /* display:inline-block; */
-    /* display:none; */
 }
 
 .mobHeader .feedToggle {
@@ -235,20 +195,13 @@ li.feed {
 
 .mobHeader .feedTitle {
     flex: 3 3 auto;
-    /* width:50%; */
-    /* font-size:.8em; */
-    /* display: inline; */
 }
 
 .mobHeader .feedControls {
     flex: 0 0 auto;
-    /* z-index:50; */
     min-width:80px;
     align-items:flex-start;
     align-content:flex-start;
-    /* position:absolute; */
-    /* right:0; */
-    /* float: right; */
     display: flex;
     justify-content: flex-end;
     padding:0;
@@ -286,39 +239,10 @@ li.feedItem a {
     display: block;
     width:100%;
     font-weight: bold;
-    /* color: #111; */
-}
-
-li.feedItem a:link {
-}
-
-li.feedItem a:visited {
-    /* color: #777 !important; */
-}
-
-li.feedItem a:hover {
-    /* color: #fff !important; */
-}
-
-li.feedItem a:active {
-    /* color: blue; */
 }
 
 li.feedItem {
-    /* background-color: #eee !important; */
     padding: .2rem;
-}
-
-li.feedItem:nth-child(odd) {
-    /* background-color: #ddd !important; */
-}
-
-li.feedItem:hover {
-    /* background-color: #aaa !important; */
-}
-
-div.feedItem {
-    /* border-bottom: 1px solid #c5c5c5 !important; */
 }
 
 div.feedItem img {
@@ -361,19 +285,4 @@ li.feedItem {
 .feed {
     border: #AAAAAA 1px solid !important;
     padding: 0;
-}
-
-/* Paste this css to your style sheet file or under head tag */
-/* This only works with JavaScript,
-if it's not present, don't show loader */
-.no-js #loader { display: none;  }
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
-.se-pre-con {
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-        background: url(images/loader-64x/Preloader_2.gif) center no-repeat #fff;
 }

@@ -330,7 +330,7 @@ var Dialog = (function() {
                             return false;
                         });
 
-                        $dialog.find('#feedGuess').select()
+                        // $dialog.find('#feedGuess').select();
 
                     }
                 });

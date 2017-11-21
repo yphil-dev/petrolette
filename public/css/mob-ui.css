@@ -99,7 +99,8 @@ legend {
     color:            #000000 !important;
 }
 
-.ui-button {
+button#profile,
+button#donate {
     text-align: left
 }
 
