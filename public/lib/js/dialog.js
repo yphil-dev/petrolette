@@ -221,7 +221,7 @@ var Dialog = (function () {
 
             $guessButton.click(function (event) {
               $guessSpinner.removeClass('icon-ok icon-cancel-circled icon-flashlight')
-                           .addClass('spinner icon-cog')
+                .addClass('spinner icon-cog')
               $guessButton.removeClass('ui-state-success ui-state-error')
 
               $.get('/discover', {
@@ -231,28 +231,23 @@ var Dialog = (function () {
               }, function (feed, status) {
                 $guessSpinner.removeClass('spinner icon-cog')
               }).done(function (feed, status) {
-                console.log( 'OK %s (status %s)', feed, status)
                 $guessField.val(feed)
                 $guessSpinner.addClass('icon-ok')
                 $guessButton.addClass('ui-state-success')
 
                 $okButton.removeClass('ui-state-error')
-                         .addClass('ui-state-success')
-
+                  .addClass('ui-state-success')
               }).fail(function (feed, status) {
-                console.log( 'ERROR %s (status: %s)', $guessField.val(), status)
                 $guessSpinner.removeClass('icon-cog spinner')
-                             .addClass('icon-cancel-circled')
+                  .addClass('icon-cancel-circled')
                 $guessButton.addClass('ui-state-error')
                 $okButton.addClass('ui-state-error')
-
               }).always(function (feed, status) {
-                console.log( 'Always %s (status: %s)', $guessField.val(), status)
+                // console.log('Always %s (status: %s)', $guessField.val(), status)
               })
-
             })
 
-            $spinner.spinner( 'value', oldLimit)
+            $spinner.spinner('value', oldLimit)
 
             $dialog.find('input#feedGuess').val(oldUrl)
 
@@ -263,7 +258,7 @@ var Dialog = (function () {
             })
 
             $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
-                   .checkboxradio('refresh')
+              .checkboxradio('refresh')
 
             $dialog.find('#feedType').controlgroup()
 
@@ -282,16 +277,16 @@ var Dialog = (function () {
               min: 1,
               max: 128,
               step: 1,
-              create: function ( event, ui ) {
+              create: function (event, ui) {
                 $('input#feedLimit').val(oldLimit)
                 $(this).find('.ui-slider-handle').text(oldLimit)
               },
-              slide: function ( event, ui ) {
+              slide: function (event, ui) {
                 $(this).val(ui.value)
                 $(this).find('.ui-slider-handle').text(ui.value)
                 $('input#spinner').val(ui.value)
               },
-              change: function ( event, ui ) {
+              change: function (event, ui) {
                 $('input#feedLimit').val(ui.value)
                 $dataStore.data('limit', ui.value)
               }
@@ -306,7 +301,6 @@ var Dialog = (function () {
             })
 
             // $dialog.find('#feedGuess').select()
-
           }
         })
 
@@ -317,7 +311,6 @@ var Dialog = (function () {
           .data('limit', $dataStore.data('limit'))
           .dialog('open')
       })
-
     }
   }
 }())
