@@ -2,7 +2,7 @@ var Dialog = (function () {
   return {
     kill: function ($dialog) {
       $dialog.dialog('destroy')
-      jQuery('#mobDialogs').empty()
+      $('#mobDialogs').empty()
     },
     question: function (qn) {
       var questions = [

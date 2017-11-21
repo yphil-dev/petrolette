@@ -31,10 +31,18 @@
     "standard": "*"
   },
   "standard": {
-  "ignore": [
-    "public/lib/js/jquery.localize.js",
-    "test.js",
-    "public/css"
-  ]
-}
+    "globals": [
+      "$",
+      "Dialog",
+      "Feed",
+      "Prefs",
+      "Tab",
+      "Utilities"
+    ],
+    "ignore": [
+      "public/lib/js/jquery.localize.js",
+      "test.js",
+      "public/css"
+    ]
+  }
 }
