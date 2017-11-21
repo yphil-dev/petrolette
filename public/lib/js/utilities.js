@@ -13,11 +13,9 @@ var Utilities = (function () {
         this.go()
       }
       progress.increment = function () {
-        var randomColor = '#' + (0x1000000 + (Math.random()) * 0xffffff).toString(16).substr(1, 6)
 
         this.progressElt.animate({
           width: Math.ceil(100 * (this.step + 1) / this.steps) + '%'
-                    // ,'background-color': randomColor
         })
         this.step++
         if (this.step + 1 >= this.steps) this.finish()
