@@ -7,7 +7,6 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "test": "standard",
     "postinstall": "bower install"
   },
   "dependencies": {
@@ -26,26 +25,5 @@
     "jquery": "latest",
     "jquery-ui": "latest",
     "parse-favicon": "1.2.8"
-  },
-  "devDependencies": {
-    "standard": "*"
-  },
-  "standard": {
-    "globals": [
-      "$",
-      "Blob",
-      "localStorage",
-      "FileReader",
-      "Dialog",
-      "Feed",
-      "Prefs",
-      "Tab",
-      "Utilities"
-    ],
-    "ignore": [
-      "public/lib/js/jquery.localize.js",
-      "test.js",
-      "public/css/**/*.js"
-    ]
   }
 }

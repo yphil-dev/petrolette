@@ -72,7 +72,7 @@ fieldset a:link {
 }
 
 fieldset a:visited {
-    color:            #e6a400;
+    color:            #6E7A94;
 }
 
 p, label {
@@ -117,22 +117,10 @@ button#donate {
     color:            #FFDC00 !important;
 }
 
-.ui-state-active {
+#menu .ui-state-active,
+#menu .ui-state-hover {
     background-color: #FFD05B !important;
     color: #001F3F !important;
-}
-
-.ui-button:active {
-    background-color: #001F3F !important;
-    color: #FFD05B !important;
-}
-
-/* .ui-state-active:hover { */
-/*     background-color: #FFD05B !important; */
-/* } */
-
-.ui-visual-focus {
-    box-shadow: 0 0 3px 1px #FFD05B !important;
 }
 
 .ui-state-success {
