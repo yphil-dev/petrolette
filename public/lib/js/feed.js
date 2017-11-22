@@ -71,7 +71,7 @@ var Feed = (function() {
           $(this).data('img',iconImg);
 
           $(this).find('.feedControls').slideDown('fast');
-          $feedToggle.css('background-image', 'url("/static/images/feed-toggle-triangle.png")')
+          $feedToggle.css('background-image', 'url("/static/images/feed-toggle-triangle.png")');
         },
         function() {
           $(this).find('.feedControls').slideUp('slow');
@@ -79,9 +79,9 @@ var Feed = (function() {
           $feedToggle.removeClass('arrow');
 
           if (typeof $(this).data('img') !== 'undefined') {
-            $feedToggle.css('background-image', $(this).data('img'))
+            $feedToggle.css('background-image', $(this).data('img'));
           } else {
-            $feedToggle.css('background-image', 'url("/static/images/feed-generic-rss.png")')
+            $feedToggle.css('background-image', 'url("/static/images/feed-generic-rss.png")');
           }
 
         }
@@ -102,7 +102,7 @@ var Feed = (function() {
 
       $feedControls.appendTo($header);
 
-      $feedBodyUl.appendTo($feedBody)
+      $feedBodyUl.appendTo($feedBody);
 
       $header.appendTo($feed);
       $feedBody.appendTo($feed);
@@ -124,51 +124,48 @@ var Feed = (function() {
       var $header = $dataStore.parent();
       var $panel = $dataStore.parent().parent().parent();
 
-      var r = new RegExp('^(?:[a-z]+:)?//', 'i');
+      // var r = new RegExp('^(?:[a-z]+:)?//', 'i');
 
       var getLocation = function(href) {
         var l = document.createElement("a");
         l.href = href;
         return l;
-      }
+      };
 
       // var $feed = $('#' + id);
-      var $feed = $('#' + $dataStore.data('id'))
+      var $feed = $('#' + $dataStore.data('id'));
 
       var $feedTitle = $feed.children().children('.feedTitle');
       var $feedBody = $feed.children().children('ul.feedBody');
 
-      var feedIndex = $dataStore.data('index');
       var feedUrl = $dataStore.data('url');
       var feedType = $dataStore.data('type');
       var feedLimit = $dataStore.data('limit');
 
-      var $feedIcon = $feed.find('.feedToggle > i')
+      var $feedIcon = $feed.find('.feedToggle > i');
 
-      var l = getLocation(feedUrl)
+      var l = getLocation(feedUrl);
 
-      var feedHost = l.protocol + '//' + l.hostname
+      var feedHost = l.protocol + '//' + l.hostname;
 
-      $refreshButton.addClass('spinner')
-      $feed.children('.mobHeader').removeClass('ui-state-error')
-
-      var cleanUrl = feedUrl.substring(0, feedUrl.lastIndexOf("/") + 1);
+      $refreshButton.addClass('spinner');
+      $feed.children('.mobHeader').removeClass('ui-state-error');
 
       $.get("/feedicon", {
         url: decodeURI(feedHost),
         dataType: "json",
         timeout: 2000
-      }, function(icon, status) {
+      }, function(icon) {
         if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
-      }).done(function(icon, status) {
+      }).done(function(icon) {
         // console.log( 'DONE %s OK (status %s)',  icon, status);
         $feedIcon.css('background-image','url("' + icon + '")');
         $header.data('img',icon);
 
       }).fail(function(icon, status) {
-        // console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
+        console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
         $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
-      }).always(function(icon, status) {
+      }).always(function() {
 
         // console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
       });
@@ -176,9 +173,9 @@ var Feed = (function() {
       $.get("/feed", {
         feedurl: feedUrl,
         dataType: 'json'
-      }, function(data, status) {
+      }, function() {
 
-        $feedBody.empty()
+        $feedBody.empty();
 
       }).done(function(data) {
         $feedTitle.text(data.feedTitle);
@@ -193,30 +190,29 @@ var Feed = (function() {
 
           // console.log( "\n\nItem (%s)", item.enclosures[0].url);
 
-          var $description = $.parseHTML(item.description)
-          console.log( "Desc: (%s)", $description);
+          var $description = $.parseHTML(item.description);
+          // console.log( "Desc: (%s)", $description);
 
           // var $mediaGroup = $.parseHTML(item.media)
 
-          console.log( "Item: (%s)", item);
+          // console.log( "Item: (%s)", item);
+          var imageUrl;
 
           if (item['media:group']) {
             console.log( "Media: (%s)", JSON.stringify(item['media:group']['media:content']));
             var myArray = item['media:group']['media:content'];
-              for (var i = 0; i < myArray.length; i++) {
-                  if (myArray[i]['@'].url) {
-                      imageUrl = myArray[i]['@'].url;
-                  }
+            for (var i = 0; i < myArray.length; i++) {
+              if (myArray[i]['@'].url) {
+                imageUrl = myArray[i]['@'].url;
+              }
               console.log('Wopopop:' + JSON.stringify(myArray[i]['@'].url));
             }
           }
 
           var $tempDom = $('<output>').append($description);
 
-          var imageUrl;
-
           if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
-            imageUrl = $tempDom.find('img').attr('src')
+            imageUrl = $tempDom.find('img').attr('src');
           }
 
           // var $tempDom2 = $('<output2>').append($description);
@@ -241,25 +237,25 @@ var Feed = (function() {
           // media:content medium="image" url=
 
           if (typeof item.image.url !== 'undefined') {
-            imageUrl = item.image.url
+            imageUrl = item.image.url;
           }
 
           if (item.enclosures[0]) {
-            imageUrl = item.enclosures[0].url
+            imageUrl = item.enclosures[0].url;
           }
 
           // console.log('S: %s', item.summary)
-          var summary = $('<p>').append(item.summary).text()
+          var summary = $('<p>').append(item.summary).text();
 
-          var $feedItem = $('<li class="feedItem">').attr('title', summary.trim())
-          var $itemDiv = $('<div class="feedItem">')
+          var $feedItem = $('<li class="feedItem">').attr('title', summary.trim());
+          var $itemDiv = $('<div class="feedItem">');
           var $itemLink = $('<a class="ui-helper-clearfix">')
               .attr('href', item.link)
-              .append(item.title)
+              .append(item.title);
 
           if (index % 2 === 0) {
             /* we are even */
-            $feedItem.addClass('mobFeedEven')
+            $feedItem.addClass('mobFeedEven');
           }
 
           if (imageUrl && imageUrl[0] == "/") {
@@ -274,18 +270,18 @@ var Feed = (function() {
             // var $itemImg = $('<img src="' + imageUrl + '" onError="this.onerror=null;this.src=\'/static/images/broken-image.png\';" />')
 
             var $itemImg = $('<img>').attr('src', imageUrl)
-                .appendTo($imgLink)
+                .appendTo($imgLink);
 
             if (feedType == 'photo')
-              $itemImg.addClass('full')
+              $itemImg.addClass('full');
 
             if (feedType !== 'text')
-              $imgLink.appendTo($itemDiv)
+              $imgLink.appendTo($itemDiv);
           }
 
-          $itemLink.appendTo($itemDiv)
-          $itemDiv.appendTo($feedItem)
-          $feedItem.appendTo($feedBody)
+          $itemLink.appendTo($itemDiv);
+          $itemDiv.appendTo($feedItem);
+          $feedItem.appendTo($feedBody);
 
         });
 
@@ -305,7 +301,7 @@ var Feed = (function() {
 
         $refreshButton.removeClass('spinner');
 
-      });;
+      });
     }
   };
 }());
