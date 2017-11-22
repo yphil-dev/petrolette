@@ -209,6 +209,7 @@ var Feed = (function() {
             }
           }
 
+
           var $tempDom = $('<output>').append($description);
 
           if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
