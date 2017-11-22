@@ -5,7 +5,7 @@ var Tab = (function() {
 
             var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
-            if (!name) var name = 'Tab ' + tabIndex;
+            if (!name) name = 'Tab ' + tabIndex;
 
             var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
@@ -55,23 +55,21 @@ var Tab = (function() {
                     //unselect since the operation is complete
                     $('.selected').removeClass('selected ui-state-hover');
                     $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
-                    Tab.saveTabs()
+                    Tab.saveTabs();
 
                 }
             }).disableSelection();
 
-            $newFeedButton.appendTo($tabPanel)
+            $newFeedButton.appendTo($tabPanel);
             $sortable.appendTo($tabPanel);
             $tabPanel.appendTo($tabs);
 
-            var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>')
+            var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>');
 
             var $thisTab = $('<li class="modal mobTab" title="' + name + ' - Click to rename, drag to re-order">');
 
             $thisTabLink.appendTo($thisTab);
             $tabCloser.appendTo($thisTab);
-
-            var $thisSelectedTab = $('#tabs div.ui-tabs-panel:not(.ui-tabs-hide)');
 
             var $tabUl = $('#tabs ul#tabUl');
 
@@ -88,11 +86,11 @@ var Tab = (function() {
                     ui.draggable.show().hide('slow', function () {
 
                         if ($('#tabDropActivate').prop('checked'))
-                            $tabs.tabs('option', 'active', $index)
+                            $tabs.tabs('option', 'active', $index);
 
-                        $(this).prependTo($list).show('slow').before($elements.show('slow'))
+                        $(this).prependTo($list).show('slow').before($elements.show('slow'));
 
-                        Tab.saveTabs()
+                        Tab.saveTabs();
 
                     });
                 }
@@ -104,7 +102,7 @@ var Tab = (function() {
                 feeds.forEach(function(feed) {
                     Feed.newFeed($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit, false, progress);
                 });
-            };
+            }
 
             $tabs.tabs('refresh');
             $tabs.tabs( "option", "active", tabIndex - 1);
@@ -132,30 +130,30 @@ var Tab = (function() {
             var myTabs = [];
             var $allTabs = $('#tabUl > li.mobTab');
 
-            $allTabs.each(function(i) {
+            $allTabs.each(function() {
                 var myFeeds = [];
                 var myTab = {};
                 var $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
 
-                myTab["name"] = $(this).children('a').text();
+                myTab.name = $(this).children('a').text();
 
-                $allFeeds.each(function(i) {
-                    var $dataStore = $(this).find('.feedControls')
+                $allFeeds.each(function() {
+                    var $dataStore = $(this).find('.feedControls');
                     var myFeed = {};
-                    myFeed["url"] = $dataStore.data('url');
-                    myFeed["type"] = $dataStore.data('type');
-                    myFeed["limit"] = $dataStore.data('limit');
+                    myFeed.url = $dataStore.data('url');
+                    myFeed.type = $dataStore.data('type');
+                    myFeed.limit = $dataStore.data('limit');
                     myFeeds.push(myFeed);
                 });
-                myTab["feeds"] = myFeeds;
-                myTabs.push(myTab)
+                myTab.feeds = myFeeds;
+                myTabs.push(myTab);
             });
 
             return myTabs;
 
         },
         saveTabs:function() {
-            var allTabs = Tab.getTabs()
+            var allTabs = Tab.getTabs();
             Prefs.writeConfig('tabs', JSON.stringify(allTabs));
         },
         populateTabs:function(tabs, clickToRefresh) {
@@ -163,7 +161,7 @@ var Tab = (function() {
             $('div#tabs ul li').remove();
             $('div#tabs div').remove();
 
-            var totalFeeds = 0
+            var totalFeeds = 0;
 
             Tab.makeNewTabButton($('div#tabs'));
 
@@ -171,7 +169,7 @@ var Tab = (function() {
                 totalFeeds += tab.feeds.length;
             });
 
-            progress = Utilities.buildProgress()
+            var progress = Utilities.buildProgress();
             progress.init(totalFeeds);
 
             tabs.forEach(function(tab) {
@@ -187,7 +185,7 @@ var Tab = (function() {
                 Tab.saveTabs();
             }
 
-            $("div#tabs").tabs('option', 'active', 0)
+            $("div#tabs").tabs('option', 'active', 0);
 
 
         }
