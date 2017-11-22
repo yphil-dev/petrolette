@@ -1,0 +1,89 @@
+<div id="killDialog">
+    <p>
+        <i class="mobylette logoItem icon-motorcycle" aria-hidden="true"></i>
+    </p>
+</div>
+
+<div id="questionDialog" title="Just answer the question">
+    <p>
+        Yo!
+    </p>
+</div>
+
+<div id="renameTabDialog" title="Rename tab">
+    <form>
+        <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+            <legend class="ui-corner-top">Tab Name</legend>
+            <label for="tabName" class="ui-helper-hidden">Name</label>
+            <input
+                name="name"
+                id="tabName"
+                class="ui-widget-content ui-corner-all"
+                value=""
+                class="text ui-widget-content ui-corner-all" />
+        </fieldset>
+    </form>
+</div>
+
+<div id="feedPrefs" title="Feed parameters">
+    <form>
+        <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+            <legend class="ui-corner-top">URL</legend>
+
+            <p>
+                Enter a wesite's address/URL, or directly a <a href="https://www.lifewire.com/rss-101-3482781">Feed's</a>.
+            </p>
+
+            <div id="feedGuess" class="testFlex">
+                <input name="guess"
+                       id="feedGuess"
+                       placeholder="URL (https://reddit.com)"
+                       title="Enter a feed URL, or a website (and hit search)"
+                       value=""
+                       class="ui-widget-content grow left twin ui-corner-all"
+                       onclick="select()"
+                       autofocus
+                />
+                <button type="button" id="feedGuess" class="shrink twin right">
+                    <i class="icon-flashlight"></i>
+                </button>
+            </div>
+
+        </fieldset>
+
+        <fieldset id="feedType" class="prefsForm ui-widget ui-widget-content ui-corner-all">
+            <legend class="ui-corner-top">Display Type</legend>
+            <p>
+                What type of feed? All text, all image, or mixed.
+            </p>
+            <label for="mixed" class="noBottom">Mixed</label>
+            <input type="radio" name="radio-1" id="mixed">
+
+            <label for="photo" class="noBottom">Photo</label>
+            <input type="radio" name="radio-1" id="photo">
+
+            <label for="text" class="noBottom">Text</label>
+            <input type="radio" name="radio-1" id="text">
+        </fieldset>
+
+        <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
+            <legend class="ui-corner-top" class="ui-corner-top">Limit # of items</legend>
+            <p>
+                How many items should the feed display?
+            </p>
+            <div class="testFlex">
+                <div class="feedLimit grow left twin">
+                    <label for="feedLimit" class="ui-helper-hidden">
+                        <input type="text" id="feedLimit" />
+                    </label>
+
+                    <div id="feedLimit"></div>
+                </div>
+                <div class="feedLimit limitSpinner shrink twin right">
+                    <label for="spinner" class="ui-helper-hidden">Select a value:</label>
+                    <input id="spinner" name="value">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

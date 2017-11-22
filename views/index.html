@@ -1,274 +1,134 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mobylette</title>
-        <!-- <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" /> -->
-        <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="lib/jQuery-ColorPicker/css/colorpicker.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="lib/jQuery-ColorPicker/colorpicker.js"></script>
-    </head>
 
-    <style>
+        <link rel="icon" type="image/png" href="/static/images/mobylette.png" />
 
-     ul {
-         list-style-type: none;
-         margin:0;
-         padding:0;
-     }
+        <link rel="preload" as="style" href="/static/css/themes/day/jquery-ui.css">
+        <link rel="preload" as="style" href="/static/css/fontello.css">
+        <link rel="preload" as="style" href="/static/css/themes/day.css">
+        <link rel="preload" as="style" href="/static/css/themes/night.css">
 
-     .tabSort li {
-         cursor:grab;
-         margin: 0 5px 5px 5px;
-         padding: 5px;
-         font-size: 1.2em;
-         width: 120px;
-     }
+        <script src="/bower/jquery/dist/jquery.min.js"></script>
+        <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
 
-     .chbox {
-         margin-right:10px;
-     }
+        <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
+        <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
+        <link rel="stylesheet" href="/static/css/themes/day/jquery-ui.min.css">
 
-     .selected {
-         /* background:red !important; */
-     }
+        <link rel="stylesheet" href="/static/css/mob-ui.css">
+        <link rel="stylesheet" href="/static/css/mobylette.css">
 
-     .hidden {
-         display:none;
-     }
+        <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
 
-     .ui-tabs-panel {
-         padding:.4em .1em !important;
-     }
+        <link rel="stylesheet" href="/static/css/fontello.css">
 
-     label { display:block; }
-     input.text { margin-bottom:12px; width:95%; padding: .4em; }
-     fieldset { padding:0; border:0; margin-top:25px; }
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/kaushan-script" type="text/css"/>
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/arima-koshi" type="text/css"/>
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/>
 
-     .small-button {
-         font-size: .2em !important;
-         margin:0;
-         /* display: table-cell; */
-         vertical-align: top;
-     }
+        <script>
 
-     .feed {
-         /* width:25% !important; */
-     }
+         console.log('Lang: (%s)', navigator.language)
 
-    </style>
+         $(document).ready(function() {
 
-    <script>
+             $("#mobStyle").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '.css'});
 
-     var tabList =
-         [{"name":"plop",
-           "feeds":[
-               {"url":"//url9","type":"photo","limit":16},
-               {"url":"//url1","type":"photo","limit":16},
-               {"url":"//url3","type":"text","limit":16}
-           ]},
-          {"name":"plip",
-           "feeds": [
-               {"url":"//url5","type":"text","limit": 12},
-               {"url":"//url4","type":"mixed","limit": 8}
-           ]},
-          {"name":"plup",
-           "feeds": [
-               {"url":"//url50","type":"text","limit": 12},
-               {"url":"//url14","type":"mixed","limit": 8}
-           ]}
-         ];
+             var $tabs = $('#tabs').tabs({
+                 heightStyle: 'content',
+                 activate: function(event, ui) {
 
-     $(document).ready(function() {
+                     var $activeTab = $tabs.find('.ui-tabs-active');
 
-         $.get("https://mobylette-feedr.herokuapp.com?q=http://www.ebaytechblog.com/feed/", function(data, status){
-             alert("Data: " + data + "\nStatus: " + status);
-         });
+                     $(document).prop('title', $activeTab.text() + ' | Mobylette');
 
-         var $tabs = $("#tabs").tabs({
-             heightStyle: "fill"
-         });
+                     $('.tabCloser').hide();
 
-         tabList.forEach(function(tab) {
-             Tab.newTab($tabs, tab.name, tab.feeds);
-         });
-
-         $('#addTab').click(function () {
-             Tab.newTab($tabs);
-         });
-
-         $('#saveTabs').click(function () {
-             var myTabs = [];
-
-             $( '#theTabs li' ).each(function(i) {
-                 var myFeeds = [];
-                 var myTab = {};
-
-                 myTab["name"] = $(this).children().text();
-
-                 // myTabs
-                 $($(this).children().attr('href') + ' ul li').each(function(i) {
-                     var myFeed = {};
-                     myFeed["url"] = $(this).data('url');
-                     myFeed["type"] = $(this).data('type');
-                     myFeed["limit"] = $(this).data('limit');
-                     myFeeds.push(myFeed);
-                 });
-                 myTab["feeds"] = myFeeds;
-                 myTabs.push(myTab)
-             });
-             console.log(JSON.stringify(myTabs));
-         });
-
-         $tabs.find( ".ui-tabs-nav" ).sortable({
-             axis: "x",
-             stop: function() {
-                 $tabs.tabs( "refresh" );
-             }
-         });
-
-         $('#tabLimit').spinner();
-
-         $( 'button' ).button();
-
-         $( ".radio" ).checkboxradio();
-         $('#tabDropActivate').checkboxradio();
-
-         $( '#tabDialog' ).dialog({
-             autoOpen: false,
-             resizable: false,
-             height: 'auto',
-             width: 400,
-             modal: true,
-             buttons: {
-                 Cancel: function() {
-                     $( this ).dialog( 'close' );
-                 },
-                 'OK': function() {
-                     $('#' + $(this).data('tabId')).text($('#tabName').val());
-                     $( this ).dialog( 'close' );
+                     $activeTab.find('.tabCloser').show();
                  }
-             },
-             open: function( event, ui ) {
-                 console.log('plop! ' + $(this).data('tabId'));
-                 $('#tabName').val($(this).data('tabName'));
-             }
+
+             });
+
+             $tabs.find('.ui-tabs-nav').sortable({
+                 axis: 'x',
+                 items: '> li:not(#newTabButton)',
+                 stop: function() {
+                     $tabs.tabs('refresh');
+                     Tab.saveTabs()
+                 }
+             });
+
+             $tabs.on('mouseup', '.ui-tabs-active a', function(e){
+                 e.preventDefault();
+                 if (e.which === 1)
+                     Dialog.renameTab($(this))
+             });
+
+             $tabs.on("click", "i.tabCloser", function() {
+                 Dialog.killTab($(this))
+             });
+
+             // INIT
+
+             Tab.populateTabs(JSON.parse(Prefs.readConfig('tabs')))
+
+             $tabs.find('div.feedControls').slideUp()
+
          });
 
-         $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
-             e.preventDefault();
-             $( '#tabDialog' )
-                 .data('tabName', $(this).text())
-                 .data('tabId', $(this).children('a').prop('id'))
-                 .dialog('open');
-         });
+        </script>
 
-         console.log('---- CONSOLE LOGGING OK ----');
+        <style>
 
+         div#preloaded-images {
+             position: absolute;
+             overflow: hidden;
+             left: -9999px;
+             top: -9999px;
+             height: 1px;
+             width: 1px;
+         }
 
-         // Prefs
+        </style>
 
-         $('#themes').selectmenu({
-             change: function( event, data ) {
-
-                 Prefs.writeConfig('theme', data.item.value);
-
-                 $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-             }
-         });
-
-         $("#stylesheet").attr({href : 'https://code.jquery.com/ui/1.12.1/themes/' + Prefs.readConfig('theme') + '/jquery-ui.css'});
-
-         $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
-
-         $('#tabDropActivate').val(Prefs.readConfig('tabDropActivate'));
-
-         $('#tabDropActivate').change(function() {
-             Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
-         });
-
-         $('#colorselector2').ColorPicker({
-             color: '#EFEFEF',
-             onShow: function (colpkr) {
-                 $(colpkr).fadeIn(500);
-                 return false;
-             },
-             onHide: function (colpkr) {
-                 $(colpkr).fadeOut(500);
-                 return false;
-             },
-             onChange: function (hsb, hex, rgb) {
-                 $('#colorSelector div').css('backgroundColor', '#' + hex);
-                 Prefs.writeConfig('background-color', hex);
-
-                 $('body').css('background-color', '#' + Prefs.readConfig('background-color'));
-
-             }
-         });
-
-     });
-
-    </script>
+    </head>
 
     <body>
 
-        <div id="tabs">
-            <ul id="theTabs"></ul>
+        <div id="waitScreen" style="position: fixed; top:0; width: 100vw; height: 100vh;">
+            <div class="wspinner"></div>
+            <!-- plop -->
         </div>
 
-        <fieldset id="prefsForm">
-            <button id="addTab">Add Tab</button>
-            <button id="saveTabs">Save Tabs</button>
-            <label for="tabDropActivate">Open tab on feed drop</label>
-            <input type="checkbox" name="tabDropActivate" id="tabDropActivate">
-            <button id="colorselector2">Color</button>
+        <div id="tabs">
+            <ul id="tabUl"></ul>
+        </div>
 
-            <select id="themes">
-                <option value="base">Base</option>
-                <option value="black-tie">Black-Tie</option>
-                <option value="blitzer">Blitzer</option>
-                <option value="cupertino">Cupertino</option>
-                <option value="dark-hive">Dark-hive</option>
-                <option value="dot-luv">Dot-luv</option>
-                <option value="eggplant">Eggplant</option>
-                <option value="excite-bike">Excite-bike</option>
-                <option value="flick">Flick</option>
-                <option value="hot-sneaks">Hot-sneaks</option>
-                <option value="humanity">Humanity</option>
-                <option value="le-frog">Le-frog</option>
-                <option value="mint-choc">Mint-choc</option>
-                <option value="overcast">Overcast</option>
-                <option value="pepper-grinder">Pepper-grinder</option>
-                <option value="redmond">Redmond</option>
-                <option value="smoothness">Smoothness</option>
-                <option value="south-street">South-street</option>
-                <option value="start">Start</option>
-                <option value="sunny">Sunny</option>
-                <option value="swanky-purse">Swanky-purse</option>
-                <option value="trontastic">Trontastic</option>
-                <option value="ui-darkness">Ui-darkness</option>
-                <option value="ui-lightness">Ui-lightness</option>
-                <option value="vader">Vader</option>
-            </select>
-        </fieldset>
+        <div id="mobDialogs"></div>
 
-        <div id="tabDialog" title="Rename tab">
-            <form>
-                <fieldset>
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="tabName" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                </fieldset>
-            </form>
+        <script>
+
+         document.fonts.ready.then((fontFaceSet) => {
+             console.log(fontFaceSet.size, 'FontFaces loaded.');
+             document.getElementById('waitScreen').style.display = 'none';
+         });
+
+        </script>
+
+        <script src="/static/lib/js/menu.js"></script>
+        <script src="/static/lib/js/tab.js"></script>
+        <script src="/static/lib/js/feed.js"></script>
+        <script src="/static/lib/js/prefs.js"></script>
+        <script src="/static/lib/js/dialog.js"></script>
+        <script src="/static/lib/js/utilities.js"></script>
+
+        <div id="preloaded-images">
+            <img src="/static/images/feed-toggle-triangle.png" width="1" height="1" alt="Image 01" />
         </div>
 
     </body>
-    <script src="lib/js/tab.js"></script>
-    <script src="lib/js/feed.js"></script>
-    <script src="lib/js/prefs.js"></script>
 </html>

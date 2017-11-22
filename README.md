@@ -18,53 +18,7 @@ Make the page your home page, and read it every morning. You know instantly what
 
 ### Technical Features
 
-- AJAX (asynchronous) loading of the feeds (ie reload one single feed w/o reloading the whole page)
-- Flexible/Responsive rendering of the feeds wrapping
-- Additionnaly, per tab/category:
-    - Column mode
-    - Block mode
-    - Full block mode (for phones and small screens)
-- Handles any charset encoding/langage
-- Grabs the most out of the description text and displays it as standard tooltip on mouse hover
-- Built-in **image gallery** (to view all the images in a feed, or in a category)
-- Does its best to parse any given feed and identify it w/o questions
-- Plays nice with different resolutions & ergonomics, ie phones, tablets, etc
-- Directly links to any included image (and sound file)
-- If any, displays item image, wrapped around text (displays it full width if it's the only item's element, or if it comes from a photoblog)
-- Lightweight and standard (valid HTML5 code)
-
-### Installation
-
--   Copy the files in a directory within a webserver root, or just a directory on your local machine (but remember to install PHP)
--   Point your browser to that directory. That's it.
--   Oh, if you want to use the favicon caching feature (those favicons can take a loong time to get) make sure that the web server has the right to write to our directory:
-    -   On the average web server (Debian / Apache) it's generally just a matter of, in the `nws` folder: `sudo chown .www-data .`
--   Recommended if installed online : Protect (restrict access to) the back-office / feeds file:
-    -   Use [a trusted online htpassword generator](https://duckduckgo.com/?q%3Dhtpassword%2Bgenerator) (You can also create user/password pair(s) directly on the server with the command `htpasswd -b .access username password`)
-    -   Paste this user/password pair in a file, and point to it from the [.htaccess](http://bitbucket.org/yassinphilip/nws/src/master/.htaccess) file
-
-#### Annex: A simple local server
-
-To run NWS locally, simply install a basic PHP server:
-
-- Install the server components: `sudo apt install php7.0 php7.0-xml` (you may have to log in and out)
-- Start the server in the NWS directory : `php -S localhost:8000`
-- Point your browser to http://localhost:8000
-
-### Usage
-
--   Navigate the tabs with < left and > right arrow keys (and `r` & `t`)
--   Click the big "►" to view all the tab/category images in a gallery
--   Click the small, feed item's "►" to view all feed's images in a gallery
-    -   Navigate the gallery's images with < left and > right arrow keys
-    -   Exit the gallery by clicking outside it, or pressing the ESC key
--   Use the "Manage feeds" link to access the "back office"
-    -   Use the "add a new feed" text entry field at the bottom to enter a new feed
-    -   Use the "new tab" text entry field to create a new category
-    -   Use the "change this feed's tab" menu to re-categorize the feed
-    -   Use the "promote this feed" (^) link to bump up a feed as 1st of its tab
-    -   Use the "delete this feed" (x) link to delete a feed
--   Or directly edit [libs/feeds.xml](http://bitbucket.org/yassinphilip/nws/src/master/libs/feeds.xml) (way **faster & safer**).
+WIP :)
 
 ### LICENSE
 
