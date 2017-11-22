@@ -196,6 +196,7 @@ var Feed = (function() {
           // var $mediaGroup = $.parseHTML(item.media)
 
           // console.log( "Item: (%s)", item);
+          var imageUrl;
 
           if (item['media:group']) {
             console.log( "Media: (%s)", JSON.stringify(item['media:group']['media:content']));
@@ -209,8 +210,6 @@ var Feed = (function() {
           }
 
           var $tempDom = $('<output>').append($description);
-
-          var imageUrl;
 
           if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
             imageUrl = $tempDom.find('img').attr('src');
