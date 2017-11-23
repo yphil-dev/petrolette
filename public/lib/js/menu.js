@@ -14,17 +14,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $donate = $('button#donate').button().tooltip(),
       $profile = $('button#profile').button().tooltip();
 
-  $('.translate').each(function() {
-
-    if ($(this).data('title')) {
-      $(this).prop('title', MOB.tr($(this).data('title')));
-    }
-
-    if ($(this).data('content')) {
-      $(this).text(MOB.tr($(this).data('content')));
-    }
-
-  });
+  MOB.utilities.translate();
 
   $langMenu.val(MOB.prefs.readConfig('lang'));
 
@@ -35,18 +25,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     console.log('Lang: %s', selectedLang);
     MOB.language = selectedLang;
     MOB.prefs.writeConfig('lang', selectedLang);
-
-    $('.translate').each(function() {
-
-      if ($(this).data('title')) {
-        $(this).prop('title', MOB.tr($(this).data('title')));
-      }
-
-      if ($(this).data('content')) {
-        $(this).text(MOB.tr($(this).data('content')));
-      }
-
-    });
+    MOB.utilities.translate();
 
   });
 

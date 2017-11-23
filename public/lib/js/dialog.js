@@ -9,6 +9,8 @@ MOB.dialog = {
     $('#mobDialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
       var $dialog = $(this).find('#feedPrefs');
 
+      MOB.utilities.translate();
+
       var $spinner = $(this).find('#spinner').spinner();
 
       $spinner.on( 'spinstop', function() {
@@ -21,6 +23,7 @@ MOB.dialog = {
       var $feed = $dataStore.parent().parent();
 
       $dialog.dialog({
+        title: MOB.tr('Feed: Parameters'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,

@@ -1,5 +1,20 @@
 MOB.utilities = {
 
+  translate:function() {
+
+    $('.translate').each(function() {
+
+      if ($(this).data('title')) {
+        $(this).prop('title', MOB.tr($(this).data('title')));
+      }
+
+      if ($(this).data('content')) {
+        $(this).text(MOB.tr($(this).data('content')));
+      }
+
+    });
+
+  },
   getLocation: function(href) {
     var l = document.createElement("a");
     l.href = href;

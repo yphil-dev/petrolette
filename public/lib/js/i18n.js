@@ -110,7 +110,10 @@ MOB.i18n.translations = {
 
   // Dialogues
   "Feed: Kill" : { fr: "Flux: Supprimer", ja: "フィード：削除", es: "Feed: Eliminar" },
+  "Feed: Parameters" : { fr: "Flux: Paramètres", ja: "フィード：パラメータ", es: "Feed: Parámetros" },
+
   "Tab: Kill" : { fr: "Tab: Supprimer", ja: "タブ：削除", es: "Pestaña: Eliminar" },
+  "Location (URL)" : { fr: "Adresse (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },
 
   // Titres
   "Add a new feed to %1" : { fr: "Ajouter un flux à %1", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo feed a %1" },
