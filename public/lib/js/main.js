@@ -1,7 +1,8 @@
 var MOB = (function() {
 
   return {
-    language: Prefs.readConfig('lang'),
+    // language: Prefs.readConfig('lang'),
+    language: 'en',
 
     start : function() {
       var self = this;

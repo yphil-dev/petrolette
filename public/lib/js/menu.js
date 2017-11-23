@@ -9,7 +9,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $donate = $('button#donate').button().tooltip(),
       $profile = $('button#profile').button().tooltip();
 
-  $langMenu.val(Prefs.readConfig('lang'));
+  $langMenu.val(MOB.prefs.readConfig('lang'));
 
   $langMenu.change(function() {
 
@@ -17,7 +17,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
     console.log('Lang: %s', selectedLang);
     MOB.language = selectedLang;
-    Prefs.writeConfig('lang', selectedLang);
+    MOB.prefs.writeConfig('lang', selectedLang);
 
     $('.translate').each(function() {
 
@@ -59,13 +59,13 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $fileExport.click(function () {
-    Prefs.exportConfig(MOB.tab.all(), 'mobylette.json');
+    MOB.prefs.exportConfig(MOB.tab.all(), 'mobylette.json');
     return false;
   });
 
   $(".checkboxradio").checkboxradio();
 
-  $(this).find('input#' + Prefs.readConfig('theme')).prop("checked", true)
+  $(this).find('input#' + MOB.prefs.readConfig('theme')).prop("checked", true)
     .checkboxradio('refresh');
 
   $('.themeSwitcher').change(function() {
@@ -73,12 +73,12 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
     $("#mobStyle").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
 
-    Prefs.writeConfig('theme', $(this).attr('value'));
+    MOB.prefs.writeConfig('theme', $(this).attr('value'));
 
   });
 
-  var gallerySlideshowSpeed = Prefs.readConfig('gallerySlideshowSpeed');
-  var gallerySlideTransition = Prefs.readConfig('gallerySlideTransition');
+  var gallerySlideshowSpeed = MOB.prefs.readConfig('gallerySlideshowSpeed');
+  var gallerySlideTransition = MOB.prefs.readConfig('gallerySlideTransition');
 
   $.fancybox.defaults.thumbs.autoStart = true;
   $.fancybox.defaults.transitionEffect = gallerySlideTransition;
@@ -87,18 +87,18 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   $slider.find('select#gallerySlideTransition').change(function() {
     console.log('New FX: %s', $(this).val());
     $.fancybox.defaults.transitionEffect = $(this).val();
-    Prefs.writeConfig('gallerySlideTransition', $(this).val());
+    MOB.prefs.writeConfig('gallerySlideTransition', $(this).val());
   });
 
   $slider.find('select#gallerySlideTransition').val(gallerySlideTransition);
 
-  if (Prefs.readConfig('tabDropActivate') === 'true')
+  if (MOB.prefs.readConfig('tabDropActivate') === 'true')
     $('#tabDropActivate').prop('checked', true).checkboxradio('refresh');
   else
     $('#tabDropActivate').prop('checked', false).checkboxradio('refresh');
 
   $('#tabDropActivate').change(function() {
-    Prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
+    MOB.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
   });
 
   $slider.find('#gallerySlideshowSpeed').slider({
@@ -112,7 +112,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $('#gallerySlideshowSpeedValue').text(Utilities.milliToSecs(ui.value) + 's');
     },
     change: function(event, ui) {
-      Prefs.writeConfig('gallerySlideshowSpeed', ui.value);
+      MOB.prefs.writeConfig('gallerySlideshowSpeed', ui.value);
       $('#tabs').find("[data-fancybox]").fancybox({
         slideShow: {
           speed: ui.value
