@@ -152,6 +152,7 @@ MOB.feed = {
       return l;
     };
 
+
     // var $feed = $('#' + id);
     var $feed = $('#' + $dataStore.data('id'));
 
@@ -162,6 +163,21 @@ MOB.feed = {
     var feedType = $dataStore.data('type');
     var feedLimit = $dataStore.data('limit');
 
+    if (!MOB.utilities.isUrl(feedUrl)) {
+      console.log('bad URL: (%s)', feedUrl);
+      $header.addClass('ui-state-error');
+
+      $feedTitle
+        .text(MOB.tr("Error"))
+        .addClass('translate')
+        .data('content', MOB.tr("Error"));
+
+      $feedBody
+        .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+
+      return;
+    }
+
     var $feedIcon = $feed.find('.feedToggle > i');
 
     var l = getLocation(feedUrl);
@@ -170,6 +186,7 @@ MOB.feed = {
 
     $refreshButton.addClass('spinner');
     $feed.children('.mobHeader').removeClass('ui-state-error');
+
 
     $.get("/feedicon", {
       url: decodeURI(feedHost),
@@ -183,7 +200,7 @@ MOB.feed = {
       $header.data('img',icon);
 
     }).fail(function(icon, status) {
-      console.error('FAVICON %s ERROR (status: %s)',  feedHost, status);
+      // console.error('FAVICON %s ERROR (status: %s)',  feedHost, status);
       $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
     }).always(function() {
 

@@ -46,7 +46,7 @@ MOB.dialog = {
               .data('type', newType);
 
             MOB.feed.populate($feedPrefsButton);
-            Tab.saveTabs();
+            MOB.tab.saveTabs();
             MOB.dialog.kill($dialog);
           }
         },
@@ -151,7 +151,8 @@ MOB.dialog = {
 
           $dialog.on('submit', function () {
             MOB.feed.populate($mobFeedRefresh);
-            Tab.saveTabs();
+
+            MOB.tab.saveTabs();
 
             $(this).dialog('destroy');
             return false;
@@ -200,7 +201,7 @@ MOB.dialog = {
             $selectedTab.remove();
             $selectedPanel.remove();
 
-            Tab.saveTabs();
+            MOB.tab.saveTabs();
             MOB.dialog.kill($dialog);
             $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
 
@@ -228,6 +229,8 @@ MOB.dialog = {
       var $thisFeedId = $button.parent().parent().parent().parent().attr('id');
       var thisFeedName = $button.parent().parent().prev().text();
 
+      console.log('ID: %s', $thisFeedId);
+
       $dialog.dialog({
         title: 'Kill Feed',
         autoOpen: false,
@@ -242,10 +245,11 @@ MOB.dialog = {
 
             $tabFeedId.hide('fade', 1000, function() {
               $tabFeedId.remove();
+              MOB.tab.saveTabs();
             });
 
-            Tab.saveTabs();
             MOB.dialog.kill($dialog);
+
           },
           Cancel: function() {
             MOB.dialog.kill($dialog);
@@ -281,7 +285,7 @@ MOB.dialog = {
           },
           'OK': function() {
             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
-            Tab.saveTabs();
+            MOB.tab.saveTabs();
             // MOB.dialog.kill($dialog);
             MOB.dialog.kill($dialog);
           }
@@ -301,7 +305,7 @@ MOB.dialog = {
 
           $(this).on('submit', function () {
             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
-            Tab.saveTabs();
+            MOB.tab.saveTabs();
             MOB.dialog.kill($dialog);
           });
         }

@@ -4,6 +4,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $handle = $slider.find('.handle'),
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
+
+      $helpLegend = $('legend#helpLegend'),
       $saveButton = $('#saveTabs').button(),
       $dropTabLabel = $('label#dropTabLabel'),
       $dayLabel = $('label#dayLabel'),
@@ -12,25 +14,17 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $donate = $('button#donate').button().tooltip(),
       $profile = $('button#profile').button().tooltip();
 
-  $donate.attr('title', MOB.tr('Mobylette (really) needs your help'))
-    .text(MOB.tr('Donate'));
-  $profile.attr('title', MOB.tr('Forgot what you are? Reset Mobylette tabs & feeds'))
-    .text(MOB.tr('Profile'));
+  $('.translate').each(function() {
 
-  $loadButton.attr('title', MOB.tr('Open feeds and tabs file'))
-    .text(MOB.tr('Load'));
+    if ($(this).data('title')) {
+      $(this).prop('title', MOB.tr($(this).data('title')));
+    }
 
-  $saveButton.attr('title', MOB.tr('Save feeds and tabs file'))
-    .text(MOB.tr('Save'));
+    if ($(this).data('content')) {
+      $(this).text(MOB.tr($(this).data('content')));
+    }
 
-  $dropTabLabel.attr('title', MOB.tr('Open tab on feed drop'))
-    .text(MOB.tr('Open tab on feed drop'));
-
-  $dayLabel.attr('title', MOB.tr('Day theme'))
-    .text(MOB.tr('Day'));
-
-  $nightLabel.attr('title', MOB.tr('Night theme'))
-    .text(MOB.tr('Night'));
+  });
 
   $langMenu.val(MOB.prefs.readConfig('lang'));
 
@@ -131,7 +125,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     slide: function(event, ui) {
       $('#amount').val(ui.value + 'ms');
       // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-      $('#gallerySlideshowSpeedValue').text(Utilities.milliToSecs(ui.value) + 's');
+      $('#gallerySlideshowSpeedValue').text(MOB.utilities.milliToSecs(ui.value) + 's');
     },
     change: function(event, ui) {
       MOB.prefs.writeConfig('gallerySlideshowSpeed', ui.value);
@@ -144,7 +138,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $('#amount').val($('#gallerySlideshowSpeed').slider('value') + 'ms');
-  $('#gallerySlideshowSpeedValue').text(Utilities.milliToSecs($('#gallerySlideshowSpeed').slider('value')) + 's');
+  $('#gallerySlideshowSpeedValue').text(MOB.utilities.milliToSecs($('#gallerySlideshowSpeed').slider('value')) + 's');
 
   // File select
 
@@ -157,7 +151,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       console.log('JSON!');
     } else {
       console.log('NOT JSON!');
-      Utilities.notify('error', 'Not a Mobylette definition file format');
+      MOB.utilities.notify('error', 'Not a Mobylette definition file format');
       return;
     }
 
@@ -190,16 +184,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         if (IsJsonString(y)) {
           p = JSON.parse(y);
         } else {
-          Utilities.notify('error', 'Not a Mobylette definition file');
+          MOB.utilities.notify('error', 'Not a Mobylette definition file');
         }
 
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          Utilities.notify('success', 'Successful import');
+          MOB.utilities.notify('success', 'Successful import');
           MOB.tab.populate(p, true);
         } else {
-          Utilities.notify('error', 'Not a Mobylette definition file');
+          MOB.utilities.notify('error', 'Not a Mobylette definition file');
         }
 
         // console.log('Is Valid: %s', isValid)
