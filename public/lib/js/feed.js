@@ -1,4 +1,142 @@
 MOB.feed = {
+  make:function($tab, url, type, limit, clickNew, progress) {
+
+    var feedIndex = $('#tabs').find('.feed').length;
+
+    var $feedToggle = $('<i>')
+        .attr('class', 'feedIcon rotate translate')
+        .data('title', 'Fold / unfold')
+        .attr('title', MOB.tr('Fold / unfold'));
+
+    var $feedSelect = $('<i>')
+        .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
+        .data('title', 'Select this feed')
+        .attr('title', MOB.tr('Select this feed'))
+        .button();
+
+    var $feedDelete = $('<i>')
+        .attr('class', 'feedControl translate icon-trash feedDelete')
+        .data('title', 'Delete this feed')
+        .attr('title', MOB.tr('Delete this feed'))
+        .button();
+
+    var $feedPrefs = $('<i>')
+        .attr('class', 'feedControl translate icon-cog mobFeedPrefs')
+        .data('title', 'Options')
+        .attr('title', MOB.tr('Options'))
+        .button();
+
+    var $feedReload = $('<i>')
+        .attr('class', 'feedControl translate icon-arrows-cw mobFeedRefresh')
+        .data('title', 'Refresh')
+        .attr('title', MOB.tr('Refresh'))
+        .button();
+
+    var $feedControls = $('<div>').attr('class', 'feedControls dataStore')
+        .data('id', 'feed-' + feedIndex)
+        .data('index', feedIndex)
+        .data('url', url)
+        .data('type', type)
+        .data('limit', limit);
+
+    $feedToggle.click(function() {
+      $(this).toggleClass("down");
+      $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
+      return false;
+    });
+
+    $feedSelect.click(function() {
+      $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
+      $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1');
+      return false;
+    });
+
+    $feedDelete.click(function() {
+      MOB.dialog.killFeed($(this));
+      return false;
+    });
+
+    $feedPrefs.click(function() {
+      MOB.dialog.feedPrefs($(this));
+      return false;
+    });
+
+    $feedReload.click(function() {
+      MOB.feed.populate($(this), progress);
+      return false;
+    });
+
+    var $feedBody = $('<div class="feedBody ui-widget-content">');
+    var $feedBodyUl = $('<ul class="feedBody">');
+
+    var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-widget" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
+
+    var $header = $('<div class="mobHeader ui-widget-header">');
+
+    var $toggleDiv = $('<div class="feedToggle">');
+    var $selectDiv = $('<div class="feedSelect">');
+    var $deleteDiv = $('<div class="feedDelete">');
+    var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
+    var $prefsDiv = $('<div class="prefs">');
+    var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
+
+    $feedToggle.appendTo($toggleDiv);
+
+    $header.hover (
+      function() {
+        var iconImg = $feedToggle.css('background-image');
+
+        $feedToggle.addClass('arrow');
+
+        $(this).data('img',iconImg);
+
+        $(this).find('.feedControls').slideDown('fast');
+        $feedToggle.css('background-image', 'url("/static/images/feed-toggle-triangle.png")');
+      },
+      function() {
+        $(this).find('.feedControls').slideUp('slow');
+
+        $feedToggle.removeClass('arrow');
+
+        if (typeof $(this).data('img') !== 'undefined') {
+          $feedToggle.css('background-image', $(this).data('img'));
+        } else {
+          $feedToggle.css('background-image', 'url("/static/images/feed-generic-rss.png")');
+        }
+
+      }
+    );
+
+    $feedSelect.appendTo($selectDiv);
+    $feedDelete.appendTo($deleteDiv);
+    $titleDiv.html(url);
+    $feedPrefs.appendTo($prefsDiv);
+    $feedReload.appendTo($reloadDiv);
+
+    $toggleDiv.appendTo($header);
+    $titleDiv.appendTo($header);
+    $selectDiv.appendTo($feedControls);
+    $deleteDiv.appendTo($feedControls);
+    $prefsDiv.appendTo($feedControls);
+    $reloadDiv.appendTo($feedControls);
+
+    $feedControls.appendTo($header);
+
+    $feedBodyUl.appendTo($feedBody);
+
+    $header.appendTo($feed);
+    $feedBody.appendTo($feed);
+
+    if (clickNew) {
+      $feed.prependTo($tab);
+      // $feedPrefs.click()
+      MOB.dialog.feedPrefs($feedPrefs, true);
+    } else {
+      $feed.appendTo($tab);
+      $feedReload.click();
+    }
+
+  },
   populate:function($button, progress) {
 
     var $dataStore = $button.parent().parent();
@@ -165,149 +303,6 @@ MOB.feed = {
       $refreshButton.removeClass('spinner');
 
     });
-  },
-  make:function($tab, url, type, limit, clickNew, progress) {
-
-    var feedIndex = $('#tabs').find('.feed').length;
-
-    var $feedToggle = $('<i>')
-        .attr('class', 'feedIcon rotate translate')
-        .data('title', 'Fold / unfold')
-        .attr('title', MOB.tr('Fold / unfold'));
-
-    var $feedSelect = $('<i>')
-        .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
-        .data('title', 'Select this feed')
-        .attr('title', MOB.tr('Select this feed'))
-        .button();
-
-    var $feedDelete = $('<i>')
-        .attr('class', 'feedControl translate icon-trash feedDelete')
-        .data('title', 'Delete this feed')
-        .attr('title', MOB.tr('Delete this feed'))
-        .button();
-
-    var $feedPrefs = $('<i>')
-        .attr('class', 'feedControl translate icon-cog mobFeedPrefs')
-        .data('title', 'Options')
-        .attr('title', MOB.tr('Options'))
-        .button();
-
-    var $feedReload = $('<i>')
-        .attr('class', 'feedControl translate icon-arrows-cw mobFeedRefresh')
-        .data('title', 'Refresh')
-        .attr('title', MOB.tr('Refresh'))
-        .button();
-
-    var $feedControls = $('<div>').attr('class', 'feedControls dataStore')
-        .data('id', 'feed-' + feedIndex)
-        .data('index', feedIndex)
-        .data('url', url)
-        .data('type', type)
-        .data('limit', limit);
-
-    $feedToggle.click(function() {
-      $(this).toggleClass("down");
-      $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
-      return false;
-    });
-
-    $feedSelect.click(function() {
-      $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
-      $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1');
-      return false;
-    });
-
-    $feedDelete.click(function() {
-      MOB.dialog.killFeed($(this));
-      return false;
-    });
-
-    $feedPrefs.click(function() {
-      MOB.dialog.feedPrefs($(this));
-      return false;
-    });
-
-    $feedReload.click(function() {
-      MOB.feed.populate($(this), progress);
-      return false;
-    });
-
-    var $feedBody = $('<div class="feedBody ui-widget-content">');
-    var $feedBodyUl = $('<ul class="feedBody">');
-
-    var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-widget" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
-
-    var $header = $('<div class="mobHeader ui-widget-header">');
-
-    var $toggleDiv = $('<div class="feedToggle">');
-    var $selectDiv = $('<div class="feedSelect">');
-    var $deleteDiv = $('<div class="feedDelete">');
-    var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
-    var $prefsDiv = $('<div class="prefs">');
-    var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
-
-    $feedToggle.appendTo($toggleDiv);
-
-    $header.hover (
-      function() {
-        var iconImg = $feedToggle.css('background-image');
-
-        $feedToggle.addClass('arrow');
-
-        $(this).data('img',iconImg);
-
-        $(this).find('.feedControls').slideDown('fast');
-        $feedToggle.css('background-image', 'url("/static/images/feed-toggle-triangle.png")');
-      },
-      function() {
-        $(this).find('.feedControls').slideUp('slow');
-
-        $feedToggle.removeClass('arrow');
-
-        if (typeof $(this).data('img') !== 'undefined') {
-          $feedToggle.css('background-image', $(this).data('img'));
-        } else {
-          $feedToggle.css('background-image', 'url("/static/images/feed-generic-rss.png")');
-        }
-
-      }
-    );
-
-    $feedSelect.appendTo($selectDiv);
-    $feedDelete.appendTo($deleteDiv);
-    $titleDiv.html(url);
-    $feedPrefs.appendTo($prefsDiv);
-    $feedReload.appendTo($reloadDiv);
-
-    $toggleDiv.appendTo($header);
-    $titleDiv.appendTo($header);
-    $selectDiv.appendTo($feedControls);
-    $deleteDiv.appendTo($feedControls);
-    $prefsDiv.appendTo($feedControls);
-    $reloadDiv.appendTo($feedControls);
-
-    $feedControls.appendTo($header);
-
-    $feedBodyUl.appendTo($feedBody);
-
-    $header.appendTo($feed);
-    $feedBody.appendTo($feed);
-
-    if (clickNew) {
-      $feed.prependTo($tab);
-      // $feedPrefs.click()
-      MOB.dialog.feedPrefs($feedPrefs, true);
-    } else {
-      $feed.appendTo($tab);
-      $feedReload.click();
-    }
-
-  },
-  kill:function($dialog) {
-    console.info('Kill!');
-    $dialog.dialog( 'destroy' );
-    $('#mobDialogs').empty();
   }
 };
 
