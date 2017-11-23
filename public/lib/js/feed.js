@@ -5,7 +5,12 @@ var Feed = (function() {
 
       var feedIndex = $('#tabs').find('.feed').length;
 
-      var $feedToggle = $('<i class="feedIcon rotate" title="Click to fold/unfold">').click(function() {
+      var $feedToggle = $('<i>')
+          .attr('class', 'feedIcon rotate translateTitle')
+          .data('title', 'Fold / unfold')
+          .attr('title', MOB.tr('Fold / unfold'));
+
+      $feedToggle.click(function() {
         $(this).toggleClass("down");
         $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
         return false;
@@ -163,7 +168,7 @@ var Feed = (function() {
         $header.data('img',icon);
 
       }).fail(function(icon, status) {
-        console.log( 'FAVICON %s ERROR (status: %s)',  feedHost, status);
+        console.error('FAVICON %s ERROR (status: %s)',  feedHost, status);
         $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
       }).always(function() {
 
@@ -176,8 +181,6 @@ var Feed = (function() {
       }, function() {
 
         $feedBody.empty();
-
-          console.log('i18n: (%s)', MOB.i18n.trans( "Add" ));
 
       }).done(function(data) {
         $feedTitle.text(data.feedTitle);
@@ -265,8 +268,9 @@ var Feed = (function() {
 
         // console.log( "error" );
         $header.addClass('ui-state-error');
-        $feedTitle.text('Error');
-        $feedBody.html('<li class="feedItem"><strong>Feed Error</strong> (' + feedUrl + ')</li>');
+        $feedTitle.text(MOB.tr("Error"));
+        $feedBody.html('<li class="feedItem"><strong>' + MOB.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+
       }).always(function() {
 
         if(progress) {

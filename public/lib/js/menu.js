@@ -9,9 +9,23 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $donate = $('button#donate').button().tooltip(),
       $profile = $('button#profile').button().tooltip();
 
+  $langMenu.val(Prefs.readConfig('lang'));
+
   $langMenu.change(function() {
-    console.log('Lang: %s', $(this).val());
-    MOB.language = $(this).val();
+
+    var selectedLang = $(this).val();
+
+    console.log('Lang: %s', selectedLang);
+    MOB.language = selectedLang;
+    Prefs.writeConfig('lang', selectedLang);
+
+    $('i.translateTitle').each(function() {
+      var existingTitle = $(this).data('title');
+      // $(this).removeAttr('title');
+      $(this).prop('title', MOB.tr(existingTitle));
+      console.log('Title then: %s, now: %s (lang %s)', existingTitle, MOB.tr(existingTitle), MOB.language);
+    });
+
   });
 
   $handle.click(function () {

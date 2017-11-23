@@ -30,12 +30,13 @@
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/arima-koshi" type="text/css"/>
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/>
 
+    <script src="/static/lib/js/prefs.js"></script>
     <script src="/static/lib/js/main.js"></script>
     <script src="/static/lib/js/i18n.js"></script>
 
     <script>
 
-     console.log('Lang: (%s)', navigator.language)
+     console.log('Lang: %s (prefs: %s)', navigator.language, Prefs.readConfig('lang'))
 
      $(document).ready(function() {
 
@@ -126,7 +127,6 @@
     <script src="/static/lib/js/menu.js"></script>
     <script src="/static/lib/js/tab.js"></script>
     <script src="/static/lib/js/feed.js"></script>
-    <script src="/static/lib/js/prefs.js"></script>
     <script src="/static/lib/js/dialog.js"></script>
     <script src="/static/lib/js/utilities.js"></script>
 
