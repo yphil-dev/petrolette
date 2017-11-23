@@ -59,7 +59,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $fileExport.click(function () {
-    Prefs.exportConfig(Tab.getTabs(), 'mobylette.json');
+    Prefs.exportConfig(MOB.tab.all(), 'mobylette.json');
     return false;
   });
 
@@ -175,7 +175,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
         if (p && isOk(p) === true){
           Utilities.notify('success', 'Successful import');
-          Tab.populateTabs(p, true);
+          MOB.tab.populate(p, true);
         } else {
           Utilities.notify('error', 'Not a Mobylette definition file');
         }
