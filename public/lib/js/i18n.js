@@ -20,7 +20,7 @@ MOB.i18n.translations = {
   "All" : { fr: "Tous", ja: "全て" },
   "From": { fr: "Du", ja: "から" },
   "To": { fr: "Au", ja: "まで" },
-  "Cancel": { fr: "Annuler", ja: "取り消す" },
+  "Cancel": { fr: "Annuler", ja: "取り消す", es: "Cancelar" },
   "Esc": { fr: "Echap", ja: "" },
   "Canceled" : { fr: "Annulé", ja: "取り消し" },
   "Close": { fr: "Clôturer", ja: "閉じる" },
@@ -32,7 +32,7 @@ MOB.i18n.translations = {
   "Create": { fr: "Créer", ja: "作成" },
   "Date": { fr: "Date", ja: "日付" },
   "%1 days": { fr: "%1 jours", ja: "%1 日" },
-  "Delete": { fr: "Supprimer", ja: "削除" },
+  "Delete": { fr: "Supprimer", ja: "削除", es: "Eliminar" },
   "elements" : { fr: "éléments", ja: "データ？要素" },
   "element" : { fr : "élément", ja: "データ？要素" },
   "End": { fr: "Fin", ja: "最後" },
@@ -99,12 +99,18 @@ MOB.i18n.translations = {
   "Open tab on feed drop"   : { fr: "Ouvrir nouveau tab" , ja: "ドロップ時にタブを開く", es: "Abrir pestaña en drop" },
 
   // Messages d'erreurs
-  "Mobylette (really) needs your help"   : { fr: "Aider (en vrai) Mobylette" , ja: "Mobylette（本当に）あなたの助けが必要です", es: "Mobylette (realmente) necesita tu ayuda" },
-
-  "Forgot what you are? Reset Mobylette tabs & feeds"   : { fr: "Oublié ce que vous êtes? Re-initialiser Mobylette" , ja: "あなたは何かを忘れましたか？ リセットMobylette", es: "Olvidó lo que eres? Restablecer Mobylette" },
+  "Mobylette (really) needs your help" : { fr: "Aider (en vrai) Mobylette" , ja: "Mobylette（本当に）あなたの助けが必要です", es: "Mobylette (realmente) necesita tu ayuda" },
+  "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
+  "This file is fine" : { fr: "Ce fichier est parfait" , ja: "このファイルは問題ありません", es: "Este archivo está bien" },
+  "Forgot what you are? Reset Mobylette tabs & feeds" : { fr: "Oublié ce que vous êtes? Re-initialiser Mobylette" , ja: "あなたは何かを忘れましたか？ リセットMobylette", es: "Olvidó lo que eres? Restablecer Mobylette" },
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
+  "error" : { fr: "erreur", ja: "エラー", es: "error" },
+
+  // Dialogues
+  "Feed: Kill" : { fr: "Flux: Supprimer", ja: "フィード：削除", es: "Feed: Eliminar" },
+  "Tab: Kill" : { fr: "Tab: Supprimer", ja: "タブ：削除", es: "Pestaña: Eliminar" },
 
   // Titres
   "Add a new feed to %1" : { fr: "Ajouter un flux à %1", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo feed a %1" },
@@ -112,6 +118,9 @@ MOB.i18n.translations = {
   "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
   "Select this feed" : { fr: "Sélectionner ce flux", ja: "RSSフィードを選択", es: "Selecciona este feed" },
   "Delete this feed" : { fr: "Supprimer ce flux", ja: "このRSSフィードを削除", es: "Eliminar este feed rss" },
+  "Really delete this feed? (%1)" : { fr: "Vraiment supprimer ce flux (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este feed? (%1)" },
+  "Really delete this tab? (%1, %2 feeds)" : { fr: "Vraiment supprimer cet onglet (%1, %2 flux) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta pestaña? (%1, %2 feeds)" },
+
   "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },
   "Refresh" : { fr: "Rafraîchir", ja: "リロード", es: "Recargar" },
 

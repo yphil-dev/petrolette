@@ -1,4 +1,10 @@
 MOB.utilities = {
+
+  getLocation: function(href) {
+    var l = document.createElement("a");
+    l.href = href;
+    return l;
+  },
   isUrl:  function (s) {
     var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     return regexp.test(s);
@@ -41,13 +47,17 @@ MOB.utilities = {
     return progress;
   },
   notify : function(type, message) {
-    var $p = $('#menu').find('#mobNotify > p');
+    var $p = $('#menu').find('#mobNotify > p').empty();
 
-    $p.parent().fadeIn('fast');
+    var $type = $('<strong>')
+        .addClass(type)
+        .addClass('translate')
+        .text(MOB.tr(type));
 
-    $p.html('<strong class="' +  type + '">' + type + '</strong> ' + message);
-    $p.fadeIn( 1000, function() {
-      $p.animate({
+    $p.append($type, ' ', message)
+      .parent().fadeIn('fast')
+      .fadeIn( 1000, function() {
+        $p.animate({
         opacity: 0.1
       }, 6500, function() {
         $p.slideUp(500, function() {

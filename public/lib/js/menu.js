@@ -151,7 +151,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       console.log('JSON!');
     } else {
       console.log('NOT JSON!');
-      MOB.utilities.notify('error', 'Not a Mobylette definition file format');
+      MOB.utilities.notify('error', MOB.tr('This file is bad'));
       return;
     }
 
@@ -184,16 +184,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         if (IsJsonString(y)) {
           p = JSON.parse(y);
         } else {
-          MOB.utilities.notify('error', 'Not a Mobylette definition file');
+          MOB.utilities.notify('error', MOB.tr('This file is bad'));
         }
 
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          MOB.utilities.notify('success', 'Successful import');
+          MOB.utilities.notify('success', MOB.tr('This file is fine'));
           MOB.tab.populate(p, true);
         } else {
-          MOB.utilities.notify('error', 'Not a Mobylette definition file');
+          MOB.utilities.notify('error', MOB.tr('This file is bad'));
         }
 
         // console.log('Is Valid: %s', isValid)

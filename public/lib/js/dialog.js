@@ -22,6 +22,7 @@ MOB.dialog = {
 
       $dialog.dialog({
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
         width: 400,
@@ -189,32 +190,44 @@ MOB.dialog = {
       var $dialog = $('#killDialog');
 
       $dialog.dialog({
+        title: MOB.tr('Tab: Kill'),
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        title: 'Kill Tab',
         width: 400,
         modal: true,
-        buttons: {
-          'Delete all feeds': function() {
+        buttons: [
+          {
+            text: MOB.tr('Delete'),
+            icon: "ui-icon-alert",
+            class: "ui-state-error",
+            click: function() {
 
-            $selectedTab.remove();
-            $selectedPanel.remove();
+              $selectedTab.remove();
+              $selectedPanel.remove();
 
-            MOB.tab.saveTabs();
-            MOB.dialog.kill($dialog);
-            $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+              MOB.tab.saveTabs();
+              MOB.dialog.kill($dialog);
+              $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
 
+            }
           },
-          Cancel: function() {
-            MOB.dialog.kill($dialog);
+          {
+            text: MOB.tr('Cancel'),
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
           }
-        },
+        ],
         open: function () {
 
-          $('button:contains("Delete")').addClass('ui-state-error');
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
 
-          $(this).children('p').append('Really delete the <strong>' + $a.text() + '</strong> tab and <strong>' + $selectedPanel.find('li.feed').length + '</strong> feeds in it?');
+          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 feeds)', $a.text(), $selectedPanel.find('li.feed').length));
+
         }
       });
 
@@ -232,34 +245,46 @@ MOB.dialog = {
       console.log('ID: %s', $thisFeedId);
 
       $dialog.dialog({
-        title: 'Kill Feed',
+        title: MOB.tr('Feed: Kill'),
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
         width: 400,
         modal: true,
-        buttons: {
-          'Delete feed': function() {
+        buttons: [
+          {
+            text: MOB.tr('Delete'),
+            icon: "ui-icon-alert",
+            class: "ui-state-error",
+            click: function() {
 
-            var $tabFeedId = $('#' + $(this).data('feedId'));
+              var $tabFeedId = $('#' + $(this).data('feedId'));
 
-            $tabFeedId.hide('fade', 1000, function() {
-              $tabFeedId.remove();
-              MOB.tab.saveTabs();
-            });
+              $tabFeedId.hide('fade', 1000, function() {
+                $tabFeedId.remove();
+                MOB.tab.saveTabs();
+              });
 
-            MOB.dialog.kill($dialog);
+              MOB.dialog.kill($dialog);
 
+            }
           },
-          Cancel: function() {
-            MOB.dialog.kill($dialog);
+          {
+            text: MOB.tr('Cancel'),
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
           }
-        },
+        ],
         open: function () {
-          var $dialog = $(this);
-          $dialog.children('p').append('Really delete the <strong>' + thisFeedName + '</strong> feed?');
 
-          $('button:contains("Delete")').addClass('ui-state-error');
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
+          $dialog.children('p').append(MOB.tr('Really delete this feed? (%1)', thisFeedName));
+
         }
       });
 
@@ -275,6 +300,7 @@ MOB.dialog = {
       $dialog.dialog({
         title: MOB.tr('Rename tab'),
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
         width: 400,
@@ -333,6 +359,7 @@ MOB.dialog = {
       $dialog.dialog({
         position: { my: 'center', at: 'center', of: window },
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
         width: 'auto',
