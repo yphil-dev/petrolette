@@ -5,8 +5,33 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $fileImportButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
       $fileExport = $('#saveTabs').button(),
-      $donate = $('#donate').button().tooltip(),
-      $profile = $('#profile').button().tooltip();
+      $langMenu = $('select#language'),
+      $donate = $('button#donate').button().tooltip(),
+      $profile = $('button#profile').button().tooltip();
+
+  $langMenu.val(Prefs.readConfig('lang'));
+
+  $langMenu.change(function() {
+
+    var selectedLang = $(this).val();
+
+    console.log('Lang: %s', selectedLang);
+    MOB.language = selectedLang;
+    Prefs.writeConfig('lang', selectedLang);
+
+    $('.translate').each(function() {
+
+      if ($(this).data('title')) {
+        $(this).prop('title', MOB.tr($(this).data('title')));
+      }
+
+      if ($(this).data('content')) {
+        $(this).text(MOB.tr($(this).data('content')));
+      }
+
+    });
+
+  });
 
   $handle.click(function () {
     $slider.toggleClass('expanded');
@@ -19,7 +44,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
     $handle.click();
 
-    Dialog.question(0);
+    MOB.dialog.question(0);
   });
 
   $donate.click(function (event) {
