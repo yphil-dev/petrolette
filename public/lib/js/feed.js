@@ -177,7 +177,7 @@ var Feed = (function() {
 
         $feedBody.empty();
 
-          console.log('i18n: (%s)', JSON.stringify(MOB.i18n.translate( "Add" )));
+          console.log('i18n: (%s)', MOB.i18n.trans( "Add" ));
 
       }).done(function(data) {
         $feedTitle.text(data.feedTitle);
