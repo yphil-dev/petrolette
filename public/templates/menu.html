@@ -30,19 +30,20 @@
            style="display: none;" />
     <button id="fileImport"
             class="twin left button icon-upload translate"
-            data-title="Open feeds & tabs file"
+            data-title="Open feeds and tabs file"
             data-content="Load">
       Load
     </button>
     <button id="saveTabs"
             class="twin right icon-download translate"
-            data-title="Save Mobylette tabs & feeds"
+            data-title="Save feeds and tabs file"
             data-content="Save">
       Save
     </button>
 
     <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
-    <label class="unique noBottom"
+    <label id="dropTabLabel"
+           class="unique noBottom translate"
            for="tabDropActivate"
            data-title="Open tab on feed drop"
            data-content="Open tab on feed drop">
@@ -53,11 +54,32 @@
   <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
     <legend class="ui-corner-top">Theme</legend>
 
-    <label class="twin left noBottom" for="day">Day</label>
-    <input class="themeSwitcher checkboxradio" type="radio" name="radio-1" id="day" value="day">
+    <label id="dayLabel"
+           class="twin left noBottom translate"
+           for="day"
+           data-title="Day theme"
+           data-content="Day">
+      Day
+    </label>
+    <input id="day"
+           class="themeSwitcher checkboxradio"
+           type="radio"
+           name="radio-1"
+           value="day">
 
-    <label class="twin right noBottom" for="night">Night</label>
-    <input class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" id="night" value="night">
+    <label id="nightLabel"
+           class="twin right noBottom translate"
+           for="night"
+           data-title="Night theme"
+           data-content="Night">
+      Night
+    </label>
+
+    <input id="night"
+           class="themeSwitcher checkboxradio noBottom"
+           type="radio"
+           name="radio-1"
+           value="night">
   </fieldset>
 
   <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">

@@ -68,8 +68,15 @@ MOB.i18n.translations = {
   "Donate"   : { fr: "Donation" , ja: "寄付する", es: "Donar" },
   "Load"   : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
   "Save"   : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
-  "Open feeds & tabs file"   : { fr: "Importer" , ja: "タブとRSSフィードを保存する", es: "Guardar tabs y feeds" },
-  "Save feeds & tabs file"   : { fr: "Enregistrer les onglets et les flux" , ja: "すべてを保存", es: "Guardar archivo de tabs y feeds" },
+  "Rename tab"   : { fr: "Onglet: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la pestaña" },
+  "Tab name"   : { fr: "Nom onglet" , ja: "タブ名", es: "Nombre de la pestaña" },
+  "Day Theme"   : { fr: "Thème jour" , ja: "日テーマ", es: "Tema del día" },
+  "Night Theme"   : { fr: "Thème nuit" , ja: "夜のテーマ", es: "Tema nocturno" },
+  "Day"   : { fr: "Jour" , ja: "日", es: "día" },
+  "Night"   : { fr: "Nuit" , ja: "夜", es: "Noche" },
+
+  "Open feeds and tabs file"   : { fr: "Importer" , ja: "タブとRSSフィードを保存する", es: "Guardar tabs y feeds" },
+  "Save feeds and tabs file"   : { fr: "Enregistrer les onglets et les flux" , ja: "すべてを保存", es: "Guardar archivo de tabs y feeds" },
   "Open tab on feed drop"   : { fr: "Ouvrir nouveau tab" , ja: "ドロップ時にタブを開く", es: "Abrir pestaña en drop" },
 
   // Messages d'erreurs

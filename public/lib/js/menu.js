@@ -5,6 +5,9 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
       $saveButton = $('#saveTabs').button(),
+      $dropTabLabel = $('label#dropTabLabel'),
+      $dayLabel = $('label#dayLabel'),
+      $nightLabel = $('label#nightLabel'),
       $langMenu = $('select#language'),
       $donate = $('button#donate').button().tooltip(),
       $profile = $('button#profile').button().tooltip();
@@ -14,11 +17,20 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   $profile.attr('title', MOB.tr('Forgot what you are? Reset Mobylette tabs & feeds'))
     .text(MOB.tr('Profile'));
 
-  $loadButton.attr('title', MOB.tr('Open feeds & tabs file'))
+  $loadButton.attr('title', MOB.tr('Open feeds and tabs file'))
     .text(MOB.tr('Load'));
 
-  $saveButton.attr('title', MOB.tr('Save Mobylette tabs & feeds'))
+  $saveButton.attr('title', MOB.tr('Save feeds and tabs file'))
     .text(MOB.tr('Save'));
+
+  $dropTabLabel.attr('title', MOB.tr('Open tab on feed drop'))
+    .text(MOB.tr('Open tab on feed drop'));
+
+  $dayLabel.attr('title', MOB.tr('Day theme'))
+    .text(MOB.tr('Day'));
+
+  $nightLabel.attr('title', MOB.tr('Night theme'))
+    .text(MOB.tr('Night'));
 
   $langMenu.val(MOB.prefs.readConfig('lang'));
 
@@ -103,11 +115,11 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   $slider.find('select#gallerySlideTransition').val(gallerySlideTransition);
 
   if (MOB.prefs.readConfig('tabDropActivate') === 'true')
-    $('#tabDropActivate').prop('checked', true).checkboxradio('refresh');
+    $('input#tabDropActivate').prop('checked', true).checkboxradio('refresh');
   else
-    $('#tabDropActivate').prop('checked', false).checkboxradio('refresh');
+    $('input#tabDropActivate').prop('checked', false).checkboxradio('refresh');
 
-  $('#tabDropActivate').change(function() {
+  $('input#tabDropActivate').change(function() {
     MOB.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
   });
 

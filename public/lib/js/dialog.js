@@ -269,6 +269,7 @@ MOB.dialog = {
       var $dialog = $('#renameTabDialog');
 
       $dialog.dialog({
+        title: MOB.tr('Rename tab'),
         autoOpen: false,
         resizable: false,
         height: 'auto',
@@ -276,7 +277,6 @@ MOB.dialog = {
         modal: true,
         buttons: {
           Cancel: function() {
-            console.info('kIIIl!');
             MOB.dialog.kill($dialog);
           },
           'OK': function() {
@@ -287,7 +287,16 @@ MOB.dialog = {
           }
         },
         open: function() {
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
           var $tabName = $dialog.find('#tabName');
+          var $tabNameLegend = $dialog.find('legend#tabNameLegend');
+
+          $tabNameLegend.text(MOB.tr('Tab name'));
+
           $tabName.val($(this).data('tabName')).select();
 
           $(this).on('submit', function () {
