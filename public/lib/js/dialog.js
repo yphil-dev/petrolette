@@ -45,7 +45,7 @@ MOB.dialog = {
             $dataStore.data('url', newUrl)
               .data('type', newType);
 
-            Feed.populateFeed($feedPrefsButton);
+            MOB.feed.populate($feedPrefsButton);
             Tab.saveTabs();
             MOB.dialog.kill($dialog);
           }
@@ -150,7 +150,7 @@ MOB.dialog = {
           });
 
           $dialog.on('submit', function () {
-            Feed.populateFeed($mobFeedRefresh);
+            MOB.feed.populate($mobFeedRefresh);
             Tab.saveTabs();
 
             $(this).dialog('destroy');
@@ -348,20 +348,6 @@ MOB.dialog = {
       return;
 
     });
-
-  },
-  plop : function(term) {
-
-    // if (MOB.language === 'en') {
-    //   return term;
-    // } else {
-    //   return MOB.i18n.translations[term][MOB.language];
-    // }
-
-    var terms = {};
-    terms[ MOB.language ] = MOB.tr(term);
-
-    return terms;
 
   }
 };
