@@ -1,5 +1,3 @@
-/* jshint -W098 */
-
 MOB.prefs = (function() {
 
   var tabList =

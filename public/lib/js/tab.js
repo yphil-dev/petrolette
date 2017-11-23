@@ -86,7 +86,13 @@ MOB.tab = {
 
     var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
 
-    var $newFeedButton = $('<div class="handle newFeed ui-corner-left" title="Add a new feed to [' + name + ']"><i class="icon-plus-1 rotate"></i></div>').on("click", function() {
+    var $newFeedButton = $('<div>')
+        .html('<i class="icon-plus-1 rotate"></i>')
+        .attr('class', 'handle newFeed ui-corner-left')
+        .data('title', 'Add a new feed to')
+        .attr('title', MOB.tr('Add a new feed to %1'));
+
+    $newFeedButton.on("click", function() {
       MOB.feed.make($sortable, 'New Feed', 'mixed', 8, true);
       return false;
     });
