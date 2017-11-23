@@ -6,37 +6,44 @@ var Feed = (function() {
       var feedIndex = $('#tabs').find('.feed').length;
 
       var $feedToggle = $('<i>')
-          .attr('class', 'feedIcon rotate translateTitle')
+          .attr('class', 'feedIcon rotate translate')
           .data('title', 'Fold / unfold')
           .attr('title', MOB.tr('Fold / unfold'));
+
+      var $feedSelect = $('<i>')
+          .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
+          .data('title', 'Select this feed')
+          .attr('title', MOB.tr('Select this feed'))
+          .button();
+
+      var $feedDelete = $('<i>')
+          .attr('class', 'feedControl translate icon-trash feedDelete')
+          .data('title', 'Delete this feed')
+          .attr('title', MOB.tr('Delete this feed'))
+          .button();
+
+      var $feedPrefs = $('<i>')
+          .attr('class', 'feedControl translate icon-cog mobFeedPrefs')
+          .data('title', 'Options')
+          .attr('title', MOB.tr('Options'))
+          .button();
+
+      var $feedReload = $('<i>')
+          .attr('class', 'feedControl translate icon-arrows-cw mobFeedRefresh')
+          .data('title', 'Refresh')
+          .attr('title', MOB.tr('Refresh'))
+          .button();
+
+      var $feedControls = $('<div>').attr('class', 'feedControls dataStore')
+          .data('id', 'feed-' + feedIndex)
+          .data('index', feedIndex)
+          .data('url', url)
+          .data('type', type)
+          .data('limit', limit);
 
       $feedToggle.click(function() {
         $(this).toggleClass("down");
         $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
-        return false;
-      });
-
-      var $feedSelect = $('<i title="Select feed" class="icon-check-empty-1 feedSelect feedControl">').button();
-      var $feedDelete = $('<i title="Delete feed" class="icon-trash feedDelete feedControl">').button();
-      var $feedPrefs = $('<i title="Feed preferences" class="icon-cog mobFeedPrefs feedControl">').button();
-      var $feedReload = $('<i class="icon-arrows-cw mobFeedRefresh feedControl">').button();
-
-      var $feedControls = $('<div class="feedControls">');
-
-      $feedControls.data('test', 'plop')
-        .data('id', 'feed-' + feedIndex)
-        .data('index', feedIndex)
-        .data('url', url)
-        .data('type', type)
-        .data('limit', limit);
-
-      $feedDelete.click(function() {
-        Dialog.killFeed($(this));
-        return false;
-      });
-
-      $feedReload.click(function() {
-        Feed.populateFeed($(this), progress);
         return false;
       });
 
@@ -46,8 +53,18 @@ var Feed = (function() {
         return false;
       });
 
+      $feedDelete.click(function() {
+        MOB.dialog.killFeed($(this));
+        return false;
+      });
+
       $feedPrefs.click(function() {
-        Dialog.feedPrefs($(this));
+        MOB.dialog.feedPrefs($(this));
+        return false;
+      });
+
+      $feedReload.click(function() {
+        Feed.populateFeed($(this), progress);
         return false;
       });
 
@@ -61,7 +78,7 @@ var Feed = (function() {
       var $toggleDiv = $('<div class="feedToggle">');
       var $selectDiv = $('<div class="feedSelect">');
       var $deleteDiv = $('<div class="feedDelete">');
-      var $titleDiv = $('<div class="feedTitle truncate">');
+      var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
       var $prefsDiv = $('<div class="prefs">');
       var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
 
@@ -115,7 +132,7 @@ var Feed = (function() {
       if (clickNew) {
         $feed.prependTo($tab);
         // $feedPrefs.click()
-        Dialog.feedPrefs($feedPrefs, true);
+        MOB.dialog.feedPrefs($feedPrefs, true);
       } else {
         $feed.appendTo($tab);
         $feedReload.click();
@@ -268,8 +285,16 @@ var Feed = (function() {
 
         // console.log( "error" );
         $header.addClass('ui-state-error');
-        $feedTitle.text(MOB.tr("Error"));
-        $feedBody.html('<li class="feedItem"><strong>' + MOB.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+
+        $feedTitle
+          .text(MOB.tr("Error"))
+          .addClass('translate')
+          .data('content', MOB.tr("Error"));
+
+        $feedBody
+          .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+
+        // WP.tr('add %1', WP.tr('truck') );
 
       }).always(function() {
 

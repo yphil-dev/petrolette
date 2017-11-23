@@ -69,12 +69,12 @@
        $tabs.on('mouseup', '.ui-tabs-active a', function(e){
          e.preventDefault();
          if (e.which === 1) {
-           Dialog.renameTab($(this))
+           MOB.dialog.renameTab($(this))
          }
        });
 
        $tabs.on("click", "i.tabCloser", function() {
-         Dialog.killTab($(this));
+         MOB.dialog.killTab($(this));
        });
 
        // INIT

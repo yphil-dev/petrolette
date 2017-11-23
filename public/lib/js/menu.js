@@ -19,11 +19,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     MOB.language = selectedLang;
     Prefs.writeConfig('lang', selectedLang);
 
-    $('i.translateTitle').each(function() {
-      var existingTitle = $(this).data('title');
-      // $(this).removeAttr('title');
-      $(this).prop('title', MOB.tr(existingTitle));
-      console.log('Title then: %s, now: %s (lang %s)', existingTitle, MOB.tr(existingTitle), MOB.language);
+    $('.translate').each(function() {
+
+      if ($(this).data('title')) {
+        $(this).prop('title', MOB.tr($(this).data('title')));
+      }
+
+      if ($(this).data('content')) {
+        $(this).text(MOB.tr($(this).data('content')));
+      }
+
     });
 
   });
@@ -39,7 +44,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
     $handle.click();
 
-    Dialog.question(0);
+    MOB.dialog.question(0);
   });
 
   $donate.click(function (event) {

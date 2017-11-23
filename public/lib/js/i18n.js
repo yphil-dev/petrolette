@@ -68,10 +68,15 @@ MOB.i18n.translations = {
   // Messages d'erreurs
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
-  "Error" : { fr: "Erreur", ja: "エラー" },
+  "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
 
-  // Prompt
-  "Fold / unfold" : { fr: "Plier déplier", ja: "ウーブリール - ファーマー", es: "Abrir cerrar" },
+  // Titres
+  "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
+  "Select this feed" : { fr: "Sélectionner ce flux", ja: "RSSフィードを選択", es: "Selecciona este feed" },
+  "Delete this feed" : { fr: "Supprimer ce flux", ja: "このRSSフィードを削除", es: "Eliminar este feed rss" },
+  "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },
+  "Refresh" : { fr: "Rafraîchir", ja: "リロード", es: "Recargar" },
+
   "plop plop" : { fr: "plip", ja: "ploup", es: "plap" },
 
   "Last" : { fr: "Dernier", ja: "zz" }
