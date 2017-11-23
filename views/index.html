@@ -1,134 +1,138 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Mobylette</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mobylette</title>
 
-        <link rel="icon" type="image/png" href="/static/images/mobylette.png" />
+    <link rel="icon" type="image/png" href="/static/images/mobylette.png" />
 
-        <link rel="preload" as="style" href="/static/css/themes/day/jquery-ui.css">
-        <link rel="preload" as="style" href="/static/css/fontello.css">
-        <link rel="preload" as="style" href="/static/css/themes/day.css">
-        <link rel="preload" as="style" href="/static/css/themes/night.css">
+    <link rel="preload" as="style" href="/static/css/themes/day/jquery-ui.css">
+    <link rel="preload" as="style" href="/static/css/fontello.css">
+    <link rel="preload" as="style" href="/static/css/themes/day.css">
+    <link rel="preload" as="style" href="/static/css/themes/night.css">
 
-        <script src="/bower/jquery/dist/jquery.min.js"></script>
-        <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
 
-        <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
-        <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
-        <link rel="stylesheet" href="/static/css/themes/day/jquery-ui.min.css">
+    <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/static/css/themes/day/jquery-ui.min.css">
 
-        <link rel="stylesheet" href="/static/css/mob-ui.css">
-        <link rel="stylesheet" href="/static/css/mobylette.css">
+    <link rel="stylesheet" href="/static/css/mob-ui.css">
+    <link rel="stylesheet" href="/static/css/mobylette.css">
 
-        <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
+    <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
 
-        <link rel="stylesheet" href="/static/css/fontello.css">
+    <link rel="stylesheet" href="/static/css/fontello.css">
 
-        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/kaushan-script" type="text/css"/>
-        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/arima-koshi" type="text/css"/>
-        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/kaushan-script" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/arima-koshi" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/>
 
-        <script>
+    <script src="/static/lib/js/main.js"></script>
+    <script src="/static/lib/js/i18n.js"></script>
 
-         console.log('Lang: (%s)', navigator.language)
+    <script>
 
-         $(document).ready(function() {
+     console.log('Lang: (%s)', navigator.language)
 
-             $("#mobStyle").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '.css'});
+     $(document).ready(function() {
 
-             var $tabs = $('#tabs').tabs({
-                 heightStyle: 'content',
-                 activate: function(event, ui) {
+       $("#mobStyle").attr({href : '/static/css/themes/' + Prefs.readConfig('theme') + '.css'});
 
-                     var $activeTab = $tabs.find('.ui-tabs-active');
+       var $tabs = $('#tabs').tabs({
+         heightStyle: 'content',
+         activate: function(event, ui) {
 
-                     $(document).prop('title', $activeTab.text() + ' | Mobylette');
+           var $activeTab = $tabs.find('.ui-tabs-active');
 
-                     $('.tabCloser').hide();
+           $(document).prop('title', $activeTab.text() + ' | Mobylette');
 
-                     $activeTab.find('.tabCloser').show();
-                 }
+           $('.tabCloser').hide();
 
-             });
-
-             $tabs.find('.ui-tabs-nav').sortable({
-                 axis: 'x',
-                 items: '> li:not(#newTabButton)',
-                 stop: function() {
-                     $tabs.tabs('refresh');
-                     Tab.saveTabs()
-                 }
-             });
-
-             $tabs.on('mouseup', '.ui-tabs-active a', function(e){
-                 e.preventDefault();
-                 if (e.which === 1)
-                     Dialog.renameTab($(this))
-             });
-
-             $tabs.on("click", "i.tabCloser", function() {
-                 Dialog.killTab($(this))
-             });
-
-             // INIT
-
-             Tab.populateTabs(JSON.parse(Prefs.readConfig('tabs')))
-
-             $tabs.find('div.feedControls').slideUp()
-
-         });
-
-        </script>
-
-        <style>
-
-         div#preloaded-images {
-             position: absolute;
-             overflow: hidden;
-             left: -9999px;
-             top: -9999px;
-             height: 1px;
-             width: 1px;
+           $activeTab.find('.tabCloser').show();
          }
 
-        </style>
+       });
 
-    </head>
+       $tabs.find('.ui-tabs-nav').sortable({
+         axis: 'x',
+         items: '> li:not(#newTabButton)',
+         stop: function() {
+           $tabs.tabs('refresh');
+           Tab.saveTabs();
+         }
+       });
 
-    <body>
+       $tabs.on('mouseup', '.ui-tabs-active a', function(e){
+         e.preventDefault();
+         if (e.which === 1) {
+           Dialog.renameTab($(this))
+         }
+       });
 
-        <div id="waitScreen" style="position: fixed; top:0; width: 100vw; height: 100vh;">
-            <div class="wspinner"></div>
-            <!-- plop -->
-        </div>
+       $tabs.on("click", "i.tabCloser", function() {
+         Dialog.killTab($(this));
+       });
 
-        <div id="tabs">
-            <ul id="tabUl"></ul>
-        </div>
+       // INIT
 
-        <div id="mobDialogs"></div>
+       Tab.populateTabs(JSON.parse(Prefs.readConfig('tabs')));
 
-        <script>
+       $tabs.find('div.feedControls').slideUp();
 
-         document.fonts.ready.then((fontFaceSet) => {
-             console.log(fontFaceSet.size, 'FontFaces loaded.');
-             document.getElementById('waitScreen').style.display = 'none';
-         });
+     });
 
-        </script>
+    </script>
 
-        <script src="/static/lib/js/menu.js"></script>
-        <script src="/static/lib/js/tab.js"></script>
-        <script src="/static/lib/js/feed.js"></script>
-        <script src="/static/lib/js/prefs.js"></script>
-        <script src="/static/lib/js/dialog.js"></script>
-        <script src="/static/lib/js/utilities.js"></script>
+    <style>
 
-        <div id="preloaded-images">
-            <img src="/static/images/feed-toggle-triangle.png" width="1" height="1" alt="Image 01" />
-        </div>
+     div#preloaded-images {
+         position: absolute;
+         overflow: hidden;
+         left: -9999px;
+         top: -9999px;
+         height: 1px;
+         width: 1px;
+     }
 
-    </body>
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="waitScreen" style="position: fixed; top:0; width: 100vw; height: 100vh;">
+      <div class="wspinner"></div>
+      <!-- plop -->
+    </div>
+
+    <div id="tabs">
+      <ul id="tabUl"></ul>
+    </div>
+
+    <div id="mobDialogs"></div>
+
+    <script>
+
+     document.fonts.ready.then((fontFaceSet) => {
+       console.log(fontFaceSet.size, 'FontFaces loaded.');
+       document.getElementById('waitScreen').style.display = 'none';
+     });
+
+    </script>
+
+    <script src="/static/lib/js/menu.js"></script>
+    <script src="/static/lib/js/tab.js"></script>
+    <script src="/static/lib/js/feed.js"></script>
+    <script src="/static/lib/js/prefs.js"></script>
+    <script src="/static/lib/js/dialog.js"></script>
+    <script src="/static/lib/js/utilities.js"></script>
+
+    <div id="preloaded-images">
+      <img src="/static/images/feed-toggle-triangle.png" width="1" height="1" alt="Image 01" />
+    </div>
+
+  </body>
 </html>

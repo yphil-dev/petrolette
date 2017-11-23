@@ -177,6 +177,8 @@ var Feed = (function() {
 
         $feedBody.empty();
 
+          console.log('i18n: (%s)', JSON.stringify(MOB.i18n.translate( "Add" )));
+
       }).done(function(data) {
         $feedTitle.text(data.feedTitle);
 
@@ -191,51 +193,23 @@ var Feed = (function() {
           // console.log( "\n\nItem (%s)", item.enclosures[0].url);
 
           var $description = $.parseHTML(item.description);
-          // console.log( "Desc: (%s)", $description);
 
-          // var $mediaGroup = $.parseHTML(item.media)
-
-          // console.log( "Item: (%s)", item);
           var imageUrl;
 
           if (item['media:group']) {
-            console.log( "Media: (%s)", JSON.stringify(item['media:group']['media:content']));
             var myArray = item['media:group']['media:content'];
             for (var i = 0; i < myArray.length; i++) {
               if (myArray[i]['@'].url) {
                 imageUrl = myArray[i]['@'].url;
               }
-              console.log('Wopopop:' + JSON.stringify(myArray[i]['@'].url));
             }
           }
-
 
           var $tempDom = $('<output>').append($description);
 
           if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
             imageUrl = $tempDom.find('img').attr('src');
           }
-
-          // var $tempDom2 = $('<output2>').append($description);
-
-          // $tempDom.find('').each(function(){
-          //     console.log('media!');
-          //     var $item=$(this)
-          //     var content= $item.find('media\\:content,content')
-          //     if(content.attr('medium')=='image')
-
-          //         imageUrl = content.attr('url');
-
-          // })
-
-          // if (typeof $tempDom.find('media\\:content,content') !== 'undefined') {
-          //     // imageUrl = $tempDom.find('img').attr('src')
-          //     var $content = $tempDom.find('media\\:content,content');
-
-
-          // }
-
-          // media:content medium="image" url=
 
           if (typeof item.image.url !== 'undefined') {
             imageUrl = item.image.url;
@@ -255,7 +229,6 @@ var Feed = (function() {
               .append(item.title);
 
           if (index % 2 === 0) {
-            /* we are even */
             $feedItem.addClass('mobFeedEven');
           }
 
