@@ -2,12 +2,23 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   var $slider = $(this),
       $handle = $slider.find('.handle'),
-      $fileImportButton = $("button#fileImport").button(),
+      $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
-      $fileExport = $('#saveTabs').button(),
+      $saveButton = $('#saveTabs').button(),
       $langMenu = $('select#language'),
       $donate = $('button#donate').button().tooltip(),
       $profile = $('button#profile').button().tooltip();
+
+  $donate.attr('title', MOB.tr('Mobylette (really) needs your help'))
+    .text(MOB.tr('Donate'));
+  $profile.attr('title', MOB.tr('Forgot what you are? Reset Mobylette tabs & feeds'))
+    .text(MOB.tr('Profile'));
+
+  $loadButton.attr('title', MOB.tr('Open feeds & tabs file'))
+    .text(MOB.tr('Load'));
+
+  $saveButton.attr('title', MOB.tr('Save Mobylette tabs & feeds'))
+    .text(MOB.tr('Save'));
 
   $langMenu.val(MOB.prefs.readConfig('lang'));
 
@@ -49,16 +60,15 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $donate.click(function (event) {
     event.preventDefault();
-    console.log('Click!');
     location.href='https://liberapay.com/yPhil/donate';
   });
 
-  $fileImportButton.click(function () {
+  $loadButton.click(function () {
     $("input#fileImport").click();
     return false;
   });
 
-  $fileExport.click(function () {
+  $saveButton.click(function () {
     MOB.prefs.exportConfig(MOB.tab.all(), 'mobylette.json');
     return false;
   });

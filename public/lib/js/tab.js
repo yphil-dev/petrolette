@@ -88,9 +88,9 @@ MOB.tab = {
 
     var $newFeedButton = $('<div>')
         .html('<i class="icon-plus-1 rotate"></i>')
-        .attr('class', 'handle newFeed ui-corner-left')
+        .attr('class', 'handle newFeed ui-corner-left translate')
         .data('title', 'Add a new feed to')
-        .attr('title', MOB.tr('Add a new feed to %1'));
+        .attr('title', MOB.tr('Add a new feed to %1', name));
 
     $newFeedButton.on("click", function() {
       MOB.feed.make($sortable, 'New Feed', 'mixed', 8, true);

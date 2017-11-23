@@ -25,12 +25,29 @@
   <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
     <legend class="ui-corner-top" data-localize="tabs">Tabs</legend>
 
-    <input id="fileImport" type="file" style="display: none;" />
-    <button id="fileImport" class="twin left button icon-upload">Import</button>
-    <button id="saveTabs" class="twin right icon-download nob"> Export</button>
+    <input id="fileImport"
+           type="file"
+           style="display: none;" />
+    <button id="fileImport"
+            class="twin left button icon-upload translate"
+            data-title="Open feeds & tabs file"
+            data-content="Load">
+      Load
+    </button>
+    <button id="saveTabs"
+            class="twin right icon-download translate"
+            data-title="Save Mobylette tabs & feeds"
+            data-content="Save">
+      Save
+    </button>
 
     <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
-    <label class="unique noBottom" for="tabDropActivate">Open tab on feed drop</label>
+    <label class="unique noBottom"
+           for="tabDropActivate"
+           data-title="Open tab on feed drop"
+           data-content="Open tab on feed drop">
+      Open tab on feed drop
+    </label>
   </fieldset>
 
   <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
@@ -65,8 +82,18 @@
 
   <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
         <legend class="ui-corner-top">Help</legend>
-        <button id="profile" class="unique icon-police" title="Forgot what you are? Reset Mobylette tabs & feeds"> Re-profile me</button>
-        <button id="donate" class="unique icon-heartbeat noBottom" title="Mobylette (really) needs your help" onclick="location.href='https://liberapay.com/yPhil/donate';"> Donate</button>
+        <button id="profile"
+                class="unique icon-police translate"
+                data-content="Profile"
+                data-title="Forgot what you are? Reset Mobylette tabs & feeds">
+          Profil
+        </button>
+        <button id="donate"
+                class="unique icon-heartbeat noBottom translate"
+                data-title="Mobylette (really) needs your help"
+                data-content="Donate">
+          Donate
+        </button>
     </fieldset>
 
     <fieldset id="mobNotify" class="ui-widget ui-widget-content ui-corner-all">

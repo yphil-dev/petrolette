@@ -64,13 +64,25 @@ MOB.i18n.translations = {
   "Feeds"   : { fr: "flux" , ja: "RSSフィード" },
   "Tab"   : { fr: "onglet" , ja: "タブ" },
   "Tabs"   : { fr: "onglets" , ja: "タブ" },
+  "Profile"   : { fr: "Profil" , ja: "プロフィール", es: "Perfil" },
+  "Donate"   : { fr: "Donation" , ja: "寄付する", es: "Donar" },
+  "Load"   : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
+  "Save"   : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
+  "Open feeds & tabs file"   : { fr: "Importer" , ja: "タブとRSSフィードを保存する", es: "Guardar tabs y feeds" },
+  "Save feeds & tabs file"   : { fr: "Enregistrer les onglets et les flux" , ja: "すべてを保存", es: "Guardar archivo de tabs y feeds" },
+  "Open tab on feed drop"   : { fr: "Ouvrir nouveau tab" , ja: "ドロップ時にタブを開く", es: "Abrir pestaña en drop" },
 
   // Messages d'erreurs
+  "Mobylette (really) needs your help"   : { fr: "Aider (en vrai) Mobylette" , ja: "Mobylette（本当に）あなたの助けが必要です", es: "Mobylette (realmente) necesita tu ayuda" },
+
+  "Forgot what you are? Reset Mobylette tabs & feeds"   : { fr: "Oublié ce que vous êtes? Re-initialiser Mobylette" , ja: "あなたは何かを忘れましたか？ リセットMobylette", es: "Olvidó lo que eres? Restablecer Mobylette" },
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
 
   // Titres
+  "Add a new feed to %1" : { fr: "Ajouter un flux à %1", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo feed a %1" },
+
   "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
   "Select this feed" : { fr: "Sélectionner ce flux", ja: "RSSフィードを選択", es: "Selecciona este feed" },
   "Delete this feed" : { fr: "Supprimer ce flux", ja: "このRSSフィードを削除", es: "Eliminar este feed rss" },
