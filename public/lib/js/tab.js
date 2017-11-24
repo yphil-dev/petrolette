@@ -1,7 +1,7 @@
 MOB.tab = {
   saveTabs:function() {
     var allTabs = MOB.tab.all();
-    Prefs.writeConfig('tabs', JSON.stringify(allTabs));
+    MOB.prefs.writeConfig('tabs', JSON.stringify(allTabs));
   },
   populate:function(tabs, clickToRefresh) {
 
@@ -16,7 +16,7 @@ MOB.tab = {
       totalFeeds += tab.feeds.length;
     });
 
-    var progress = Utilities.buildProgress();
+    var progress = MOB.utilities.buildProgress();
     progress.init(totalFeeds);
 
     tabs.forEach(function(tab) {
@@ -29,7 +29,7 @@ MOB.tab = {
 
     if (clickToRefresh) {
       $('#tabs').find('.mobFeedRefresh').click();
-      Tab.saveTabs();
+      MOB.tab.saveTabs();
     }
 
     $("div#tabs").tabs('option', 'active', 0);
@@ -84,22 +84,27 @@ MOB.tab = {
 
     if (!name) name = 'Tab ' + tabIndex;
 
-    var $sortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
+    var $sortable = $('<ul>')
+        .attr('class', 'tabSort')
+        .attr('id', 'sortable' + tabIndex);
 
     var $newFeedButton = $('<div>')
         .html('<i class="icon-plus-1 rotate"></i>')
-        .attr('class', 'handle newFeed ui-corner-left')
-        .data('title', 'Add a new feed to')
-        .attr('title', MOB.tr('Add a new feed to %1'));
+        .attr('class', 'handle newFeed ui-corner-left translate')
+        .data('title', 'Add a new feed to %1')
+        .attr('title', MOB.tr('Add a new feed to %1', name));
 
     $newFeedButton.on("click", function() {
       MOB.feed.make($sortable, 'New Feed', 'mixed', 8, true);
       return false;
     });
 
-    var $tabCloser = $('<i class="icon-cancel-circled tabCloser">');
+    var $tabCloser = $('<i>')
+        .attr('class', 'icon-cancel-circled tabCloser');
 
-    var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
+    var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>')
+        .attr('id', 'tab-' + tabIndex)
+        .attr('class', 'tab');
 
     $sortable.sortable({
       revert:0,
@@ -108,10 +113,9 @@ MOB.tab = {
       },
       helper: function (e, item) { //create custom helper
         if (!item.hasClass('selected')) item.addClass('selected');
+
         // clone selected items before hiding
-
         var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
-
         //hide selected items
         item.siblings('.selected').addClass('hidden');
         var $helper = $('<ul class="feedHelper">');
@@ -138,7 +142,7 @@ MOB.tab = {
         //unselect since the operation is complete
         $('.selected').removeClass('selected ui-state-hover');
         $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
-        Tab.saveTabs();
+        MOB.tab.saveTabs();
 
       }
     }).disableSelection();
@@ -157,7 +161,7 @@ MOB.tab = {
     var $tabUl = $('#tabs ul#tabUl');
 
     $thisTab.droppable({
-      accept: 'li.feed',
+      accept: 'ul, .tabSort li',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
         var $item = $(this);
@@ -168,12 +172,12 @@ MOB.tab = {
         $elements.show().hide('slow');
         ui.draggable.show().hide('slow', function () {
 
-          if ($('#tabDropActivate').prop('checked'))
-            $tabs.tabs('option', 'active', $index);
+          // if ($('#tabDropActivate').prop('checked'))
+          // $tabs.tabs('option', 'active', $index);
 
           $(this).prependTo($list).show('slow').before($elements.show('slow'));
 
-          Tab.saveTabs();
+          MOB.tab.saveTabs();
 
         });
       }
@@ -194,10 +198,3 @@ MOB.tab = {
     // console.log('---- TAB OK ----');
   }
 };
-
-var Tab = (function() {
-
-  return {
-  };
-
-}());

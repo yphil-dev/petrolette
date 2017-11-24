@@ -1,4 +1,5 @@
 MOB.feed = {
+
   make:function($tab, url, type, limit, clickNew, progress) {
 
     var feedIndex = $('#tabs').find('.feed').length;
@@ -66,13 +67,15 @@ MOB.feed = {
       return false;
     });
 
-    var $feedBody = $('<div class="feedBody ui-widget-content">');
-    var $feedBodyUl = $('<ul class="feedBody">');
+    var $feedBody = $('<div>')
+        .attr('class', 'feedBody ui-widget-content');
+
+    var $feedBodyUl = $('<ul>')
+        .attr('class', 'feedBody');
 
     var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-widget" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
 
     var $header = $('<div class="mobHeader ui-widget-header">');
-
     var $toggleDiv = $('<div class="feedToggle">');
     var $selectDiv = $('<div class="feedSelect">');
     var $deleteDiv = $('<div class="feedDelete">');
@@ -144,14 +147,6 @@ MOB.feed = {
     var $header = $dataStore.parent();
     var $panel = $dataStore.parent().parent().parent();
 
-    // var r = new RegExp('^(?:[a-z]+:)?//', 'i');
-
-    var getLocation = function(href) {
-      var l = document.createElement("a");
-      l.href = href;
-      return l;
-    };
-
     // var $feed = $('#' + id);
     var $feed = $('#' + $dataStore.data('id'));
 
@@ -162,9 +157,24 @@ MOB.feed = {
     var feedType = $dataStore.data('type');
     var feedLimit = $dataStore.data('limit');
 
+    if (!MOB.utilities.isUrl(feedUrl)) {
+      console.info('bad URL: (%s)', feedUrl);
+      $header.addClass('ui-state-error');
+
+      $feedTitle
+        .text(MOB.tr("Error"))
+        .addClass('translate')
+        .data('content', MOB.tr("Error"));
+
+      $feedBody
+        .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+
+      return;
+    }
+
     var $feedIcon = $feed.find('.feedToggle > i');
 
-    var l = getLocation(feedUrl);
+    var l = MOB.utilities.getLocation(feedUrl);
 
     var feedHost = l.protocol + '//' + l.hostname;
 
@@ -183,7 +193,7 @@ MOB.feed = {
       $header.data('img',icon);
 
     }).fail(function(icon, status) {
-      console.error('FAVICON %s ERROR (status: %s)',  feedHost, status);
+      console.info('Bad favicon: %s (status: %s)', feedHost, status);
       $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
     }).always(function() {
 
@@ -305,9 +315,3 @@ MOB.feed = {
     });
   }
 };
-
-var Feed = (function() {
-
-  return {
-  };
-}());

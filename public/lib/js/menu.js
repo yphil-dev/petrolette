@@ -2,12 +2,19 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   var $slider = $(this),
       $handle = $slider.find('.handle'),
-      $fileImportButton = $("button#fileImport").button(),
+      $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
-      $fileExport = $('#saveTabs').button(),
+
+      $helpLegend = $('legend#helpLegend'),
+      $saveButton = $('#saveTabs').button(),
+      $dropTabLabel = $('label#dropTabLabel'),
+      $dayLabel = $('label#dayLabel'),
+      $nightLabel = $('label#nightLabel'),
       $langMenu = $('select#language'),
       $donate = $('button#donate').button().tooltip(),
       $profile = $('button#profile').button().tooltip();
+
+  MOB.utilities.translate();
 
   $langMenu.val(MOB.prefs.readConfig('lang'));
 
@@ -18,18 +25,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     console.log('Lang: %s', selectedLang);
     MOB.language = selectedLang;
     MOB.prefs.writeConfig('lang', selectedLang);
-
-    $('.translate').each(function() {
-
-      if ($(this).data('title')) {
-        $(this).prop('title', MOB.tr($(this).data('title')));
-      }
-
-      if ($(this).data('content')) {
-        $(this).text(MOB.tr($(this).data('content')));
-      }
-
-    });
+    MOB.utilities.translate();
 
   });
 
@@ -49,16 +45,15 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $donate.click(function (event) {
     event.preventDefault();
-    console.log('Click!');
     location.href='https://liberapay.com/yPhil/donate';
   });
 
-  $fileImportButton.click(function () {
+  $loadButton.click(function () {
     $("input#fileImport").click();
     return false;
   });
 
-  $fileExport.click(function () {
+  $saveButton.click(function () {
     MOB.prefs.exportConfig(MOB.tab.all(), 'mobylette.json');
     return false;
   });
@@ -93,11 +88,11 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   $slider.find('select#gallerySlideTransition').val(gallerySlideTransition);
 
   if (MOB.prefs.readConfig('tabDropActivate') === 'true')
-    $('#tabDropActivate').prop('checked', true).checkboxradio('refresh');
+    $('input#tabDropActivate').prop('checked', true).checkboxradio('refresh');
   else
-    $('#tabDropActivate').prop('checked', false).checkboxradio('refresh');
+    $('input#tabDropActivate').prop('checked', false).checkboxradio('refresh');
 
-  $('#tabDropActivate').change(function() {
+  $('input#tabDropActivate').change(function() {
     MOB.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
   });
 
@@ -109,7 +104,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     slide: function(event, ui) {
       $('#amount').val(ui.value + 'ms');
       // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-      $('#gallerySlideshowSpeedValue').text(Utilities.milliToSecs(ui.value) + 's');
+      $('#gallerySlideshowSpeedValue').text(MOB.utilities.milliToSecs(ui.value) + 's');
     },
     change: function(event, ui) {
       MOB.prefs.writeConfig('gallerySlideshowSpeed', ui.value);
@@ -122,7 +117,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $('#amount').val($('#gallerySlideshowSpeed').slider('value') + 'ms');
-  $('#gallerySlideshowSpeedValue').text(Utilities.milliToSecs($('#gallerySlideshowSpeed').slider('value')) + 's');
+  $('#gallerySlideshowSpeedValue').text(MOB.utilities.milliToSecs($('#gallerySlideshowSpeed').slider('value')) + 's');
 
   // File select
 
@@ -135,7 +130,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       console.log('JSON!');
     } else {
       console.log('NOT JSON!');
-      Utilities.notify('error', 'Not a Mobylette definition file format');
+      MOB.utilities.notify('error', MOB.tr('This file is bad'));
       return;
     }
 
@@ -168,16 +163,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         if (IsJsonString(y)) {
           p = JSON.parse(y);
         } else {
-          Utilities.notify('error', 'Not a Mobylette definition file');
+          MOB.utilities.notify('error', MOB.tr('This file is bad'));
         }
 
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          Utilities.notify('success', 'Successful import');
+          MOB.utilities.notify('success', MOB.tr('This file is fine'));
           MOB.tab.populate(p, true);
         } else {
-          Utilities.notify('error', 'Not a Mobylette definition file');
+          MOB.utilities.notify('error', MOB.tr('This file is bad'));
         }
 
         // console.log('Is Valid: %s', isValid)
