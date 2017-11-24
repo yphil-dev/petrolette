@@ -28,7 +28,7 @@ MOB.dialog = {
         title: MOB.tr('Feed: Parameters'),
         autoOpen: false,
         closeOnEscape: true,
-        resizable: false,
+        resizable: true,
         height: 'auto',
         width: 500,
         modal: true,
@@ -210,7 +210,7 @@ MOB.dialog = {
           {
             text: MOB.tr('Delete'),
             icon: "ui-icon-alert",
-            class: "ui-state-error",
+            class: "dangerous",
             click: function() {
 
               $selectedTab.remove();
@@ -265,7 +265,7 @@ MOB.dialog = {
           {
             text: MOB.tr('Delete'),
             icon: "ui-icon-alert",
-            class: "ui-state-error",
+            class: "dangerous",
             click: function() {
 
               var $tabFeedId = $('#' + $(this).data('feedId'));
@@ -366,15 +366,45 @@ MOB.dialog = {
       var $dialog = $('#questionDialog');
 
       $dialog.dialog({
-        position: { my: 'center', at: 'center', of: window },
+        title: MOB.tr('Just answer the question'),
+        position: {
+          my: 'center',
+          at: 'center',
+          of: window
+        },
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
         width: 'auto',
-        modal: false,
+        modal: true,
         show: 'slide',
         hide: 'explode',
+        // buttons: [
+        //   {
+        //     text: MOB.tr('Delete'),
+        //     icon: "ui-icon-alert",
+        //     class: "ui-state-error",
+        //     click: function() {
+
+        //       var $tabFeedId = $('#' + $(this).data('feedId'));
+
+        //       $tabFeedId.hide('fade', 1000, function() {
+        //         $tabFeedId.remove();
+        //         MOB.tab.saveTabs();
+        //       });
+
+        //       MOB.dialog.kill($dialog);
+
+        //     }
+        //   },
+        //   {
+        //     text: MOB.tr('Cancel'),
+        //     click: function() {
+        //       MOB.dialog.kill($dialog);
+        //     }
+        //   }
+        // ],
         buttons: {
           'What? No': function() {
             MOB.dialog.kill($dialog);
@@ -389,6 +419,11 @@ MOB.dialog = {
           }
         },
         open: function() {
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
           $dialog.find('p').html('Are you<br />' + questions[qn++] + '?');
         }
       });

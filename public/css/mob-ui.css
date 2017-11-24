@@ -198,10 +198,25 @@ fieldset.prefsForm {
 
 fieldset.menuForm {
     display:flex;
+    height: 100%;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* display: flex; */
+    /* display: -webkit-flex; */
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    /* -webkit-justify-content: space-between; */
+    /* flex-flow: row wrap; */
     justify-content: space-between;
-    flex-flow: row wrap;
-    align-items: stretch;
+    /* align-items: stretch; */
 }
+
+/* fieldset.menuForm button, */
+/* fieldset.menuForm label { */
+/*     flex: 1; */
+/*     -webkit-flex: 1; */
+/* } */
 
 label,
 button {
@@ -209,7 +224,7 @@ button {
 }
 
 .prefsForm > *:not(p) {
-    flex: 1;
+    width: 100%;
 }
 
 div.testFlex {
@@ -345,4 +360,31 @@ div#feedLimit {
 .ui-dialog[aria-describedby="questionDialog"] {
     width: 90vw !important;
     max-width: 1000px !important;
+}
+
+button.dangerous:hover {
+    border-color: #2B374B !important;
+    background-color: #C0111E !important;
+    color: #2B374B !important;
+}
+
+i.dangerous:hover {
+    color: #C0111E !important;
+    /* color: #2B374B !important; */
+}
+
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+    background-color: #FFDC00 !important;
+    color: #2B374B !important;
+}
+
+.ui-icon-background,
+.ui-state-active .ui-icon-background {
+    /* border: red !important; */
+        /* border: #003eff; */
+    /* background-color: red; */
+    /* color: red; */
+
 }
