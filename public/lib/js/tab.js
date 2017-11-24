@@ -91,8 +91,8 @@ MOB.tab = {
     var $newFeedButton = $('<div>')
         .html('<i class="icon-plus-1 rotate"></i>')
         .attr('class', 'handle newFeed ui-corner-left translate')
-        .data('title', 'Add a new feed to %1')
-        .attr('title', MOB.tr('Add a new feed to %1', name));
+        .data('title', MOB.tr('Add a new feed to [%1]', name))
+        .attr('title', MOB.tr('Add a new feed to [%1]', name));
 
     $newFeedButton.on("click", function() {
       MOB.feed.make($sortable, 'New Feed', 'mixed', 8, true);
@@ -100,7 +100,9 @@ MOB.tab = {
     });
 
     var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel-circled tabCloser');
+        .attr('class', 'icon-cancel-circled tabCloser translate dangerous')
+        .data('title', MOB.tr('Delete the [%1] tab', name))
+        .attr('title', MOB.tr('Delete the [%1] tab'));
 
     var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>')
         .attr('id', 'tab-' + tabIndex)
@@ -153,7 +155,10 @@ MOB.tab = {
 
     var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>');
 
-    var $thisTab = $('<li class="modal mobTab" title="' + name + ' - Click to rename, drag to re-order">');
+    var $thisTab = $('<li>')
+        .attr('class', 'modal mobTab translate')
+        .data('title', MOB.tr('%1 | Click to rename, drag to re-order', name))
+        .attr('title', MOB.tr('%1 | Click to rename, drag to re-order', name));
 
     $thisTabLink.appendTo($thisTab);
     $tabCloser.appendTo($thisTab);

@@ -21,8 +21,16 @@ MOB.utilities = {
     return l;
   },
   isUrl:  function (s) {
-    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-    return regexp.test(s);
+      var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+      console.log('String: (%s)', s.indexOf('http'));
+
+      if (s.indexOf('http') === 0) {
+          return true;
+      } else {
+          return false;
+      }
+
+      // return regexp.test(s);
   },
   buildProgress : function( $container, eltClass ) {
 
