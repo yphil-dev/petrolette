@@ -61,7 +61,7 @@ li.ui-tabs-tab a:link {
 }
 
 i.tabCloser:hover {
-    color: #7395AE !important;
+    color: #7395AE;
 }
 
 li.feed {

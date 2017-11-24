@@ -7,95 +7,122 @@ var request = require('request'); // for fetching the feed
 var feedrat = require('feedrat');
 
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+    res.render('index');
+});
+
+router.use(function(req,res,next){
+    var _send = res.send;
+    var sent = false;
+    res.send = function(data){
+        if(sent) return;
+        _send.bind(res)(data);
+        sent = true;
+    };
+    next();
 });
 
 function getFeed (urlfeed, callback) {
-  var req = request (urlfeed);
-  var feedparser = new FeedParser ();
-  var feedItems = [];
-  req.on ("response", function (res) {
-    var stream = this;
-    if (res.statusCode == 200) {
-      stream.pipe (feedparser);
-      // console.log ("OK: (code %s) reading (%s)", res.statusCode, urlfeed);
-    } else {
-      // console.log ("Error (code %s) reading (%s)", res.statusCode, urlfeed);
-    }
-  });
-  req.on ("error", function (res) {
-    console.log ("getFeed: Error reading %s (%s) .", urlfeed, res);
-  });
-  feedparser.on ("readable", function () {
-    try {
-      var item = this.read ();
-      if (item !== null) { //2/9/17 by DW
-        feedItems.push (item);
-      }
-    }
-    catch (err) {
-      console.log ("getFeed: err.message == " + err.message);
-    }
-  }).on ("end", function () {
-    var meta = this.meta;
-    callback (undefined, feedItems, meta.title);
-  }).on ("error", function (err) {
-    console.log ("getFeed: Error reading (%s) feed.", urlfeed);
-    callback (err);
-  });
+    var req = request (urlfeed);
+    var feedparser = new FeedParser ();
+    var feedItems = [];
+    req.on ("response", function (res) {
+        var stream = this;
+        if (res.statusCode === 200 && res.headers['content-type'].includes('xml')) {
+            stream.pipe (feedparser);
+            // console.log ("OK: (code %s) reading (%s) res: %s", res.statusCode, urlfeed, JSON.stringify(res.headers['content-type']));
+
+        } else {
+            callback ('HTML page');
+            return;
+            // console.log ("Error (code %s) reading (%s)", res.statusCode, urlfeed);
+        }
+    });
+    req.on ("error", function (res) {
+        console.log ("getFeed: Error reading %s (%s) .", urlfeed, res);
+    });
+    feedparser.on ("readable", function () {
+        try {
+            var item = this.read ();
+            if (item !== null) { //2/9/17 by DW
+                feedItems.push (item);
+            }
+        }
+        catch (err) {
+            console.log ("getFeed: err.message == " + err.message);
+        }
+    }).on ("end", function () {
+        var meta = this.meta;
+        callback ('Feed OK', feedItems, meta.title);
+    }).on ("error", function (err) {
+        // console.log ("getFeed: Error reading (%s) feed: %s.", urlfeed, err.message);
+        callback ('Bad feed');
+    });
 }
 
 router.get('/feed', function(req, res) {
 
-  getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
-    if (!err) {
-      res.status(200).json({"feedItems": feedItems,"feedTitle": feedTitle});
-    }
-  });
+    // var timer = setTimeout(function () {
+    //     res.send({error:"error"});
+    // }, 2500);
+    // req.once('timeout', function () {
+    //     clearTimeout(timer);
+    // });
+
+    getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
+        if (feedItems) {
+            res.send({
+                feedItems: feedItems,
+                feedTitle: feedTitle
+            });
+        } else {
+            console.log('Huston, we have a (%s)', JSON.stringify(err));
+            res.send({error:err});
+        }
+    });
 
 });
 
 router.get('/feedicon', function(req, res) {
 
-  favicon(req.query.url, function(err, u) {
+    favicon(req.query.url, function(err, u) {
 
-    if (u) {
-      res.send(u);
-    } else {
-      res.status(500).send('No icon found');
-    }
+        if (u) {
+            res.send(u);
+        } else {
+            res.status(500).send('No icon found');
+        }
 
-  });
+    });
 });
 
 router.get('/discover', function(req, res) {
 
-  feedrat(req.query.url, function(err, feed) {
+    feedrat(req.query.url, function(err, feed) {
 
-    if (feed && typeof feed !== 'undefined' ) {
-      res.send(feed);
-    } else {
-      res.status(500).send('No feed found');
-    }
+        if (feed) {
+            res.send(feed);
+        } else {
+            res.status(500).send('No feed found');
+        }
 
-  });
+    });
 });
 
 
 router.post('/upload', function(req, res) {
-  if (!req.files)
-    return res.status(400).send('No files were uploaded.');
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
 
-  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-  let sampleFile = req.files.sampleFile;
+    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+    let sampleFile = req.files.sampleFile;
 
-  // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv('/tmp/plop.json', function(err) {
-    if (err)
-      return res.status(500).send(err);
+    // Use the mv() method to place the file somewhere on your server
+    sampleFile.mv('/tmp/plop.json', function(err) {
+        if (err)
+            return res.status(500).send(err);
 
-    res.send('File uploaded!');
-  });
+        res.send('File uploaded!');
+    });
 });
 
 module.exports = router;
