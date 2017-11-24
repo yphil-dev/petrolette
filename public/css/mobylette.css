@@ -235,7 +235,7 @@ li.feedItem {
     font-size: 10pt  !important;
 }
 
-li.feedItem a {
+li.feedItem a:not(.error) {
     display: block;
     width:100%;
     font-weight: bold;
