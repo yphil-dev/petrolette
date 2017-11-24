@@ -148,7 +148,8 @@ MOB.feed = {
         var $panel = $dataStore.parent().parent().parent();
 
         // var $feed = $('#' + id);
-        var $feed = $('#' + $dataStore.data('id'));
+        // var $feed = $('#' + $dataStore.data('id'));
+        var $feed = $dataStore.parent().parent();
 
         var $feedTitle = $feed.children().children('.feedTitle');
         var $feedBody = $feed.children().children('ul.feedBody');
@@ -158,6 +159,9 @@ MOB.feed = {
         var feedLimit = $dataStore.data('limit');
 
         if (!MOB.utilities.isUrl(feedUrl)) {
+
+            // MOB.utilities.feedError($feed, 'dOh!');
+
             console.info('bad URL: (%s)', feedUrl);
             $header.addClass('ui-state-error');
 
@@ -222,7 +226,7 @@ MOB.feed = {
                     .data('content', MOB.tr("Error"));
 
                 $feedBody
-                    .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> (' + feedUrl + ') ' + data.error  + '</li>');
+                    .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> (<a class="error" href="' + feedUrl + '">' + feedUrl + '</a>)</li>');
 
                 return;
 
