@@ -38,17 +38,24 @@
       <legend data-title="Location (URL)"
               data-content="Location (URL)"
               class="ui-corner-top translate">Location (URL)</legend>
+
       <p>
-        Enter a wesite's address/URL, or directly a <a href="https://www.lifewire.com/rss-101-3482781">Feed's</a>.
+        <span class="translate"
+              data-title="Location (URL)"
+              data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">Enter a website address/URL and click search, then OK, or simply enter the URL of the</span>
+        <a
+          class="translate rssDocLink"
+          data-content="Feed"
+          href="#">Feed</a>.
       </p>
 
       <div id="feedGuess" class="testFlex">
         <input name="guess"
                id="feedGuess"
                placeholder="URL (https://reddit.com)"
-               title="Enter a feed URL, or a website (and hit search)"
+               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the"
                value=""
-               class="ui-widget-content grow left twin ui-corner-all"
+               class="ui-widget-content grow left twin ui-corner-all translate"
                onclick="select()"
                autofocus
         />
@@ -60,24 +67,38 @@
     </fieldset>
 
     <fieldset id="feedType" class="prefsForm ui-widget ui-widget-content ui-corner-all">
-      <legend class="ui-corner-top">Display Type</legend>
-      <p>
-        What type of feed? All text, all image, or mixed.
-      </p>
-      <label for="mixed" class="noBottom">Mixed</label>
+      <legend data-title="Feed Type"
+              data-content="Feed Type"
+              class="ui-corner-top translate">Feed Type</legend>
+      <p data-title="Feed Type"
+         data-content="What type of feed? All text, all image, or mixed."
+         class="ui-corner-top translate">What type of feed? All text, all image, or mixed.</p>
+
+      <label data-title="Mixed"
+             data-content="Mixed"
+             for="mixed"
+             class="noBottom translate">Mixed</label>
       <input type="radio" name="radio-1" id="mixed">
 
-      <label for="photo" class="noBottom">Photo</label>
+      <label data-title="Photo"
+             data-content="Photo"
+             class="noBottom translate"
+             for="photo">Photo</label>
       <input type="radio" name="radio-1" id="photo">
 
-      <label for="text" class="noBottom">Text</label>
+      <label data-title="Text"
+             data-content="Text"
+             class="noBottom translate"
+             for="text" >Text</label>
       <input type="radio" name="radio-1" id="text">
     </fieldset>
 
     <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
-      <legend class="ui-corner-top" class="ui-corner-top">Limit # of items</legend>
-      <p>
-        How many items should the feed display?
+      <legend data-content="Number of items"
+              class="ui-corner-top translate">Number of items</legend>
+      <p data-content="How many items?"
+         class="translate">
+        How many items?
       </p>
       <div class="testFlex">
         <div class="feedLimit grow left twin">

@@ -11,6 +11,8 @@ MOB.dialog = {
 
       MOB.utilities.translate();
 
+      $('.rssDocLink').attr('href', 'https://' + MOB.language + '.wikipedia.org/wiki/RSS');
+
       var $spinner = $(this).find('#spinner').spinner();
 
       $spinner.on( 'spinstop', function() {
@@ -28,7 +30,7 @@ MOB.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: 400,
+        width: 500,
         modal: true,
         buttons: {
           Cancel: function() {
@@ -55,6 +57,10 @@ MOB.dialog = {
           }
         },
         open: function() {
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
 
           var $dialog = $(this),
               $tabFeedId = $('li#' + $dataStore.data('id')),

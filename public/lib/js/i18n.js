@@ -111,9 +111,18 @@ MOB.i18n.translations = {
   // Dialogues
   "Feed: Kill" : { fr: "Flux: Supprimer", ja: "フィード：削除", es: "Feed: Eliminar" },
   "Feed: Parameters" : { fr: "Flux: Paramètres", ja: "フィード：パラメータ", es: "Feed: Parámetros" },
+  "Feed Type" : { fr: "Type de Flux", ja: "フィードの種類", es: "Tipo de Feed" },
+  "What type of feed? All text, all image, or mixed." : { fr: "Quel type de flux? Tout le texte, toute l'image, ou les deux.", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de feed? Todo el texto, toda la imagen o mixto." },
+
+  "Mixed" : { fr: "Mixte", ja: "混合", es: "Mezclado" },
+  "Image" : { fr: "Image", ja: "画像", es: "Imagen" },
+  "Text" : { fr: "Texte", ja: "テキスト", es: "Texto" },
+  "Number of items" : { fr: "Nombre de titres", ja: "タイトル数", es: "Cantidad de títulos" },
+  "How many items?" : { fr: "Combien d'articles?", ja: "いくつのアイテムがありますか？", es: "Cuantos articulos?" },
 
   "Tab: Kill" : { fr: "Tab: Supprimer", ja: "タブ：削除", es: "Pestaña: Eliminar" },
   "Location (URL)" : { fr: "Adresse (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },
+  "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse dun", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del" },
 
   // Titres
   "Add a new feed to %1" : { fr: "Ajouter un flux à %1", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo feed a %1" },
