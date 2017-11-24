@@ -9,6 +9,10 @@ MOB.dialog = {
     $('#mobDialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
       var $dialog = $(this).find('#feedPrefs');
 
+      MOB.utilities.translate();
+
+      $('.rssDocLink').attr('href', 'https://' + MOB.language + '.wikipedia.org/wiki/RSS');
+
       var $spinner = $(this).find('#spinner').spinner();
 
       $spinner.on( 'spinstop', function() {
@@ -21,10 +25,12 @@ MOB.dialog = {
       var $feed = $dataStore.parent().parent();
 
       $dialog.dialog({
+        title: MOB.tr('Feed: Parameters'),
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: 400,
+        width: 500,
         modal: true,
         buttons: {
           Cancel: function() {
@@ -46,11 +52,15 @@ MOB.dialog = {
               .data('type', newType);
 
             MOB.feed.populate($feedPrefsButton);
-            Tab.saveTabs();
+            MOB.tab.saveTabs();
             MOB.dialog.kill($dialog);
           }
         },
         open: function() {
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
 
           var $dialog = $(this),
               $tabFeedId = $('li#' + $dataStore.data('id')),
@@ -151,7 +161,8 @@ MOB.dialog = {
 
           $dialog.on('submit', function () {
             MOB.feed.populate($mobFeedRefresh);
-            Tab.saveTabs();
+
+            MOB.tab.saveTabs();
 
             $(this).dialog('destroy');
             return false;
@@ -188,32 +199,44 @@ MOB.dialog = {
       var $dialog = $('#killDialog');
 
       $dialog.dialog({
+        title: MOB.tr('Tab: Kill'),
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        title: 'Kill Tab',
         width: 400,
         modal: true,
-        buttons: {
-          'Delete all feeds': function() {
+        buttons: [
+          {
+            text: MOB.tr('Delete'),
+            icon: "ui-icon-alert",
+            class: "ui-state-error",
+            click: function() {
 
-            $selectedTab.remove();
-            $selectedPanel.remove();
+              $selectedTab.remove();
+              $selectedPanel.remove();
 
-            Tab.saveTabs();
-            MOB.dialog.kill($dialog);
-            $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+              MOB.tab.saveTabs();
+              MOB.dialog.kill($dialog);
+              $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
 
+            }
           },
-          Cancel: function() {
-            MOB.dialog.kill($dialog);
+          {
+            text: MOB.tr('Cancel'),
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
           }
-        },
+        ],
         open: function () {
 
-          $('button:contains("Delete")').addClass('ui-state-error');
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
 
-          $(this).children('p').append('Really delete the <strong>' + $a.text() + '</strong> tab and <strong>' + $selectedPanel.find('li.feed').length + '</strong> feeds in it?');
+          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 feeds)', $a.text(), $selectedPanel.find('li.feed').length));
+
         }
       });
 
@@ -228,34 +251,49 @@ MOB.dialog = {
       var $thisFeedId = $button.parent().parent().parent().parent().attr('id');
       var thisFeedName = $button.parent().parent().prev().text();
 
+      console.log('ID: %s', $thisFeedId);
+
       $dialog.dialog({
-        title: 'Kill Feed',
+        title: MOB.tr('Feed: Kill'),
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
         width: 400,
         modal: true,
-        buttons: {
-          'Delete feed': function() {
+        buttons: [
+          {
+            text: MOB.tr('Delete'),
+            icon: "ui-icon-alert",
+            class: "ui-state-error",
+            click: function() {
 
-            var $tabFeedId = $('#' + $(this).data('feedId'));
+              var $tabFeedId = $('#' + $(this).data('feedId'));
 
-            $tabFeedId.hide('fade', 1000, function() {
-              $tabFeedId.remove();
-            });
+              $tabFeedId.hide('fade', 1000, function() {
+                $tabFeedId.remove();
+                MOB.tab.saveTabs();
+              });
 
-            Tab.saveTabs();
-            MOB.dialog.kill($dialog);
+              MOB.dialog.kill($dialog);
+
+            }
           },
-          Cancel: function() {
-            MOB.dialog.kill($dialog);
+          {
+            text: MOB.tr('Cancel'),
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
           }
-        },
+        ],
         open: function () {
-          var $dialog = $(this);
-          $dialog.children('p').append('Really delete the <strong>' + thisFeedName + '</strong> feed?');
 
-          $('button:contains("Delete")').addClass('ui-state-error');
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
+          $dialog.children('p').append(MOB.tr('Really delete this feed? (%1)', thisFeedName));
+
         }
       });
 
@@ -269,30 +307,40 @@ MOB.dialog = {
       var $dialog = $('#renameTabDialog');
 
       $dialog.dialog({
+        title: MOB.tr('Rename tab'),
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
         width: 400,
         modal: true,
         buttons: {
           Cancel: function() {
-            console.info('kIIIl!');
             MOB.dialog.kill($dialog);
           },
           'OK': function() {
             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
-            Tab.saveTabs();
+            MOB.tab.saveTabs();
             // MOB.dialog.kill($dialog);
             MOB.dialog.kill($dialog);
           }
         },
         open: function() {
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
           var $tabName = $dialog.find('#tabName');
+          var $tabNameLegend = $dialog.find('legend#tabNameLegend');
+
+          $tabNameLegend.text(MOB.tr('Tab name'));
+
           $tabName.val($(this).data('tabName')).select();
 
           $(this).on('submit', function () {
             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
-            Tab.saveTabs();
+            MOB.tab.saveTabs();
             MOB.dialog.kill($dialog);
           });
         }
@@ -320,6 +368,7 @@ MOB.dialog = {
       $dialog.dialog({
         position: { my: 'center', at: 'center', of: window },
         autoOpen: false,
+        closeOnEscape: true,
         resizable: false,
         height: 'auto',
         width: 'auto',

@@ -1,71 +1,95 @@
-/* jshint -W098 */
+MOB.utilities = {
 
-var Utilities = (function() {
+  translate:function() {
 
-  return {
-    buildProgress : function( $container, eltClass ) {
+    $('.translate').each(function() {
 
-      var progress = { step: 0 };
+      if ($(this).data('title')) {
+        $(this).prop('title', MOB.tr($(this).data('title')));
+      }
 
-      progress.init = function( steps ) {
-        this.progressContainer = $('<div id="progressBar">' );
-        this.progressElt = $('<div id="cursor">' );
+      if ($(this).data('content')) {
+        $(this).text(MOB.tr($(this).data('content')));
+      }
 
-        this.progressContainer.append( this.progressElt );
-        $('body').prepend(this.progressContainer);
-        this.steps = steps;
-        this.go();
-      };
-      progress.increment = function() {
-        var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+    });
 
-        this.progressElt.animate({
-          width: Math.ceil(100 * (this.step + 1) / this.steps) + '%'
-          // ,'background-color': randomColor
-        });
-        this.step++;
-        if (this.step + 1 >= this.steps) this.finish();
+  },
+  getLocation: function(href) {
+    var l = document.createElement("a");
+    l.href = href;
+    return l;
+  },
+  isUrl:  function (s) {
+    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    return regexp.test(s);
+  },
+  buildProgress : function( $container, eltClass ) {
 
-      };
-      progress.finish = function() {
-        var self = this;
-        self.progressContainer.hide('fast');
-      };
-      progress.stop = function() {
-        this.progressElt.removeClass( 'progress-bar-striped active' );
-      };
-      progress.go = function() {
-        this.progressElt.addClass( 'progress-bar-striped active' );
-      };
+    var progress = { step: 0 };
 
-      return progress;
-    },
-    notify : function(type, message) {
-      var $p = $('#menu').find('#mobNotify > p');
+    progress.init = function( steps ) {
+      this.progressContainer = $('<div id="progressBar">' );
+      this.progressElt = $('<div id="cursor">' );
 
-      $p.parent().fadeIn('fast');
+      this.progressContainer.append( this.progressElt );
+      $('body').prepend(this.progressContainer);
+      this.steps = steps;
+      this.go();
+    };
+    progress.increment = function() {
+      var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
 
-      $p.html('<strong class="' +  type + '">' + type + '</strong> ' + message);
-      $p.fadeIn( 1000, function() {
+      this.progressElt.animate({
+        width: Math.ceil(100 * (this.step + 1) / this.steps) + '%'
+        // ,'background-color': randomColor
+      });
+      this.step++;
+      if (this.step + 1 >= this.steps) this.finish();
+
+    };
+    progress.finish = function() {
+      var self = this;
+      self.progressContainer.hide('fast');
+    };
+    progress.stop = function() {
+      this.progressElt.removeClass( 'progress-bar-striped active' );
+    };
+    progress.go = function() {
+      this.progressElt.addClass( 'progress-bar-striped active' );
+    };
+
+    return progress;
+  },
+  notify : function(type, message) {
+    var $p = $('#menu').find('#mobNotify > p').empty();
+
+    var $type = $('<strong>')
+        .addClass(type)
+        .addClass('translate')
+        .text(MOB.tr(type));
+
+    $p.append($type, ' ', message)
+      .parent().fadeIn('fast')
+      .fadeIn( 1000, function() {
         $p.animate({
-          opacity: 0.1
-        }, 6500, function() {
-          $p.slideUp(500, function() {
-            $p.animate({opacity: 1}, 1);
-            $p.parent().fadeOut('slow');
-          });
+        opacity: 0.1
+      }, 6500, function() {
+        $p.slideUp(500, function() {
+          $p.animate({opacity: 1}, 1);
+          $p.parent().fadeOut('slow');
         });
       });
-    },
-    milliToSecs : function(s) {
-      var ms = s % 1000;
-      s = (s - ms) / 1000;
-      var secs = s % 60;
-      s = (s - secs) / 60;
-      var mins = s % 60;
-      var hrs = (s - mins) / 60;
+    });
+  },
+  milliToSecs : function(s) {
+    var ms = s % 1000;
+    s = (s - ms) / 1000;
+    var secs = s % 60;
+    s = (s - secs) / 60;
+    var mins = s % 60;
+    var hrs = (s - mins) / 60;
 
-      return secs + '.' + ms;
-    }
-  };
-}());
+    return secs + '.' + ms;
+  }
+};
