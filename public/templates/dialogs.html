@@ -30,7 +30,7 @@
 
 <div id="feedPrefs">
   <form>
-    <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+    <fieldset class="ui-widget ui-widget-content ui-corner-all">
       <legend data-title="Location (URL)"
               data-content="Location (URL)"
               class="ui-corner-top translate">Location (URL)</legend>
@@ -63,31 +63,35 @@
     </fieldset>
 
     <fieldset id="feedType" class="prefsForm ui-widget ui-widget-content ui-corner-all">
+
       <legend data-title="Feed Type"
               data-content="Feed Type"
               class="ui-corner-top translate">Feed Type
       </legend>
+
       <p data-title="Feed Type"
          data-content="What type of feed? All text, all image, or mixed."
          class="ui-corner-top translate">What type of feed? All text, all image, or mixed.</p>
 
-      <label data-title="Mixed"
-             data-content="Mixed"
-             for="mixed"
-             class="noBottom translate">Mixed</label>
-      <input type="radio" name="radio-1" id="mixed">
+      <div id="testBox">
+        <label data-title="Mixed"
+               data-content="Mixed"
+               for="mixed"
+               class="noBottom translate">Mixed</label>
+        <input type="radio" name="radio-1" id="mixed">
 
-      <label data-title="Photo"
-             data-content="Photo"
-             class="noBottom translate"
-             for="photo">Photo</label>
-      <input type="radio" name="radio-1" id="photo">
+        <label data-title="Photo"
+               data-content="Photo"
+               class="noBottom translate"
+               for="photo">Photo</label>
+        <input type="radio" name="radio-1" id="photo">
 
-      <label data-title="Text"
-             data-content="Text"
-             class="noBottom translate"
-             for="text" >Text</label>
-      <input type="radio" name="radio-1" id="text">
+        <label data-title="Text"
+               data-content="Text"
+               class="noBottom translate"
+               for="text" >Text</label>
+        <input type="radio" name="radio-1" id="text">
+      </div>
     </fieldset>
 
     <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">

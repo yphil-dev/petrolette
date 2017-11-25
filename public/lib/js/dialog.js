@@ -127,7 +127,11 @@ MOB.dialog = {
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
             .checkboxradio('refresh');
 
-          $dialog.find('#feedType').controlgroup();
+          $dialog.find('#feedType').controlgroup({
+            classes: {
+              "ui-controlgroup": "plop"
+            }
+          });
 
           // $dialog.find('.feedType').on("change", function(event){
           //     console.log("CHANGE EVENT!", $(this).attr('id'));
