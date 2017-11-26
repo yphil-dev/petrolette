@@ -13,11 +13,10 @@ MOB.dialog = {
 
       $('.rssDocLink').attr('href', 'https://' + MOB.language + '.wikipedia.org/wiki/RSS');
 
-      var $spinner = $(this).find('#spinner').spinner();
-
-      $spinner.on( 'spinstop', function() {
-        $dialog.find('div#feedLimit').slider( 'option', 'value', $(this).val());
-        $dialog.find('.ui-slider-handle').text($(this).val());
+      var $spinner = $(this).find('input#feedLimitSpinner').spinner({
+        classes: {
+          "ui-spinner": "shrink ui-corner-all"
+        }
       });
 
       var $dataStore = $feedPrefsButton.parent().parent();
@@ -114,8 +113,6 @@ MOB.dialog = {
 
           });
 
-          $spinner.spinner( 'value', oldLimit);
-
           $dialog.find('input#feedGuess').val(oldUrl);
 
           // $dialog.find('.feedType').checkboxradio();
@@ -127,12 +124,6 @@ MOB.dialog = {
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
             .checkboxradio('refresh');
 
-          $dialog.find('#feedType').controlgroup({
-            classes: {
-              "ui-controlgroup": "plop"
-            }
-          });
-
           // $dialog.find('.feedType').on("change", function(event){
           //     console.log("CHANGE EVENT!", $(this).attr('id'));
           //     $(this).attr("checked","checked").change();
@@ -142,6 +133,14 @@ MOB.dialog = {
           //     console.log("CHANGE EVENT!", $(this).attr('id'));
           //     $dialog.find('#feedType').controlgroup('refresh');
           // });
+
+
+          $spinner.on( 'spinstop', function() {
+            $dialog.find('div#feedLimit').slider( 'option', 'value', $(this).val());
+            $dialog.find('.ui-slider-handle').text($(this).val());
+          });
+
+          $spinner.spinner( 'value', oldLimit);
 
           $dialog.find('div#feedLimit').slider({
             value: oldLimit,
@@ -155,7 +154,7 @@ MOB.dialog = {
             slide: function( event, ui ) {
               $(this).val(ui.value);
               $(this).find('.ui-slider-handle').text(ui.value);
-              $('input#spinner').val(ui.value);
+              $('input#feedLimitSpinner').val(ui.value);
             },
             change: function( event, ui ) {
               $('input#feedLimit').val(ui.value);

@@ -1,7 +1,7 @@
 $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', function() {
 
-  var $slider = $(this),
-      $handle = $slider.find('.handle'),
+  var $menu = $(this),
+      $handle = $menu.find('.handle'),
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
 
@@ -12,11 +12,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $nightLabel = $('label#nightLabel'),
       $langMenu = $('select#language'),
       $donate = $('button#donate').button().tooltip(),
-      $profile = $('button#profile').button().tooltip();
+      $profile = $('button#profile').button().tooltip(),
+      $slider = $('div#gallerySpeedSlider'),
+      $spinner = $('#gallerySpeedSpinner');
+
 
   MOB.utilities.translate();
 
-  $langMenu.val(MOB.prefs.readConfig('lang'));
+  $langMenu.val(MOB.prefs.readConfig('lang')).prop('selected', true);
+
+  // $langMenu.val(MOB.prefs.readConfig('lang'));
 
   $langMenu.change(function() {
 
@@ -30,7 +35,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $handle.click(function () {
-    $slider.toggleClass('expanded');
+    $menu.toggleClass('expanded');
     $(this).children('i').toggleClass('close');
   });
 
@@ -79,13 +84,13 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   $.fancybox.defaults.transitionEffect = gallerySlideTransition;
   $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
 
-  $slider.find('select#gallerySlideTransition').change(function() {
+  $menu.find('select#gallerySlideTransition').change(function() {
     console.log('New FX: %s', $(this).val());
     $.fancybox.defaults.transitionEffect = $(this).val();
     MOB.prefs.writeConfig('gallerySlideTransition', $(this).val());
   });
 
-  $slider.find('select#gallerySlideTransition').val(gallerySlideTransition);
+  $menu.find('select#gallerySlideTransition').val(gallerySlideTransition);
 
   if (MOB.prefs.readConfig('tabDropActivate') === 'true')
     $('input#tabDropActivate').prop('checked', true).checkboxradio('refresh');
@@ -96,15 +101,43 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     MOB.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
   });
 
-  $slider.find('#gallerySlideshowSpeed').slider({
-    value: gallerySlideshowSpeed,
-    min: 1,
+
+  $spinner.spinner({
+    min: 0.5,
     max: 10000,
-    step: 1,
+    step: 0.5,
+    classes: {
+      "ui-spinner": "shrink ui-corner-all",
+      "ui-spinner-down": "ui-corner-br",
+      "ui-spinner-up": "ui-corner-tr"
+    }
+  });
+
+  $spinner.spinner('value', MOB.utilities.milliToSecs(gallerySlideshowSpeed));
+
+  $spinner.on( 'spinstop', function() {
+    $slider.slider( 'option', 'value', $(this).val() * 1000);
+    $('.ui-slider-handle').text(MOB.utilities.milliToSecs($(this).val() * 1000) + 's');
+  });
+
+  $slider.slider({
+    classes: {
+      "ui-slider": "grow ui-corner-all",
+      "ui-slider-handle": "ui-corner-all",
+      "ui-slider-range": "ui-corner-all ui-widget-header"
+    },
+    value: gallerySlideshowSpeed,
+    min: 500,
+    max: 10000,
+    step: 500,
+    create: function() {
+      $(this).find('.ui-slider-handle').text(MOB.utilities.milliToSecs(gallerySlideshowSpeed) + 's');
+    },
     slide: function(event, ui) {
-      $('#amount').val(ui.value + 'ms');
       // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-      $('#gallerySlideshowSpeedValue').text(MOB.utilities.milliToSecs(ui.value) + 's');
+      $spinner.val(MOB.utilities.milliToSecs(ui.value));
+      $(this).find('.ui-slider-handle').text(MOB.utilities.milliToSecs(ui.value) + 's');
+
     },
     change: function(event, ui) {
       MOB.prefs.writeConfig('gallerySlideshowSpeed', ui.value);
@@ -115,9 +148,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       });
     }
   });
-
-  $('#amount').val($('#gallerySlideshowSpeed').slider('value') + 'ms');
-  $('#gallerySlideshowSpeedValue').text(MOB.utilities.milliToSecs($('#gallerySlideshowSpeed').slider('value')) + 's');
 
   // File select
 
