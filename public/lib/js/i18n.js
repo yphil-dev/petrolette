@@ -150,7 +150,7 @@ MOB.i18n.translations = {
   "Really delete this tab? (%1, %2 feeds)" : { fr: "Vraiment supprimer cet onglet (%1, %2 flux) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta pestaña? (%1, %2 feeds)" },
 
   "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },
-  "Refresh" : { fr: "Rafraîchir", ja: "リロード", es: "Recargar" },
+  "Refresh %1" : { fr: "Rafraîchir %1", ja: "リロード %1", es: "Recargar %1" },
 
   "plop plop" : { fr: "plip", ja: "ploup", es: "plap" },
 
