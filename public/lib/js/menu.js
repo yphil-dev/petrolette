@@ -5,17 +5,17 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
 
-      $helpLegend = $('legend#helpLegend'),
       $saveButton = $('#saveTabs').button(),
-      $dropTabLabel = $('label#dropTabLabel'),
-      $dayLabel = $('label#dayLabel'),
-      $nightLabel = $('label#nightLabel'),
       $langMenu = $('select#language'),
       $donate = $('button#donate').button().tooltip(),
       $profile = $('button#profile').button().tooltip(),
       $slider = $('div#gallerySpeedSlider'),
       $spinner = $('#gallerySpeedSpinner');
 
+  // $langMenu.selectmenu({
+  //   width: 80
+  // }).selectmenu( "menuWidget" )
+  //   .addClass( "overflow" );
 
   MOB.utilities.translate();
 
@@ -149,7 +149,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     }
   });
 
-  // File select
+  // File reader
 
   $fileImportInput.change(function(evt){
     var files = evt.target.files;

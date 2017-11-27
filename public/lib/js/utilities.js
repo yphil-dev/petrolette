@@ -12,7 +12,6 @@ MOB.utilities = {
         $(this).text(MOB.tr($(this).data('content')));
       }
 
-
     });
 
   },

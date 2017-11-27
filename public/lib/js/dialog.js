@@ -31,30 +31,41 @@ MOB.dialog = {
         height: 'auto',
         width: 500,
         modal: true,
-        buttons: {
-          Cancel: function() {
-            MOB.dialog.kill($dialog);
+        buttons: [
+          {
+            text: MOB.tr('Ok'),
+            title: MOB.tr('Ok'),
+            class: 'translate',
+            click: function() {
 
-            if (isNewFeed) {
-              $feed.hide('slide', 1000, function() {
-                $feed.remove();
-              });
+              var newUrl = $(this).find('input#feedGuess').val();
+              var newType = $('#feedType :radio:checked').attr('id');
+
+              $dataStore.data('url', newUrl)
+                .data('type', newType);
+
+              MOB.feed.populate($feedPrefsButton);
+              MOB.tab.saveTabs();
+              MOB.dialog.kill($dialog);
+
             }
-
           },
-          'OK': function() {
+          {
+            text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
 
-            var newUrl = $(this).find('input#feedGuess').val();
-            var newType = $('#feedType :radio:checked').attr('id');
+              if (isNewFeed) {
+                $feed.hide('slide', 1000, function() {
+                  $feed.remove();
+                });
+              }
 
-            $dataStore.data('url', newUrl)
-              .data('type', newType);
-
-            MOB.feed.populate($feedPrefsButton);
-            MOB.tab.saveTabs();
-            MOB.dialog.kill($dialog);
+            }
           }
-        },
+        ],
         open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
@@ -212,8 +223,9 @@ MOB.dialog = {
         buttons: [
           {
             text: MOB.tr('Delete'),
+            title: MOB.tr('Delete'),
             icon: "ui-icon-alert",
-            class: "dangerous",
+            class: "dangerous translate",
             click: function() {
 
               $selectedTab.remove();
@@ -227,6 +239,8 @@ MOB.dialog = {
           },
           {
             text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
             click: function() {
               MOB.dialog.kill($dialog);
             }
@@ -267,8 +281,9 @@ MOB.dialog = {
         buttons: [
           {
             text: MOB.tr('Delete'),
+            title: MOB.tr('Delete'),
             icon: "ui-icon-alert",
-            class: "dangerous",
+            class: "dangerous translate",
             click: function() {
 
               var $tabFeedId = $('#' + $(this).data('feedId'));
@@ -284,6 +299,8 @@ MOB.dialog = {
           },
           {
             text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
             click: function() {
               MOB.dialog.kill($dialog);
             }
@@ -317,17 +334,29 @@ MOB.dialog = {
         height: 'auto',
         width: 400,
         modal: true,
-        buttons: {
-          Cancel: function() {
-            MOB.dialog.kill($dialog);
+        buttons: [
+          {
+            text: MOB.tr('Ok'),
+            title: MOB.tr('Ok'),
+            class: 'translate',
+            click: function() {
+
+              $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
+              MOB.tab.saveTabs();
+              // MOB.dialog.kill($dialog);
+              MOB.dialog.kill($dialog);
+
+            }
           },
-          'OK': function() {
-            $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
-            MOB.tab.saveTabs();
-            // MOB.dialog.kill($dialog);
-            MOB.dialog.kill($dialog);
+          {
+            text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
           }
-        },
+        ],
         open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
@@ -383,44 +412,38 @@ MOB.dialog = {
         modal: true,
         show: 'slide',
         hide: 'explode',
-        // buttons: [
-        //   {
-        //     text: MOB.tr('Delete'),
-        //     icon: "ui-icon-alert",
-        //     class: "ui-state-error",
-        //     click: function() {
+        buttons: [
+          {
+            text: MOB.tr('Hell, Yeah'),
+            title: MOB.tr('Hell, Yeah'),
+            class: 'translate',
+            click: function() {
 
-        //       var $tabFeedId = $('#' + $(this).data('feedId'));
+              $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
+              MOB.tab.saveTabs();
+              // MOB.dialog.kill($dialog);
+              MOB.dialog.kill($dialog);
 
-        //       $tabFeedId.hide('fade', 1000, function() {
-        //         $tabFeedId.remove();
-        //         MOB.tab.saveTabs();
-        //       });
-
-        //       MOB.dialog.kill($dialog);
-
-        //     }
-        //   },
-        //   {
-        //     text: MOB.tr('Cancel'),
-        //     click: function() {
-        //       MOB.dialog.kill($dialog);
-        //     }
-        //   }
-        // ],
-        buttons: {
-          'What? No': function() {
-            MOB.dialog.kill($dialog);
-
-            MOB.dialog.question(qn++);
+            }
           },
-          'Heck, Yes': function() {
-            MOB.dialog.kill($dialog);
+          {
+            text: MOB.tr('What? No'),
+            title: MOB.tr('What? No'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+              MOB.dialog.question(qn++);
+            }
           },
-          'Huh, Skip': function() {
-            MOB.dialog.kill($dialog);
+          {
+            text: MOB.tr('Huh, Next question'),
+            title: MOB.tr('Huh, Next question'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
           }
-        },
+        ],
         open: function() {
 
           $('.ui-widget-overlay').on('click', function() {

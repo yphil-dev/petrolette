@@ -29,8 +29,8 @@ MOB.feed = {
 
         var $feedReload = $('<i>')
             .attr('class', 'feedControl translate icon-arrows-cw mobFeedRefresh')
-            .data('title', MOB.tr('Refresh [%1]', url))
-            .attr('title', MOB.tr('Refresh [%1]', url))
+            .data('title', MOB.tr('Refresh', url))
+            .attr('title', MOB.tr('Refresh', url))
             .button();
 
         var $feedControls = $('<div>').attr('class', 'feedControls dataStore')

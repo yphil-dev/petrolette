@@ -15,7 +15,11 @@
       Language
     </legend>
 
-    <select id="language" name="language" class="unique">
+    <select id="language"
+            class="unique translate"
+            name="language"
+            data-title="Language"
+            title="Language">
       <option id="optionEnglish" class="translate" data-content="English" selected="selected" value="en"></option>
       <option id="optionFrench" class="translate" data-content="Français" value="fr"></option>
       <option id="optionJapanese" class="translate" data-content="日本語" value="ja"></option>
@@ -52,7 +56,8 @@
       <label id="dropTabLabel"
              class="translate last"
              for="tabDropActivate"
-             data-title="Open tab on feed drop"
+             data-title="Open tab on witch a feed is dropped"
+             title="Open tab on witch a feed is dropped"
              data-content="Open tab on feed drop">
         Open tab on feed drop
       </label>
@@ -73,28 +78,22 @@
              class="bottom translate"
              for="day"
              data-title="Day theme"
+             title="Day theme"
              data-content="Day">
         Day
       </label>
-      <input id="day"
-             class="themeSwitcher checkboxradio"
-             type="radio"
-             name="radio-1"
-             value="day">
+      <input id="day" class="themeSwitcher checkboxradio" type="radio" name="radio-1" value="day">
 
       <label id="nightLabel"
              class="bottom translate last"
              for="night"
              data-title="Night theme"
+             title="Night theme"
              data-content="Night">
         Night
       </label>
+      <input id="night" class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" value="night">
 
-      <input id="night"
-             class="themeSwitcher checkboxradio noBottom"
-             type="radio"
-             name="radio-1"
-             value="night">
     </div>
   </fieldset>
 
@@ -108,29 +107,26 @@
     <span id="gallerySlideshowSpeedValue" class="twin"></span>
     <div id="gallerySlideshowSpeed"></div>
 
-    <p data-content="Slideshow speed"
-       class="translate">Slideshow speed</p>
-
     <div class="flexBox">
       <div class="grow">
         <label for="gallerySpeed" class="ui-helper-hidden">
           <input type="text" id="gallerySpeed" />
         </label>
-        <div id="gallerySpeedSlider"></div>
+        <div id="gallerySpeedSlider"
+             data-title="Slideshow speed"
+             class="translate">
+        </div>
       </div>
       <label for="spinner" class="ui-helper-hidden">Select a value:</label>
       <input id="gallerySpeedSpinner"
+             data-title="Slideshow speed"
+             class="translate"
              name="value">
     </div>
 
-    <label id="gallerySlideTransitionLabel"
-           class="translate"
-           for="gallerySlideTransition"
-           data-content="Slide transition">
-      Slide transition
-    </label>
-
-    <select class="unique" id="gallerySlideTransition">
+    <select id="gallerySlideTransition"
+            class="unique translate"
+            data-title="Slide transition">
       <option class="translate"
               data-content="None"
               value="false">None</option>
