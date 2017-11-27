@@ -450,7 +450,7 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          $dialog.find('p').html('Are you<br />' + questions[qn++] + '?');
+          $dialog.find('p').html(MOB.tr('Are you') + '<br />' + MOB.tr(questions[qn++]) + '?');
         }
       });
 
