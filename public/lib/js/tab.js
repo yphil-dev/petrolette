@@ -34,7 +34,6 @@ MOB.tab = {
 
     $("div#tabs").tabs('option', 'active', 0);
 
-
   },
   all:function() {
     var myTabs = [];

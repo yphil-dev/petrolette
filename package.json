@@ -22,8 +22,7 @@
     "feedrat": "latest",
     "find-favicon": "0.1.2",
     "hyperquest": "2.1.2",
-    "jquery": "latest",
-    "jquery-ui": "latest",
-    "parse-favicon": "1.2.8"
+    "jquery": "3.2.1",
+    "jquery-ui": "1.12.1"
   }
 }

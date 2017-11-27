@@ -16,67 +16,53 @@
     </legend>
 
     <select id="language"
+            class="unique translate"
             name="language"
-            class="unique">
-
-      <option id="optionEnglish"
-              class="translate"
-              data-content="English"
-              selected="selected"
-              value="en">
-        English
-      </option>
-      <option id="optionFrench"
-              class="translate"
-              data-content="French"
-              value="fr">
-        French
-      </option>
-      <option id="optionJapanese"
-              class="translate"
-              data-content="Japanese"
-              value="ja">
-        Japanese
-      </option>
-      <option id="optionSpanish"
-              class="translate"
-              data-content="Spanish"
-              value="es">
-        Espagnol
-      </option>
+            data-title="Language"
+            title="Language">
+      <option id="optionEnglish" class="translate" data-content="English" selected="selected" value="en"></option>
+      <option id="optionFrench" class="translate" data-content="Français" value="fr"></option>
+      <option id="optionJapanese" class="translate" data-content="日本語" value="ja"></option>
+      <option id="optionSpanish" class="translate" data-content="Español" value="es"></option>
     </select>
 
   </fieldset>
 
-  <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+  <fieldset class="ui-widget ui-widget-content ui-corner-all">
     <legend id="tabsLegend"
             class="ui-corner-top translate"
             data-content="Tabs">Tabs</legend>
 
-    <input id="fileImport"
-           type="file"
-           style="display: none;" />
-    <button id="fileImport"
-            class="twin translate"
-            data-title="Open feeds and tabs file"
-            data-content="Load">
-      Load
-    </button>
-    <button id="saveTabs"
-            class="twin translate"
-            data-title="Save feeds and tabs file"
-            data-content="Save">
-      Save
-    </button>
+    <div class="flexBox">
+      <input id="fileImport"
+             type="file"
+             style="display: none;" />
+      <button id="fileImport"
+              class="grow translate"
+              data-title="Open feeds and tabs file"
+              data-content="Load">
+        Load
+      </button>
+      <button id="saveTabs"
+              class="grow translate last"
+              data-title="Save feeds and tabs file"
+              data-content="Save">
+        Save
+      </button>
+    </div>
+    <div class="flexBox">
 
-    <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
-    <label id="dropTabLabel"
-           class="unique noBottom translate"
-           for="tabDropActivate"
-           data-title="Open tab on feed drop"
-           data-content="Open tab on feed drop">
-      Open tab on feed drop
-    </label>
+      <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
+      <label id="dropTabLabel"
+             class="translate last"
+             for="tabDropActivate"
+             data-title="Open tab on witch a feed is dropped"
+             title="Open tab on witch a feed is dropped"
+             data-content="Open tab on feed drop">
+        Open tab on feed drop
+      </label>
+    </div>
+
   </fieldset>
 
   <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
@@ -86,59 +72,61 @@
       Theme
     </legend>
 
-    <label id="dayLabel"
-           class="twin translate"
-           for="day"
-           data-title="Day theme"
-           data-content="Day">
-      Day
-    </label>
-    <input id="day"
-           class="themeSwitcher checkboxradio"
-           type="radio"
-           name="radio-1"
-           value="day">
+    <div class="flexBox">
 
-    <label id="nightLabel"
-           class="twin translate"
-           for="night"
-           data-title="Night theme"
-           data-content="Night">
-      Night
-    </label>
+      <label id="dayLabel"
+             class="bottom translate"
+             for="day"
+             data-title="Day theme"
+             title="Day theme"
+             data-content="Day">
+        Day
+      </label>
+      <input id="day" class="themeSwitcher checkboxradio" type="radio" name="radio-1" value="day">
 
-    <input id="night"
-           class="themeSwitcher checkboxradio noBottom"
-           type="radio"
-           name="radio-1"
-           value="night">
+      <label id="nightLabel"
+             class="bottom translate last"
+             for="night"
+             data-title="Night theme"
+             title="Night theme"
+             data-content="Night">
+        Night
+      </label>
+      <input id="night" class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" value="night">
+
+    </div>
   </fieldset>
 
   <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+
     <legend id="imageGalleryLegend"
             class="ui-corner-top translate"
-            data-content="Image gallery">
-      Image gallery
-    </legend>
-    <label class="twin grow" for="gallerySlideshowSpeedValue">
-      <span
-        id="gallerySlideshowSpeedLabel"
-        class="twin translate"
-        data-content="Slideshow speed">
-        Slideshow speed
-      </span>
-      <span id="gallerySlideshowSpeedValue" class="twin"></span>
-    </label>
-    <div class="unique" id="gallerySlideshowSpeed"></div>
+            data-content="Image gallery">Image gallery</legend>
 
-    <label id="gallerySlideTransitionLabel"
-           class="unique translate"
-           for="gallerySlideTransition"
-           data-content="Slide transition">
-      Slide transition
-    </label>
+    <label class="ui-helper-hidden" for="gallerySlideshowSpeedValue"></label>
+    <span id="gallerySlideshowSpeedValue" class="twin"></span>
+    <div id="gallerySlideshowSpeed"></div>
 
-    <select class="unique" id="gallerySlideTransition">
+    <div class="flexBox">
+      <div class="grow">
+        <label for="gallerySpeed" class="ui-helper-hidden">
+          <input type="text" id="gallerySpeed" />
+        </label>
+        <div id="gallerySpeedSlider"
+             data-title="Slideshow speed"
+             class="translate">
+        </div>
+      </div>
+      <label for="spinner" class="ui-helper-hidden">Select a value:</label>
+      <input id="gallerySpeedSpinner"
+             data-title="Slideshow speed"
+             class="translate"
+             name="value">
+    </div>
+
+    <select id="gallerySlideTransition"
+            class="unique translate"
+            data-title="Slide transition">
       <option class="translate"
               data-content="None"
               value="false">None</option>
@@ -170,22 +158,34 @@
             class="ui-corner-top translate">
       Help
     </legend>
-    <button id="profile"
-            class="twin icon-police translate"
-            data-content="Profile"
-            data-title="Forgot what you are? Reset Mobylette tabs & feeds">
-      Profil
-    </button>
-    <button id="donate"
-            class="twin icon-heartbeat translate"
-            data-title="Mobylette (really) needs your help"
-            data-content="Donate">
-      Donate
-    </button>
-    </fieldset>
 
-    <fieldset id="mobNotify" class="ui-widget ui-widget-content ui-corner-all">
-        <legend class="ui-corner-top">Notifications</legend>
-        <p></p>
-    </fieldset>
+    <div class="flexBox">
+      <button id="help"
+              class="unique icon-motorcycle translate"
+              data-content="Help"
+              data-title="Help">
+        Help
+      </button>
+
+      <button id="profile"
+              class="grow icon-police translate"
+              data-content="Profile"
+              data-title="Forgot what you are? Reset Mobylette tabs & feeds">
+        Profil
+      </button>
+
+      <button id="donate"
+              class="grow icon-heartbeat translate last"
+              data-title="Mobylette (really) needs your help"
+              data-content="Donate">
+        Donate
+      </button>
+    </div>
+
+  </fieldset>
+
+  <fieldset id="mobNotify" class="ui-widget ui-widget-content ui-corner-all">
+    <legend class="ui-corner-top">Notifications</legend>
+    <p></p>
+  </fieldset>
 </form>
