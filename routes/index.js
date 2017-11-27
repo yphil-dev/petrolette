@@ -75,8 +75,8 @@ router.get('/feed', function(req, res) {
                 feedTitle: feedTitle
             });
         } else {
-            console.log('Huston, we have a (%s)', JSON.stringify(err));
-            res.send({error:err});
+          console.log('Huston, we have a [%s] (%s)', JSON.stringify(err), req.query.feedurl);
+          res.send({error:err});
         }
     });
 

@@ -16,21 +16,23 @@
       <legend id="tabNameLegend"
               class="ui-corner-top translate"
               data-content="Tab name">Tab Name</legend>
-      <label for="tabName"
-             class="ui-helper-hidden">Name</label>
-      <input
-        name="name"
-        id="tabName"
-        class="ui-widget-content ui-corner-all"
-        value=""
-        class="text ui-widget-content ui-corner-all" />
+      <div class="flexBox">
+
+        <label for="tabName"
+               class="ui-helper-hidden">Name</label>
+        <input
+          name="name"
+          id="tabName"
+          value=""
+          class="ui-widget-content grow ui-corner-all" />
+      </div>
     </fieldset>
   </form>
 </div>
 
 <div id="feedPrefs">
   <form>
-    <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+    <fieldset class="ui-widget ui-widget-content ui-corner-all">
       <legend data-title="Location (URL)"
               data-content="Location (URL)"
               class="ui-corner-top translate">Location (URL)</legend>
@@ -45,17 +47,17 @@
           href="#">Feed</a>.
       </p>
 
-      <div id="feedGuess" class="testFlex">
+      <div id="feedGuess" class="flexBox">
         <input name="guess"
                id="feedGuess"
                placeholder="URL (https://reddit.com)"
                data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the"
                value=""
-               class="ui-widget-content grow left twin ui-corner-all translate"
+               class="ui-widget-content grow ui-corner-all translate"
                onclick="select()"
                autofocus
         />
-        <button type="button" id="feedGuess" class="shrink twin right">
+        <button type="button" id="feedGuess" class="shrink">
           <i class="icon-flashlight"></i>
         </button>
       </div>
@@ -63,52 +65,57 @@
     </fieldset>
 
     <fieldset id="feedType" class="prefsForm ui-widget ui-widget-content ui-corner-all">
+
       <legend data-title="Feed Type"
               data-content="Feed Type"
-              class="ui-corner-top translate">Feed Type</legend>
+              class="ui-corner-top translate">Feed Type
+      </legend>
+
       <p data-title="Feed Type"
          data-content="What type of feed? All text, all image, or mixed."
          class="ui-corner-top translate">What type of feed? All text, all image, or mixed.</p>
 
-      <label data-title="Mixed"
-             data-content="Mixed"
-             for="mixed"
-             class="noBottom translate">Mixed</label>
-      <input type="radio" name="radio-1" id="mixed">
+      <div class="flexBox">
+        <label data-title="Mixed"
+               data-content="Mixed"
+               for="mixed"
+               class="translate">Mixed</label>
+        <input type="radio" name="radio-1" id="mixed">
 
-      <label data-title="Photo"
-             data-content="Photo"
-             class="noBottom translate"
-             for="photo">Photo</label>
-      <input type="radio" name="radio-1" id="photo">
+        <label data-title="Photo"
+               data-content="Photo"
+               class="translate"
+               for="photo">Photo</label>
+        <input type="radio" name="radio-1" id="photo">
 
-      <label data-title="Text"
-             data-content="Text"
-             class="noBottom translate"
-             for="text" >Text</label>
-      <input type="radio" name="radio-1" id="text">
+        <label data-title="Text"
+               data-content="Text"
+               class="last translate"
+               for="text" >Text</label>
+        <input type="radio" name="radio-1" id="text">
+      </div>
     </fieldset>
 
     <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
       <legend data-content="Number of items"
               class="ui-corner-top translate">Number of items</legend>
+
       <p data-content="How many items?"
          class="translate">
         How many items?
       </p>
-      <div class="testFlex">
-        <div class="feedLimit grow left twin">
+      <div class="flexBox">
+        <div class="feedLimit grow">
           <label for="feedLimit" class="ui-helper-hidden">
             <input type="text" id="feedLimit" />
           </label>
-
           <div id="feedLimit"></div>
         </div>
-        <div class="feedLimit limitSpinner shrink twin right">
-          <label for="spinner" class="ui-helper-hidden">Select a value:</label>
-          <input id="spinner" name="value">
-        </div>
+        <label for="spinner" class="ui-helper-hidden">Select a value:</label>
+        <input id="feedLimitSpinner"
+               name="value">
       </div>
+
     </fieldset>
   </form>
 </div>

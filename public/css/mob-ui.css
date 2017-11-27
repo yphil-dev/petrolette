@@ -1,165 +1,180 @@
+:root {
+  --main-bg-color: red;
+  --ui-bg-color: red;
+  --ui-bg-color-pri: red;
+  --ui-bg-color-sec: red;
+  --ui-color-pri: red;
+  --ui-color-sec: red;
+}
+
 #progressBar {
-    position:absolute;
-    /* float: left; */
-    z-index: 9 !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* background-color: grey; */
+  position:absolute;
+  /* float: left; */
+  z-index: 9 !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* background-color: grey; */
 }
 
 #progressBar > #cursor {
-    width: 1%;
-    height: 2px;
+  width: 1%;
+  height: 2px;
 }
 
 
 #menu {
-    /* border-right: #2e2e2e solid 1px; */
-    padding:.5em;
-    border: none !important;
+  /* border-right: #2e2e2e solid 1px; */
+  padding:.5em;
+  border: none !important;
 
-    position: fixed;
-    width: 275px;
-    transition: all 300ms ease 0s;
-    height: 100%;
-    top: 0px;
-    left: -291px;
+  position: fixed;
+  width: 275px;
+  transition: all 300ms ease 0s;
+  height: 100%;
+  top: 0px;
+  left: -291px;
 }
 
 #menu.expanded {
-    left: 0px;
+  left: 0px;
 }
 
 #mobNotify {
-    bottom: 1em;
-    position: absolute !important;
-    width: 255px;
-    display: none;
+  bottom: 1em;
+  position: absolute !important;
+  width: 255px;
+  display: none;
 }
 
 #mobNotify > p {
-    margin:0;
+  margin:0;
 }
 
 #mobNotify > p > strong {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 #mobNotify > p > strong.error {
-    color: red !important;
+  color: red !important;
 }
 
 #mobNotify > p > strong.success {
-    color: green !important;
+  color: green !important;
 }
 
 legend {
-    font-family: 'KaushanScriptRegular' !important;
-    font-weight: normal;
-    font-style: italic;
-    /* color: #6E7A94 !important; */
-    font-size:120% !important;
-    padding: .2em .8em .2em .4em;
+  font-family: 'KaushanScriptRegular' !important;
+  font-weight: normal;
+  font-style: italic;
+  /* color: #6E7A94 !important; */
+  font-size:120% !important;
+  padding: .2em .8em .2em .4em;
 }
 
 fieldset > p {
-    margin: 0  0 .2em 0;
+  margin: 0  0 .2em 0;
 }
 
 fieldset a:link {
-    color:            #BFD8D1;
+  color:            #BFD8D1;
 }
 
 fieldset a:visited {
-    color:            #6E7A94;
+  color:            #6E7A94;
 }
 
 p, label {
-    font-size:12pt;
-    font-family: 'ArimaKoshiRegular';
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1.2em;
-    color:            #FFD05B;
+  font-size:12pt;
+  font-family: 'ArimaKoshiRegular';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.2em;
+  color:            #FFD05B;
 }
 
 fieldset,
 legend {
-    background-color: #453246 !important;
-    color:            #BFD8D1 !important;
-    /* font-size:76% !important; */
+  background-color: #453246 !important;
+  color:            #BFD8D1 !important;
+  /* font-size:76% !important; */
 }
 
 #menu,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
-    background-color: #2B374B !important;
-    color:            #000000 !important;
+  background-color: #2B374B !important;
+  color:            #eeeeee !important;
 }
 
 button#profile,
 button#donate {
-    text-align: left
+  text-align: left
 }
 
 .ui-dialog .ui-dialog-buttonpane {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 .handle {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .handle:hover {
-    opacity: 1;
-    color:            #FFDC00 !important;
+  opacity: 1;
+  color:            #FFDC00 !important;
 }
 
-#menu .ui-state-active,
-#menu .ui-state-hover {
-    background-color: #FFD05B !important;
-    color: #001F3F !important;
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  background-color: #FFD05B !important;
+  color: #2B374B !important;
+}
+
+.ui-state-active,
+.ui-state-hover {
+  background-color: #FFD05B !important;
+  color: #001F3F !important;
 }
 
 .ui-state-success {
-    background-color: #DFF2BF !important;
+  background-color: #DFF2BF !important;
 }
 
 .ui-state-error {
-    background-color: #FFBABA !important;
+  background-color: #FFBABA !important;
 }
 
 .logoItem {
-    flex: 1 1 30%;
+  flex: 1 1 30%;
 }
 
 .tabCloser {
-    font-size:.8rem;
-    margin: .2rem .2rem 0 0;
-    cursor:pointer;
+  font-size:.8rem;
+  margin: .2rem .2rem 0 0;
+  cursor:pointer;
 }
 
 #tabs .newFeed,
 #menu > .handle {
-    font-size: 2rem;
-    background-color: #001F3F;
-    position:absolute;
+  font-size: 2rem;
+  background-color: #001F3F;
+  position:absolute;
 }
 
 #tabs .newFeed {
-    right:0;
-    top:4px;
+  right:0;
+  top:4px;
 }
 
 #menu > .handle {
-    left:290px;
-    bottom:50px;
+  left:290px;
+  bottom:50px;
 }
 
 #menu > .handle > i {
-    border: none !important;
+  border: none !important;
 }
 
 #menu {
@@ -175,144 +190,148 @@ button#donate {
   }
 }
 
-.ui-slider-handle {
-    text-align: center !important;
-}
-
-fieldset {
-    margin: 0 0 .5em 0;
+button#feedGuess,
+.ui-spinner {
+  margin: 0;
 }
 
 input {
-    padding: 0 .2em;
-}
-
-button#feedGuess {
-    margin: 0;
-}
-
-fieldset.prefsForm {
-    display:flex;
-    flex-flow: row wrap;
+  padding: .4em;
+  margin-right: .4em;
 }
 
 fieldset.menuForm {
-    display:flex;
-    height: 100%;
-    display: -webkit-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /* display: flex; */
-    /* display: -webkit-flex; */
-    -webkit-flex-direction: row;
-    -webkit-flex-wrap: wrap;
-    /* -webkit-justify-content: space-between; */
-    /* flex-flow: row wrap; */
-    justify-content: space-between;
-    /* align-items: stretch; */
+  height: 100%;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-/* fieldset.menuForm button, */
-/* fieldset.menuForm label { */
-/*     flex: 1; */
-/*     -webkit-flex: 1; */
-/* } */
-
-label,
-button {
-    margin: 5px 0;
+fieldset {
+  margin: 0 0 .5em 0;
+  width: -moz-available;
+  padding-bottom: .4em;
+  padding-left: .4em;
+  padding-right: .4em;
 }
 
-.prefsForm > *:not(p) {
-    width: 100%;
+div.flexBox {
+  width:-moz-available;
+  display:flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-div.testFlex {
-    display:flex;
-}
-
-#spinner {
-    width: 2rem;
-}
-
-div#feedLimit {
-    height: 31px !important;
-}
-
-#feedLimit .ui-slider .ui-slider-handle {
-        height: 38px !important;
-        min-width: 30px;
-        /* padding-top: 5px !important; */
-        line-height: 38px !important;
-        vertical-align: middle;
-    /* padding-left: 5px; */
+div.flexBox > label {
+  flex: 1;
 }
 
 .grow {
-    flex-grow: 9 !important;
+  flex: 1 0 auto !important;
 }
 
 .shrink {
-    flex-shrink: 3 !important;
-}
-
-.left {
-    margin-right:.2em !important;
-}
-
-.right {
-    margin-left:.2em !important;
+  flex: 0 1 4em !important;
 }
 
 .unique {
-    flex: 1 100%;
+  flex: 1 100%;
 }
 
 .twin {
-    flex: 1;
+  flex: 1;
+}
+
+.ui-button {
+  margin-right: .4em;
+  margin-bottom: 0;
+}
+
+span.ui-spinner,
+.last {
+  margin-right: 0;
+}
+
+label:last-child {
+  margin-bottom: 0 !important;
+}
+
+.bottom {
+  margin-bottom: 0;
+}
+
+label,
+button,
+select {
+  margin: .4em 0 0 0;
+}
+
+/* .prefsForm > *:not(p) { */
+/*     width: 100%; */
+/* } */
+
+div.testFlex {
+  display:flex;
+}
+
+#spinner {
+  width: 2rem;
+}
+
+.ui-slider {
+  height: 31px;
+  margin-right: .4em;
+}
+
+.ui-slider-handle {
+  height: 38px !important;
+  min-width: 38px;
+  line-height: 38px;
+  text-align: center !important;
 }
 
 .noBottom {
-    margin-bottom:0;
+  margin-bottom:0;
 }
 
 .ui-selectmenu-button.ui-button {
-    text-align: left;
-    white-space: nowrap;
-    width: 100% !important;
+  text-align: left;
+  white-space: nowrap;
+  width: 100% !important;
 }
 
 /* WTF */
 
 #logo > h1 {
-    font-family: 'LobsterRegular';
-    font-weight: normal;
-    font-style:  normal;
-    font-size:   38pt;
-    margin:      0 0 .2em .2em;
-    color:       #F1E5D1;
-    text-shadow: 1px 1px #3C2413;
+  font-family: 'LobsterRegular';
+  font-weight: normal;
+  font-style:  normal;
+  font-size:   38pt;
+  margin:      0 0 .2em .2em;
+  color:       #F1E5D1;
+  text-shadow: 1px 1px #3C2413;
 }
 
 #logo > .mobylette,
 .ui-dialog-content .mobylette {
-    color:     #84A6CB;
-    font-size: 3.5rem  !important;
-    margin:    -2px 0 0 0 !important;
+  color:     #84A6CB;
+  font-size: 3.5rem  !important;
+  margin:    -2px 0 0 0 !important;
 }
 
 .ui-dialog-content .mobylette {
-    display: inline !important;
-    font-size: 1.5rem !important;
+  display: inline !important;
+  font-size: 1.5rem !important;
 }
 
 #killDialog .mobylette {
-    color:     red;
-    font-size: 3.5rem  !important;
+  color:     red;
+  font-size: 3.5rem  !important;
 }
 
 #logo {
-    display: flex;
+  display: flex;
 }
 
 /* Wait screen */
@@ -352,39 +371,37 @@ div#feedLimit {
 }
 
 #questionDialog > p {
-    font-family: 'GrobeDeutschmeisterRegular';
-    font-size: 74pt;
-    text-align:center;
+  font-family: 'GrobeDeutschmeisterRegular';
+  font-size: 74pt;
+  text-align:center;
 }
 
 .ui-dialog[aria-describedby="questionDialog"] {
-    width: 90vw !important;
-    max-width: 1000px !important;
+  width: 90vw !important;
+  max-width: 1000px !important;
 }
 
 button.dangerous:hover {
-    border-color: #2B374B !important;
-    background-color: #C0111E !important;
-    color: #2B374B !important;
+  border-color: #2B374B !important;
+  background-color: #C0111E !important;
+  color: #2B374B !important;
 }
 
 i.dangerous:hover {
-    color: #C0111E !important;
-    /* color: #2B374B !important; */
-}
-
-a.ui-button:active,
-.ui-button:active,
-.ui-button.ui-state-active:hover {
-    background-color: #FFDC00 !important;
-    color: #2B374B !important;
+  color: #C0111E !important;
+  /* color: #2B374B !important; */
 }
 
 .ui-icon-background,
 .ui-state-active .ui-icon-background {
-    /* border: red !important; */
-        /* border: #003eff; */
-    /* background-color: red; */
-    /* color: red; */
+  /* border: red !important; */
+  /* border: #003eff; */
+  /* background-color: red; */
+  /* color: red; */
 
+}
+
+select {
+  width:100%;
+  height: 30px;
 }
