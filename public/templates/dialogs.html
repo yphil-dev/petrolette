@@ -39,7 +39,6 @@
 
       <p>
         <span class="translate"
-              data-title="Location (URL)"
               data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">Enter a website address/URL and click search, then OK, or simply enter the URL of the</span>
         <a
           class="translate rssDocLink"
@@ -51,13 +50,17 @@
         <input name="guess"
                id="feedGuess"
                placeholder="URL (https://reddit.com)"
-               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the"
+               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed"
+               data-intro="Enter the address of the feed"
                value=""
                class="ui-widget-content grow ui-corner-all translate"
                onclick="select()"
                autofocus
         />
-        <button type="button" id="feedGuess" class="shrink">
+        <button id="feedGuess"
+                class="shrink"
+                type="button"
+                data-intro="Search for a feed">
           <i class="icon-flashlight"></i>
         </button>
       </div>
@@ -71,11 +74,8 @@
               class="ui-corner-top translate">Feed Type
       </legend>
 
-      <p data-title="Feed Type"
-         data-content="What type of feed? All text, all image, or mixed."
-         class="ui-corner-top translate">What type of feed? All text, all image, or mixed.</p>
-
-      <div class="flexBox">
+      <div class="flexBox"
+           data-intro="What type of feed?">
         <label data-title="Mixed"
                data-content="Mixed"
                for="mixed"
@@ -96,14 +96,10 @@
       </div>
     </fieldset>
 
-    <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
+    <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all"
+              data-intro="How many items?">
       <legend data-content="Number of items"
               class="ui-corner-top translate">Number of items</legend>
-
-      <p data-content="How many items?"
-         class="translate">
-        How many items?
-      </p>
       <div class="flexBox">
         <div class="feedLimit grow">
           <label for="feedLimit" class="ui-helper-hidden">

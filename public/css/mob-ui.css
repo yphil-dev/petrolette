@@ -3,8 +3,50 @@
   --ui-bg-color: red;
   --ui-bg-color-pri: red;
   --ui-bg-color-sec: red;
-  --ui-color-pri: red;
+  --ui-color-pri: #eeeeee;
   --ui-color-sec: red;
+  --ui-color-danger: #660000;
+}
+
+select {
+  width:100%;
+  height: 30px;
+}
+
+legend {
+  font-family: 'KaushanScriptRegular' !important;
+  font-weight: normal;
+  font-style: italic;
+  font-size:120% !important;
+  padding: .2em .8em .2em .4em;
+}
+
+fieldset > p {
+  margin: 0  0 .2em 0;
+}
+
+fieldset a:link {
+  color:            #BFD8D1;
+}
+
+fieldset a:visited {
+  color:            #6E7A94;
+}
+
+p, label {
+  font-size:12pt;
+  font-family: 'ArimaKoshiRegular';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.2em;
+  color:            #FFD05B;
+}
+
+fieldset,
+legend {
+  background-color: #453246 !important;
+  color:            #BFD8D1 !important;
+  /* font-size:76% !important; */
 }
 
 #progressBar {
@@ -63,49 +105,12 @@
   color: green !important;
 }
 
-legend {
-  font-family: 'KaushanScriptRegular' !important;
-  font-weight: normal;
-  font-style: italic;
-  /* color: #6E7A94 !important; */
-  font-size:120% !important;
-  padding: .2em .8em .2em .4em;
-}
-
-fieldset > p {
-  margin: 0  0 .2em 0;
-}
-
-fieldset a:link {
-  color:            #BFD8D1;
-}
-
-fieldset a:visited {
-  color:            #6E7A94;
-}
-
-p, label {
-  font-size:12pt;
-  font-family: 'ArimaKoshiRegular';
-  font-weight: normal;
-  font-style: normal;
-  line-height: 1.2em;
-  color:            #FFD05B;
-}
-
-fieldset,
-legend {
-  background-color: #453246 !important;
-  color:            #BFD8D1 !important;
-  /* font-size:76% !important; */
-}
-
 #menu,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
   background-color: #2B374B !important;
-  color:            #eeeeee !important;
+  color: var(--ui-color-pri) !important;
 }
 
 button#profile,
@@ -382,26 +387,23 @@ div.testFlex {
 }
 
 button.dangerous:hover {
-  border-color: #2B374B !important;
-  background-color: #C0111E !important;
-  color: #2B374B !important;
+  /* border-color: #2B374B !important; */
+  background-color: var(--ui-color-danger) !important;
+  color: var(--ui-color-pri) !important;
 }
 
 i.dangerous:hover {
-  color: #C0111E !important;
+  color: var(--ui-color-danger) !important;
   /* color: #2B374B !important; */
 }
 
-.ui-icon-background,
-.ui-state-active .ui-icon-background {
-  /* border: red !important; */
-  /* border: #003eff; */
-  /* background-color: red; */
-  /* color: red; */
-
-}
-
-select {
-  width:100%;
-  height: 30px;
+.ui-dialog .ui-dialog-titlebar-help {
+  /* position: absolute; */
+  /* right: .3em; */
+  /* top: 50%; */
+  float:right;
+  width: 20px;
+  height: 20px;
+  margin: 0 .8em 0 0;
+  padding: 1px;
 }

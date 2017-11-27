@@ -179,7 +179,8 @@ li.feed {
 
 .mobHeader {
     cursor:grab;
-    min-height:20px;
+    /* min-height:20px; */
+    max-height:18px;
     display: flex;
     padding:.2rem;
 }
@@ -199,12 +200,13 @@ li.feed {
 
 .mobHeader .feedControls {
     flex: 0 0 auto;
-    min-width:80px;
-    align-items:flex-start;
-    align-content:flex-start;
     display: flex;
-    justify-content: flex-end;
-    padding:0;
+    text-align:right;
+    /* min-width:80px; */
+    /* align-items:flex-start; */
+    /* align-content:flex-start; */
+    /* justify-content: flex-end; */
+    /* padding:0; */
 }
 
 .mobHeader .feedControls div {
@@ -215,15 +217,18 @@ li.feed {
     font-size: 1em !important;
 }
 
-.mobHeader .feedControls div i.ui-button {
-    padding: 0 !important;
+.mobHeader .ui-button {
+  padding: 0 !important;
+  margin: 0 0 0 .2em !important;
 }
 
+.mobHeader .feedControls div i.ui-button:first-child {
+  margin: 0 !important;
+}
 
 .selected {
     opacity: 0.5;
 }
-
 
 /* Item */
 
@@ -256,11 +261,11 @@ div.feedItem img.full {
 }
 
 .feedIcon {
-    width: 16px;
-    height: 16px;
-    background-image: url("/static/images/feed-generic-rss.png");
-    background-size: 16px;
-    background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+  background-image: url("/static/images/feed-generic-rss.png");
+  background-size: 18px;
+  background-repeat: no-repeat;
 }
 
 .tabSort .ui-sortable-placeholder {
