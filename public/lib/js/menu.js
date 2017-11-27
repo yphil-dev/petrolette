@@ -7,8 +7,9 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
       $saveButton = $('#saveTabs').button(),
       $langMenu = $('select#language'),
+      $help = $('button#help').button(),
       $donate = $('button#donate').button().tooltip(),
-      $profile = $('button#profile').button().tooltip(),
+      $profile = $('button#profile').button(),
       $slider = $('div#gallerySpeedSlider'),
       $spinner = $('#gallerySpeedSpinner');
 
@@ -16,6 +17,12 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   //   width: 80
   // }).selectmenu( "menuWidget" )
   //   .addClass( "overflow" );
+
+  $profile.tooltip({
+    classes: {
+      "ui-tooltip": "ui-corner-all ui-widget-shadow icon-heartbeat"
+    }
+  });
 
   MOB.utilities.translate();
 
@@ -46,6 +53,11 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     $handle.click();
 
     MOB.dialog.question(0);
+  });
+
+  $help.click(function (event) {
+    event.preventDefault();
+    location.href='https://bitbucket.org/yphil/mobylette/wiki/Home';
   });
 
   $donate.click(function (event) {

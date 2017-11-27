@@ -220,6 +220,7 @@ div.flexBox {
   width:-moz-available;
   display:flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 div.flexBox > label {

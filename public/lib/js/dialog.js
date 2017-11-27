@@ -1,8 +1,71 @@
 MOB.dialog = {
   kill:function($dialog) {
-    console.info('Kill!');
-    $dialog.dialog( 'destroy' );
+    $dialog.dialog('destroy');
     $('#mobDialogs').empty();
+  },
+  help:function($button) {
+
+    var $tabs = $('#tabs');
+    var $a = $button.prev('a.ui-tabs-anchor');
+    var tabId = $a.attr('href');
+
+    var $selectedTab = $a.parent();
+    var $selectedPanel = $tabs.find(tabId);
+
+    var selectedTabIndex = $tabs.tabs('option', 'active');
+    var previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
+
+    $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
+
+      var $dialog = $('#killDialog');
+
+      $dialog.dialog({
+        title: MOB.tr('Tab: Kill'),
+        autoOpen: false,
+        closeOnEscape: true,
+        resizable: false,
+        height: 'auto',
+        width: 400,
+        modal: true,
+        buttons: [
+          {
+            text: MOB.tr('Delete'),
+            title: MOB.tr('Delete'),
+            icon: "ui-icon-alert",
+            class: "dangerous translate",
+            click: function() {
+
+              $selectedTab.remove();
+              $selectedPanel.remove();
+
+              MOB.tab.saveTabs();
+              MOB.dialog.kill($dialog);
+              $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+
+            }
+          },
+          {
+            text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
+          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 feeds)', $a.text(), $selectedPanel.find('li.feed').length));
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
   },
   feedPrefs:function($feedPrefsButton, isNewFeed) {
 
@@ -431,8 +494,15 @@ MOB.dialog = {
             title: MOB.tr('What? No'),
             class: 'translate',
             click: function() {
-              MOB.dialog.kill($dialog);
-              MOB.dialog.question(qn++);
+
+              if (qn >= questions.length)
+                MOB.dialog.kill($dialog);
+              else {
+                MOB.dialog.question(qn++);
+                MOB.dialog.kill($dialog);
+              }
+
+              console.log('Question: (%s/%s)', qn, questions.length);
             }
           },
           {
