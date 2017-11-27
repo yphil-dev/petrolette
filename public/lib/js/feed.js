@@ -154,6 +154,8 @@ MOB.feed = {
     var feedType = $dataStore.data('type');
     var feedLimit = $dataStore.data('limit');
 
+    var $feedIcon = $feed.find('.feedToggle > i');
+
     if (!MOB.utilities.isUrl(feedUrl)) {
 
       // MOB.utilities.feedError($feed, 'dOh!');

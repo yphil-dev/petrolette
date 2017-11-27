@@ -138,6 +138,8 @@ MOB.i18n.translations = {
   "Location (URL)" : { fr: "Adresse (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },
   "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse dun", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del" },
 
+  "Enter a website address/URL and click search, then OK, or simply enter the URL of the feed" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse d'un flux", ja: "ウェブサイトのアドレス/ URLを入力して検索をクリックするか、フィードのアドレスを入力するだけです", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, o ingrese directamente la ubicación del feed" },
+
   // Titres
   "Add a new feed to [%1]" : { fr: "Ajouter un flux à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo feed a [%1]" },
 
