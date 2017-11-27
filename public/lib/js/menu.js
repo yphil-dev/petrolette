@@ -57,7 +57,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $help.click(function (event) {
     event.preventDefault();
-    location.href='https://bitbucket.org/yphil/mobylette/wiki/Home';
+    window.open('https://bitbucket.org/yphil/mobylette/wiki/Home', '_blank');
   });
 
   $donate.click(function (event) {

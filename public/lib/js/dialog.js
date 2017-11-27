@@ -131,6 +131,7 @@ MOB.dialog = {
         ],
         open: function() {
 
+
           $('.ui-widget-overlay').on('click', function() {
             MOB.dialog.kill($dialog);
           });
@@ -141,7 +142,15 @@ MOB.dialog = {
               $guessButton = $dialog.find('button#feedGuess').button(),
               $guessSpinner = $dialog.find('button#feedGuess > i'),
               $guessField = $dialog.find('input#feedGuess'),
-              $okButton = $('.ui-dialog-buttonpane');
+              $okButton = $('.ui-dialog-buttonpane'),
+              $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-info"></span><span class="ui-button-icon-space"> </span>Help</button>');
+
+          $dialog.parent().find('.ui-dialog-titlebar').append($helpButton);
+
+          $helpButton.on('click', function() {
+            console.log('plop!');
+            introJs().start();
+          });
 
           $okButton
             .find('button:contains("OK")')
