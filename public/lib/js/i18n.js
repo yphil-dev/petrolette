@@ -90,7 +90,7 @@ MOB.i18n.translations = {
 
   "Profile" : { fr: "Profil" , ja: "プロフィール", es: "Perfil" },
   "Donate" : { fr: "Donation" , ja: "寄付する", es: "Donar" },
-  "Load" : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
+  "Open" : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
   "Save" : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
   "Rename tab" : { fr: "Onglet: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la pestaña" },
   "Tab name" : { fr: "Nom onglet" , ja: "タブ名", es: "Nombre de la pestaña" },
@@ -110,16 +110,22 @@ MOB.i18n.translations = {
   "Hell, Yeah" : { fr: "Peste, Ouais" , ja: "地獄、うん。", es: "Diablos, Sí" },
   "Huh, Next question" : { fr: "Euh, Question suivante" , ja: "あ、次の質問", es: "Eh, Siguiente pregunta" },
 
-  "Open feeds and tabs file" : { fr: "Importer" , ja: "タブとRSSフィードを保存する", es: "Guardar tabs y feeds" },
-  "Save feeds and tabs file" : { fr: "Enregistrer les onglets et les flux" , ja: "すべてを保存", es: "Guardar archivo de tabs y feeds" },
-  "Open tab on feed drop" : { fr: "Ouvrir nouveau tab" , ja: "ドロップ時にタブを開く", es: "Abrir pestaña en drop" },
+  "Open / import tabs and feeds." : { fr: "Ouvrir / importer les onglets et les flux." , ja: "タブを開く/インポートする", es: "Abrir / importar pestañas y canales RSS." },
+  "Save / Export tabs and feeds." : { fr: "Enregistrer / exporter les onglets et les flux." , ja: "タブとフィードの保存/エクスポート", es: "Guardar archivo de tabs y feeds." },
+  "Open tab on feed drop." : { fr: "Ouvrir nouveau tab." , ja: "ドロップ時にタブを開く", es: "Abrir pestaña en drop." },
 
-  "Open tab on witch a feed is dropped" : { fr: "Ouvrir l'onglet où un flux est déposé" , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir pestaña en donde se pone un feed" },
+  "If this is set, when you drag & drop one or more feed(s) in a tab, said tab opens." : { fr: "Ouvrir l'onglet où un flux est déposé." , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir pestaña en donde se pone un canal." },
 
   // Messages d'erreurs
-  "Mobylette (really) needs your help" : { fr: "Aider (en vrai) Mobylette" , ja: "Mobylette（本当に）あなたの助けが必要です", es: "Mobylette (realmente) necesita tu ayuda" },
+  "View Mobylette according to the time of day." : { fr: "Voir Mobylette selon l'heure de la journée." , ja: "時刻に応じてMobyletteを表示する", es: "Ver Mobylette según la hora del día." },
+
+  "Reset Mobylette according to your political mood of the week." : { fr: "Réinitialiser Mobylette selon votre humeur politique de la semaine." , ja: "今週のあなたの政治的な気分に合わせてMobyletteをリセットする", es: "Restablece Mobylette según tu estado de ánimo político de la semana." },
+
+  "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Lorsque vous cliquez sur une image, vous pouvez l'afficher dans une galerie et lancer un diaporama." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería e iniciar una presentación de diapositivas." },
+
+  "Help Mobylette according to your spiritual mood of the day" : { fr: "Aider (en vrai) Mobylette" , ja: "あなたの精神的な日の気分に応じてMobyletteを助けてください", es: "Ayuda a Mobylette de acuerdo con tu estado de ánimo espiritual del día" },
   "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
-  "This file is fine" : { fr: "Ce fichier est parfait" , ja: "このファイルは問題ありません", es: "Este archivo está bien" },
+  "This file is fine" : { fr: "Ce fichier est nickel-chrome" , ja: "このファイルは問題ありません", es: "Este archivo está bien" },
   "Forgot what you are? Reset Mobylette tabs & feeds" : { fr: "Oublié ce que vous êtes? Re-initialiser Mobylette" , ja: "あなたは何かを忘れましたか？ リセットMobylette", es: "Olvidó lo que eres? Restablecer Mobylette" },
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
