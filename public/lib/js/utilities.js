@@ -1,37 +1,81 @@
 MOB.utilities = {
 
-  helpMenu:function() {
-    var intro = introJs();
+  help:function(type) {
+    var dialog = introJs();
+    var menu = introJs();
 
-    intro.setOptions({
+    dialog.setOptions({
       steps: [
         {
           element: 'input#feedGuess',
-          intro: 'Enter the address of the feed'
+          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('feed') + '</a>.'
         },
         {
           element: 'button#feedGuess',
-          intro: 'Search for a feed',
-          position: 'right'
+          intro: MOB.tr('Find the website\'s RSS feed')
         },
         {
           element: 'div#feedTitle',
-          intro: 'plop',
+          intro: MOB.tr('What type of feed? All text, all image, or mixed'),
           position: 'left'
         },
         {
           element: 'fieldset#feedLimit',
-          intro: 'plip',
+          intro: MOB.tr('How many new items should the feed display at a time?'),
           position: 'bottom'
         },
         {
           element: '.button-ok',
-          intro: '<strong>Get</strong> it, <strong>use</strong> it.'
+          intro: MOB.tr('Ok')
         }
       ]
     });
 
-    intro.start();
+    menu.setOptions({
+      steps: [
+        {
+          element: 'select#language',
+          intro: MOB.tr('Select your lang'),
+          position: 'right'
+        },
+        {
+          element: 'button#fileImport',
+          intro: MOB.tr('Import the shit')
+        },
+        {
+          element: 'button#saveTabs',
+          intro: MOB.tr('Save the shit')
+        },
+        {
+          element: 'label#dropTabLabel',
+          intro: MOB.tr('Open tab on witch a feed is dropped')
+        },
+        {
+          element: 'div#themeBox',
+          intro: MOB.tr('Select your visual mood')
+        },
+        {
+          element: 'fieldset#galleryBox',
+          intro: MOB.tr('When you click an image, you can view it in a gallery, and start a slideshow')
+        },
+        {
+          element: 'button#profile',
+          intro: MOB.tr('Reset Mobylette according to your political mood of the day')
+        },
+        {
+          element: 'button#donate',
+          intro: MOB.tr('Help Mobylette according to your spiritual mood of the day')
+        }
+      ]
+    });
+
+    if (type === 'menu') {
+      menu.start();
+      $('.introjs-fixParent').css('position', 'absolute');
+    } else {
+      dialog.start();
+    }
+
   },
   translate:function() {
 
