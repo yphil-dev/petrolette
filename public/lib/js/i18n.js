@@ -16,6 +16,8 @@ MOB.i18n = {
 };
 
 MOB.i18n.translations = {
+  "test" : { fr: "samarche", ja: "追加", es: "Esta Muy bien" },
+
   "Add" : { fr: "Ajouter", ja: "追加" },
   "All" : { fr: "Tous", ja: "全て" },
   "From": { fr: "Du", ja: "から" },
@@ -60,7 +62,10 @@ MOB.i18n.translations = {
   "Message" : { fr: "Message", ja: "メッセージ" },
 
   // Mobylette
-  "Feed" : { fr: "flux" , ja: "RSSフィード" },
+  "Find the website\'s RSS feed" : { fr: "Trouver le feed du site web" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
+  "feed" : { fr: "flux" , ja: "RSSフィード", es: "feed" },
+
+  "Feed" : { fr: "Flux" , ja: "RSSフィード", es: "Feed" },
   "Feeds" : { fr: "flux" , ja: "RSSフィード" },
   "Tab" : { fr: "onglet" , ja: "タブ", es: "Pestaña" },
   "Tabs" : { fr: "Onglets" , ja: "タブ", es: "Pestañas" },

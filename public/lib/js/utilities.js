@@ -7,12 +7,11 @@ MOB.utilities = {
       steps: [
         {
           element: 'input#feedGuess',
-          intro: 'Enter the address of the feed'
+          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('feed') + '</a>.'
         },
         {
           element: 'button#feedGuess',
-          intro: 'Search for a feed',
-          position: 'right'
+          intro: MOB.tr('Find the website\'s RSS feed')
         },
         {
           element: 'div#feedTitle',
