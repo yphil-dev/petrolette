@@ -98,7 +98,7 @@ MOB.dialog = {
           {
             text: MOB.tr('Ok'),
             title: MOB.tr('Ok'),
-            class: 'translate',
+            class: 'translate button-ok',
             click: function() {
 
               var newUrl = $(this).find('input#feedGuess').val();
@@ -149,7 +149,8 @@ MOB.dialog = {
 
           $helpButton.on('click', function() {
             console.log('plop!');
-            introJs().start();
+            // introJs().start();
+            MOB.utilities.helpMenu();
           });
 
           $okButton

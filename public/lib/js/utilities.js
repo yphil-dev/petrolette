@@ -1,5 +1,38 @@
 MOB.utilities = {
 
+  helpMenu:function() {
+    var intro = introJs();
+
+    intro.setOptions({
+      steps: [
+        {
+          element: 'input#feedGuess',
+          intro: 'Enter the address of the feed'
+        },
+        {
+          element: 'button#feedGuess',
+          intro: 'Search for a feed',
+          position: 'right'
+        },
+        {
+          element: 'div#feedTitle',
+          intro: 'plop',
+          position: 'left'
+        },
+        {
+          element: 'fieldset#feedLimit',
+          intro: 'plip',
+          position: 'bottom'
+        },
+        {
+          element: '.button-ok',
+          intro: '<strong>Get</strong> it, <strong>use</strong> it.'
+        }
+      ]
+    });
+
+    intro.start();
+  },
   translate:function() {
 
     $('.translate').each(function() {
