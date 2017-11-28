@@ -41,6 +41,7 @@
     <script>
 
      document.fonts.ready.then((fontFaceSet) => {
+       console.log(fontFaceSet.name, 'FontFace loaded.');
        console.log(fontFaceSet.size, 'FontFaces loaded.');
        document.getElementById('waitScreen').style.display = 'none';
      });

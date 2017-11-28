@@ -242,6 +242,7 @@ div.flexBox > label {
 
 .unique {
   flex: 1 100%;
+  margin-right: 0 !important;
 }
 
 .twin {

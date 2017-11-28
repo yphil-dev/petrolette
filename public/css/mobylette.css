@@ -293,14 +293,7 @@ li.feedItem {
 }
 
 .introjs-helperLayer {
-  position: absolute;
-  z-index: 9999998;
   background-color: rgba(255,255,255,.1) !important;
-  border: 1px solid #777;
-}
-
-.introjs-overlay {
-  opacity: 0 !important;
 }
 
 .introjs-helperNumberLayer {
@@ -334,4 +327,12 @@ li.feedItem {
   border: 4px solid transparent !important;
   border-right-color: #900 !important;
   border-top-color: #900 !important;
+}
+
+div.wiki {
+  float:right;
+}
+
+div.wiki i:hover {
+  color: green;
 }
