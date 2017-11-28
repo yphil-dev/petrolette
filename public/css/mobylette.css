@@ -288,6 +288,50 @@ li.feedItem {
 }
 
 .feed {
-    border: #AAAAAA 1px solid !important;
-    padding: 0;
+  border: #AAAAAA 1px solid !important;
+  padding: 0;
+}
+
+.introjs-helperLayer {
+  position: absolute;
+  z-index: 9999998;
+  background-color: rgba(255,255,255,.1) !important;
+  border: 1px solid #777;
+}
+
+.introjs-overlay {
+  opacity: 0 !important;
+}
+
+.introjs-helperNumberLayer {
+  position: absolute !important;
+  top: -16px !important;
+  left: -9px !important;
+  z-index: 9999999999 !important;
+  padding: 2px !important;
+  font-family: Arial, verdana, tahoma !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  color: #fff !important;
+  background: #DA4433 !important;
+  width: 20px !important;
+  box-shadow: 0 1px 1px rgba(0,0,0,.35) !important;
+  height: 20px !important;
+  text-align: center !important;
+  line-height: 20px !important;
+  border: 2px solid #DA4433 !important;
+  border-radius: 0 !important;
+}
+
+.introjs-helperNumberLayer::after {
+  content: "" !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  content: 0 !important;
+  left: -3px !important;
+  bottom: -10px !important;
+  border: 4px solid transparent !important;
+  border-right-color: #900 !important;
+  border-top-color: #900 !important;
 }

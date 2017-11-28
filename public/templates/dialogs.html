@@ -37,21 +37,11 @@
               data-content="Location (URL)"
               class="ui-corner-top translate">Location (URL)</legend>
 
-      <p>
-        <span class="translate"
-              data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">Enter a website address/URL and click search, then OK, or simply enter the URL of the</span>
-        <a
-          class="translate rssDocLink"
-          data-content="Feed"
-          href="#">Feed</a>.
-      </p>
-
       <div id="feedGuess" class="flexBox">
         <input name="guess"
                id="feedGuess"
                placeholder="URL (https://reddit.com)"
                data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed"
-               data-intro="Enter the address of the feed"
                value=""
                class="ui-widget-content grow ui-corner-all translate"
                onclick="select()"
@@ -59,8 +49,7 @@
         />
         <button id="feedGuess"
                 class="shrink"
-                type="button"
-                data-intro="Search for a feed">
+                type="button">
           <i class="icon-flashlight"></i>
         </button>
       </div>
@@ -74,8 +63,8 @@
               class="ui-corner-top translate">Feed Type
       </legend>
 
-      <div class="flexBox"
-           data-intro="What type of feed?">
+      <div id="feedTitle"
+           class="flexBox">
         <label data-title="Mixed"
                data-content="Mixed"
                for="mixed"
@@ -96,8 +85,7 @@
       </div>
     </fieldset>
 
-    <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all"
-              data-intro="How many items?">
+    <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
       <legend data-content="Number of items"
               class="ui-corner-top translate">Number of items</legend>
       <div class="flexBox">

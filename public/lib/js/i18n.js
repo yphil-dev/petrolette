@@ -16,6 +16,8 @@ MOB.i18n = {
 };
 
 MOB.i18n.translations = {
+  "test" : { fr: "samarche", ja: "追加", es: "Esta Muy bien" },
+
   "Add" : { fr: "Ajouter", ja: "追加" },
   "All" : { fr: "Tous", ja: "全て" },
   "From": { fr: "Du", ja: "から" },
@@ -60,7 +62,10 @@ MOB.i18n.translations = {
   "Message" : { fr: "Message", ja: "メッセージ" },
 
   // Mobylette
-  "Feed" : { fr: "flux" , ja: "RSSフィード" },
+  "Find the website\'s RSS feed" : { fr: "Trouver le feed du site web" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
+  "feed" : { fr: "flux" , ja: "RSSフィード", es: "feed" },
+
+  "Feed" : { fr: "Flux" , ja: "RSSフィード", es: "Feed" },
   "Feeds" : { fr: "flux" , ja: "RSSフィード" },
   "Tab" : { fr: "onglet" , ja: "タブ", es: "Pestaña" },
   "Tabs" : { fr: "Onglets" , ja: "タブ", es: "Pestañas" },
@@ -125,13 +130,13 @@ MOB.i18n.translations = {
   "Feed: Kill" : { fr: "Flux: Supprimer", ja: "フィード：削除", es: "Feed: Eliminar" },
   "Feed: Parameters" : { fr: "Flux: Paramètres", ja: "フィード：パラメータ", es: "Feed: Parámetros" },
   "Feed Type" : { fr: "Type de Flux", ja: "フィードの種類", es: "Tipo de Feed" },
-  "What type of feed? All text, all image, or mixed." : { fr: "Quel type de flux? Tout le texte, toute l'image, ou les deux.", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de feed? Todo el texto, toda la imagen o mixto." },
+  "What type of feed? All text, all image, or mixed" : { fr: "Quel type de flux? Tout le texte, toute l'image, ou les deux", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de feed? Todo el texto, toda la imagen o mixto" },
 
   "Mixed" : { fr: "Mixte", ja: "混合", es: "Mezclado" },
   "Image" : { fr: "Image", ja: "画像", es: "Imagen" },
   "Text" : { fr: "Texte", ja: "テキスト", es: "Texto" },
   "Number of items" : { fr: "Nombre de titres", ja: "タイトル数", es: "Cantidad de títulos" },
-  "How many items?" : { fr: "Combien d'articles?", ja: "いくつのアイテムがありますか？", es: "Cuantos articulos?" },
+  "How many new items should the feed display at a time?" : { fr: "Combien de nouveaux articles le flux peut-il contenir?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el feed a la vez?" },
   "Just answer the question" : { fr: "Répond juste à la question", ja: "ちょうど質問に答える", es: "Solo responde la pregunta" },
 
   "Tab: Kill" : { fr: "Tab: Supprimer", ja: "タブ：削除", es: "Pestaña: Eliminar" },
