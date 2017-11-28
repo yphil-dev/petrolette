@@ -122,7 +122,6 @@ MOB.i18n.translations = {
   "Reset Mobylette according to your political mood of the week." : { fr: "Réinitialiser Mobylette selon votre humeur politique de la semaine." , ja: "今週のあなたの政治的な気分に合わせてMobyletteをリセットする", es: "Restablece Mobylette según tu estado de ánimo político de la semana." },
 
   "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
-
   "Help Mobylette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Mobylette." , ja: "あなたの精神的な日の気分に応じてMobyletteを助けてください", es: "Ayuda a Mobylette de acuerdo con tu estado de ánimo espiritual del día." },
   "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
   "This file is fine" : { fr: "Ce fichier est nickel-chrome" , ja: "このファイルは問題ありません", es: "Este archivo está bien" },
