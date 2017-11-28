@@ -25,7 +25,8 @@
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/>
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/minified/introjs.min.css" />
-
+    <!-- <link href="/bower/intro.js/themes/introjs-nassim.css" rel="stylesheet">
+    -->
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
 
@@ -38,6 +39,11 @@
     <script src="/static/lib/js/i18n.js"></script>
 
     <script>
+
+     document.fonts.ready.then((fontFaceSet) => {
+       console.log(fontFaceSet.size, 'FontFaces loaded.');
+       document.getElementById('waitScreen').style.display = 'none';
+     });
 
      console.log('Lang: %s (prefs: %s)', navigator.language, MOB.prefs.readConfig('lang'))
 
@@ -119,15 +125,6 @@
     </div>
 
     <div id="mobDialogs"></div>
-
-    <script>
-
-     document.fonts.ready.then((fontFaceSet) => {
-       console.log(fontFaceSet.size, 'FontFaces loaded.');
-       document.getElementById('waitScreen').style.display = 'none';
-     });
-
-    </script>
 
     <script src="/static/lib/js/menu.js"></script>
     <script src="/static/lib/js/tab.js"></script>

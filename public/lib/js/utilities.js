@@ -1,9 +1,10 @@
 MOB.utilities = {
 
-  helpMenu:function() {
-    var intro = introJs();
+  help:function(type) {
+    var dialog = introJs();
+    var menu = introJs();
 
-    intro.setOptions({
+    dialog.setOptions({
       steps: [
         {
           element: 'input#feedGuess',
@@ -15,22 +16,66 @@ MOB.utilities = {
         },
         {
           element: 'div#feedTitle',
-          intro: 'plop',
+          intro: MOB.tr('What type of feed? All text, all image, or mixed'),
           position: 'left'
         },
         {
           element: 'fieldset#feedLimit',
-          intro: 'plip',
+          intro: MOB.tr('How many new items should the feed display at a time?'),
           position: 'bottom'
         },
         {
           element: '.button-ok',
-          intro: '<strong>Get</strong> it, <strong>use</strong> it.'
+          intro: MOB.tr('Ok')
         }
       ]
     });
 
-    intro.start();
+    menu.setOptions({
+      steps: [
+        {
+          element: 'select#language',
+          intro: MOB.tr('Select your lang'),
+          position: 'right'
+        },
+        {
+          element: 'button#fileImport',
+          intro: MOB.tr('Import the shit')
+        },
+        {
+          element: 'button#saveTabs',
+          intro: MOB.tr('Save the shit')
+        },
+        {
+          element: 'label#dropTabLabel',
+          intro: MOB.tr('Open tab on witch a feed is dropped')
+        },
+        {
+          element: 'div#themeBox',
+          intro: MOB.tr('Select your visual mood')
+        },
+        {
+          element: 'fieldset#galleryBox',
+          intro: MOB.tr('When you click an image, you can view it in a gallery, and start a slideshow')
+        },
+        {
+          element: 'button#profile',
+          intro: MOB.tr('Reset Mobylette according to your political mood of the day')
+        },
+        {
+          element: 'button#donate',
+          intro: MOB.tr('Help Mobylette according to your spiritual mood of the day')
+        }
+      ]
+    });
+
+    if (type === 'menu') {
+      menu.start();
+      $('.introjs-fixParent').css('position', 'absolute');
+    } else {
+      dialog.start();
+    }
+
   },
   translate:function() {
 

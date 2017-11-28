@@ -150,7 +150,7 @@ MOB.dialog = {
           $helpButton.on('click', function() {
             console.log('plop!');
             // introJs().start();
-            MOB.utilities.helpMenu();
+            MOB.utilities.help('dialog');
           });
 
           $okButton
