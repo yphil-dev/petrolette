@@ -1,6 +1,7 @@
 MOB.utilities = {
 
   help:function(type) {
+
     var dialog = introJs();
     var menu = introJs();
 
@@ -34,45 +35,45 @@ MOB.utilities = {
     menu.setOptions({
       steps: [
         {
-          element: 'select#language',
-          intro: MOB.tr('Select your lang'),
-          position: 'right'
-        },
-        {
           element: 'button#fileImport',
-          intro: MOB.tr('Import the shit')
+          intro: MOB.tr('Open / import tabs and feeds.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/mobylette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
         },
         {
           element: 'button#saveTabs',
-          intro: MOB.tr('Save the shit')
+          intro: MOB.tr('Save / Export tabs and feeds.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/mobylette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
         },
         {
           element: 'label#dropTabLabel',
-          intro: MOB.tr('Open tab on witch a feed is dropped')
+          intro: MOB.tr('If this is set, when you drag & drop one or more feed(s) in a tab, said tab opens.')
         },
         {
           element: 'div#themeBox',
-          intro: MOB.tr('Select your visual mood')
+          intro: MOB.tr('View Mobylette according to the time of day.')
         },
         {
           element: 'fieldset#galleryBox',
-          intro: MOB.tr('When you click an image, you can view it in a gallery, and start a slideshow')
+          intro: MOB.tr('When you click an image, you can view it in a gallery, and start a slideshow.')
         },
         {
           element: 'button#profile',
-          intro: MOB.tr('Reset Mobylette according to your political mood of the day')
+          intro: MOB.tr('Reset Mobylette according to your political mood of the week.')
         },
         {
           element: 'button#donate',
-          intro: MOB.tr('Help Mobylette according to your spiritual mood of the day')
+          intro: MOB.tr('Help Mobylette according to your spiritual mood of the day.')
         }
       ]
     });
 
+    dialog.setOption("overlayOpacity", 0);
+    menu.setOption("overlayOpacity", 0.2);
+
     if (type === 'menu') {
+      dialog.exit();
       menu.start();
       $('.introjs-fixParent').css('position', 'absolute');
     } else {
+      menu.exit();
       dialog.start();
     }
 
