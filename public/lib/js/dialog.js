@@ -131,6 +131,12 @@ MOB.dialog = {
         ],
         open: function() {
 
+          function guessError () {
+            $guessSpinner.removeClass('icon-cog spinner')
+              .addClass('icon-cancel-circled');
+            $guessButton.addClass('ui-state-error');
+            $okButton.addClass('ui-state-error');
+          }
 
           $('.ui-widget-overlay').on('click', function() {
             MOB.dialog.kill($dialog);
@@ -148,9 +154,9 @@ MOB.dialog = {
           $dialog.parent().find('.ui-dialog-titlebar').append($helpButton);
 
           $helpButton.on('click', function() {
-            console.log('plop!');
-            // introJs().start();
+
             MOB.utilities.help('dialog');
+
           });
 
           $okButton
@@ -169,6 +175,11 @@ MOB.dialog = {
               .addClass('spinner icon-cog');
             $guessButton.removeClass('ui-state-success ui-state-error');
 
+            if (!$guessField.val().startsWith('http')) {
+              guessError();
+              return;
+            }
+
             $.get('/discover', {
               url: $guessField.val(),
               dataType: 'json',
@@ -186,10 +197,7 @@ MOB.dialog = {
 
             }).fail(function(feed, status) {
               console.log( 'ERROR %s (status: %s)', $guessField.val(), status);
-              $guessSpinner.removeClass('icon-cog spinner')
-                .addClass('icon-cancel-circled');
-              $guessButton.addClass('ui-state-error');
-              $okButton.addClass('ui-state-error');
+              guessError();
 
             }).always(function(feed, status) {
               console.log( 'Always %s (status: %s)', $guessField.val(), status);
@@ -207,17 +215,6 @@ MOB.dialog = {
 
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
             .checkboxradio('refresh');
-
-          // $dialog.find('.feedType').on("change", function(event){
-          //     console.log("CHANGE EVENT!", $(this).attr('id'));
-          //     $(this).attr("checked","checked").change();
-          // });
-
-          // $dialog.find('.feedType').click(function(event){
-          //     console.log("CHANGE EVENT!", $(this).attr('id'));
-          //     $dialog.find('#feedType').controlgroup('refresh');
-          // });
-
 
           $spinner.on( 'spinstop', function() {
             $dialog.find('div#feedLimit').slider( 'option', 'value', $(this).val());
