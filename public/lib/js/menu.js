@@ -63,7 +63,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $donate.click(function (event) {
     event.preventDefault();
-    location.href='https://liberapay.com/yPhil/donate';
+    window.open('https://liberapay.com/yPhil/donate', '_blank');
   });
 
   $loadButton.click(function () {
