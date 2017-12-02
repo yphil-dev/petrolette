@@ -403,8 +403,9 @@ i.dangerous:hover {
   /* right: .3em; */
   /* top: 50%; */
   float:right;
-  width: 20px;
-  height: 20px;
-  margin: 0 .8em 0 0;
   padding: 1px;
+}
+
+.arrow {
+  background-image: url("/static/images/feed-toggle-triangle-000.png");
 }

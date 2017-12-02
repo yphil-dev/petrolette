@@ -90,7 +90,6 @@ MOB.feed = {
         $(this).data('img',iconImg);
 
         $(this).find('.feedControls').slideDown('fast');
-        $feedToggle.css('background-image', 'url("/static/images/feed-toggle-triangle.png")');
       },
       function() {
         $(this).find('.feedControls').slideUp('slow');
@@ -100,7 +99,7 @@ MOB.feed = {
         if (typeof $(this).data('img') !== 'undefined') {
           $feedToggle.css('background-image', $(this).data('img'));
         } else {
-          $feedToggle.css('background-image', 'url("/static/images/feed-generic-rss.png")');
+          $feedToggle.addClass('generic');
         }
 
       }
