@@ -416,7 +416,7 @@ i.dangerous:hover {
   overflow: hidden;
 }
 
-#tabs ul li {
+#tabs > ul > li {
   display: inline-block;
   float: none;
   vertical-align: bottom;
