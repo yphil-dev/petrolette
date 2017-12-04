@@ -416,6 +416,11 @@ i.dangerous:hover {
   overflow: hidden;
 }
 
+#tabs > ul {
+  overflow: auto;
+  overflow-y: hidden;
+}
+
 #tabs > ul > li {
   display: inline-block;
   float: none;
