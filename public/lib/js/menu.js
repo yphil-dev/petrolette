@@ -169,16 +169,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     var f = files[0];
     var reader = new FileReader();
 
-
-    if (f.type.match(/application\/json/)) {
-      console.log('JSON!');
-    } else {
-      console.log('NOT JSON!');
-      $.notify('This file is bad: not JSON:' + f.type);
-
-      return;
-    }
-
     reader.onload = (function() {
       return function(e) {
 
