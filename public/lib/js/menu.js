@@ -169,11 +169,13 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     var f = files[0];
     var reader = new FileReader();
 
+
     if (f.type.match(/application\/json/)) {
       console.log('JSON!');
     } else {
       console.log('NOT JSON!');
-      MOB.utilities.notify('error', MOB.tr('This file is bad: Not JSON'));
+      $.notify(MOB.tr('This file is bad: not JSON'));
+
       return;
     }
 
@@ -206,16 +208,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         if (IsJsonString(y)) {
           p = JSON.parse(y);
         } else {
-          MOB.utilities.notify('error', MOB.tr('This file is bad: parsing'));
+          $.notify(MOB.tr('This file is bad: parsing'));
         }
 
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          MOB.utilities.notify('success', MOB.tr('This file is fine'));
+          $.notify(MOB.tr('This file is fine'));
           MOB.tab.populate(p, true);
         } else {
-          MOB.utilities.notify('error', MOB.tr('This file is bad: Not OK'));
+          $.notify(MOB.tr('This file is bad: Not OK'));
         }
 
         // console.log('Is Valid: %s', isValid)

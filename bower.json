@@ -21,6 +21,7 @@
   "dependencies": {
     "jquery-ui": "^1.12.1",
     "fancybox": "^3.1.25",
+    "notifyjs": "latest",
     "intro.js": "latest"
   }
 }

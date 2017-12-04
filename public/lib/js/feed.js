@@ -203,7 +203,7 @@ MOB.feed = {
       feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '')
     }
 
-    console.log('HOST: (%s)', feedHost);
+    // console.log('HOST: (%s)', feedHost);
 
     $refreshButton.addClass('spinner');
     $feed.children('.mobHeader').removeClass('ui-state-error');
@@ -214,13 +214,13 @@ MOB.feed = {
       timeout: 2000
     }, function(icon) {
 
-      if (icon) console.log('I: (%s)', icon);
+      // if (icon) console.log('I: (%s)', icon);
 
-      if (imageIsOk(icon)) {
-        console.log('OK: (%s)', icon);
-      } else {
-        console.log('KO: (%s)', icon);
-      }
+      // if (imageIsOk(icon)) {
+      //   console.log('OK: (%s)', icon);
+      // } else {
+      //   console.log('KO: (%s)', icon);
+      // }
 
 
       if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
