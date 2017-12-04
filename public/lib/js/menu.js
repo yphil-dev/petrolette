@@ -174,7 +174,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       console.log('JSON!');
     } else {
       console.log('NOT JSON!');
-      $.notify(MOB.tr('This file is bad: not JSON'));
+      $.notify(MOB.tr('This file is bad: not JSON (${f.type})'));
 
       return;
     }
