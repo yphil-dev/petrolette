@@ -78,10 +78,6 @@ li.feed a {
     color: #eeeeee;
 }
 
-.mobHeader i.arrow {
-    filter: invert(100%);
-}
-
 li.feedItem {
     background-color: #4B5162 !important;
 }
@@ -116,4 +112,8 @@ li.ui-droppable-hover a:link {
 
 .fancybox-thumbs {
     background-color: #404552 !important;
+}
+
+.arrow {
+  background-image: url("/static/images/feed-toggle-triangle-fff.png") !important;
 }
