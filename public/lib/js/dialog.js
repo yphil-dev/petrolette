@@ -87,7 +87,7 @@ MOB.dialog = {
       var $feed = $dataStore.parent().parent();
 
       $dialog.dialog({
-        title: MOB.tr('Feed: Parameters'),
+        title: MOB.tr('Source'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: true,

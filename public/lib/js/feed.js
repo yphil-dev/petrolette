@@ -83,14 +83,13 @@ MOB.feed = {
 
     $header.hover (
       function() {
+        $(this).find('.feedControls').slideDown('fast');
+
         var iconImg = $feedToggle.css('background-image');
 
         $feedToggle.addClass('arrow');
 
         $(this).data('img',iconImg);
-
-        $(this).find('.feedControls').slideDown('fast');
-        $feedToggle.css('background-image', 'url("/static/images/feed-toggle-triangle.png")');
       },
       function() {
         $(this).find('.feedControls').slideUp('slow');
@@ -100,9 +99,8 @@ MOB.feed = {
         if (typeof $(this).data('img') !== 'undefined') {
           $feedToggle.css('background-image', $(this).data('img'));
         } else {
-          $feedToggle.css('background-image', 'url("/static/images/feed-generic-rss.png")');
+          $feedToggle.addClass('generic');
         }
-
       }
     );
 
@@ -137,6 +135,25 @@ MOB.feed = {
 
   },
   populate:function($button, progress) {
+
+    function imageIsOk(img) {
+      // During the onload event, IE correctly identifies any images that
+      // weren’t downloaded as not complete. Others should too. Gecko-based
+      // browsers act like NS4 in that they report this incorrectly.
+      if (!img.complete) {
+        return false;
+      }
+
+      // However, they do have two very useful properties: naturalWidth and
+      // naturalHeight. These give the true size of the image. If it failed
+      // to load, either of these should be zero.
+      if (img.naturalWidth === 0) {
+        return false;
+      }
+
+      // No other way of checking: assume it’s ok.
+      return true;
+    }
 
     var $dataStore = $button.parent().parent();
     var $refreshButton = $dataStore.find('i.mobFeedRefresh');
@@ -179,6 +196,15 @@ MOB.feed = {
 
     var feedHost = l.protocol + '//' + l.hostname;
 
+    // const myurl = new URL(feedUrl);
+    const subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
+
+    if (subdomain === 'rss' || subdomain === 'feeds') {
+      feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '')
+    }
+
+    // console.log('HOST: (%s)', feedHost);
+
     $refreshButton.addClass('spinner');
     $feed.children('.mobHeader').removeClass('ui-state-error');
 
@@ -187,6 +213,16 @@ MOB.feed = {
       dataType: "json",
       timeout: 2000
     }, function(icon) {
+
+      // if (icon) console.log('I: (%s)', icon);
+
+      // if (imageIsOk(icon)) {
+      //   console.log('OK: (%s)', icon);
+      // } else {
+      //   console.log('KO: (%s)', icon);
+      // }
+
+
       if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
     }).done(function(icon) {
       // console.log( 'DONE %s OK (status %s)',  icon, status);
@@ -194,7 +230,7 @@ MOB.feed = {
       $header.data('img',icon);
 
     }).fail(function(icon, status) {
-      // console.info('Bad favicon: %s (status: %s)', feedHost, status);
+      console.info('Bad favicon: %s (status: %s)', feedHost, status);
       $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
     }).always(function() {
 
@@ -214,7 +250,7 @@ MOB.feed = {
       // console.log( "\nDATA: (%s)", JSON.stringify(data.error));
 
       if (data.error) {
-        console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
+        // console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
         $header.addClass('ui-state-error');
 
         $feedTitle
