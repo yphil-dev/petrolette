@@ -83,13 +83,13 @@ MOB.feed = {
 
     $header.hover (
       function() {
+        $(this).find('.feedControls').slideDown('fast');
+
         var iconImg = $feedToggle.css('background-image');
 
         $feedToggle.addClass('arrow');
 
         $(this).data('img',iconImg);
-
-        $(this).find('.feedControls').slideDown('fast');
       },
       function() {
         $(this).find('.feedControls').slideUp('slow');
@@ -101,7 +101,6 @@ MOB.feed = {
         } else {
           $feedToggle.addClass('generic');
         }
-
       }
     );
 
@@ -178,6 +177,15 @@ MOB.feed = {
 
     var feedHost = l.protocol + '//' + l.hostname;
 
+    // const myurl = new URL(feedUrl);
+    const subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
+
+    if (subdomain === 'rss' || subdomain === 'feeds') {
+      feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '')
+    }
+
+    console.log('HOST: (%s)', feedHost);
+
     $refreshButton.addClass('spinner');
     $feed.children('.mobHeader').removeClass('ui-state-error');
 
@@ -186,6 +194,9 @@ MOB.feed = {
       dataType: "json",
       timeout: 2000
     }, function(icon) {
+
+      if (icon) console.log('I: (%s)', icon);
+
       if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
     }).done(function(icon) {
       // console.log( 'DONE %s OK (status %s)',  icon, status);
@@ -193,7 +204,7 @@ MOB.feed = {
       $header.data('img',icon);
 
     }).fail(function(icon, status) {
-      // console.info('Bad favicon: %s (status: %s)', feedHost, status);
+      console.info('Bad favicon: %s (status: %s)', feedHost, status);
       $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
     }).always(function() {
 
@@ -213,7 +224,7 @@ MOB.feed = {
       // console.log( "\nDATA: (%s)", JSON.stringify(data.error));
 
       if (data.error) {
-        console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
+        // console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
         $header.addClass('ui-state-error');
 
         $feedTitle

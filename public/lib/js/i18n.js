@@ -62,11 +62,11 @@ MOB.i18n.translations = {
   "Message" : { fr: "Message", ja: "メッセージ" },
 
   // Mobylette
-  "Find the website\'s RSS feed" : { fr: "Trouver le feed du site web" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
-  "feed" : { fr: "flux" , ja: "RSSフィード", es: "feed" },
+  "Find the website\'s RSS source" : { fr: "Trouver la source du site web" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
+  "source" : { fr: "source" , ja: "ソース", es: "source" },
 
-  "Feed" : { fr: "Flux" , ja: "RSSフィード", es: "Feed" },
-  "Feeds" : { fr: "flux" , ja: "RSSフィード" },
+  "Source" : { fr: "Source" , ja: "RSSフィード", es: "Source" },
+  "Sources" : { fr: "source" , ja: "RSSフィード" },
   "Tab" : { fr: "onglet" , ja: "タブ", es: "Pestaña" },
   "Tabs" : { fr: "Onglets" , ja: "タブ", es: "Pestañas" },
   "Theme" : { fr: "Thème" , ja: "テーマ", es: "Tema" },
@@ -110,11 +110,11 @@ MOB.i18n.translations = {
   "Hell, Yeah" : { fr: "Peste, Ouais" , ja: "地獄、うん。", es: "Diablos, Sí" },
   "Huh, Next question" : { fr: "Euh, Question suivante" , ja: "あ、次の質問", es: "Eh, Siguiente pregunta" },
 
-  "Open / import tabs and feeds." : { fr: "Ouvrir / importer les onglets et les flux." , ja: "タブを開く/インポートする", es: "Abrir / importar pestañas y canales RSS." },
-  "Save / Export tabs and feeds." : { fr: "Enregistrer / exporter les onglets et les flux." , ja: "タブとフィードの保存/エクスポート", es: "Guardar archivo de tabs y feeds." },
-  "Open tab on feed drop." : { fr: "Ouvrir nouveau tab." , ja: "ドロップ時にタブを開く", es: "Abrir pestaña en drop." },
+  "Open / import tabs and sources." : { fr: "Ouvrir / importer les onglets et les source." , ja: "タブを開く/インポートする", es: "Abrir / importar pestañas y canales RSS." },
+  "Save / Export tabs and sources." : { fr: "Enregistrer / exporter les onglets et les source." , ja: "タブとフィードの保存/エクスポート", es: "Guardar archivo de tabs y sources." },
+  "Open tab on source drop." : { fr: "Ouvrir nouveau tab." , ja: "ドロップ時にタブを開く", es: "Abrir pestaña en drop." },
 
-  "If this is set, when you drag & drop one or more feed(s) in a tab, said tab opens." : { fr: "Ouvrir l'onglet où un flux est déposé." , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir pestaña en donde se pone un canal." },
+  "If this is set, when you drag & drop one or more source(s) in a tab, said tab opens." : { fr: "Ouvrir l'onglet où un source est déposé." , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir pestaña en donde se pone un canal." },
 
   // Messages d'erreurs
   "View Mobylette according to the time of day." : { fr: "Voir Mobylette selon l'heure de la journée." , ja: "時刻に応じてMobyletteを表示する", es: "Ver Mobylette según la hora del día." },
@@ -125,41 +125,41 @@ MOB.i18n.translations = {
   "Help Mobylette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Mobylette." , ja: "あなたの精神的な日の気分に応じてMobyletteを助けてください", es: "Ayuda a Mobylette de acuerdo con tu estado de ánimo espiritual del día." },
   "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
   "This file is fine" : { fr: "Ce fichier est nickel-chrome" , ja: "このファイルは問題ありません", es: "Este archivo está bien" },
-  "Forgot what you are? Reset Mobylette tabs & feeds" : { fr: "Oublié ce que vous êtes? Re-initialiser Mobylette" , ja: "あなたは何かを忘れましたか？ リセットMobylette", es: "Olvidó lo que eres? Restablecer Mobylette" },
+  "Forgot what you are? Reset Mobylette tabs & sources" : { fr: "Oublié ce que vous êtes? Re-initialiser Mobylette" , ja: "あなたは何かを忘れましたか？ リセットMobylette", es: "Olvidó lo que eres? Restablecer Mobylette" },
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
   "error" : { fr: "erreur", ja: "エラー", es: "error" },
 
   // Dialogues
-  "Feed: Kill" : { fr: "Flux: Supprimer", ja: "フィード：削除", es: "Feed: Eliminar" },
-  "Feed: Parameters" : { fr: "Flux: Paramètres", ja: "フィード：パラメータ", es: "Feed: Parámetros" },
-  "Feed Type" : { fr: "Type de Flux", ja: "フィードの種類", es: "Tipo de Feed" },
-  "What type of feed? All text, all image, or mixed" : { fr: "Quel type de flux? Tout le texte, toute l'image, ou les deux", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de feed? Todo el texto, toda la imagen o mixto" },
+  "Source: Kill" : { fr: "Source: Supprimer", ja: "フィード：削除", es: "Source: Eliminar" },
+  "Source: Parameters" : { fr: "Source: Paramètres", ja: "フィード：パラメータ", es: "Source: Parámetros" },
+  "Source Type" : { fr: "Type de Source", ja: "フィードの種類", es: "Tipo de Source" },
+  "What type of source? All text, all image, or mixed" : { fr: "Quel type de source? Tout le texte, toute l'image, ou les deux", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de source? Todo el texto, toda la imagen o mixto" },
 
   "Mixed" : { fr: "Mixte", ja: "混合", es: "Mezclado" },
   "Image" : { fr: "Image", ja: "画像", es: "Imagen" },
   "Text" : { fr: "Texte", ja: "テキスト", es: "Texto" },
   "Number of items" : { fr: "Nombre de titres", ja: "タイトル数", es: "Cantidad de títulos" },
-  "How many new items should the feed display at a time?" : { fr: "Combien de nouveaux articles le flux peut-il contenir?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el feed a la vez?" },
+  "How many new items should the source display at a time?" : { fr: "Combien de nouveaux articles cette source peut-elle contenir?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el source a la vez?" },
   "Just answer the question" : { fr: "Répond juste à la question", ja: "ちょうど質問に答える", es: "Solo responde la pregunta" },
 
   "Tab: Kill" : { fr: "Tab: Supprimer", ja: "タブ：削除", es: "Pestaña: Eliminar" },
-  "Location (URL)" : { fr: "Adresse (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },
+  "Source Location (URL)" : { fr: "Adresse de la source (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },
   "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse dun", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del" },
 
-  "Enter a website address/URL and click search, then OK, or simply enter the URL of the feed" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse d'un flux", ja: "ウェブサイトのアドレス/ URLを入力して検索をクリックするか、フィードのアドレスを入力するだけです", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, o ingrese directamente la ubicación del feed" },
+  "Enter a website address/URL and click search, then OK, or simply enter the URL of the source" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse d'un source", ja: "ウェブサイトのアドレス/ URLを入力して検索をクリックするか、フィードのアドレスを入力するだけです", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, o ingrese directamente la ubicación del source" },
 
   // Titres
-  "Add a new feed to [%1]" : { fr: "Ajouter un flux à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo feed a [%1]" },
+  "Add a new source to [%1]" : { fr: "Ajouter un source à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo source a [%1]" },
 
   "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
-  "Select this feed" : { fr: "Sélectionner ce flux", ja: "RSSフィードを選択", es: "Selecciona este feed" },
-  "Delete this feed" : { fr: "Supprimer ce flux", ja: "このRSSフィードを削除", es: "Eliminar este feed rss" },
+  "Select this source" : { fr: "Sélectionner ce source", ja: "RSSフィードを選択", es: "Selecciona este source" },
+  "Delete this source" : { fr: "Supprimer ce source", ja: "このRSSフィードを削除", es: "Eliminar este source rss" },
   "Delete the [%1] tab" : { fr: "Supprimer l'onglet [%1]", ja: "サプリメント [%1]", es: "Eliminar este pestaña [%1]" },
   "%1 | Click to rename, drag to re-order" : { fr: "%1 | Clic pour renommer, glisse pour ranger", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
-  "Really delete this feed? (%1)" : { fr: "Vraiment supprimer ce flux (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este feed? (%1)" },
-  "Really delete this tab? (%1, %2 feeds)" : { fr: "Vraiment supprimer cet onglet (%1, %2 flux) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta pestaña? (%1, %2 feeds)" },
+  "Really delete this source? (%1)" : { fr: "Vraiment supprimer ce source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
+  "Really delete this tab? (%1, %2 sources)" : { fr: "Vraiment supprimer cet onglet (%1, %2 source) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta pestaña? (%1, %2 sources)" },
 
   "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },
   "Refresh %1" : { fr: "Rafraîchir %1", ja: "リロード %1", es: "Recargar %1" },

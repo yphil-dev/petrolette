@@ -409,3 +409,19 @@ i.dangerous:hover {
 .arrow {
   background-image: url("/static/images/feed-toggle-triangle-000.png");
 }
+
+
+#tabs {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#tabs ul li {
+  display: inline-block;
+  float: none;
+  vertical-align: bottom;
+}
+
+.tabSort {
+  white-space: initial;
+}
