@@ -430,3 +430,17 @@ i.dangerous:hover {
 .tabSort {
   white-space: initial;
 }
+
+.droppableCopy:hover {
+  cursor: copy !important;
+}
+
+li.ui-droppable-hover {
+  background-color: red !important;
+}
+
+li.ui-droppable-hover a {
+  border-color: red;
+  cursor: copy !important;
+  color: red !important;
+}
