@@ -178,7 +178,7 @@ li.feed {
 }
 
 .mobHeader {
-  /* cursor:grab; */
+  cursor:grab;
   /* min-height:20px; */
   max-height:18px;
   display: flex;
@@ -347,4 +347,8 @@ div.wiki i:hover {
 
 i.feedIcon {
   background-image:url("/static/images/feed-generic-rss.png");
+}
+
+.ui-state-hover {
+  background: #DA4433 !important;
 }

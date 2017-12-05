@@ -108,7 +108,7 @@ MOB.tab = {
         .attr('class', 'tab');
 
     $sortable.sortable({
-      // tolerance: 'pointer',
+      cursor: 'move',
       cursorAt: {top: 10, left: 150},
       receive: function(e, ui) {
         ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
@@ -166,16 +166,15 @@ MOB.tab = {
     var $tabUl = $('#tabs ul#tabUl');
 
     $thisTab.droppable({
-      over: function() {
-        console.log('OVER (%s)', $(this).attr('class'));
-
-        $(this).addClass('droppableCopy');
-
-      },
-      out: function() {
-        console.log('OUT');
-        $(this).removeClass('droppableCopy');
-      },
+      tolerance: 'pointer',
+      over: function(event, ui) {
+          console.log('OVER (%s)', $(this).attr('class'));
+          // ui.item.css('cursor','copy');
+        },
+      out: function(event, ui) {
+          console.log('OUT');
+          // ui.item.css('cursor','auto');
+        },
       accept: 'ul, .tabSort li',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
@@ -191,6 +190,8 @@ MOB.tab = {
             $tabs.tabs('option', 'active', $index);
 
           $(this).prependTo($list).show('slow').before($elements.show('slow'));
+
+          $('body').css('cursor','auto');
 
           MOB.tab.saveTabs();
 
