@@ -230,7 +230,7 @@ MOB.feed = {
       $header.data('img',icon);
 
     }).fail(function(icon, status) {
-      console.info('Bad favicon: %s (status: %s)', feedHost, status);
+      // console.info('Bad favicon: %s (status: %s)', feedHost, status);
       $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
     }).always(function() {
 

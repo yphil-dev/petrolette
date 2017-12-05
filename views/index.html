@@ -53,6 +53,12 @@
 
      $(document).ready(function() {
 
+       $( document ).keydown(function( event ) {
+         if ( event.keyCode === $.ui.keyCode.ESCAPE ) {
+           $( ".tabSort" ).sortable( "cancel" );
+         }
+       });
+
        $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
 
        var $tabs = $('#tabs').tabs({
