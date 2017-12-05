@@ -186,7 +186,7 @@ MOB.feed = {
 
     // console.log('HOST: (%s)', feedHost);
 
-    $refreshButton.addClass('spinner');
+    $refreshButton.addClass('spin');
     $feed.children('.mobHeader').removeClass('ui-state-error');
 
     $.get("/feedicon", {
@@ -195,16 +195,8 @@ MOB.feed = {
       timeout: 2000
     }, function(icon) {
 
-      // if (icon) console.log('I: (%s)', icon);
-
-      // if (imageIsOk(icon)) {
-      //   console.log('OK: (%s)', icon);
-      // } else {
-      //   console.log('KO: (%s)', icon);
-      // }
-
-
       if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
+
     }).done(function(icon) {
       // console.log( 'DONE %s OK (status %s)',  icon, status);
       $feedIcon.css('background-image','url("' + icon + '")');
@@ -261,8 +253,6 @@ MOB.feed = {
           return false;
         }
 
-        // console.log( "\n\nItem (%s)", item.enclosures[0].url);
-
         var $description = $.parseHTML(item.description);
 
         var imageUrl;
@@ -295,9 +285,15 @@ MOB.feed = {
 
         var $feedItem = $('<li class="feedItem">').attr('title', summary.trim());
         var $itemDiv = $('<div class="feedItem">');
-        var $itemLink = $('<a class="ui-helper-clearfix">')
+        var $itemLink = $('<a>')
+            .attr('target', '_blank')
+            .attr('class', 'ui-helper-clearfix')
             .attr('href', item.link)
             .append(item.title);
+
+        var $itemSpan = $('<span>')
+            .attr('class', 'truncate ui-helper-clearfix')
+            .text(summary.trim());
 
         if (index % 2 === 0) {
           $feedItem.addClass('mobFeedEven');
@@ -308,11 +304,11 @@ MOB.feed = {
         }
 
         if (typeof imageUrl !== 'undefined') {
-          var $imgLink = $('<a>').attr('href', imageUrl)
+          var $imgLink = $('<a>')
+              .attr('href', imageUrl)
               .attr('data-fancybox', 'gallery')
               .attr('data-fancybox-group', $panel.attr('id'))
               .attr('data-caption', item.title);
-          // var $itemImg = $('<img src="' + imageUrl + '" onError="this.onerror=null;this.src=\'/static/images/broken-image.png\';" />')
 
           var $itemImg = $('<img>').attr('src', imageUrl)
               .appendTo($imgLink);
@@ -324,7 +320,9 @@ MOB.feed = {
             $imgLink.appendTo($itemDiv);
         }
 
+        // $itemSpan.appendTo($itemLink);
         $itemLink.appendTo($itemDiv);
+        // $itemSpan.appendTo($itemDiv);
         $itemDiv.appendTo($feedItem);
         $feedItem.appendTo($feedBody);
 
@@ -332,7 +330,7 @@ MOB.feed = {
 
 
     }).fail(function() {
-      $refreshButton.removeClass('spinner');
+      $refreshButton.removeClass('spin');
 
       // console.log( "error" );
       $header.addClass('ui-state-error');
@@ -353,7 +351,7 @@ MOB.feed = {
         progress.increment();
       }
 
-      $refreshButton.removeClass('spinner');
+      $refreshButton.removeClass('spin');
 
     });
   }
