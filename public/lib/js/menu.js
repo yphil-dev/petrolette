@@ -198,16 +198,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         if (IsJsonString(y)) {
           p = JSON.parse(y);
         } else {
-          $.notify(MOB.tr('This file is bad: parsing'), 'error');
+          $.notify(MOB.tr('This file is bad'), 'error');
         }
 
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          $.notify(MOB.tr('This file is fine'), 'success');
+          $.notify(MOB.tr('Loaded mobylette.json OK'), 'success');
           MOB.tab.populate(p, true);
         } else {
-          $.notify(MOB.tr('This file is bad: Not OK'), 'error');
+          $.notify(MOB.tr('This file is bad'), 'error');
         }
 
         // console.log('Is Valid: %s', isValid)

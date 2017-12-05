@@ -61,14 +61,14 @@ li.mobTab,
   }
 }
 
-.spinner {
+.spin {
   animation: spin-animation 0.5s infinite;
   display: inline-block;
 }
 
-#waitScreen > .spinner {
-    animation: spin-animation 2s infinite;
-    font-size: 400%;
+#waitScreen > .spin {
+  animation: spin-animation 2s infinite;
+  font-size: 400%;
 }
 
 .rotate {
@@ -347,17 +347,4 @@ div.wiki i:hover {
 
 i.feedIcon {
   background-image:url("/static/images/feed-generic-rss.png");
-}
-
-.ui-state-hover {
-  background: #DA4433 !important;
-  color: green !important;
-  border-top-color: #900 !important;
-}
-
-.plop {
-  background: #DA4433 !important;
-  color: green !important;
-  border-top-color: #900 !important;
-  cursor: copy;
 }
