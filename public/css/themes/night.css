@@ -102,14 +102,6 @@ li.feedItem a:visited {
     box-shadow: 0px 0px 6px 5px rgba(227,239,243,.2);
 }
 
-li.ui-droppable-hover {
-    background: #E3EFF3 !important;
-}
-
-li.ui-droppable-hover a:link {
-    color: #5294E2 !important;
-}
-
 .fancybox-thumbs {
     background-color: #404552 !important;
 }
