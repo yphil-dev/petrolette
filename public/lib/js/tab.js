@@ -110,7 +110,6 @@ MOB.tab = {
     $sortable.sortable({
       // tolerance: 'pointer',
       cursorAt: {top: 10, left: 150},
-      // revert:50,
       receive: function(e, ui) {
         ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
       },
@@ -168,10 +167,14 @@ MOB.tab = {
 
     $thisTab.droppable({
       over: function() {
-        $('body').css('cursor','copy');
+        console.log('OVER (%s)', $(this).attr('class'));
+
+        $(this).addClass('droppableCopy');
+
       },
       out: function() {
-        $('body').css('cursor','no-drop');
+        console.log('OUT');
+        $(this).removeClass('droppableCopy');
       },
       accept: 'ul, .tabSort li',
       hoverClass: 'ui-state-hover',

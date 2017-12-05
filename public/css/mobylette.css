@@ -158,7 +158,7 @@ li.feed {
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
 
 .selected,
@@ -178,11 +178,11 @@ li.feed {
 }
 
 .mobHeader {
-    cursor:grab;
-    /* min-height:20px; */
-    max-height:18px;
-    display: flex;
-    padding:.2rem;
+  /* cursor:grab; */
+  /* min-height:20px; */
+  max-height:18px;
+  display: flex;
+  padding:.2rem;
 }
 
 .mobHeader > div {
@@ -251,9 +251,9 @@ li.feedItem {
 }
 
 div.feedItem img {
-    max-width:50%;
-    float:left;
-    margin: 0 .2rem .2rem 0; /* Some gutter */
+  max-width:30%;
+  float:left;
+  margin: 0 .2rem .2rem 0; /* Some gutter */
 }
 
 div.feedItem img.full {
@@ -343,4 +343,8 @@ div.wiki i:hover {
 
 .generic {
   background-image: url("/static/images/feed-generic-rss.png") !important;
+}
+
+i.feedIcon {
+  background-image:url("/static/images/feed-generic-rss.png");
 }

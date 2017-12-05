@@ -229,6 +229,15 @@ MOB.feed = {
       $feedIcon.css('background-image','url("' + icon + '")');
       $header.data('img',icon);
 
+      var img = new Image();
+
+      img.src = icon;
+
+      img.onerror = function() {
+        $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
+      };
+
+
     }).fail(function(icon, status) {
       // console.info('Bad favicon: %s (status: %s)', feedHost, status);
       $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
