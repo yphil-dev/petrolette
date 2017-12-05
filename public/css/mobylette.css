@@ -351,4 +351,13 @@ i.feedIcon {
 
 .ui-state-hover {
   background: #DA4433 !important;
+  color: green !important;
+  border-top-color: #900 !important;
+}
+
+.plop {
+  background: #DA4433 !important;
+  color: green !important;
+  border-top-color: #900 !important;
+  cursor: copy;
 }

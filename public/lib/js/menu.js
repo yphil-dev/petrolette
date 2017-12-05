@@ -198,16 +198,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         if (IsJsonString(y)) {
           p = JSON.parse(y);
         } else {
-          $.notify(MOB.tr('This file is bad: parsing'));
+          $.notify(MOB.tr('This file is bad: parsing'), 'error');
         }
 
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          $.notify(MOB.tr('This file is fine'));
+          $.notify(MOB.tr('This file is fine'), 'success');
           MOB.tab.populate(p, true);
         } else {
-          $.notify(MOB.tr('This file is bad: Not OK'));
+          $.notify(MOB.tr('This file is bad: Not OK'), 'error');
         }
 
         // console.log('Is Valid: %s', isValid)

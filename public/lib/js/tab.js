@@ -176,7 +176,7 @@ MOB.tab = {
           // ui.item.css('cursor','auto');
         },
       accept: 'ul, .tabSort li',
-      hoverClass: 'ui-state-hover',
+      hoverClass: 'ui-state-hover plop',
       drop: function (event, ui) {
         var $item = $(this);
         var $index = $('li.mobTab').index(this);
