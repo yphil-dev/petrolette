@@ -59,7 +59,7 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 feeds)', $a.text(), $selectedPanel.find('li.feed').length));
+          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 sources)', $a.text(), $selectedPanel.find('li.feed').length));
 
         }
       });
@@ -132,7 +132,7 @@ MOB.dialog = {
         open: function() {
 
           function guessError () {
-            $guessSpinner.removeClass('icon-cog spinner')
+            $guessSpinner.removeClass('icon-cog spin')
               .addClass('icon-cancel-circled');
             $guessButton.addClass('ui-state-error');
             $okButton.addClass('ui-state-error');
@@ -172,7 +172,7 @@ MOB.dialog = {
 
             $guessSpinner
               .removeClass('icon-ok icon-cancel-circled icon-flashlight')
-              .addClass('spinner icon-cog');
+              .addClass('spin icon-cog');
             $guessButton.removeClass('ui-state-success ui-state-error');
 
             if (!$guessField.val().startsWith('http')) {
@@ -185,7 +185,7 @@ MOB.dialog = {
               dataType: 'json',
               timeout: 1200
             }, function() {
-              $guessSpinner.removeClass('spinner icon-cog');
+              $guessSpinner.removeClass('spin icon-cog');
             }).done(function(feed, status) {
               console.log( 'OK %s (status %s)', feed, status);
               $guessField.val(feed);
@@ -322,7 +322,7 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 feeds)', $a.text(), $selectedPanel.find('li.feed').length));
+          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 sources)', $a.text(), $selectedPanel.find('li.feed').length));
 
         }
       });
@@ -341,7 +341,7 @@ MOB.dialog = {
       console.log('ID: %s', $thisFeedId);
 
       $dialog.dialog({
-        title: MOB.tr('Feed: Kill'),
+        title: MOB.tr('Source: Kill'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
@@ -382,7 +382,7 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          $dialog.children('p').append(MOB.tr('Really delete this feed? (%1)', thisFeedName));
+          $dialog.children('p').append(MOB.tr('Really delete this source? (%1)', thisFeedName));
 
         }
       });
