@@ -154,12 +154,12 @@ MOB.i18n.translations = {
   "Add a new source to [%1]" : { fr: "Ajouter un source à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo source a [%1]" },
 
   "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
-  "Select this source" : { fr: "Sélectionner ce source", ja: "RSSフィードを選択", es: "Selecciona este source" },
-  "Delete this source" : { fr: "Supprimer ce source", ja: "このRSSフィードを削除", es: "Eliminar este source rss" },
+  "Select this source" : { fr: "Sélectionner cette source", ja: "RSSフィードを選択", es: "Selecciona este source" },
+  "Delete this source" : { fr: "Supprimer cette source", ja: "このRSSフィードを削除", es: "Eliminar este source rss" },
   "Delete the [%1] tab" : { fr: "Supprimer l'onglet [%1]", ja: "サプリメント [%1]", es: "Eliminar este pestaña [%1]" },
   "%1 | Click to rename, drag to re-order" : { fr: "%1 | Clic pour renommer, glisse pour ranger", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
-  "Really delete this source? (%1)" : { fr: "Vraiment supprimer ce source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
-  "Really delete this tab? (%1, %2 sources)" : { fr: "Vraiment supprimer cet onglet (%1, %2 source) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta pestaña? (%1, %2 sources)" },
+  "Really delete this source? (%1)" : { fr: "Réellement supprimer cette source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
+  "Really delete this tab? (%1, %2 sources)" : { fr: "Réellement supprimer cet onglet (%1, %2 source) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta pestaña? (%1, %2 sources)" },
 
   "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },
   "Refresh %1" : { fr: "Rafraîchir %1", ja: "リロード %1", es: "Recargar %1" },
