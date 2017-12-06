@@ -11,13 +11,13 @@ MOB.feed = {
 
     var $feedSelect = $('<i>')
         .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
-        .data('title', 'Select this feed')
-        .attr('title', MOB.tr('Select this feed'));
+        .data('title', 'Select this source')
+        .attr('title', MOB.tr('Select this source'));
 
     var $feedDelete = $('<i>')
         .attr('class', 'feedControl translate icon-trash feedDelete dangerous')
-        .data('title', 'Delete this feed')
-        .attr('title', MOB.tr('Delete this feed'));
+        .data('title', 'Delete this source')
+        .attr('title', MOB.tr('Delete this source'));
 
     var $feedPrefs = $('<i>')
         .attr('class', 'feedControl translate icon-cog mobFeedPrefs')
