@@ -319,19 +319,19 @@ div.testFlex {
   text-shadow: 1px 1px #3C2413;
 }
 
-#logo > .mobylette,
-.ui-dialog-content .mobylette {
+#logo > .petrolette,
+.ui-dialog-content .petrolette {
   color:     #84A6CB;
   font-size: 3.5rem  !important;
   margin:    -2px 0 0 0 !important;
 }
 
-.ui-dialog-content .mobylette {
+.ui-dialog-content .petrolette {
   display: inline !important;
   font-size: 1.5rem !important;
 }
 
-#killDialog .mobylette {
+#killDialog .petrolette {
   color:     red;
   font-size: 3.5rem  !important;
 }
