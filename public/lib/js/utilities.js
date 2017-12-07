@@ -1,5 +1,18 @@
 MOB.utilities = {
+  vWidth:function() {
 
+    var vWidth = $(window).width();
+    var vW;
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || vWidth < 720 ) {
+      vW = vWidth;
+    } else {
+      vW = vWidth - vWidth / 4;
+    }
+
+    return vW;
+
+  },
   help:function(type) {
 
     var dialog = introJs();
