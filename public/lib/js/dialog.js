@@ -25,7 +25,7 @@ MOB.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: 400,
+        width: MOB.utilities.vWidth(),
         modal: true,
         buttons: [
           {
@@ -86,24 +86,13 @@ MOB.dialog = {
 
       var $feed = $dataStore.parent().parent();
 
-      var vWidth = $(window).width();
-      var vW;
-
-      console.log('W (%s)', vWidth);
-
-      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || vWidth < 720 ) {
-        vW = vWidth;
-      } else {
-        vW = vWidth - vWidth / 4;
-      }
-
       $dialog.dialog({
         title: MOB.tr('Source'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: true,
         height: 'auto',
-        width: vW,
+        width: MOB.utilities.vWidth(),
         modal: true,
         buttons: [
           {
@@ -299,7 +288,7 @@ MOB.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: 400,
+        width: MOB.utilities.vWidth(),
         modal: true,
         buttons: [
           {
@@ -357,7 +346,7 @@ MOB.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: 400,
+        width: MOB.utilities.vWidth(),
         modal: true,
         buttons: [
           {
@@ -413,7 +402,7 @@ MOB.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: 400,
+        width: MOB.utilities.vWidth(),
         modal: true,
         buttons: [
           {
@@ -489,7 +478,7 @@ MOB.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: 'auto',
+        width: MOB.utilities.vWidth(),
         modal: true,
         show: 'slide',
         hide: 'explode',
