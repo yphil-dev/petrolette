@@ -400,10 +400,8 @@ i.dangerous:hover {
 
 .ui-dialog .ui-dialog-titlebar-help {
   /* position: absolute; */
-  /* right: .3em; */
+  right: 2em;
   /* top: 50%; */
-  float:right;
-  padding: 1px;
 }
 
 .arrow {

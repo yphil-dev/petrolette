@@ -86,13 +86,24 @@ MOB.dialog = {
 
       var $feed = $dataStore.parent().parent();
 
+      var vWidth = $(window).width();
+      var vW;
+
+      console.log('W (%s)', vWidth);
+
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || vWidth < 720 ) {
+        vW = vWidth;
+      } else {
+        vW = vWidth - vWidth / 4;
+      }
+
       $dialog.dialog({
         title: MOB.tr('Source'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: true,
         height: 'auto',
-        // width: 500,
+        width: vW,
         modal: true,
         buttons: [
           {
@@ -149,7 +160,7 @@ MOB.dialog = {
               $guessSpinner = $dialog.find('button#feedGuess > i'),
               $guessField = $dialog.find('input#feedGuess'),
               $okButton = $('.ui-dialog-buttonpane'),
-              $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-info"></span><span class="ui-button-icon-space"> </span>Help</button>');
+              $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-info"></span><span class="ui-button-icon-space"> </span>Help</button>');
 
           $dialog.parent().find('.ui-dialog-titlebar').append($helpButton);
 
