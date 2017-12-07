@@ -1,4 +1,4 @@
-# Mobylette
+# Petrolette
 
 *RSS/Atom morning news reader ; Works at night too.*
 
@@ -8,9 +8,9 @@
 
 Read about it in French [ici](http://linuxfr.org/users/philippemc/journaux/avec-quoi-tu-lis-tes-rss-le-matin).
 
-## Mobylette is a personal track-free online RSS news reader
+## Petrolette is a personal track-free online RSS news reader
 
-Mobylette is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now ; It does what I want from a no-nonsense, every-morning-every-day news reader.
+Petrolette is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now ; It does what I want from a no-nonsense, every-morning-every-day news reader.
 
 ### Practical Features
 
