@@ -61,7 +61,7 @@ MOB.i18n.translations = {
   "Contact the WAPLANNER support" : { fr: "Contactez l'assistance WAPLANNER", ja: "ＷＡＰＬＡＮＮＥＲサポートへの連絡" },
   "Message" : { fr: "Message", ja: "メッセージ" },
 
-  // Mobylette
+  // Petrolette
   "Find the website\'s RSS source" : { fr: "Trouver la source du site web" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
   "source" : { fr: "source" , ja: "ソース", es: "source" },
 
@@ -117,15 +117,15 @@ MOB.i18n.translations = {
   "If this is set, when you drag & drop one or more source(s) in a tab, said tab opens." : { fr: "Ouvrir l'onglet où un source est déposé." , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir pestaña en donde se pone un canal." },
 
   // Messages d'erreurs
-  "View Mobylette according to the time of day." : { fr: "Voir Mobylette selon l'heure de la journée." , ja: "時刻に応じてMobyletteを表示する", es: "Ver Mobylette según la hora del día." },
+  "View Petrolette according to the time of day." : { fr: "Voir Petrolette selon l'heure de la journée." , ja: "時刻に応じてPetroletteを表示する", es: "Ver Petrolette según la hora del día." },
 
-  "Reset Mobylette according to your political mood of the week." : { fr: "Réinitialiser Mobylette selon votre humeur politique de la semaine." , ja: "今週のあなたの政治的な気分に合わせてMobyletteをリセットする", es: "Restablece Mobylette según tu estado de ánimo político de la semana." },
+  "Reset Petrolette according to your political mood of the week." : { fr: "Réinitialiser Petrolette selon votre humeur politique de la semaine." , ja: "今週のあなたの政治的な気分に合わせてPetroletteをリセットする", es: "Restablece Petrolette según tu estado de ánimo político de la semana." },
 
   "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
-  "Help Mobylette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Mobylette." , ja: "あなたの精神的な日の気分に応じてMobyletteを助けてください", es: "Ayuda a Mobylette de acuerdo con tu estado de ánimo espiritual del día." },
+  "Help Petrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Petrolette." , ja: "あなたの精神的な日の気分に応じてPetroletteを助けてください", es: "Ayuda a Petrolette de acuerdo con tu estado de ánimo espiritual del día." },
   "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
-  "Loaded mobylette.json OK" : { fr: "Ouverture de mobylette.json OK" , ja: "このファイルは問題ありません", es: "Este archivo está bien" },
-  "Forgot what you are? Reset Mobylette tabs & sources" : { fr: "Oublié ce que vous êtes? Re-initialiser Mobylette" , ja: "あなたは何かを忘れましたか？ リセットMobylette", es: "Olvidó lo que eres? Restablecer Mobylette" },
+  "Loaded petrolette.json OK" : { fr: "Ouverture de petrolette.json OK" , ja: "このファイルは問題ありません", es: "Este archivo está bien" },
+  "Forgot what you are? Reset Petrolette tabs & sources" : { fr: "Oublié ce que vous êtes? Re-initialiser Petrolette" , ja: "あなたは何かを忘れましたか？ リセットPetrolette", es: "Olvidó lo que eres? Restablecer Petrolette" },
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
