@@ -92,7 +92,7 @@ MOB.dialog = {
         closeOnEscape: true,
         resizable: true,
         height: 'auto',
-        width: 500,
+        // width: 500,
         modal: true,
         buttons: [
           {
