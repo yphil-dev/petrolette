@@ -184,7 +184,7 @@ button#donate {
 
 #menu > .handle {
   left:290px;
-  bottom:12vh;
+  bottom:10vh;
 }
 
 #menu > .handle > i {
@@ -386,13 +386,8 @@ div.testFlex {
 
 #questionDialog > p {
   font-family: 'GrobeDeutschmeisterRegular';
-  font-size: 74pt;
+  font-size: 6em;
   text-align:center;
-}
-
-.ui-dialog[aria-describedby="questionDialog"] {
-  width: 90vw !important;
-  max-width: 1000px !important;
 }
 
 button.dangerous:hover {
