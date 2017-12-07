@@ -1,18 +1,18 @@
 MOB.i18n = {
-    trans : function(term) {
+  trans : function(term) {
 
-        // if (MOB.language === 'en') {
-        //   return term;
-        // } else {
-        //   return MOB.i18n.translations[term][MOB.language];
-        // }
+    // if (MOB.language === 'en') {
+    //   return term;
+    // } else {
+    //   return MOB.i18n.translations[term][MOB.language];
+    // }
 
-        var terms = {};
-        terms[ MOB.language ] = MOB.tr(term);
+    var terms = {};
+    terms[ MOB.language ] = MOB.tr(term);
 
-        return terms;
+    return terms;
 
-    }
+  }
 };
 
 MOB.i18n.translations = {
