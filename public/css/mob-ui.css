@@ -442,3 +442,7 @@ li.ui-droppable-hover a {
   cursor: copy !important;
   color: red !important;
 }
+
+.ui-dialog.ui-corner-all {
+  border-radius: 0px !important;
+}
