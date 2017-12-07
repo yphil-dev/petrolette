@@ -8,21 +8,10 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $saveButton = $('#saveTabs').button(),
       $langMenu = $('select#language'),
       $help = $('button#help').button(),
-      $donate = $('button#donate').button().tooltip(),
+      $donate = $('button#donate').button(),
       $profile = $('button#profile').button(),
       $slider = $('div#gallerySpeedSlider'),
       $spinner = $('#gallerySpeedSpinner');
-
-  // $langMenu.selectmenu({
-  //   width: 80
-  // }).selectmenu( "menuWidget" )
-  //   .addClass( "overflow" );
-
-  $profile.tooltip({
-    classes: {
-      "ui-tooltip": "ui-corner-all ui-widget-shadow icon-heartbeat"
-    }
-  });
 
   MOB.utilities.translate();
 
