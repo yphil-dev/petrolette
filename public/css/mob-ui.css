@@ -13,13 +13,13 @@ select {
   height: 30px;
 }
 
-legend {
-  font-family: 'KaushanScriptRegular' !important;
-  font-weight: normal;
-  font-style: italic;
-  font-size:120% !important;
-  padding: .2em .8em .2em .4em;
-}
+/* legend { */
+/*   font-family: 'KaushanScriptRegular' !important; */
+/*   font-weight: normal; */
+/*   font-style: italic; */
+/*   font-size:120% !important; */
+/*   padding: .2em .8em .2em .4em; */
+/* } */
 
 fieldset > p {
   margin: 0  0 .2em 0;
@@ -44,8 +44,17 @@ p, label {
 
 fieldset,
 legend {
-  background-color: #453246 !important;
+  background-color: #2B374B !important;
   color:            #BFD8D1 !important;
+  /* font-size:76% !important; */
+}
+
+legend {
+  font-size: 9pt;
+}
+
+fieldset {
+  border: 1px solid #BFD8D1 !important;
   /* font-size:76% !important; */
 }
 
@@ -226,6 +235,11 @@ div.flexBox {
   display:flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: .4em;
+}
+
+button#help {
+  margin-bottom: .4em;
 }
 
 div.flexBox > label {
@@ -265,12 +279,6 @@ label:last-child {
 
 .bottom {
   margin-bottom: 0;
-}
-
-label,
-button,
-select {
-  margin: .4em 0 0 0;
 }
 
 /* .prefsForm > *:not(p) { */
@@ -445,4 +453,13 @@ li.ui-droppable-hover a {
 
 .ui-dialog.ui-corner-all {
   border-radius: 0px !important;
+}
+
+img.icon-warning {
+  vertical-align:middle;
+  width:100px;
+}
+
+p.dialog-warning {
+  font-size:26pt;
 }
