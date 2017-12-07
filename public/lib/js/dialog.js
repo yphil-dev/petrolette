@@ -469,15 +469,15 @@ MOB.dialog = {
 
       $dialog.dialog({
         title: MOB.tr('Just answer the question'),
-        position: {
-          my: 'center',
-          at: 'center',
-          of: window
-        },
+        // position: {
+        //   my: 'center',
+        //   at: 'center',
+        //   of: window
+        // },
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
-        height: 'auto',
+        // height: 'auto',
         width: MOB.utilities.vWidth(),
         modal: true,
         show: 'slide',
