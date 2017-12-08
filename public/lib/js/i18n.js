@@ -75,6 +75,8 @@ MOB.i18n.translations = {
   "Slideshow speed" : { fr: "Vitesse du diaporama" , ja: "スライドショーのスピード", es: "Velocidad de la presentación" },
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
+  "Petrolette?" : { fr: "Pétrolette ?" , ja: "Petrolette?", es: "¿Petrolette?" },
+
   "English" : { fr: "English" , ja: "English", es: "English" },
   "Français" : { fr: "Français" , ja: "Français", es: "Français" },
   "日本語" : { fr: "日本語" , ja: "日本語", es: "日本語" },
@@ -98,6 +100,21 @@ MOB.i18n.translations = {
   "Night theme" : { fr: "Thème nuit" , ja: "夜のテーマ", es: "Tema nocturno" },
   "Day" : { fr: "Jour" , ja: "日", es: "día" },
   "Night" : { fr: "Nuit" , ja: "夜", es: "Noche" },
+
+  // Help
+  "This is a tab. It contains sources." : { fr: "Ceci est un onglet ; un onglet contient des sources." , ja: "これはタブです。 それはソースを含んでいます。", es: "Esta es una pestaña. Contiene fuentes." },
+  "This is a source." : { fr: "Ceci est une source." , ja: "これはソースです", es: "Esta es una fuente." },
+  "Click this button to create a new tab." : { fr: "Cliquez sur ce bouton pour créer un nouvel onglet." , ja: "新しいタブを作成するには、このボタンをクリックします。", es: "Haga clic en este botón para crear una nueva pestaña." },
+  "Click here to add a source." : { fr: "Cliquer ici pour ajouter une source." , ja: "ソースを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar una fuente." },
+  "What is Petrolette?" : { fr: "Qu'est-ce que Petrolette?" , ja: "Petroletteとは何ですか？", es: "¿Qué es Petrolette?" },
+  "How do I use it?" : { fr: "Comment ça marche ?" , ja: "どうやって使うの？", es: "¿Como lo uso?" },
+  "Petrolette is your news reader. Find new sources, sort them in categories, you are on the in-ter-net." : { fr: "Petrolette est un lecteur de sources. Trouver de nouvelles sources, les trier dans les catégories, c'est l'in-ter-net." , ja: "Petroletteはあなたのニュースリーダーです。 新しいソースを見つけ、カテゴリで並べ替え、あなたはインターネット上にいます。", es: "Petrolette es tu lector de noticias. Encuentra nuevas fuentes, clasifícalas en categorías, estás en la red interna." },
+  "Learn how to use <a id='aide-un' href='#'>the tabs and the sources, and Petrolette in general." : { fr: "Apprenez à utiliser <a id='aide-un' href='#'>les onglets et les sources</a>, et Petrolette en général." , ja: "タブとソース、および一般的なPetroletteの使い方を学んでください。", es: "Aprenda cómo usar <a id='aide-un' href='#'>las pestañas y las fuentes</a>, y Petrolette en general." },
+  "Learn how to use" : { fr: "Apprenez à utiliser" , ja: "タブとソース、および一般的なPetroletteの使い方を学んでください。", es: "Aprenda cómo usar" },
+  "and Petrolette in general." : { fr: "et Petrolette en général." , ja: "Petroletteの使い方を学んでください。", es: "y Petrolette en general." },
+  "the tabs and the sources" : { fr: "les onglets et les sources" , ja: "タブとソース", es: "las pestañas y las fuentes" },
+
+
 
   // Profile
 

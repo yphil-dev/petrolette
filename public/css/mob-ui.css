@@ -1,11 +1,23 @@
 :root {
   --main-bg-color: red;
   --ui-bg-color: red;
-  --ui-bg-color-pri: red;
+  --ui-bg-color-pri: #2B374B;
   --ui-bg-color-sec: red;
   --ui-color-pri: #eeeeee;
   --ui-color-sec: red;
   --ui-color-danger: #660000;
+}
+
+h1, h2 {
+  color: var(--ui-color-pri) !important;
+}
+
+p.dialog > a:link {
+  color: var(--ui-color-pri) !important;
+}
+
+p.dialog > a:visited {
+  color: var(--ui-color-pri) !important;
 }
 
 select {
@@ -44,7 +56,7 @@ p, label {
 
 fieldset,
 legend {
-  background-color: #2B374B !important;
+  background-color: var(--ui-bg-color-pri) !important;
   color:            #BFD8D1 !important;
   /* font-size:76% !important; */
 }
@@ -161,7 +173,7 @@ button#donate {
 }
 
 .logoItem {
-  flex: 1 1 30%;
+  flex: 1 1 auto;
 }
 
 .tabCloser {
@@ -189,6 +201,7 @@ button#donate {
 
 #menu > .handle > i {
   border: none !important;
+  line-height: 0 !important;
 }
 
 #menu {
@@ -457,4 +470,10 @@ img.icon-warning {
 
 p.dialog-warning {
   font-size:26pt;
+}
+
+/* Hacks & workarounds */
+
+button > i {
+  margin-right: .3em !important;
 }
