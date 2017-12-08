@@ -1,15 +1,5 @@
-:root {
-  --main-bg-color: red;
-  --ui-bg-color: red;
-  --ui-bg-color-pri: red;
-  --ui-bg-color-sec: red;
-  --ui-color-pri: #eeeeee;
-  --ui-color-sec: red;
-  --ui-color-danger: #660000;
-}
-
 body {
-    background-color: #dddddd;
+  background-color: #dddddd;
 }
 
 li.mobTab {
