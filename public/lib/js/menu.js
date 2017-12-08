@@ -62,7 +62,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $saveButton.click(function () {
-    MOB.prefs.exportConfig(MOB.tab.all(), 'mobylette.json');
+    MOB.prefs.exportConfig(MOB.tab.all(), 'petrolette.json');
     return false;
   });
 
@@ -194,7 +194,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          $.notify(MOB.tr('Loaded mobylette.json OK'), 'success');
+          $.notify(MOB.tr('Loaded petrolette.json OK'), 'success');
           MOB.tab.populate(p, true);
         } else {
           $.notify(MOB.tr('This file is bad'), 'error');
