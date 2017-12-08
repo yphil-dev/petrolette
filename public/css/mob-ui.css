@@ -517,30 +517,58 @@ button > i {
 
 .mobHeader .feedControls {
   position:relative;
+  left:100px;
+
+  cursor:pointer;
+
   flex: 0 0 auto;
   display: flex;
   text-align:right;
   background-color: red !important;
-  padding:.2rem;
+  /* padding:.2rem; */
 
   /* min-width:80px; */
   /* align-items:flex-start; */
   /* align-content:flex-start; */
   /* justify-content: flex-end; */
   /* padding:0; */
+  transition: all 800ms ease 0s;
+}
+
+.openControls {
+  background-color: blue !important;
+
+  left:0 !important;
+}
+
+.mobHeader .feedControls .controlsToggle {
+  position:relative;
+  display: inline-block;
+  width:26px;
+  height:26px;
+  margin:0;
+}
+
+.mobHeader .feedControls .controlsToggle:before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  border-bottom: 26px solid #E9E9E9;
+  border-right: 18px solid red;
+  width: 0;
 }
 
 .mobHeader .feedControls div {
+  margin:1px 1px 1px 0;
   flex: 1 100%;
 }
 
 .feedControl {
-  font-size: 1em !important;
+  font-size: 16pt !important;
 }
 
 .mobHeader .ui-button {
   padding: 0 !important;
-  margin: 0 0 0 .2em !important;
 }
 
 .mobHeader .feedControls div i.ui-button:first-child {
