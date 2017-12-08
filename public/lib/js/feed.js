@@ -83,7 +83,10 @@ MOB.feed = {
 
     $header.hover (
       function() {
-        $(this).find('.feedControls').slideDown('fast');
+        // $(this).find('.feedControls').slideDown('fast');
+        // $(this).find('.feedControls').show('slide', {direction: 'right'}, 100);
+
+        $(this).find('.feedControls').animate({'left': '0'}, 1000);
 
         var iconImg = $feedToggle.css('background-image');
 
@@ -92,7 +95,8 @@ MOB.feed = {
         $(this).data('img',iconImg);
       },
       function() {
-        $(this).find('.feedControls').slideUp('slow');
+        // $(this).find('.feedControls').hide('slide', {direction: 'right'}, 600);
+        $(this).find('.feedControls').animate({'left': '80px'}, 1000);
 
         $feedToggle.removeClass('arrow');
 
