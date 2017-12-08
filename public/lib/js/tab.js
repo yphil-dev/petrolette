@@ -34,6 +34,9 @@ MOB.tab = {
 
     $("div#tabs").tabs('option', 'active', 0);
 
+    $('li.mobTab').last().addClass('lastTab');
+    $('li.mobTab').first().addClass('firstTab');
+
   },
   all:function() {
     var myTabs = [];
