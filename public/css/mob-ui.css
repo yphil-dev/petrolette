@@ -208,6 +208,10 @@ button#donate {
   animation: fadeIn ease 6s;
 }
 
+#newTabButton:hover {
+  color: #FFDC00 !important;
+}
+
 @keyframes fadeIn {
   0% {
     opacity:0;
