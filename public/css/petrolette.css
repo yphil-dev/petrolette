@@ -177,12 +177,8 @@ li.feed {
 
 /* Item */
 
-.feedTitle {
-    font-size: 1em  !important;
-}
-
 li.feedItem {
-    font-size: 10pt  !important;
+  font-size: 10pt  !important;
 }
 
 li.feedItem a:not(.error) {

@@ -73,6 +73,7 @@ MOB.feed = {
 
     var $header = $('<div class="mobHeader ui-widget-header">');
     var $toggleDiv = $('<div class="feedToggle">');
+    var $controlsToggleDiv = $('<div class="controlsToggle">');
     var $selectDiv = $('<div class="feedSelect">').button();
     var $deleteDiv = $('<div class="feedDelete">').button();
     var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
@@ -81,12 +82,19 @@ MOB.feed = {
 
     $feedToggle.appendTo($toggleDiv);
 
+    $controlsToggleDiv.click(function() {
+      console.log('click: (%s)', $(this).parent().attr('class'));
+      // $(this).parent().animate({'left': '0'}, 1000);
+      $(this).parent().toggleClass('openControls');
+
+    });
+
     $header.hover (
       function() {
         // $(this).find('.feedControls').slideDown('fast');
         // $(this).find('.feedControls').show('slide', {direction: 'right'}, 100);
 
-        $(this).find('.feedControls').animate({'left': '0'}, 1000);
+        // $(this).find('.feedControls').animate({'left': '0'}, 1000);
 
         var iconImg = $feedToggle.css('background-image');
 
@@ -96,7 +104,7 @@ MOB.feed = {
       },
       function() {
         // $(this).find('.feedControls').hide('slide', {direction: 'right'}, 600);
-        $(this).find('.feedControls').animate({'left': '80px'}, 1000);
+        // $(this).find('.feedControls').animate({'left': '80px'}, 1000);
 
         $feedToggle.removeClass('arrow');
 
@@ -116,6 +124,7 @@ MOB.feed = {
 
     $toggleDiv.appendTo($header);
     $titleDiv.appendTo($header);
+    $controlsToggleDiv.appendTo($feedControls);
     $selectDiv.appendTo($feedControls);
     $deleteDiv.appendTo($feedControls);
     $prefsDiv.appendTo($feedControls);
