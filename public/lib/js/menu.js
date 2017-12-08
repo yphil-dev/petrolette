@@ -48,7 +48,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     event.preventDefault();
     MOB.dialog.help();
     // MOB.utilities.help('menu');
-    // window.open('https://bitbucket.org/yphil/mobylette/wiki/Home', '_blank');
+    // window.open('https://bitbucket.org/yphil/petrolette/wiki/Home', '_blank');
   });
 
   $donate.click(function (event) {
