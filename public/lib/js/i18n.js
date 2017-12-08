@@ -183,7 +183,5 @@ MOB.i18n.translations = {
   "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },
   "Refresh %1" : { fr: "Rafraîchir %1", ja: "リロード %1", es: "Recargar %1" },
 
-  "plop plop" : { fr: "plip", ja: "ploup", es: "plap" },
-
   "Last" : { fr: "Dernier", ja: "zz" }
 };
