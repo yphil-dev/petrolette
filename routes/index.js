@@ -29,12 +29,10 @@ function getFeed (urlfeed, callback) {
         var stream = this;
         if (res.statusCode === 200 && res.headers['content-type'].includes('xml')) {
             stream.pipe (feedparser);
-            // console.log ("OK: (code %s) reading (%s) res: %s", res.statusCode, urlfeed, JSON.stringify(res.headers['content-type']));
 
         } else {
             callback ('HTML page');
             return;
-            // console.log ("Error (code %s) reading (%s)", res.statusCode, urlfeed);
         }
     });
     req.on ("error", function (res) {
@@ -61,21 +59,13 @@ function getFeed (urlfeed, callback) {
 
 router.get('/feed', function(req, res) {
 
-    // var timer = setTimeout(function () {
-    //     res.send({error:"error"});
-    // }, 2500);
-    // req.once('timeout', function () {
-    //     clearTimeout(timer);
-    // });
-
-    getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
+  getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
         if (feedItems) {
             res.send({
                 feedItems: feedItems,
                 feedTitle: feedTitle
             });
         } else {
-          console.log('Huston, we have a [%s] (%s)', JSON.stringify(err), req.query.feedurl);
           res.send({error:err});
         }
     });
@@ -108,21 +98,5 @@ router.get('/discover', function(req, res) {
     });
 });
 
-
-router.post('/upload', function(req, res) {
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
-
-    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let sampleFile = req.files.sampleFile;
-
-    // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv('/tmp/plop.json', function(err) {
-        if (err)
-            return res.status(500).send(err);
-
-        res.send('File uploaded!');
-    });
-});
 
 module.exports = router;
