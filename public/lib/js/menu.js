@@ -46,7 +46,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $help.click(function (event) {
     event.preventDefault();
-    MOB.utilities.help('menu');
+    MOB.dialog.help();
+    // MOB.utilities.help('menu');
     // window.open('https://bitbucket.org/yphil/mobylette/wiki/Home', '_blank');
   });
 
@@ -82,7 +83,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   var gallerySlideshowSpeed = MOB.prefs.readConfig('gallerySlideshowSpeed');
   var gallerySlideTransition = MOB.prefs.readConfig('gallerySlideTransition');
 
-  $.fancybox.defaults.thumbs.autoStart = true;
+  // $.fancybox.defaults.thumbs.autoStart = true;
   $.fancybox.defaults.transitionEffect = gallerySlideTransition;
   $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
 

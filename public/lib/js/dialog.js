@@ -3,24 +3,14 @@ MOB.dialog = {
     $dialog.dialog('destroy');
     $('#mobDialogs').empty();
   },
-  help:function($button) {
+  help:function() {
 
-    var $tabs = $('#tabs');
-    var $a = $button.prev('a.ui-tabs-anchor');
-    var tabId = $a.attr('href');
+    $('#mobDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
 
-    var $selectedTab = $a.parent();
-    var $selectedPanel = $tabs.find(tabId);
-
-    var selectedTabIndex = $tabs.tabs('option', 'active');
-    var previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
-
-    $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
-
-      var $dialog = $('#killDialog');
+      var $dialog = $('#helpDialog');
 
       $dialog.dialog({
-        title: MOB.tr('Tab: Kill'),
+        title: MOB.tr('Help'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
@@ -29,24 +19,8 @@ MOB.dialog = {
         modal: true,
         buttons: [
           {
-            text: MOB.tr('Delete'),
-            title: MOB.tr('Delete'),
-            icon: "ui-icon-alert",
-            class: "dangerous translate",
-            click: function() {
-
-              $selectedTab.remove();
-              $selectedPanel.remove();
-
-              MOB.tab.saveTabs();
-              MOB.dialog.kill($dialog);
-              $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
-
-            }
-          },
-          {
-            text: MOB.tr('Cancel'),
-            title: MOB.tr('Cancel'),
+            text: MOB.tr('Ok'),
+            title: MOB.tr('Ok'),
             class: 'translate',
             click: function() {
               MOB.dialog.kill($dialog);
@@ -55,11 +29,16 @@ MOB.dialog = {
         ],
         open: function () {
 
+          MOB.utilities.translate();
+
+          $('button#aide-un').click(function (event) {
+            event.preventDefault();
+            MOB.utilities.help('ui');
+          });
+
           $('.ui-widget-overlay').on('click', function() {
             MOB.dialog.kill($dialog);
           });
-
-          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 sources)', $a.text(), $selectedPanel.find('li.feed').length));
 
         }
       });

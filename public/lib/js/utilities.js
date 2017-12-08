@@ -15,8 +15,57 @@ MOB.utilities = {
   },
   help:function(type) {
 
-    var dialog = introJs();
-    var menu = introJs();
+    var dialog = introJs(),
+        menu = introJs(),
+        ui = introJs();
+
+    dialog.setOptions({
+      steps: [
+        {
+          element: 'input#feedGuess',
+          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('feed') + '</a>.'
+        },
+        {
+          element: 'button#feedGuess',
+          intro: MOB.tr('Find the website\'s RSS feed')
+        },
+        {
+          element: 'div#feedTitle',
+          intro: MOB.tr('What type of feed? All text, all image, or mixed'),
+          position: 'left'
+        },
+        {
+          element: 'fieldset#feedLimit',
+          intro: MOB.tr('How many new items should the feed display at a time?'),
+          position: 'bottom'
+        },
+        {
+          element: '.button-ok',
+          intro: MOB.tr('Ok')
+        }
+      ]
+    });
+
+    ui.setOptions({
+      steps: [
+        {
+          element: 'li.mobTab',
+          intro: MOB.tr('This is a tab. It contains sources.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+        },
+        {
+          element: 'li.feed',
+          intro: MOB.tr('This is a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+        },
+        {
+          element: 'li#newTabButton',
+          intro: MOB.tr('Click this button to create a new tab.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+        },
+        {
+          element: '.handle.newFeed',
+          intro: MOB.tr('Click here to add a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+        }
+      ]
+    });
 
     dialog.setOptions({
       steps: [
@@ -49,11 +98,11 @@ MOB.utilities = {
       steps: [
         {
           element: 'button#fileImport',
-          intro: MOB.tr('Open / import tabs and feeds.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/mobylette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Open / import tabs and feeds.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
         },
         {
           element: 'button#saveTabs',
-          intro: MOB.tr('Save / Export tabs and feeds.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/mobylette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Save / Export tabs and feeds.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
         },
         {
           element: 'label#dropTabLabel',
@@ -61,7 +110,7 @@ MOB.utilities = {
         },
         {
           element: 'div#themeBox',
-          intro: MOB.tr('View Mobylette according to the time of day.')
+          intro: MOB.tr('View Petrolette according to the time of day.')
         },
         {
           element: 'fieldset#galleryBox',
@@ -69,25 +118,37 @@ MOB.utilities = {
         },
         {
           element: 'button#profile',
-          intro: MOB.tr('Reset Mobylette according to your political mood of the week.')
+          intro: MOB.tr('Reset Petrolette according to your political mood of the week.')
         },
         {
           element: 'button#donate',
-          intro: MOB.tr('Help Mobylette according to your spiritual mood of the day.')
+          intro: MOB.tr('Help Petrolette according to your spiritual mood of the day.')
         }
       ]
     });
 
     dialog.setOption("overlayOpacity", 0);
     menu.setOption("overlayOpacity", 0.2);
+    ui.setOption("overlayOpacity", 0.2);
+
+    ui.setOption("showStepNumbers", false);
+    ui.setOption("nextLabel", '→');
+    ui.setOption("prevLabel", '←');
+    ui.setOption("skipLabel", '...');
+    ui.setOption("doneLabel", '.');
 
     if (type === 'menu') {
       dialog.exit();
       menu.start();
       $('.introjs-fixParent').css('position', 'absolute');
-    } else {
+    } else if (type === 'dialog') {
       menu.exit();
       dialog.start();
+    } else {
+      dialog.exit();
+      $('#menu > .handle').click();
+      $('.ui-dialog-titlebar-close').click();
+      ui.start();
     }
 
   },
