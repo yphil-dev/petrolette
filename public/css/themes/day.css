@@ -1,88 +1,11 @@
-body {
-  background-color: #dddddd;
-}
-
-li.mobTab {
-    background-color: #C3DCD9 !important;
-}
-
-li.ui-tabs-active,
-li.mobTab:first-child {
-    box-shadow: none !important;
-}
-
-#tabUl,
-#tabs {
-    background: none;
-    border-radius: 0;
-}
-
-#newTabButton {
-    background-color: #DDE0FA !important;
-}
-
-#newTabButton:hover {
-    background-color: #E3EFF3 !important;
-    box-shadow: none !important;
-}
-
-.handle:hover {
-    opacity: 1;
-    color:            #E3EFF3 !important;
-}
-
-li.ui-tabs-active,
-div.ui-tabs-panel {
-    background-color: #E3EFF3 !important;
-}
-
-li.ui-state-hover:not(.ui-tabs-active) {
-    background-color: #dddddd !important;
-}
-
-i.tabCloser,
-li.ui-tabs-active a:link {
-    color: #3C4440 !important;
-}
-
-i.tabCloser:hover {
-    color: #000 !important;
-}
-
-li.feed {
-    background-color: #ffffff !important;
-    color: #3C4440 !important;
-}
-
-li.feed a {
-    color: #3C4440 !important;
-}
-
-li.feedItem:nth-child(even) {
-    background-color: #dddddd !important;
-}
-
-li.feedItem:hover {
-    background-color: #e3eff3 !important;
-    color: #000 !important;
-}
-
-
-li.feedItem a:visited {
-    color: #565 !important;
-}
-
-#progressBar > #cursor {
-    width: 1%;
-    height: 2px;
-    background-color: #3C4440;
-    box-shadow: 0px 12px 6px 5px rgba(227,239,243,.2);
-}
-
-li.ui-droppable-hover {
-    background: #E3EFF3 !important;
-}
-
-li.ui-droppable-hover a:link {
-    color: red !important;
+:root {
+  --bg-color-tri: #DDE0FA;
+  --bg-color-qua: #e3eff3;
+  --bg-color-pri: #C3DCD9;
+  --bg-color-sec: #eeeeee;
+  --color-pri: #3C4440;
+  --color-sec: #5294E2;
+  --color-tri: #FFDC00;
+  --color-qua: #DDE0FA;
+  --color-danger: #660000;
 }
