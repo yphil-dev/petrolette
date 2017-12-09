@@ -1,13 +1,39 @@
-h1, h2 {
+:root {
+  --ui-bg-color-pri: #2B374B;
+  --ui-color-pri: #BFD8D1;
+  --ui-color-sec: #FFDC00;
+  --ui-color-ter: #6E7A94;
+}
+
+body {
+  background-color: var(--bg-color-tri) !important;
+}
+
+li.ui-tabs-active,
+li.mobTab:first-child {
+  box-shadow: none !important;
+}
+
+#tabUl,
+#tabs {
+  background: none;
+  border-radius: 0;
+}
+
+li.mobTab {
+  background-color: var(--bg-color-sec) !important;
+}
+
+h1, h2, p.ui {
   color: var(--ui-color-pri) !important;
 }
 
 p.dialog > a:link {
-  color: var(--ui-color-pri) !important;
+  color: var(--color-pri) !important;
 }
 
 p.dialog > a:visited {
-  color: var(--ui-color-pri) !important;
+  color: var(--color-pri) !important;
 }
 
 select {
@@ -28,26 +54,18 @@ fieldset > p {
 }
 
 fieldset a:link {
-  color:            #BFD8D1;
+  color: var(--ui-color-pri);
 }
 
 fieldset a:visited {
-  color:            #6E7A94;
-}
-
-p, label {
-  font-size:12pt;
-  font-family: 'ArimaKoshiRegular';
-  font-weight: normal;
-  font-style: normal;
-  line-height: 1.2em;
-  color:            #FFD05B;
+  color: var(--ui-color-ter);
 }
 
 fieldset,
 legend {
-  background-color: var(--ui-bg-color-pri) !important;
-  color:            #BFD8D1 !important;
+  background: var(--ui-bg-color-pri) !important;
+  /* background-color: var(--bg-color-pri) !important; */
+  color: var(--ui-color-pri);
   /* font-size:76% !important; */
 }
 
@@ -56,7 +74,7 @@ legend {
 }
 
 fieldset {
-  border: 1px solid #BFD8D1 !important;
+  /* border: 1px solid #BFD8D1 !important; */
   /* font-size:76% !important; */
 }
 
@@ -74,7 +92,6 @@ fieldset {
   width: 1%;
   height: 2px;
 }
-
 
 #menu {
   /* border-right: #2e2e2e solid 1px; */
@@ -120,8 +137,8 @@ fieldset {
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
-  background-color: #2B374B !important;
-  color: var(--ui-color-pri) !important;
+  background-color: var(--ui-bg-color-pri);
+  /* color: var(--ui-color-pri) !important; */
 }
 
 button#profile,
@@ -135,11 +152,12 @@ button#donate {
 
 .handle {
   opacity: 0.6;
+  color: var(--ui-color-sec) !important;
 }
 
 .handle:hover {
   opacity: 1;
-  color:            #FFDC00 !important;
+  color: var(--ui-color-sec) !important;
 }
 
 .ui-button:active,
@@ -151,7 +169,7 @@ button#donate {
 .ui-state-active,
 .ui-state-hover {
   background-color: #FFD05B !important;
-  color: #001F3F !important;
+  color: var(--ui-bg-color-pri);
 }
 
 .ui-state-success {
@@ -175,7 +193,6 @@ button#donate {
 #tabs .newFeed,
 #menu > .handle {
   font-size: 2rem;
-  background-color: #001F3F;
   position:absolute;
 }
 
@@ -399,12 +416,12 @@ div.testFlex {
 
 button.dangerous:hover {
   /* border-color: #2B374B !important; */
-  background-color: var(--ui-color-danger) !important;
-  color: var(--ui-color-pri) !important;
+  background-color: var(--color-danger) !important;
+  color: var(--color-pri) !important;
 }
 
 i.dangerous:hover {
-  color: var(--ui-color-danger) !important;
+  color: var(--color-danger) !important;
   /* color: #2B374B !important; */
 }
 
@@ -513,7 +530,7 @@ button > i {
 
   display: flex;
   text-align:right;
-  background-color: var(--ui-bg-color-sec) !important;
+  background-color: var(--bg-color-sec) !important;
   /* padding:.2rem; */
 
   /* min-width:80px; */
@@ -542,8 +559,8 @@ button > i {
   width: 0;
   top: 0;
   left: 0;
-  border-bottom: 26px solid var(--ui-bg-color-pri);
-  border-right: 18px solid var(--ui-bg-color-sec);
+  border-bottom: 26px solid var(--bg-color-pri);
+  border-right: 18px solid var(--bg-color-sec);
 }
 
 .mobHeader .feedControls div {
@@ -561,4 +578,105 @@ button > i {
 
 .mobHeader .feedControls div i.ui-button:first-child {
   margin: 0 !important;
+}
+
+/* From night */
+
+#tabUl,
+#tabs {
+  background: none;
+  border-radius: 0;
+}
+
+li.mobTab,
+#newTabButton {
+  box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
+}
+
+#newTabButton {
+  background-color: var(--color-qua);
+}
+
+.handle:hover {
+  opacity: 1;
+  color: var(--color-tri);
+}
+
+#newTabButton:hover {
+  background-color: var(--bg-color-pri) !important;
+  box-shadow: none !important;
+}
+
+li.ui-tabs-active,
+div.ui-tabs-panel {
+  background-color: var(--bg-color-tri) !important;
+}
+
+li.ui-state-hover:not(.ui-tabs-active) {
+  background-color: var(--bg-color-pri) !important;
+}
+
+.ui-state-error {
+  background-color: var(--bg-color-pri) !important;
+  color: var(--color-danger);
+}
+
+i.tabCloser,
+li.ui-tabs-active a:link {
+  color: var(--color-pri) !important;
+}
+
+i.tabCloser,
+li.ui-tabs-tab a:link {
+  color: var(--color-pri) !important;
+}
+
+i.tabCloser:hover {
+  color: var(--color-danger);
+}
+
+li.feed {
+  background-color: var(--bg-color-pri) !important;
+  color: var(--color-pri) !important;
+}
+
+li.feed a {
+  color: var(--color-pri) !important;
+}
+
+.mobHeader {
+  background-color: var(--bg-color-pri);
+  color: var(--color-pri);
+}
+
+li.feedItem {
+  background-color: var(--bg-color-sec) !important;
+}
+
+li.feedItem:nth-child(even) {
+  background-color: var(--bg-color-qua) !important;
+}
+
+li.feedItem:hover {
+  background-color: var(--bg-color-pri) !important;
+  color: #000 !important;
+}
+
+li.feedItem a:visited {
+  color: var(--color-sec);
+}
+
+#progressBar > #cursor {
+  width: 1%;
+  height: 2px;
+  background-color: var(--color-sec);
+  box-shadow: 0px 0px 6px 5px rgba(227,239,243,.2);
+}
+
+.fancybox-thumbs {
+  background-color: var(--bg-color-qua) !important;
+}
+
+.arrow {
+  background-image: url("/static/images/feed-toggle-triangle-fff.png") !important;
 }
