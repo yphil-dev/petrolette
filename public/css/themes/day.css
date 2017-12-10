@@ -1,11 +1,15 @@
 :root {
-  --bg-color-tri: #DDE0FA;
-  --bg-color-qua: #e3eff3;
   --bg-color-pri: #C3DCD9;
   --bg-color-sec: #eeeeee;
+  --bg-color-ter: #DDE0FA;
+  --bg-color-qua: #e3eff3;
   --color-pri: #3C4440;
   --color-sec: #5294E2;
   --color-tri: #FFDC00;
-  --color-qua: #DDE0FA;
+  --color-qua: #7395AE;
   --color-danger: #660000;
+}
+
+.arrow {
+  background-image: url("/static/images/feed-toggle-triangle-000.png") !important;
 }
