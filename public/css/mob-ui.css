@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: var(--bg-color-tri) !important;
+  background-color: var(--bg-color-ter) !important;
 }
 
 li.ui-tabs-active,
@@ -150,16 +150,6 @@ button#donate {
   margin: 0 !important;
 }
 
-.handle {
-  opacity: 0.6;
-  color: var(--ui-color-sec) !important;
-}
-
-.handle:hover {
-  opacity: 1;
-  color: var(--ui-color-sec) !important;
-}
-
 .ui-button:active,
 .ui-button.ui-state-active:hover {
   background-color: #FFD05B !important;
@@ -213,10 +203,6 @@ button#donate {
 
 #menu {
   animation: fadeIn ease 6s;
-}
-
-#newTabButton:hover {
-  color: #FFDC00 !important;
 }
 
 @keyframes fadeIn {
@@ -530,7 +516,7 @@ button > i {
 
   display: flex;
   text-align:right;
-  background-color: var(--bg-color-sec) !important;
+  background-color: var(--color-qua) !important;
   /* padding:.2rem; */
 
   /* min-width:80px; */
@@ -560,11 +546,11 @@ button > i {
   top: 0;
   left: 0;
   border-bottom: 26px solid var(--bg-color-pri);
-  border-right: 18px solid var(--bg-color-sec);
+  border-right: 24px solid var(--color-qua);
 }
 
 .mobHeader .feedControls div {
-  margin:1px 1px 1px 0;
+  margin: 1px 1px 1px 0;
   flex: 1 100%;
 }
 
@@ -588,32 +574,45 @@ button > i {
   border-radius: 0;
 }
 
-li.mobTab,
-#newTabButton {
-  box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
+.handle {
+  opacity: 0.6;
+}
+
+#newTabButton:hover,
+.handle:hover {
+  opacity: 1;
+  color: var(--ui-color-sec) !important;
+}
+
+.handle,
+#newTabButton a:link {
+  color: var(--ui-color-sec) !important;
 }
 
 #newTabButton {
   background-color: var(--color-qua);
 }
 
-.handle:hover {
-  opacity: 1;
-  color: var(--color-tri);
+#newTabButton:hover {
+  box-shadow: none !important;
 }
 
-#newTabButton:hover {
-  background-color: var(--bg-color-pri) !important;
-  box-shadow: none !important;
+#newTabButton a:hover {
+  background-color: var(--ui-bg-color-pri);
+}
+
+li.mobTab,
+#newTabButton {
+  box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
 }
 
 li.ui-tabs-active,
 div.ui-tabs-panel {
-  background-color: var(--bg-color-tri) !important;
+  background-color: var(--bg-color-ter) !important;
 }
 
 li.ui-state-hover:not(.ui-tabs-active) {
-  background-color: var(--bg-color-pri) !important;
+  background-color: var(--bg-color-ter) !important;
 }
 
 .ui-state-error {
@@ -675,8 +674,4 @@ li.feedItem a:visited {
 
 .fancybox-thumbs {
   background-color: var(--bg-color-qua) !important;
-}
-
-.arrow {
-  background-image: url("/static/images/feed-toggle-triangle-fff.png") !important;
 }
