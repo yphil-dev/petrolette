@@ -539,13 +539,17 @@ button > i {
   margin:0;
 }
 
+.mobHeader .feedControls .controlsToggle:hover {
+  background-color: var(--color-qua) !important;
+}
+
 .mobHeader .feedControls .controlsToggle:before {
   content: '';
   position: absolute;
   width: 0;
   top: 0;
   left: 0;
-  border-bottom: 26px solid var(--bg-color-pri);
+  border-bottom: 52px solid var(--bg-color-pri);
   border-right: 24px solid var(--color-qua);
 }
 
