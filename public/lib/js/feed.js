@@ -85,8 +85,8 @@ MOB.feed = {
     $controlsToggleDiv.click(function() {
       console.log('click: (%s)', $(this).parent().attr('class'));
       // $(this).parent().animate({'left': '0'}, 1000);
+      // $('.feedControls').removeClass('openControls');
       $(this).parent().toggleClass('openControls');
-
     });
 
     $header.hover (
