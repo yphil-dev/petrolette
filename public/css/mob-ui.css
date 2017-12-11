@@ -501,6 +501,7 @@ button > i {
 
   max-height: var(--var-header-height);
   display: flex;
+  align-content: stretch;
   padding:0;
   overflow: hidden;
 }
@@ -515,6 +516,7 @@ button > i {
 }
 
 .mobHeader .feedTitle {
+  width:100%;
   flex: 3 3 auto;
   margin: .2rem;
 }
