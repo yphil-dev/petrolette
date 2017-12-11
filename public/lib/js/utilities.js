@@ -190,6 +190,9 @@ MOB.utilities = {
       this.progressContainer = $('<div id="progressBar">' );
       this.progressElt = $('<div id="cursor">' );
 
+      this.radialLoader = $('#loadRadial');
+      this.radialLoaderLabel = $('#loadRadial > span');
+
       this.progressContainer.append( this.progressElt );
       $('body').prepend(this.progressContainer);
       this.steps = steps;
@@ -197,17 +200,22 @@ MOB.utilities = {
     };
     progress.increment = function() {
 
+      this.radialLoader.attr('class', 'c100 small green dark p' + Math.ceil(100 * this.step / this.steps));
+
+      this.radialLoaderLabel.text(Math.ceil(100 * this.step / this.steps) + '%');
+
       this.progressElt.animate({
-        width: Math.ceil(100 * (this.step + 1) / this.steps) + '%'
+        width: Math.ceil(100 * this.step / this.steps) + '%'
         // ,'background-color': randomColor
       });
       this.step++;
-      if (this.step + 1 >= this.steps) this.finish();
+      if (this.step >= this.steps) this.finish();
 
     };
     progress.finish = function() {
       var self = this;
       self.progressContainer.hide('fast');
+      self.radialLoader.fadeOut('fast');
     };
     progress.stop = function() {
       this.progressElt.removeClass( 'progress-bar-striped active' );
