@@ -278,14 +278,6 @@ div.wiki i:hover {
   color: green;
 }
 
-.arrow {
-  background-image: url("/static/images/feed-toggle-triangle-000.png") !important;
-}
-
-.generic {
-  background-image: url("/static/images/feed-generic-rss.png") !important;
-}
-
 i.feedIcon {
   background-image:url("/static/images/feed-generic-rss.png");
 }
