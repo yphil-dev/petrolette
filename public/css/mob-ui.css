@@ -417,11 +417,6 @@ i.dangerous:hover {
   /* top: 50%; */
 }
 
-.arrow {
-  background-image: url("/static/images/feed-toggle-triangle-000.png");
-}
-
-
 #tabs {
   white-space: nowrap;
   overflow: hidden;

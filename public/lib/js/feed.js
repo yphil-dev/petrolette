@@ -39,28 +39,28 @@ MOB.feed = {
     $feedToggle.click(function() {
       $(this).toggleClass("down");
       $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
-      return false;
+      // return false;
     });
 
     $feedSelect.click(function() {
       $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
       $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1');
-      return false;
+      // return false;
     });
 
     $feedDelete.click(function() {
       MOB.dialog.killFeed($(this));
-      return false;
+      // return false;
     });
 
     $feedPrefs.click(function() {
       MOB.dialog.feedPrefs($(this));
-      return false;
+      // return false;
     });
 
     $feedReload.click(function() {
       MOB.feed.populate($(this), progress);
-      return false;
+      // return false;
     });
 
     var $feedBody = $('<div>')
@@ -83,10 +83,9 @@ MOB.feed = {
     $feedToggle.appendTo($toggleDiv);
 
     $controlsToggleDiv.click(function() {
-      console.log('click: (%s)', $(this).parent().attr('class'));
-      // $(this).parent().animate({'left': '0'}, 1000);
-      // $('.feedControls').removeClass('openControls');
-      $(this).parent().toggleClass('openControls');
+      var $controls = $(this).parent();
+      $('.feedControls').not($controls).removeClass('openControls');
+      $controls.toggleClass('openControls');
     });
 
     $header.hover (
