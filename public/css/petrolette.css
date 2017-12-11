@@ -284,8 +284,8 @@ i.feedIcon {
 
 #loadRadial {
   position:fixed;
-  right:50%;
-  bottom:10px;
+  right:3vw;
+  bottom:5vh;
   opacity:0.5;
 }
 
