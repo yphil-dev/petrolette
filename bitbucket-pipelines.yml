@@ -6,4 +6,4 @@ pipelines:
     - step:
         script:
           - npm install
-          - ssh <user>@<server> ls -l ~/
+          - ssh $user@$server ls -l ~/
