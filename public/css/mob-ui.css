@@ -6,6 +6,7 @@
   --var-header-height: 26px;
   --var-controls-width: 150px;
   --var-controls-font-size: 16pt;
+  --var-controls-toggle-size: 18pt;
 }
 
 
@@ -14,6 +15,7 @@
     --var-header-height: 42px;
     --var-controls-width: 75%;
     --var-controls-font-size: 26pt;
+    --var-controls-toggle-size: 28pt;
 
     --var-width: red;
   }
@@ -537,6 +539,10 @@ button > i {
   transition: left 200ms ease 0ms;
 }
 
+.mobHeader .feedControls .controlsToggle:hover {
+  color: var(--color-ter) !important;
+}
+
 .openControls {
   left:0 !important;
 }
@@ -551,7 +557,7 @@ button > i {
   height:var(--var-header-height);
   background-color: var(--color-qua) !important;
   margin: 0 5px 0 0;
-  font-size: var(--var-controls-font-size);
+  font-size: var(--var-controls-toggle-size);
   text-align: center;
 }
 
@@ -596,7 +602,7 @@ button > i {
 
 .handle,
 #newTabButton a:link {
-  color: var(--ui-color-sec) !important;
+  color: var(--color-pri) !important;
 }
 
 #newTabButton {
@@ -611,10 +617,12 @@ button > i {
   padding:0;
   background-color: var(--color-qua);
   width: 100%;
+  color: var(--color-pri) !important;
 }
 
 #newTabButton a:hover {
   background-color: var(--ui-bg-color-pri);
+  color: var(--color-ter);
 }
 
 li.mobTab,
