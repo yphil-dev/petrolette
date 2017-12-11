@@ -548,10 +548,9 @@ button > i {
 .mobHeader .feedControls .controlsToggle {
   position:relative;
   display: inline-block;
-  width:24px;
   height:var(--var-header-height);
   background-color: var(--color-qua) !important;
-  margin:0;
+  margin: 0 5px 0 0;
   font-size: var(--var-controls-font-size);
   text-align: center;
 }
