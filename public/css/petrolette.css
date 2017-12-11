@@ -281,3 +281,15 @@ div.wiki i:hover {
 i.feedIcon {
   background-image:url("/static/images/feed-generic-rss.png");
 }
+
+#loadRadial {
+  position:fixed;
+  right:50%;
+  bottom:10px;
+  opacity:0.5;
+}
+
+#loadRadial .fill,
+#loadRadial .bar {
+  border-color: var(--color-qua) !important;
+}
