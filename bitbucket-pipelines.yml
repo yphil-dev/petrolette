@@ -5,5 +5,4 @@ pipelines:
   default:
     - step:
         script:
-          - npm install
-          - ssh $user@$server ls -l ~/
+          - npm version
