@@ -1,0 +1,195 @@
+<div class="handle ui-corner-right" title="Preferences">
+  <i class="icon-right-open rotate"></i>
+</div>
+
+<div id="logo">
+  <i class="petrolette logoItem icon-motorcycle" aria-hidden="true"></i>
+  <h1 class="logoItem">Petrolette</h1>
+</div>
+
+<form>
+  <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+    <legend id="languageLegend"
+            class="ui-corner-top translate"
+            data-content="Language">
+      Language
+    </legend>
+
+    <select id="language"
+            class="unique translate"
+            name="language"
+            data-title="Language"
+            title="Language">
+      <option id="optionEnglish" class="translate" data-content="English" selected="selected" value="en"></option>
+      <option id="optionFrench" class="translate" data-content="Français" value="fr"></option>
+      <option id="optionJapanese" class="translate" data-content="日本語" value="ja"></option>
+      <option id="optionSpanish" class="translate" data-content="Español" value="es"></option>
+    </select>
+
+  </fieldset>
+
+  <fieldset class="ui-widget ui-widget-content ui-corner-all">
+    <legend id="tabsLegend"
+            class="ui-corner-top translate"
+            data-content="Tabs">Tabs</legend>
+
+    <div class="flexBox">
+      <input id="fileImport"
+             type="file"
+             style="display: none;" />
+      <button id="fileImport"
+              class="grow translate"
+              data-title="Open / import tabs and sources"
+              data-content="Open">
+        Load
+      </button>
+      <button id="saveTabs"
+              class="grow translate last"
+              data-title="Save / Export tabs and sources"
+              data-content="Save">
+        Save
+      </button>
+    </div>
+    <div class="flexBox">
+
+      <input class="checkboxradio ui-helper-hidden" type="checkbox" name="tabDropActivate" id="tabDropActivate">
+      <label id="dropTabLabel"
+             class="translate last"
+             for="tabDropActivate"
+             data-title="If this is set, when you drag & drop one or more source(s) in a tab, said tab opens"
+             title="If this is set, when you drag & drop one or more source(s) in a tab, said tab opens"
+             data-content="Open tab on source drop">
+        Open tab on source drop
+      </label>
+    </div>
+
+  </fieldset>
+
+  <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+    <legend id="themeLegend"
+            class="ui-corner-top translate"
+            data-content="Theme">
+      Theme
+    </legend>
+
+    <div id="themeBox"
+         class="flexBox">
+
+      <label id="dayLabel"
+             class="bottom translate"
+             for="day"
+             data-title="Day theme"
+             title="Day theme"
+             data-content="Day">
+        Day
+      </label>
+      <input id="day" class="themeSwitcher checkboxradio" type="radio" name="radio-1" value="day">
+
+      <label id="nightLabel"
+             class="bottom translate last"
+             for="night"
+             data-title="Night theme"
+             title="Night theme"
+             data-content="Night">
+        Night
+      </label>
+      <input id="night" class="themeSwitcher checkboxradio noBottom" type="radio" name="radio-1" value="night">
+
+    </div>
+  </fieldset>
+
+  <fieldset id="galleryBox"
+            class="menuForm ui-widget ui-widget-content ui-corner-all">
+
+    <legend id="imageGalleryLegend"
+            class="ui-corner-top translate"
+            data-content="Image gallery">Image gallery</legend>
+
+    <label class="ui-helper-hidden" for="gallerySlideshowSpeedValue"></label>
+    <span id="gallerySlideshowSpeedValue" class="twin"></span>
+    <div id="gallerySlideshowSpeed"></div>
+
+    <div class="flexBox">
+      <div class="grow">
+        <label for="gallerySpeed" class="ui-helper-hidden">
+          <input type="text" id="gallerySpeed" />
+        </label>
+        <div id="gallerySpeedSlider"
+             data-title="Slideshow speed"
+             class="translate">
+        </div>
+      </div>
+      <label for="spinner" class="ui-helper-hidden">Select a value:</label>
+      <input id="gallerySpeedSpinner"
+             data-title="Slideshow speed"
+             class="translate"
+             name="value">
+    </div>
+
+    <select id="gallerySlideTransition"
+            class="unique translate"
+            data-title="Slide transition">
+      <option class="translate"
+              data-content="None"
+              value="false">None</option>
+      <option class="translate"
+              data-content="Fade"
+              value="fade">Fade</option>
+      <option class="translate"
+              data-content="Slide"
+              value="slide">Slide</option>
+      <option class="translate"
+              data-content="Circular"
+              value="circular">Circular</option>
+      <option class="translate"
+              data-content="Tube"
+              value="tube">Tube</option>
+      <option class="translate"
+              data-content="Zoom"
+              value="zoom-in-out">Zoom-in-out</option>
+      <option class="translate"
+              data-content="Rotate"
+              value="rotate">Rotate</option>
+    </select>
+
+  </fieldset>
+
+  <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+    <legend id="helpLegend"
+            data-content="Help"
+            class="ui-corner-top translate">
+      Help
+    </legend>
+
+    <div class="flexBox">
+      <button id="help"
+              data-title="Help"
+              title="Help"
+              class="unique translate">
+        <i class="icon-motorcycle"></i>
+        <span class="translate"
+              data-content="Petrolette?">Petrolette?</span>
+      </button>
+
+      <button id="profile"
+              class="grow icon-police translate"
+              data-content="Profile"
+              data-title="Forgot what you are? Reset Petrolette tabs & sources">
+        Profil
+      </button>
+
+      <button id="donate"
+              class="grow icon-heartbeat translate last"
+              data-title="Petrolette (really) needs your help"
+              data-content="Donate">
+        Donate
+      </button>
+    </div>
+
+  </fieldset>
+
+  <fieldset id="mobNotify" class="ui-widget ui-widget-content ui-corner-all">
+    <legend class="ui-corner-top">Notifications</legend>
+    <p></p>
+  </fieldset>
+</form>

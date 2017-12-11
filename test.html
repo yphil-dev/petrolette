@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>NWS reboot</title>
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+        <link id="stylesheet" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+
+    <style>
+
+     ul {
+         list-style-type: none;
+         margin:0;
+         padding:0;
+     }
+
+     .tabSort li {
+         cursor:grab;
+         margin: 0 5px 5px 5px;
+         padding: 5px;
+         font-size: 1.2em;
+         width: 120px;
+     }
+
+     .chbox {
+         margin-right:10px;
+     }
+
+     .selected {
+         /* background:red !important; */
+     }
+
+     .hidden {
+         display:none;
+     }
+
+     .ui-tabs-panel {
+         padding:.4em .1em !important;
+     }
+
+     label { display:block; }
+     input.text { margin-bottom:12px; width:95%; padding: .4em; }
+     fieldset { padding:0; border:0; margin-top:25px; }
+
+     .small-button {
+         font-size: .2em !important;
+         margin:0;
+         /* display: table-cell; */
+         vertical-align: top;
+     }
+
+    </style>
+
+    <script>
+
+     var tabList =
+         [{"name":"plop",
+           "feeds":[
+               {"url":"//url9","type":"photo","limit":16},
+               {"url":"//url1","type":"photo","limit":16},
+               {"url":"//url3","type":"text","limit":16}
+           ]},
+          {"name":"plip",
+           "feeds": [
+               {"url":"//url5","type":"text","limit": 12},
+               {"url":"//url4","type":"mixed","limit": 8}
+           ]},
+          {"name":"plup",
+           "feeds": [
+               {"url":"//url50","type":"text","limit": 12},
+               {"url":"//url14","type":"mixed","limit": 8}
+           ]}
+         ];
+
+     $(document).ready(function() {
+
+         function newFeed($tab, url, type, limit) {
+
+             var $chbox = $('<input class="chbox" type="checkbox" />');
+
+             var $feedToggle = $('<button class="feedToggle small-button"><span class="ui-icon ui-icon-triangle-1-s"></span></button>');
+
+             var $li = $('<li class="feed ui-state-default" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '">' + url + '</li>')
+
+             $chbox.prependTo($li);
+             $feedToggle.prependTo($li);
+             $li.appendTo($tab);
+         }
+
+         function newTab(name, feeds) {
+
+             var tabIndex = $('#tabs ul').length;
+
+             if (!name) {
+                 var name = 'Tab ' + tabIndex;
+             }
+
+             var $thisSortable = $('<ul id="sortable' + tabIndex + '" class="tabSort"></ul>');
+
+             var $thisButton = $('<button class="addFeed">Add Feed</button>');
+
+             $thisButton.on( "click", function() {
+                 newFeed($(this).prev(), '//url100', 'photo', 8);
+             });
+
+             var $thisTabPane = $('<div class="tab" id="tab-' + tabIndex + '"></div>');
+
+             $thisSortable.on('click', 'input', function () {
+                 $(this).parent().toggleClass('selected ui-state-hover');
+             });
+
+             $thisSortable.sortable({
+                 revert:0,
+                 helper: function (e, item) { //create custom helper
+                     if (!item.hasClass('selected')) item.addClass('selected');
+                     // clone selected items before hiding
+                     var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
+                     //hide selected items
+                     item.siblings('.selected').addClass('hidden');
+                     var helper = $('<ul/>');
+                     return helper.append($elements);
+                 },
+                 start: function (e, ui) {
+                     var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
+                     //store the selected items to item being dragged
+                     ui.item.data('items', $elements);
+                 },
+                 update: function (e, ui) {
+                     //manually add the selected items before the one actually being dragged
+                     ui.item.before(ui.item.data('items'));
+                 },
+                 stop: function (e, ui) {
+                     //show the selected items after the operation
+                     ui.item.siblings('.selected').removeClass('hidden');
+                     //unselect since the operation is complete
+                     $('.selected').removeClass('selected ui-state-hover');
+                     $(this).find('input:checked').prop('checked',false);
+                 }
+             }).disableSelection();
+
+             $thisSortable.appendTo($thisTabPane);
+             $thisButton.appendTo($thisTabPane);
+             $thisTabPane.appendTo($tabs);
+
+             var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>')
+
+             var $thisTab = $('<li class="modal"></li>');
+
+             $thisTabLink.appendTo($thisTab);
+
+             var $thisSelectedTab = $("#tabs div.ui-tabs-panel:not(.ui-tabs-hide)");
+
+             $thisTab.droppable({
+                 accept: "ul, .tabSort li",
+                 hoverClass: "ui-state-hover",
+                 drop: function (event, ui) {
+                     var $item = $(this);
+                     var $index = $( "li" ).index( this );
+                     console.log('elt: ' + $index);
+                     var $elements = ui.draggable.data('items');
+                     var $list = $($item.find("a").attr("href"))
+                         .find(".tabSort");
+                     $elements.show().hide('slow');
+                     ui.draggable.show().hide("slow", function () {
+
+                         if ($('#tabDropActivate').prop('checked')) {
+                             $tabs.tabs("option", "active", $index);
+                         }
+
+                         $(this).appendTo($list).show("slow").before($elements.show("slow"));
+                     });
+                 }
+             }).appendTo('#tabs ul#theTabs');
+
+             if(typeof feeds != 'undefined') {
+                 feeds.forEach(function(feed) {
+                     newFeed($('#tab-' + tabIndex + ' ul'), feed.url, feed.type, feed.limit);
+                 });
+             };
+
+             $tabs.tabs('refresh');
+             $tabs.tabs( "option", "active", tabIndex - 1);
+             tabIndex++;
+         }
+
+         var $tabs = $("#tabs").tabs({
+             heightStyle: "fill"
+         });
+
+         tabList.forEach(function(tab) {
+             newTab(tab.name, tab.feeds);
+         });
+
+         $('#addTab').click(function () {
+             newTab();
+         });
+
+         $('#saveTabs').click(function () {
+             var myTabs = [];
+
+             $( '#theTabs li' ).each(function(i) {
+                 var myFeeds = [];
+                 var myTab = {};
+
+                 myTab["name"] = $(this).children().text();
+
+                 // myTabs
+                 $($(this).children().attr('href') + ' ul li').each(function(i) {
+                     var myFeed = {};
+                     myFeed["url"] = $(this).data('url');
+                     myFeed["type"] = $(this).data('type');
+                     myFeed["limit"] = $(this).data('limit');
+                     myFeeds.push(myFeed);
+                 });
+                 myTab["feeds"] = myFeeds;
+                 myTabs.push(myTab)
+             });
+             console.log(JSON.stringify(myTabs));
+         });
+
+         $tabs.find( ".ui-tabs-nav" ).sortable({
+             axis: "x",
+             stop: function() {
+                 $tabs.tabs( "refresh" );
+             }
+         });
+
+         $( "#opener" ).on( "click", function() {
+             $( "#tabDialog" ).dialog( "open" );
+         });
+
+         var spinner = $('#tabLimit').spinner();
+
+         $( ".widget input[type=submit], button" ).button();
+
+         $( ".radio" ).checkboxradio();
+
+         // $( "select" ).selectmenu();
+
+         $( '#tabDialog' ).dialog({
+             autoOpen: false,
+             resizable: false,
+             height: 'auto',
+             width: 400,
+             modal: true,
+             buttons: {
+                 Cancel: function() {
+                     $( this ).dialog( 'close' );
+                 },
+                 'OK': function() {
+                     $('#' + $(this).data('tabId')).text($('#tabName').val());
+                     $( this ).dialog( 'close' );
+                 }
+             },
+             open: function( event, ui ) {
+                 console.log('plop! ' + $(this).data('tabId'));
+                 $('#tabName').val($(this).data('tabName'));
+             }
+         });
+
+         $('#tabs').on('mouseup', '.ui-tabs-active', function(e){
+             e.preventDefault();
+             $( '#tabDialog' )
+                 .data('tabName', $(this).text())
+                 .data('tabId', $(this).children('a').prop('id'))
+                 .dialog('open');
+         });
+
+         $('#themes').change(function(){
+             $("#stylesheet").attr({href : $('#themes').find(":selected").val()});
+         });
+
+         //
+         //          $.get('https://stackoverflow.com/feeds/question/10943544', function(data) {
+         //              var $xml = $(data);
+         //              $xml.find("entry").each(function() {
+         //                  console.log('title: ' + $(this).find("title").text());
+         //
+         //                  var $this = $(this),
+         //                      item = {
+         //                          title: $this.find("title").text(),
+         //                          link: $this.find("link").text(),
+         //                          description: $this.find("description").text(),
+         //                          pubDate: $this.find("pubDate").text(),
+         //                          author: $this.find("author").text()
+         //                      }
+         //                  console.log('title: ' + item.title);
+         //              });
+         //          });
+         //          console.log('---- CONSOLE LOGGING OK ----');
+         //
+
+         console.log('---- CONSOLE LOGGING OK ----');
+
+         $.ajax({
+             url: 'http://localhost:3000?url=http://www.google.com'
+         }).done(function(data, status, obj) {
+             console.log('Ajax status: ' + status);
+             console.log('Ajax object: ' + obj);
+             console.log('Ajax data: ' + data);
+         }).always(function() {
+             console.log('This code will always run');
+         }).fail(function(data) {
+             switch (data.status) {
+                 case 500:
+                     alert('Server error');
+             }
+         });
+
+     });
+
+    </script>
+
+    <body>
+
+        <div id="tabs">
+            <ul id="theTabs"></ul>
+        </div>
+        <button id="addTab">Add Tab</button>
+        <button id="saveTabs">Save Tabs</button>
+        Activate tab on feed drop <input id="tabDropActivate" type="checkbox" value="">
+
+        <div class="wrapper">
+            <p>This example is designed to demonstrate usage of the <a href="http://dev.w3.org/html5/webstorage/">W3C Web Storage API</a>.</p>
+
+            <form>
+                <div>
+                    <label for="bgcolor">Choose background color:</label>
+                    <input class="color" id="bgcolor" value="FF0000">
+                </div>
+                <div>
+                    <label for="font">Choose font style:</label>
+                    <select id="font">
+                        <option value="'Open Sans Condensed', sans-serif" selected>Sans-serif</option>
+                        <option value="'Bitter', serif">Serif</option>
+                        <option value="'Ubuntu Mono'">Monospace</option>
+                    </select>
+                </div>
+            </form>
+
+            <footer></footer>
+        </div>
+
+        <div id="tabDialog" title="Rename tab">
+            <form>
+                <fieldset>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="tabName" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+
+
+                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
+        <select id="themes">
+            <option value="http://code.jquery.com/ui/1.10.4/themes/le-frog/jquery-ui.css">Le Frog</option>
+            <option value="http://code.jquery.com/ui/1.10.4/themes/start/jquery-ui.css">Start</option>
+            <option value="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">Smoothness</option>
+            <option value="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css">Redmond</option>
+            <option value="http://code.jquery.com/ui/1.10.4/themes/sunny/jquery-ui.css">Sunny</option>
+        </select>
+        <button id="opener">Open Dialog</button>
+
+    </body>
+    <script src="lib/js/jscolor/jscolor.js"></script>
+    <script src="lib/js/prefs.js"></script>
+</html>

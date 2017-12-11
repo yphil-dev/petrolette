@@ -1,0 +1,34 @@
+{
+  "name": "petrolette",
+  "version": "0.8.1",
+  "private": true,
+  "engines": {
+    "node": "8.5.0"
+  },
+  "scripts": {
+    "start": "pm2 start bin/www --watch --name petrolette",
+    "stop": "pm2 stop petrolette",
+    "postinstall": "bower install"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "bower": "^1.3.2",
+    "cookie-parser": "~1.4.3",
+    "cors": "2.8.4",
+    "debug": "~2.6.9",
+    "ejs": "^2.5.7",
+    "express": "~4.15.5",
+    "favicon": "0.0.2",
+    "feedparser": "2.2.2",
+    "feedrat": "0.1.30",
+    "find-favicon": "0.1.2",
+    "hyperquest": "2.1.2",
+    "jquery": "3.2.1",
+    "jquery-ui": "1.12.1",
+    "pm2": "2.8.0"
+  }
+}

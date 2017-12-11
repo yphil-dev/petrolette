@@ -1,0 +1,130 @@
+<div id="killDialog">
+  <p class="ui dialog-warning">
+    <img class="icon-warning" alt="Petrolette attention!" src="/static/images/icon-flamable.png"/>
+  </p>
+</div>
+
+<div id="questionDialog" title="Just answer the question">
+  <p class="ui">
+    Yo!
+  </p>
+</div>
+
+<div id="helpDialog" title="Petrolette">
+  <h1 class="translate"
+      data-title="What is Petrolette?"
+      data-content="What is Petrolette?">What is Petrolette?</h1>
+  <p class="translate ui"
+     data-title="Petrolette is your news reader. Find new sources, sort them in categories, you are on the in-ter-net."
+     data-content="Petrolette is your news reader. Find new sources, sort them in categories, you are on the in-ter-net.">
+    Petrolette is your news reader. Find new sources, sort them in categories, you are on the in-ter-net.
+  </p>
+  <h2 class="translate"
+      data-title="How do I use it?"
+      data-content="How do I use it?">How do I use it?</h2>
+  <p class="ui">
+    <span class="dialog translate"
+          data-content="Learn how to use">Learn how to use</span>
+    <button id="aide-un"
+            class="translate"
+            data-content="the tabs and the sources">
+      the tabs and the sources
+    </button>
+    <span class="dialog translate"
+          data-content="and Petrolette in general.">and Petrolette in general.</span>
+  </p>
+</div>
+
+<div id="renameTabDialog">
+  <form>
+    <fieldset class="prefsForm ui-widget ui-widget-content ui-corner-all">
+      <legend id="tabNameLegend"
+              class="ui-corner-top translate"
+              data-content="Tab name">Tab Name</legend>
+      <div class="flexBox">
+
+        <label for="tabName"
+               class="ui-helper-hidden">Name</label>
+        <input
+          name="name"
+          id="tabName"
+          value=""
+          class="ui-widget-content grow ui-corner-all" />
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div id="feedPrefs">
+  <form>
+    <fieldset class="ui-widget ui-widget-content ui-corner-all">
+      <legend data-title="Source Location (URL)"
+              data-content="Source Location (URL)"
+              class="ui-corner-top translate">Source Location (URL)</legend>
+
+      <div id="feedGuess" class="flexBox">
+        <input name="guess"
+               id="feedGuess"
+               placeholder="URL (https://reddit.com)"
+               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the source"
+               value=""
+               class="ui-widget-content grow ui-corner-all translate"
+               onclick="select()"
+               autofocus
+        />
+        <button id="feedGuess"
+                class="shrink"
+                type="button">
+          <i class="icon-flashlight"></i>
+        </button>
+      </div>
+
+    </fieldset>
+
+    <fieldset id="feedType" class="prefsForm ui-widget ui-widget-content ui-corner-all">
+
+      <legend data-title="Source Type"
+              data-content="Source Type"
+              class="ui-corner-top translate">Source Type
+      </legend>
+
+      <div id="feedTitle"
+           class="flexBox">
+        <label data-title="Mixed"
+               data-content="Mixed"
+               for="mixed"
+               class="translate">Mixed</label>
+        <input type="radio" name="radio-1" id="mixed">
+
+        <label data-title="Photo"
+               data-content="Photo"
+               class="translate"
+               for="photo">Photo</label>
+        <input type="radio" name="radio-1" id="photo">
+
+        <label data-title="Text"
+               data-content="Text"
+               class="last translate"
+               for="text" >Text</label>
+        <input type="radio" name="radio-1" id="text">
+      </div>
+    </fieldset>
+
+    <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
+      <legend data-content="Number of items"
+              class="ui-corner-top translate">Number of items</legend>
+      <div class="flexBox">
+        <div class="feedLimit grow">
+          <label for="feedLimit" class="ui-helper-hidden">
+            <input type="text" id="feedLimit" />
+          </label>
+          <div id="feedLimit"></div>
+        </div>
+        <label for="spinner" class="ui-helper-hidden">Select a value:</label>
+        <input id="feedLimitSpinner"
+               name="value">
+      </div>
+
+    </fieldset>
+  </form>
+</div>
