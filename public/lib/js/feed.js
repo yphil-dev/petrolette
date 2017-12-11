@@ -9,6 +9,11 @@ MOB.feed = {
         .data('title', 'Fold / unfold')
         .attr('title', MOB.tr('Fold / unfold'));
 
+    var $controlsToggle = $('<i>')
+        .attr('class', 'icon-left-open rotate')
+        .data('title', 'Fold / unfold')
+        .attr('title', MOB.tr('Fold / unfold'));
+
     var $feedSelect = $('<i>')
         .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
         .data('title', 'Select this source')
@@ -84,6 +89,10 @@ MOB.feed = {
 
     $controlsToggleDiv.click(function() {
       var $controls = $(this).parent();
+      var $controlsIcon = $(this).find('i');
+      // $controlsIcon.removeClass('icon-left-open').addClass('icon-right-open');
+      // $controlsIcon.toggleClass('right');
+
       $('.feedControls').not($controls).removeClass('openControls');
       $controls.toggleClass('openControls');
     });
@@ -123,6 +132,7 @@ MOB.feed = {
 
     $toggleDiv.appendTo($header);
     $titleDiv.appendTo($header);
+    $controlsToggle.appendTo($controlsToggleDiv);
     $controlsToggleDiv.appendTo($feedControls);
     $selectDiv.appendTo($feedControls);
     $deleteDiv.appendTo($feedControls);

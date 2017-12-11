@@ -3,6 +3,20 @@
   --ui-color-pri: #BFD8D1;
   --ui-color-sec: #FFDC00;
   --ui-color-ter: #6E7A94;
+  --var-header-height: 26px;
+  --var-controls-width: 150px;
+  --var-controls-font-size: 18pt;
+}
+
+
+@media screen and (max-width: 700px) {
+  :root {
+    --var-header-height: 42px;
+    --var-controls-width: 75%;
+    --var-controls-font-size: 26pt;
+
+    --var-width: red;
+  }
 }
 
 body {
@@ -481,9 +495,9 @@ button > i {
 .mobHeader {
   cursor:grab;
   /* min-height:20px; */
-  height:26px;
+  height: var(--var-header-height);
 
-  max-height:26px;
+  max-height: var(--var-header-height);
   display: flex;
   padding:0;
   overflow: hidden;
@@ -505,7 +519,8 @@ button > i {
 
 .mobHeader .feedControls {
   position:relative;
-  left:100px;
+  width: 200px;
+  left:160px;
 
   cursor:pointer;
 
@@ -526,26 +541,23 @@ button > i {
   left:0 !important;
 }
 
+.openControls i {
+  transform: rotate(180deg);
+}
+
 .mobHeader .feedControls .controlsToggle {
   position:relative;
   display: inline-block;
   width:24px;
-  height:26px;
+  height:var(--var-header-height);
+  background-color: var(--color-qua) !important;
   margin:0;
+  font-size: var(--var-controls-font-size);
+  text-align: center;
 }
 
 .mobHeader .feedControls .controlsToggle:hover {
-  background-color: var(--color-qua) !important;
-}
-
-.mobHeader .feedControls .controlsToggle:before {
-  content: '';
-  position: absolute;
-  width: 0;
-  top: 0;
-  left: 0;
-  border-bottom: 52px solid var(--bg-color-pri);
-  border-right: 24px solid var(--color-qua);
+  background-color: var(--bg-color-pri);
 }
 
 .mobHeader .feedControls div {
