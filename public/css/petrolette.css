@@ -290,11 +290,74 @@ i.feedIcon {
   position:fixed;
   right:3vw;
   bottom:5vh;
-  opacity:0.8;
+  opacity:0.8 ;
 }
 
 
 #loadRadial .fill,
 #loadRadial .bar {
   border-color: var(--color-qua) !important;
+}
+
+div#container {
+  width: 300px;
+  height: 50px;
+  min-width: 250px;
+  background-color: #aabb00;
+  margin:50px;
+}
+
+div#container > div#test {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+div#container > div#test > div {
+  border: 1px solid red;
+  background-color: #aaff00;
+
+  transition: all 2s;
+}
+
+div#container > div#test > div.icon {
+  flex-grow:0;
+  flex-shrink:1;
+  flex-basis:auto;
+}
+
+div#container > div#test > div.title {
+  flex-grow:4;
+  flex-shrink:1;
+  flex-basis:auto;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+div#container > div#test > div.toggler {
+  flex-grow:0;
+  flex-shrink:0;
+  flex-basis:auto;
+
+  cursor:pointer;
+
+}
+
+div#container > div#test > div.controls {
+  flex-grow:0;
+  flex-shrink:0;
+  flex-basis:0px;
+
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+.flexGrow {
+  flex-grow: 4 !important;
+  flex-shrink: 1 !important;
+  flex-basis:200px !important;
 }

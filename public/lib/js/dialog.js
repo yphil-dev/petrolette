@@ -301,7 +301,7 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 sources)', $a.text(), $selectedPanel.find('li.feed').length));
+          $dialog.children('p').append(MOB.tr('Really delete this group? (%1, %2 sources)', $a.text(), $selectedPanel.find('li.feed').length));
 
         }
       });
