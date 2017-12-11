@@ -5,7 +5,7 @@
   --ui-color-ter: #6E7A94;
   --var-header-height: 26px;
   --var-controls-width: 150px;
-  --var-controls-font-size: 18pt;
+  --var-controls-font-size: 16pt;
 }
 
 
@@ -565,7 +565,7 @@ button > i {
 }
 
 .feedControl {
-  font-size: 16pt !important;
+  font-size: var(--var-controls-font-size);
 }
 
 .mobHeader .ui-button {
@@ -600,11 +600,17 @@ button > i {
 }
 
 #newTabButton {
+  width: 40px;
   background-color: var(--color-qua);
+  text-align: center;
 }
 
-#newTabButton:hover {
-  box-shadow: none !important;
+#newTabButton a {
+  font-size: 21.2pt;
+  margin:0;
+  padding:0;
+  background-color: var(--color-qua);
+  width: 100%;
 }
 
 #newTabButton a:hover {

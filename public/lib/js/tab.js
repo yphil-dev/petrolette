@@ -71,7 +71,7 @@ MOB.tab = {
       return false;
     });
 
-    var $dummyTabLink = $('<a href="#">+</a>').bind('click', function(e){
+    var $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e){
       e.preventDefault();
       // return false;
     });
