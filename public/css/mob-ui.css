@@ -551,14 +551,10 @@ button > i {
   overflow:hidden;
 
   display: flex;
-  /* flex-direction:row; */
-
-  /* background-color: var(--color-qua) !important; */
 }
 
 .mobHeader .feedControls div {
   margin: 2px;
-  /* flex: 1 100%; */
 }
 
 .feedControl {
