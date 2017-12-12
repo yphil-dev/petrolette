@@ -79,6 +79,8 @@ MOB.feed = {
     var $header = $('<div class="mobHeader ui-widget-header">');
     var $toggleDiv = $('<div class="feedToggle">');
     var $controlsToggleDiv = $('<div class="controlsToggle">');
+    var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
+
     var $selectDiv = $('<div class="feedSelect">').button();
     var $deleteDiv = $('<div class="feedDelete">').button();
     var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
@@ -95,6 +97,18 @@ MOB.feed = {
 
       $('.feedControls').not($controls).removeClass('openControls');
       $controls.toggleClass('openControls');
+    });
+
+
+    $myControlsToggleDiv.click(function() {
+
+      var $controls = $(this).next();
+
+      $('.feedControls').not($controls).removeClass('flexGrow');
+      $controls.toggleClass('flexGrow');
+
+      $(this).toggleClass('open');
+
     });
 
     $header.hover (
@@ -132,8 +146,11 @@ MOB.feed = {
 
     $toggleDiv.appendTo($header);
     $titleDiv.appendTo($header);
-    $controlsToggle.appendTo($controlsToggleDiv);
-    $controlsToggleDiv.appendTo($feedControls);
+
+    $controlsToggle.appendTo($myControlsToggleDiv);
+    $myControlsToggleDiv.appendTo($header);
+
+    // $controlsToggleDiv.appendTo($feedControls);
     $selectDiv.appendTo($feedControls);
     $deleteDiv.appendTo($feedControls);
     $prefsDiv.appendTo($feedControls);

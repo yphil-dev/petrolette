@@ -98,12 +98,6 @@
          MOB.dialog.killTab($(this));
        });
 
-       $('.toggler').click(function() {
-         var $controls = $(this).next();
-         console.log('yo! (%s)', $controls.text());
-         $controls.toggleClass('flexGrow')
-       });
-
 
        // INIT
 
@@ -156,15 +150,6 @@
     <div id="preloaded-images">
       <img src="/static/images/feed-toggle-triangle-fff.png" width="1" height="1" alt="Image 01" />
       <img src="/static/images/feed-toggle-triangle-000.png" width="1" height="1" alt="Image 02" />
-    </div>
-
-    <div id="container">
-      <div id="test">
-        <div class="icon">i</div>
-        <div class="title">title OMG this is a ducking looooong title</div>
-        <div class="toggler"><</div>
-        <div class="controls">controls</div>
-      </div>
     </div>
 
   </body>
