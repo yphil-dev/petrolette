@@ -81,24 +81,13 @@ MOB.feed = {
     var $controlsToggleDiv = $('<div class="controlsToggle">');
     var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
 
-    var $selectDiv = $('<div class="feedSelect">').button();
-    var $deleteDiv = $('<div class="feedDelete">').button();
+    var $selectDiv = $('<div class="feedSelect">');
+    var $deleteDiv = $('<div class="feedDelete">');
     var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
-    var $prefsDiv = $('<div class="prefs">').button();
-    var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">').button();
+    var $prefsDiv = $('<div class="prefs">');
+    var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
 
     $feedToggle.appendTo($toggleDiv);
-
-    $controlsToggleDiv.click(function() {
-      var $controls = $(this).parent();
-      var $controlsIcon = $(this).find('i');
-      // $controlsIcon.removeClass('icon-left-open').addClass('icon-right-open');
-      // $controlsIcon.toggleClass('right');
-
-      $('.feedControls').not($controls).removeClass('openControls');
-      $controls.toggleClass('openControls');
-    });
-
 
     $myControlsToggleDiv.click(function() {
 

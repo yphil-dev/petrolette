@@ -501,6 +501,7 @@ button > i {
 
   max-height: var(--var-header-height);
   display: flex;
+  flex-direction:row;
   /* align-content: stretch; */
   padding:0;
 }
@@ -547,48 +548,26 @@ button > i {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: 0px;
+  overflow:hidden;
 
-  white-space: nowrap;
-  overflow: hidden;
+  display: flex;
+  /* flex-direction:row; */
 
-  cursor:pointer;
-
-  background-color: var(--color-qua) !important;
-}
-
-.mobHeader .feedControls .controlsToggle:hover {
-  color: var(--color-ter) !important;
-}
-
-.openControls {
-  left:0 !important;
-}
-
-.openControls i {
-  transform: rotate(180deg);
-}
-
-.mobHeader .feedControls .controlsToggle {
-  position:relative;
-  display: inline-block;
-  height:var(--var-header-height);
-  background-color: var(--color-qua) !important;
-  margin: 0 5px 0 0;
-  font-size: var(--var-controls-toggle-size);
-  text-align: center;
-}
-
-.mobHeader .feedControls .controlsToggle:hover {
-  background-color: var(--bg-color-pri);
+  /* background-color: var(--color-qua) !important; */
 }
 
 .mobHeader .feedControls div {
-  margin: 1px 1px 1px 0;
-  flex: 1 100%;
+  margin: 2px;
+  /* flex: 1 100%; */
 }
 
 .feedControl {
+  cursor:pointer;
   font-size: var(--var-controls-font-size);
+}
+
+.feedControl:hover {
+  color: var(--ui-color-sec) !important;
 }
 
 .mobHeader .ui-button {
