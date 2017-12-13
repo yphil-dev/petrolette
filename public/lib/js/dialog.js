@@ -277,12 +277,19 @@ MOB.dialog = {
             class: "dangerous translate",
             click: function() {
 
+
               $selectedTab.remove();
               $selectedPanel.remove();
 
               MOB.tab.saveTabs();
               MOB.dialog.kill($dialog);
-              // $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+
+
+              if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+                $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+              } else {
+                console.error('Zero tabs!')
+              }
 
             }
           },

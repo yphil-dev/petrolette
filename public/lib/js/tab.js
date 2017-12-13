@@ -5,7 +5,10 @@ MOB.tab = {
   },
   populate:function(tabs, clickToRefresh) {
 
-    console.log('POPTABS: (%s)', $('div#tabs').length);
+
+    // if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+    // }
+
 
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
