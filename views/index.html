@@ -101,8 +101,15 @@
 
        // INIT
 
-       MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+       console.log('TABS: (%s)', $.parseJSON(MOB.prefs.readConfig('tabs')).length)
 
+       MOB.tab.makeNewTabButton($tabs);
+
+       if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+         MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+       } else {
+         console.error('Zero tabs!')
+       }
        // $tabs.find('div.feedControls').slideUp();
 
      });
@@ -150,6 +157,7 @@
     <div id="preloaded-images">
       <img src="/static/images/feed-toggle-triangle-fff.png" width="1" height="1" alt="Image 01" />
       <img src="/static/images/feed-toggle-triangle-000.png" width="1" height="1" alt="Image 02" />
+      <img src="/static/images/icon-flamable.png" width="1" height="1" alt="Image 03" />
     </div>
 
   </body>

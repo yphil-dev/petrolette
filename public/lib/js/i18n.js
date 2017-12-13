@@ -44,7 +44,7 @@ MOB.i18n.translations = {
   "In progress": { fr: "En cours", ja: "進行中" },
   "Manage": { fr: "Gérer", ja: "管理する" },
   "Mandatory field" : { fr: "Champ obligatoire", ja: "必須事項" },
-  "Name": { fr: "Nom", ja: "姓" },
+  "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
   "No" : { fr: "Non", ja: "いいえ" },
   "Ok": { fr: "Ok", ja: "Ok", es: "Ok" },
   "Search": { fr: "Rechercher", ja: "検索" },
@@ -160,6 +160,8 @@ MOB.i18n.translations = {
   "Image" : { fr: "Image", ja: "画像", es: "Imagen" },
   "Text" : { fr: "Texte", ja: "テキスト", es: "Texto" },
   "Number of items" : { fr: "Nombre de titres", ja: "タイトル数", es: "Cantidad de títulos" },
+  "Number of sources" : { fr: "Nombre de sources", ja: "ソース数", es: "Cantidad de fuentes" },
+
   "How many new items should the source display at a time?" : { fr: "Combien de nouveaux articles cette source peut-elle contenir?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el source a la vez?" },
   "Just answer the question" : { fr: "Répond juste à la question", ja: "ちょうど質問に答える", es: "Solo responde la pregunta" },
 
@@ -175,9 +177,11 @@ MOB.i18n.translations = {
   "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
   "Select this source" : { fr: "Sélectionner cette source", ja: "RSSフィードを選択", es: "Selecciona este source" },
   "Delete this source" : { fr: "Supprimer cette source", ja: "このRSSフィードを削除", es: "Eliminar este source rss" },
-  "Delete the [%1] group" : { fr: "Supprimer le groupe [%1]", ja: "サプリメント [%1]", es: "Eliminar este grupo [%1]" },
+  "Delete group" : { fr: "Supprimer groupe", ja: "グループを削除する", es: "Eliminar grupo" },
   "%1 | Click to rename, drag to re-order" : { fr: "%1 | Clic pour renommer, glisse pour ranger", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
   "Really delete this source? (%1)" : { fr: "Réellement supprimer cette source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
+  "Delete source" : { fr: "Supprimer source", ja: "本当にこのフィードを削除しますか", es: "Borraste source" },
+
   "Really delete this group? (%1, %2 sources)" : { fr: "Réellement supprimer ce groupe (%1, %2 sources) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta grupo? (%1, %2 sources)" },
 
   "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },

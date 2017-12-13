@@ -5,6 +5,8 @@ MOB.tab = {
   },
   populate:function(tabs, clickToRefresh) {
 
+    console.log('POPTABS: (%s)', $('div#tabs').length);
+
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
 

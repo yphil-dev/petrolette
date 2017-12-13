@@ -471,13 +471,44 @@ li.ui-droppable-hover a {
   border-radius: 0px !important;
 }
 
-img.icon-warning {
+img.warning {
   vertical-align:middle;
-  width:100px;
+  width:10em;
 }
 
 p.dialog-warning {
   font-size:26pt;
+}
+
+div.dialog {
+  display:flex;
+}
+
+div.dialog > div {
+  flex: 1 1 auto;
+}
+
+div.dialog > div.icon {
+  flex: 0 0 200px;
+}
+
+div.dialog > div.content {
+  padding: 0 0 0 .2em;
+  font-size:26pt;
+}
+
+div.dialog > div.content p {
+  margin:0 0 .5em 0;
+}
+
+div.dialog > div.content p.name {
+  font-size: .5em;
+  color: var(--ui-color-ter) !important;
+}
+
+div.dialog > div.content p.value {
+  font-size: .8em;
+  color: var(--ui-color-pri) !important;
 }
 
 /* Hacks & workarounds */
