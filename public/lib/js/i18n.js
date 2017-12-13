@@ -155,10 +155,11 @@ MOB.i18n.translations = {
   "Source: Parameters" : { fr: "Source: Paramètres", ja: "フィード：パラメータ", es: "Source: Parámetros" },
   "Source Type" : { fr: "Type de Source", ja: "フィードの種類", es: "Tipo de Source" },
   "What type of source? All text, all image, or mixed" : { fr: "Quel type de source? Tout le texte, toute l'image, ou les deux", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de source? Todo el texto, toda la imagen o mixto" },
-
   "Mixed" : { fr: "Mixte", ja: "混合", es: "Mezclado" },
   "Image" : { fr: "Image", ja: "画像", es: "Imagen" },
   "Text" : { fr: "Texte", ja: "テキスト", es: "Texto" },
+  "Collection" : { fr: "Collection", ja: "コレクション", es: "Colección" },
+
   "Number of items" : { fr: "Nombre de titres", ja: "タイトル数", es: "Cantidad de títulos" },
   "Number of sources" : { fr: "Nombre de sources", ja: "ソース数", es: "Cantidad de fuentes" },
 

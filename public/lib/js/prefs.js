@@ -35,6 +35,30 @@ MOB.prefs = (function() {
         }
       ];
 
+  var fascistTabListFr =
+      [
+        {"name":"Actu",
+         "feeds": [
+           {"url":"http://e00-elmundo.uecdn.es/rss/portada.xml",
+            "type":"mixed",
+            "limit": 12},
+           {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
+           {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4},
+           {"url":"https://www.reddit.com/.rss","type":"text","limit": 8}
+         ]
+        },
+        {"name":"Actu",
+         "feeds": [
+           {"url":"http://e00-elmundo.uecdn.es/rss/portada.xml",
+            "type":"mixed",
+            "limit": 12},
+           {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
+           {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4},
+           {"url":"https://www.reddit.com/.rss","type":"text","limit": 8}
+         ]
+        }
+      ];
+
   // var newTabList = jQuery.extend(true, {}, tabList);
 
   var defaults = {'gallerySlideTransition': 'fade',
@@ -45,7 +69,12 @@ MOB.prefs = (function() {
                   'explicitLang': false,
                   'tabs': JSON.stringify(tabList)};
 
+  var collections = {'rightFr': JSON.stringify(fascistTabListFr)};
+
   return {
+    collection:function(key) {
+      return collections[key];
+    },
     readConfig:function(key) {
 
       if(typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
@@ -54,25 +83,25 @@ MOB.prefs = (function() {
         return localStorage.getItem(key);
       }
 
-    },
-    writeConfig:function(key, val) {
-      $('#progressBar').fadeToggle('fast');
-      // $('#savingIcon').fadeToggle('fast');
-      localStorage.setItem(key, val);
-      // $('#savingIcon').fadeToggle('slow');
-      $('#progressBar').fadeToggle('slow');
-    },
-    exportConfig:function(data, fileName) {
-      var a = document.createElement("a");
-      document.body.appendChild(a);
-      a.style = "display: none";
-      var json = JSON.stringify(data, null, 2),
-          blop = new Blob([json], {type: "application/json"}),
-          url = window.URL.createObjectURL(blop);
-      a.href = url;
-      a.download = fileName;
-      a.click();
-      window.URL.revokeObjectURL(url);
-    }
+      },
+      writeConfig:function(key, val) {
+        $('#progressBar').fadeToggle('fast');
+        // $('#savingIcon').fadeToggle('fast');
+        localStorage.setItem(key, val);
+        // $('#savingIcon').fadeToggle('slow');
+        $('#progressBar').fadeToggle('slow');
+      },
+      exportConfig:function(data, fileName) {
+        var a = document.createElement("a");
+        document.body.appendChild(a);
+        a.style = "display: none";
+        var json = JSON.stringify(data, null, 2),
+            blop = new Blob([json], {type: "application/json"}),
+            url = window.URL.createObjectURL(blop);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      }
   };
 }());
