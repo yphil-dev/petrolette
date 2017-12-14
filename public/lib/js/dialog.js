@@ -35,9 +35,9 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          var $rightSources = $('<button>').text('I want right sources');
-          var $leftSources = $('<button>').text('I want left sources');
-          var $noSources = $('<button>').text('I want to reset everything');
+          var $rightSources = $('<button>').text('Add right sources');
+          var $leftSources = $('<button>').text('Add left sources');
+          var $noSources = $('<button>').text('Reset everything');
 
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 
