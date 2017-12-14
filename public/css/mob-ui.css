@@ -1,7 +1,7 @@
 :root {
   --ui-bg-color-pri: #2B374B;
   --ui-color-pri: #BFD8D1;
-  --ui-color-sec: #FFDC00;
+  --ui-color-sec: #01FF70;
   --ui-color-ter: #6E7A94;
   --var-header-height: 26px;
   --var-controls-width: 150px;
@@ -10,7 +10,8 @@
   --var-controls-flex-basis: 100px;
   --dialog-flex-direction: row;
 
-  --color-danger: #FF4136;
+  --bg-color-danger: #FF4136;
+  --color-danger: #000000;
 }
 
 @media screen and (max-width: 700px) {
@@ -443,12 +444,12 @@ div.testFlex {
 
 button.dangerous:hover {
   /* border-color: #2B374B !important; */
-  background-color: var(--color-danger) !important;
+  background-color: var(--bg-color-danger) !important;
   color: var(--color-pri) !important;
 }
 
 i.dangerous:hover {
-  color: var(--color-danger) !important;
+  color: var(--bg-color-danger) !important;
   /* color: #2B374B !important; */
 }
 
@@ -714,7 +715,7 @@ li.ui-state-hover:not(.ui-tabs-active) {
 
 .ui-state-error {
   background-color: var(--bg-color-pri) !important;
-  color: var(--color-danger);
+  color: var(--bg-color-danger);
 }
 
 i.tabCloser,
@@ -725,10 +726,6 @@ li.ui-tabs-active a:link {
 i.tabCloser,
 li.ui-tabs-tab a:link {
   color: var(--color-pri) !important;
-}
-
-i.tabCloser:hover {
-  color: var(--color-danger);
 }
 
 li.feed {
