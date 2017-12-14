@@ -40,6 +40,7 @@ MOB.dialog = {
 
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 
+
           $rightSources.click(function() {
             MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')));
           });
