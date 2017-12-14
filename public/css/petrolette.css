@@ -205,23 +205,6 @@ div.feedItem img.full {
     min-width:100%;
 }
 
-.feedIcon {
-  width: 18px;
-  height: 18px;
-  background-image: url("/static/images/feed-generic-rss.png");
-  background-size: 18px;
-  background-repeat: no-repeat;
-}
-
-.tabSort .ui-sortable-placeholder {
-    visibility: visible !important;
-    border: 3px dashed !important;
-}
-
-.feedToggle > .ui-icon {
-    margin: .1rem .2rem 0 .1rem;
-}
-
 li.feedItem {
     border:0 !important;
 }

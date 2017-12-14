@@ -41,7 +41,9 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
     $handle.click();
 
-    MOB.dialog.question(0);
+    MOB.dialog.collection();
+
+    // MOB.dialog.question(0);
   });
 
   $help.click(function (event) {

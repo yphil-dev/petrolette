@@ -36,11 +36,16 @@ MOB.dialog = {
           });
 
           var $rightSources = $('<button>').text('I want right sources');
+          var $noSources = $('<button>').text('I want to reset everything');
 
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 
           $rightSources.click(function() {
-              MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')));
+            MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')));
+          });
+
+          $noSources.click(function() {
+            MOB.tab.empty();
           });
 
           var $nameLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist'));
@@ -48,7 +53,8 @@ MOB.dialog = {
 
           $dialog.find('div.content')
             .append($nameLegend)
-            .append($nameValue);
+            .append($nameValue)
+            .append($noSources);
 
         }
       });
@@ -330,18 +336,17 @@ MOB.dialog = {
             class: "dangerous translate",
             click: function() {
 
-
               $selectedTab.remove();
               $selectedPanel.remove();
 
               MOB.tab.saveTabs();
               MOB.dialog.kill($dialog);
 
-
               if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
               } else {
-                console.error('Zero tabs!')
+                console.error('Zero tabs!');
+                $('#nothingButton').fadeIn('slow');
               }
 
             }

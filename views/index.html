@@ -118,7 +118,8 @@
        if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
          MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
        } else {
-         console.error('Zero tabs!')
+         console.error('Zero tabs!');
+         $('#nothingButton').fadeIn('slow');
        }
        // $tabs.find('div.feedControls').slideUp();
 
