@@ -10,7 +10,7 @@ MOB.feed = {
         .attr('title', MOB.tr('Fold / unfold'));
 
     var $controlsToggle = $('<i>')
-        .attr('class', 'icon-left-open rotate')
+        .attr('class', 'feedControl icon-left-open rotate')
         .data('title', 'Fold / unfold')
         .attr('title', MOB.tr('Fold / unfold'));
 

@@ -104,7 +104,7 @@
          MOB.dialog.killTab($(this));
        });
 
-       $('button#nothingButton').click(function() {
+       $('#nothingButton button').click(function() {
          MOB.dialog.collection();
        });
 
@@ -165,9 +165,9 @@
       </div>
     </div>
 
-    <div class="deadCenter">
-      <button id="nothingButton">
-        You have no content. <br/>
+    <div id="nothingButton" class="deadCenter hidden">
+      <button>
+        Whoops, no content! <br/>
         Click here to add some.
       </button>
     </div>
