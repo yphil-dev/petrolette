@@ -13,7 +13,7 @@ MOB.dialog = {
         title: MOB.tr('Collection'),
         autoOpen: false,
         closeOnEscape: true,
-        resizable: false,
+        resizable: true,
         height: 'auto',
         width: MOB.utilities.vWidth(),
         modal: true,
@@ -35,9 +35,8 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-
-
           var $rightSources = $('<button>').text('I want right sources');
+          var $leftSources = $('<button>').text('I want left sources');
           var $noSources = $('<button>').text('I want to reset everything');
 
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
@@ -46,18 +45,32 @@ MOB.dialog = {
             MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')));
           });
 
+          $leftSources.click(function() {
+            MOB.tab.populate(JSON.parse(MOB.prefs.collection('leftFr')));
+          });
+
           $noSources.click(function() {
             MOB.tab.empty();
+            $('#nothingButton').fadeIn('slow');
           });
 
 
-          var $nameLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist'));
-          var $nameValue = $('<p class="value">').html($rightSources);
+          var $rightLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist')),
+              $rightValue = $('<p class="value">').html($rightSources),
+
+              $leftLegend = $('<p class="name">').text(MOB.tr('I\'m a leftist')),
+              $leftValue = $('<p class="value">').html($leftSources),
+
+              $noLegend = $('<p class="name">').text(MOB.tr('I\'m fed up')),
+              $noValue = $('<p class="value">').html($noSources);
 
           $dialog.find('div.content')
-            .append($nameLegend)
-            .append($nameValue)
-            .append($noSources);
+            .append($rightLegend)
+            .append($rightValue)
+            .append($leftLegend)
+            .append($leftValue)
+            .append($noLegend)
+            .append($noValue);
 
         }
       });

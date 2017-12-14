@@ -1,15 +1,17 @@
 :root {
   --ui-bg-color-pri: #2B374B;
   --ui-color-pri: #BFD8D1;
-  --ui-color-sec: #FF4136;
+  --ui-color-sec: #FFDC00;
   --ui-color-ter: #6E7A94;
   --var-header-height: 26px;
   --var-controls-width: 150px;
   --var-controls-font-size: 16pt;
   --var-controls-toggle-size: 18px;
   --var-controls-flex-basis: 100px;
-}
+  --dialog-flex-direction: row;
 
+  --color-danger: #FF4136;
+}
 
 @media screen and (max-width: 700px) {
   :root {
@@ -19,6 +21,8 @@
     --var-controls-toggle-size: 28px;
 
     --var-controls-flex-basis: 160px;
+    --dialog-flex-direction: column;
+
   }
 }
 
@@ -503,6 +507,11 @@ p.dialog-warning {
 
 div.dialog {
   display:flex;
+  flex-direction: var(--dialog-flex-direction);
+}
+
+div.dialog div.content p.value button {
+  width: 100%;
 }
 
 div.dialog > div {
@@ -612,8 +621,6 @@ button > i {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
-  cursor: pointer;
-  font-size: var(--var-controls-font-size);
 }
 
 .mobHeader > .feedControls {
@@ -633,10 +640,6 @@ button > i {
 .feedControl {
   cursor:pointer;
   font-size: var(--var-controls-font-size);
-
-  &:hover {
-    color: var(--ui-color-sec) !important;
-  }
 
 }
 
