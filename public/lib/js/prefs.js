@@ -173,14 +173,10 @@ MOB.prefs = (function() {
       $loader.children('span').text('');
       $loader.fadeToggle('fast');
 
-      // $('#savingIcon').fadeToggle('fast');
       localStorage.setItem(key, val);
-      // $('#savingIcon').fadeToggle('slow');
       $loader.fadeToggle('slow');
 
-      // $('#loadRadial').attr('class', 'c100 small green dark p0');
-
-      },
+    },
       exportConfig:function(data, fileName) {
         var a = document.createElement("a");
         document.body.appendChild(a);
