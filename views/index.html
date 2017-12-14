@@ -7,6 +7,12 @@
 
     <link rel="icon" type="image/png" href="/static/images/petrolette.png" />
 
+    <link rel="preload" as="font" href="public/font/fontello.eot">
+    <link rel="preload" as="font" href="public/font/fontello.svg">
+    <link rel="preload" as="font" href="public/font/fontello.ttf">
+    <link rel="preload" as="font" href="public/font/fontello.woff">
+    <link rel="preload" as="font" href="public/font/fontello.woff2">
+
     <link rel="preload" as="style" href="/static/css/themes/day/jquery-ui.css">
     <link rel="preload" as="style" href="/static/css/fontello.css">
     <link rel="preload" as="style" href="/static/css/themes/day.css">
@@ -23,7 +29,7 @@
 
     <link rel="stylesheet" href="/static/css/circle.css">
 
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/>
+    <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/> -->
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/minified/introjs.min.css" />
     <!-- <link href="/bower/intro.js/themes/introjs-nassim.css" rel="stylesheet">
@@ -98,10 +104,23 @@
          MOB.dialog.killTab($(this));
        });
 
+       $('button#nothingButton').click(function() {
+         MOB.dialog.collection();
+       });
+
+
        // INIT
 
-       MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+       console.log('TABS: (%s)', $.parseJSON(MOB.prefs.readConfig('tabs')).length)
 
+       MOB.tab.makeNewTabButton($tabs);
+
+       if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+         MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+       } else {
+         console.error('Zero tabs!');
+         $('#nothingButton').fadeIn('slow');
+       }
        // $tabs.find('div.feedControls').slideUp();
 
      });
@@ -138,7 +157,7 @@
     <script src="/static/lib/js/dialog.js"></script>
     <script src="/static/lib/js/utilities.js"></script>
 
-    <div id="loadRadial" class="c100 small green dark p0">
+    <div id="loadRadial" class="c100 small green dark p0 hidden">
       <span>0%</span>
       <div class="slice">
         <div class="bar"></div>
@@ -146,9 +165,17 @@
       </div>
     </div>
 
+    <div class="deadCenter">
+      <button id="nothingButton">
+        You have no content. <br/>
+        Click here to add some.
+      </button>
+    </div>
+
     <div id="preloaded-images">
       <img src="/static/images/feed-toggle-triangle-fff.png" width="1" height="1" alt="Image 01" />
       <img src="/static/images/feed-toggle-triangle-000.png" width="1" height="1" alt="Image 02" />
+      <img src="/static/images/icon-flamable.png" width="1" height="1" alt="Image 03" />
     </div>
 
   </body>

@@ -1,12 +1,49 @@
 :root {
   --ui-bg-color-pri: #2B374B;
   --ui-color-pri: #BFD8D1;
-  --ui-color-sec: #FFDC00;
+  --ui-color-sec: #FF4136;
   --ui-color-ter: #6E7A94;
+  --var-header-height: 26px;
+  --var-controls-width: 150px;
+  --var-controls-font-size: 16pt;
+  --var-controls-toggle-size: 18px;
+  --var-controls-flex-basis: 100px;
+}
+
+
+@media screen and (max-width: 700px) {
+  :root {
+    --var-header-height: 42px;
+    --var-controls-width: 75%;
+    --var-controls-font-size: 26pt;
+    --var-controls-toggle-size: 28px;
+
+    --var-controls-flex-basis: 160px;
+  }
 }
 
 body {
   background-color: var(--bg-color-ter) !important;
+}
+
+.deadCenter {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  text-align:center;
+}
+
+.hidden {
+  display:none;
+}
+
+#nothingButton {
+  /* margin-top:50%; */
+  display:none;
 }
 
 li.ui-tabs-active,
@@ -455,13 +492,44 @@ li.ui-droppable-hover a {
   border-radius: 0px !important;
 }
 
-img.icon-warning {
+img.warning {
   vertical-align:middle;
-  width:100px;
+  width:10em;
 }
 
 p.dialog-warning {
   font-size:26pt;
+}
+
+div.dialog {
+  display:flex;
+}
+
+div.dialog > div {
+  flex: 1 1 auto;
+}
+
+div.dialog > div.icon {
+  flex: 0 0 200px;
+}
+
+div.dialog > div.content {
+  padding: 0 0 0 .2em;
+  font-size:26pt;
+}
+
+div.dialog > div.content p {
+  margin:0 0 .5em 0;
+}
+
+div.dialog > div.content p.name {
+  font-size: .5em;
+  color: var(--ui-color-ter) !important;
+}
+
+div.dialog > div.content p.value {
+  font-size: .8em;
+  color: var(--ui-color-pri) !important;
 }
 
 /* Hacks & workarounds */
@@ -481,80 +549,99 @@ button > i {
 .mobHeader {
   cursor:grab;
   /* min-height:20px; */
-  height:26px;
+  height: var(--var-header-height);
 
-  max-height:26px;
+  max-height: var(--var-header-height);
   display: flex;
+  flex-direction:row;
+  /* align-content: stretch; */
   padding:0;
-  overflow: hidden;
 }
+
+.flexGrow {
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  flex-basis: var(--var-controls-flex-basis) !important;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
 
 .mobHeader > div {
-  flex: 0 0 auto;
+  transition: all 700ms;
 }
 
-.mobHeader .feedToggle {
-  flex: 0 0 auto;
+.mobHeader > .feedToggle {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+
   margin: .2rem;
+  width : var(--var-controls-toggle-size);
 }
 
-.mobHeader .feedTitle {
-  flex: 3 3 auto;
-  margin: .2rem;
+.feedIcon {
+  width: var(--var-controls-toggle-size);
+  height: var(--var-controls-toggle-size);
+  background-size: var(--var-controls-toggle-size);
+  background-image: url("/static/images/feed-generic-rss.png");
+  background-repeat: no-repeat;
 }
 
-.mobHeader .feedControls {
-  position:relative;
-  left:100px;
+.tabSort .ui-sortable-placeholder {
+  visibility: visible !important;
+  border: 3px dashed !important;
+}
 
-  cursor:pointer;
+.feedToggle > .ui-icon {
+  margin: .1rem .2rem 0 .1rem;
+}
+
+.mobHeader > .feedTitle {
+  flex-grow: 4;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+  /* margin: .2em 0; */
+  font-size: var(--var-controls-font-size);
+}
+
+.mobHeader > .myControlsToggleDiv {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  cursor: pointer;
+  font-size: var(--var-controls-font-size);
+}
+
+.mobHeader > .feedControls {
+
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0px;
+  overflow:hidden;
 
   display: flex;
-  text-align:right;
-  background-color: var(--color-qua) !important;
-  /* padding:.2rem; */
-
-  /* min-width:80px; */
-  /* align-items:flex-start; */
-  /* align-content:flex-start; */
-  /* justify-content: flex-end; */
-  /* padding:0; */
-  transition: left 200ms ease 0ms;
-}
-
-.openControls {
-  left:0 !important;
-}
-
-.mobHeader .feedControls .controlsToggle {
-  position:relative;
-  display: inline-block;
-  width:24px;
-  height:26px;
-  margin:0;
-}
-
-.mobHeader .feedControls .controlsToggle:hover {
-  background-color: var(--color-qua) !important;
-}
-
-.mobHeader .feedControls .controlsToggle:before {
-  content: '';
-  position: absolute;
-  width: 0;
-  top: 0;
-  left: 0;
-  border-bottom: 52px solid var(--bg-color-pri);
-  border-right: 24px solid var(--color-qua);
 }
 
 .mobHeader .feedControls div {
-  margin: 1px 1px 1px 0;
-  flex: 1 100%;
+  margin: 2px;
 }
 
 .feedControl {
-  font-size: 16pt !important;
+  cursor:pointer;
+  font-size: var(--var-controls-font-size);
+
+  &:hover {
+    color: var(--ui-color-sec) !important;
+  }
+
+}
+
+.feedControl:hover {
+  color: var(--ui-color-sec) !important;
 }
 
 .mobHeader .ui-button {
@@ -585,19 +672,27 @@ button > i {
 
 .handle,
 #newTabButton a:link {
-  color: var(--ui-color-sec) !important;
+  color: var(--color-pri) !important;
 }
 
 #newTabButton {
+  width: 40px;
   background-color: var(--color-qua);
+  text-align: center;
 }
 
-#newTabButton:hover {
-  box-shadow: none !important;
+#newTabButton a {
+  font-size: 21.2pt;
+  margin:0;
+  padding:0;
+  background-color: var(--color-qua);
+  width: 100%;
+  color: var(--color-pri) !important;
 }
 
 #newTabButton a:hover {
   background-color: var(--ui-bg-color-pri);
+  color: var(--color-ter);
 }
 
 li.mobTab,

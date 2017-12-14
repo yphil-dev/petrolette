@@ -3,6 +3,13 @@ MOB.tab = {
     var allTabs = MOB.tab.all();
     MOB.prefs.writeConfig('tabs', JSON.stringify(allTabs));
   },
+  empty:function() {
+    $('div#tabs ul li').remove();
+    $('div#tabs div').remove();
+    $('#nothingButton').fadeIn('slow');
+    MOB.tab.saveTabs();
+    MOB.tab.makeNewTabButton($('div#tabs'));
+  },
   populate:function(tabs, clickToRefresh) {
 
     $('div#tabs ul li').remove();
@@ -66,21 +73,23 @@ MOB.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li id="newTabButton" class="translate" data-title="New tab" title="New tab">').click(function () {
+    var $newTabButton = $('<li id="newTabButton" class="translate" data-title="New group" title="New group">').click(function () {
       MOB.tab.make($tabs);
       return false;
     });
 
-    var $dummyTabLink = $('<a href="#">+</a>').bind('click', function(e){
+    var $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e){
       e.preventDefault();
       // return false;
     });
 
     $dummyTabLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tabUl'));
-    $tabs.tabs('refresh');
+    // $tabs.tabs('refresh');
   },
   make:function($tabs, name, feeds, progress) {
+
+    $('#nothingButton').fadeOut('fast');
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
@@ -171,13 +180,13 @@ MOB.tab = {
     $thisTab.droppable({
       tolerance: 'pointer',
       over: function(event, ui) {
-          console.log('OVER (%s)', $(this).attr('class'));
-          // ui.item.css('cursor','copy');
-        },
+        console.log('OVER (%s)', $(this).attr('class'));
+        // ui.item.css('cursor','copy');
+      },
       out: function(event, ui) {
-          console.log('OUT');
-          // ui.item.css('cursor','auto');
-        },
+        console.log('OUT');
+        // ui.item.css('cursor','auto');
+      },
       accept: 'ul, .tabSort li',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {

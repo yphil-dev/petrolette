@@ -81,6 +81,10 @@ li.mobTab,
     transform: rotate(-90deg);
 }
 
+.rotate.right {
+  transform: rotate(180deg);
+}
+
 .rotate.close {
     transform: rotate(-180deg);
 }
@@ -201,23 +205,6 @@ div.feedItem img.full {
     min-width:100%;
 }
 
-.feedIcon {
-  width: 18px;
-  height: 18px;
-  background-image: url("/static/images/feed-generic-rss.png");
-  background-size: 18px;
-  background-repeat: no-repeat;
-}
-
-.tabSort .ui-sortable-placeholder {
-    visibility: visible !important;
-    border: 3px dashed !important;
-}
-
-.feedToggle > .ui-icon {
-    margin: .1rem .2rem 0 .1rem;
-}
-
 li.feedItem {
     border:0 !important;
 }
@@ -286,7 +273,7 @@ i.feedIcon {
   position:fixed;
   right:3vw;
   bottom:5vh;
-  opacity:0.5;
+  opacity:0.8 ;
 }
 
 #loadRadial .fill,

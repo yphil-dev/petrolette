@@ -3,6 +3,65 @@ MOB.dialog = {
     $dialog.dialog('destroy');
     $('#mobDialogs').empty();
   },
+  collection:function() {
+
+    $('#mobDialogs').load('/static/templates/dialogs.html #collectionDialog', function() {
+
+      var $dialog = $('#collectionDialog');
+
+      $dialog.dialog({
+        title: MOB.tr('Collection'),
+        autoOpen: false,
+        closeOnEscape: true,
+        resizable: false,
+        height: 'auto',
+        width: MOB.utilities.vWidth(),
+        modal: true,
+        buttons: [
+          {
+            text: MOB.tr('Ok'),
+            title: MOB.tr('Ok'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          MOB.utilities.translate();
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
+          var $rightSources = $('<button>').text('I want right sources');
+          var $noSources = $('<button>').text('I want to reset everything');
+
+          // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+
+          $rightSources.click(function() {
+            MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')));
+          });
+
+          $noSources.click(function() {
+            MOB.tab.empty();
+          });
+
+          var $nameLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist'));
+          var $nameValue = $('<p class="value">').html($rightSources);
+
+          $dialog.find('div.content')
+            .append($nameLegend)
+            .append($nameValue)
+            .append($noSources);
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
+  },
   help:function() {
 
     $('#mobDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
@@ -262,7 +321,7 @@ MOB.dialog = {
       var $dialog = $('#killDialog');
 
       $dialog.dialog({
-        title: MOB.tr('Tab: Kill'),
+        title: MOB.tr('Delete group'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
@@ -282,7 +341,13 @@ MOB.dialog = {
 
               MOB.tab.saveTabs();
               MOB.dialog.kill($dialog);
-              $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+
+              if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+                $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+              } else {
+                console.error('Zero tabs!');
+                $('#nothingButton').fadeIn('slow');
+              }
 
             }
           },
@@ -301,7 +366,19 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          $dialog.children('p').append(MOB.tr('Really delete this tab? (%1, %2 sources)', $a.text(), $selectedPanel.find('li.feed').length));
+          var $nameLegend = $('<p class="name">').text(MOB.tr('Name'));
+          var $nameValue = $('<p class="value">').text($a.text());
+
+          var $numberLegend = $('<p class="name">').text(MOB.tr('Number of sources'));
+          var $numberValue = $('<p class="value">').text($selectedPanel.find('li.feed').length);
+
+          $dialog.find('div.content')
+            .append($nameLegend)
+            .append($nameValue)
+            .append($numberLegend)
+            .append($numberValue);
+
+          // $dialog.children('p').append(MOB.tr('Really delete this group? (%1, %2 sources)', $a.text(), $selectedPanel.find('li.feed').length));
 
         }
       });
@@ -315,12 +392,12 @@ MOB.dialog = {
       var $dialog = $('#killDialog');
 
       var $thisFeedId = $button.parent().parent().parent().parent().attr('id');
-      var thisFeedName = $button.parent().parent().prev().text();
+      var thisFeedName = $button.parent().parent().parent().find('.feedTitle').text();
 
       console.log('ID: %s', $thisFeedId);
 
       $dialog.dialog({
-        title: MOB.tr('Source: Kill'),
+        title: MOB.tr('Delete source'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
@@ -361,7 +438,12 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          $dialog.children('p').append(MOB.tr('Really delete this source? (%1)', thisFeedName));
+          var $name = $('<p class="name">').text(MOB.tr('Name'));
+          var $value = $('<p class="value">').text(thisFeedName);
+
+          $dialog.find('div.content')
+            .append($name)
+            .append($value);
 
         }
       });

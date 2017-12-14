@@ -9,6 +9,11 @@ MOB.feed = {
         .data('title', 'Fold / unfold')
         .attr('title', MOB.tr('Fold / unfold'));
 
+    var $controlsToggle = $('<i>')
+        .attr('class', 'icon-left-open rotate')
+        .data('title', 'Fold / unfold')
+        .attr('title', MOB.tr('Fold / unfold'));
+
     var $feedSelect = $('<i>')
         .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
         .data('title', 'Select this source')
@@ -74,18 +79,25 @@ MOB.feed = {
     var $header = $('<div class="mobHeader ui-widget-header">');
     var $toggleDiv = $('<div class="feedToggle">');
     var $controlsToggleDiv = $('<div class="controlsToggle">');
-    var $selectDiv = $('<div class="feedSelect">').button();
-    var $deleteDiv = $('<div class="feedDelete">').button();
+    var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
+
+    var $selectDiv = $('<div class="feedSelect">');
+    var $deleteDiv = $('<div class="feedDelete">');
     var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
-    var $prefsDiv = $('<div class="prefs">').button();
-    var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">').button();
+    var $prefsDiv = $('<div class="prefs">');
+    var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
 
     $feedToggle.appendTo($toggleDiv);
 
-    $controlsToggleDiv.click(function() {
-      var $controls = $(this).parent();
-      $('.feedControls').not($controls).removeClass('openControls');
-      $controls.toggleClass('openControls');
+    $myControlsToggleDiv.click(function() {
+
+      var $controls = $(this).next();
+
+      $('.feedControls').not($controls).removeClass('flexGrow');
+      $controls.toggleClass('flexGrow');
+
+      $(this).toggleClass('open');
+
     });
 
     $header.hover (
@@ -123,7 +135,11 @@ MOB.feed = {
 
     $toggleDiv.appendTo($header);
     $titleDiv.appendTo($header);
-    $controlsToggleDiv.appendTo($feedControls);
+
+    $controlsToggle.appendTo($myControlsToggleDiv);
+    $myControlsToggleDiv.appendTo($header);
+
+    // $controlsToggleDiv.appendTo($feedControls);
     $selectDiv.appendTo($feedControls);
     $deleteDiv.appendTo($feedControls);
     $prefsDiv.appendTo($feedControls);
