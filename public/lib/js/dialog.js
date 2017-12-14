@@ -42,11 +42,11 @@ MOB.dialog = {
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 
           $rightSources.click(function() {
-            MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')));
+            MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')), true, true);
           });
 
           $leftSources.click(function() {
-            MOB.tab.populate(JSON.parse(MOB.prefs.collection('leftFr')));
+            MOB.tab.populate(JSON.parse(MOB.prefs.collection('leftFr')), true, true);
           });
 
           $noSources.click(function() {
