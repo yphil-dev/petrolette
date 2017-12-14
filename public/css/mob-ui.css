@@ -1,12 +1,13 @@
 :root {
   --ui-bg-color-pri: #2B374B;
   --ui-color-pri: #BFD8D1;
-  --ui-color-sec: #FFDC00;
+  --ui-color-sec: #FF4136;
   --ui-color-ter: #6E7A94;
   --var-header-height: 26px;
   --var-controls-width: 150px;
   --var-controls-font-size: 16pt;
-  --var-controls-toggle-size: 18pt;
+  --var-controls-toggle-size: 18px;
+  --var-controls-flex-basis: 100px;
 }
 
 
@@ -15,14 +16,34 @@
     --var-header-height: 42px;
     --var-controls-width: 75%;
     --var-controls-font-size: 26pt;
-    --var-controls-toggle-size: 28pt;
+    --var-controls-toggle-size: 28px;
 
-    --var-width: red;
+    --var-controls-flex-basis: 160px;
   }
 }
 
 body {
   background-color: var(--bg-color-ter) !important;
+}
+
+.deadCenter {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  text-align:center;
+}
+
+.hidden {
+  display:none;
+}
+
+#nothingButton {
+  /* margin-top:50%; */
+  display:none;
 }
 
 li.ui-tabs-active,
@@ -540,7 +561,7 @@ button > i {
 .flexGrow {
   flex-grow: 0 !important;
   flex-shrink: 0 !important;
-  flex-basis: 100px !important;
+  flex-basis: var(--var-controls-flex-basis) !important;
 }
 
 .open {
@@ -558,12 +579,33 @@ button > i {
   flex-basis: auto;
 
   margin: .2rem;
+  width : var(--var-controls-toggle-size);
+}
+
+.feedIcon {
+  width: var(--var-controls-toggle-size);
+  height: var(--var-controls-toggle-size);
+  background-size: var(--var-controls-toggle-size);
+  background-image: url("/static/images/feed-generic-rss.png");
+  background-repeat: no-repeat;
+}
+
+.tabSort .ui-sortable-placeholder {
+  visibility: visible !important;
+  border: 3px dashed !important;
+}
+
+.feedToggle > .ui-icon {
+  margin: .1rem .2rem 0 .1rem;
 }
 
 .mobHeader > .feedTitle {
   flex-grow: 4;
   flex-shrink: 1;
   flex-basis: auto;
+
+  /* margin: .2em 0; */
+  font-size: var(--var-controls-font-size);
 }
 
 .mobHeader > .myControlsToggleDiv {
@@ -571,7 +613,7 @@ button > i {
   flex-shrink: 0;
   flex-basis: auto;
   cursor: pointer;
-  font-size: 18pt;
+  font-size: var(--var-controls-font-size);
 }
 
 .mobHeader > .feedControls {
@@ -591,6 +633,11 @@ button > i {
 .feedControl {
   cursor:pointer;
   font-size: var(--var-controls-font-size);
+
+  &:hover {
+    color: var(--ui-color-sec) !important;
+  }
+
 }
 
 .feedControl:hover {

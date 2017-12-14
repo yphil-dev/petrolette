@@ -192,6 +192,7 @@ MOB.utilities = {
 
       this.radialLoader = $('#loadRadial');
       this.radialLoaderLabel = $('#loadRadial > span');
+      this.radialLoader.fadeIn('fast');
 
       this.progressContainer.append( this.progressElt );
       $('body').prepend(this.progressContainer);

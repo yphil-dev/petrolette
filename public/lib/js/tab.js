@@ -3,9 +3,14 @@ MOB.tab = {
     var allTabs = MOB.tab.all();
     MOB.prefs.writeConfig('tabs', JSON.stringify(allTabs));
   },
+  empty:function() {
+    $('div#tabs ul li').remove();
+    $('div#tabs div').remove();
+    $('#nothingButton').fadeIn('slow');
+    MOB.tab.saveTabs();
+    MOB.tab.makeNewTabButton($('div#tabs'));
+  },
   populate:function(tabs, clickToRefresh) {
-
-    console.log('POPTABS: (%s)', $('div#tabs').length);
 
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
@@ -80,9 +85,11 @@ MOB.tab = {
 
     $dummyTabLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tabUl'));
-    $tabs.tabs('refresh');
+    // $tabs.tabs('refresh');
   },
   make:function($tabs, name, feeds, progress) {
+
+    $('#nothingButton').fadeOut('fast');
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
@@ -173,13 +180,13 @@ MOB.tab = {
     $thisTab.droppable({
       tolerance: 'pointer',
       over: function(event, ui) {
-          console.log('OVER (%s)', $(this).attr('class'));
-          // ui.item.css('cursor','copy');
-        },
+        console.log('OVER (%s)', $(this).attr('class'));
+        // ui.item.css('cursor','copy');
+      },
       out: function(event, ui) {
-          console.log('OUT');
-          // ui.item.css('cursor','auto');
-        },
+        console.log('OUT');
+        // ui.item.css('cursor','auto');
+      },
       accept: 'ul, .tabSort li',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {

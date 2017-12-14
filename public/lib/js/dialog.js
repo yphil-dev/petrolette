@@ -3,6 +3,65 @@ MOB.dialog = {
     $dialog.dialog('destroy');
     $('#mobDialogs').empty();
   },
+  collection:function() {
+
+    $('#mobDialogs').load('/static/templates/dialogs.html #collectionDialog', function() {
+
+      var $dialog = $('#collectionDialog');
+
+      $dialog.dialog({
+        title: MOB.tr('Collection'),
+        autoOpen: false,
+        closeOnEscape: true,
+        resizable: false,
+        height: 'auto',
+        width: MOB.utilities.vWidth(),
+        modal: true,
+        buttons: [
+          {
+            text: MOB.tr('Ok'),
+            title: MOB.tr('Ok'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          MOB.utilities.translate();
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
+          var $rightSources = $('<button>').text('I want right sources');
+          var $noSources = $('<button>').text('I want to reset everything');
+
+          // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+
+          $rightSources.click(function() {
+            MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')));
+          });
+
+          $noSources.click(function() {
+            MOB.tab.empty();
+          });
+
+          var $nameLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist'));
+          var $nameValue = $('<p class="value">').html($rightSources);
+
+          $dialog.find('div.content')
+            .append($nameLegend)
+            .append($nameValue)
+            .append($noSources);
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
+  },
   help:function() {
 
     $('#mobDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
@@ -282,7 +341,13 @@ MOB.dialog = {
 
               MOB.tab.saveTabs();
               MOB.dialog.kill($dialog);
-              // $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+
+              if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+                $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
+              } else {
+                console.error('Zero tabs!');
+                $('#nothingButton').fadeIn('slow');
+              }
 
             }
           },
