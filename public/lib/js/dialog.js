@@ -35,11 +35,12 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
+
+
           var $rightSources = $('<button>').text('I want right sources');
           var $noSources = $('<button>').text('I want to reset everything');
 
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-
 
           $rightSources.click(function() {
             MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')));
