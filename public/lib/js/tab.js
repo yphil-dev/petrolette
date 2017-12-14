@@ -10,14 +10,19 @@ MOB.tab = {
     MOB.tab.saveTabs();
     MOB.tab.makeNewTabButton($('div#tabs'));
   },
-  populate:function(tabs, clickToRefresh) {
+  populate:function(tabs, clickToRefresh, add) {
 
-    $('div#tabs ul li').remove();
-    $('div#tabs div').remove();
+
+    if (add) {
+      console.log('ADD!');
+    } else {
+      $('div#tabs div').remove();
+      $('div#tabs ul li').remove();
+      MOB.tab.makeNewTabButton($('div#tabs'));
+    }
 
     var totalFeeds = 0;
 
-    MOB.tab.makeNewTabButton($('div#tabs'));
 
     tabs.forEach(function(tab) {
       totalFeeds += tab.feeds.length;
