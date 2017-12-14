@@ -50,7 +50,7 @@ MOB.utilities = {
       steps: [
         {
           element: 'li.mobTab',
-          intro: MOB.tr('This is a tab. It contains sources.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('This is a group. It contains sources.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
         },
         {
           element: 'li.feed',
