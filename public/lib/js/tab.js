@@ -23,7 +23,6 @@ MOB.tab = {
 
     var totalFeeds = 0;
 
-
     tabs.forEach(function(tab) {
       totalFeeds += tab.feeds.length;
     });

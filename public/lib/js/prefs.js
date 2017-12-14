@@ -170,7 +170,7 @@ MOB.prefs = (function() {
       var $loader = $('#loadRadial');
       $loader.attr('class', 'c100 small green dark p100');
 
-      $loader.children('span').text('');
+      $loader.children('span').text('Saving');
       $loader.fadeToggle('fast');
 
       localStorage.setItem(key, val);
