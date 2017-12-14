@@ -48,6 +48,7 @@ MOB.dialog = {
             MOB.tab.empty();
           });
 
+
           var $nameLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist'));
           var $nameValue = $('<p class="value">').html($rightSources);
 
