@@ -13,7 +13,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $slider = $('div#gallerySpeedSlider'),
       $spinner = $('#gallerySpeedSpinner');
 
-  // MOB.utilities.translate();
+  MOB.utilities.translate();
 
   $langMenu.val(MOB.prefs.readConfig('lang')).prop('selected', true);
 
