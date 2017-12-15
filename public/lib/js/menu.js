@@ -64,7 +64,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $saveButton.click(function () {
-    MOB.prefs.exportConfig(MOB.tab.all(), 'petrolette.json');
+    MOB.prefs.exportConfig(MOB.tab.list(), 'petrolette.json');
     return false;
   });
 

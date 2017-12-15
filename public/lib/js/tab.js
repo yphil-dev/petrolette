@@ -1,6 +1,6 @@
 MOB.tab = {
   saveTabs:function() {
-    var allTabs = MOB.tab.all();
+    var allTabs = MOB.tab.list();
     MOB.prefs.writeConfig('tabs', JSON.stringify(allTabs));
   },
   empty:function() {
@@ -11,7 +11,6 @@ MOB.tab = {
     MOB.tab.makeNewTabButton($('div#tabs'));
   },
   populate:function(tabs, clickToRefresh, add) {
-
 
     if (add) {
       console.log('ADD!');
@@ -49,7 +48,7 @@ MOB.tab = {
     $('li.mobTab').first().addClass('firstTab');
 
   },
-  all:function() {
+  list:function(type) {
     var myTabs = [];
     var $allTabs = $('#tabUl > li.mobTab');
 
@@ -59,6 +58,9 @@ MOB.tab = {
       var $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
 
       myTab.name = $(this).children('a').text();
+
+      if (type && type === 'all')
+        myTab.pane = $($(this).children().attr('href') + ' ul').attr('id');
 
       $allFeeds.each(function() {
         var $dataStore = $(this).find('.feedControls');

@@ -140,6 +140,12 @@ MOB.dialog = {
 
       var $feed = $dataStore.parent().parent();
 
+      var allGroups = MOB.tab.list('all');
+
+      var $thisGroup =  $feed.parent();
+
+      var $groupMenu = $('select#feedGroup');
+
       $dialog.dialog({
         title: MOB.tr('Source'),
         autoOpen: false,
@@ -154,6 +160,8 @@ MOB.dialog = {
             title: MOB.tr('Ok'),
             class: 'translate button-ok',
             click: function() {
+
+              console.log('Selected: %s (from %s to %s)', $feed.attr('id'), $groupMenu.find(":selected").val(), $thisGroup.attr('id'));
 
               var newUrl = $(this).find('input#feedGuess').val();
               var newType = $('#feedType :radio:checked').attr('id');
@@ -184,6 +192,31 @@ MOB.dialog = {
           }
         ],
         open: function() {
+
+
+          console.log('this group: (%s)', $thisGroup.attr('id'));
+
+
+          $.each(allGroups, function() {
+
+            var selected = false;
+
+            if (this.pane === $thisGroup.attr('id')) {
+              selected = true
+            }
+
+            $groupMenu.append($('<option>', {
+              value: this.pane,
+              selected: selected,
+              text : this.name
+            }));
+
+
+          });
+
+          // $groupMenu.val
+
+          // $dialog.find('form').append('plop');
 
           function guessError () {
             $guessSpinner.removeClass('icon-cog spin')
