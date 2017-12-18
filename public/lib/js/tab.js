@@ -117,7 +117,7 @@ MOB.tab = {
     });
 
     var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel-circled tabCloser translate dangerous')
+        .attr('class', 'icon-cancel-1 tabCloser translate dangerous')
         .data('title', MOB.tr('Delete the [%1] tab', name))
         .attr('title', MOB.tr('Delete the [%1] tab'));
 
@@ -202,12 +202,13 @@ MOB.tab = {
         var $list = $($item.find('a').attr('href'))
             .find('.tabSort');
         $elements.show().hide('slow');
-        ui.draggable.show().hide('slow', function () {
+
+        ui.draggable.show().hide('fade', 300, function () {
 
           if ($('#tabDropActivate').prop('checked'))
             $tabs.tabs('option', 'active', $index);
 
-          $(this).prependTo($list).show('slow').before($elements.show('slow'));
+          $(this).prependTo($list).show('fade', 800).before($elements.show('fade', 800));
 
           $('body').css('cursor','auto');
 
