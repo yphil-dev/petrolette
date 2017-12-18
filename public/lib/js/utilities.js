@@ -201,7 +201,7 @@ MOB.utilities = {
     };
     progress.increment = function() {
 
-      this.radialLoader.attr('class', 'c100 small green dark p' + Math.ceil(100 * this.step / this.steps));
+      this.radialLoader.attr('class', 'c100 small p' + Math.ceil(100 * this.step / this.steps));
 
       this.radialLoaderLabel.text(Math.ceil(100 * this.step / this.steps) + '%');
 
