@@ -3,6 +3,8 @@
   --ui-color-pri: #BFD8D1;
   --ui-color-sec: #01FF70;
   --ui-color-ter: #6E7A94;
+  --ui-color-qua: #222222;
+
   --var-header-height: 26px;
   --var-controls-width: 150px;
   --var-controls-font-size: 16pt;
@@ -10,7 +12,7 @@
   --var-controls-flex-basis: 100px;
   --dialog-flex-direction: row;
 
-  --bg-color-danger: #FF4136;
+  --ui-bg-color-danger: #FF4136;
   --color-danger: #000000;
 }
 
@@ -192,24 +194,9 @@ button#donate {
   margin: 0 !important;
 }
 
-.ui-button:active,
-.ui-button.ui-state-active:hover {
-  background-color: #FFD05B !important;
+.ui-button:active {
+  background-color: var(--ui-color-pri) !important;
   color: #2B374B !important;
-}
-
-.ui-state-active,
-.ui-state-hover {
-  background-color: #FFD05B !important;
-  color: var(--ui-bg-color-pri);
-}
-
-.ui-state-success {
-  background-color: #DFF2BF !important;
-}
-
-.ui-state-error {
-  background-color: #FFBABA !important;
 }
 
 .logoItem {
@@ -217,8 +204,8 @@ button#donate {
 }
 
 .tabCloser {
-  font-size:.8rem;
-  margin: .2rem .2rem 0 0;
+  font-size: .9em;
+  margin: 0 .1em 0 -1em;
   cursor:pointer;
 }
 
@@ -282,7 +269,7 @@ fieldset {
   padding-right: .4em;
 }
 
-div.flexBox {
+.flexBox {
   width:-moz-available;
   display:flex;
   justify-content: space-between;
@@ -290,11 +277,15 @@ div.flexBox {
   margin-bottom: .4em;
 }
 
+.ui-widget .ui-widget {
+  font-size: 12pt !important;
+}
+
 button#help {
   margin-bottom: .4em;
 }
 
-div.flexBox > label {
+.flexBox > label {
   flex: 1;
 }
 
@@ -444,12 +435,12 @@ div.testFlex {
 
 button.dangerous:hover {
   /* border-color: #2B374B !important; */
-  background-color: var(--bg-color-danger) !important;
-  color: var(--color-pri) !important;
+  background-color: var(--ui-bg-color-danger) !important;
+  border: 1px solid var(--ui-color-qua);
 }
 
 i.dangerous:hover {
-  color: var(--bg-color-danger) !important;
+  color: var(--ui-bg-color-danger) !important;
   /* color: #2B374B !important; */
 }
 
@@ -483,16 +474,6 @@ i.dangerous:hover {
   cursor: copy !important;
 }
 
-li.ui-droppable-hover {
-  background-color: red !important;
-}
-
-li.ui-droppable-hover a {
-  border-color: red;
-  cursor: copy !important;
-  color: red !important;
-}
-
 .ui-dialog.ui-corner-all {
   border-radius: 0px !important;
 }
@@ -509,10 +490,6 @@ p.dialog-warning {
 div.dialog {
   display:flex;
   flex-direction: var(--dialog-flex-direction);
-}
-
-div.dialog div.content p.value button {
-  width: 100%;
 }
 
 div.dialog > div {
@@ -715,7 +692,7 @@ li.ui-state-hover:not(.ui-tabs-active) {
 
 .ui-state-error {
   background-color: var(--bg-color-pri) !important;
-  color: var(--bg-color-danger);
+  color: var(--ui-bg-color-danger);
 }
 
 i.tabCloser,

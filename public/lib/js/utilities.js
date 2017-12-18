@@ -75,16 +75,20 @@ MOB.utilities = {
         },
         {
           element: 'button#feedGuess',
-          intro: MOB.tr('Find the website\'s RSS feed')
+          intro: MOB.tr('Find the website\'s source')
+        },
+        {
+          element: 'select#feedGroup',
+          intro: MOB.tr('Move this source to another group')
         },
         {
           element: 'div#feedTitle',
-          intro: MOB.tr('What type of feed? All text, all image, or mixed'),
+          intro: MOB.tr('What type of source? All text, all image, or mixed'),
           position: 'left'
         },
         {
           element: 'fieldset#feedLimit',
-          intro: MOB.tr('How many new items should the feed display at a time?'),
+          intro: MOB.tr('How many new items should this source display at a time?'),
           position: 'bottom'
         },
         {

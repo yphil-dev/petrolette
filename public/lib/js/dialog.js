@@ -35,12 +35,22 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          var $rightSources = $('<button>').text('Add right sources');
-          var $leftSources = $('<button>').text('Add left sources');
-          var $noSources = $('<button>').text('Reset everything');
+          var $rightSources = $('<button>')
+              .attr('class', 'unique')
+              .text('Add right sources').button();
+          var $leftSources = $('<button>')
+              .attr('class', 'unique')
+              .text('Add left sources').button();
+          var $noSources = $('<button>')
+              .attr('class', 'unique')
+              .text('Reset everything').button();
 
-          var $newGoup = $('<button>').text('New group');
-          var $newSource = $('<button>').text('New source');
+          var $newGroup = $('<button>')
+              .text('New group')
+              .attr('class', 'grow').button();
+          var $newSource = $('<button>')
+              .text('New source')
+              .attr('class', 'grow last').button();
 
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 
@@ -58,15 +68,28 @@ MOB.dialog = {
           });
 
           var $rightLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist')),
-              $rightValue = $('<p class="value">').html($rightSources),
+              $rightValue = $('<p>')
+              .attr('class', 'value flexBox')
+              .html($rightSources),
 
               $leftLegend = $('<p class="name">').text(MOB.tr('I\'m a leftist')),
-              $leftValue = $('<p class="value">').html($leftSources),
+              $leftValue = $('<p>')
+              .attr('class', 'value flexBox')
+              .html($leftSources),
+
+              $newLegend = $('<p class="name">').text(MOB.tr('New content')),
+              $newValue = $('<p>')
+              .attr('class', 'value flexBox')
+              .append($newGroup).append($newSource),
 
               $noLegend = $('<p class="name">').text(MOB.tr('I\'m fed up')),
-              $noValue = $('<p class="value">').html($noSources);
+              $noValue = $('<p>')
+              .attr('class', 'value flexBox')
+              .html($noSources);
 
           $dialog.find('div.content')
+            .append($newLegend)
+            .append($newValue)
             .append($rightLegend)
             .append($rightValue)
             .append($leftLegend)
@@ -165,7 +188,6 @@ MOB.dialog = {
               console.log('Selected: %s (from %s to %s)', $feed.attr('id'), $thisGroup.attr('id'), $groupMenu.find(":selected").val());
 
               if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
-                console.log('Moving!');
 
                 $feed.hide('slow', function () {
 

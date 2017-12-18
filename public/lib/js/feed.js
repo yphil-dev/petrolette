@@ -20,12 +20,12 @@ MOB.feed = {
         .attr('title', MOB.tr('Select this source'));
 
     var $feedDelete = $('<i>')
-        .attr('class', 'feedControl translate icon-trash feedDelete dangerous')
+        .attr('class', 'feedControl translate icon-cancel-2 feedDelete dangerous')
         .data('title', 'Delete this source')
         .attr('title', MOB.tr('Delete this source'));
 
     var $feedPrefs = $('<i>')
-        .attr('class', 'feedControl translate icon-cog mobFeedPrefs')
+        .attr('class', 'feedControl translate icon-cog-1 mobFeedPrefs')
         .data('title', 'Options')
         .attr('title', MOB.tr('Options'));
 
@@ -186,6 +186,7 @@ MOB.feed = {
 
       // MOB.utilities.feedError($feed, 'dOh!');
 
+
       console.info('bad URL: (%s)', feedUrl);
       $header.addClass('ui-state-error');
 
@@ -260,7 +261,7 @@ MOB.feed = {
       // console.log( "\nDATA: (%s)", JSON.stringify(data.error));
 
       if (data.error) {
-        // console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
+        console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
         $header.addClass('ui-state-error');
 
         $feedTitle
@@ -269,7 +270,7 @@ MOB.feed = {
           .data('content', MOB.tr("Error"));
 
         $feedBody
-          .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> (<a class="error" href="' + feedUrl + '">' + feedUrl + '</a>)</li>');
+          .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> <a class="error" href="' + feedUrl + '">' + feedUrl + '</a> ("' + data.error  + '")</li>');
 
         return;
 
