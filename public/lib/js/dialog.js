@@ -39,6 +39,9 @@ MOB.dialog = {
           var $leftSources = $('<button>').text('Add left sources');
           var $noSources = $('<button>').text('Reset everything');
 
+          var $newGoup = $('<button>').text('New group');
+          var $newSource = $('<button>').text('New source');
+
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 
           $rightSources.click(function() {
@@ -53,7 +56,6 @@ MOB.dialog = {
             MOB.tab.empty();
             $('#nothingButton').fadeIn('slow');
           });
-
 
           var $rightLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist')),
               $rightValue = $('<p class="value">').html($rightSources),
@@ -71,7 +73,6 @@ MOB.dialog = {
             .append($leftValue)
             .append($noLegend)
             .append($noValue);
-
         }
       });
 
@@ -161,12 +162,26 @@ MOB.dialog = {
             class: 'translate button-ok',
             click: function() {
 
-              console.log('Selected: %s (from %s to %s)', $feed.attr('id'), $groupMenu.find(":selected").val(), $thisGroup.attr('id'));
+              console.log('Selected: %s (from %s to %s)', $feed.attr('id'), $thisGroup.attr('id'), $groupMenu.find(":selected").val());
+
+              if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
+                console.log('Moving!');
+
+                $feed.hide('slow', function () {
+
+                  $(this).prependTo($('#' + $groupMenu.find(":selected").val())).show('slow');
+
+                  MOB.tab.saveTabs();
+
+                });
+
+              }
 
               var newUrl = $(this).find('input#feedGuess').val();
               var newType = $('#feedType :radio:checked').attr('id');
 
-              $dataStore.data('url', newUrl)
+              $dataStore
+                .data('url', newUrl)
                 .data('type', newType);
 
               MOB.feed.populate($feedPrefsButton);

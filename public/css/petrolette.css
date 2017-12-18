@@ -275,8 +275,3 @@ i.feedIcon {
   bottom:5vh;
   opacity:0.8 ;
 }
-
-#loadRadial .fill,
-#loadRadial .bar {
-  border-color: var(--color-qua) !important;
-}
