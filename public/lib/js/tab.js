@@ -127,6 +127,7 @@ MOB.tab = {
 
     $sortable.sortable({
       cursor: 'move',
+      handle: ".feedMover",
       cursorAt: {top: 10, left: 150},
       receive: function(e, ui) {
         ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
