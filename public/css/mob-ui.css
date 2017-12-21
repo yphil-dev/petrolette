@@ -534,39 +534,51 @@ button > i {
 }
 
 .mobHeader {
-  cursor:grab;
   /* min-height:20px; */
   height: var(--var-header-height);
 
   max-height: var(--var-header-height);
-  display: flex;
-  flex-direction:row;
   /* align-content: stretch; */
+
+  display:flex;
+
+  padding:.2em;
+
+  background: repeating-linear-gradient(
+    -55deg,
+    #222,
+    #222 10px,
+    #333 10px,
+    #333 20px
+  );
+}
+
+.feedMover {
+  cursor:grab;
   padding:0;
+  display:flex;
+  justify-content: flex-end;
+
+  background: repeating-linear-gradient(
+    55deg,
+    #444,
+    #444 4px,
+    #333 4px,
+    #333 10px
+  );
+
 }
 
-.flexGrow {
-  flex-grow: 0 !important;
-  flex-shrink: 0 !important;
-  flex-basis: var(--var-controls-flex-basis) !important;
-}
-
-.open {
-  transform: rotate(180deg);
-}
-
-
-.mobHeader > div {
-  transition: all 700ms;
-}
-
-.mobHeader > .feedToggle {
-  flex-grow: 0;
+.mobHeader > .feedTitle {
+  flex-grow: 4;
   flex-shrink: 1;
   flex-basis: auto;
 
-  margin: .2rem;
-  width : var(--var-controls-toggle-size);
+  font-size: var(--var-controls-font-size);
+}
+
+.mobHeader > div {
+  transition: all 700ms;
 }
 
 .feedIcon {
@@ -582,43 +594,21 @@ button > i {
   border: 3px dashed !important;
 }
 
-.feedToggle > .ui-icon {
-  margin: .1rem .2rem 0 .1rem;
-}
+.feedControls {
 
-.mobHeader > .feedTitle {
-  flex-grow: 4;
-  flex-shrink: 1;
-  flex-basis: auto;
-
-  /* margin: .2em 0; */
-  font-size: var(--var-controls-font-size);
-}
-
-.mobHeader > .myControlsToggleDiv {
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: auto;
-}
-
-.mobHeader > .feedControls {
-
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 0px;
-  overflow:hidden;
+  flex-direction:row;
 
   display: flex;
+  background-color: #222222
 }
 
-.mobHeader .feedControls div {
+.feedControls div {
   margin: 2px;
 }
 
 .feedControl {
   cursor:pointer;
   font-size: var(--var-controls-font-size);
-
 }
 
 .feedControl:hover {
@@ -629,7 +619,7 @@ button > i {
   padding: 0 !important;
 }
 
-.mobHeader .feedControls div i.ui-button:first-child {
+.feedControls div i.ui-button:first-child {
   margin: 0 !important;
 }
 
