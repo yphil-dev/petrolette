@@ -543,14 +543,6 @@ button > i {
   display:flex;
 
   padding:.2em;
-
-  background: repeating-linear-gradient(
-    -55deg,
-    #222,
-    #222 10px,
-    #333 10px,
-    #333 20px
-  );
 }
 
 .feedMover {
@@ -564,7 +556,7 @@ button > i {
     #444,
     #444 4px,
     #333 4px,
-    #333 10px
+    #333 8px
   );
 
 }
@@ -573,8 +565,8 @@ button > i {
   flex-grow: 4;
   flex-shrink: 1;
   flex-basis: auto;
-
-  font-size: var(--var-controls-font-size);
+  margin: 0 0 0 .2em;
+  /* font-size: var(--var-controls-font-size); */
 }
 
 .mobHeader > div {
