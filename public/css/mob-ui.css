@@ -546,18 +546,37 @@ button > i {
 }
 
 .feedMover {
-  cursor:grab;
+  background-color: #282828;
   padding:0;
   display:flex;
   justify-content: flex-end;
+}
 
-  background: repeating-linear-gradient(
-    55deg,
-    #444,
-    #444 4px,
-    #333 4px,
-    #333 8px
-  );
+.feedHandle {
+  cursor:grab;
+  margin:1px;
+  flex: 1 1 auto;
+
+  /* border: 2px solid #282828; */
+  border-radius: 5px;
+
+  background:
+  linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+
+  /* background: repeating-linear-gradient( */
+  /*   55deg, */
+  /*   #444, */
+  /*   #444 4px, */
+  /*   #333 4px, */
+  /*   #333 8px */
+  /* ); */
 
 }
 
@@ -581,7 +600,11 @@ button > i {
   background-repeat: no-repeat;
 }
 
+
+/* The placeholder height is hard-coded because I found NO WAY to get the computed height reliably. */
+
 .tabSort .ui-sortable-placeholder {
+  height: 60px;
   visibility: visible !important;
   border: 3px dashed !important;
 }
@@ -591,7 +614,6 @@ button > i {
   flex-direction:row;
 
   display: flex;
-  background-color: #222222
 }
 
 .feedControls div {
