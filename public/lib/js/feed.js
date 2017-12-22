@@ -82,6 +82,7 @@ MOB.feed = {
     var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
 
     var $feedMover = $('<div class="feedMover">');
+    var $feedHandle = $('<div class="feedHandle">');
 
     var $selectDiv = $('<div class="feedSelect">');
     var $deleteDiv = $('<div class="feedDelete">');
@@ -148,6 +149,7 @@ MOB.feed = {
     $reloadDiv.appendTo($feedControls);
 
     // $feedControls.appendTo($header);
+    $feedHandle.appendTo($feedMover);
     $feedControls.appendTo($feedMover);
 
     $feedBodyUl.appendTo($feedBody);
