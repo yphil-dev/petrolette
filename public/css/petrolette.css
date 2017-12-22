@@ -168,6 +168,7 @@ li.feed {
 .selected,
 li.feed {
     width: 100%;
+    height: 100%;
     min-height:20px !important;
 }
 
