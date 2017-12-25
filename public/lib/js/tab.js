@@ -127,7 +127,7 @@ MOB.tab = {
 
     $sortable.sortable({
       cursor: 'move',
-      handle: ".feedMover",
+      handle: ".feedHandle",
       cursorAt: {top: 10, left: 150},
       receive: function(e, ui) {
         ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
@@ -150,7 +150,7 @@ MOB.tab = {
         ui.item.data('items', $elements);
 
         // Size the placeHolder
-        // $('.ui-sortable-placeholder').height(ui.item.height());
+        $('.ui-sortable-placeholder').css('height', ui.item.height());
 
       },
       update: function (e, ui) {
@@ -186,6 +186,14 @@ MOB.tab = {
 
     $thisTab.droppable({
       tolerance: 'pointer',
+      over: function(event, ui) {
+        console.log('OVER (%s)', $(this).attr('class'));
+        // ui.item.css('cursor','copy');
+      },
+      out: function(event, ui) {
+        console.log('OUT');
+        // ui.item.css('cursor','auto');
+      },
       accept: 'ul, .tabSort li',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
