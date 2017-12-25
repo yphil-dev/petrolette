@@ -641,10 +641,10 @@ button > i {
   margin: 2px;
 }
 
-.mobHeader .feedControls div.collapsible {
-  /* visibility:hidden; */
-  display:none;
-}
+/* .mobHeader .feedControls div.collapsible { */
+/*   /\* visibility:hidden; *\/ */
+/*   display:none; */
+/* } */
 
 .feedControl {
   cursor:pointer;
