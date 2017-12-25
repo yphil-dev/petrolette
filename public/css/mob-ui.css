@@ -12,6 +12,9 @@
   --var-controls-flex-basis: 100px;
   --dialog-flex-direction: row;
 
+  --handle-flex-shrink: 0;
+  --handle-visibility: visible;
+
   --ui-bg-color-danger: #FF4136;
   --color-danger: #000000;
 }
@@ -25,6 +28,9 @@
 
     --var-controls-flex-basis: 160px;
     --dialog-flex-direction: column;
+
+    --handle-flex-shrink: 1;
+    --handle-visibility: collapse;
 
   }
 }
@@ -596,9 +602,11 @@ button > i {
 
 .mobHeader > .feedHandle {
   flex-grow: 0;
-  flex-shrink: 0;
+  flex-shrink: var(--handle-flex-shrink);
   flex-basis: 14px;
   cursor:move;
+
+  visibility: var(--handle-visibility);
 
   background: linear-gradient(90deg, var(--bg-color-pri) 4px, transparent 1%) center, linear-gradient(var(--bg-color-pri) 4px, transparent 1%) center, var(--bg-color-ter);
   background-size: 6px 6px;
@@ -606,6 +614,9 @@ button > i {
   background-position: 0 2px;
 }
 
+/* .feedSelect { */
+/*   visibility: var(--handle-visibility); */
+/* } */
 
 .mobHeader > .feedHandle > div {
 }
@@ -621,13 +632,18 @@ button > i {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: 0px;
-  overflow:hidden;
+  /* overflow:hidden; */
 
   display: flex;
 }
 
 .mobHeader .feedControls div {
   margin: 2px;
+}
+
+.mobHeader .feedControls div.collapsible {
+  /* visibility:hidden; */
+  display:none;
 }
 
 .feedControl {
