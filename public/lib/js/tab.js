@@ -99,7 +99,7 @@ MOB.tab = {
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
-    if (!name) name = 'Tab ' + tabIndex;
+    if (!name) name = 'Group ' + tabIndex;
 
     var $sortable = $('<ul>')
         .attr('class', 'tabSort')
