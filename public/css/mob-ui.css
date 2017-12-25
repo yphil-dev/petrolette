@@ -538,57 +538,34 @@ button > i {
   height: var(--var-header-height);
 
   max-height: var(--var-header-height);
+  display: flex;
+  flex-direction:row;
   /* align-content: stretch; */
-
-  display:flex;
-
-  padding:.2em;
-}
-
-.feedMover {
-  background-color: #282828;
   padding:0;
-  display:flex;
-  justify-content: flex-end;
 }
 
-.feedHandle {
-  cursor:grab;
-  margin:1px;
-  flex: 1 1 auto;
-
-  /* border: 2px solid #282828; */
-  border-radius: 5px;
-
-  background:
-  radial-gradient(black 15%, transparent 16%) 0 0,
-  radial-gradient(black 15%, transparent 16%) 8px 8px,
-  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-  background-color:#282828;
-  background-size:16px 16px;
-
-
-  /* background: repeating-linear-gradient( */
-  /*   55deg, */
-  /*   #444, */
-  /*   #444 4px, */
-  /*   #333 4px, */
-  /*   #333 8px */
-  /* ); */
-
+.flexGrow {
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  flex-basis: var(--var-controls-flex-basis) !important;
 }
 
-.mobHeader > .feedTitle {
-  flex-grow: 4;
-  flex-shrink: 1;
-  flex-basis: auto;
-  margin: 0 0 0 .2em;
-  /* font-size: var(--var-controls-font-size); */
+.open {
+  transform: rotate(180deg);
 }
+
 
 .mobHeader > div {
   transition: all 700ms;
+}
+
+.mobHeader > .feedToggle {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+  margin: .2rem;
+  width : var(--var-controls-toggle-size);
 }
 
 .feedIcon {
@@ -599,29 +576,64 @@ button > i {
   background-repeat: no-repeat;
 }
 
-
-/* The placeholder height is hard-coded because I found NO WAY to get the computed height reliably. */
-
 .tabSort .ui-sortable-placeholder {
-  height: 60px;
   visibility: visible !important;
   border: 3px dashed !important;
 }
 
-.feedControls {
+.feedToggle > .ui-icon {
+  margin: .1rem .2rem 0 .1rem;
+}
 
-  flex-direction:row;
+.mobHeader > .feedTitle {
+  flex-grow: 4;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+  /* margin: .2em 0; */
+  font-size: var(--var-controls-font-size);
+}
+
+.mobHeader > .feedHandle {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 14px;
+  cursor:move;
+
+  background: linear-gradient(90deg, var(--bg-color-pri) 4px, transparent 1%) center, linear-gradient(var(--bg-color-pri) 4px, transparent 1%) center, var(--bg-color-ter);
+  background-size: 6px 6px;
+
+  background-position: 0 2px;
+}
+
+
+.mobHeader > .feedHandle > div {
+}
+
+.mobHeader > .myControlsToggleDiv {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.mobHeader > .feedControls {
+
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0px;
+  overflow:hidden;
 
   display: flex;
 }
 
-.feedControls div {
+.mobHeader .feedControls div {
   margin: 2px;
 }
 
 .feedControl {
   cursor:pointer;
   font-size: var(--var-controls-font-size);
+
 }
 
 .feedControl:hover {
@@ -632,7 +644,7 @@ button > i {
   padding: 0 !important;
 }
 
-.feedControls div i.ui-button:first-child {
+.mobHeader .feedControls div i.ui-button:first-child {
   margin: 0 !important;
 }
 
