@@ -67,6 +67,11 @@ MOB.dialog = {
             $('#nothingButton').fadeIn('slow');
           });
 
+          $newGroup.click(function() {
+            MOB.tab.make($('div#tabs'));
+            $('div#tabs ul').scrollLeft(90000);
+          });
+
           var $rightLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist')),
               $rightValue = $('<p>')
               .attr('class', 'value flexBox')
