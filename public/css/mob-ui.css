@@ -632,13 +632,18 @@ button > i {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: 0px;
-  overflow:hidden;
+  /* overflow:hidden; */
 
   display: flex;
 }
 
 .mobHeader .feedControls div {
   margin: 2px;
+}
+
+.mobHeader .feedControls div.collapsible {
+  /* visibility:hidden; */
+  display:none;
 }
 
 .feedControl {
