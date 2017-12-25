@@ -112,6 +112,12 @@
 
        // INIT
 
+       if (MOB.utilities.isMobile()) {
+         alert('Mobile!');
+       } else {
+         console.log('NOT Mobile!');
+       }
+
        console.log('TABS: (%s)', $.parseJSON(MOB.prefs.readConfig('tabs')).length)
 
        MOB.tab.makeNewTabButton($tabs);
