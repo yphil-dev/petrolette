@@ -13,6 +13,19 @@ MOB.utilities = {
     return vW;
 
   },
+  isMobile:function() {
+
+    var isMobile = false;
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      isMobile = true;
+    } else {
+      isMobile = false;
+    }
+
+    return isMobile;
+
+  },
   help:function(type) {
 
     var dialog = introJs(),

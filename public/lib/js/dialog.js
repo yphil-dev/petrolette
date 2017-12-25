@@ -3,6 +3,10 @@ MOB.dialog = {
     $dialog.dialog('destroy');
     $('#mobDialogs').empty();
   },
+  vWidth:function($dialog) {
+    $dialog.dialog('destroy');
+    $('#mobDialogs').empty();
+  },
   collection:function() {
 
     $('#mobDialogs').load('/static/templates/dialogs.html #collectionDialog', function() {
@@ -65,6 +69,11 @@ MOB.dialog = {
           $noSources.click(function() {
             MOB.tab.empty();
             $('#nothingButton').fadeIn('slow');
+          });
+
+          $newGroup.click(function() {
+            MOB.tab.make($('div#tabs'));
+            $('div#tabs ul').scrollLeft(90000);
           });
 
           var $rightLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist')),
