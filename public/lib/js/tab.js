@@ -79,14 +79,21 @@ MOB.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li id="newTabButton" class="translate" data-title="New group" title="New group">').click(function () {
-      MOB.tab.make($tabs);
-      return false;
-    });
+    var $newTabButton = $('<li id="newTabButton" class="translate" data-title="New group" title="New group">');
 
-    var $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e){
-      e.preventDefault();
-      // return false;
+    // $newTabButton.click(function (e) {
+    //   // MOB.tab.make($tabs);
+    //   // MOB.dialog.newContent();
+    //   // console.log('plop');
+    //   e.preventDefault();
+    //   return false;
+    // });
+
+    var $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
+      // e.preventDefault();
+      e.stopImmediatePropagation();
+      MOB.dialog.newContent();
+      return false;
     });
 
     $dummyTabLink.appendTo($newTabButton);
@@ -104,17 +111,6 @@ MOB.tab = {
     var $sortable = $('<ul>')
         .attr('class', 'tabSort')
         .attr('id', 'sortable' + tabIndex);
-
-    var $newFeedButton = $('<div>')
-        .html('<i class="icon-plus-1 rotate"></i>')
-        .attr('class', 'handle newFeed ui-corner-left translate')
-        .data('title', MOB.tr('Add a new source to [%1]', name))
-        .attr('title', MOB.tr('Add a new source to [%1]', name));
-
-    $newFeedButton.on("click", function() {
-      MOB.feed.make($sortable, 'New Feed', 'mixed', 8, true);
-      return false;
-    });
 
     var $tabCloser = $('<i>')
         .attr('class', 'icon-cancel-1 tabCloser translate dangerous')
@@ -168,7 +164,6 @@ MOB.tab = {
       }
     }).disableSelection();
 
-    $newFeedButton.appendTo($tabPanel);
     $sortable.appendTo($tabPanel);
     $tabPanel.appendTo($tabs);
 
