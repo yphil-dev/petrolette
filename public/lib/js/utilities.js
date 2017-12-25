@@ -4,7 +4,7 @@ MOB.utilities = {
     var vWidth = $(window).width();
     var vW;
 
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || vWidth < 720 ) {
+    if(MOB.utilities.isMobile() || vWidth < 720 ) {
       vW = vWidth - 8;
     } else {
       vW = vWidth - vWidth / 4;

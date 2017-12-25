@@ -3,10 +3,6 @@ MOB.dialog = {
     $dialog.dialog('destroy');
     $('#mobDialogs').empty();
   },
-  vWidth:function($dialog) {
-    $dialog.dialog('destroy');
-    $('#mobDialogs').empty();
-  },
   collection:function() {
 
     $('#mobDialogs').load('/static/templates/dialogs.html #collectionDialog', function() {
