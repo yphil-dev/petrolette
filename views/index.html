@@ -113,9 +113,10 @@
        // INIT
 
        if (MOB.utilities.isMobile()) {
-         alert('Mobile!');
+         $('.mobileHidden').hide();
        } else {
-         console.log('NOT Mobile!');
+         console.log('Woyo');
+         $('.collapsible').hide();
        }
 
        console.log('TABS: (%s)', $.parseJSON(MOB.prefs.readConfig('tabs')).length)
