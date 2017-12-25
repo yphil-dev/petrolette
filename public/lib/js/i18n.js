@@ -98,7 +98,7 @@ MOB.i18n.translations = {
   "Donate" : { fr: "Donation" , ja: "寄付する", es: "Donar" },
   "Open" : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
   "Save" : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
-  "Rename group" : { fr: "Groupe: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la grupo" },
+  "Rename Group" : { fr: "Groupe: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la grupo" },
   "New group" : { fr: "Nouveau Groupe" , ja: "新しいグループ", es: "Nuevo grupo" },
 
   "Group name" : { fr: "Nom du groupe" , ja: "グループ名", es: "Nombre de la grupo" },

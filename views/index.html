@@ -97,7 +97,7 @@
        $tabs.on('mouseup', '.ui-tabs-active a', function(e){
          e.preventDefault();
          if (e.which === 1) {
-           MOB.dialog.renameTab($(this))
+           MOB.dialog.renameGroup($(this))
          }
        });
 
@@ -106,9 +106,8 @@
        });
 
        $('#nothingButton button').click(function() {
-         MOB.dialog.collection();
+         MOB.dialog.newContent();
        });
-
 
        // INIT
 
