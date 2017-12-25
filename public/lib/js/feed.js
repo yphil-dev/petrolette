@@ -84,10 +84,10 @@ MOB.feed = {
     var $feedHandle = $('<div>')
         .attr('class', 'feedHandle');
 
-    var $selectDiv = $('<div class="feedSelect">');
-    var $deleteDiv = $('<div class="feedDelete">');
+    var $selectDiv = $('<div class="feedSelect collapsible">');
+    var $deleteDiv = $('<div class="feedDelete collapsible">');
     var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
-    var $prefsDiv = $('<div class="prefs">');
+    var $prefsDiv = $('<div class="prefs collapsible">');
     var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
 
     $feedToggle.appendTo($toggleDiv);
@@ -102,6 +102,15 @@ MOB.feed = {
       $(this).toggleClass('open');
 
     });
+
+    $feedControls.hover (
+      function() {
+        $(this).find('.collapsible').show();
+      },
+      function() {
+        $(this).find('.collapsible').hide();
+      }
+    );
 
     $header.hover (
       function() {
@@ -143,7 +152,7 @@ MOB.feed = {
     $titleDiv.appendTo($header);
 
     $controlsToggle.appendTo($myControlsToggleDiv);
-    $myControlsToggleDiv.appendTo($header);
+    // $myControlsToggleDiv.appendTo($header);
 
     // $controlsToggleDiv.appendTo($feedControls);
     $selectDiv.appendTo($feedControls);
