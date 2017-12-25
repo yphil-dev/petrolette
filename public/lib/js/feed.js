@@ -84,8 +84,8 @@ MOB.feed = {
     var $feedHandle = $('<div>')
         .attr('class', 'feedHandle');
 
-    var $selectDiv = $('<div class="feedSelect collapsible mobileHidden">');
-    var $deleteDiv = $('<div class="feedDelete collapsible mobileHidden">');
+    var $selectDiv = $('<div class="feedSelect collapsible">');
+    var $deleteDiv = $('<div class="feedDelete collapsible">');
     var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
     var $prefsDiv = $('<div class="prefs collapsible">');
     var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
