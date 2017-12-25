@@ -3,7 +3,7 @@ MOB.dialog = {
     $dialog.dialog('destroy');
     $('#mobDialogs').empty();
   },
-  collection:function() {
+  newContent:function() {
 
     $('#mobDialogs').load('/static/templates/dialogs.html #collectionDialog', function() {
 
@@ -34,6 +34,11 @@ MOB.dialog = {
           $('.ui-widget-overlay').on('click', function() {
             MOB.dialog.kill($dialog);
           });
+
+
+          var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+
+          console.log('Selected: (%s)', $openGroupPanel.get());
 
           var $rightSources = $('<button>')
               .attr('class', 'unique')
@@ -68,8 +73,14 @@ MOB.dialog = {
           });
 
           $newGroup.click(function() {
+            MOB.dialog.kill($dialog);
             MOB.tab.make($('div#tabs'));
             $('div#tabs ul').scrollLeft(90000);
+          });
+
+          $newSource.click(function() {
+            MOB.dialog.kill($dialog);
+            MOB.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
           });
 
           var $rightLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist')),
@@ -543,13 +554,13 @@ MOB.dialog = {
     });
 
   },
-  renameTab:function($tab) {
+  renameGroup:function($tab) {
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #renameTabDialog', function() {
-      var $dialog = $('#renameTabDialog');
+    $('#mobDialogs').load('/static/templates/dialogs.html #renameGroupDialog', function() {
+      var $dialog = $('#renameGroupDialog');
 
       $dialog.dialog({
-        title: MOB.tr('Rename tab'),
+        title: MOB.tr('Rename Group'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
