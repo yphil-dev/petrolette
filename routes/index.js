@@ -59,6 +59,14 @@ function getFeed (urlfeed, callback) {
 
 router.get('/feed', function(req, res) {
 
+  // var timer = setTimeout(function () {
+  //     res.send({error:"error"});
+  // }, 2500);
+  // req.once('timeout', function () {
+  //     clearTimeout(timer);
+  // });
+
+
   getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
         if (feedItems) {
             res.send({
