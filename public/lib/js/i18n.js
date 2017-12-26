@@ -100,8 +100,10 @@ MOB.i18n.translations = {
   "Save" : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
   "Rename Group" : { fr: "Groupe: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la grupo" },
   "New group" : { fr: "Nouveau Groupe" , ja: "新しいグループ", es: "Nuevo grupo" },
-
+  "Add source" : { fr: "Ajouter source" , ja: "ソースを追加", es: "Agregue fuente" },
+  "Edit group" : { fr: "Modifier groupe" , ja: "グループの編集", es: "Editar grupo" },
   "Group name" : { fr: "Nom du groupe" , ja: "グループ名", es: "Nombre de la grupo" },
+  "Group position" : { fr: "Position du groupe" , ja: "グループの位置", es: "Posición del grupo" },
   "Day theme" : { fr: "Thème jour" , ja: "日テーマ", es: "Tema del día" },
   "Night theme" : { fr: "Thème nuit" , ja: "夜のテーマ", es: "Tema nocturno" },
   "Day" : { fr: "Jour" , ja: "日", es: "día" },
