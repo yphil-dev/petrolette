@@ -79,7 +79,7 @@ MOB.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li id="newTabButton" class="translate" data-title="New group" title="New group">');
+    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="New group" title="New group">');
 
     // $newTabButton.click(function (e) {
     //   // MOB.tab.make($tabs);

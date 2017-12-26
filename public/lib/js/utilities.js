@@ -13,6 +13,16 @@ MOB.utilities = {
     return vW;
 
   },
+  moveEltLeft:function($elt) {
+    $elt.insertBefore($elt.prev());
+  },
+  moveEltRight:function($elt) {
+
+    if (!$elt.next().hasClass('newContentButton')) {
+      $elt.insertAfter($elt.next());
+    }
+
+  },
   isMobile:function() {
 
     var isMobile = false;

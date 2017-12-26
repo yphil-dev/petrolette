@@ -560,7 +560,7 @@ MOB.dialog = {
       var $dialog = $('#renameGroupDialog');
 
       $dialog.dialog({
-        title: MOB.tr('Rename Group'),
+        title: MOB.tr('Edit Group'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
@@ -599,6 +599,19 @@ MOB.dialog = {
           var $tabName = $dialog.find('#tabName');
           var $tabNameLegend = $dialog.find('legend#tabNameLegend');
 
+          var $tabLeft = $dialog.find('button#left');
+          var $tabRight = $dialog.find('button#right');
+
+          var $tab = $('a#' + $(this).data('tabId')).parent('li');
+
+          $tabLeft.click(function() {
+            MOB.utilities.moveEltLeft($tab);
+          });
+
+          $tabRight.click(function() {
+            MOB.utilities.moveEltRight($tab);
+          });
+
           $tabNameLegend.text(MOB.tr('Group name'));
 
           $tabName.val($(this).data('tabName')).select();
@@ -608,6 +621,7 @@ MOB.dialog = {
             MOB.tab.saveTabs();
             MOB.dialog.kill($dialog);
           });
+
         }
       });
 

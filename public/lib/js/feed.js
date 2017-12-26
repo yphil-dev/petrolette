@@ -362,7 +362,7 @@ MOB.feed = {
           if (imageUrl.match(/\.mp3$/)) {
 
             $media = $('<span>')
-              .attr('class', 'icon-volume-down')
+              .attr('class', 'media icon-volume-down')
               .css("display", "inline-block")
               .appendTo($mediaLink);
 

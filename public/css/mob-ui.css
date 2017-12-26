@@ -656,6 +656,10 @@ button > i {
   color: var(--ui-color-sec) !important;
 }
 
+.media:hover {
+  color: var(--ui-color-sec) !important;
+}
+
 .mobHeader .ui-button {
   padding: 0 !important;
 }
