@@ -599,7 +599,7 @@ MOB.dialog = {
           var $tabName = $dialog.find('#tabName');
           var $tabNameLegend = $dialog.find('legend#tabNameLegend');
 
-          $tabNameLegend.text(MOB.tr('Tab name'));
+          $tabNameLegend.text(MOB.tr('Group name'));
 
           $tabName.val($(this).data('tabName')).select();
 
