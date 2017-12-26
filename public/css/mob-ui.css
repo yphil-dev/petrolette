@@ -39,6 +39,15 @@ body {
   background-color: var(--bg-color-ter) !important;
 }
 
+input {
+  margin:0;
+  padding: .4em;
+}
+
+input#feedGuess {
+  margin-right: .4em;
+}
+
 .deadCenter {
   width: 300px;
   height: 300px;
@@ -252,11 +261,6 @@ button#donate {
 button#feedGuess,
 .ui-spinner {
   margin: 0;
-}
-
-input {
-  padding: .4em;
-  margin-right: .4em;
 }
 
 fieldset.menuForm {

@@ -10,7 +10,7 @@ MOB.dialog = {
       var $dialog = $('#collectionDialog');
 
       $dialog.dialog({
-        title: MOB.tr('Collection'),
+        title: MOB.tr('Add source'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: true,
