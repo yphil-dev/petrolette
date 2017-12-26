@@ -327,13 +327,21 @@ MOB.feed = {
         // console.log('S: %s', item.summary)
         var summary = $('<p>').append(item.summary).text();
 
-        var $feedItem = $('<li class="feedItem">').attr('title', summary.trim());
-        var $itemDiv = $('<div class="feedItem">');
+        var $feedItem = $('<li>')
+            .attr('title', summary.trim())
+            .attr('class', 'feedItem');
+
+        var $itemDiv = $('<div>')
+            .attr('class', 'feedItem ui-helper-clearfix');
+
         var $itemLink = $('<a>')
             .attr('target', '_blank')
-            .attr('class', 'ui-helper-clearfix')
             .attr('href', item.link)
             .append(item.title);
+
+        var $mediaLink = $('<a>')
+            .css("display", "inline")
+            .attr('href', imageUrl);
 
         var $itemSpan = $('<span>')
             .attr('class', 'truncate ui-helper-clearfix')
@@ -347,25 +355,39 @@ MOB.feed = {
           imageUrl = feedHost + imageUrl;
         }
 
-        if (typeof imageUrl !== 'undefined') {
-          var $imgLink = $('<a>')
-              .attr('href', imageUrl)
-              .attr('data-fancybox', 'gallery')
+        if (imageUrl && imageUrl !== 'null' && typeof imageUrl !== 'undefined') {
+
+          var $media;
+
+          if (imageUrl.match(/\.mp3$/)) {
+
+            $media = $('<span>')
+              .attr('class', 'icon-volume-down')
+              .css("display", "inline-block")
+              .appendTo($mediaLink);
+
+          } else {
+
+            $mediaLink.attr('data-fancybox', 'gallery')
               .attr('data-fancybox-group', $panel.attr('id'))
               .attr('data-caption', item.title);
 
-          var $itemImg = $('<img>').attr('src', imageUrl)
-              .appendTo($imgLink);
+            $media = $('<img>').attr('src', imageUrl)
+              .appendTo($mediaLink);
+          }
 
           if (feedType == 'photo')
-            $itemImg.addClass('full');
+            $media.addClass('full');
 
-          if (feedType !== 'text')
-            $imgLink.appendTo($itemDiv);
         }
+
+        if (feedType !== 'text')
+          $mediaLink.appendTo($itemDiv);
+
 
         // $itemSpan.appendTo($itemLink);
         $itemLink.appendTo($itemDiv);
+        $('<br class="ui-helper-clearfix">').appendTo($itemDiv);
         // $itemSpan.appendTo($itemDiv);
         $itemDiv.appendTo($feedItem);
         $feedItem.appendTo($feedBody);

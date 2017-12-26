@@ -186,9 +186,9 @@ li.feedItem {
 }
 
 li.feedItem a:not(.error) {
-    display: block;
-    width:100%;
-    font-weight: bold;
+  /* display: block; */
+  /* width:100%; */
+  font-weight: bold;
 }
 
 li.feedItem {
