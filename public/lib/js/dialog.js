@@ -274,7 +274,11 @@ MOB.dialog = {
           function guessError () {
             $guessSpinner.removeClass('icon-cog spin ui-state-success')
               .addClass('icon-cancel-circled');
-            $guessButton.addClass('ui-state-error');
+
+            $guessButton
+              .addClass('ui-state-error')
+              .attr('title', MOB.tr('No valid source found at this address')) ;
+
             $okButton.addClass('ui-state-error');
           }
 
@@ -324,12 +328,16 @@ MOB.dialog = {
               $guessSpinner.removeClass('spin icon-cog');
 
             }).done(function(feed, status) {
-              console.log( 'OK %s (status %s)', feed, status);
+
               $guessField.val(feed);
+
               $guessSpinner
                 .removeClass('ui-state-error')
                 .addClass('icon-ok ui-state-success');
-              $guessButton.addClass('ui-state-success');
+
+              $guessButton
+                .addClass('ui-state-success')
+                .attr('title', MOB.tr('Valid source found! Now just press OK')) ;
 
             }).fail(function(feed, status) {
               console.log( 'ERROR %s (status: %s)', $guessField.val(), status);
