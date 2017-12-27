@@ -592,6 +592,8 @@ MOB.dialog = {
         ],
         open: function() {
 
+          MOB.utilities.translate();
+
           $('.ui-widget-overlay').on('click', function() {
             MOB.dialog.kill($dialog);
           });
