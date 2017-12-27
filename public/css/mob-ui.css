@@ -1,8 +1,8 @@
 :root {
-  --ui-bg-color-pri: #2B374B;
-  --ui-color-pri: #BFD8D1;
-  --ui-color-sec: #01FF70;
-  --ui-color-ter: #6E7A94;
+  --ui-bg-color-pri: #373737;
+  --ui-color-pri: #f4f4f4;
+  --ui-color-sec: #DCD0C0;
+  --ui-color-ter: #C0B283;
   --ui-color-qua: #222222;
 
   --var-header-height: 26px;
@@ -16,6 +16,9 @@
   --handle-visibility: visible;
 
   --ui-bg-color-danger: #FF4136;
+  --ui-color-danger: #FF4136;
+  --ui-color-success: #4db53c;
+
   --color-danger: #000000;
 }
 
@@ -289,6 +292,26 @@ fieldset {
 
 .ui-widget .ui-widget {
   font-size: 12pt !important;
+}
+
+.ui-widget-header {
+  background: none;
+  color: var(--ui-color-sec);
+  font-weight: bold;
+}
+
+.ui-checkboxradio-checked.ui-state-active {
+  background: var(--ui-color-sec) !important;
+  border: 1px solid var(--ui-color-ter);
+}
+
+.ui-icon-background, .ui-state-active .ui-icon-background {
+  border: var(--ui-color-success);
+  background-color: var(--ui-color-pri);
+}
+
+.ui-visual-focus {
+  box-shadow: 0 0 3px 1px var(--ui-color-pri);
 }
 
 button#help {
@@ -657,11 +680,11 @@ button > i {
 }
 
 .feedControl:hover {
-  color: var(--ui-color-sec) !important;
+  color: var(--color-ter) !important;
 }
 
 .media:hover {
-  color: var(--ui-color-sec) !important;
+  color: var(--color-ter) !important;
 }
 
 .mobHeader .ui-button {
