@@ -151,7 +151,7 @@ MOB.i18n.translations = {
   "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
   "Help Petrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Petrolette." , ja: "あなたの精神的な日の気分に応じてPetroletteを助けてください", es: "Ayuda a Petrolette de acuerdo con tu estado de ánimo espiritual del día." },
   "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
-  "Loaded petrolette.json OK" : { fr: "Ouverture de petrolette.json OK" , ja: "このファイルは問題ありません", es: "Este archivo está bien" },
+  "Loading %1 OK" : { fr: "Ouverture de %1 OK" , ja: "%1をロードしました。OK", es: "Cargado %1 bien" },
   "Forgot what you are? Reset Petrolette groups & sources" : { fr: "Oublié ce que vous êtes? Re-initialiser Petrolette" , ja: "あなたは何かを忘れましたか？ リセットPetrolette", es: "Olvidó lo que eres? Restablecer Petrolette" },
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },

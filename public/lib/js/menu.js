@@ -159,6 +159,9 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   $fileImportInput.change(function(evt){
     var files = evt.target.files;
     var f = files[0];
+
+    console.log('name: (%s)', f.name);
+
     var reader = new FileReader();
 
     reader.onload = (function() {
@@ -196,7 +199,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          $.notify(MOB.tr('Loaded petrolette.json OK'), 'success');
+          $.notify(MOB.tr('Loading %s OK', f.name), 'success');
           MOB.tab.populate(p, true);
         } else {
           $.notify(MOB.tr('This file is bad'), 'error');
