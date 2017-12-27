@@ -1,55 +1,55 @@
 html {
-  font-size: 100%;
-  overflow-y: scroll;
-  /* -webkit-text-size-adjust: 100%; */
-  /* -ms-text-size-adjust: 100%; */
+    font-size: 100%;
+    overflow-y: scroll;
+    /* -webkit-text-size-adjust: 100%; */
+    /* -ms-text-size-adjust: 100%; */
 }
 
 /* Bootstrapping */
 ul {
-  list-style-type: none;
-  margin:0;
-  padding:0;
+    list-style-type: none;
+    margin:0;
+    padding:0;
 }
 
 /* Petrolette */
 body {
-  /* font-size:.8em !important; */
-  margin:0 !important;
+    /* font-size:.8em !important; */
+    margin:0 !important;
 }
 
 @font-face {
-  font-family: LobsterRegular;
-  src: url('/static/font/Lobster.otf') format("opentype");
-  src: url('/static/font/Lobster.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: LobsterRegular;
+    src: url('/static/font/Lobster.otf') format("opentype");
+    src: url('/static/font/Lobster.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: Ubuntu;
-  src: url('/static/font/ubuntu/Ubuntu-R.ttf') format("truetype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: Ubuntu;
+    src: url('/static/font/ubuntu/Ubuntu-R.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* TABS */
 
 li.mobTab,
 #newTabButton {
-  margin: 0 0 0 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: inset 4px 0px 6px -4px rgba(0,0,0,0.19) !important;
+    margin: 0 0 0 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: inset 4px 0px 6px -4px rgba(0,0,0,0.19) !important;
 }
 
 .tabCloser {
-  display: none;
+    display: none;
 }
 /* FEEDS */
 
 .ui-tabs-panel {
-  padding:0 !important;
+    padding:0 !important;
 }
 
 @keyframes spin-animation {
@@ -72,13 +72,13 @@ li.mobTab,
 }
 
 .rotate {
-  display:inline-block;
-  cursor:pointer;
-  transition: all .2s linear;
+    display:inline-block;
+    cursor:pointer;
+    transition: all .2s linear;
 }
 
 .rotate.down {
-  transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 .rotate.right {
@@ -86,7 +86,7 @@ li.mobTab,
 }
 
 .rotate.close {
-  transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }
 
 /* Fontello */
@@ -95,70 +95,70 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 
 .tab  {
-  border: none !important;
-  margin:0 !important;
+    border: none !important;
+    margin:0 !important;
 }
 
 #tabs li .ui-icon-close {
-  /* float: left; */
-  /* margin: 0.4em 0.2em 0 0; */
-  cursor: pointer;
+    /* float: left; */
+    /* margin: 0.4em 0.2em 0 0; */
+    cursor: pointer;
 }
 
 .newFeedButton {
-  position: absolute;
-  text-align: center;
-  cursor: pointer;
-  /* float: right; */
-  top: 0px;
-  right: .2em;
-  width: 78px;
-  height: 78px;
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    /* float: right; */
+    top: 0px;
+    right: .2em;
+    width: 78px;
+    height: 78px;
 }
 
 .newFeedButton > p {
-  margin: 6px -92px 5px auto;
-  vertical-align:middle;
+    margin: 6px -92px 5px auto;
+    vertical-align:middle;
 }
 
 .newFeedButton > p > span.plus {
-  font-weight: normal;
+    font-weight: normal;
 }
 
 .newFeedButton > p > span.text {
-  position: relative;
-  top: 5px;
-  opacity: 0.1;
-  font-size: 1em;
-  font-weight: bold;
+    position: relative;
+    top: 5px;
+    opacity: 0.1;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 /* Feed */
 ul.tabSort {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  /* align-items:flex-start; */
-  /* padding-bottom: 0px !important; */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* align-items:flex-start; */
+    /* padding-bottom: 0px !important; */
 
-  /* column-count: 3; */
-  /* columns: 15em; */
-  /* column-gap: .3em; */
-  padding: 0 .2em .2em;
-  columns: 18rem;
-  column-gap: .3em;
-  min-height:30px;
+    /* column-count: 3; */
+    /* columns: 15em; */
+    /* column-gap: .3em; */
+    padding: 0 .2em .2em;
+    columns: 18rem;
+    column-gap: .3em;
+    min-height:30px;
 }
 
 li.feed {
-  font-family: Verdana, Arial, sans-serif;
-  page-break-inside: avoid;
-  break-inside: avoid;
-  display: inline-block;
-  break-inside: avoid;
-  vertical-align:top;
-  margin: .2em 0 0 0;
-  /* break-inside: avoid-column; */
-  /* padding: 5px; */
+    font-family: Verdana, Arial, sans-serif;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: inline-block;
+    break-inside: avoid;
+    vertical-align:top;
+    margin: .2em 0 0 0;
+    /* break-inside: avoid-column; */
+    /* padding: 5px; */
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
@@ -167,16 +167,16 @@ li.feed {
 
 .selected,
 li.feed {
-  width: 100%;
-  min-height:20px !important;
+    width: 100%;
+    min-height:20px !important;
 }
 
 .feedBody {
-  margin: 0;
+    margin: 0;
 }
 
 .selected {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 /* Item */
@@ -186,13 +186,13 @@ li.feedItem {
 }
 
 li.feedItem a:not(.error) {
-  /* display: block; */
-  /* width:100%; */
-  font-weight: bold;
+    display: block;
+    width:100%;
+    font-weight: bold;
 }
 
 li.feedItem {
-  padding: .2rem;
+    padding: .2rem;
 }
 
 div.feedItem img {
@@ -202,17 +202,17 @@ div.feedItem img {
 }
 
 div.feedItem img.full {
-  min-width:100%;
+    min-width:100%;
 }
 
 li.feedItem {
-  border:0 !important;
+    border:0 !important;
 }
 
 /* Theme Overrides */
 .ui-widget-content,
 .ui-widget-header {
-  border: none !important;
+    border: none !important;
 }
 
 .feed {
