@@ -104,6 +104,8 @@ MOB.i18n.translations = {
   "Edit group" : { fr: "Modifier groupe" , ja: "グループの編集", es: "Editar grupo" },
   "Group name" : { fr: "Nom du groupe" , ja: "グループ名", es: "Nombre de la grupo" },
   "Group position" : { fr: "Position du groupe" , ja: "グループの位置", es: "Posición del grupo" },
+  "Left" : { fr: "Gauche" , ja: "左", es: "Izquierda" },
+  "Right" : { fr: "Droite" , ja: "右", es: "Derecha" },
   "Day theme" : { fr: "Thème jour" , ja: "日テーマ", es: "Tema del día" },
   "Night theme" : { fr: "Thème nuit" , ja: "夜のテーマ", es: "Tema nocturno" },
   "Day" : { fr: "Jour" , ja: "日", es: "día" },
