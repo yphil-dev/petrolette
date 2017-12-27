@@ -336,16 +336,13 @@ MOB.feed = {
 
         var $itemLink = $('<a>')
             .attr('target', '_blank')
+            .attr('class', 'feedItem ui-helper-clearfix')
             .attr('href', item.link)
             .append(item.title);
 
         var $mediaLink = $('<a>')
             .css("display", "inline")
             .attr('href', imageUrl);
-
-        var $itemSpan = $('<span>')
-            .attr('class', 'truncate ui-helper-clearfix')
-            .text(summary.trim());
 
         if (index % 2 === 0) {
           $feedItem.addClass('mobFeedEven');
@@ -387,7 +384,7 @@ MOB.feed = {
 
         // $itemSpan.appendTo($itemLink);
         $itemLink.appendTo($itemDiv);
-        $('<br class="ui-helper-clearfix">').appendTo($itemDiv);
+        // $('<br class="ui-helper-clearfix">').appendTo($itemDiv);
         // $itemSpan.appendTo($itemDiv);
         $itemDiv.appendTo($feedItem);
         $feedItem.appendTo($feedBody);
