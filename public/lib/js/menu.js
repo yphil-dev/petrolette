@@ -64,7 +64,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $saveButton.click(function () {
-    MOB.prefs.exportConfig(MOB.tab.list(), 'petrolette.conf');
+    MOB.prefs.exportConfig(MOB.tab.list(), 'petrolette.json');
     return false;
   });
 
@@ -157,8 +157,9 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   // File reader
 
   $fileImportInput.change(function(evt){
-    var f = evt.target.files[0],
-        reader = new FileReader();
+    var files = evt.target.files;
+    var f = files[0];
+    var reader = new FileReader();
 
     reader.onload = (function() {
       return function(e) {
@@ -175,7 +176,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
         var y = e.target.result;
 
-        function isJsonString(str) {
+        function IsJsonString(str) {
           try {
             JSON.parse(str);
           } catch (e) {
@@ -186,7 +187,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
         var p = false;
 
-        if (isJsonString(y)) {
+        if (IsJsonString(y)) {
           p = JSON.parse(y);
         } else {
           $.notify(MOB.tr('This file is bad'), 'error');
@@ -195,7 +196,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          $.notify(MOB.tr('Loading of %s OK', f.name), 'success');
+          $.notify(MOB.tr('Loaded petrolette.json OK'), 'success');
           MOB.tab.populate(p, true);
         } else {
           $.notify(MOB.tr('This file is bad'), 'error');

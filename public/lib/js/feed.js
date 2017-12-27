@@ -299,13 +299,13 @@ MOB.feed = {
 
         var $description = $.parseHTML(item.description);
 
-        var imageUrl;
+        var mediaUrl;
 
         if (item['media:group']) {
           var myArray = item['media:group']['media:content'];
           for (var i = 0; i < myArray.length; i++) {
             if (myArray[i]['@'].url) {
-              imageUrl = myArray[i]['@'].url;
+              mediaUrl = myArray[i]['@'].url;
             }
           }
         }
@@ -313,78 +313,131 @@ MOB.feed = {
         var $tempDom = $('<output>').append($description);
 
         if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
-          imageUrl = $tempDom.find('img').attr('src');
+          mediaUrl = $tempDom.find('img').attr('src');
         }
 
         if (typeof item.image.url !== 'undefined') {
-          imageUrl = item.image.url;
+          mediaUrl = item.image.url;
         }
 
         if (item.enclosures[0]) {
-          imageUrl = item.enclosures[0].url;
+          mediaUrl = item.enclosures[0].url;
         }
 
         // console.log('S: %s', item.summary)
         var summary = $('<p>').append(item.summary).text();
 
-        var $feedItem = $('<li>')
-            .attr('title', summary.trim())
-            .attr('class', 'feedItem');
+        var $feedItem = $('<li class="feedItem">').attr('title', summary.trim());
+        var $itemDiv = $('<div class="feedItem">');
 
-        var $itemDiv = $('<div>')
-            .attr('class', 'feedItem ui-helper-clearfix');
+
+        // var $itemDiv = $('<div>')
+        //     .attr('class', 'feedItem ui-helper-clearfix');
+
+        // var $itemLink = $('<a>')
+        //     .attr('target', '_blank')
+        //     .attr('class', 'feedItem ui-helper-clearfix')
+        //     .attr('href', item.link)
+        //     .append(item.title);
+
+        // var $mediaLink = $('<a>')
+        //     .css("display", "inline")
+        //     .attr('href', mediaUrl);
+
+        // if (index % 2 === 0) {
+        //   $feedItem.addClass('mobFeedEven');
+        // }
+
+        // if (mediaUrl && mediaUrl[0] == "/") {
+        //   mediaUrl = feedHost + mediaUrl;
+        // }
+
+        // if (mediaUrl && mediaUrl !== 'null' && typeof mediaUrl !== 'undefined') {
+
+        //   var $media;
+
+        //   if (mediaUrl.match(/\.mp3$/)) {
+
+        //     $media = $('<span>')
+        //       .attr('class', 'media icon-volume-down')
+        //       .css("display", "inline-block")
+        //       .appendTo($mediaLink);
+
+        //   } else {
+
+        //     $mediaLink.attr('data-fancybox', 'gallery')
+        //       .attr('data-fancybox-group', $panel.attr('id'))
+        //       .attr('data-caption', item.title);
+
+        //     $media = $('<img>').attr('src', mediaUrl)
+        //       .appendTo($mediaLink);
+        //   }
+
+        //   if (feedType == 'photo')
+        //     $media.addClass('full');
+
+        // }
+
+        // if (feedType !== 'text')
+        //   $mediaLink.appendTo($itemDiv);
 
         var $itemLink = $('<a>')
             .attr('target', '_blank')
-            .attr('class', 'feedItem ui-helper-clearfix')
+            .attr('class', 'ui-helper-clearfix')
             .attr('href', item.link)
             .append(item.title);
 
-        var $mediaLink = $('<a>')
-            .css("display", "inline")
-            .attr('href', imageUrl);
+        var $itemSpan = $('<span>')
+            .attr('class', 'truncate ui-helper-clearfix')
+            .text(summary.trim());
 
         if (index % 2 === 0) {
           $feedItem.addClass('mobFeedEven');
         }
 
-        if (imageUrl && imageUrl[0] == "/") {
-          imageUrl = feedHost + imageUrl;
+        if (typeof mediaUrl !== 'undefined' && mediaUrl[0] == "/") {
+          mediaUrl = feedHost + mediaUrl;
         }
 
-        if (imageUrl && imageUrl !== 'null' && typeof imageUrl !== 'undefined') {
+        var $mediaLink;
+        var $itemMedia;
 
-          var $media;
+        if (mediaUrl !== 'null' && typeof mediaUrl !== 'undefined') {
 
-          if (imageUrl.match(/\.mp3$/)) {
+          $mediaLink = $('<a>')
+            .attr('href', mediaUrl);
 
-            $media = $('<span>')
+          if (mediaUrl.match(/\.ogg$/) || mediaUrl.match(/\.mp3$/)) {
+
+            $itemMedia = $('<i>')
               .attr('class', 'media icon-volume-down')
-              .css("display", "inline-block")
-              .appendTo($mediaLink);
+              .css('float', 'right');
 
           } else {
 
-            $mediaLink.attr('data-fancybox', 'gallery')
+            $mediaLink
+              .attr('data-fancybox', 'gallery')
               .attr('data-fancybox-group', $panel.attr('id'))
               .attr('data-caption', item.title);
 
-            $media = $('<img>').attr('src', imageUrl)
-              .appendTo($mediaLink);
+            $itemMedia = $('<img>').attr('src', mediaUrl);
+
           }
 
+          $itemMedia.appendTo($mediaLink);
+
+          // $itemMedia = $('<img>').attr('src', mediaUrl)
+          //   .appendTo($mediaLink);
+
           if (feedType == 'photo')
-            $media.addClass('full');
+            $itemMedia.addClass('full');
 
+          if (feedType !== 'text')
+            $mediaLink.appendTo($itemDiv);
         }
-
-        if (feedType !== 'text')
-          $mediaLink.appendTo($itemDiv);
-
 
         // $itemSpan.appendTo($itemLink);
         $itemLink.appendTo($itemDiv);
-        // $('<br class="ui-helper-clearfix">').appendTo($itemDiv);
         // $itemSpan.appendTo($itemDiv);
         $itemDiv.appendTo($feedItem);
         $feedItem.appendTo($feedBody);
