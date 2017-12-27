@@ -159,8 +159,8 @@ MOB.utilities = {
     ui.setOption("overlayOpacity", 0.2);
 
     ui.setOption("showStepNumbers", false);
-    ui.setOption("nextLabel", '→');
-    ui.setOption("prevLabel", '←');
+    ui.setOption("nextLabel", 'â†’');
+    ui.setOption("prevLabel", 'â†');
     ui.setOption("skipLabel", '...');
     ui.setOption("doneLabel", '.');
 
