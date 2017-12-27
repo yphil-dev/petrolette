@@ -272,7 +272,7 @@ MOB.dialog = {
           // $dialog.find('form').append('plop');
 
           function guessError () {
-            $guessSpinner.removeClass('icon-cog spin')
+            $guessSpinner.removeClass('icon-cog spin ui-state-success')
               .addClass('icon-cancel-circled');
             $guessButton.addClass('ui-state-error');
             $okButton.addClass('ui-state-error');
@@ -288,7 +288,7 @@ MOB.dialog = {
               $guessButton = $dialog.find('button#feedGuess').button(),
               $guessSpinner = $dialog.find('button#feedGuess > i'),
               $guessField = $dialog.find('input#feedGuess'),
-              $okButton = $('.ui-dialog-buttonpane'),
+              $okButton = $dialog.find('.ui-dialog-buttonpane'),
               $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-help"></span><span class="ui-button-icon-space"> </span>Help</button>');
 
           $dialog.parent().find('.ui-dialog-titlebar').append($helpButton);
@@ -299,10 +299,6 @@ MOB.dialog = {
 
           });
 
-          $okButton
-            .find('button:contains("OK")')
-            .addClass('okButton');
-
           var oldUrl = $dataStore.data('url'),
               oldType = $dataStore.data('type'),
               oldLimit = $dataStore.data('limit');
@@ -311,9 +307,9 @@ MOB.dialog = {
             console.log('\nGuess: %s', $guessField.val());
 
             $guessSpinner
-              .removeClass('icon-ok icon-cancel-circled icon-flashlight')
+              .removeClass('icon-ok icon-cancel-circled icon-flashlight ui-state-success ui-state-error')
               .addClass('spin icon-cog');
-            $guessButton.removeClass('ui-state-success ui-state-error');
+            $guessButton.removeClass('icon-ok ui-state-success ui-state-error');
 
             if (!$guessField.val().startsWith('http')) {
               guessError();
@@ -326,14 +322,14 @@ MOB.dialog = {
               timeout: 1200
             }, function() {
               $guessSpinner.removeClass('spin icon-cog');
+
             }).done(function(feed, status) {
               console.log( 'OK %s (status %s)', feed, status);
               $guessField.val(feed);
-              $guessSpinner.addClass('icon-ok');
+              $guessSpinner
+                .removeClass('ui-state-error')
+                .addClass('icon-ok ui-state-success');
               $guessButton.addClass('ui-state-success');
-
-              $okButton.removeClass('ui-state-error')
-                .addClass('ui-state-success');
 
             }).fail(function(feed, status) {
               console.log( 'ERROR %s (status: %s)', $guessField.val(), status);

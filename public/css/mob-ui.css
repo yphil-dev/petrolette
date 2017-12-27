@@ -310,6 +310,14 @@ fieldset {
   background-color: var(--ui-color-pri);
 }
 
+.ui-state-success {
+  background-color: var(--ui-color-success) !important;
+}
+
+.ui-state-error {
+  background-color: var(--ui-color-danger) !important;
+}
+
 .ui-visual-focus {
   box-shadow: 0 0 3px 1px var(--ui-color-pri);
 }
@@ -750,11 +758,6 @@ div.ui-tabs-panel {
 
 li.ui-state-hover:not(.ui-tabs-active) {
   background-color: var(--bg-color-ter) !important;
-}
-
-.ui-state-error {
-  background-color: var(--bg-color-pri) !important;
-  color: var(--ui-bg-color-danger);
 }
 
 i.tabCloser,
