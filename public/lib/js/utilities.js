@@ -232,6 +232,10 @@ MOB.utilities = {
 
       this.radialLoaderLabel.text(Math.ceil(100 * this.step / this.steps) + '%');
 
+      if ((100 * this.step / this.steps) >= 10 && (100 * this.step / this.steps) < 11) {
+        console.log('TEN!');
+      }
+
       // this.progressElt.animate({
       // width: Math.ceil(100 * this.step / this.steps) + '%'
       // });
@@ -253,27 +257,6 @@ MOB.utilities = {
     };
 
     return progress;
-  },
-  notify : function(type, message) {
-    var $p = $('#menu').find('#mobNotify > p').empty();
-
-    var $type = $('<strong>')
-        .addClass(type)
-        .addClass('translate')
-        .text(MOB.tr(type));
-
-    $p.append($type, ' ', message)
-      .parent().fadeIn('fast')
-      .fadeIn( 1000, function() {
-        $p.animate({
-          opacity: 0.1
-        }, 6500, function() {
-          $p.slideUp(500, function() {
-            $p.animate({opacity: 1}, 1);
-            $p.parent().fadeOut('slow');
-          });
-        });
-      });
   },
   milliToSecs : function(s) {
     var ms = s % 1000;
