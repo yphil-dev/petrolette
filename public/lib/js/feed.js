@@ -44,28 +44,23 @@ MOB.feed = {
     $feedToggle.click(function() {
       $(this).toggleClass("down");
       $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
-      // return false;
     });
 
     $feedSelect.click(function() {
       $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
       $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1');
-      // return false;
     });
 
     $feedDelete.click(function() {
       MOB.dialog.killFeed($(this));
-      // return false;
     });
 
     $feedPrefs.click(function() {
       MOB.dialog.feedPrefs($(this));
-      // return false;
     });
 
     $feedReload.click(function() {
       MOB.feed.populate($(this), progress);
-      // return false;
     });
 
     var $feedBody = $('<div>')
@@ -74,11 +69,15 @@ MOB.feed = {
     var $feedBodyUl = $('<ul>')
         .attr('class', 'feedBody');
 
-    var $feed = $('<li id="feed-' + feedIndex + '" class="feed ui-widget" data-url="' + url + '" data-type="' + type + '" data-limit="' + limit + '"></li>');
+    var $feed = $('<li>')
+        .attr('id', 'feed-' + feedIndex)
+        .attr('class', 'feed no-fouc ui-widget')
+        .data('url', url)
+        .data('type', type)
+        .data('limit', limit);
 
     var $header = $('<div class="mobHeader ui-widget-header">');
     var $toggleDiv = $('<div class="feedToggle">');
-    var $controlsToggleDiv = $('<div class="controlsToggle">');
     var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
 
     var $feedHandle = $('<div>')
@@ -151,10 +150,6 @@ MOB.feed = {
 
     $titleDiv.appendTo($header);
 
-    $controlsToggle.appendTo($myControlsToggleDiv);
-    // $myControlsToggleDiv.appendTo($header);
-
-    // $controlsToggleDiv.appendTo($feedControls);
     $selectDiv.appendTo($feedControls);
     $deleteDiv.appendTo($feedControls);
     $prefsDiv.appendTo($feedControls);
@@ -169,7 +164,6 @@ MOB.feed = {
 
     if (clickNew) {
       $feed.prependTo($tab);
-      // $feedPrefs.click()
       MOB.dialog.feedPrefs($feedPrefs, true);
     } else {
       $feed.appendTo($tab);
@@ -179,28 +173,19 @@ MOB.feed = {
   },
   populate:function($button, progress) {
 
-    var $dataStore = $button.parent().parent();
-    var $refreshButton = $dataStore.find('i.mobFeedRefresh');
-    var $header = $dataStore.parent();
-    var $panel = $dataStore.parent().parent().parent();
-
-    // var $feed = $('#' + id);
-    // var $feed = $('#' + $dataStore.data('id'));
-    var $feed = $dataStore.parent().parent();
-
-    var $feedTitle = $feed.children().children('.feedTitle');
-    var $feedBody = $feed.children().children('ul.feedBody');
-
-    var feedUrl = $dataStore.data('url');
-    var feedType = $dataStore.data('type');
-    var feedLimit = $dataStore.data('limit');
-
-    var $feedIcon = $feed.find('.feedToggle > i');
+    var $dataStore = $button.parent().parent(),
+        $refreshButton = $dataStore.find('i.mobFeedRefresh'),
+        $header = $dataStore.parent(),
+        $panel = $dataStore.parent().parent().parent(),
+        $feed = $dataStore.parent().parent(),
+        $feedTitle = $feed.children().children('.feedTitle'),
+        $feedBody = $feed.children().children('ul.feedBody'),
+        feedUrl = $dataStore.data('url'),
+        feedType = $dataStore.data('type'),
+        feedLimit = $dataStore.data('limit'),
+        $feedIcon = $feed.find('.feedToggle > i');
 
     if (!MOB.utilities.isUrl(feedUrl)) {
-
-      // MOB.utilities.feedError($feed, 'dOh!');
-
 
       console.info('bad URL: (%s)', feedUrl);
       $header.addClass('ui-state-error');
@@ -216,19 +201,15 @@ MOB.feed = {
       return;
     }
 
-
     var l = MOB.utilities.getLocation(feedUrl);
 
     var feedHost = l.protocol + '//' + l.hostname;
 
-    // const myurl = new URL(feedUrl);
     const subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
     if (subdomain === 'rss' || subdomain === 'feeds') {
       feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '')
     }
-
-    // console.log('HOST: (%s)', feedHost);
 
     $refreshButton.addClass('spin');
     $feed.children('.mobHeader').removeClass('ui-state-error');
@@ -395,14 +376,14 @@ MOB.feed = {
           $feedItem.addClass('mobFeedEven');
         }
 
-        if (typeof mediaUrl !== 'undefined' && mediaUrl[0] == "/") {
+        if (mediaUrl && mediaUrl !== 'null' && typeof mediaUrl !== 'undefined' && mediaUrl[0] == "/") {
           mediaUrl = feedHost + mediaUrl;
         }
 
         var $mediaLink;
         var $itemMedia;
 
-        if (mediaUrl !== 'null' && typeof mediaUrl !== 'undefined') {
+        if (mediaUrl && mediaUrl !== 'null' && typeof mediaUrl !== 'undefined') {
 
           $mediaLink = $('<a>')
             .attr('href', mediaUrl);

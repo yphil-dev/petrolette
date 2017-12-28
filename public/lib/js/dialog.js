@@ -558,13 +558,13 @@ MOB.dialog = {
     });
 
   },
-  renameGroup:function($tab) {
+  editGroup:function($tab) {
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #renameGroupDialog', function() {
-      var $dialog = $('#renameGroupDialog');
+    $('#mobDialogs').load('/static/templates/dialogs.html #editGroupDialog', function() {
+      var $dialog = $('#editGroupDialog');
 
       $dialog.dialog({
-        title: MOB.tr('Edit Group'),
+        title: MOB.tr('Group'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
@@ -610,6 +610,10 @@ MOB.dialog = {
 
           var $tab = $('a#' + $(this).data('tabId')).parent('li');
 
+          $tabName.click(function() {
+            $(this).select();
+          });
+
           $tabLeft.click(function() {
             MOB.utilities.moveEltLeft($tab);
           });
@@ -620,7 +624,7 @@ MOB.dialog = {
 
           $tabNameLegend.text(MOB.tr('Group name'));
 
-          $tabName.val($(this).data('tabName')).select();
+          $tabName.val($(this).data('tabName'));
 
           $(this).on('submit', function () {
             $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());

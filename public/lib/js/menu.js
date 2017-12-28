@@ -9,7 +9,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $langMenu = $('select#language'),
       $help = $('button#help').button(),
       $donate = $('button#donate').button(),
-      $profile = $('button#profile').button(),
+      $addSource = $('button#addSource').button(),
       $slider = $('div#gallerySpeedSlider'),
       $spinner = $('#gallerySpeedSpinner');
 
@@ -23,7 +23,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
     var selectedLang = $(this).val();
 
-    console.log('Lang: %s', selectedLang);
     MOB.language = selectedLang;
     MOB.prefs.writeConfig('lang', selectedLang);
     MOB.utilities.translate();
@@ -35,15 +34,13 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     $(this).children('i').toggleClass('close');
   });
 
-  $profile.click(function (event) {
+  $addSource.click(function (event) {
     event.preventDefault();
-    console.log('Click!');
 
     $handle.click();
 
     MOB.dialog.newContent();
 
-    // MOB.dialog.question(0);
   });
 
   $help.click(function (event) {
@@ -64,7 +61,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $saveButton.click(function () {
-    MOB.prefs.exportConfig(MOB.tab.list(), 'petrolette.json');
+    MOB.prefs.exportConfig(MOB.tab.list(), 'petrolette.conf');
     return false;
   });
 
@@ -105,7 +102,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   $('input#tabDropActivate').change(function() {
     MOB.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
   });
-
 
   $spinner.spinner({
     min: 0.5,
@@ -157,9 +153,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   // File reader
 
   $fileImportInput.change(function(evt){
-    var files = evt.target.files;
-    var f = files[0];
-    var reader = new FileReader();
+    var f = evt.target.files[0],
+        reader = new FileReader();
 
     reader.onload = (function() {
       return function(e) {
@@ -176,7 +171,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
         var y = e.target.result;
 
-        function IsJsonString(str) {
+        function isJsonString(str) {
           try {
             JSON.parse(str);
           } catch (e) {
@@ -187,7 +182,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
         var p = false;
 
-        if (IsJsonString(y)) {
+        if (isJsonString(y)) {
           p = JSON.parse(y);
         } else {
           $.notify(MOB.tr('This file is bad'), 'error');
@@ -196,7 +191,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          $.notify(MOB.tr('Loaded petrolette.json OK'), 'success');
+          $.notify(MOB.tr('Loading of [%s] OK', f.name), 'success');
           MOB.tab.populate(p, true);
         } else {
           $.notify(MOB.tr('This file is bad'), 'error');
