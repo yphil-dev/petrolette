@@ -1,7 +1,7 @@
 :root {
   --ui-bg-color-pri: #373737;
   --ui-color-pri: #f4f4f4;
-  --ui-color-sec: #DCD0C0;
+  --ui-color-sec: #FF9009;
   --ui-color-ter: #C0B283;
   --ui-color-qua: #222222;
 
@@ -15,7 +15,7 @@
   --handle-flex-shrink: 0;
   --handle-visibility: visible;
 
-  --ui-bg-color-danger: #FF4136;
+  --ui-bg-color-danger: #C63D0F;
   --ui-color-danger: #FF4136;
   --ui-color-success: #4db53c;
 
@@ -143,7 +143,7 @@ fieldset a:visited {
 
 fieldset,
 legend {
-  background: var(--ui-bg-color-pri) !important;
+  background: none !important;
   /* background-color: var(--bg-color-pri) !important; */
   color: var(--ui-color-pri);
   /* font-size:76% !important; */
@@ -194,8 +194,18 @@ fieldset {
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
-  background-color: var(--ui-bg-color-pri);
+
+  background: #485563;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* background-color: var(--ui-bg-color-pri); */
   /* color: var(--ui-color-pri) !important; */
+}
+
+.handle {
+  background: #485563;  /* fallback for old browsers */
+
 }
 
 button {
@@ -204,11 +214,6 @@ button {
 
 .ui-dialog .ui-dialog-buttonpane {
   margin: 0 !important;
-}
-
-.ui-button:active {
-  background-color: var(--ui-color-pri) !important;
-  color: #2B374B !important;
 }
 
 .logoItem {
@@ -293,9 +298,12 @@ fieldset {
   font-weight: bold;
 }
 
-.ui-checkboxradio-checked.ui-state-active {
+.ui-checkboxradio-checked.ui-state-active,
+.ui-button:active {
   background: var(--ui-color-sec) !important;
-  border: 1px solid var(--ui-color-ter);
+  color: var(--ui-color-qua) !important;
+
+  border: 1px solid transparent;
 }
 
 .ui-icon-background, .ui-state-active .ui-icon-background {
@@ -684,7 +692,7 @@ button > i {
 
 .feedControl:hover,
 .media:hover {
-  color: var(--ui-color-success) !important;
+  color: var(--ui-color-sec) !important;
 }
 
 .mobHeader .ui-button {
