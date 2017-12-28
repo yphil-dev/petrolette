@@ -61,6 +61,9 @@ MOB.i18n.translations = {
   "Message" : { fr: "Message", ja: "メッセージ" },
 
   // Petrolette
+
+  "Whoops, no sources!" : { fr: "Oups, pas de sources!", ja: "うわー、ソースはありません！", es: "¡Ups, sin fuentes!" },
+  "Click here to add some." : { fr: "Cliquez ici pour en ajouter.", ja: "いくつか追加するにはここをクリックしてください。", es: "Haga clic aquí para agregar algunos." },
   "Group" : { fr: "Groupe", ja: "グループ", es: "Grupo" },
 
   "Find the website\'s source" : { fr: "Trouver la source du site web" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },

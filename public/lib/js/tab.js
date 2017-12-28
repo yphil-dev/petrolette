@@ -6,7 +6,7 @@ MOB.tab = {
   empty:function() {
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
-    $('#nothingButton').fadeIn('slow');
+    $('#noSourcesButton').fadeIn('slow');
     MOB.tab.saveTabs();
     MOB.tab.makeNewTabButton($('div#tabs'));
   },
@@ -102,7 +102,7 @@ MOB.tab = {
   },
   make:function($tabs, name, feeds, progress) {
 
-    $('#nothingButton').fadeOut('fast');
+    $('#noSourcesButton').fadeOut('fast');
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
