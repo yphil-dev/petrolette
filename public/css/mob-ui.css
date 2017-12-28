@@ -47,6 +47,20 @@ input {
   padding: .4em;
 }
 
+.notifyjs-bootstrap-base {
+  background-color: var(--bg-color-sec) !important;
+  border-color: var(--bg-color-ter) !important;
+  text-shadow: none !important;
+}
+
+.notifyjs-bootstrap-base.notifyjs-bootstrap-success {
+  color: var(--ui-color-success) !important;
+}
+
+.notifyjs-bootstrap-base.notifyjs-bootstrap-error {
+  color: var(--ui-color-danger) !important;
+}
+
 input#feedGuess {
   margin-right: .4em;
 }
@@ -74,6 +88,10 @@ input#feedGuess {
 li.ui-tabs-active,
 li.mobTab:first-child {
   box-shadow: none !important;
+}
+
+#tabs {
+  transition: all 2s ease;
 }
 
 #tabUl,
@@ -172,29 +190,6 @@ fieldset {
   left: 0px;
 }
 
-#mobNotify {
-  bottom: 1em;
-  position: absolute !important;
-  width: 255px;
-  display: none;
-}
-
-#mobNotify > p {
-  margin:0;
-}
-
-#mobNotify > p > strong {
-  text-transform: uppercase;
-}
-
-#mobNotify > p > strong.error {
-  color: red !important;
-}
-
-#mobNotify > p > strong.success {
-  color: green !important;
-}
-
 #menu,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
@@ -203,8 +198,7 @@ fieldset {
   /* color: var(--ui-color-pri) !important; */
 }
 
-button#profile,
-button#donate {
+button {
   text-align: left
 }
 
@@ -287,7 +281,6 @@ fieldset {
   display:flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: .4em;
 }
 
 .ui-widget .ui-widget {
@@ -310,6 +303,10 @@ fieldset {
   background-color: var(--ui-color-pri);
 }
 
+.ui-button.ui-state-active:hover {
+  border: 1px solid var(--ui-color-ter) !important;
+}
+
 .ui-state-success {
   background-color: var(--ui-color-success) !important;
 }
@@ -320,10 +317,6 @@ fieldset {
 
 .ui-visual-focus {
   box-shadow: 0 0 3px 1px var(--ui-color-pri);
-}
-
-button#help {
-  margin-bottom: .4em;
 }
 
 .flexBox > label {
@@ -347,10 +340,12 @@ button#help {
   flex: 1;
 }
 
+span.ui-spinner,
 .ui-button {
   margin-right: .4em;
-  margin-bottom: 0;
+  margin-bottom: .4em;
 }
+
 
 span.ui-spinner,
 .last {
@@ -687,12 +682,9 @@ button > i {
 
 }
 
-.feedControl:hover {
-  color: var(--color-ter) !important;
-}
-
+.feedControl:hover,
 .media:hover {
-  color: var(--color-ter) !important;
+  color: var(--ui-color-success) !important;
 }
 
 .mobHeader .ui-button {
@@ -817,11 +809,12 @@ li.feedItem:hover {
 }
 
 .c100 {
-  background-color: var(--ui-bg-color-pri);
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color-ter);
 }
 
 .c100 .bar, .c100 .fill {
-  border-color: var(--ui-color-sec);
+  border-color: var(--ui-color-ter);
 }
 
 .c100:hover > span {
@@ -833,5 +826,5 @@ li.feedItem:hover {
 }
 
 .c100:after {
-  background-color: var(--ui-bg-color-pri);
+  background-color: var(--bg-color-ter);
 }

@@ -24,11 +24,13 @@
 
     <link rel="stylesheet" href="/static/css/fontello.css" media="none" onload="this.media='all';">
 
+
     <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
 
     <link rel="stylesheet" href="/static/css/circle.css">
 
     <link rel="stylesheet" href="/static/css/mob-ui.css" media="none" onload="this.media='all';">
+
     <link rel="stylesheet" href="/static/css/petrolette.css" media="none" onload="this.media='all';">
 
     <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/> -->
@@ -48,7 +50,14 @@
     <script src="/static/lib/js/prefs.js"></script>
     <script src="/static/lib/js/i18n.js"></script>
 
-    <script>
+
+    <style type="text/css">
+     #menu, #tabs {
+         display:none;
+     }
+    </style>
+
+    <script type="text/javascript">
 
      document.fonts.ready.then((fontFaceSet) => {
        console.log(fontFaceSet.name, 'FontFace loaded.');
@@ -61,107 +70,17 @@
 
      MOB.language = MOB.prefs.readConfig('lang');
 
-     $(document).ready(function() {
-
-       $( document ).keydown(function( event ) {
-         if ( event.keyCode === $.ui.keyCode.ESCAPE ) {
-           $( ".tabSort" ).sortable( "cancel" );
-         }
-       });
-
-       $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
-
-       var $tabs = $('#tabs').tabs({
-         heightStyle: 'content',
-         activate: function(event, ui) {
-
-           var $activeTab = $tabs.find('.ui-tabs-active');
-
-           $(document).prop('title', $activeTab.text() + ' | Petrolette');
-
-           $('.tabCloser').hide();
-
-           $activeTab.find('.tabCloser').show();
-         }
-
-       });
-
-       $tabs.find('.ui-tabs-nav').sortable({
-         axis: 'x',
-         items: '> li:not(#newTabButton)',
-         stop: function() {
-           $tabs.tabs('refresh');
-           MOB.tab.saveTabs();
-         }
-       });
-
-       $tabs.on('mouseup', '.ui-tabs-active a', function(e){
-         e.preventDefault();
-         if (e.which === 1) {
-           MOB.dialog.renameGroup($(this))
-         }
-       });
-
-       $tabs.on("click", "i.tabCloser", function() {
-         MOB.dialog.killTab($(this));
-       });
-
-       $('#nothingButton button').click(function() {
-         MOB.dialog.newContent();
-       });
-
-       // INIT
-
-       if (MOB.utilities.isMobile()) {
-         console.log()
-         $tabs.find('.prefs').css('display', 'initial');
-       }
-
-       console.log('TABS: (%s)', $.parseJSON(MOB.prefs.readConfig('tabs')).length)
-
-       MOB.tab.makeNewTabButton($tabs);
-
-       if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
-         MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-       } else {
-         console.error('Zero tabs!');
-         $('#nothingButton').fadeIn('slow');
-       }
-       // $tabs.find('div.feedControls').slideUp();
-
-     });
-
     </script>
-
-    <style>
-
-     div#preloaded-images {
-         position: absolute;
-         overflow: hidden;
-         left: -9999px;
-         top: -9999px;
-         height: 1px;
-         width: 1px;
-     }
-
-    </style>
 
   </head>
 
   <body>
 
-
-    <div id="tabs">
+    <div id="tabs" style="display:none;">
       <ul id="tabUl"></ul>
     </div>
 
     <div id="mobDialogs"></div>
-
-    <script src="/static/lib/js/tab.js"></script>
-    <script src="/static/lib/js/feed.js"></script>
-    <script src="/static/lib/js/dialog.js"></script>
-    <script src="/static/lib/js/utilities.js"></script>
-    <script src="/static/lib/js/menu.js"></script>
 
     <div id="loadRadial" class="c100 small p0 hidden" style="display:none;">
       <span>0%</span>
@@ -178,11 +97,118 @@
       </button>
     </div>
 
-    <div id="preloaded-images">
-      <img src="/static/images/feed-toggle-triangle-fff.png" width="1" height="1" alt="Image 01" />
-      <img src="/static/images/feed-toggle-triangle-000.png" width="1" height="1" alt="Image 02" />
-      <img src="/static/images/icon-flamable.png" width="1" height="1" alt="Image 03" />
-    </div>
-
   </body>
+
+  <script src="/static/lib/js/tab.js"></script>
+  <script src="/static/lib/js/feed.js"></script>
+  <script src="/static/lib/js/dialog.js"></script>
+  <script src="/static/lib/js/utilities.js"></script>
+  <script src="/static/lib/js/menu.js"></script>
+
+  <script>
+
+   $(document).ready(function() {
+
+     $.notify.defaults({
+       // whether to hide the notification on click
+       clickToHide: true,
+       // whether to auto-hide the notification
+       autoHide: true,
+       // if autoHide, hide after milliseconds
+       autoHideDelay: 3000,
+       // default style
+       style: 'bootstrap',
+       // show the arrow pointing at the element
+       arrowShow: true,
+       // arrow size in pixels
+       arrowSize: 5,
+       // show animation
+       showAnimation: 'slideDown',
+       // show animation duration
+       showDuration: 400,
+       // hide animation
+       hideAnimation: 'slideUp',
+       // hide animation duration
+       hideDuration: 200,
+       // padding between element and notification
+       gap: 2
+     })
+
+     $( document ).keydown(function( event ) {
+       if ( event.keyCode === $.ui.keyCode.ESCAPE ) {
+         $( ".tabSort" ).sortable( "cancel" );
+       }
+     });
+
+     $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
+
+     var $tabs = $('#tabs').tabs({
+       heightStyle: 'content',
+       activate: function(event, ui) {
+
+         var $activeTab = $tabs.find('.ui-tabs-active');
+
+         $(document).prop('title', $activeTab.text() + ' | Petrolette');
+
+         $('.tabCloser').hide();
+
+         $activeTab.find('.tabCloser').show();
+       }
+
+     });
+
+     $tabs.find('.ui-tabs-nav').sortable({
+       axis: 'x',
+       items: '> li:not(#newTabButton)',
+       stop: function() {
+         $tabs.tabs('refresh');
+         MOB.tab.saveTabs();
+       }
+     });
+
+     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
+       e.preventDefault();
+       if (e.which === 1) {
+         MOB.dialog.editGroup($(this))
+       }
+     });
+
+     $tabs.on("click", "i.tabCloser", function() {
+       MOB.dialog.killTab($(this));
+     });
+
+     $('#nothingButton button').click(function() {
+       MOB.dialog.newContent();
+     });
+
+     // INIT
+
+     if (MOB.utilities.isMobile()) {
+       console.log()
+       $tabs.find('.prefs').css('display', 'initial');
+     }
+
+     console.log('TABS: (%s)', $.parseJSON(MOB.prefs.readConfig('tabs')).length)
+
+     MOB.tab.makeNewTabButton($tabs);
+
+     if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+       MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+     } else {
+       console.error('Zero tabs!');
+       $('#nothingButton').fadeIn('slow');
+     }
+     // $tabs.find('div.feedControls').slideUp();
+
+     setTimeout(function() {
+
+       $('#tabs').fadeIn(300);
+       $('#menu').fadeIn(600);
+
+     }, 1000);
+
+   });
+
+  </script>
+
 </html>
