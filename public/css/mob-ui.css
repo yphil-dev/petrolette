@@ -80,7 +80,7 @@ input#feedGuess {
   display:none;
 }
 
-#nothingButton {
+#noSourcesButton {
   /* margin-top:50%; */
   display:none;
 }
@@ -205,11 +205,6 @@ fieldset {
 
 .handle {
   background: #485563;  /* fallback for old browsers */
-
-}
-
-button {
-  text-align: left
 }
 
 .ui-dialog .ui-dialog-buttonpane {
@@ -715,7 +710,6 @@ button > i {
   opacity: 0.6;
 }
 
-#newTabButton:hover,
 .handle:hover {
   opacity: 1;
   color: var(--ui-color-sec) !important;
@@ -742,8 +736,7 @@ button > i {
 }
 
 #newTabButton a:hover {
-  background-color: var(--ui-bg-color-pri);
-  color: var(--color-ter);
+  color: var(--ui-color-sec) !important;
 }
 
 li.mobTab,
