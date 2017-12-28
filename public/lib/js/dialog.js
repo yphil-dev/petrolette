@@ -69,7 +69,7 @@ MOB.dialog = {
 
           $noSources.click(function() {
             MOB.tab.empty();
-            $('#nothingButton').fadeIn('slow');
+            $('#noSourcesButton').fadeIn('slow');
           });
 
           $newGroup.click(function() {
@@ -452,7 +452,7 @@ MOB.dialog = {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
               } else {
                 console.error('Zero tabs!');
-                $('#nothingButton').fadeIn('slow');
+                $('#noSourcesButton').fadeIn('slow');
               }
 
             }

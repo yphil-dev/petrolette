@@ -159,7 +159,7 @@ MOB.prefs = (function() {
     readConfig:function(key) {
 
       if(typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
-        return defaults[key];
+        return false;
       } else {
         return localStorage.getItem(key);
       }

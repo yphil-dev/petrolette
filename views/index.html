@@ -90,10 +90,21 @@
       </div>
     </div>
 
-    <div id="nothingButton" class="deadCenter hidden" style="display:none;">
+    <div id="noSourcesButton" class="deadCenter hidden" style="display:none;">
       <button>
-        Whoops, no content! <br/>
-        Click here to add some.
+        <span
+          data-content="Whoops, no sources!"
+          data-title="Whoops, no sources!"
+          class="translate">
+          Whoops, no sources!
+        </span>
+        <br/>
+        <span
+          data-content="Click here to add some."
+          data-title="Click here to add some."
+          class="translate">
+          Click here to add some.
+        </span>
       </button>
     </div>
 
@@ -177,7 +188,7 @@
        MOB.dialog.killTab($(this));
      });
 
-     $('#nothingButton button').click(function() {
+     $('#noSourcesButton button').button().click(function() {
        MOB.dialog.newContent();
      });
 
@@ -196,7 +207,7 @@
        MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
      } else {
        console.error('Zero tabs!');
-       $('#nothingButton').fadeIn('slow');
+       $('#noSourcesButton').fadeIn('slow');
      }
      // $tabs.find('div.feedControls').slideUp();
 
