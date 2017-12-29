@@ -182,8 +182,8 @@ MOB.prefs = (function() {
         document.body.appendChild(a);
         a.style = "display: none";
         var json = JSON.stringify(data, null, 2),
-            blop = new Blob([json], {type: "application/json"}),
-            url = window.URL.createObjectURL(blop);
+            blob = new Blob([json], {type: "application/json"}),
+            url = window.URL.createObjectURL(blob);
         a.href = url;
         a.download = fileName;
         a.click();

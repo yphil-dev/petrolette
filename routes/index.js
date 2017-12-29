@@ -22,39 +22,48 @@ router.use(function(req,res,next){
 });
 
 function getFeed (urlfeed, callback) {
-    var req = request (urlfeed);
-    var feedparser = new FeedParser ();
-    var feedItems = [];
-    req.on ("response", function (res) {
-        var stream = this;
-        if (res.statusCode === 200 && res.headers['content-type'].includes('xml')) {
-            stream.pipe (feedparser);
 
-        } else {
-            callback ('HTML page');
-            return;
-        }
-    });
-    req.on ("error", function (res) {
-        console.log ("getFeed: Error reading %s (%s) .", urlfeed, res);
-    });
-    feedparser.on ("readable", function () {
-        try {
-            var item = this.read ();
-            if (item !== null) { //2/9/17 by DW
-                feedItems.push (item);
-            }
-        }
-        catch (err) {
-            console.log ("getFeed: err.message == " + err.message);
-        }
-    }).on ("end", function () {
-        var meta = this.meta;
-        callback ('Feed OK', feedItems, meta.title);
-    }).on ("error", function (err) {
-        // console.log ("getFeed: Error reading (%s) feed: %s.", urlfeed, err.message);
-        callback ('Bad feed');
-    });
+  var options = {
+    url: urlfeed,
+    headers: {
+      'User-Agent': 'Mozilla/5.0',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  };
+
+  var req = request (options, urlfeed);
+  var feedparser = new FeedParser ();
+  var feedItems = [];
+  req.on ('response', function (res) {
+    var stream = this;
+    if (res.statusCode === 200 && res.headers['content-type'].includes('xml')) {
+      stream.pipe (feedparser);
+
+    } else {
+      callback (res.headers['content-type']);
+      return;
+    }
+  });
+  req.on ('error', function (res) {
+    console.log ('getFeed: Error reading %s (%s) .', urlfeed, res);
+  });
+  feedparser.on ('readable', function () {
+    try {
+      var item = this.read ();
+      if (item !== null) { //2/9/17 by DW
+        feedItems.push (item);
+      }
+    }
+    catch (err) {
+      console.log ('getFeed: err.message == ' + err.message);
+    }
+  }).on ('end', function () {
+    var meta = this.meta;
+    callback ('Feed OK', feedItems, meta.title);
+  }).on ('error', function (err) {
+    // console.log ("getFeed: Error reading (%s) feed: %s.", urlfeed, err.message);
+    callback ('Bad feed');
+  });
 }
 
 router.get('/feed', function(req, res) {
