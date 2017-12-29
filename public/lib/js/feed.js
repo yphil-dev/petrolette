@@ -85,11 +85,25 @@ MOB.feed = {
         .attr('title', MOB.tr('Move source'))
         .attr('class', 'feedHandle');
 
-    var $selectDiv = $('<div class="feedSelect collapsible">');
-    var $deleteDiv = $('<div class="feedDelete collapsible">');
-    var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
-    var $prefsDiv = $('<div class="prefs collapsible">');
+    var $selectDiv = $('<div>')
+        .attr('class', 'feedSelect');
+
+    var $deleteDiv = $('<div>')
+        .attr('class', 'feedDelete');
+
+    var $titleDiv = $('<div>')
+        .attr('class', 'feedTitle');
+
+    var $prefsDiv = $('<div>')
+        .attr('class', 'prefs');
+
     var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
+
+    if (!MOB.utilities.isMobile()) {
+      $selectDiv.addClass('collapsible');
+      $deleteDiv.addClass('collapsible');
+      $prefsDiv.addClass('collapsible');
+    }
 
     $feedToggle.appendTo($toggleDiv);
 
