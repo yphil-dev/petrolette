@@ -38,6 +38,7 @@ MOB.utilities = {
   },
   help:function(type) {
 
+
     var dialog = introJs(),
         menu = introJs(),
         ui = introJs();
@@ -81,11 +82,31 @@ MOB.utilities = {
         },
         {
           element: 'li#newTabButton',
-          intro: MOB.tr('Click this button to create a new tab.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click this button to add a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
         },
         {
-          element: '.handle.newFeed',
-          intro: MOB.tr('Click here to add a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          element: '.mobFeedRefresh',
+          intro: MOB.tr('Click here to refresh this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+        },
+        {
+          element: '.mobFeedPrefs',
+          intro: MOB.tr('Click here to edit this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+        },
+        {
+          element: '.feedDelete',
+          intro: MOB.tr('Click here to delete this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+        },
+        {
+          element: '.feedSelect',
+          intro: MOB.tr('Click here to select this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+        },
+        {
+          element: '.feedHandle',
+          intro: MOB.tr('Click here to drag this source (and all other selected sources) and to re-position it within this group, or to move it to another.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+        },
+        {
+          element: 'div.feedToggle',
+          intro: MOB.tr('Click here to expand and collapse this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
         }
       ]
     });
@@ -159,10 +180,14 @@ MOB.utilities = {
     ui.setOption("overlayOpacity", 0.2);
 
     ui.setOption("showStepNumbers", false);
-    ui.setOption("nextLabel", 'â†’');
-    ui.setOption("prevLabel", 'â†');
+    ui.setOption("prevLabel", 'Prev');
+    ui.setOption("nextLabel", 'Next');
     ui.setOption("skipLabel", '...');
     ui.setOption("doneLabel", '.');
+    ui.setOption("hidePrev", true);
+    ui.setOption("hideNext", true);
+    ui.setOption("exitOnEsc", true);
+    ui.setOption("exitOnOverlayClick", true);
 
     if (type === 'menu') {
       dialog.exit();
@@ -174,9 +199,11 @@ MOB.utilities = {
     } else {
       dialog.exit();
       $('#menu > .handle').click();
-      $('.ui-dialog-titlebar-close').click();
+      $('#feed-0').find('.collapsible').show('fade', 'fast');
       ui.start();
     }
+
+    $('.introjs-button').button();
 
   },
   translate:function() {

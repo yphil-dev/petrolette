@@ -146,8 +146,9 @@ MOB.dialog = {
 
           MOB.utilities.translate();
 
-          $('button#aide-un').click(function (event) {
+          $('button#aide-un').button().click(function (event) {
             event.preventDefault();
+            MOB.dialog.kill($dialog);
             MOB.utilities.help('ui');
           });
 
@@ -498,7 +499,7 @@ MOB.dialog = {
       var $dialog = $('#killDialog');
 
       var $thisFeedId = $button.parent().parent().parent().parent().attr('id');
-      var thisFeedName = $button.parent().parent().parent().find('.feedTitle').text();
+      var thisFeedName = $button.parent().parent().parent().find('span.title').text();
 
       console.log('ID: %s', $thisFeedId);
 

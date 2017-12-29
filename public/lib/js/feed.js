@@ -9,11 +9,6 @@ MOB.feed = {
         .data('title', 'Fold / unfold')
         .attr('title', MOB.tr('Fold / unfold'));
 
-    var $controlsToggle = $('<i>')
-        .attr('class', 'feedControl icon-left-open rotate')
-        .data('title', 'Fold / unfold')
-        .attr('title', MOB.tr('Fold / unfold'));
-
     var $feedSelect = $('<i>')
         .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
         .data('title', 'Select this source')
@@ -34,7 +29,8 @@ MOB.feed = {
         .data('title', MOB.tr('Refresh %1', url))
         .attr('title', MOB.tr('Refresh %1', url));
 
-    var $feedControls = $('<div>').attr('class', 'feedControls dataStore')
+    var $feedControls = $('<div>')
+        .attr('class', 'feedControls dataStore')
         .data('id', 'feed-' + feedIndex)
         .data('index', feedIndex)
         .data('url', url)
@@ -76,31 +72,33 @@ MOB.feed = {
         .data('type', type)
         .data('limit', limit);
 
-    var $header = $('<div class="mobHeader ui-widget-header">');
-    var $toggleDiv = $('<div class="feedToggle">');
-    var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
+    var $header = $('<div>')
+        .attr('class', 'mobHeader ui-widget-header');
+
+    var $toggleDiv = $('<div>')
+        .attr('class', 'feedToggle');
 
     var $feedHandle = $('<div>')
         .attr('class', 'feedHandle');
 
-    var $selectDiv = $('<div class="feedSelect collapsible">');
-    var $deleteDiv = $('<div class="feedDelete collapsible">');
-    var $titleDiv = $('<div class="feedTitle truncate" data-content="">');
-    var $prefsDiv = $('<div class="prefs collapsible">');
-    var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
+    var $selectDiv = $('<div>')
+        .attr('class', 'feedSelect collapsible');
+
+    var $deleteDiv = $('<div>')
+        .attr('class', 'feedDelete collapsible');
+
+    var $titleDiv = $('<div>')
+        .attr('class', 'feedTitle truncate');
+
+    var $prefsDiv = $('<div>')
+        .attr('class', 'prefs collapsible');
+
+    var $reloadDiv = $('<div>')
+        .attr('class', 'reload')
+        .data('title', MOB.tr('Refresh %1', url))
+        .attr('title', MOB.tr('Refresh %1', url));
 
     $feedToggle.appendTo($toggleDiv);
-
-    $myControlsToggleDiv.click(function() {
-
-      var $controls = $(this).next();
-
-      $('.feedControls').not($controls).removeClass('flexGrow');
-      $controls.toggleClass('flexGrow');
-
-      $(this).toggleClass('open');
-
-    });
 
     $feedControls.hover (
       function() {
@@ -138,9 +136,21 @@ MOB.feed = {
       }
     );
 
+    var $nameSpan = $('<span>')
+        .attr('class', 'title truncate')
+        .text(url);
+
+    var $urlSpan = $('<span>')
+        .attr('class', 'url truncate')
+        .text(url);
+
     $feedSelect.appendTo($selectDiv);
     $feedDelete.appendTo($deleteDiv);
-    $titleDiv.html(url);
+    $nameSpan.appendTo($titleDiv);
+
+    // $('<br>').appendTo($titleDiv);
+    // $urlSpan.appendTo($titleDiv);
+
     $feedPrefs.appendTo($prefsDiv);
     $feedReload.appendTo($reloadDiv);
 
@@ -178,7 +188,7 @@ MOB.feed = {
         $header = $dataStore.parent(),
         $panel = $dataStore.parent().parent().parent(),
         $feed = $dataStore.parent().parent(),
-        $feedTitle = $feed.children().children('.feedTitle'),
+        $feedTitle = $feed.find('span.title'),
         $feedBody = $feed.children().children('ul.feedBody'),
         feedUrl = $dataStore.data('url'),
         feedType = $dataStore.data('type'),
@@ -368,10 +378,6 @@ MOB.feed = {
             .attr('href', item.link)
             .append(item.title);
 
-        var $itemSpan = $('<span>')
-            .attr('class', 'truncate ui-helper-clearfix')
-            .text(summary.trim());
-
         if (index % 2 === 0) {
           $feedItem.addClass('mobFeedEven');
         }
@@ -417,9 +423,7 @@ MOB.feed = {
             $mediaLink.appendTo($itemDiv);
         }
 
-        // $itemSpan.appendTo($itemLink);
         $itemLink.appendTo($itemDiv);
-        // $itemSpan.appendTo($itemDiv);
         $itemDiv.appendTo($feedItem);
         $feedItem.appendTo($feedBody);
 
