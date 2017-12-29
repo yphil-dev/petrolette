@@ -4,6 +4,8 @@ var favicon = require('favicon');
 var FeedParser = require('feedparser');
 var request = require('request'); // for fetching the feed
 
+// require('request').debug = true;
+
 var feedrat = require('feedrat');
 
 router.get('/', function(req, res) {
@@ -26,12 +28,11 @@ function getFeed (urlfeed, callback) {
   var options = {
     url: urlfeed,
     headers: {
-      'User-Agent': 'Mozilla/5.0',
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'User-Agent': 'Mozilla/5.0'
     }
   };
 
-  var req = request (options, urlfeed);
+  var req = request (options);
   var feedparser = new FeedParser ();
   var feedItems = [];
   req.on ('response', function (res) {

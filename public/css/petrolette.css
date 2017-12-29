@@ -185,12 +185,6 @@ li.feedItem {
   font-size: 10pt  !important;
 }
 
-li.feedItem a:not(.error) {
-    display: block;
-    width:100%;
-    font-weight: bold;
-}
-
 li.feedItem {
     padding: .2rem;
 }
@@ -216,8 +210,12 @@ li.feedItem {
 }
 
 .feed {
-  border: #AAAAAA 1px solid !important;
+  border: #7a7a7a 1px solid !important;
   padding: 0;
+}
+
+.feed:hover {
+  border: #8b8b8b 1px solid !important;
 }
 
 .introjs-helperLayer {
