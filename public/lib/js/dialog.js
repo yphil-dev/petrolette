@@ -615,11 +615,11 @@ MOB.dialog = {
             $(this).select();
           });
 
-          $tabLeft.click(function() {
+          $tabLeft.button().click(function() {
             MOB.utilities.moveEltLeft($tab);
           });
 
-          $tabRight.click(function() {
+          $tabRight.button().click(function() {
             MOB.utilities.moveEltRight($tab);
           });
 

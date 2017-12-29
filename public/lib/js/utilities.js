@@ -250,24 +250,17 @@ MOB.utilities = {
       return false;
     }
 
-    // return regexp.test(s);
   },
   buildProgress : function() {
 
     var progress = { step: 0 };
 
     progress.init = function( steps ) {
-      // this.progressContainer = $('<div id="progressBar">' );
-      // this.progressElt = $('<div id="cursor">' );
 
       this.radialLoader = $('#loadRadial');
       this.radialLoaderLabel = $('#loadRadial > span');
       this.radialLoader.fadeIn('fast');
-
-      // this.progressContainer.append( this.progressElt );
-      // $('body').prepend(this.progressContainer);
       this.steps = steps;
-      // this.go();
     };
     progress.increment = function() {
 
@@ -275,13 +268,9 @@ MOB.utilities = {
 
       this.radialLoaderLabel.text(Math.ceil(100 * this.step / this.steps) + '%');
 
-      if ((100 * this.step / this.steps) >= 10 && (100 * this.step / this.steps) < 11) {
+      if ((100 * this.step / this.steps) >= 90 && (100 * this.step / this.steps) < 11) {
         console.log('TEN!');
       }
-
-      // this.progressElt.animate({
-      // width: Math.ceil(100 * this.step / this.steps) + '%'
-      // });
 
       this.step++;
       if (this.step >= this.steps) this.finish();
@@ -289,14 +278,7 @@ MOB.utilities = {
     };
     progress.finish = function() {
       var self = this;
-      // self.progressContainer.hide('fast');
       self.radialLoader.fadeOut('fast');
-    };
-    progress.stop = function() {
-      // this.progressElt.removeClass( 'progress-bar-striped active' );
-    };
-    progress.go = function() {
-      // this.progressElt.addClass( 'progress-bar-striped active' );
     };
 
     return progress;

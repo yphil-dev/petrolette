@@ -94,6 +94,7 @@ MOB.feed = {
     var $titleDiv = $('<div>')
         .attr('class', 'feedTitle truncate');
 
+
     var $prefsDiv = $('<div>')
         .attr('class', 'prefs');
 
