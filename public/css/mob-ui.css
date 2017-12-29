@@ -40,6 +40,7 @@
 
 body {
   background-color: var(--bg-color-ter) !important;
+  color: var(--color-pri) !important;
 }
 
 input {
@@ -780,15 +781,18 @@ li.ui-tabs-tab a:link {
 
 li.feed {
   background-color: var(--bg-color-pri) !important;
-  color: var(--color-pri) !important;
 }
 
 li.feed a:link {
-  color: var(--color-pri) !important;
+  color: var(--color-pri);
 }
 
 li.feed a:visited {
   color: var(--color-sec);
+}
+
+li.feed a:hover {
+  color: var(--ui-color-sec);
 }
 
 .mobHeader {

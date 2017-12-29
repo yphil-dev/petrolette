@@ -306,7 +306,7 @@ MOB.feed = {
             .text(data.error);
 
         var $errorItem = $('<li>')
-            .attr('class', 'feedItem')
+            .attr('class', 'feedItem error')
             .append($errorTitle)
             .append('&nbsp;')
             .append($errorLink)
@@ -319,9 +319,6 @@ MOB.feed = {
 
         $feedBody
           .append($errorItem);
-
-        // $feedBody
-        //   .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> <a class="error" href="' + feedUrl + '">' + feedUrl + '</a> ("' + data.error  + '")</li>');
 
         return;
 
