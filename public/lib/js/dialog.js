@@ -499,7 +499,7 @@ MOB.dialog = {
       var $dialog = $('#killDialog');
 
       var $thisFeedId = $button.parent().parent().parent().parent().attr('id');
-      var thisFeedName = $button.parent().parent().parent().find('span.title').text();
+      var thisFeedName = $button.parent().parent().parent().find('.feedTitle').text();
 
       console.log('ID: %s', $thisFeedId);
 

@@ -117,6 +117,12 @@ MOB.i18n.translations = {
 
   // Help
   "This is a group. It contains sources." : { fr: "Ceci est un groupe ; un groupe contient des sources." , ja: "これはタブです。 それはソースを含んでいます。", es: "Esta es una grupo. Contiene fuentes." },
+
+  "Click on a group tab to display it." : { fr: "Cliquez sur l'onglet d'un groupe pour l'afficher." , ja: "グループタブをクリックして表示します。", es: "Haga clic en una pestaña de grupo para mostrarla." },
+
+  "Click on the current/selected group tab to change its name and position." : { fr: "Cliquez sur l'onglet actuel / groupe sélectionné pour changer son nom et sa position." , ja: "現在の/選択したグループタブをクリックして、名前と位置を変更します。", es: "Haga clic en la pestaña del grupo actual / seleccionado para cambiar su nombre y posición." },
+
+
   "This is a source." : { fr: "Ceci est une source." , ja: "これはソースです", es: "Esta es una fuente." },
   "Click this button to add a source." : { fr: "Cliquez sur ce bouton pour ajouter une source." , ja: "ソースを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar una fuente." },
 
