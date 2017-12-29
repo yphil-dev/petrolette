@@ -117,8 +117,28 @@ MOB.i18n.translations = {
 
   // Help
   "This is a group. It contains sources." : { fr: "Ceci est un groupe ; un groupe contient des sources." , ja: "これはタブです。 それはソースを含んでいます。", es: "Esta es una grupo. Contiene fuentes." },
+
+  "Click on a group tab to display it." : { fr: "Cliquez sur l'onglet d'un groupe pour l'afficher." , ja: "グループタブをクリックして表示します。", es: "Haga clic en una pestaña de grupo para mostrarla." },
+
+  "Click on the current/selected group tab to change its name and position." : { fr: "Cliquez sur l'onglet actuel / groupe sélectionné pour changer son nom et sa position." , ja: "現在の/選択したグループタブをクリックして、名前と位置を変更します。", es: "Haga clic en la pestaña del grupo actual / seleccionado para cambiar su nombre y posición." },
+
+
   "This is a source." : { fr: "Ceci est une source." , ja: "これはソースです", es: "Esta es una fuente." },
-  "Click this button to create a new group." : { fr: "Cliquez sur ce bouton pour créer un nouvel groupe." , ja: "新しいタブを作成するには、このボタンをクリックします。", es: "Haga clic en este botón para crear una nueva grupo." },
+  "Click this button to add a source." : { fr: "Cliquez sur ce bouton pour ajouter une source." , ja: "ソースを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar una fuente." },
+
+  "Click here to refresh this source." : { fr: "Cliquez ici pour actualiser cette source." , ja: "このソースを更新するにはここをクリックしてください。", es: "Haga clic aquí para actualizar esta fuente." },
+
+  "Click here to edit this source." : { fr: "Cliquez ici pour paramétrer cette source." , ja: "このソースを編集するには、ここをクリックしてください。", es: "Haga clic aquí para editar esta fuente." },
+
+  "Click here to delete this source." : { fr: "Cliquez ici pour supprimer cette source." , ja: "このソースを削除するには、ここをクリックしてください。", es: "Haga clic aquí para eliminar esta fuente." },
+
+  "Click here to select this source." : { fr: "Cliquez ici pour sélectionner cette source." , ja: "このソースを選択するには、ここをクリックしてください。", es: "Haga clic aquí para seleccionar esta fuente." },
+
+  "Click here to expand and collapse this source." : { fr: "Cliquez ici pour déplier et replier cette source." , ja: "このソースを展開して折り畳むには、ここをクリックしてください。", es: "Haga clic aquí para expandir y contraer esta fuente" },
+
+
+  "Click here to drag this source (and all other selected sources) and to re-position it within this group, or to move it to another." : { fr: "Cliquez ici pour faire glisser cette source (et toutes les autres sources sélectionnées) et pour la repositionner dans ce groupe ou pour la déplacer vers une autre." , ja: "このソース（および他のすべての選択されたソース）をドラッグし、このグループ内で再配置するか、別のソースに移動するには、ここをクリックしてください。", es: "Haga clic aquí para arrastrar esta fuente (y todas las demás fuentes seleccionadas) y para volver a colocarla dentro de este grupo, o para moverla a otra." },
+
   "Click here to add a source." : { fr: "Cliquer ici pour ajouter une source." , ja: "ソースを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar una fuente." },
   "What is Petrolette?" : { fr: "Qu'est-ce que Petrolette?" , ja: "Petroletteとは何ですか？", es: "¿Qué es Petrolette?" },
   "How do I use it?" : { fr: "Comment ça marche ?" , ja: "どうやって使うの？", es: "¿Como lo uso?" },
@@ -190,6 +210,9 @@ MOB.i18n.translations = {
   "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
   "Select this source" : { fr: "Sélectionner cette source", ja: "RSSフィードを選択", es: "Selecciona este source" },
   "Delete this source" : { fr: "Supprimer cette source", ja: "このRSSフィードを削除", es: "Eliminar este source rss" },
+
+  "Refresh %1" : { fr: "Rafraichir %1", ja: "％1をリロードする", es: "Recarga %1" },
+
   "Delete group" : { fr: "Supprimer groupe", ja: "グループを削除する", es: "Eliminar grupo" },
   "%1 | Click to rename, drag to re-order" : { fr: "%1 | Clic pour renommer, glisse pour ranger", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
   "Really delete this source? (%1)" : { fr: "Réellement supprimer cette source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
