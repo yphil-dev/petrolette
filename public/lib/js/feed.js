@@ -278,12 +278,50 @@ MOB.feed = {
         $header.addClass('ui-state-error');
 
         $feedTitle
-          .text(MOB.tr("Error"))
+          .text(MOB.tr('Error'))
           .addClass('translate')
-          .data('content', MOB.tr("Error"));
+          .data('content', MOB.tr('Error'));
+
+        var $errorTitle = $('<strong>')
+            .attr('class', 'translate')
+            .data('content', MOB.tr('Error'))
+            .text(MOB.tr('Error'));
+
+        var $typeTitle = $('<strong>')
+            .attr('class', 'translate')
+            .data('content', MOB.tr('Type'))
+            .text(MOB.tr('Type'));
+
+        var $errorLink = $('<a>')
+            .attr('href', feedUrl)
+            .text(feedUrl);
+
+        var $validateLink = $('<a>')
+            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)            .text(MOB.tr('validate'));
+
+        var $error = $('<span>')
+            .text(feedUrl);
+
+        var $type = $('<strong>')
+            .text(data.error);
+
+        var $errorItem = $('<li>')
+            .attr('class', 'feedItem')
+            .append($errorTitle)
+            .append('&nbsp;')
+            .append($errorLink)
+            .append('&nbsp; (')
+            .append($validateLink)
+            .append(')<br/>')
+            .append($typeTitle)
+            .append('&nbsp;')
+            .append($type);
 
         $feedBody
-          .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> <a class="error" href="' + feedUrl + '">' + feedUrl + '</a> ("' + data.error  + '")</li>');
+          .append($errorItem);
+
+        // $feedBody
+        //   .html('<li class="feedItem"><strong class="translate" data-content="' + MOB.tr("Error") + '">' + MOB.tr("Error") + '</strong> <a class="error" href="' + feedUrl + '">' + feedUrl + '</a> ("' + data.error  + '")</li>');
 
         return;
 

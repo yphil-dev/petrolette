@@ -317,7 +317,8 @@ fieldset {
 }
 
 .ui-state-error {
-  background-color: var(--ui-color-danger) !important;
+  color: var(--ui-color-danger) !important;
+  background-color: var(--ui-bg-color-pri) !important;
 }
 
 .ui-visual-focus {
