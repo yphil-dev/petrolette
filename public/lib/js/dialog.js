@@ -146,8 +146,9 @@ MOB.dialog = {
 
           MOB.utilities.translate();
 
-          $('button#aide-un').click(function (event) {
+          $('button#aide-un').button().click(function (event) {
             event.preventDefault();
+            MOB.dialog.kill($dialog);
             MOB.utilities.help('ui');
           });
 
