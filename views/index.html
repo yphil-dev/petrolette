@@ -198,6 +198,8 @@
        $tabs.find('.feedControls > div').removeClass('collapsible');
      }
 
+     $tabs.find('.collapsible').show('fast');
+
      console.log('TABS: (%s)', $.parseJSON(MOB.prefs.readConfig('tabs')).length)
 
      MOB.tab.makeNewTabButton($tabs);
