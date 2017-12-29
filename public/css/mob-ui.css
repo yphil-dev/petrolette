@@ -29,7 +29,7 @@
     --var-controls-font-size: 26pt;
     --var-controls-toggle-size: 28px;
 
-    --var-controls-flex-basis: 160px;
+    --var-controls-flex-basis: 60px;
     --dialog-flex-direction: column;
 
     --handle-flex-shrink: 1;

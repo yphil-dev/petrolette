@@ -92,7 +92,7 @@ MOB.feed = {
         .attr('class', 'feedDelete');
 
     var $titleDiv = $('<div>')
-        .attr('class', 'feedTitle');
+        .attr('class', 'feedTitle truncate');
 
     var $prefsDiv = $('<div>')
         .attr('class', 'prefs');
@@ -147,8 +147,6 @@ MOB.feed = {
         }
       }
     );
-
-
 
     if (!MOB.utilities.isMobile()) {
       $selectDiv.addClass('collapsible');
