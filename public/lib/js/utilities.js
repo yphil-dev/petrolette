@@ -81,7 +81,7 @@ MOB.utilities = {
           intro: MOB.tr('Click on a group tab to display it.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
         },
         {
-          element: 'li[aria-controls=tab-2]',
+          element: 'li[aria-controls=tab-1]',
           intro: MOB.tr('Click on the current/selected group tab to change its name and position.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
         },
         {
@@ -188,10 +188,17 @@ MOB.utilities = {
     ui.setOption('overlayOpacity', 0.2);
 
     ui.setOption('showStepNumbers', false);
-    ui.setOption('prevLabel', 'Prev');
-    ui.setOption('nextLabel', 'Next');
-    ui.setOption('skipLabel', '...');
-    ui.setOption('doneLabel', '.');
+
+    ui.setOption('prevLabel', MOB.tr('Prev'));
+    ui.setOption('nextLabel', MOB.tr('Next'));
+    ui.setOption('skipLabel', MOB.tr('Skip'));
+    ui.setOption('doneLabel', MOB.tr('Got it!'));
+
+    dialog.setOption('prevLabel', MOB.tr('Prev'));
+    dialog.setOption('nextLabel', MOB.tr('Next'));
+    dialog.setOption('skipLabel', MOB.tr('Skip'));
+    dialog.setOption('doneLabel', MOB.tr('Got it!'));
+
     ui.setOption('hidePrev', true);
     ui.setOption('hideNext', true);
     ui.setOption('exitOnEsc', true);

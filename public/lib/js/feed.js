@@ -81,6 +81,8 @@ MOB.feed = {
     var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
 
     var $feedHandle = $('<div>')
+        .data('title', MOB.tr('Move source'))
+        .attr('title', MOB.tr('Move source'))
         .attr('class', 'feedHandle');
 
     var $selectDiv = $('<div class="feedSelect collapsible">');

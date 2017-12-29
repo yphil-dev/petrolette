@@ -116,12 +116,16 @@ MOB.i18n.translations = {
   "Night" : { fr: "Nuit" , ja: "夜", es: "Noche" },
 
   // Help
+  "Prev" : { fr: "Précédent" , ja: "前", es: "Anterior" },
+  "Next" : { fr: "Suivant" , ja: "次", es: "Siguiente" },
+  "Skip" : { fr: "Passer" , ja: "スキップ", es: "Omitir" },
+  "Got it!" : { fr: "Compris !" , ja: "理解！", es: "Entendido!" },
+
   "This is a group. It contains sources." : { fr: "Ceci est un groupe ; un groupe contient des sources." , ja: "これはタブです。 それはソースを含んでいます。", es: "Esta es una grupo. Contiene fuentes." },
 
   "Click on a group tab to display it." : { fr: "Cliquez sur l'onglet d'un groupe pour l'afficher." , ja: "グループタブをクリックして表示します。", es: "Haga clic en una pestaña de grupo para mostrarla." },
 
   "Click on the current/selected group tab to change its name and position." : { fr: "Cliquez sur l'onglet actuel / groupe sélectionné pour changer son nom et sa position." , ja: "現在の/選択したグループタブをクリックして、名前と位置を変更します。", es: "Haga clic en la pestaña del grupo actual / seleccionado para cambiar su nombre y posición." },
-
 
   "This is a source." : { fr: "Ceci est une source." , ja: "これはソースです", es: "Esta es una fuente." },
   "Click this button to add a source." : { fr: "Cliquez sur ce bouton pour ajouter une source." , ja: "ソースを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar una fuente." },
@@ -208,6 +212,9 @@ MOB.i18n.translations = {
   "Add a new source to [%1]" : { fr: "Ajouter une source à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo source a [%1]" },
 
   "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
+
+  "Move source" : { fr: "Déplacer cette source", ja: "このソースを移動する", es: "Mueva esta fuente" },
+
   "Select this source" : { fr: "Sélectionner cette source", ja: "RSSフィードを選択", es: "Selecciona este source" },
   "Delete this source" : { fr: "Supprimer cette source", ja: "このRSSフィードを削除", es: "Eliminar este source rss" },
 
