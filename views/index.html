@@ -12,7 +12,7 @@
     <link rel="preload" as="font" href="public/font/fontello.ttf">
     <link rel="preload" as="font" href="public/font/fontello.woff">
     <link rel="preload" as="font" href="public/font/fontello.woff2">
-
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
     <link rel="preload" as="style" href="/static/css/themes/mob-ui.css">
     <link rel="preload" as="style" href="/static/css/themes/day/jquery-ui.css">
     <link rel="preload" as="style" href="/static/css/fontello.css">
@@ -195,8 +195,7 @@
      // INIT
 
      if (MOB.utilities.isMobile()) {
-       console.log()
-       $tabs.find('.prefs').css('display', 'initial');
+       $tabs.find('.feedControls > div').removeClass('collapsible');
      }
 
      console.log('TABS: (%s)', $.parseJSON(MOB.prefs.readConfig('tabs')).length)
