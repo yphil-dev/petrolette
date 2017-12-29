@@ -197,6 +197,21 @@ MOB.dialog = {
         modal: true,
         buttons: [
           {
+            text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+
+              if (isNewFeed) {
+                $feed.hide('slide', 1000, function() {
+                  $feed.remove();
+                });
+              }
+
+            }
+          },
+          {
             text: MOB.tr('Ok'),
             title: MOB.tr('Ok'),
             class: 'translate button-ok',
@@ -228,35 +243,18 @@ MOB.dialog = {
               MOB.dialog.kill($dialog);
 
             }
-          },
-          {
-            text: MOB.tr('Cancel'),
-            title: MOB.tr('Cancel'),
-            class: 'translate',
-            click: function() {
-              MOB.dialog.kill($dialog);
-
-              if (isNewFeed) {
-                $feed.hide('slide', 1000, function() {
-                  $feed.remove();
-                });
-              }
-
-            }
           }
         ],
         open: function() {
 
-
           console.log('this group: (%s)', $thisGroup.attr('id'));
-
 
           $.each(allGroups, function() {
 
             var selected = false;
 
             if (this.pane === $thisGroup.attr('id')) {
-              selected = true
+              selected = true;
             }
 
             $groupMenu.append($('<option>', {
@@ -437,6 +435,14 @@ MOB.dialog = {
         modal: true,
         buttons: [
           {
+            text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
+          },
+          {
             text: MOB.tr('Delete'),
             title: MOB.tr('Delete'),
             icon: "ui-icon-alert",
@@ -456,14 +462,6 @@ MOB.dialog = {
                 $('#noSourcesButton').fadeIn('slow');
               }
 
-            }
-          },
-          {
-            text: MOB.tr('Cancel'),
-            title: MOB.tr('Cancel'),
-            class: 'translate',
-            click: function() {
-              MOB.dialog.kill($dialog);
             }
           }
         ],
@@ -513,6 +511,14 @@ MOB.dialog = {
         modal: true,
         buttons: [
           {
+            text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
+          },
+          {
             text: MOB.tr('Delete'),
             title: MOB.tr('Delete'),
             icon: "ui-icon-alert",
@@ -528,14 +534,6 @@ MOB.dialog = {
 
               MOB.dialog.kill($dialog);
 
-            }
-          },
-          {
-            text: MOB.tr('Cancel'),
-            title: MOB.tr('Cancel'),
-            class: 'translate',
-            click: function() {
-              MOB.dialog.kill($dialog);
             }
           }
         ],
@@ -574,6 +572,14 @@ MOB.dialog = {
         modal: true,
         buttons: [
           {
+            text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
+          },
+          {
             text: MOB.tr('Ok'),
             title: MOB.tr('Ok'),
             class: 'translate',
@@ -584,14 +590,6 @@ MOB.dialog = {
               // MOB.dialog.kill($dialog);
               MOB.dialog.kill($dialog);
 
-            }
-          },
-          {
-            text: MOB.tr('Cancel'),
-            title: MOB.tr('Cancel'),
-            class: 'translate',
-            click: function() {
-              MOB.dialog.kill($dialog);
             }
           }
         ],
