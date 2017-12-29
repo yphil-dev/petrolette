@@ -99,12 +99,6 @@ MOB.feed = {
 
     var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
 
-    if (!MOB.utilities.isMobile()) {
-      $selectDiv.addClass('collapsible');
-      $deleteDiv.addClass('collapsible');
-      $prefsDiv.addClass('collapsible');
-    }
-
     $feedToggle.appendTo($toggleDiv);
 
     $myControlsToggleDiv.click(function() {
@@ -154,6 +148,15 @@ MOB.feed = {
       }
     );
 
+
+
+    if (!MOB.utilities.isMobile()) {
+      $selectDiv.addClass('collapsible');
+      $deleteDiv.addClass('collapsible');
+      $prefsDiv.addClass('collapsible');
+      $selectDiv.appendTo($feedControls);
+    }
+
     $feedSelect.appendTo($selectDiv);
     $feedDelete.appendTo($deleteDiv);
     $titleDiv.html(url);
@@ -166,7 +169,6 @@ MOB.feed = {
 
     $titleDiv.appendTo($header);
 
-    $selectDiv.appendTo($feedControls);
     $deleteDiv.appendTo($feedControls);
     $prefsDiv.appendTo($feedControls);
     $reloadDiv.appendTo($feedControls);
