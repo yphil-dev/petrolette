@@ -144,7 +144,7 @@ MOB.prefs = (function() {
     'theme': 'day',
     'lang': 'en',
     'explicitLang': false,
-    'tabs': JSON.stringify(tabList)
+    'tabs': ''
   };
 
   var collections = {
