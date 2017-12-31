@@ -25,7 +25,7 @@
     "express": "~4.15.5",
     "favicon": "0.0.2",
     "feedparser": "2.2.2",
-    "feedrat": "0.1.30",
+    "feedrat": "latest",
     "find-favicon": "0.1.2",
     "hyperquest": "2.1.2",
     "jquery": "3.2.1",
