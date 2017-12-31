@@ -185,6 +185,20 @@ li.feedItem {
   font-size: 10pt  !important;
 }
 
+li.feedItem a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+li.feedItem a:hover {
+  /* text-decoration: underline; */
+}
+
+li.feedItem:not(.error) a {
+  display: block;
+  width:100%;
+}
+
 li.feedItem {
     padding: .2rem;
 }

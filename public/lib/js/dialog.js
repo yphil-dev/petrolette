@@ -314,11 +314,6 @@ MOB.dialog = {
               .addClass('spin icon-cog');
             $guessButton.removeClass('icon-ok ui-state-success ui-state-error');
 
-            if (!$guessField.val().startsWith('http')) {
-              guessError();
-              return;
-            }
-
             $.get('/discover', {
               url: $guessField.val(),
               dataType: 'json',
