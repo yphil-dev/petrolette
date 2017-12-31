@@ -260,6 +260,14 @@ MOB.utilities = {
       this.radialLoader = $('#loadRadial');
       this.radialLoaderLabel = $('#loadRadial > span');
       this.radialLoader.fadeIn('fast');
+
+      setTimeout(function() {
+
+        $('#loadRadial').fadeOut(300);
+
+      }, 100000);
+
+
       this.steps = steps;
     };
     progress.increment = function() {
