@@ -1,4 +1,16 @@
 MOB.utilities = {
+  noSourcesButton:function() {
+
+    var $noSourcesButton = $('<button>').append('<span data-content="Whoops, no sources!" data-title="Whoops, no sources!" class="translate"> Whoops, no sources! </span> <br/> <span data-content="Click here to add some." data-title="Click here to add some." class="translate"> Click here to add some.</span>');
+
+    var $noSourcesButtonContainer = $('<div>')
+        .attr('id', 'noSourcesButton')
+        .attr('class', 'deadCenter hidden')
+        .append($noSourcesButton);
+
+    $('body').append($noSourcesButtonContainer);
+
+  },
   vWidth:function() {
 
     var vWidth = $(window).width();
@@ -257,28 +269,19 @@ MOB.utilities = {
 
     progress.init = function( steps ) {
 
-      this.radialLoader = $('#loadRadial');
-      this.radialLoaderLabel = $('#loadRadial > span');
-      this.radialLoader.fadeIn('fast');
+      this.radialObj = $('#indicatorContainer').data('radialIndicator');
 
       setTimeout(function() {
 
-        $('#loadRadial').fadeOut(300);
+        this.radialObj.fadeOut(300);
 
-      }, 100000);
-
+      }, 600000);
 
       this.steps = steps;
     };
     progress.increment = function() {
 
-      this.radialLoader.attr('class', 'c100 small p' + Math.ceil(100 * this.step / this.steps));
-
-      this.radialLoaderLabel.text(Math.ceil(100 * this.step / this.steps) + '%');
-
-      if ((100 * this.step / this.steps) >= 90 && (100 * this.step / this.steps) < 11) {
-        console.log('TEN!');
-      }
+      this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
       this.step++;
       if (this.step >= this.steps) this.finish();
@@ -286,7 +289,7 @@ MOB.utilities = {
     };
     progress.finish = function() {
       var self = this;
-      self.radialLoader.fadeOut('fast');
+      self.radialObj.fadeOut('fast');
     };
 
     return progress;

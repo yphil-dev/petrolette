@@ -27,8 +27,6 @@
 
     <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
 
-    <link rel="stylesheet" href="/static/css/circle.css">
-
     <link rel="stylesheet" href="/static/css/mob-ui.css" media="none" onload="this.media='all';">
 
     <link rel="stylesheet" href="/static/css/petrolette.css" media="none" onload="this.media='all';">
@@ -45,6 +43,7 @@
     <script src="/bower/notifyjs/dist/notify.js"></script>
 
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="/bower/radialIndicator/radialIndicator.min.js"></script>
 
     <script src="/static/lib/js/main.js"></script>
     <script src="/static/lib/js/prefs.js"></script>
@@ -82,31 +81,7 @@
 
     <div id="mobDialogs"></div>
 
-    <div id="loadRadial" class="c100 small p0 hidden" style="display:none;">
-      <span>0%</span>
-      <div class="slice">
-        <div class="bar"></div>
-        <div class="fill"></div>
-      </div>
-    </div>
-
-    <div id="noSourcesButton" class="deadCenter hidden" style="display:none;">
-      <button>
-        <span
-          data-content="Whoops, no sources!"
-          data-title="Whoops, no sources!"
-          class="translate">
-          Whoops, no sources!
-        </span>
-        <br/>
-        <span
-          data-content="Click here to add some."
-          data-title="Click here to add some."
-          class="translate">
-          Click here to add some.
-        </span>
-      </button>
-    </div>
+    <div id="indicatorContainer"></div>
 
   </body>
 
@@ -119,6 +94,16 @@
   <script>
 
    $(document).ready(function() {
+
+     $('#indicatorContainer').radialIndicator({
+       radius: 30,
+       barWidth: 3,
+       barBgColor: 'transparent',
+       barColor: '#FF9009',
+       barWidth: 10,
+       roundCorner : true,
+       percentage: true
+     });
 
      $.notify.defaults({
        // whether to hide the notification on click
@@ -187,6 +172,8 @@
      $tabs.on("click", "i.tabCloser", function() {
        MOB.dialog.killTab($(this));
      });
+
+     MOB.utilities.noSourcesButton();
 
      $('#noSourcesButton button').button().click(function() {
        MOB.dialog.newContent();
