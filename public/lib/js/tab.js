@@ -7,6 +7,7 @@ MOB.tab = {
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
     $('#noSourcesButton').fadeIn('slow');
+    $('#indicatorContainer').fadeOut('fast');
     MOB.tab.saveTabs();
     MOB.tab.makeNewTabButton($('div#tabs'));
   },
