@@ -202,6 +202,7 @@ MOB.feed = {
         feedLimit = $dataStore.data('limit'),
         $feedIcon = $feed.find('.feedToggle > i');
 
+
     if (!MOB.utilities.isUrl(feedUrl)) {
 
       console.info('bad URL: (%s)', feedUrl);

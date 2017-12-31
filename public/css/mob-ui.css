@@ -785,6 +785,7 @@ li.feed {
 
 li.feed a:link {
   color: var(--color-pri);
+  transition: all .2s;
 }
 
 li.feed a:visited {
@@ -860,10 +861,6 @@ li.feedItem:hover {
 
 .c100:hover > span {
   color: var(--ui-color-sec);
-}
-
-.c100 > span {
-  color: var(--ui-color-pri);
 }
 
 .c100:after {
