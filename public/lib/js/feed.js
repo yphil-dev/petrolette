@@ -42,7 +42,7 @@ MOB.feed = {
         .data('limit', limit);
 
     $feedToggle.click(function() {
-      $(this).toggleClass("down");
+      $(this).toggleClass('down');
       $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
     });
 
@@ -52,7 +52,12 @@ MOB.feed = {
     });
 
     $feedDelete.click(function() {
-      MOB.dialog.killFeed($(this));
+
+      var feedId = $(this).parent().parent().parent().parent().attr('id');
+      var feedName = $(this).parent().parent().parent().find('.feedTitle').text();
+
+      MOB.dialog.killFeed(feedId, feedName);
+
     });
 
     $feedPrefs.click(function() {
@@ -93,7 +98,6 @@ MOB.feed = {
 
     var $titleDiv = $('<div>')
         .attr('class', 'feedTitle truncate');
-
 
     var $prefsDiv = $('<div>')
         .attr('class', 'prefs');
@@ -154,6 +158,7 @@ MOB.feed = {
       $deleteDiv.addClass('collapsible');
       $prefsDiv.addClass('collapsible');
       $selectDiv.appendTo($feedControls);
+      $deleteDiv.appendTo($feedControls);
     }
 
     $feedSelect.appendTo($selectDiv);
@@ -168,7 +173,6 @@ MOB.feed = {
 
     $titleDiv.appendTo($header);
 
-    $deleteDiv.appendTo($feedControls);
     $prefsDiv.appendTo($feedControls);
     $reloadDiv.appendTo($feedControls);
 
@@ -201,7 +205,6 @@ MOB.feed = {
         feedType = $dataStore.data('type'),
         feedLimit = $dataStore.data('limit'),
         $feedIcon = $feed.find('.feedToggle > i');
-
 
     if (!MOB.utilities.isUrl(feedUrl)) {
 

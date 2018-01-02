@@ -271,9 +271,13 @@ MOB.utilities = {
 
       this.radialObj = $('#indicatorContainer').data('radialIndicator');
 
+      this.$radialObj = $('#indicatorContainer').click(function() {
+        $(this).fadeOut('slow');
+      });
+
       setTimeout(function() {
 
-        this.radialObj.fadeOut(300);
+        this.$radialObj.fadeOut(300);
 
       }, 600000);
 
@@ -284,12 +288,17 @@ MOB.utilities = {
       this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
       this.step++;
-      if (this.step >= this.steps) this.finish();
+      if (this.step >= (this.steps - 2)) {
+        console.log('finished!');
+        this.finish();
+      }
+
+
 
     };
     progress.finish = function() {
-      var self = this;
-      self.radialObj.fadeOut('fast');
+      // var self = this;
+      this.$radialObj.fadeOut('fast');
     };
 
     return progress;
