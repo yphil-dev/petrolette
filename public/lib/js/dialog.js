@@ -253,7 +253,7 @@ MOB.dialog = {
         ],
         open: function() {
 
-          $('.ui-dialog :input').blur();
+          $('.ui-dialog :button').focus();
 
           $('.ui-widget-overlay').on('click', function() {
             MOB.dialog.kill($dialog);
