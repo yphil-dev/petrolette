@@ -620,7 +620,7 @@ button > i {
 
 .tabSort .ui-sortable-placeholder {
   visibility: visible !important;
-  border: 3px dashed !important;
+  border: 3px dashed var(--ui-color-pri) !important;
 }
 
 .feedToggle > .ui-icon {
