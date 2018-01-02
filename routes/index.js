@@ -2,10 +2,9 @@ var express = require('express');
 var router = express.Router();
 var favicon = require('favicon');
 var FeedParser = require('feedparser');
-var request = require('request'); // for fetching the feed
+var request = require('request');
 
 // require('request').debug = true;
-
 
 var feedrat = require('feedrat');
 
@@ -29,11 +28,14 @@ function getFeed (urlfeed, callback) {
   var options = {
     url: urlfeed,
     headers: {
-      'User-Agent': 'Mozilla/5.0'
+      // 'User-Agent': 'Mozilla/5.0',
+      'Accept': 'application/rss+xml, application/rdf+xml;q=0.8, application/atom+xml;q=0.6, application/xml;q=0.4, text/xml;q=0.4'
     }
   };
 
+  // var req = request (urlfeed);
   var req = request (options);
+
   var feedparser = new FeedParser ();
   var feedItems = [];
   req.on ('response', function (res) {
@@ -42,12 +44,13 @@ function getFeed (urlfeed, callback) {
       stream.pipe (feedparser);
 
     } else {
+      console.log ('getFeed: Content-type Error read %s (%s) .', urlfeed, res.headers['content-type']);
       callback (res.headers['content-type']);
       return;
     }
   });
   req.on ('error', function (res) {
-    console.log ('getFeed: Error reading %s (%s) .', urlfeed, res);
+    console.log ('getFeed: Error read %s (%s) .', urlfeed, res);
   });
   feedparser.on ('readable', function () {
     try {
@@ -101,7 +104,7 @@ router.get('/discover', function(req, res) {
     feedrat(req.query.url, function(err, feed) {
 
         if (feed) {
-            res.send(feed);
+          res.send(feed);
         } else {
             res.status(500).send('No feed found');
         }

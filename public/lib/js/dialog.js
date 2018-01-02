@@ -38,8 +38,6 @@ MOB.dialog = {
 
           var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
 
-          console.log('Selected: (%s)', $openGroupPanel.get());
-
           var $rightSources = $('<button>')
               .attr('class', 'unique')
               .text('Add right sources').button();
@@ -181,6 +179,9 @@ MOB.dialog = {
 
       var $feed = $dataStore.parent().parent();
 
+      var feedId = $feed.attr('id');
+      var feedName = $feed.find('.feedTitle').text();
+
       var allGroups = MOB.tab.list('all');
 
       var $thisGroup =  $feed.parent();
@@ -217,8 +218,6 @@ MOB.dialog = {
             class: 'translate button-ok',
             click: function() {
 
-              console.log('Selected: %s (from %s to %s)', $feed.attr('id'), $thisGroup.attr('id'), $groupMenu.find(":selected").val());
-
               if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
 
                 $feed.hide('slow', function () {
@@ -228,6 +227,13 @@ MOB.dialog = {
                   MOB.tab.saveTabs();
 
                 });
+
+              }
+
+              if ($('input[name=killFeedChbox]:checked').val() === 'on') {
+                console.log('Yep!');
+
+                MOB.dialog.killFeed(feedId, feedName);
 
               }
 
@@ -247,7 +253,10 @@ MOB.dialog = {
         ],
         open: function() {
 
-          console.log('this group: (%s)', $thisGroup.attr('id'));
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
 
           $.each(allGroups, function() {
 
@@ -263,12 +272,7 @@ MOB.dialog = {
               text : this.name
             }));
 
-
           });
-
-          // $groupMenu.val
-
-          // $dialog.find('form').append('plop');
 
           function guessError () {
             $guessSpinner.removeClass('icon-cog spin ui-state-success')
@@ -280,10 +284,6 @@ MOB.dialog = {
 
             $okButton.addClass('ui-state-error');
           }
-
-          $('.ui-widget-overlay').on('click', function() {
-            MOB.dialog.kill($dialog);
-          });
 
           var $dialog = $(this),
               $tabFeedId = $('li#' + $dataStore.data('id')),
@@ -307,7 +307,6 @@ MOB.dialog = {
               oldLimit = $dataStore.data('limit');
 
           $guessButton.click(function() {
-            console.log('\nGuess: %s', $guessField.val());
 
             $guessSpinner
               .removeClass('icon-ok icon-cancel-circled icon-flashlight ui-state-success ui-state-error')
@@ -334,18 +333,13 @@ MOB.dialog = {
                 .attr('title', MOB.tr('Valid source found! Now just press OK')) ;
 
             }).fail(function(feed, status) {
-              console.log( 'ERROR %s (status: %s)', $guessField.val(), status);
               guessError();
 
-            }).always(function(feed, status) {
-              console.log( 'Always %s (status: %s)', $guessField.val(), status);
             });
 
           });
 
           $dialog.find('input#feedGuess').val(oldUrl);
-
-          // $dialog.find('.feedType').checkboxradio();
 
           $('input:radio, input:checkbox').checkboxradio({
             icon: true
@@ -486,15 +480,13 @@ MOB.dialog = {
       $dialog.dialog('open');
     });
   },
-  killFeed:function($button) {
+  killFeed:function(feedId, feedName) {
 
     $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
       var $dialog = $('#killDialog');
 
-      var $thisFeedId = $button.parent().parent().parent().parent().attr('id');
-      var thisFeedName = $button.parent().parent().parent().find('.feedTitle').text();
-
-      console.log('ID: %s', $thisFeedId);
+      var $thisFeedId = feedId;
+      var thisFeedName = feedName;
 
       $dialog.dialog({
         title: MOB.tr('Delete source'),
@@ -690,7 +682,6 @@ MOB.dialog = {
                 MOB.dialog.kill($dialog);
               }
 
-              console.log('Question: (%s/%s)', qn, questions.length);
             }
           },
           {
