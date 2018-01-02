@@ -874,7 +874,8 @@ li.feedItem:hover {
 }
 
 #indicatorContainer {
-  transition opacity 5s;
+  cursor:pointer;
+  transition: opacity .5s;
   opacity: .5;
   position: fixed;
   bottom: 2em;
