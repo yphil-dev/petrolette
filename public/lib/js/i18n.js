@@ -18,6 +18,10 @@ MOB.i18n = {
 MOB.i18n.translations = {
   "test" : { fr: "samarche", ja: "追加", es: "Esta Muy bien" },
 
+  "They'll sell the Internet" : { fr: "Ils vendront Internet", ja: "彼らはインターネットを売るだろう", es: "Venderán Internet" },
+  "when we're done filling it up" : { fr: "quand on aura fini de le remplir", ja: "私たちがそれを埋めるとき", es: "cuando terminemos de llenarlo" },
+
+
   "Add" : { fr: "Ajouter", ja: "追加" },
   "All" : { fr: "Tous", ja: "全て" },
   "From": { fr: "Du", ja: "から" },
