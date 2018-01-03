@@ -726,7 +726,7 @@ button > i {
   flex-grow: 4;
   flex-shrink: 1;
   flex-basis: auto;
-  margin-left:.2em;
+  margin-left: 4px;
   /* margin: .2em 0; */
   font-size: var(--var-controls-font-size);
 
