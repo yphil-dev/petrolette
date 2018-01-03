@@ -12,6 +12,10 @@ router.get('/', function(req, res) {
     res.render('index');
 });
 
+router.get('/start', function(req, res) {
+  res.render('start/start.html');
+});
+
 router.use(function(req,res,next){
     var _send = res.send;
     var sent = false;
