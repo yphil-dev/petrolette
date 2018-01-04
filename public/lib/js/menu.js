@@ -1,4 +1,4 @@
-$('<div id="menu" style="display:none">').appendTo($('body')).load('/static/templates/menu.html', function() {
+$('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', function() {
 
   var $menu = $(this),
       $handle = $menu.find('.handle'),
