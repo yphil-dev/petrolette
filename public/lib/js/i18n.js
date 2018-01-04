@@ -72,7 +72,7 @@ MOB.i18n.translations = {
 
   "Find the website\'s source" : { fr: "Trouver la source du site web" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
   "Move this source to another group" : { fr: "Déplacer cette source dans un autre groupe" , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo" },
-  "What type of source? All text, all image, or mixed" : { fr: "Quel type de source? Tout le texte, toute l'image, ou les deux", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de source? Todo el texto, toda la imagen o mixto" },
+  "The type of source: It can be all text, all image, or mixed" : { fr: "Quel type de source? Tout le texte, toute l'image, ou les deux", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de source? Todo el texto, toda la imagen o mixto" },
   "How many new items should this source display at a time?" : { fr: "Combien de nouveaux articles cette source peut-elle contenir?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el source a la vez?" },
 
   "source" : { fr: "source" , ja: "ソース", es: "source" },
