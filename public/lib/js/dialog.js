@@ -353,7 +353,7 @@ MOB.dialog = {
           $dialog.find('input#feedGuess').val(oldUrl);
 
           $('input:radio, input:checkbox').checkboxradio({
-            icon: true
+            icon: false
           });
 
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
