@@ -1,4 +1,8 @@
-var $indicatorContainer = $('#indicatorContainer');
+var $indicatorContainer = $('#indicatorContainer').hide();
+
+$indicatorContainer.click(function() {
+  $(this).fadeOut('slow');
+});
 
 $indicatorContainer.radialIndicator({
   radius: 30,

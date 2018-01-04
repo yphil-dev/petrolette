@@ -118,10 +118,6 @@ li.mobTab:first-child {
   box-shadow: none !important;
 }
 
-#tabs {
-  transition: all 2s ease;
-}
-
 #tabUl,
 #tabs {
   background: none;
@@ -797,14 +793,6 @@ button > i {
   margin: 0 !important;
 }
 
-/* From night */
-
-#tabUl,
-#tabs {
-  background: none;
-  border-radius: 0;
-}
-
 .handle {
   opacity: 0.6;
 }
@@ -864,6 +852,7 @@ li.ui-tabs-tab a:link {
 
 li.feed {
   background-color: var(--bg-color-pri) !important;
+  transition: all 2s ease;
 }
 
 li.feed a:link {
