@@ -492,8 +492,13 @@ div.testFlex {
 #logo > .petrolette,
 .ui-dialog-content .petrolette {
   color:     #84A6CB;
+  cursor:pointer;
   font-size: 3.5rem  !important;
   margin:    -2px 0 0 0 !important;
+}
+
+#logo > .petrolette:hover {
+  color:     var(--ui-color-sec);
 }
 
 .ui-dialog-content .petrolette {
