@@ -112,7 +112,9 @@
 
    $(document).ready(function() {
 
-     $('#indicatorContainer').radialIndicator({
+     var $indicatorContainer = $('#indicatorContainer');
+
+     $indicatorContainer.radialIndicator({
        radius: 30,
        barWidth: 3,
        barBgColor: 'transparent',

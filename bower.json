@@ -1,10 +1,10 @@
 {
   "name": "petrolette",
-  "version": "0.4.5",
+  "version": "0.8.4",
   "description": "Fly by night RSS feed reader",
   "main": "",
   "authors": [
-    "yassinphilip <xaccrocheur@gmail.com>"
+    "yPhil <xaccrocheur@gmail.com>"
   ],
   "license": "GPLv3",
   "keywords": [
