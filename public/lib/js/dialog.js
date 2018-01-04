@@ -98,7 +98,7 @@ MOB.dialog = {
               .attr('class', 'value flexBox')
               .append($newGroup).append($newSource),
 
-              $noLegend = $('<p class="name">').text(MOB.tr('I\'m fed up')),
+              $noLegend = $('<p class="name">').text(MOB.tr('Erase all')),
               $noValue = $('<p>')
               .attr('class', 'value flexBox')
               .html($noSources);
@@ -106,10 +106,10 @@ MOB.dialog = {
           $dialog.find('div.content')
             .append($newLegend)
             .append($newValue)
-            .append($rightLegend)
-            .append($rightValue)
-            .append($leftLegend)
-            .append($leftValue)
+          // .append($rightLegend)
+          // .append($rightValue)
+          // .append($leftLegend)
+          // .append($leftValue)
             .append($noLegend)
             .append($noValue);
         }
