@@ -149,6 +149,7 @@ MOB.dialog = {
           $('button#aide-un').button().click(function (event) {
             event.preventDefault();
             MOB.dialog.kill($dialog);
+            $('#tabs').tabs('option', 'active', 0);
             MOB.utilities.help('ui');
           });
 
@@ -299,6 +300,12 @@ MOB.dialog = {
               $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-help"></span><span class="ui-button-icon-space"> </span>Help</button>');
 
           $dialog.parent().find('.ui-dialog-titlebar').append($helpButton);
+
+          if (!MOB.utilities.isMobile()) {
+            $guessField.click(function() {
+              $(this).select();
+            });
+          }
 
           $helpButton.on('click', function() {
 

@@ -55,33 +55,6 @@ MOB.utilities = {
         menu = introJs(),
         ui = introJs();
 
-    dialog.setOptions({
-      steps: [
-        {
-          element: 'input#feedGuess',
-          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('feed') + '</a>.'
-        },
-        {
-          element: 'button#feedGuess',
-          intro: MOB.tr('Find the website\'s RSS feed')
-        },
-        {
-          element: 'div#feedTitle',
-          intro: MOB.tr('What type of feed? All text, all image, or mixed'),
-          position: 'left'
-        },
-        {
-          element: 'fieldset#feedLimit',
-          intro: MOB.tr('How many new items should the feed display at a time?'),
-          position: 'bottom'
-        },
-        {
-          element: '.button-ok',
-          intro: MOB.tr('Ok')
-        }
-      ]
-    });
-
     ui.setOptions({
       steps: [
         {
@@ -135,29 +108,33 @@ MOB.utilities = {
       steps: [
         {
           element: 'input#feedGuess',
-          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('feed') + '</a>.'
+          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('feed') + '</a>.',
+          position: 'bottom'
         },
         {
           element: 'button#feedGuess',
-          intro: MOB.tr('Find the website\'s source')
+          intro: MOB.tr('Find the website\'s source'),
+          position: 'left'
         },
         {
           element: 'select#feedGroup',
-          intro: MOB.tr('Move this source to another group')
+          intro: MOB.tr('Move this source to another group'),
+          position: 'bottom'
         },
         {
-          element: 'div#feedTitle',
-          intro: MOB.tr('What type of source? All text, all image, or mixed'),
-          position: 'left'
+          element: 'div#feedType',
+          intro: MOB.tr('The type of source: It can be all text, all image, or mixed'),
+          position: 'top'
         },
         {
           element: 'fieldset#feedLimit',
           intro: MOB.tr('How many new items should this source display at a time?'),
-          position: 'bottom'
+          position: 'top'
         },
         {
-          element: '.button-ok',
-          intro: MOB.tr('Ok')
+          element: 'div#feedDel',
+          intro: MOB.tr('Delete the source'),
+          position: 'top'
         }
       ]
     });
