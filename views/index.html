@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Petrolette</title>
 
-
     <link rel="icon" type="image/png" href="/static/images/petrolette.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicon-96x96.png">
 
     <link rel="preload" as="font" href="public/font/fontello.eot">
     <link rel="preload" as="font" href="public/font/fontello.woff">
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
-    <link rel="preload" as="style" href="/static/css/themes/mob-ui.css">
+    <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/bebas" type="text/css"/> -->
     <link rel="preload" as="style" href="/static/css/themes/day/jquery-ui.css">
     <link rel="preload" as="style" href="/static/css/fontello.css">
-    <link rel="preload" as="style" href="/static/css/petrolette.css">
     <link rel="preload" as="style" href="/static/css/themes/day.css">
     <link rel="preload" as="style" href="/static/css/themes/night.css">
 
@@ -22,18 +22,13 @@
 
     <link rel="stylesheet" href="/static/css/fontello.css" media="none" onload="this.media='all';">
 
+    <link rel="stylesheet" href="/static/css/themes/day.css" id="mobStyle">
+    <link rel="stylesheet" href="/static/css/petrolette-ui.css" media="none" onload="this.media='all';">
+    <link rel="stylesheet" href="/static/css/petrolette-ux.css" media="none" onload="this.media='all';">
 
-    <link rel="stylesheet" id="mobStyle" href="/static/css/themes/day.css">
-
-    <link rel="stylesheet" href="/static/css/mob-ui.css" media="none" onload="this.media='all';">
-
-    <link rel="stylesheet" href="/static/css/petrolette.css" media="none" onload="this.media='all';">
-
-    <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grobe-deutschmeister" type="text/css"/> -->
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/minified/introjs.min.css" />
-    <!-- <link href="/bower/intro.js/themes/introjs-nassim.css" rel="stylesheet">
-    -->
+
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
 
@@ -46,24 +41,6 @@
     <script src="/static/lib/js/main.js"></script>
     <script src="/static/lib/js/prefs.js"></script>
     <script src="/static/lib/js/i18n.js"></script>
-
-
-    <style type="text/css">
-
-     .div-fake-hidden {
-         width:0px;
-         height:0px;
-         overflow:hidden;
-     }
-
-     .LobsterRegular {
-         font-family: 'LobsterRegular';
-     }
-
-     #menu, #tabs {
-         display:none;
-     }
-    </style>
 
     <script type="text/javascript">
 
@@ -102,120 +79,10 @@
   <script src="/static/lib/js/utilities.js"></script>
   <script src="/static/lib/js/menu.js"></script>
 
-  <script>
+  <script type="text/javascript">
 
    $(document).ready(function() {
-
-     var $indicatorContainer = $('#indicatorContainer');
-
-     $indicatorContainer.radialIndicator({
-       radius: 30,
-       barWidth: 3,
-       barBgColor: 'transparent',
-       barColor: '#FF9009',
-       barWidth: 10,
-       roundCorner : true,
-       percentage: true
-     });
-
-     $.notify.defaults({
-       // whether to hide the notification on click
-       clickToHide: true,
-       // whether to auto-hide the notification
-       autoHide: true,
-       // if autoHide, hide after milliseconds
-       autoHideDelay: 3000,
-       // default style
-       style: 'bootstrap',
-       // show the arrow pointing at the element
-       arrowShow: true,
-       // arrow size in pixels
-       arrowSize: 5,
-       // show animation
-       showAnimation: 'slideDown',
-       // show animation duration
-       showDuration: 400,
-       // hide animation
-       hideAnimation: 'slideUp',
-       // hide animation duration
-       hideDuration: 200,
-       // padding between element and notification
-       gap: 2
-     })
-
-     $( document ).keydown(function( event ) {
-       if ( event.keyCode === $.ui.keyCode.ESCAPE ) {
-         $( ".tabSort" ).sortable( "cancel" );
-       }
-     });
-
-     $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
-
-     var $tabs = $('#tabs').tabs({
-       heightStyle: 'content',
-       activate: function(event, ui) {
-
-         var $activeTab = $tabs.find('.ui-tabs-active');
-
-         $(document).prop('title', $activeTab.text() + ' | Petrolette');
-
-         $('.tabCloser').hide();
-
-         $activeTab.find('.tabCloser').show();
-       }
-
-     });
-
-     $tabs.find('.ui-tabs-nav').sortable({
-       axis: 'x',
-       items: '> li:not(#newTabButton)',
-       stop: function() {
-         $tabs.tabs('refresh');
-         MOB.tab.saveTabs();
-       }
-     });
-
-     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
-       e.preventDefault();
-       if (e.which === 1) {
-         MOB.dialog.editGroup($(this))
-       }
-     });
-
-     $tabs.on("click", "i.tabCloser", function() {
-       MOB.dialog.killTab($(this));
-     });
-
-     MOB.utilities.noSourcesButton();
-
-     $('#noSourcesButton button').button().click(function() {
-       MOB.dialog.newContent();
-     });
-
-     // INIT
-
-     if (MOB.utilities.isMobile()) {
-       $tabs.find('.feedControls > div').removeClass('collapsible');
-     }
-
-     $tabs.find('.collapsible').show('fast');
-
-     MOB.tab.makeNewTabButton($tabs);
-
-     if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
-       MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-     } else {
-       console.error('Zero tabs!');
-       $('#noSourcesButton').fadeIn('slow');
-     }
-
-     setTimeout(function() {
-
-       $('#tabs').fadeIn(300);
-       $('#menu').fadeIn(600);
-
-     }, 1000);
-
+     $.getScript('/static/lib/js/init.js');
    });
 
   </script>
