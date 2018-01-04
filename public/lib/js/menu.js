@@ -4,7 +4,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $handle = $menu.find('.handle'),
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
-      $logoType = $("#logoType"),
       $saveButton = $('#saveTabs').button(),
       $langMenu = $('select#language'),
       $help = $('button#help').button(),
