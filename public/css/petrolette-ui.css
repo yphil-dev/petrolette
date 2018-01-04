@@ -399,10 +399,6 @@ fieldset {
   margin-bottom: .4em;
 }
 
-.grow {
-  flex: 1 0 auto !important;
-}
-
 .shrink {
   flex: 0 1 4em !important;
 }
@@ -422,6 +418,15 @@ fieldset {
 /*   margin-bottom: .4em; */
 /* } */
 
+
+.grow {
+  flex: 1 0 auto !important;
+  margin-right: .4em;
+}
+
+.last {
+  margin-right: 0;
+}
 
 span.ui-spinner,
 .last {

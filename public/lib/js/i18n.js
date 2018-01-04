@@ -107,8 +107,10 @@ MOB.i18n.translations = {
   "Open" : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
   "Save" : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
   "Rename Group" : { fr: "Groupe: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la grupo" },
-  "New group" : { fr: "Nouveau Groupe" , ja: "新しいグループ", es: "Nuevo grupo" },
   "Add source" : { fr: "Ajouter source" , ja: "ソースを追加", es: "Agregue fuente" },
+  "Add sources" : { fr: "Ajouter sources" , ja: "ソースを追加", es: "Agregue fuentes" },
+  "Example sources" : { fr: "Exemples de sources" , ja: "情報源の例", es: "Ejemplos de fuentes" },
+
   "Edit group" : { fr: "Modifier groupe" , ja: "グループの編集", es: "Editar grupo" },
   "Group name" : { fr: "Nom du groupe" , ja: "グループ名", es: "Nombre de la grupo" },
   "Group position" : { fr: "Position du groupe" , ja: "グループの位置", es: "Posición del grupo" },
@@ -212,6 +214,14 @@ MOB.i18n.translations = {
   "Enter a website address/URL and click search, then OK, or simply enter the URL of the source" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse d'une source", ja: "ウェブサイトのアドレス/ URLを入力して検索をクリックするか、フィードのアドレスを入力するだけです", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, o ingrese directamente la ubicación del source" },
   "No valid source found at this address" : { fr: "Aucune source valide découverte à cette adresse", ja: "このアドレスに有効なソースが見つかりません", es: "No se encontró una fuente válida en esta dirección" },
   "Valid source found! Now just press OK" : { fr: "Source valide trouvée ! Maintenant, appuyez simplement sur OK", ja: "有効なソースが見つかりました！ OKを押すだけです", es: "¡Se ha encontrado una fuente válida! Ahora solo presione OK" },
+
+  // New Content
+  "New group" : { fr: "Nouveau groupe", ja: "新しい集団", es: "Nuevo grupo" },
+  "New source" : { fr: "Nouvelle source", ja: "新しい情報源", es: "Nueva fuente" },
+
+  "Add news sources" : { fr: "Ajouter des sources d'actualités", ja: "ニュースソースを追加", es: "Agregar fuentes de noticias" },
+  "Add misc sources" : { fr: "Ajouter des sources diverses", ja: "その他のソースを追加", es: "Agregar fuentes diferentes" },
+  "Delete everything" : { fr: "Tout supprimer", ja: "すべて削除", es: "Elimina todo" },
 
   // Titres
   "Add a new source to [%1]" : { fr: "Ajouter une source à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo source a [%1]" },
