@@ -38,10 +38,10 @@ MOB.dialog = {
 
           var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
 
-          var $rightSources = $('<button>')
+          var $newsSources = $('<button>')
               .attr('class', 'unique')
               .text('Add right sources').button();
-          var $leftSources = $('<button>')
+          var $miscSources = $('<button>')
               .attr('class', 'unique')
               .text('Add left sources').button();
           var $noSources = $('<button>')
@@ -57,16 +57,18 @@ MOB.dialog = {
 
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 
-          $rightSources.click(function() {
-            MOB.tab.populate(JSON.parse(MOB.prefs.collection('rightFr')), true, true);
+          $newsSources.click(function() {
+            MOB.tab.populate(JSON.parse(MOB.prefs.collection('news')), true, true);
           });
 
-          $leftSources.click(function() {
-            MOB.tab.populate(JSON.parse(MOB.prefs.collection('leftFr')), true, true);
+          $miscSources.click(function() {
+            MOB.tab.populate(JSON.parse(MOB.prefs.collection('misc')), true, true);
           });
 
           $noSources.click(function() {
             // MOB.tab.empty();
+
+            MOB.dialog.kill();
 
             MOB.dialog.killAll();
 
@@ -86,12 +88,12 @@ MOB.dialog = {
           var $rightLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist')),
               $rightValue = $('<p>')
               .attr('class', 'value flexBox')
-              .html($rightSources),
+              .html($newsSources),
 
               $leftLegend = $('<p class="name">').text(MOB.tr('I\'m a leftist')),
               $leftValue = $('<p>')
               .attr('class', 'value flexBox')
-              .html($leftSources),
+              .html($miscSources),
 
               $newLegend = $('<p class="name">').text(MOB.tr('New content')),
               $newValue = $('<p>')

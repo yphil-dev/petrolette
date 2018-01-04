@@ -1,82 +1,6 @@
 MOB.prefs = (function() {
 
-  var tabList = [
-    {
-      "name":"Here",
-      "feeds":[
-        {
-          "url":"http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
-          "type":"photo",
-          "limit":16
-        },
-        {
-          "url":"http://feeds.bbci.co.uk/news/rss.xml?edition=int",
-          "type":"photo",
-          "limit":16
-        },
-        {
-          "url":"http://feeds.reuters.com/reuters/environment",
-          "type":"text",
-          "limit":16
-        }
-      ]
-    },
-    {
-      "name":"Abroad",
-      "feeds": [
-        {
-          "url":"http://feeds.reuters.com/news/artsculture",
-          "type":"text",
-          "limit": 12
-        },
-        {
-          "url":"http://feeds.reuters.com/reuters/businessNews",
-          "type":"mixed",
-          "limit": 8
-        }
-      ]
-    },
-    {
-      "name":"Group 3",
-      "feeds": [
-        {
-          "url":"https://www.sciencedaily.com/rss/matter_energy/engineering.xml",
-          "type":"text",
-          "limit": 12
-        },
-        {
-          "url":"https://feeds.feedburner.com/TechCrunch/",
-          "type":"mixed",
-          "limit": 8
-        },
-        {
-          "url":"http://xkcd.com/rss.xml",
-          "type":"photo",
-          "limit": 4
-        },
-        {
-          "url":"https://www.reddit.com/.rss",
-          "type":"text",
-          "limit": 8
-        }
-      ]
-    }
-      ];
-
-  var fascistTabListEs = [
-    {"name":"Spanish",
-     "feeds": [
-       {"url":"http://e00-elmundo.uecdn.es/rss/portada.xml",
-        "type":"mixed",
-        "limit": 12},
-       {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
-       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4},
-       {"url":"https://www.reddit.com/.rss","type":"text","limit": 8}
-     ]
-    }
-      ];
-
-  var fascistTabListFr = [
+  var newsTabList = [
     {"name":"Actu",
      "feeds": [
        {"url":"http://www.egaliteetreconciliation.fr/spip.php?page=backend",
@@ -99,7 +23,7 @@ MOB.prefs = (function() {
     }
       ];
 
-  var leftistTabListFr = [
+  var miscTabList = [
     {"name":"Actu",
      "feeds": [
        {"url":"http://www.lemonde.fr/rss/une.xml",
@@ -148,8 +72,8 @@ MOB.prefs = (function() {
   };
 
   var collections = {
-    'rightFr': JSON.stringify(fascistTabListFr),
-    'leftFr': JSON.stringify(leftistTabListFr)
+    'news': JSON.stringify(newsTabList),
+    'misc': JSON.stringify(miscTabList)
   };
 
   return {
@@ -159,7 +83,7 @@ MOB.prefs = (function() {
     readConfig:function(key) {
 
       if(typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
-        return false;
+        return defaults[key];
       } else {
         return localStorage.getItem(key);
       }
