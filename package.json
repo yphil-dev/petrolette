@@ -26,8 +26,6 @@
     "feedparser": "2.2.2",
     "feedrat": "latest",
     "find-favicon": "0.1.2",
-    "jquery": "3.2.1",
-    "jquery-ui": "1.12.1",
     "pm2": "2.8.0"
   }
 }

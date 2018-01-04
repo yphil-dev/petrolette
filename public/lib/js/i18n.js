@@ -228,6 +228,7 @@ MOB.i18n.translations = {
   "%1 | Click to rename, drag to re-order" : { fr: "%1 | Clic pour renommer, glisse pour ranger", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
   "Really delete this source? (%1)" : { fr: "Réellement supprimer cette source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
   "Delete source" : { fr: "Supprimer source", ja: "本当にこのフィードを削除しますか", es: "Borraste source" },
+  "Delete all" : { fr: "Supprimer tout", ja: "すべて削除", es: "Eliminar todos" },
 
   "Really delete this group? (%1, %2 sources)" : { fr: "Réellement supprimer ce groupe (%1, %2 sources) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta grupo? (%1, %2 sources)" },
   "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },

@@ -18,7 +18,8 @@ Make the page your home page, and read it every morning. You know instantly what
 
 ### Technical Features
 
-WIP :)
+- Automatic discovery of a website's RSS feed (called "source" in Petrolette)
+- Creation of a source from a natural search query ("latest bitcoin crash")
 
 ### LICENSE
 

@@ -66,8 +66,10 @@ MOB.dialog = {
           });
 
           $noSources.click(function() {
-            MOB.tab.empty();
-            $('#noSourcesButton').fadeIn('slow');
+            // MOB.tab.empty();
+
+            MOB.dialog.killAll();
+
           });
 
           $newGroup.click(function() {
@@ -482,6 +484,64 @@ MOB.dialog = {
       $dialog.dialog('open');
     });
   },
+  killAll:function() {
+
+    $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
+      var $dialog = $('#killDialog');
+
+      $dialog.dialog({
+        title: MOB.tr('Delete all'),
+        autoOpen: false,
+        closeOnEscape: true,
+        resizable: false,
+        height: 'auto',
+        width: MOB.utilities.vWidth(),
+        modal: true,
+        buttons: [
+          {
+            text: MOB.tr('Cancel'),
+            title: MOB.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              MOB.dialog.kill($dialog);
+            }
+          },
+          {
+            text: MOB.tr('Delete'),
+            title: MOB.tr('Delete'),
+            icon: "ui-icon-alert",
+            class: "dangerous translate",
+            click: function() {
+
+              MOB.tab.empty();
+
+              $('#noSourcesButton').fadeIn('slow');
+
+              MOB.dialog.kill($dialog);
+
+            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            MOB.dialog.kill($dialog);
+          });
+
+          var $name = $('<p class="name">').text(MOB.tr('Name'));
+          var $value = $('<p class="value">').text('All');
+
+          $dialog.find('div.content')
+            .append($name)
+            .append($value);
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
+
+  },
   killFeed:function(feedId, feedName) {
 
     $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
@@ -533,7 +593,7 @@ MOB.dialog = {
           });
 
           var $name = $('<p class="name">').text(MOB.tr('Name'));
-          var $value = $('<p class="value">').text(thisFeedName);
+          var $value = $('<p class="value">').text('Everything');
 
           $dialog.find('div.content')
             .append($name)

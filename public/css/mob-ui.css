@@ -80,9 +80,12 @@ input#feedGuess {
   display:none;
 }
 
-#noSourcesButton {
+#noSourcesButton button {
   /* margin-top:50%; */
-  display:none;
+  background-color: #39b54a;
+  border-color: #39b54a;
+  color: #FFFFFF;
+
 }
 
 li.ui-tabs-active,
