@@ -248,9 +248,7 @@ MOB.utilities = {
 
       this.radialObj = $('#indicatorContainer').data('radialIndicator');
 
-      this.$radialObj = $('#indicatorContainer').click(function() {
-        $(this).fadeOut('slow');
-      });
+      this.$radialObj = $('#indicatorContainer').fadeIn('slow');
 
       setTimeout(function() {
 
