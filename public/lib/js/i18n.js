@@ -185,6 +185,7 @@ MOB.i18n.translations = {
   "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
   "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
   "Forgot what you are? Reset Petrolette groups & sources" : { fr: "Oublié ce que vous êtes? Re-initialiser Petrolette" , ja: "あなたは何かを忘れましたか？ リセットPetrolette", es: "Olvidó lo que eres? Restablecer Petrolette" },
+  "Erase all" : { fr: "Tout effacer" , ja: "すべてを消去する", es: "Borrar todo" },
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
