@@ -108,7 +108,7 @@ input#feedGuess {
 #noSourcesButton button {
   /* margin-top:50%; */
   background-color: #39b54a;
-  border-color: #39b54a;
+  border: 1px transparent solid;
   color: #FFFFFF;
 
 }
