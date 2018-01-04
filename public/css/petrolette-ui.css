@@ -399,6 +399,10 @@ fieldset {
   flex: 1;
 }
 
+.flexBox > * {
+  margin-bottom: .4em;
+}
+
 .grow {
   flex: 1 0 auto !important;
 }
@@ -416,11 +420,11 @@ fieldset {
   flex: 1;
 }
 
-span.ui-spinner,
-.ui-button {
-  margin-right: .4em;
-  margin-bottom: .4em;
-}
+/* span.ui-spinner, */
+/* .ui-button { */
+/*   margin-right: .4em; */
+/*   margin-bottom: .4em; */
+/* } */
 
 
 span.ui-spinner,
