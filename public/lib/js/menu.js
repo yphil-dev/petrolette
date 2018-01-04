@@ -64,7 +64,9 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     return false;
   });
 
-  $(".checkboxradio").checkboxradio();
+  $(".checkboxradio").checkboxradio({
+    icon: false
+  });
 
   $(this).find('input#' + MOB.prefs.readConfig('theme')).prop("checked", true)
     .checkboxradio('refresh');
