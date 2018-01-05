@@ -59,47 +59,47 @@ MOB.utilities = {
       steps: [
         {
           element: 'li[aria-controls=tab-1]',
-          intro: MOB.tr('This is a group. It contains sources.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('This is a group. It contains sources.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: 'li[aria-controls=tab-2]',
-          intro: MOB.tr('Click on a group tab to display it.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click on a group tab to display it.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: 'li[aria-controls=tab-1]',
-          intro: MOB.tr('Click on the current/selected group tab to change its name and position.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click on the current/selected group tab to change its name and position.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: 'li.feed',
-          intro: MOB.tr('This is a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('This is a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: 'li#newTabButton',
-          intro: MOB.tr('Click this button to add a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click this button to add a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: '.mobFeedRefresh',
-          intro: MOB.tr('Click here to refresh this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click here to refresh this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: '.mobFeedPrefs',
-          intro: MOB.tr('Click here to edit this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click here to edit this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: '.feedDelete',
-          intro: MOB.tr('Click here to delete this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click here to delete this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: '.feedSelect',
-          intro: MOB.tr('Click here to select this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click here to select this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: '.feedHandle',
-          intro: MOB.tr('Click here to drag this source (and all other selected sources) and to re-position it within this group, or to move it to another.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click here to drag this source (and all other selected sources) and to re-position it within this group, or to move it to another.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
         },
         {
           element: 'div.feedToggle',
-          intro: MOB.tr('Click here to expand and collapse this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click here to expand and collapse this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
         }
       ]
     });
