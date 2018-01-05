@@ -122,10 +122,10 @@ MOB.prefs = (function() {
 
       var $loader = $('#indicatorContainer');
 
-      $loader.fadeToggle('fast');
+      $loader.fadeToggle(50);
 
       localStorage.setItem(key, val);
-      $loader.fadeToggle('slow');
+      $loader.fadeToggle('fast');
 
     },
     exportConfig:function(data, fileName) {

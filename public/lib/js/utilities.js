@@ -79,27 +79,27 @@ MOB.utilities = {
         },
         {
           element: '.mobFeedRefresh',
-          intro: MOB.tr('Click here to refresh this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+          intro: MOB.tr('Refresh / reload this source.')
         },
         {
           element: '.mobFeedPrefs',
-          intro: MOB.tr('Click here to edit this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+          intro: MOB.tr('Configure this source.')
         },
         {
           element: '.feedDelete',
-          intro: MOB.tr('Click here to delete this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+          intro: MOB.tr('Delete this source.')
         },
         {
           element: '.feedSelect',
-          intro: MOB.tr('Click here to select this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+          intro: MOB.tr('Select this source (for drag & drop).')
         },
         {
           element: '.feedHandle',
-          intro: MOB.tr('Click here to drag this source (and all other selected sources) and to re-position it within this group, or to move it to another.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+          intro: MOB.tr('Drag here to move this source (and all other selected sources) within this group, or into another.')
         },
         {
           element: 'div.feedToggle',
-          intro: MOB.tr('Click here to expand and collapse this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+          intro: MOB.tr('Expand / collapse this source.')
         }
       ]
     });
@@ -258,23 +258,24 @@ MOB.utilities = {
           this.$radialObj.fadeOut(300);
         }
 
-      }, 600000);
+      }, 60000);
 
       console.log('steps: (%s)', steps);
 
-      this.steps = steps;
+      this.steps = steps - 1;
     };
     progress.increment = function() {
 
       this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
-      this.step++;
+      console.log('this.step: (%s)', this.step);
+
       if (this.step >= this.steps) {
         console.log('finished!');
         this.finish();
       }
 
-
+      this.step++;
 
     };
     progress.finish = function() {
