@@ -117,30 +117,28 @@ MOB.prefs = (function() {
         return localStorage.getItem(key);
       }
 
-      },
+    },
     writeConfig:function(key, val) {
 
-      var $loader = $('#loadRadial');
-      $loader.attr('class', 'c100 small green dark p100');
+      var $loader = $('#indicatorContainer');
 
-      $loader.children('span').text('Saving');
       $loader.fadeToggle('fast');
 
       localStorage.setItem(key, val);
       $loader.fadeToggle('slow');
 
     },
-      exportConfig:function(data, fileName) {
-        var a = document.createElement("a");
-        document.body.appendChild(a);
-        a.style = "display: none";
-        var json = JSON.stringify(data, null, 2),
-            blob = new Blob([json], {type: "application/json"}),
-            url = window.URL.createObjectURL(blob);
-        a.href = url;
-        a.download = fileName;
-        a.click();
-        window.URL.revokeObjectURL(url);
-      }
+    exportConfig:function(data, fileName) {
+      var a = document.createElement("a");
+      document.body.appendChild(a);
+      a.style = "display: none";
+      var json = JSON.stringify(data, null, 2),
+          blob = new Blob([json], {type: "application/json"}),
+          url = window.URL.createObjectURL(blob);
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
   };
 }());
