@@ -262,7 +262,6 @@ MOB.feed = {
       $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
     }).always(function() {
 
-      // console.log( '\nALWAYS for %s: %s (status: %s)', feedHost, JSON.stringify(icon), status);
     });
 
     $.get("/feed", {
@@ -273,9 +272,8 @@ MOB.feed = {
       $feedBody.empty();
 
     }).done(function(data) {
-      $feedTitle.text(data.feedTitle);
-
-      // console.log( "\nDATA: (%s)", JSON.stringify(data.error));
+      $feedTitle.text(data.feedTitle)
+        .attr('title', data.feedTitle || MOB.tr('Error') + ' (' + feedUrl + ')');
 
       if (data.error) {
         console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
@@ -361,62 +359,10 @@ MOB.feed = {
           mediaUrl = item.enclosures[0].url;
         }
 
-        // console.log('S: %s', item.summary)
         var summary = $('<p>').append(item.summary).text();
 
         var $feedItem = $('<li class="feedItem">').attr('title', summary.trim());
         var $itemDiv = $('<div class="feedItem">');
-
-
-        // var $itemDiv = $('<div>')
-        //     .attr('class', 'feedItem ui-helper-clearfix');
-
-        // var $itemLink = $('<a>')
-        //     .attr('target', '_blank')
-        //     .attr('class', 'feedItem ui-helper-clearfix')
-        //     .attr('href', item.link)
-        //     .append(item.title);
-
-        // var $mediaLink = $('<a>')
-        //     .css("display", "inline")
-        //     .attr('href', mediaUrl);
-
-        // if (index % 2 === 0) {
-        //   $feedItem.addClass('mobFeedEven');
-        // }
-
-        // if (mediaUrl && mediaUrl[0] == "/") {
-        //   mediaUrl = feedHost + mediaUrl;
-        // }
-
-        // if (mediaUrl && mediaUrl !== 'null' && typeof mediaUrl !== 'undefined') {
-
-        //   var $media;
-
-        //   if (mediaUrl.match(/\.mp3$/)) {
-
-        //     $media = $('<span>')
-        //       .attr('class', 'media icon-volume-down')
-        //       .css("display", "inline-block")
-        //       .appendTo($mediaLink);
-
-        //   } else {
-
-        //     $mediaLink.attr('data-fancybox', 'gallery')
-        //       .attr('data-fancybox-group', $panel.attr('id'))
-        //       .attr('data-caption', item.title);
-
-        //     $media = $('<img>').attr('src', mediaUrl)
-        //       .appendTo($mediaLink);
-        //   }
-
-        //   if (feedType == 'photo')
-        //     $media.addClass('full');
-
-        // }
-
-        // if (feedType !== 'text')
-        //   $mediaLink.appendTo($itemDiv);
 
         var $itemLink = $('<a>')
             .attr('target', '_blank')
