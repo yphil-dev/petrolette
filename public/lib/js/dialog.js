@@ -151,13 +151,6 @@ MOB.dialog = {
 
           MOB.utilities.translate();
 
-          $('button#aide-un').button().click(function (event) {
-            event.preventDefault();
-            MOB.dialog.kill($dialog);
-            $('#tabs').tabs('option', 'active', 0);
-            MOB.utilities.help('ui');
-          });
-
           $('.ui-widget-overlay').on('click', function() {
             MOB.dialog.kill($dialog);
           });

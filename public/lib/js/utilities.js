@@ -63,11 +63,11 @@ MOB.utilities = {
         },
         {
           element: 'li[aria-controls=tab-2]',
-          intro: MOB.tr('Click on a group tab to display it.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click on a group tab to display it.')
         },
         {
           element: 'li[aria-controls=tab-1]',
-          intro: MOB.tr('Click on the current/selected group tab to change its name and position.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Click on the current/selected group tab to change its name and position.')
         },
         {
           element: 'li.feed',
@@ -75,31 +75,31 @@ MOB.utilities = {
         },
         {
           element: 'li#newTabButton',
-          intro: MOB.tr('Click this button to add a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Ajouter une source ou un groupe.')
         },
         {
           element: '.mobFeedRefresh',
-          intro: MOB.tr('Click here to refresh this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Refresh / reload this source.')
         },
         {
           element: '.mobFeedPrefs',
-          intro: MOB.tr('Click here to edit this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Configure this source.')
         },
         {
           element: '.feedDelete',
-          intro: MOB.tr('Click here to delete this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Delete this source.')
         },
         {
           element: '.feedSelect',
-          intro: MOB.tr('Click here to select this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Select this source (for drag & drop).')
         },
         {
           element: '.feedHandle',
-          intro: MOB.tr('Click here to drag this source (and all other selected sources) and to re-position it within this group, or to move it to another.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Drag here to move this source (and all other selected sources) within this group, or into another.')
         },
         {
           element: 'div.feedToggle',
-          intro: MOB.tr('Click here to expand and collapse this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+          intro: MOB.tr('Expand / collapse this source.')
         }
       ]
     });
@@ -117,12 +117,12 @@ MOB.utilities = {
           position: 'left'
         },
         {
-          element: 'select#feedGroup',
+          element: 'fieldset#feedGroup',
           intro: MOB.tr('Move this source to another group.'),
           position: 'bottom'
         },
         {
-          element: 'div#feedType',
+          element: 'fieldset#feedType',
           intro: MOB.tr('The type of source: It can be all text, all image, or mixed.'),
           position: 'top'
         },
@@ -132,7 +132,7 @@ MOB.utilities = {
           position: 'top'
         },
         {
-          element: 'div#feedDel',
+          element: 'fieldset#killFeed',
           intro: MOB.tr('Delete this source'),
           position: 'top'
         }
@@ -188,10 +188,6 @@ MOB.utilities = {
     dialog.setOption('skipLabel', MOB.tr('Skip'));
     dialog.setOption('doneLabel', MOB.tr('Got it!'));
 
-    ui.setOption('hidePrev', true);
-    ui.setOption('hideNext', true);
-    ui.setOption('exitOnEsc', true);
-    ui.setOption('exitOnOverlayClick', true);
     ui.setOption('scrollToElement', true);
 
     if (type === 'menu') {

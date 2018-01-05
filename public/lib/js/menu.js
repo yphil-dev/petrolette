@@ -44,10 +44,10 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $help.click(function (event) {
     event.preventDefault();
-    MOB.dialog.help();
-    // MOB.utilities.help('menu');
-    // window.open('https://bitbucket.org/yphil/petrolette/wiki/Home', '_blank');
+    $('#tabs').tabs('option', 'active', 0);
+    MOB.utilities.help('ui');
   });
+
 
   $donate.click(function (event) {
     event.preventDefault();
