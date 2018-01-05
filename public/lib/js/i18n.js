@@ -70,10 +70,10 @@ MOB.i18n.translations = {
   "Click here to add some." : { fr: "Cliquez ici pour en ajouter.", ja: "いくつか追加するにはここをクリックしてください。", es: "Haga clic aquí para agregar algunos." },
   "Group" : { fr: "Groupe", ja: "グループ", es: "Grupo" },
 
-  "Find the website\'s source" : { fr: "Trouver la source du site web" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
-  "Move this source to another group" : { fr: "Déplacer cette source dans un autre groupe" , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo" },
-  "The type of source: It can be all text, all image, or mixed" : { fr: "Quel type de source? Tout le texte, toute l'image, ou les deux", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de source? Todo el texto, toda la imagen o mixto" },
-  "How many new items should this source display at a time?" : { fr: "Combien de nouveaux articles cette source peut-elle contenir?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el source a la vez?" },
+  "Find the website\'s source, or build a new one from the seach query." : { fr: "Trouver la source du site web, ou construire une source à partir des termes de recherche." , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web." },
+  "Move this source to another group." : { fr: "Déplacer cette source dans un autre groupe." , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo." },
+  "The type of source: It can be all text, all image, or mixed." : { fr: "Quel type de source ? Tout le texte, toute l'image, ou les deux.", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de source? Todo el texto, toda la imagen o mixto." },
+  "How many new items should this source display at a time?" : { fr: "Combien de nouveaux articles dans cette source ?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el source a la vez?" },
 
   "source" : { fr: "source" , ja: "ソース", es: "fuente" },
 
