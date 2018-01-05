@@ -113,17 +113,17 @@ MOB.utilities = {
         },
         {
           element: 'button#feedGuess',
-          intro: MOB.tr('Find the website\'s source'),
+          intro: MOB.tr('Find the website\'s source, or build a new one from the seach query.'),
           position: 'left'
         },
         {
           element: 'select#feedGroup',
-          intro: MOB.tr('Move this source to another group'),
+          intro: MOB.tr('Move this source to another group.'),
           position: 'bottom'
         },
         {
           element: 'div#feedType',
-          intro: MOB.tr('The type of source: It can be all text, all image, or mixed'),
+          intro: MOB.tr('The type of source: It can be all text, all image, or mixed.'),
           position: 'top'
         },
         {
