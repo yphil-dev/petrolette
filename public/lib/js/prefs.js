@@ -1,62 +1,82 @@
 MOB.prefs = (function() {
 
   var newsTabList = [
-    {"name":"Actu",
+    {"name":"World",
      "feeds": [
-       {"url":"http://www.egaliteetreconciliation.fr/spip.php?page=backend",
-        "type":"text",
-        "limit": 16},
-       {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
-       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4},
+       {"url":"http://feeds.bbci.co.uk/news/world/rss.xml","type":"mixed","limit":8},
+       {"url":"http://www.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4},
+       {"url":"http://feeds.reuters.com/Reuters/worldNews","type":"text","limit": 16},
+       {"url":"http://feeds.reuters.com/reuters/USVideoWorldNews","type":"photo","limit": 16},
+       {"url":"http://www.economist.com/sections/international/rss.xml","type":"text","limit": 8},
+
        {"url":"https://www.reddit.com/.rss","type":"text","limit": 8}
      ]
     },
-    {"name":"News",
+    {"name":"Europe",
      "feeds": [
-       {"url":"http://feeds.feedburner.com/breitbart?format=xml",
-        "type":"mixed",
-        "limit": 12},
+       {"url":"http://www.economist.com/sections/europe/rss.xml", "type":"text", "limit": 12},
        {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
        {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4},
        {"url":"https://www.reddit.com/.rss","type":"text","limit": 8}
      ]
     }
-      ];
+  ];
 
   var miscTabList = [
-    {"name":"Actu",
+    {"name":"Tech",
      "feeds": [
-       {"url":"http://www.lemonde.fr/rss/une.xml",
-        "type":"mixed",
-        "limit": 16
-       },
-       {
-         "url":"http://rss.liberation.fr/rss/latest/",
-         "type":"mixed",
-         "limit": 12
-       },
-       {
-         "url":"http://rezo.net/backend/",
-         "type":"photo",
-         "limit": 4
-       },
-       {
-         "url":"http://www.acrimed.org/spip.php?page=backend",
-         "type":"text",
-         "limit": 16
-       }
+       {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
+       {"url":"http://feeds.reuters.com/reuters/technologyNews", "type":"text", "limit": 16},
+       {"url":"https://www.sciencedaily.com/rss/matter_energy/engineering.xml", "type":"mixed", "limit": 12},
+       {"url":"https://www.theengineer.co.uk/feed", "type":"mixed", "limit": 14},
+       {"url":"http://feed.cnet.com/feed/topics/tech-industry", "type":"mixed", "limit": 14},
+
+       {"url":"https://spectrum.ieee.org/rss/videos", "type":"mixed", "limit": 16}
      ]
     },
-    {"name":"Culture",
+    {"name":"Computing",
      "feeds": [
-       {"url":"http://www.lesinrocks.com/actualite/feed/",
-        "type":"mixed",
-        "limit": 12},
+       {"url":"http://feeds.reuters.com/reuters/technologyNews", "type":"text", "limit": 16},
+       {"url":"https://spectrum.ieee.org/rss/computing/fulltext", "type":"mixed", "limit": 12},
+       {"url":"https://www.technologyreview.com/c/computing/rss/", "type":"photo", "limit": 4},
+
+       {"url":"http://www.economist.com/blogs/gametheory/index.xml","type":"mixed","limit": 8},
+
+       {"url":"http://rss.slashdot.org/Slashdot/slashdot", "type":"mixed", "limit": 4},
+       {"url":"http://rss.slashdot.org/Slashdot/slashdot", "type":"mixed", "limit": 4},
+       {"url":"http://rss.slashdot.org/Slashdot/slashdot", "type":"mixed", "limit": 4},
+
+       {"url":"http://www.economist.com/topics/computer-technology/index.xml", "type":"text", "limit": 16}
+     ]
+    },
+    {"name":"Science",
+     "feeds": [
+       {"url":"http://feeds.bbci.co.uk/news/science_and_environment/rss.xml", "type":"mixed", "limit": 6},
        {"url":"https://feeds.feedburner.com/TechCrunch/","type":"mixed","limit": 8},
-       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4},
+       {"url":"https://spectrum.ieee.org/rss/biomedical/fulltext","type":"mixed","limit": 4},
+       {"url":"https://www.technologyreview.com/topnews.rss","type":"mixed","limit": 4},
+
+       {"url":"https://www.technologyreview.com/c/biomedicine/rss/","type":"mixed","limit": 4},
+       {"url":"https://www.technologyreview.com/c/energy/rss/","type":"mixed","limit": 4},
+       {"url":"https://spectrum.ieee.org/rss/blog/energywise/fulltext","type":"mixed","limit": 4},
+       {"url":"https://spectrum.ieee.org/rss/blog/automaton/fulltext","type":"mixed","limit": 4},
+
+
        {"url":"https://www.reddit.com/.rss","type":"text","limit": 8}
      ]
+    },
+    {"name":"Comics",
+     "feeds": [
+       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+       {"url":"http://thisisindexed.com/feed","type":"photo","limit": 8},
+       {"url":"http://what-if.xkcd.com/feed.atom","type":"photo","limit": 8},
+       {"url":"http://phdcomics.com/gradfeed.php","type":"photo","limit": 8},
+       {"url":"http://comicfeeds.chrisbenard.net/view/pennyarcade/default","type":"photo","limit": 8},
+
+       {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 8}
+     ]
     }
+
   ];
 
   // var newTabList = jQuery.extend(true, {}, tabList);

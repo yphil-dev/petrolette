@@ -140,7 +140,7 @@ li.feed {
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 600 !important;
 
   page-break-inside: avoid;
   break-inside: avoid;

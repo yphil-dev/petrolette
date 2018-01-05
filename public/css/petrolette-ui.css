@@ -113,6 +113,14 @@ input#feedGuess {
 
 }
 
+button > i {
+  margin: 0 !important;
+}
+
+.icon-motorcycle {
+  margin-right: .4px !important;
+}
+
 li.ui-tabs-active,
 li.mobTab:first-child {
   box-shadow: none !important;
@@ -204,7 +212,7 @@ fieldset {
 
   position: fixed;
   width: 275px;
-  transition: all 300ms ease 0s;
+  /* transition: all 300ms ease 0s; */
   height: 100%;
   top: 0px;
   left: -291px;
@@ -395,12 +403,8 @@ fieldset {
   flex: 1;
 }
 
-.flexBox > * {
+#menu .flexBox > * {
   margin-bottom: .4em;
-}
-
-.grow {
-  flex: 1 0 auto !important;
 }
 
 .shrink {
@@ -422,6 +426,15 @@ fieldset {
 /*   margin-bottom: .4em; */
 /* } */
 
+
+.grow {
+  flex: 1 0 auto !important;
+  margin-right: .4em;
+}
+
+.last {
+  margin-right: 0;
+}
 
 span.ui-spinner,
 .last {
@@ -638,10 +651,6 @@ div.dialog > div.content p.value {
 
 /* Hacks & workarounds */
 
-button > i {
-  margin-right: .3em !important;
-}
-
 /* Feed controls */
 
 .truncate {
@@ -852,7 +861,7 @@ li.ui-tabs-tab a:link {
 
 li.feed {
   background-color: var(--bg-color-pri) !important;
-  transition: all 2s ease;
+  transition: all .1s ease;
 }
 
 li.feed a:link {
