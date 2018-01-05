@@ -108,7 +108,7 @@ MOB.utilities = {
       steps: [
         {
           element: 'input#feedGuess',
-          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('feed') + '</a>.',
+          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('source') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a source from your search query.">' + MOB.tr('Heck, enter anything, and Pétrolette will build a source from your search query.') + '</span>',
           position: 'bottom'
         },
         {
@@ -133,7 +133,7 @@ MOB.utilities = {
         },
         {
           element: 'div#feedDel',
-          intro: MOB.tr('Delete the source'),
+          intro: MOB.tr('Delete this source'),
           position: 'top'
         }
       ]
