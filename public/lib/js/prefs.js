@@ -1,5 +1,14 @@
 MOB.prefs = (function() {
 
+
+  var emptyTabList = [
+    {"name":"Group 1",
+     "feeds": [
+       {"url":"http://www.androidpolice.com/feed","type":"mixed","limit": 4}
+     ]
+    }
+  ];
+
   var newsTabList = [
     {"name":"World",
      "feeds": [
@@ -88,7 +97,7 @@ MOB.prefs = (function() {
     'theme': 'day',
     'lang': 'en',
     'explicitLang': false,
-    'tabs': ''
+    'tabs': JSON.stringify(emptyTabList)
   };
 
   var collections = {

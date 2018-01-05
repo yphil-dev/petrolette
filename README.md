@@ -14,6 +14,16 @@ Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/deco
 
 Petrolette is a simple but powerful web app to view and manage various XML (RSS, aTom, etc) news feeds and present them in a nice, ergonomic fashion. I made it to replace the online news services (NetVibes, Google news, etc.) that I use up until around 2007, when they became bloated and **crippled with spyware**. It's a fast, simple and light system, and I've been using it for ~~weeks~~ years now ; It does what I want from a no-nonsense, every-morning-every-day news reader.
 
+### Installation
+
+```sh
+git clone https://yphil@bitbucket.org/yphil/petrolette.git
+cd petrolette
+npm install
+npm start
+firefox http://localhost:8666
+
+```
 ### Practical Features
 
 Make the page your home page, and read it every morning. You know instantly what article you've read ; We're already on the web, right? Just click and read the article. This is *so much better than TV*.
