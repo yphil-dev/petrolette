@@ -120,10 +120,8 @@ MOB.prefs = (function() {
       },
     writeConfig:function(key, val) {
 
-      var $loader = $('#loadRadial');
-      $loader.attr('class', 'c100 small green dark p100');
+      var $loader = $('#indicatorContainer');
 
-      $loader.children('span').text('Saving');
       $loader.fadeToggle('fast');
 
       localStorage.setItem(key, val);

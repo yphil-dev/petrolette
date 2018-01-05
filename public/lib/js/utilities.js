@@ -248,13 +248,19 @@ MOB.utilities = {
 
       this.radialObj = $('#indicatorContainer').data('radialIndicator');
 
-      this.$radialObj = $('#indicatorContainer').fadeIn('slow');
+      this.$radialObj = $('#indicatorContainer').fadeIn('fast');
 
       setTimeout(function() {
 
-        this.$radialObj.fadeOut(300);
+        console.log('timeout');
+
+        if (this.$radialObj) {
+          this.$radialObj.fadeOut(300);
+        }
 
       }, 600000);
+
+      console.log('steps: (%s)', steps);
 
       this.steps = steps;
     };
@@ -263,7 +269,7 @@ MOB.utilities = {
       this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
       this.step++;
-      if (this.step >= (this.steps - 2)) {
+      if (this.step >= this.steps) {
         console.log('finished!');
         this.finish();
       }
@@ -273,7 +279,7 @@ MOB.utilities = {
     };
     progress.finish = function() {
       // var self = this;
-      this.$radialObj.fadeOut('fast');
+      this.$radialObj.fadeOut('slow');
     };
 
     return progress;
