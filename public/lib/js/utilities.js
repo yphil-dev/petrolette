@@ -99,7 +99,7 @@ MOB.utilities = {
         },
         {
           element: 'div.feedToggle',
-          intro: MOB.tr('Expand / collapse this source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+          intro: MOB.tr('Expand / collapse this source.')
         }
       ]
     });
@@ -258,23 +258,24 @@ MOB.utilities = {
           this.$radialObj.fadeOut(300);
         }
 
-      }, 600000);
+      }, 60000);
 
       console.log('steps: (%s)', steps);
 
-      this.steps = steps;
+      this.steps = steps - 1;
     };
     progress.increment = function() {
 
       this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
-      this.step++;
+      console.log('this.step: (%s)', this.step);
+
       if (this.step >= this.steps) {
         console.log('finished!');
         this.finish();
       }
 
-
+      this.step++;
 
     };
     progress.finish = function() {
