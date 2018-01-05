@@ -117,12 +117,12 @@ MOB.utilities = {
           position: 'left'
         },
         {
-          element: 'select#feedGroup',
+          element: 'fieldset#feedGroup',
           intro: MOB.tr('Move this source to another group.'),
           position: 'bottom'
         },
         {
-          element: 'div#feedType',
+          element: 'fieldset#feedType',
           intro: MOB.tr('The type of source: It can be all text, all image, or mixed.'),
           position: 'top'
         },
@@ -132,7 +132,7 @@ MOB.utilities = {
           position: 'top'
         },
         {
-          element: 'div#feedDel',
+          element: 'fieldset#killFeed',
           intro: MOB.tr('Delete this source'),
           position: 'top'
         }
