@@ -273,7 +273,7 @@ MOB.feed = {
 
     }).done(function(data) {
       $feedTitle.text(data.feedTitle)
-        .attr('title', data.feedTitle || MOB.tr('Error') + ' (' + feedUrl + ')');
+        .attr('title', (data.feedTitle || MOB.tr('Error')) + ' (' + feedUrl + ')');
 
       if (data.error) {
         console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
