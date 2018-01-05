@@ -98,6 +98,8 @@ $tabs.find('.collapsible').show('fast');
 MOB.tab.makeNewTabButton($tabs);
 
 if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+  console.error('Tabs!');
+
   MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 } else {
   console.error('Zero tabs!');

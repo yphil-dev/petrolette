@@ -806,14 +806,9 @@ div.dialog > div.content p.value {
   opacity: 0.6;
 }
 
-.handle:hover {
-  opacity: 1;
-  color: var(--ui-color-sec) !important;
-}
-
 .handle,
-#newTabButton a:link {
-  color: var(--color-pri) !important;
+#newTabButton a {
+  color: var(--ui-color-pri) !important;
 }
 
 #newTabButton {
@@ -828,10 +823,12 @@ div.dialog > div.content p.value {
   padding:0;
   background-color: var(--color-qua);
   width: 100%;
-  color: var(--color-pri) !important;
+  /* color: var(--ui-color-pri) !important; */
 }
 
+.handle:hover,
 #newTabButton a:hover {
+  opacity: 1;
   color: var(--ui-color-sec) !important;
 }
 
