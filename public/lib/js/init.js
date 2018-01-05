@@ -10,6 +10,7 @@ $indicatorContainer.radialIndicator({
   barBgColor: 'transparent',
   barColor: '#FF9009',
   roundCorner : true,
+  displayNumber: false,
   percentage: true
 });
 
