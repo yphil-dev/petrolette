@@ -10,7 +10,7 @@ MOB.dialog = {
       var $dialog = $('#collectionDialog');
 
       $dialog.dialog({
-        title: MOB.tr('Add source'),
+        title: MOB.tr('Add sources'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: true,
@@ -39,21 +39,32 @@ MOB.dialog = {
           var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
 
           var $newsSources = $('<button>')
-              .attr('class', 'unique')
-              .text('Add right sources').button();
+              .attr('class', 'grow translate')
+              .data('title', 'Add news sources')
+              .data('content', 'Add news sources')
+              .text(MOB.tr('Add news sources')).button();
           var $miscSources = $('<button>')
-              .attr('class', 'unique')
-              .text('Add left sources').button();
+              .attr('class', 'grow last translate')
+              .data('title', 'Add misc sources')
+              .data('content', 'Add misc sources')
+              .text(MOB.tr('Add misc sources')).button();
           var $noSources = $('<button>')
-              .attr('class', 'unique')
-              .text('Reset everything').button();
+              .attr('class', 'unique translate')
+              .data('title', 'Delete everything')
+              .data('content', 'Delete everything')
+              .text(MOB.tr('Delete everything')).button();
 
           var $newGroup = $('<button>')
-              .text('New group')
-              .attr('class', 'grow').button();
+              .attr('class', 'grow translate')
+              .data('title', 'New group')
+              .data('content', 'New group')
+              .text(MOB.tr('New group')).button();
           var $newSource = $('<button>')
-              .text('New source')
-              .attr('class', 'grow last').button();
+              .attr('class', 'grow last translate')
+              .data('title', 'New source')
+              .data('content', 'New source')
+              .text(MOB.tr('New source')).button();
+
 
           // MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
 
@@ -66,9 +77,8 @@ MOB.dialog = {
           });
 
           $noSources.click(function() {
-            // MOB.tab.empty();
 
-            MOB.dialog.kill();
+            MOB.dialog.kill($dialog);
 
             MOB.dialog.killAll();
 
@@ -85,20 +95,15 @@ MOB.dialog = {
             MOB.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
           });
 
-          var $rightLegend = $('<p class="name">').text(MOB.tr('I\'m a fascist')),
-              $rightValue = $('<p>')
-              .attr('class', 'value flexBox')
-              .html($newsSources),
-
-              $leftLegend = $('<p class="name">').text(MOB.tr('I\'m a leftist')),
-              $leftValue = $('<p>')
-              .attr('class', 'value flexBox')
-              .html($miscSources),
-
-              $newLegend = $('<p class="name">').text(MOB.tr('New content')),
+          var $newLegend = $('<p class="name">').text(MOB.tr('New sources')),
               $newValue = $('<p>')
               .attr('class', 'value flexBox')
               .append($newGroup).append($newSource),
+
+              $examplesLegend = $('<p class="name">').text(MOB.tr('Example sources')),
+              $examplesValue = $('<p>')
+              .attr('class', 'value flexBox')
+              .append($newsSources).append($miscSources),
 
               $noLegend = $('<p class="name">').text(MOB.tr('Erase all')),
               $noValue = $('<p>')
@@ -108,10 +113,8 @@ MOB.dialog = {
           $dialog.find('div.content')
             .append($newLegend)
             .append($newValue)
-          // .append($rightLegend)
-          // .append($rightValue)
-          // .append($leftLegend)
-          // .append($leftValue)
+            .append($examplesLegend)
+            .append($examplesValue)
             .append($noLegend)
             .append($noValue);
         }
