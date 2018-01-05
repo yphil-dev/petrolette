@@ -395,7 +395,7 @@ fieldset {
   flex: 1;
 }
 
-.flexBox > * {
+#menu .flexBox > * {
   margin-bottom: .4em;
 }
 
