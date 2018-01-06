@@ -231,13 +231,6 @@ MOB.dialog = {
 
               }
 
-              if ($('input[name=killFeedChbox]:checked').val() === 'on') {
-                console.log('Yep!');
-
-                MOB.dialog.killFeed(feedId, feedName);
-
-              }
-
               var newUrl = $(this).find('input#feedGuess').val();
               var newType = $('#feedType :radio:checked').attr('id');
 
@@ -245,7 +238,16 @@ MOB.dialog = {
                 .data('url', newUrl)
                 .data('type', newType);
 
-              MOB.feed.populate($feedPrefsButton);
+              if ($('input[name=killFeedChbox]:checked').val() === 'on') {
+                console.log('Yep!');
+
+                MOB.dialog.killFeed(feedId, feedName);
+
+              } else {
+
+                MOB.feed.populate($feedPrefsButton);
+              }
+
               MOB.tab.saveTabs();
               MOB.dialog.kill($dialog);
 
