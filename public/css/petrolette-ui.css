@@ -41,6 +41,11 @@
   }
 }
 
+#gallerySpeedSlider,
+#feedLimit {
+  margin-right: 0;
+}
+
 @font-face {
   font-family: LobsterRegular;
   src: url('/static/font/Lobster.otf') format("opentype");
