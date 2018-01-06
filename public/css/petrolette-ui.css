@@ -489,7 +489,6 @@ div.testFlex {
 .ui-selectmenu-button.ui-button {
   text-align: left;
   white-space: nowrap;
-  width: 100% !important;
 }
 
 /* WTF */
