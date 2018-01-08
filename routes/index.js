@@ -8,15 +8,6 @@ var feedrat = require('feedrat');
 // require('request').debug = true;
 
 
-var RemoteStorage = require('remotestoragejs');
-var Widget = require('remotestorage-widget');
-
-const remoteStorage = new RemoteStorage(/* options */);
-
-remoteStorage.access.claim('bookmarks', 'rw');
-
-const widget = new Widget(remoteStorage);
-
 // widget.attach();
 
 router.get('/', function(req, res) {
