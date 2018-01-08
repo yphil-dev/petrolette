@@ -76,6 +76,10 @@ body {
   font-family: 'LobsterRegular';
 }
 
+.BebasNeueRegular {
+  font-family: 'BebasNeueRegular';
+}
+
 input {
   margin:0;
   padding: .4em;
