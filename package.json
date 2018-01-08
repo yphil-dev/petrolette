@@ -33,7 +33,6 @@
     "feedrat": "latest",
     "find-favicon": "0.1.2",
     "pm2": "2.8.0",
-    "remotestorage-widget": "1.2.0",
-    "remotestoragejs": "1.0.2"
+    "remotestorage-widget": "1.2.0"
   }
 }
