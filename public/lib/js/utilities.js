@@ -267,7 +267,6 @@ MOB.utilities = {
       this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
       if (this.step >= this.steps) {
-        console.log('finished!');
         this.finish();
       }
 

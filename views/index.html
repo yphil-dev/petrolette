@@ -82,21 +82,34 @@
 
     <script>
 
-      $(document).ready(function() {
-      $.getScript('/static/lib/js/init.js');
+     $(document).ready(function() {
+       $.getScript('/static/lib/js/init.js');
 
-        const remoteStorage = new RemoteStorage(/* options */);
+       var Sources = { name: 'sources', builder: function(privateClient, publicClient) {
+         return {
+           exports: {
+             saveSources: function() {
+               console.log('saved!')
+             }
+           }
+         }
+       }};
 
-        remoteStorage.access.claim('bookmarks', 'rw');
+       const remoteStorage = new RemoteStorage(
+         { modules: [ Sources ] }
+       );
 
-        const widget = new Widget(remoteStorage);
-        widget.attach();
+       remoteStorage.access.claim('petrolette.conf', 'rw');
 
-        remoteStorage.on('connected', function() {
-          console.log('user connected their storage');
-        });
+       const widget = new Widget(remoteStorage);
+       widget.attach();
 
-      });
+       remoteStorage.on('connected', function() {
+         console.log('user connected their storage');
+         remoteStorage.sources.saveSources();
+       });
+
+     });
 
     </script>
 
