@@ -41,6 +41,9 @@
     <script src="/static/lib/js/prefs.js"></script>
     <script src="/static/lib/js/i18n.js"></script>
 
+    <!-- <script src="/bower/remotestorage/release/remotestorage.js"></script> -->
+    <!-- <script src="/node/remotestorage-widget/build/widget.js"></script>
+    -->
     <script>
 
      MOB.language = MOB.prefs.readConfig('lang');
@@ -81,6 +84,19 @@
 
      $(document).ready(function() {
        $.getScript('/static/lib/js/init.js');
+       // widget.attach();
+
+       // const remoteStorage = new RemoteStorage(/* options */);
+
+       // remoteStorage.access.claim('bookmarks', 'rw');
+
+       // const widget = new Widget(remoteStorage);
+       // widget.attach();
+
+       // remoteStorage.on('connected', function() {
+       //   console.log('user connected their storage');
+       // });
+
      });
 
     </script>
