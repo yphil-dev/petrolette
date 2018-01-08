@@ -15,6 +15,8 @@ app.use('/static', express.static(__dirname + '/public'));
 app.use('/tmp', express.static(__dirname + '/tmp'));
 
 app.use('/bower', express.static(__dirname + '/bower_components'));
+app.use('/node', express.static(__dirname + '/node_modules'));
+
 app.use('/', index);
 
 module.exports = app;

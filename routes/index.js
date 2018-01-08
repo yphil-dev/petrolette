@@ -3,13 +3,24 @@ var router = express.Router();
 var favicon = require('favicon');
 var FeedParser = require('feedparser');
 var request = require('request');
+var feedrat = require('feedrat');
 
 // require('request').debug = true;
 
-var feedrat = require('feedrat');
+
+var RemoteStorage = require('remotestoragejs');
+var Widget = require('remotestorage-widget');
+
+const remoteStorage = new RemoteStorage(/* options */);
+
+remoteStorage.access.claim('bookmarks', 'rw');
+
+const widget = new Widget(remoteStorage);
+
+// widget.attach();
 
 router.get('/', function(req, res) {
-    res.render('index');
+  res.render('index');
 });
 
 router.use(function(req,res,next){

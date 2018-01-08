@@ -1,9 +1,15 @@
 {
   "name": "petrolette",
+  "description": "A RSS/Atom morning news reader ; Works at night too.",
   "version": "0.8.4",
   "private": true,
+  "license": "GPL-3.0-only",
   "engines": {
     "node": "8.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/yphil/petrolette"
   },
   "scripts": {
     "start": "pm2 start bin/www --watch --name petrolette",
@@ -26,6 +32,8 @@
     "feedparser": "2.2.2",
     "feedrat": "latest",
     "find-favicon": "0.1.2",
-    "pm2": "2.8.0"
+    "pm2": "2.8.0",
+    "remotestorage-widget": "1.2.0",
+    "remotestoragejs": "1.0.2"
   }
 }
