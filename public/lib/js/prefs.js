@@ -1,6 +1,5 @@
 MOB.prefs = (function() {
 
-
   var Sources = { name: 'sources', builder: function(privateClient, publicClient) {
 
     return {
@@ -33,6 +32,8 @@ MOB.prefs = (function() {
   remoteStorage.setApiKeys({
     dropbox: 'k1fou9gcp0z28j4'
   });
+
+
 
   var emptyTabList = [
     {"name":"Group 1",
@@ -139,6 +140,10 @@ MOB.prefs = (function() {
   };
 
   return {
+    wd:function() {
+      const widget = new Widget(remoteStorage);
+      return widget.attach();
+    },
     collection:function(key) {
       return collections[key];
     },
@@ -146,7 +151,7 @@ MOB.prefs = (function() {
 
       remoteStorage.sources.read()
         .then((data) => {
-          console.log('Read sources successfully:', data);
+          // console.log('Read sources successfully:', data);
         })
         .catch((err) => {
           console.error('Validation error:', err);
