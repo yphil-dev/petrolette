@@ -1,7 +1,7 @@
 :root {
   --ui-bg-color-pri: #373737;
   --ui-color-pri: #f4f4f4;
-  --ui-color-sec: #FF9009;
+  --ui-color-sec: #FF4B03;
   --ui-color-ter: #C0B283;
   --ui-color-qua: #222222;
 
@@ -225,9 +225,9 @@ fieldset {
 
   position: fixed;
   width: 275px;
-  transition: all 150ms linear;
+  transition: all 150ms ease-out;
   height: 100%;
-  top: 0px;
+  top: 45px;
   left: -291px;
 }
 
@@ -239,17 +239,6 @@ fieldset {
   margin:      0 0 .2em .2em;
   color:       #F1E5D1;
   text-shadow: 1px 1px #3C2413;
-}
-
-#betaBadge {
-  position:absolute;
-  opacity: .8;
-  font-size:9pt;
-  top: 22px;
-  left: 261px;
-  background: var(--ui-color-sec);
-  padding: 2px;
-  border-radius: 10%;
 }
 
 .baseline {
@@ -285,11 +274,11 @@ fieldset {
 }
 
 #menu,
+#myTopnav,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
-  background: #485563;
-  background: linear-gradient(to right, #29323c, #485563);
+  background: #29323c;
 }
 
 .handle {
@@ -298,10 +287,6 @@ fieldset {
 
 .ui-dialog .ui-dialog-buttonpane {
   margin: 0 !important;
-}
-
-.logoItem {
-  flex: 1 1 auto;
 }
 
 .tabCloser {
@@ -953,6 +938,8 @@ li.feedItem:hover {
   opacity: 1;
 }
 
+/* Rs Widget */
+
 #remotestorage-widget {
 
   /* position: absolute; */
@@ -968,11 +955,37 @@ li.feedItem:hover {
   border-radius: 0 0 0 3px;
 }
 
+.rs-disconnect:hover {
+  border-color: var(--ui-color-sec);
+}
+
+.rs-disconnect:hover .rs-icon{
+  fill: var(--ui-color-sec);
+}
+
+.rs-sync:hover {
+  border-color: #FFBB0C;
+}
+
+.rs-sync:hover .rs-icon {
+  fill: #FFBB0C;
+}
+
+.rs-sync.rs-rotate {
+  border-color: #FFBB0C;
+}
+
+.rs-sync.rs-rotate .rs-icon {
+  fill: #FFBB0C;
+  animation: rs-spin 1s linear infinite;
+}
+
 /* MenuBar */
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
   overflow: hidden;
+  height: 45px;
 }
 
 /* Style the links inside the navigation bar */
@@ -981,9 +994,48 @@ li.feedItem:hover {
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav > div.menuBarItem {
+  float: left;
+  text-align: center;
+  margin: 0 26px 0 5px;
+}
+
+.topnav > div.menuBarItem > .logoType {
+  font-size: 32pt;
+}
+
+.topnav > div.menuBarItem > .logoTitle {
+  margin: -6px 0 0 0 !important;
+  font-family: 'LobsterRegular';
+  font-size: 36pt;
+}
+
+.topnav > div.menuBarItem:hover {
+  cursor:pointer;
+  transition: all .5s linear;
+  color: var(--ui-color-sec);
+}
+
+.topnav > div.menuBarItem > .logoHandle {
+  /* margin: 0 0 0 5px; */
+  /* font-family: 'LobsterRegular'; */
+  font-size: 29pt;
+}
+
+#betaBadge {
+  position:absolute;
+  opacity: .8;
+  font-size:9pt;
+  top: 3px;
+  left: 227px;
+  background: var(--ui-color-sec);
+  padding: 2px;
+  border-radius: 10%;
 }
 
 /* Change the color of links on hover */

@@ -1,5 +1,14 @@
 var $indicatorContainer = $('#indicatorContainer').hide();
 
+var $menu = $('#menu');
+
+var $menuHandle = $('#petrolette');
+
+$menuHandle.click(function () {
+  $menu.toggleClass('expanded');
+  $(this).children('i').toggleClass('close');
+});
+
 $indicatorContainer.click(function() {
   $(this).fadeOut('slow');
 });
