@@ -252,7 +252,7 @@ MOB.utilities = {
 
       setTimeout(function() {
 
-        console.log('timeout');
+        console.log('Timeout!');
 
         if (this.$radialObj) {
           this.$radialObj.fadeOut(300);

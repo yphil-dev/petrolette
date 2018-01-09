@@ -85,12 +85,12 @@
      $(document).ready(function() {
        $.getScript('/static/lib/js/init.js');
 
-       var Bookmarks = { name: 'bookmarks', builder: function(privateClient, publicClient) {
+       var Sources = { name: 'sources', builder: function(privateClient, publicClient) {
 
          return {
            exports: {
 
-             read: function (bookmark) {
+             read: function () {
 
                return privateClient.getFile('petrolette.conf', false)
                                    .then(function (file) {
@@ -100,9 +100,9 @@
 
              },
 
-             write: function (bookmark) {
+             write: function (sources) {
 
-               return privateClient.storeFile('text/plain', 'petrolette.conf', '<h2>Bye World!</h1>')
+               return privateClient.storeFile('text/plain', 'petrolette.conf', sources)
                                    .then(() => { console.log("Upload done") });
 
              }
@@ -113,7 +113,7 @@
        }};
 
        const remoteStorage = new RemoteStorage(
-         { modules: [ Bookmarks ] }
+         { modules: [ Sources ] }
        );
 
        remoteStorage.access.claim('petrolette.conf', 'rw');
@@ -125,20 +125,20 @@
        const widget = new Widget(remoteStorage);
        widget.attach();
 
-       remoteStorage.bookmarks.read()
+       remoteStorage.sources.read()
                     .then(() => {
-                      console.log('read bookmark successfully');
+                      console.log('Read sources successfully');
                     })
                     .catch((err) => {
-                      console.error('validation error:', err);
+                      console.error('Validation error:', err);
                     });
 
-       remoteStorage.bookmarks.write()
+       remoteStorage.sources.write('ploup')
                     .then(() => {
-                      console.log('stored bookmark successfully');
+                      console.log('Stored sources successfully');
                     })
                     .catch((err) => {
-                      console.error('validation error:', err);
+                      console.error('Validation error:', err);
                     });
 
      });
