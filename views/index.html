@@ -85,29 +85,61 @@
      $(document).ready(function() {
        $.getScript('/static/lib/js/init.js');
 
-       var Sources = { name: 'sources', builder: function(privateClient, publicClient) {
+       var Bookmarks = { name: 'bookmarks', builder: function(privateClient, publicClient) {
+
          return {
            exports: {
-             saveSources: function() {
-               console.log('saved!')
+
+             read: function (bookmark) {
+
+               return privateClient.getFile('petrolette.conf', false)
+                                   .then(function (file) {
+                                     var blob = new Blob([file.data], { type: file.mimeType });
+                                     console.log('Data: (%s)', file.data);
+                                   });
+
+             },
+
+             write: function (bookmark) {
+
+               return privateClient.storeFile('text/plain', 'petrolette.conf', '<h2>Bye World!</h1>')
+                                   .then(() => { console.log("Upload done") });
+
              }
+
+
            }
          }
        }};
 
        const remoteStorage = new RemoteStorage(
-         { modules: [ Sources ] }
+         { modules: [ Bookmarks ] }
        );
 
        remoteStorage.access.claim('petrolette.conf', 'rw');
 
+       remoteStorage.setApiKeys({
+         dropbox: 'k1fou9gcp0z28j4'
+       });
+
        const widget = new Widget(remoteStorage);
        widget.attach();
 
-       remoteStorage.on('connected', function() {
-         console.log('user connected their storage');
-         remoteStorage.sources.saveSources();
-       });
+       remoteStorage.bookmarks.read()
+                    .then(() => {
+                      console.log('read bookmark successfully');
+                    })
+                    .catch((err) => {
+                      console.error('validation error:', err);
+                    });
+
+       remoteStorage.bookmarks.write()
+                    .then(() => {
+                      console.log('stored bookmark successfully');
+                    })
+                    .catch((err) => {
+                      console.error('validation error:', err);
+                    });
 
      });
 
