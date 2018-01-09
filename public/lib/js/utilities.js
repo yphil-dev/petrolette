@@ -250,16 +250,6 @@ MOB.utilities = {
 
       this.$radialObj = $('#indicatorContainer').fadeIn('fast');
 
-      setTimeout(function() {
-
-        console.log('Timeout!');
-
-        if (this.$radialObj) {
-          this.$radialObj.fadeOut(300);
-        }
-
-      }, 60000);
-
       this.steps = steps - 1;
     };
     progress.increment = function() {

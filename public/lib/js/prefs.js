@@ -1,27 +1,30 @@
 MOB.prefs = (function() {
 
-  var Sources = { name: 'sources', builder: function(privateClient, publicClient) {
+  var synced = false;
 
-    return {
-      exports: {
+  var Sources = {
+    name: 'sources', builder: function(privateClient, publicClient) {
 
-        read: function () {
-          return privateClient.getFile('petrolette.conf', false)
-            .then(function (file) {
-              // var blob = new Blob([file.data], { type: file.mimeType });
-              // console.log('Data: (%s)', file.data);
-              return file.data;
-            });
-        },
-        write: function (sources) {
-          return privateClient.storeFile('text/plain', 'petrolette.conf', sources)
-            .then(() => { console.log("Upload done"); });
+      return {
+        exports: {
+
+          read: function () {
+            return privateClient.getFile('petrolette.conf', false)
+              .then(function (file) {
+                // var blob = new Blob([file.data], { type: file.mimeType });
+                // console.log('Data: (%s)', file.data);
+                return file.data;
+              });
+          },
+          write: function (sources) {
+            return privateClient.storeFile('text/plain', 'petrolette.conf', sources)
+              .then(() => { console.log("Upload done"); });
+          }
 
         }
-
-      }
-    };
-  }};
+      };
+    }
+  };
 
   const remoteStorage = new RemoteStorage(
     { modules: [ Sources ] }
@@ -33,7 +36,15 @@ MOB.prefs = (function() {
     dropbox: 'k1fou9gcp0z28j4'
   });
 
+  remoteStorage.on('connected', function() {
+    synced = true;
+    console.log('Storage account has been connected, let’s roll!');
+  });
 
+  remoteStorage.on('disconnected', function() {
+    synced = false;
+    console.log('Storage account has been disconnected!');
+  });
 
   var emptyTabList = [
     {"name":"Group 1",
@@ -142,7 +153,7 @@ MOB.prefs = (function() {
   return {
     wd:function() {
       const widget = new Widget(remoteStorage);
-      return widget.attach();
+      return widget.attach('myTopnav');
     },
     collection:function(key) {
       return collections[key];
