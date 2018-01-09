@@ -1,6 +1,39 @@
 MOB.prefs = (function() {
 
 
+  var Sources = { name: 'sources', builder: function(privateClient, publicClient) {
+
+    return {
+      exports: {
+
+        read: function () {
+          return privateClient.getFile('petrolette.conf', false)
+            .then(function (file) {
+              // var blob = new Blob([file.data], { type: file.mimeType });
+              // console.log('Data: (%s)', file.data);
+              return file.data;
+            });
+        },
+        write: function (sources) {
+          return privateClient.storeFile('text/plain', 'petrolette.conf', sources)
+            .then(() => { console.log("Upload done"); });
+
+        }
+
+      }
+    };
+  }};
+
+  const remoteStorage = new RemoteStorage(
+    { modules: [ Sources ] }
+  );
+
+  remoteStorage.access.claim('petrolette.conf', 'rw');
+
+  remoteStorage.setApiKeys({
+    dropbox: 'k1fou9gcp0z28j4'
+  });
+
   var emptyTabList = [
     {"name":"Group 1",
      "feeds": [
@@ -111,6 +144,14 @@ MOB.prefs = (function() {
     },
     readConfig:function(key) {
 
+      remoteStorage.sources.read()
+        .then((data) => {
+          console.log('Read sources successfully:', data);
+        })
+        .catch((err) => {
+          console.error('Validation error:', err);
+        });
+
       if(typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
         return defaults[key];
       } else {
@@ -123,6 +164,16 @@ MOB.prefs = (function() {
       var $loader = $('#indicatorContainer');
 
       $loader.fadeToggle(50);
+
+      if (key === 'tabs') {
+        remoteStorage.sources.write(val)
+          .then(() => {
+            console.log('Stored sources successfully (%s)', key);
+          })
+          .catch((err) => {
+            console.error('Validation error:', err);
+          });
+      }
 
       localStorage.setItem(key, val);
       $loader.fadeToggle('fast');

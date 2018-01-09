@@ -37,12 +37,12 @@
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="/bower/radialIndicator/radialIndicator.min.js"></script>
 
+    <script src="/bower/remotestorage/release/remotestorage.js"></script>
+    <script src="/node/remotestorage-widget/build/widget.js"></script>
+
     <script src="/static/lib/js/main.js"></script>
     <script src="/static/lib/js/prefs.js"></script>
     <script src="/static/lib/js/i18n.js"></script>
-
-    <script src="/bower/remotestorage/release/remotestorage.js"></script>
-    <script src="/node/remotestorage-widget/build/widget.js"></script>
 
     <script>
 
@@ -85,61 +85,8 @@
      $(document).ready(function() {
        $.getScript('/static/lib/js/init.js');
 
-       var Sources = { name: 'sources', builder: function(privateClient, publicClient) {
-
-         return {
-           exports: {
-
-             read: function () {
-
-               return privateClient.getFile('petrolette.conf', false)
-                                   .then(function (file) {
-                                     var blob = new Blob([file.data], { type: file.mimeType });
-                                     console.log('Data: (%s)', file.data);
-                                   });
-
-             },
-
-             write: function (sources) {
-
-               return privateClient.storeFile('text/plain', 'petrolette.conf', sources)
-                                   .then(() => { console.log("Upload done") });
-
-             }
-
-
-           }
-         }
-       }};
-
-       const remoteStorage = new RemoteStorage(
-         { modules: [ Sources ] }
-       );
-
-       remoteStorage.access.claim('petrolette.conf', 'rw');
-
-       remoteStorage.setApiKeys({
-         dropbox: 'k1fou9gcp0z28j4'
-       });
-
-       const widget = new Widget(remoteStorage);
-       widget.attach();
-
-       remoteStorage.sources.read()
-                    .then(() => {
-                      console.log('Read sources successfully');
-                    })
-                    .catch((err) => {
-                      console.error('Validation error:', err);
-                    });
-
-       remoteStorage.sources.write('ploup')
-                    .then(() => {
-                      console.log('Stored sources successfully');
-                    })
-                    .catch((err) => {
-                      console.error('Validation error:', err);
-                    });
+       // const widget = new Widget(remoteStorage);
+       // widget.attach();
 
      });
 
