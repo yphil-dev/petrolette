@@ -18,7 +18,10 @@ MOB.prefs = (function() {
           },
           write: function (sources) {
             return privateClient.storeFile('text/plain', 'petrolette.conf', sources)
-              .then(() => { console.log("Upload done"); });
+              .then(() => {
+                console.log("Upload done");
+                return;
+              });
           }
 
         }
@@ -152,7 +155,9 @@ MOB.prefs = (function() {
 
   return {
     wd:function() {
-      const widget = new Widget(remoteStorage);
+      const widget = new Widget(remoteStorage, {
+        logging: true
+      });
       return widget.attach();
     },
     collection:function(key) {
@@ -162,7 +167,7 @@ MOB.prefs = (function() {
 
       remoteStorage.sources.read()
         .then((data) => {
-          // console.log('Read sources successfully:', data);
+          console.log('Read sources successfully:', data);
         })
         .catch((err) => {
           console.error('Validation error:', err);
