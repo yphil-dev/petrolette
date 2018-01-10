@@ -966,6 +966,16 @@ li.feedItem:hover {
   margin: 3px 0 0 15px !important;
 }
 
+.rs-button {
+  background-color: #ededed !important;
+  border-color: #ededed !important;
+  margin: 2px 0 0 0 !important;
+}
+
+.rs-button:first-child {
+  margin: 2px 0 0 5px !important;
+}
+
 .rs-disconnect:hover {
   border-color: var(--ui-color-sec);
 }
@@ -1031,10 +1041,17 @@ li.feedItem:hover {
   font-size: 36pt;
 }
 
-.topnav > div.menuBarItem:hover {
+.topnav > div.menuBarItem {
   cursor:pointer;
-  transition: all .5s linear;
-  color: var(--ui-color-sec);
+}
+
+.topnav > div#petrolette {
+  transition: all .2s;
+  color: #943e1f;
+}
+
+.topnav > div#petrolette:hover {
+  color: var(--ui-color-sec) !important;
 }
 
 .topnav > div.menuBarItem > .logoHandle {
