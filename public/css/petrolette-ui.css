@@ -966,13 +966,13 @@ li.feedItem:hover {
   margin: 3px 0 0 15px !important;
 }
 
-.rs-button {
+.rs-button-small {
   background-color: #ededed !important;
   border-color: #ededed !important;
   margin: 2px 0 0 0 !important;
 }
 
-.rs-button:first-child {
+.rs-button-small:first-child {
   margin: 2px 0 0 5px !important;
 }
 
