@@ -3,7 +3,7 @@
   --ui-color-pri: #f4f4f4;
   --ui-color-sec: #FF4B03;
   --ui-color-ter: #C0B283;
-  --ui-color-qua: #222222;
+  --ui-color-qua: #29323c;
 
   --var-header-height: 26px;
   --var-controls-width: 150px;
@@ -115,7 +115,7 @@ input#feedGuess {
 }
 
 .hidden {
-  display:none;
+  display:none !important;
 }
 
 #noSourcesButton button {
@@ -940,19 +940,30 @@ li.feedItem:hover {
 
 /* Rs Widget */
 
+.rs-widget {
+  background-color: var(--ui-color-qua) !important;
+  color: var(--ui-color-pri) !important;
+  box-shadow: none !important;
+}
+
 #remotestorage-widget {
+  background-color: var(--ui-color-qua) !important;
 
-  /* position: absolute; */
-  /* top: 0; */
-  /* right: 0; */
+  position: absolute;
+  top: 0;
+  right: 0;
 
-  float:right;
+  /* float:right; */
 }
 
 #remotestorage-widget > .rs-widget {
   margin: 0;
-  padding: 3px;
+  padding: 2px;
   border-radius: 0 0 0 3px;
+}
+
+.rs-main-logo {
+  margin: 3px 0 0 15px !important;
 }
 
 .rs-disconnect:hover {
@@ -998,15 +1009,20 @@ li.feedItem:hover {
   font-size: 17px;
 }
 
-/* Style the links inside the navigation bar */
 .topnav > div.menuBarItem {
   float: left;
   text-align: center;
   margin: 0 26px 0 5px;
 }
 
+.topnav > div#logoTitle {
+  display: none;
+}
+
 .topnav > div.menuBarItem > .logoType {
+  display: block;
   font-size: 32pt;
+  margin: -2px 0 0 0;
 }
 
 .topnav > div.menuBarItem > .logoTitle {

@@ -153,7 +153,7 @@ MOB.prefs = (function() {
   return {
     wd:function() {
       const widget = new Widget(remoteStorage);
-      return widget.attach('myTopnav');
+      return widget.attach();
     },
     collection:function(key) {
       return collections[key];

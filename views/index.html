@@ -70,7 +70,7 @@
       <div id="petrolette" class="menuBarItem">
         <i class="logoType icon-motorcycle"></i>
       </div>
-      <div class="menuBarItem">
+      <div id="logoTitle" class="menuBarItem">
         <div class="logoTitle">Pétrolette</div>
         <span id="betaBadge">beta</span>
       </div>
@@ -100,6 +100,16 @@
        $.getScript('/static/lib/js/init.js');
 
        MOB.prefs.wd();
+
+       var $widget = $('#remotestorage-widget');
+
+       var $readMore = $('<a>')
+         .attr('class', 'rs-help')
+         .attr('href', 'https://remotestorage.io/')
+         .text(MOB.tr('Read more.'));
+
+       $widget.find('.rs-short-desc').text(MOB.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
+              .append($readMore);
 
      });
 

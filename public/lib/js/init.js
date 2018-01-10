@@ -6,6 +6,7 @@ var $menuHandle = $('#petrolette');
 
 $menuHandle.click(function () {
   $menu.toggleClass('expanded');
+  $('#logoTitle').fadeToggle('slow');
   $(this).children('i').toggleClass('close');
 });
 
