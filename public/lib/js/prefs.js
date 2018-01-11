@@ -40,7 +40,7 @@ MOB.prefs = (function() {
 
   remoteStorage.setApiKeys({
     dropbox: 'jyss37l88l4ural',
-    googledrive: '228755392285-gc4285eap9infcvd275si8jhqtaluivq.apps.googleusercontent.com'
+    googledrive: '228755392285-87kkpdod9op50nmnrvnvo6eofr5d3ehl.apps.googleusercontent.com'
   });
 
   remoteStorage.on('connected', function() {
