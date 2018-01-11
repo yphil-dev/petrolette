@@ -184,24 +184,25 @@ MOB.prefs = (function() {
 
       if (synchronized) {
         console.log('synchronized');
+
+        remoteStorage.petrolette.read()
+          .then((data) => {
+            console.log('Read sources successfully:', data);
+
+            if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
+              console.log('VALID sources');
+            } else {
+              console.log('INVALID sources');
+            }
+
+          })
+          .catch((err) => {
+            console.error('Validation error:', err);
+          });
+
       } else {
         console.log('NOT synchronized');
       }
-
-      remoteStorage.petrolette.read()
-        .then((data) => {
-          console.log('Read sources successfully:', data);
-
-          if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
-            console.log('VALID sources');
-          } else {
-            console.log('INVALID sources');
-          }
-
-        })
-        .catch((err) => {
-          console.error('Validation error:', err);
-        });
 
       if(typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
         return defaults[key];
