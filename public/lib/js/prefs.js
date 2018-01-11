@@ -1,6 +1,6 @@
 MOB.prefs = (function() {
 
-  var synced = false;
+  var synchronized = false;
 
   var Sources = {
     name: 'petrolette', builder: function(privateClient, publicClient) {
@@ -44,12 +44,12 @@ MOB.prefs = (function() {
   });
 
   remoteStorage.on('connected', function() {
-    synced = true;
+    synchronized = true;
     console.log('Storage account has been connected, let’s roll!');
   });
 
   remoteStorage.on('disconnected', function() {
-    synced = false;
+    synchronized = false;
     console.log('Storage account has been disconnected!');
   });
 
@@ -171,6 +171,12 @@ MOB.prefs = (function() {
       return collections[key];
     },
     readConfig:function(key) {
+
+      if (synchronized) {
+        console.log('synchronized');
+      } else {
+        console.log('NOT synchronized');
+      }
 
       remoteStorage.petrolette.read()
         .then((data) => {
