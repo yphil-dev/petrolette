@@ -47,7 +47,9 @@ MOB.prefs = (function() {
   remoteStorage.on('connected', function() {
     synchronized = true;
     console.log('Storage account has been connected, let’s roll!');
-    MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')), true, true);
+    $.notify(MOB.tr('Loading of [%s] OK', 'success'));
+    // MOB.tab.populate(p, true);
+    MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')), true);
   });
 
   remoteStorage.on('disconnected', function() {
