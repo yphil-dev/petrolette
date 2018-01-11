@@ -36,7 +36,8 @@ MOB.prefs = (function() {
   // remoteStorage.access.claim('petrolette.conf', 'rw');
 
   remoteStorage.setApiKeys({
-    dropbox: 'k1fou9gcp0z28j4'
+    dropbox: 'jyss37l88l4ural',
+    googledrive: '228755392285-gc4285eap9infcvd275si8jhqtaluivq.apps.googleusercontent.com'
   });
 
   remoteStorage.on('connected', function() {
