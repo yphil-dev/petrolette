@@ -33,7 +33,7 @@ MOB.prefs = (function() {
     { modules: [ Sources ] }
   );
 
-  remoteStorage.access.claim('petrolette.conf', 'rw');
+  // remoteStorage.access.claim('petrolette.conf', 'rw');
 
   remoteStorage.setApiKeys({
     dropbox: 'k1fou9gcp0z28j4'
@@ -158,6 +158,9 @@ MOB.prefs = (function() {
       const widget = new Widget(remoteStorage, {
         logging: true
       });
+
+      remoteStorage.access.claim('petrolette', 'rw');
+
       return widget.attach();
     },
     collection:function(key) {
