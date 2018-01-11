@@ -3,7 +3,7 @@ MOB.prefs = (function() {
   var synced = false;
 
   var Sources = {
-    name: 'sources', builder: function(privateClient, publicClient) {
+    name: 'petrolette', builder: function(privateClient, publicClient) {
 
       return {
         exports: {
@@ -30,7 +30,10 @@ MOB.prefs = (function() {
   };
 
   const remoteStorage = new RemoteStorage(
-    { modules: [ Sources ] }
+    { modules: [ Sources ],
+      // logging: true,
+      cordovaRedirectUri: 'http://test.petrolette.space' // defaults to undefined
+    }
   );
 
   // remoteStorage.access.claim('petrolette.conf', 'rw');
@@ -157,7 +160,7 @@ MOB.prefs = (function() {
   return {
     wd:function() {
       const widget = new Widget(remoteStorage, {
-        logging: true
+        // logging: true
       });
 
       remoteStorage.access.claim('petrolette', 'rw');
@@ -169,7 +172,7 @@ MOB.prefs = (function() {
     },
     readConfig:function(key) {
 
-      remoteStorage.sources.read()
+      remoteStorage.petrolette.read()
         .then((data) => {
           console.log('Read sources successfully:', data);
         })
@@ -191,7 +194,7 @@ MOB.prefs = (function() {
       $loader.fadeToggle(50);
 
       if (key === 'tabs') {
-        remoteStorage.sources.write(val)
+        remoteStorage.petrolette.write(val)
           .then(() => {
             console.log('Stored sources successfully (%s)', key);
           })
