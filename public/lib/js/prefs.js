@@ -2,8 +2,10 @@ MOB.prefs = (function() {
 
   var synchronized = false;
 
+  var syncDirectory = 'petrolette';
+
   var Sources = {
-    name: 'petrolette', builder: function(privateClient, publicClient) {
+    name: syncDirectory, builder: function(privateClient, publicClient) {
 
       return {
         exports: {
@@ -29,12 +31,11 @@ MOB.prefs = (function() {
     }
   };
 
-  const remoteStorage = new RemoteStorage(
-    { modules: [ Sources ],
-      // logging: true,
-      cordovaRedirectUri: 'http://test.petrolette.space' // defaults to undefined
-    }
-  );
+  const remoteStorage = new RemoteStorage({
+    logging: false,
+    // cordovaRedirectUri: 'http://test.petrolette.space' // defaults to undefined
+    modules: [ Sources ]
+  });
 
   // remoteStorage.access.claim('petrolette.conf', 'rw');
 
@@ -170,6 +171,15 @@ MOB.prefs = (function() {
     collection:function(key) {
       return collections[key];
     },
+    isValidSourcesFile:function(sources) {
+      var isValid = false;
+      if (Object.prototype.toString.call(sources) === '[object Array]') {
+        isValid = sources.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
+      } else {
+        isValid = false;
+      }
+      return isValid;
+    },
     readConfig:function(key) {
 
       if (synchronized) {
@@ -181,6 +191,13 @@ MOB.prefs = (function() {
       remoteStorage.petrolette.read()
         .then((data) => {
           console.log('Read sources successfully:', data);
+
+          if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
+            console.log('VALID sources');
+          } else {
+            console.log('INVALID sources');
+          }
+
         })
         .catch((err) => {
           console.error('Validation error:', err);
