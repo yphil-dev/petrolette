@@ -1,62 +1,5 @@
 MOB.prefs = (function() {
 
-  var synchronized = false;
-
-  var syncDirectory = 'petrolette';
-
-  var Sources = {
-    name: syncDirectory, builder: function(privateClient, publicClient) {
-
-      return {
-        exports: {
-
-          read: function () {
-            return privateClient.getFile('petrolette.conf', false)
-              .then(function (file) {
-                // var blob = new Blob([file.data], { type: file.mimeType });
-                // console.log('Data: (%s)', file.data);
-                return file.data;
-              });
-          },
-          write: function (sources) {
-            return privateClient.storeFile('text/plain', 'petrolette.conf', sources)
-              .then(() => {
-                console.log("Upload done");
-                return;
-              });
-          }
-
-        }
-      };
-    }
-  };
-
-  const remoteStorage = new RemoteStorage({
-    logging: false,
-    // cordovaRedirectUri: 'http://test.petrolette.space' // defaults to undefined
-    modules: [ Sources ]
-  });
-
-  // remoteStorage.access.claim('petrolette.conf', 'rw');
-
-  remoteStorage.setApiKeys({
-    dropbox: 'jyss37l88l4ural',
-    googledrive: '228755392285-87kkpdod9op50nmnrvnvo6eofr5d3ehl.apps.googleusercontent.com'
-  });
-
-  remoteStorage.on('connected', function() {
-    synchronized = true;
-    console.log('Storage account has been connected, let’s roll!');
-    $.notify(MOB.tr('Loading of [%s] OK', 'success'));
-    // MOB.tab.populate(p, true);
-    MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')), true);
-  });
-
-  remoteStorage.on('disconnected', function() {
-    synchronized = false;
-    console.log('Storage account has been disconnected!');
-  });
-
   var emptyTabList = [
     {"name":"Group 1",
      "feeds": [
@@ -162,15 +105,6 @@ MOB.prefs = (function() {
   };
 
   return {
-    wd:function() {
-      const widget = new Widget(remoteStorage, {
-        // logging: true
-      });
-
-      remoteStorage.access.claim('petrolette', 'rw');
-
-      return widget.attach();
-    },
     collection:function(key) {
       return collections[key];
     },
@@ -185,28 +119,6 @@ MOB.prefs = (function() {
     },
     readConfig:function(key) {
 
-      if (synchronized) {
-        console.log('synchronized');
-
-        remoteStorage.petrolette.read()
-          .then((data) => {
-            console.log('Read sources successfully:', data);
-
-            if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
-              console.log('VALID sources');
-            } else {
-              console.log('INVALID sources');
-            }
-
-          })
-          .catch((err) => {
-            console.error('Validation error:', err);
-          });
-
-      } else {
-        console.log('NOT synchronized');
-      }
-
       if(typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
         return defaults[key];
       } else {
@@ -219,16 +131,6 @@ MOB.prefs = (function() {
       var $loader = $('#indicatorContainer');
 
       $loader.fadeToggle(50);
-
-      if (key === 'tabs') {
-        remoteStorage.petrolette.write(val)
-          .then(() => {
-            console.log('Stored sources successfully (%s)', key);
-          })
-          .catch((err) => {
-            console.error('Validation error:', err);
-          });
-      }
 
       localStorage.setItem(key, val);
       $loader.fadeToggle('fast');

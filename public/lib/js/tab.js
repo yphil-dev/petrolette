@@ -2,6 +2,7 @@ MOB.tab = {
   saveTabs:function() {
     var allTabs = MOB.tab.list();
     MOB.prefs.writeConfig('tabs', JSON.stringify(allTabs));
+    MOB.sync.writeSync(JSON.stringify(allTabs));
   },
   empty:function() {
     $('div#tabs ul li').remove();

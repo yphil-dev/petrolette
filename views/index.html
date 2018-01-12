@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="gZjIQjkGXwYltleCVHxODL0EDW5TfKg9H5s1HE0q0aQ" />
-
     <title>Petrolette</title>
 
     <link rel="icon" type="image/png" href="/static/images/petrolette.png" />
@@ -95,26 +93,27 @@
     <script src="/static/lib/js/dialog.js"></script>
     <script src="/static/lib/js/utilities.js"></script>
     <script src="/static/lib/js/menu.js"></script>
+    <script src="/static/lib/js/sync.js"></script>
 
     <script>
 
      $(document).ready(function() {
        $.getScript('/static/lib/js/init.js');
 
-       MOB.prefs.wd();
+       MOB.sync.rs();
 
-       var $widget = $('#remotestorage-widget');
+       // var $widget = $('#remotestorage-widget');
 
-       var $readMore = $('<a>')
-         .attr('class', 'rs-help')
-         .attr('href', 'https://remotestorage.io/')
-         .text(MOB.tr('Read more.'));
+       // var $readMore = $('<a>')
+       //   .attr('class', 'rs-help')
+       //   .attr('href', 'https://remotestorage.io/')
+       //   .text(MOB.tr('Read more.'));
 
-       $widget.find('.rs-short-desc').text(MOB.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
-              .append($readMore);
+       // $widget.find('.rs-short-desc').text(MOB.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
+       //        .append($readMore);
 
 
-       $('.rs-button-small').button();
+       // $('.rs-button-small').button();
 
      });
 

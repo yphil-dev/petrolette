@@ -254,7 +254,7 @@ MOB.utilities = {
     };
     progress.increment = function() {
 
-      this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
+      // this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
       if (this.step >= this.steps) {
         this.finish();
