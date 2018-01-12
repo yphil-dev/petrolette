@@ -25,7 +25,7 @@ $indicatorContainer.radialIndicator({
   radius: 30,
   barWidth: 6,
   barBgColor: 'transparent',
-  barColor: '#FF9009',
+  barColor: '#FF4B03',
   roundCorner : true,
   displayNumber: false,
   percentage: true

@@ -87,8 +87,6 @@ MOB.prefs = (function() {
 
   ];
 
-  // var newTabList = jQuery.extend(true, {}, tabList);
-
   var defaults = {
     'gallerySlideTransition': 'fade',
     'gallerySlideshowSpeed': 3000,

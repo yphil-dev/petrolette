@@ -922,6 +922,9 @@ li.feedItem:hover {
 }
 
 #indicatorContainer {
+
+  color: var(--ui-color-sec) !important;
+
   cursor:pointer;
   transition: opacity .5s;
   opacity: .5;
@@ -958,9 +961,9 @@ li.feedItem:hover {
   border-radius: 0 0 0 3px;
 }
 
-.rs-main-logo {
-  margin: 3px 0 0 15px !important;
-}
+/* .rs-main-logo { */
+/*   margin: 3px 0 0 15px !important; */
+/* } */
 
 .rs-button-small {
   background-color: #ededed !important;
