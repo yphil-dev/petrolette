@@ -48,7 +48,7 @@ MOB.sync = (function() {
     // $.notify(MOB.tr('Loading of [%s] OK', 'success'));
     // MOB.tab.populate(p, true);
     // MOB.tab.populate(MOB.sync.readSync(), true);
-    MOB.sync.readSync();
+    // MOB.sync.readSync();
   });
 
   remoteStorage.on('disconnected', function() {
@@ -75,7 +75,7 @@ MOB.sync = (function() {
           .then((data) => {
 
             if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
-              return MOB.tab.populate(JSON.parse(data), true, false);
+              return MOB.tab.populate(JSON.parse(data));
 
             } else {
               MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));

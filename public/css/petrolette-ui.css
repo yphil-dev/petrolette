@@ -281,10 +281,6 @@ fieldset {
   background: #29323c;
 }
 
-.handle {
-  background: #485563;  /* fallback for old browsers */
-}
-
 .ui-dialog .ui-dialog-buttonpane {
   margin: 0 !important;
 }

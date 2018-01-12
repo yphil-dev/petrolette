@@ -1,5 +1,8 @@
 MOB.tab = {
   saveTabs:function() {
+
+    console.log('Saving sources...')
+
     var allTabs = MOB.tab.list();
     MOB.prefs.writeConfig('tabs', JSON.stringify(allTabs));
     MOB.sync.writeSync(JSON.stringify(allTabs));

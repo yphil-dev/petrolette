@@ -246,6 +246,8 @@ MOB.utilities = {
 
     progress.init = function( steps ) {
 
+      // console.log('steps: ', steps);
+
       this.radialObj = $('#indicatorContainer').data('radialIndicator');
 
       this.$radialObj = $('#indicatorContainer').fadeIn('fast');
@@ -254,7 +256,7 @@ MOB.utilities = {
     };
     progress.increment = function() {
 
-      this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
+      // this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
       if (this.step >= this.steps) {
         this.finish();
