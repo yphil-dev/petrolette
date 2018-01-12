@@ -108,11 +108,15 @@ $tabs.find('.collapsible').show('fast');
 
 MOB.tab.makeNewTabButton($tabs);
 
-if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
-  MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-} else {
-  $('#noSourcesButton').fadeIn('slow');
-}
+MOB.sync.readSync();
+
+// if ($.parseJSON(MOB.sync.readSync()).length > 0) {
+//   MOB.tab.populate(JSON.parse(MOB.sync.readSync()));
+// } else if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+//   MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+// } else {
+//   $('#noSourcesButton').fadeIn('slow');
+// }
 
 setTimeout(function() {
 

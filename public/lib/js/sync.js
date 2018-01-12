@@ -82,7 +82,8 @@ MOB.sync = (function() {
               // return;
 
             } else {
-              console.log('INVALID sources');
+              MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+              // console.log('INVALID sources');
             }
 
           })
