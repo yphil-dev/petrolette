@@ -32,17 +32,15 @@ MOB.sync = (function() {
   };
 
   const remoteStorage = new RemoteStorage({
-    logging: true,
+    // logging: true,
     // cordovaRedirectUri: 'http://test.petrolette.space' // defaults to undefined
     modules: [ Sources ]
   });
 
-  // remoteStorage.access.claim('petrolette.conf', 'rw');
-
-  remoteStorage.setApiKeys({
-    dropbox: 'jyss37l88l4ural',
-    googledrive: '228755392285-87kkpdod9op50nmnrvnvo6eofr5d3ehl.apps.googleusercontent.com'
-  });
+  // remoteStorage.setApiKeys({
+  //   dropbox: 'jyss37l88l4ural',
+  //   googledrive: '228755392285-87kkpdod9op50nmnrvnvo6eofr5d3ehl.apps.googleusercontent.com'
+  // });
 
   remoteStorage.on('connected', function() {
     synchronized = true;
@@ -89,7 +87,7 @@ MOB.sync = (function() {
 
           })
           .catch((err) => {
-            console.error('Validation error:', err);
+            console.error('Validation error:', err + data);
           });
 
       } else {
