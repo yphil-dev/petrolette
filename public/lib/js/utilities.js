@@ -13,8 +13,8 @@ MOB.utilities = {
   },
   vWidth:function() {
 
-    var vWidth = $(window).width();
-    var vW;
+    var vWidth = $(window).width(),
+        vW;
 
     if(MOB.utilities.isMobile() || vWidth < 720 ) {
       vW = vWidth - 8;
@@ -231,15 +231,6 @@ MOB.utilities = {
     l.href = href;
     return l;
   },
-  isUrl:  function (s) {
-
-    if (s.indexOf('http') === 0) {
-      return true;
-    } else {
-      return false;
-    }
-
-  },
   buildProgress : function() {
 
     var progress = { step: 0 };
@@ -256,7 +247,7 @@ MOB.utilities = {
     };
     progress.increment = function() {
 
-      // this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
+      this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
       if (this.step >= this.steps) {
         this.finish();

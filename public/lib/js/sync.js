@@ -9,23 +9,15 @@ MOB.sync = (function() {
 
       return {
         exports: {
-
           read: function () {
             return privateClient.getFile('petrolette.conf', 50000)
               .then(function (file) {
-                // var blob = new Blob([file.data], { type: file.mimeType });
-                // console.log('Data: (%s)', file.data);
                 return file.data;
               });
           },
           write: function (sources) {
-            return privateClient.storeFile('text/plain', 'petrolette.conf', sources)
-              .then(() => {
-                console.log("Upload done");
-                return;
-              });
+            return privateClient.storeFile('text/plain', 'petrolette.conf', sources);
           }
-
         }
       };
     }
@@ -44,16 +36,12 @@ MOB.sync = (function() {
 
   remoteStorage.on('connected', function() {
     synchronized = true;
-    console.log('Storage account has been connected, let’s roll!');
-    // $.notify(MOB.tr('Loading of [%s] OK', 'success'));
-    // MOB.tab.populate(p, true);
-    // MOB.tab.populate(MOB.sync.readSync(), true);
-    // MOB.sync.readSync();
+    console.info('Petrolette | Connected to remote storage');
   });
 
   remoteStorage.on('disconnected', function() {
     synchronized = false;
-    console.log('Storage account has been disconnected!');
+    console.info('Petrolette | Disconnected from remote storage');
   });
 
   return {
@@ -69,7 +57,6 @@ MOB.sync = (function() {
     readSync:function() {
 
       if (synchronized) {
-        console.log('synchronized');
 
         remoteStorage.petrolette.read()
           .then((data) => {
@@ -99,7 +86,7 @@ MOB.sync = (function() {
 
       remoteStorage.petrolette.write(sources)
         .then(() => {
-          console.log('Stored sources successfully (%s)');
+          console.info('Petrolette | Writing to remote storage OK');
         })
         .catch((err) => {
           console.error('Validation error:', err);

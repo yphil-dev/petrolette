@@ -1,10 +1,7 @@
-var express = require('express');
-var path = require('path');
-
-
-var index = require('./routes/index');
-
-var app = express();
+var express = require('express'),
+    path = require('path'),
+    index = require('./routes/index'),
+    app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -15,7 +12,6 @@ app.use('/static', express.static(__dirname + '/public'));
 app.use('/tmp', express.static(__dirname + '/tmp'));
 
 app.use('/bower', express.static(__dirname + '/bower_components'));
-app.use('/node', express.static(__dirname + '/node_modules'));
 
 app.use('/', index);
 
