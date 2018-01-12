@@ -25,7 +25,7 @@ MOB.sync = (function() {
 
   const remoteStorage = new RemoteStorage({
     // logging: true,
-    cordovaRedirectUri: 'http://test.petrolette.space', // defaults to undefined
+    cordovaRedirectUri: 'http://petrolette.space',
     modules: [ Sources ]
   });
 
