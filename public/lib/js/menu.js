@@ -30,7 +30,14 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $handle.click(function () {
     $menu.toggleClass('expanded');
+    $('#logoTitle').fadeToggle('slow');
     $(this).children('i').toggleClass('close');
+
+    $('i.logoType')
+      .toggleClass('close')
+      .toggleClass('icon-menu')
+      .toggleClass('icon-motorcycle');
+
   });
 
   $addSource.click(function (event) {

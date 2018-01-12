@@ -7,7 +7,10 @@ var $menuHandle = $('#petrolette');
 $menuHandle.click(function () {
   $menu.toggleClass('expanded');
   $('#logoTitle').fadeToggle('slow');
-  $(this).children('i')
+
+  $('i#handle').toggleClass('close');
+
+  $('i.logoType')
     .toggleClass('close')
     .toggleClass('icon-menu')
     .toggleClass('icon-motorcycle');
