@@ -7,7 +7,11 @@ var $menuHandle = $('#petrolette');
 $menuHandle.click(function () {
   $menu.toggleClass('expanded');
   $('#logoTitle').fadeToggle('slow');
-  $(this).children('i').toggleClass('close');
+  $(this).children('i')
+    .toggleClass('close')
+    .toggleClass('icon-menu')
+    .toggleClass('icon-motorcycle');
+
 });
 
 $indicatorContainer.click(function() {
