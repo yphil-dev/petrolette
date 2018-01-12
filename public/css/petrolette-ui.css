@@ -860,7 +860,7 @@ li.feed a:link {
 }
 
 li.feed a:visited {
-  color: var(--color-sec);
+  color: var(--color-ter);
 }
 
 li.feed a:hover {
