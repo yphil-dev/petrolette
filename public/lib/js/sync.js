@@ -11,7 +11,7 @@ MOB.sync = (function() {
         exports: {
 
           read: function () {
-            return privateClient.getFile('petrolette.conf', false)
+            return privateClient.getFile('petrolette.conf', 500000)
               .then(function (file) {
                 // var blob = new Blob([file.data], { type: file.mimeType });
                 console.log('Data: (%s)', file.data);
