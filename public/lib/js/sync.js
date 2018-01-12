@@ -77,11 +77,11 @@ MOB.sync = (function() {
           .then((data) => {
             console.log('Read sources successfully:', data);
 
-            if (MOB.prefs.isValidSourcesFile(data)) {
+            if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
               console.log('VALID sources');
               // return data;
-              MOB.tab.populate(JSON.parse(data), true);
-              return;
+              return MOB.tab.populate(JSON.parse(data), true, false);
+              // return;
 
             } else {
               console.log('INVALID sources');

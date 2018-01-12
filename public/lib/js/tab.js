@@ -104,6 +104,8 @@ MOB.tab = {
   },
   make:function($tabs, name, feeds, progress) {
 
+    $tabs.tabs();
+
     $('#noSourcesButton').fadeOut('fast');
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
