@@ -868,7 +868,7 @@ li.feed a:visited {
 }
 
 li.feed a:hover {
-  color: var(--ui-color-sec);
+  color: var(--color-ter);
 }
 
 .mobHeader {
