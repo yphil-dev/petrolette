@@ -1,5 +1,22 @@
 var $indicatorContainer = $('#indicatorContainer').hide();
 
+var $menu = $('#menu');
+
+var $menuHandle = $('#petrolette');
+
+$menuHandle.click(function () {
+  $menu.toggleClass('expanded');
+  $('#logoTitle').fadeToggle('slow');
+
+  $('i#handle').toggleClass('close');
+
+  $('i.logoType')
+    .toggleClass('close')
+    .toggleClass('icon-menu')
+    .toggleClass('icon-motorcycle');
+
+});
+
 $indicatorContainer.click(function() {
   $(this).fadeOut('slow');
 });
@@ -8,7 +25,7 @@ $indicatorContainer.radialIndicator({
   radius: 30,
   barWidth: 6,
   barBgColor: 'transparent',
-  barColor: '#FF9009',
+  barColor: '#FF4B03',
   roundCorner : true,
   displayNumber: false,
   percentage: true
@@ -98,11 +115,15 @@ $tabs.find('.collapsible').show('fast');
 
 MOB.tab.makeNewTabButton($tabs);
 
-if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
-  MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-} else {
-  $('#noSourcesButton').fadeIn('slow');
-}
+MOB.sync.readSync();
+
+// if ($.parseJSON(MOB.sync.readSync()).length > 0) {
+//   MOB.tab.populate(JSON.parse(MOB.sync.readSync()));
+// } else if ($.parseJSON(MOB.prefs.readConfig('tabs')).length > 0) {
+//   MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+// } else {
+//   $('#noSourcesButton').fadeIn('slow');
+// }
 
 setTimeout(function() {
 

@@ -37,13 +37,13 @@
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="/bower/radialIndicator/radialIndicator.min.js"></script>
 
+    <script src="/bower/remotestorage/release/remotestorage.js"></script>
+    <script src="/bower/rs-widget/build/widget.js"></script>
+
     <script src="/static/lib/js/main.js"></script>
     <script src="/static/lib/js/prefs.js"></script>
     <script src="/static/lib/js/i18n.js"></script>
 
-    <!-- <script src="/bower/remotestorage/release/remotestorage.js"></script> -->
-    <!-- <script src="/node/remotestorage-widget/build/widget.js"></script>
-    -->
     <script>
 
      MOB.language = MOB.prefs.readConfig('lang');
@@ -66,6 +66,20 @@
       <i class="BebasNeueRegular"></i>
     </div>
 
+    <div class="topnav" id="myTopnav">
+      <div id="petrolette" class="menuBarItem logoType">
+        <i class="logoType icon-menu"></i>
+      </div>
+      <div id="logoTitle" class="menuBarItem">
+        <div class="logoTitle">Pétrolette</div>
+        <span id="betaBadge">beta</span>
+      </div>
+      <!-- <div class="menuBarItem">
+           <i class="logoHandle icon-right-open"></i>
+           </div>
+      -->
+    </div>
+
     <div id="tabs" style="display:none;">
       <ul id="tabUl"></ul>
     </div>
@@ -74,28 +88,32 @@
 
     <div id="indicatorContainer"></div>
 
+    <script src="/static/lib/js/utilities.js"></script>
     <script src="/static/lib/js/tab.js"></script>
     <script src="/static/lib/js/feed.js"></script>
     <script src="/static/lib/js/dialog.js"></script>
-    <script src="/static/lib/js/utilities.js"></script>
     <script src="/static/lib/js/menu.js"></script>
+    <script src="/static/lib/js/sync.js"></script>
 
     <script>
 
      $(document).ready(function() {
        $.getScript('/static/lib/js/init.js');
-       // widget.attach();
 
-       // const remoteStorage = new RemoteStorage(/* options */);
+       MOB.sync.rs();
 
-       // remoteStorage.access.claim('bookmarks', 'rw');
+       var $widget = $('#remotestorage-widget');
 
-       // const widget = new Widget(remoteStorage);
-       // widget.attach();
+       var $readMore = $('<a>')
+         .attr('class', 'rs-help')
+         .attr('href', 'https:remotestorage.io/')
+         .text(MOB.tr('Read more.'));
 
-       // remoteStorage.on('connected', function() {
-       //   console.log('user connected their storage');
-       // });
+       $widget.find('.rs-short-desc').text(MOB.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
+              .append($readMore);
+
+
+       // $('.rs-button-small').button();
 
      });
 

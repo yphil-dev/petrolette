@@ -1,9 +1,9 @@
 :root {
   --ui-bg-color-pri: #373737;
   --ui-color-pri: #f4f4f4;
-  --ui-color-sec: #FF9009;
+  --ui-color-sec: #FF4B03;
   --ui-color-ter: #C0B283;
-  --ui-color-qua: #222222;
+  --ui-color-qua: #29323c;
 
   --var-header-height: 26px;
   --var-controls-width: 150px;
@@ -115,7 +115,7 @@ input#feedGuess {
 }
 
 .hidden {
-  display:none;
+  display:none !important;
 }
 
 #noSourcesButton button {
@@ -225,9 +225,9 @@ fieldset {
 
   position: fixed;
   width: 275px;
-  transition: all 150ms linear;
+  transition: all 150ms ease-out;
   height: 100%;
-  top: 0px;
+  top: 45px;
   left: -291px;
 }
 
@@ -239,17 +239,6 @@ fieldset {
   margin:      0 0 .2em .2em;
   color:       #F1E5D1;
   text-shadow: 1px 1px #3C2413;
-}
-
-#betaBadge {
-  position:absolute;
-  opacity: .8;
-  font-size:9pt;
-  top: 22px;
-  left: 261px;
-  background: var(--ui-color-sec);
-  padding: 2px;
-  border-radius: 10%;
 }
 
 .baseline {
@@ -285,23 +274,15 @@ fieldset {
 }
 
 #menu,
+#myTopnav,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
-  background: #485563;
-  background: linear-gradient(to right, #29323c, #485563);
-}
-
-.handle {
-  background: #485563;  /* fallback for old browsers */
+  background: #29323c;
 }
 
 .ui-dialog .ui-dialog-buttonpane {
   margin: 0 !important;
-}
-
-.logoItem {
-  flex: 1 1 auto;
 }
 
 .tabCloser {
@@ -879,11 +860,11 @@ li.feed a:link {
 }
 
 li.feed a:visited {
-  color: var(--color-sec);
+  color: var(--color-ter);
 }
 
 li.feed a:hover {
-  color: var(--ui-color-sec);
+  color: var(--color-ter);
 }
 
 .mobHeader {
@@ -941,6 +922,9 @@ li.feedItem:hover {
 }
 
 #indicatorContainer {
+
+  color: var(--ui-color-sec) !important;
+
   cursor:pointer;
   transition: opacity .5s;
   opacity: .5;
@@ -953,8 +937,154 @@ li.feedItem:hover {
   opacity: 1;
 }
 
+/* Rs Widget */
+
+.rs-widget {
+  background-color: var(--ui-color-qua) !important;
+  color: var(--ui-color-pri) !important;
+  box-shadow: none !important;
+}
+
 #remotestorage-widget {
+  background-color: var(--ui-color-qua) !important;
+
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0;
+  right: 0;
+
+  /* float:right; */
+}
+
+#remotestorage-widget > .rs-widget {
+  margin: 0;
+  padding: 2px;
+  border-radius: 0 0 0 3px;
+}
+
+/* .rs-main-logo { */
+/*   margin: 3px 0 0 15px !important; */
+/* } */
+
+.rs-button-small {
+  background-color: #ededed !important;
+  border-color: #ededed !important;
+  margin: 2px 0 0 0 !important;
+}
+
+.rs-button-small:first-child {
+  margin: 2px 0 0 5px !important;
+}
+
+.rs-disconnect:hover {
+  border-color: var(--ui-color-sec);
+}
+
+.rs-disconnect:hover .rs-icon{
+  fill: var(--ui-color-sec);
+}
+
+.rs-sync:hover {
+  border-color: #FFBB0C;
+}
+
+.rs-sync:hover .rs-icon {
+  fill: #FFBB0C;
+}
+
+.rs-sync.rs-rotate {
+  border-color: #FFBB0C;
+}
+
+.rs-sync.rs-rotate .rs-icon {
+  fill: #FFBB0C;
+  animation: rs-spin 1s linear infinite;
+}
+
+/* MenuBar */
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  height: 45px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav > div.menuBarItem {
+  float: left;
+  text-align: center;
+  margin: 0 26px 0 5px;
+}
+
+.topnav > div#logoTitle {
+  display: none;
+}
+
+.topnav > div.menuBarItem > .logoType {
+  display: block;
+  font-size: 32pt;
+  margin: -2px 0 0 0;
+}
+
+.topnav > div.menuBarItem > .logoTitle {
+  margin: -6px 0 0 0 !important;
+  font-family: 'LobsterRegular';
+  font-size: 36pt;
+  color: var(--ui-color-pri);
+}
+
+.topnav > div.menuBarItem {
+  cursor:pointer;
+}
+
+.topnav > div#petrolette {
+  transition: all .2s;
+  color: #943e1f;
+}
+
+.topnav > div#petrolette:hover {
+  color: var(--ui-color-sec) !important;
+}
+
+.topnav > div.menuBarItem > .logoHandle {
+  /* margin: 0 0 0 5px; */
+  /* font-family: 'LobsterRegular'; */
+  font-size: 29pt;
+}
+
+#betaBadge {
+  position:absolute;
+  opacity: .8;
+  font-size:9pt;
+  top: 3px;
+  left: 227px;
+  background: var(--ui-color-sec);
+  color: var(--ui-color-pri);
+  padding: 2px;
+  border-radius: 10%;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add an active class to highlight the current page */
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
 }

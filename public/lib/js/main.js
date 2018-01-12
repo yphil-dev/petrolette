@@ -26,7 +26,7 @@ var MOB = (function() {
           currentReplacement,
           i = 1; // pour pointer sur le premier argument optionnel, arguments[1]
 
-      // Retourne la traduction de la chaine de caracètre passée en argument.
+      // Retourne la traduction de la chaine de caractère passée en argument.
       _trAux = function( string ) {
         if( !string ) {
           return "";

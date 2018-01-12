@@ -1,9 +1,14 @@
 MOB.tab = {
   saveTabs:function() {
+
+    console.info('Petrolette | Writing to local storage OK');
+
     var allTabs = MOB.tab.list();
     MOB.prefs.writeConfig('tabs', JSON.stringify(allTabs));
+    MOB.sync.writeSync(JSON.stringify(allTabs));
   },
   empty:function() {
+
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
     $('#noSourcesButton').fadeIn('slow');
@@ -21,22 +26,18 @@ MOB.tab = {
       MOB.tab.makeNewTabButton($('div#tabs'));
     }
 
-    var totalFeeds = 0;
+    var totalFeeds = 0,
+        progress = MOB.utilities.buildProgress();
 
     tabs.forEach(function(tab) {
       totalFeeds += tab.feeds.length;
     });
 
-    var progress = MOB.utilities.buildProgress();
     progress.init(totalFeeds);
 
     tabs.forEach(function(tab) {
       MOB.tab.make($('#tabs'), tab.name, tab.feeds, progress);
     });
-
-    // console.log('Total: %s', progress)
-
-    // $("div#tabs").tabs("refresh");
 
     if (clickToRefresh) {
       $('#tabs').find('.mobFeedRefresh').click();
@@ -50,13 +51,13 @@ MOB.tab = {
 
   },
   list:function(type) {
-    var myTabs = [];
-    var $allTabs = $('#tabUl > li.mobTab');
+    var myTabs = [],
+        $allTabs = $('#tabUl > li.mobTab');
 
     $allTabs.each(function() {
-      var myFeeds = [];
-      var myTab = {};
-      var $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
+      var myFeeds = [],
+          myTab = {},
+          $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
 
       myTab.name = $(this).children('a').text();
 
@@ -64,8 +65,8 @@ MOB.tab = {
         myTab.pane = $($(this).children().attr('href') + ' ul').attr('id');
 
       $allFeeds.each(function() {
-        var $dataStore = $(this).find('.feedControls');
-        var myFeed = {};
+        var $dataStore = $(this).find('.feedControls'),
+            myFeed = {};
         myFeed.url = $dataStore.data('url');
         myFeed.type = $dataStore.data('type');
         myFeed.limit = $dataStore.data('limit');
@@ -80,28 +81,19 @@ MOB.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add source" title="Add source">');
-
-    // $newTabButton.click(function (e) {
-    //   // MOB.tab.make($tabs);
-    //   // MOB.dialog.newContent();
-    //   // console.log('plop');
-    //   e.preventDefault();
-    //   return false;
-    // });
-
-    var $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
-      // e.preventDefault();
-      e.stopImmediatePropagation();
+    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add source" title="Add source">'),
+        $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
+          e.stopImmediatePropagation();
       MOB.dialog.newContent();
       return false;
     });
 
     $dummyTabLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tabUl'));
-    // $tabs.tabs('refresh');
   },
   make:function($tabs, name, feeds, progress) {
+
+    $tabs.tabs();
 
     $('#noSourcesButton').fadeOut('fast');
 
@@ -141,11 +133,11 @@ MOB.tab = {
         return $helper.append($elements);
       },
       start: function (e, ui) {
+
         // Drag begins
         var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
         // Store the selected items to item being dragged
         ui.item.data('items', $elements);
-
         // Size the placeHolder
         $('.ui-sortable-placeholder').css('height', ui.item.height());
 
@@ -182,14 +174,6 @@ MOB.tab = {
 
     $thisTab.droppable({
       tolerance: 'pointer',
-      over: function(event, ui) {
-        console.log('OVER (%s)', $(this).attr('class'));
-        // ui.item.css('cursor','copy');
-      },
-      out: function(event, ui) {
-        console.log('OUT');
-        // ui.item.css('cursor','auto');
-      },
       accept: 'ul, .tabSort li',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
@@ -227,6 +211,5 @@ MOB.tab = {
     $tabs.tabs( "option", "active", tabIndex - 1);
     tabIndex++;
 
-    // console.log('---- TAB OK ----');
   }
 };
