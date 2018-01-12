@@ -6,3 +6,4 @@ pipelines:
     - step:
         script:
           - npm version
+          - npm install
