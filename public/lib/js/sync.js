@@ -14,7 +14,7 @@ MOB.sync = (function() {
             return privateClient.getFile('petrolette.conf', false)
               .then(function (file) {
                 // var blob = new Blob([file.data], { type: file.mimeType });
-                // console.log('Data: (%s)', file.data);
+                console.log('Data: (%s)', file.data);
                 return file.data;
               });
           },
@@ -87,7 +87,7 @@ MOB.sync = (function() {
 
           })
           .catch((err) => {
-            console.error('Validation error:', err + data);
+            console.error('Validation error:', err);
           });
 
       } else {
