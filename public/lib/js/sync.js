@@ -14,7 +14,7 @@ MOB.sync = (function() {
             return privateClient.getFile('petrolette.conf', 50000)
               .then(function (file) {
                 // var blob = new Blob([file.data], { type: file.mimeType });
-                console.log('Data: (%s)', file.data);
+                // console.log('Data: (%s)', file.data);
                 return file.data;
               });
           },
@@ -73,7 +73,7 @@ MOB.sync = (function() {
 
         remoteStorage.petrolette.read()
           .then((data) => {
-            console.log('Read sources successfully:', data);
+            // console.log('Read sources successfully:', data);
 
             if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
               console.log('VALID sources');
