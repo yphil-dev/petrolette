@@ -24,6 +24,7 @@
     "radialIndicator": "^1.3.1",
     "notifyjs": "latest",
     "intro.js": "latest",
-    "remotestorage": "rs#^1.0.2"
+    "remotestorage": "rs#^1.0.2",
+    "rs-widget": "^1.2.0"
   }
 }

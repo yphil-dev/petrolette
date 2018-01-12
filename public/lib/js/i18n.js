@@ -147,6 +147,9 @@ MOB.i18n.translations = {
 
   "Expand / collapse this source." : { fr: "Ouvrir / fermer cette source." , ja: "このソースを展開/折りたたむ。", es: "Expandir / contraer esta fuente." },
 
+  "Pétrolette allows you to sync data with a storage of your choice ; " : { fr: "Synchroniser Pétrolette avec le stockage de votre choix ; " , ja: "Pétroletteでは、選択したストレージにデータを同期させることができます。 ; ", es: "Pétrolette le permite sincronizar datos con un almacenamiento de su elección ; " },
+
+  "Read more." : { fr: "En savoir plus" , ja: "続きを読む。", es: "Lee mas." },
 
   "Add a source or a group." : { fr: "Ajouter une source ou un groupe." , ja: "ソースまたはグループを追加する", es: "Agrega una fuente o un grupo." },
   "What is Petrolette?" : { fr: "Qu'est-ce que Petrolette?" , ja: "Petroletteとは何ですか？", es: "¿Qué es Petrolette?" },

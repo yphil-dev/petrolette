@@ -1,6 +1,5 @@
 MOB.prefs = (function() {
 
-
   var emptyTabList = [
     {"name":"Group 1",
      "feeds": [
@@ -88,8 +87,6 @@ MOB.prefs = (function() {
 
   ];
 
-  // var newTabList = jQuery.extend(true, {}, tabList);
-
   var defaults = {
     'gallerySlideTransition': 'fade',
     'gallerySlideshowSpeed': 3000,
@@ -108,6 +105,15 @@ MOB.prefs = (function() {
   return {
     collection:function(key) {
       return collections[key];
+    },
+    isValidSourcesFile:function(sources) {
+      var isValid = false;
+      if (Object.prototype.toString.call(sources) === '[object Array]') {
+        isValid = sources.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
+      } else {
+        isValid = false;
+      }
+      return isValid;
     },
     readConfig:function(key) {
 
