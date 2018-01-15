@@ -7,6 +7,7 @@ MOB.sync = (function() {
   var Sources = {
     name: syncDirectory, builder: function(privateClient, publicClient) {
 
+
       return {
         exports: {
           read: function () {
