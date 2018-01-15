@@ -7,11 +7,10 @@ MOB.sync = (function() {
   var Sources = {
     name: syncDirectory, builder: function(privateClient, publicClient) {
 
-
       return {
         exports: {
           read: function () {
-            return privateClient.getFile('petrolette.conf', false)
+            return privateClient.getFile('petrolette.conf', 2592000000)
               .then(function (file) {
                 return file.data;
               });
