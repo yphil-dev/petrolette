@@ -62,15 +62,21 @@ MOB.sync = (function() {
           .then((data) => {
 
             if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
+
+              console.error('Petrolette | Validation OK');
+
               return MOB.tab.populate(JSON.parse(data));
 
             } else {
+
+              console.error('Petrolette | Validation NOT OK: Default sources');
+
               MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
             }
 
           })
           .catch((err) => {
-            console.error('Validation error:', err);
+            console.error('Petrolette | Validation error:', err);
           });
 
       } else {
@@ -89,7 +95,7 @@ MOB.sync = (function() {
           console.info('Petrolette | Writing to remote storage OK');
         })
         .catch((err) => {
-          console.error('Validation error:', err);
+          console.error('Petrolette | Validation error:', err);
         });
 
       // localStorage.setItem(key, val);
