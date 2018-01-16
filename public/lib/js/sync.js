@@ -74,6 +74,7 @@ MOB.sync = (function() {
 
         })
         .catch((err) => {
+          MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
           console.error('Petrolette | Validation error:', err);
         });
 
