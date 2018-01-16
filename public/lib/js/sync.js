@@ -67,15 +67,27 @@ MOB.sync = (function() {
 
           } else {
 
-            console.error('Petrolette | Validation NOT OK: Default sources');
+            console.error('Petrolette | Validation NOT OK: Tryin browser cache');
 
-            MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+            if (MOB.prefs.isValidSourcesFile(JSON.parse(MOB.prefs.readConfig('tabs')))) {
+              console.log('plop');
+              MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+            } else {
+              localStorage.setItem("tabs", "");
+            }
+
           }
 
         })
         .catch((err) => {
-          MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-          console.error('Petrolette | Validation error:', err);
+          // console.error('Petrolette | Validation err:', err);
+
+          if (MOB.prefs.isValidSourcesFile(JSON.parse(MOB.prefs.readConfig('tabs')))) {
+            MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+          } else {
+            localStorage.setItem("tabs", "");
+          }
+
         });
 
     },
