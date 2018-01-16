@@ -10,7 +10,7 @@ MOB.sync = (function() {
       return {
         exports: {
           read: function () {
-            return privateClient.getFile('petrolette.conf', false)
+            return privateClient.getFile('petrolette.conf', 999999)
               .then(function (file) {
                 return file.data;
               });
