@@ -10,7 +10,7 @@ MOB.sync = (function() {
       return {
         exports: {
           read: function () {
-            return privateClient.getFile('petrolette.conf', 999999)
+            return privateClient.getFile('petrolette.conf')
               .then(function (file) {
                 return file.data;
               });
@@ -67,7 +67,7 @@ MOB.sync = (function() {
 
           } else {
 
-            console.error('Petrolette | Validation NOT OK: Tryin browser cache');
+            console.error('Petrolette | Validation NOT OK(%s) Tryin browser cache', data);
 
             if (MOB.prefs.isValidSourcesFile(JSON.parse(MOB.prefs.readConfig('tabs')))) {
               console.log('plop');
