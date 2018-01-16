@@ -5,7 +5,7 @@ MOB.utilities = {
 
     var $noSourcesButtonContainer = $('<div>')
         .attr('id', 'noSourcesButton')
-        .attr('class', 'deadCenter hidden')
+        .attr('class', 'deadCenter')
         .append($noSourcesButton);
 
     $('body').append($noSourcesButtonContainer);
