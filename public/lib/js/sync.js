@@ -56,32 +56,26 @@ MOB.sync = (function() {
     },
     readSync:function() {
 
-      if (synchronized) {
+      remoteStorage.petrolette.read()
+        .then((data) => {
 
-        remoteStorage.petrolette.read()
-          .then((data) => {
+          if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
 
-            if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
+            console.info('Petrolette | Validation OK');
 
-              console.error('Petrolette | Validation OK');
+            return MOB.tab.populate(JSON.parse(data));
 
-              return MOB.tab.populate(JSON.parse(data));
+          } else {
 
-            } else {
+            console.error('Petrolette | Validation NOT OK: Default sources');
 
-              console.error('Petrolette | Validation NOT OK: Default sources');
+            MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+          }
 
-              MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-            }
-
-          })
-          .catch((err) => {
-            console.error('Petrolette | Validation error:', err);
-          });
-
-      } else {
-        MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-      }
+        })
+        .catch((err) => {
+          console.error('Petrolette | Validation error:', err);
+        });
 
     },
     writeSync:function(sources) {
