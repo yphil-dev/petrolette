@@ -10,7 +10,7 @@
 
 [Pétrolette Official website](https://yphil.bitbucket.io/petrolette/)
 
-Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/decollage-de-la-petrolette-de-l-espace) ; Test instance [here](http://petrolette.space/)
+Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/decollage-de-la-petrolette-de-l-espace) ; Test instance [here](http://petrolette.space/).
 
 ## Petrolette is a personal track-free online RSS news reader
 
