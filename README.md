@@ -6,11 +6,11 @@
 
 [![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html) [![Gratipay](http://img.shields.io/gratipay/yassinphilip.svg)](https://www.gratipay.com/yassinphilip/)
 
-![PÃ©trolette](https://yphil.bitbucket.io/images/misc/petrolette-screenshot.png)
+![Pétrolette](https://yphil.bitbucket.io/images/misc/petrolette-screenshot.png)
 
-[PÃ©trolette Official website](https://yphil.bitbucket.io/petrolette/)
+[Pétrolette Official website](https://yphil.bitbucket.io/petrolette/)
 
-Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/decollage-de-la-petrolette-de-l-espace).
+Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/decollage-de-la-petrolette-de-l-espace) ; Test instance [here](http://petrolette.space/).
 
 ## Petrolette is a personal track-free online RSS news reader
 
