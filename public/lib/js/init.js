@@ -101,9 +101,11 @@ $tabs.on("click", "i.tabCloser", function() {
 
 MOB.utilities.noSourcesButton();
 
-$('#noSourcesButton button').button().click(function() {
-  MOB.dialog.newContent();
-});
+$('#noSourcesButton button').button();
+
+// $('#noSourcesButton button').click(function() {
+//   MOB.dialog.newContent();
+// });
 
 // INIT
 
@@ -130,4 +132,4 @@ setTimeout(function() {
   $('#tabs').fadeIn(350);
   $('#menu').fadeIn(600);
 
-}, 1000);
+  }, 1000);
