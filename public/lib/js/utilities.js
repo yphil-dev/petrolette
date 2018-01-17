@@ -15,6 +15,7 @@ MOB.utilities = {
 
     $('body').append($noSourcesButtonContainer);
 
+
   },
   vWidth:function() {
 
