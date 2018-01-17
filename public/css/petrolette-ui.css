@@ -118,12 +118,15 @@ input#feedGuess {
   display:none !important;
 }
 
-#noSourcesButton button {
+#noSourcesButton > button {
   /* margin-top:50%; */
   background-color: #39b54a;
   border: 1px transparent solid;
   color: #FFFFFF;
+}
 
+#noSourcesButton > button > i {
+  font-size: 24pt;
 }
 
 button > i {
