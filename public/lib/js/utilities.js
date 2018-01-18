@@ -17,7 +17,7 @@ MOB.utilities = {
         .attr('class', 'deadCenter')
         .append($noSourcesButton);
 
-    $('body').append($noSourcesButtonContainer);
+    $('main').append($noSourcesButtonContainer);
 
   },
   vWidth:function() {

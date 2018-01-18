@@ -10,20 +10,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicon-96x96.png">
 
-    <link rel="preload" as="font" href="public/font/fontello.eot">
-    <link rel="preload" as="font" href="public/font/fontello.woff">
-    <link rel="preload" as="style" href="/static/css/themes/day/jquery-ui.css">
-    <link rel="preload" as="style" href="/static/css/fontello.css">
-    <link rel="preload" as="style" href="/static/css/themes/day.css">
-    <link rel="preload" as="style" href="/static/css/themes/night.css">
-
     <link rel="stylesheet" href="/static/css/themes/day/jquery-ui.min.css">
+    <link id="mobStyle" rel="stylesheet" href="/static/css/themes/night.css">
 
-    <link rel="stylesheet" href="/static/css/fontello.css" onload="this.media='all';">
+    <link rel="stylesheet" href="/static/css/fontello.css">
 
-    <link rel="stylesheet" href="/static/css/themes/day.css" id="mobStyle">
-    <link rel="stylesheet" href="/static/css/petrolette-ui.css" onload="this.media='all';">
-    <link rel="stylesheet" href="/static/css/petrolette-ux.css" onload="this.media='all';">
+    <link rel="stylesheet" href="/static/css/petrolette-ui.css">
+    <link rel="stylesheet" href="/static/css/petrolette-ux.css">
 
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/minified/introjs.min.css" />
@@ -52,7 +45,7 @@
 
   </head>
 
-  <body style="background-color:#7C818C;">
+  <body>
 
     <div class="div-fake-hidden">
       <i class="icon-arrows-cw"></i>
@@ -66,7 +59,7 @@
       <i class="BebasNeueRegular"></i>
     </div>
 
-    <div class="topnav" id="myTopnav">
+    <nav class="topnav" id="myTopnav">
       <div id="petrolette" class="menuBarItem logoType">
         <i class="logoType icon-menu"></i>
       </div>
@@ -78,15 +71,18 @@
            <i class="logoHandle icon-right-open"></i>
            </div>
       -->
-    </div>
+    </nav>
 
-    <div id="tabs" style="display:none;">
-      <ul id="tabUl"></ul>
-    </div>
+    <main>
+      <div id="tabs" style="background-color:transparent;display:none;">
+        <ul id="tabUl"></ul>
+      </div>
 
-    <div id="mobDialogs"></div>
+      <div id="mobDialogs"></div>
 
-    <div id="indicatorContainer"></div>
+      <div id="indicatorContainer"></div>
+
+    </main>
 
     <script src="/static/lib/js/utilities.js"></script>
     <script src="/static/lib/js/tab.js"></script>
@@ -98,7 +94,11 @@
     <script>
 
      $(document).ready(function() {
+
        $.getScript('/static/lib/js/init.js');
+
+       $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
+
 
        // MOB.sync.rs();
 

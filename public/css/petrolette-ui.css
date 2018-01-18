@@ -41,7 +41,16 @@
   }
 }
 
+
+/* Petrolette */
 body {
+  /* font-size:.8em !important; */
+  margin:0 !important;
+}
+
+html,
+body,
+main {
   background-color: var(--bg-color-ter) !important;
   color: var(--color-pri) !important;
 }
