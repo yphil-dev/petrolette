@@ -960,7 +960,7 @@ li.feedItem:hover {
 
 #remotestorage-widget > .rs-widget {
   margin: 0;
-  padding: 2px;
+  padding: 0;
   border-radius: 0 0 0 3px;
 }
 
@@ -974,8 +974,12 @@ li.feedItem:hover {
   margin: 2px 0 0 0 !important;
 }
 
-.rs-button-small:first-child {
-  margin: 2px 0 0 5px !important;
+/* .rs-button-small:first-child { */
+/*   margin: 2px 0 0 6px !important; */
+/* } */
+
+.rs-box-connected {
+  margin: 0 6px 0 0 !important;
 }
 
 .rs-disconnect:hover {
