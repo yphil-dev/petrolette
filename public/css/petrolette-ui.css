@@ -152,10 +152,6 @@ li.mobTab {
   background-color: var(--bg-color-sec) !important;
 }
 
-h1, h2, p.ui {
-  color: var(--ui-color-pri) !important;
-}
-
 p.dialog > a:link {
   color: var(--color-pri) !important;
 }
@@ -942,70 +938,74 @@ li.feedItem:hover {
 
 /* Rs Widget */
 
-.rs-widget {
-  background-color: var(--ui-color-qua) !important;
-  color: var(--ui-color-pri) !important;
-  box-shadow: none !important;
-}
+/* .rs-widget { */
+/*   background-color: var(--ui-color-qua) !important; */
+/*   color: var(--ui-color-pri) !important; */
+/*   box-shadow: none !important; */
+/* } */
+
+/* #remotestorage-widget { */
+/*   background-color: var(--ui-color-qua) !important; */
+
+/*   position: absolute; */
+/*   top: 0; */
+/*   right: 0; */
+
+/*   /\* float:right; *\/ */
+/* } */
 
 #remotestorage-widget {
-  background-color: var(--ui-color-qua) !important;
-
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  /* float:right; */
+  color: var(--ui-bg-color-pri) !important;
 }
 
 #remotestorage-widget > .rs-widget {
-  margin: 0;
-  padding: 0;
-  border-radius: 0 0 0 3px;
+  margin: 0 0 .4em 0;
+  padding-left: 0;
+  border-radius: 3px;
 }
 
 /* .rs-main-logo { */
 /*   margin: 3px 0 0 15px !important; */
 /* } */
 
-.rs-button-small {
-  background-color: #ededed !important;
-  border-color: #ededed !important;
-  margin: 2px 0 0 0 !important;
-}
+/* .rs-button-small { */
+/*   background-color: #ededed !important; */
+/*   border-color: #ededed !important; */
+/*   margin: 2px 0 0 0 !important; */
+/* } */
 
 /* .rs-button-small:first-child { */
 /*   margin: 2px 0 0 6px !important; */
 /* } */
 
-.rs-box-connected {
-  margin: 0 6px 0 0 !important;
-}
+/* .rs-box-connected { */
+/*   margin: 0 6px 0 0 !important; */
+/* } */
 
-.rs-disconnect:hover {
-  border-color: var(--ui-color-sec);
-}
+/* .rs-disconnect:hover { */
+/*   border-color: var(--ui-color-sec); */
+/* } */
 
-.rs-disconnect:hover .rs-icon{
-  fill: var(--ui-color-sec);
-}
+/* .rs-disconnect:hover .rs-icon{ */
+/*   fill: var(--ui-color-sec); */
+/* } */
 
-.rs-sync:hover {
-  border-color: #FFBB0C;
-}
+/* .rs-sync:hover { */
+/*   border-color: #FFBB0C; */
+/* } */
 
-.rs-sync:hover .rs-icon {
-  fill: #FFBB0C;
-}
+/* .rs-sync:hover .rs-icon { */
+/*   fill: #FFBB0C; */
+/* } */
 
-.rs-sync.rs-rotate {
-  border-color: #FFBB0C;
-}
+/* .rs-sync.rs-rotate { */
+/*   border-color: #FFBB0C; */
+/* } */
 
-.rs-sync.rs-rotate .rs-icon {
-  fill: #FFBB0C;
-  animation: rs-spin 1s linear infinite;
-}
+/* .rs-sync.rs-rotate .rs-icon { */
+/*   fill: #FFBB0C; */
+/*   animation: rs-spin 1s linear infinite; */
+/* } */
 
 /* MenuBar */
 /* Add a black background color to the top navigation */
