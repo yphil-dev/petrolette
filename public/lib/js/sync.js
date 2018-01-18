@@ -36,12 +36,12 @@ MOB.sync = (function() {
 
   remoteStorage.on('connected', function() {
     synchronized = true;
-    console.info('Petrolette | Connected to remote storage');
+    console.info('Pétrolette | Connected to remote storage');
   });
 
   remoteStorage.on('disconnected', function() {
     synchronized = false;
-    console.info('Petrolette | Disconnected from remote storage');
+    console.info('Pétrolette | Disconnected from remote storage');
   });
 
   return {
@@ -61,13 +61,13 @@ MOB.sync = (function() {
 
           if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
 
-            console.info('Petrolette | Validation OK');
+            console.info('Pétrolette | Remote file validation OK');
 
             return MOB.tab.populate(JSON.parse(data));
 
           } else {
 
-            console.error('Petrolette | Validation NOT OK(%s) Tryin browser cache', data);
+            console.error('Pétrolette | Remote file validation NOT OK(%s) Tryin browser cache', data);
 
             if (MOB.prefs.isValidSourcesFile(JSON.parse(MOB.prefs.readConfig('tabs')))) {
               console.log('plop');
@@ -80,7 +80,6 @@ MOB.sync = (function() {
 
         })
         .catch((err) => {
-          // console.error('Petrolette | Validation err:', err);
 
           if (MOB.prefs.isValidSourcesFile(JSON.parse(MOB.prefs.readConfig('tabs')))) {
             MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
@@ -99,10 +98,10 @@ MOB.sync = (function() {
 
       remoteStorage.petrolette.write(sources)
         .then(() => {
-          console.info('Petrolette | Writing to remote storage OK');
+          console.info('Pétrolette | Writing to remote storage OK');
         })
         .catch((err) => {
-          console.error('Petrolette | Validation error:', err);
+          console.error('Pétrolette | Remote file validation error:', err);
         });
 
       // localStorage.setItem(key, val);
