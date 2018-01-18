@@ -4,13 +4,13 @@ MOB.utilities = {
     var $loadingSpinner = $('<i>')
         .attr('class', 'icon-spin3 spin');
 
-    var $noSourcesText = $('<span>').text('Loading sources');
+    var $noSourcesText = $('<div>').text('Loading sources');
 
     var $noSourcesButton = $('<div>')
     // .append('<span data-content="Whoops, no sources!" data-title="Whoops, no sources!" class="translate"> Whoops, no sources! </span> <br/> <span data-content="Click here to add some." data-title="Click here to add some." class="translate"> Click here to add some.</span>')
-        .append($noSourcesText)
+        .append($loadingSpinner)
         .append('<br>')
-        .append($loadingSpinner);
+        .append($noSourcesText);
 
     var $noSourcesButtonContainer = $('<div>')
         .attr('id', 'noSourcesButton')
