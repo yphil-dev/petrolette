@@ -133,16 +133,15 @@ input#feedGuess {
 }
 
 #noSourcesButton > div > i {
+  line-height: 0;
+  color: #8d94a5 !important;
+  font-size: 8em;
+}
+
+#noSourcesButton > div > div {
+  margin: 2em 0 0 0;
   color: var(--color-pri) !important;
-  font-size: 24pt;
-}
-
-button > i {
-  margin: 0 !important;
-}
-
-.icon-motorcycle {
-  margin-right: .4px !important;
+  font-size: 12pt;
 }
 
 li.ui-tabs-active,
