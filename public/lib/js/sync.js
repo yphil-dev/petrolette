@@ -52,7 +52,7 @@ MOB.sync = (function() {
 
       remoteStorage.access.claim('petrolette', 'rw');
 
-      return widget.attach();
+      return widget.attach('syncBox');
     },
     readSync:function() {
 
