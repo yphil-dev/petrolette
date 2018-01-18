@@ -1,4 +1,4 @@
-$("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
+// $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
 
 var $indicatorContainer = $('#indicatorContainer').hide();
 
