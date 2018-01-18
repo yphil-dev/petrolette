@@ -1,3 +1,5 @@
+$("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
+
 var $indicatorContainer = $('#indicatorContainer').hide();
 
 var $menu = $('#menu');
@@ -31,38 +33,11 @@ $indicatorContainer.radialIndicator({
   percentage: true
 });
 
-$.notify.defaults({
-  // whether to hide the notification on click
-  clickToHide: true,
-  // whether to auto-hide the notification
-  autoHide: true,
-  // if autoHide, hide after milliseconds
-  autoHideDelay: 3000,
-  // default style
-  style: 'bootstrap',
-  // show the arrow pointing at the element
-  arrowShow: true,
-  // arrow size in pixels
-  arrowSize: 5,
-  // show animation
-  showAnimation: 'slideDown',
-  // show animation duration
-  showDuration: 400,
-  // hide animation
-  hideAnimation: 'slideUp',
-  // hide animation duration
-  hideDuration: 200,
-  // padding between element and notification
-  gap: 2
-});
-
 $( document ).keydown(function( event ) {
   if ( event.keyCode === $.ui.keyCode.ESCAPE ) {
     $( ".tabSort" ).sortable( "cancel" );
   }
 });
-
-$("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
 
 var $tabs = $('#tabs').tabs({
   heightStyle: 'content',
@@ -100,12 +75,6 @@ $tabs.on("click", "i.tabCloser", function() {
 });
 
 MOB.utilities.noSourcesButton();
-
-$('#noSourcesButton button').button();
-
-// $('#noSourcesButton button').click(function() {
-//   MOB.dialog.newContent();
-// });
 
 // INIT
 

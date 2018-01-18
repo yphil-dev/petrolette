@@ -41,6 +41,11 @@
   }
 }
 
+body {
+  background-color: var(--bg-color-ter) !important;
+  color: var(--color-pri) !important;
+}
+
 #gallerySpeedSlider,
 #feedLimit {
   margin-right: 0;
@@ -59,11 +64,6 @@
   src: url('/static/font/BebasNeue.otf') format("opentype");
   font-weight: normal;
   font-style: normal;
-}
-
-body {
-  background-color: var(--bg-color-ter) !important;
-  color: var(--color-pri) !important;
 }
 
 .div-fake-hidden {
@@ -118,14 +118,13 @@ input#feedGuess {
   display:none !important;
 }
 
-#noSourcesButton > button {
-  /* margin-top:50%; */
-  background-color: #39b54a;
-  border: 1px transparent solid;
-  color: #FFFFFF;
+#noSourcesButton > div {
+  color: var(--color-pri) !important;
+  font-size: 12pt;
 }
 
-#noSourcesButton > button > i {
+#noSourcesButton > div > i {
+  color: var(--color-pri) !important;
   font-size: 24pt;
 }
 
