@@ -207,15 +207,6 @@ li.feedItem {
   border: none !important;
 }
 
-.feed {
-  border: #7a7a7a 1px solid !important;
-  padding: 0;
-}
-
-.feed:hover {
-  border: #8b8b8b 1px solid !important;
-}
-
 .introjs-helperLayer {
   background-color: rgba(255,255,255,.1) !important;
 }
