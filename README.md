@@ -5,6 +5,7 @@
 ---
 
 [![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html) [![Gratipay](http://img.shields.io/gratipay/yassinphilip.svg)](https://www.gratipay.com/yassinphilip/)
+[![PayPal Donate](https://img.shields.io/badge/donate-PayPal.me-ff69b4.svg)](https://www.paypal.me/yphil)
 
 ![Pétrolette](https://yphil.bitbucket.io/images/misc/petrolette-screenshot.png)
 
