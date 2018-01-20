@@ -9,7 +9,7 @@
 
 ![Pétrolette](https://bytebucket.org/yphil/takeoff.petrolette.space/raw/c51580164590798635d8cbc251de32ba43ea6abb/images/petrolette.png)
 
-[Pétrolette Official website](takeoff.petrolette.space)
+[Pétrolette Official website](http://takeoff.petrolette.space)
 
 Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/decollage-de-la-petrolette-de-l-espace) ; Test instance [here](http://petrolette.space/).
 
