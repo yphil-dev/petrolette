@@ -12,11 +12,6 @@ $menuHandle.click(function () {
 
   $('i#handle').toggleClass('close');
 
-  $('i.logoType')
-    .toggleClass('close')
-    .toggleClass('icon-menu')
-    .toggleClass('icon-motorcycle');
-
 });
 
 $indicatorContainer.click(function() {
@@ -101,4 +96,4 @@ setTimeout(function() {
   $('#tabs').fadeIn(350);
   $('#menu').fadeIn(600);
 
-  }, 1000);
+}, 1000);
