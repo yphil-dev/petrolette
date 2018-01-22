@@ -17,7 +17,7 @@ Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/deco
 
 ## Petrolette is a track-free online news reader
 
-[Pétrolette](http://takeoff.petrolette.space/) is a #paranoid news reader, usable right away (no installation, no registration, nothing) **totally free of charge**. It doesn’t ask you to register or create any sort of account, and won’t even ask your name. What you are reading is nobody’s (and certainly not GAFAM’s) business.
+[Pétrolette](http://takeoff.petrolette.space/) is a #paranoid news reader : home page, usable **right away** (no installation, no registration, nothing) **totally free of charge**. It doesn’t ask you to register or create any sort of account, and won’t even ask your name. What you are reading is nobody’s (and certainly not GAFAM’s) business.
 
 - Add your sources ([exemple of a source](https://hackernoon.com/feed)) ;
 - Organize them by creating groups and dragging & droppin’ sources in them ;
