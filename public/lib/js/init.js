@@ -12,11 +12,6 @@ $menuHandle.click(function () {
 
   $('i#handle').toggleClass('close');
 
-  $('i.logoType')
-    .toggleClass('close')
-    .toggleClass('icon-menu')
-    .toggleClass('icon-motorcycle');
-
 });
 
 $indicatorContainer.click(function() {
