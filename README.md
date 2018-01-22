@@ -4,9 +4,11 @@
 
 ---
 
-[![https://framagit.org/yphil/petrolette/badges/master/build.svg)](https://framagit.org/yphil/petrolette/pipelines)
+[![Framagit Pipeline]https://framagit.org/yphil/petrolette/badges/master/build.svg)](https://framagit.org/yphil/petrolette/pipelines)
 
-[![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html) [![Liberapay](https://img.shields.io/badge/donate-Liberapay-yellow.svg)](https://liberapay.com/yPhil/donate)
+[![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
+
+[![Liberapay](https://img.shields.io/badge/donate-Liberapay-yellow.svg)](https://liberapay.com/yPhil/donate)
 [![PayPal Donate](https://img.shields.io/badge/donate-PayPal.me-ff69b4.svg)](https://www.paypal.me/yphil)
 
 ![Pétrolette](https://bytebucket.org/yphil/takeoff.petrolette.space/raw/c51580164590798635d8cbc251de32ba43ea6abb/images/petrolette.png)
