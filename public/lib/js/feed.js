@@ -276,7 +276,7 @@ MOB.feed = {
         .attr('title', (data.feedTitle || MOB.tr('Error')) + ' (' + feedUrl + ')');
 
       if (data.error) {
-        console.info('Petrolette | bad Feed: (%s) error: [%s]', feedUrl, data.error);
+        console.info('Pétrolette | bad Feed: (%s) error: [%s]', feedUrl, data.error);
         $header.addClass('ui-state-error');
 
         $feedTitle
