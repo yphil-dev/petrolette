@@ -4,7 +4,7 @@
 
 ---
 
-[![Framagit Pipeline]https://framagit.org/yphil/petrolette/badges/master/build.svg)](https://framagit.org/yphil/petrolette/pipelines)
+[![Framagit Pipeline](https://framagit.org/yphil/petrolette/badges/master/build.svg)](https://framagit.org/yphil/petrolette/pipelines)
 
 [![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 
