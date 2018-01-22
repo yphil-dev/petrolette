@@ -1,4 +1,4 @@
-# Petrolette
+# Pétrolette
 
 *RSS/Atom morning news reader ; Works at night too.*
 
@@ -15,7 +15,7 @@
 
 Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/decollage-de-la-petrolette-de-l-espace) ; Test instance [here](http://petrolette.space/).
 
-## Petrolette is a track-free online news reader
+## Pétrolette is a track-free online news reader
 
 [Pétrolette](http://takeoff.petrolette.space/) is a #paranoid news reader : home page, usable **right away** (no installation, no registration, nothing) **totally free of charge**. It doesn’t ask you to register or create any sort of account, and won’t even ask your name. What you are reading is nobody’s (and certainly not GAFAM’s) business.
 
