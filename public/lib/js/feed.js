@@ -328,6 +328,9 @@ MOB.feed = {
 
       $.each(data.feedItems, function(index, item) {
 
+        // console.log('item:', item.link);
+        console.log('item:', item.description);
+
         if (index == parseInt(feedLimit)) {
           return false;
         }
@@ -340,6 +343,13 @@ MOB.feed = {
 
         if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
           mediaUrl = $tempDom.find('img').attr('src');
+        }
+
+        if (typeof $tempDom.find('span a').attr('href') !== 'undefined') {
+          if (MOB.utilities.isImage($tempDom.find('span a').attr('href'))) {
+            console.log('Aha!:', $tempDom.find('span a').attr('href'));
+            mediaUrl = $tempDom.find('span a').attr('href');
+          }
         }
 
         if (typeof item.image.url !== 'undefined') {
