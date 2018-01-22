@@ -186,8 +186,8 @@ MOB.tab = {
 
         ui.draggable.show().hide('fade', 300, function () {
 
-          if ($('#tabDropActivate').prop('checked'))
-            $tabs.tabs('option', 'active', $index);
+          // if ($('#tabDropActivate').prop('checked'))
+          $tabs.tabs('option', 'active', $index);
 
           $(this).prependTo($list).show('fade', 800).before($elements.show('fade', 800));
 
