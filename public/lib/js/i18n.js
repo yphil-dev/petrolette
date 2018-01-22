@@ -43,7 +43,6 @@ MOB.i18n.translations = {
   "element" : { fr : "élément", ja: "データ？要素" },
   "End": { fr: "Fin", ja: "最後" },
   "Every" : { fr: "Toutes les", ja: "毎日" },
-  "Export": { fr: "Export", ja: "輸出" },
   "Go": { fr: "Aller", ja: "行く" },
   "In progress": { fr: "En cours", ja: "進行中" },
   "Manage": { fr: "Gérer", ja: "管理する" },
@@ -77,9 +76,8 @@ MOB.i18n.translations = {
 
   "source" : { fr: "source" , ja: "ソース", es: "fuente" },
 
-  "Source" : { fr: "Source" , ja: "RSSフィード", es: "Source" },
-  "Sources" : { fr: "source" , ja: "RSSフィード" },
-  "Group" : { fr: "groupe" , ja: "タブ", es: "Grupo" },
+  "Source" : { fr: "Source" , ja: "ソース", es: "Fuente" },
+  "Sources" : { fr: "Sources" , ja: "ソース", es: "Fuentes" },
   "Groups" : { fr: "Groupes" , ja: "タブ", es: "Grupos" },
   "Theme" : { fr: "Thème" , ja: "テーマ", es: "Tema" },
   "Language" : { fr: "Langue" , ja: "言語", es: "Idioma" },
@@ -106,6 +104,10 @@ MOB.i18n.translations = {
   "Donate" : { fr: "Donation" , ja: "寄付する", es: "Donar" },
   "Open" : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
   "Save" : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
+
+  "Import" : { fr: "Import" , ja: "インポート", es: "Importar" },
+  "Export" : { fr: "Export" , ja: "輸出する", es: "Exportar" },
+
   "Rename Group" : { fr: "Groupe: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la grupo" },
   "Add source" : { fr: "Ajouter source" , ja: "ソースを追加", es: "Agregue fuente" },
   "Add sources" : { fr: "Ajouter sources" , ja: "ソースを追加", es: "Agregue fuentes" },
@@ -174,7 +176,7 @@ MOB.i18n.translations = {
   "Huh, Next question" : { fr: "Euh, Question suivante" , ja: "あ、次の質問", es: "Eh, Siguiente pregunta" },
 
   "Open / import groups and sources" : { fr: "Ouvrir / importer groupes et sources" , ja: "タブを開く/インポートする", es: "Abrir / importar grupos y canales RSS" },
-  "Save / Export groups and sources" : { fr: "Enregistrer / exporter groupes et sources" , ja: "タブとフィードの保存/エクスポート", es: "Guardar archivo de groups y sources" },
+  "Save / export groups and sources" : { fr: "Enregistrer / exporter groupes et sources" , ja: "タブとフィードの保存/エクスポート", es: "Guardar archivo de groups y sources" },
   "Open group on source drop" : { fr: "Ouvrir nouveau groupe" , ja: "ドロップ時にタブを開く", es: "Abrir grupo en drop" },
 
   "If this is set, when you drag & drop one or more source(s) in a group, said group opens" : { fr: "Ouvrir le groupe où une source est déposée" , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir grupo en donde se pone un canal" },

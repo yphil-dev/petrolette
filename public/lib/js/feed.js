@@ -276,7 +276,7 @@ MOB.feed = {
         .attr('title', (data.feedTitle || MOB.tr('Error')) + ' (' + feedUrl + ')');
 
       if (data.error) {
-        console.info('bad Feed: (%s) error: %s', feedUrl, data.error);
+        console.info('Petrolette | bad Feed: (%s) error: [%s]', feedUrl, data.error);
         $header.addClass('ui-state-error');
 
         $feedTitle
@@ -336,15 +336,6 @@ MOB.feed = {
 
         var mediaUrl;
 
-        if (item['media:group']) {
-          var myArray = item['media:group']['media:content'];
-          for (var i = 0; i < myArray.length; i++) {
-            if (myArray[i]['@'].url) {
-              mediaUrl = myArray[i]['@'].url;
-            }
-          }
-        }
-
         var $tempDom = $('<output>').append($description);
 
         if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
@@ -353,10 +344,17 @@ MOB.feed = {
 
         if (typeof item.image.url !== 'undefined') {
           mediaUrl = item.image.url;
+        } else if (item.enclosures[0]) {
+          mediaUrl = item.enclosures[0].url;
         }
 
-        if (item.enclosures[0]) {
-          mediaUrl = item.enclosures[0].url;
+        if (item['media:group']) {
+          var myArray = item['media:group']['media:content'];
+          for (var i = 0; i < myArray.length; i++) {
+            if (myArray[i]['@'].url) {
+              mediaUrl = myArray[i]['@'].url;
+            }
+          }
         }
 
         var summary = $('<p>').append(item.summary).text();

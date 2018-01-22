@@ -3,7 +3,9 @@ MOB.prefs = (function() {
   var emptyTabList = [
     {"name":"Group 1",
      "feeds": [
-       {"url":"http://www.androidpolice.com/feed","type":"mixed","limit": 4}
+       {"url":"http://www.androidpolice.com/feed","type":"mixed","limit": 8},
+       {"url":"http://feeds.nature.com/nature/rss/current","type":"text","limit": 16},
+       {"url":"https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss","type":"photo","limit": 4}
      ]
     }
   ];

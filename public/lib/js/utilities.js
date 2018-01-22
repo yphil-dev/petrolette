@@ -1,14 +1,23 @@
 MOB.utilities = {
   noSourcesButton:function() {
 
-    var $noSourcesButton = $('<button>').append('<span data-content="Whoops, no sources!" data-title="Whoops, no sources!" class="translate"> Whoops, no sources! </span> <br/> <span data-content="Click here to add some." data-title="Click here to add some." class="translate"> Click here to add some.</span>');
+    var $loadingSpinner = $('<i>')
+        .attr('class', 'icon-spin3 spin');
+
+    var $noSourcesText = $('<div>').text('Loading sources');
+
+    var $noSourcesButton = $('<div>')
+    // .append('<span data-content="Whoops, no sources!" data-title="Whoops, no sources!" class="translate"> Whoops, no sources! </span> <br/> <span data-content="Click here to add some." data-title="Click here to add some." class="translate"> Click here to add some.</span>')
+        .append($loadingSpinner)
+        .append('<br>')
+        .append($noSourcesText);
 
     var $noSourcesButtonContainer = $('<div>')
         .attr('id', 'noSourcesButton')
-        .attr('class', 'deadCenter hidden')
+        .attr('class', 'deadCenter')
         .append($noSourcesButton);
 
-    $('body').append($noSourcesButtonContainer);
+    $('main').append($noSourcesButtonContainer);
 
   },
   vWidth:function() {

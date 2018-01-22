@@ -41,6 +41,20 @@
   }
 }
 
+
+/* Petrolette */
+body {
+  /* font-size:.8em !important; */
+  margin:0 !important;
+}
+
+html,
+body,
+main {
+  background-color: var(--bg-color-ter) !important;
+  color: var(--color-pri) !important;
+}
+
 #gallerySpeedSlider,
 #feedLimit {
   margin-right: 0;
@@ -59,11 +73,6 @@
   src: url('/static/font/BebasNeue.otf') format("opentype");
   font-weight: normal;
   font-style: normal;
-}
-
-body {
-  background-color: var(--bg-color-ter) !important;
-  color: var(--color-pri) !important;
 }
 
 .div-fake-hidden {
@@ -118,20 +127,21 @@ input#feedGuess {
   display:none !important;
 }
 
-#noSourcesButton button {
-  /* margin-top:50%; */
-  background-color: #39b54a;
-  border: 1px transparent solid;
-  color: #FFFFFF;
-
+#noSourcesButton > div {
+  color: var(--color-pri) !important;
+  font-size: 12pt;
 }
 
-button > i {
-  margin: 0 !important;
+#noSourcesButton > div > i {
+  line-height: 0;
+  color: #8d94a5 !important;
+  font-size: 8em;
 }
 
-.icon-motorcycle {
-  margin-right: .4px !important;
+#noSourcesButton > div > div {
+  margin: 2em 0 0 0;
+  color: var(--color-pri) !important;
+  font-size: 12pt;
 }
 
 li.ui-tabs-active,
@@ -147,10 +157,6 @@ li.mobTab:first-child {
 
 li.mobTab {
   background-color: var(--bg-color-sec) !important;
-}
-
-h1, h2, p.ui {
-  color: var(--ui-color-pri) !important;
 }
 
 p.dialog > a:link {
@@ -849,9 +855,20 @@ li.ui-tabs-tab a:link {
   color: var(--color-pri) !important;
 }
 
+.feed {
+  /* border: #7a7a7a 1px solid !important; */
+  padding: 0;
+}
+
+.feed:hover {
+  /* border: #8b8b8b 1px solid !important; */
+}
+
 li.feed {
   background-color: var(--bg-color-pri) !important;
   transition: all .1s ease;
+
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4), -2px -2px 3px 0 rgba(0, 0, 0, 0.7) inset;
 }
 
 li.feed a:link {
@@ -939,66 +956,74 @@ li.feedItem:hover {
 
 /* Rs Widget */
 
-.rs-widget {
-  background-color: var(--ui-color-qua) !important;
-  color: var(--ui-color-pri) !important;
-  box-shadow: none !important;
-}
+/* .rs-widget { */
+/*   background-color: var(--ui-color-qua) !important; */
+/*   color: var(--ui-color-pri) !important; */
+/*   box-shadow: none !important; */
+/* } */
+
+/* #remotestorage-widget { */
+/*   background-color: var(--ui-color-qua) !important; */
+
+/*   position: absolute; */
+/*   top: 0; */
+/*   right: 0; */
+
+/*   /\* float:right; *\/ */
+/* } */
 
 #remotestorage-widget {
-  background-color: var(--ui-color-qua) !important;
-
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  /* float:right; */
+  color: var(--ui-bg-color-pri) !important;
 }
 
 #remotestorage-widget > .rs-widget {
-  margin: 0;
-  padding: 2px;
-  border-radius: 0 0 0 3px;
+  margin: 0 0 .4em 0;
+  padding-left: 0;
+  border-radius: 3px;
 }
 
 /* .rs-main-logo { */
 /*   margin: 3px 0 0 15px !important; */
 /* } */
 
-.rs-button-small {
-  background-color: #ededed !important;
-  border-color: #ededed !important;
-  margin: 2px 0 0 0 !important;
-}
+/* .rs-button-small { */
+/*   background-color: #ededed !important; */
+/*   border-color: #ededed !important; */
+/*   margin: 2px 0 0 0 !important; */
+/* } */
 
-.rs-button-small:first-child {
-  margin: 2px 0 0 5px !important;
-}
+/* .rs-button-small:first-child { */
+/*   margin: 2px 0 0 6px !important; */
+/* } */
 
-.rs-disconnect:hover {
-  border-color: var(--ui-color-sec);
-}
+/* .rs-box-connected { */
+/*   margin: 0 6px 0 0 !important; */
+/* } */
 
-.rs-disconnect:hover .rs-icon{
-  fill: var(--ui-color-sec);
-}
+/* .rs-disconnect:hover { */
+/*   border-color: var(--ui-color-sec); */
+/* } */
 
-.rs-sync:hover {
-  border-color: #FFBB0C;
-}
+/* .rs-disconnect:hover .rs-icon{ */
+/*   fill: var(--ui-color-sec); */
+/* } */
 
-.rs-sync:hover .rs-icon {
-  fill: #FFBB0C;
-}
+/* .rs-sync:hover { */
+/*   border-color: #FFBB0C; */
+/* } */
 
-.rs-sync.rs-rotate {
-  border-color: #FFBB0C;
-}
+/* .rs-sync:hover .rs-icon { */
+/*   fill: #FFBB0C; */
+/* } */
 
-.rs-sync.rs-rotate .rs-icon {
-  fill: #FFBB0C;
-  animation: rs-spin 1s linear infinite;
-}
+/* .rs-sync.rs-rotate { */
+/*   border-color: #FFBB0C; */
+/* } */
+
+/* .rs-sync.rs-rotate .rs-icon { */
+/*   fill: #FFBB0C; */
+/*   animation: rs-spin 1s linear infinite; */
+/* } */
 
 /* MenuBar */
 /* Add a black background color to the top navigation */

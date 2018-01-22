@@ -10,7 +10,10 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $donate = $('button#donate').button(),
       $addSource = $('button#addSource').button(),
       $slider = $('div#gallerySpeedSlider'),
+      $syncBox = $('div#syncBox'),
       $spinner = $('#gallerySpeedSpinner');
+
+  MOB.sync.rs();
 
   MOB.utilities.translate();
 
@@ -193,19 +196,16 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
         if (isJsonString(y)) {
           p = JSON.parse(y);
         } else {
-          $.notify(MOB.tr('This file is bad'), 'error');
+          console.error('Pétrolette | ' + MOB.tr('This file is bad'));
         }
-
-        // console.log('p Is array: %s', isOk(p));
 
         if (p && isOk(p) === true){
-          $.notify(MOB.tr('Loading of [%s] OK', f.name), 'success');
+          console.info('Pétrolette | ' + MOB.tr('Loading of [%s] OK', f.name));
           MOB.tab.populate(p, true);
         } else {
-          $.notify(MOB.tr('This file is bad'), 'error');
+          console.error('Pétrolette | ' + MOB.tr('This file is bad'));
         }
 
-        // console.log('Is Valid: %s', isValid)
       };
     })(f);
 

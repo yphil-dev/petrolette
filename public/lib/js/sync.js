@@ -10,7 +10,7 @@ MOB.sync = (function() {
       return {
         exports: {
           read: function () {
-            return privateClient.getFile('petrolette.conf', 90000000)
+            return privateClient.getFile('petrolette.conf')
               .then(function (file) {
                 return file.data;
               });
@@ -36,12 +36,12 @@ MOB.sync = (function() {
 
   remoteStorage.on('connected', function() {
     synchronized = true;
-    console.info('Petrolette | Connected to remote storage');
+    console.info('Pétrolette | Connected to remote storage');
   });
 
   remoteStorage.on('disconnected', function() {
     synchronized = false;
-    console.info('Petrolette | Disconnected from remote storage');
+    console.info('Pétrolette | Disconnected from remote storage');
   });
 
   return {
@@ -52,30 +52,42 @@ MOB.sync = (function() {
 
       remoteStorage.access.claim('petrolette', 'rw');
 
-      return widget.attach();
+      return widget.attach('syncBox');
     },
     readSync:function() {
 
-      if (synchronized) {
+      remoteStorage.petrolette.read()
+        .then((data) => {
 
-        remoteStorage.petrolette.read()
-          .then((data) => {
+          if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
 
-            if (MOB.prefs.isValidSourcesFile(JSON.parse(data))) {
-              return MOB.tab.populate(JSON.parse(data));
+            console.info('Pétrolette | Remote file validation OK');
 
-            } else {
+            return MOB.tab.populate(JSON.parse(data));
+
+          } else {
+
+            console.error('Pétrolette | Remote file validation NOT OK(%s) Tryin browser cache', data);
+
+            if (MOB.prefs.isValidSourcesFile(JSON.parse(MOB.prefs.readConfig('tabs')))) {
+              console.log('plop');
               MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+            } else {
+              localStorage.setItem("tabs", "");
             }
 
-          })
-          .catch((err) => {
-            console.error('Validation error:', err);
-          });
+          }
 
-      } else {
-        MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
-      }
+        })
+        .catch((err) => {
+
+          if (MOB.prefs.isValidSourcesFile(JSON.parse(MOB.prefs.readConfig('tabs')))) {
+            MOB.tab.populate(JSON.parse(MOB.prefs.readConfig('tabs')));
+          } else {
+            localStorage.setItem("tabs", "");
+          }
+
+        });
 
     },
     writeSync:function(sources) {
@@ -86,10 +98,10 @@ MOB.sync = (function() {
 
       remoteStorage.petrolette.write(sources)
         .then(() => {
-          console.info('Petrolette | Writing to remote storage OK');
+          console.info('Pétrolette | Writing to remote storage OK');
         })
         .catch((err) => {
-          console.error('Validation error:', err);
+          console.error('Pétrolette | Remote file validation error:', err);
         });
 
       // localStorage.setItem(key, val);
