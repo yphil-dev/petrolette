@@ -328,9 +328,6 @@ MOB.feed = {
 
       $.each(data.feedItems, function(index, item) {
 
-        // console.log('item:', item);
-        console.log('item:', item.description);
-
         if (index == parseInt(feedLimit)) {
           return false;
         }
@@ -341,32 +338,19 @@ MOB.feed = {
 
         var $tempDom = $('<output>').append($description);
 
-
-        // if (typeof $tempDom.find('img').attr('src') !== 'undefined') {
-
-        //   console.info('$tempDom img');
-
-        //   mediaUrl = $tempDom.find('img').attr('src');
-        // }
-
-
         if (typeof $tempDom.find('span a').attr('href') !== 'undefined') {
-          console.log('SPAN: ', $tempDom.find('span a').attr('href'));
           if (MOB.utilities.isImage($tempDom.find('span a').attr('href'))) {
-            console.log('Aha!:', $tempDom.find('span a').attr('href'));
             mediaUrl = $tempDom.find('span a').attr('href');
           }
         }
 
+        if (!mediaUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
+          mediaUrl = $tempDom.find('img').attr('src');
+        }
+
         if (typeof item.image.url !== 'undefined') {
-
-          console.info('item.image.url');
-
           mediaUrl = item.image.url;
         } else if (item.enclosures[0]) {
-
-          console.info('item.enclosures');
-
           mediaUrl = item.enclosures[0].url;
         }
 
@@ -374,9 +358,6 @@ MOB.feed = {
           var myArray = item['media:group']['media:content'];
           for (var i = 0; i < myArray.length; i++) {
             if (myArray[i]['@'].url) {
-
-              console.info('media:group');
-
               mediaUrl = myArray[i]['@'].url;
             }
           }
