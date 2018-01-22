@@ -1,6 +1,9 @@
 MOB.utilities = {
   isImage:function(string) {
-    return string.split('.').pop() === 'jpg';
+    // return string.split('.').pop() === 'jpg';
+
+
+    return (['jpg', 'png'].indexOf(string.split('.').pop()) >= 0);
   },
   noSourcesButton:function() {
 
