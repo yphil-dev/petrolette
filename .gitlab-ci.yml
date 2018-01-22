@@ -1,9 +1,16 @@
 image: node:6
-clone:
-  depth: full
-pipelines:
-  default:
-    - step:
-        script:
-          - npm version
-          - npm install
+before_script:
+  - npm version
+
+after_script:
+  - npm version
+
+stages:
+  - build
+
+job1:
+  stage: build
+  script:
+    - npm install
+  only:
+    - master
