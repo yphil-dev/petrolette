@@ -96,4 +96,4 @@ setTimeout(function() {
   $('#tabs').fadeIn(350);
   $('#menu').fadeIn(600);
 
-  }, 1000);
+}, 1000);
