@@ -386,7 +386,7 @@ fieldset {
   border: 1px solid var(--ui-color-ter) !important;
 }
 
-.ui-state-success {
+button.ui-state-success {
   background-color: var(--ui-color-success) !important;
 }
 
