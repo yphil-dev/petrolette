@@ -12,7 +12,7 @@
     "url": "https://bitbucket.org/yphil/petrolette"
   },
   "scripts": {
-    "start": "pm2 start bin/www --watch --name petrolette",
+    "start": "pm2 start bin/www --watch --log-date-format='YYYY-MM-DD HH:mm Z' --name petrolette",
     "stop": "pm2 stop petrolette",
     "postinstall": "bower install"
   },
