@@ -25,7 +25,6 @@
     <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
 
     <script src="/bower/intro.js/minified/intro.min.js"></script>
-    <script src="/bower/notifyjs/dist/notify.js"></script>
 
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="/bower/radialIndicator/radialIndicator.min.js"></script>
@@ -101,16 +100,6 @@
 
 
        // MOB.sync.rs();
-
-       var $widget = $('#remotestorage-widget');
-
-       var $readMore = $('<a>')
-         .attr('class', 'rs-help')
-         .attr('href', 'https:remotestorage.io/')
-         .text(MOB.tr('Read more.'));
-
-       $widget.find('.rs-short-desc').text(MOB.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
-              .append($readMore);
 
        // $('.rs-button-small').button();
 
