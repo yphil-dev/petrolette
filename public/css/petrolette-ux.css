@@ -124,6 +124,9 @@ ul.tabSort {
 
   column-gap: .4em;
   /* min-height:30px; */
+
+  transition: all .5s ease-in-out;
+
 }
 
 li.feed {
@@ -139,6 +142,8 @@ li.feed {
 
   page-break-inside: avoid;
   break-inside: avoid;
+
+  transition: all .2s linear;
 
   /* max-width: 33%; */
 
