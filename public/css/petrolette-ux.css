@@ -114,19 +114,18 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 
 /* Feed */
 ul.tabSort {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* align-items:flex-start; */
+  /* padding-bottom: 0px !important; */
+
+  /* column-count: 3; */
+  /* columns: 15em; */
+  /* column-gap: .3em; */
   padding: 0 .2em .2em;
-
-  /* padding: 0; */
-
-  /* columns: auto 3; */
-
-  columns: var(--columns);
-
-  column-gap: .4em;
-  /* min-height:30px; */
-
-  transition: all .5s ease-in-out;
-
+  columns: 18rem;
+  column-gap: .3em;
+  min-height:30px;
 }
 
 li.feed {
@@ -136,17 +135,13 @@ li.feed {
   "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1.6rem;
   font-weight: 600 !important;
-  vertical-align:top;
-  margin: .4em 0 0 0;
-  display: inline-block;
 
   page-break-inside: avoid;
   break-inside: avoid;
-
-  transition: all .2s linear;
-
-  /* max-width: 33%; */
-
+  display: inline-block;
+  break-inside: avoid;
+  vertical-align:top;
+  margin: .2em 0 0 0;
   /* break-inside: avoid-column; */
   /* padding: 5px; */
 }

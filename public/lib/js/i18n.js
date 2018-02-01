@@ -123,10 +123,6 @@ MOB.i18n.translations = {
   "Day" : { fr: "Jour" , ja: "日", es: "día" },
   "Night" : { fr: "Nuit" , ja: "夜", es: "Noche" },
 
-  "Grid" : { fr: "Grille" , ja: "グリッド", es: "Cuadrícula" },
-  "Static" : { fr: "Statique" , ja: "静的", es: "Estático" },
-  "Flowing" : { fr: "Fluide" , ja: "流れる", es: "Fluente" },
-
   // Help
   "Prev" : { fr: "Précédent" , ja: "前", es: "Anterior" },
   "Next" : { fr: "Suivant" , ja: "次", es: "Siguiente" },
