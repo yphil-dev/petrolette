@@ -10,7 +10,7 @@ MOB.sync = (function() {
       return {
         exports: {
           read: function () {
-            return privateClient.getFile('petrolette.conf')
+            return privateClient.getFile('petrolette.conf', 9999999999)
               .then(function (file) {
                 return file.data;
               });
@@ -24,8 +24,8 @@ MOB.sync = (function() {
   };
 
   const remoteStorage = new RemoteStorage({
-    // logging: true,
-    cordovaRedirectUri: 'http://petrolette.space',
+    logging: true,
+    // cordovaRedirectUri: 'http://petrolette.space',
     modules: [ Sources ]
   });
 
