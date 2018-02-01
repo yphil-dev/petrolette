@@ -15,6 +15,24 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   MOB.sync.rs();
 
+  var $widget = $('#remotestorage-widget');
+
+  var $readMore = $('<a>')
+      .attr('class', 'rs-help')
+      .attr('href', 'https:remotestorage.io/')
+      .text(MOB.tr('Read more.'));
+
+  $widget.find('.rs-short-desc').text(MOB.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
+    .append($readMore);
+
+  var $fuckingButton =  $widget.find('.rs-choose-rs');
+
+  $fuckingButton.css('border-color', '#f00');
+
+  $fuckingButton.click(function (event) {
+    event.preventDefault();
+  });
+
   MOB.utilities.translate();
 
   $langMenu.val(MOB.prefs.readConfig('lang')).prop('selected', true);

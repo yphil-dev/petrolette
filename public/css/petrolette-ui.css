@@ -22,8 +22,6 @@
   --ui-color-success: #4db53c;
 
   --color-danger: #000000;
-  --columns: auto 3;
-
 }
 
 @media screen and (max-width: 700px) {
@@ -40,8 +38,6 @@
     --handle-visibility: collapse;
 
     --title-margin-left: 0;
-
-    --columns: auto auto;
   }
 }
 
