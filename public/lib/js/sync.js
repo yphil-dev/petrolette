@@ -24,7 +24,7 @@ MOB.sync = (function() {
   };
 
   const remoteStorage = new RemoteStorage({
-    logging: true,
+    // logging: true,
     // cordovaRedirectUri: 'http://petrolette.space',
     modules: [ Sources ]
   });

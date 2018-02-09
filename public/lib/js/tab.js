@@ -103,6 +103,7 @@ MOB.tab = {
 
     var $sortable = $('<ul>')
         .attr('class', 'tabSort')
+    // .css('columns', 'auto ' + MOB.prefs.readConfig('columns'))
         .attr('id', 'sortable' + tabIndex);
 
     var $tabCloser = $('<i>')
