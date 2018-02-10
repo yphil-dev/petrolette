@@ -254,15 +254,15 @@ MOB.utilities = {
 
         // console.log('steps: ', steps);
 
-        this.radialObj = $('#indicatorContainer').data('radialIndicator');
+        // this.radialObj = $('#indicatorContainer').data('radialIndicator');
 
-        this.$radialObj = $('#indicatorContainer').fadeIn('fast');
+        // this.$radialObj = $('#indicatorContainer').fadeIn('fast');
 
         this.steps = steps - 1;
       };
       progress.increment = function() {
 
-        this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
+        // this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
 
         if (this.step >= this.steps) {
           this.finish();
@@ -273,7 +273,7 @@ MOB.utilities = {
       };
       progress.finish = function() {
         // var self = this;
-        this.$radialObj.fadeOut('slow');
+        // this.$radialObj.fadeOut('slow');
       };
 
       return progress;

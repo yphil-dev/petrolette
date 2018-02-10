@@ -986,6 +986,7 @@ li.feedItem:hover {
   margin: 0 0 .4em 0;
   padding-left: 0;
   border-radius: 3px;
+  background-color: #ededed;
 }
 
 /* .rs-main-logo { */

@@ -47,6 +47,7 @@ MOB.sync = (function() {
   return {
     rs:function() {
       const widget = new Widget(remoteStorage, {
+        leaveOpen: true
         // logging: true
       });
 
