@@ -250,22 +250,27 @@ MOB.utilities = {
 
       var progress = { step: 0 };
 
+      var seconds = 0;
+
+      function incrementSeconds() {
+        console.log('plop:', ++seconds);
+      }
+
+      setInterval(incrementSeconds, 1000);
+
       progress.init = function( steps ) {
 
-        // console.log('steps: ', steps);
 
         var $progressBar = $('div#progressBar');
         this.progressBar = $progressBar;
 
         var $progressLabel = $( ".progress-label" );
+        this.progressLabel =  $progressLabel;
 
         $progressBar.progressbar({
           value: 1,
-          change: function() {
-            $progressLabel.text( $progressBar.progressbar( "value" ) + "%" );
-          },
           complete: function() {
-            $progressLabel.text( "Complete!" );
+            $progressLabel.text( "loaded in " + seconds );
           }
         });
 
@@ -277,8 +282,12 @@ MOB.utilities = {
       };
       progress.increment = function() {
 
+
         // this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
         this.progressBar.progressbar('value', Math.ceil(100 * this.step / this.steps));
+
+        this.progressLabel.text(this.step + '/' + this.steps + ' sources loaded');
+
 
         if (this.step >= this.steps) {
           this.finish();
