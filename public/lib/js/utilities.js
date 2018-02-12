@@ -250,16 +250,7 @@ MOB.utilities = {
 
       var progress = { step: 0 };
 
-      var seconds = 0;
-
-      function incrementSeconds() {
-        console.log('plop:', ++seconds);
-      }
-
-      setInterval(incrementSeconds, 1000);
-
       progress.init = function( steps ) {
-
 
         var $progressBar = $('div#progressBar');
         this.progressBar = $progressBar;
@@ -270,7 +261,7 @@ MOB.utilities = {
         $progressBar.progressbar({
           value: 1,
           complete: function() {
-            $progressLabel.text( "loaded in " + seconds );
+            $progressLabel.text( "loaded" );
           }
         });
 
