@@ -10,10 +10,15 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $donate = $('button#donate').button(),
       $addSource = $('button#addSource').button(),
       $slider = $('div#gallerySpeedSlider'),
-      $syncBox = $('div#syncBox'),
+      $progressBar = $('div#progressBar'),
+      $p = $('div#syncBox'),
       $spinner = $('#gallerySpeedSpinner');
 
   MOB.sync.rs();
+
+  // $progressBar.progressbar({
+  //   value: 37
+  // });
 
   var $widget = $('#remotestorage-widget');
 

@@ -250,19 +250,38 @@ MOB.utilities = {
 
       var progress = { step: 0 };
 
+      var seconds = 0;
+
+      function incrementSeconds() {
+        console.log('plop:', ++seconds);
+      }
+
+      setInterval(incrementSeconds, 1000);
+
       progress.init = function( steps ) {
 
-        // console.log('steps: ', steps);
 
-        this.radialObj = $('#indicatorContainer').data('radialIndicator');
+        var $progressBar = $('div#progressBar');
+        this.progressBar = $progressBar;
 
-        this.$radialObj = $('#indicatorContainer').fadeIn('fast');
+        var $progressLabel = $( ".progress-label" );
+        this.progressLabel =  $progressLabel;
+
+        $progressBar.progressbar({
+          value: 1,
+          complete: function() {
+            $progressLabel.text( "loaded in " + seconds );
+          }
+        });
 
         this.steps = steps - 1;
       };
       progress.increment = function() {
 
-        this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
+        this.progressBar.progressbar('value', Math.ceil(100 * this.step / this.steps));
+
+        this.progressLabel.text(this.step + '/' + this.steps + ' sources loaded');
+
 
         if (this.step >= this.steps) {
           this.finish();
@@ -273,7 +292,7 @@ MOB.utilities = {
       };
       progress.finish = function() {
         // var self = this;
-        this.$radialObj.fadeOut('slow');
+        // this.$radialObj.fadeOut('slow');
       };
 
       return progress;

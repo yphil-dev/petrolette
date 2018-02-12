@@ -94,6 +94,7 @@ MOB.prefs = (function() {
     'gallerySlideshowSpeed': 3000,
     'tabDropActivate': true,
     'theme': 'day',
+    'columns': 3,
     'lang': 'en',
     'explicitLang': false,
     'tabs': JSON.stringify(emptyTabList)

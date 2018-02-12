@@ -1,7 +1,3 @@
-// $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
-
-var $indicatorContainer = $('#indicatorContainer').hide();
-
 var $menu = $('#menu');
 
 var $menuHandle = $('#petrolette');
@@ -12,20 +8,6 @@ $menuHandle.click(function () {
 
   $('i#handle').toggleClass('close');
 
-});
-
-$indicatorContainer.click(function() {
-  $(this).fadeOut('slow');
-});
-
-$indicatorContainer.radialIndicator({
-  radius: 30,
-  barWidth: 6,
-  barBgColor: 'transparent',
-  barColor: '#FF4B03',
-  roundCorner : true,
-  displayNumber: false,
-  percentage: true
 });
 
 $( document ).keydown(function( event ) {

@@ -22,6 +22,9 @@
   --ui-color-success: #4db53c;
 
   --color-danger: #000000;
+
+  --columns: auto 3;
+
 }
 
 @media screen and (max-width: 700px) {
@@ -38,6 +41,9 @@
     --handle-visibility: collapse;
 
     --title-margin-left: 0;
+
+    --columns: auto;
+
   }
 }
 
@@ -209,21 +215,6 @@ fieldset {
   /* font-size:76% !important; */
 }
 
-#progressBar {
-  position:absolute;
-  /* float: left; */
-  z-index: 9 !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* background-color: grey; */
-}
-
-#progressBar > #cursor {
-  width: 1%;
-  height: 2px;
-}
-
 #menu {
   /* border-right: #2e2e2e solid 1px; */
   padding:.5em;
@@ -235,6 +226,27 @@ fieldset {
   height: 100%;
   top: 45px;
   left: -291px;
+}
+
+#progressBar {
+  color: var(--ui-color-sec) !important;
+}
+
+.ui-progressbar {
+  position: relative;
+}
+
+.progress-label {
+  position: absolute;
+  left: .4em;
+  top: 7px;
+  color: #2b2b2b;
+}
+
+.ui-progressbar .ui-progressbar-value {
+  border: 1px solid var(--ui-color-sec) !important;
+  background: var(--ui-color-sec) !important;
+  margin: none !important;
 }
 
 #logo > h1 {
@@ -980,6 +992,7 @@ li.feedItem:hover {
   margin: 0 0 .4em 0;
   padding-left: 0;
   border-radius: 3px;
+  background-color: #ededed;
 }
 
 /* .rs-main-logo { */
