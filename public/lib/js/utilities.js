@@ -254,6 +254,21 @@ MOB.utilities = {
 
         // console.log('steps: ', steps);
 
+        var $progressBar = $('div#progressBar');
+        this.progressBar = $progressBar;
+
+        var $progressLabel = $( ".progress-label" );
+
+        $progressBar.progressbar({
+          value: 1,
+          change: function() {
+            $progressLabel.text( $progressBar.progressbar( "value" ) + "%" );
+          },
+          complete: function() {
+            $progressLabel.text( "Complete!" );
+          }
+        });
+
         // this.radialObj = $('#indicatorContainer').data('radialIndicator');
 
         // this.$radialObj = $('#indicatorContainer').fadeIn('fast');
@@ -263,6 +278,7 @@ MOB.utilities = {
       progress.increment = function() {
 
         // this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
+        this.progressBar.progressbar('value', Math.ceil(100 * this.step / this.steps));
 
         if (this.step >= this.steps) {
           this.finish();
