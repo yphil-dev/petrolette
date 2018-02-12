@@ -5,6 +5,7 @@ var $menuHandle = $('#petrolette');
 $menuHandle.click(function () {
   $menu.toggleClass('expanded');
 
+
   $('#logoTitle').fadeToggle('slow');
 
   $('i#handle').toggleClass('close');
