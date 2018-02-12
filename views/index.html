@@ -79,8 +79,6 @@
 
       <div id="mobDialogs"></div>
 
-      <div id="indicatorContainer"></div>
-
     </main>
 
     <script src="/static/lib/js/utilities.js"></script>
@@ -98,10 +96,7 @@
 
        $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
 
-
-       // MOB.sync.rs();
-
-       // $('.rs-button-small').button();
+       console.log('COLS: ', MOB.prefs.readConfig('columns'));
 
      });
 
