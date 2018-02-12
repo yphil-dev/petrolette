@@ -274,16 +274,10 @@ MOB.utilities = {
           }
         });
 
-        // this.radialObj = $('#indicatorContainer').data('radialIndicator');
-
-        // this.$radialObj = $('#indicatorContainer').fadeIn('fast');
-
         this.steps = steps - 1;
       };
       progress.increment = function() {
 
-
-        // this.radialObj.animate(Math.ceil(100 * this.step / this.steps));
         this.progressBar.progressbar('value', Math.ceil(100 * this.step / this.steps));
 
         this.progressLabel.text(this.step + '/' + this.steps + ' sources loaded');

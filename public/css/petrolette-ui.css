@@ -235,12 +235,11 @@ fieldset {
 .ui-progressbar {
   position: relative;
 }
+
 .progress-label {
   position: absolute;
   left: .4em;
   top: 7px;
-  /* font-weight: bold; */
-  /* text-shadow: 1px 1px 0 #000; */
   color: #2b2b2b;
 }
 
