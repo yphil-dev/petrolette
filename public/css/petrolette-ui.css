@@ -1068,8 +1068,13 @@ li.feedItem:hover {
 
 .topnav > div.menuBarItem > .logoType {
   display: block;
-  font-size: 32pt;
+  font-size: 22pt;
   margin: -2px 0 0 0;
+}
+
+.topnav > div.menuBarItem > div.text {
+  font-size: 10pt;
+  color: #eee;
 }
 
 .topnav > div.menuBarItem > .logoTitle {
