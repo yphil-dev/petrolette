@@ -12,7 +12,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $donate = $('button#donate').button(),
       $addSource = $('button#addSource').button(),
       $slider = $('div#gallerySpeedSlider'),
-      $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort'),
       $spinner = $('#gallerySpeedSpinner');
 
   MOB.sync.attachWidget();
@@ -26,6 +25,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $newSourceButton.click(function () {
+    var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
     MOB.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
   });
 
