@@ -14,9 +14,22 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   MOB.sync.rs();
 
-  // $progressBar.progressbar({
-  //   value: 37
-  // });
+  var $menuHandle = $('#petrolette');
+
+  $menuHandle.click(function () {
+    $menu.toggleClass('expanded');
+
+    $('#logoTitle').fadeToggle('slow');
+
+    $('i#handle').toggleClass('close');
+
+  });
+
+  $( document ).keydown(function( event ) {
+    if ( event.keyCode === $.ui.keyCode.ESCAPE ) {
+      $( ".tabSort" ).sortable( "cancel" );
+    }
+  });
 
   var $widget = $('#remotestorage-widget');
 

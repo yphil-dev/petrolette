@@ -1078,10 +1078,9 @@ li.feedItem:hover {
 
 .topnav > div#petrolette {
   transition: all .2s;
-  color: #943e1f;
 }
 
-.topnav > div#petrolette:hover {
+.topnav > div.menuBarItem:hover {
   color: var(--ui-color-sec) !important;
 }
 
