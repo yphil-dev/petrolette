@@ -1,6 +1,8 @@
 $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', function() {
 
   var $menu = $(this),
+      $menuButton = $('#petrolette'),
+      $newSourceButton = $('#newSource'),
       $handle = $menu.find('.handle'),
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
@@ -10,15 +12,28 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $donate = $('button#donate').button(),
       $addSource = $('button#addSource').button(),
       $slider = $('div#gallerySpeedSlider'),
-      $progressBar = $('div#progressBar'),
-      $p = $('div#syncBox'),
       $spinner = $('#gallerySpeedSpinner');
 
-  MOB.sync.rs();
+  MOB.sync.attachWidget();
 
-  // $progressBar.progressbar({
-  //   value: 37
-  // });
+  $menuButton.click(function () {
+    $menu.toggleClass('expanded');
+
+    $('#logoTitle').fadeToggle('slow');
+    $('i#handle').toggleClass('close');
+
+  });
+
+  $newSourceButton.click(function () {
+    var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+    MOB.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
+  });
+
+  $(document).keydown(function(event) {
+    if (event.keyCode === $.ui.keyCode.ESCAPE) {
+      $('.tabSort' ).sortable('cancel');
+    }
+  });
 
   var $widget = $('#remotestorage-widget');
 
