@@ -216,14 +216,15 @@ fieldset {
 
 #menu {
   /* border-right: #2e2e2e solid 1px; */
-  padding:.5em 0;
+  padding: 45px 0 0 0;
   border: none !important;
 
   position: fixed;
   width: 275px;
   transition: all 150ms ease-out;
   height: 100%;
-  top: 45px;
+  top: 0;
+  z-index:11;
   left: -291px;
 }
 
@@ -904,6 +905,10 @@ li.feedItem {
   background-color: var(--bg-color-sec) !important;
 }
 
+li.feedItem img:hover {
+  outline: 1px solid var(--ui-color-sec) !important;
+}
+
 li.feedItem:nth-child(even) {
   background-color: var(--bg-color-qua) !important;
 }
@@ -1051,6 +1056,7 @@ li.feedItem:hover {
 /* MenuBar */
 /* Add a black background color to the top navigation */
 .topnav {
+  position:relative;
   z-index: 20;
   background-color: #333;
   overflow: hidden;
