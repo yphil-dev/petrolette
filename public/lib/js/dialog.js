@@ -35,8 +35,9 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-
           var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+
+          console.log('$openGroupPanel',  $openGroupPanel.get());
 
           var $newsSources = $('<button>')
               .attr('class', 'grow translate')

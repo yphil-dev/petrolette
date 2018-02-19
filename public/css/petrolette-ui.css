@@ -1046,20 +1046,10 @@ li.feedItem:hover {
   height: 45px;
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  text-decoration: none;
-  font-size: 17px;
-}
-
 .topnav > div.menuBarItem {
   float: left;
   text-align: center;
-  margin: 0 26px 0 5px;
+  margin: 0 .2em;
 }
 
 .topnav > div#logoTitle {
@@ -1067,9 +1057,12 @@ li.feedItem:hover {
 }
 
 .topnav > div.menuBarItem > .logoType {
-  display: block;
-  font-size: 32pt;
-  margin: -2px 0 0 0;
+  font-size: 18pt;
+}
+
+.topnav > div.menuBarItem > div.text {
+  font-size: 10pt;
+  color: #eee;
 }
 
 .topnav > div.menuBarItem > .logoTitle {
@@ -1085,10 +1078,9 @@ li.feedItem:hover {
 
 .topnav > div#petrolette {
   transition: all .2s;
-  color: #943e1f;
 }
 
-.topnav > div#petrolette:hover {
+.topnav > div.menuBarItem:hover {
   color: var(--ui-color-sec) !important;
 }
 

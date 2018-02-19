@@ -1,23 +1,5 @@
 var $menu = $('#menu');
 
-var $menuHandle = $('#petrolette');
-
-$menuHandle.click(function () {
-  $menu.toggleClass('expanded');
-
-
-  $('#logoTitle').fadeToggle('slow');
-
-  $('i#handle').toggleClass('close');
-
-});
-
-$( document ).keydown(function( event ) {
-  if ( event.keyCode === $.ui.keyCode.ESCAPE ) {
-    $( ".tabSort" ).sortable( "cancel" );
-  }
-});
-
 var $tabs = $('#tabs').tabs({
   heightStyle: 'content',
   activate: function() {
