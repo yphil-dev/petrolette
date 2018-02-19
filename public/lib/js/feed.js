@@ -20,7 +20,7 @@ MOB.feed = {
         .attr('title', MOB.tr('Select this source'));
 
     var $feedDelete = $('<i>')
-        .attr('class', 'feedControl translate icon-cancel-2 feedDelete dangerous')
+        .attr('class', 'feedControl translate icon-cancel feedDelete dangerous')
         .data('title', 'Delete this source')
         .attr('title', MOB.tr('Delete this source'));
 

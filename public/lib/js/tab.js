@@ -81,7 +81,7 @@ MOB.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add source" title="Add source">'),
+    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add a group" title="Add a group">'),
         $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
           e.stopImmediatePropagation();
           // MOB.dialog.newContent();
@@ -93,6 +93,9 @@ MOB.tab = {
 
     $dummyTabLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tabUl'));
+
+    MOB.utilities.translate();
+
   },
   make:function($tabs, name, feeds, progress) {
 

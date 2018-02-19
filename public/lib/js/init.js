@@ -1,5 +1,16 @@
 var $menu = $('#menu');
 
+var $menuButton = $('#menuButton'),
+    $newSourceButton = $('#newSourceButton');
+
+$menuButton
+  .data('title', MOB.tr('Options'))
+  .attr('title', MOB.tr('Options'));
+
+$newSourceButton
+  .data('title', MOB.tr('Add a source'))
+  .attr('title', MOB.tr('Add a source'));
+
 var $tabs = $('#tabs').tabs({
   heightStyle: 'content',
   activate: function() {
