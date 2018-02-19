@@ -1039,7 +1039,7 @@ li.feedItem:hover {
 
 #overlay {
   display:none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 275px;
   width: 100%;
