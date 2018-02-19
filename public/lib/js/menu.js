@@ -1,8 +1,9 @@
 $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', function() {
 
   var $menu = $(this),
-      $menuButton = $('#petrolette'),
-      $newSourceButton = $('#newSource'),
+      $overlay = $('#overlay'),
+      $menuButton = $('#menuButton'),
+      $newSourceButton = $('#newSourceButton'),
       $handle = $menu.find('.handle'),
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
@@ -17,11 +18,18 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   MOB.sync.attachWidget();
 
   $menuButton.click(function () {
+
+    $('#overlay').fadeToggle('slow');
+
     $menu.toggleClass('expanded');
 
     $('#logoTitle').fadeToggle('slow');
     $('i#handle').toggleClass('close');
 
+  });
+
+  $overlay.click(function () {
+    $menuButton.click();
   });
 
   $newSourceButton.click(function () {
