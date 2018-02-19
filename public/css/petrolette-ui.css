@@ -1070,7 +1070,16 @@ li.feedItem:hover {
 }
 
 .topnav > div#logoTitle {
-  display: none;
+  display:flex;
+  float: right;
+}
+
+.topnav > div#logoTitle > div {
+  flex: 1 0 ;
+}
+
+.topnav > div#logoTitle > div > img {
+  margin: 9px 6px 0 0;
 }
 
 .topnav > div.menuBarItem > .logoType {
@@ -1111,8 +1120,8 @@ li.feedItem:hover {
   position:absolute;
   opacity: .8;
   font-size:9pt;
-  top: 3px;
-  left: 227px;
+  top: 22px;
+  right: 12px;
   background: var(--ui-color-sec);
   color: var(--ui-color-pri);
   padding: 2px;

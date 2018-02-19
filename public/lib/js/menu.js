@@ -22,7 +22,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
     $menu.toggleClass('expanded');
 
-    $('#logoTitle').fadeToggle('slow');
+    // $('#logoTitle').fadeToggle('slow');
     $('i#handle').toggleClass('close');
 
   });
@@ -79,7 +79,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $handle.click(function () {
     $menu.toggleClass('expanded');
-    $('#logoTitle').fadeToggle('slow');
+    // $('#logoTitle').fadeToggle('slow');
     $(this).children('i').toggleClass('close');
 
   });
