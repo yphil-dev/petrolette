@@ -84,7 +84,6 @@ MOB.tab = {
     var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add a group" title="Add a group">'),
         $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
           e.stopImmediatePropagation();
-          // MOB.dialog.newContent();
 
           MOB.tab.make($($tabs));
 

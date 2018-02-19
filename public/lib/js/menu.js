@@ -11,7 +11,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $langMenu = $('select#language'),
       $help = $('button#help').button(),
       $donate = $('button#donate').button(),
-      $addSource = $('button#addSource').button(),
       $slider = $('div#gallerySpeedSlider'),
       $spinner = $('#gallerySpeedSpinner');
 
@@ -29,7 +28,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $overlay.click(function () {
-    $menuButton.click();
+    $(this).fadeToggle('slow');
+    $menu.removeClass('expanded');
   });
 
   $newSourceButton.click(function () {
@@ -84,21 +84,11 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   });
 
-  $addSource.click(function (event) {
-    event.preventDefault();
-
-    $handle.click();
-
-    MOB.dialog.newContent();
-
-  });
-
   $help.click(function (event) {
     event.preventDefault();
     $('#tabs').tabs('option', 'active', 0);
     MOB.utilities.help('ui');
   });
-
 
   $donate.click(function (event) {
     event.preventDefault();
