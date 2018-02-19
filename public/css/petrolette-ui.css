@@ -1046,20 +1046,10 @@ li.feedItem:hover {
   height: 45px;
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  text-decoration: none;
-  font-size: 17px;
-}
-
 .topnav > div.menuBarItem {
   float: left;
   text-align: center;
-  margin: 0 26px 0 5px;
+  margin: 0 .2em;
 }
 
 .topnav > div#logoTitle {
@@ -1067,9 +1057,7 @@ li.feedItem:hover {
 }
 
 .topnav > div.menuBarItem > .logoType {
-  display: block;
-  font-size: 22pt;
-  margin: -2px 0 0 0;
+  font-size: 18pt;
 }
 
 .topnav > div.menuBarItem > div.text {
