@@ -154,6 +154,11 @@ MOB.i18n.translations = {
   "Read more." : { fr: "En savoir plus" , ja: "続きを読む。", es: "Lee mas." },
 
   "Add a source or a group." : { fr: "Ajouter une source ou un groupe." , ja: "ソースまたはグループを追加する", es: "Agrega una fuente o un grupo." },
+
+  "Add a group" : { fr: "Ajouter un groupe" , ja: "グループを追加します", es: "Agrega un grupo" },
+
+  "Add a source" : { fr: "Ajouter une source" , ja: "ソースを追加します", es: "Agrega una fuente" },
+
   "What is Petrolette?" : { fr: "Qu'est-ce que Petrolette?" , ja: "Petroletteとは何ですか？", es: "¿Qué es Petrolette?" },
   "How do I use it?" : { fr: "Comment ça marche ?" , ja: "どうやって使うの？", es: "¿Como lo uso?" },
   "Petrolette is your news reader. Find new sources, sort them in categories, you are on the in-ter-net." : { fr: "Petrolette est un lecteur de sources. Trouver de nouvelles sources, les trier dans les catégories, c'est l'in-ter-net." , ja: "Petroletteはあなたのニュースリーダーです。 新しいソースを見つけ、カテゴリで並べ替え、あなたはインターネット上にいます。", es: "Petrolette es tu lector de noticias. Encuentra nuevas fuentes, clasifícalas en categorías, estás en la red interna." },
@@ -244,7 +249,7 @@ MOB.i18n.translations = {
   "Refresh %1" : { fr: "Rafraichir %1", ja: "％1をリロードする", es: "Recarga %1" },
 
   "Delete group" : { fr: "Supprimer groupe", ja: "グループを削除する", es: "Eliminar grupo" },
-  "%1 | Click to rename, drag to re-order" : { fr: "%1 | Clic pour renommer, glisse pour ranger", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
+  "%1 | Click to rename, drag to move" : { fr: "%1 | Cliquer pour renommer, glisser pour déplacer", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
   "Really delete this source? (%1)" : { fr: "Réellement supprimer cette source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
   "Delete source" : { fr: "Supprimer source", ja: "本当にこのフィードを削除しますか", es: "Borraste source" },
   "Delete all" : { fr: "Supprimer tout", ja: "すべて削除", es: "Eliminar todos" },
