@@ -30,7 +30,7 @@ MOB.feed = {
         .attr('title', MOB.tr('Options'));
 
     var $feedReload = $('<i>')
-        .attr('class', 'feedControl translate icon-arrows-cw mobFeedRefresh')
+        .attr('class', 'feedControl translate icon-plus-1 mobFeedRefresh')
         .data('title', MOB.tr('Refresh %1', url))
         .attr('title', MOB.tr('Refresh %1', url));
 
