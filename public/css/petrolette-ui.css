@@ -47,6 +47,17 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+[class^="icon-"]::before, [class*=" icon-"]::before {
+  margin:0 !important!;
+  display:initial;
+}
+
 /* Petrolette */
 body {
   /* font-size:.8em !important; */
