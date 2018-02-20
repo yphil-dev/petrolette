@@ -25,7 +25,7 @@ MOB.feed = {
         .attr('title', MOB.tr('Delete this source'));
 
     var $feedPrefs = $('<i>')
-        .attr('class', 'feedControl translate icon-cog-1 mobFeedPrefs')
+        .attr('class', 'feedControl translate icon-wrench-1 mobFeedPrefs')
         .data('title', 'Options')
         .attr('title', MOB.tr('Options'));
 

@@ -1,7 +1,7 @@
 :root {
   --ui-bg-color-pri: #373737;
   --ui-color-pri: #f4f4f4;
-  --ui-color-sec: #FF4B03;
+  --ui-color-sec: #7FDBFF;
   --ui-color-ter: #C0B283;
   --ui-color-qua: #29323c;
 
@@ -316,8 +316,11 @@ fieldset {
 }
 
 .tabCloser {
-  font-size: .9em;
+  font-size: .7em;
   margin: 0 .1em 0 -1em;
+
+  float:right;
+
   cursor:pointer;
 }
 
@@ -1120,7 +1123,7 @@ li.feedItem:nth-child(even) {
   font-size:9pt;
   top: 22px;
   right: 12px;
-  background: var(--ui-color-sec);
+  background: var(--ui-color-danger);
   color: var(--ui-color-pri);
   padding: 2px;
   border-radius: 10%;
