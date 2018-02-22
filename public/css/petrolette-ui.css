@@ -835,7 +835,7 @@ li.feed {
 
 li.feed a:link {
   color: var(--color-pri);
-  transition: all .2s;
+  /* transition: all 1s; */
 }
 
 li.feed a:active {
@@ -843,7 +843,7 @@ li.feed a:active {
 }
 
 li.feed a:visited {
-  color: var(--color-ter);
+  color: #B0C4DE;
 }
 
 li.feed a:hover {

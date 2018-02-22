@@ -3,6 +3,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   var $menu = $(this),
       $overlay = $('#overlay'),
       $menuButton = $('#menuButton'),
+      $helpButton = $('#helpButton'),
       $newSourceButton = $('#newSourceButton'),
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
@@ -58,23 +59,22 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $langMenu.val(MOB.prefs.readConfig('lang')).prop('selected', true);
 
-  // $langMenu.val(MOB.prefs.readConfig('lang'));
-
   $langMenu.change(function() {
-
     var selectedLang = $(this).val();
-
     MOB.language = selectedLang;
     MOB.prefs.writeConfig('lang', selectedLang);
     MOB.utilities.translate();
-
   });
 
   $help.click(function (event) {
     event.preventDefault();
-
     $overlay.removeClass('visible');
+    $('#tabs').tabs('option', 'active', 0);
+    MOB.utilities.help('ui');
+  });
 
+  $helpButton.click(function (event) {
+    event.preventDefault();
     $('#tabs').tabs('option', 'active', 0);
     MOB.utilities.help('ui');
   });

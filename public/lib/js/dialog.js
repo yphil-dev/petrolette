@@ -86,7 +86,7 @@ MOB.dialog = {
               MOB.dialog.kill($dialog);
 
               if (isNewFeed) {
-                $feed.hide('slide', 1000, function() {
+                $feed.hide('fade', 1000, function() {
                   $feed.remove();
                 });
               }
