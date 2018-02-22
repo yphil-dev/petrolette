@@ -4,7 +4,6 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $overlay = $('#overlay'),
       $menuButton = $('#menuButton'),
       $newSourceButton = $('#newSourceButton'),
-      $handle = $menu.find('.handle'),
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
       $saveButton = $('#saveTabs').button(),
@@ -17,23 +16,12 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   MOB.sync.attachWidget();
 
   $menuButton.click(function () {
-
-    // $overlay.fadeToggle('slow');
     $overlay.toggleClass('visible');
-
     $menu.toggleClass('expanded');
-
-    // $('#logoTitle').fadeToggle('slow');
-    $('i#handle').toggleClass('close');
-
   });
 
   $overlay.click(function () {
-    // $(this).fadeToggle('slow');
-
-    $(this).toggleClass('visible');
-
-
+    $(this).removeClass('visible');
     $menu.removeClass('expanded');
   });
 
@@ -82,17 +70,10 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   });
 
-  $handle.click(function () {
-    $menu.toggleClass('expanded');
-    // $('#logoTitle').fadeToggle('slow');
-    $(this).children('i').toggleClass('close');
-
-  });
-
   $help.click(function (event) {
     event.preventDefault();
 
-    // $overlay.hide();
+    $overlay.removeClass('visible');
 
     $('#tabs').tabs('option', 'active', 0);
     MOB.utilities.help('ui');
