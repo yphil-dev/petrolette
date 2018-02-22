@@ -136,6 +136,7 @@ MOB.i18n.translations = {
   "Click on the current/selected group tab to change its name and position." : { fr: "Cliquer sur le groupe sélectionné pour changer son nom et sa position." , ja: "現在の/選択したグループタブをクリックして、名前と位置を変更します。", es: "Haga clic en la pestaña del grupo actual / seleccionado para cambiar su nombre y posición." },
 
   "This is a source." : { fr: "Ceci est une source." , ja: "これはソースです", es: "Esta es una fuente." },
+  "Click this button to add a group." : { fr: "Cliquez sur ce bouton pour ajouter un groupe." , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo." },
   "Click this button to add a source." : { fr: "Cliquez sur ce bouton pour ajouter une source." , ja: "ソースを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar una fuente." },
 
   "Refresh / reload this source." : { fr: "Actualiser / recharger cette source." , ja: "このソースを更新/再読み込みしてください。", es: "Actualiza / recarga esta fuente." },
