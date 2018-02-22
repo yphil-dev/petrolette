@@ -18,7 +18,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $menuButton.click(function () {
 
-    $('#overlay').fadeToggle('slow');
+    // $overlay.fadeToggle('slow');
+    $overlay.toggleClass('visible');
 
     $menu.toggleClass('expanded');
 
@@ -28,7 +29,11 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   });
 
   $overlay.click(function () {
-    $(this).fadeToggle('slow');
+    // $(this).fadeToggle('slow');
+
+    $(this).toggleClass('visible');
+
+
     $menu.removeClass('expanded');
   });
 
@@ -86,6 +91,9 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $help.click(function (event) {
     event.preventDefault();
+
+    // $overlay.hide();
+
     $('#tabs').tabs('option', 'active', 0);
     MOB.utilities.help('ui');
   });

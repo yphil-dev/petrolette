@@ -68,6 +68,10 @@ body {
   font-family: Arial,Helvetica,sans-serif;
 }
 
+.visible {
+  display:initial;
+}
+
 html,
 body,
 main {
@@ -791,7 +795,7 @@ div.ui-tabs-panel {
 }
 
 li.ui-state-hover:not(.ui-tabs-active) {
-  background-color: var(--bg-color-ter) !important;
+  background-color: var(--bg-color-ter);
 }
 
 i.tabCloser,
@@ -802,6 +806,23 @@ li.ui-tabs-tab a:link {
 li.ui-tabs-tab a.ui-tabs-anchor:hover,
 li.ui-tabs-active a.ui-tabs-anchor:link {
   color: var(--ui-color-sec) !important;
+}
+
+li.feedItem {
+  background-color: var(--bg-color-sec) !important;
+}
+
+li.feedItem:nth-child(even) {
+  background-color: var(--bg-color-qua) !important;
+}
+
+li.feedItem img:hover {
+  outline: 1px solid var(--ui-color-sec) !important;
+}
+
+li.feedItem:hover {
+  /* background-color: var(--bg-color-ter) !important; */
+  background-color: var(--bg-color-pri) !important;
 }
 
 li.feed {
@@ -821,12 +842,12 @@ li.feed a:active {
   color: var(--ui-color-sec);
 }
 
-li.feed a:hover {
-  color: var(--ui-color-sec);
-}
-
 li.feed a:visited {
   color: var(--color-ter);
+}
+
+li.feed a:hover {
+  color: var(--ui-color-sec);
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
@@ -881,15 +902,6 @@ i.dangerous:hover {
   color: var(--ui-color-sec) !important;
 }
 
-li.feedItem img:hover {
-  outline: 1px solid var(--ui-color-sec) !important;
-}
-
-li.feedItem:hover {
-  background-color: var(--bg-color-pri) !important;
-  color: #000 !important;
-}
-
 @media (hover: none) {
 
   li.feedItem:hover {
@@ -925,14 +937,6 @@ li.feedItem:hover {
 .mobHeader {
   background-color: var(--bg-color-pri);
   color: var(--color-pri);
-}
-
-li.feedItem {
-  background-color: var(--bg-color-sec) !important;
-}
-
-li.feedItem:nth-child(even) {
-  background-color: var(--bg-color-qua) !important;
 }
 
 #progressBar > #cursor {
