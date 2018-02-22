@@ -112,7 +112,7 @@ MOB.tab = {
         .attr('id', 'sortable' + tabIndex);
 
     var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel-1 tabCloser translate dangerous')
+        .attr('class', 'icon-cancel tabCloser translate dangerous')
         .data('title', MOB.tr('Delete the [%1] tab', name))
         .attr('title', MOB.tr('Delete the [%1] tab'));
 

@@ -1,7 +1,7 @@
 :root {
   --ui-bg-color-pri: #373737;
   --ui-color-pri: #f4f4f4;
-  --ui-color-sec: #FF4B03;
+  --ui-color-sec: #7FDBFF;
   --ui-color-ter: #C0B283;
   --ui-color-qua: #29323c;
 
@@ -25,6 +25,8 @@
 
   --columns: auto 3;
 
+  --logo-display: inline;
+
 }
 
 @media screen and (max-width: 700px) {
@@ -43,6 +45,7 @@
     --title-margin-left: 0;
 
     --columns: auto;
+    --logo-display: none;
 
   }
 }
@@ -54,7 +57,7 @@
 /* } */
 
 [class^="icon-"]::before, [class*=" icon-"]::before {
-  margin:0 !important!;
+  margin:0;
   display:initial;
 }
 
@@ -261,16 +264,6 @@ fieldset {
   margin: none !important;
 }
 
-#logo > h1 {
-  font-family: 'LobsterRegular';
-  font-weight: normal;
-  font-style:  normal;
-  font-size:   38pt;
-  margin:      0 0 .2em .2em;
-  color:       #F1E5D1;
-  text-shadow: 1px 1px #3C2413;
-}
-
 .baseline {
   font-family: "Times New Roman",Bodoni,Garamond,"Minion Web","ITC Stone Serif","MS Georgia", serif;
   /* font-variant: small-caps; */
@@ -316,8 +309,16 @@ fieldset {
 }
 
 .tabCloser {
-  font-size: .9em;
-  margin: 0 .1em 0 -1em;
+  font-size: .7em;
+
+  /* margin: 0 .1em 0 -1em; */
+  /* float:right; */
+
+  position:absolute;
+
+  top: 3px;
+  right: 3px;
+
   cursor:pointer;
 }
 
@@ -496,40 +497,6 @@ div.testFlex {
 .ui-selectmenu-button.ui-button {
   text-align: left;
   white-space: nowrap;
-}
-
-/* WTF */
-
-#logo > h1 {
-  font-family: 'LobsterRegular';
-  font-weight: normal;
-  font-style:  normal;
-  font-size:   38pt;
-  margin:      0 0 .2em .2em;
-  color:       #F1E5D1;
-  text-shadow: 1px 1px #3C2413;
-}
-
-#logo > .petrolette,
-.ui-dialog-content .petrolette {
-  color:     #84A6CB;
-  cursor:pointer;
-  font-size: 3.5rem  !important;
-  margin:    -2px 0 0 0 !important;
-}
-
-.ui-dialog-content .petrolette {
-  display: inline !important;
-  font-size: 1.5rem !important;
-}
-
-#killDialog .petrolette {
-  color:     red;
-  font-size: 3.5rem  !important;
-}
-
-#logo {
-  display: flex;
 }
 
 /* Wait screen */
@@ -828,21 +795,17 @@ li.ui-state-hover:not(.ui-tabs-active) {
 }
 
 i.tabCloser,
-li.ui-tabs-active a:link {
-  color: var(--color-pri) !important;
-}
-
-i.tabCloser,
 li.ui-tabs-tab a:link {
   color: var(--color-pri) !important;
 }
 
-.feed {
-  /* border: #7a7a7a 1px solid !important; */
-  padding: 0;
+li.ui-tabs-tab a.ui-tabs-anchor:hover,
+li.ui-tabs-active a.ui-tabs-anchor:link {
+  color: var(--ui-color-sec) !important;
 }
 
 li.feed {
+  padding: 0;
   background-color: var(--bg-color-pri) !important;
   transition: all .1s ease;
 
@@ -852,6 +815,14 @@ li.feed {
 li.feed a:link {
   color: var(--color-pri);
   transition: all .2s;
+}
+
+li.feed a:active {
+  color: var(--ui-color-sec);
+}
+
+li.feed a:hover {
+  color: var(--ui-color-sec);
 }
 
 li.feed a:visited {
@@ -864,10 +835,6 @@ li.feed a:visited {
 
 .ui-button.ui-state-active:hover {
   border: 1px solid var(--ui-color-ter) !important;
-}
-
-#logo > .petrolette:hover {
-  color:     var(--ui-color-sec);
 }
 
 .mobHeader > .feedHandle:hover {
@@ -912,11 +879,6 @@ i.dangerous:hover {
 .feedControl:hover,
 .media:hover {
   color: var(--ui-color-sec) !important;
-}
-
-
-li.feed a:hover {
-  color: var(--color-ter);
 }
 
 li.feedItem img:hover {
@@ -1076,6 +1038,21 @@ li.feedItem:nth-child(even) {
   float: right;
 }
 
+.topnav i.icon-petrolette {
+  display:block;
+  font-size:24pt;
+  margin: 6px !important;
+  color: var(--ui-color-sec);
+}
+
+.topnav i.icon-petrolette:before {
+  font-style:italic !important;
+}
+
+.topnav i.icon-petrolette:hover {
+  font-style:normal !important;
+}
+
 .topnav > div#logoTitle > div {
   flex: 1 0 ;
 }
@@ -1094,6 +1071,7 @@ li.feedItem:nth-child(even) {
 }
 
 .topnav > div.menuBarItem > .logoTitle {
+  display:var(--logo-display);
   margin: -6px 0 0 0 !important;
   font-family: 'LobsterRegular';
   font-size: 36pt;
@@ -1115,26 +1093,16 @@ li.feedItem:nth-child(even) {
 }
 
 #betaBadge {
+  display:var(--logo-display);
   position:absolute;
   opacity: .8;
   font-size:9pt;
   top: 22px;
-  right: 12px;
-  background: var(--ui-color-sec);
+  right: 60px;
+  background: var(--ui-color-danger);
   color: var(--ui-color-pri);
   padding: 2px;
   border-radius: 10%;
-}
-
-/* Add an active class to highlight the current page */
-.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-.topnav .icon {
-  display: none;
 }
 
 #return-to-top {
