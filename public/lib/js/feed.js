@@ -6,33 +6,28 @@ MOB.feed = {
 
     var $feedToggle = $('<i>')
         .attr('class', 'feedIcon rotate translate')
-        .data('title', 'Fold / unfold')
-        .attr('title', MOB.tr('Fold / unfold'));
-
-    var $controlsToggle = $('<i>')
-        .attr('class', 'feedControl icon-left-open rotate')
-        .data('title', 'Fold / unfold')
-        .attr('title', MOB.tr('Fold / unfold'));
+        .data('title', 'Fold / unfold this source (%1)', url)
+        .attr('title', MOB.tr('Fold / unfold this source (%1)', url));
 
     var $feedSelect = $('<i>')
         .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
-        .data('title', 'Select this source')
-        .attr('title', MOB.tr('Select this source'));
+        .data('title', 'Select this source (%1)', url)
+        .attr('title', MOB.tr('Select this source (%1)', url));
 
     var $feedDelete = $('<i>')
         .attr('class', 'feedControl translate icon-cancel feedDelete dangerous')
-        .data('title', 'Delete this source')
-        .attr('title', MOB.tr('Delete this source'));
+        .data('title', 'Delete this source (%1)', url)
+        .attr('title', MOB.tr('Delete this source (%1)', url));
 
     var $feedPrefs = $('<i>')
         .attr('class', 'feedControl translate icon-wrench-1 mobFeedPrefs')
-        .data('title', 'Options')
-        .attr('title', MOB.tr('Options'));
+        .data('title', MOB.tr('Change this source (%1) parameters', url))
+        .attr('title', MOB.tr('Change this source (%1) parameters', url));
 
     var $feedReload = $('<i>')
         .attr('class', 'feedControl translate icon-arrows-cw mobFeedRefresh')
-        .data('title', MOB.tr('Refresh %1', url))
-        .attr('title', MOB.tr('Refresh %1', url));
+        .data('title', MOB.tr('Refresh this source (%1)', url))
+        .attr('title', MOB.tr('Refresh this source (%1)', url));
 
     var $feedControls = $('<div>').attr('class', 'feedControls dataStore')
         .data('id', 'feed-' + feedIndex)
@@ -86,8 +81,8 @@ MOB.feed = {
     var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
 
     var $feedHandle = $('<div>')
-        .data('title', MOB.tr('Move source'))
-        .attr('title', MOB.tr('Move source'))
+        .data('title', MOB.tr('Move this source (%1)', url))
+        .attr('title', MOB.tr('Move this source (%1)', url))
         .attr('class', 'feedHandle');
 
     var $selectDiv = $('<div>')

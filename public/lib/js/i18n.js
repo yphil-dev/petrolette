@@ -239,23 +239,22 @@ MOB.i18n.translations = {
   // Titres
   "Add a new source to [%1]" : { fr: "Ajouter une source à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo source a [%1]" },
 
-  "Fold / unfold" : { fr: "Plier / déplier", ja: "ウーブリール - ファーマー", es: "Abrir / cerrar" },
-
-  "Move source" : { fr: "Déplacer cette source", ja: "このソースを移動する", es: "Mueva esta fuente" },
-
   "Select this source" : { fr: "Sélectionner cette source", ja: "RSSフィードを選択", es: "Selecciona este source" },
   "Delete this source" : { fr: "Supprimer cette source", ja: "このRSSフィードを削除", es: "Eliminar este source rss" },
-
-  "Refresh %1" : { fr: "Rafraichir %1", ja: "％1をリロードする", es: "Recarga %1" },
 
   "Delete group" : { fr: "Supprimer groupe", ja: "グループを削除する", es: "Eliminar grupo" },
   "%1 | Click to rename, drag to move" : { fr: "%1 | Cliquer pour renommer, glisser pour déplacer", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
   "Really delete this source? (%1)" : { fr: "Réellement supprimer cette source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
-  "Delete source" : { fr: "Supprimer source", ja: "本当にこのフィードを削除しますか", es: "Borraste source" },
+
+  "Fold / unfold this source (%1)" : { fr: "Plier / déplier cette source (%1)", ja: "ウーブリール - ファーマー (%1)", es: "Abrir / cerrar esta fuente (%1)" },
+
+  "Move this source (%1)" : { fr: "Déplacer cette source (%1)", ja: "このソースを移動する (%1)", es: "Mueva esta fuente (%)" },
+
+  "Delete this source (%1)" : { fr: "Supprimer cette source (%1)", ja: "本当にこのフィードを削除しますか (%1)", es: "Borraste esta source (%1)" },
   "Delete all" : { fr: "Supprimer tout", ja: "すべて削除", es: "Eliminar todos" },
 
   "Really delete this group? (%1, %2 sources)" : { fr: "Réellement supprimer ce groupe (%1, %2 sources) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta grupo? (%1, %2 sources)" },
-  "Options" : { fr: "Options", ja: "嗜好", es: "Preferencias" },
-  "Refresh %1" : { fr: "Rafraîchir %1", ja: "リロード %1", es: "Recargar %1" },
+  "Change this source (%1) parameters" : { fr: "Changer les paramètres de cette source (%1)", ja: "このソース（%1）パラメータを変更する", es: "Establezca estos parámetros fuente %1" },
+  "Refresh this source (%1)" : { fr: "Actualiser cette source (%1)", ja: "このソースをリフレッシュしてください (%1)", es: "Actualiza esta fuente (%1)" },
   "Last" : { fr: "Dernier", ja: "zz" }
 };
