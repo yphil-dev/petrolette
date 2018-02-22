@@ -74,23 +74,23 @@ MOB.utilities = {
         steps: [
           {
             element: 'li[aria-controls=tab-1]',
-            intro: MOB.tr('This is a group. It contains sources.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-motorcycle"></i></a></div>'
+            intro: MOB.tr('This is a group. It contains sources.')
           },
           {
             element: 'li[aria-controls=tab-2]',
-            intro: MOB.tr('Click on a group tab to display it.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-motorcycle"></i></a></div>'
+            intro: MOB.tr('Click on a group tab to display it.')
           },
           {
             element: 'li[aria-controls=tab-1]',
-            intro: MOB.tr('Click on the current/selected group tab to change its name and position.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-motorcycle"></i></a></div>'
+            intro: MOB.tr('Click on the current/selected group tab to change its name and position.')
           },
           {
             element: 'li.feed',
-            intro: MOB.tr('This is a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+            intro: MOB.tr('This is a source.')
           },
           {
-            element: 'li#newTabButton',
-            intro: MOB.tr('Click this button to add a source.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-motorcycle"></i></a></div>'
+            element: 'div#newSourceButton',
+            intro: MOB.tr('Click this button to add a source.')
           },
           {
             element: '.mobFeedRefresh',
@@ -158,11 +158,11 @@ MOB.utilities = {
         steps: [
           {
             element: 'button#fileImport',
-            intro: MOB.tr('Open / import tabs and feeds.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-importexport-tabs"><i class="icon-help-circled"></i></a></div>'
+            intro: MOB.tr('Open / import tabs and feeds.')
           },
           {
             element: 'button#saveTabs',
-            intro: MOB.tr('Save / Export tabs and feeds.') + '<div class="wiki ui-corner-all"><a href="https://bitbucket.org/yphil/petrolette/wiki/Home#markdown-header-how-do-i-use-it"><i class="icon-help-circled"></i></a></div>'
+            intro: MOB.tr('Save / Export tabs and feeds.')
           },
           {
             element: 'label#dropTabLabel',

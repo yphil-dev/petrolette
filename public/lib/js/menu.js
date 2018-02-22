@@ -3,8 +3,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   var $menu = $(this),
       $overlay = $('#overlay'),
       $menuButton = $('#menuButton'),
+      $helpButton = $('#helpButton'),
       $newSourceButton = $('#newSourceButton'),
-      $handle = $menu.find('.handle'),
       $loadButton = $("button#fileImport").button(),
       $fileImportInput = $("input#fileImport").button(),
       $saveButton = $('#saveTabs').button(),
@@ -17,23 +17,12 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   MOB.sync.attachWidget();
 
   $menuButton.click(function () {
-
-    // $overlay.fadeToggle('slow');
     $overlay.toggleClass('visible');
-
     $menu.toggleClass('expanded');
-
-    // $('#logoTitle').fadeToggle('slow');
-    $('i#handle').toggleClass('close');
-
   });
 
   $overlay.click(function () {
-    // $(this).fadeToggle('slow');
-
-    $(this).toggleClass('visible');
-
-
+    $(this).removeClass('visible');
     $menu.removeClass('expanded');
   });
 
@@ -70,30 +59,22 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $langMenu.val(MOB.prefs.readConfig('lang')).prop('selected', true);
 
-  // $langMenu.val(MOB.prefs.readConfig('lang'));
-
   $langMenu.change(function() {
-
     var selectedLang = $(this).val();
-
     MOB.language = selectedLang;
     MOB.prefs.writeConfig('lang', selectedLang);
     MOB.utilities.translate();
-
-  });
-
-  $handle.click(function () {
-    $menu.toggleClass('expanded');
-    // $('#logoTitle').fadeToggle('slow');
-    $(this).children('i').toggleClass('close');
-
   });
 
   $help.click(function (event) {
     event.preventDefault();
+    $overlay.removeClass('visible');
+    $('#tabs').tabs('option', 'active', 0);
+    MOB.utilities.help('ui');
+  });
 
-    // $overlay.hide();
-
+  $helpButton.click(function (event) {
+    event.preventDefault();
     $('#tabs').tabs('option', 'active', 0);
     MOB.utilities.help('ui');
   });
