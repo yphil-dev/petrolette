@@ -402,11 +402,6 @@ fieldset {
   color: var(--ui-color-qua) !important;
 }
 
-#killFeed.ui-state-active,
-#killFeed.ui-button:active {
-  color: var(--ui-color-danger) !important;
-}
-
 .ui-icon-background, .ui-state-active .ui-icon-background {
   border: var(--ui-color-success);
   background-color: var(--ui-color-pri);
@@ -422,7 +417,15 @@ button.ui-state-success {
 }
 
 .ui-visual-focus {
+  box-shadow: none;
+}
+
+.ui-state-active {
   box-shadow: 0 0 3px 1px var(--ui-color-pri);
+}
+
+#killFeed.ui-state-active {
+  box-shadow: 0 0 3px 1px var(--ui-color-danger);
 }
 
 .flexBox > label {
