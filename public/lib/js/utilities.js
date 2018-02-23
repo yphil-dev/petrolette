@@ -97,7 +97,7 @@ MOB.utilities = {
             intro: MOB.tr('Refresh / reload this source.')
           },
           {
-            element: '.mobFeedPrefs',
+            element: 'li#feed-0 i.feedControl.mobFeedPrefs',
             intro: MOB.tr('Configure this source.')
           },
           {

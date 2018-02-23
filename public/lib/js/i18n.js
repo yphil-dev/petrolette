@@ -21,47 +21,11 @@ MOB.i18n.translations = {
   "They'll sell the Internet" : { fr: "Ils vendront Internet", ja: "彼らはインターネットを売るだろう", es: "Venderán Internet" },
   "when we're done filling it up" : { fr: "quand on aura fini de le remplir", ja: "私たちがそれを埋めるとき", es: "cuando terminemos de llenarlo" },
 
-
-  "Add" : { fr: "Ajouter", ja: "追加" },
-  "All" : { fr: "Tous", ja: "全て" },
-  "From": { fr: "Du", ja: "から" },
-  "To": { fr: "Au", ja: "まで" },
   "Cancel": { fr: "Annuler", ja: "取り消す", es: "Cancelar" },
-  "Esc": { fr: "Echap", ja: "" },
-  "Canceled" : { fr: "Annulé", ja: "取り消し" },
-  "Close": { fr: "Clôturer", ja: "閉じる" },
-  "Closed": { fr: "Clôturé", ja: "閉じた" },
-  "Comment": { fr: "Commentaire", ja: "" },
-  "Informations": { fr: "Informations", ja: "コメント" },
-  "Complete": { fr: "Terminé", ja: "情報" },
-  "Completed": { fr: "Terminé", ja: "終了" },
-  "Create": { fr: "Créer", ja: "作成" },
-  "Date": { fr: "Date", ja: "日付" },
-  "%1 days": { fr: "%1 jours", ja: "%1 日" },
   "Delete": { fr: "Supprimer", ja: "削除", es: "Eliminar" },
-  "elements" : { fr: "éléments", ja: "データ？要素" },
-  "element" : { fr : "élément", ja: "データ？要素" },
-  "End": { fr: "Fin", ja: "最後" },
-  "Every" : { fr: "Toutes les", ja: "毎日" },
-  "Go": { fr: "Aller", ja: "行く" },
-  "In progress": { fr: "En cours", ja: "進行中" },
-  "Manage": { fr: "Gérer", ja: "管理する" },
-  "Mandatory field" : { fr: "Champ obligatoire", ja: "必須事項" },
   "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
-  "No" : { fr: "Non", ja: "いいえ" },
   "Ok": { fr: "Ok", ja: "Ok", es: "Ok" },
-  "Search": { fr: "Rechercher", ja: "検索" },
-  "Time": { fr: "Heure", ja: "時間" },
-  "Update": { fr: "Modifier", ja: "変更" },
-  "Waiting": { fr: "En attente", ja: "待機中" },
-  "Yes" : { fr: "Oui", ja: "はい" },
-  "Parameters" : { fr: "Paramètres", ja: "パラメーター・要因" },
-  "Configuration" : { fr: "Configuration", ja: "形状" },
-  "Reset password" : { fr: "RAZ mot de passe", ja: "パスワードの変更" },
-  "<fem>Canceled" : { fr: "Annulée", ja: "取り消し" },
-  "<plural>Closed" : { fr: "Clôturés", ja: "終了" },
-  "Support" : { fr: "Assistance", ja: "サポート" },
-  "Message" : { fr: "Message", ja: "メッセージ" },
+  "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
 
   // Petrolette
 
@@ -137,7 +101,10 @@ MOB.i18n.translations = {
 
   "This is a source." : { fr: "Ceci est une source." , ja: "これはソースです", es: "Esta es una fuente." },
   "Click this button to add a group." : { fr: "Cliquez sur ce bouton pour ajouter un groupe." , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo." },
-  "Click this button to add a source." : { fr: "Cliquez sur ce bouton pour ajouter une source." , ja: "ソースを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar una fuente." },
+
+  "Source code" : { fr: "Code source" , ja: "ソースコード", es: "Código fuente" },
+
+  "Click to add a source" : { fr: "Cliquer pour ajouter une source" , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente" },
 
   "Refresh / reload this source." : { fr: "Actualiser / recharger cette source." , ja: "このソースを更新/再読み込みしてください。", es: "Actualiza / recarga esta fuente." },
 
@@ -196,12 +163,13 @@ MOB.i18n.translations = {
   "Help Petrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Petrolette." , ja: "あなたの精神的な日の気分に応じてPetroletteを助けてください", es: "Ayuda a Petrolette de acuerdo con tu estado de ánimo espiritual del día." },
   "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
   "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
-  "Forgot what you are? Reset Petrolette groups & sources" : { fr: "Oublié ce que vous êtes? Re-initialiser Petrolette" , ja: "あなたは何かを忘れましたか？ リセットPetrolette", es: "Olvidó lo que eres? Restablecer Petrolette" },
   "Erase all" : { fr: "Tout effacer" , ja: "すべてを消去する", es: "Borrar todo" },
 
   "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
   "error" : { fr: "erreur", ja: "エラー", es: "error" },
+
+  "Set Pétrolette preferences/options" : { fr: "Définir les préférences / options de Pétrolette", ja: "ペレットの環境設定/オプションを設定する", es: "Establecer las preferencias / opciones de Pétrolette" },
 
   // Dialogues
   "Source: Kill" : { fr: "Source: Supprimer", ja: "フィード：削除", es: "Source: Eliminar" },
