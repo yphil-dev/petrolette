@@ -5,14 +5,15 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $menuButton = $('#menuButton'),
       $helpButton = $('#helpButton'),
       $newSourceButton = $('#newSourceButton'),
-      $loadButton = $("button#fileImport").button(),
-      $fileImportInput = $("input#fileImport").button(),
-      $saveButton = $('#saveTabs').button(),
+      $importButton = $("button#fileImport"),
+      $fileImportInput = $("input#fileImport"),
+      $saveButton = $('#saveTabs'),
       $langMenu = $('select#language'),
-      $help = $('button#help').button(),
-      $donate = $('button#donate').button(),
+      $donateButton = $('button#donate'),
       $slider = $('div#gallerySpeedSlider'),
       $spinner = $('#gallerySpeedSpinner');
+
+  $('button').button();
 
   MOB.sync.attachWidget();
 
@@ -66,25 +67,18 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
     MOB.utilities.translate();
   });
 
-  $help.click(function (event) {
-    event.preventDefault();
-    $overlay.removeClass('visible');
-    $('#tabs').tabs('option', 'active', 0);
-    MOB.utilities.help('ui');
-  });
-
   $helpButton.click(function (event) {
     event.preventDefault();
     $('#tabs').tabs('option', 'active', 0);
     MOB.utilities.help('ui');
   });
 
-  $donate.click(function (event) {
+  $donateButton.click(function (event) {
     event.preventDefault();
     window.open('https://liberapay.com/yPhil/donate', '_blank');
   });
 
-  $loadButton.click(function () {
+  $importButton.click(function () {
     $("input#fileImport").click();
     return false;
   });
