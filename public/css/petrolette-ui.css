@@ -928,10 +928,6 @@ i.dangerous:hover {
   top: 5px;
 }
 
-.topnav > div.menuBarItem:hover {
-  color: var(--ui-color-sec) !important;
-}
-
 #indicatorContainer:hover {
   opacity: 1;
 }
@@ -1042,7 +1038,32 @@ i.dangerous:hover {
 .topnav > div.menuBarItem {
   float: left;
   text-align: center;
-  margin: 0 .3em;
+  margin: 0;
+  padding: 16px 6px;
+  cursor:pointer;
+  /* height:100%; */
+  position: relative;
+  min-width:60px
+}
+
+.topnav > div.menuBarItem > .text {
+  position: relative;
+  z-index: 10;
+}
+
+.topnav > div.menuBarItem > i {
+  color: var(--ui-color-sec);
+  opacity: .2;
+  position: absolute;
+  top: 0;
+  left: 21px;
+  font-size: 32pt;
+  z-index: 5;
+  /* float:left; */
+}
+
+.topnav > div.menuBarItem:hover {
+  background-color: var(--ui-color-sec);
 }
 
 .topnav > div#logoTitle {
@@ -1069,39 +1090,12 @@ i.dangerous:hover {
   flex: 1 0 ;
 }
 
-.topnav > div#logoTitle > div > img {
-  margin: 9px 6px 0 0;
-}
-
-.topnav > div.menuBarItem > i.logoType {
-  font-size: 18pt;
-}
-
-.topnav > div.menuBarItem > div.text {
-  font-size: 8pt;
-  color: #eee;
-}
-
-.topnav > div.menuBarItem > .logoTitle {
+.topnav > div#logoTitle > .logoTitle {
   display:var(--logo-display);
   margin: -6px 0 0 0 !important;
   font-family: 'LobsterRegular';
   font-size: 36pt;
   color: var(--ui-color-pri);
-}
-
-.topnav > div.menuBarItem {
-  cursor:pointer;
-}
-
-.topnav > div#menuButton {
-  transition: all .2s;
-}
-
-.topnav > div.menuBarItem > .logoHandle {
-  /* margin: 0 0 0 5px; */
-  /* font-family: 'LobsterRegular'; */
-  font-size: 29pt;
 }
 
 #betaBadge {
@@ -1139,4 +1133,13 @@ i.dangerous:hover {
   top: 13px;
   font-size: 19px;
   transition: all 0.3s ease;
+}
+
+
+i.huge.icon-petrolette:before {
+  color: var(--ui-color-sec) !important;
+
+  font-style: italic !important;
+  font-size: 525pt;
+  margin: 15px !important;
 }
