@@ -9,8 +9,7 @@
   --color-ter: #fdfae9;
   --color-qua: #29323c;
   --color-danger: #660000;
-}
-
-.arrow {
-  background-image: url("/static/images/feed-toggle-triangle-fff.png") !important;
+  --color-link: #ffffff;
+  --color-link-visited: #B0C4DE;
+  --icon-feed-toggle-arrow: url("/static/images/feed-toggle-triangle-fff.png");
 }

@@ -772,22 +772,18 @@ div.dialog > div.content p.value {
   opacity: 0.6;
 }
 
-.handle,
-#newTabButton a {
-  color: var(--ui-color-pri) !important;
-}
-
 #newTabButton {
-  width: 40px;
   background-color: var(--color-qua);
   text-align: center;
+  width: 40px;
 }
 
 #newTabButton a {
-  font-size: 21.2pt;
-  margin:0;
-  padding:0;
   background-color: var(--color-qua);
+  color: var(--ui-color-pri);
+  font-size: 21.2pt;
+  margin: 0;
+  padding: 0;
   width: 100%;
   /* color: var(--ui-color-pri) !important; */
 }
@@ -842,7 +838,7 @@ li.feed {
 }
 
 li.feed a:link {
-  color: var(--color-pri);
+  color: var(--color-link);
   /* transition: all 1s; */
 }
 
@@ -851,11 +847,17 @@ li.feed a:active {
 }
 
 li.feed a:visited {
-  color: #B0C4DE;
+  color: var(--color-link-visited);
 }
 
-li.feed a:hover {
+li.feed a:hover,
+.feedControl:hover,
+.media:hover {
   color: var(--ui-color-sec);
+}
+
+.feedToggleArrow {
+  background-image: var(--icon-feed-toggle-arrow) !important;;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
@@ -870,47 +872,20 @@ li.feed a:hover {
   border-color: var(--ui-color-sec);
 }
 
-.handle:hover,
-#newTabButton a:hover {
-  opacity: 1;
-  color: var(--ui-color-sec) !important;
-}
-
 button.dangerous:hover {
-  /* border-color: #2B374B !important; */
   background-color: var(--ui-bg-color-danger) !important;
   border: 1px solid var(--ui-color-qua);
 }
 
 i.dangerous:hover {
   color: var(--ui-bg-color-danger) !important;
-  /* color: #2B374B !important; */
-}
-
-.mobHeader > .feedHandle:hover {
-  border-color: var(--ui-color-sec);
-}
-
-.handle:hover,
-#newTabButton a:hover {
-  opacity: 1;
-  color: var(--ui-color-sec) !important;
-}
-
-.feed:hover {
-  /* border: #8b8b8b 1px solid !important; */
-}
-
-.droppableCopy:hover {
-  cursor: copy !important;
-}
-
-.feedControl:hover,
-.media:hover {
-  color: var(--ui-color-sec) !important;
 }
 
 @media (hover: none) {
+
+  a:hover {
+    color: inherit;
+  }
 
   li.feedItem:hover {
     background-color: inherit;
@@ -1030,7 +1005,8 @@ i.dangerous:hover {
 .topnav {
   position:relative;
   z-index: 20;
-  background-color: #333;
+  background-color: var(--ui-color-qua);
+  color: var(--ui-color-sec);
   overflow: hidden;
   height: 45px;
 }
@@ -1043,7 +1019,8 @@ i.dangerous:hover {
   cursor:pointer;
   /* height:100%; */
   position: relative;
-  min-width:60px
+  min-width: 60px;
+  color: var(--ui-color-pri);
 }
 
 .topnav > div.menuBarItem > .text {
@@ -1074,7 +1051,7 @@ i.dangerous:hover {
 .topnav i.icon-petrolette {
   display:block;
   font-size:24pt;
-  margin: 6px !important;
+  margin: 6px 12px 6px 6px !important;
   color: var(--ui-color-sec);
 }
 
