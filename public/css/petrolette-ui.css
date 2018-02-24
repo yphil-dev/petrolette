@@ -1,9 +1,9 @@
 :root {
   --ui-bg-color-pri: #373737;
   --ui-color-pri: #f4f4f4;
-  --ui-color-sec: #7FDBFF;
+  --ui-color-sec: #19B5FE;
   --ui-color-ter: #C0B283;
-  --ui-color-qua: #29323c;
+  --ui-color-qua: #22313F;
 
   --var-header-height: 26px;
   --var-controls-width: 150px;
@@ -305,7 +305,7 @@ fieldset {
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane,
 .handle {
-  background: #29323c;
+  background: var(--ui-color-qua);
 }
 
 .ui-dialog .ui-dialog-buttonpane {
@@ -1052,7 +1052,7 @@ i.dangerous:hover {
 }
 
 .topnav > div.menuBarItem > i {
-  color: var(--ui-color-sec);
+  color: var(--ui-color-qua);
   opacity: .2;
   position: absolute;
   top: 0;
