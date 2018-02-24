@@ -114,7 +114,7 @@ MOB.tab = {
     var $tabCloser = $('<i>')
         .attr('class', 'icon-cancel tabCloser translate dangerous')
         .data('title', MOB.tr('Delete the [%1] tab', name))
-        .attr('title', MOB.tr('Delete the [%1] tab'));
+        .attr('title', MOB.tr('Delete the [%1] tab', name));
 
     var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>')
         .attr('id', 'tab-' + tabIndex)
