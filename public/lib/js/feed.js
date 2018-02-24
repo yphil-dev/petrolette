@@ -123,22 +123,17 @@ MOB.feed = {
 
     $header.hover (
       function() {
-        // $(this).find('.feedControls').slideDown('fast');
-        // $(this).find('.feedControls').show('slide', {direction: 'right'}, 100);
-
-        // $(this).find('.feedControls').animate({'left': '0'}, 1000);
 
         var iconImg = $feedToggle.css('background-image');
 
-        $feedToggle.addClass('arrow');
+        $feedToggle.addClass('feedToggleArrow');
 
         $(this).data('img',iconImg);
+
       },
       function() {
-        // $(this).find('.feedControls').hide('slide', {direction: 'right'}, 600);
-        // $(this).find('.feedControls').animate({'left': '80px'}, 1000);
 
-        $feedToggle.removeClass('arrow');
+        $feedToggle.removeClass('feedToggleArrow');
 
         if (typeof $(this).data('img') !== 'undefined') {
           $feedToggle.css('background-image', $(this).data('img'));
