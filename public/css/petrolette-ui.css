@@ -823,35 +823,28 @@ li.feedItem img:hover {
 }
 
 li.feedItem:hover {
-  /* background-color: var(--bg-color-ter) !important; */
   background-color: var(--bg-color-pri) !important;
 }
 
 li.feed {
-  padding: 0;
-  background-color: var(--bg-color-pri) !important;
-  transition: all .1s ease;
-
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4), -2px -2px 3px 0 rgba(0, 0, 0, 0.7) inset;
+  padding: 0;
+  transition: all .1s ease;
 }
 
 li.feed a:link {
   color: var(--color-link);
-  /* transition: all 1s; */
 }
 
-li.feed a:active {
+li.feed a:active,
+li.feed a:hover,
+.feedControl:hover,
+.media:hover {
   color: var(--ui-color-sec);
 }
 
 li.feed a:visited {
   color: var(--color-link-visited);
-}
-
-li.feed a:hover,
-.feedControl:hover,
-.media:hover {
-  color: var(--ui-color-sec);
 }
 
 .feedToggleArrow {
@@ -890,6 +883,7 @@ i.dangerous:hover {
     color: inherit;
   }
 
+  li.feed a:active,
   li.feed a:hover,
   .feedControl:hover,
   .media:hover {
