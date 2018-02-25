@@ -793,19 +793,16 @@ li.mobTab,
   box-shadow: inset 14px 0px 10px -3px rgba(0,0,0,0.19) !important;
 }
 
-li.ui-tabs-active,
-div.ui-tabs-panel {
-  background-color: var(--bg-color-ter) !important;
-}
-
-li.ui-state-hover:not(.ui-tabs-active) {
-  background-color: var(--bg-color-ter);
-}
-
 i.tabCloser,
 li.ui-tabs-tab a:link,
 li.ui-tabs-tab a:visited {
   color: var(--color-pri) !important;
+}
+
+li.ui-tabs-active,
+li.ui-state-hover:not(.ui-tabs-active),
+div.ui-tabs-panel {
+  background-color: var(--bg-color-ter) !important;
 }
 
 li.ui-tabs-tab a.ui-tabs-anchor:hover,
