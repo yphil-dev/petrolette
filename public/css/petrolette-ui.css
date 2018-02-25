@@ -875,19 +875,19 @@ i.dangerous:hover {
 @media (hover: none) {
 
   a:hover {
-    color: inherit;
+    color: none;
   }
 
   li.feedItem:hover {
-    background-color: inherit;
-    color: inherit;
+    background-color: none;
+    color: none;
   }
 
   li.feed a:active,
   li.feed a:hover,
   .feedControl:hover,
   .media:hover {
-    color: inherit;
+    color: none;
   }
 
 }
@@ -899,10 +899,6 @@ i.dangerous:hover {
 #return-to-top:hover i {
   color: #fff;
   top: 5px;
-}
-
-#indicatorContainer:hover {
-  opacity: 1;
 }
 
 .introjs-tooltip a:hover,
