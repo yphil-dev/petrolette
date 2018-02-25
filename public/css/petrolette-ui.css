@@ -833,7 +833,7 @@ li.feed {
 }
 
 li.feed a:link {
-  color: var(--color-link) !important;
+  color: var(--color-link);
 }
 
 li.feed a:active,
@@ -875,7 +875,7 @@ i.dangerous:hover {
 @media (hover: none) {
 
   a:hover {
-    color: none;
+    color: var(--color-link);
   }
 
   li.feedItem:hover {
