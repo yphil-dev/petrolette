@@ -803,7 +803,8 @@ li.ui-state-hover:not(.ui-tabs-active) {
 }
 
 i.tabCloser,
-li.ui-tabs-tab a:link {
+li.ui-tabs-tab a:link,
+li.ui-tabs-tab a:visited {
   color: var(--color-pri) !important;
 }
 
