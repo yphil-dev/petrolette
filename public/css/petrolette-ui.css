@@ -875,11 +875,11 @@ i.dangerous:hover {
 @media (hover: none) {
 
   a:hover {
-    color: unset;
+    color: inherit;
   }
 
   li.feedItem:hover {
-    background-color: unset;
+    background-color: inherit;
     color: inherit;
   }
 
@@ -887,7 +887,7 @@ i.dangerous:hover {
   li.feed a:hover,
   .feedControl:hover,
   .media:hover {
-    color: unset;
+    color: inherit;
   }
 
 }
