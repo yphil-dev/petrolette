@@ -893,6 +893,12 @@ i.dangerous:hover {
     color: inherit;
   }
 
+  li.feed a:hover,
+  .feedControl:hover,
+  .media:hover {
+    color: inherit;
+  }
+
 }
 
 #return-to-top:hover {
