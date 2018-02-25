@@ -880,14 +880,14 @@ i.dangerous:hover {
 
   li.feedItem:hover {
     background-color: none;
-    color: none;
+    color: var(--color-link);
   }
 
   li.feed a:active,
   li.feed a:hover,
   .feedControl:hover,
   .media:hover {
-    color: none;
+    color: var(--color-link);
   }
 
 }
