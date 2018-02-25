@@ -833,7 +833,7 @@ li.feed {
 }
 
 li.feed a:link {
-  color: var(--color-link);
+  color: var(--color-link) !important;
 }
 
 li.feed a:active,
