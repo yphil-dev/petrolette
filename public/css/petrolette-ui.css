@@ -1139,6 +1139,16 @@ i.dangerous:hover {
   margin: -6px 0 0 0 !important;
 }
 
+.topnav > div#logoTitle > .logoTitle > a:link,
+.topnav > div#logoTitle > .logoTitle > a:visited {
+  color: var(--ui-color-pri) !important;
+  transition: all 0.3s linear;
+}
+
+.topnav > div#logoTitle > .logoTitle > a:hover {
+  color: var(--ui-color-sec) !important;
+}
+
 #betaBadge {
   background: var(--ui-color-danger);
   border-radius: 10%;
