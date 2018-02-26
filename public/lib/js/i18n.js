@@ -27,7 +27,7 @@ MOB.i18n.translations = {
   "Ok": { fr: "Ok", ja: "Ok", es: "Ok" },
   "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
 
-  // Petrolette
+  // Pétrolette
 
   "Whoops, no sources!" : { fr: "Oups, pas de sources!", ja: "うわー、ソースはありません！", es: "¡Ups, sin fuentes!" },
   "Click here to add some." : { fr: "Cliquez ici pour en ajouter.", ja: "いくつか追加するにはここをクリックしてください。", es: "Haga clic aquí para agregar algunos." },
@@ -49,7 +49,7 @@ MOB.i18n.translations = {
   "Slideshow speed" : { fr: "Vitesse du diaporama" , ja: "スライドショーのスピード", es: "Velocidad de la presentación" },
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
-  "Petrolette?" : { fr: "Pétrolette ?" , ja: "Petrolette?", es: "¿Petrolette?" },
+  "Pétrolette?" : { fr: "Pétrolette ?" , ja: "Pétrolette?", es: "¿Pétrolette?" },
 
   "English" : { fr: "English" , ja: "English", es: "English" },
   "Français" : { fr: "Français" , ja: "Français", es: "Français" },
@@ -104,7 +104,7 @@ MOB.i18n.translations = {
 
   "Source code" : { fr: "Code source" , ja: "ソースコード", es: "Código fuente" },
 
-  "Click to add a source" : { fr: "Cliquer pour ajouter une source" , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente" },
+  "Click to add a source." : { fr: "Cliquer pour ajouter une source" , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente" },
 
   "Refresh / reload this source." : { fr: "Actualiser / recharger cette source." , ja: "このソースを更新/再読み込みしてください。", es: "Actualiza / recarga esta fuente." },
 
@@ -123,16 +123,28 @@ MOB.i18n.translations = {
 
   "Add a source or a group." : { fr: "Ajouter une source ou un groupe." , ja: "ソースまたはグループを追加する", es: "Agrega una fuente o un grupo." },
 
-  "Add a group" : { fr: "Ajouter un groupe" , ja: "グループを追加します", es: "Agrega un grupo" },
+  "Add a new group" : { fr: "Ajouter un nouveau groupe" , ja: "グループを追加します", es: "Agrega un grupo nuevo" },
 
   "Add a source" : { fr: "Ajouter une source" , ja: "ソースを追加します", es: "Agrega una fuente" },
 
-  "What is Petrolette?" : { fr: "Qu'est-ce que Petrolette?" , ja: "Petroletteとは何ですか？", es: "¿Qué es Petrolette?" },
-  "How do I use it?" : { fr: "Comment ça marche ?" , ja: "どうやって使うの？", es: "¿Como lo uso?" },
-  "Petrolette is your news reader. Find new sources, sort them in categories, you are on the in-ter-net." : { fr: "Petrolette est un lecteur de sources. Trouver de nouvelles sources, les trier dans les catégories, c'est l'in-ter-net." , ja: "Petroletteはあなたのニュースリーダーです。 新しいソースを見つけ、カテゴリで並べ替え、あなたはインターネット上にいます。", es: "Petrolette es tu lector de noticias. Encuentra nuevas fuentes, clasifícalas en categorías, estás en la red interna." },
-  "Learn how to use <a id='aide-un' href='#'>the groups and the sources, and Petrolette in general." : { fr: "Apprenez à utiliser <a id='aide-un' href='#'>les groupes et les sources</a>, et Petrolette en général." , ja: "タブとソース、および一般的なPetroletteの使い方を学んでください。", es: "Aprenda cómo usar <a id='aide-un' href='#'>las grupos y las fuentes</a>, y Petrolette en general." },
-  "Learn how to use" : { fr: "Apprenez à utiliser" , ja: "タブとソース、および一般的なPetroletteの使い方を学んでください。", es: "Aprenda cómo usar" },
-  "and Petrolette in general." : { fr: "et Petrolette en général." , ja: "Petroletteの使い方を学んでください。", es: "y Petrolette en general." },
+  "What is Pétrolette?" : { fr: "Qu'est-ce que Pétrolette?" , ja: "Pétroletteとは何ですか？", es: "¿Qué es Pétrolette?" },
+  "How does it work?" : { fr: "Comment ça marche ?" , ja: "どのように機能するのですか？", es: "¿Como funciona?" },
+
+  "Pétrolette uses a time-tested technology" : { fr: "Pétrolette fonctionne sur une technologie éprouvée" , ja: "Pétroletteは時間を守った技術を使用しています", es: "Pétrolette utiliza una tecnología probada" },
+
+  "Create sources and organize them into groups." : { fr: "Créez des sources et organisez-les en groupes." , ja: "ソースを作成し、それらをグループに編成する。", es: "Crea fuentes y organízalas en grupos." },
+
+  "What is a group?" : { fr: "Qu'est-ce qu'un groupe?" , ja: "グループとは何ですか？", es: "¿Qué es un grupo?" },
+
+  "What is a source?" : { fr: "Qu'est-ce qu'une source?" , ja: "情報源とは何ですか？", es: "¿Qué es una fuente?" },
+
+  "How do I use it?" : { fr: "Comment l'utiliser ?" , ja: "どうやって使うの？", es: "¿Como lo uso?" },
+
+  "Pétrolette is a news reader focused on preventing anyone to know what you are reading." : { fr: "Pétrolette est un lecteur d'actualités qui protège votre vie privée en empéchant quiconque de savoir ce que vous lisez. " , ja: "Pétroletteは、あなたが読んでいるものを誰かが知るのを防ぐことに焦点を当てたニュースリーダーです。", es: "Pétrolette es un lector de noticias enfocado en evitar que cualquiera sepa lo que está leyendo." },
+
+  "Learn how to use <a id='aide-un' href='#'>the groups and the sources, and Pétrolette in general." : { fr: "Apprenez à utiliser <a id='aide-un' href='#'>les groupes et les sources</a>, et Pétrolette en général." , ja: "タブとソース、および一般的なPétroletteの使い方を学んでください。", es: "Aprenda cómo usar <a id='aide-un' href='#'>las grupos y las fuentes</a>, y Pétrolette en general." },
+  "Learn how to use" : { fr: "Apprenez à utiliser" , ja: "タブとソース、および一般的なPétroletteの使い方を学んでください。", es: "Aprenda cómo usar" },
+  "and Pétrolette in general." : { fr: "et Pétrolette en général." , ja: "Pétroletteの使い方を学んでください。", es: "y Pétrolette en general." },
   "the groups and the sources" : { fr: "les groupes et les sources" , ja: "タブとソース", es: "las grupos y las fuentes" },
 
 
@@ -155,12 +167,12 @@ MOB.i18n.translations = {
   "If this is set, when you drag & drop one or more source(s) in a group, said group opens" : { fr: "Ouvrir le groupe où une source est déposée" , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir grupo en donde se pone un canal" },
 
   // Messages d'erreurs
-  "View Petrolette according to the time of day." : { fr: "Voir Petrolette selon l'heure de la journée." , ja: "時刻に応じてPetroletteを表示する", es: "Ver Petrolette según la hora del día." },
+  "View Pétrolette according to the time of day." : { fr: "Voir Pétrolette selon l'heure de la journée." , ja: "時刻に応じてPétroletteを表示する", es: "Ver Pétrolette según la hora del día." },
 
-  "Reset Petrolette according to your political mood of the week." : { fr: "Réinitialiser Petrolette selon votre humeur politique de la semaine." , ja: "今週のあなたの政治的な気分に合わせてPetroletteをリセットする", es: "Restablece Petrolette según tu estado de ánimo político de la semana." },
+  "Reset Pétrolette according to your political mood of the week." : { fr: "Réinitialiser Pétrolette selon votre humeur politique de la semaine." , ja: "今週のあなたの政治的な気分に合わせてPétroletteをリセットする", es: "Restablece Pétrolette según tu estado de ánimo político de la semana." },
 
   "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
-  "Help Petrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Petrolette." , ja: "あなたの精神的な日の気分に応じてPetroletteを助けてください", es: "Ayuda a Petrolette de acuerdo con tu estado de ánimo espiritual del día." },
+  "Help Pétrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Pétrolette." , ja: "あなたの精神的な日の気分に応じてPétroletteを助けてください", es: "Ayuda a Pétrolette de acuerdo con tu estado de ánimo espiritual del día." },
   "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
   "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
   "Erase all" : { fr: "Tout effacer" , ja: "すべてを消去する", es: "Borrar todo" },
