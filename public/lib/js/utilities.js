@@ -85,12 +85,16 @@ MOB.utilities = {
             intro: MOB.tr('Click on the current/selected group tab to change its name and position.')
           },
           {
+            element: '#newTabButton',
+            intro: MOB.tr('Add a new group')
+          },
+          {
             element: 'li.feed',
             intro: MOB.tr('This is a source.')
           },
           {
             element: 'div#newSourceButton',
-            intro: MOB.tr('Click this button to add a source.')
+            intro: MOB.tr('Click to add a source.')
           },
           {
             element: '.mobFeedRefresh',
@@ -123,7 +127,7 @@ MOB.utilities = {
         steps: [
           {
             element: 'input#feedGuess',
-            intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="translate rssDocLink" data-content="Feed" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('source') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a source from your search query.">' + MOB.tr('Heck, enter anything, and Pétrolette will build a source from your search query.') + '</span>',
+            intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + MOB.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="rssDocLink" href="https://' + MOB.language + '.wikipedia.org/wiki/RSS">' + MOB.tr('source') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a source from your search query.">' + MOB.tr('Heck, enter anything, and Pétrolette will build a source from your search query.') + '</span>',
             position: 'bottom'
           },
           {
