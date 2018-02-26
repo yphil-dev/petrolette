@@ -81,9 +81,23 @@ body {
 }
 
 html,
-.ui-widget-content,
 body {
   color: var(--color-pri) !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ui-color-sec) !important;
+}
+
+.ui-widget-content:not(input) {
+  color: var(--ui-color-pri) !important;
+}
+
+.ui-widget-content input {
+  color: #454545 !important;
 }
 
 ul {
@@ -104,6 +118,18 @@ i.feedControl:hover,
 a:active,
 a:hover {
   color: var(--ui-color-sec) !important;
+}
+
+.rs-button:hover {
+  border-color: var(--ui-color-sec) !important;
+}
+
+.rs-button.rs-sync:hover svg {
+  fill: var(--ui-color-sec) !important;
+}
+
+.rs-button.rs-disconnect:hover svg {
+  fill: var(--ui-color-danger) !important;
 }
 
 .spin {
@@ -615,7 +641,7 @@ div.dialog > div.content p {
 
 div.dialog > div.content p.name {
   font-size: .5em;
-  color: var(--ui-color-ter) !important;
+  font-weight: bold;
 }
 
 div.dialog > div.content p.value {
@@ -997,40 +1023,19 @@ i.dangerous:hover {
 }
 
 /* Gallery */
-
 .fancybox-thumbs > ul > li::before {
   border: 4px solid var(--ui-color-sec) !important;
 }
 
 #indicatorContainer {
-
+  bottom: 2em;
   color: var(--ui-color-sec) !important;
-
   cursor:pointer;
-  transition: opacity .5s;
   opacity: .5;
   position: fixed;
-  bottom: 2em;
   right: 2em;
+  transition: opacity .5s;
 }
-
-/* Rs Widget */
-
-/* .rs-widget { */
-/*   background-color: var(--ui-color-qua) !important; */
-/*   color: var(--ui-color-pri) !important; */
-/*   box-shadow: none !important; */
-/* } */
-
-/* #remotestorage-widget { */
-/*   background-color: var(--ui-color-qua) !important; */
-
-/*   position: absolute; */
-/*   top: 0; */
-/*   right: 0; */
-
-/*   /\* float:right; *\/ */
-/* } */
 
 #remotestorage-widget {
   color: var(--ui-bg-color-pri) !important;
@@ -1055,7 +1060,6 @@ i.dangerous:hover {
 }
 
 /* MenuBar */
-/* Add a black background color to the top navigation */
 .topnav {
   position:relative;
   z-index: 20;
@@ -1066,15 +1070,14 @@ i.dangerous:hover {
 }
 
 .topnav > div.menuBarItem {
-  float: left;
-  text-align: center;
-  margin: 0;
-  padding: 16px 6px;
-  cursor:pointer;
-  /* height:100%; */
-  position: relative;
-  min-width: 60px;
   color: var(--ui-color-pri);
+  cursor:pointer;
+  float: left;
+  margin: 0;
+  min-width: 60px;
+  padding: 16px 6px;
+  position: relative;
+  text-align: center;
 }
 
 .topnav > div.menuBarItem > .text {
@@ -1084,13 +1087,12 @@ i.dangerous:hover {
 
 .topnav > div.menuBarItem > i {
   color: var(--ui-color-qua);
+  font-size: 32pt;
+  left: 21px;
   opacity: .2;
   position: absolute;
   top: 0;
-  left: 21px;
-  font-size: 32pt;
   z-index: 5;
-  /* float:left; */
 }
 
 .topnav > div.menuBarItem:hover {
@@ -1122,55 +1124,54 @@ i.dangerous:hover {
 }
 
 .topnav > div#logoTitle > .logoTitle {
+  color: var(--ui-color-pri);
   display:var(--logo-display);
-  margin: -6px 0 0 0 !important;
   font-family: 'LobsterRegular';
   font-size: 36pt;
-  color: var(--ui-color-pri);
+  margin: -6px 0 0 0 !important;
 }
 
 #betaBadge {
-  display:var(--logo-display);
-  position:absolute;
-  opacity: .8;
-  font-size:9pt;
-  top: 22px;
-  right: 60px;
   background: var(--ui-color-danger);
-  color: var(--ui-color-pri);
-  padding: 2px;
   border-radius: 10%;
+  color: var(--ui-color-pri);
+  display:var(--logo-display);
+  font-size:9pt;
+  opacity: .8;
+  padding: 2px;
+  position:absolute;
+  right: 60px;
+  top: 22px;
 }
 
 #return-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
   background: rgba(0, 0, 0, 0.5);
-  width: 50px;
-  height: 50px;
-  display: block;
-  text-decoration: none;
   border-radius: 35px;
+  bottom: 20px;
+  display: block;
   display: none;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  text-decoration: none;
   transition: all 0.3s ease;
+  width: 50px;
 }
 
 #return-to-top i {
   color: #fff;
+  font-size: 19px;
+  left: 16px;
   margin: 0;
   position: relative;
-  left: 16px;
   top: 13px;
-  font-size: 19px;
   transition: all 0.3s ease;
 }
 
 
 i.huge.icon-petrolette:before {
   color: var(--ui-color-sec) !important;
-
-  font-style: italic !important;
   font-size: 525pt;
+  font-style: italic !important;
   margin: 15px !important;
 }

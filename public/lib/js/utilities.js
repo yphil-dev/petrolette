@@ -85,6 +85,10 @@ MOB.utilities = {
             intro: MOB.tr('Click on the current/selected group tab to change its name and position.')
           },
           {
+            element: '#newTabButton',
+            intro: MOB.tr('Add a new group')
+          },
+          {
             element: 'li.feed',
             intro: MOB.tr('This is a source.')
           },

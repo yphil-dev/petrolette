@@ -147,6 +147,12 @@ MOB.dialog = {
 
           $('.ui-widget-overlay').on('click', function() {
             MOB.dialog.kill($dialog);
+
+            if (isNewFeed) {
+              $feed.hide('fade', 1000, function() {
+                $feed.remove();
+              });
+            }
           });
 
 

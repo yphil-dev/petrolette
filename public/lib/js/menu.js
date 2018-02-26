@@ -3,7 +3,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   var $menu = $(this),
       $overlay = $('#overlay'),
       $menuButton = $('#menuButton'),
-      $helpButton = $('#helpButton'),
+      $helpButton = $('.helpButton'),
       $newSourceButton = $('#newSourceButton'),
       $sourceCodeButton = $('button#sourceCode'),
       $importButton = $("button#fileImport"),
@@ -35,6 +35,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   $newSourceButton.click(function() {
     var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+    $overlay.removeClass('visible');
+    $menu.removeClass('expanded');
     MOB.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
   });
 
