@@ -1095,6 +1095,7 @@ i.dangerous:hover {
   transition: all 0.3s linear;
 }
 
+
 .topnav > div.menuBarItem:hover .text {
   /* display: none; */
   visibility: hidden;
