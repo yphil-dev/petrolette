@@ -929,11 +929,9 @@ i.dangerous:hover {
   color: var(--color-pri);
 }
 
-/* IntroJS (help tooltips) */
-
-.introjs-tooltip a:link,
-.introjs-tooltip a:visited {
-  color: var(--ui-color-pri) !important;
+.introjs-bullets ul li a.active,
+.introjs-bullets ul li a:hover {
+  background: var(--ui-color-sec) !important;
 }
 
 /* Gallery */
