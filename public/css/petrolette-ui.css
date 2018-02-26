@@ -1095,7 +1095,6 @@ i.dangerous:hover {
   transition: all 0.3s linear;
 }
 
-
 .topnav > div.menuBarItem:hover .text {
   /* display: none; */
   visibility: hidden;
@@ -1186,12 +1185,4 @@ i.dangerous:hover {
   position: relative;
   top: 13px;
   transition: all 0.3s ease;
-}
-
-
-i.huge.icon-petrolette:before {
-  color: var(--ui-color-sec) !important;
-  font-size: 525pt;
-  font-style: italic !important;
-  margin: 15px !important;
 }
