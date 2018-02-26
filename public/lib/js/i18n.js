@@ -127,16 +127,16 @@ MOB.i18n.translations = {
 
   "Add a source" : { fr: "Ajouter une source" , ja: "ソースを追加します", es: "Agrega una fuente" },
 
-  "What is Pétrolette?" : { fr: "Qu'est-ce que Pétrolette?" , ja: "Pétroletteとは何ですか？", es: "¿Qué es Pétrolette?" },
+  "What exactly is Pétrolette?" : { fr: "Pétrolette, c'est quoi au juste?" , ja: "Pétroletteとは何ですか？", es: "¿Qué es Pétrolette?" },
   "How does it work?" : { fr: "Comment ça marche ?" , ja: "どのように機能するのですか？", es: "¿Como funciona?" },
 
   "Pétrolette uses a time-tested technology" : { fr: "Pétrolette fonctionne sur une technologie éprouvée" , ja: "Pétroletteは時間を守った技術を使用しています", es: "Pétrolette utiliza una tecnología probada" },
 
   "Create sources and organize them into groups." : { fr: "Créez des sources et organisez-les en groupes." , ja: "ソースを作成し、それらをグループに編成する。", es: "Crea fuentes y organízalas en grupos." },
 
-  "What is a group?" : { fr: "Qu'est-ce qu'un groupe?" , ja: "グループとは何ですか？", es: "¿Qué es un grupo?" },
+  "What is a group?" : { fr: "Qu'est-ce qu'un groupe ?" , ja: "グループとは何ですか？", es: "¿Qué es un grupo?" },
 
-  "What is a source?" : { fr: "Qu'est-ce qu'une source?" , ja: "情報源とは何ですか？", es: "¿Qué es una fuente?" },
+  "What is a source?" : { fr: "Qu'est-ce qu'une source ?" , ja: "情報源とは何ですか？", es: "¿Qué es una fuente?" },
 
   "How do I use it?" : { fr: "Comment l'utiliser ?" , ja: "どうやって使うの？", es: "¿Como lo uso?" },
 
