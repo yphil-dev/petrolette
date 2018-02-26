@@ -1092,6 +1092,7 @@ i.dangerous:hover {
   position: absolute;
   top: 0;
   z-index: 5;
+  transition: all 0.3s linear;
 }
 
 .topnav > div.menuBarItem:hover .text {
@@ -1137,6 +1138,16 @@ i.dangerous:hover {
   font-family: 'LobsterRegular';
   font-size: 36pt;
   margin: -6px 0 0 0 !important;
+}
+
+.topnav > div#logoTitle > .logoTitle > a:link,
+.topnav > div#logoTitle > .logoTitle > a:visited {
+  color: var(--ui-color-pri) !important;
+  transition: all 0.3s linear;
+}
+
+.topnav > div#logoTitle > .logoTitle > a:hover {
+  color: var(--ui-color-sec) !important;
 }
 
 #betaBadge {
