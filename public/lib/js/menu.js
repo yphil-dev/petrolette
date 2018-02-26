@@ -5,6 +5,7 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
       $menuButton = $('#menuButton'),
       $helpButton = $('#helpButton'),
       $newSourceButton = $('#newSourceButton'),
+      $sourceCodeButton = $('button#sourceCode'),
       $importButton = $("button#fileImport"),
       $fileImportInput = $("input#fileImport"),
       $saveButton = $('#saveTabs'),
@@ -17,17 +18,22 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
 
   MOB.sync.attachWidget();
 
-  $menuButton.click(function () {
+  $menuButton.click(function() {
     $overlay.toggleClass('visible');
     $menu.toggleClass('expanded');
   });
 
-  $overlay.click(function () {
+  $sourceCodeButton.click(function(event) {
+    event.preventDefault();
+    window.open('https://framagit.org/yphil/petrolette');
+  });
+
+  $overlay.click(function() {
     $(this).removeClass('visible');
     $menu.removeClass('expanded');
   });
 
-  $newSourceButton.click(function () {
+  $newSourceButton.click(function() {
     var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
     MOB.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
   });
