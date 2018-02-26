@@ -1089,14 +1089,22 @@ i.dangerous:hover {
   color: var(--ui-color-qua);
   font-size: 32pt;
   left: 21px;
-  opacity: .2;
   position: absolute;
   top: 0;
   z-index: 5;
 }
 
+.topnav > div.menuBarItem:hover .text {
+  /* display: none; */
+  visibility: hidden;
+}
+
 .topnav > div.menuBarItem:hover {
   background-color: var(--ui-color-sec);
+}
+
+.topnav > div.menuBarItem:hover i {
+  color: var(--ui-color-pri) !important;
 }
 
 .topnav > div#logoTitle {
