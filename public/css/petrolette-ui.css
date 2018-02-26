@@ -1092,6 +1092,7 @@ i.dangerous:hover {
   position: absolute;
   top: 0;
   z-index: 5;
+  transition: all 0.3s linear;
 }
 
 .topnav > div.menuBarItem:hover .text {
