@@ -70,7 +70,8 @@ $('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', fun
   $helpButton.click(function (event) {
     event.preventDefault();
     $('#tabs').tabs('option', 'active', 0);
-    MOB.utilities.help('ui');
+    // MOB.utilities.help('ui');
+    MOB.dialog.help();
   });
 
   $donateButton.click(function (event) {

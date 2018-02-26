@@ -8,8 +8,8 @@
   --color-sec: #dddddd;
   --color-ter: #fdfae9;
   --color-qua: #29323c;
+  --color-qui: #B0C4DE; /* visited links */
   --color-danger: #660000;
   --color-link: #ffffff;
-  --color-link-visited: #B0C4DE;
   --icon-feed-toggle-arrow: url("/static/images/feed-toggle-triangle-fff.png");
 }

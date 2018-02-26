@@ -50,38 +50,35 @@
   }
 }
 
-/* * { */
-/*   box-sizing: border-box; */
-/*   margin:0; */
-/*   padding:0; */
-/* } */
-
 [class^="icon-"]::before, [class*=" icon-"]::before {
-  margin:0;
   display:initial;
+  margin:0;
 }
 
 /* Petrolette */
 body {
-  /* font-size:.8em !important; */
-  margin:0 !important;
+  background-color: var(--bg-color-ter);
   font-family: Arial,Helvetica,sans-serif;
-}
-
-.visible {
-  display:initial !important;
+  margin:0;
 }
 
 html,
-body,
-main {
-  background-color: var(--bg-color-ter) !important;
+.ui-widget-content,
+body {
   color: var(--color-pri) !important;
 }
 
-#gallerySpeedSlider,
-#feedLimit {
-  margin-right: 0;
+a:link {
+  color: var(--color-pri) !important;
+}
+
+a:visited {
+  color: var(--color-qui) !important;
+}
+
+a:active,
+a:hover {
+  color: var(--ui-color-sec) !important;
 }
 
 @font-face {
@@ -99,18 +96,19 @@ main {
   font-style: normal;
 }
 
-.div-fake-hidden {
+#gallerySpeedSlider,
+#feedLimit {
+  margin-right: 0;
+}
+
+.visible {
+  display:initial !important;
+}
+
+.preloadHiddenDiv {
   width:0px;
   height:0px;
   overflow:hidden;
-}
-
-.LobsterRegular {
-  font-family: 'LobsterRegular';
-}
-
-.BebasNeueRegular {
-  font-family: 'BebasNeueRegular';
 }
 
 input {
@@ -832,21 +830,6 @@ li.feed {
   transition: all .1s ease;
 }
 
-li.feed a:link {
-  color: var(--color-link);
-}
-
-li.feed a:active,
-li.feed a:hover,
-.feedControl:hover,
-.media:hover {
-  color: var(--ui-color-sec);
-}
-
-li.feed a:visited {
-  color: var(--color-link-visited);
-}
-
 .feedToggleArrow {
   background-image: var(--icon-feed-toggle-arrow) !important;;
 }
@@ -932,6 +915,11 @@ i.dangerous:hover {
 .introjs-bullets ul li a.active,
 .introjs-bullets ul li a:hover {
   background: var(--ui-color-sec) !important;
+}
+
+.ui-widget-content a:visited,
+.introjs-tooltip a:visited {
+  color: var(--color-qui);
 }
 
 /* Gallery */
