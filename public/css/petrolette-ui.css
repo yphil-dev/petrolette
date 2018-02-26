@@ -83,17 +83,17 @@ a:hover {
 
 @font-face {
   font-family: LobsterRegular;
+  font-style: normal;
+  font-weight: normal;
   src: url('/static/font/Lobster.otf') format("opentype");
   src: url('/static/font/Lobster.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 @font-face {
   font-family: BebasNeueRegular;
-  src: url('/static/font/BebasNeue.otf') format("opentype");
-  font-weight: normal;
   font-style: normal;
+  font-weight: normal;
+  src: url('/static/font/BebasNeue.otf') format("opentype");
 }
 
 #gallerySpeedSlider,
@@ -106,9 +106,9 @@ a:hover {
 }
 
 .preloadHiddenDiv {
-  width:0px;
   height:0px;
   overflow:hidden;
+  width:0px;
 }
 
 input {
@@ -116,33 +116,19 @@ input {
   padding: .4em;
 }
 
-.notifyjs-bootstrap-base {
-  background-color: var(--bg-color-sec) !important;
-  border-color: var(--bg-color-ter) !important;
-  text-shadow: none !important;
-}
-
-.notifyjs-bootstrap-base.notifyjs-bootstrap-success {
-  color: var(--ui-color-success) !important;
-}
-
-.notifyjs-bootstrap-base.notifyjs-bootstrap-error {
-  color: var(--ui-color-danger) !important;
-}
-
 input#feedGuess {
   margin-right: .4em;
 }
 
 .deadCenter {
-  width: 300px;
   height: 300px;
-  position: absolute;
   left: 50%;
-  top: 50%;
   margin-left: -150px;
   margin-top: -150px;
+  position: absolute;
   text-align:center;
+  top: 50%;
+  width: 300px;
 }
 
 .hidden {

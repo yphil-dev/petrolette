@@ -1,10 +1,3 @@
-html {
-  font-size: 100%;
-  overflow-y: scroll;
-  /* -webkit-text-size-adjust: 100%; */
-  /* -ms-text-size-adjust: 100%; */
-}
-
 /* Bootstrapping */
 ul {
   list-style-type: none;
@@ -78,40 +71,6 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
   margin:0 !important;
 }
 
-#tabs li .ui-icon-close {
-  /* float: left; */
-  /* margin: 0.4em 0.2em 0 0; */
-  cursor: pointer;
-}
-
-.newFeedButton {
-  position: absolute;
-  text-align: center;
-  cursor: pointer;
-  /* float: right; */
-  top: 0px;
-  right: .2em;
-  width: 78px;
-  height: 78px;
-}
-
-.newFeedButton > p {
-  margin: 6px -92px 5px auto;
-  vertical-align:middle;
-}
-
-.newFeedButton > p > span.plus {
-  font-weight: normal;
-}
-
-.newFeedButton > p > span.text {
-  position: relative;
-  top: 5px;
-  opacity: 0.1;
-  font-size: 1em;
-  font-weight: bold;
-}
-
 /* Feed */
 ul.tabSort {
   padding: 0 .2em .2em;
@@ -151,7 +110,7 @@ li.feed {
   /* padding: 5px; */
 }
 
-.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+.ui-tabs-anchor {
   cursor: pointer !important;
 }
 
@@ -210,54 +169,6 @@ li.feedItem {
 .ui-widget-content,
 .ui-widget-header {
   border: none !important;
-}
-
-.introjs-helperLayer {
-  background-color: rgba(255,255,255,.1) !important;
-}
-
-.introjs-helperNumberLayer {
-  position: absolute !important;
-  top: -16px !important;
-  left: -9px !important;
-  z-index: 9999999999 !important;
-  padding: 2px !important;
-  font-family: Arial, verdana, tahoma !important;
-  font-size: 13px !important;
-  font-weight: bold !important;
-  color: #fff !important;
-  background: var(--ui-color-sec) !important;
-  width: 20px !important;
-  box-shadow: 0 1px 1px rgba(0,0,0,.35) !important;
-  height: 20px !important;
-  text-align: center !important;
-  line-height: 20px !important;
-  border: 2px solid var(--ui-color-sec) !important;
-  border-radius: 0 !important;
-}
-
-.introjs-helperNumberLayer::after {
-  content: "" !important;
-  width: 0 !important;
-  height: 0 !important;
-  position: absolute !important;
-  left: -3px !important;
-  bottom: -10px !important;
-  border: 4px solid transparent !important;
-  border-right-color: #900 !important;
-  border-top-color: #900 !important;
-}
-
-div.wiki {
-  float:right;
-}
-
-div.wiki i:hover {
-  color: green;
-}
-
-i.feedIcon {
-  background-image:url("/static/images/feed-generic-rss.png");
 }
 
 #loadRadial {
