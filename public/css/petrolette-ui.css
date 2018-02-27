@@ -1133,7 +1133,7 @@ button.dangerous:hover {
   top: 22px;
 }
 
-#return-to-top {
+#scrollToTop {
   background: var(--ui-color-qua);
   border-radius: 35px;
   bottom: 20px;
@@ -1149,7 +1149,7 @@ button.dangerous:hover {
   width: 50px;
 }
 
-#return-to-top i {
+#scrollToTop i {
   color: var(--ui-color-pri);
   font-size: 19px;
   left: 18px;
@@ -1159,11 +1159,11 @@ button.dangerous:hover {
   transition: all 0.3s ease;
 }
 
-#return-to-top:hover {
+#scrollToTop:hover {
   opacity: 1;
 }
 
-#return-to-top:hover i {
+#scrollToTop:hover i {
   color: var(--ui-color-sec);
   top: 5px;
 }
