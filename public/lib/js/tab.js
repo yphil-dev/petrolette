@@ -81,7 +81,7 @@ MOB.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add a group" title="Add a group">'),
+    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add a new group" title="Add a new group">'),
         $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
           e.stopImmediatePropagation();
 
@@ -170,8 +170,8 @@ MOB.tab = {
 
     var $thisTab = $('<li>')
         .attr('class', 'modal mobTab translate')
-        .data('title', MOB.tr('%1 | Click to rename, drag to re-order', name))
-        .attr('title', MOB.tr('%1 | Click to rename, drag to re-order', name));
+        .data('title', MOB.tr('%1 | Click to rename, drag to move', name))
+        .attr('title', MOB.tr('%1 | Click to rename, drag to move', name));
 
     $thisTabLink.appendTo($thisTab);
     $tabCloser.appendTo($thisTab);
