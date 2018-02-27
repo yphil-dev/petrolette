@@ -187,12 +187,6 @@ MOB.utilities = {
         ]
       });
 
-      dialog.setOption('overlayOpacity', 0);
-      menu.setOption('overlayOpacity', 0.2);
-      ui.setOption('overlayOpacity', 0.2);
-
-      ui.setOption('showStepNumbers', false);
-
       ui.setOption('prevLabel', MOB.tr('Prev'));
       ui.setOption('nextLabel', MOB.tr('Next'));
       ui.setOption('skipLabel', MOB.tr('Skip'));
@@ -203,11 +197,12 @@ MOB.utilities = {
       dialog.setOption('skipLabel', MOB.tr('Skip'));
       dialog.setOption('doneLabel', MOB.tr('Got it!'));
 
-      ui.setOption('hidePrev', true);
       ui.setOption('hideNext', true);
-      ui.setOption('exitOnEsc', true);
-      ui.setOption('exitOnOverlayClick', true);
-      ui.setOption('scrollToElement', true);
+      ui.setOption('hidePrev', true);
+      ui.setOption('showStepNumbers', false);
+
+      dialog.setOption('hideNext', true);
+      dialog.setOption('hidePrev', true);
 
       if (type === 'menu') {
         dialog.exit();
