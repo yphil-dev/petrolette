@@ -35,7 +35,7 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          $('#aide-un').on('click', function() {
+          $('#aide-un').button().on('click', function() {
             MOB.dialog.kill($dialog);
             $('#overlay').removeClass('visible');
             $('#menu').removeClass('expanded');
