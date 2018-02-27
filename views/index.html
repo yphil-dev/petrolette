@@ -114,9 +114,7 @@
       <div id="tabs" style="background-color:transparent;display:none;">
         <ul id="tabUl"></ul>
       </div>
-
       <div id="mobDialogs"></div>
-
     </main>
 
     <footer>
@@ -135,15 +133,11 @@
      $(document).ready(function() {
 
        $.getScript('/static/lib/js/init.js');
-
        $("#mobStyle").attr({href : '/static/css/themes/' + MOB.prefs.readConfig('theme') + '.css'});
-
-       console.log('COLS: ', MOB.prefs.readConfig('columns'));
 
      });
 
     </script>
 
   </body>
-
 </html>
