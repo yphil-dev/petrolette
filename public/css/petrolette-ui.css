@@ -953,7 +953,7 @@ button.dangerous:hover {
   li.feed a:hover,
   .feedControl:hover,
   .media:hover {
-    color: initial !important;
+    color: none !important;
   }
 
 }
