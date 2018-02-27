@@ -207,11 +207,10 @@ MOB.feed = {
     if (feedUrl.indexOf('http') !== 0) {
 
       console.info('bad URL: (%s)', feedUrl);
-      $header.addClass('ui-state-error');
 
       $feedTitle
         .text(MOB.tr("Error"))
-        .addClass('translate')
+        .addClass('translate danger')
         .data('content', MOB.tr("Error"));
 
       $feedBody
@@ -231,7 +230,7 @@ MOB.feed = {
     }
 
     $refreshButton.addClass('spin');
-    $feed.children('.mobHeader').removeClass('ui-state-error');
+    $feedLink.removeClass('danger');
 
     $.get("/feedicon", {
       url: decodeURI(feedHost),
@@ -271,20 +270,19 @@ MOB.feed = {
 
     }).done(function(data) {
 
-      console.log('data.feedLink:', $feedTitle.text());
+      console.log('data.feedLink:', data.feedTitle);
 
       $feedLink.text(data.feedTitle)
         .attr('href', data.feedLink)
         .attr('title', (data.feedTitle || MOB.tr('Error')) + ' (' + feedUrl + ')');
-      // $feedTitle.text(data.feedTitle);
+
 
       if (data.error) {
         console.info('Pétrolette | bad Feed: (%s) error: [%s]', feedUrl, data.error);
-        $header.addClass('ui-state-error');
 
-        $feedTitle
+        $feedLink
           .text(MOB.tr('Error'))
-          .addClass('translate')
+          .addClass('translate danger')
           .data('content', MOB.tr('Error'));
 
         var $errorTitle = $('<strong>')
@@ -438,12 +436,9 @@ MOB.feed = {
     }).fail(function() {
       $refreshButton.removeClass('spin');
 
-      // console.log( "error" );
-      $header.addClass('ui-state-error');
-
-      $feedTitle
+      $feedLink
         .text(MOB.tr("Error"))
-        .addClass('translate')
+        .addClass('translate danger')
         .data('content', MOB.tr("Error"));
 
       $feedBody
