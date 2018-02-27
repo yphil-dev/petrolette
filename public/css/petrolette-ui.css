@@ -441,7 +441,7 @@ button#aide-un {
 }
 
 .ui-dialog-titlebar-help {
-  right: 15px !important;
+  right: 30px !important;
 }
 
 .ui-visual-focus {
@@ -975,6 +975,15 @@ button.dangerous:active {
 .introjs-tooltip a i:hover,
 .introjs-tooltip a i:active {
   color: var(--ui-color-sec) !important;
+}
+
+span.introjs-helperNumberLayer {
+  /* background: linear-gradient(to bottom,#ff3019 0,#cf0404 100%); */
+  background: var(--ui-color-sec);
+}
+
+div.introjs-helperLayer {
+  background-color: rgba(255,255,255,.2);
 }
 
 .mobHeader {
