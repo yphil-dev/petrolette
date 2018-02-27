@@ -418,7 +418,7 @@ fieldset {
 
 .ui-state-active,
 .ui-button:active {
-  background: var(--ui-color-sec);
+  background: var(--ui-color-sec) !important;
   color: var(--ui-color-qua);
 }
 
@@ -430,6 +430,18 @@ fieldset {
 
 button.ui-state-success {
   background-color: var(--ui-color-success) !important;
+}
+
+button#aide-un {
+  background-color: var(--ui-color-success);
+  border-color: var(--ui-color-success);
+  color: var(--ui-color-pri);
+
+  padding: .4em;
+}
+
+.ui-dialog-titlebar-help {
+  right: 15px !important;
 }
 
 .ui-visual-focus {
