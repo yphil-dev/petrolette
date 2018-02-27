@@ -270,12 +270,9 @@ MOB.feed = {
 
     }).done(function(data) {
 
-      console.log('data.feedLink:', data.feedTitle);
-
       $feedLink.text(data.feedTitle)
         .attr('href', data.feedLink)
         .attr('title', (data.feedTitle || MOB.tr('Error')) + ' (' + feedUrl + ')');
-
 
       if (data.error) {
         console.info('Pétrolette | bad Feed: (%s) error: [%s]', feedUrl, data.error);

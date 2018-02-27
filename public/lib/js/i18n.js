@@ -49,6 +49,7 @@ MOB.i18n.translations = {
   "Slideshow speed" : { fr: "Vitesse du diaporama" , ja: "スライドショーのスピード", es: "Velocidad de la presentación" },
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
+  "WTF" : { fr: "GNI" , ja: "一体", es: "WTF" },
   "Pétrolette?" : { fr: "Pétrolette ?" , ja: "Pétrolette?", es: "¿Pétrolette?" },
 
   "English" : { fr: "English" , ja: "English", es: "English" },
