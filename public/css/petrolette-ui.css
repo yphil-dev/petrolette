@@ -946,8 +946,7 @@ button.dangerous:hover {
   }
 
   li.feedItem:hover {
-    background-color: none;
-    color: var(--color-link);
+    background-color: none !important;
   }
 
   li.feed a:active,
