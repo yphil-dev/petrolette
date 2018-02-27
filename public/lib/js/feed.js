@@ -10,7 +10,7 @@ MOB.feed = {
         .attr('title', MOB.tr('Fold / unfold this source (%1)', url));
 
     var $feedSelect = $('<i>')
-        .attr('class', 'feedControl translate icon-check-empty-1 feedSelect')
+        .attr('class', 'feedControl translate icon-uncheck feedSelect')
         .data('title', 'Select this source (%1)', url)
         .attr('title', MOB.tr('Select this source (%1)', url));
 
@@ -20,7 +20,7 @@ MOB.feed = {
         .attr('title', MOB.tr('Delete this source (%1)', url));
 
     var $feedPrefs = $('<i>')
-        .attr('class', 'feedControl translate icon-wrench-1 mobFeedPrefs')
+        .attr('class', 'feedControl translate icon-pencil mobFeedPrefs')
         .data('title', MOB.tr('Change this source (%1) parameters', url))
         .attr('title', MOB.tr('Change this source (%1) parameters', url));
 
@@ -43,7 +43,7 @@ MOB.feed = {
 
     $feedSelect.click(function() {
       $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
-      $(this).toggleClass('icon-ok').toggleClass('icon-check-empty-1');
+      $(this).toggleClass('icon-ok').toggleClass('icon-uncheck');
     });
 
     $feedDelete.click(function() {
@@ -97,6 +97,7 @@ MOB.feed = {
 
     var $titleLink = $('<a>')
         .attr('href', url)
+        .attr('target', '_blank')
         .html(url);
 
     var $prefsDiv = $('<div>')
