@@ -572,18 +572,6 @@ div.testFlex {
   }
 }
 
-#questionDialog > p {
-  font-family: 'GrobeDeutschmeisterRegular';
-  font-size: 4em;
-  text-align:center;
-}
-
-.ui-dialog .ui-dialog-titlebar-help {
-  /* position: absolute; */
-  right: 2em;
-  /* top: 50%; */
-}
-
 #tabs {
   white-space: nowrap;
   overflow: hidden;
@@ -769,17 +757,28 @@ li.feed {
 }
 
 .mobHeader > .feedTitle {
+  color: var(--color-ter);
+  flex-basis: auto;
   flex-grow: 4;
   flex-shrink: 1;
-  flex-basis: auto;
+  font-family: 'BebasNeueRegular' !important;
   margin-left: var(--title-margin-left);
-  color: var(--color-ter);
-  /* margin: .2em 0; */
-  font-size: var(--var-controls-font-size);
+}
 
-  font-family: 'BebasNeueRegular';
-  font-weight: normal;
+.mobHeader > .feedTitle > a:link {
+  color: var(--color-ter);
+  font-size: var(--var-controls-font-size);
   font-style: italic;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.mobHeader > .feedTitle > a:visited {
+  color: var(--color-ter) !important;
+}
+
+.mobHeader > .feedTitle > a:hover {
+  color: var(--ui-color-sec) !important;
 }
 
 .ui-tabs-active a {

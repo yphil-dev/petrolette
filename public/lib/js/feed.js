@@ -92,7 +92,12 @@ MOB.feed = {
         .attr('class', 'feedDelete');
 
     var $titleDiv = $('<div>')
+        .attr('title', url)
         .attr('class', 'feedTitle truncate');
+
+    var $titleLink = $('<a>')
+        .attr('href', url)
+        .html(url);
 
     var $prefsDiv = $('<div>')
         .attr('class', 'prefs');
@@ -153,7 +158,8 @@ MOB.feed = {
 
     $feedSelect.appendTo($selectDiv);
     $feedDelete.appendTo($deleteDiv);
-    $titleDiv.html(url);
+    $titleLink.appendTo($titleDiv);
+    // $titleDiv.html(url);
     $feedPrefs.appendTo($prefsDiv);
     $feedReload.appendTo($reloadDiv);
 
@@ -190,6 +196,7 @@ MOB.feed = {
         $panel = $dataStore.parent().parent().parent(),
         $feed = $dataStore.parent().parent(),
         $feedTitle = $feed.children().children('.feedTitle'),
+        $feedLink = $feedTitle.children('a'),
         $feedBody = $feed.children().children('ul.feedBody'),
         feedUrl = $dataStore.data('url'),
         feedType = $dataStore.data('type'),
@@ -262,8 +269,13 @@ MOB.feed = {
       $feedBody.empty();
 
     }).done(function(data) {
-      $feedTitle.text(data.feedTitle)
+
+      console.log('data.feedLink:', $feedTitle.text());
+
+      $feedLink.text(data.feedTitle)
+        .attr('href', data.feedLink)
         .attr('title', (data.feedTitle || MOB.tr('Error')) + ' (' + feedUrl + ')');
+      // $feedTitle.text(data.feedTitle);
 
       if (data.error) {
         console.info('Pétrolette | bad Feed: (%s) error: [%s]', feedUrl, data.error);

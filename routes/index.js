@@ -51,9 +51,11 @@ function getFeed (urlfeed, callback) {
       return;
     }
   });
+
   req.on ('error', function (res) {
     console.log ('getFeed: Error read %s (%s) .', urlfeed, res);
   });
+
   feedparser.on ('readable', function () {
     try {
       var item = this.read ();
@@ -66,7 +68,7 @@ function getFeed (urlfeed, callback) {
     }
   }).on ('end', function () {
     var meta = this.meta;
-    callback ('Feed OK', feedItems, meta.title);
+    callback ('Feed OK', feedItems, meta.title, meta.link);
   }).on ('error', function (err) {
     // console.log ("getFeed: Error reading (%s) feed: %s.", urlfeed, err.message);
     callback ('Bad feed');
@@ -75,15 +77,16 @@ function getFeed (urlfeed, callback) {
 
 router.get('/feed', function(req, res) {
 
-  getFeed(req.query.feedurl, function (err, feedItems, feedTitle) {
-        if (feedItems) {
-            res.send({
-                feedItems: feedItems,
-                feedTitle: feedTitle
-            });
-        } else {
-          res.send({error:err});
-        }
+  getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
+    if (feedItems) {
+      res.send({
+        feedItems: feedItems,
+        feedLink: feedLink,
+        feedTitle: feedTitle
+      });
+    } else {
+      res.send({error:err});
+    }
     });
 
 });
