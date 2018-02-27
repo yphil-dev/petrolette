@@ -429,7 +429,7 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          var $name = $('<p class="name">').text(MOB.tr('Name'));
+          var $name = $('<h2 class="name">').text(MOB.tr('Name'));
           var $value = $('<p class="value">').text('All');
 
           $dialog.find('div.content')
@@ -493,7 +493,7 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          var $name = $('<p class="name">').text(MOB.tr('Name'));
+          var $name = $('<h2 class="name">').text(MOB.tr('Name'));
           var $value = $('<p class="value">').text(thisFeedName);
 
           $dialog.find('div.content')
