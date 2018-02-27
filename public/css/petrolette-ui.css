@@ -1,5 +1,4 @@
 :root {
-  --ui-bg-color-pri: #373737;
   --ui-color-pri: #f4f4f4;
   --ui-color-sec: #19B5FE;
   --ui-color-ter: #C0B283;
@@ -17,11 +16,8 @@
 
   --title-margin-left: 4px;
 
-  --ui-bg-color-danger: #C63D0F;
-  --ui-color-danger: #FF4136;
+  --ui-color-danger: #C63D0F;
   --ui-color-success: #4db53c;
-
-  --color-danger: #000000;
 
   --columns: auto 3;
 
@@ -114,10 +110,13 @@ a:visited {
   color: var(--color-qui) !important;
 }
 
-i.feedControl:hover,
 a:active,
 a:hover {
   color: var(--ui-color-sec) !important;
+}
+
+i.feedControl:hover {
+  color: var(--ui-color-sec);
 }
 
 .rs-button:hover {
@@ -436,11 +435,6 @@ button.ui-state-success {
   background-color: var(--ui-color-success) !important;
 }
 
-.ui-state-error {
-  color: var(--ui-color-danger) !important;
-  background-color: var(--ui-bg-color-pri) !important;
-}
-
 .ui-visual-focus {
   box-shadow: none;
 }
@@ -601,6 +595,10 @@ img.warning {
   width:10em;
 }
 
+i.huge {
+  font-size: 10em;
+}
+
 p.dialog-warning {
   font-size:26pt;
 }
@@ -616,25 +614,6 @@ div.dialog > div {
 
 div.dialog > div.icon {
   flex: 0 0 200px;
-}
-
-div.dialog > div.content {
-  padding: 0 0 0 .2em;
-  font-size:26pt;
-}
-
-div.dialog > div.content p {
-  margin:0 0 .5em 0;
-}
-
-div.dialog > div.content p.name {
-  font-size: .5em;
-  font-weight: bold;
-}
-
-div.dialog > div.content p.value {
-  font-size: .8em;
-  color: var(--ui-color-pri) !important;
 }
 
 /* Tab */
@@ -763,13 +742,13 @@ li.feed {
   flex-shrink: 1;
   font-family: 'BebasNeueRegular' !important;
   margin-left: var(--title-margin-left);
+  font-size: var(--var-controls-font-size);
+  font-style: italic;
+  font-weight: normal;
 }
 
 .mobHeader > .feedTitle > a:link {
   color: var(--color-ter);
-  font-size: var(--var-controls-font-size);
-  font-style: italic;
-  font-weight: normal;
   text-decoration: none;
 }
 
@@ -945,13 +924,18 @@ li.feed {
   border-color: var(--ui-color-sec);
 }
 
-button.dangerous:hover {
-  background-color: var(--ui-bg-color-danger) !important;
-  border: 1px solid var(--ui-color-qua);
+.danger {
+  color: var(--ui-color-danger) !important;
 }
 
 i.dangerous:hover {
-  color: var(--ui-bg-color-danger) !important;
+  color: var(--ui-color-danger) !important;
+}
+
+button.dangerous:hover {
+  color: var(--ui-color-qua) !important;
+  background-color: var(--ui-color-danger) !important;
+  border: 1px solid var(--ui-color-qua);
 }
 
 @media (hover: none) {
@@ -972,15 +956,6 @@ i.dangerous:hover {
     color: var(--color-link);
   }
 
-}
-
-#return-to-top:hover {
-  background: rgba(0, 0, 0, 0.9);
-}
-
-#return-to-top:hover i {
-  color: #fff;
-  top: 5px;
 }
 
 .introjs-tooltip a:hover,
@@ -1034,10 +1009,6 @@ i.dangerous:hover {
   position: fixed;
   right: 2em;
   transition: opacity .5s;
-}
-
-#remotestorage-widget {
-  color: var(--ui-bg-color-pri) !important;
 }
 
 #remotestorage-widget > .rs-widget {
@@ -1162,13 +1133,15 @@ i.dangerous:hover {
   top: 22px;
 }
 
-#return-to-top {
-  background: rgba(0, 0, 0, 0.5);
+#scrollToTop {
+  background: var(--ui-color-qua);
   border-radius: 35px;
   bottom: 20px;
+  cursor: pointer;
   display: block;
   display: none;
   height: 50px;
+  opacity: .5;
   position: fixed;
   right: 20px;
   text-decoration: none;
@@ -1176,12 +1149,21 @@ i.dangerous:hover {
   width: 50px;
 }
 
-#return-to-top i {
-  color: #fff;
+#scrollToTop i {
+  color: var(--ui-color-pri);
   font-size: 19px;
-  left: 16px;
+  left: 18px;
   margin: 0;
   position: relative;
   top: 13px;
   transition: all 0.3s ease;
+}
+
+#scrollToTop:hover {
+  opacity: 1;
+}
+
+#scrollToTop:hover i {
+  color: var(--ui-color-sec);
+  top: 5px;
 }
