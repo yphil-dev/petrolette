@@ -221,7 +221,7 @@ MOB.i18n.translations = {
   // Titres
   "Add a new source to [%1]" : { fr: "Ajouter une source à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo source a [%1]" },
 
-  "Select this source" : { fr: "Sélectionner cette source", ja: "RSSフィードを選択", es: "Selecciona este source" },
+  "Select this source (%1)" : { fr: "Sélectionner cette source (%1)", ja: "RSS(%1)フィードを選択", es: "Selecciona este source (%1)" },
   "Delete this source" : { fr: "Supprimer cette source", ja: "このRSSフィードを削除", es: "Eliminar este source rss" },
 
   "Delete group" : { fr: "Supprimer groupe", ja: "グループを削除する", es: "Eliminar grupo" },
