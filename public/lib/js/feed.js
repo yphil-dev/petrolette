@@ -271,8 +271,6 @@ MOB.feed = {
 
     }).done(function(data) {
 
-      console.log('data.feedLink:', $feedTitle.text());
-
       $feedLink.text(data.feedTitle)
         .attr('href', data.feedLink)
         .attr('title', (data.feedTitle || MOB.tr('Error')) + ' (' + feedUrl + ')');
