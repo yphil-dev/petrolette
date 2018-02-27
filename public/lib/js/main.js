@@ -6,16 +6,6 @@ var MOB = (function() {
 
     start : function() {
       var self = this;
-
-    },
-    finishHtmlInitialization : function() {
-
-      function setDateFormat() {
-        console.log('plop');
-      }
-
-      setDateFormat();
-
     },
     tr : function( string ) {
       var _trAux,
@@ -47,7 +37,6 @@ var MOB = (function() {
       };
 
       translatedString = _trAux( string );
-
 
       while ( ( matchData = stringVarRegExp.exec( translatedString ) ) !== null ) {
         currentReplacement = translatedString.replace( matchData[0], arguments[ i ]  );
