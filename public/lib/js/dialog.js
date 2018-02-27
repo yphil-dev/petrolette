@@ -340,7 +340,6 @@ MOB.dialog = {
           {
             text: MOB.tr('Delete'),
             title: MOB.tr('Delete'),
-            icon: "ui-icon-alert",
             class: "dangerous translate",
             click: function() {
 
@@ -366,10 +365,10 @@ MOB.dialog = {
             MOB.dialog.kill($dialog);
           });
 
-          var $nameLegend = $('<p class="name">').text(MOB.tr('Name'));
+          var $nameLegend = $('<h2 class="name">').text(MOB.tr('Name'));
           var $nameValue = $('<p class="value">').text($a.text());
 
-          var $numberLegend = $('<p class="name">').text(MOB.tr('Number of sources'));
+          var $numberLegend = $('<h2 class="name">').text(MOB.tr('Number of sources'));
           var $numberValue = $('<p class="value">').text($selectedPanel.find('li.feed').length);
 
           $dialog.find('div.content')
