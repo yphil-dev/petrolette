@@ -5,6 +5,7 @@
   --ui-color-qua: #22313F;
   --ui-color-qui: #808080;
   --ui-color-sen: #f26522;
+  --ui-color-sep: #ccc;
 
   --var-header-height: 26px;
   --var-controls-width: 150px;
@@ -423,25 +424,32 @@ fieldset {
   border: none !important;
 }
 
-.ui-state-active,
-.ui-button:active {
-  background: var(--ui-color-sec) !important;
-  color: var(--ui-color-qua);
-}
-
 .ui-icon-background,
 .ui-state-active .ui-icon-background {
   background-color: var(--ui-color-pri);
   border: var(--ui-color-success);
 }
 
+.ui-slider-handle,
+.ui-state-default,
+/* html .ui-button.ui-state-disabled:active, */
 .ui-button {
+  border: 3px solid var(--ui-color-sep);
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-focus,
+.ui-slider-handle:focus,
+.ui-slider-handle:hover,
+.ui-button:hover,
+.ui-button:focus,
+#feedGroup:focus {
   /* color: var(--ui-color-qua) !important; */
-  border: 1px solid var(--ui-color-qui);
+  border: 3px solid var(--ui-color-sec);
 }
 
 button.ui-state-success {
-  background-color: var(--ui-color-success) !important;
+  background-color: var(--ui-color-success);
 }
 
 button.helpIntroUI {
@@ -541,13 +549,6 @@ label#killFeed:active {
   flex: 1;
 }
 
-/* span.ui-spinner, */
-/* .ui-button { */
-/*   margin-right: .4em; */
-/*   margin-bottom: .4em; */
-/* } */
-
-
 .grow {
   flex: 1 0 auto !important;
   margin-right: .4em;
@@ -569,10 +570,6 @@ label:last-child {
 .bottom {
   margin-bottom: 0;
 }
-
-/* .prefsForm > *:not(p) { */
-/*     width: 100%; */
-/* } */
 
 div.testFlex {
   display:flex;
@@ -596,11 +593,6 @@ div.testFlex {
 
 .noBottom {
   margin-bottom:0;
-}
-
-.ui-selectmenu-button.ui-button {
-  text-align: left;
-  white-space: nowrap;
 }
 
 /* Wait screen */
@@ -894,14 +886,6 @@ li.feed {
   margin: 0 0 0 2px;
 }
 
-.mobHeader .ui-button {
-  padding: 0 !important;
-}
-
-.mobHeader .feedControls div i.ui-button:first-child {
-  margin: 0 !important;
-}
-
 .handle {
   opacity: 0.6;
 }
@@ -984,14 +968,6 @@ li.feed {
 
 .feedToggleArrow {
   background-image: var(--icon-feed-toggle-arrow) !important;;
-}
-
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
-  border: 1px solid transparent;
-}
-
-.ui-button.ui-state-active:hover {
-  border: 1px solid var(--ui-color-ter);
 }
 
 .mobHeader > .feedHandle:hover {
