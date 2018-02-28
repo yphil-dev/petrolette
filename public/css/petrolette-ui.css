@@ -73,6 +73,20 @@
   src: url('/static/font/BebasNeue.otf') format("opentype");
 }
 
+#preloadHiddenDiv {
+  height:0px;
+  overflow:hidden;
+  width:0px;
+}
+
+#preloadHiddenDiv > .logoTitle {
+  font-family: LobsterRegular;
+}
+
+#preloadHiddenDiv > .feedTitle {
+  font-family: BebasNeueRegular;
+}
+
 body {
   background-color: var(--bg-color-ter);
   font-family: Arial,Helvetica,sans-serif;
@@ -184,12 +198,6 @@ i.feedControl:hover {
 
 .visible {
   display:initial !important;
-}
-
-.preloadHiddenDiv {
-  height:0px;
-  overflow:hidden;
-  width:0px;
 }
 
 input {
@@ -432,11 +440,8 @@ fieldset {
 }
 
 .ui-button.ui-state-active {
-  background-color: var(--ui-color-sec);
-}
-
-#menu .ui-button.ui-state-active {
   border: 3px solid var(--ui-color-sec);
+  background-color: var(--ui-color-sec);
 }
 
 .ui-state-hover,
@@ -474,28 +479,27 @@ a.ui-button:active,
   background-color: var(--ui-color-sec);
 }
 
-.ui-button.ui-state-active.dangerous,
-.null {
-  background-color: var(--ui-color-danger);
-}
-
 .ui-button.ui-state-active:hover,
+.ui-button.ui-state-active:focus,
 .null {
   border: 3px solid var(--ui-color-sep);
 }
 
+.ui-button.ui-state-active.dangerous:active,
 .ui-button.ui-state-active.dangerous:hover,
 .ui-button.ui-state-active.dangerous:focus,
 .null {
-  border: 3px solid var(--ui-color-sec);
+  border: 3px solid var(--ui-color-sen);
 }
 
+.ui-button.ui-state-active.dangerous,
 .ui-button.dangerous:focus,
 .ui-button.dangerous:hover,
 .ui-button.dangerous:active,
 label.ui-button.dangerous:hover,
 .plop {
   background-color: var(--ui-color-danger) !important;
+  color: var(--ui-color-pri) !important;
   /* border: 3px solid var(--ui-color-danger) !important; */
 }
 
