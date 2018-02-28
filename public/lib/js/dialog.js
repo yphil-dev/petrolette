@@ -145,7 +145,7 @@ MOB.dialog = {
 
           $('.ui-dialog :button').focus();
 
-          $('.ui-widget-overlay').on('click', function() {
+          $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
             MOB.dialog.kill($dialog);
 
             if (isNewFeed) {
@@ -153,8 +153,18 @@ MOB.dialog = {
                 $feed.remove();
               });
             }
+
           });
 
+          $(document).keyup(function(e) {
+            if (e.keyCode === 27) {
+              if (isNewFeed) {
+                $feed.hide('fade', 1000, function() {
+                  $feed.remove();
+                });
+              }
+            } // esc
+          });
 
           $.each(allGroups, function() {
 
@@ -339,8 +349,8 @@ MOB.dialog = {
           },
           {
             text: MOB.tr('Delete'),
-            title: MOB.tr('Delete'),
-            class: "dangerous translate",
+            title: MOB.tr('Wait! Are you sure?'),
+            class: "dangerous translate icon-trash-empty",
             click: function() {
 
               $selectedTab.remove();
@@ -470,9 +480,8 @@ MOB.dialog = {
           },
           {
             text: MOB.tr('Delete'),
-            title: MOB.tr('Delete'),
-            icon: "ui-icon-alert",
-            class: "dangerous translate",
+            title: MOB.tr('Wait! Are you sure?'),
+            class: "dangerous translate icon-trash-empty",
             click: function() {
 
               var $tabFeedId = $('#' + $(this).data('feedId'));

@@ -143,10 +143,6 @@ a:hover {
   color: var(--ui-color-sec) !important;
 }
 
-i.feedControl:hover {
-  color: var(--ui-color-sec);
-}
-
 .rs-button:hover {
   border-color: var(--ui-color-sec) !important;
 }
@@ -359,27 +355,6 @@ i.tabCloser {
   position:absolute;
   right: 3px;
   top: 3px;
-}
-
-#tabs .newFeed,
-#menu > .handle {
-  font-size: 2rem;
-  position:absolute;
-}
-
-#tabs .newFeed {
-  right:0;
-  top: 20vh;
-}
-
-#menu > .handle {
-  bottom: 20vh;
-  left:275px;
-}
-
-#menu > .handle > i {
-  border: none !important;
-  line-height: 0 !important;
 }
 
 #menu {
@@ -891,44 +866,30 @@ li.feed {
 }
 
 .mobHeader > .feedHandle {
-  flex-grow: 0;
-  flex-shrink: var(--handle-flex-shrink);
-  flex-basis: 4px;
-  cursor:move;
-
-  visibility: var(--handle-visibility);
-
-  /* background: linear-gradient(90deg, var(--bg-color-pri) 4px, transparent 1%) center, linear-gradient(var(--bg-color-pri) 4px, transparent 1%) center, var(--bg-color-ter); */
-  /* background-size: 6px 6px; */
-
-  /* background-position: 0 2px; */
-
   background-color: transparent;
   border-left: 3px dotted var(--bg-color-ter);
   border-right: 3px dotted var(--bg-color-ter);
+  cursor:move;
+  flex-basis: 4px;
+  flex-grow: 0;
+  flex-shrink: var(--handle-flex-shrink);
+  visibility: var(--handle-visibility);
 }
-
-/* .feedSelect { */
-/*   visibility: var(--handle-visibility); */
-/* } */
 
 .mobHeader > .feedHandle > div {
 }
 
 .mobHeader > .myControlsToggleDiv {
+  flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: auto;
 }
 
 .mobHeader > .feedControls {
-
+  display: flex;
+  flex-basis: 0px;
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 0px;
-  /* overflow:hidden; */
-
-  display: flex;
 }
 
 .mobHeader .feedControls div {
@@ -936,7 +897,6 @@ li.feed {
 }
 
 .mobHeader .feedControls div.collapsible {
-  /* visibility:hidden; */
   display:none;
 }
 
@@ -946,8 +906,8 @@ li.feed {
   margin: 0 0 0 2px;
 }
 
-.handle {
-  opacity: 0.6;
+i.feedControl:hover {
+  color: var(--ui-color-sec);
 }
 
 #newTabButton {
@@ -963,7 +923,6 @@ li.feed {
   margin: 0;
   padding: 0;
   width: 100%;
-  /* color: var(--ui-color-pri) !important; */
 }
 
 i.tabCloser,
