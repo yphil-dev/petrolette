@@ -430,6 +430,7 @@ fieldset {
   border: var(--ui-color-success);
 }
 
+.ui-button.ui-state-active,
 .ui-slider-handle,
 .ui-state-default,
 .ui-button {
@@ -451,34 +452,46 @@ fieldset {
   border: 3px solid var(--ui-color-sep) !important;
 }
 
-.ui-slider-handle:focus,
-.ui-slider-handle:hover {
-  border: 3px solid var(--ui-color-sec) !important;
-}
-
 /* .ui-state-active, */
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active,
+.ui-state-active:not(li),
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover,
 .null {
-  border: 3px solid var(--ui-color-sec) !important;
+  border: 3px solid var(--ui-color-sec);
   background-color: var(--ui-color-sec);
 }
-/* #killFeed.ui-state-active:hover, */
-/* #killFeed.ui-state-active { */
-/*   /\* color: var(--ui-color-qua) !important; *\/ */
-/*   background-color: var(--ui-color-danger); */
-/* } */
 
-.dangerous:hover,
-.dangerous:active {
+.ui-button.ui-state-active.dangerous,
+.null {
   background-color: var(--ui-color-danger);
 }
 
+.ui-button.ui-state-active:hover,
+.null {
+  border: 3px solid var(--ui-color-sep);
+}
+
+.ui-button.ui-state-active.dangerous:hover,
+.ui-button.ui-state-active.dangerous:focus,
+.null {
+  border: 3px solid var(--ui-color-sec);
+}
+
+.ui-slider-handle:focus,
+/* .ui-widget-content .ui-state-focus.dangerous, */
+.ui-slider-handle:hover {
+  border: 3px solid var(--ui-color-sec) !important;
+}
+
+.ui-button.dangerous:focus,
+.ui-button.dangerous:active,
+.ui-button.dangerous:hover {
+  border: 3px solid var(--ui-color-danger);
+}
+
 button.ui-state-success {
-  background-color: var(--ui-color-success);
+  background-color: var(--ui-color-success) !important;
 }
 
 button.helpIntroUI {
