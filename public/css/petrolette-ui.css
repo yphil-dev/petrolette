@@ -432,7 +432,6 @@ fieldset {
 
 .ui-slider-handle,
 .ui-state-default,
-/* html .ui-button.ui-state-disabled:active, */
 .ui-button {
   border: 3px solid var(--ui-color-sep);
 }
@@ -457,6 +456,16 @@ fieldset {
   border: 3px solid var(--ui-color-sec) !important;
 }
 
+/* .ui-state-active, */
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover,
+.null {
+  border: 3px solid var(--ui-color-sec) !important;
+  background-color: var(--ui-color-sec);
+}
 /* #killFeed.ui-state-active:hover, */
 /* #killFeed.ui-state-active { */
 /*   /\* color: var(--ui-color-qua) !important; *\/ */
