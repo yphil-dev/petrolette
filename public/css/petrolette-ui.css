@@ -448,6 +448,26 @@ fieldset {
   border: 3px solid var(--ui-color-sec);
 }
 
+.ui-slider-handle {
+  border: 3px solid var(--ui-color-sep) !important;
+}
+
+.ui-slider-handle:focus,
+.ui-slider-handle:hover {
+  border: 3px solid var(--ui-color-sec) !important;
+}
+
+/* #killFeed.ui-state-active:hover, */
+/* #killFeed.ui-state-active { */
+/*   /\* color: var(--ui-color-qua) !important; *\/ */
+/*   background-color: var(--ui-color-danger); */
+/* } */
+
+.dangerous:hover,
+.dangerous:active {
+  background-color: var(--ui-color-danger);
+}
+
 button.ui-state-success {
   background-color: var(--ui-color-success);
 }
@@ -516,12 +536,6 @@ ul.help li.export:before {
 ul.help li.cloud:before {
   content: '\e803';
   color: var(--ui-color-success);
-}
-
-#killFeed.ui-state-active {
-  /* color: var(--ui-color-qua) !important; */
-  background-color: var(--ui-color-danger) !important;
-  border: 1px solid var(--ui-color-qua);
 }
 
 label#killFeed:active {
@@ -985,13 +999,6 @@ li.feed {
 
 i.dangerous:hover {
   color: var(--ui-color-danger) !important;
-}
-
-button.dangerous:hover,
-button.dangerous:active {
-  color: var(--ui-color-qua) !important;
-  background-color: var(--ui-color-danger);
-  border: 1px solid var(--ui-color-danger);
 }
 
 @media (hover: none) {
