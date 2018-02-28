@@ -424,17 +424,19 @@ fieldset {
   border: none !important;
 }
 
-.ui-icon-background,
-.ui-state-active .ui-icon-background {
-  background-color: var(--ui-color-pri);
-  border: var(--ui-color-success);
-}
-
 .ui-button.ui-state-active,
 .ui-slider-handle,
 .ui-state-default,
 .ui-button {
   border: 3px solid var(--ui-color-sep);
+}
+
+.ui-button.ui-state-active {
+  background-color: var(--ui-color-sec);
+}
+
+#menu .ui-button.ui-state-active {
+  border: 3px solid var(--ui-color-sec);
 }
 
 .ui-state-hover,
@@ -446,6 +448,16 @@ fieldset {
 #feedGroup:focus {
   /* color: var(--ui-color-qua) !important; */
   border: 3px solid var(--ui-color-sec);
+}
+
+.ui-button-icon-only {
+  /* color: var(--ui-color-qua) !important; */
+  border: 1px solid var(--ui-color-sep);
+}
+
+.ui-button-icon-only:hover {
+  /* color: var(--ui-color-qua) !important; */
+  border: 1px solid var(--ui-color-sec);
 }
 
 .ui-slider-handle {
@@ -499,15 +511,20 @@ button.ui-state-success {
   background-color: var(--ui-color-success) !important;
 }
 
+button.ui-state-error {
+  background-color: var(--ui-color-danger) !important;
+}
+
 button.helpIntroUI {
   background-color: var(--ui-color-success);
   border-color: var(--ui-color-success);
   color: var(--ui-color-pri);
-
   padding: .4em;
 }
 
+button.helpIntroUI:focus,
 button.helpIntroUI:hover {
+  color: var(--ui-color-pri);
   background-color: var(--ui-color-success);
 }
 
