@@ -484,27 +484,25 @@ a.ui-button:active,
   border: 3px solid var(--ui-color-sep);
 }
 
-.ui-button.dangerous:focus,
-.ui-button.dangerous:active,
-label.ui-button.dangerous:hover,
-.plop {
-  border: 3px solid var(--ui-color-danger);
-}
-
 .ui-button.ui-state-active.dangerous:hover,
 .ui-button.ui-state-active.dangerous:focus,
 .null {
   border: 3px solid var(--ui-color-sec);
 }
 
+.ui-button.dangerous:focus,
+.ui-button.dangerous:hover,
+.ui-button.dangerous:active,
+label.ui-button.dangerous:hover,
+.plop {
+  background-color: var(--ui-color-danger) !important;
+  /* border: 3px solid var(--ui-color-danger) !important; */
+}
+
 .ui-slider-handle:focus,
 /* .ui-widget-content .ui-state-focus.dangerous, */
 .ui-slider-handle:hover {
   border: 3px solid var(--ui-color-sec) !important;
-}
-
-.ui-button.dangerous:focus {
-  border: 3px solid var(--ui-color-danger) !important;
 }
 
 button.ui-state-success {
