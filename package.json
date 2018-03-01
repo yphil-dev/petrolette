@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
-  "description": "A RSS/Atom morning news reader ; Works at night too.",
-  "version": "1.0.4",
+  "description": "Fly-by-night news reading webapp.",
+  "version": "1.0.5",
   "private": true,
   "license": "GPL-3.0-only",
   "engines": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/yphil/petrolette"
+    "url": "https://framagit.org/yphil/petrolette"
   },
   "scripts": {
     "start": "pm2 start bin/www --watch --log-date-format='YYYY-MM-DD HH:mm Z' --name petrolette",
