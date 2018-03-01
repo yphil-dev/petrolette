@@ -270,6 +270,8 @@ MOB.feed = {
 
     }).done(function(data) {
 
+      // console.log('DATA:', data);
+
       $feedLink.text(data.feedTitle || feedUrl)
         .attr('href', data.feedLink)
         .attr('title', (data.feedTitle || MOB.tr('Untitled')) + ' (' + feedUrl + ')');
@@ -334,6 +336,24 @@ MOB.feed = {
 
         var mediaUrl;
 
+        var $commentsLink,
+            $commentsIcon;
+
+        if (item.comments) {
+
+          console.log('itemCommentsLink!: ', item.comments);
+
+          $commentsLink = $('<a>')
+            .attr('href', item.comments);
+
+          $commentsIcon = $('<i>')
+            .attr('class', 'media icon-comments')
+            .css('float', 'right')
+            .appendTo($commentsLink);
+
+
+        }
+
         var $tempDom = $('<output>').append($description);
 
         if (typeof $tempDom.find('span a').attr('href') !== 'undefined') {
@@ -361,20 +381,24 @@ MOB.feed = {
           }
         }
 
-        var summary = $('<p>').append(item.summary).text();
+        var summary = $('<p>')
+            .append(item.summary)
+            .text();
 
-        var $feedItem = $('<li class="feedItem">').attr('title', summary.trim());
+        var $feedItem = $('<li class="feedItem">')
+            .attr('title', summary.trim());
+
         var $itemDiv = $('<div class="feedItem">');
+
+        if (typeof $commentsLink !== 'undefined') {
+          $commentsLink.appendTo($itemDiv);
+        }
 
         var $itemLink = $('<a>')
             .attr('target', '_blank')
             .attr('class', 'ui-helper-clearfix')
             .attr('href', item.link)
             .append(item.title);
-
-        var $itemSpan = $('<span>')
-            .attr('class', 'truncate ui-helper-clearfix')
-            .text(summary.trim());
 
         if (index % 2 === 0) {
           $feedItem.addClass('mobFeedEven');
@@ -411,19 +435,16 @@ MOB.feed = {
 
           $itemMedia.appendTo($mediaLink);
 
-          // $itemMedia = $('<img>').attr('src', mediaUrl)
-          //   .appendTo($mediaLink);
-
           if (feedType == 'photo')
             $itemMedia.addClass('full');
 
           if (feedType !== 'text')
             $mediaLink.appendTo($itemDiv);
+
+
         }
 
-        // $itemSpan.appendTo($itemLink);
         $itemLink.appendTo($itemDiv);
-        // $itemSpan.appendTo($itemDiv);
         $itemDiv.appendTo($feedItem);
         $feedItem.appendTo($feedBody);
 
