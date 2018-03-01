@@ -49,7 +49,7 @@ MOB.i18n.translations = {
   "Slideshow speed" : { fr: "Vitesse du diaporama" , ja: "スライドショーのスピード", es: "Velocidad de la presentación" },
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
-  "WTF" : { fr: "GNI" , ja: "一体", es: "WTF" },
+  "WtF" : { fr: "Heu" , ja: "一体", es: "Eh" },
   "Pétrolette?" : { fr: "Pétrolette ?" , ja: "Pétrolette?", es: "¿Pétrolette?" },
 
   "English" : { fr: "English" , ja: "English", es: "English" },
@@ -113,7 +113,7 @@ MOB.i18n.translations = {
 
   "Delete this source." : { fr: "Supprimer cette source." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
 
-  "Wait! Are you sure?" : { fr: "Stop ! Vous êtes sûr ?" , ja: "待つ！ 本気ですか？", es: "¡Espere! ¿Estás seguro?" },
+  "Wait! Are you sure?" : { fr: "Stop ! Sur ?" , ja: "待つ！ 本気ですか？", es: "¡Espere! ¿Estás seguro?" },
 
   "Select this source (for drag & drop)." : { fr: "Sélectionner cette source (pour le glisser-déposer)." , ja: "このソースを選択します（ドラッグ＆ドロップ用）。", es: "Seleccione esta fuente (para arrastrar y soltar)." },
   "Drag here to move this source (and all other selected sources) within this group, or into another." : { fr: "Attraper ici pour déplacer cette source (et toutes les autres sources sélectionnées) dans ce groupe ou dans un autre." , ja: "ここでドラッグすると、このグループ内のこのソース（および他のすべての選択されたソース）を別のグループに移動できます。", es: "Arrastre aquí para mover esta fuente (y todas las demás fuentes seleccionadas) dentro de este grupo o dentro de otra." },
