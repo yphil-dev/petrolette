@@ -156,8 +156,8 @@ MOB.dialog = {
 
           });
 
-          $(document).keyup(function(e) {
-            if (e.keyCode === 27) {
+          $(document).keyup(function(event) {
+            if (event.keyCode === 27) {
               if (isNewFeed) {
                 $feed.hide('fade', 1000, function() {
                   $feed.remove();
