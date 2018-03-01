@@ -951,21 +951,16 @@ li.ui-tabs-active a.ui-tabs-anchor:link {
 }
 
 li.feedItem {
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
   background-color: var(--bg-color-sec) !important;
   font-size: 10pt  !important;
-  padding: .2rem;
-
-  /* These are technically the same, but use both */
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  word-break: break-word;
-
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
   hyphens: auto;
+  overflow-wrap: break-word;
+  padding: .2rem;
+  word-break: break-word;
+  word-wrap: break-word;
 }
 
 li.feedItem a {
