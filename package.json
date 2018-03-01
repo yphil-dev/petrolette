@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "A RSS/Atom morning news reader ; Works at night too.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "license": "GPL-3.0-only",
   "engines": {
