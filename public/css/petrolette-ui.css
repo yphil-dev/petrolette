@@ -120,14 +120,6 @@ div.dialog {
   /* color: red; */
 }
 
-.ui-widget-content:not(input) {
-  color: var(--ui-color-pri) !important;
-}
-
-.ui-widget-content input {
-  color: #454545 !important;
-}
-
 ul {
   list-style-type: none;
   margin:0;
@@ -135,16 +127,56 @@ ul {
 }
 
 a:link {
-  color: var(--color-pri) !important;
+  color: var(--color-pri);
+  text-decoration: none;
 }
 
 a:visited {
-  color: var(--color-qui) !important;
+  color: var(--color-qui);
 }
 
+li.error a:hover,
+a:hover,
 a:active,
-a:hover {
-  color: var(--ui-color-sec) !important;
+i.media:hover {
+  color: var(--ui-color-sec);
+}
+
+i.media {
+  float: right;
+  margin: .2em;
+}
+
+i.feedControl:hover {
+  color: var(--ui-color-sec);
+}
+
+i.dangerous:hover {
+  color: var(--ui-color-danger);
+}
+
+.mobHeader > .feedTitle > a:link,
+.mobHeader > .feedTitle > a:visited  {
+  color: var(--ui-color-pri);
+}
+
+.mobHeader > .feedTitle > a.danger:link,
+.mobHeader > .feedTitle > a.danger:visited  {
+  color: var(--ui-color-danger);
+}
+
+.mobHeader > .feedTitle > a.danger:hover,
+.mobHeader > .feedTitle > a:hover {
+  color: var(--ui-color-sec);
+}
+
+li.feedItem:not(.error) a {
+  display: block;
+  width:100%;
+}
+
+li.feedItem.error > strong.key {
+  color: var(--ui-color-danger);
 }
 
 .rs-button:hover {
@@ -760,7 +792,7 @@ li.feed {
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   font-weight: 600 !important;
   vertical-align:top;
   margin: .4em 0 0 0;
@@ -856,23 +888,6 @@ li.feed {
   font-weight: normal;
 }
 
-.mobHeader > .feedTitle > a:link {
-  color: var(--color-ter);
-  text-decoration: none;
-}
-
-.mobHeader > .feedTitle > a:visited {
-  color: var(--color-ter) !important;
-}
-
-.mobHeader > .feedTitle > a:hover {
-  color: var(--ui-color-sec) !important;
-}
-
-.ui-tabs-active a {
-  color: var(--color-qua) !important;
-}
-
 .mobHeader > .feedHandle {
   background-color: transparent;
   border-left: 3px dotted var(--bg-color-ter);
@@ -914,10 +929,6 @@ li.feed {
   margin: 0 0 0 2px;
 }
 
-i.feedControl:hover {
-  color: var(--ui-color-sec);
-}
-
 #newTabButton {
   background-color: var(--color-qua);
   text-align: center;
@@ -933,7 +944,6 @@ i.feedControl:hover {
   width: 100%;
 }
 
-i.tabCloser,
 li.ui-tabs-tab a:link,
 li.ui-tabs-tab a:visited {
   color: var(--color-pri) !important;
@@ -954,22 +964,14 @@ li.feedItem {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
-  background-color: var(--bg-color-sec) !important;
-  font-size: 10pt  !important;
+  background-color: var(--bg-color-sec);
+  color: var(--color-pri);
+  font-size: 10pt;
   hyphens: auto;
   overflow-wrap: break-word;
   padding: .2rem;
   word-break: break-word;
   word-wrap: break-word;
-}
-
-li.feedItem a {
-  text-decoration: none;
-}
-
-li.feedItem:not(.error) a {
-  display: block;
-  width:100%;
 }
 
 div.feedItem img {
@@ -983,15 +985,15 @@ div.feedItem img.full {
 }
 
 li.feedItem:nth-child(even) {
-  background-color: var(--bg-color-qua) !important;
-}
-
-li.feedItem img:hover {
-  outline: 1px solid var(--ui-color-sec) !important;
+  background-color: var(--bg-color-qua);
 }
 
 li.feedItem:hover {
   background-color: var(--bg-color-pri) !important;
+}
+
+li.feedItem img:hover {
+  outline: 1px solid var(--ui-color-sec);
 }
 
 li.feed {
@@ -1006,19 +1008,6 @@ li.feed {
 
 .mobHeader > .feedHandle:hover {
   border-color: var(--ui-color-sec);
-}
-
-.danger {
-  color: var(--ui-color-danger) !important;
-}
-
-.danger:link,
-.danger:visited {
-  color: var(--ui-color-danger) !important;
-}
-
-i.dangerous:hover {
-  color: var(--ui-color-danger) !important;
 }
 
 @media (hover: none) {

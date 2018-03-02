@@ -64,14 +64,14 @@ MOB.feed = {
     });
 
     var $feedBody = $('<div>')
-        .attr('class', 'feedBody ui-widget-content');
+        .attr('class', 'feedBody');
 
     var $feedBodyUl = $('<ul>')
         .attr('class', 'feedBody');
 
     var $feed = $('<li>')
         .attr('id', 'feed-' + feedIndex)
-        .attr('class', 'feed no-fouc ui-widget')
+        .attr('class', 'feed no-fouc')
         .data('url', url)
         .data('type', type)
         .data('limit', limit);
@@ -277,33 +277,44 @@ MOB.feed = {
       if (data.error) {
         console.info('Pétrolette | bad Feed: (%s) error: [%s]', feedUrl, data.error);
 
+        var $w3cLink = $('<a>'),
+            $validCssIcon = $('<i>');
+
+        $w3cLink.attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
+
+        $validCssIcon
+          .attr('class', 'media icon-w3c')
+          .attr('titre', MOB.tr('Validate /verify this source file with the W3C'))
+          .css('float', 'right');
+
+        $validCssIcon.appendTo($w3cLink);
+        $w3cLink.appendTo($feedBody);
+
         $feedLink
           .text(MOB.tr('Error'))
           .addClass('translate danger')
           .data('content', MOB.tr('Error'));
 
         var $errorTitle = $('<strong>')
-            .attr('class', 'translate')
+            .attr('class', 'translate key')
             .data('content', MOB.tr('Error'))
             .text(MOB.tr('Error'));
 
-        var $typeTitle = $('<strong>')
-            .attr('class', 'translate')
+        var $key = $('<strong>')
+            .attr('class', 'translate key')
             .data('content', MOB.tr('Type'))
             .text(MOB.tr('Type'));
+
+        var $value = $('<strong>')
+            .attr('class', 'value')
+            .text(data.error);
 
         var $errorLink = $('<a>')
             .attr('href', feedUrl)
             .text(feedUrl);
 
         var $validateLink = $('<a>')
-            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)            .text(MOB.tr('validate'));
-
-        var $error = $('<span>')
-            .text(feedUrl);
-
-        var $type = $('<strong>')
-            .text(data.error);
+            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl).text(MOB.tr('validate'));
 
         var $errorItem = $('<li>')
             .attr('class', 'feedItem error')
@@ -313,9 +324,9 @@ MOB.feed = {
             .append('&nbsp; (')
             .append($validateLink)
             .append(')<br/>')
-            .append($typeTitle)
+            .append($key)
             .append('&nbsp;')
-            .append($type);
+            .append($value);
 
         $feedBody
           .append($errorItem);
@@ -330,13 +341,12 @@ MOB.feed = {
           return false;
         }
 
-        var $itemDiv = $('<div class="feedItem">');
-
         var $description = $.parseHTML(item.description);
 
         var imageUrl;
 
         var $imageLink = $('<a>'),
+            $itemLink = $('<a>'),
             $soundLink = $('<a>'),
             $commentsLink = $('<a>'),
             $commentsIcon = $('<i>'),
@@ -347,7 +357,8 @@ MOB.feed = {
             .append(item.summary)
             .text();
 
-        var $feedItem = $('<li class="feedItem">')
+        var $itemDiv = $('<div class="feedItem">'),
+            $feedItem = $('<li class="feedItem">')
             .attr('title', $summary.trim());
 
         if (item.comments) {
@@ -403,11 +414,11 @@ MOB.feed = {
           }
         }
 
-        var $itemLink = $('<a>')
-            .attr('target', '_blank')
-            .attr('class', 'ui-helper-clearfix')
-            .attr('href', item.link)
-            .append(item.title);
+        $itemLink
+          .attr('target', '_blank')
+          .attr('class', 'ui-helper-clearfix')
+          .attr('href', item.link)
+          .append(item.title);
 
         if (index % 2 === 0) {
           $feedItem.addClass('mobFeedEven');

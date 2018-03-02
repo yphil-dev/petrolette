@@ -238,6 +238,7 @@ MOB.i18n.translations = {
 
   "Heck, enter anything, and Pétrolette will build a source from your search query." : { fr: "Bon, entrez n'importe quoi, et Pétrolette construira une source à partir de votre requête de recherche.", ja: "何かを入力すると、Pétroletteは検索クエリからソースを作成します。]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Diablos, ingrese cualquier cosa, y Pétrolette construirá una fuente a partir de su consulta de búsqueda." },
 
+  "Validate /verify this source file with the W3C" : { fr: "Valider / vérifier ce fichier source avec le W3C", ja: "このソースファイルをW3Cで検証/検証する", es: "Validar / verificar este archivo fuente con el W3C" },
 
   "No valid source found at this address" : { fr: "Aucune source valide découverte à cette adresse", ja: "このアドレスに有効なソースが見つかりません", es: "No se encontró una fuente válida en esta dirección" },
   "Valid source found! Now just press OK" : { fr: "Source valide trouvée ! Maintenant, appuyez simplement sur OK", ja: "有効なソースが見つかりました！ OKを押すだけです", es: "¡Se ha encontrado una fuente válida! Ahora solo presione OK" },
