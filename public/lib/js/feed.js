@@ -241,7 +241,7 @@ MOB.feed = {
       if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
 
     }).done(function(icon) {
-      // console.log( 'DONE %s OK (status %s)',  icon, status);
+
       $feedIcon.css('background-image','url("' + icon + '")');
       $header.data('img',icon);
 
@@ -269,8 +269,6 @@ MOB.feed = {
       $feedBody.empty();
 
     }).done(function(data) {
-
-      // console.log('DATA:', data);
 
       $feedLink.text(data.feedTitle || feedUrl)
         .attr('href', data.feedLink)
@@ -332,66 +330,77 @@ MOB.feed = {
           return false;
         }
 
+        var $itemDiv = $('<div class="feedItem">');
+
         var $description = $.parseHTML(item.description);
 
-        var mediaUrl;
+        var imageUrl;
 
-        var $commentsLink,
-            $commentsIcon;
+        var $imageLink = $('<a>'),
+            $soundLink = $('<a>'),
+            $commentsLink = $('<a>'),
+            $commentsIcon = $('<i>'),
+            $soundIcon = $('<i>'),
+            $image = $('<img>');
+
+        var $summary = $('<null>')
+            .append(item.summary)
+            .text();
+
+        var $feedItem = $('<li class="feedItem">')
+            .attr('title', $summary.trim());
 
         if (item.comments) {
-
-          console.log('itemCommentsLink!: ', item.comments);
-
-          $commentsLink = $('<a>')
+          $commentsLink
             .attr('href', item.comments);
-
-          $commentsIcon = $('<i>')
+          $commentsIcon
             .attr('class', 'media icon-comments')
             .css('float', 'right')
             .appendTo($commentsLink);
-
-
+          $commentsLink.appendTo($itemDiv);
         }
 
-        var $tempDom = $('<output>').append($description);
+        var $tempDom = $('<null>').append($description);
 
         if (typeof $tempDom.find('span a').attr('href') !== 'undefined') {
           if (MOB.utilities.isImage($tempDom.find('span a').attr('href'))) {
-            mediaUrl = $tempDom.find('span a').attr('href');
+            imageUrl = $tempDom.find('span a').attr('href');
           }
         }
 
-        if (!mediaUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
-          mediaUrl = $tempDom.find('img').attr('src');
+        if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
+          imageUrl = $tempDom.find('img').attr('src');
         }
 
         if (typeof item.image.url !== 'undefined') {
-          mediaUrl = item.image.url;
-        } else if (item.enclosures[0]) {
-          mediaUrl = item.enclosures[0].url;
+          imageUrl = item.image.url;
+        }
+
+        if (item.enclosures[0]) {
+
+          imageUrl = item.enclosures[0].url;
+
+          if (item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
+
+            $soundLink.attr('href', item.enclosures[0].url);
+
+            $soundIcon
+              .attr('class', 'media icon-volume')
+              .css('float', 'right');
+
+            $soundIcon.appendTo($soundLink);
+            $soundLink.appendTo($itemDiv);
+          }
         }
 
         if (item['media:group']) {
           var myArray = item['media:group']['media:content'];
           for (var i = 0; i < myArray.length; i++) {
             if (myArray[i]['@'].url) {
-              mediaUrl = myArray[i]['@'].url;
+              console.log('media:group! (%s)', feedUrl);
+              imageUrl = myArray[i]['@'].url;
             }
           }
-        }
-
-        var summary = $('<p>')
-            .append(item.summary)
-            .text();
-
-        var $feedItem = $('<li class="feedItem">')
-            .attr('title', summary.trim());
-
-        var $itemDiv = $('<div class="feedItem">');
-
-        if (typeof $commentsLink !== 'undefined') {
-          $commentsLink.appendTo($itemDiv);
         }
 
         var $itemLink = $('<a>')
@@ -404,43 +413,30 @@ MOB.feed = {
           $feedItem.addClass('mobFeedEven');
         }
 
-        if (mediaUrl && mediaUrl !== 'null' && typeof mediaUrl !== 'undefined' && mediaUrl[0] == "/") {
-          mediaUrl = feedHost + mediaUrl;
-        }
+        if (imageUrl) {
 
-        var $mediaLink;
-        var $itemMedia;
-
-        if (mediaUrl && mediaUrl !== 'null' && typeof mediaUrl !== 'undefined') {
-
-          $mediaLink = $('<a>')
-            .attr('href', mediaUrl);
-
-          if (mediaUrl.match(/\.ogg$/) || mediaUrl.match(/\.mp3$/)) {
-
-            $itemMedia = $('<i>')
-              .attr('class', 'media icon-volume-down')
-              .css('float', 'right');
-
-          } else {
-
-            $mediaLink
-              .attr('data-fancybox', 'gallery')
-              .attr('data-fancybox-group', $panel.attr('id'))
-              .attr('data-caption', item.title);
-
-            $itemMedia = $('<img>').attr('src', mediaUrl);
-
+          if (imageUrl[0] == "/") {
+            imageUrl = feedHost + imageUrl;
           }
 
-          $itemMedia.appendTo($mediaLink);
+          $imageLink
+            .attr('href', imageUrl);
+
+          $imageLink
+            .attr('data-fancybox', 'gallery')
+            .attr('data-fancybox-group', $panel.attr('id'))
+            .attr('data-caption', item.title);
+
+          $image
+            .attr('src', imageUrl);
+
+          $image.appendTo($imageLink);
 
           if (feedType == 'photo')
-            $itemMedia.addClass('full');
+            $image.addClass('full');
 
           if (feedType !== 'text')
-            $mediaLink.appendTo($itemDiv);
-
+            $imageLink.appendTo($itemDiv);
 
         }
 
