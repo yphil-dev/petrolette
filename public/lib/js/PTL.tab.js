@@ -63,11 +63,6 @@ PTL.tab = {
 
     $("#mobStyle").attr({href : '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
 
-    setTimeout(function() {
-      $('#tabs').fadeIn(350);
-      $('#menu').fadeIn(600);
-    }, 1000);
-
   },
   saveTabs:function() {
 
