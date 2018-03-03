@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta property="og:title" content="Pétrolette">
-    <meta property="og:description" content="Fly-by-night news reader">
-    <meta name="description" content="Fly-by-night news reader" />
+    <meta property="og:description" content="The fly-by-night news reader">
+    <meta name="description" content="The fly-by-night news reader" />
     <meta property="og:image" content="http://takeoff.petrolette.space/img/screenshot-desktop.png">
     <meta property="og:url" content="http://petrolette.space">
     <meta name="twitter:card" content="summary_large_image">
@@ -23,7 +23,7 @@
     <meta name="msapplication-config" content="/static/images/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="/static/css/themes/day/jquery-ui.min.css">
+    <link rel="stylesheet" href="/static/css/themes/base/jquery-ui.min.css">
     <link id="mobStyle" rel="stylesheet" href="/static/css/themes/night.css">
     <link rel="stylesheet" href="/static/css/fontello.css">
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
@@ -111,14 +111,16 @@
     </nav>
 
     <main>
-      <div id="tabs" style="background-color:transparent;display:none;">
+      <div id="tabs">
         <ul id="tabUl"></ul>
       </div>
       <div id="mobDialogs"></div>
     </main>
 
     <footer>
-      <span id="scrollToTop"><i class="icon-up"></i></span>
+      <span id="scrollToTop">
+        <i class="icon-up"></i>
+      </span>
     </footer>
 
     <script src="/static/lib/js/PTL.utilities.js"></script>
