@@ -1,0 +1,239 @@
+$('<div id="menu">').appendTo($('body')).load('/static/templates/menu.html', function() {
+
+  var $menu = $(this),
+      $overlay = $('#overlay'),
+      $menuButton = $('#menuButton'),
+      $helpButton = $('.helpButton'),
+      $newSourceButton = $('#newSourceButton'),
+      $sourceCodeButton = $('button#sourceCode'),
+      $importButton = $("button#fileImport"),
+      $fileImportInput = $("input#fileImport"),
+      $saveButton = $('#saveTabs'),
+      $langMenu = $('select#language'),
+      $donateButton = $('button#donate'),
+      $slider = $('div#gallerySpeedSlider'),
+      $spinner = $('#gallerySpeedSpinner');
+
+  $('button').button();
+
+  PTL.sync.attachWidget();
+
+  $menuButton.click(function() {
+    $overlay.toggleClass('visible');
+    $menu.toggleClass('expanded');
+  });
+
+  $sourceCodeButton.click(function(event) {
+    event.preventDefault();
+    window.open('https://framagit.org/yphil/petrolette');
+  });
+
+  $overlay.click(function() {
+    $(this).removeClass('visible');
+    $menu.removeClass('expanded');
+  });
+
+  $newSourceButton.click(function() {
+    var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+    $overlay.removeClass('visible');
+    $menu.removeClass('expanded');
+    PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
+  });
+
+  $(document).keydown(function(event) {
+    if (event.keyCode === $.ui.keyCode.ESCAPE) {
+      $('.tabSort' ).sortable('cancel');
+    }
+  });
+
+  var $widget = $('#remotestorage-widget');
+
+  var $readMore = $('<a>')
+      .attr('class', 'rs-help')
+      .attr('href', 'https:remotestorage.io/')
+      .text(PTL.tr('Read more.'));
+
+  $widget.find('.rs-short-desc').text(PTL.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
+    .append($readMore);
+
+  var $fuckingButton =  $widget.find('.rs-choose-rs');
+
+  $fuckingButton.css('border-color', '#f00');
+
+  $fuckingButton.click(function (event) {
+    event.preventDefault();
+  });
+
+  PTL.utilities.translate();
+
+  $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
+
+  $langMenu.change(function() {
+    var selectedLang = $(this).val();
+    PTL.language = selectedLang;
+    PTL.prefs.writeConfig('lang', selectedLang);
+    PTL.utilities.translate();
+  });
+
+  $helpButton.click(function (event) {
+    event.preventDefault();
+    $('#tabs').tabs('option', 'active', 0);
+    // PTL.utilities.help('ui');
+    PTL.dialog.help();
+  });
+
+  $donateButton.click(function (event) {
+    event.preventDefault();
+    window.open('https://liberapay.com/yPhil/donate', '_blank');
+  });
+
+  $importButton.click(function () {
+    $("input#fileImport").click();
+    return false;
+  });
+
+  $saveButton.click(function () {
+    PTL.prefs.exportConfig(PTL.tab.list(), 'petrolette.conf');
+    return false;
+  });
+
+  $(".checkboxradio").checkboxradio({
+    icon: false
+  });
+
+  $(this).find('input#' + PTL.prefs.readConfig('theme')).prop("checked", true)
+    .checkboxradio('refresh');
+
+  $('.themeSwitcher').change(function() {
+    console.log('Theme: ' + '/static/css/themes/' + $(this).attr('value') + '.css');
+
+    $("#mobStyle").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
+
+    PTL.prefs.writeConfig('theme', $(this).attr('value'));
+
+  });
+
+  var gallerySlideshowSpeed = PTL.prefs.readConfig('gallerySlideshowSpeed');
+  var gallerySlideTransition = PTL.prefs.readConfig('gallerySlideTransition');
+
+  // $.fancybox.defaults.thumbs.autoStart = true;
+  $.fancybox.defaults.transitionEffect = gallerySlideTransition;
+  $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
+
+  $menu.find('select#gallerySlideTransition').change(function() {
+    console.log('New FX: %s', $(this).val());
+    $.fancybox.defaults.transitionEffect = $(this).val();
+    PTL.prefs.writeConfig('gallerySlideTransition', $(this).val());
+  });
+
+  $menu.find('select#gallerySlideTransition').val(gallerySlideTransition);
+
+  if (PTL.prefs.readConfig('tabDropActivate') === 'true')
+    $('input#tabDropActivate').prop('checked', true).checkboxradio('refresh');
+  else
+    $('input#tabDropActivate').prop('checked', false).checkboxradio('refresh');
+
+  $('input#tabDropActivate').change(function() {
+    PTL.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
+  });
+
+  $spinner.spinner({
+    min: 0.5,
+    max: 10000,
+    step: 0.5,
+    classes: {
+      "ui-spinner": "shrink ui-corner-all",
+      "ui-spinner-down": "ui-corner-br",
+      "ui-spinner-up": "ui-corner-tr"
+    }
+  });
+
+  $spinner.spinner('value', PTL.utilities.milliToSecs(gallerySlideshowSpeed));
+
+  $spinner.on( 'spinstop', function() {
+    $slider.slider( 'option', 'value', $(this).val() * 1000);
+    $('.ui-slider-handle').text(PTL.utilities.milliToSecs($(this).val() * 1000) + 's');
+  });
+
+  $slider.slider({
+    classes: {
+      "ui-slider": "grow ui-corner-all",
+      "ui-slider-handle": "ui-corner-all",
+      "ui-slider-range": "ui-corner-all ui-widget-header"
+    },
+    value: gallerySlideshowSpeed,
+    min: 500,
+    max: 10000,
+    step: 500,
+    create: function() {
+      $(this).find('.ui-slider-handle').text(PTL.utilities.milliToSecs(gallerySlideshowSpeed) + 's');
+    },
+    slide: function(event, ui) {
+      // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
+      $spinner.val(PTL.utilities.milliToSecs(ui.value));
+      $(this).find('.ui-slider-handle').text(PTL.utilities.milliToSecs(ui.value) + 's');
+
+    },
+    change: function(event, ui) {
+      PTL.prefs.writeConfig('gallerySlideshowSpeed', ui.value);
+      $('#tabs').find("[data-fancybox]").fancybox({
+        slideShow: {
+          speed: ui.value
+        }
+      });
+    }
+  });
+
+  // File reader
+
+  $fileImportInput.change(function(evt){
+    var f = evt.target.files[0],
+        reader = new FileReader();
+
+    reader.onload = (function() {
+      return function(e) {
+
+        function isOk(o) {
+          var isValid = false;
+          if (Object.prototype.toString.call(o) === '[object Array]') {
+            isValid = o.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
+          } else {
+            isValid = false;
+          }
+          return isValid;
+        }
+
+        var y = e.target.result;
+
+        function isJsonString(str) {
+          try {
+            JSON.parse(str);
+          } catch (e) {
+            return false;
+          }
+          return true;
+        }
+
+        var p = false;
+
+        if (isJsonString(y)) {
+          p = JSON.parse(y);
+        } else {
+          console.error('Pétrolette | ' + PTL.tr('This file is bad'));
+        }
+
+        if (p && isOk(p) === true){
+          console.info('Pétrolette | ' + PTL.tr('Loading of [%s] OK', f.name));
+          PTL.tab.populate(p, true);
+        } else {
+          console.error('Pétrolette | ' + PTL.tr('This file is bad'));
+        }
+
+      };
+    })(f);
+
+    reader.readAsText(f);
+
+  });
+
+});
