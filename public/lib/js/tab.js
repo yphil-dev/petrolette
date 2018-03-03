@@ -1,11 +1,81 @@
-MOB.tab = {
+PTL.tab = {
+  init:function() {
+    console.info('Pétrolette | Starting UP!');
+
+    var $tabs = $('#tabs').tabs({
+      heightStyle: 'content',
+      activate: function() {
+
+        var $activeTab = $tabs.find('.ui-tabs-active');
+
+        $(document).prop('title', $activeTab.text() + ' | Pétrolette');
+
+        $('.tabCloser').hide();
+
+        $activeTab.find('.tabCloser').show();
+      }
+
+    });
+
+    $tabs.find('.ui-tabs-nav').sortable({
+      axis: 'x',
+      items: '> li:not(#newTabButton)',
+      stop: function() {
+        $tabs.tabs('refresh');
+        PTL.tab.saveTabs();
+      }
+    });
+
+    $tabs.on('mouseup', '.ui-tabs-active a', function(e){
+      e.preventDefault();
+      if (e.which === 1) {
+        PTL.dialog.editGroup($(this));
+      }
+    });
+
+    $tabs.on("click", "i.tabCloser", function() {
+      PTL.dialog.killTab($(this));
+    });
+
+    if (PTL.utilities.isMobile()) {
+      $tabs.find('.feedControls > div').removeClass('collapsible');
+    }
+
+    $tabs.find('.collapsible').show('fast');
+
+    PTL.tab.makeNewTabButton($tabs);
+
+    $(window).scroll(function() {
+      if ($(this).scrollTop() >= 50) {
+        $('#scrollToTop').fadeIn(200);
+      } else {
+        $('#scrollToTop').fadeOut(200);
+      }
+    });
+    $('#scrollToTop').click(function() {
+      $('body,html').animate({
+        scrollTop : 0
+      }, 500);
+    });
+
+    PTL.utilities.noSourcesButton();
+    PTL.sync.readSync();
+
+    $("#mobStyle").attr({href : '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
+
+    setTimeout(function() {
+      $('#tabs').fadeIn(350);
+      $('#menu').fadeIn(600);
+    }, 1000);
+
+  },
   saveTabs:function() {
 
-    console.info('Petrolette | Writing to local storage OK');
+    console.info('Pétrolette | Writing to local storage OK');
 
-    var allTabs = MOB.tab.list();
-    MOB.prefs.writeConfig('tabs', JSON.stringify(allTabs));
-    MOB.sync.writeSync(JSON.stringify(allTabs));
+    var allTabs = PTL.tab.list();
+    PTL.prefs.writeConfig('tabs', JSON.stringify(allTabs));
+    PTL.sync.writeSync(JSON.stringify(allTabs));
   },
   empty:function() {
 
@@ -13,8 +83,8 @@ MOB.tab = {
     $('div#tabs div').remove();
     $('#noSourcesButton').fadeIn('slow');
     $('#indicatorContainer').fadeOut('fast');
-    MOB.tab.saveTabs();
-    MOB.tab.makeNewTabButton($('div#tabs'));
+    PTL.tab.saveTabs();
+    PTL.tab.makeNewTabButton($('div#tabs'));
   },
   populate:function(tabs, clickToRefresh, add) {
 
@@ -23,11 +93,11 @@ MOB.tab = {
     } else {
       $('div#tabs div').remove();
       $('div#tabs ul li').remove();
-      MOB.tab.makeNewTabButton($('div#tabs'));
+      PTL.tab.makeNewTabButton($('div#tabs'));
     }
 
     var totalFeeds = 0,
-        progress = MOB.utilities.buildProgress();
+        progress = PTL.utilities.buildProgress();
 
     tabs.forEach(function(tab) {
       totalFeeds += tab.feeds.length;
@@ -36,12 +106,12 @@ MOB.tab = {
     progress.init(totalFeeds);
 
     tabs.forEach(function(tab) {
-      MOB.tab.make($('#tabs'), tab.name, tab.feeds, progress);
+      PTL.tab.make($('#tabs'), tab.name, tab.feeds, progress);
     });
 
     if (clickToRefresh) {
       $('#tabs').find('.mobFeedRefresh').click();
-      MOB.tab.saveTabs();
+      PTL.tab.saveTabs();
     }
 
     $("div#tabs").tabs('option', 'active', 0);
@@ -85,7 +155,7 @@ MOB.tab = {
         $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
           e.stopImmediatePropagation();
 
-          MOB.tab.make($($tabs));
+          PTL.tab.make($($tabs));
 
           return false;
     });
@@ -93,7 +163,7 @@ MOB.tab = {
     $dummyTabLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tabUl'));
 
-    MOB.utilities.translate();
+    PTL.utilities.translate();
 
   },
   make:function($tabs, name, feeds, progress) {
@@ -108,13 +178,13 @@ MOB.tab = {
 
     var $sortable = $('<ul>')
         .attr('class', 'tabSort')
-    // .css('columns', 'auto ' + MOB.prefs.readConfig('columns'))
+    // .css('columns', 'auto ' + PTL.prefs.readConfig('columns'))
         .attr('id', 'sortable' + tabIndex);
 
     var $tabCloser = $('<i>')
         .attr('class', 'icon-cancel tabCloser translate dangerous')
-        .data('title', MOB.tr('Delete the [%1] tab', name))
-        .attr('title', MOB.tr('Delete the [%1] tab', name));
+        .data('title', PTL.tr('Delete the [%1] tab', name))
+        .attr('title', PTL.tr('Delete the [%1] tab', name));
 
     var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>')
         .attr('id', 'tab-' + tabIndex)
@@ -158,7 +228,7 @@ MOB.tab = {
         //unselect since the operation is complete
         $('.selected').removeClass('selected ui-state-hover');
         $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
-        MOB.tab.saveTabs();
+        PTL.tab.saveTabs();
 
       }
     }).disableSelection();
@@ -170,8 +240,8 @@ MOB.tab = {
 
     var $thisTab = $('<li>')
         .attr('class', 'modal mobTab translate')
-        .data('title', MOB.tr('%1 | Click to rename, drag to move', name))
-        .attr('title', MOB.tr('%1 | Click to rename, drag to move', name));
+        .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
+        .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
     $thisTabLink.appendTo($thisTab);
     $tabCloser.appendTo($thisTab);
@@ -199,7 +269,7 @@ MOB.tab = {
 
           $('body').css('cursor','auto');
 
-          MOB.tab.saveTabs();
+          PTL.tab.saveTabs();
 
         });
       }
@@ -209,7 +279,7 @@ MOB.tab = {
 
     if(typeof feeds != 'undefined') {
       feeds.forEach(function(feed) {
-        MOB.feed.make($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit, false, progress);
+        PTL.feed.make($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit, false, progress);
       });
     }
 
