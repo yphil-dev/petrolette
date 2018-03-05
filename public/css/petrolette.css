@@ -73,6 +73,15 @@
   src: url('/static/font/BebasNeue.otf') format("opentype");
 }
 
+#noScript {
+  margin: 25% auto;
+  background: var(--ui-color-qua);
+}
+
+#noScript > * {
+  margin: 0 0 0 25%;
+}
+
 #preloadHiddenDiv {
   height:0px;
   overflow:hidden;
@@ -318,7 +327,7 @@ legend {
   font-size: 9pt;
 }
 
-#menu {
+div#sideMenu {
   border: none !important;
   height: 100%;
   left: -291px;
@@ -365,11 +374,11 @@ legend {
   text-shadow: #FC0 1px 0 10px;
 }
 
-#menu.expanded {
+div#sideMenu.expanded {
   left: 0px;
 }
 
-#menu,
+div#sideMenu,
 #topnav,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane {
@@ -396,7 +405,7 @@ i.tabCloser {
   top: 3px;
 }
 
-#menu {
+div#sideMenu {
   animation: fadeIn ease 6s;
 }
 
@@ -610,7 +619,7 @@ label#killFeed:active {
   flex: 1;
 }
 
-#menu .flexBox > * {
+div#sideMenu .flexBox > * {
   margin-bottom: .4em;
 }
 
