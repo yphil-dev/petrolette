@@ -65,50 +65,14 @@
       <i class="feedToggleArrow"></i>
     </div>
 
-    <nav class="topnav" id="topnav">
+    <header></header>
 
-      <div id="menuButton"
-           class="menuBarItem logoType translate"
-           title="Set Pétrolette preferences/options"
-           data-title="Set Pétrolette preferences/options">
-        <i class="logoType icon-menu"></i>
-        <span class="text translate"
-              data-content="Menu">
-          Menu
-        </span>
+    <noscript>
+      <div id="noScript">
+        <h1>No script</h1>
+        <p>plop</p>
       </div>
-      <div id="helpButton"
-           class="menuBarItem logoType translate helpButton"
-           title="What exactly is Pétrolette?"
-           data-title="What exactly is Pétrolette?">
-        <i class="logoType icon-help-1"></i>
-        <span class="text translate"
-              data-content="Help">
-          Help
-        </span>
-      </div>
-      <div id="newSourceButton"
-           class="menuBarItem logoType translate"
-           title="Add a source"
-           data-title="Add a source">
-        <i class="logoType icon-plus-1"></i>
-        <span class="text translate"
-              data-content="Source">
-          Source
-        </span>
-      </div>
-
-      <div id="logoTitle">
-        <div class="logoTitle">
-          <a href="http://takeoff.petrolette.space">Pétrolette</a>
-        </div>
-        <div class="logoType">
-          <i class="icon-petrolette"></i>
-        </div>
-        <span id="betaBadge">beta</span>
-      </div>
-
-    </nav>
+    </noscript>
 
     <main>
       <div id="tabs">
@@ -132,7 +96,13 @@
 
     <script>
 
-     PTL.tab.init();
+     PTL.menu.top();
+     PTL.menu.side();
+
+     setTimeout(
+       function() {
+         PTL.tab.init();
+       }, 500);
 
     </script>
 

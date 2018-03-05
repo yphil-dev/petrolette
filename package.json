@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "Fly-by-night news reading webapp.",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "private": true,
   "license": "GPL-3.0-only",
   "engines": {

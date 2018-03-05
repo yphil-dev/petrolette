@@ -73,6 +73,15 @@
   src: url('/static/font/BebasNeue.otf') format("opentype");
 }
 
+#noScript {
+  margin: 25% auto;
+  background: var(--ui-color-qua);
+}
+
+#noScript > * {
+  margin: 0 0 0 25%;
+}
+
 #preloadHiddenDiv {
   height:0px;
   overflow:hidden;
@@ -197,6 +206,7 @@ li.feedItem.error > strong.key {
 .spin {
   animation: spin-animation .5s infinite;
   display: inline-block;
+  color: var(--ui-color-sec) !important;
 }
 
 #waitScreen > .spin {
@@ -260,19 +270,18 @@ input#feedGuess {
 }
 
 #noSourcesButton > div {
-  color: var(--color-pri) !important;
+  color: var(--color-pri);
   font-size: 12pt;
 }
 
 #noSourcesButton > div > i {
   line-height: 0;
-  color: #8d94a5 !important;
   font-size: 8em;
 }
 
 #noSourcesButton > div > div {
   margin: 2em 0 0 0;
-  color: var(--color-pri) !important;
+  color: var(--color-pri);
   font-size: 12pt;
 }
 
@@ -318,7 +327,7 @@ legend {
   font-size: 9pt;
 }
 
-#menu {
+div#sideMenu {
   border: none !important;
   height: 100%;
   left: -291px;
@@ -365,11 +374,11 @@ legend {
   text-shadow: #FC0 1px 0 10px;
 }
 
-#menu.expanded {
+div#sideMenu.expanded {
   left: 0px;
 }
 
-#menu,
+div#sideMenu,
 #topnav,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane {
@@ -396,7 +405,7 @@ i.tabCloser {
   top: 3px;
 }
 
-#menu {
+div#sideMenu {
   animation: fadeIn ease 6s;
 }
 
@@ -610,7 +619,7 @@ label#killFeed:active {
   flex: 1;
 }
 
-#menu .flexBox > * {
+div#sideMenu .flexBox > * {
   margin-bottom: .4em;
 }
 
@@ -772,7 +781,6 @@ li.mobTab,
   margin: 0 0 0 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
-  box-shadow: inset 4px 0px 6px -4px rgba(0,0,0,0.19) !important;
 }
 
 /* Tab pane */
@@ -817,8 +825,8 @@ li.feed {
   margin: 0;
 }
 
-.selected {
-  opacity: 0.5;
+.selected .feedBody {
+  opacity: 0.8;
 }
 
 .truncate {
@@ -848,11 +856,6 @@ li.feed {
   transform: rotate(180deg);
 }
 
-
-.mobHeader > div {
-  transition: all 700ms;
-}
-
 .mobHeader > .feedToggle {
   flex-grow: 0;
   flex-shrink: 1;
@@ -872,7 +875,7 @@ li.feed {
 
 .tabSort .ui-sortable-placeholder {
   visibility: visible !important;
-  border: 3px dashed var(--ui-color-pri) !important;
+  border: 3px dashed var(--ui-color-sec) !important;
 }
 
 .feedToggle > .ui-icon {
@@ -1000,7 +1003,6 @@ li.feedItem img:hover {
 }
 
 li.feed {
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4), -2px -2px 3px 0 rgba(0, 0, 0, 0.7) inset;
   padding: 0;
   transition: all .1s ease;
 }
@@ -1138,11 +1140,11 @@ div.introjs-helperLayer {
 }
 
 .topnav > div.menuBarItem:hover {
-  background-color: var(--ui-color-sec);
+  background-color: var(--ui-color-qua);
 }
 
 .topnav > div.menuBarItem:hover i {
-  color: var(--ui-color-pri) !important;
+  color: var(--ui-color-sec);
 }
 
 .topnav > div#logoTitle {
@@ -1153,7 +1155,7 @@ div.introjs-helperLayer {
 .topnav i.icon-petrolette {
   display:block;
   font-size:24pt;
-  margin: 6px 12px 6px 6px !important;
+  margin: 6px 12px 6px 6px;
   color: var(--ui-color-sec);
 }
 
