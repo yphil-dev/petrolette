@@ -206,6 +206,7 @@ li.feedItem.error > strong.key {
 .spin {
   animation: spin-animation .5s infinite;
   display: inline-block;
+  color: var(--ui-color-sec) !important;
 }
 
 #waitScreen > .spin {
@@ -269,19 +270,18 @@ input#feedGuess {
 }
 
 #noSourcesButton > div {
-  color: var(--color-pri) !important;
+  color: var(--color-pri);
   font-size: 12pt;
 }
 
 #noSourcesButton > div > i {
   line-height: 0;
-  color: #8d94a5 !important;
   font-size: 8em;
 }
 
 #noSourcesButton > div > div {
   margin: 2em 0 0 0;
-  color: var(--color-pri) !important;
+  color: var(--color-pri);
   font-size: 12pt;
 }
 
@@ -1140,11 +1140,11 @@ div.introjs-helperLayer {
 }
 
 .topnav > div.menuBarItem:hover {
-  background-color: var(--ui-color-sec);
+  background-color: var(--ui-color-qua);
 }
 
 .topnav > div.menuBarItem:hover i {
-  color: var(--ui-color-pri) !important;
+  color: var(--ui-color-sec);
 }
 
 .topnav > div#logoTitle {
@@ -1155,7 +1155,7 @@ div.introjs-helperLayer {
 .topnav i.icon-petrolette {
   display:block;
   font-size:24pt;
-  margin: 6px 12px 6px 6px !important;
+  margin: 6px 12px 6px 6px;
   color: var(--ui-color-sec);
 }
 
