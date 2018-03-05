@@ -129,12 +129,14 @@ PTL.prefs = (function() {
     },
     writeConfig:function(key, val) {
 
-      var $loader = $('#indicatorContainer');
-
-      $loader.fadeToggle(50);
+      $('div#logoTitle i').addClass('writing');
 
       localStorage.setItem(key, val);
-      $loader.fadeToggle('fast');
+
+      setTimeout(function () {
+        $('div#logoTitle i').delay('slow').removeClass('writing');
+      }, 300);
+
 
     },
     exportConfig:function(data, fileName) {
