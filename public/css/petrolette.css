@@ -952,7 +952,7 @@ li.feed {
 
 li.ui-tabs-tab a:link,
 li.ui-tabs-tab a:visited {
-  color: var(--color-pri) !important;
+  color: var(--color-pri);
 }
 
 li.ui-tabs-active,
@@ -995,6 +995,7 @@ li.feedItem:nth-child(even) {
 }
 
 li.feedItem:hover {
+  color: var(--bg-color-sec) !important;
   background-color: var(--bg-color-pri) !important;
 }
 
@@ -1070,7 +1071,6 @@ div.introjs-helperLayer {
   background: var(--ui-color-sec) !important;
 }
 
-.ui-widget-content a:visited,
 .introjs-tooltip a:visited {
   color: var(--color-qui);
 }
@@ -1176,12 +1176,12 @@ div.introjs-helperLayer {
   display:var(--logo-display);
   font-family: LobsterRegular, Helvetica, Arial, sans-serif;
   font-size: 36pt;
-  margin: -6px 0 0 0 !important;
+  margin: -6px 0 0 0;
 }
 
 .topnav > div#logoTitle > .logoTitle > a:link,
 .topnav > div#logoTitle > .logoTitle > a:visited {
-  color: var(--ui-color-pri) !important;
+  color: var(--ui-color-pri);
   transition: all 0.3s linear;
 }
 
