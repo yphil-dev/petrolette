@@ -826,7 +826,7 @@ li.feed {
 }
 
 .selected .feedBody {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .truncate {
@@ -875,7 +875,7 @@ li.feed {
 
 .tabSort .ui-sortable-placeholder {
   visibility: visible !important;
-  border: 3px dashed var(--ui-color-pri) !important;
+  border: 3px dashed var(--ui-color-sec) !important;
 }
 
 .feedToggle > .ui-icon {
