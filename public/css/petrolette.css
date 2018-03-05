@@ -1103,7 +1103,7 @@ div.introjs-helperLayer {
   position:relative;
   z-index: 20;
   background-color: var(--ui-color-qua);
-  color: var(--ui-color-sec);
+  /* color: var(--ui-color-sec); */
   overflow: hidden;
   height: 45px;
 }
@@ -1131,7 +1131,7 @@ div.introjs-helperLayer {
   position: absolute;
   top: 0;
   z-index: 5;
-  transition: all 0.3s linear;
+  transition: all .3s linear;
 }
 
 .topnav > div.menuBarItem:hover .text {
@@ -1154,8 +1154,15 @@ div.introjs-helperLayer {
 
 .topnav i.icon-petrolette {
   display:block;
+  cursor: pointer;
   font-size:24pt;
   margin: 6px 12px 6px 6px;
+  color: var(--ui-color-pri);
+  transition: all .3s linear;
+}
+
+.topnav i.icon-petrolette:hover,
+.topnav i.icon-petrolette.writing {
   color: var(--ui-color-sec);
 }
 

@@ -93,10 +93,6 @@ PTL.sync = (function() {
     },
     writeSync:function(sources) {
 
-      var $loader = $('#indicatorContainer');
-
-      $loader.fadeToggle(50);
-
       remoteStorage.petrolette.write(sources)
         .then(() => {
           console.info('Pétrolette | Writing to remote storage OK');
@@ -104,9 +100,6 @@ PTL.sync = (function() {
         .catch((err) => {
           console.error('Pétrolette | Remote file validation error:', err);
         });
-
-      // localStorage.setItem(key, val);
-      $loader.fadeToggle('fast');
 
     }
   };

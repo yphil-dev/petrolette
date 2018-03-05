@@ -77,7 +77,6 @@ PTL.tab = {
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
     $('#noSourcesButton').fadeIn('slow');
-    $('#indicatorContainer').fadeOut('fast');
     PTL.tab.saveTabs();
     PTL.tab.makeNewTabButton($('div#tabs'));
   },
