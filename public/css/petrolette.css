@@ -816,7 +816,7 @@ li.feed {
   margin: 0;
 }
 
-.selected {
+.selected .feedBody {
   opacity: 0.5;
 }
 
@@ -845,11 +845,6 @@ li.feed {
 
 .open {
   transform: rotate(180deg);
-}
-
-
-.mobHeader > div {
-  transition: all 700ms;
 }
 
 .mobHeader > .feedToggle {
