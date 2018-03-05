@@ -42,7 +42,7 @@ PTL.feed = {
     });
 
     $feedSelect.click(function() {
-      $(this).parent().parent().parent().parent().toggleClass('selected ui-state-hover');
+      $(this).parent().parent().parent().parent().toggleClass('selected');
       $(this).toggleClass('icon-ok').toggleClass('icon-uncheck');
     });
 

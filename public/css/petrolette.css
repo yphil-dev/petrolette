@@ -772,7 +772,6 @@ li.mobTab,
   margin: 0 0 0 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
-  box-shadow: inset 4px 0px 6px -4px rgba(0,0,0,0.19) !important;
 }
 
 /* Tab pane */
@@ -1000,7 +999,6 @@ li.feedItem img:hover {
 }
 
 li.feed {
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4), -2px -2px 3px 0 rgba(0, 0, 0, 0.7) inset;
   padding: 0;
   transition: all .1s ease;
 }
