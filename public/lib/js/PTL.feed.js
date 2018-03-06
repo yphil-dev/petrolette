@@ -99,7 +99,6 @@ PTL.feed = {
 
     var $titleLink = $('<a>')
         .attr('href', url)
-        .attr('target', '_blank')
         .html(url);
 
     var $prefsDiv = $('<div>')
@@ -408,7 +407,6 @@ PTL.feed = {
         }
 
         $itemLink
-          .attr('target', '_blank')
           .attr('class', 'ui-helper-clearfix')
           .attr('href', item.link)
           .append(item.title);
