@@ -17,9 +17,7 @@
     "postinstall": "bower install"
   },
   "devDependencies": {
-    "intro.js": "2.8.0-alpha.1",
-    "mocha": "4.1.0",
-    "should": "13.2.0"
+    "uglify-js": "3.3.13"
   },
   "dependencies": {
     "bower": "1.8.2",
