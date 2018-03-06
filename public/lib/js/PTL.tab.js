@@ -1,6 +1,5 @@
 PTL.tab = {
   init:function() {
-    console.info('Pétrolette | Starting UP!');
 
     var $tabs = $('#tabs').tabs({
       heightStyle: 'content',
