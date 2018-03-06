@@ -135,7 +135,6 @@ PTL.feed = {
 
         // $feedIcon.css('background-image', iconImg);
 
-        console.log('iconImg: ', $(this).data('img'));
 
         if ($(this).data('img') !== 'none') {
           $feedToggle.css('background-image', $(this).data('img'));
@@ -267,7 +266,8 @@ PTL.feed = {
         .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
 
       if (data.error) {
-        console.info('Pétrolette | bad Feed: (%s) error: [%s]', feedUrl, data.error);
+
+        console.warn('Pétrolette | ' + PTL.tr('Problem reading source [%1] Error type [%2]', feedUrl, data.error));
 
         var $w3cLink = $('<a>'),
             $validCssIcon = $('<i>');
@@ -400,7 +400,6 @@ PTL.feed = {
           var myArray = item['media:group']['media:content'];
           for (var i = 0; i < myArray.length; i++) {
             if (myArray[i]['@'].url) {
-              console.log('media:group! (%s)', feedUrl);
               imageUrl = myArray[i]['@'].url;
             }
           }

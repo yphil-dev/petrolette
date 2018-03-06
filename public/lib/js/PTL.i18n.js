@@ -210,7 +210,20 @@ PTL.i18n.translations = {
   "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
   "Erase all" : { fr: "Tout effacer" , ja: "すべてを消去する", es: "Borrar todo" },
 
-  "You can't create more than %1 resources of each type." : { fr: "Vous ne pouvez pas créer plus de %1 ressources de chaque type.", ja: "各種％以上の財源を作ることはできません。" },
+  "Connected to remote storage" : { fr: "Connecté au stockage distant" , ja: "リモートストレージに接続", es: "Conectado al almacenamiento remoto" },
+
+  "Disconnected from remote storage" : { fr: "Déconnecté du stockage distant" , ja: "リモートストレージから切断されました", es: "Desconectado de almacenamiento remoto" },
+
+  "Remote file validation NOT OK (error [%1]) now reading from browser cache" : { fr: "Validation de fichier à distance NOT OK (erreur [%1]) lecture depuis le cache du navigateur" , ja: "リモートファイルの検証NOT OK（エラー[%1]）がブラウザのキャッシュから読み込み中です", es: "La validación remota de archivos NO está OK (error [%1]) leyendo desde el caché del navegador" },
+
+  "Remote file validation OK" : { fr: "Validation fichier distant OK" , ja: "リモートファイルの検証OK", es: "Validación remota de archivos OK" },
+
+  "Problem reading source [%1] Error type [%2]" : { fr: "Problème lecture source [%1] Type d'erreur [%2]", ja: "問題の読書の問題[%1]エラータイプ[%2]", es: "Problema al leer la fuente [%1] Tipo de error [%2]" },
+
+
+
+  "ERROR TYPE" : { fr: "TYPE D'ERREUR", ja: "エラータイプ", es: "TIPO DE ERROR" },
+
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
   "error" : { fr: "erreur", ja: "エラー", es: "error" },
 

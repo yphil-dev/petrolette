@@ -1,9 +1,7 @@
 PTL.menu = {
   top:function() {
 
-    $('<div id="topMenu">').appendTo($('header')).load('/static/templates/menu.html nav#topnav', function() {
-      console.log('plop!');
-    });
+    $('<div id="topMenu">').appendTo($('header')).load('/static/templates/menu.html nav#topnav', null);
 
   },
   side:function() {

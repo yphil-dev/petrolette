@@ -36,12 +36,12 @@ PTL.sync = (function() {
 
   remoteStorage.on('connected', function() {
     synchronized = true;
-    console.info('Pétrolette | Connected to remote storage');
+    console.info('Pétrolette | ' + PTL.tr('Connected to remote storage'));
   });
 
   remoteStorage.on('disconnected', function() {
     synchronized = false;
-    console.info('Pétrolette | Disconnected from remote storage');
+    console.warn('Pétrolette | ' + PTL.tr('Disconnected from remote storage'));
   });
 
   return {
@@ -62,13 +62,13 @@ PTL.sync = (function() {
 
           if (PTL.prefs.isValidSourcesFile(JSON.parse(data))) {
 
-            console.info('Pétrolette | Remote file validation OK');
+            console.info('Pétrolette | ' + PTL.tr('Remote file validation OK'));
 
             return PTL.tab.populate(JSON.parse(data));
 
           } else {
 
-            console.error('Pétrolette | Remote file validation NOT OK(%s) Tryin browser cache', data);
+            console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', data));
 
             if (PTL.prefs.isValidSourcesFile(JSON.parse(PTL.prefs.readConfig('tabs')))) {
               console.log('plop');
