@@ -172,7 +172,7 @@ i.dangerous:hover {
 
 .mobHeader > .feedTitle > a:link,
 .mobHeader > .feedTitle > a:visited  {
-  color: var(--ui-color-pri);
+  color: var(--color-pri);
 }
 
 .mobHeader > .feedTitle > a.danger:link,
