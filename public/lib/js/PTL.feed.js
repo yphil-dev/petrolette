@@ -5,7 +5,7 @@ PTL.feed = {
     var feedIndex = $('#tabs').find('.feed').length;
 
     var $feedToggle = $('<i>')
-        .attr('class', 'feedIcon rotate translate')
+        .attr('class', 'feedIcon icon-rss-squared rotate translate')
         .data('title', 'Fold / unfold this source (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this source (%1)', url));
 
@@ -76,9 +76,11 @@ PTL.feed = {
         .data('type', type)
         .data('limit', limit);
 
-    var $header = $('<div class="mobHeader ui-widget-header">');
-    var $toggleDiv = $('<div class="feedToggle">');
-    var $myControlsToggleDiv = $('<div class="myControlsToggleDiv">');
+    var $header = $('<div>')
+        .attr('class', 'mobHeader');
+
+    var $toggleDiv = $('<div>')
+        .attr('class', 'feedToggle');
 
     var $feedHandle = $('<div>')
         .data('title', PTL.tr('Move this source (%1)', url))
@@ -107,17 +109,6 @@ PTL.feed = {
 
     $feedToggle.appendTo($toggleDiv);
 
-    $myControlsToggleDiv.click(function() {
-
-      var $controls = $(this).next();
-
-      $('.feedControls').not($controls).removeClass('flexGrow');
-      $controls.toggleClass('flexGrow');
-
-      $(this).toggleClass('open');
-
-    });
-
     $feedControls.hover (
       function() {
         $(this).find('.collapsible').show('fade', 'fast');
@@ -127,27 +118,33 @@ PTL.feed = {
       }
     );
 
-    $header.hover (
+    $header.hover (function() {
+
+      var iconImg = $feedToggle.css('background-image');
+
+      $feedToggle.css('background-image', 'none');
+
+      $feedToggle.addClass('icon-down-big');
+      $feedToggle.removeClass('icon-rss-squared');
+
+      $(this).data('img', iconImg);
+
+    },
       function() {
 
-        var iconImg = $feedToggle.css('background-image');
+        $feedToggle.removeClass('icon-down-big');
 
-        $feedToggle.addClass('feedToggleArrow');
+        // $feedToggle.css('background-image', iconImg);
 
-        $(this).data('img',iconImg);
+        console.log('iconImg: ', $(this).data('img'));
 
-      },
-      function() {
-
-        $feedToggle.removeClass('feedToggleArrow');
-
-        if (typeof $(this).data('img') !== 'undefined') {
+        if ($(this).data('img') !== 'none') {
           $feedToggle.css('background-image', $(this).data('img'));
         } else {
-          $feedToggle.addClass('generic');
+          $feedToggle.addClass('icon-rss-squared');
         }
-      }
-    );
+
+      });
 
     if (!PTL.utilities.isMobile()) {
       $selectDiv.addClass('collapsible');
@@ -236,11 +233,15 @@ PTL.feed = {
       timeout: 2000
     }, function(icon) {
 
-      if ( !icon || icon.length === 0) icon = '/static/images/feed-generic-rss.png';
+      if ( !icon || icon.length === 0) {
+        console.log('generic! ', feedHost);
+        icon = '/static/images/feed-generic-rss.png';
+      }
 
     }).done(function(icon) {
 
       $feedIcon.css('background-image','url("' + icon + '")');
+      $feedIcon.removeClass('icon-rss-squared');
       $header.data('img',icon);
 
       var img = new Image();
@@ -248,7 +249,9 @@ PTL.feed = {
       img.src = icon;
 
       img.onerror = function() {
-        $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
+        console.log('onerror generic! ', feedHost);
+        $feedIcon.addClass('icon-rss-squared');
+        $feedIcon.css('background-image', 'none');
       };
 
     }).fail(function() {
