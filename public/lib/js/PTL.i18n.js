@@ -220,7 +220,7 @@ PTL.i18n.translations = {
 
   "Problem reading source [%1] Error type [%2]" : { fr: "Problème lecture source [%1] Type d'erreur [%2]", ja: "問題の読書の問題[%1]エラータイプ[%2]", es: "Problema al leer la fuente [%1] Tipo de error [%2]" },
 
-  "ERROR TYPE" : { fr: "TYPE D'ERREUR", ja: "エラータイプ", es: "TIPO DE ERROR" },
+  "Error type" : { fr: "Type d'erreur", ja: "エラータイプ", es: "Tipo de error" },
 
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
   "error" : { fr: "erreur", ja: "エラー", es: "error" },
