@@ -12,10 +12,10 @@
   --var-header-height: 26px;
   --var-controls-width: 150px;
   --var-controls-font-size: 16pt;
-  --var-controls-toggle-size: 18px;
+  --var-controls-toggle-size: 22px;
   --var-controls-flex-basis: 100px;
   --dialog-flex-direction: row;
-
+  --var-controls-toggle-margin: -2px 0 0 -2px;
   --handle-flex-shrink: 0;
   --handle-visibility: visible;
 
@@ -35,7 +35,8 @@
     --var-header-height: 42px;
     --var-controls-width: 75%;
     --var-controls-font-size: 29pt;
-    --var-controls-toggle-size: 36px;
+    --var-controls-toggle-size: 42px;
+    --var-controls-toggle-margin: -2px 0 0 -2px;
 
     --var-controls-flex-basis: 60px;
     --dialog-flex-direction: column;
@@ -217,7 +218,6 @@ li.feedItem.error > strong.key {
 
 .rotate {
   display:inline-block;
-  cursor:pointer;
   transition: all .2s linear;
 }
 
@@ -399,7 +399,7 @@ div#sideMenu,
 }
 
 i.tabCloser {
-  cursor:pointer;
+  cursor: pointer;
   display: none;
   font-size: .7em;
   position:absolute;
@@ -858,35 +858,6 @@ li.feed {
   transform: rotate(180deg);
 }
 
-.mobHeader > .feedToggle {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-
-  margin: .2rem;
-  width : var(--var-controls-toggle-size);
-}
-
-/* .icon-down-dir { */
-/*   margin: 0; */
-/*   font-size:24pt; */
-/* } */
-
-.feedIcon {
-  /* font-size: 24pt; */
-  text-align: center;
-  width: var(--var-controls-toggle-size);
-  height: var(--var-controls-toggle-size);
-  background-size: var(--var-controls-toggle-size);
-  /* background-image: url("/static/images/feed-generic-rss.png"); */
-  background-repeat: no-repeat;
-}
-
-.icon-rss-squared {
-  color: var(--ui-color-rss);
-
-}
-
 .tabSort .ui-sortable-placeholder {
   visibility: visible !important;
   border: 3px dashed var(--ui-color-sec) !important;
@@ -935,14 +906,42 @@ li.feed {
   margin: 0 2px 0 0;
 }
 
+.mobHeader > .feedToggle,
+.mobHeader .feedControls div {
+  text-align: center;
+}
+
 .mobHeader .feedControls div.collapsible {
   display:none;
 }
 
 .feedControl {
-  cursor:pointer;
+  cursor: pointer;
   font-size: var(--var-controls-font-size);
   margin: 0 0 0 2px;
+}
+
+.mobHeader > .feedToggle {
+  margin: 2px;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 1;
+
+  background-repeat: no-repeat;
+  /* background-size: var(--var-controls-toggle-size) var(--var-controls-toggle-size); */
+  background-size: cover;
+  /* height: var(--var-controls-toggle-size); */
+  /* width: var(--var-controls-toggle-size); */
+  /* height: var(--var-controls-toggle-size); */
+  min-width: var(--var-controls-toggle-size) !important;
+}
+
+.mobHeader > .feedToggle i {
+  margin: var(--var-controls-toggle-margin);
+}
+
+.icon-rss-squared {
+  color: var(--ui-color-rss);
 }
 
 #newTabButton {
@@ -1016,10 +1015,6 @@ li.feedItem img:hover {
 li.feed {
   padding: 0;
   transition: all .1s ease;
-}
-
-.feedToggleArrow {
-  background-image: var(--icon-feed-toggle-arrow) !important;;
 }
 
 .mobHeader > .feedHandle:hover {
@@ -1120,7 +1115,7 @@ div.introjs-helperLayer {
 
 .topnav > div.menuBarItem {
   color: var(--ui-color-pri);
-  cursor:pointer;
+  cursor: pointer;
   float: left;
   margin: 0;
   min-width: 60px;

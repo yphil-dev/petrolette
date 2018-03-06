@@ -4,8 +4,8 @@ PTL.feed = {
 
     var feedIndex = $('#tabs').find('.feed').length;
 
-    var $feedToggle = $('<i>')
-        .attr('class', 'feedIcon icon-rss-squared rotate translate')
+    var $feedIcon = $('<i>')
+        .attr('class', 'feedControl feedIcon icon-rss-squared rotate translate')
         .data('title', 'Fold / unfold this source (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this source (%1)', url));
 
@@ -36,7 +36,7 @@ PTL.feed = {
         .data('type', type)
         .data('limit', limit);
 
-    $feedToggle.click(function() {
+    $feedIcon.click(function() {
       $(this).toggleClass('down');
       $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
     });
@@ -79,7 +79,7 @@ PTL.feed = {
     var $header = $('<div>')
         .attr('class', 'mobHeader');
 
-    var $toggleDiv = $('<div>')
+    var $feedToggle = $('<div>')
         .attr('class', 'feedToggle');
 
     var $feedHandle = $('<div>')
@@ -107,7 +107,7 @@ PTL.feed = {
 
     var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
 
-    $feedToggle.appendTo($toggleDiv);
+    $feedIcon.appendTo($feedToggle);
 
     $feedControls.hover (
       function() {
@@ -124,24 +124,24 @@ PTL.feed = {
 
       $feedToggle.css('background-image', 'none');
 
-      $feedToggle.addClass('icon-down-big');
-      $feedToggle.removeClass('icon-rss-squared');
+      $feedIcon.addClass('icon-down-big');
+      $feedIcon.removeClass('icon-rss-squared');
 
       $(this).data('img', iconImg);
 
     },
       function() {
 
-        $feedToggle.removeClass('icon-down-big');
+        $feedIcon.removeClass('icon-down-big');
 
-        // $feedToggle.css('background-image', iconImg);
+        // $feedIcon.css('background-image', iconImg);
 
         console.log('iconImg: ', $(this).data('img'));
 
         if ($(this).data('img') !== 'none') {
           $feedToggle.css('background-image', $(this).data('img'));
         } else {
-          $feedToggle.addClass('icon-rss-squared');
+          $feedIcon.addClass('icon-rss-squared');
         }
 
       });
@@ -161,7 +161,7 @@ PTL.feed = {
     $feedPrefs.appendTo($prefsDiv);
     $feedReload.appendTo($reloadDiv);
 
-    $toggleDiv.appendTo($header);
+    $feedToggle.appendTo($header);
 
     $feedHandle.appendTo($header);
 
@@ -199,6 +199,7 @@ PTL.feed = {
         feedUrl = $dataStore.data('url'),
         feedType = $dataStore.data('type'),
         feedLimit = $dataStore.data('limit'),
+        $feedToggle = $feed.find('.feedToggle'),
         $feedIcon = $feed.find('.feedToggle > i');
 
     var l = PTL.utilities.getLocation(feedUrl),
@@ -233,14 +234,9 @@ PTL.feed = {
       timeout: 2000
     }, function(icon) {
 
-      if ( !icon || icon.length === 0) {
-        console.log('generic! ', feedHost);
-        icon = '/static/images/feed-generic-rss.png';
-      }
-
     }).done(function(icon) {
 
-      $feedIcon.css('background-image','url("' + icon + '")');
+      $feedToggle.css('background-image','url("' + icon + '")');
       $feedIcon.removeClass('icon-rss-squared');
       $header.data('img',icon);
 
@@ -249,13 +245,13 @@ PTL.feed = {
       img.src = icon;
 
       img.onerror = function() {
-        console.log('onerror generic! ', feedHost);
         $feedIcon.addClass('icon-rss-squared');
-        $feedIcon.css('background-image', 'none');
+        $feedToggle.css('background-image', 'none');
       };
 
     }).fail(function() {
-      $feedIcon.css('background-image','url("/static/images/feed-generic-rss.png")');
+      $feedIcon.addClass('icon-rss-squared');
+      $feedToggle.css('background-image', 'none');
     });
 
     $.get("/feed", {
@@ -385,7 +381,7 @@ PTL.feed = {
           imageUrl = item.image.url;
         }
 
-        if (item.enclosures[0]) {
+        if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
 
           imageUrl = item.enclosures[0].url;
 
