@@ -18,7 +18,7 @@
     "build:post": "uglifyjs public/js/PTL.utilities.js public/js/PTL.tab.js public/js/PTL.feed.js public/js/PTL.dialog.js public/js/PTL.sync.js public/js/PTL.menu.js -m -o dist/js/PTL.post.js",
     "build:js": "mkdir -p dist/js && npm run build:pre && npm run build:post",
     "watch:js": "onchange 'public/js/*.js' -- npm run build:js",
-    "postinstall": "npm run build:pre && npm run build:post && bower install"
+    "postinstall": "npm run build:js && bower install"
   },
   "devDependencies": {
     "onchange": "3.3.0",
