@@ -1,5 +1,5 @@
 PTL.tab = {
-  init:function() {
+  init:function(qstring) {
 
     var $tabs = $('#tabs').tabs({
       heightStyle: 'content',
@@ -24,6 +24,10 @@ PTL.tab = {
         PTL.tab.saveTabs();
       }
     });
+
+    if (qstring) {
+      PTL.qstring = qstring;
+    }
 
     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
       e.preventDefault();
@@ -161,7 +165,7 @@ PTL.tab = {
   },
   make:function($tabs, name, feeds, progress) {
 
-    $tabs.tabs();
+    // $tabs.tabs();
 
     $('#noSourcesButton').fadeOut('fast');
 
@@ -173,6 +177,7 @@ PTL.tab = {
         .attr('class', 'tabSort')
     // .css('columns', 'auto ' + PTL.prefs.readConfig('columns'))
         .attr('id', 'sortable' + tabIndex);
+
 
     var $tabCloser = $('<i>')
         .attr('class', 'icon-cancel tabCloser translate dangerous')
@@ -228,6 +233,11 @@ PTL.tab = {
 
     $sortable.appendTo($tabPanel);
     $tabPanel.appendTo($tabs);
+
+    if (PTL.qstring) {
+      PTL.feed.make($('.tabSort').first(), PTL.qstring, 'mixed', 8, true);
+      PTL.qstring = null;
+    }
 
     var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>');
 

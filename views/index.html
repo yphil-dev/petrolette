@@ -102,10 +102,20 @@
      PTL.menu.top();
      PTL.menu.side();
 
+     var qstring = "<%= qstring %>";
+
      setTimeout(
        function() {
-         PTL.tab.init();
+         PTL.tab.init(qstring);
+         // if (qstring) {
+         //   var $openGroupPanel = $('#sortable1');
+         //   console.log('qstring: %s, $openGroupPanel: ', qstring, $openGroupPanel.get())
+         // }
+
        }, 500);
+
+
+
 
     </script>
 
