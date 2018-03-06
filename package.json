@@ -12,14 +12,17 @@
     "url": "https://framagit.org/yphil/petrolette"
   },
   "scripts": {
-    "start": "pm2 start bin/www --watch --log-date-format='YYYY-MM-DD HH:mm Z' --name petrolette",
-    "stop": "pm2 stop petrolette",
-    "postinstall": "bower install"
+    "start": "pm2 start -f bin/www --log-date-format='YYYY-MM-DD HH:mm Z' --name PTL",
+    "stop": "pm2 stop PTL",
+    "build:pre": "uglifyjs public/js/PTL.main.js public/js/PTL.prefs.js public/js/PTL.i18n.js -m -o dist/js/PTL.pre.js",
+    "build:post": "uglifyjs public/js/PTL.utilities.js public/js/PTL.tab.js public/js/PTL.feed.js public/js/PTL.dialog.js public/js/PTL.sync.js public/js/PTL.menu.js -m -o dist/js/PTL.post.js",
+    "build:js": "mkdir -p dist/js && npm run build:pre && npm run build:post",
+    "watch:js": "onchange 'public/js/*.js' -- npm run build:js",
+    "postinstall": "npm run build:pre && npm run build:post && bower install"
   },
   "devDependencies": {
-    "intro.js": "2.8.0-alpha.1",
-    "mocha": "4.1.0",
-    "should": "13.2.0"
+    "onchange": "3.3.0",
+    "uglify-es": "3.3.9"
   },
   "dependencies": {
     "bower": "1.8.2",

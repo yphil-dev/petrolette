@@ -206,7 +206,7 @@ PTL.i18n.translations = {
 
   "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
   "Help Pétrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Pétrolette." , ja: "あなたの精神的な日の気分に応じてPétroletteを助けてください", es: "Ayuda a Pétrolette de acuerdo con tu estado de ánimo espiritual del día." },
-  "This file is bad" : { fr: "Ce fichier est chelou" , ja: "このファイルは悪いです", es: "Este archivo es malo" },
+  "This file is bad [%1]" : { fr: "Ce fichier est chelou [%1]" , ja: "[%1]このファイルは悪いです", es: "Este archivo es malo [%1]" },
   "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
   "Erase all" : { fr: "Tout effacer" , ja: "すべてを消去する", es: "Borrar todo" },
 

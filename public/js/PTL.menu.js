@@ -43,7 +43,6 @@ PTL.menu = {
 
       $newSourceButton.click(function() {
         var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
-        console.log('$openGroupPanel: ', $openGroupPanel.attr('class'));
         $overlay.removeClass('visible');
         $menu.removeClass('expanded');
         PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
@@ -114,7 +113,6 @@ PTL.menu = {
           .checkboxradio('refresh');
 
         $('.themeSwitcher').change(function() {
-          console.log('Theme: ' + '/static/css/themes/' + $(this).attr('value') + '.css');
 
           $("#mobStyle").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
 
@@ -130,7 +128,6 @@ PTL.menu = {
         $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
 
         $menu.find('select#gallerySlideTransition').change(function() {
-          console.log('New FX: %s', $(this).val());
           $.fancybox.defaults.transitionEffect = $(this).val();
           PTL.prefs.writeConfig('gallerySlideTransition', $(this).val());
         });
@@ -228,14 +225,14 @@ PTL.menu = {
               if (isJsonString(y)) {
                 p = JSON.parse(y);
               } else {
-                console.error('Pétrolette | ' + PTL.tr('This file is bad'));
+                console.error('Pétrolette | ' + PTL.tr('This file is bad [%1]', f.name));
               }
 
               if (p && isOk(p) === true){
-                console.info('Pétrolette | ' + PTL.tr('Loading of [%s] OK', f.name));
+                console.info('Pétrolette | ' + PTL.tr('Loading of [%1] OK', f.name));
                 PTL.tab.populate(p, true);
               } else {
-                console.error('Pétrolette | ' + PTL.tr('This file is bad'));
+                console.error('Pétrolette | ' + PTL.tr('This file is bad [%1]', f.name));
               }
 
             };

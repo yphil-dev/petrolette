@@ -979,7 +979,6 @@ li.feedItem {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
-  background-color: var(--bg-color-sec);
   color: var(--color-pri);
   font-size: 10pt;
   hyphens: auto;
@@ -999,10 +998,22 @@ div.itemDiv img.full {
   min-width:100%;
 }
 
+table tr,
+li.feedItem {
+  background-color: var(--bg-color-sec);
+}
+
+table tr:nth-child(even),
 li.feedItem:nth-child(even) {
   background-color: var(--bg-color-qua);
 }
 
+table tr:nth-child(even),
+li.feedItem:nth-child(even) {
+  background-color: var(--bg-color-qua);
+}
+
+table tr:hover,
 li.feedItem:hover {
   color: var(--bg-color-sec) !important;
   background-color: var(--bg-color-pri) !important;
@@ -1152,12 +1163,12 @@ div.introjs-helperLayer {
   color: var(--ui-color-sec);
 }
 
-.topnav > div#logoTitle {
+div#logoTitle {
   display:flex;
   float: right;
 }
 
-.topnav i.icon-petrolette {
+i.icon-petrolette {
   display:block;
   cursor: pointer;
   font-size:24pt;
@@ -1166,24 +1177,24 @@ div.introjs-helperLayer {
   transition: all .3s linear;
 }
 
-.topnav i.icon-petrolette:hover,
-.topnav i.icon-petrolette.writing {
+i.icon-petrolette:hover,
+i.icon-petrolette.writing {
   color: var(--ui-color-sec);
 }
 
-.topnav i.icon-petrolette:before {
+i.icon-petrolette:before {
   font-style:italic !important;
 }
 
-.topnav i.icon-petrolette:hover {
+i.icon-petrolette:hover {
   font-style:normal !important;
 }
 
-.topnav > div#logoTitle > div {
+div#logoTitle > div {
   flex: 1 0 ;
 }
 
-.topnav > div#logoTitle > .logoTitle {
+div#logoTitle > .logoTitle {
   color: var(--ui-color-pri);
   display:var(--logo-display);
   font-family: LobsterRegular, Helvetica, Arial, sans-serif;
@@ -1191,13 +1202,13 @@ div.introjs-helperLayer {
   margin: -6px 0 0 0;
 }
 
-.topnav > div#logoTitle > .logoTitle > a:link,
-.topnav > div#logoTitle > .logoTitle > a:visited {
+div#logoTitle > .logoTitle > a:link,
+div#logoTitle > .logoTitle > a:visited {
   color: var(--ui-color-pri);
   transition: all 0.3s linear;
 }
 
-.topnav > div#logoTitle > .logoTitle > a:hover {
+div#logoTitle > .logoTitle > a:hover {
   color: var(--ui-color-sec) !important;
 }
 
@@ -1247,4 +1258,37 @@ div.introjs-helperLayer {
 #scrollToTop:hover i {
   color: var(--ui-color-sec);
   top: 5px;
+}
+
+/* Javascript */
+table {
+  border-collapse: collapse;
+  width: 90vw;
+  margin: auto;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#js {
+  background: var(--ui-color-qua);
+}
+
+#js h1 {
+  padding-top: 2em;
+}
+
+#js h1,
+#js p {
+  margin-left: 40px;
 }
