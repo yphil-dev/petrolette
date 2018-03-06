@@ -43,6 +43,7 @@ PTL.menu = {
 
       $newSourceButton.click(function() {
         var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+        console.log('$openGroupPanel: ', $openGroupPanel.attr('class'));
         $overlay.removeClass('visible');
         $menu.removeClass('expanded');
         PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);

@@ -8,7 +8,7 @@ var feedrat = require('feedrat');
 // require('request').debug = true;
 
 router.get('/', function(req, res) {
-  res.render('index');
+  res.render('index', {qstring:req.query.source});
 });
 
 router.use(function(req,res,next){
