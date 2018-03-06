@@ -7,9 +7,6 @@ var feedrat = require('feedrat');
 
 // require('request').debug = true;
 
-
-// widget.attach();
-
 router.get('/', function(req, res) {
   res.render('index');
 });
