@@ -7,6 +7,8 @@
   --ui-color-sen: #f26522;
   --ui-color-sep: #ccc;
 
+  --ui-color-rss: #f26522;
+
   --var-header-height: 26px;
   --var-controls-width: 150px;
   --var-controls-font-size: 16pt;
@@ -865,21 +867,28 @@ li.feed {
   width : var(--var-controls-toggle-size);
 }
 
+/* .icon-down-dir { */
+/*   margin: 0; */
+/*   font-size:24pt; */
+/* } */
+
 .feedIcon {
+  /* font-size: 24pt; */
+  text-align: center;
   width: var(--var-controls-toggle-size);
   height: var(--var-controls-toggle-size);
   background-size: var(--var-controls-toggle-size);
-  background-image: url("/static/images/feed-generic-rss.png");
+  /* background-image: url("/static/images/feed-generic-rss.png"); */
   background-repeat: no-repeat;
+}
+
+.icon-rss-squared {
+  color: var(--ui-color-rss);
 }
 
 .tabSort .ui-sortable-placeholder {
   visibility: visible !important;
   border: 3px dashed var(--ui-color-sec) !important;
-}
-
-.feedToggle > .ui-icon {
-  margin: .1rem .2rem 0 .1rem;
 }
 
 .mobHeader > .feedTitle {
