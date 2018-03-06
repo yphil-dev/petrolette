@@ -132,14 +132,20 @@ PTL.feed = {
 
         var iconImg = $feedToggle.css('background-image');
 
-        $feedToggle.addClass('feedToggleArrow');
+        $feedToggle.css('background-image', 'none');
+
+        $feedToggle.addClass('icon-down-big');
+
+        console.log('iconImg: ', iconImg);
 
         $(this).data('img',iconImg);
 
       },
       function() {
 
-        $feedToggle.removeClass('feedToggleArrow');
+        $feedToggle.removeClass('icon-down-big');
+
+        // $feedToggle.css('background-image', iconImg);
 
         if (typeof $(this).data('img') !== 'undefined') {
           $feedToggle.css('background-image', $(this).data('img'));

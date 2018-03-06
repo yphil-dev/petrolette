@@ -865,7 +865,14 @@ li.feed {
   width : var(--var-controls-toggle-size);
 }
 
+/* .icon-down-dir { */
+/*   margin: 0; */
+/*   font-size:24pt; */
+/* } */
+
 .feedIcon {
+  /* font-size: 24pt; */
+  text-align: center;
   width: var(--var-controls-toggle-size);
   height: var(--var-controls-toggle-size);
   background-size: var(--var-controls-toggle-size);
@@ -876,10 +883,6 @@ li.feed {
 .tabSort .ui-sortable-placeholder {
   visibility: visible !important;
   border: 3px dashed var(--ui-color-sec) !important;
-}
-
-.feedToggle > .ui-icon {
-  margin: .1rem .2rem 0 .1rem;
 }
 
 .mobHeader > .feedTitle {
