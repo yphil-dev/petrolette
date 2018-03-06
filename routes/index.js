@@ -11,6 +11,10 @@ router.get('/', function(req, res) {
   res.render('index', {qstring:req.query.source});
 });
 
+router.get('/about/javascript', function(req, res) {
+  res.render('javascript');
+});
+
 router.use(function(req,res,next){
     var _send = res.send;
     var sent = false;
