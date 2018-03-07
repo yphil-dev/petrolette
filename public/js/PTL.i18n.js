@@ -49,8 +49,13 @@ PTL.i18n.translations = {
   "Slideshow speed" : { fr: "Vitesse du diaporama" , ja: "スライドショーのスピード", es: "Velocidad de la presentación" },
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
-  "WtF" : { fr: "Heu" , ja: "一体", es: "Eh" },
-  "Pétrolette (really) needs your help" : { fr: "Pétrolette a (vraiment) besoin de votre aide" , ja: "Pétrolette（本当に）あなたの助けが必要です", es: "Pétrolette (realmente) necesita tu ayuda" },
+  "WtF?" : { fr: "Heu?" , ja: "ハァッ？", es: "Eh?" },
+
+  "JS Licences" : { fr: "Licences JS" , ja: "JSライセンス", es: "Licencias JS" },
+
+  "JavaScript licencing information" : { fr: "Informations de licence JavaScript" , ja: "JavaScriptのライセンス情報", es: "Información de licencia de JavaScript" },
+
+  "Send your love to Pétrolette" : { fr: "Aider Pétrolette" , ja: "Pétroletteにあなたの愛を送る", es: "Envíale tu amor a Pétrolette" },
 
   "English" : { fr: "English" , ja: "English", es: "English" },
   "Français" : { fr: "Français" , ja: "Français", es: "Français" },

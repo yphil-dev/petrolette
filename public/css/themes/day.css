@@ -3,12 +3,12 @@
   --bg-color-sec: #eeeeee;
   --bg-color-ter: #7C818C;
   --bg-color-qua: #e3eff3;
+  --bg-color-qui: #94c2d1;
   --color-pri: #3C4440;
   --color-sec: #dddddd;
-  --color-tri: #FFDC00;
+  --color-ter: #FFDC00;
   --color-qua: #7395AE;
-  --color-qui: #B0C4DE; /* visited links */
+  --color-qui: #788780; /* visited links */
   --color-danger: #660000;
   --color-link: #3C4440;
-  --color-link-visited: #B0C4DE;
 }

@@ -1,4 +1,15 @@
 PTL.utilities = {
+  isValidSourcesFile:function(sources) {
+
+    var isValid = false;
+    if (Object.prototype.toString.call(sources) === '[object Array]') {
+      isValid = sources.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
+    } else {
+      isValid = false;
+    }
+    return isValid;
+
+  },
   isImage:function(string) {
     // return string.split('.').pop() === 'jpg';
 

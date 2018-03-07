@@ -38,7 +38,7 @@ PTL.feed = {
 
     $feedIcon.click(function() {
       $(this).toggleClass('down');
-      $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
+      $(this).parent().parent().parent().children('div.feedBody').slideToggle('slow');
     });
 
     $feedSelect.click(function() {

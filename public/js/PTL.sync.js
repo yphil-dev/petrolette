@@ -60,7 +60,7 @@ PTL.sync = (function() {
       remoteStorage.petrolette.read()
         .then((data) => {
 
-          if (PTL.prefs.isValidSourcesFile(JSON.parse(data))) {
+          if (PTL.utilities.isValidSourcesFile(JSON.parse(data))) {
 
             console.info('Pétrolette | ' + PTL.tr('Remote file validation OK'));
 
@@ -70,7 +70,7 @@ PTL.sync = (function() {
 
             console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', data));
 
-            if (PTL.prefs.isValidSourcesFile(JSON.parse(PTL.prefs.readConfig('tabs')))) {
+            if (PTL.utilities.isValidSourcesFile(JSON.parse(PTL.prefs.readConfig('tabs')))) {
               console.log('plop');
               PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
             } else {
@@ -82,7 +82,7 @@ PTL.sync = (function() {
         })
         .catch((err) => {
 
-          if (PTL.prefs.isValidSourcesFile(JSON.parse(PTL.prefs.readConfig('tabs')))) {
+          if (PTL.utilities.isValidSourcesFile(JSON.parse(PTL.prefs.readConfig('tabs')))) {
             PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
           } else {
             localStorage.setItem("tabs", "");

@@ -76,7 +76,15 @@
   src: url('/static/font/BebasNeue.otf') format("opentype");
 }
 
+body {
+  color: var(--color-pri);
+  background-color: var(--bg-color-ter);
+  font-family: Arial,Helvetica,sans-serif;
+  margin:0;
+}
+
 #noScript {
+  padding: 1em 0;
   margin: 25% auto;
   background: var(--ui-color-qua);
 }
@@ -103,17 +111,6 @@
   font-family: fontello;
 }
 
-body {
-  background-color: var(--bg-color-ter);
-  font-family: Arial,Helvetica,sans-serif;
-  margin:0;
-}
-
-html,
-body {
-  color: var(--color-pri);
-}
-
 h1,
 h2,
 h3,
@@ -131,13 +128,28 @@ p,
 .ui-dialog,
 div.dialog {
   line-height: 1.5em;
-  color: var(--color-pri);
+  color: var(--ui-color-pri);
 }
 
 ul {
   list-style-type: none;
   margin:0;
   padding:0;
+}
+
+#noScript ul {
+  list-style-type: disc;
+  /* padding: .2em; */
+}
+
+#noScript h1 {
+  font-style: italic;
+  color: var(--ui-color-danger);
+}
+
+#noScript ul > li {
+  margin: .3em 0;
+  /* padding: .2em; */
 }
 
 a:link {
@@ -336,7 +348,7 @@ div#sideMenu {
   padding: 45px 0 0 0;
   position: fixed;
   top: 0;
-  transition: all 150ms ease-out;
+  transition: all .2s ease-out;
   width: 275px;
   z-index:11;
 }
@@ -684,42 +696,6 @@ div.testFlex {
   margin-bottom:0;
 }
 
-/* Wait screen */
-
-#waitScreen{
-  background-color: #7C818C;
-}
-
-#waitScreen > .wspinner {
-  width: 200px;
-  height: 200px;
-  margin: 30% auto;
-  background-color: #7395AE;
-
-  border-radius: 100%;
-  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-  animation: sk-scaleout 1.0s infinite ease-in-out;
-}
-
-@-webkit-keyframes sk-scaleout {
-  0% { -webkit-transform: scale(0) }
-  100% {
-    -webkit-transform: scale(1.0);
-    opacity: 0;
-  }
-}
-
-@keyframes sk-scaleout {
-  0% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  } 100% {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
-    opacity: 0;
-  }
-}
-
 #tabs {
   white-space: nowrap;
   overflow: hidden;
@@ -794,33 +770,24 @@ li.mobTab,
 ul.tabSort {
   column-gap: .4em;
   columns: var(--columns);
-  padding: 0 .2em .2em;
-  transition: all .5s ease-in-out;
+  padding: .4em .2em;
 }
 
 /* Feed */
 
 li.feed {
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  /* font-size: 1.6rem; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 600 !important;
-  vertical-align:top;
-  margin: .4em 0 0 0;
-  display: inline-block;
-
+  margin: 0 0 .4em 0;
+  page-break-after: always;
+  page-break-before: always;
   page-break-inside: avoid;
-  break-inside: avoid;
-
-  transition: all .2s linear;
 }
 
 .selected,
 li.feed {
-  width: 100%;
   min-height:20px !important;
+  width: 100%;
 }
 
 .feedBody {
@@ -832,26 +799,23 @@ li.feed {
 }
 
 .truncate {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .mobHeader {
-  /* min-height:20px; */
-  height: var(--var-header-height);
-
-  max-height: var(--var-header-height);
   display: flex;
   flex-direction:row;
-  /* align-content: stretch; */
+  height: var(--var-header-height);
+  max-height: var(--var-header-height);
   padding:0;
 }
 
 .flexGrow {
-  flex-grow: 0 !important;
-  flex-shrink: 0 !important;
-  flex-basis: var(--var-controls-flex-basis) !important;
+  flex-basis: var(--var-controls-flex-basis);
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .open {
@@ -859,8 +823,8 @@ li.feed {
 }
 
 .tabSort .ui-sortable-placeholder {
-  visibility: visible !important;
-  border: 3px dashed var(--ui-color-sec) !important;
+  visibility: visible;
+  outline: 3px dashed var(--ui-color-sec) !important;
 }
 
 .mobHeader > .feedTitle {
@@ -868,11 +832,11 @@ li.feed {
   flex-basis: auto;
   flex-grow: 4;
   flex-shrink: 1;
-  font-family: BebasNeueRegular, Helvetica, Arial, sans-serif !important;
-  margin-left: var(--title-margin-left);
+  font-family: BebasNeueRegular, Helvetica, Arial, sans-serif;
   font-size: var(--var-controls-font-size);
   font-style: italic;
   font-weight: normal;
+  margin-left: var(--title-margin-left);
 }
 
 .mobHeader > .feedHandle {
@@ -920,6 +884,11 @@ li.feed {
   font-size: var(--var-controls-font-size);
   margin: 0 0 0 2px;
 }
+
+.feed * {
+  transition: all .1s linear;
+}
+
 
 .mobHeader > .feedToggle {
   margin: 2px;
@@ -988,13 +957,13 @@ li.feedItem {
   word-wrap: break-word;
 }
 
-div.itemDiv img {
-  max-width:30%;
+li.feedItem > div.itemDiv > a > img {
   float:left;
-  margin: 0 .2rem .2rem 0; /* Some gutter */
+  margin: 0 .2rem .2rem 0;
+  max-width:30%;
 }
 
-div.itemDiv img.full {
+li.feedItem > div.itemDiv > a > img.full {
   min-width:100%;
 }
 
@@ -1015,17 +984,26 @@ li.feedItem:nth-child(even) {
 
 table tr:hover,
 li.feedItem:hover {
-  color: var(--bg-color-sec) !important;
   background-color: var(--bg-color-pri) !important;
+  color: var(--bg-color-sec) !important;
 }
 
-li.feedItem img:hover {
+li.feed div.feedBody {
+  border-right: 1px solid var(--bg-color-qua);
+  border-bottom: 1px solid var(--bg-color-qua);
+  border-left: 1px solid var(--bg-color-qua);
+}
+
+li.feed:hover div.feedBody {
+  border-color: var(--bg-color-qui);
+}
+
+li.feedItem > div.itemDiv > a > img:hover {
   outline: 1px solid var(--ui-color-sec);
 }
 
 li.feed {
   padding: 0;
-  transition: all .1s ease;
 }
 
 .mobHeader > .feedHandle:hover {
@@ -1107,7 +1085,7 @@ div.introjs-helperLayer {
   display:none;
   position: fixed;
   top: 0;
-  left: 275px;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: 10;
@@ -1261,6 +1239,20 @@ div#logoTitle > .logoTitle > a:hover {
 }
 
 /* Javascript */
+
+#js {
+  background-color: var(--ui-color-qua);
+}
+
+#js h1 {
+  padding-top: 2em;
+}
+
+#js h1,
+#js p {
+  margin-left: 40px;
+}
+
 table {
   border-collapse: collapse;
   width: 90vw;
@@ -1278,17 +1270,4 @@ table th {
   text-align: left;
   background-color: #4CAF50;
   color: white;
-}
-
-#js {
-  background: var(--ui-color-qua);
-}
-
-#js h1 {
-  padding-top: 2em;
-}
-
-#js h1,
-#js p {
-  margin-left: 40px;
 }
