@@ -825,8 +825,8 @@ li.feed {
 }
 
 .tabSort .ui-sortable-placeholder {
-  visibility: visible;
-  outline: 3px dashed var(--color-sec) !important;
+  visibility: visible !important;
+  outline: .1em dashed var(--color-sec);
 }
 
 .mobHeader > .feedTitle {
