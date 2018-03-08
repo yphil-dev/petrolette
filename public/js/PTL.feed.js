@@ -1,3 +1,5 @@
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+
 PTL.feed = {
 
   make:function($tab, url, type, limit, clickNew, progress) {
@@ -38,7 +40,7 @@ PTL.feed = {
 
     $feedIcon.click(function() {
       $(this).toggleClass('down');
-      $(this).parent().parent().parent().children('div.feedBody').slideToggle(200);
+      $(this).parent().parent().parent().children('div.feedBody').slideToggle('slow');
     });
 
     $feedSelect.click(function() {

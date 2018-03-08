@@ -1,3 +1,32 @@
+/*!
+ * @base: https://github.com/videojs/video.js
+ *
+ * @Source: cliplibrejs.dev.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in this page.
+ *
+ * Copyleft 2017 Jesus Eduardo
+ *
+ * The JavaScript code in this page is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in this page.
+ *
+ */
+
 PTL.i18n = {
   trans : function(term) {
 
@@ -49,8 +78,13 @@ PTL.i18n.translations = {
   "Slideshow speed" : { fr: "Vitesse du diaporama" , ja: "スライドショーのスピード", es: "Velocidad de la presentación" },
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
-  "WtF" : { fr: "Heu" , ja: "一体", es: "Eh" },
-  "Pétrolette (really) needs your help" : { fr: "Pétrolette a (vraiment) besoin de votre aide" , ja: "Pétrolette（本当に）あなたの助けが必要です", es: "Pétrolette (realmente) necesita tu ayuda" },
+  "WtF?" : { fr: "Heu?" , ja: "ハァッ？", es: "Eh?" },
+
+  "JS Licences" : { fr: "Licences JS" , ja: "JSライセンス", es: "Licencias JS" },
+
+  "JavaScript licencing information" : { fr: "Informations de licence JavaScript" , ja: "JavaScriptのライセンス情報", es: "Información de licencia de JavaScript" },
+
+  "Send your love to Pétrolette" : { fr: "Aider Pétrolette" , ja: "Pétroletteにあなたの愛を送る", es: "Envíale tu amor a Pétrolette" },
 
   "English" : { fr: "English" , ja: "English", es: "English" },
   "Français" : { fr: "Français" , ja: "Français", es: "Français" },

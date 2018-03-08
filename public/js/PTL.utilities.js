@@ -1,4 +1,17 @@
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+
 PTL.utilities = {
+  isValidSourcesFile:function(sources) {
+
+    var isValid = false;
+    if (Object.prototype.toString.call(sources) === '[object Array]') {
+      isValid = sources.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
+    } else {
+      isValid = false;
+    }
+    return isValid;
+
+  },
   isImage:function(string) {
     // return string.split('.').pop() === 'jpg';
 
@@ -294,3 +307,5 @@ PTL.utilities = {
       return parseFloat(secs + '.' + ms.toFixed(1));
     }
 };
+
+// @license-end
