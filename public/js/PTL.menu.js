@@ -54,9 +54,23 @@ PTL.menu = {
 
       PTL.sync.attachWidget();
 
-      $menuButton.click(function() {
+      $menuButton.on('click', function() {
+        console.log('CLIK!');
         $overlay.toggleClass('visible');
         $menu.toggleClass('expanded');
+      });
+
+      $newSourceButton.on('click', function() {
+        var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+        $overlay.removeClass('visible');
+        $menu.removeClass('expanded');
+        PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
+      });
+
+      $helpButton.on('click', function(event) {
+        event.preventDefault();
+        $('#tabs').tabs('option', 'active', 0);
+        PTL.dialog.help();
       });
 
       $sourceCodeButton.click(function(event) {
@@ -66,25 +80,18 @@ PTL.menu = {
 
       $overlay.click(function() {
         $(this).removeClass('visible');
-        $menu.removeClass('expanded');
-      });
+          $menu.removeClass('expanded');
+        });
 
-      $newSourceButton.click(function() {
-        var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
-        $overlay.removeClass('visible');
-        $menu.removeClass('expanded');
-        PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
-      });
+        $(document).keydown(function(event) {
+          if (event.keyCode === $.ui.keyCode.ESCAPE) {
+            $('.tabSort' ).sortable('cancel');
+          }
+        });
 
-      $(document).keydown(function(event) {
-        if (event.keyCode === $.ui.keyCode.ESCAPE) {
-          $('.tabSort' ).sortable('cancel');
-        }
-      });
+        var $widget = $('#remotestorage-widget');
 
-      var $widget = $('#remotestorage-widget');
-
-      var $readMore = $('<a>')
+        var $readMore = $('<a>')
           .attr('class', 'rs-help')
           .attr('href', 'https:remotestorage.io/')
           .text(PTL.tr('Read more.'));
@@ -109,13 +116,6 @@ PTL.menu = {
         PTL.language = selectedLang;
         PTL.prefs.writeConfig('lang', selectedLang);
         PTL.utilities.translate();
-      });
-
-      $helpButton.click(function (event) {
-        event.preventDefault();
-        $('#tabs').tabs('option', 'active', 0);
-        // PTL.utilities.help('ui');
-        PTL.dialog.help();
       });
 
       $importButton.click(function () {

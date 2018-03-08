@@ -85,11 +85,9 @@ PTL.tab = {
     PTL.tab.saveTabs();
     PTL.tab.makeNewTabButton($('div#tabs'));
   },
-  populate:function(tabs, clickToRefresh, add) {
+  populate:function(sources, clickToRefresh, add) {
 
-    if (add) {
-      console.log('ADD!');
-    } else {
+    if (!add) {
       $('div#tabs div').remove();
       $('div#tabs ul li').remove();
       PTL.tab.makeNewTabButton($('div#tabs'));
@@ -98,13 +96,13 @@ PTL.tab = {
     var totalFeeds = 0,
         progress = PTL.utilities.buildProgress();
 
-    tabs.forEach(function(tab) {
+    sources.forEach(function(tab) {
       totalFeeds += tab.feeds.length;
     });
 
     progress.init(totalFeeds);
 
-    tabs.forEach(function(tab) {
+    sources.forEach(function(tab) {
       PTL.tab.make($('#tabs'), tab.name, tab.feeds, progress);
     });
 
@@ -162,8 +160,8 @@ PTL.tab = {
     var $newTabButtonIcon = $('<a>')
         .attr('class', 'plusButton icon-plus-1');
 
-    $newTabButtonLink.bind('click', function(e) {
-      e.stopImmediatePropagation();
+    $newTabButtonLink.bind('click', function(event) {
+      event.stopImmediatePropagation();
 
       PTL.tab.make($($tabs));
 
@@ -176,8 +174,6 @@ PTL.tab = {
 
   },
   make:function($tabs, name, feeds, progress) {
-
-    // $tabs.tabs();
 
     $('#noSourcesButton').fadeOut('fast');
 
