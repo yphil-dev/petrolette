@@ -183,7 +183,8 @@ PTL.tab = {
         .data('title', PTL.tr('Delete the [%1] tab', name))
         .attr('title', PTL.tr('Delete the [%1] tab', name));
 
-    var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>')
+    var $tabPanel = $('<div>')
+        .attr('id', 'tab-' + tabIndex)
         .attr('class', 'tab');
 
     $sortable.sortable({
