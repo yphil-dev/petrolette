@@ -154,7 +154,7 @@ PTL.tab = {
         .attr('id', 'newTabButton')
         .attr('class', 'translate newContentButton')
         .data('title', 'Add a new group')
-        .attr('title', 'Add a new group');
+        .attr('title', PTL.tr('Add a new group'));
 
     var $newTabButtonLink = $('<a>')
         .attr('href', '#');
@@ -173,8 +173,6 @@ PTL.tab = {
     $newTabButtonIcon.appendTo($newTabButtonLink);
     $newTabButtonLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tabUl'));
-
-    PTL.utilities.translate();
 
   },
   make:function($tabs, name, feeds, progress) {
