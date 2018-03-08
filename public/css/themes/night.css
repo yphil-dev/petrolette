@@ -1,14 +1,13 @@
 :root {
-  --bg-color-pri: #383C4A;
-  --bg-color-sec: #4B5162;
-  --bg-color-ter: #7C818C;
-  --bg-color-qua: #404552;
-  --bg-color-qui: #404552;
   --color-pri: #ffffff;
-  --color-sec: #dddddd;
+  --color-sec: #FF4136;
   --color-ter: #fdfae9;
   --color-qua: #29323c;
   --color-qui: #B0C4DE; /* visited links */
+  --color-sen: #383C4A;
+  --color-sep: #4B5162;
+  --color-oct: #7C818C;
+  --color-non: #404552;
+  --color-den: #5a6172;
   --color-danger: #660000;
-  --color-link: #ffffff;
 }
