@@ -150,16 +150,28 @@ PTL.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add a new group" title="Add a new group">'),
-        $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
-          e.stopImmediatePropagation();
+    var $newTabButton = $('<li>')
+        .attr('id', 'newTabButton')
+        .attr('class', 'translate newContentButton')
+        .data('title', 'Add a new group')
+        .attr('title', 'Add a new group');
 
-          PTL.tab.make($($tabs));
+    var $newTabButtonLink = $('<a>')
+        .attr('href', '#');
 
-          return false;
+    var $newTabButtonIcon = $('<a>')
+        .attr('class', 'plusButton icon-plus-1');
+
+    $newTabButtonLink.bind('click', function(e) {
+      e.stopImmediatePropagation();
+
+      PTL.tab.make($($tabs));
+
+      return false;
     });
 
-    $dummyTabLink.appendTo($newTabButton);
+    $newTabButtonIcon.appendTo($newTabButtonLink);
+    $newTabButtonLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tabUl'));
 
     PTL.utilities.translate();
