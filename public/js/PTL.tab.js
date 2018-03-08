@@ -176,10 +176,7 @@ PTL.tab = {
     if (!name) name = 'Group ' + tabIndex;
 
     var $sortable = $('<ul>')
-        .attr('class', 'tabSort')
-    // .css('columns', 'auto ' + PTL.prefs.readConfig('columns'))
-        .attr('id', 'sortable' + tabIndex);
-
+        .attr('class', 'tabSort');
 
     var $tabCloser = $('<i>')
         .attr('class', 'icon-cancel tabCloser translate dangerous')
@@ -187,7 +184,6 @@ PTL.tab = {
         .attr('title', PTL.tr('Delete the [%1] tab', name));
 
     var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>')
-        .attr('id', 'tab-' + tabIndex)
         .attr('class', 'tab');
 
     $sortable.sortable({
@@ -241,7 +237,9 @@ PTL.tab = {
       PTL.qstring = null;
     }
 
-    var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>');
+    var $thisTabLink = $('<a>')
+        .attr('href', '#tab-' + tabIndex)
+        .append(name);
 
     var $thisTab = $('<li>')
         .attr('class', 'modal mobTab translate')
@@ -284,7 +282,7 @@ PTL.tab = {
 
     if(typeof feeds != 'undefined') {
       feeds.forEach(function(feed) {
-        PTL.feed.make($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit, false, progress);
+        PTL.feed.make($sortable, feed.url, feed.type, feed.limit, false, progress);
       });
     }
 
