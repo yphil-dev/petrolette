@@ -3,14 +3,19 @@
 PTL.prefs = (function() {
 
   var newList = [
-    {"name":"News",
-     "feeds": [
+    {"groupName":"News",
+     "0": [
+       {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8},
+       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4}
+     ],
+     "1": [
+       {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8},
        {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8},
        {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4}
      ]
     },
-    {"name":"Comics",
-     "feeds": [
+    {"groupName":"Comics",
+     "0": [
        {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
        {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
      ]

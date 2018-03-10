@@ -340,14 +340,10 @@ PTL.feed = {
 
         var imageUrl;
 
-        var $imageLink = $('<a>')
-            .attr('target', '_blank'),
-            $itemLink = $('<a>')
-            .attr('target', '_blank'),
-            $soundLink = $('<a>')
-            .attr('target', '_blank'),
-            $commentsLink = $('<a>')
-            .attr('target', '_blank'),
+        var $imageLink = $('<a>').attr('target', '_blank'),
+            $itemLink = $('<a>').attr('target', '_blank'),
+            $soundLink = $('<a>').attr('target', '_blank'),
+            $commentsLink = $('<a>').attr('target', '_blank'),
             $commentsIcon = $('<i>'),
             $soundIcon = $('<i>'),
             $image = $('<img>');
