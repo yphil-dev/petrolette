@@ -2,6 +2,21 @@
 
 PTL.prefs = (function() {
 
+  var newList = [
+    {"name":"News",
+     "feeds": [
+       {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8},
+       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4}
+     ]
+    },
+    {"name":"Comics",
+     "feeds": [
+       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+       {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+     ]
+    }
+  ];
+
   var emptyTabList = [
     {"name":"News",
      "feeds": [
@@ -46,6 +61,7 @@ PTL.prefs = (function() {
     'columns': 3,
     'lang': 'en',
     'explicitLang': false,
+    'sources': JSON.stringify(newList),
     'tabs': JSON.stringify(emptyTabList)
   };
 

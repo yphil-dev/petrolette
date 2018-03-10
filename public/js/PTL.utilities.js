@@ -3,6 +3,21 @@
 PTL.utilities = {
   isValidSourcesFile:function(sources) {
 
+    function checkElt(val) {
+      return val === 'news';
+    }
+
+    function has(object, key) {
+      return object ? hasOwnProperty.call(object, key) : false;
+    }
+
+    // console.log('sources', sources.find('name'));
+    console.log('feeds', sources.hasOwnProperty('name'));
+
+    console.log('sources: ', has(sources, 'feeds'));
+
+    // sources.find('name');
+
     var isValid = false;
     if (Object.prototype.toString.call(sources) === '[object Array]') {
       isValid = sources.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
@@ -13,9 +28,6 @@ PTL.utilities = {
 
   },
   isImage:function(string) {
-    // return string.split('.').pop() === 'jpg';
-
-
     return (['jpg', 'png'].indexOf(string.split('.').pop()) >= 0);
   },
   noSourcesButton:function() {
@@ -26,15 +38,14 @@ PTL.utilities = {
     var $noSourcesText = $('<div>').text('Loading sources');
 
     var $noSourcesButton = $('<div>')
-    // .append('<span data-content="Whoops, no sources!" data-title="Whoops, no sources!" class="translate"> Whoops, no sources! </span> <br/> <span data-content="Click here to add some." data-title="Click here to add some." class="translate"> Click here to add some.</span>')
-          .append($loadingSpinner)
-          .append('<br>')
-          .append($noSourcesText);
+        .append($loadingSpinner)
+        .append('<br>')
+        .append($noSourcesText);
 
-      var $noSourcesButtonContainer = $('<div>')
-          .attr('id', 'noSourcesButton')
-          .attr('class', 'deadCenter')
-          .append($noSourcesButton);
+    var $noSourcesButtonContainer = $('<div>')
+        .attr('id', 'noSourcesButton')
+        .attr('class', 'deadCenter')
+        .append($noSourcesButton);
 
       $('main').append($noSourcesButtonContainer);
 
@@ -44,7 +55,7 @@ PTL.utilities = {
       var vWidth = $(window).width(),
           vW;
 
-      if(PTL.utilities.isMobile() || vWidth < 720 ) {
+      if (PTL.utilities.isMobile() || vWidth < 720 ) {
         vW = vWidth - 8;
       } else {
         vW = vWidth - vWidth / 4;

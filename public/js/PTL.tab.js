@@ -179,7 +179,7 @@ PTL.tab = {
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
-    if (!name) name = 'Group ' + tabIndex;
+    name = name || 'Group ' + tabIndex;
 
     var $sortable = $('<ul>')
         .attr('class', 'tabSort');

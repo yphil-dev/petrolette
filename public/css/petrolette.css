@@ -887,11 +887,6 @@ li.feed {
   margin: 0 0 0 2px;
 }
 
-.feed * {
-  transition: all .1s linear;
-}
-
-
 .mobHeader > .feedToggle {
   margin: 2px;
   flex-basis: auto;
@@ -1127,6 +1122,13 @@ div.introjs-helperLayer {
   position: absolute;
   top: 0;
   z-index: 5;
+}
+
+div#logoTitle > .logoTitle > a:link,
+div#logoTitle > .logoTitle > a:visited,
+.topnav i,
+#scrollToTop,
+#scrollToTop i {
   transition: all .3s linear;
 }
 
@@ -1154,7 +1156,6 @@ i.icon-petrolette {
   font-size:24pt;
   margin: 6px 12px 6px 6px;
   color: var(--ui-color-pri);
-  transition: all .3s linear;
 }
 
 i.icon-petrolette:hover,
@@ -1185,7 +1186,6 @@ div#logoTitle > .logoTitle {
 div#logoTitle > .logoTitle > a:link,
 div#logoTitle > .logoTitle > a:visited {
   color: var(--ui-color-pri);
-  transition: all 0.3s linear;
 }
 
 div#logoTitle > .logoTitle > a:hover {
@@ -1217,7 +1217,6 @@ div#logoTitle > .logoTitle > a:hover {
   position: fixed;
   right: 20px;
   text-decoration: none;
-  transition: all 0.3s ease;
   width: 50px;
 }
 
@@ -1228,7 +1227,6 @@ div#logoTitle > .logoTitle > a:hover {
   margin: 0;
   position: relative;
   top: 13px;
-  transition: all 0.3s ease;
 }
 
 #scrollToTop:hover {
