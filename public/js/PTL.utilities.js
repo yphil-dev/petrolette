@@ -3,27 +3,12 @@
 PTL.utilities = {
   isValidSourcesFile:function(sources) {
 
-    function checkElt(val) {
-      return val === 'news';
-    }
-
-    function has(object, key) {
-      return object ? hasOwnProperty.call(object, key) : false;
-    }
-
-    // console.log('sources', sources.find('name'));
-    console.log('feeds', sources.hasOwnProperty('name'));
-
-    console.log('sources: ', has(sources, 'feeds'));
-
-    // sources.find('name');
-
     var isValid = false;
-    if (Object.prototype.toString.call(sources) === '[object Array]') {
-      isValid = sources.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
-    } else {
-      isValid = false;
-    }
+
+    sources.forEach(function(element) {
+      if (element.feeds) isValid = true;
+    });
+
     return isValid;
 
   },
