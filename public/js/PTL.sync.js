@@ -110,7 +110,7 @@ PTL.sync = (function() {
         })
         .catch((err) => {
 
-          console.log('sources in sync: ', JSON.parse(PTL.prefs.readConfig('sources')));
+          // console.log('sources in sync: ', JSON.parse(PTL.prefs.readConfig('sources')));
 
           PTL.tab.newPopulate(JSON.parse(PTL.prefs.readConfig('sources')));
 

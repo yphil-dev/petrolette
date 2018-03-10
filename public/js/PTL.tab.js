@@ -87,36 +87,42 @@ PTL.tab = {
   },
   newPopulate:function(sources) {
 
-    var totalCols = 0;
+    var totalGroups = sources.length;
 
-    sources.forEach(function(tab) {
-      console.log('tab: ', tab.groupName);
+    var totalThisCol = 0;
 
-      console.log('tab feeds: ', tab);
+    sources.forEach(function(group) {
 
-      var group = tab.groupName;
+      totalThisCol += 1;
 
-      // tab.forEach(function(src) {
-      //   console.log('src: ', src);
+      console.log('group: ', group.name);
+
+      // console.log('%s feeds: ', totalThisCol, tab);
+
+      $.each(group, function( k, v ) {
+        if (k !== 'name') {
+          console.log( "Col: " + k + ", #feeds: " + v.length);
+          $.each(v, function( k, v ) {
+            $.each(v, function( k, v ) {
+              // console.log( "Key: " + k + ", Value: " + v );
+            });
+          });
+        }
+      });
+
+      // var totalFeedsInCol = 0;
+
+      // Object.keys(tab).forEach(function(col){
+      //   console.log('col: ', col);
       // });
 
-      Object.keys(tab).forEach(function(col){
-        console.log('col: ', col);
-
-        var arr = tab[col];
-
-        Object.values(arr).forEach(function(f){
-          console.log('f: ', f);
-        });
-
-        totalCols += col.length;
-      });
+      // console.log('t (%s)', totalFeedsInCol);
+      // console.log('%s Groups', totalGroups);
 
     });
 
     // PTL.tab.make($('#tabs'), tab.groupName, tab.feeds, progress);
 
-    console.log('New sources (%s) : %s', totalCols, sources);
 
   },
   populate:function(sources, clickToRefresh, add) {
