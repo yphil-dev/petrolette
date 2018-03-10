@@ -61,6 +61,7 @@ PTL.prefs = (function() {
     'columns': 3,
     'lang': 'en',
     'explicitLang': false,
+    'writeTime': Date.now(),
     'sources': JSON.stringify(newList),
     'tabs': JSON.stringify(emptyTabList)
   };
@@ -78,6 +79,11 @@ PTL.prefs = (function() {
     writeConfig:function(key, val) {
 
       $('div#logoTitle i').addClass('writing');
+
+      if (key === 'tabs') {
+        localStorage.setItem('writeTime', Date.now());
+      }
+
       localStorage.setItem(key, val);
       setTimeout(function () {
         $('div#logoTitle i').delay('slow').removeClass('writing');

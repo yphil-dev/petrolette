@@ -39,7 +39,7 @@ PTL.sync = (function() {
       return {
         exports: {
           read: function () {
-            return privateClient.getFile('petrolette.conf')
+            return privateClient.getFile('petrolette.conf', (Date.now() - PTL.prefs.readConfig('writeTime')))
               .then(function (file) {
                 return file.data;
               });
