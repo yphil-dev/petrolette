@@ -39,9 +39,6 @@ PTL.menu = {
 
       var $menu = $(this),
           $overlay = $('#overlay'),
-          $menuButton = $('#menuButton'),
-          $helpButton = $('.helpButton'),
-          $newSourceButton = $('#newSourceButton'),
           $sourceCodeButton = $('button#sourceCode'),
           $importButton = $("button#fileImport"),
           $fileImportInput = $("input#fileImport"),
@@ -54,9 +51,21 @@ PTL.menu = {
 
       PTL.sync.attachWidget();
 
-      $menuButton.click(function() {
+      $('body').on('click','#menuButton', function() {
         $overlay.toggleClass('visible');
         $menu.toggleClass('expanded');
+      });
+
+      $('body').on('click','#helpButton', function() {
+        $('#tabs').tabs('option', 'active', 0);
+        PTL.dialog.help();
+      });
+
+      $('body').on('click','#newSourceButton', function() {
+        var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+        $overlay.removeClass('visible');
+        $menu.removeClass('expanded');
+        PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
       });
 
       $sourceCodeButton.click(function(event) {
@@ -66,25 +75,18 @@ PTL.menu = {
 
       $overlay.click(function() {
         $(this).removeClass('visible');
-        $menu.removeClass('expanded');
-      });
+          $menu.removeClass('expanded');
+        });
 
-      $newSourceButton.click(function() {
-        var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
-        $overlay.removeClass('visible');
-        $menu.removeClass('expanded');
-        PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
-      });
+        $(document).keydown(function(event) {
+          if (event.keyCode === $.ui.keyCode.ESCAPE) {
+            $('.tabSort' ).sortable('cancel');
+          }
+        });
 
-      $(document).keydown(function(event) {
-        if (event.keyCode === $.ui.keyCode.ESCAPE) {
-          $('.tabSort' ).sortable('cancel');
-        }
-      });
+        var $widget = $('#remotestorage-widget');
 
-      var $widget = $('#remotestorage-widget');
-
-      var $readMore = $('<a>')
+        var $readMore = $('<a>')
           .attr('class', 'rs-help')
           .attr('href', 'https:remotestorage.io/')
           .text(PTL.tr('Read more.'));
@@ -109,13 +111,6 @@ PTL.menu = {
         PTL.language = selectedLang;
         PTL.prefs.writeConfig('lang', selectedLang);
         PTL.utilities.translate();
-      });
-
-      $helpButton.click(function (event) {
-        event.preventDefault();
-        $('#tabs').tabs('option', 'active', 0);
-        // PTL.utilities.help('ui');
-        PTL.dialog.help();
       });
 
       $importButton.click(function () {

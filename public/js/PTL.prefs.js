@@ -2,6 +2,21 @@
 
 PTL.prefs = (function() {
 
+  var newList = [
+    {"name":"News",
+     "feeds": [
+       {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8},
+       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4}
+     ]
+    },
+    {"name":"Comics",
+     "feeds": [
+       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+       {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+     ]
+    }
+  ];
+
   var emptyTabList = [
     {"name":"News",
      "feeds": [
@@ -46,6 +61,8 @@ PTL.prefs = (function() {
     'columns': 3,
     'lang': 'en',
     'explicitLang': false,
+    'writeTime': Date.now(),
+    'sources': JSON.stringify(newList),
     'tabs': JSON.stringify(emptyTabList)
   };
 
@@ -62,6 +79,11 @@ PTL.prefs = (function() {
     writeConfig:function(key, val) {
 
       $('div#logoTitle i').addClass('writing');
+
+      if (key === 'tabs') {
+        localStorage.setItem('writeTime', Date.now());
+      }
+
       localStorage.setItem(key, val);
       setTimeout(function () {
         $('div#logoTitle i').delay('slow').removeClass('writing');

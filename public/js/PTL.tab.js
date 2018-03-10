@@ -85,11 +85,9 @@ PTL.tab = {
     PTL.tab.saveTabs();
     PTL.tab.makeNewTabButton($('div#tabs'));
   },
-  populate:function(tabs, clickToRefresh, add) {
+  populate:function(sources, clickToRefresh, add) {
 
-    if (add) {
-      console.log('ADD!');
-    } else {
+    if (!add) {
       $('div#tabs div').remove();
       $('div#tabs ul li').remove();
       PTL.tab.makeNewTabButton($('div#tabs'));
@@ -98,13 +96,13 @@ PTL.tab = {
     var totalFeeds = 0,
         progress = PTL.utilities.buildProgress();
 
-    tabs.forEach(function(tab) {
+    sources.forEach(function(tab) {
       totalFeeds += tab.feeds.length;
     });
 
     progress.init(totalFeeds);
 
-    tabs.forEach(function(tab) {
+    sources.forEach(function(tab) {
       PTL.tab.make($('#tabs'), tab.name, tab.feeds, progress);
     });
 
@@ -150,43 +148,48 @@ PTL.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li id="newTabButton" class="translate newContentButton" data-title="Add a new group" title="Add a new group">'),
-        $dummyTabLink = $('<a href="#"><i class="plusButton icon-plus-1"></i></a>').bind('click', function(e) {
-          e.stopImmediatePropagation();
+    var $newTabButton = $('<li>')
+        .attr('id', 'newTabButton')
+        .attr('class', 'translate newContentButton')
+        .data('title', 'Add a new group')
+        .attr('title', PTL.tr('Add a new group'));
 
-          PTL.tab.make($($tabs));
+    var $newTabButtonLink = $('<a>')
+        .attr('href', '#');
 
-          return false;
+    var $newTabButtonIcon = $('<a>')
+        .attr('class', 'plusButton icon-plus-1');
+
+    $newTabButtonLink.bind('click', function(event) {
+      event.stopImmediatePropagation();
+
+      PTL.tab.make($($tabs));
+
+      return false;
     });
 
-    $dummyTabLink.appendTo($newTabButton);
+    $newTabButtonIcon.appendTo($newTabButtonLink);
+    $newTabButtonLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tabUl'));
-
-    PTL.utilities.translate();
 
   },
   make:function($tabs, name, feeds, progress) {
-
-    // $tabs.tabs();
 
     $('#noSourcesButton').fadeOut('fast');
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
-    if (!name) name = 'Group ' + tabIndex;
+    name = name || 'Group ' + tabIndex;
 
     var $sortable = $('<ul>')
-        .attr('class', 'tabSort')
-    // .css('columns', 'auto ' + PTL.prefs.readConfig('columns'))
-        .attr('id', 'sortable' + tabIndex);
-
+        .attr('class', 'tabSort');
 
     var $tabCloser = $('<i>')
         .attr('class', 'icon-cancel tabCloser translate dangerous')
         .data('title', PTL.tr('Delete the [%1] tab', name))
         .attr('title', PTL.tr('Delete the [%1] tab', name));
 
-    var $tabPanel = $('<div class="tab" id="tab-' + tabIndex + '"></div>')
+    var $tabPanel = $('<div>')
         .attr('id', 'tab-' + tabIndex)
         .attr('class', 'tab');
 
@@ -241,7 +244,9 @@ PTL.tab = {
       PTL.qstring = null;
     }
 
-    var $thisTabLink = $('<a href="#tab-' + tabIndex  + '">' + name + '</a>');
+    var $thisTabLink = $('<a>')
+        .attr('href', '#tab-' + tabIndex)
+        .append(name);
 
     var $thisTab = $('<li>')
         .attr('class', 'modal mobTab translate')
@@ -284,7 +289,7 @@ PTL.tab = {
 
     if(typeof feeds != 'undefined') {
       feeds.forEach(function(feed) {
-        PTL.feed.make($('#tab-' + tabIndex + ' ul.tabSort'), feed.url, feed.type, feed.limit, false, progress);
+        PTL.feed.make($sortable, feed.url, feed.type, feed.limit, false, progress);
       });
     }
 

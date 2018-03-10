@@ -29,7 +29,7 @@
 
 PTL.sync = (function() {
 
-  var synchronized = false;
+  PTL.synchronized = false;
 
   var syncDirectory = 'petrolette';
 
@@ -39,7 +39,7 @@ PTL.sync = (function() {
       return {
         exports: {
           read: function () {
-            return privateClient.getFile('petrolette.conf', 9999999999)
+            return privateClient.getFile('petrolette.conf', (Date.now() - PTL.prefs.readConfig('writeTime')))
               .then(function (file) {
                 return file.data;
               });
@@ -64,12 +64,17 @@ PTL.sync = (function() {
   // });
 
   remoteStorage.on('connected', function() {
-    synchronized = true;
+    PTL.synchronized = true;
     console.info('Pétrolette | ' + PTL.tr('Connected to remote storage'));
   });
 
+  remoteStorage.on('not-connected', function() {
+    PTL.synchronized = false;
+    console.info('Pétrolette | ' + PTL.tr('NOT connected to remote storage'));
+  });
+
   remoteStorage.on('disconnected', function() {
-    synchronized = false;
+    PTL.synchronized = false;
     console.warn('Pétrolette | ' + PTL.tr('Disconnected from remote storage'));
   });
 
@@ -98,24 +103,15 @@ PTL.sync = (function() {
           } else {
 
             console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', data));
-
-            if (PTL.utilities.isValidSourcesFile(JSON.parse(PTL.prefs.readConfig('tabs')))) {
-              console.log('plop');
-              PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
-            } else {
-              localStorage.setItem("tabs", "");
-            }
+            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
 
           }
 
         })
         .catch((err) => {
 
-          if (PTL.utilities.isValidSourcesFile(JSON.parse(PTL.prefs.readConfig('tabs')))) {
-            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
-          } else {
-            localStorage.setItem("tabs", "");
-          }
+          console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err));
+          PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
 
         });
 

@@ -3,6 +3,12 @@ var express = require('express'),
     index = require('./routes/index'),
     app = express();
 
+
+// fs.exists(cacheDir, (exists) => {
+//   if (!exists) fs.mkdirSync(cacheDir);
+// });
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
