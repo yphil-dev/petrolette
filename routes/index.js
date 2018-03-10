@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var favicon = require('favicon');
-var FeedParser = require('feedparser');
-var request = require('request');
-var feedrat = require('feedrat');
+var express = require('express'),
+    router = express.Router(),
+    favicon = require('favicon'),
+    FeedParser = require('feedparser'),
+    request = require('request'),
+    feedrat = require('feedrat'),
+    Url = require('url'),
+    fs = require('fs'),
+    path = require('path'),
+    packageJson = require('../package.json'),
+    cacheDir = path.join(__dirname, packageJson.cacheDirName);
 
 // require('request').debug = true;
 
@@ -16,14 +21,14 @@ router.get('/about/javascript', function(req, res) {
 });
 
 router.use(function(req,res,next){
-    var _send = res.send;
-    var sent = false;
-    res.send = function(data){
-        if(sent) return;
-        _send.bind(res)(data);
-        sent = true;
-    };
-    next();
+  var _send = res.send;
+  var sent = false;
+  res.send = function(data){
+    if(sent) return;
+    _send.bind(res)(data);
+    sent = true;
+  };
+  next();
 });
 
 function getFeed (urlfeed, callback) {
@@ -47,14 +52,14 @@ function getFeed (urlfeed, callback) {
       stream.pipe (feedparser);
 
     } else {
-      console.log ('getFeed: Content-type Error read %s (%s) .', urlfeed, res.headers['content-type']);
+      // console.log ('getFeed: Content-type Error read %s (%s) .', urlfeed, res.headers['content-type']);
       callback (res.headers['content-type']);
       return;
     }
   });
 
   req.on ('error', function (res) {
-    console.log ('getFeed: Error read %s (%s) .', urlfeed, res);
+    // console.log ('getFeed: Error read %s (%s) .', urlfeed, res);
   });
 
   feedparser.on ('readable', function () {
@@ -65,7 +70,7 @@ function getFeed (urlfeed, callback) {
       }
     }
     catch (err) {
-      console.log ('getFeed: err.message == ' + err.message);
+      // console.log ('getFeed: err.message == ' + err.message);
     }
   }).on ('end', function () {
     var meta = this.meta;
@@ -94,15 +99,47 @@ router.get('/feed', function(req, res) {
 
 router.get('/feedicon', function(req, res) {
 
-    favicon(req.query.url, function(err, u) {
+  // var p = Url.parse(req.query.url),
+  // fileName = p.host + "-" + p.path;
 
-        if (u) {
-            res.send(u);
-        } else {
-            res.status(500).send('No icon found');
-        }
+  // fs.exists(path.join(cacheDir, fileName), (exists) => {
+  //   if (!exists) {
+  //     console.log('path.join(cacheDir, fileName) does not exist');
+  //     // fs.mkdirSync(cacheDir);
+  //   }
+  // });
 
-    });
+  favicon(req.query.url, function(err, iconUrl) {
+
+
+    if (iconUrl) {
+
+      res.send(iconUrl);
+
+      var u = Url.parse(iconUrl);
+
+      var fileName = u.host + '.' + u.pathname.replace(/(^\/|\/$)/g,'');
+
+      console.log('(%s) is not in (%s)', fileName, cacheDir);
+
+      // console.log('icon! (%s) Name: %s', iconUrl, root);
+
+      // var s = fs.ReadStream(u);
+      // s.on('data', function(d) {
+      //   shasum.update(d);
+      // });
+
+      // s.on('end', function() {
+      //   var d = shasum.digest('hex');
+      //   console.log('plop! ' + d + '  ' + u);
+      // });
+
+
+    } else {
+      res.status(500).send('No icon found');
+    }
+
+  });
 });
 
 router.get('/discover', function(req, res) {

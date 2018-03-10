@@ -136,15 +136,11 @@
     -->
     <script>
 
-     PTL.menu.top();
-     PTL.menu.side();
-
      var qstring = "<%= qstring %>";
 
-     setTimeout(
-       function() {
-         PTL.tab.init(qstring);
-       }, 500);
+     PTL.menu.top();
+     PTL.menu.side();
+     PTL.tab.init(qstring);
 
     </script>
 
