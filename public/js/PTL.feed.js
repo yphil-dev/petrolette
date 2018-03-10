@@ -101,6 +101,7 @@ PTL.feed = {
 
     var $titleLink = $('<a>')
         .attr('href', url)
+        .attr('target', '_blank')
         .html(url);
 
     var $prefsDiv = $('<div>')
@@ -339,10 +340,14 @@ PTL.feed = {
 
         var imageUrl;
 
-        var $imageLink = $('<a>'),
-            $itemLink = $('<a>'),
-            $soundLink = $('<a>'),
-            $commentsLink = $('<a>'),
+        var $imageLink = $('<a>')
+            .attr('target', '_blank'),
+            $itemLink = $('<a>')
+            .attr('target', '_blank'),
+            $soundLink = $('<a>')
+            .attr('target', '_blank'),
+            $commentsLink = $('<a>')
+            .attr('target', '_blank'),
             $commentsIcon = $('<i>'),
             $soundIcon = $('<i>'),
             $image = $('<img>');
