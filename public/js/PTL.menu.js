@@ -37,10 +37,12 @@ PTL.menu = {
 
     $('<div id="sideMenu">').appendTo($('body')).load('/static/templates/menu.html form#sideMenu', function() {
 
+      console.log('MENU OK');
+
       var $menu = $(this),
           $overlay = $('#overlay'),
           $menuButton = $('#menuButton'),
-          $helpButton = $('.helpButton'),
+          $helpButton = $('#helpButton'),
           $newSourceButton = $('#newSourceButton'),
           $sourceCodeButton = $('button#sourceCode'),
           $importButton = $("button#fileImport"),
@@ -54,23 +56,21 @@ PTL.menu = {
 
       PTL.sync.attachWidget();
 
-      $menuButton.on('click', function() {
-        console.log('CLIK!');
+      $('body').on('click','#menuButton', function() {
         $overlay.toggleClass('visible');
         $menu.toggleClass('expanded');
       });
 
-      $newSourceButton.on('click', function() {
+      $('body').on('click','#helpButton', function() {
+        $('#tabs').tabs('option', 'active', 0);
+        PTL.dialog.help();
+      });
+
+      $('body').on('click','#newSourceButton', function() {
         var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
         $overlay.removeClass('visible');
         $menu.removeClass('expanded');
         PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
-      });
-
-      $helpButton.on('click', function(event) {
-        event.preventDefault();
-        $('#tabs').tabs('option', 'active', 0);
-        PTL.dialog.help();
       });
 
       $sourceCodeButton.click(function(event) {
