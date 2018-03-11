@@ -10,7 +10,7 @@ PTL.prefs = (function() {
      ],
      "1": [
        {"url":"http://xkcd.com/2.xml","type":"mixed","limit": 8},
-       {"url":"http://xkcd.com/2.xml","type":"mixed","limit": 8},
+       {"url":"http://xkcd.com/2.xml","type":"mixed","limit": 6},
        {"url":"http://xkcd.com/2.xml","type":"photo","limit": 4}
      ]
     },
