@@ -62,7 +62,7 @@ PTL.menu = {
       });
 
       $('body').on('click','#newSourceButton', function() {
-        var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.tabSort');
+        var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.column');
         $overlay.removeClass('visible');
         $menu.removeClass('expanded');
         PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
@@ -80,7 +80,7 @@ PTL.menu = {
 
         $(document).keydown(function(event) {
           if (event.keyCode === $.ui.keyCode.ESCAPE) {
-            $('.tabSort' ).sortable('cancel');
+            $('.column' ).sortable('cancel');
           }
         });
 

@@ -5,7 +5,9 @@ PTL.tab = {
 
     var $tabs = $('#tabs').tabs({
       heightStyle: 'content',
-      activate: function() {
+      activate: function(event, ui) {
+
+        ui.newPanel.css("display","flex");
 
         var $activeTab = $tabs.find('.ui-tabs-active');
 
@@ -159,16 +161,18 @@ PTL.tab = {
   },
   tstMake:function($tabs, name, columns, progress) {
 
-    console.log('TAB!');
+    console.log('MAKING TAB!');
+    console.log('FINISHED MAKING TAB!');
 
     if(typeof columns != 'undefined') {
       columns.forEach(function(sources) {
-        console.log('column!');
+        console.log('MAKING COLUMN!');
+        console.log('FINISHED MAKING COLUMN!');
+
         sources.forEach(function(source) {
-
-          console.log('source: ', source);
-
+          console.log('MAKING SOURCE!');
           // PTL.feed.make($column, feed.url, feed.type, feed.limit, false, progress);
+          console.log('FINISHED MAKING SOURCE!');
         });
       });
     }
@@ -182,9 +186,6 @@ PTL.tab = {
 
     name = name || 'Group ' + tabIndex;
 
-    var $column = $('<ul>')
-        .attr('class', 'tabSort');
-
     var $tabCloser = $('<i>')
         .attr('class', 'icon-cancel tabCloser translate dangerous')
         .data('title', PTL.tr('Delete the [%1] tab', name))
@@ -194,27 +195,27 @@ PTL.tab = {
         .attr('id', 'tab-' + tabIndex)
         .attr('class', 'tab panel');
 
-    var $thisTabLink = $('<a>')
+    var $tabLink = $('<a>')
         .attr('href', '#tab-' + tabIndex)
         .append(name);
 
-    var $thisTab = $('<li>')
+    var $tab = $('<li>')
         .attr('class', 'modal mobTab translate')
         .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
         .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
     var $tabUl = $('#tabs ul#tabUl');
 
-    $thisTab.droppable({
+    $tab.droppable({
       tolerance: 'pointer',
-      accept: 'ul, .tabSort li',
+      accept: 'ul, .column li',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
         var $item = $(this);
         var $index = $('li.mobTab').index(this);
         var $elements = ui.draggable.data('items');
         var $list = $($item.find('a').attr('href'))
-            .find('.tabSort');
+            .find('.column');
         $elements.show().hide('slow');
 
         ui.draggable.show().hide('fade', 300, function () {
@@ -231,6 +232,14 @@ PTL.tab = {
         });
       }
     });
+
+    $tabLink.appendTo($tab);
+    $tabCloser.appendTo($tab);
+    $tab.appendTo($tabUl);
+    $tabUl.find('#newTabButton').appendTo($tabUl);
+
+    var $column = $('<ul>')
+        .attr('class', 'column');
 
     $column.sortable({
       cursor: 'move',
@@ -275,15 +284,12 @@ PTL.tab = {
       }
     }).disableSelection();
 
-    $thisTabLink.appendTo($thisTab);
-    $tabCloser.appendTo($thisTab);
-    $thisTab.appendTo($tabUl);
-    $tabUl.find('#newTabButton').appendTo($tabUl);
     $column.appendTo($tabPanel);
+
     $tabPanel.appendTo($tabs);
 
     if (PTL.qstring) {
-      PTL.feed.make($('.tabSort').first(), PTL.qstring, 'mixed', 8, true);
+      PTL.feed.make($('.column').first(), PTL.qstring, 'mixed', 8, true);
       PTL.qstring = null;
     }
 

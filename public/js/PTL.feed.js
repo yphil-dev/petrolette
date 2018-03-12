@@ -6,6 +6,8 @@ PTL.feed = {
 
     var feedIndex = $('#tabs').find('.feed').length;
 
+    // console.log('i: ', feedIndex);
+
     var $feedIcon = $('<i>')
         .attr('class', 'feedControl feedIcon icon-rss-squared rotate translate')
         .data('title', 'Fold / unfold this source (%1)', url)
@@ -73,7 +75,7 @@ PTL.feed = {
 
     var $feed = $('<li>')
         .attr('id', 'feed-' + feedIndex)
-        .attr('class', 'feed no-fouc')
+        .attr('class', 'feed')
         .data('url', url)
         .data('type', type)
         .data('limit', limit);

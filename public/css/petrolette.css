@@ -712,7 +712,7 @@ div.testFlex {
   vertical-align: bottom;
 }
 
-.tabSort {
+.column {
   white-space: initial;
 }
 
@@ -763,14 +763,29 @@ li.mobTab,
 
 /* Tab pane */
 
-.ui-tabs-panel {
-  padding:0 !important;
+.panel {
+  padding: 0 !important;
 }
 
-ul.tabSort {
-  column-gap: .4em;
-  columns: var(--columns);
-  padding: .4em .2em;
+
+ul.column {
+  flex: 1;
+  width: 0;
+  margin-right: .2em;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+/* .ui-tabs-panel { */
+/*   padding:0 !important; */
+/* } */
+
+ul.column {
+  /* column-gap: .4em; */
+  /* columns: var(--columns); */
+  /* padding: .4em .2em; */
 }
 
 /* Feed */
@@ -824,7 +839,7 @@ li.feed {
   transform: rotate(180deg);
 }
 
-.tabSort .ui-sortable-placeholder {
+.column .ui-sortable-placeholder {
   visibility: visible !important;
   outline: .1em dashed var(--color-sec);
 }
