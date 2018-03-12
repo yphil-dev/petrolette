@@ -418,62 +418,49 @@ PTL.tab = {
   },
   list:function(type) {
 
-    console.log('SAVE');
+    var $allTabs = $('#tabUl > li.mobTab');
 
-    var tabs = [],
-        $allTabs = $('#tabUl > li.mobTab');
+    var groups = [],
+        cols = [];
 
     $allTabs.each(function() {
 
-      console.log('href %s', $(this).children().attr('href'));
-
-      var groups = [],
-          group = [],
-          sources = [],
+      var group = {},
           column = {},
+          thisCol = [],
+          colSources = [],
           $columnNodes = $($(this).children().attr('href') + ' ul.column');
 
       group.name = $(this).children('a').text();
-
       console.log('group.name: ', group.name);
+
+      groups.push(group);
 
       if (type && type === 'all')
         group.pane = $($(this).children().attr('href') + ' ul').attr('id');
 
       $columnNodes.each(function() {
-
-        var $srcNodes = $(this).find('li.feed');
+        var $srcNodes = $(this).find('li.feed'),
+            source = {};
 
         $srcNodes.each(function() {
-
-          var $dataStore = $(this).find('.feedControls'),
-              source = {};
+          var $dataStore = $(this).find('.feedControls');
           source.url = $dataStore.data('url');
           source.type = $dataStore.data('type');
           source.limit = $dataStore.data('limit');
-          sources.push(source);
-
-          console.log('this: ', $(this));
         });
-
+        colSources.push(source);
+        thisCol.push(colSources);
+        // column.sources = colSources;
       });
+      group.colums = thisCol;
+      // cols.push(thisCol);
 
-      // $allFeeds.each(function() {
-      //   var $dataStore = $(this).find('.feedControls'),
-      //       myFeed = {};
-      //   myFeed.url = $dataStore.data('url');
-      //   myFeed.type = $dataStore.data('type');
-      //   myFeed.limit = $dataStore.data('limit');
-      //   myFeeds.push(myFeed);
-      // });
-
-      column.sources = sources;
       groups.push(group);
-      console.log('ALL: ', column);
     });
+    // console.log('Group: (%s) Columns: (%s)', groups);
 
-
-    return tabs;
+    return groups;
 
   },
   makeNewTabButton:function($tabs) {
