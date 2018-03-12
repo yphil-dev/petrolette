@@ -163,13 +163,14 @@ PTL.tab = {
 
     columns.forEach(function(sources) {
       console.log('MAKING COLUMN!');
-      console.log('FINISHED MAKING COLUMN!');
 
       sources.forEach(function(source) {
-        console.log('MAKING SOURCE!');
+        console.log('MAKING SOURCE (%s)', source.url);
         // PTL.feed.make($column, feed.url, feed.type, feed.limit, false, progress);
         console.log('FINISHED MAKING SOURCE!');
       });
+      console.log('FINISHED MAKING COLUMN!');
+
     });
 
     console.log('FINISHED (%s)!!', name);
