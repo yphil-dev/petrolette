@@ -114,13 +114,16 @@ PTL.tab = {
   },
   newPopulate:function(sources) {
 
-    var nbOfSources = 0;
+    var nbOfSources = 0,
+        progress = PTL.utilities.buildProgress();
 
     sources.forEach(function(group) {
       $.each(group.columns, function(k, v) {
         nbOfSources += v.length;
       });
     });
+
+    progress.init(nbOfSources);
 
     sources.forEach(function(group) {
 
@@ -148,13 +151,13 @@ PTL.tab = {
         thisTabCols.push(thisColSources);
 
 
-        PTL.tab.tstMake($('#tabs'), thisGroup.name, thisTabCols);
+        PTL.tab.tstMake($('#tabs'), thisGroup.name, thisTabCols, progress);
       });
       console.log('nb: %s', nbOfSources);
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
   },
-  tstMake:function($tabs, name, columns) {
+  tstMake:function($tabs, name, columns, progress) {
 
     console.log('TAB!');
 
@@ -169,130 +172,6 @@ PTL.tab = {
         });
       });
     }
-
-  },
-  newMake:function($tabs, name, feeds, progress) {
-
-    $('#noSourcesButton').fadeOut('fast');
-
-    var tabIndex = $('ul#tabUl li.mobTab').length + 1;
-
-    name = name || 'Group ' + tabIndex;
-
-    var $column = $('<ul>')
-        .attr('class', 'tabSort');
-
-    var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel tabCloser translate dangerous')
-        .data('title', PTL.tr('Delete the [%1] tab', name))
-        .attr('title', PTL.tr('Delete the [%1] tab', name));
-
-    var $tabPanel = $('<div>')
-        .attr('id', 'tab-' + tabIndex)
-        .attr('class', 'tab panel');
-
-    var $thisTabLink = $('<a>')
-        .attr('href', '#tab-' + tabIndex)
-        .append(name);
-
-    var $thisTab = $('<li>')
-        .attr('class', 'modal mobTab translate')
-        .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
-        .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
-
-    var $tabUl = $('#tabs ul#tabUl');
-
-    $thisTab.droppable({
-      tolerance: 'pointer',
-      accept: 'ul, .tabSort li',
-      hoverClass: 'ui-state-hover',
-      drop: function (event, ui) {
-        var $item = $(this);
-        var $index = $('li.mobTab').index(this);
-        var $elements = ui.draggable.data('items');
-        var $list = $($item.find('a').attr('href'))
-            .find('.tabSort');
-        $elements.show().hide('slow');
-
-        ui.draggable.show().hide('fade', 300, function () {
-
-          // if ($('#tabDropActivate').prop('checked'))
-          $tabs.tabs('option', 'active', $index);
-
-          $(this).prependTo($list).show('fade', 800).before($elements.show('fade', 800));
-
-          $('body').css('cursor','auto');
-
-          PTL.tab.saveTabs();
-
-        });
-      }
-    });
-
-    $column.sortable({
-      cursor: 'move',
-      handle: ".feedHandle",
-      cursorAt: {top: 10, left: 150},
-      receive: function(e, ui) {
-        ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
-      },
-      helper: function (e, item) { //create custom helper
-        if (!item.hasClass('selected')) item.addClass('selected');
-
-        // clone selected items before hiding
-        var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
-        //hide selected items
-        item.siblings('.selected').addClass('hidden');
-        var $helper = $('<ul class="feedHelper">');
-
-        return $helper.append($elements);
-      },
-      start: function (e, ui) {
-
-        // Drag begins
-        var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
-        // Store the selected items to item being dragged
-        ui.item.data('items', $elements);
-        // Size the placeHolder
-        $('.ui-sortable-placeholder').css('height', ui.item.height());
-
-      },
-      update: function (e, ui) {
-        //manually add the selected items before the one actually being dragged
-        ui.item.before(ui.item.data('items'));
-      },
-      stop: function (e, ui) {
-        //show the selected items after the operation
-        ui.item.siblings('.selected').removeClass('hidden');
-        //unselect since the operation is complete
-        $('.selected').removeClass('selected ui-state-hover');
-        $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
-        PTL.tab.saveTabs();
-
-      }
-    }).disableSelection();
-
-    $thisTabLink.appendTo($thisTab);
-    $tabCloser.appendTo($thisTab);
-    $thisTab.appendTo($tabUl);
-    $tabUl.find('#newTabButton').appendTo($tabUl);
-    $column.appendTo($tabPanel);
-    $tabPanel.appendTo($tabs);
-
-    if (PTL.qstring) {
-      PTL.feed.make($('.tabSort').first(), PTL.qstring, 'mixed', 8, true);
-      PTL.qstring = null;
-    }
-
-    if(typeof feeds != 'undefined') {
-      feeds.forEach(function(feed) {
-        PTL.feed.make($column, feed.url, feed.type, feed.limit, false, progress);
-      });
-    }
-
-    $tabs.tabs('refresh');
-    $tabs.tabs( "option", "active", tabIndex - 1);
-    tabIndex++;
 
   },
   make:function($tabs, name, feeds, progress) {
