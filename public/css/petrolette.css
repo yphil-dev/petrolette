@@ -773,7 +773,7 @@ li.mobTab,
 /* Column */
 
 ul.column {
-  min-height: 200px;
+  min-height: 250px;
   margin: .2em;
   flex: 1;
   align-content: center;

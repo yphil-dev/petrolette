@@ -217,15 +217,27 @@ PTL.tab = {
     $tab.appendTo($tabUl);
     $tabUl.find('#newTabButton').appendTo($tabUl);
 
-    var numberOfColsInTab = 0
+    var numberOfColsInTab = 1;
 
     columns.forEach(function(sources) {
 
+      var $colNewButton = $('<button>')
+          .button()
+          .text('+');
+
+      var $colDelButton = $('<button>')
+          .button()
+          .text('-');
+
+      var $colLegend = $('<span>')
+          .attr('class', 'legend')
+          .text('Column ' + numberOfColsInTab++);
+
+      $colLegend.append($colDelButton, $colNewButton);
+
       var $column = $('<ul>')
           .attr('class', 'column')
-          .append($('<span>')
-                  .attr('class', 'legend')
-                  .text('Column ' + numberOfColsInTab++));
+          .append($colLegend);
 
       $column.sortable({
         cursor: 'move',
@@ -418,21 +430,17 @@ PTL.tab = {
   },
   list:function(type) {
 
-    var $allTabs = $('#tabUl > li.mobTab');
-
-    var groups = [],
-        cols = [];
+    var $allTabs = $('#tabUl > li.mobTab'),
+        groups = [];
 
     $allTabs.each(function() {
 
       var group = {},
-          column = {},
           thisCol = [],
           colSources = [],
           $columnNodes = $($(this).children().attr('href') + ' ul.column');
 
       group.name = $(this).children('a').text();
-      console.log('group.name: ', group.name);
 
       groups.push(group);
 
@@ -451,14 +459,10 @@ PTL.tab = {
         });
         colSources.push(source);
         thisCol.push(colSources);
-        // column.sources = colSources;
       });
       group.colums = thisCol;
-      // cols.push(thisCol);
-
       groups.push(group);
     });
-    // console.log('Group: (%s) Columns: (%s)', groups);
 
     return groups;
 
