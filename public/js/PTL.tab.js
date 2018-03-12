@@ -231,7 +231,7 @@ PTL.tab = {
         cursor: 'move',
         handle: ".feedHandle",
         connectWith: ".column",
-        cursorAt: {top: 10, left: 150},
+        cursorAt: {top: 10, left: 32},
         receive: function(e, ui) {
 
           if (ui.helper)
@@ -356,7 +356,7 @@ PTL.tab = {
     $column.sortable({
       cursor: 'move',
       handle: ".feedHandle",
-      cursorAt: {top: 10, left: 150},
+      cursorAt: {top: 10, left: 0},
       receive: function(e, ui) {
         ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
       },
