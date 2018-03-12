@@ -161,19 +161,131 @@ PTL.tab = {
 
     console.log('MAKING TAB! (%s)', name);
 
+    $('#noSourcesButton').fadeOut('fast');
+
+    var tabIndex = $('ul#tabUl li.mobTab').length + 1;
+
+    name = name || 'Group ' + tabIndex;
+
+    var $tabCloser = $('<i>')
+        .attr('class', 'icon-cancel tabCloser translate dangerous')
+        .data('title', PTL.tr('Delete the [%1] tab', name))
+        .attr('title', PTL.tr('Delete the [%1] tab', name));
+
+    var $tabPanel = $('<div>')
+        .attr('id', 'tab-' + tabIndex)
+        .attr('class', 'tab panel');
+
+    var $tabLink = $('<a>')
+        .attr('href', '#tab-' + tabIndex)
+        .append(name);
+
+    var $tab = $('<li>')
+        .attr('class', 'modal mobTab translate')
+        .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
+        .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
+
+    var $tabUl = $('#tabs ul#tabUl');
+
+    $tab.droppable({
+      tolerance: 'pointer',
+      accept: 'ul, .column li',
+      hoverClass: 'ui-state-hover',
+      drop: function (event, ui) {
+        var $item = $(this);
+        var $index = $('li.mobTab').index(this);
+        var $elements = ui.draggable.data('items');
+        var $list = $($item.find('a').attr('href'))
+            .find('.column');
+        $elements.show().hide('slow');
+
+        ui.draggable.show().hide('fade', 300, function () {
+
+          // if ($('#tabDropActivate').prop('checked'))
+          $tabs.tabs('option', 'active', $index);
+
+          $(this).prependTo($list).show('fade', 800).before($elements.show('fade', 800));
+
+          $('body').css('cursor','auto');
+
+          PTL.tab.saveTabs();
+
+        });
+      }
+    });
+
+    $tabLink.appendTo($tab);
+    $tabCloser.appendTo($tab);
+    $tab.appendTo($tabUl);
+    $tabUl.find('#newTabButton').appendTo($tabUl);
+
     columns.forEach(function(sources) {
       console.log('MAKING COLUMN!');
 
+      var $column = $('<ul>')
+          .attr('class', 'column');
+
+      $column.sortable({
+        cursor: 'move',
+        handle: ".feedHandle",
+        cursorAt: {top: 10, left: 150},
+        receive: function(e, ui) {
+          ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
+        },
+        helper: function (e, item) { //create custom helper
+          if (!item.hasClass('selected')) item.addClass('selected');
+
+          // clone selected items before hiding
+          var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
+          //hide selected items
+          item.siblings('.selected').addClass('hidden');
+          var $helper = $('<ul class="feedHelper">');
+
+          return $helper.append($elements);
+        },
+        start: function (e, ui) {
+
+          // Drag begins
+          var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
+          // Store the selected items to item being dragged
+          ui.item.data('items', $elements);
+          // Size the placeHolder
+          $('.ui-sortable-placeholder').css('height', ui.item.height());
+
+        },
+        update: function (e, ui) {
+          //manually add the selected items before the one actually being dragged
+          ui.item.before(ui.item.data('items'));
+        },
+        stop: function (e, ui) {
+          //show the selected items after the operation
+          ui.item.siblings('.selected').removeClass('hidden');
+          //unselect since the operation is complete
+          $('.selected').removeClass('selected ui-state-hover');
+          $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
+          PTL.tab.saveTabs();
+
+        }
+      }).disableSelection();
+
+      $column.appendTo($tabPanel);
+
       sources.forEach(function(source) {
         console.log('MAKING SOURCE (%s)', source.url);
-        // PTL.feed.make($column, feed.url, feed.type, feed.limit, false, progress);
+        PTL.feed.make($column, source.url, source.type, source.limit, false, progress);
         console.log('FINISHED MAKING SOURCE!');
       });
       console.log('FINISHED MAKING COLUMN!');
 
+      $tabPanel.appendTo($tabs);
+
     });
 
     console.log('FINISHED (%s)!!', name);
+
+    $tabs.tabs('refresh');
+    $tabs.tabs( "option", "active", tabIndex - 1);
+    tabIndex++;
 
   },
   make:function($tabs, name, feeds, progress) {

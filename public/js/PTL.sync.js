@@ -115,7 +115,7 @@ PTL.sync = (function() {
 
           console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err));
           PTL.tab.newPopulate(JSON.parse(PTL.prefs.readConfig('sources')));
-          PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
+          // PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
 
         });
 
