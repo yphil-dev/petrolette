@@ -316,17 +316,72 @@ PTL.dialog = {
     });
 
   },
+  killColumn:function($button) {
+
+    $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
+
+      var $dialog = $('#killDialog'),
+          $column = $button.parent().parent(),
+          $panel = $column.parent(),
+          colIndex = $panel.find('.column').index($column),
+          $sourcesInCol = $column.find('.feed'),
+          $nbOfSourcesInCol = $sourcesInCol.length;
+
+      $dialog.dialog({
+        title: PTL.tr('Delete column'),
+        autoOpen: false,
+        closeOnEscape: true,
+        resizable: false,
+        height: 'auto',
+        width: PTL.utilities.vWidth(),
+        modal: true,
+        buttons: [
+          {
+            text: PTL.tr('Cancel'),
+            title: PTL.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          },
+          {
+            text: PTL.tr('Delete'),
+            title: PTL.tr('Wait! Are you sure?'),
+            class: "dangerous translate icon-trash-empty",
+            click: function() {
+
+            }
+          }
+        ],
+        open: function () {
+
+          console.log('colIndex (%s) $nbOfSourcesInCol (%s) ', colIndex, $nbOfSourcesInCol);
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+          $dialog.find('h1').text(PTL.tr('Really delete this column?'));
+          $dialog.find('h2#name').text(PTL.tr('Index'));
+          $dialog.find('p#name').text((colIndex + 1));
+          $dialog.find('h2#number').text(PTL.tr('Number of sources'));
+          $dialog.find('p#number').text($nbOfSourcesInCol);
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
+  },
   killTab:function($button) {
 
-    var $tabs = $('#tabs');
-    var $a = $button.prev('a.ui-tabs-anchor');
-    var tabId = $a.attr('href');
-
-    var $selectedTab = $a.parent();
-    var $selectedPanel = $tabs.find(tabId);
-
-    var selectedTabIndex = $tabs.tabs('option', 'active');
-    var previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
+    var $tabs = $('#tabs'),
+        $a = $button.prev('a.ui-tabs-anchor'),
+        tabId = $a.attr('href'),
+        $selectedTab = $a.parent(),
+        $selectedPanel = $tabs.find(tabId),
+        selectedTabIndex = $tabs.tabs('option', 'active'),
+        previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
 
     $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
 
@@ -377,19 +432,11 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          var $nameLegend = $('<h2 class="name">').text(PTL.tr('Name'));
-          var $nameValue = $('<p class="value">').text($a.text());
-
-          var $numberLegend = $('<h2 class="name">').text(PTL.tr('Number of sources'));
-          var $numberValue = $('<p class="value">').text($selectedPanel.find('li.feed').length);
-
-          $dialog.find('div.content')
-            .append($nameLegend)
-            .append($nameValue)
-            .append($numberLegend)
-            .append($numberValue);
-
-          // $dialog.children('p').append(PTL.tr('Really delete this group? (%1, %2 sources)', $a.text(), $selectedPanel.find('li.feed').length));
+          $dialog.find('h1').text(PTL.tr('Really delete this group?'));
+          $dialog.find('h2#name').text(PTL.tr('Name'));
+          $dialog.find('p#name').text($a.text());
+          $dialog.find('h2#number').text(PTL.tr('Number of sources'));
+          $dialog.find('p#number').text($selectedPanel.find('li.feed').length);
 
         }
       });
@@ -504,12 +551,9 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          var $name = $('<h2 class="name">').text(PTL.tr('Name'));
-          var $value = $('<p class="value">').text(thisFeedName);
-
-          $dialog.find('div.content')
-            .append($name)
-            .append($value);
+          $dialog.find('h1').text(PTL.tr('Really delete this source?'));
+          $dialog.find('h2#name').text(PTL.tr('Name'));
+          $dialog.find('p#name').text(thisFeedName);
 
         }
       });

@@ -502,7 +502,7 @@ fieldset {
 }
 
 .ui-button-icon-only:hover {
-  /* color: var(--ui-color-qua) !important; */
+  background-color: var(--ui-color-sec);
   border: 1px solid var(--ui-color-sec);
 }
 

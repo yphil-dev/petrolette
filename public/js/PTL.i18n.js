@@ -272,6 +272,8 @@ PTL.i18n.translations = {
   "Text" : { fr: "Texte", ja: "テキスト", es: "Texto" },
   "Collection" : { fr: "Collection", ja: "コレクション", es: "Colección" },
 
+  "Index" : { fr: "Indice", ja: "インデックス", es: "Índice" },
+
   "Number of items" : { fr: "Nombre de titres", ja: "タイトル数", es: "Cantidad de títulos" },
   "Number of sources" : { fr: "Nombre de sources", ja: "ソース数", es: "Cantidad de fuentes" },
 
@@ -307,7 +309,12 @@ PTL.i18n.translations = {
   "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },
 
   "%1 | Click to rename, drag to move" : { fr: "%1 | Cliquer pour renommer, glisser pour déplacer", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
+
   "Really delete this source? (%1)" : { fr: "Réellement supprimer cette source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
+
+  "Really delete this column?" : { fr: "Vraiment supprimer cette colonne ?", ja: "本当にこの列を削除しますか？", es: "¿Realmente borras esta columna?" },
+
+  "Really delete this group?" : { fr: "Vraiment supprimer ce groupe ?", ja: "本当にこのグループを削除しますか？", es: "¿Eliminar realmente este grupo?" },
 
   "Fold / unfold this source (%1)" : { fr: "Plier / déplier cette source (%1)", ja: "ウーブリール - ファーマー (%1)", es: "Abrir / cerrar esta fuente (%1)" },
 

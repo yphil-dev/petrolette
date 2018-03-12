@@ -217,23 +217,39 @@ PTL.tab = {
     $tab.appendTo($tabUl);
     $tabUl.find('#newTabButton').appendTo($tabUl);
 
-    var numberOfColsInTab = 1;
+    var colIndex = 1,
+        nbOfColumnsInTab = columns.length;
+
+    console.log('nbOfColumnsInTab: ', nbOfColumnsInTab);
 
     columns.forEach(function(sources) {
 
       var $colNewButton = $('<button>')
           .button()
+          .data('colIndex', colIndex)
           .text('+');
 
       var $colDelButton = $('<button>')
+          .data('colIndex', colIndex)
           .button()
           .text('-');
 
       var $colLegend = $('<span>')
           .attr('class', 'legend')
-          .text('Column ' + numberOfColsInTab++);
+          .text('Column ' + colIndex++);
 
-      $colLegend.append($colDelButton, $colNewButton);
+      // $tabs.on("click", "i.tabCloser", function() {
+      //   PTL.dialog.killTab($(this));
+      // });
+
+      $colDelButton.click(function(event) {
+        // event.preventDefault();
+        PTL.dialog.killColumn($(this));
+      });
+
+      if (nbOfColumnsInTab > 1)
+        $colLegend.append($colDelButton);
+      $colLegend.append($colNewButton);
 
       var $column = $('<ul>')
           .attr('class', 'column')
