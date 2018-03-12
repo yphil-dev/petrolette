@@ -74,9 +74,6 @@ PTL.tab = {
 
   },
   saveTabs:function() {
-
-    console.info('Pétrolette | Writing to local storage OK');
-
     var allTabs = PTL.tab.list();
     PTL.prefs.writeConfig('tabs', JSON.stringify(allTabs));
     PTL.sync.writeSync(JSON.stringify(allTabs));
@@ -161,7 +158,6 @@ PTL.tab = {
   },
   tstMake:function($tabs, name, columns, progress) {
 
-    console.log('MAKING TAB! (%s)', name);
 
     $('#noSourcesButton').fadeOut('fast');
 
@@ -224,12 +220,12 @@ PTL.tab = {
     var numberOfColsInTab = 0
 
     columns.forEach(function(sources) {
-      console.log('MAKING COLUMN!');
 
       var $column = $('<ul>')
-      // .attr('id', 'col-' + PTL.totalNbBOfCols++)
           .attr('class', 'column')
-          .append($('<span>').attr('class', 'legend').text('Column ' + numberOfColsInTab++));
+          .append($('<span>')
+                  .attr('class', 'legend')
+                  .text('Column ' + numberOfColsInTab++));
 
       $column.sortable({
         cursor: 'move',
@@ -237,7 +233,9 @@ PTL.tab = {
         connectWith: ".column",
         cursorAt: {top: 10, left: 150},
         receive: function(e, ui) {
-          ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
+
+          if (ui.helper)
+            ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
         },
         helper: function (e, item) { //create custom helper
           if (!item.hasClass('selected')) item.addClass('selected');
@@ -278,17 +276,14 @@ PTL.tab = {
       $column.appendTo($tabPanel);
 
       sources.forEach(function(source) {
-        console.log('MAKING SOURCE (%s)', source.url);
         PTL.feed.make($column, source.url, source.type, source.limit, false, progress);
-        console.log('FINISHED MAKING SOURCE!');
       });
-      console.log('FINISHED MAKING COLUMN!');
 
       $tabPanel.appendTo($tabs);
 
     });
 
-    console.log('FINISHED (%s)!!', name);
+    // console.log('FINISHED (%s)!!', name);
 
     $tabs.tabs('refresh');
     $tabs.tabs( "option", "active", tabIndex - 1);
@@ -422,32 +417,63 @@ PTL.tab = {
 
   },
   list:function(type) {
-    var myTabs = [],
+
+    console.log('SAVE');
+
+    var tabs = [],
         $allTabs = $('#tabUl > li.mobTab');
 
     $allTabs.each(function() {
-      var myFeeds = [],
-          myTab = {},
-          $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
 
-      myTab.name = $(this).children('a').text();
+      console.log('href %s', $(this).children().attr('href'));
+
+      var groups = [],
+          group = [],
+          sources = [],
+          column = {},
+          $columnNodes = $($(this).children().attr('href') + ' ul.column');
+
+      group.name = $(this).children('a').text();
+
+      console.log('group.name: ', group.name);
 
       if (type && type === 'all')
-        myTab.pane = $($(this).children().attr('href') + ' ul').attr('id');
+        group.pane = $($(this).children().attr('href') + ' ul').attr('id');
 
-      $allFeeds.each(function() {
-        var $dataStore = $(this).find('.feedControls'),
-            myFeed = {};
-        myFeed.url = $dataStore.data('url');
-        myFeed.type = $dataStore.data('type');
-        myFeed.limit = $dataStore.data('limit');
-        myFeeds.push(myFeed);
+      $columnNodes.each(function() {
+
+        var $srcNodes = $(this).find('li.feed');
+
+        $srcNodes.each(function() {
+
+          var $dataStore = $(this).find('.feedControls'),
+              source = {};
+          source.url = $dataStore.data('url');
+          source.type = $dataStore.data('type');
+          source.limit = $dataStore.data('limit');
+          sources.push(source);
+
+          console.log('this: ', $(this));
+        });
+
       });
-      myTab.feeds = myFeeds;
-      myTabs.push(myTab);
+
+      // $allFeeds.each(function() {
+      //   var $dataStore = $(this).find('.feedControls'),
+      //       myFeed = {};
+      //   myFeed.url = $dataStore.data('url');
+      //   myFeed.type = $dataStore.data('type');
+      //   myFeed.limit = $dataStore.data('limit');
+      //   myFeeds.push(myFeed);
+      // });
+
+      column.sources = sources;
+      groups.push(group);
+      console.log('ALL: ', column);
     });
 
-    return myTabs;
+
+    return tabs;
 
   },
   makeNewTabButton:function($tabs) {
