@@ -3,6 +3,8 @@
 PTL.tab = {
   init:function(qstring) {
 
+    PTL.totalNbBOfCols = 0;
+
     var $tabs = $('#tabs').tabs({
       heightStyle: 'content',
       activate: function(event, ui) {
@@ -165,6 +167,8 @@ PTL.tab = {
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
+    var totalNbBOfCols = 0;
+
     name = name || 'Group ' + tabIndex;
 
     var $tabCloser = $('<i>')
@@ -223,11 +227,13 @@ PTL.tab = {
       console.log('MAKING COLUMN!');
 
       var $column = $('<ul>')
+      // .attr('id', 'col-' + PTL.totalNbBOfCols++)
           .attr('class', 'column');
 
       $column.sortable({
         cursor: 'move',
         handle: ".feedHandle",
+        connectWith: ".column",
         cursorAt: {top: 10, left: 150},
         receive: function(e, ui) {
           ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
