@@ -167,8 +167,6 @@ PTL.tab = {
 
     var tabIndex = $('ul#tabUl li.mobTab').length + 1;
 
-    var totalNbBOfCols = 0;
-
     name = name || 'Group ' + tabIndex;
 
     var $tabCloser = $('<i>')
@@ -223,12 +221,15 @@ PTL.tab = {
     $tab.appendTo($tabUl);
     $tabUl.find('#newTabButton').appendTo($tabUl);
 
+    var numberOfColsInTab = 0
+
     columns.forEach(function(sources) {
       console.log('MAKING COLUMN!');
 
       var $column = $('<ul>')
       // .attr('id', 'col-' + PTL.totalNbBOfCols++)
-          .attr('class', 'column');
+          .attr('class', 'column')
+          .append($('<span>').attr('class', 'legend').text('Column ' + numberOfColsInTab++));
 
       $column.sortable({
         cursor: 'move',

@@ -25,6 +25,27 @@ PTL.prefs = (function() {
          {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
        ]
      ]
+    },
+    {"name":"Four",
+     "columns":
+     [
+       [
+         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+       ],
+       [
+         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+       ],
+       [
+         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+       ],
+       [
+         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+       ]
+     ]
     }
   ];
 

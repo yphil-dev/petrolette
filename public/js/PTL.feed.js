@@ -55,6 +55,8 @@ PTL.feed = {
       var feedId = $(this).parent().parent().parent().parent().attr('id');
       var feedName = $(this).parent().parent().parent().find('.feedTitle').text();
 
+      console.log('feedId: ', feedId);
+
       PTL.dialog.killFeed(feedId, feedName);
 
     });
