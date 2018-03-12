@@ -134,8 +134,8 @@ PTL.tab = {
 
       thisGroup.name = group.name;
 
+      var thisTabCols = [];
       $.each(group.columns, function(k, v) {
-        var thisTabCols = [];
         // console.log('Col: ' + k + ', #feeds: ' + v.length);
         var thisColSources = [];
 
@@ -151,31 +151,28 @@ PTL.tab = {
           // console.log('URL: %s, Type: %s, Limit: %s', v.url, v.type, v.limit);
         });
         thisTabCols.push(thisColSources);
-
-
-        PTL.tab.tstMake($('#tabs'), thisGroup.name, thisTabCols, progress);
       });
+      PTL.tab.tstMake($('#tabs'), thisGroup.name, thisTabCols, progress);
       console.log('nb: %s', nbOfSources);
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
   },
   tstMake:function($tabs, name, columns, progress) {
 
-    console.log('MAKING TAB!');
-    console.log('FINISHED MAKING TAB!');
+    console.log('MAKING TAB! (%s)', name);
 
-    if(typeof columns != 'undefined') {
-      columns.forEach(function(sources) {
-        console.log('MAKING COLUMN!');
-        console.log('FINISHED MAKING COLUMN!');
+    columns.forEach(function(sources) {
+      console.log('MAKING COLUMN!');
+      console.log('FINISHED MAKING COLUMN!');
 
-        sources.forEach(function(source) {
-          console.log('MAKING SOURCE!');
-          // PTL.feed.make($column, feed.url, feed.type, feed.limit, false, progress);
-          console.log('FINISHED MAKING SOURCE!');
-        });
+      sources.forEach(function(source) {
+        console.log('MAKING SOURCE!');
+        // PTL.feed.make($column, feed.url, feed.type, feed.limit, false, progress);
+        console.log('FINISHED MAKING SOURCE!');
       });
-    }
+    });
+
+    console.log('FINISHED (%s)!!', name);
 
   },
   make:function($tabs, name, feeds, progress) {
