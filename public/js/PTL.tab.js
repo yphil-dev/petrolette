@@ -340,8 +340,8 @@ PTL.tab = {
     var $newTabButtonLink = $('<a>')
         .attr('href', '#');
 
-    var $newTabButtonIcon = $('<a>')
-        .attr('class', 'plusButton icon-plus-1');
+    var $newTabButtonIcon = $('<i>')
+        .attr('class', 'icon-plus-1');
 
     $newTabButtonLink.bind('click', function(event) {
       event.stopImmediatePropagation();
