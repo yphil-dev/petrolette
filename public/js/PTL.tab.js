@@ -75,7 +75,7 @@ PTL.tab = {
   },
   saveTabs:function() {
     var sources = PTL.tab.list();
-    console.log('sources : (%s)', JSON.stringify(sources));
+    // console.log('sources : (%s)', JSON.stringify(sources));
     PTL.prefs.writeConfig('sources', JSON.stringify(sources));
     PTL.sync.writeSync(JSON.stringify(sources));
   },
@@ -87,34 +87,7 @@ PTL.tab = {
     PTL.tab.saveTabs();
     PTL.tab.makeNewTabButton($('div#tabs'));
   },
-  populate:function(sources, clickToRefresh) {
-
-    var totalFeeds = 0,
-        progress = PTL.utilities.buildProgress();
-
-    sources.forEach(function(tab) {
-      totalFeeds += tab.feeds.length;
-    });
-
-    $('div#tabs div').remove();
-    $('div#tabs ul li').remove();
-    PTL.tab.makeNewTabButton($('div#tabs'));
-
-    progress.init(totalFeeds);
-
-    sources.forEach(function(tab) {
-      PTL.tab.make($('#tabs'), tab.name, tab.feeds, progress);
-    });
-
-    if (clickToRefresh) {
-      $('#tabs').find('.mobFeedRefresh').click();
-      PTL.tab.saveTabs();
-    }
-
-    $("div#tabs").tabs('option', 'active', 0);
-
-  },
-  newPopulate:function(sources) {
+  populate:function(sources) {
 
 
     var nbOfSources = 0,
@@ -122,13 +95,9 @@ PTL.tab = {
 
     sources.forEach(function(group) {
       $.each(group.columns, function(k, v) {
-
-        console.log('group : (%s)', group);
         nbOfSources += v.length;
       });
     });
-
-    console.log('sources : (%s)', sources);
 
     progress.init(nbOfSources);
 
@@ -157,11 +126,11 @@ PTL.tab = {
         });
         thisTabCols.push(thisColSources);
       });
-      PTL.tab.tstMake($('#tabs'), thisGroup.name, thisTabCols, progress);
+      PTL.tab.make($('#tabs'), thisGroup.name, thisTabCols, progress);
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
   },
-  tstMake:function($tabs, name, columns, progress) {
+  make:function($tabs, name, columns, progress) {
 
 
     $('#noSourcesButton').fadeOut('fast');
@@ -255,6 +224,7 @@ PTL.tab = {
       $colLegend.append($colNewButton);
 
       var $column = $('<ul>')
+          .attr('id', 'column-' + (colIndex - 1))
           .attr('class', 'column')
           .append($colLegend);
 
@@ -321,141 +291,18 @@ PTL.tab = {
     tabIndex++;
 
   },
-  make:function($tabs, name, feeds, progress) {
-
-    $('#noSourcesButton').fadeOut('fast');
-
-    var tabIndex = $('ul#tabUl li.mobTab').length + 1;
-
-    name = name || 'Group ' + tabIndex;
-
-    var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel tabCloser translate dangerous')
-        .data('title', PTL.tr('Delete the [%1] tab', name))
-        .attr('title', PTL.tr('Delete the [%1] tab', name));
-
-    var $tabPanel = $('<div>')
-        .attr('id', 'tab-' + tabIndex)
-        .attr('class', 'tab panel');
-
-    var $tabLink = $('<a>')
-        .attr('href', '#tab-' + tabIndex)
-        .append(name);
-
-    var $tab = $('<li>')
-        .attr('class', 'modal mobTab translate')
-        .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
-        .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
-
-    var $tabUl = $('#tabs ul#tabUl');
-
-    $tab.droppable({
-      tolerance: 'pointer',
-      accept: 'ul, .column li',
-      hoverClass: 'ui-state-hover',
-      drop: function (event, ui) {
-        var $item = $(this);
-        var $index = $('li.mobTab').index(this);
-        var $elements = ui.draggable.data('items');
-        var $list = $($item.find('a').attr('href'))
-            .find('.column');
-        $elements.show().hide('slow');
-
-        ui.draggable.show().hide('fade', 300, function () {
-
-          // if ($('#tabDropActivate').prop('checked'))
-          $tabs.tabs('option', 'active', $index);
-
-          $(this).prependTo($list).show('fade', 800).before($elements.show('fade', 800));
-
-          $('body').css('cursor','auto');
-
-          PTL.tab.saveTabs();
-
-        });
-      }
-    });
-
-    $tabLink.appendTo($tab);
-    $tabCloser.appendTo($tab);
-    $tab.appendTo($tabUl);
-    $tabUl.find('#newTabButton').appendTo($tabUl);
-
-    var $column = $('<ul>')
-        .attr('class', 'column');
-
-    $column.sortable({
-      cursor: 'move',
-      handle: ".feedHandle",
-      cursorAt: {top: 10, left: 0},
-      receive: function(e, ui) {
-        ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
-      },
-      helper: function (e, item) { //create custom helper
-        if (!item.hasClass('selected')) item.addClass('selected');
-
-        // clone selected items before hiding
-        var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
-        //hide selected items
-        item.siblings('.selected').addClass('hidden');
-        var $helper = $('<ul class="feedHelper">');
-
-        return $helper.append($elements);
-      },
-      start: function (e, ui) {
-
-        // Drag begins
-        var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
-        // Store the selected items to item being dragged
-        ui.item.data('items', $elements);
-        // Size the placeHolder
-        $('.ui-sortable-placeholder').css('height', ui.item.height());
-
-      },
-      update: function (e, ui) {
-        //manually add the selected items before the one actually being dragged
-        ui.item.before(ui.item.data('items'));
-      },
-      stop: function (e, ui) {
-        //show the selected items after the operation
-        ui.item.siblings('.selected').removeClass('hidden');
-        //unselect since the operation is complete
-        $('.selected').removeClass('selected ui-state-hover');
-        $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
-        PTL.tab.saveTabs();
-
-      }
-    }).disableSelection();
-
-    $column.appendTo($tabPanel);
-
-    $tabPanel.appendTo($tabs);
-
-    if (PTL.qstring) {
-      PTL.feed.make($('.column').first(), PTL.qstring, 'mixed', 8, true);
-      PTL.qstring = null;
-    }
-
-    if(typeof feeds != 'undefined') {
-      feeds.forEach(function(feed) {
-        PTL.feed.make($column, feed.url, feed.type, feed.limit, false, progress);
-      });
-    }
-
-    $tabs.tabs('refresh');
-    $tabs.tabs( "option", "active", tabIndex - 1);
-    tabIndex++;
-
-  },
   list:function(type) {
 
-    var $allTabs = $('#tabUl > li.mobTab'),
+    var $groupsNodes = $('#tabUl > li.mobTab'),
         groups = [];
 
-    $allTabs.each(function() {
+
+    $groupsNodes.each(function() {
+
 
       var group = {},
-          thisCol = [],
+      thisCol = [],
+      colSources = [],
           $columnNodes = $($(this).children().attr('href') + ' ul.column');
 
       group.name = $(this).children('a').text();
@@ -463,23 +310,44 @@ PTL.tab = {
       if (type && type === 'all')
         group.pane = $($(this).children().attr('href') + ' ul').attr('id');
 
-      $columnNodes.each(function() {
-        var $srcNodes = $(this).find('li.feed'),
-            colSources = [],
-            source = {};
+      // console.log('this is a group: (%s)', group.name);
 
+      $columnNodes.each(function() {
+
+        // console.log('this is a col: (%s)', $(this).attr('id'));
+
+        var col = $(this).attr('id');
+
+        // console.log('k : (%s) v : (%s) g: (%s)', k, v, group.name);
+
+        // $.each(v, function( k, v ) {
+        //   console.log('k : (%s) v : (%s) g: (%s)', k, v, group.name);
+        // });
+
+
+        var $srcNodes = $(this).children('li.feed');
+
+        var source = {};
         $srcNodes.each(function() {
-          var $dataStore = $(this).find('.feedControls');
+
+          // console.log('this is a src: (%s)', $(this).find('.feedTitle').text());
+
+          var $dataStore = $(this).find('.dataStore');
           source.url = $dataStore.data('url');
           source.type = $dataStore.data('type');
           source.limit = $dataStore.data('limit');
           colSources.push(source);
+          console.log('group: (%s) column: (%s) src: (%s)', group.name, col, source.url);
         });
-        thisCol.push(colSources);
+
+        group.columns = colSources;
+        // thisCol.push(colSources);
       });
-      group.columns = thisCol;
       groups.push(group);
+      groups.push(thisCol);
     });
+
+    // console.log('groups : (%s)', JSON.stringify(groups));
 
     return groups;
 

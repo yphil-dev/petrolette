@@ -10,7 +10,8 @@ PTL.prefs = (function() {
              {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8}
            ],
            [
-             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4}
+             {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8},
+             {"url":"https://www.reddit.com/.rss","type":"photo","limit": 4}
            ],
            [
              {"url":"http://www.lemonde.fr/rss/une.xml","type":"photo","limit": 4},
@@ -21,24 +22,18 @@ PTL.prefs = (function() {
         {"name":"Comics",
          "columns": [
            [
-             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+             {"url":"http://feeds.nature.com/nature/rss/current","type":"text","limit": 16},
+             {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 16},
+             {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 16},
+
              {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
            ]
          ]
         },
-        {"name":"Four",
+        {"name":"Two",
          "columns": [
            [
-             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-           ],
-           [
-             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-           ],
-           [
-             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+             {"url":"http://phdcomics.com/gradfeed.php","type":"photo","limit": 4}
            ],
            [
              {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},

@@ -103,7 +103,7 @@ PTL.sync = (function() {
           } else {
 
             console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults', data));
-            PTL.tab.newPopulate(JSON.parse(PTL.prefs.readConfig('sources')));
+            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('sources')));
 
           }
 
@@ -113,7 +113,7 @@ PTL.sync = (function() {
           // console.log('sources in sync: ', JSON.parse(PTL.prefs.readConfig('sources')));
 
           console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err));
-          PTL.tab.newPopulate(JSON.parse(PTL.prefs.readConfig('sources')));
+          PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('sources')));
           // PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('tabs')));
 
         });
