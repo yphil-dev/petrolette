@@ -122,8 +122,8 @@ PTL.sync = (function() {
     writeSync:function(sources) {
 
       remoteStorage.petrolette.write(sources)
-        .then(() => {
-          console.info('Pétrolette | Writing to remote storage OK');
+        .then((data) => {
+          console.info('Pétrolette | Writing to remote storage OK: ', data);
         })
         .catch((err) => {
           console.error('Pétrolette | Remote file validation error:', err);

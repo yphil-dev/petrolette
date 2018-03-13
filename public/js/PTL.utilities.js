@@ -103,15 +103,15 @@ PTL.utilities = {
             intro: PTL.tr('Click to add a source.')
           },
           {
-            element: '.mobFeedRefresh',
+            element: '.source-refresh',
             intro: PTL.tr('Refresh / reload this source.')
           },
           {
-            element: 'li#feed-0 i.feedControl.mobFeedPrefs',
+            element: 'li#feed-0 i.feedControl.source-edit',
             intro: PTL.tr('Configure this source.')
           },
           {
-            element: '.feedDelete',
+            element: '.source-delete',
             intro: PTL.tr('Delete this source.')
           },
           {

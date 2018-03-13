@@ -4,6 +4,7 @@ PTL.tab = {
   init:function(qstring) {
 
     PTL.totalNbBOfCols = 0;
+    PTL.language = PTL.prefs.readConfig('lang');
 
     var $tabs = $('#tabs').tabs({
       heightStyle: 'content',
@@ -70,7 +71,7 @@ PTL.tab = {
     PTL.utilities.noSourcesButton();
     PTL.sync.readSync();
 
-    $("#mobStyle").attr({href : '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
+    $("#theme").attr({href : '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
 
   },
   saveTabs:function() {
@@ -135,7 +136,7 @@ PTL.tab = {
 
     $('#noSourcesButton').fadeOut('fast');
 
-    var tabIndex = $('ul#tabUl li.mobTab').length + 1;
+    var tabIndex = $('ul#tabNames li.mobTab').length + 1;
 
     name = name || 'Group ' + tabIndex;
 
@@ -157,7 +158,7 @@ PTL.tab = {
         .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
         .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
-    var $tabUl = $('#tabs ul#tabUl');
+    var $tabNames = $('#tabs ul#tabNames');
 
     $tab.droppable({
       tolerance: 'pointer',
@@ -188,8 +189,8 @@ PTL.tab = {
 
     $tabLink.appendTo($tab);
     $tabCloser.appendTo($tab);
-    $tab.appendTo($tabUl);
-    $tabUl.find('#newTabButton').appendTo($tabUl);
+    $tab.appendTo($tabNames);
+    $tabNames.find('#newTabButton').appendTo($tabNames);
 
     var colIndex = 1,
         nbOfColumnsInTab = columns.length;
@@ -293,12 +294,10 @@ PTL.tab = {
   },
   list:function(type) {
 
-    var $groupsNodes = $('#tabUl > li.mobTab'),
+    var $groupsNodes = $('#tabNames > li.mobTab'),
         groups = [];
 
-
     $groupsNodes.each(function() {
-
 
       var group = {},
           columns = [],
@@ -309,40 +308,26 @@ PTL.tab = {
       if (type && type === 'all')
         group.pane = $($(this).children().attr('href') + ' ul').attr('id');
 
-      // console.log('this is a group: (%s)', group.name);
-
       $columnNodes.each(function() {
 
-        var col = $(this).attr('id');
-
-        var column = [];
-
-        var $srcNodes = $(this).children('li.feed');
-
-        console.log('$srcNodes : (%s)', $srcNodes.length);
+        var column = [],
+            $srcNodes = $(this).children('li.feed');
 
         $srcNodes.each(function() {
           var source = {};
-
-          // console.log('this is a src: (%s)', $(this).find('.feedTitle').text());
 
           var $dataStore = $(this).find('.dataStore');
           source.url = $dataStore.data('url');
           source.type = $dataStore.data('type');
           source.limit = $dataStore.data('limit');
           column.push(source);
-          // console.log('group: (%s) column: (%s) src: (%s)', group.name, col, source.url);
         });
         columns.push(column);
-
-        // console.log('srcs in this col: (%s)', JSON.stringify(column));
 
       });
       group.columns = columns;
       groups.push(group);
     });
-
-    // console.log('groups : (%s)', JSON.stringify(groups));
 
     return groups;
 
@@ -371,7 +356,7 @@ PTL.tab = {
 
     $newTabButtonIcon.appendTo($newTabButtonLink);
     $newTabButtonLink.appendTo($newTabButton);
-    $newTabButton.appendTo($tabs.find('ul#tabUl'));
+    $newTabButton.appendTo($tabs.find('ul#tabNames'));
 
   }
 };

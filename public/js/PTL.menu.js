@@ -132,7 +132,7 @@ PTL.menu = {
 
       $('.themeSwitcher').change(function() {
 
-        $("#mobStyle").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
+        $("#theme").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
 
         PTL.prefs.writeConfig('theme', $(this).attr('value'));
 

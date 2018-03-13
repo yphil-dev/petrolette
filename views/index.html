@@ -52,7 +52,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="/static/css/themes/base/jquery-ui.min.css">
-    <link id="mobStyle" rel="stylesheet" href="/static/css/themes/night.css">
+    <link id="theme" rel="stylesheet" href="/static/css/themes/night.css">
     <link rel="stylesheet" href="/static/css/fontello.css">
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/minified/introjs.min.css" />
@@ -72,14 +72,6 @@
     <script src="/static/js/PTL.main.js"></script>
     <script src="/static/js/PTL.prefs.js"></script>
     <script src="/static/js/PTL.i18n.js"></script>
-
-    <!-- <script src="/dist/js/PTL.pre.min.js"></script>
-    -->
-    <script>
-
-     PTL.language = PTL.prefs.readConfig('lang');
-
-    </script>
 
   </head>
 
@@ -112,9 +104,9 @@
 
     <main>
       <div id="tabs">
-        <ul id="tabUl"></ul>
+        <ul id="tabNames"></ul>
       </div>
-      <div id="mobDialogs"></div>
+      <div id="dialogs"></div>
     </main>
 
     <footer>
@@ -130,11 +122,10 @@
     <script src="/static/js/PTL.sync.js"></script>
     <script src="/static/js/PTL.menu.js"></script>
 
-    <!-- <script src="/dist/js/PTL.post.min.js"></script>
-    -->
     <script>
 
      var qstring = "<%= qstring %>";
+
 
      PTL.menu.top();
      PTL.menu.side();

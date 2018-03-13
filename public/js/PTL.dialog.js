@@ -3,11 +3,11 @@
 PTL.dialog = {
   kill:function($dialog) {
     $dialog.dialog('destroy');
-    $('#mobDialogs').empty();
+    $('#dialogs').empty();
   },
   help:function() {
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {
 
       var $dialog = $('#helpDialog');
 
@@ -52,7 +52,7 @@ PTL.dialog = {
   },
   feedPrefs:function($feedPrefsButton, isNewFeed) {
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
       var $dialog = $(this).find('#feedPrefs');
 
       PTL.utilities.translate();
@@ -197,7 +197,7 @@ PTL.dialog = {
 
           var $dialog = $(this),
               $tabFeedId = $('li#' + $dataStore.data('id')),
-              $mobFeedRefresh = $tabFeedId.find('.mobFeedRefresh'),
+              $sourceRefresh = $tabFeedId.find('.sourceRefresh'),
               $guessButton = $dialog.find('button#feedGuess').button(),
               $guessSpinner = $dialog.find('button#feedGuess > i'),
               $guessField = $dialog.find('input#feedGuess'),
@@ -294,7 +294,7 @@ PTL.dialog = {
           });
 
           $dialog.on('submit', function () {
-            PTL.feed.populate($mobFeedRefresh);
+            PTL.feed.populate($sourceRefresh);
 
             PTL.tab.saveTabs();
 
@@ -318,7 +318,7 @@ PTL.dialog = {
   },
   killColumn:function($button) {
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
 
       var $dialog = $('#killDialog'),
           $column = $button.parent().parent(),
@@ -383,7 +383,7 @@ PTL.dialog = {
         selectedTabIndex = $tabs.tabs('option', 'active'),
         previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
 
       var $dialog = $('#killDialog');
 
@@ -446,7 +446,7 @@ PTL.dialog = {
   },
   killAll:function() {
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
       var $dialog = $('#killDialog');
 
       $dialog.dialog({
@@ -504,7 +504,7 @@ PTL.dialog = {
   },
   killFeed:function(feedId, feedName) {
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #killDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
       var $dialog = $('#killDialog');
 
       var $thisFeedId = feedId;
@@ -564,7 +564,7 @@ PTL.dialog = {
   },
   editGroup:function($tab) {
 
-    $('#mobDialogs').load('/static/templates/dialogs.html #editGroupDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #editGroupDialog', function() {
       var $dialog = $('#editGroupDialog');
 
       $dialog.dialog({

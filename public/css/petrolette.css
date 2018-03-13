@@ -182,18 +182,18 @@ i.dangerous:hover {
   color: var(--ui-color-danger);
 }
 
-.mobHeader > .feedTitle > a:link,
-.mobHeader > .feedTitle > a:visited  {
+.source-header > .feedTitle > a:link,
+.source-header > .feedTitle > a:visited  {
   color: var(--color-pri);
 }
 
-.mobHeader > .feedTitle > a.danger:link,
-.mobHeader > .feedTitle > a.danger:visited  {
+.source-header > .feedTitle > a.danger:link,
+.source-header > .feedTitle > a.danger:visited  {
   color: var(--ui-color-danger);
 }
 
-.mobHeader > .feedTitle > a.danger:hover,
-.mobHeader > .feedTitle > a:hover {
+.source-header > .feedTitle > a.danger:hover,
+.source-header > .feedTitle > a:hover {
   color: var(--color-sec);
 }
 
@@ -304,7 +304,7 @@ li.mobTab:first-child {
   box-shadow: none !important;
 }
 
-#tabUl,
+#tabNames,
 #tabs {
   background: none;
   border-radius: 0;
@@ -831,7 +831,7 @@ li.feed {
   text-overflow: ellipsis;
 }
 
-.mobHeader {
+.source-header {
   display: flex;
   flex-direction:row;
   height: var(--var-header-height);
@@ -854,7 +854,7 @@ li.feed {
   outline: .1em dashed var(--color-sec);
 }
 
-.mobHeader > .feedTitle {
+.source-header > .feedTitle {
   color: var(--color-ter);
   flex-basis: auto;
   flex-grow: 4;
@@ -866,7 +866,7 @@ li.feed {
   margin-left: var(--title-margin-left);
 }
 
-.mobHeader > .feedHandle {
+.source-header > .feedHandle {
   background-color: transparent;
   border-left: 3px dotted var(--color-oct);
   border-right: 3px dotted var(--color-oct);
@@ -877,32 +877,32 @@ li.feed {
   visibility: var(--handle-visibility);
 }
 
-.mobHeader > .feedHandle > div {
+.source-header > .feedHandle > div {
 }
 
-.mobHeader > .myControlsToggleDiv {
+.source-header > .myControlsToggleDiv {
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
 }
 
-.mobHeader > .feedControls {
+.source-header > .feedControls {
   display: flex;
   flex-basis: 0px;
   flex-grow: 0;
   flex-shrink: 0;
 }
 
-.mobHeader .feedControls div {
+.source-header .feedControls div {
   margin: 0 2px 0 0;
 }
 
-.mobHeader > .feedToggle,
-.mobHeader .feedControls div {
+.source-header > .feedToggle,
+.source-header .feedControls div {
   text-align: center;
 }
 
-.mobHeader .feedControls div.collapsible {
+.source-header .feedControls div.collapsible {
   display:none;
 }
 
@@ -912,7 +912,7 @@ li.feed {
   margin: 0 0 0 2px;
 }
 
-.mobHeader > .feedToggle {
+.source-header > .feedToggle {
   margin: 2px;
   flex-basis: auto;
   flex-grow: 0;
@@ -927,7 +927,7 @@ li.feed {
   min-width: var(--var-controls-toggle-size) !important;
 }
 
-.mobHeader > .feedToggle i {
+.source-header > .feedToggle i {
   margin: var(--var-controls-toggle-margin);
 }
 
@@ -1028,7 +1028,7 @@ li.feed {
   padding: 0;
 }
 
-.mobHeader > .feedHandle:hover {
+.source-header > .feedHandle:hover {
   border-color: var(--color-sec);
 }
 
@@ -1067,7 +1067,7 @@ div.introjs-helperLayer {
   background-color: rgba(255,255,255,.2);
 }
 
-.mobHeader {
+.source-header {
   background-color: var(--color-sen);
   color: var(--color-pri);
 }

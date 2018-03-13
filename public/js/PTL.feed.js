@@ -19,17 +19,17 @@ PTL.feed = {
         .attr('title', PTL.tr('Select this source (%1)', url));
 
     var $feedDelete = $('<i>')
-        .attr('class', 'feedControl translate icon-cancel feedDelete dangerous')
+        .attr('class', 'feedControl translate icon-cancel source-delete dangerous')
         .data('title', 'Delete this source (%1)', url)
         .attr('title', PTL.tr('Delete this source (%1)', url));
 
     var $feedPrefs = $('<i>')
-        .attr('class', 'feedControl translate icon-pencil mobFeedPrefs')
+        .attr('class', 'feedControl translate icon-pencil source-edit')
         .data('title', PTL.tr('Change this source (%1) parameters', url))
         .attr('title', PTL.tr('Change this source (%1) parameters', url));
 
     var $feedReload = $('<i>')
-        .attr('class', 'feedControl translate icon-arrows-cw mobFeedRefresh')
+        .attr('class', 'feedControl translate icon-arrows-cw source-refresh')
         .data('title', PTL.tr('Refresh this source (%1)', url))
         .attr('title', PTL.tr('Refresh this source (%1)', url));
 
@@ -83,7 +83,7 @@ PTL.feed = {
         .data('limit', limit);
 
     var $header = $('<div>')
-        .attr('class', 'mobHeader');
+        .attr('class', 'source-header');
 
     var $feedToggle = $('<div>')
         .attr('class', 'feedToggle');
@@ -97,7 +97,7 @@ PTL.feed = {
         .attr('class', 'feedSelect');
 
     var $deleteDiv = $('<div>')
-        .attr('class', 'feedDelete');
+        .attr('class', 'source-delete');
 
     var $titleDiv = $('<div>')
         .attr('title', url)
@@ -194,7 +194,7 @@ PTL.feed = {
   populate:function($button, progress) {
 
     var $dataStore = $button.parent().parent(),
-        $refreshButton = $dataStore.find('i.mobFeedRefresh'),
+        $refreshButton = $dataStore.find('i.source-refresh'),
         $header = $dataStore.parent(),
         $panel = $dataStore.parent().parent().parent(),
         $feed = $dataStore.parent().parent(),
