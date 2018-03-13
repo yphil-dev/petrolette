@@ -152,11 +152,6 @@ ul {
   /* padding: .2em; */
 }
 
-a:link {
-  color: var(--color-pri);
-  text-decoration: none;
-}
-
 a:visited {
   color: var(--color-qui);
 }
@@ -167,20 +162,43 @@ i.item-icon:hover {
   color: var(--color-sec);
 }
 
-.ui-state-active,
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active,
-a.ui-button:active,
-.ui-button:active,
-.ui-button.ui-state-active:hover {
-  border: var(--color-oct);
-  background: var(--color-oct);
-  color: var(--color-pri);
+a:visited,
+a:link {
+  color: var(--color-pri) !important;
+  text-decoration: none;
 }
 
-.ui-button.ui-state-active:hover,
+/* .ui-state-active, */
+/* .ui-widget-content .ui-state-active, */
+/* .ui-widget-header .ui-state-active, */
+/* a.ui-button:active, */
+/* .ui-button:active, */
+/* .ui-button.ui-state-active:hover { */
+/*   border: var(--color-oct); */
+/*   background: var(--color-oct); */
+/*   color: var(--color-pri); */
+/* } */
+
+.ui-tab.ui-state-default {
+  background: var(--color-sep);
+}
+
+.ui-tab {
+  padding: 0 !important;
+}
+
+.ui-tab.ui-state-active {
+  background: var(--color-oct);
+}
+
+.ui-tab.ui-state-hover a,
+.ui-tab.ui-state-active a {
+  cursor: pointer !important;
+  color: var(--color-sec) !important;
+}
+
 .ui-tab.ui-state-hover {
-  border: red;
+  background: var(--color-non);
 }
 
 #tab-names,
@@ -189,21 +207,18 @@ a.ui-button:active,
 }
 
 #create-tab {
-  color: var(--color-pri);
   text-align: center;
   width: 40px;
 }
 
+#create-tab a:visited,
 #create-tab a:link {
+  color: var(--color-pri);
   background-color: var(--color-qua);
   font-size: 21.2pt;
   margin: 0;
   padding: 0;
   width: 100%;
-}
-
-#create-tab a:hover {
-  color: var(--color-sec);
 }
 
 i.item-icon {
@@ -502,7 +517,7 @@ fieldset {
   background-color: var(--ui-color-sec);
 }
 
-.ui-state-hover,
+/* .ui-state-hover, */
 .ui-widget-content .ui-state-focus,
 .ui-slider-handle:focus,
 .ui-slider-handle:hover,
