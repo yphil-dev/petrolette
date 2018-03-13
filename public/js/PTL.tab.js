@@ -301,8 +301,7 @@ PTL.tab = {
 
 
       var group = {},
-      thisCol = [],
-      colSources = [],
+          columns = [],
           $columnNodes = $($(this).children().attr('href') + ' ul.column');
 
       group.name = $(this).children('a').text();
@@ -314,21 +313,16 @@ PTL.tab = {
 
       $columnNodes.each(function() {
 
-        // console.log('this is a col: (%s)', $(this).attr('id'));
-
         var col = $(this).attr('id');
 
-        // console.log('k : (%s) v : (%s) g: (%s)', k, v, group.name);
-
-        // $.each(v, function( k, v ) {
-        //   console.log('k : (%s) v : (%s) g: (%s)', k, v, group.name);
-        // });
-
+        var column = [];
 
         var $srcNodes = $(this).children('li.feed');
 
-        var source = {};
+        console.log('$srcNodes : (%s)', $srcNodes.length);
+
         $srcNodes.each(function() {
+          var source = {};
 
           // console.log('this is a src: (%s)', $(this).find('.feedTitle').text());
 
@@ -336,15 +330,16 @@ PTL.tab = {
           source.url = $dataStore.data('url');
           source.type = $dataStore.data('type');
           source.limit = $dataStore.data('limit');
-          colSources.push(source);
-          console.log('group: (%s) column: (%s) src: (%s)', group.name, col, source.url);
+          column.push(source);
+          // console.log('group: (%s) column: (%s) src: (%s)', group.name, col, source.url);
         });
+        columns.push(column);
 
-        group.columns = colSources;
-        // thisCol.push(colSources);
+        // console.log('srcs in this col: (%s)', JSON.stringify(column));
+
       });
+      group.columns = columns;
       groups.push(group);
-      groups.push(thisCol);
     });
 
     // console.log('groups : (%s)', JSON.stringify(groups));
