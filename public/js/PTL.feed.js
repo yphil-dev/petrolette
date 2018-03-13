@@ -215,7 +215,7 @@ PTL.feed = {
         .data('content', PTL.tr("Error"));
 
       $feedBody
-        .html('<li class="feedItem"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+        .html('<li class="source-item"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
 
       return;
     }
@@ -310,7 +310,7 @@ PTL.feed = {
             .text(PTL.tr('validate'));
 
         var $errorItem = $('<li>')
-            .attr('class', 'feedItem error')
+            .attr('class', 'source-item error')
             .append($errorTitle)
             .append('&nbsp;')
             .append($errorLink)
@@ -352,8 +352,8 @@ PTL.feed = {
 
         var $itemDiv = $('<div>')
             .attr('class', 'itemDiv'),
-            $feedItem = $('<li>')
-            .attr('class', 'feedItem')
+            $sourceItem = $('<li>')
+            .attr('class', 'sourceItem')
             .attr('title', $summary.trim());
 
         if (item.comments) {
@@ -412,7 +412,7 @@ PTL.feed = {
           .append(item.title);
 
         if (index % 2 === 0) {
-          $feedItem.addClass('mobFeedEven');
+          $sourceItem.addClass('mobFeedEven');
         }
 
         if (imageUrl) {
@@ -443,8 +443,8 @@ PTL.feed = {
         }
 
         $itemLink.appendTo($itemDiv);
-        $itemDiv.appendTo($feedItem);
-        $feedItem.appendTo($feedBody);
+        $itemDiv.appendTo($sourceItem);
+        $sourceItem.appendTo($feedBody);
 
       });
 
@@ -457,7 +457,7 @@ PTL.feed = {
         .data('content', PTL.tr("Error"));
 
       $feedBody
-        .html('<li class="feedItem"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+        .html('<li class="sourceItem"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
 
       // WP.tr('add %1', WP.tr('truck') );
 

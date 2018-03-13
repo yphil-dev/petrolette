@@ -197,12 +197,12 @@ i.dangerous:hover {
   color: var(--color-sec);
 }
 
-li.feedItem:not(.error) a {
+li.sourceItem:not(.error) a {
   display: block;
   width:100%;
 }
 
-li.feedItem.error > strong.key {
+li.sourceItem.error > strong.key {
   color: var(--ui-color-danger);
 }
 
@@ -755,7 +755,7 @@ div.dialogWithIcon > div.icon {
 }
 
 li.tab-name,
-#newTabButton {
+#create-tab {
   margin: 0 0 0 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -920,13 +920,13 @@ li.feed {
   color: var(--ui-color-rss);
 }
 
-#newTabButton {
+#create-tab {
   background-color: var(--color-qua);
   text-align: center;
   width: 40px;
 }
 
-#newTabButton a {
+#create-tab a {
   background-color: var(--color-qua);
   color: var(--ui-color-pri);
   font-size: 21.2pt;
@@ -951,7 +951,7 @@ li.ui-tabs-active a.ui-tabs-anchor:link {
   color: var(--color-sec) !important;
 }
 
-li.feedItem {
+li.sourceItem {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
@@ -964,33 +964,33 @@ li.feedItem {
   word-wrap: break-word;
 }
 
-li.feedItem > div.itemDiv > a > img {
+li.sourceItem > div.itemDiv > a > img {
   float:left;
   margin: 0 .2rem .2rem 0;
   max-width:30%;
 }
 
-li.feedItem > div.itemDiv > a > img.full {
+li.sourceItem > div.itemDiv > a > img.full {
   min-width:100%;
 }
 
 table tr,
-li.feedItem {
+li.sourceItem {
   background-color: var(--color-sep);
 }
 
 table tr:nth-child(even),
-li.feedItem:nth-child(even) {
+li.sourceItem:nth-child(even) {
   background-color: var(--color-non);
 }
 
 table tr:nth-child(even),
-li.feedItem:nth-child(even) {
+li.sourceItem:nth-child(even) {
   background-color: var(--color-non);
 }
 
 table tr:hover,
-li.feedItem:hover {
+li.sourceItem:hover {
   background-color: var(--color-sen) !important;
   color: var(--color-sep) !important;
 }
@@ -1005,7 +1005,7 @@ li.feed:hover div.feedBody {
   border-color: var(--color-den);
 }
 
-li.feedItem > div.itemDiv > a > img:hover {
+li.sourceItem > div.itemDiv > a > img:hover {
   outline: 1px solid var(--color-sec);
 }
 
@@ -1024,7 +1024,7 @@ li.feed {
     color: var(--color-pri) !important;
   }
 
-  li.feedItem:hover {
+  li.sourceItem:hover {
     background-color: none !important;
   }
 

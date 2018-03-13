@@ -25,7 +25,7 @@ PTL.tab = {
 
     $tabs.find('.ui-tabs-nav').sortable({
       axis: 'x',
-      items: '> li:not(#newTabButton)',
+      items: '> li:not(#create-tab)',
       stop: function() {
         $tabs.tabs('refresh');
         PTL.tab.saveTabs();
@@ -133,7 +133,6 @@ PTL.tab = {
   },
   make:function($tabs, name, columns, progress) {
 
-
     $('#noSourcesButton').fadeOut('fast');
 
     var tabIndex = $('ul#tab-names li.tab-name').length + 1;
@@ -190,7 +189,14 @@ PTL.tab = {
     $tabLink.appendTo($tab);
     $tabCloser.appendTo($tab);
     $tab.appendTo($tabNames);
-    $tabNames.find('#newTabButton').appendTo($tabNames);
+    $tabNames.find('#create-tab').appendTo($tabNames);
+
+    var newTab = false;
+
+    if (typeof columns === 'undefined') {
+      newTab = true;
+      columns = ['empty'];
+    }
 
     var colIndex = 1,
         nbOfColumnsInTab = columns.length;
@@ -211,12 +217,7 @@ PTL.tab = {
           .attr('class', 'legend')
           .text('Column ' + colIndex++);
 
-      // $tabs.on("click", "i.tabCloser", function() {
-      //   PTL.dialog.killTab($(this));
-      // });
-
-      $colDelButton.click(function(event) {
-        // event.preventDefault();
+      $colDelButton.click(function() {
         PTL.dialog.killColumn($(this));
       });
 
@@ -235,30 +236,25 @@ PTL.tab = {
         connectWith: ".column",
         cursorAt: {top: 10, left: 32},
         receive: function(e, ui) {
-
           if (ui.helper)
             ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
         },
         helper: function (e, item) { //create custom helper
           if (!item.hasClass('selected')) item.addClass('selected');
-
           // clone selected items before hiding
           var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
           //hide selected items
           item.siblings('.selected').addClass('hidden');
           var $helper = $('<ul class="feedHelper">');
-
           return $helper.append($elements);
         },
         start: function (e, ui) {
-
           // Drag begins
           var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
           // Store the selected items to item being dragged
           ui.item.data('items', $elements);
           // Size the placeHolder
           $('.ui-sortable-placeholder').css('height', ui.item.height());
-
         },
         update: function (e, ui) {
           //manually add the selected items before the one actually being dragged
@@ -271,15 +267,16 @@ PTL.tab = {
           $('.selected').removeClass('selected ui-state-hover');
           $(this).find('i.source-select').removeClass('icon-ok').addClass('icon-check-empty-1');
           PTL.tab.saveTabs();
-
         }
       }).disableSelection();
 
       $column.appendTo($tabPanel);
 
-      sources.forEach(function(source) {
-        PTL.feed.make($column, source.url, source.type, source.limit, false, progress);
-      });
+      if (!newTab) {
+        sources.forEach(function(source) {
+          PTL.feed.make($column, source.url, source.type, source.limit, false, progress);
+        });
+      }
 
       $tabPanel.appendTo($tabs);
 
@@ -335,7 +332,7 @@ PTL.tab = {
   makeNewTabButton:function($tabs) {
 
     var $newTabButton = $('<li>')
-        .attr('id', 'newTabButton')
+        .attr('id', 'create-tab')
         .attr('class', 'translate newContentButton')
         .data('title', 'Add a new group')
         .attr('title', PTL.tr('Add a new group'));
@@ -349,7 +346,7 @@ PTL.tab = {
     $newTabButtonLink.bind('click', function(event) {
       event.stopImmediatePropagation();
 
-      PTL.tab.make($($tabs));
+      PTL.tab.make($tabs);
 
       return false;
     });
