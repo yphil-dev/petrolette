@@ -86,12 +86,12 @@ PTL.feed = {
         .attr('class', 'source-header');
 
     var $feedToggle = $('<div>')
-        .attr('class', 'feedToggle');
+        .attr('class', 'source-toggle');
 
     var $feedHandle = $('<div>')
         .data('title', PTL.tr('Move this source (%1)', url))
         .attr('title', PTL.tr('Move this source (%1)', url))
-        .attr('class', 'feedHandle');
+        .attr('class', 'source-handle');
 
     var $selectDiv = $('<div>'),
         $deleteDiv = $('<div>'),
@@ -198,8 +198,8 @@ PTL.feed = {
         feedUrl = $dataStore.data('url'),
         feedType = $dataStore.data('type'),
         feedLimit = $dataStore.data('limit'),
-        $feedToggle = $feed.find('.feedToggle'),
-        $feedIcon = $feed.find('.feedToggle > i');
+        $feedToggle = $feed.find('.source-toggle'),
+        $feedIcon = $feed.find('.source-toggle > i');
 
     var l = PTL.utilities.getLocation(feedUrl),
         feedHost = l.protocol + '//' + l.hostname,

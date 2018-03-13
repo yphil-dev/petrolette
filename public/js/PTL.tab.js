@@ -232,7 +232,7 @@ PTL.tab = {
 
       $column.sortable({
         cursor: 'move',
-        handle: ".feedHandle",
+        handle: ".source-handle",
         connectWith: ".column",
         cursorAt: {top: 10, left: 32},
         receive: function(e, ui) {

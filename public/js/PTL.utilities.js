@@ -119,11 +119,11 @@ PTL.utilities = {
             intro: PTL.tr('Select this source (for drag & drop).')
           },
           {
-            element: '.feedHandle',
+            element: '.source-handle',
             intro: PTL.tr('Drag here to move this source (and all other selected sources) within this group, or into another.')
           },
           {
-            element: 'div.feedToggle',
+            element: 'div.source-toggle',
             intro: PTL.tr('Expand / collapse this source.')
           }
         ]

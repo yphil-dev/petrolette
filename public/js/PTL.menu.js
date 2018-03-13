@@ -62,7 +62,7 @@ PTL.menu = {
       });
 
       $('body').on('click','#newSourceButton', function() {
-        var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.column');
+        var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.column').first();
         $overlay.removeClass('visible');
         $menu.removeClass('expanded');
         PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);

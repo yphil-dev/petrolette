@@ -897,7 +897,7 @@ li.feed {
   margin-left: var(--title-margin-left);
 }
 
-.source-header > .feedHandle {
+.source-header > .source-handle {
   background-color: transparent;
   border-left: 3px dotted var(--color-oct);
   border-right: 3px dotted var(--color-oct);
@@ -919,7 +919,7 @@ li.feed {
   margin: 0 2px 0 0;
 }
 
-.source-header > .feedToggle,
+.source-header > .source-toggle,
 .source-header .source-controls div {
   text-align: center;
 }
@@ -934,7 +934,7 @@ li.feed {
   margin: 0 0 0 2px;
 }
 
-.source-header > .feedToggle {
+.source-header > .source-toggle {
   margin: 2px;
   flex-basis: auto;
   flex-grow: 0;
@@ -949,7 +949,7 @@ li.feed {
   min-width: var(--var-controls-toggle-size) !important;
 }
 
-.source-header > .feedToggle i {
+.source-header > .source-toggle i {
   margin: var(--var-controls-toggle-margin);
 }
 
@@ -1039,7 +1039,7 @@ li.feed {
   padding: 0;
 }
 
-.source-header > .feedHandle:hover {
+.source-header > .source-handle:hover {
   border-color: var(--color-sec);
 }
 
