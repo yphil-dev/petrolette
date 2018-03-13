@@ -48,7 +48,7 @@ PTL.tab = {
     });
 
     if (PTL.utilities.isMobile()) {
-      $tabs.find('.feedControls > div').removeClass('collapsible');
+      $tabs.find('.source-controls > div').removeClass('collapsible');
     }
 
     $tabs.find('.collapsible').show('fast');
@@ -57,12 +57,12 @@ PTL.tab = {
 
     $(window).scroll(function() {
       if ($(this).scrollTop() >= 50) {
-        $('#scrollToTop').fadeIn(200);
+        $('#scroll-top').fadeIn(200);
       } else {
-        $('#scrollToTop').fadeOut(200);
+        $('#scroll-top').fadeOut(200);
       }
     });
-    $('#scrollToTop').click(function() {
+    $('#scroll-top').click(function() {
       $('body,html').animate({
         scrollTop : 0
       }, 500);
@@ -136,7 +136,7 @@ PTL.tab = {
 
     $('#noSourcesButton').fadeOut('fast');
 
-    var tabIndex = $('ul#tabNames li.mobTab').length + 1;
+    var tabIndex = $('ul#tab-names li.tab-name').length + 1;
 
     name = name || 'Group ' + tabIndex;
 
@@ -154,11 +154,11 @@ PTL.tab = {
         .append(name);
 
     var $tab = $('<li>')
-        .attr('class', 'modal mobTab translate')
+        .attr('class', 'modal tab-name translate')
         .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
         .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
-    var $tabNames = $('#tabs ul#tabNames');
+    var $tabNames = $('#tabs ul#tab-names');
 
     $tab.droppable({
       tolerance: 'pointer',
@@ -166,7 +166,7 @@ PTL.tab = {
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
         var $item = $(this);
-        var $index = $('li.mobTab').index(this);
+        var $index = $('li.tab-name').index(this);
         var $elements = ui.draggable.data('items');
         var $list = $($item.find('a').attr('href'))
             .find('.column');
@@ -269,7 +269,7 @@ PTL.tab = {
           ui.item.siblings('.selected').removeClass('hidden');
           //unselect since the operation is complete
           $('.selected').removeClass('selected ui-state-hover');
-          $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
+          $(this).find('i.source-select').removeClass('icon-ok').addClass('icon-check-empty-1');
           PTL.tab.saveTabs();
 
         }
@@ -294,7 +294,7 @@ PTL.tab = {
   },
   list:function(type) {
 
-    var $groupsNodes = $('#tabNames > li.mobTab'),
+    var $groupsNodes = $('#tab-names > li.tab-name'),
         groups = [];
 
     $groupsNodes.each(function() {
@@ -356,7 +356,7 @@ PTL.tab = {
 
     $newTabButtonIcon.appendTo($newTabButtonLink);
     $newTabButtonLink.appendTo($newTabButton);
-    $newTabButton.appendTo($tabs.find('ul#tabNames'));
+    $newTabButton.appendTo($tabs.find('ul#tab-names'));
 
   }
 };

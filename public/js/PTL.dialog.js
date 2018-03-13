@@ -70,7 +70,7 @@ PTL.dialog = {
       var $feed = $dataStore.parent().parent();
 
       var feedId = $feed.attr('id');
-      var feedName = $feed.find('.feedTitle').text();
+      var feedName = $feed.find('.source-title').text();
 
       var allGroups = PTL.tab.list('all');
 
@@ -120,7 +120,7 @@ PTL.dialog = {
 
               }
 
-              var newUrl = $(this).find('input#feedGuess').val();
+              var newUrl = $(this).find('input#feed-guess').val();
               var newType = $('#feedType :radio:checked').attr('id');
 
               $dataStore
@@ -198,9 +198,9 @@ PTL.dialog = {
           var $dialog = $(this),
               $tabFeedId = $('li#' + $dataStore.data('id')),
               $sourceRefresh = $tabFeedId.find('.sourceRefresh'),
-              $guessButton = $dialog.find('button#feedGuess').button(),
-              $guessSpinner = $dialog.find('button#feedGuess > i'),
-              $guessField = $dialog.find('input#feedGuess'),
+              $guessButton = $dialog.find('button#feed-guess').button(),
+              $guessSpinner = $dialog.find('button#feed-guess > i'),
+              $guessField = $dialog.find('input#feed-guess'),
               $okButton = $dialog.find('.ui-dialog-buttonpane'),
               $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-help"></span><span class="ui-button-icon-space"> </span>Help</button>');
 
@@ -257,7 +257,7 @@ PTL.dialog = {
 
           });
 
-          $dialog.find('input#feedGuess').val(oldUrl);
+          $dialog.find('input#feed-guess').val(oldUrl);
 
           $('input:radio, input:checkbox').checkboxradio({
             icon: false
@@ -302,7 +302,7 @@ PTL.dialog = {
             return false;
           });
 
-          // $dialog.find('#feedGuess').select();
+          // $dialog.find('#feed-guess').select();
 
         }
       });

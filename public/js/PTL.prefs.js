@@ -104,7 +104,7 @@ PTL.prefs = (function() {
     },
     writeConfig:function(key, val) {
 
-      $('div#logoTitle i').addClass('writing');
+      $('div#logo-title i').addClass('writing');
 
       if (key === 'tabs') {
         localStorage.setItem('writeTime', Date.now());
@@ -112,7 +112,7 @@ PTL.prefs = (function() {
 
       localStorage.setItem(key, val);
       setTimeout(function () {
-        $('div#logoTitle i').delay('slow').removeClass('writing');
+        $('div#logo-title i').delay('slow').removeClass('writing');
       }, 300);
 
     },

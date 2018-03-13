@@ -9,31 +9,31 @@ PTL.feed = {
     // console.log('i: ', feedIndex);
 
     var $feedIcon = $('<i>')
-        .attr('class', 'feedControl feedIcon icon-rss-squared rotate translate')
+        .attr('class', 'source-control feedIcon icon-rss-squared rotate translate')
         .data('title', 'Fold / unfold this source (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this source (%1)', url));
 
     var $feedSelect = $('<i>')
-        .attr('class', 'feedControl translate icon-uncheck feedSelect')
+        .attr('class', 'source-control translate icon-uncheck source-select')
         .data('title', 'Select this source (%1)', url)
         .attr('title', PTL.tr('Select this source (%1)', url));
 
     var $feedDelete = $('<i>')
-        .attr('class', 'feedControl translate icon-cancel source-delete dangerous')
+        .attr('class', 'source-control translate icon-cancel source-delete dangerous')
         .data('title', 'Delete this source (%1)', url)
         .attr('title', PTL.tr('Delete this source (%1)', url));
 
     var $feedPrefs = $('<i>')
-        .attr('class', 'feedControl translate icon-pencil source-edit')
+        .attr('class', 'source-control translate icon-pencil source-edit')
         .data('title', PTL.tr('Change this source (%1) parameters', url))
         .attr('title', PTL.tr('Change this source (%1) parameters', url));
 
     var $feedReload = $('<i>')
-        .attr('class', 'feedControl translate icon-arrows-cw source-refresh')
+        .attr('class', 'source-control translate icon-arrows-cw source-refresh')
         .data('title', PTL.tr('Refresh this source (%1)', url))
         .attr('title', PTL.tr('Refresh this source (%1)', url));
 
-    var $feedControls = $('<div>').attr('class', 'feedControls dataStore')
+    var $feedControls = $('<div>').attr('class', 'source-controls dataStore')
         .data('id', 'feed-' + feedIndex)
         .data('index', feedIndex)
         .data('url', url)
@@ -53,7 +53,7 @@ PTL.feed = {
     $feedDelete.click(function() {
 
       var feedId = $(this).parent().parent().parent().parent().attr('id');
-      var feedName = $(this).parent().parent().parent().find('.feedTitle').text();
+      var feedName = $(this).parent().parent().parent().find('.source-title').text();
 
       console.log('feedId: ', feedId);
 
@@ -93,25 +93,19 @@ PTL.feed = {
         .attr('title', PTL.tr('Move this source (%1)', url))
         .attr('class', 'feedHandle');
 
-    var $selectDiv = $('<div>')
-        .attr('class', 'feedSelect');
-
-    var $deleteDiv = $('<div>')
-        .attr('class', 'source-delete');
+    var $selectDiv = $('<div>'),
+        $deleteDiv = $('<div>'),
+        $prefsDiv = $('<div>'),
+        $reloadDiv = $('<div>');
 
     var $titleDiv = $('<div>')
         .attr('title', url)
-        .attr('class', 'feedTitle truncate');
+        .attr('class', 'source-title truncate');
 
     var $titleLink = $('<a>')
         .attr('href', url)
         .attr('target', '_blank')
         .html(url);
-
-    var $prefsDiv = $('<div>')
-        .attr('class', 'prefs');
-
-    var $reloadDiv = $('<div class="reload" title="Click to reload ' + url + '">');
 
     $feedIcon.appendTo($feedToggle);
 
@@ -198,7 +192,7 @@ PTL.feed = {
         $header = $dataStore.parent(),
         $panel = $dataStore.parent().parent().parent(),
         $feed = $dataStore.parent().parent(),
-        $feedTitle = $feed.children().children('.feedTitle'),
+        $feedTitle = $feed.children().children('.source-title'),
         $feedLink = $feedTitle.children('a'),
         $feedBody = $feed.children().children('ul.feedBody'),
         feedUrl = $dataStore.data('url'),
@@ -282,7 +276,7 @@ PTL.feed = {
         $w3cLink.attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
 
         $validCssIcon
-          .attr('class', 'feedItemSmallIcon icon-w3c')
+          .attr('class', 'item-icon icon-w3c')
           .attr('titre', PTL.tr('Validate /verify this source file with the W3C'));
 
         $validCssIcon.appendTo($w3cLink);
@@ -366,7 +360,7 @@ PTL.feed = {
           $commentsLink
             .attr('href', item.comments);
           $commentsIcon
-            .attr('class', 'feedItemSmallIcon icon-comments')
+            .attr('class', 'item-icon icon-comments')
             .appendTo($commentsLink);
           $commentsLink.appendTo($itemDiv);
         }
@@ -396,7 +390,7 @@ PTL.feed = {
             $soundLink.attr('href', item.enclosures[0].url);
 
             $soundIcon
-              .attr('class', 'feedItemSmallIcon icon-volume');
+              .attr('class', 'item-icon icon-volume');
 
             $soundIcon.appendTo($soundLink);
             $soundLink.appendTo($itemDiv);

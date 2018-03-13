@@ -83,31 +83,31 @@ body {
   margin:0;
 }
 
-#noScript {
+#no-script {
   padding: 1em 0;
   margin: 25% auto;
   background: var(--ui-color-qua);
 }
 
-#noScript > * {
+#no-script > * {
   margin: 0 0 0 25%;
 }
 
-#preloadHiddenDiv {
+#preload {
   height:0px;
   overflow:hidden;
   width:0px;
 }
 
-#preloadHiddenDiv > .logoTitle {
+#preload > .logo-title {
   font-family: LobsterRegular;
 }
 
-#preloadHiddenDiv > .feedTitle {
+#preload > .source-title {
   font-family: BebasNeueRegular;
 }
 
-#preloadHiddenDiv > .fontello {
+#preload > .fontello {
   font-family: fontello;
 }
 
@@ -137,17 +137,17 @@ ul {
   padding:0;
 }
 
-#noScript ul {
+#no-script ul {
   list-style-type: disc;
   /* padding: .2em; */
 }
 
-#noScript h1 {
+#no-script h1 {
   font-style: italic;
   color: var(--ui-color-danger);
 }
 
-#noScript ul > li {
+#no-script ul > li {
   margin: .3em 0;
   /* padding: .2em; */
 }
@@ -164,16 +164,16 @@ a:visited {
 li.error a:hover,
 a:hover,
 a:active,
-i.feedItemSmallIcon:hover {
+i.item-icon:hover {
   color: var(--color-sec);
 }
 
-i.feedItemSmallIcon {
+i.item-icon {
   float: right;
   margin: .2em;
 }
 
-i.feedControl:hover {
+i.source-control:hover {
   color: var(--color-sec);
 }
 
@@ -182,18 +182,18 @@ i.dangerous:hover {
   color: var(--ui-color-danger);
 }
 
-.source-header > .feedTitle > a:link,
-.source-header > .feedTitle > a:visited  {
+.source-header > .source-title > a:link,
+.source-header > .source-title > a:visited  {
   color: var(--color-pri);
 }
 
-.source-header > .feedTitle > a.danger:link,
-.source-header > .feedTitle > a.danger:visited  {
+.source-header > .source-title > a.danger:link,
+.source-header > .source-title > a.danger:visited  {
   color: var(--ui-color-danger);
 }
 
-.source-header > .feedTitle > a.danger:hover,
-.source-header > .feedTitle > a:hover {
+.source-header > .source-title > a.danger:hover,
+.source-header > .source-title > a:hover {
   color: var(--color-sec);
 }
 
@@ -264,7 +264,7 @@ input {
   padding: .4em;
 }
 
-input#feedGuess {
+input#feed-guess {
   margin-right: .4em;
 }
 
@@ -300,17 +300,17 @@ input#feedGuess {
 }
 
 li.ui-tabs-active,
-li.mobTab:first-child {
+li.tab-name:first-child {
   box-shadow: none !important;
 }
 
-#tabNames,
+#tab-names,
 #tabs {
   background: none;
   border-radius: 0;
 }
 
-li.mobTab {
+li.tab-name {
   background-color: var(--color-sep) !important;
 }
 
@@ -432,7 +432,7 @@ div#sideMenu {
   }
 }
 
-button#feedGuess,
+button#feed-guess,
 .ui-spinner {
   margin: 0;
 }
@@ -754,7 +754,7 @@ div.dialogWithIcon > div.icon {
   margin:0 !important;
 }
 
-li.mobTab,
+li.tab-name,
 #newTabButton {
   margin: 0 0 0 0 !important;
   border: 0 !important;
@@ -839,12 +839,6 @@ li.feed {
   padding:0;
 }
 
-.flexGrow {
-  flex-basis: var(--var-controls-flex-basis);
-  flex-grow: 0;
-  flex-shrink: 0;
-}
-
 .open {
   transform: rotate(180deg);
 }
@@ -854,7 +848,7 @@ li.feed {
   outline: .1em dashed var(--color-sec);
 }
 
-.source-header > .feedTitle {
+.source-header > .source-title {
   color: var(--color-ter);
   flex-basis: auto;
   flex-grow: 4;
@@ -877,36 +871,27 @@ li.feed {
   visibility: var(--handle-visibility);
 }
 
-.source-header > .feedHandle > div {
-}
-
-.source-header > .myControlsToggleDiv {
-  flex-basis: auto;
-  flex-grow: 0;
-  flex-shrink: 0;
-}
-
-.source-header > .feedControls {
+.source-header > .source-controls {
   display: flex;
   flex-basis: 0px;
   flex-grow: 0;
   flex-shrink: 0;
 }
 
-.source-header .feedControls div {
+.source-header .source-controls div {
   margin: 0 2px 0 0;
 }
 
 .source-header > .feedToggle,
-.source-header .feedControls div {
+.source-header .source-controls div {
   text-align: center;
 }
 
-.source-header .feedControls div.collapsible {
+.source-header .source-controls div.collapsible {
   display:none;
 }
 
-.feedControl {
+.source-control {
   cursor: pointer;
   font-size: var(--var-controls-font-size);
   margin: 0 0 0 2px;
@@ -1045,8 +1030,8 @@ li.feed {
 
   li.feed a:active,
   li.feed a:hover,
-  .feedControl:hover,
-  .feedItemSmallIcon:hover {
+  .source-control:hover,
+  .item-icon:hover {
     color: none !important;
   }
 
@@ -1149,11 +1134,11 @@ div.introjs-helperLayer {
   z-index: 5;
 }
 
-div#logoTitle > .logoTitle > a:link,
-div#logoTitle > .logoTitle > a:visited,
+div#logo-title > .logo-title > a:link,
+div#logo-title > .logo-title > a:visited,
 .topnav i,
-#scrollToTop,
-#scrollToTop i {
+#scroll-top,
+#scroll-top i {
   transition: all .3s linear;
 }
 
@@ -1170,7 +1155,7 @@ div#logoTitle > .logoTitle > a:visited,
   color: var(--ui-color-sec);
 }
 
-div#logoTitle {
+div#logo-title {
   display:flex;
   float: right;
 }
@@ -1196,11 +1181,11 @@ i.icon-petrolette:hover {
   font-style:normal !important;
 }
 
-div#logoTitle > div {
+div#logo-title > div {
   flex: 1 0 ;
 }
 
-div#logoTitle > .logoTitle {
+div#logo-title > .logo-title {
   color: var(--ui-color-pri);
   display:var(--logo-display);
   font-family: LobsterRegular, Helvetica, Arial, sans-serif;
@@ -1208,16 +1193,16 @@ div#logoTitle > .logoTitle {
   margin: -6px 0 0 0;
 }
 
-div#logoTitle > .logoTitle > a:link,
-div#logoTitle > .logoTitle > a:visited {
+div#logo-title > .logo-title > a:link,
+div#logo-title > .logo-title > a:visited {
   color: var(--ui-color-pri);
 }
 
-div#logoTitle > .logoTitle > a:hover {
+div#logo-title > .logo-title > a:hover {
   color: var(--ui-color-sec) !important;
 }
 
-#betaBadge {
+#beta-badge {
   background: var(--ui-color-danger);
   border-radius: 10%;
   color: var(--ui-color-pri);
@@ -1230,7 +1215,8 @@ div#logoTitle > .logoTitle > a:hover {
   top: 22px;
 }
 
-#scrollToTop {
+#scroll-top {
+  z-index: 2;
   background: var(--ui-color-qua);
   border-radius: 35px;
   bottom: 20px;
@@ -1245,7 +1231,7 @@ div#logoTitle > .logoTitle > a:hover {
   width: 50px;
 }
 
-#scrollToTop i {
+#scroll-top i {
   color: var(--ui-color-pri);
   font-size: 19px;
   left: 18px;
@@ -1254,11 +1240,11 @@ div#logoTitle > .logoTitle > a:hover {
   top: 13px;
 }
 
-#scrollToTop:hover {
+#scroll-top:hover {
   opacity: 1;
 }
 
-#scrollToTop:hover i {
+#scroll-top:hover i {
   color: var(--ui-color-sec);
   top: 5px;
 }

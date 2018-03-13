@@ -107,7 +107,7 @@ PTL.utilities = {
             intro: PTL.tr('Refresh / reload this source.')
           },
           {
-            element: 'li#feed-0 i.feedControl.source-edit',
+            element: 'li#feed-0 i.source-control.source-edit',
             intro: PTL.tr('Configure this source.')
           },
           {
@@ -115,7 +115,7 @@ PTL.utilities = {
             intro: PTL.tr('Delete this source.')
           },
           {
-            element: '.feedSelect',
+            element: '.source-select',
             intro: PTL.tr('Select this source (for drag & drop).')
           },
           {
@@ -132,12 +132,12 @@ PTL.utilities = {
       dialog.setOptions({
         steps: [
           {
-            element: 'input#feedGuess',
+            element: 'input#feed-guess',
             intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="rssDocLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('source') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a source from your search query.">' + PTL.tr('Heck, enter anything, and Pétrolette will build a source from your search query.') + '</span>',
             position: 'bottom'
           },
           {
-            element: 'button#feedGuess',
+            element: 'button#feed-guess',
             intro: PTL.tr('Find the website\'s source, or build a new one from the seach query.'),
             position: 'left'
           },
