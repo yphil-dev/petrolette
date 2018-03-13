@@ -74,9 +74,10 @@ PTL.tab = {
 
   },
   saveTabs:function() {
-    var allTabs = PTL.tab.list();
-    PTL.prefs.writeConfig('tabs', JSON.stringify(allTabs));
-    PTL.sync.writeSync(JSON.stringify(allTabs));
+    var sources = PTL.tab.list();
+    console.log('sources : (%s)', JSON.stringify(sources));
+    PTL.prefs.writeConfig('sources', JSON.stringify(sources));
+    PTL.sync.writeSync(JSON.stringify(sources));
   },
   empty:function() {
 
@@ -115,14 +116,19 @@ PTL.tab = {
   },
   newPopulate:function(sources) {
 
+
     var nbOfSources = 0,
         progress = PTL.utilities.buildProgress();
 
     sources.forEach(function(group) {
       $.each(group.columns, function(k, v) {
+
+        console.log('group : (%s)', group);
         nbOfSources += v.length;
       });
     });
+
+    console.log('sources : (%s)', sources);
 
     progress.init(nbOfSources);
 
@@ -152,7 +158,6 @@ PTL.tab = {
         thisTabCols.push(thisColSources);
       });
       PTL.tab.tstMake($('#tabs'), thisGroup.name, thisTabCols, progress);
-      console.log('nb: %s', nbOfSources);
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
   },
@@ -219,8 +224,6 @@ PTL.tab = {
 
     var colIndex = 1,
         nbOfColumnsInTab = columns.length;
-
-    console.log('nbOfColumnsInTab: ', nbOfColumnsInTab);
 
     columns.forEach(function(sources) {
 
@@ -453,18 +456,16 @@ PTL.tab = {
 
       var group = {},
           thisCol = [],
-          colSources = [],
           $columnNodes = $($(this).children().attr('href') + ' ul.column');
 
       group.name = $(this).children('a').text();
-
-      groups.push(group);
 
       if (type && type === 'all')
         group.pane = $($(this).children().attr('href') + ' ul').attr('id');
 
       $columnNodes.each(function() {
         var $srcNodes = $(this).find('li.feed'),
+            colSources = [],
             source = {};
 
         $srcNodes.each(function() {
@@ -472,11 +473,11 @@ PTL.tab = {
           source.url = $dataStore.data('url');
           source.type = $dataStore.data('type');
           source.limit = $dataStore.data('limit');
+          colSources.push(source);
         });
-        colSources.push(source);
         thisCol.push(colSources);
       });
-      group.colums = thisCol;
+      group.columns = thisCol;
       groups.push(group);
     });
 

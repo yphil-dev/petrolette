@@ -6,9 +6,10 @@ PTL.utilities = {
     var isValid = false;
 
     sources.forEach(function(element) {
-      if (element.feeds) isValid = true;
+      if (element.columns) isValid = true;
     });
 
+    console.log('isValid : (%s)', isValid);
     return isValid;
 
   },

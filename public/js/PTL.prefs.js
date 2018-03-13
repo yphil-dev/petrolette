@@ -2,51 +2,50 @@
 
 PTL.prefs = (function() {
 
-  var newList = [
-    {"name":"News",
-     "columns":
-     [
-       [
-         {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8}
-       ],
-       [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4}
-       ],
-       [
-         {"url":"http://www.lemonde.fr/rss/une.xml","type":"photo","limit": 4}
-       ]
-     ]
-    },
-    {"name":"Comics",
-     "columns":
-     [
-       [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-       ]
-     ]
-    },
-    {"name":"Four",
-     "columns":
-     [
-       [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-       ],
-       [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-       ],
-       [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-       ],
-       [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-       ]
-     ]
-    }
+  var newList =
+      [
+        {"name":"News",
+         "columns": [
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8}
+           ],
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4}
+           ],
+           [
+             {"url":"http://www.lemonde.fr/rss/une.xml","type":"photo","limit": 4},
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ]
+         ]
+        },
+        {"name":"Comics",
+         "columns": [
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ]
+         ]
+        },
+        {"name":"Four",
+         "columns": [
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ],
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ],
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ],
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ]
+         ]
+        }
   ];
 
   var emptyTabList = [
