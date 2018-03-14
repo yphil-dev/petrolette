@@ -50,22 +50,25 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  feedPrefs:function($feedPrefsButton, isNewFeed) {
+  feedPrefs:function($button, isNewFeed) {
 
     $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
-      var $dialog = $(this).find('#feedPrefs');
+
+      var $dialog = $(this);
+
+      console.log('$dialog : (%s)', $(this).attr('id'));
 
       PTL.utilities.translate();
 
       $('.rssDocLink').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
-      var $spinner = $(this).find('input#feedLimitSpinner').spinner({
+      var $spinner = $dialog.find('input#feedLimitSpinner').spinner({
         classes: {
           "ui-spinner": "shrink ui-corner-all"
         }
       });
 
-      var $dataStore = $feedPrefsButton.parent().parent();
+      var $dataStore = $button.parent().parent();
 
       var $feed = $dataStore.parent().parent();
 
@@ -74,9 +77,9 @@ PTL.dialog = {
 
       var allGroups = PTL.tab.list('all');
 
-      var $thisGroup =  $feed.parent();
+      var $thisGroup =  $feed.parent().parent();
 
-      var $groupMenu = $('select#feedGroup');
+      var $groupMenu = $dialog.find('select#feedGroup');
 
       $dialog.dialog({
         title: PTL.tr('Source'),
@@ -109,15 +112,10 @@ PTL.dialog = {
             click: function() {
 
               if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
-
                 $feed.hide('slow', function () {
-
-                  $(this).prependTo($('#' + $groupMenu.find(":selected").val())).show('slow');
-
+                  $(this).prependTo($('#' + $groupMenu.find(":selected").val() + ' .column').first()).show('slow');
                   PTL.tab.saveTabs();
-
                 });
-
               }
 
               var newUrl = $(this).find('input#feed-guess').val();
@@ -134,7 +132,7 @@ PTL.dialog = {
 
               } else {
 
-                PTL.feed.populate($feedPrefsButton);
+                PTL.feed.populate($button);
               }
 
               PTL.tab.saveTabs();
@@ -149,13 +147,11 @@ PTL.dialog = {
 
           $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
             PTL.dialog.kill($dialog);
-
             if (isNewFeed) {
               $feed.hide('fade', 1000, function() {
                 $feed.remove();
               });
             }
-
           });
 
           $(document).keyup(function(event) {
@@ -165,23 +161,16 @@ PTL.dialog = {
                   $feed.remove();
                 });
               }
-            } // esc
+            }
           });
 
           $.each(allGroups, function() {
-
-            var selected = false;
-
-            if (this.pane === $thisGroup.attr('id')) {
-              selected = true;
-            }
-
+            var selected = (this.pane === $thisGroup.attr('id'));
             $groupMenu.append($('<option>', {
               value: this.pane,
               selected: selected,
               text : this.name
             }));
-
           });
 
           function guessError () {
@@ -195,8 +184,7 @@ PTL.dialog = {
             $okButton.addClass('ui-state-error');
           }
 
-          var $dialog = $(this),
-              $tabFeedId = $('li#' + $dataStore.data('id')),
+          var $tabFeedId = $('li#' + $dataStore.data('id')),
               $sourceRefresh = $tabFeedId.find('.sourceRefresh'),
               $guessButton = $dialog.find('button#feed-guess').button(),
               $guessSpinner = $dialog.find('button#feed-guess > i'),
@@ -322,6 +310,7 @@ PTL.dialog = {
 
       var $dialog = $('#killDialog'),
           $column = $button.parent().parent(),
+          nbOfColumnsInTab = $column.length,
           $panel = $column.parent(),
           colIndex = $panel.find('.column').index($column),
           $sourcesInCol = $column.find('.feed'),
@@ -349,7 +338,13 @@ PTL.dialog = {
             title: PTL.tr('Wait! Are you sure?'),
             class: "dangerous translate icon-trash-empty",
             click: function() {
+              PTL.dialog.kill($dialog);
+              $column.hide('fast', function() {
+                console.log('nbOfColumnsInTab : (%s)', nbOfColumnsInTab);
 
+                if (nbOfColumnsInTab < 2)
+                  console.log('plop : (%s)');
+              });
             }
           }
         ],

@@ -1,9 +1,6 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.tab = {
-  test : function(s) {
-    return $('<i>').attr('id', 'test').text(s);
-  },
   newColumn: function(colIndex, nbOfColumnsInTab) {
 
     var $colLegend = $('<span>')
@@ -16,6 +13,7 @@ PTL.tab = {
         .append($colLegend);
 
     var $colNewButton = $('<button>')
+        .attr('class', 'col-new')
         .button()
         .data('colIndex', colIndex)
         .text('+');
@@ -24,6 +22,10 @@ PTL.tab = {
         .data('colIndex', colIndex)
         .button()
         .text('-');
+
+    $colDelButton.bind('click', function() {
+      PTL.dialog.killColumn($(this));
+    });
 
     $column.sortable({
       cursor: 'move',
@@ -91,8 +93,9 @@ PTL.tab = {
 
         $activeTab.find('.tabCloser').show();
       }
-
     });
+
+    PTL.tabs = $tabs;
 
     $tabs.find('.ui-tabs-nav').sortable({
       axis: 'x',
@@ -161,7 +164,6 @@ PTL.tab = {
   },
   populate:function(sources) {
 
-
     var nbOfSources = 0,
         progress = PTL.utilities.buildProgress();
 
@@ -198,11 +200,11 @@ PTL.tab = {
         });
         thisTabCols.push(thisColSources);
       });
-      PTL.tab.make($('#tabs'), thisGroup.name, thisTabCols, progress);
+      PTL.tab.newTab($('#tabs'), thisGroup.name, thisTabCols, progress);
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
   },
-  make:function($tabs, name, columns, progress) {
+  newTab:function($tabs, name, columns, progress) {
 
     $('#noSourcesButton').fadeOut('fast');
 
@@ -225,6 +227,7 @@ PTL.tab = {
 
     var $tab = $('<li>')
         .attr('class', 'modal tab-name translate')
+        .data('id', 'tab-' + tabIndex)
         .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
         .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
@@ -290,8 +293,6 @@ PTL.tab = {
 
     $tabPanel.appendTo($tabs);
 
-    // console.log('FINISHED (%s)!!', name);
-
     $tabs.tabs('refresh');
     $tabs.tabs( "option", "active", tabIndex - 1);
     tabIndex++;
@@ -299,19 +300,20 @@ PTL.tab = {
   },
   list:function(type) {
 
-    var $groupsNodes = $('#tab-names > li.tab-name'),
+    var $groupNodes = $('#tab-names > li.tab-name'),
         groups = [];
 
-    $groupsNodes.each(function() {
+    $groupNodes.each(function() {
 
       var group = {},
           columns = [],
-          $columnNodes = $($(this).children().attr('href') + ' ul.column');
+          $groupNode = $(this),
+          $columnNodes = $($groupNode.children().attr('href') + ' ul.column');
 
-      group.name = $(this).children('a').text();
+      group.name = $groupNode.children('a').text();
 
       if (type && type === 'all')
-        group.pane = $($(this).children().attr('href') + ' ul').attr('id');
+        group.pane = $groupNode.data('id');
 
       $columnNodes.each(function() {
 
@@ -354,7 +356,7 @@ PTL.tab = {
     $newTabButtonLink.bind('click', function(event) {
       event.stopImmediatePropagation();
 
-      PTL.tab.make($tabs);
+      PTL.tab.newTab($tabs);
 
       return false;
     });
