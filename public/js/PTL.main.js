@@ -11,8 +11,8 @@ var PTL = (function() {
       $('nav#topMenu')
         .load('/static/templates/menu.html div#topnav', null);
 
-      $('nav#plopMenu')
-        .load('/static/templates/menu.html div#sideMenu', function () {
+      $('aside div#sideMenu')
+        .load('/static/templates/menu.html form#sideMenu', function () {
 
           console.log('menu : (%s)', $(this).attr('id'));
 
