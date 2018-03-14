@@ -407,7 +407,7 @@ PTL.feed = {
         }
 
         $itemLink
-          .attr('class', 'ui-helper-clearfix')
+          .attr('class', 'ui-helper-clearfix source-link')
           .attr('href', item.link)
           .append(item.title);
 

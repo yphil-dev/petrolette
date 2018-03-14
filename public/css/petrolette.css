@@ -1017,8 +1017,12 @@ li.sourceItem:nth-child(even) {
 
 table tr:hover,
 li.sourceItem:hover {
-  background-color: var(--color-sen) !important;
-  color: var(--color-sep) !important;
+  background-color: var(--color-sen);
+  color: var(--color-sep);
+}
+
+a.source-link:hover {
+  color: var(--color-sec) !important;
 }
 
 li.feed div.feedBody {
