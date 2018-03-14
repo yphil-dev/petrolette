@@ -13,19 +13,35 @@ PTL.tab = {
         .append($colLegend);
 
     var $colNewButton = $('<button>')
-        .attr('class', 'col-new')
+        .attr('class', 'col-new icon-plus')
         .button()
-        .data('colIndex', colIndex)
-        .text('+');
+        .data('colIndex', colIndex);
 
     var $colDelButton = $('<button>')
+        .attr('class', 'col-del icon-minus')
         .data('colIndex', colIndex)
-        .button()
-        .text('-');
+        .button();
 
     $colDelButton.bind('click', function() {
+      console.log('nbOfColumnsInTab : (%s)', nbOfColumnsInTab);
       PTL.dialog.killColumn($(this));
     });
+
+    $colNewButton.bind('click', function() {
+
+      var $column = $(this).parent().parent(),
+          $panel = $column.parent(),
+          $columnsInTab = $panel.find('.column'),
+          nbOfColumnsInTab = $columnsInTab.length,
+          colIndex = $panel.find('.column').index($column);
+
+      var $newColumn = PTL.tab.newColumn(colIndex, nbOfColumnsInTab);
+
+      $panel.find('button.col-del').show();
+
+      $newColumn.appendTo($panel);
+    });
+
 
     $column.sortable({
       cursor: 'move',
@@ -351,7 +367,7 @@ PTL.tab = {
         .attr('href', '#');
 
     var $newTabButtonIcon = $('<i>')
-        .attr('class', 'icon-plus-1');
+        .attr('class', 'icon-plus');
 
     $newTabButtonLink.bind('click', function(event) {
       event.stopImmediatePropagation();

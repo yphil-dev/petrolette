@@ -39,6 +39,7 @@ PTL.dialog = {
 
           $('.helpIntroUI').button().on('click', function() {
             PTL.dialog.kill($dialog);
+            $('#tabs').tabs('option', 'active', 0);
             $('#overlay').removeClass('visible');
             $('#menu').removeClass('expanded');
             PTL.utilities.help('ui');
@@ -54,13 +55,16 @@ PTL.dialog = {
 
     $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
 
-      var $dialog = $(this);
-
-      console.log('$dialog : (%s)', $(this).attr('id'));
-
       PTL.utilities.translate();
 
-      $('.rssDocLink').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
+      var $dialog = $(this),
+          $dataStore = $button.parent().parent(),
+          $feed = $dataStore.parent().parent(),
+          feedId = $feed.attr('id'),
+          feedName = $feed.find('.source-title').text(),
+          allGroups = PTL.tab.list('all'),
+          $thisGroup =  $feed.parent().parent(),
+          $groupMenu = $dialog.find('select#feedGroup');
 
       var $spinner = $dialog.find('input#feedLimitSpinner').spinner({
         classes: {
@@ -68,18 +72,7 @@ PTL.dialog = {
         }
       });
 
-      var $dataStore = $button.parent().parent();
-
-      var $feed = $dataStore.parent().parent();
-
-      var feedId = $feed.attr('id');
-      var feedName = $feed.find('.source-title').text();
-
-      var allGroups = PTL.tab.list('all');
-
-      var $thisGroup =  $feed.parent().parent();
-
-      var $groupMenu = $dialog.find('select#feedGroup');
+      $('.rssDocLink').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
       $dialog.dialog({
         title: PTL.tr('Source'),
@@ -112,14 +105,18 @@ PTL.dialog = {
             click: function() {
 
               if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
-                $feed.hide('slow', function () {
-                  $(this).prependTo($('#' + $groupMenu.find(":selected").val() + ' .column').first()).show('slow');
+                $feed.hide('slow', function() {
+                  $(this).prependTo($('#' + $groupMenu
+                                      .find(":selected")
+                                      .val() + ' .column')
+                                    .first())
+                    .show('slow');
                   PTL.tab.saveTabs();
                 });
               }
 
-              var newUrl = $(this).find('input#feed-guess').val();
-              var newType = $('#feedType :radio:checked').attr('id');
+              var newUrl = $(this).find('input#feed-guess').val(),
+                  newType = $('#feedType :radio:checked').attr('id');
 
               $dataStore
                 .data('url', newUrl)
@@ -308,13 +305,16 @@ PTL.dialog = {
 
     $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
 
-      var $dialog = $('#killDialog'),
+      var $dialog = $(this),
           $column = $button.parent().parent(),
-          nbOfColumnsInTab = $column.length,
           $panel = $column.parent(),
+          $columnsInTab = $panel.find('.column'),
+          nbOfColumnsInTab = $columnsInTab.length,
           colIndex = $panel.find('.column').index($column),
           $sourcesInCol = $column.find('.feed'),
           $nbOfSourcesInCol = $sourcesInCol.length;
+
+      console.log('There is %s cols in the %s panel', nbOfColumnsInTab, $panel.attr('id'));
 
       $dialog.dialog({
         title: PTL.tr('Delete column'),
@@ -340,17 +340,21 @@ PTL.dialog = {
             click: function() {
               PTL.dialog.kill($dialog);
               $column.hide('fast', function() {
-                console.log('nbOfColumnsInTab : (%s)', nbOfColumnsInTab);
 
-                if (nbOfColumnsInTab < 2)
-                  console.log('plop : (%s)');
+                $(this).remove();
+                if (nbOfColumnsInTab <= 2) {
+                  $panel.find('button.col-del').hide();
+                }
+
+                PTL.tab.saveTabs();
+
               });
             }
           }
         ],
         open: function () {
 
-          console.log('colIndex (%s) $nbOfSourcesInCol (%s) ', colIndex, $nbOfSourcesInCol);
+          console.log('NB : (%s)', nbOfColumnsInTab);
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -497,13 +501,18 @@ PTL.dialog = {
     });
 
   },
-  killFeed:function(feedId, feedName) {
+  killFeed:function($button) {
 
     $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
-      var $dialog = $('#killDialog');
 
-      var $thisFeedId = feedId;
-      var thisFeedName = feedName;
+      var $dialog = $(this);
+
+      var $thisFeed = $button.parent().parent().parent().parent();
+
+      var thisFeedId = $button.parent().parent().parent().parent().attr('id');
+      var thisFeedName = $button.parent().parent().parent().find('.source-title').text();
+
+      console.log('feedId: %s, thisFeedName: %s', thisFeedId, thisFeedName);
 
       $dialog.dialog({
         title: PTL.tr('Delete source'),
@@ -528,10 +537,8 @@ PTL.dialog = {
             class: "dangerous translate icon-trash-empty",
             click: function() {
 
-              var $tabFeedId = $('#' + $(this).data('feedId'));
-
-              $tabFeedId.hide('fade', 1000, function() {
-                $tabFeedId.remove();
+              $thisFeed.hide('fade', 1000, function() {
+                $(this).remove();
                 PTL.tab.saveTabs();
               });
 
@@ -553,7 +560,7 @@ PTL.dialog = {
         }
       });
 
-      $dialog.data('feedId', $thisFeedId).dialog('open');
+      $dialog.data('feedId', thisFeedId).dialog('open');
     });
 
   },

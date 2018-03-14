@@ -57,7 +57,6 @@ PTL.menu = {
       });
 
       $('body').on('click','#helpButton', function() {
-        $('#tabs').tabs('option', 'active', 0);
         PTL.dialog.help();
       });
 
