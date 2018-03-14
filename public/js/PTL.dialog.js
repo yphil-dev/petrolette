@@ -38,10 +38,10 @@ PTL.dialog = {
           });
 
           $('.helpIntroUI').button().on('click', function() {
-            PTL.dialog.kill($dialog);
-            $('#tabs').tabs('option', 'active', 0);
             $('#overlay').removeClass('visible');
             $('#menu').removeClass('expanded');
+            PTL.dialog.kill($dialog);
+            $('#tabs').tabs('option', 'active', 0);
             PTL.utilities.help('ui');
           });
 

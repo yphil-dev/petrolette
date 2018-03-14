@@ -257,7 +257,7 @@ PTL.utilities = {
 
     progress.init = function( steps ) {
 
-      var $progressBar = $('div#progressBar');
+      var $progressBar = $('nav#side-menu').find('div#progressBar');
       this.progressBar = $progressBar;
 
       var $progressLabel = $( ".progress-label" );

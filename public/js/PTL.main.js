@@ -5,16 +5,13 @@ var PTL = (function() {
   return {
     // language: Prefs.readConfig('lang'),
     language: 'en',
-
     start : function() {
 
-      $('nav#topMenu')
+      $('nav#top-menu')
         .load('/static/templates/menu.html div#topnav', null);
 
-      $('aside div#sideMenu')
-        .load('/static/templates/menu.html form#sideMenu', function () {
-
-          console.log('menu : (%s)', $(this).attr('id'));
+      $('nav#side-menu')
+        .load('/static/templates/menu.html form#side-menu', function () {
 
           var $menu = $(this),
               $overlay = $('#overlay'),
@@ -26,13 +23,14 @@ var PTL = (function() {
               $slider = $('div#gallerySpeedSlider'),
               $spinner = $('#gallerySpeedSpinner');
 
+          console.log('menu : (%s)', $menu.attr('class'));
+
           $('button').button();
 
           PTL.sync.attachWidget();
 
           $('body').on('click','#menuButton', function() {
-            $overlay.toggleClass('visible');
-            $menu.toggleClass('expanded');
+            PTL.sideMenu('toggle');
           });
 
           $('body').on('click','#helpButton', function() {
@@ -41,8 +39,7 @@ var PTL = (function() {
 
           $('body').on('click','#newSourceButton', function() {
             var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.column').first();
-            $overlay.removeClass('visible');
-            $menu.removeClass('expanded');
+            PTL.sideMenu('close');
             PTL.feed.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
           });
 
@@ -52,8 +49,7 @@ var PTL = (function() {
           });
 
           $overlay.click(function() {
-            $(this).removeClass('visible');
-            $menu.removeClass('expanded');
+            PTL.sideMenu('close');
           });
 
           $(document).keydown(function(event) {
@@ -240,7 +236,24 @@ var PTL = (function() {
 
         });
     },
-    tr : function( string ) {
+    sideMenu: function(action) {
+
+      var $overlay = $('#overlay'),
+          $sideMenu = $('nav#side-menu');
+
+      if (action == 'open') {
+        $overlay.addClass('visible');
+        $sideMenu.addClass('expanded');
+      } else if (action == 'close') {
+        $overlay.removeClass('visible');
+        $sideMenu.removeClass('expanded');
+      } else {
+        $overlay.toggleClass('visible');
+        $sideMenu.toggleClass('expanded');
+      }
+
+    },
+    tr: function( string ) {
       var _trAux,
           stringVarRegExp = /(%.)/,
           matchData,

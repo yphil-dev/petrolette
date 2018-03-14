@@ -15,7 +15,7 @@
     "start": "pm2 start -f bin/www --watch --log-date-format='YYYY-MM-DD HH:mm Z' --name PTL",
     "stop": "pm2 stop PTL",
     "build:pre": "uglifyjs public/js/PTL.main.js public/js/PTL.prefs.js public/js/PTL.i18n.js -m -o dist/js/PTL.pre.min.js",
-    "build:post": "uglifyjs public/js/PTL.utilities.js public/js/PTL.tab.js public/js/PTL.feed.js public/js/PTL.dialog.js public/js/PTL.sync.js public/js/PTL.menu.js -m -o dist/js/PTL.post.min.js",
+    "build:post": "uglifyjs public/js/PTL.utilities.js public/js/PTL.tab.js public/js/PTL.feed.js public/js/PTL.dialog.js public/js/PTL.sync.js -m -o dist/js/PTL.post.min.js",
     "build:js": "mkdir -p dist/js cache-favicons && npm run build:pre && npm run build:post",
     "watch:js": "onchange 'public/js/*.js' -- npm run build:js",
     "postinstall": "npm run build:js && bower install"

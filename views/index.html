@@ -85,40 +85,35 @@
       <i class="ui-icon"></i>
     </div>
 
-    <nav id="topMenu"></nav>
-    <nav id="plopMenu"></nav>
-
-    <aside>
-      <div id="sideMenu"></div>
-    </aside>
-
-    <noscript>
-      <div id="no-script">
-        <h1>Uh-oh</h1>
-        <h3>Pétrolette cannot work without javascript.</h3>
-        <ul>
-          <li>
-            <a href="/about/javascript" data-jslicense="1">JavaScript license information</a>
-          </li>
-          <li>
-            Use the force, read <a href="https://framagit.org/yphil/petrolette">the source</a>.
-          </li>
-        </ul>
-      </div>
-    </noscript>
+    <nav id="top-menu" class="plop"></nav>
+    <nav id="side-menu"></nav>
 
     <main>
       <div id="tabs">
         <ul id="tab-names"></ul>
       </div>
-      <div id="dialogs"></div>
-    </main>
 
-    <footer>
+      <noscript>
+        <div id="no-script">
+          <h1>Uh-oh</h1>
+          <h3>Pétrolette cannot work without javascript.</h3>
+          <ul>
+            <li>
+              <a href="/about/javascript" data-jslicense="1">JavaScript license information</a>
+            </li>
+            <li>
+              Use the force, read <a href="https://framagit.org/yphil/petrolette">the source</a>.
+            </li>
+          </ul>
+        </div>
+      </noscript>
+
+      <div id="dialogs"></div>
+
       <span id="scroll-top">
         <i class="icon-up"></i>
       </span>
-    </footer>
+    </main>
 
     <script src="/static/js/PTL.utilities.js"></script>
     <script src="/static/js/PTL.tab.js"></script>
