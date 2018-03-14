@@ -55,7 +55,7 @@ PTL.utilities = {
     },
     moveEltRight:function($elt) {
 
-      if (!$elt.next().hasClass('newContentButton')) {
+      if (!$elt.next().hasClass('new-group')) {
         $elt.insertAfter($elt.next());
       }
 

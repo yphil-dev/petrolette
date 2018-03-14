@@ -42,7 +42,7 @@ PTL.feed = {
 
     $feedIcon.click(function() {
       $(this).toggleClass('down');
-      $(this).parent().parent().parent().children('div.feedBody').slideToggle('slow');
+      $(this).parent().parent().parent().children('div.source-body').slideToggle(350);
     });
 
     $feedSelect.click(function() {
@@ -70,10 +70,10 @@ PTL.feed = {
     });
 
     var $feedBody = $('<div>')
-        .attr('class', 'feedBody');
+        .attr('class', 'source-body');
 
     var $feedBodyUl = $('<ul>')
-        .attr('class', 'feedBody');
+        .attr('class', 'source-body');
 
     var $feed = $('<li>')
         .attr('id', 'feed-' + feedIndex)
@@ -194,7 +194,7 @@ PTL.feed = {
         $feed = $dataStore.parent().parent(),
         $feedTitle = $feed.children().children('.source-title'),
         $feedLink = $feedTitle.children('a'),
-        $feedBody = $feed.children().children('ul.feedBody'),
+        $feedBody = $feed.children().children('ul.source-body'),
         feedUrl = $dataStore.data('url'),
         feedType = $dataStore.data('type'),
         feedLimit = $dataStore.data('limit'),
@@ -353,7 +353,7 @@ PTL.feed = {
         var $itemDiv = $('<div>')
             .attr('class', 'itemDiv'),
             $sourceItem = $('<li>')
-            .attr('class', 'sourceItem')
+            .attr('class', 'source-item')
             .attr('title', $summary.trim());
 
         if (item.comments) {
@@ -457,7 +457,7 @@ PTL.feed = {
         .data('content', PTL.tr("Error"));
 
       $feedBody
-        .html('<li class="sourceItem"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+        .html('<li class="source-item"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
 
       // WP.tr('add %1', WP.tr('truck') );
 

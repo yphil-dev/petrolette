@@ -1,6 +1,77 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.tab = {
+  test : function(s) {
+    return $('<i>').attr('id', 'test').text(s);
+  },
+  newColumn: function(colIndex, nbOfColumnsInTab) {
+
+    var $colLegend = $('<span>')
+        .attr('class', 'legend')
+        .text('Column ' + colIndex);
+
+    var $column = $('<ul>')
+        .attr('id', 'column-' + (colIndex - 1))
+        .attr('class', 'column')
+        .append($colLegend);
+
+    var $colNewButton = $('<button>')
+        .button()
+        .data('colIndex', colIndex)
+        .text('+');
+
+    var $colDelButton = $('<button>')
+        .data('colIndex', colIndex)
+        .button()
+        .text('-');
+
+    $column.sortable({
+      cursor: 'move',
+      handle: ".source-handle",
+      connectWith: ".column",
+      cursorAt: {top: 10, left: 32},
+      receive: function(e, ui) {
+        if (ui.helper)
+          ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
+      },
+      helper: function (e, item) { //create custom helper
+        if (!item.hasClass('selected')) item.addClass('selected');
+        // clone selected items before hiding
+        var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
+        //hide selected items
+        item.siblings('.selected').addClass('hidden');
+        var $helper = $('<ul class="feedHelper">');
+        return $helper.append($elements);
+      },
+      start: function (e, ui) {
+        // Drag begins
+        var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
+        // Store the selected items to item being dragged
+        ui.item.data('items', $elements);
+        // Size the placeHolder
+        $('.ui-sortable-placeholder').css('height', ui.item.height());
+      },
+      update: function (e, ui) {
+        //manually add the selected items before the one actually being dragged
+        ui.item.before(ui.item.data('items'));
+      },
+      stop: function (e, ui) {
+        //show the selected items after the operation
+        ui.item.siblings('.selected').removeClass('hidden');
+        //unselect since the operation is complete
+        $('.selected').removeClass('selected ui-state-hover');
+        $(this).find('i.source-select').removeClass('icon-ok').addClass('icon-check-empty-1');
+        PTL.tab.saveTabs();
+      }
+    }).disableSelection();
+
+    if (nbOfColumnsInTab > 1)
+      $colLegend.append($colDelButton);
+    $colLegend.append($colNewButton);
+
+    return $column;
+
+  },
   init:function(qstring) {
 
     PTL.totalNbBOfCols = 0;
@@ -25,7 +96,7 @@ PTL.tab = {
 
     $tabs.find('.ui-tabs-nav').sortable({
       axis: 'x',
-      items: '> li:not(#create-tab)',
+      items: '> li:not(#new-group)',
       stop: function() {
         $tabs.tabs('refresh');
         PTL.tab.saveTabs();
@@ -189,7 +260,7 @@ PTL.tab = {
     $tabLink.appendTo($tab);
     $tabCloser.appendTo($tab);
     $tab.appendTo($tabNames);
-    $tabNames.find('#create-tab').appendTo($tabNames);
+    $tabNames.find('#new-group').appendTo($tabNames);
 
     var newTab = false;
 
@@ -203,72 +274,7 @@ PTL.tab = {
 
     columns.forEach(function(sources) {
 
-      var $colNewButton = $('<button>')
-          .button()
-          .data('colIndex', colIndex)
-          .text('+');
-
-      var $colDelButton = $('<button>')
-          .data('colIndex', colIndex)
-          .button()
-          .text('-');
-
-      var $colLegend = $('<span>')
-          .attr('class', 'legend')
-          .text('Column ' + colIndex++);
-
-      $colDelButton.click(function() {
-        PTL.dialog.killColumn($(this));
-      });
-
-      if (nbOfColumnsInTab > 1)
-        $colLegend.append($colDelButton);
-      $colLegend.append($colNewButton);
-
-      var $column = $('<ul>')
-          .attr('id', 'column-' + (colIndex - 1))
-          .attr('class', 'column')
-          .append($colLegend);
-
-      $column.sortable({
-        cursor: 'move',
-        handle: ".source-handle",
-        connectWith: ".column",
-        cursorAt: {top: 10, left: 32},
-        receive: function(e, ui) {
-          if (ui.helper)
-            ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
-        },
-        helper: function (e, item) { //create custom helper
-          if (!item.hasClass('selected')) item.addClass('selected');
-          // clone selected items before hiding
-          var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
-          //hide selected items
-          item.siblings('.selected').addClass('hidden');
-          var $helper = $('<ul class="feedHelper">');
-          return $helper.append($elements);
-        },
-        start: function (e, ui) {
-          // Drag begins
-          var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
-          // Store the selected items to item being dragged
-          ui.item.data('items', $elements);
-          // Size the placeHolder
-          $('.ui-sortable-placeholder').css('height', ui.item.height());
-        },
-        update: function (e, ui) {
-          //manually add the selected items before the one actually being dragged
-          ui.item.before(ui.item.data('items'));
-        },
-        stop: function (e, ui) {
-          //show the selected items after the operation
-          ui.item.siblings('.selected').removeClass('hidden');
-          //unselect since the operation is complete
-          $('.selected').removeClass('selected ui-state-hover');
-          $(this).find('i.source-select').removeClass('icon-ok').addClass('icon-check-empty-1');
-          PTL.tab.saveTabs();
-        }
-      }).disableSelection();
+      var $column = PTL.tab.newColumn(colIndex, nbOfColumnsInTab);
 
       $column.appendTo($tabPanel);
 
@@ -278,9 +284,11 @@ PTL.tab = {
         });
       }
 
-      $tabPanel.appendTo($tabs);
+      colIndex++;
 
     });
+
+    $tabPanel.appendTo($tabs);
 
     // console.log('FINISHED (%s)!!', name);
 
@@ -332,8 +340,8 @@ PTL.tab = {
   makeNewTabButton:function($tabs) {
 
     var $newTabButton = $('<li>')
-        .attr('id', 'create-tab')
-        .attr('class', 'translate newContentButton')
+        .attr('id', 'new-group')
+        .attr('class', 'translate new-group')
         .data('title', 'Add a new group')
         .attr('title', PTL.tr('Add a new group'));
 
