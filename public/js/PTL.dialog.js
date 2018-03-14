@@ -534,16 +534,13 @@ PTL.dialog = {
           {
             text: PTL.tr('Delete'),
             title: PTL.tr('Wait! Are you sure?'),
-            class: "dangerous translate icon-trash-empty",
+            class: 'dangerous translate icon-trash-empty',
             click: function() {
-
               $thisFeed.hide('fade', 1000, function() {
                 $(this).remove();
                 PTL.tab.saveTabs();
               });
-
               PTL.dialog.kill($dialog);
-
             }
           }
         ],

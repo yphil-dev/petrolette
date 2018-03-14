@@ -37,7 +37,7 @@ PTL.menu = {
 
     $('<div id="sideMenu">').appendTo($('body')).load('/static/templates/menu.html form#sideMenu', function() {
 
-      var $menu = $(this),
+      var $menu = $('#sideMenu'),
           $overlay = $('#overlay'),
           $sourceCodeButton = $('button#sourceCode'),
           $importButton = $("button#fileImport"),

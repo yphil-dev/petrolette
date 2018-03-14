@@ -85,7 +85,13 @@
       <i class="ui-icon"></i>
     </div>
 
-    <header></header>
+    <header>
+      <div id="topMenu"></div>
+    </header>
+
+    <aside>
+      <div id="sideMenu"></div>
+    </aside>
 
     <noscript>
       <div id="no-script">
@@ -120,14 +126,12 @@
     <script src="/static/js/PTL.feed.js"></script>
     <script src="/static/js/PTL.dialog.js"></script>
     <script src="/static/js/PTL.sync.js"></script>
-    <script src="/static/js/PTL.menu.js"></script>
 
     <script>
 
      var queryString = "<%= queryString %>";
 
-     PTL.menu.top();
-     PTL.menu.side();
+     PTL.start();
      PTL.tab.init(queryString);
 
     </script>
