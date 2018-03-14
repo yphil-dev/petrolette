@@ -253,20 +253,21 @@ PTL.utilities = {
   },
   buildProgress : function() {
 
+
     var progress = { step: 0 };
 
     progress.init = function( steps ) {
 
-      var $progressBar = $('nav#side-menu').find('div#progressBar');
+      var $progressBar = $('.progress-bar');
       this.progressBar = $progressBar;
 
-      var $progressLabel = $( ".progress-label" );
-      this.progressLabel =  $progressLabel;
+      var $progressLabel = $('.progress-label');
+      this.progressLabel =  $progressLabel.removeClass('on');
 
       $progressBar.progressbar({
         value: 1,
         complete: function() {
-          $progressLabel.text( "loaded" );
+          $progressLabel.addClass('on');
         }
       });
 
@@ -275,20 +276,10 @@ PTL.utilities = {
     progress.increment = function() {
 
       this.progressBar.progressbar('value', Math.ceil(100 * this.step / this.steps));
-
       this.progressLabel.text(this.step + '/' + this.steps + ' sources loaded');
-
-
-      if (this.step >= this.steps) {
-        this.finish();
-      }
 
       this.step++;
 
-    };
-    progress.finish = function() {
-      // var self = this;
-      // this.$radialObj.fadeOut('slow');
     };
 
     return progress;

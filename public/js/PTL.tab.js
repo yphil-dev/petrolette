@@ -107,6 +107,8 @@ PTL.tab = {
 
         $('.tabCloser').hide();
 
+        $('#new-group').removeClass('invisible');
+
         $activeTab.find('.tabCloser').show();
       }
     });
@@ -185,7 +187,9 @@ PTL.tab = {
 
     sources.forEach(function(group) {
       $.each(group.columns, function(k, v) {
-        nbOfSources += v.length;
+        $.each(v, function() {
+          nbOfSources++;
+        });
       });
     });
 
@@ -359,7 +363,7 @@ PTL.tab = {
 
     var $newTabButton = $('<li>')
         .attr('id', 'new-group')
-        .attr('class', 'translate new-group')
+        .attr('class', 'translate new-group invisible')
         .data('title', 'Add a new group')
         .attr('title', PTL.tr('Add a new group'));
 

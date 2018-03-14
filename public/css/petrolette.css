@@ -6,6 +6,7 @@
   --ui-color-qui: #808080;
   --ui-color-sen: #f26522;
   --ui-color-sep: #ccc;
+  --ui-color-oct: #2b2b2b;
 
   --ui-color-rss: #f26522;
 
@@ -301,8 +302,18 @@ li.source-item.error > strong.key {
   margin-right: 0;
 }
 
-.visible {
-  display:initial !important;
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.invisible {
+  display:none !important;
 }
 
 input {
@@ -384,7 +395,7 @@ nav#side-menu {
   z-index:11;
 }
 
-#progressBar {
+#progress-bar {
   color: var(--ui-color-sec) !important;
 }
 
@@ -396,7 +407,11 @@ nav#side-menu {
   position: absolute;
   left: .4em;
   top: 7px;
-  color: #2b2b2b;
+  color: var(--ui-color-oct);
+}
+
+.progress-label.on {
+  color: var(--ui-color-pri);
 }
 
 .ui-progressbar .ui-progressbar-value {
@@ -446,19 +461,6 @@ i.tabCloser {
   position:absolute;
   right: 3px;
   top: 3px;
-}
-
-nav#side-menu {
-  animation: fadeIn ease 6s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
 }
 
 button#feed-guess,
@@ -1089,17 +1091,6 @@ div.introjs-helperLayer {
   padding-left: 0;
   border-radius: 3px;
   background-color: #ededed;
-}
-
-#overlay {
-  display:none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background-color: rgba(0,0,0,0.2); /*dim the background*/
 }
 
 /* MenuBar */

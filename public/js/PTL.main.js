@@ -11,7 +11,7 @@ var PTL = (function() {
         .load('/static/templates/menu.html div#topnav', null);
 
       $('nav#side-menu')
-        .load('/static/templates/menu.html form#side-menu', function () {
+        .load('/static/templates/menu.html div#side-menu', function () {
 
           var $menu = $(this),
               $overlay = $('#overlay'),
@@ -242,13 +242,13 @@ var PTL = (function() {
           $sideMenu = $('nav#side-menu');
 
       if (action == 'open') {
-        $overlay.addClass('visible');
+        $overlay.removeClass('invisible');
         $sideMenu.addClass('expanded');
       } else if (action == 'close') {
-        $overlay.removeClass('visible');
+        $overlay.addClass('invisible');
         $sideMenu.removeClass('expanded');
       } else {
-        $overlay.toggleClass('visible');
+        $overlay.toggleClass('invisible');
         $sideMenu.toggleClass('expanded');
       }
 
