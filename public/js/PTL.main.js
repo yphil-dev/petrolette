@@ -8,13 +8,15 @@ var PTL = (function() {
 
     start : function() {
 
-      $('header div#topMenu')
-        .load('/static/templates/menu.html nav#topnav', null);
+      $('nav#topMenu')
+        .load('/static/templates/menu.html div#topnav', null);
 
-      $('aside div#sideMenu')
-        .load('/static/templates/menu.html form#sideMenu', function () {
+      $('nav#plopMenu')
+        .load('/static/templates/menu.html div#sideMenu', function () {
 
-          var $menu = $('#sideMenu'),
+          console.log('menu : (%s)', $(this).attr('id'));
+
+          var $menu = $(this),
               $overlay = $('#overlay'),
               $sourceCodeButton = $('button#sourceCode'),
               $importButton = $("button#fileImport"),
