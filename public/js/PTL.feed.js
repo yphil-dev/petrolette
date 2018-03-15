@@ -9,7 +9,7 @@ PTL.feed = {
     // console.log('i: ', feedIndex);
 
     var $feedIcon = $('<i>')
-        .attr('class', 'source-control feedIcon icon-rss-squared rotate translate')
+        .attr('class', 'source-control feedIcon icon-rss rotate translate')
         .data('title', 'Fold / unfold this source (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this source (%1)', url));
 
@@ -120,7 +120,7 @@ PTL.feed = {
       $feedToggle.css('background-image', 'none');
 
       $feedIcon.addClass('icon-down-big');
-      $feedIcon.removeClass('icon-rss-squared');
+      $feedIcon.removeClass('icon-rss');
 
       $(this).data('img', iconImg);
 
@@ -135,7 +135,7 @@ PTL.feed = {
         if ($(this).data('img') !== 'none') {
           $feedToggle.css('background-image', $(this).data('img'));
         } else {
-          $feedIcon.addClass('icon-rss-squared');
+          $feedIcon.addClass('icon-rss');
         }
 
       });
@@ -200,7 +200,7 @@ PTL.feed = {
         feedHost = l.protocol + '//' + l.hostname,
         subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
-    if (feedUrl.indexOf('http') !== 0) {
+    if (!PTL.utilities.isUrl(feedUrl)) {
 
       console.info('bad URL: (%s)', feedUrl);
 
@@ -231,7 +231,7 @@ PTL.feed = {
     }).done(function(icon) {
 
       $feedToggle.css('background-image','url("' + icon + '")');
-      $feedIcon.removeClass('icon-rss-squared');
+      $feedIcon.removeClass('icon-rss');
       $header.data('img',icon);
 
       var img = new Image();
@@ -239,12 +239,12 @@ PTL.feed = {
       img.src = icon;
 
       img.onerror = function() {
-        $feedIcon.addClass('icon-rss-squared');
+        $feedIcon.addClass('icon-rss');
         $feedToggle.css('background-image', 'none');
       };
 
     }).fail(function() {
-      $feedIcon.addClass('icon-rss-squared');
+      $feedIcon.addClass('icon-rss');
       $feedToggle.css('background-image', 'none');
     });
 

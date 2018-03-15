@@ -123,10 +123,17 @@
 
     <script>
 
-     var queryString = "<%= queryString %>";
-
      PTL.start();
-     PTL.tab.init(queryString);
+
+     PTL.queryString = '<%= queryString %>';
+
+     PTL.tab.init();
+
+     if (PTL.queryString) {
+       PTL.dialog.addSource(PTL.queryString);
+       console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.utilities.isUrl('https'));
+       PTL.queryString = null;
+     }
 
     </script>
 

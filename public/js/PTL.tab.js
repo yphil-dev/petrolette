@@ -90,7 +90,7 @@ PTL.tab = {
     return $column;
 
   },
-  init:function(qstring) {
+  init:function() {
 
     PTL.totalNbBOfCols = 0;
     PTL.language = PTL.prefs.readConfig('lang');
@@ -123,10 +123,6 @@ PTL.tab = {
         PTL.tab.saveTabs();
       }
     });
-
-    if (qstring) {
-      PTL.qstring = qstring;
-    }
 
     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
       e.preventDefault();

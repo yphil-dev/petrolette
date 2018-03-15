@@ -181,6 +181,8 @@ a:link {
   padding: 0 !important;
 }
 
+/* a.ui-button:nth-child(1) */
+
 .ui-tab.ui-state-hover a,
 .ui-tab.ui-state-active a {
   cursor: pointer !important;
@@ -519,8 +521,11 @@ fieldset {
 .ui-button:hover,
 .ui-button:focus,
 #feedGroup:focus {
-  /* color: var(--ui-color-qua) !important; */
   border: 3px solid var(--ui-color-sec);
+}
+
+a.ui-button:link {
+  color: var(--ui-color-qua) !important;
 }
 
 .ui-slider-horizontal .ui-slider-handle {
@@ -764,16 +769,16 @@ p.dialog-warning {
   font-size:26pt;
 }
 
-div.dialogWithIcon {
+div.dialog-question {
   display:flex;
   flex-direction: var(--dialog-flex-direction);
 }
 
-div.dialogWithIcon > div {
+div.dialog-question > div {
   flex: 1 1 auto;
 }
 
-div.dialogWithIcon > div.icon {
+div.dialog-question > div.icon {
   text-align: center;
   flex: 0 0 200px;
 }
@@ -948,7 +953,7 @@ li.feed {
   margin: var(--var-controls-toggle-margin);
 }
 
-.icon-rss-squared {
+.icon-rss {
   color: var(--ui-color-rss);
 }
 

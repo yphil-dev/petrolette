@@ -23,11 +23,19 @@ var PTL = (function() {
               $slider = $('div#gallerySpeedSlider'),
               $spinner = $('#gallerySpeedSpinner');
 
-          console.log('menu : (%s)', $menu.attr('class'));
+          PTL.sync.attachWidget();
 
           $('button').button();
 
-          PTL.sync.attachWidget();
+          $('h3.rs-small-headline, h1.rs-big-headline').text(PTL.tr('Connection to storage'));
+          $('span.rs-sub-headline').text(PTL.tr('To synchronize the sources across devices'));
+          $('div.rs-sign-in-error').text(PTL.tr('To synchronize the sources across devices'));
+
+          $('input.rs-connect')
+            .val(PTL.tr('Synchronize'))
+            .button();
+
+          $('a.rs-help').text(PTL.tr('More info'));
 
           $('body').on('click','#menuButton', function() {
             PTL.sideMenu('toggle');

@@ -87,7 +87,7 @@ PTL.sync = (function() {
 
       remoteStorage.access.claim('petrolette', 'rw');
 
-      return widget.attach('syncBox');
+      return widget.attach('sync-box');
     },
     readSync:function() {
 

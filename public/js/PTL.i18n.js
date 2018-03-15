@@ -147,6 +147,8 @@ PTL.i18n.translations = {
 
   "Delete this source." : { fr: "Supprimer cette source." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
 
+  "sources loaded" : { fr: "sources chargées" , ja: "ソースが読み込まれました", es: "fuentes cargadas" },
+
   "Wait! Are you sure?" : { fr: "Stop ! Sur ?" , ja: "待つ！ 本気ですか？", es: "¡Espere! ¿Estás seguro?" },
 
   "Select this source (for drag & drop)." : { fr: "Sélectionner cette source (pour le glisser-déposer)." , ja: "このソースを選択します（ドラッグ＆ドロップ用）。", es: "Seleccione esta fuente (para arrastrar y soltar)." },
@@ -247,6 +249,12 @@ PTL.i18n.translations = {
   "Connected to remote storage" : { fr: "Connecté au stockage distant" , ja: "リモートストレージに接続", es: "Conectado al almacenamiento remoto" },
 
   "Disconnected from remote storage" : { fr: "Déconnecté du stockage distant" , ja: "リモートストレージから切断されました", es: "Desconectado de almacenamiento remoto" },
+
+  "Synchronize" : { fr: "Synchroniser" , ja: "同期する", es: "Sincronizar" },
+  "More info" : { fr: "Plus d'informations" , ja: "詳細情報", es: "Más información" },
+  "Connection to storage" : { fr: "Connexion au stockage" , ja: "ストレージへの接続", es: "Conexión al almacenamiento" },
+
+  "To synchronize the sources across devices" : { fr: "Pour synchroniser les sources sur plusieurs appareils" , ja: "デバイス間でソースを同期するには", es: "Para sincronizar las fuentes en todos los dispositivos" },
 
   "Remote file validation NOT OK (error [%1]) now reading from browser cache" : { fr: "Validation de fichier à distance NOT OK (erreur [%1]) lecture depuis le cache du navigateur" , ja: "リモートファイルの検証NOT OK（エラー[%1]）がブラウザのキャッシュから読み込み中です", es: "La validación remota de archivos NO está OK (error [%1]) leyendo desde el caché del navegador" },
 

@@ -303,7 +303,7 @@ PTL.dialog = {
   },
   killColumn:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
       var $dialog = $(this),
           $column = $button.parent().parent(),
@@ -312,7 +312,10 @@ PTL.dialog = {
           nbOfColumnsInTab = $columnsInTab.length,
           colIndex = $panel.find('.column').index($column),
           $sourcesInCol = $column.find('.feed'),
-          $nbOfSourcesInCol = $sourcesInCol.length;
+          $nbOfSourcesInCol = $sourcesInCol.length,
+          $icon = $dialog.find('div.icon > i');
+
+      $icon.addClass('icon-trash-empty danger');
 
       console.log('There is %s cols in the %s panel', nbOfColumnsInTab, $panel.attr('id'));
 
@@ -336,7 +339,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Delete'),
             title: PTL.tr('Wait! Are you sure?'),
-            class: "dangerous translate icon-trash-empty",
+            class: "dangerous translate",
             click: function() {
               PTL.dialog.kill($dialog);
               $column.hide('fast', function() {
@@ -372,19 +375,76 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
+  addSource:function(sourceUrl) {
+
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+
+      var $dialog = $(this),
+          $icon = $dialog.find('div.icon > i');
+
+      $icon.addClass('icon-rss');
+
+      // console.log('There is %s cols in the %s panel', nbOfColumnsInTab, $panel.attr('id'));
+
+      $dialog.dialog({
+        title: PTL.tr('Add source'),
+        autoOpen: false,
+        closeOnEscape: true,
+        resizable: false,
+        height: 'auto',
+        width: PTL.utilities.vWidth(),
+        modal: true,
+        buttons: [
+          {
+            text: PTL.tr('Cancel'),
+            title: PTL.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          },
+          {
+            text: PTL.tr('Ok'),
+            title: PTL.tr('Add source'),
+            class: "translate",
+            click: function() {
+              PTL.feed.make($('.column').first(), sourceUrl, 'mixed', 8, true);
+              PTL.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+          $dialog.find('h1').text(PTL.tr('New source'));
+          $dialog.find('h2#name').text(PTL.tr('URL'));
+          $dialog.find('p#name').text((sourceUrl));
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
+  },
   killTab:function($button) {
 
-    var $tabs = $('#tabs'),
-        $a = $button.prev('a.ui-tabs-anchor'),
-        tabId = $a.attr('href'),
-        $selectedTab = $a.parent(),
-        $selectedPanel = $tabs.find(tabId),
-        selectedTabIndex = $tabs.tabs('option', 'active'),
-        previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
+      var $dialog = $(this),
+          $tabs = $('#tabs'),
+          $a = $button.prev('a.ui-tabs-anchor'),
+          tabId = $a.attr('href'),
+          $selectedTab = $a.parent(),
+          $selectedPanel = $tabs.find(tabId),
+          selectedTabIndex = $tabs.tabs('option', 'active'),
+          previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1,
+          $icon = $dialog.find('div.icon > i');
 
-      var $dialog = $('#killDialog');
+      $icon.addClass('icon-trash-empty danger');
 
       $dialog.dialog({
         title: PTL.tr('Delete group'),
@@ -406,7 +466,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Delete'),
             title: PTL.tr('Wait! Are you sure?'),
-            class: "dangerous translate icon-trash-empty",
+            class: "dangerous translate",
             click: function() {
 
               $selectedTab.remove();
@@ -445,8 +505,8 @@ PTL.dialog = {
   },
   killAll:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
-      var $dialog = $('#killDialog');
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+      var $dialog = $('#question-dialog');
 
       $dialog.dialog({
         title: PTL.tr('Delete all'),
@@ -503,14 +563,15 @@ PTL.dialog = {
   },
   killFeed:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #killDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-      var $dialog = $(this);
+      var $dialog = $(this),
+          $thisFeed = $button.parent().parent().parent().parent(),
+          thisFeedId = $button.parent().parent().parent().parent().attr('id'),
+          thisFeedName = $button.parent().parent().parent().find('.source-title').text(),
+          $icon = $dialog.find('div.icon > i');
 
-      var $thisFeed = $button.parent().parent().parent().parent();
-
-      var thisFeedId = $button.parent().parent().parent().parent().attr('id');
-      var thisFeedName = $button.parent().parent().parent().find('.source-title').text();
+      $icon.addClass('icon-trash-empty danger');
 
       console.log('feedId: %s, thisFeedName: %s', thisFeedId, thisFeedName);
 
@@ -534,7 +595,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Delete'),
             title: PTL.tr('Wait! Are you sure?'),
-            class: 'dangerous translate icon-trash-empty',
+            class: 'dangerous translate',
             click: function() {
               $thisFeed.hide('fade', 1000, function() {
                 $(this).remove();
