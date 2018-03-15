@@ -131,7 +131,7 @@
 
      if (PTL.queryString) {
        PTL.dialog.addSource(PTL.queryString);
-       console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.utilities.isUrl('https'));
+       console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.utilities.isUrl(PTL.queryString));
        PTL.queryString = null;
      }
 

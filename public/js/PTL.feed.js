@@ -216,7 +216,7 @@ PTL.feed = {
     }
 
     if (subdomain === 'rss' || subdomain === 'feeds') {
-      feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '')
+      feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
     }
 
     $refreshButton.addClass('spin');

@@ -113,8 +113,6 @@ PTL.tab = {
       }
     });
 
-    PTL.tabs = $tabs;
-
     $tabs.find('.ui-tabs-nav').sortable({
       axis: 'x',
       items: '> li:not(#new-group)',
@@ -131,6 +129,8 @@ PTL.tab = {
       }
     });
 
+    $tabs.tabs('disable', '#disabled');
+
     $tabs.on("click", "i.tabCloser", function() {
       PTL.dialog.killTab($(this));
     });
@@ -141,8 +141,6 @@ PTL.tab = {
 
     $tabs.find('.collapsible').show('fast');
 
-    PTL.tab.makeNewTabButton($tabs);
-
     $(window).scroll(function() {
       if ($(this).scrollTop() >= 50) {
         $('#scroll-top').fadeIn(200);
@@ -150,16 +148,18 @@ PTL.tab = {
         $('#scroll-top').fadeOut(200);
       }
     });
+
     $('#scroll-top').click(function() {
       $('body,html').animate({
         scrollTop : 0
       }, 500);
     });
 
+    PTL.tab.makeNewTabButton($tabs);
     PTL.utilities.noSourcesButton();
     PTL.sync.readSync();
 
-    $("#theme").attr({href : '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
+    $("#theme").attr({href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
 
   },
   saveTabs:function() {
@@ -167,14 +167,6 @@ PTL.tab = {
     // console.log('sources : (%s)', JSON.stringify(sources));
     PTL.prefs.writeConfig('sources', JSON.stringify(sources));
     PTL.sync.writeSync(JSON.stringify(sources));
-  },
-  empty:function() {
-
-    $('div#tabs ul li').remove();
-    $('div#tabs div').remove();
-    $('#noSourcesButton').fadeIn('slow');
-    PTL.tab.saveTabs();
-    PTL.tab.makeNewTabButton($('div#tabs'));
   },
   populate:function(sources) {
 
@@ -243,7 +235,7 @@ PTL.tab = {
 
     var $tab = $('<li>')
         .attr('class', 'modal tab-name translate')
-        .data('id', 'tab-' + tabIndex)
+        .data('id', 'tab-' + tabIndex++)
         .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
         .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
@@ -310,9 +302,9 @@ PTL.tab = {
     $tabPanel.appendTo($tabs);
 
     $tabs.tabs('refresh');
-    $tabs.tabs( "option", "active", tabIndex - 1);
-    tabIndex++;
+    $tabs.tabs( "option", "active", 0);
 
+    $('#ui-id-1').focus();
   },
   list:function(type) {
 
@@ -364,7 +356,8 @@ PTL.tab = {
         .attr('title', PTL.tr('Add a new group'));
 
     var $newTabButtonLink = $('<a>')
-        .attr('href', '#');
+        .attr('onfocus', 'this.blur()')
+        .attr('href', '#disabled');
 
     var $newTabButtonIcon = $('<i>')
         .attr('class', 'icon-plus');

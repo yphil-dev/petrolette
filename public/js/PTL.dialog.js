@@ -37,7 +37,9 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $('.helpIntroUI').button().on('click', function() {
+          $('.help-button').button();
+
+          $('.help-tour').on('click', function() {
             $('#overlay').removeClass('visible');
             $('#menu').removeClass('expanded');
             PTL.dialog.kill($dialog);
@@ -380,7 +382,9 @@ PTL.dialog = {
     $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
       var $dialog = $(this),
-          $icon = $dialog.find('div.icon > i');
+          $icon = $dialog.find('div.icon > i'),
+          isUrl = false,
+          h1, h2;
 
       $icon.addClass('icon-rss');
 
@@ -404,7 +408,7 @@ PTL.dialog = {
             }
           },
           {
-            text: PTL.tr('Ok'),
+            text:  PTL.tr('Add'),
             title: PTL.tr('Add source'),
             class: "translate",
             click: function() {
@@ -415,13 +419,21 @@ PTL.dialog = {
         ],
         open: function () {
 
+          if (!PTL.utilities.isUrl(sourceUrl)) {
+            h1 = 'Whoops!';
+            h2 = PTL.tr('Unrecognized URL');
+          } else {
+            isUrl = true;
+            h1 = PTL.tr('New source');
+            h2 = PTL.tr('URL');
+          }
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text(PTL.tr('New source'));
-          $dialog.find('h2#name').text(PTL.tr('URL'));
+          $dialog.find('h1').text(h1);
+          $dialog.find('h2#name').text(h2);
           $dialog.find('p#name').text((sourceUrl));
 
         }
@@ -502,64 +514,6 @@ PTL.dialog = {
 
       $dialog.dialog('open');
     });
-  },
-  killAll:function() {
-
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
-      var $dialog = $('#question-dialog');
-
-      $dialog.dialog({
-        title: PTL.tr('Delete all'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: false,
-        height: 'auto',
-        width: PTL.utilities.vWidth(),
-        modal: true,
-        buttons: [
-          {
-            text: PTL.tr('Cancel'),
-            title: PTL.tr('Cancel'),
-            class: 'translate',
-            click: function() {
-              PTL.dialog.kill($dialog);
-            }
-          },
-          {
-            text: PTL.tr('Delete'),
-            title: PTL.tr('Delete'),
-            icon: "ui-icon-alert",
-            class: "dangerous translate",
-            click: function() {
-
-              PTL.tab.empty();
-
-              $('#noSourcesButton').fadeIn('slow');
-
-              PTL.dialog.kill($dialog);
-
-            }
-          }
-        ],
-        open: function () {
-
-          $('.ui-widget-overlay').on('click', function() {
-            PTL.dialog.kill($dialog);
-          });
-
-          var $name = $('<h2 class="name">').text(PTL.tr('Name'));
-          var $value = $('<p class="value">').text('All');
-
-          $dialog.find('div.content')
-            .append($name)
-            .append($value);
-
-        }
-      });
-
-      $dialog.dialog('open');
-    });
-
   },
   killFeed:function($button) {
 

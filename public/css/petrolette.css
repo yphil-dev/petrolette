@@ -173,6 +173,10 @@ a:link {
   border-right: 1px solid var(--color-sep) !important;
 }
 
+/* .ui-tab.ui-state-focus { */
+/*   outline: 3px solid var(--ui-color-sec) !important; */
+/* } */
+
 .ui-tab.ui-state-default a:visited {
   color: var(--color-pri);
 }
@@ -189,6 +193,8 @@ a:link {
   color: var(--color-sec) !important;
 }
 
+.ui-tab.ui-state-focus,
+.ui-tab.ui-state-focus,
 .ui-tab.ui-state-hover {
   background: var(--color-sep);
 }
@@ -547,7 +553,7 @@ a.ui-button:link {
 }
 
 /* .ui-state-active, */
-.ui-state-active:not(li),
+/* .ui-state-active:not(li), */
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover,
@@ -594,15 +600,15 @@ button.ui-state-error {
   background-color: var(--ui-color-danger) !important;
 }
 
-button.helpIntroUI {
+button.help-button {
   background-color: var(--ui-color-success);
   border-color: var(--ui-color-success);
   color: var(--ui-color-pri);
   padding: .4em;
 }
 
-button.helpIntroUI:focus,
-button.helpIntroUI:hover {
+button.help-button:focus,
+button.help-button:hover {
   color: var(--ui-color-pri);
   background-color: var(--ui-color-success);
 }
