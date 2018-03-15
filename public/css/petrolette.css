@@ -132,6 +132,12 @@ div.dialog {
   color: var(--ui-color-pri);
 }
 
+kbd.key {
+  border-radius: 3px;
+  padding: 1px 2px 0;
+  border: 1px solid black;
+}
+
 ul {
   list-style-type: none;
   margin:0;
@@ -153,32 +159,22 @@ ul {
   /* padding: .2em; */
 }
 
-a:visited {
-  color: var(--color-qui);
-}
-
-a:hover,
-a:active,
-i.item-icon:hover {
-  color: var(--color-sec);
-}
-
 a:link {
   color: var(--color-pri) !important;
   text-decoration: none;
 }
 
-.ui-tab.ui-state-default {
-  background: var(--color-qua);
-  border-right: 1px solid var(--color-sep) !important;
+a:visited {
+  color: var(--color-qui);
 }
 
-/* .ui-tab.ui-state-focus { */
-/*   outline: 3px solid var(--ui-color-sec) !important; */
-/* } */
+a:focus {
+  border-color: var(--color-sec);
+}
 
-.ui-tab.ui-state-default a:visited {
-  color: var(--color-pri);
+a:hover,
+a:active {
+  color: var(--color-sec);
 }
 
 .ui-tab {
@@ -191,6 +187,11 @@ a:link {
 .ui-tab.ui-state-active a {
   cursor: pointer !important;
   color: var(--color-sec) !important;
+}
+
+.ui-tab.ui-state-default {
+  background: var(--color-non);
+  border-right: 1px solid var(--color-sep) !important;
 }
 
 .ui-tab.ui-state-focus,
@@ -209,18 +210,13 @@ a:link {
 }
 
 #new-group {
-  text-align: center;
   width: 40px;
 }
 
-#new-group a:visited,
 #new-group a:link {
   color: var(--color-pri);
   background-color: var(--color-qua);
-  font-size: 21.2pt;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  font-size: 1em;
 }
 
 i.item-icon {
@@ -458,9 +454,9 @@ nav#side-menu,
   margin: 0 !important;
 }
 
-.ui-tabs-anchor {
-  cursor: pointer;
-}
+/* .ui-tabs-anchor { */
+/*   cursor: pointer; */
+/* } */
 
 i.tabCloser {
   cursor: pointer;
@@ -510,7 +506,6 @@ fieldset {
 
 .ui-button.ui-state-active,
 .ui-slider-handle,
-.ui-state-default,
 .ui-button {
   border: 3px solid var(--ui-color-sep);
 }
@@ -1001,7 +996,6 @@ li.source-item:nth-child(even) {
   background-color: var(--color-non);
 }
 
-table tr:hover,
 li.source-item:hover {
   background-color: var(--color-sen);
   color: var(--color-sep);
@@ -1165,7 +1159,7 @@ div#logo-title {
   float: right;
 }
 
-i.icon-petrolette {
+.logoType i.icon-petrolette {
   display:block;
   cursor: pointer;
   font-size:24pt;

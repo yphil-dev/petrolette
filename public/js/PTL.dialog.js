@@ -40,11 +40,16 @@ PTL.dialog = {
           $('.help-button').button();
 
           $('.help-tour').on('click', function() {
-            $('#overlay').removeClass('visible');
-            $('#menu').removeClass('expanded');
+            PTL.sideMenu('close');
             PTL.dialog.kill($dialog);
             $('#tabs').tabs('option', 'active', 0);
             PTL.utilities.help('ui');
+          });
+
+          $('.help-kb-shortcuts').on('click', function() {
+            PTL.sideMenu('close');
+            PTL.dialog.kill($dialog);
+            PTL.dialog.kbShortcuts();
           });
 
         }
@@ -142,7 +147,7 @@ PTL.dialog = {
         ],
         open: function() {
 
-          $('.ui-dialog :button').focus();
+          // $('.ui-dialog :button').focus();
 
           $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -370,6 +375,139 @@ PTL.dialog = {
           $dialog.find('p#name').text((colIndex + 1));
           $dialog.find('h2#number').text(PTL.tr('Number of sources'));
           $dialog.find('p#number').text($nbOfSourcesInCol);
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
+  },
+  kbShortcuts:function() {
+
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+
+      var $dialog = $(this),
+          $iconDiv = $dialog.find('div.icon');
+
+      $iconDiv.remove();
+
+      $dialog.dialog({
+        title: PTL.tr('Keyboard shortcuts'),
+        autoOpen: false,
+        closeOnEscape: true,
+        resizable: false,
+        show: { effect: "blind", duration: 800 },
+        position: { my: "left top", at: "left top" },
+        height: 'auto',
+        width: '100%',
+        modal: true,
+        buttons: [
+          {
+            text: PTL.tr('Ok'),
+            title: PTL.tr('Ok'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+          var $kbShortCutsTab = $('<table>')
+              .attr('class', 'keyboard-shortcuts')
+              .append($('<tr>')
+                      .append($('<th>')
+                              .text('Key'))
+                      .append($('<th>')
+                              .text('Command')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">UP</kbd>/<kbd class="key">LEFT</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the previous tab. If on first tab, moves focus to last tab. Activate focused tab after a short delay.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the next tab. If on last tab, moves focus to first tab. Activate focused tab after a short delay.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the next tab. If on last tab, moves focus to first tab. The focused tab must be manually activated.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">HOME</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the first tab. Activate focused tab after a short delay.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">END</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the last tab. Activate focused tab after a short delay.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">HOME</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the first tab. The focused tab must be manually activated.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">END</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the last tab. The focused tab must be manually activated.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">SPACE</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Activate panel associated with focused tab.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">ENTER</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Activate or toggle panel associated with focused tab.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the previous tab and immediately activate.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE DOWN</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the next tab and immediately activate.')));
+
+          var $kbShortCutsPanel = $('<table>')
+              .attr('class', 'keyboard-shortcuts')
+              .append($('<tr>')
+                      .append($('<th>')
+                              .text('Key'))
+                      .append($('<th>')
+                              .text('Command')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">UP</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to associated tab.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the previous tab and immediately activate.')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE DOWN</kbd></kbd>'))
+                      .append($('<td>')
+                              .text('Move focus to the next tab and immediately activate.')));
+
+          $dialog.find('h1').text(PTL.tr('Keyboard shortcuts'));
+          $dialog.find('h2#name').text(PTL.tr('When focus is on a tab'));
+          $dialog.find('h2#number').text(PTL.tr('When focus is in a panel'));
+          $dialog.find('p#name').append($kbShortCutsTab);
+          $dialog.find('p#number').append($kbShortCutsPanel);
 
         }
       });

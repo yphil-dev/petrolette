@@ -96,6 +96,7 @@ PTL.tab = {
     PTL.language = PTL.prefs.readConfig('lang');
 
     var $tabs = $('#tabs').tabs({
+      active: 2,
       heightStyle: 'content',
       activate: function(event, ui) {
 
@@ -107,7 +108,7 @@ PTL.tab = {
 
         $('.tabCloser').hide();
 
-        $('#new-group').removeClass('invisible');
+        // $('#new-group').removeClass('invisible');
 
         $activeTab.find('.tabCloser').show();
       }
@@ -128,8 +129,6 @@ PTL.tab = {
         PTL.dialog.editGroup($(this));
       }
     });
-
-    $tabs.tabs('disable', '#disabled');
 
     $tabs.on("click", "i.tabCloser", function() {
       PTL.dialog.killTab($(this));
@@ -351,12 +350,12 @@ PTL.tab = {
 
     var $newTabButton = $('<li>')
         .attr('id', 'new-group')
-        .attr('class', 'translate new-group invisible')
+        .attr('class', 'translate new-group')
         .data('title', 'Add a new group')
         .attr('title', PTL.tr('Add a new group'));
 
     var $newTabButtonLink = $('<a>')
-        .attr('onfocus', 'this.blur()')
+    // .attr('tabindex', '-1')
         .attr('href', '#disabled');
 
     var $newTabButtonIcon = $('<i>')
