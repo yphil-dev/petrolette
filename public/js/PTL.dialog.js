@@ -706,7 +706,8 @@ PTL.dialog = {
   editGroup:function($tab) {
 
     $('#dialogs').load('/static/templates/dialogs.html #editGroupDialog', function() {
-      var $dialog = $('#editGroupDialog');
+
+      var $dialog = $(this);
 
       $dialog.dialog({
         title: PTL.tr('Group'),

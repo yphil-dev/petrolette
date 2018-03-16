@@ -195,21 +195,21 @@ a:active {
 .ui-tab.ui-state-default a:visited,
 .ui-tab.ui-state-default a:hover,
 .ui-tab.ui-state-default a:active {
-  color: var(--ui-color-pri);
+  color: var(--color-pri);
 }
 
 .ui-tab.ui-state-active a:link,
 .ui-tab.ui-state-active a:visited,
 .ui-tab.ui-state-active a:hover,
 .ui-tab.ui-state-active a:active {
-  color: var(--ui-color-pri);
+  color: var(--color-pri);
 }
 
 .ui-tab.ui-state-hover a:link,
 .ui-tab.ui-state-hover a:visited,
 .ui-tab.ui-state-hover a:hover,
 .ui-tab.ui-state-hover a:active {
-  color: var(--ui-color-sec);
+  color: var(--color-sec);
 }
 
 .ui-tab.ui-state-hover a,
@@ -400,8 +400,8 @@ fieldset > p {
   margin: 0  0 .2em 0;
 }
 
-.menu fieldset,
-.menu legend {
+fieldset,
+legend {
   background: none !important;
   color: var(--ui-color-pri);
 }
@@ -509,7 +509,7 @@ fieldset {
   width: -moz-available;
 }
 
-.flexBox {
+.flex-box {
   display:flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -688,11 +688,11 @@ label#killFeed:active {
   background: var(--ui-color-danger) !important;
 }
 
-.flexBox > label {
+.flex-box > label {
   flex: 1;
 }
 
-nav#side-menu .flexBox > * {
+nav#side-menu .flex-box > * {
   margin-bottom: .4em;
 }
 
@@ -855,12 +855,12 @@ ul.column div.buttons {
   left: 0;
   margin-left: auto;
   margin-right: auto;
-  padding: 5px;
+  padding: .4em;
   position:absolute;
   right: 0;
   text-align: center;
   bottom: 15px;
-  width: 150px; /* Need a specific value to work */
+  width: 150px;
   z-index: 1 !important;
 }
 

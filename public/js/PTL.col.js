@@ -19,14 +19,14 @@ PTL.col = {
   add: function(colIndex, nbOfColumnsInTab, newCol) {
 
     var $colButtons = $('<div>')
-        .attr('class', 'buttons');
+        .attr('class', 'buttons flex-box');
 
     var $colLegend = $('<legend>')
-        .attr('class', 'legend')
+        .attr('class', 'legend unique')
         .text('Column ' + colIndex);
 
     var $srcLegend = $('<legend>')
-        .attr('class', 'legend')
+        .attr('class', 'legend unique')
         .text('Source');
 
     var $column = $('<ul>')
@@ -35,17 +35,17 @@ PTL.col = {
         .append($colButtons);
 
     var $srcNewButton = $('<button>')
-        .attr('class', 'icon-plus expand')
+        .attr('class', 'icon-plus expand unique')
         .button()
         .data('colIndex', colIndex);
 
     var $colNewButton = $('<button>')
-        .attr('class', 'icon-plus half')
+        .attr('class', 'icon-plus twin')
         .button()
         .data('colIndex', colIndex);
 
     var $colDelButton = $('<button>')
-        .attr('class', 'col-del icon-minus half')
+        .attr('class', 'col-del icon-minus twin')
         .data('colIndex', colIndex)
         .button();
 
