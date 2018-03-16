@@ -35,7 +35,7 @@ PTL.col = {
         .append($colButtons);
 
     var $srcNewButton = $('<button>')
-        .attr('class', 'icon-plus expand unique')
+        .attr('class', 'icon-plus unique')
         .button()
         .data('colIndex', colIndex);
 
