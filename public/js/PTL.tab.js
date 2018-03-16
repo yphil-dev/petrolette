@@ -39,9 +39,11 @@ PTL.tab = {
 
       $panel.find('button.col-del').show();
 
-      $newColumn.appendTo($panel);
-    });
+      console.log('$column: (%s)', $column.attr('id'));
 
+      $newColumn.insertAfter($column);
+
+    });
 
     $column.sortable({
       cursor: 'move',
