@@ -8,6 +8,8 @@
   --ui-color-sep: #ccc;
   --ui-color-oct: #2b2b2b;
 
+  --ui-color-title-one: #ff4136;
+
   --ui-color-rss: #f26522;
 
   --var-header-height: 26px;
@@ -122,6 +124,7 @@ h4 {
 }
 
 h1 {
+  color: var(--ui-color-title-one);
   margin-top: 0
 }
 
@@ -130,6 +133,10 @@ p,
 div.dialog {
   line-height: 1.5em;
   color: var(--ui-color-pri);
+}
+
+.ui-dialog p {
+  margin: 0 0 .4em .4em;
 }
 
 kbd.key {
@@ -514,6 +521,19 @@ fieldset {
   background-color: var(--ui-color-sec);
 }
 
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus,
+.ui-button:hover,
+.ui-button:focus,
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button.ui-state-disabled:hover,
+.ui-button.ui-state-disabled:active,
 .ui-button {
   border: 3px solid var(--ui-color-sep);
 }
@@ -549,12 +569,6 @@ fieldset {
   border: 3px solid var(--ui-color-sep);
 }
 
-.ui-button.ui-state-default,
-.ui-button.ui-state-active
-.null {
-  border: 3px solid var(--ui-color-sen);
-}
-
 .ui-button.ui-state-active.dangerous,
 .ui-button.dangerous:focus,
 .ui-button.dangerous:hover,
@@ -579,8 +593,8 @@ button.ui-state-error {
 }
 
 .ui-slider-handle {
-  top: -.4em;
-  height: 38px !important;
+  /* top: -.4em; */
+  height: 36px !important;
   line-height: 38px;
   min-width: 38px;
   text-align: center;
@@ -591,23 +605,23 @@ button.ui-state-error {
   margin-right: .4em;
 }
 
-button.help-button {
+.dialog button.help-button {
   background-color: var(--ui-color-success);
   border-color: var(--ui-color-success);
   color: var(--ui-color-pri);
   padding: .4em;
 }
 
-button.help-button:focus,
-button.help-button:hover {
+.dialog button.help-button:focus,
+.dialog button.help-button:hover {
   color: var(--ui-color-pri);
   background-color: var(--ui-color-success);
 }
 
 .ui-dialog-titlebar-help {
-  right: 30px !important;
+  right: 30px;
   background-color: var(--ui-color-success);
-  color: var(--ui-color-pri) !important;
+  color: var(--ui-color-pri);
 }
 
 /* .ui-visual-focus { */
@@ -675,6 +689,10 @@ label#killFeed:active {
 
 nav#side-menu .flex-box > * {
   margin-bottom: .4em;
+}
+
+nav#side-menu #gallerySlideTransition {
+  margin-top: 2px;
 }
 
 .shrink {

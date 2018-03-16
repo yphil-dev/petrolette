@@ -41,7 +41,7 @@ var PTL = (function() {
             PTL.sideMenu('toggle');
           });
 
-          $('body').on('click','#helpButton', function() {
+          $('body').on('click','.help-button', function() {
             PTL.dialog.help();
           });
 
