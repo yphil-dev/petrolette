@@ -319,12 +319,12 @@ PTL.dialog = {
           nbOfColumnsInTab = $columnsInTab.length,
           colIndex = $panel.find('.column').index($column),
           $sourcesInCol = $column.find('.feed'),
-          $nbOfSourcesInCol = $sourcesInCol.length,
+          nbOfSourcesInCol = $sourcesInCol.length,
           $icon = $dialog.find('div.icon > i');
 
       $icon.addClass('icon-trash-empty danger');
 
-      console.log('There is %s cols in the %s panel', nbOfColumnsInTab, $panel.attr('id'));
+      console.log('There is %s sources', nbOfSourcesInCol);
 
       $dialog.dialog({
         title: PTL.tr('Delete column'),
@@ -349,16 +349,7 @@ PTL.dialog = {
             class: "dangerous translate",
             click: function() {
               PTL.dialog.kill($dialog);
-              $column.hide('fast', function() {
-
-                $(this).remove();
-                if (nbOfColumnsInTab <= 2) {
-                  $panel.find('button.col-del').hide();
-                }
-
-                PTL.tab.saveTabs();
-
-              });
+              PTL.col.del($column, nbOfColumnsInTab);
             }
           }
         ],
@@ -374,7 +365,7 @@ PTL.dialog = {
           $dialog.find('h2#name').text(PTL.tr('Index'));
           $dialog.find('p#name').text((colIndex + 1));
           $dialog.find('h2#number').text(PTL.tr('Number of sources'));
-          $dialog.find('p#number').text($nbOfSourcesInCol);
+          $dialog.find('p#number').text(nbOfSourcesInCol);
 
         }
       });
