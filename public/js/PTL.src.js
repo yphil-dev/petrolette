@@ -1,6 +1,6 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
-PTL.feed = {
+PTL.src = {
 
   make:function($tab, url, type, limit, clickNew, progress) {
 
@@ -61,7 +61,7 @@ PTL.feed = {
     });
 
     $feedReload.click(function() {
-      PTL.feed.populate($(this), progress);
+      PTL.src.populate($(this), progress);
     });
 
     var $feedBody = $('<div>')

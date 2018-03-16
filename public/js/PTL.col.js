@@ -105,8 +105,7 @@ PTL.col = {
         }
       }).disableSelection();
 
-    if (nbOfColumnsInTab > 1 || newCol)
-      $colLegend.append($colDelButton);
+    if (nbOfColumnsInTab > 1 || newCol) $colLegend.append($colDelButton);
 
     $colLegend.append($colNewButton);
 

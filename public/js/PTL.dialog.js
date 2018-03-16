@@ -136,7 +136,7 @@ PTL.dialog = {
 
               } else {
 
-                PTL.feed.populate($button);
+                PTL.src.populate($button);
               }
 
               PTL.tab.saveTabs();
@@ -286,7 +286,7 @@ PTL.dialog = {
           });
 
           $dialog.on('submit', function () {
-            PTL.feed.populate($sourceRefresh);
+            PTL.src.populate($sourceRefresh);
 
             PTL.tab.saveTabs();
 
@@ -541,7 +541,7 @@ PTL.dialog = {
             title: PTL.tr('Add source'),
             class: "translate",
             click: function() {
-              PTL.feed.make($('.column').first(), sourceUrl, 'mixed', 8, true);
+              PTL.src.make($('.column').first(), sourceUrl, 'mixed', 8, true);
               PTL.dialog.kill($dialog);
             }
           }
