@@ -504,8 +504,7 @@ fieldset {
   border: none !important;
 }
 
-.ui-slider-handle.ui-state-default,
-.ui-button {
+.ui-state-default {
   border: 3px solid var(--ui-color-sep);
 }
 
@@ -515,7 +514,10 @@ fieldset {
   background-color: var(--ui-color-sec);
 }
 
-/* .ui-state-hover, */
+.ui-button {
+  border: 3px solid var(--ui-color-sep);
+}
+
 .ui-slider-handle:focus,
 .ui-slider-handle:hover,
 .ui-button:hover,
@@ -534,9 +536,6 @@ fieldset {
   border: 1px solid var(--ui-color-sec);
 }
 
-/* .ui-state-active, */
-/* .ui-state-active:not(li), */
-a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover,
 .null {
@@ -550,9 +549,8 @@ a.ui-button:active,
   border: 3px solid var(--ui-color-sep);
 }
 
-.ui-button.ui-state-active.dangerous:active,
-.ui-button.ui-state-active.dangerous:hover,
-.ui-button.ui-state-active.dangerous:focus,
+.ui-button.ui-state-default,
+.ui-button.ui-state-active
 .null {
   border: 3px solid var(--ui-color-sen);
 }
@@ -561,11 +559,23 @@ a.ui-button:active,
 .ui-button.dangerous:focus,
 .ui-button.dangerous:hover,
 .ui-button.dangerous:active,
-label.ui-button.dangerous:hover,
 .null {
   background-color: var(--ui-color-danger);
   color: var(--ui-color-pri);
   border: 3px solid var(--ui-color-danger);
+}
+
+button.ui-state-success {
+  background-color: var(--ui-color-success) !important;
+}
+
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error,
+button.ui-state-error {
+  border: 3px solid var(--ui-color-danger);
+  color: var(--ui-color-pri);
+  background-color: var(--ui-color-danger) !important;
 }
 
 .ui-slider-handle {
@@ -573,20 +583,12 @@ label.ui-button.dangerous:hover,
   height: 38px !important;
   line-height: 38px;
   min-width: 38px;
-  text-align: center !important;
+  text-align: center;
 }
 
 .ui-slider {
   height: 32px;
   margin-right: .4em;
-}
-
-button.ui-state-success {
-  background-color: var(--ui-color-success) !important;
-}
-
-button.ui-state-error {
-  background-color: var(--ui-color-danger) !important;
 }
 
 button.help-button {
