@@ -112,7 +112,10 @@ PTL.i18n.translations = {
   "Add source" : { fr: "Ajouter source" , ja: "ソースを追加", es: "Agregue fuente" },
   "Add sources" : { fr: "Ajouter sources" , ja: "ソースを追加", es: "Agregue fuentes" },
 
-
+  "Column" : { fr: "Colonne" , ja: "列", es: "Columna" },
+  "Add a column" : { fr: "Ajouter une colonne" , ja: "列を追加する", es: "Agrega una columna" },
+  "Remove this column" : { fr: "Supprimer cette colonne" , ja: "この列を削除", es: "Eliminar esta columna" },
+  "Add a source to this column" : { fr: "Ajouter une source à cette colonne" , ja: "この列にソースを追加する", es: "Agregar una fuente a esta columna" },
   "Keyboard shortcuts" : { fr: "Raccourcis clavier" , ja: "キーボードショートカット", es: "Atajos de teclado" },
   "When focus is on a tab" : { fr: "Lorsque le focus est sur un onglet" , ja: "フォーカスがタブにあるとき", es: "Cuando el foco está en una pestaña" },
   "When focus is in a panel" : { fr: "Lorsque le focus est dans un panel" , ja: "フォーカスがパネルにあるとき", es: "Cuando el foco está en un panel" },

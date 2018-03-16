@@ -45,8 +45,21 @@ var PTL = (function() {
             PTL.dialog.help();
           });
 
-          $('body').on('click','#newSourceButton', function() {
-            var $column = $($('.ui-tabs-active').find('a').attr('href')).find('.column').first();
+          $('body').on('click','.new-source-button', function() {
+
+            var $column;
+
+            console.log('this: (%s)', $(this).attr('class'));
+
+            if ($(this).hasClass('button-column')) {
+              $column = $(this).parent().parent();
+            } else {
+              $column = $($('.ui-tabs-active')
+                          .find('a')
+                          .attr('href'))
+                .find('.column').first();
+            }
+
             PTL.sideMenu('close');
             PTL.src.add($column, 'New Feed', 'mixed', 8, true);
           });

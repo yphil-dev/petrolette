@@ -23,11 +23,11 @@ PTL.col = {
 
     var $colLegend = $('<legend>')
         .attr('class', 'legend unique')
-        .text('Column ' + colIndex);
+        .text(PTL.tr('Column') + ' ' + colIndex);
 
     var $srcLegend = $('<legend>')
         .attr('class', 'legend unique')
-        .text('Source');
+        .text(PTL.tr('Source'));
 
     var $column = $('<ul>')
         .attr('id', 'column-' + (colIndex - 1))
@@ -35,16 +35,22 @@ PTL.col = {
         .append($colButtons);
 
     var $srcNewButton = $('<button>')
-        .attr('class', 'icon-plus unique')
+        .attr('title', PTL.tr('Add a source to this column'))
+        .data('title', 'Add a source to this column')
+        .attr('class', 'icon-plus unique translate new-source-button button-column')
         .button()
         .data('colIndex', colIndex);
 
     var $colNewButton = $('<button>')
-        .attr('class', 'icon-plus twin')
+        .attr('title', PTL.tr('Add a column'))
+        .data('title', 'Add a column')
+        .attr('class', 'icon-plus twin translate')
         .button()
         .data('colIndex', colIndex);
 
     var $colDelButton = $('<button>')
+        .attr('title', PTL.tr('Remove this column'))
+        .data('title', 'Remove this column')
         .attr('class', 'col-del icon-minus twin')
         .data('colIndex', colIndex)
         .button();
