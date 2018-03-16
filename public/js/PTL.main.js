@@ -203,9 +203,21 @@ var PTL = (function() {
             }
           });
 
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('plop'));
+          $('#console').prepend($('<div>').text('pl1p'));
+
           // File reader
 
-          $fileImportInput.change(function(evt){
+          $fileImportInput.change(function(evt) {
             var f = evt.target.files[0],
                 reader = new FileReader();
 
@@ -214,6 +226,26 @@ var PTL = (function() {
 
                 function isOk(o) {
                   var isValid = false;
+
+                  if (typeof o === 'object')
+                    console.log('o: (%s)', JSON.stringify(o));
+
+                  o.forEach(function(group) {
+                    // console.log('k: (%s)', JSON.stringify(group.columns));
+
+                    if (group.columns) console.log('has cols!: (%s)');
+
+                    $.each(group.columns, function(k, v) {
+                      $.each(v, function(k, v) {
+                        // console.log('k: (%s)', JSON.stringify(v));
+                        $.each(v, function(k) {
+                          // console.log('k: (%s)', JSON.stringify(k));
+                        });
+                      });
+                    });
+                  });
+
+
                   if (Object.prototype.toString.call(o) === '[object Array]') {
                     isValid = o.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
                   } else {
