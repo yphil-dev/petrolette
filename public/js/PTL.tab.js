@@ -201,7 +201,7 @@ PTL.tab = {
 
       if (!newTab) {
         sources.forEach(function(source) {
-          PTL.src.make($column, source.url, source.type, source.limit, false, progress);
+          PTL.src.add($column, source.url, source.type, source.limit, false, progress);
         });
       }
 

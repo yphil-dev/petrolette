@@ -133,9 +133,12 @@ div.dialog {
 }
 
 kbd.key {
+  background-color: var(--ui-color-pri);
+  color: var(--ui-color-qua);
   border-radius: 3px;
-  padding: 1px 2px 0;
-  border: 1px solid black;
+  padding: 2px;
+  margin: 0 2px;
+  border: 1px solid var(--ui-color-qua);
 }
 
 ul {
@@ -179,15 +182,40 @@ a:active {
 
 /* a.ui-button:nth-child(1) */
 
+.ui-tab.ui-state-default {
+  background: var(--color-non);
+  border-right: 1px solid var(--color-sep) !important;
+}
+
+.ui-tab.ui-state-hover {
+  background: var(--color-sep);
+}
+
+.ui-tab.ui-state-default a:link,
+.ui-tab.ui-state-default a:visited,
+.ui-tab.ui-state-default a:hover,
+.ui-tab.ui-state-default a:active {
+  color: var(--ui-color-pri);
+}
+
+.ui-tab.ui-state-active a:link,
+.ui-tab.ui-state-active a:visited,
+.ui-tab.ui-state-active a:hover,
+.ui-tab.ui-state-active a:active {
+  color: var(--ui-color-pri);
+}
+
+.ui-tab.ui-state-hover a:link,
+.ui-tab.ui-state-hover a:visited,
+.ui-tab.ui-state-hover a:hover,
+.ui-tab.ui-state-hover a:active {
+  color: var(--ui-color-sec);
+}
+
 .ui-tab.ui-state-hover a,
 .ui-tab.ui-state-active a {
   cursor: pointer !important;
   color: var(--color-sec) !important;
-}
-
-.ui-tab.ui-state-default {
-  background: var(--color-non);
-  border-right: 1px solid var(--color-sep) !important;
 }
 
 /* .ui-tab.ui-state-focus, */
@@ -372,13 +400,13 @@ fieldset > p {
   margin: 0  0 .2em 0;
 }
 
-fieldset,
-legend {
+.menu fieldset,
+.menu legend {
   background: none !important;
   color: var(--ui-color-pri);
 }
 
-legend {
+.menu legend {
   font-size: 9pt;
 }
 
@@ -677,6 +705,14 @@ nav#side-menu .flexBox > * {
   margin-right: 0 !important;
 }
 
+.expand {
+  width: 98%;
+}
+
+.half {
+  width: 48%;
+}
+
 .twin {
   flex: 1;
 }
@@ -809,10 +845,10 @@ ul.column {
   flex: 1;
   align-content: center;
   position:relative;
-  padding: 0 0 100px 0;
+  padding: 0 0 150px 0;
 }
 
-ul.column span.legend {
+ul.column div.buttons {
   border-radius: 3px;
   border: 3px dashed var(--ui-color-sep);
   color: var(--ui-color-sep);
@@ -824,8 +860,12 @@ ul.column span.legend {
   right: 0;
   text-align: center;
   bottom: 15px;
-  width: 100px; /* Need a specific value to work */
+  width: 150px; /* Need a specific value to work */
   z-index: 1 !important;
+}
+
+ul.column div.buttons > button {
+  margin-bottom: .2em;
 }
 
 /* Source */

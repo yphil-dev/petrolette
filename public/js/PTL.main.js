@@ -46,9 +46,9 @@ var PTL = (function() {
           });
 
           $('body').on('click','#newSourceButton', function() {
-            var $openGroupPanel = $($('.ui-tabs-active').find('a').attr('href')).find('.column').first();
+            var $column = $($('.ui-tabs-active').find('a').attr('href')).find('.column').first();
             PTL.sideMenu('close');
-            PTL.src.make($openGroupPanel, 'New Feed', 'mixed', 8, true);
+            PTL.src.add($column, 'New Feed', 'mixed', 8, true);
           });
 
           $sourceCodeButton.click(function(event) {

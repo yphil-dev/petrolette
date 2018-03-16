@@ -387,10 +387,8 @@ PTL.dialog = {
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
-        show: { effect: "blind", duration: 800 },
-        position: { my: "left top", at: "left top" },
         height: 'auto',
-        width: '100%',
+        width: '95%',
         modal: true,
         buttons: [
           {
@@ -541,7 +539,7 @@ PTL.dialog = {
             title: PTL.tr('Add source'),
             class: "translate",
             click: function() {
-              PTL.src.make($('.column').first(), sourceUrl, 'mixed', 8, true);
+              PTL.src.add($('.column').first(), sourceUrl, 'mixed', 8, true);
               PTL.dialog.kill($dialog);
             }
           }

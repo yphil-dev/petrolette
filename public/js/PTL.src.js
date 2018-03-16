@@ -2,11 +2,9 @@
 
 PTL.src = {
 
-  make:function($tab, url, type, limit, clickNew, progress) {
+  add:function($column, url, type, limit, clickNew, progress) {
 
     var feedIndex = $('#tabs').find('.feed').length;
-
-    // console.log('i: ', feedIndex);
 
     var $feedIcon = $('<i>')
         .attr('class', 'source-control feedIcon icon-rss rotate translate')
@@ -51,9 +49,7 @@ PTL.src = {
     });
 
     $feedDelete.click(function() {
-
       PTL.dialog.killFeed($(this));
-
     });
 
     $feedPrefs.click(function() {
@@ -172,10 +168,10 @@ PTL.src = {
     $feedBody.appendTo($feed);
 
     if (clickNew) {
-      $feed.prependTo($tab);
+      $feed.prependTo($column);
       PTL.dialog.feedPrefs($feedPrefs, true);
     } else {
-      $feed.appendTo($tab);
+      $feed.appendTo($column);
       $feedReload.click();
     }
 

@@ -18,28 +18,40 @@ PTL.col = {
   },
   add: function(colIndex, nbOfColumnsInTab, newCol) {
 
-    var $colLegend = $('<span>')
-          .attr('class', 'legend')
-          .text('Column ' + colIndex);
+    var $colButtons = $('<div>')
+        .attr('class', 'buttons');
 
-      var $column = $('<ul>')
-          .attr('id', 'column-' + (colIndex - 1))
-          .attr('class', 'column')
-          .append($colLegend);
+    var $colLegend = $('<legend>')
+        .attr('class', 'legend')
+        .text('Column ' + colIndex);
 
-      var $colNewButton = $('<button>')
-          .attr('class', 'col-new icon-plus')
-          .button()
-          .data('colIndex', colIndex);
+    var $srcLegend = $('<legend>')
+        .attr('class', 'legend')
+        .text('Source');
 
-      var $colDelButton = $('<button>')
-          .attr('class', 'col-del icon-minus')
-          .data('colIndex', colIndex)
-          .button();
+    var $column = $('<ul>')
+        .attr('id', 'column-' + (colIndex - 1))
+        .attr('class', 'column')
+        .append($colButtons);
 
-      $colDelButton.bind('click', function() {
+    var $srcNewButton = $('<button>')
+        .attr('class', 'icon-plus expand')
+        .button()
+        .data('colIndex', colIndex);
 
-        var $column = $(this).parent().parent(),
+    var $colNewButton = $('<button>')
+        .attr('class', 'icon-plus half')
+        .button()
+        .data('colIndex', colIndex);
+
+    var $colDelButton = $('<button>')
+        .attr('class', 'col-del icon-minus half')
+        .data('colIndex', colIndex)
+        .button();
+
+    $colDelButton.bind('click', function() {
+
+      var $column = $(this).parent().parent(),
             $sourcesInCol = $column.find('.feed'),
             nbOfSourcesInCol = $sourcesInCol.length;
 
@@ -105,10 +117,18 @@ PTL.col = {
         }
       }).disableSelection();
 
-    if (nbOfColumnsInTab > 1 || newCol) $colLegend.append($colDelButton);
 
-    $colLegend.append($colNewButton);
+    $colButtons.append($colLegend);
+
+    if (nbOfColumnsInTab > 1 || newCol) $colButtons.append($colDelButton);
+
+
+    $colButtons.append($colNewButton);
+
+    $colButtons.append($srcLegend);
+
+    $colButtons.append($srcNewButton);
 
     return $column;
-    }
+  }
 };
