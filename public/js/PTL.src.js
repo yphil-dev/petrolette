@@ -199,6 +199,7 @@ PTL.src = {
     if (!PTL.utilities.isUrl(feedUrl)) {
 
       console.info('bad URL: (%s)', feedUrl);
+      PTL.utilities.console(PTL.tr('Unrecognized URL: %1', feedUrl), 'warning');
 
       $feedTitle
         .text(PTL.tr("Error"))

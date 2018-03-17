@@ -136,10 +136,15 @@ PTL.i18n.translations = {
   "Move focus to the next tab and immediately activate." : { fr: "Déplace le focus sur l'onglet suivant et active immédiatement." , ja: "フォーカスを次のタブに移動し、すぐにアクティブにします。", es: "Mueva el foco a la siguiente pestaña y actívela de inmediato." },
 
   "Move focus to associated tab." : { fr: "Déplace le focus sur l'onglet associé." , ja: "関連するタブにフォーカスを移動します。", es: "Mueve el foco a la pestaña asociada." },
-  "Move focus to the previous tab and immediately activate." : { fr: "Déplace le focus sur l'onglet précédent et active immédiatement." , ja: "フォーカスを前のタブに移動し、すぐにアクティブにします。", es: "Mueva el foco a la pestaña anterior y actívela de inmediato." },
-  "Move focus to the next tab and immediately activate." : { fr: "Déplace le focus sur l'onglet suivant et active immédiatement." , ja: "フォーカスを次のタブに移動し、すぐにアクティブにします。", es: "Mueva el foco a la siguiente pestaña y actívela de inmediato." },
+
+  "Valid JSON file, but no groups in it" : { fr: "Fichier JSON valide, mais aucun groupe" , ja: "有効なJSONファイルですが、その中にグループはありません", es: "Archivo JSON válido, pero no hay grupos en él" },
+
+
+  "Valid json file with %1 groups in it, but you should put sources in it" : { fr: "Fichier json valide avec %1 groupes, mais vous devriez y mettre des sources" , ja: "%1つのグループがある有効なjsonファイルですが、その中にソースを入れる必要があります", es: "Archivo json válido con %1 grupos, pero debe poner las fuentes en él" },
 
   "Example sources" : { fr: "Exemples de sources" , ja: "情報源の例", es: "Ejemplos de fuentes" },
+
+  "Found %1 groups containing %2 sources" : { fr: "%1 groupes contenant %2 sources" , ja: "%2つのソースを含む%1つのグループが見つかりました", es: "Se encontraron %1 grupos que contienen %2 fuentes" },
 
   "Edit group" : { fr: "Modifier groupe" , ja: "グループの編集", es: "Editar grupo" },
   "Group name" : { fr: "Nom du groupe" , ja: "グループ名", es: "Nombre de la grupo" },
@@ -317,7 +322,9 @@ PTL.i18n.translations = {
   "Just answer the question" : { fr: "Répond juste à la question", ja: "ちょうど質問に答える", es: "Solo responde la pregunta" },
 
   "Group: Kill" : { fr: "Group: Supprimer", ja: "タブ：削除", es: "Grupo: Eliminar" },
-  "Unrecognized URL" : { fr: "URL non reconnue", ja: "認識できないURL", es: "URL no reconocida" },
+  "Unrecognized URL: %1" : { fr: "URL non reconnue: %1", ja: "認識できないURL: %1", es: "URL no reconocida: %1" },
+
+  "Found %1 sources in %2 columns in %3 groups" : { fr: "Trouvé %1 sources dans %2 colonnes dans %3 groupes", ja: "%3つのグループで%2つの列に%1つのソースが見つかりました", es: "Se encontraron %1 fuentes en %2 columnas en %3 grupos" },
 
   "Source Location (URL)" : { fr: "Adresse de la source (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },
   "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse d'une", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del" },

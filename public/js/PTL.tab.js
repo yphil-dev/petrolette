@@ -96,13 +96,13 @@ PTL.tab = {
     sources.forEach(function(group) {
 
       var thisGroup = {},
-          allSources = [];
+          allSources = [],
+          thisTabCols = [];
 
       thisGroup.name = group.name;
 
-      var thisTabCols = [];
       $.each(group.columns, function(k, v) {
-        // console.log('Col: ' + k + ', #feeds: ' + v.length);
+
         var thisColSources = [];
 
         $.each(v, function( k, v ) {
@@ -121,6 +121,7 @@ PTL.tab = {
       PTL.tab.newTab($('#tabs'), thisGroup.name, thisTabCols, progress);
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
+
   },
   newTab:function($tabs, name, columns, progress) {
 

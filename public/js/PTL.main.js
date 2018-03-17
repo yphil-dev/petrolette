@@ -203,18 +203,6 @@ var PTL = (function() {
             }
           });
 
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('plop'));
-          $('#console').prepend($('<div>').text('pl1p'));
-
           // File reader
 
           $fileImportInput.change(function(evt) {
@@ -224,62 +212,27 @@ var PTL = (function() {
             reader.onload = (function() {
               return function(e) {
 
-                function isOk(o) {
-                  var isValid = false;
+                var r = PTL.utilities.isPTLStruct(e.target.result);
 
-                  if (typeof o === 'object')
-                    console.log('o: (%s)', JSON.stringify(o));
+                console.log('plop: (%s), %s, %s', r[0], r[1] > 0, r[2] > 0);
 
-                  o.forEach(function(group) {
-                    // console.log('k: (%s)', JSON.stringify(group.columns));
-
-                    if (group.columns) console.log('has cols!: (%s)');
-
-                    $.each(group.columns, function(k, v) {
-                      $.each(v, function(k, v) {
-                        // console.log('k: (%s)', JSON.stringify(v));
-                        $.each(v, function(k) {
-                          // console.log('k: (%s)', JSON.stringify(k));
-                        });
-                      });
-                    });
-                  });
-
-
-                  if (Object.prototype.toString.call(o) === '[object Array]') {
-                    isValid = o.some(obj => Array.isArray(obj.feeds) && obj.feeds.some(feed => Object.prototype.hasOwnProperty.call(feed, 'url')));
-                  } else {
-                    isValid = false;
-                  }
-                  return isValid;
-                }
-
-                var y = e.target.result;
-
-                function isJsonString(str) {
-                  try {
-                    JSON.parse(str);
-                  } catch (e) {
-                    return false;
-                  }
-                  return true;
-                }
-
-                var p = false;
-
-                if (isJsonString(y)) {
-                  p = JSON.parse(y);
+                if (!r[0]) {
+                  PTL.utilities.console(PTL.tr('INVALID JSON'), 'error');
                 } else {
-                  console.error('Pétrolette | ' + PTL.tr('This file is bad [%1]', f.name));
+                  if (r[1] < 1) {
+                    PTL.utilities.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
+                  }
+
+                  if (r[0] && r[1] > 0 && r[2] < 1) {
+                    PTL.utilities.console(PTL.tr('Valid json file with %1 groups in it, but you should put sources in it', r[1]), 'warning');
+                  }
+
+                  if (r[0] && r[1] > 0 && r[2] > 0)  {
+                    PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', r[1], r[2]), 'ok');
+                  }
                 }
 
-                if (p && isOk(p) === true){
-                  console.info('Pétrolette | ' + PTL.tr('Loading of [%1] OK', f.name));
-                  PTL.tab.populate(p, true);
-                } else {
-                  console.error('Pétrolette | ' + PTL.tr('This file is bad [%1]', f.name));
-                }
-
+                return r[0];
               };
             })(f);
 

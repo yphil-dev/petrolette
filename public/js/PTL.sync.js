@@ -66,16 +66,20 @@ PTL.sync = (function() {
   remoteStorage.on('connected', function() {
     PTL.synchronized = true;
     console.info('Pétrolette | ' + PTL.tr('Connected to remote storage'));
+    PTL.utilities.console(PTL.tr('Connected to remote storage'), 'ok');
   });
 
   remoteStorage.on('not-connected', function() {
     PTL.synchronized = false;
     console.info('Pétrolette | ' + PTL.tr('NOT connected to remote storage'));
+    PTL.utilities.console(PTL.tr('NOT connected to remote storage'), 'warning');
   });
 
   remoteStorage.on('disconnected', function() {
     PTL.synchronized = false;
     console.warn('Pétrolette | ' + PTL.tr('Disconnected from remote storage'));
+    PTL.utilities.console(PTL.tr('Disconnected from remote storage'), 'warning');
+
   });
 
   return {

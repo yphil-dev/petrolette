@@ -548,7 +548,7 @@ PTL.dialog = {
 
           if (!PTL.utilities.isUrl(sourceUrl)) {
             h1 = 'Whoops!';
-            h2 = PTL.tr('Unrecognized URL');
+            h2 = PTL.tr('Unrecognized URL: %1', sourceUrl);
           } else {
             isUrl = true;
             h1 = PTL.tr('New source');
@@ -618,6 +618,8 @@ PTL.dialog = {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
               } else {
                 console.error('Zero tabs!');
+                PTL.utilities.console(PTL.tr('Zero tabs!'), 'error');
+
                 $('#noSourcesButton').fadeIn('slow');
               }
 

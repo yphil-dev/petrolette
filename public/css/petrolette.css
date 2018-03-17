@@ -26,6 +26,7 @@
 
   --ui-color-danger: #C63D0F;
   --ui-color-success: #4db53c;
+  --ui-color-warning: #ff8700;
 
   --columns: auto 3;
 
@@ -153,6 +154,18 @@ div.dialog {
   color: green;
   background-color: black;
   border: 1px solid black;
+}
+
+#console div.error {
+  color: var(--ui-color-danger);
+}
+
+#console div.success {
+  color: var(--ui-color-success);
+}
+
+#console div.warning {
+  color: var(--ui-color-warning);
 }
 
 kbd.key {
