@@ -126,6 +126,7 @@ PTL.tab = {
   newTab:function($tabs, name, columns, progress) {
 
     $('#noSourcesButton').fadeOut('fast');
+    $('#new-group').fadeIn('slow');
 
     var tabIndex = $('ul#tab-names li.tab-name').length + 1;
 
@@ -262,7 +263,7 @@ PTL.tab = {
 
     var $newTabButton = $('<li>')
         .attr('id', 'new-group')
-        .attr('class', 'translate new-group')
+        .attr('class', 'translate new-group invisible')
         .data('title', 'Add a new group')
         .attr('title', PTL.tr('Add a new group'));
 

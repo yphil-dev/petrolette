@@ -214,8 +214,6 @@ var PTL = (function() {
 
                 var r = PTL.utilities.isPTLStruct(e.target.result);
 
-                console.log('plop: (%s), %s, %s', r[0], r[1] > 0, r[2] > 0);
-
                 if (!r[0]) {
                   PTL.utilities.console(PTL.tr('INVALID JSON'), 'error');
                 } else {
@@ -229,10 +227,12 @@ var PTL = (function() {
 
                   if (r[0] && r[1] > 0 && r[2] > 0)  {
                     PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', r[1], r[2]), 'ok');
+
+                    PTL.tab.populate(JSON.parse(e.target.result), true);
                   }
                 }
 
-                return r[0];
+                return r[0] && r[1] > 0 && r[2] > 0;
               };
             })(f);
 
