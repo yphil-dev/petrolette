@@ -40,11 +40,25 @@ PTL.utilities = {
 
     } catch(e) {
       isJson = false;
+      PTL.utilities.console(PTL.tr('Invalid file'), 'error');
     }
 
-    // console.log('plop: (%s)', groups.length);
+    if (isJson) {
 
-    return [isJson, groups.length || 0, sources.length || 0];
+      if (groups.length < 1) {
+        PTL.utilities.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
+      }
+
+      if (isJson && groups.length > 0 && sources.length < 1) {
+        PTL.utilities.console(PTL.tr('Valid json file with %1 groups in it, but you should put sources in it', groups.length), 'warning');
+      }
+
+      if (isJson && groups.length > 0 && sources.length > 0)  {
+        PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', groups.length, sources.length), 'ok');
+      }
+    }
+
+    return isJson;
 
   },
   isValidSourcesFile:function(sources) {

@@ -145,6 +145,7 @@ PTL.i18n.translations = {
   "Example sources" : { fr: "Exemples de sources" , ja: "情報源の例", es: "Ejemplos de fuentes" },
 
   "Found %1 groups containing %2 sources" : { fr: "%1 groupes contenant %2 sources" , ja: "%2つのソースを含む%1つのグループが見つかりました", es: "Se encontraron %1 grupos que contienen %2 fuentes" },
+  "Invalid file" : { fr: "Fichier non valide" , ja: "無効なファイル", es: "Archivo inválido" },
 
   "Edit group" : { fr: "Modifier groupe" , ja: "グループの編集", es: "Editar grupo" },
   "Group name" : { fr: "Nom du groupe" , ja: "グループ名", es: "Nombre de la grupo" },

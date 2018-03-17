@@ -203,37 +203,16 @@ var PTL = (function() {
             }
           });
 
-          // File reader
-
           $fileImportInput.change(function(evt) {
             var f = evt.target.files[0],
                 reader = new FileReader();
 
             reader.onload = (function() {
               return function(e) {
-
-                var r = PTL.utilities.isPTLStruct(e.target.result);
-
-                if (!r[0]) {
-                  PTL.utilities.console(PTL.tr('INVALID JSON'), 'error');
-                } else {
-
-                  if (r[1] < 1) {
-                    PTL.utilities.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
-                  }
-
-                  if (r[0] && r[1] > 0 && r[2] < 1) {
-                    PTL.utilities.console(PTL.tr('Valid json file with %1 groups in it, but you should put sources in it', r[1]), 'warning');
-                  }
-
-                  if (r[0] && r[1] > 0 && r[2] > 0)  {
-                    PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', r[1], r[2]), 'ok');
-
-                    PTL.tab.populate(JSON.parse(e.target.result), true);
-                  }
+                if (PTL.utilities.isPTLStruct(e.target.result)) {
+                  PTL.tab.empty();
+                  PTL.tab.populate(JSON.parse(e.target.result), true);
                 }
-
-                return r[0] && r[1] > 0 && r[2] > 0;
               };
             })(f);
 

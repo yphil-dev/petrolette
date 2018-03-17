@@ -123,6 +123,14 @@ PTL.tab = {
     });
 
   },
+  empty:function() {
+
+    $('div#tabs ul li').remove();
+    $('div#tabs div').remove();
+    $('#noSourcesButton').fadeIn('slow');
+    // PTL.tab.saveTabs();
+    PTL.tab.makeNewTabButton($('div#tabs'));
+  },
   newTab:function($tabs, name, columns, progress) {
 
     $('#noSourcesButton').fadeOut('fast');
