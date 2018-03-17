@@ -4,6 +4,7 @@ var PTL = (function() {
 
   return {
     // language: Prefs.readConfig('lang'),
+    sourceTypes: ['text', 'mixed', 'photo'],
     language: 'en',
     start : function() {
 

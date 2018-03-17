@@ -124,11 +124,9 @@ PTL.tab = {
 
   },
   empty:function() {
-
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
     $('#noSourcesButton').fadeIn('slow');
-    // PTL.tab.saveTabs();
     PTL.tab.makeNewTabButton($('div#tabs'));
   },
   newTab:function($tabs, name, columns, progress) {
@@ -211,7 +209,13 @@ PTL.tab = {
 
       if (!newTab) {
         sources.forEach(function(source) {
-          PTL.src.add($column, source.url, source.type, source.limit, false, progress);
+
+          var type = PTL.sourceTypes.includes(source.type) ? source.type : 'mixed';
+          var limit = Number.isInteger(source.limit) ? source.limit : 8;
+
+          console.log('source.type: %s (%s)', type, ['text', 'mixed', 'photo'].includes(source.type));
+
+          PTL.src.add($column, source.url || PTL.tr('Unrecognized URL'), type, limit, false, progress);
         });
       }
 

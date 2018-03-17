@@ -323,6 +323,8 @@ PTL.i18n.translations = {
   "Just answer the question" : { fr: "Répond juste à la question", ja: "ちょうど質問に答える", es: "Solo responde la pregunta" },
 
   "Group: Kill" : { fr: "Group: Supprimer", ja: "タブ：削除", es: "Grupo: Eliminar" },
+  "Unrecognized URL" : { fr: "URL non reconnue", ja: "認識できないURL", es: "URL no reconocida" },
+
   "Unrecognized URL: %1" : { fr: "URL non reconnue: %1", ja: "認識できないURL: %1", es: "URL no reconocida: %1" },
 
   "Found %1 sources in %2 columns in %3 groups" : { fr: "Trouvé %1 sources dans %2 colonnes dans %3 groupes", ja: "%3つのグループで%2つの列に%1つのソースが見つかりました", es: "Se encontraron %1 fuentes en %2 columnas en %3 grupos" },
