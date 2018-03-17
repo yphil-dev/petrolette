@@ -126,7 +126,7 @@ PTL.tab = {
   newTab:function($tabs, name, columns, progress) {
 
     $('#noSourcesButton').fadeOut('fast');
-    $('#new-group').fadeIn('slow');
+    $('#new-group').removeClass('invisible');
 
     var tabIndex = $('ul#tab-names li.tab-name').length + 1;
 

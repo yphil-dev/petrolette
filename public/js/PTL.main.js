@@ -217,6 +217,7 @@ var PTL = (function() {
                 if (!r[0]) {
                   PTL.utilities.console(PTL.tr('INVALID JSON'), 'error');
                 } else {
+
                   if (r[1] < 1) {
                     PTL.utilities.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
                   }
