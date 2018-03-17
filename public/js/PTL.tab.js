@@ -80,7 +80,7 @@ PTL.tab = {
   },
   populate:function(sources) {
 
-    console.log('sources: (%s)', sources);
+    // console.log('sources: (%s)', sources);
 
     var nbOfSources = 0,
         progress = PTL.utilities.buildProgress();
@@ -122,7 +122,7 @@ PTL.tab = {
       });
       PTL.tab.newTab($('#tabs'), thisGroup.name, thisTabCols, progress);
 
-      console.log('thisTabColsA: (%s)', JSON.stringify(thisTabCols));
+      // console.log('thisTabColsA: (%s)', JSON.stringify(thisTabCols));
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
 
@@ -201,8 +201,6 @@ PTL.tab = {
       newTab = true;
       columns = ['empty'];
     }
-
-    console.log('columns: (%s)', columns);
 
     var colIndex = 1,
         nbOfColumnsInTab = columns.length;

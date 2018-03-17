@@ -7,7 +7,6 @@ PTL.utilities = {
                           .text(output));
   },
   isUrl:function(url) {
-    console.log('url: (%s)', url);
     return (url.indexOf('http') === 0);
   },
   isOldPTLStruct:function(o) {
@@ -18,22 +17,21 @@ PTL.utilities = {
       var columns = [];
       var column = [];
       var group = {};
-      var allCols = [];
-
-      console.log('g: (%s)', g);
-
-      $.each(g.feeds, function(k, v) {
-        // console.log('k: %s (group %s)', JSON.stringify(v), g.name);
-        column.push(v);
-        // $.each(v, function(k, v) {
-        // });
-      });
-      columns.push(column);
 
       group.name = g.name;
-      // console.log('group.name: (%s) group.feeds: %s', group.name, group.feeds);
+
+      $.each(g.feeds, function(k, v) {
+        console.log('k, v: %s %s', JSON.stringify(k), JSON.stringify(v));
+
+        if (k === 'url') {
+          console.log('wopop!: (%s)');
+        }
+
+        column.push(v);
+
+      });
+
       columns.push(column);
-      allCols.push(columns);
       group.columns = columns;
       groups.push(group);
     });
