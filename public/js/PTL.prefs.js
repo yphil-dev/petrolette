@@ -106,7 +106,7 @@ PTL.prefs = (function() {
 
       $('div#logo-title i').addClass('writing');
 
-      if (key === 'tabs') {
+      if (key === 'sources') {
         localStorage.setItem('writeTime', Date.now());
       }
 

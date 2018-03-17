@@ -2,33 +2,48 @@
 
 PTL.utilities = {
   console:function(output, type) {
+
+    var $lines = $('#console div');
+
+    var d = new Date();
+
+    console.info('Pétrolette | %s (%s)', output, d.toLocaleString());
+
+    var $prompt = $('<span>')
+        .attr('class', 'prompt')
+        .text('#');
+    var $line = $('<span>').text(output);
+
     $('#console').prepend($('<div>')
-                          .attr('class', type)
-                          .text(output));
+                          .attr('class', type || 'normal')
+                          .attr('title', d.toLocaleString())
+                          .append($prompt, $line));
+
+    if ($lines.length > 50) {
+      $lines.last().remove();
+    }
+
   },
   isUrl:function(url) {
     return (url.indexOf('http') === 0);
   },
   isOldPTLStruct:function(o) {
     PTL.tab.empty();
-    var groups = [];
+    var groups = [],
+        nbGroups = 0,
+        nbSources = 0;
 
     JSON.parse(o).forEach(function(g) {
-      var columns = [];
-      var column = [];
-      var group = {};
+      var columns = [],
+          column = [],
+          group = {};
 
+      nbGroups++;
       group.name = g.name;
 
       $.each(g.feeds, function(k, v) {
-        console.log('k, v: %s %s', JSON.stringify(k), JSON.stringify(v));
-
-        if (k === 'url') {
-          console.log('wopop!: (%s)');
-        }
-
+        nbSources++;
         column.push(v);
-
       });
 
       columns.push(column);
@@ -36,18 +51,9 @@ PTL.utilities = {
       groups.push(group);
     });
 
-    // groups.forEach(function(group) {
-
-    //   console.log('group: (%s)', JSON.stringify(group));
-
-    //   PTL.tab.populate(group, true);
-    // });
+    PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', nbGroups, nbSources), 'success');
 
     PTL.tab.populate(groups, true);
-
-    // PTL.tab.populate(groups, true);
-
-    // console.log('grp: (%s)', JSON.stringify(groups));
   },
   isPTLStruct:function(o) {
 
@@ -59,17 +65,13 @@ PTL.utilities = {
     try {
       var json = JSON.parse(o);
 
+      PTL.utilities.console(PTL.tr('File OK'), 'success');
+
       isJson = true;
 
       json.forEach(function(group) {
 
         groups.push(group);
-
-        var thisGroup = {};
-
-        thisGroup.name = group.name;
-
-        console.log('group.column: (%s)', 'feeds' in group);
 
         if ('feeds' in group) {
           isJson = false;
@@ -95,21 +97,20 @@ PTL.utilities = {
     if (isJson) {
 
       if (groups.length < 1) {
-        PTL.utilities.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
+        // PTL.utilities.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
       }
 
       if (isJson && groups.length > 0 && sources.length < 1) {
-        PTL.utilities.console(PTL.tr('Valid json file with %1 groups in it, but you should put sources in it', groups.length), 'warning');
+        // PTL.utilities.console(PTL.tr('Valid json file with %1 groups in it, but you should put sources in it', groups.length), 'warning');
       }
 
       if (isJson && groups.length > 0 && sources.length > 0)  {
-        PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', groups.length, sources.length), 'ok');
+        // PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', groups.length, sources.length), 'ok');
       }
-    } else {
-      PTL.utilities.console(PTL.tr('Invalid file'), 'error');
     }
 
     if (isOldPTLStruct) {
+      PTL.utilities.console(PTL.tr('Old Pétrolette file format: converting'), 'warning');
       PTL.utilities.isOldPTLStruct(o);
     }
 
@@ -367,7 +368,6 @@ PTL.utilities = {
     return l;
   },
   buildProgress : function() {
-
 
     var progress = { step: 0 };
 

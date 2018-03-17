@@ -9,6 +9,11 @@
   --ui-color-oct: #2b2b2b;
 
   --ui-color-title-one: #ff4136;
+  --ui-color-console-bg: #002b36;
+  --ui-color-message-normal: #268bd2;
+  --ui-color-message-error: #dc322f;
+  --ui-color-message-success: #859900;
+  --ui-color-message-warning: #b58900;
 
   --ui-color-rss: #f26522;
 
@@ -143,29 +148,38 @@ div.dialog {
 #console {
   display: flex;
   flex-direction: column-reverse;
-  overflow: hidden;
+  overflow-y: scroll;
   height: 100px;
   max-height: 100px;
-  font-size: 8pt;
+  font-size: 7pt;
   font-family: monospace;
   width: 100%;
-  border-radius: 3px;
   padding: .2em;
-  color: green;
-  background-color: black;
-  border: 1px solid black;
+  color: var(--ui-color-message-normal);
+  background-color: var(--ui-color-oct);
+  border: 1px solid var(--ui-color-console);
+}
+
+#console > div > span.prompt {
+  margin-right: 3px;
+  font-weight: 900;
+  color: var(--ui-color-pri);
+}
+
+#console div.normal {
+  color: var(--ui-color-message-normal);
 }
 
 #console div.error {
-  color: var(--ui-color-danger);
+  color: var(--ui-color-message-error);
 }
 
 #console div.success {
-  color: var(--ui-color-success);
+  color: var(--ui-color-message-success);
 }
 
 #console div.warning {
-  color: var(--ui-color-warning);
+  color: var(--ui-color-message-warning);
 }
 
 kbd.key {
@@ -216,13 +230,20 @@ a:active {
   padding: 0;
 }
 
-/* a.ui-button:nth-child(1) */
+.ui-tab#new-group {
+  width: 40px;
+}
+
+.ui-tab#new-group {
+  background-color: var(--color-qua);
+}
 
 .ui-tab.ui-state-default {
   background: var(--color-non);
   border-right: 1px solid var(--color-sep) !important;
 }
 
+.ui-tab#new-group:hover,
 .ui-tab.ui-state-hover {
   background: var(--color-sep);
 }
@@ -261,16 +282,6 @@ a:active {
 #tab-names,
 #tabs {
   background: none;
-}
-
-#new-group {
-  width: 40px;
-}
-
-#new-group a:link {
-  color: var(--color-pri);
-  background-color: var(--color-qua);
-  font-size: 1em;
 }
 
 i.item-icon {

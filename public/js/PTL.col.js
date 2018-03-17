@@ -135,7 +135,7 @@ PTL.col = {
 
     $colButtons.append($srcNewButton);
 
-    PTL.tab.saveTabs();
+    // PTL.tab.saveTabs();
 
     return $column;
   }

@@ -8,220 +8,216 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
+      PTL.utilities.console(PTL.tr('Pétrolette starting up'));
+
       $('nav#top-menu')
         .load('/static/templates/menu.html div#topnav', null);
 
-      $('nav#side-menu')
-        .load('/static/templates/menu.html div#side-menu', function () {
+      var $menu = $('nav#side-menu'),
+          $overlay = $('#overlay'),
+          $sourceCodeButton = $('button#sourceCode'),
+          $importButton = $("button#fileImport"),
+          $fileImportInput = $("input#fileImport"),
+          $saveButton = $('#saveTabs'),
+          $langMenu = $('select#language'),
+          $slider = $('div#gallerySpeedSlider'),
+          $spinner = $('#gallerySpeedSpinner');
 
-          var $menu = $(this),
-              $overlay = $('#overlay'),
-              $sourceCodeButton = $('button#sourceCode'),
-              $importButton = $("button#fileImport"),
-              $fileImportInput = $("input#fileImport"),
-              $saveButton = $('#saveTabs'),
-              $langMenu = $('select#language'),
-              $slider = $('div#gallerySpeedSlider'),
-              $spinner = $('#gallerySpeedSpinner');
+      PTL.sync.attachWidget();
 
-          PTL.sync.attachWidget();
+      $('button').button();
 
-          $('button').button();
+      $('h3.rs-small-headline, h1.rs-big-headline').text(PTL.tr('Connection to storage'));
+      $('span.rs-sub-headline').text(PTL.tr('To synchronize the sources across devices'));
+      $('div.rs-sign-in-error').text(PTL.tr('To synchronize the sources across devices'));
 
-          $('h3.rs-small-headline, h1.rs-big-headline').text(PTL.tr('Connection to storage'));
-          $('span.rs-sub-headline').text(PTL.tr('To synchronize the sources across devices'));
-          $('div.rs-sign-in-error').text(PTL.tr('To synchronize the sources across devices'));
+      $('input.rs-connect')
+        .val(PTL.tr('Synchronize'))
+        .button();
 
-          $('input.rs-connect')
-            .val(PTL.tr('Synchronize'))
-            .button();
+      $('a.rs-help').text(PTL.tr('More info'));
 
-          $('a.rs-help').text(PTL.tr('More info'));
+      $('body').on('click','#menuButton', function() {
+        PTL.sideMenu('toggle');
+      });
 
-          $('body').on('click','#menuButton', function() {
-            PTL.sideMenu('toggle');
-          });
+      $('body').on('click','.help-button', function() {
+        PTL.dialog.help();
+      });
 
-          $('body').on('click','.help-button', function() {
-            PTL.dialog.help();
-          });
+      $('body').on('click','.new-source-button', function() {
 
-          $('body').on('click','.new-source-button', function() {
+        var $column;
 
-            var $column;
+        console.log('this: (%s)', $(this).attr('class'));
 
-            console.log('this: (%s)', $(this).attr('class'));
+        if ($(this).hasClass('button-column')) {
+          $column = $(this).parent().parent();
+        } else {
+          $column = $($('.ui-tabs-active')
+                      .find('a')
+                      .attr('href'))
+            .find('.column').first();
+        }
 
-            if ($(this).hasClass('button-column')) {
-              $column = $(this).parent().parent();
-            } else {
-              $column = $($('.ui-tabs-active')
-                          .find('a')
-                          .attr('href'))
-                .find('.column').first();
-            }
+        PTL.sideMenu('close');
+        PTL.src.add($column, 'New Feed', 'mixed', 8, true);
+      });
 
-            PTL.sideMenu('close');
-            PTL.src.add($column, 'New Feed', 'mixed', 8, true);
-          });
+      $sourceCodeButton.click(function(event) {
+        event.preventDefault();
+        window.open('https://framagit.org/yphil/petrolette');
+      });
 
-          $sourceCodeButton.click(function(event) {
-            event.preventDefault();
-            window.open('https://framagit.org/yphil/petrolette');
-          });
+      $overlay.click(function() {
+        PTL.sideMenu('close');
+      });
 
-          $overlay.click(function() {
-            PTL.sideMenu('close');
-          });
+      $(document).keydown(function(event) {
+        if (event.keyCode === $.ui.keyCode.ESCAPE) {
+          $('.column' ).sortable('cancel');
+        }
+      });
 
-          $(document).keydown(function(event) {
-            if (event.keyCode === $.ui.keyCode.ESCAPE) {
-              $('.column' ).sortable('cancel');
-            }
-          });
+      var $widget = $('#remotestorage-widget');
 
-          var $widget = $('#remotestorage-widget');
+      var $readMore = $('<a>')
+          .attr('class', 'rs-help')
+          .attr('href', 'https:remotestorage.io/')
+          .text(PTL.tr('Read more.'));
 
-          var $readMore = $('<a>')
-              .attr('class', 'rs-help')
-              .attr('href', 'https:remotestorage.io/')
-              .text(PTL.tr('Read more.'));
+      $widget.find('.rs-short-desc').text(PTL.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
+        .append($readMore);
 
-          $widget.find('.rs-short-desc').text(PTL.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
-            .append($readMore);
+      var $fuckingButton =  $widget.find('.rs-choose-rs');
 
-          var $fuckingButton =  $widget.find('.rs-choose-rs');
+      $fuckingButton.css('border-color', '#f00');
 
-          $fuckingButton.css('border-color', '#f00');
+      $fuckingButton.click(function (event) {
+        event.preventDefault();
+      });
 
-          $fuckingButton.click(function (event) {
-            event.preventDefault();
-          });
+      PTL.utilities.translate();
 
-          PTL.utilities.translate();
+      $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
 
-          $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
+      $langMenu.change(function() {
+        var selectedLang = $(this).val();
+        PTL.language = selectedLang;
+        PTL.prefs.writeConfig('lang', selectedLang);
+        PTL.utilities.translate();
+      });
 
-          $langMenu.change(function() {
-            var selectedLang = $(this).val();
-            PTL.language = selectedLang;
-            PTL.prefs.writeConfig('lang', selectedLang);
-            PTL.utilities.translate();
-          });
+      $importButton.click(function () {
+        $("input#fileImport").click();
+        return false;
+      });
 
-          $importButton.click(function () {
-            $("input#fileImport").click();
-            return false;
-          });
+      $saveButton.click(function () {
+        PTL.prefs.exportConfig(PTL.tab.list(), 'petrolette.conf');
+        return false;
+      });
 
-          $saveButton.click(function () {
-            PTL.prefs.exportConfig(PTL.tab.list(), 'petrolette.conf');
-            return false;
-          });
+      $(".checkboxradio").checkboxradio({
+        icon: false
+      });
 
-          $(".checkboxradio").checkboxradio({
-            icon: false
-          });
+      $(this).find('input#' + PTL.prefs.readConfig('theme')).prop("checked", true)
+        .checkboxradio('refresh');
 
-          $(this).find('input#' + PTL.prefs.readConfig('theme')).prop("checked", true)
-            .checkboxradio('refresh');
+      $('.themeSwitcher').change(function() {
 
-          $('.themeSwitcher').change(function() {
+        $("#theme").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
 
-            $("#theme").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
+        PTL.prefs.writeConfig('theme', $(this).attr('value'));
 
-            PTL.prefs.writeConfig('theme', $(this).attr('value'));
+      });
 
-          });
+      var gallerySlideshowSpeed = PTL.prefs.readConfig('gallerySlideshowSpeed');
+      var gallerySlideTransition = PTL.prefs.readConfig('gallerySlideTransition');
 
-          var gallerySlideshowSpeed = PTL.prefs.readConfig('gallerySlideshowSpeed');
-          var gallerySlideTransition = PTL.prefs.readConfig('gallerySlideTransition');
+      // $.fancybox.defaults.thumbs.autoStart = true;
+      $.fancybox.defaults.transitionEffect = gallerySlideTransition;
+      $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
 
-          // $.fancybox.defaults.thumbs.autoStart = true;
-          $.fancybox.defaults.transitionEffect = gallerySlideTransition;
-          $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
+      $menu.find('select#gallerySlideTransition').change(function() {
+        $.fancybox.defaults.transitionEffect = $(this).val();
+        PTL.prefs.writeConfig('gallerySlideTransition', $(this).val());
+      });
 
-          $menu.find('select#gallerySlideTransition').change(function() {
-            $.fancybox.defaults.transitionEffect = $(this).val();
-            PTL.prefs.writeConfig('gallerySlideTransition', $(this).val());
-          });
+      $menu.find('select#gallerySlideTransition').val(gallerySlideTransition);
 
-          $menu.find('select#gallerySlideTransition').val(gallerySlideTransition);
+      if (PTL.prefs.readConfig('tabDropActivate') === 'true')
+        $('input#tabDropActivate').prop('checked', true).checkboxradio('refresh');
+      else
+        $('input#tabDropActivate').prop('checked', false).checkboxradio('refresh');
 
-          if (PTL.prefs.readConfig('tabDropActivate') === 'true')
-            $('input#tabDropActivate').prop('checked', true).checkboxradio('refresh');
-          else
-            $('input#tabDropActivate').prop('checked', false).checkboxradio('refresh');
+      $('input#tabDropActivate').change(function() {
+        PTL.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
+      });
 
-          $('input#tabDropActivate').change(function() {
-            PTL.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
-          });
+      $spinner.spinner({
+        min: 0.5,
+        max: 10000,
+        step: 0.5,
+        classes: {
+          "ui-spinner": "shrink ui-corner-all",
+          "ui-spinner-down": "ui-corner-br",
+          "ui-spinner-up": "ui-corner-tr"
+        }
+      });
 
-          $spinner.spinner({
-            min: 0.5,
-            max: 10000,
-            step: 0.5,
-            classes: {
-              "ui-spinner": "shrink ui-corner-all",
-              "ui-spinner-down": "ui-corner-br",
-              "ui-spinner-up": "ui-corner-tr"
-            }
-          });
+      $spinner.spinner('value', PTL.utilities.milliToSecs(gallerySlideshowSpeed));
 
-          $spinner.spinner('value', PTL.utilities.milliToSecs(gallerySlideshowSpeed));
+      $spinner.on( 'spinstop', function() {
+        $slider.slider( 'option', 'value', $(this).val() * 1000);
+        $('.ui-slider-handle').text(PTL.utilities.milliToSecs($(this).val() * 1000) + 's');
+      });
 
-          $spinner.on( 'spinstop', function() {
-            $slider.slider( 'option', 'value', $(this).val() * 1000);
-            $('.ui-slider-handle').text(PTL.utilities.milliToSecs($(this).val() * 1000) + 's');
-          });
+      $slider.slider({
+        classes: {
+          "ui-slider": "grow ui-corner-all",
+          "ui-slider-handle": "ui-corner-all",
+          "ui-slider-range": "ui-corner-all ui-widget-header"
+        },
+        value: gallerySlideshowSpeed,
+        min: 500,
+        max: 10000,
+        step: 500,
+        create: function() {
+          $(this).find('.ui-slider-handle').text(PTL.utilities.milliToSecs(gallerySlideshowSpeed) + 's');
+        },
+        slide: function(event, ui) {
+          // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
+          $spinner.val(PTL.utilities.milliToSecs(ui.value));
+          $(this).find('.ui-slider-handle').text(PTL.utilities.milliToSecs(ui.value) + 's');
 
-          $slider.slider({
-            classes: {
-              "ui-slider": "grow ui-corner-all",
-              "ui-slider-handle": "ui-corner-all",
-              "ui-slider-range": "ui-corner-all ui-widget-header"
-            },
-            value: gallerySlideshowSpeed,
-            min: 500,
-            max: 10000,
-            step: 500,
-            create: function() {
-              $(this).find('.ui-slider-handle').text(PTL.utilities.milliToSecs(gallerySlideshowSpeed) + 's');
-            },
-            slide: function(event, ui) {
-              // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-              $spinner.val(PTL.utilities.milliToSecs(ui.value));
-              $(this).find('.ui-slider-handle').text(PTL.utilities.milliToSecs(ui.value) + 's');
-
-            },
-            change: function(event, ui) {
-              PTL.prefs.writeConfig('gallerySlideshowSpeed', ui.value);
-              $('#tabs').find("[data-fancybox]").fancybox({
-                slideShow: {
-                  speed: ui.value
-                }
-              });
+        },
+        change: function(event, ui) {
+          PTL.prefs.writeConfig('gallerySlideshowSpeed', ui.value);
+          $('#tabs').find("[data-fancybox]").fancybox({
+            slideShow: {
+              speed: ui.value
             }
           });
+        }
+      });
 
-          $fileImportInput.change(function(evt) {
-            var f = evt.target.files[0],
-                reader = new FileReader();
+      $fileImportInput.change(function(evt) {
+        var f = evt.target.files[0],
+            reader = new FileReader();
 
-            reader.onload = (function() {
-              return function(e) {
-                if (PTL.utilities.isPTLStruct(e.target.result)) {
-                  PTL.tab.empty();
-                  // PTL.tab.populate(JSON.parse(e.target.result), true);
-                }
-              };
-            })(f);
+        reader.onload = (function() {
+          return function(e) {
+            if (PTL.utilities.isPTLStruct(e.target.result)) {
+              PTL.tab.empty();
+              // PTL.tab.populate(JSON.parse(e.target.result), true);
+            }
+          };
+        })(f);
 
-            reader.readAsText(f);
-
-          });
-
-        });
+        reader.readAsText(f);
+      });
     },
     sideMenu: function(action) {
 

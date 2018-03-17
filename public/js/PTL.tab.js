@@ -74,24 +74,30 @@ PTL.tab = {
   },
   saveTabs:function() {
     var sources = PTL.tab.list();
-    // console.log('sources : (%s)', JSON.stringify(sources));
+    console.log('sources LIST : (%s)', JSON.stringify(sources));
     PTL.prefs.writeConfig('sources', JSON.stringify(sources));
-    PTL.sync.writeSync(JSON.stringify(sources));
+    // PTL.sync.writeSync(JSON.stringify(sources));
   },
   populate:function(sources) {
 
-    // console.log('sources: (%s)', sources);
+    console.log('sources: (%s)', sources);
 
-    var nbOfSources = 0,
+    var nbOfGroups = 0,
+        nbOfSources = 0,
         progress = PTL.utilities.buildProgress();
 
     sources.forEach(function(group) {
+      nbOfGroups++;
       $.each(group.columns, function(k, v) {
         $.each(v, function() {
           nbOfSources++;
         });
       });
     });
+
+    console.log('nbOfGroups, nbOfSources: (%s) %s', nbOfGroups, nbOfSources);
+
+    PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', nbOfGroups, nbOfSources), 'ok');
 
     progress.init(nbOfSources);
 
@@ -130,10 +136,12 @@ PTL.tab = {
   empty:function() {
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
-    $('#noSourcesButton').fadeIn('slow');
-    PTL.tab.makeNewTabButton($('div#tabs'));
+    // $('#noSourcesButton').fadeIn('slow');
+    // PTL.tab.makeNewTabButton($('div#tabs'));
   },
   newTab:function($tabs, name, columns, progress) {
+
+    console.log('columns: (%s)', columns);
 
     $('#noSourcesButton').fadeOut('fast');
     $('#new-group').removeClass('invisible');
@@ -229,12 +237,14 @@ PTL.tab = {
     $tabs.tabs('refresh');
     $tabs.tabs( "option", "active", 0);
 
-    $('#ui-id-1').focus();
+    // $('#ui-id-1').focus();
   },
   list:function(type) {
 
     var $groupNodes = $('#tab-names > li.tab-name'),
         groups = [];
+
+    console.log('$groupNodes in: (%s)', $groupNodes.length);
 
     $groupNodes.each(function() {
 
@@ -268,6 +278,8 @@ PTL.tab = {
       group.columns = columns;
       groups.push(group);
     });
+
+    console.log('$groupNodes out: (%s)', $groupNodes.length);
 
     return groups;
 
