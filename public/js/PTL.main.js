@@ -212,7 +212,7 @@ var PTL = (function() {
               return function(e) {
                 if (PTL.utilities.isPTLStruct(e.target.result)) {
                   PTL.tab.empty();
-                  PTL.tab.populate(JSON.parse(e.target.result), true);
+                  // PTL.tab.populate(JSON.parse(e.target.result), true);
                 }
               };
             })(f);

@@ -7,11 +7,54 @@ PTL.utilities = {
                           .text(output));
   },
   isUrl:function(url) {
+    console.log('url: (%s)', url);
     return (url.indexOf('http') === 0);
+  },
+  isOldPTLStruct:function(o) {
+    PTL.tab.empty();
+    var groups = [];
+
+    JSON.parse(o).forEach(function(g) {
+      var columns = [];
+      var column = [];
+      var group = {};
+      var allCols = [];
+
+      console.log('g: (%s)', g);
+
+      $.each(g.feeds, function(k, v) {
+        // console.log('k: %s (group %s)', JSON.stringify(v), g.name);
+        column.push(v);
+        // $.each(v, function(k, v) {
+        // });
+      });
+      columns.push(column);
+
+      group.name = g.name;
+      // console.log('group.name: (%s) group.feeds: %s', group.name, group.feeds);
+      columns.push(column);
+      allCols.push(columns);
+      group.columns = columns;
+      groups.push(group);
+    });
+
+    // groups.forEach(function(group) {
+
+    //   console.log('group: (%s)', JSON.stringify(group));
+
+    //   PTL.tab.populate(group, true);
+    // });
+
+    PTL.tab.populate(groups, true);
+
+    // PTL.tab.populate(groups, true);
+
+    // console.log('grp: (%s)', JSON.stringify(groups));
   },
   isPTLStruct:function(o) {
 
     var isJson = false,
+        isOldPTLStruct = false,
         groups = [],
         sources = [];
 
@@ -28,14 +71,22 @@ PTL.utilities = {
 
         thisGroup.name = group.name;
 
-        $.each(group.columns, function(k, v) {
+        console.log('group.column: (%s)', 'feeds' in group);
 
-          $.each(v, function() {
-            var thisSource = {};
-            sources.push(thisSource);
+        if ('feeds' in group) {
+          isJson = false;
+          isOldPTLStruct = true;
+        } else {
+
+          $.each(group.columns, function(k, v) {
+
+            $.each(v, function() {
+              var thisSource = {};
+              sources.push(thisSource);
+            });
+
           });
-
-        });
+        }
       });
 
     } catch(e) {
@@ -56,6 +107,12 @@ PTL.utilities = {
       if (isJson && groups.length > 0 && sources.length > 0)  {
         PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', groups.length, sources.length), 'ok');
       }
+    } else {
+      PTL.utilities.console(PTL.tr('Invalid file'), 'error');
+    }
+
+    if (isOldPTLStruct) {
+      PTL.utilities.isOldPTLStruct(o);
     }
 
     return isJson;

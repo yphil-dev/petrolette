@@ -80,6 +80,8 @@ PTL.tab = {
   },
   populate:function(sources) {
 
+    console.log('sources: (%s)', sources);
+
     var nbOfSources = 0,
         progress = PTL.utilities.buildProgress();
 
@@ -119,6 +121,8 @@ PTL.tab = {
         thisTabCols.push(thisColSources);
       });
       PTL.tab.newTab($('#tabs'), thisGroup.name, thisTabCols, progress);
+
+      console.log('thisTabColsA: (%s)', JSON.stringify(thisTabCols));
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
 
@@ -198,28 +202,27 @@ PTL.tab = {
       columns = ['empty'];
     }
 
+    console.log('columns: (%s)', columns);
+
     var colIndex = 1,
         nbOfColumnsInTab = columns.length;
 
     columns.forEach(function(sources) {
 
-      var $column = PTL.col.add(colIndex, nbOfColumnsInTab);
+      var $column = PTL.col.add(colIndex++, nbOfColumnsInTab);
 
       $column.appendTo($tabPanel);
 
       if (!newTab) {
         sources.forEach(function(source) {
 
-          var type = PTL.sourceTypes.includes(source.type) ? source.type : 'mixed';
-          var limit = Number.isInteger(source.limit) ? source.limit : 8;
+          var url = PTL.utilities.isUrl(source.url) ? source.url : PTL.tr('Unrecognized URL'),
+              type = PTL.sourceTypes.includes(source.type) ? source.type : 'mixed',
+              limit = Number.isInteger(source.limit) ? source.limit : 8;
 
-          console.log('source.type: %s (%s)', type, ['text', 'mixed', 'photo'].includes(source.type));
-
-          PTL.src.add($column, source.url || PTL.tr('Unrecognized URL'), type, limit, false, progress);
+          PTL.src.add($column, url, type, limit, false, progress);
         });
       }
-
-      colIndex++;
 
     });
 
