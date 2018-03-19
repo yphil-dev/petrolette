@@ -391,9 +391,12 @@ li.source-item.error > strong.key {
   background-color: rgba(0,0,0,0.2);
 }
 
-.hidden,
-.invisible {
+.hidden {
   display:none;
+}
+
+#new-group.hidden {
+  display:none !important;
 }
 
 input {
@@ -414,22 +417,6 @@ input#feed-guess {
   text-align:center;
   top: 50%;
   width: 300px;
-}
-
-#noSourcesButton > div {
-  color: var(--color-pri);
-  font-size: 12pt;
-}
-
-#noSourcesButton > div > i {
-  line-height: 0;
-  font-size: 8em;
-}
-
-#noSourcesButton > div > div {
-  margin: 2em 0 0 0;
-  color: var(--color-pri);
-  font-size: 12pt;
 }
 
 select {
@@ -528,7 +515,7 @@ nav#side-menu,
 /*   cursor: pointer; */
 /* } */
 
-i.tabCloser {
+i.tab-closer {
   cursor: pointer;
   display: none;
   font-size: .7em;
@@ -1245,12 +1232,12 @@ div#logo-title {
   cursor: pointer;
   font-size:24pt;
   margin: 6px 12px 6px 6px;
-  color: var(--ui-color-pri);
+  color: var(--ui-color-sec);
 }
 
 i.icon-petrolette:hover,
 i.icon-petrolette.writing {
-  color: var(--ui-color-sec);
+  color: var(--ui-color-pri);
 }
 
 i.icon-petrolette:before {

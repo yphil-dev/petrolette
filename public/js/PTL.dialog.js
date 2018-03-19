@@ -615,8 +615,6 @@ PTL.dialog = {
               } else {
                 console.error('Zero tabs!');
                 PTL.util.console(PTL.tr('Zero tabs!'), 'error');
-
-                $('#noSourcesButton').fadeIn('slow');
               }
 
             }

@@ -132,26 +132,6 @@ PTL.util = {
   isImage:function(string) {
     return (['jpg', 'png'].indexOf(string.split('.').pop()) >= 0);
   },
-  noSourcesButton:function() {
-
-    var $loadingSpinner = $('<i>')
-        .attr('class', 'icon-arrows-cw spin');
-
-    var $noSourcesText = $('<div>').text('Loading sources');
-
-    var $noSourcesButton = $('<div>')
-        .append($loadingSpinner)
-        .append('<br>')
-        .append($noSourcesText);
-
-    var $noSourcesButtonContainer = $('<div>')
-        .attr('id', 'noSourcesButton')
-        .attr('class', 'deadCenter')
-        .append($noSourcesButton);
-
-    $('main').append($noSourcesButtonContainer);
-
-  },
   vWidth:function() {
 
     var vWidth = $(window).width(),

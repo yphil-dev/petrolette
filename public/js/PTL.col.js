@@ -86,8 +86,6 @@ PTL.col = {
 
         $newColumn.insertAfter($column);
 
-        // PTL.util.reOrderColButtons($(this));
-
       });
 
     $column.sortable({
@@ -132,10 +130,6 @@ PTL.col = {
 
 
     $colButtons.append($colLegend);
-
-    // $colButtons.append($colDelButton);
-
-      // $colButtons.append($colDelButton);
 
     $colButtons.append($colDelButton, $colNewButton);
 

@@ -230,13 +230,13 @@ var PTL = (function() {
           $sideMenu = $('nav#side-menu');
 
       if (action == 'open') {
-        $overlay.removeClass('invisible');
+        $overlay.removeClass('hidden');
         $sideMenu.addClass('expanded');
       } else if (action == 'close') {
-        $overlay.addClass('invisible');
+        $overlay.addClass('hidden');
         $sideMenu.removeClass('expanded');
       } else {
-        $overlay.toggleClass('invisible');
+        $overlay.toggleClass('hidden');
         $sideMenu.toggleClass('expanded');
       }
 

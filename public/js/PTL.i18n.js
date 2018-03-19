@@ -332,6 +332,8 @@ PTL.i18n.translations = {
 
   "Unrecognized URL: %1" : { fr: "URL non reconnue: %1", ja: "認識できないURL: %1", es: "URL no reconocida: %1" },
 
+  "No sources found" : { fr: "Aucune source trouvée", ja: "ソースが見つかりません", es: "No se encontraron fuentes" },
+
   "Found %1 sources in %2 columns in %3 groups" : { fr: "Trouvé %1 sources dans %2 colonnes dans %3 groupes", ja: "%3つのグループで%2つの列に%1つのソースが見つかりました", es: "Se encontraron %1 fuentes en %2 columnas en %3 grupos" },
 
   "Source Location (URL)" : { fr: "Adresse de la source (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },

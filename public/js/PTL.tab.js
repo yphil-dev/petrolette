@@ -17,11 +17,8 @@ PTL.tab = {
 
         $(document).prop('title', $activeTab.text() + ' | Pétrolette');
 
-        $('.tabCloser').hide();
+        if ($('.ui-tabs-tab').length > 2) $activeTab.find('.tab-closer').show();
 
-        // $('#new-group').removeClass('invisible');
-
-        $activeTab.find('.tabCloser').show();
       }
     });
 
@@ -41,7 +38,7 @@ PTL.tab = {
       }
     });
 
-    $tabs.on("click", "i.tabCloser", function() {
+    $tabs.on("click", "i.tab-closer", function() {
       PTL.dialog.killTab($(this));
     });
 
@@ -66,7 +63,6 @@ PTL.tab = {
     });
 
     PTL.tab.makeNewTabButton($tabs);
-    PTL.util.noSourcesButton();
     PTL.sync.readSync();
 
     $("#theme").attr({href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
@@ -79,7 +75,10 @@ PTL.tab = {
   },
   populate:function(sources) {
 
-    console.log('sources: (%s)', sources);
+    if (!sources || sources.length <= 0) {
+      PTL.util.console(PTL.tr('No sources found'), 'warning');
+      sources = ['empty'];
+    }
 
     var nbOfGroups = 0,
         nbOfSources = 0,
@@ -93,8 +92,6 @@ PTL.tab = {
         });
       });
     });
-
-    console.log('nbOfGroups, nbOfSources: (%s) %s', nbOfGroups, nbOfSources);
 
     PTL.util.console(PTL.tr('Data structure OK: %1 groups containing %2 sources', nbOfGroups, nbOfSources), 'success');
 
@@ -135,22 +132,17 @@ PTL.tab = {
   empty:function() {
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
-    // $('#noSourcesButton').fadeIn('slow');
-    // PTL.tab.makeNewTabButton($('div#tabs'));
   },
   add:function($tabs, name, columns, progress) {
 
-    // console.log('columns: (%s)', columns);
-
-    $('#noSourcesButton').fadeOut('fast');
-    $('#new-group').removeClass('invisible');
+    $('#new-group').removeClass('hidden');
 
     var tabIndex = $('ul#tab-names li.tab-name').length + 1;
 
     name = name || 'Group ' + tabIndex;
 
     var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel tabCloser translate dangerous')
+        .attr('class', 'icon-cancel tab-closer translate dangerous hidden')
         .data('title', PTL.tr('Delete the [%1] tab', name))
         .attr('title', PTL.tr('Delete the [%1] tab', name));
 
@@ -289,7 +281,7 @@ PTL.tab = {
 
     var $newTabButton = $('<li>')
         .attr('id', 'new-group')
-        .attr('class', 'translate new-group invisible')
+        .attr('class', 'translate new-group hidden')
         .data('title', 'Add a new group')
         .attr('title', PTL.tr('Add a new group'));
 
