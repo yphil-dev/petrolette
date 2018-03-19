@@ -248,7 +248,7 @@ PTL.tab = {
 
     $tabs.tabs('refresh');
     $tabs.tabs( "option", "active", 0);
-    PTL.tab.saveTabs();
+    // PTL.tab.saveTabs();
 
     // $('#ui-id-1').focus();
   },
