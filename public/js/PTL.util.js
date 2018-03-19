@@ -21,9 +21,9 @@ PTL.util = {
 
     $('#console').animate({scrollTop: $('#console').prop("scrollHeight")}, 500);
 
-    // if ($lines.length > 50) {
-    //   $lines.last().remove();
-    // }
+    if ($lines.length > 50) {
+      $lines.last().remove();
+    }
 
   },
   isUrl:function(url) {
@@ -173,7 +173,6 @@ PTL.util = {
   },
   help:function(type) {
 
-
     var dialog = introJs(),
         menu = introJs(),
         ui = introJs();
@@ -194,7 +193,7 @@ PTL.util = {
         },
         {
           element: 'li.feed',
-          intro: PTL.tr('This is a source.')
+          intro: PTL.tr('This is a source. ') + '<a href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('More info') + '</a>'
         },
         {
           element: 'div#newSourceButton',
@@ -304,6 +303,9 @@ PTL.util = {
     dialog.setOption('nextLabel', PTL.tr('Next'));
     dialog.setOption('skipLabel', PTL.tr('Skip'));
     dialog.setOption('doneLabel', PTL.tr('Got it!'));
+
+    dialog.setOption('overlayOpacity', 0);
+    ui.setOption('overlayOpacity', 0.2);
 
     ui.setOption('hideNext', true);
     ui.setOption('hidePrev', true);
