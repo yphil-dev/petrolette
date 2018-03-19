@@ -8,10 +8,7 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      PTL.utilities.console(PTL.tr('Pétrolette starting up'));
-
-      $('nav#top-menu')
-        .load('/static/templates/menu.html div#topnav', null);
+      PTL.util.console(PTL.tr('Pétrolette starting up'));
 
       var $menu = $('nav#side-menu'),
           $overlay = $('#overlay'),
@@ -22,6 +19,10 @@ var PTL = (function() {
           $langMenu = $('select#language'),
           $slider = $('div#gallerySpeedSlider'),
           $spinner = $('#gallerySpeedSpinner');
+
+      $('#console').click(function() {
+        $(this).toggleClass('expanded');
+      });
 
       PTL.sync.attachWidget();
 
@@ -97,7 +98,7 @@ var PTL = (function() {
         event.preventDefault();
       });
 
-      PTL.utilities.translate();
+      PTL.util.translate();
 
       $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
 
@@ -105,7 +106,7 @@ var PTL = (function() {
         var selectedLang = $(this).val();
         PTL.language = selectedLang;
         PTL.prefs.writeConfig('lang', selectedLang);
-        PTL.utilities.translate();
+        PTL.util.translate();
       });
 
       $importButton.click(function () {
@@ -167,11 +168,11 @@ var PTL = (function() {
         }
       });
 
-      $spinner.spinner('value', PTL.utilities.milliToSecs(gallerySlideshowSpeed));
+      $spinner.spinner('value', PTL.util.milliToSecs(gallerySlideshowSpeed));
 
       $spinner.on( 'spinstop', function() {
         $slider.slider( 'option', 'value', $(this).val() * 1000);
-        $('.ui-slider-handle').text(PTL.utilities.milliToSecs($(this).val() * 1000) + 's');
+        $('.ui-slider-handle').text(PTL.util.milliToSecs($(this).val() * 1000) + 's');
       });
 
       $slider.slider({
@@ -185,12 +186,12 @@ var PTL = (function() {
         max: 10000,
         step: 500,
         create: function() {
-          $(this).find('.ui-slider-handle').text(PTL.utilities.milliToSecs(gallerySlideshowSpeed) + 's');
+          $(this).find('.ui-slider-handle').text(PTL.util.milliToSecs(gallerySlideshowSpeed) + 's');
         },
         slide: function(event, ui) {
           // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-          $spinner.val(PTL.utilities.milliToSecs(ui.value));
-          $(this).find('.ui-slider-handle').text(PTL.utilities.milliToSecs(ui.value) + 's');
+          $spinner.val(PTL.util.milliToSecs(ui.value));
+          $(this).find('.ui-slider-handle').text(PTL.util.milliToSecs(ui.value) + 's');
 
         },
         change: function(event, ui) {
@@ -209,7 +210,7 @@ var PTL = (function() {
 
         reader.onload = (function() {
           return function(e) {
-            if (PTL.utilities.isPTLStruct(e.target.result)) {
+            if (PTL.util.isPTLStruct(e.target.result)) {
               PTL.tab.empty();
               // PTL.tab.populate(JSON.parse(e.target.result), true);
             }

@@ -137,10 +137,6 @@
       <div id="side-menu" class="plip">
 
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <div id="console"></div>
-        </fieldset>
-
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
           <legend id="languageLegend"
                   class="ui-corner-top translate"
                   data-content="Language">
@@ -331,10 +327,25 @@
             </a>
           </div>
         </fieldset>
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <legend id="languageLegend"
+                  class="ui-corner-top translate"
+                  data-content="Console">
+            Console
+          </legend>
+          <div
+            class="ui-button"
+            data-title="Click to toggle"
+            title="Click to toggle"
+            id="console"></div>
+        </fieldset>
+
       </div>
     </nav>
 
     <main>
+
       <div id="tabs">
         <ul id="tab-names"></ul>
       </div>
@@ -361,7 +372,7 @@
       </span>
     </main>
 
-    <script src="/static/js/PTL.utilities.js"></script>
+    <script src="/static/js/PTL.util.js"></script>
     <script src="/static/js/PTL.tab.js"></script>
     <script src="/static/js/PTL.col.js"></script>
     <script src="/static/js/PTL.src.js"></script>
@@ -379,7 +390,7 @@
 
        if (PTL.queryString) {
          PTL.dialog.addSource(PTL.queryString);
-         console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.utilities.isUrl(PTL.queryString));
+         console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.util.isUrl(PTL.queryString));
          PTL.queryString = null;
        }
 

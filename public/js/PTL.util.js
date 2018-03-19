@@ -1,6 +1,6 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
-PTL.utilities = {
+PTL.util = {
   console:function(output, type) {
 
     var $lines = $('#console div');
@@ -51,7 +51,7 @@ PTL.utilities = {
       groups.push(group);
     });
 
-    PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', nbGroups, nbSources), 'success');
+    PTL.util.console(PTL.tr('Found %1 groups containing %2 sources', nbGroups, nbSources), 'success');
 
     PTL.tab.populate(groups, true);
   },
@@ -65,7 +65,7 @@ PTL.utilities = {
     try {
       var json = JSON.parse(o);
 
-      PTL.utilities.console(PTL.tr('File OK'), 'success');
+      PTL.util.console(PTL.tr('File OK'), 'success');
 
       isJson = true;
 
@@ -91,27 +91,27 @@ PTL.utilities = {
 
     } catch(e) {
       isJson = false;
-      PTL.utilities.console(PTL.tr('Invalid file'), 'error');
+      PTL.util.console(PTL.tr('Invalid file'), 'error');
     }
 
     if (isJson) {
 
       if (groups.length < 1) {
-        // PTL.utilities.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
+        // PTL.util.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
       }
 
       if (isJson && groups.length > 0 && sources.length < 1) {
-        // PTL.utilities.console(PTL.tr('Valid json file with %1 groups in it, but you should put sources in it', groups.length), 'warning');
+        // PTL.util.console(PTL.tr('Valid json file with %1 groups in it, but you should put sources in it', groups.length), 'warning');
       }
 
       if (isJson && groups.length > 0 && sources.length > 0)  {
-        // PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', groups.length, sources.length), 'ok');
+        // PTL.util.console(PTL.tr('Found %1 groups containing %2 sources', groups.length, sources.length), 'ok');
       }
     }
 
     if (isOldPTLStruct) {
-      PTL.utilities.console(PTL.tr('Old Pétrolette file format: converting'), 'warning');
-      PTL.utilities.isOldPTLStruct(o);
+      PTL.util.console(PTL.tr('Old Pétrolette file format: converting'), 'warning');
+      PTL.util.isOldPTLStruct(o);
     }
 
     return isJson;
@@ -157,7 +157,7 @@ PTL.utilities = {
     var vWidth = $(window).width(),
         vW;
 
-    if (PTL.utilities.isMobile() || vWidth < 720 ) {
+    if (PTL.util.isMobile() || vWidth < 720 ) {
       vW = vWidth - 8;
     } else {
       vW = vWidth - vWidth / 4;
@@ -165,6 +165,18 @@ PTL.utilities = {
 
     return vW;
 
+  },
+  reOrderColButtons:function($button) {
+
+
+    var $column = $button.parent().parent(),
+        $sourcesInCol = $column.find('.feed');
+
+    console.log('plpoip: (%s)', $column.attr('id'));
+
+    $column.find('legend.legend-col').each(function() {
+      console.log('elt: (%s)', $(this).text());
+    });
   },
   moveEltLeft:function($elt) {
     $elt.insertBefore($elt.prev());

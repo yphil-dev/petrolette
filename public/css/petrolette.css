@@ -9,11 +9,12 @@
   --ui-color-oct: #2b2b2b;
 
   --ui-color-title-one: #ff4136;
-  --ui-color-console-bg: #002b36;
-  --ui-color-message-normal: #268bd2;
-  --ui-color-message-error: #dc322f;
-  --ui-color-message-success: #859900;
-  --ui-color-message-warning: #b58900;
+  --ui-color-console-bg: #eee8d5;
+  --ui-color-console-fg: #002b36;
+  --ui-color-console-normal: #268bd2;
+  --ui-color-console-error: #dc322f;
+  --ui-color-console-success: #859900;
+  --ui-color-console-warning: #b58900;
 
   --ui-color-rss: #f26522;
 
@@ -146,40 +147,49 @@ div.dialog {
 }
 
 #console {
+  /* background-color: var(--ui-color-oct); */
+  /* max-height: 100px; */
+  border-radius: 3px;
+  border: 1px solid var(--ui-color-console);
+  color: var(--ui-color-console-fg);
+  cursor: pointer;
   display: flex;
   flex-direction: column-reverse;
-  overflow-y: scroll;
-  height: 100px;
-  max-height: 100px;
-  font-size: 7pt;
   font-family: monospace;
+  height: 2.5em;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  padding: 0 .2em;
+  position:relative;
+  transition: all .3s linear;
   width: 100%;
-  padding: .2em;
-  color: var(--ui-color-message-normal);
-  background-color: var(--ui-color-oct);
-  border: 1px solid var(--ui-color-console);
+  text-align:left;
+}
+
+#console.expanded {
+  height: 100px;
 }
 
 #console > div > span.prompt {
   margin-right: 3px;
   font-weight: 900;
-  color: var(--ui-color-pri);
+  color: var(--ui-color-console-fg);
 }
 
 #console div.normal {
-  color: var(--ui-color-message-normal);
+  color: var(--ui-color-console-normal);
 }
 
 #console div.error {
-  color: var(--ui-color-message-error);
+  color: var(--ui-color-console-error);
 }
 
 #console div.success {
-  color: var(--ui-color-message-success);
+  color: var(--ui-color-console-success);
 }
 
 #console div.warning {
-  color: var(--ui-color-message-warning);
+  color: var(--ui-color-console-warning);
 }
 
 kbd.key {
@@ -493,6 +503,7 @@ nav#side-menu {
 }
 
 nav#side-menu.expanded {
+  height: 100%;
   left: 0px;
 }
 
@@ -561,6 +572,7 @@ fieldset {
   background-color: var(--ui-color-sec);
 }
 
+#console,
 .ui-state-hover,
 .ui-widget-content .ui-state-hover,
 .ui-widget-header .ui-state-hover,
@@ -578,6 +590,8 @@ fieldset {
   border: 3px solid var(--ui-color-sep);
 }
 
+#console:hover,
+.ui-button-icon-only:focus,
 .ui-slider-handle:focus,
 .ui-slider-handle:hover,
 .ui-button:hover,
@@ -593,7 +607,10 @@ fieldset {
 .ui-button-icon-only:hover,
 .ui-button-icon-only:focus {
   color: var(--ui-color-pri);
-  border: 1px solid var(--ui-color-sec);
+}
+
+.ui-button-icon-only:hover {
+  background-color: var(--ui-color-sec);
 }
 
 .ui-button:active,
@@ -647,7 +664,7 @@ button.ui-state-error {
 
 .dialog button.help-button {
   background-color: var(--ui-color-success);
-  border-color: var(--ui-color-success);
+  /* border-color: var(--ui-color-success); */
   color: var(--ui-color-pri);
   padding: .4em;
 }
@@ -800,6 +817,11 @@ div.testFlex {
 
 .column {
   white-space: initial;
+  transition: all .3s linear;
+}
+
+.new-source-button {
+  margin-bottom: 0 !important;;
 }
 
 .ui-dialog.ui-corner-all {
@@ -1118,6 +1140,7 @@ div.introjs-helperLayer {
 .source-header {
   background-color: var(--color-sen);
   color: var(--color-pri);
+  transition: all .3s linear;
 }
 
 .fancybox-thumbs {

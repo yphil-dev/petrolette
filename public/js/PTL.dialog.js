@@ -17,7 +17,7 @@ PTL.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: PTL.utilities.vWidth(),
+        width: PTL.util.vWidth(),
         modal: true,
         buttons: [
           {
@@ -31,7 +31,7 @@ PTL.dialog = {
         ],
         open: function () {
 
-          PTL.utilities.translate();
+          PTL.util.translate();
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -43,7 +43,7 @@ PTL.dialog = {
             PTL.sideMenu('close');
             PTL.dialog.kill($dialog);
             $('#tabs').tabs('option', 'active', 0);
-            PTL.utilities.help('ui');
+            PTL.util.help('ui');
           });
 
           $('.help-kb-shortcuts').on('click', function() {
@@ -62,7 +62,7 @@ PTL.dialog = {
 
     $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
 
-      PTL.utilities.translate();
+      PTL.util.translate();
 
       var $dialog = $(this),
           $dataStore = $button.parent().parent(),
@@ -87,7 +87,7 @@ PTL.dialog = {
         closeOnEscape: true,
         resizable: true,
         height: 'auto',
-        width: PTL.utilities.vWidth(),
+        width: PTL.util.vWidth(),
         modal: true,
         buttons: [
           {
@@ -200,7 +200,7 @@ PTL.dialog = {
 
           $dialog.parent().find('.ui-dialog-titlebar').append($helpButton);
 
-          if (!PTL.utilities.isMobile()) {
+          if (!PTL.util.isMobile()) {
             $guessField.click(function() {
               $(this).select();
             });
@@ -208,7 +208,7 @@ PTL.dialog = {
 
           $helpButton.on('click', function() {
 
-            PTL.utilities.help('dialog');
+            PTL.util.help('dialog');
 
           });
 
@@ -324,15 +324,13 @@ PTL.dialog = {
 
       $icon.addClass('icon-trash-empty danger');
 
-      console.log('There is %s sources', nbOfSourcesInCol);
-
       $dialog.dialog({
         title: PTL.tr('Delete column'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: PTL.utilities.vWidth(),
+        width: PTL.util.vWidth(),
         modal: true,
         buttons: [
           {
@@ -354,8 +352,6 @@ PTL.dialog = {
           }
         ],
         open: function () {
-
-          console.log('NB : (%s)', nbOfColumnsInTab);
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -523,7 +519,7 @@ PTL.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: PTL.utilities.vWidth(),
+        width: PTL.util.vWidth(),
         modal: true,
         buttons: [
           {
@@ -546,7 +542,7 @@ PTL.dialog = {
         ],
         open: function () {
 
-          if (!PTL.utilities.isUrl(sourceUrl)) {
+          if (!PTL.util.isUrl(sourceUrl)) {
             h1 = 'Whoops!';
             h2 = PTL.tr('Unrecognized URL: %1', sourceUrl);
           } else {
@@ -591,7 +587,7 @@ PTL.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: PTL.utilities.vWidth(),
+        width: PTL.util.vWidth(),
         modal: true,
         buttons: [
           {
@@ -618,7 +614,7 @@ PTL.dialog = {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
               } else {
                 console.error('Zero tabs!');
-                PTL.utilities.console(PTL.tr('Zero tabs!'), 'error');
+                PTL.util.console(PTL.tr('Zero tabs!'), 'error');
 
                 $('#noSourcesButton').fadeIn('slow');
               }
@@ -664,7 +660,7 @@ PTL.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: PTL.utilities.vWidth(),
+        width: PTL.util.vWidth(),
         modal: true,
         buttons: [
           {
@@ -717,7 +713,7 @@ PTL.dialog = {
         closeOnEscape: true,
         resizable: false,
         height: 'auto',
-        width: PTL.utilities.vWidth(),
+        width: PTL.util.vWidth(),
         modal: true,
         buttons: [
           {
@@ -744,7 +740,7 @@ PTL.dialog = {
         ],
         open: function() {
 
-          PTL.utilities.translate();
+          PTL.util.translate();
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -763,11 +759,11 @@ PTL.dialog = {
           });
 
           $tabLeft.button().click(function() {
-            PTL.utilities.moveEltLeft($tab);
+            PTL.util.moveEltLeft($tab);
           });
 
           $tabRight.button().click(function() {
-            PTL.utilities.moveEltRight($tab);
+            PTL.util.moveEltRight($tab);
           });
 
           $tabNameLegend.text(PTL.tr('Group name'));

@@ -45,7 +45,7 @@ PTL.tab = {
       PTL.dialog.killTab($(this));
     });
 
-    if (PTL.utilities.isMobile()) {
+    if (PTL.util.isMobile()) {
       $tabs.find('.source-controls > div').removeClass('collapsible');
     }
 
@@ -66,7 +66,7 @@ PTL.tab = {
     });
 
     PTL.tab.makeNewTabButton($tabs);
-    PTL.utilities.noSourcesButton();
+    PTL.util.noSourcesButton();
     PTL.sync.readSync();
 
     $("#theme").attr({href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
@@ -74,9 +74,8 @@ PTL.tab = {
   },
   saveTabs:function() {
     var sources = PTL.tab.list();
-    console.log('sources LIST : (%s)', JSON.stringify(sources));
     PTL.prefs.writeConfig('sources', JSON.stringify(sources));
-    // PTL.sync.writeSync(JSON.stringify(sources));
+    PTL.sync.writeSync(JSON.stringify(sources));
   },
   populate:function(sources) {
 
@@ -84,7 +83,7 @@ PTL.tab = {
 
     var nbOfGroups = 0,
         nbOfSources = 0,
-        progress = PTL.utilities.buildProgress();
+        progress = PTL.util.buildProgress();
 
     sources.forEach(function(group) {
       nbOfGroups++;
@@ -97,7 +96,7 @@ PTL.tab = {
 
     console.log('nbOfGroups, nbOfSources: (%s) %s', nbOfGroups, nbOfSources);
 
-    PTL.utilities.console(PTL.tr('Found %1 groups containing %2 sources', nbOfGroups, nbOfSources), 'ok');
+    PTL.util.console(PTL.tr('Found %1 groups containing %2 sources', nbOfGroups, nbOfSources), 'success');
 
     progress.init(nbOfSources);
 
@@ -126,7 +125,7 @@ PTL.tab = {
         });
         thisTabCols.push(thisColSources);
       });
-      PTL.tab.newTab($('#tabs'), thisGroup.name, thisTabCols, progress);
+      PTL.tab.add($('#tabs'), thisGroup.name, thisTabCols, progress);
 
       // console.log('thisTabColsA: (%s)', JSON.stringify(thisTabCols));
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
@@ -139,9 +138,9 @@ PTL.tab = {
     // $('#noSourcesButton').fadeIn('slow');
     // PTL.tab.makeNewTabButton($('div#tabs'));
   },
-  newTab:function($tabs, name, columns, progress) {
+  add:function($tabs, name, columns, progress) {
 
-    console.log('columns: (%s)', columns);
+    // console.log('columns: (%s)', columns);
 
     $('#noSourcesButton').fadeOut('fast');
     $('#new-group').removeClass('invisible');
@@ -185,6 +184,8 @@ PTL.tab = {
 
         ui.draggable.show().hide('fade', 300, function () {
 
+          console.log('$list: (%s)', $item.find('a').attr('href'));
+
           // if ($('#tabDropActivate').prop('checked'))
           $tabs.tabs('option', 'active', $index);
 
@@ -205,9 +206,12 @@ PTL.tab = {
 
     var newTab = false;
 
-    if (typeof columns === 'undefined') {
+    if (!columns || columns.length <= 0) {
+      console.log('there is no columns: (%s)');
+      console.log('undefined: (%s)');
       newTab = true;
       columns = ['empty'];
+      console.log('undefined');
     }
 
     var colIndex = 1,
@@ -219,10 +223,11 @@ PTL.tab = {
 
       $column.appendTo($tabPanel);
 
+
       if (!newTab) {
         sources.forEach(function(source) {
 
-          var url = PTL.utilities.isUrl(source.url) ? source.url : PTL.tr('Unrecognized URL'),
+          var url = PTL.util.isUrl(source.url) ? source.url : PTL.tr('Unrecognized URL'),
               type = PTL.sourceTypes.includes(source.type) ? source.type : 'mixed',
               limit = Number.isInteger(source.limit) ? source.limit : 8;
 
@@ -302,7 +307,7 @@ PTL.tab = {
     $newTabButtonLink.bind('click', function(event) {
       event.stopImmediatePropagation();
 
-      PTL.tab.newTab($tabs);
+      PTL.tab.add($tabs);
 
       return false;
     });

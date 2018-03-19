@@ -66,19 +66,19 @@ PTL.sync = (function() {
   remoteStorage.on('connected', function() {
     PTL.synchronized = true;
     console.info('Pétrolette | ' + PTL.tr('Connected to remote storage'));
-    PTL.utilities.console(PTL.tr('Connected to remote storage'), 'ok');
+    PTL.util.console(PTL.tr('Connected to remote storage'), 'ok');
   });
 
   remoteStorage.on('not-connected', function() {
     PTL.synchronized = false;
     console.info('Pétrolette | ' + PTL.tr('NOT connected to remote storage'));
-    PTL.utilities.console(PTL.tr('NOT connected to remote storage'), 'warning');
+    PTL.util.console(PTL.tr('NOT connected to remote storage'), 'warning');
   });
 
   remoteStorage.on('disconnected', function() {
     PTL.synchronized = false;
     console.warn('Pétrolette | ' + PTL.tr('Disconnected from remote storage'));
-    PTL.utilities.console(PTL.tr('Disconnected from remote storage'), 'warning');
+    PTL.util.console(PTL.tr('Disconnected from remote storage'), 'warning');
 
   });
 
@@ -98,7 +98,7 @@ PTL.sync = (function() {
       remoteStorage.petrolette.read()
         .then((data) => {
 
-          if (PTL.utilities.isValidSourcesFile(JSON.parse(data))) {
+          if (PTL.util.isValidSourcesFile(JSON.parse(data))) {
 
             console.info('Pétrolette | ' + PTL.tr('Remote file validation OK'));
 
@@ -115,7 +115,7 @@ PTL.sync = (function() {
         })
         .catch((err) => {
 
-          PTL.utilities.console(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err), 'error');
+          PTL.util.console(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err), 'warning');
 
           PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('sources')));
 
@@ -125,11 +125,12 @@ PTL.sync = (function() {
     writeSync:function(sources) {
 
       remoteStorage.petrolette.write(sources)
-        .then((data) => {
-          console.info('Pétrolette | Writing to remote storage OK: ', data);
+        .then(() => {
+          PTL.util.console(PTL.tr('Writing to remote storage OK'), 'success');
+
         })
         .catch((err) => {
-          console.error('Pétrolette | Remote file validation error:', err);
+          PTL.util.console(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
         });
 
     }

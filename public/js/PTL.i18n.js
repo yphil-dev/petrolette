@@ -295,6 +295,10 @@ PTL.i18n.translations = {
 
   "Remote file validation OK" : { fr: "Validation fichier distant OK" , ja: "リモートファイルの検証OK", es: "Validación remota de archivos OK" },
 
+  "Writing to remote storage OK" : { fr: "Ecriture sur le stockage distant OK" , ja: "リモートストレージへの書き込みOK", es: "Escribir en el almacenamiento remoto OK" },
+
+  "There was a problem writing to remote storage: [%1]" : { fr: "Un problème est survenu lors de l'écriture sur le stockage distant: [%1]" , ja: "リモートストレージへの書き込みに問題がありました：[%1]", es: "Hubo un problema al escribir en el almacenamiento remoto: [%1]" },
+
   "Problem reading source [%1] Error type [%2]" : { fr: "Problème lecture source [%1] Type d'erreur [%2]", ja: "問題の読書の問題[%1]エラータイプ[%2]", es: "Problema al leer la fuente [%1] Tipo de error [%2]" },
 
   "Error type" : { fr: "Type d'erreur", ja: "エラータイプ", es: "Tipo de error" },

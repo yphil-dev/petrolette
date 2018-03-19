@@ -136,7 +136,7 @@ PTL.src = {
 
       });
 
-    if (!PTL.utilities.isMobile()) {
+    if (!PTL.util.isMobile()) {
       $selectDiv.addClass('collapsible');
       $deleteDiv.addClass('collapsible');
       $prefsDiv.addClass('collapsible');
@@ -192,14 +192,14 @@ PTL.src = {
         $feedToggle = $feed.find('.source-toggle'),
         $feedIcon = $feed.find('.source-toggle > i');
 
-    var l = PTL.utilities.getLocation(feedUrl),
+    var l = PTL.util.getLocation(feedUrl),
         feedHost = l.protocol + '//' + l.hostname,
         subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
-    if (!PTL.utilities.isUrl(feedUrl)) {
+    if (!PTL.util.isUrl(feedUrl)) {
 
       console.info('bad URL: (%s)', feedUrl);
-      PTL.utilities.console(PTL.tr('Unrecognized URL: %1', feedUrl), 'warning');
+      PTL.util.console(PTL.tr('Unrecognized URL: %1', feedUrl), 'warning');
 
       $feedTitle
         .text(PTL.tr("Error"))
@@ -360,7 +360,7 @@ PTL.src = {
         var $tempDom = $('<null>').append($description);
 
         if (typeof $tempDom.find('span a').attr('href') !== 'undefined') {
-          if (PTL.utilities.isImage($tempDom.find('span a').attr('href'))) {
+          if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
             imageUrl = $tempDom.find('span a').attr('href');
           }
         }
