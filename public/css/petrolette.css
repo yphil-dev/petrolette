@@ -93,6 +93,22 @@ body {
   margin:0;
 }
 
+#load-spinner > div {
+  color: var(--color-pri);
+  font-size: 12pt;
+}
+
+#load-spinner > div > i {
+  line-height: 0;
+  font-size: 8em;
+}
+
+#load-spinner > div > div {
+  margin: 2em 0 0 0;
+  color: var(--color-pri);
+  font-size: 12pt;
+}
+
 #no-script {
   padding: 1em 0;
   margin: 3vh auto;
@@ -332,18 +348,6 @@ li.source-item.error > strong.key {
   color: var(--ui-color-danger);
 }
 
-.rs-button:hover {
-  border-color: var(--ui-color-sec) !important;
-}
-
-.rs-button.rs-sync:hover svg {
-  fill: var(--ui-color-sec) !important;
-}
-
-.rs-button.rs-disconnect:hover svg {
-  fill: var(--ui-color-danger) !important;
-}
-
 .spin {
   animation: spin-animation .5s infinite;
   display: inline-block;
@@ -565,15 +569,24 @@ fieldset {
   flex: 1 0 auto !important;
 }
 
-.ui-button {
-  margin-right: .4em;
-}
-
 .ui-slider-handle.ui-state-active,
 .ui-button.ui-state-active {
   border: 3px solid var(--ui-color-sec);
   background-color: var(--ui-color-sec);
 }
+
+
+/* .rs-button:hover { */
+/*   border-color: var(--ui-color-sec) !important; */
+/* } */
+
+/* .rs-button.rs-sync:hover svg { */
+/*   fill: var(--ui-color-sec) !important; */
+/* } */
+
+/* .rs-button.rs-disconnect:hover svg { */
+/*   fill: var(--ui-color-danger) !important; */
+/* } */
 
 #console,
 .ui-state-hover,
@@ -591,6 +604,14 @@ fieldset {
 .ui-button.ui-state-disabled:active,
 .ui-button {
   border: 3px solid var(--ui-color-sep);
+}
+
+.rs-button {
+  border: 3px solid var(--ui-color-sep) !important;
+}
+
+.rs-button:hover {
+  border: 3px solid var(--ui-color-sec) !important;
 }
 
 #console:hover,
