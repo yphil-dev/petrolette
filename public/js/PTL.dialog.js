@@ -130,9 +130,10 @@ PTL.dialog = {
                 .data('type', newType);
 
               if ($('input[name=killFeedChbox]:checked').val() === 'on') {
-                console.log('Yep!');
 
-                PTL.dialog.killFeed(feedId, feedName);
+                $feed.hide('fade', 1000, function() {
+                  $feed.remove();
+                });
 
               } else {
 

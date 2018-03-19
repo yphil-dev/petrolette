@@ -207,8 +207,6 @@ PTL.tab = {
 
     columns.forEach(function(sources) {
 
-      console.log('panel: (%s) cols: %s', $tabPanel.attr('id'), nbOfColumnsInTab);
-
       var $column = PTL.col.add(colIndex++);
 
       $column.appendTo($tabPanel);

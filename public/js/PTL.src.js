@@ -196,22 +196,6 @@ PTL.src = {
         feedHost = l.protocol + '//' + l.hostname,
         subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
-    if (!PTL.util.isUrl(feedUrl)) {
-
-      console.info('bad URL: (%s)', feedUrl);
-      PTL.util.console(PTL.tr('Unrecognized URL: %1', feedUrl), 'warning');
-
-      $feedTitle
-        .text(PTL.tr("Error"))
-        .addClass('translate danger')
-        .data('content', PTL.tr("Error"));
-
-      $feedBody
-        .html('<li class="source-item"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
-
-      return;
-    }
-
     if (subdomain === 'rss' || subdomain === 'feeds') {
       feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
     }
@@ -252,15 +236,19 @@ PTL.src = {
 
       $feedBody.empty();
 
+      console.log('Ya!');
+
     }).done(function(data) {
 
       $feedLink.text(data.feedTitle || feedUrl)
         .attr('href', data.feedLink)
         .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
 
+      console.log('Yo!', data);
+
       if (data.error) {
 
-        console.warn('Pétrolette | ' + PTL.tr('Problem reading source [%1] Error type [%2]', feedUrl, data.error));
+        PTL.util.console(PTL.tr('Problem reading source [%1] Error type [%2]', feedUrl), 'warning');
 
         var $w3cLink = $('<a>'),
             $validCssIcon = $('<i>');
