@@ -3,21 +3,19 @@
 PTL.tab = {
   init:function() {
 
-    PTL.totalNbBOfCols = 0;
     PTL.language = PTL.prefs.readConfig('lang');
 
     var $tabs = $('#tabs').tabs({
-      active: 2,
       heightStyle: 'content',
       activate: function(event, ui) {
 
         ui.newPanel.css("display","flex");
 
-        var $activeTab = $tabs.find('.ui-tabs-active');
+        $(document).prop('title', $(this)
+                         .find('.ui-tabs-active')
+                         .text() + ' | Pétrolette');
 
-        $(document).prop('title', $activeTab.text() + ' | Pétrolette');
-
-        if ($('.ui-tabs-tab').length > 2) $activeTab.find('.tab-closer').show();
+        $('.tab-closer').show();
 
       }
     });
