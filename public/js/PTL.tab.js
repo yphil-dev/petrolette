@@ -3,6 +3,9 @@
 PTL.tab = {
   init:function() {
 
+
+    $('#load-spinner').fadeIn('fast');
+
     PTL.language = PTL.prefs.readConfig('lang');
 
     var $tabs = $('#tabs').tabs({
@@ -60,6 +63,9 @@ PTL.tab = {
     });
 
     PTL.tab.makeNewTabButton($tabs);
+
+    $('#load-spinner').fadeOut('slow');
+
     PTL.sync.readSync();
 
     $("#theme").attr({href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
@@ -71,6 +77,15 @@ PTL.tab = {
     PTL.sync.writeSync(JSON.stringify(sources));
   },
   populate:function(sources) {
+
+    $('h1.rs-big-headline, h3.rs-small-headline').text(PTL.tr('Connection to storage'));
+    $('div.rs-sign-in-error, span.rs-sub-headline').text(PTL.tr('To synchronize the sources across devices'));
+    $('input.rs-connect')
+      .val(PTL.tr('Synchronize'))
+      .button();
+    $('a.rs-help').text(PTL.tr('More info'));
+
+    PTL.util.console(PTL.tr('Pétrolette starting up OK'), 'success');
 
     if (!sources || sources.length <= 0) {
       PTL.util.console(PTL.tr('No sources found'), 'warning');
@@ -125,15 +140,16 @@ PTL.tab = {
       // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
 
+    $('#new-group').removeClass('hidden');
+
   },
-  empty:function() {
+  empty:function(callback) {
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
+    callback();
   },
   add:function($tabs, name, columns, progress) {
 
-    $('#load-spinner').fadeOut('fast');
-    $('#new-group').removeClass('hidden');
 
     var tabIndex = $('ul#tab-names li.tab-name').length + 1;
 
@@ -232,6 +248,7 @@ PTL.tab = {
 
     $tabs.tabs('refresh');
     $tabs.tabs( "option", "active", 0);
+    PTL.tab.saveTabs();
 
     // $('#ui-id-1').focus();
   },
@@ -239,8 +256,6 @@ PTL.tab = {
 
     var $groupNodes = $('#tab-names > li.tab-name'),
         groups = [];
-
-    console.log('$groupNodes in: (%s)', $groupNodes.length);
 
     $groupNodes.each(function() {
 
@@ -274,8 +289,6 @@ PTL.tab = {
       group.columns = columns;
       groups.push(group);
     });
-
-    console.log('$groupNodes out: (%s)', $groupNodes.length);
 
     return groups;
 

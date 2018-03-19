@@ -48,9 +48,6 @@ PTL.i18n.translations = {
 
   "Pétrolette starting up OK" : { fr: "Pétrolette démarrage OK", ja: "Pétroletteが起動する", es: "Pétrolette iniciando OK" },
 
-  "They'll sell the Internet" : { fr: "Ils vendront Internet", ja: "彼らはインターネットを売るだろう", es: "Venderán Internet" },
-  "when we're done filling it up" : { fr: "quand on aura fini de le remplir", ja: "私たちがそれを埋めるとき", es: "cuando terminemos de llenarlo" },
-
   "Cancel": { fr: "Annuler", ja: "取り消す", es: "Cancelar" },
   "Delete": { fr: "Supprimer", ja: "削除", es: "Eliminar" },
   "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
@@ -284,6 +281,8 @@ PTL.i18n.translations = {
 
   "Connected to remote storage" : { fr: "Connecté au stockage distant" , ja: "リモートストレージに接続", es: "Conectado al almacenamiento remoto" },
 
+  "Not Connected to remote storage" : { fr: "Non connecté au stockage distant" , ja: "リモートストレージに接続されていない", es: "No conectado a almacenamiento remoto" },
+
   "Disconnected from remote storage" : { fr: "Déconnecté du stockage distant" , ja: "リモートストレージから切断されました", es: "Desconectado de almacenamiento remoto" },
 
   "Synchronize" : { fr: "Synchroniser" , ja: "同期する", es: "Sincronizar" },
@@ -294,9 +293,11 @@ PTL.i18n.translations = {
 
   "Remote file validation NOT OK (error [%1]) now reading from browser cache" : { fr: "Validation de fichier à distance NOT OK (erreur [%1]) lecture depuis le cache du navigateur" , ja: "リモートファイルの検証NOT OK（エラー[%1]）がブラウザのキャッシュから読み込み中です", es: "La validación remota de archivos NO está OK (error [%1]) leyendo desde el caché del navegador" },
 
+  "Reading sources and preferences from browser cache" : { fr: "Lecture des sources et des préférences depuis le cache du navigateur" , ja: "ブラウザのキャッシュからソースと設定を読み込む", es: "Leer las fuentes y preferencias de la memoria caché del navegador" },
+
   "Remote file validation OK" : { fr: "Validation fichier distant OK" , ja: "リモートファイルの検証OK", es: "Validación remota de archivos OK" },
 
-  "Writing to remote storage OK" : { fr: "Ecriture sur le stockage distant OK" , ja: "リモートストレージへの書き込みOK", es: "Escribir en el almacenamiento remoto OK" },
+  "Writing to remote storage OK" : { fr: "Ecriture stockage distant OK" , ja: "リモートストレージへの書き込みOK", es: "Escribir almacenamiento remoto OK" },
 
   "There was a problem writing to remote storage: [%1]" : { fr: "Un problème est survenu lors de l'écriture sur le stockage distant: [%1]" , ja: "リモートストレージへの書き込みに問題がありました：[%1]", es: "Hubo un problema al escribir en el almacenamiento remoto: [%1]" },
 
