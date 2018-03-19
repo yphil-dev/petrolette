@@ -163,27 +163,23 @@ div.dialog {
 }
 
 #console {
-  /* background-color: var(--ui-color-oct); */
-  /* max-height: 100px; */
   border-radius: 3px;
-  border: 1px solid var(--ui-color-console);
+  background-color: var(--ui-color-console-bg);
   color: var(--ui-color-console-fg);
   cursor: pointer;
-  display: flex;
-  flex-direction: column-reverse;
   font-family: monospace;
   height: 2.5em;
   overflow-wrap: break-word;
   overflow-y: scroll;
   padding: 0 .2em;
   position:relative;
-  transition: all .3s linear;
-  width: 100%;
   text-align:left;
+  transition: height .3s ease-in-out;
+  width: 100%;
 }
 
 #console.expanded {
-  height: 100px;
+  height: 120px;
 }
 
 #console > div > span.prompt {

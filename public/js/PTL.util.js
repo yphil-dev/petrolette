@@ -14,14 +14,16 @@ PTL.util = {
         .text('#');
     var $line = $('<span>').text(output);
 
-    $('#console').prepend($('<div>')
-                          .attr('class', type || 'normal')
-                          .attr('title', d.toLocaleString())
-                          .append($prompt, $line));
+    $('#console').append($('<div>')
+                         .attr('class', type || 'normal')
+                         .attr('title', d.toLocaleString())
+                         .append($prompt, $line));
 
-    if ($lines.length > 50) {
-      $lines.last().remove();
-    }
+    $('#console').animate({scrollTop: $('#console').prop("scrollHeight")}, 500);
+
+    // if ($lines.length > 50) {
+    //   $lines.last().remove();
+    // }
 
   },
   isUrl:function(url) {
