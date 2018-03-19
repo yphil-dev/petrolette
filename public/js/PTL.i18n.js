@@ -45,7 +45,8 @@ PTL.i18n = {
 };
 
 PTL.i18n.translations = {
-  "test" : { fr: "samarche", ja: "追加", es: "Esta Muy bien" },
+
+  "Pétrolette starting up OK" : { fr: "Pétrolette démarrage OK", ja: "Pétroletteが起動する", es: "Pétrolette iniciando OK" },
 
   "They'll sell the Internet" : { fr: "Ils vendront Internet", ja: "彼らはインターネットを売るだろう", es: "Venderán Internet" },
   "when we're done filling it up" : { fr: "quand on aura fini de le remplir", ja: "私たちがそれを埋めるとき", es: "cuando terminemos de llenarlo" },
@@ -108,9 +109,44 @@ PTL.i18n.translations = {
   "Export" : { fr: "Export" , ja: "輸出する", es: "Exportar" },
 
   "Rename Group" : { fr: "Groupe: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la grupo" },
+  "Add" : { fr: "Ajouter" , ja: "追加", es: "Añadir" },
   "Add source" : { fr: "Ajouter source" , ja: "ソースを追加", es: "Agregue fuente" },
   "Add sources" : { fr: "Ajouter sources" , ja: "ソースを追加", es: "Agregue fuentes" },
+
+  "Column" : { fr: "Colonne" , ja: "列", es: "Columna" },
+  "Add a column" : { fr: "Ajouter une colonne" , ja: "列を追加する", es: "Agrega una columna" },
+  "Remove this column" : { fr: "Supprimer cette colonne" , ja: "この列を削除", es: "Eliminar esta columna" },
+  "Add a source to this column" : { fr: "Ajouter une source à cette colonne" , ja: "この列にソースを追加する", es: "Agregar una fuente a esta columna" },
+  "Keyboard shortcuts" : { fr: "Raccourcis clavier" , ja: "キーボードショートカット", es: "Atajos de teclado" },
+  "When focus is on a tab" : { fr: "Lorsque le focus est sur un onglet" , ja: "フォーカスがタブにあるとき", es: "Cuando el foco está en una pestaña" },
+  "When focus is in a panel" : { fr: "Lorsque le focus est dans un panel" , ja: "フォーカスがパネルにあるとき", es: "Cuando el foco está en un panel" },
+
+  "Move focus to the previous tab. If on first tab, moves focus to last tab. Activate focused tab after a short delay." : { fr: "Déplace le focus sur l'onglet précédent. Si sur le premier onglet, déplace le focus sur le dernier onglet. Activer l'onglet ciblé après un court délai." , ja: "フォーカスを前のタブに移動します。 最初のタブの場合、最後のタブにフォーカスを移動します。 短時間の間にフォーカスを合わせたタブを有効にします。", es: "Mueve el foco a la pestaña anterior. Si está en la primera pestaña, mueve el foco a la última pestaña. Active la pestaña enfocada después de un breve retraso." },
+
+  "Move focus to the next tab. If on last tab, moves focus to first tab. Activate focused tab after a short delay." : { fr: "Déplace le focus sur l'onglet suivant. Si sur le dernier onglet, déplace le focus sur le premier onglet. Activer l'onglet ciblé après un court délai." , ja: "フォーカスを次のタブに移動します。 最後のタブの場合は、最初のタブにフォーカスを移動します。 短時間の間にフォーカスを合わせたタブを有効にします。", es: "Mueve el foco a la siguiente pestaña. Si está en la última pestaña, mueve el foco a la primera pestaña. Active la pestaña enfocada después de un breve retraso." },
+
+  "Move focus to the next tab. If on last tab, moves focus to first tab. The focused tab must be manually activated." : { fr: "Déplace le focus sur l'onglet suivant. Si sur le dernier onglet, déplace le focus sur le premier onglet. L'onglet ciblé doit être activé manuellement." , ja: "フォーカスを次のタブに移動します。 最後のタブの場合は、最初のタブにフォーカスを移動します。 フォーカスされたタブは手動でアクティブにする必要があります。", es: "Mueve el foco a la siguiente pestaña. Si está en la última pestaña, mueve el foco a la primera pestaña. La pestaña enfocada se debe activar manualmente." },
+  "Move focus to the first tab. Activate focused tab after a short delay." : { fr: "Déplace le focus sur le premier onglet. Activer l'onglet ciblé après un court délai." , ja: "フォーカスを最初のタブに移動します。 短時間の間にフォーカスを合わせたタブを有効にします。", es: "Mueve el foco a la primera pestaña. Active la pestaña enfocada después de un breve retraso." },
+  "Move focus to the last tab. Activate focused tab after a short delay." : { fr: "Déplace le focus sur le dernier onglet. Activer l'onglet ciblé après un court délai." , ja: "フォーカスを最後のタブに移動します。 短時間の間にフォーカスを合わせたタブを有効にします。", es: "Mueve el foco a la última pestaña. Active la pestaña enfocada después de un breve retraso." },
+  "Move focus to the first tab. The focused tab must be manually activated." : { fr: "Déplace le focus sur le premier onglet. L'onglet ciblé doit être activé manuellement." , ja: "フォーカスを最初のタブに移動します。 フォーカスされたタブは手動でアクティブにする必要があります。", es: "Mueve el foco a la primera pestaña. La pestaña enfocada se debe activar manualmente." },
+  "Move focus to the last tab. The focused tab must be manually activated." : { fr: "Déplace le focus sur le dernier onglet. L'onglet ciblé doit être activé manuellement." , ja: "フォーカスを最後のタブに移動します。 フォーカスされたタブは手動でアクティブにする必要があります。", es: "Mueve el foco a la última pestaña. La pestaña enfocada se debe activar manualmente." },
+
+  "Activate panel associated with focused tab." : { fr: "Activer le panneau associé à l'onglet ciblé." , ja: "フォーカスされたタブに関連付けられたパネルをアクティブにします。", es: "Activa el panel asociado con la pestaña enfocada." },
+  "Activate or toggle panel associated with focused tab." : { fr: "Activer ou basculer le panneau associé à l'onglet ciblé." , ja: "フォーカスされたタブに関連付けられたパネルを有効または切り替えます。", es: "Activar o alternar panel asociado con la pestaña enfocada." },
+  "Move focus to the previous tab and immediately activate." : { fr: "Déplace le focus sur l'onglet précédent et active immédiatement." , ja: "フォーカスを前のタブに移動し、すぐにアクティブにします。", es: "Mueva el foco a la pestaña anterior y actívela de inmediato." },
+  "Move focus to the next tab and immediately activate." : { fr: "Déplace le focus sur l'onglet suivant et active immédiatement." , ja: "フォーカスを次のタブに移動し、すぐにアクティブにします。", es: "Mueva el foco a la siguiente pestaña y actívela de inmediato." },
+
+  "Move focus to associated tab." : { fr: "Déplace le focus sur l'onglet associé." , ja: "関連するタブにフォーカスを移動します。", es: "Mueve el foco a la pestaña asociada." },
+
+  "Valid JSON file, but no groups in it" : { fr: "Fichier JSON valide, mais aucun groupe" , ja: "有効なJSONファイルですが、その中にグループはありません", es: "Archivo JSON válido, pero no hay grupos en él" },
+
+
+  "Valid json file with %1 groups in it, but you should put sources in it" : { fr: "Fichier json valide avec %1 groupes, mais vous devriez y mettre des sources" , ja: "%1つのグループがある有効なjsonファイルですが、その中にソースを入れる必要があります", es: "Archivo json válido con %1 grupos, pero debe poner las fuentes en él" },
+
   "Example sources" : { fr: "Exemples de sources" , ja: "情報源の例", es: "Ejemplos de fuentes" },
+
+  "Data structure OK: %1 groups containing %2 sources" : { fr: "Structure de données OK: %1 groupes contenant %2 sources" , ja: "データ構造OK：%2のソースを含むグループ%1", es: "Estructura de datos OK: %1 grupos que contienen %2 fuentes" },
+  "Invalid file" : { fr: "Fichier non valide" , ja: "無効なファイル", es: "Archivo inválido" },
 
   "Edit group" : { fr: "Modifier groupe" , ja: "グループの編集", es: "Editar grupo" },
   "Group name" : { fr: "Nom du groupe" , ja: "グループ名", es: "Nombre de la grupo" },
@@ -146,6 +182,8 @@ PTL.i18n.translations = {
   "Configure this source." : { fr: "Configurer cette source." , ja: "このソースを設定します。", es: "Configura esta fuente." },
 
   "Delete this source." : { fr: "Supprimer cette source." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
+
+  "sources loaded" : { fr: "sources chargées" , ja: "ソースが読み込まれました", es: "fuentes cargadas" },
 
   "Wait! Are you sure?" : { fr: "Stop ! Sur ?" , ja: "待つ！ 本気ですか？", es: "¡Espere! ¿Estás seguro?" },
 
@@ -196,11 +234,11 @@ PTL.i18n.translations = {
 
   "Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices." : { fr: "Ou (recommandé, beaucoup plus facile) utilisez le bouton de synchronisation dans le menu principal pour vous connecter au nuage - 5Apps, DropBox et Google Drive, 5Apps seulement est activé sur cette instance pour l'instant, mais vous devriez l'utiliser de toute façon car c'est un logiciel FLOSS - chaque modification que vous effectuez sera répercutée sur tous les appareils." , ja: "メインメニューの同期ボタンを使用してクラウド（5Apps、DropBox、Googleドライブ）に接続すると、現在のところ5Appsのみが有効になっていますが、これはFLOSSソフトウェアと同じように使用する必要があります） あなたが行った変更は、すべてのデバイスに反映されます。", es: "O (recomendado, mucho más fácil) use el botón de sincronización en el menú principal para conectarse a la nube - 5Apps, DropBox y Google Drive, solo 5Apps está habilitado en esta instancia por ahora, pero debe usarlo de todos modos ya que es software FLOSS - cada cambio que realice se reflejará en todos los dispositivos." },
 
-  "If you enter the URL of a valid source (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it" : { fr: "Si vous entrez l'URL d'une source valide (voir «Flux RSS» ci-dessus), par exemple «https://news.google.com/news/rss/rss», Pétrolette l'affichera" , ja: "«https://news.google.com/news/rss/rss»のような有効なソースのURLを入力すると（上記の«RSSフィード»を参照）、Pétroletteはそれを表示します", es: "Si ingresa la URL de una fuente válida (consulte «Alimentación RSS» arriba), como «https://news.google.com/news/rss/rss», Pétrolette lo mostrará" },
+  "If you enter the URL of a valid source (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it." : { fr: "Si vous entrez l'URL d'une source valide (voir «Flux RSS» ci-dessus), par exemple «https://news.google.com/news/rss/rss», Pétrolette l'affichera." , ja: "«https://news.google.com/news/rss/rss»のような有効なソースのURLを入力すると（上記の«RSSフィード»を参照）、Pétroletteはそれを表示します", es: "Si ingresa la URL de una fuente válida (consulte «Alimentación RSS» arriba), como «https://news.google.com/news/rss/rss», Pétrolette lo mostrará." },
 
-  "Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the source of this website and display it" : { fr: "Maintenant, si vous entrez simplement l'URL d'un site Web, comme «https://www.rt.com», Pétrolette essaiera de trouver la source de ce site Web et de l'afficher" , ja: "«https://www.rt.com»のようにウェブサイトのURLを入力するだけで、Pétroletteはこのウェブサイトのソースを見つけて表示しようとします", es: "Si simplemente ingresa la URL de un sitio web, como «https://www.rt.com», Pétrolette intentará encontrar el origen de este sitio web y mostrarlo" },
+  "Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the source of this website and display it." : { fr: "Maintenant, si vous entrez simplement l'URL d'un site Web, comme «https://www.rt.com», Pétrolette essaiera de trouver la source de ce site Web et de l'afficher." , ja: "«https://www.rt.com»のようにウェブサイトのURLを入力するだけで、Pétroletteはこのウェブサイトのソースを見つけて表示しようとします", es: "Si simplemente ingresa la URL de un sitio web, como «https://www.rt.com», Pétrolette intentará encontrar el origen de este sitio web y mostrarlo." },
 
-  "And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a source using a free and open source proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it" : { fr: "Enfin, si vous entrez autre chose qu'une URL, comme l'expression «crash Bitcoin» ou «attaque zombie», Pétrolette construira une source en utilisant un moteur de recherche proxy gratuit et open source, qui affichera les dernières nouvelles sur les fluctuations des devises numérique (ou les incidents impliquant des morts-vivants) chaque fois que vous le mettez à jour" , ja: "最後に、「bitcoinクラッシュ」や「ゾンビ攻撃」のようなURL以外のものを入力すると、Pétroletteは無料でオープンソースのプロキシ検索エンジンを使用してソースを構築し、デジタルの変動に関する最新ニュースを表示します 通貨（またはアンデッドを含むインシデント）を更新するたびに", es: "Y finalmente, si ingresa algo que no sea una URL, como la expresión «accidente de bitcoin» o «ataque zombi», Pétrolette construirá una fuente utilizando un motor de búsqueda de proxy de código abierto y gratuito, que mostrará las últimas noticias sobre las fluctuaciones en moneda (o incidentes relacionados con muertos vivientes) cada vez que la actualice" },
+  "And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a source using a free and open source proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it." : { fr: "Enfin, si vous entrez autre chose qu'une URL, comme l'expression «crash Bitcoin» ou «attaque zombie», Pétrolette construira une source en utilisant un moteur de recherche proxy gratuit et open source, qui affichera les dernières nouvelles sur les fluctuations des devises numérique (ou les incidents impliquant des morts-vivants) chaque fois que vous le mettez à jour." , ja: "最後に、「bitcoinクラッシュ」や「ゾンビ攻撃」のようなURL以外のものを入力すると、Pétroletteは無料でオープンソースのプロキシ検索エンジンを使用してソースを構築し、デジタルの変動に関する最新ニュースを表示します 通貨（またはアンデッドを含むインシデント）を更新するたびに", es: "Y finalmente, si ingresa algo que no sea una URL, como la expresión «accidente de bitcoin» o «ataque zombi», Pétrolette construirá una fuente utilizando un motor de búsqueda de proxy de código abierto y gratuito, que mostrará las últimas noticias sobre las fluctuaciones en moneda (o incidentes relacionados con muertos vivientes) cada vez que la actualice." },
 
   "If you enter the URL of a valid source (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it. Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the source of this website and display it. And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a source using a free and open source proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it." : { fr: "Cliquez sur le bouton «Ajouter une source» ; si vous entrez l'URL d'une source valide (voir ci-dessus «flux RSS»), comme, par exemple, «https://news.google.com/news/rss/rss» Pétrolette l'affichera. Maintenant, si vous entrez simplement l'URL d'un site web, comme https://www.rt.com, Pétrolette va essayer de trouver la source de ce site web et l'afficher. Et enfin, si vous entrez autre chose qu'une URL, comme l'expression «crash bitcoin» ou «attaque zombie», Pétrolette va construire une source en utilisant un moteur de recherche proxy libre et open source, qui affichera les dernières nouvelles sur les fluctuations de monnaie numérique (ou des incidents impliquant des morts-vivants) chaque fois que vous l'actualisez." , ja: "[新しいソース]ボタンをクリックします。「https://news.google.com/news/rss/rss」などの有効なソース（上記の「RSSフィード」を参照）のURLを入力すると、Pétroletteに表示されます。 さて、単にhttps://www.rt.comのようなウェブサイトのURLを入力すれば、Pétroletteはこのウェブサイトのソースを見つけようとします。 最後に、「bitcoin crash」や「zombie attack」のようなURL以外のものを入力すると、Pétroletteは無料のオープンソースプロキシ検索エンジンを使用してソースを構築し、デジタルの変動に関する最新ニュースを表示します 通貨（またはアンデッドに関わるインシデント）を更新するたびに更新されます。", es: "Haga clic en el botón **Nueva fuente** ; Si ingresa la URL de una fuente válida (consulte «Alimentación RSS» arriba), como «https://news.google.com/news/rss/rss», Pétrolette lo mostrará. Ahora, si simplemente ingresa la URL de un sitio web, como https://www.rt.com, Pétrolette intentará encontrar el origen de este sitio web y mostrarlo. Y finalmente, si ingresa algo que no sea una URL, como la expresión «accidente de bitcoin» o «ataque de zombie», Pétrolette construirá una fuente utilizando un motor de búsqueda de proxy de código abierto y gratuito, que mostrará las últimas noticias sobre las fluctuaciones en moneda (o incidentes relacionados con muertos vivientes) cada vez que la actualice." },
 
@@ -248,9 +286,19 @@ PTL.i18n.translations = {
 
   "Disconnected from remote storage" : { fr: "Déconnecté du stockage distant" , ja: "リモートストレージから切断されました", es: "Desconectado de almacenamiento remoto" },
 
+  "Synchronize" : { fr: "Synchroniser" , ja: "同期する", es: "Sincronizar" },
+  "More info" : { fr: "Plus d'informations" , ja: "詳細情報", es: "Más información" },
+  "Connection to storage" : { fr: "Connexion au stockage" , ja: "ストレージへの接続", es: "Conexión al almacenamiento" },
+
+  "To synchronize the sources across devices" : { fr: "Pour synchroniser les sources sur plusieurs appareils" , ja: "デバイス間でソースを同期するには", es: "Para sincronizar las fuentes en todos los dispositivos" },
+
   "Remote file validation NOT OK (error [%1]) now reading from browser cache" : { fr: "Validation de fichier à distance NOT OK (erreur [%1]) lecture depuis le cache du navigateur" , ja: "リモートファイルの検証NOT OK（エラー[%1]）がブラウザのキャッシュから読み込み中です", es: "La validación remota de archivos NO está OK (error [%1]) leyendo desde el caché del navegador" },
 
   "Remote file validation OK" : { fr: "Validation fichier distant OK" , ja: "リモートファイルの検証OK", es: "Validación remota de archivos OK" },
+
+  "Writing to remote storage OK" : { fr: "Ecriture sur le stockage distant OK" , ja: "リモートストレージへの書き込みOK", es: "Escribir en el almacenamiento remoto OK" },
+
+  "There was a problem writing to remote storage: [%1]" : { fr: "Un problème est survenu lors de l'écriture sur le stockage distant: [%1]" , ja: "リモートストレージへの書き込みに問題がありました：[%1]", es: "Hubo un problema al escribir en el almacenamiento remoto: [%1]" },
 
   "Problem reading source [%1] Error type [%2]" : { fr: "Problème lecture source [%1] Type d'erreur [%2]", ja: "問題の読書の問題[%1]エラータイプ[%2]", es: "Problema al leer la fuente [%1] Tipo de error [%2]" },
 
@@ -272,12 +320,22 @@ PTL.i18n.translations = {
   "Text" : { fr: "Texte", ja: "テキスト", es: "Texto" },
   "Collection" : { fr: "Collection", ja: "コレクション", es: "Colección" },
 
+  "Index" : { fr: "Indice", ja: "インデックス", es: "Índice" },
+
   "Number of items" : { fr: "Nombre de titres", ja: "タイトル数", es: "Cantidad de títulos" },
   "Number of sources" : { fr: "Nombre de sources", ja: "ソース数", es: "Cantidad de fuentes" },
 
   "Just answer the question" : { fr: "Répond juste à la question", ja: "ちょうど質問に答える", es: "Solo responde la pregunta" },
 
   "Group: Kill" : { fr: "Group: Supprimer", ja: "タブ：削除", es: "Grupo: Eliminar" },
+  "Unrecognized URL" : { fr: "URL non reconnue", ja: "認識できないURL", es: "URL no reconocida" },
+
+  "Unrecognized URL: %1" : { fr: "URL non reconnue: %1", ja: "認識できないURL: %1", es: "URL no reconocida: %1" },
+
+  "No sources found" : { fr: "Aucune source trouvée", ja: "ソースが見つかりません", es: "No se encontraron fuentes" },
+
+  "Found %1 sources in %2 columns in %3 groups" : { fr: "Trouvé %1 sources dans %2 colonnes dans %3 groupes", ja: "%3つのグループで%2つの列に%1つのソースが見つかりました", es: "Se encontraron %1 fuentes en %2 columnas en %3 grupos" },
+
   "Source Location (URL)" : { fr: "Adresse de la source (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },
   "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse d'une", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del" },
 
@@ -307,7 +365,12 @@ PTL.i18n.translations = {
   "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },
 
   "%1 | Click to rename, drag to move" : { fr: "%1 | Cliquer pour renommer, glisser pour déplacer", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
+
   "Really delete this source? (%1)" : { fr: "Réellement supprimer cette source (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este source? (%1)" },
+
+  "Really delete this column?" : { fr: "Vraiment supprimer cette colonne ?", ja: "本当にこの列を削除しますか？", es: "¿Realmente borras esta columna?" },
+
+  "Really delete this group?" : { fr: "Vraiment supprimer ce groupe ?", ja: "本当にこのグループを削除しますか？", es: "¿Eliminar realmente este grupo?" },
 
   "Fold / unfold this source (%1)" : { fr: "Plier / déplier cette source (%1)", ja: "ウーブリール - ファーマー (%1)", es: "Abrir / cerrar esta fuente (%1)" },
 

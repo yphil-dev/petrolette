@@ -2,19 +2,45 @@
 
 PTL.prefs = (function() {
 
-  var newList = [
-    {"name":"News",
-     "feeds": [
-       {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8},
-       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 4}
-     ]
-    },
-    {"name":"Comics",
-     "feeds": [
-       {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-       {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-     ]
-    }
+  var newList =
+      [
+        {"name":"News",
+         "columns": [
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8}
+           ],
+           [
+             {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8},
+             {"url":"https://www.reddit.com/.rss","type":"photo","limit": 4}
+           ],
+           [
+             {"url":"http://www.lemonde.fr/rss/une.xml","type":"photo","limit": 4},
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ]
+         ]
+        },
+        {"name":"Comics",
+         "columns": [
+           [
+             {"url":"http://feeds.nature.com/nature/rss/current","type":"text","limit": 16},
+             {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 16},
+             {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 16},
+
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ]
+         ]
+        },
+        {"name":"Two",
+         "columns": [
+           [
+             {"url":"http://phdcomics.com/gradfeed.php","type":"photo","limit": 4}
+           ],
+           [
+             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
+             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+           ]
+         ]
+        }
   ];
 
   var emptyTabList = [
@@ -78,15 +104,15 @@ PTL.prefs = (function() {
     },
     writeConfig:function(key, val) {
 
-      $('div#logoTitle i').addClass('writing');
+      $('div#logo-title i').addClass('writing');
 
-      if (key === 'tabs') {
+      if (key === 'sources') {
         localStorage.setItem('writeTime', Date.now());
       }
 
       localStorage.setItem(key, val);
       setTimeout(function () {
-        $('div#logoTitle i').delay('slow').removeClass('writing');
+        $('div#logo-title i').delay('slow').removeClass('writing');
       }, 300);
 
     },

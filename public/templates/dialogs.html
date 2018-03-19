@@ -5,15 +5,15 @@
               data-content="Source Location (URL)"
               class="ui-corner-top translate">Source Location (URL)</legend>
 
-      <div id="feedGuess" class="flexBox">
+      <div id="feed-guess" class="flex-box">
         <input name="guess"
-               id="feedGuess"
+               id="feed-guess"
                placeholder="URL (https://reddit.com)"
                data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the source"
                value=""
                class="ui-widget-content grow ui-corner-all translate"
         />
-        <button id="feedGuess"
+        <button id="feed-guess"
                 class="shrink"
                 type="button">
           <i class="icon-flashlight"></i>
@@ -46,7 +46,7 @@
       </legend>
 
       <div id="feedType"
-           class="flexBox">
+           class="flex-box">
 
         <label data-title="Text"
                data-content="Text"
@@ -72,7 +72,7 @@
     <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
       <legend data-content="Number of items"
               class="ui-corner-top translate">Number of items</legend>
-      <div class="flexBox">
+      <div class="flex-box">
         <div class="feedLimit grow">
           <label for="feedLimit" class="ui-helper-hidden">
             <input type="text" id="feedLimit" />
@@ -95,7 +95,7 @@
       </legend>
 
       <div id="feedDel"
-           class="flexBox">
+           class="flex-box">
         <input type="checkbox" name="killFeedChbox" id="killFeedChbox">
         <label id="killFeed"
                class="dangerous translate last"
@@ -112,12 +112,18 @@
   </form>
 </div>
 
-<div id="killDialog">
-  <div class="dialogWithIcon">
+<div id="question-dialog">
+  <div class="dialog-question">
     <div class="icon">
-      <i class="icon-bomb danger huge"></i>
+      <i class="huge"></i>
     </div>
-    <div class="content"></div>
+    <div class="content">
+      <h1></h1>
+      <h2 id="name"></h2>
+      <p id="name"></p>
+      <h2 id="number"></h2>
+      <p id="number"></p>
+    </div>
   </div>
 </div>
 
@@ -126,88 +132,98 @@
       data-title="What exactly is Pétrolette?"
       data-content="What exactly is Pétrolette?">What exactly is Pétrolette?</h1>
   <div class="dialog">
-    <span class="translate ui"
-          data-content="Pétrolette is a news reader focused on preventing anyone to know what you are reading.">
+    <p>
+      <span class="translate ui"
+                 data-content="Pétrolette is a news reader focused on preventing anyone to know what you are reading.">
       Pétrolette is a news reader focused on preventing anyone to know what you are reading.
     </span>
-    <button class="helpIntroUI translate"
+    <button class="help-button help-tour translate"
             data-content="Take the tour">
       Take the tour
     </button>
 
+    <button class="help-button help-kb-shortcuts translate"
+            data-content="Keyboard shortcuts">
+      Keyboard shortcuts
+    </button>
+    </p>
   </div>
   <h2 class="translate"
       data-title="How does it work?"
       data-content="How does it work?">How does it work?</h2>
   <div class="dialog">
-    <span class="translate"
-          data-content="Pétrolette uses a time-tested technology">
+    <p>
+      <span class="translate"
+                 data-content="Pétrolette uses a time-tested technology">
       Pétrolette uses a time-tested technology
-    </span>: <a class="rssDocLink" href="https://wikipedia.org/wiki/RSS">RSS</a>.
-    <span class="translate"
-          data-content="Create sources and organize them into groups.">
-      Create sources and organize them into groups.
-    </span>
+      </span>: <a class="rssDocLink" href="https://wikipedia.org/wiki/RSS">RSS</a>.
+
+      <span class="translate"
+            data-content="Create sources and organize them into groups.">
+        Create sources and organize them into groups.
+      </span>
+    </p>
     <h3 class="translate"
         data-title="What is a group?"
         data-content="Why didn't I have to register? Where are my groups and sources saved?">Why didn't I have to register? Where are my groups and sources saved?</h3>
-    <span class="translate"
-          data-content="Your sources are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other sources.">
-      Your sources are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other sources.
-    </span>
-
+    <p>
+      <span class="translate"
+            data-content="Your sources are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other sources.">
+        Your sources are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other sources.
+      </span>
+    </p>
     <h4 class="translate"
         data-title="How can I view the same sources on all my devices (like my phone)?"
         data-content="How can I view the same sources on all my devices (like my phone)?">How can I view the same sources on all my devices (like my phone)?</h4>
+    <p>
+      <span class="translate"
+            data-content="Two ways:">
+        Two ways:
+      </span>
 
-    <span class="translate"
-          data-content="Two ways:">
-      Two ways:
-    </span>
+      <ul class="help">
+        <li class="export translate"
+            data-content="Use the «Export» button in the menu to save your sources file, then on the other device, use the «Import» button to load this file.">Use the «Export» button in the menu to save your sources file, then on the other device, use the «Import» button to load this file.</li>
 
-    <ul class="help">
-      <li class="export translate"
-          data-content="Use the «Export» button in the menu to save your sources file, then on the other device, use the «Import» button to load this file.">Use the «Export» button in the menu to save your sources file, then on the other device, use the «Import» button to load this file.</li>
+        <li class="cloud translate"
+            data-content="Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.">Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.</li>
 
-      <li class="cloud translate"
-          data-content="Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.">Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.</li>
-
-    </ul>
-
+      </ul>
+    </p>
   </div>
+
   <h3 class="translate"
       data-title="What is a group?"
       data-content="What is a group?">What is a group?</h3>
   <div class="dialog">
-
-    <span class="translate"
-          data-content="Just a container for your sources. Specifically, a tab that you can create, (re)name, move, and delete just like usual.">
-      Just a container for your sources. Specifically, a tab that you can create, (re)name, move, and delete just like usual.
-    </span>
+    <p>
+      <span class="translate"
+            data-content="Just a container for your sources. Specifically, a tab that you can create, (re)name, move, and delete just like usual.">
+        Just a container for your sources. Specifically, a tab that you can create, (re)name, move, and delete just like usual.
+      </span>
+    </p>
   </div>
   <h3 class="translate"
       data-title="What is a source?"
       data-content="What is a source? How do I create one?">What is a source? How do I create one?</h3>
 
   <div class="dialog">
+    <p>
+      <span class="translate"
+            data-content="Click the «New source» button.">
+        Click the «New source» button.
+      </span>
+      <ul class="help">
+        <li class="rss translate"
+            data-content="If you enter the URL of a valid source (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.">If you enter the URL of a valid source (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.</li>
 
-    <span class="translate"
-          data-content="Click the «New source» button.">
-      Click the «New source» button.
-    </span>
+        <li class="www translate"
+            data-content="Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the source of this website and display it.">Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the source of this website and display it.</li>
 
-    <ul class="help">
-
-      <li class="rss translate"
-          data-content="If you enter the URL of a valid source (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it">If you enter the URL of a valid source (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it</li>
-
-      <li class="www translate"
-          data-content="Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the source of this website and display it">Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the source of this website and display it</li>
-
-      <li class="search translate"
-          data-content="And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a source using a free and open source proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it">And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a source using a free and open source proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it</li>
-    </ul>
-
+        <li class="search translate"
+            data-content="And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a source using a free and open source proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.">And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a source using a free and open source proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.</li>
+      </ul>
+    </p>
   </div>
 
   <h2 class="translate"
@@ -216,16 +232,18 @@
     Ok, where do I start?
   </h2>
   <div class="dialog">
-    <span class="dialog translate"
-          data-content="Learn how to use">
+    <p>
+      <span class="dialog translate"
+                 data-content="Learn how to use">
       Learn how to use
     </span>
-    <button class="helpIntroUI translate"
+    <button class="help-button help-tour translate"
             data-content="the groups and the sources">
       the groups and the sources
     </button>
     <span class="dialog translate"
           data-content="and Pétrolette in general.">and Pétrolette in general.</span>
+    </p>
   </div>
 </div>
 
@@ -235,7 +253,7 @@
       <legend id="tabNameLegend"
               class="ui-corner-top translate"
               data-content="Group name">Group Name</legend>
-      <div class="flexBox">
+      <div class="flex-box">
 
         <label for="tabName"
                class="ui-helper-hidden">Name</label>
@@ -251,7 +269,7 @@
       <legend id="tabMoveLegend"
               class="ui-corner-top translate"
               data-content="Group position">Group position</legend>
-      <div class="flexBox">
+      <div class="flex-box">
 
         <button type="button"
                 id="left"
