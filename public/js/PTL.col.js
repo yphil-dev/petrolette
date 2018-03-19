@@ -1,22 +1,31 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.col = {
-  del: function($column, nbOfColumnsInTab) {
+  del: function($column) {
+
 
     var $panel = $column.parent();
 
+    var nbOfColumnsInTab = $panel.find('.column').length;
+
+    console.log('nbOfColumnsInTab: (%s)', nbOfColumnsInTab);
+
     $column.hide('fast', function() {
 
-      $(this).remove();
+      var $column = $(this);
+
       if (nbOfColumnsInTab <= 2) {
-        $panel.find('button.col-del').hide();
+        // console.log('wopop!: (%s)');
+        $panel.find('.col-del').hide();
       }
+
+      $column.remove();
 
       PTL.tab.saveTabs();
 
     });
   },
-  add: function($tabPanel, colIndex, nbOfColumnsInTab, newCol) {
+  add: function(colIndex, newCol) {
 
     var $colButtons = $('<div>')
         .attr('class', 'buttons flex-box');
@@ -50,7 +59,7 @@ PTL.col = {
     var $colDelButton = $('<button>')
         .attr('title', PTL.tr('Remove this column'))
         .data('title', 'Remove this column')
-        .attr('class', 'col-del icon-minus twin hidden')
+        .attr('class', 'col-del icon-minus twin')
         .data('colIndex', colIndex)
         .button();
 
@@ -60,10 +69,8 @@ PTL.col = {
           $sourcesInCol = $column.find('.feed'),
           nbOfSourcesInCol = $sourcesInCol.length;
 
-      console.log('nbOfSourcesInCol : (%s)', nbOfSourcesInCol);
-
       if (nbOfSourcesInCol < 1) {
-        PTL.col.del($column, nbOfColumnsInTab);
+        PTL.col.del($column);
       } else {
         PTL.dialog.killColumn($(this));
       }
@@ -74,13 +81,9 @@ PTL.col = {
 
         var $column = $(this).parent().parent(),
             $panel = $column.parent(),
-            $columnsInTab = $panel.find('.column'),
-            nbOfColumnsInTab = $columnsInTab.length,
             colIndex = $panel.find('.column').index($column);
 
-        var $newColumn = PTL.col.add($panel, colIndex, nbOfColumnsInTab, true);
-
-        PTL.util.reOrderColButtons($(this));
+        var $newColumn = PTL.col.add(colIndex, true);
 
         $panel.find('button.col-del').show();
 
@@ -128,21 +131,11 @@ PTL.col = {
       }
       }).disableSelection();
 
-
-    $colButtons.append($colLegend);
-
-    $colButtons.append($colDelButton, $colNewButton);
-
-    $colButtons.append($srcLegend);
-
-    $colButtons.append($srcNewButton);
-
-    if (nbOfColumnsInTab > 1 || newCol) {
-      $colDelButton.removeClass('hidden');
-      $tabPanel.find('.col-del').removeClass('hidden');
-    }
-
-    // PTL.tab.saveTabs();
+    $colButtons.append($colLegend,
+                       $colDelButton,
+                       $colNewButton,
+                       $srcLegend,
+                       $srcNewButton);
 
     return $column;
   }

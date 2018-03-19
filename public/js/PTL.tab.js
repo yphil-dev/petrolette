@@ -11,8 +11,7 @@ PTL.tab = {
 
         ui.newPanel.css("display","flex");
 
-        $(document).prop('title', $(this)
-                         .find('.ui-tabs-active')
+        $(document).prop('title', $(this).find('.ui-tabs-active')
                          .text() + ' | Pétrolette');
 
         $('.tab-closer').show();
@@ -206,7 +205,9 @@ PTL.tab = {
 
     columns.forEach(function(sources) {
 
-      var $column = PTL.col.add($tabPanel, colIndex++, nbOfColumnsInTab);
+      console.log('panel: (%s) cols: %s', $tabPanel.attr('id'), nbOfColumnsInTab);
+
+      var $column = PTL.col.add(colIndex++);
 
       $column.appendTo($tabPanel);
 
@@ -219,6 +220,10 @@ PTL.tab = {
 
           PTL.src.add($column, url, type, limit, false, progress);
         });
+      }
+
+      if (nbOfColumnsInTab <2) {
+        $column.find('.col-del').addClass('hidden');
       }
 
     });

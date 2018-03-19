@@ -146,18 +146,6 @@ PTL.util = {
     return vW;
 
   },
-  reOrderColButtons:function($button) {
-
-
-    var $column = $button.parent().parent(),
-        $sourcesInCol = $column.find('.feed');
-
-    console.log('plpoip: (%s)', $column.attr('id'));
-
-    $column.find('legend.legend-col').each(function() {
-      console.log('elt: (%s)', $(this).text());
-    });
-  },
   moveEltLeft:function($elt) {
     $elt.insertBefore($elt.prev());
   },
