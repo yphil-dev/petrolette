@@ -167,7 +167,7 @@ PTL.i18n.translations = {
 
   "Click on the current/selected group tab to change its name and position." : { fr: "Cliquer sur le groupe sélectionné pour changer son nom et sa position." , ja: "現在の/選択したグループタブをクリックして、名前と位置を変更します。", es: "Haga clic en la pestaña del grupo actual / seleccionado para cambiar su nombre y posición." },
 
-  "This is a source." : { fr: "Ceci est une source." , ja: "これはソースです", es: "Esta es una fuente." },
+  "This is a source. More info: %1" : { fr: "Ceci est une source. Plus d'infos: %1" , ja: "これはソースです 詳細情報：%1", es: "Esta es una fuente. Más info: %1" },
   "Click this button to add a group." : { fr: "Cliquez sur ce bouton pour ajouter un groupe." , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo." },
 
   "Source code" : { fr: "Code source" , ja: "ソースコード", es: "Código fuente" },
@@ -286,8 +286,12 @@ PTL.i18n.translations = {
   "Disconnected from remote storage" : { fr: "Déconnecté du stockage distant" , ja: "リモートストレージから切断されました", es: "Desconectado de almacenamiento remoto" },
 
   "Synchronize" : { fr: "Synchroniser" , ja: "同期する", es: "Sincronizar" },
-  "More info" : { fr: "Plus d'informations" , ja: "詳細情報", es: "Más información" },
+  "More info" : { fr: "Plus d'infos" , ja: "詳細情報", es: "Más info" },
+  "More info: %1" : { fr: "Plus d'infos: %1" , ja: "詳細情報: %1", es: "Más info: %1" },
+
   "Connection to storage" : { fr: "Connexion au stockage" , ja: "ストレージへの接続", es: "Conexión al almacenamiento" },
+
+  "Synced just now" : { fr: "Synchronisé maintenant" , ja: "今すぐ同期しました", es: "Sincronizado ahora mismo" },
 
   "To synchronize the sources across devices" : { fr: "Pour synchroniser les sources sur plusieurs appareils" , ja: "デバイス間でソースを同期するには", es: "Para sincronizar las fuentes en todos los dispositivos" },
 

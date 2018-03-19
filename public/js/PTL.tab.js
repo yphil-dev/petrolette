@@ -83,7 +83,7 @@ PTL.tab = {
     $('input.rs-connect')
       .val(PTL.tr('Synchronize'))
       .button();
-    $('a.rs-help').text(PTL.tr('More info'));
+    $('a.rs-help').text(PTL.tr(' More info'));
 
     PTL.util.console(PTL.tr('Pétrolette starting up OK'), 'success');
 
