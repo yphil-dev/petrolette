@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "Fly-by-night news reading webapp.",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "private": true,
   "license": "GPL-3.0-only",
   "engines": {
@@ -15,7 +15,7 @@
     "start": "pm2 start -f bin/www --watch --log-date-format='YYYY-MM-DD HH:mm Z' --name PTL",
     "stop": "pm2 stop PTL",
     "build:pre": "uglifyjs public/js/PTL.main.js public/js/PTL.prefs.js public/js/PTL.i18n.js -m -o dist/js/PTL.pre.min.js",
-    "build:post": "uglifyjs public/js/PTL.utilities.js public/js/PTL.tab.js public/js/PTL.feed.js public/js/PTL.dialog.js public/js/PTL.sync.js public/js/PTL.menu.js -m -o dist/js/PTL.post.min.js",
+    "build:post": "uglifyjs public/js/PTL.util.js public/js/PTL.tab.js public/js/PTL.src.js public/js/PTL.dialog.js public/js/PTL.sync.js -m -o dist/js/PTL.post.min.js",
     "build:js": "mkdir -p dist/js cache-favicons && npm run build:pre && npm run build:post",
     "watch:js": "onchange 'public/js/*.js' -- npm run build:js",
     "postinstall": "npm run build:js && bower install"
@@ -28,9 +28,9 @@
     "bower": "1.8.2",
     "ejs": "2.5.7",
     "express": "4.16.2",
+    "favicon": "0.0.2",
     "feedparser": "2.2.9",
     "feedrat": "latest",
-    "favicon": "0.0.2",
     "pm2": "2.8.0"
   },
   "cacheDirName": "favicon-cache"

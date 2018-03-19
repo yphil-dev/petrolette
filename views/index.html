@@ -52,7 +52,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="/static/css/themes/base/jquery-ui.min.css">
-    <link id="mobStyle" rel="stylesheet" href="/static/css/themes/night.css">
+    <link id="theme" rel="stylesheet" href="/static/css/themes/night.css">
     <link rel="stylesheet" href="/static/css/fontello.css">
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/minified/introjs.min.css" />
@@ -73,74 +73,329 @@
     <script src="/static/js/PTL.prefs.js"></script>
     <script src="/static/js/PTL.i18n.js"></script>
 
-    <!-- <script src="/dist/js/PTL.pre.min.js"></script>
-    -->
-    <script>
-
-     PTL.language = PTL.prefs.readConfig('lang');
-
-    </script>
-
-    <base target="_blank">
-
   </head>
 
   <body>
-    <div id="overlay"></div>
+    <div id="overlay" class="hidden"></div>
 
-    <div id="preloadHiddenDiv">
+    <div id="preload">
       <i class="fontello"></i>
-      <i class="logoTitle">.</i>
-      <i class="feedTitle">.</i>
+      <i class="logo-title">.</i>
+      <i class="source-title">.</i>
       <i class="ui-icon"></i>
     </div>
 
-    <header></header>
+    <nav id="top-menu" class="menu">
+      <div class="topnav" id="topnav">
 
-    <noscript>
-      <div id="noScript">
-        <h1>Uh-oh</h1>
-        <h3>Pétrolette cannot work without javascript.</h3>
-        <ul>
-          <li>
-            <a href="/about/javascript" data-jslicense="1">JavaScript license information</a>
-          </li>
-          <li>
-            Use the force, read <a href="https://framagit.org/yphil/petrolette">the source</a>.
-          </li>
-        </ul>
+        <div id="menuButton"
+             class="menuBarItem logoType translate js-enabled-only"
+             title="Set Pétrolette preferences/options"
+             data-title="Set Pétrolette preferences/options">
+          <i class="logoType icon-menu"></i>
+          <span class="text translate"
+                data-content="Menu">
+            Menu
+          </span>
+        </div>
+
+        <div class="menuBarItem logoType translate help-button js-enabled-only"
+             title="What exactly is Pétrolette?"
+             data-title="What exactly is Pétrolette?">
+          <i class="logoType icon-help-1"></i>
+          <span class="text translate"
+                data-content="Help">
+            Help
+          </span>
+        </div>
+
+        <div id="newSourceButton"
+             class="menuBarItem logoType translate new-source-button js-enabled-only"
+             title="Add a source"
+             data-title="Add a source">
+          <i class="logoType icon-plus"></i>
+          <span class="text translate"
+                data-content="Source">
+            Source
+          </span>
+        </div>
+
+        <div id="logo-title">
+          <div class="logo-title">
+            <a href="http://takeoff.petrolette.space">Pétrolette</a>
+          </div>
+          <div class="logoType">
+            <i class="icon-petrolette"></i>
+          </div>
+          <span id="beta-badge">beta</span>
+        </div>
+
       </div>
-    </noscript>
+    </nav>
+
+    <nav id="side-menu" class="menu">
+      <div id="side-menu" class="plip">
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <legend id="languageLegend"
+                  class="ui-corner-top translate"
+                  data-content="Language">
+            Language
+          </legend>
+          <select id="language"
+                  class="unique translate"
+                  name="language"
+                  data-title="Language"
+                  title="Language">
+            <option id="optionEnglish"
+                    class="translate"
+                    data-content="English"
+                    selected="selected"
+                    value="en"></option>
+            <option id="optionFrench"
+                    class="translate"
+                    data-content="Français"
+                    value="fr"></option>
+            <option id="optionJapanese"
+                    class="translate"
+                    data-content="日本語"
+                    value="ja"></option>
+            <option id="optionSpanish"
+                    class="translate"
+                    data-content="Español"
+                    value="es"></option>
+          </select>
+        </fieldset>
+
+        <fieldset class="ui-widget ui-widget-content ui-corner-all">
+          <legend id="tabsLegend"
+                  class="ui-corner-top translate"
+                  data-content="Sources">
+            Sources
+          </legend>
+          <div class="flex-box">
+            <input id="fileImport"
+                   type="file"
+                   style="display: none;" />
+            <button id="fileImport"
+                    class="grow translate"
+                    data-title="Open / import groups and sources"
+                    data-content="Import">
+              <i class="icon-upload"></i>
+              Import
+            </button>
+            <button id="saveTabs"
+                    class="grow translate last"
+                    data-title="Save / export groups and sources"
+                    data-content="Export">
+              <i class="icon-download"></i>
+              Export
+            </button>
+          </div>
+          <div id="sync-box"></div>
+          <div id="progress-bar"><div class="progress-label"></div></div>
+        </fieldset>
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <legend id="themeLegend"
+                  class="ui-corner-top translate"
+                  data-content="Theme">
+            Theme
+          </legend>
+          <div id="themeBox"
+               class="flex-box">
+            <label id="dayLabel"
+                   class="grow translate"
+                   for="day"
+                   data-title="Day theme"
+                   title="Day theme"
+                   data-content="Day">
+              Day
+            </label>
+            <input id="day"
+                   class="themeSwitcher checkboxradio"
+                   type="radio"
+                   name="radio-1"
+                   value="day">
+            <label id="nightLabel"
+                   class="grow translate last"
+                   for="night"
+                   data-title="Night theme"
+                   title="Night theme"
+                   data-content="Night">
+              Night
+            </label>
+            <input id="night"
+                   class="themeSwitcher checkboxradio noBottom"
+                   type="radio"
+                   name="radio-1"
+                   value="night">
+          </div>
+        </fieldset>
+
+        <fieldset id="galleryBox"
+                  class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <legend id="imageGalleryLegend"
+                  class="ui-corner-top translate"
+                  data-content="Image gallery">
+            Image gallery
+          </legend>
+          <label class="ui-helper-hidden"
+                 for="gallerySlideshowSpeedValue"></label>
+          <span id="gallerySlideshowSpeedValue"
+                class="twin"></span>
+          <div id="gallerySlideshowSpeed"></div>
+          <div class="flex-box">
+            <div class="grow">
+              <label for="gallerySpeed" class="ui-helper-hidden">
+                <input type="text" id="gallerySpeed" />
+              </label>
+              <div id="gallerySpeedSlider"
+                   data-title="Slideshow speed"
+                   class="translate">
+              </div>
+            </div>
+            <label for="spinner" class="ui-helper-hidden">Select a value:</label>
+            <input id="gallerySpeedSpinner"
+                   data-title="Slideshow speed"
+                   class="translate"
+                   name="value">
+            <select id="gallerySlideTransition"
+                    class="unique translate"
+                    data-title="Slide transition">
+              <option class="translate"
+                      data-content="None"
+                      value="false">None</option>
+              <option class="translate"
+                      data-content="Fade"
+                      value="fade">Fade</option>
+              <option class="translate"
+                      data-content="Slide"
+                      value="slide">Slide</option>
+              <option class="translate"
+                      data-content="Circular"
+                      value="circular">Circular</option>
+              <option class="translate"
+                      data-content="Tube"
+                      value="tube">Tube</option>
+              <option class="translate"
+                      data-content="Zoom"
+                      value="zoom-in-out">Zoom-in-out</option>
+              <option class="translate"
+                      data-content="Rotate"
+                      value="rotate">Rotate</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <legend id="helpLegend"
+                  data-content="Help"
+                  class="ui-corner-top translate">
+            Help
+          </legend>
+
+          <div class="flex-box">
+            <a href="https://framagit.org/yphil/petrolette"
+               class="ui-button ui-widget ui-corner-all unique icon-petrolette translate"
+               data-title="Source code"
+               data-content="Source code"
+               title="Source code">
+              Source code
+            </a>
+            <button id="help"
+                    class="grow translate help-button"
+                    data-title="What exactly is Pétrolette?"
+                    title="What exactly is Pétrolette?"
+                    data-content="WtF?">
+              WtF?
+            </button>
+            <a href="https://liberapay.com/yPhil/donate"
+               class="ui-button ui-widget ui-corner-all translate last"
+               data-title="Send your love to Pétrolette"
+               title="Send your love to Pétrolette"
+               data-content="Donate">
+              Donate
+            </a>
+            <a href="/about/javascript"
+               data-jslicense="1"
+               class="ui-button ui-widget ui-corner-all unique translate"
+               data-title="JavaScript license information"
+               title="JavaScript license information"
+               data-content="JS Licences">
+              JS Licence info
+            </a>
+          </div>
+        </fieldset>
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <legend id="languageLegend"
+                  class="ui-corner-top translate"
+                  data-content="Console">
+            Console
+          </legend>
+          <div
+            class="ui-button"
+            data-title="Click to toggle"
+            title="Click to toggle"
+            id="console"></div>
+        </fieldset>
+
+      </div>
+    </nav>
 
     <main>
-      <div id="tabs">
-        <ul id="tabUl"></ul>
-      </div>
-      <div id="mobDialogs"></div>
-    </main>
 
-    <footer>
-      <span id="scrollToTop">
+      <div id="tabs">
+        <ul id="tab-names"></ul>
+      </div>
+
+      <noscript>
+        <div id="no-script">
+          <h1>Uh-oh</h1>
+          <h3>Pétrolette cannot work without javascript.</h3>
+          <ul>
+            <li>
+              <a href="/about/javascript" data-jslicense="1">JavaScript license information</a>
+            </li>
+            <li>
+              Use the force, read <a href="https://framagit.org/yphil/petrolette">the source</a>.
+            </li>
+          </ul>
+        </div>
+      </noscript>
+
+      <div id="dialogs"></div>
+
+      <span id="scroll-top">
         <i class="icon-up"></i>
       </span>
-    </footer>
+    </main>
 
-    <script src="/static/js/PTL.utilities.js"></script>
+    <script src="/static/js/PTL.util.js"></script>
     <script src="/static/js/PTL.tab.js"></script>
-    <script src="/static/js/PTL.feed.js"></script>
+    <script src="/static/js/PTL.col.js"></script>
+    <script src="/static/js/PTL.src.js"></script>
     <script src="/static/js/PTL.dialog.js"></script>
     <script src="/static/js/PTL.sync.js"></script>
-    <script src="/static/js/PTL.menu.js"></script>
 
-    <!-- <script src="/dist/js/PTL.post.min.js"></script>
-    -->
     <script>
 
-     var qstring = "<%= qstring %>";
+     $( document ).ready(function() {
+       PTL.start();
 
-     PTL.menu.top();
-     PTL.menu.side();
-     PTL.tab.init(qstring);
+       PTL.queryString = '<%= queryString %>';
+
+       PTL.tab.init();
+
+       if (PTL.queryString) {
+         PTL.dialog.addSource(PTL.queryString);
+         console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.util.isUrl(PTL.queryString));
+         PTL.queryString = null;
+       }
+
+     });
+
 
     </script>
 

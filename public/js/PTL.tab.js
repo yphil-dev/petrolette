@@ -1,35 +1,32 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.tab = {
-  init:function(qstring) {
+  init:function() {
+
+    PTL.language = PTL.prefs.readConfig('lang');
 
     var $tabs = $('#tabs').tabs({
       heightStyle: 'content',
-      activate: function() {
+      activate: function(event, ui) {
 
-        var $activeTab = $tabs.find('.ui-tabs-active');
+        ui.newPanel.css("display","flex");
 
-        $(document).prop('title', $activeTab.text() + ' | Pétrolette');
+        $(document).prop('title', $(this).find('.ui-tabs-active')
+                         .text() + ' | Pétrolette');
 
-        $('.tabCloser').hide();
+        $('.tab-icon').show();
 
-        $activeTab.find('.tabCloser').show();
       }
-
     });
 
     $tabs.find('.ui-tabs-nav').sortable({
       axis: 'x',
-      items: '> li:not(#newTabButton)',
+      items: '> li:not(#new-group)',
       stop: function() {
         $tabs.tabs('refresh');
         PTL.tab.saveTabs();
       }
     });
-
-    if (qstring) {
-      PTL.qstring = qstring;
-    }
 
     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
       e.preventDefault();
@@ -38,239 +35,145 @@ PTL.tab = {
       }
     });
 
-    $tabs.on("click", "i.tabCloser", function() {
+    $tabs.on("click", "i.tab-closer", function() {
       PTL.dialog.killTab($(this));
     });
 
-    if (PTL.utilities.isMobile()) {
-      $tabs.find('.feedControls > div').removeClass('collapsible');
+    if (PTL.util.isMobile()) {
+      $tabs.find('.source-controls > div').removeClass('collapsible');
     }
 
     $tabs.find('.collapsible').show('fast');
 
-    PTL.tab.makeNewTabButton($tabs);
-
     $(window).scroll(function() {
       if ($(this).scrollTop() >= 50) {
-        $('#scrollToTop').fadeIn(200);
+        $('#scroll-top').fadeIn(200);
       } else {
-        $('#scrollToTop').fadeOut(200);
+        $('#scroll-top').fadeOut(200);
       }
     });
-    $('#scrollToTop').click(function() {
+
+    $('#scroll-top').click(function() {
       $('body,html').animate({
         scrollTop : 0
       }, 500);
     });
 
-    PTL.utilities.noSourcesButton();
+    PTL.tab.makeNewTabButton($tabs);
     PTL.sync.readSync();
 
-    $("#mobStyle").attr({href : '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
+    $("#theme").attr({href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
 
   },
   saveTabs:function() {
+    var sources = PTL.tab.list();
+    PTL.prefs.writeConfig('sources', JSON.stringify(sources));
+    PTL.sync.writeSync(JSON.stringify(sources));
+  },
+  populate:function(sources) {
 
-    console.info('Pétrolette | Writing to local storage OK');
+    if (!sources || sources.length <= 0) {
+      PTL.util.console(PTL.tr('No sources found'), 'warning');
+      sources = ['empty'];
+    }
 
-    var allTabs = PTL.tab.list();
-    PTL.prefs.writeConfig('tabs', JSON.stringify(allTabs));
-    PTL.sync.writeSync(JSON.stringify(allTabs));
+    var nbOfGroups = 0,
+        nbOfSources = 0,
+        progress = PTL.util.buildProgress();
+
+    sources.forEach(function(group) {
+      nbOfGroups++;
+      $.each(group.columns, function(k, v) {
+        $.each(v, function() {
+          nbOfSources++;
+        });
+      });
+    });
+
+    PTL.util.console(PTL.tr('Data structure OK: %1 groups containing %2 sources', nbOfGroups, nbOfSources), 'success');
+
+    progress.init(nbOfSources);
+
+    sources.forEach(function(group) {
+
+      var thisGroup = {},
+          allSources = [],
+          thisTabCols = [];
+
+      thisGroup.name = group.name;
+
+      $.each(group.columns, function(k, v) {
+
+        var thisColSources = [];
+
+        $.each(v, function( k, v ) {
+          var thisSource = {};
+          thisSource.url = v.url;
+          thisSource.type = v.type;
+          thisSource.limit = v.limit;
+
+          thisColSources.push(thisSource);
+          allSources.push(thisColSources);
+
+          // console.log('URL: %s, Type: %s, Limit: %s', v.url, v.type, v.limit);
+        });
+        thisTabCols.push(thisColSources);
+      });
+      PTL.tab.add($('#tabs'), thisGroup.name, thisTabCols, progress);
+
+      // console.log('thisTabColsA: (%s)', JSON.stringify(thisTabCols));
+      // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
+    });
+
   },
   empty:function() {
-
     $('div#tabs ul li').remove();
     $('div#tabs div').remove();
-    $('#noSourcesButton').fadeIn('slow');
-    PTL.tab.saveTabs();
-    PTL.tab.makeNewTabButton($('div#tabs'));
   },
-  populate:function(sources, clickToRefresh, add) {
+  add:function($tabs, name, columns, progress) {
 
-    if (!add) {
-      $('div#tabs div').remove();
-      $('div#tabs ul li').remove();
-      PTL.tab.makeNewTabButton($('div#tabs'));
-    }
+    $('#new-group').removeClass('hidden');
 
-    var totalFeeds = 0,
-        progress = PTL.utilities.buildProgress();
-
-    sources.forEach(function(tab) {
-      totalFeeds += tab.feeds.length;
-    });
-
-    progress.init(totalFeeds);
-
-    sources.forEach(function(tab) {
-      PTL.tab.make($('#tabs'), tab.name, tab.feeds, progress);
-    });
-
-    if (clickToRefresh) {
-      $('#tabs').find('.mobFeedRefresh').click();
-      PTL.tab.saveTabs();
-    }
-
-    $("div#tabs").tabs('option', 'active', 0);
-
-    $('li.mobTab').last().addClass('lastTab');
-    $('li.mobTab').first().addClass('firstTab');
-
-  },
-  list:function(type) {
-    var myTabs = [],
-        $allTabs = $('#tabUl > li.mobTab');
-
-    $allTabs.each(function() {
-      var myFeeds = [],
-          myTab = {},
-          $allFeeds = $($(this).children().attr('href') + ' ul li.feed');
-
-      myTab.name = $(this).children('a').text();
-
-      if (type && type === 'all')
-        myTab.pane = $($(this).children().attr('href') + ' ul').attr('id');
-
-      $allFeeds.each(function() {
-        var $dataStore = $(this).find('.feedControls'),
-            myFeed = {};
-        myFeed.url = $dataStore.data('url');
-        myFeed.type = $dataStore.data('type');
-        myFeed.limit = $dataStore.data('limit');
-        myFeeds.push(myFeed);
-      });
-      myTab.feeds = myFeeds;
-      myTabs.push(myTab);
-    });
-
-    return myTabs;
-
-  },
-  makeNewTabButton:function($tabs) {
-
-    var $newTabButton = $('<li>')
-        .attr('id', 'newTabButton')
-        .attr('class', 'translate newContentButton')
-        .data('title', 'Add a new group')
-        .attr('title', PTL.tr('Add a new group'));
-
-    var $newTabButtonLink = $('<a>')
-        .attr('href', '#');
-
-    var $newTabButtonIcon = $('<a>')
-        .attr('class', 'plusButton icon-plus-1');
-
-    $newTabButtonLink.bind('click', function(event) {
-      event.stopImmediatePropagation();
-
-      PTL.tab.make($($tabs));
-
-      return false;
-    });
-
-    $newTabButtonIcon.appendTo($newTabButtonLink);
-    $newTabButtonLink.appendTo($newTabButton);
-    $newTabButton.appendTo($tabs.find('ul#tabUl'));
-
-  },
-  make:function($tabs, name, feeds, progress) {
-
-    $('#noSourcesButton').fadeOut('fast');
-
-    var tabIndex = $('ul#tabUl li.mobTab').length + 1;
+    var tabIndex = $('ul#tab-names li.tab-name').length + 1;
 
     name = name || 'Group ' + tabIndex;
 
-    var $sortable = $('<ul>')
-        .attr('class', 'tabSort');
-
     var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel tabCloser translate dangerous')
+        .attr('class', 'icon-cancel tab-icon tab-closer translate dangerous hidden')
         .data('title', PTL.tr('Delete the [%1] tab', name))
         .attr('title', PTL.tr('Delete the [%1] tab', name));
 
     var $tabPanel = $('<div>')
         .attr('id', 'tab-' + tabIndex)
-        .attr('class', 'tab');
+        .attr('class', 'tab panel');
 
-    $sortable.sortable({
-      cursor: 'move',
-      handle: ".feedHandle",
-      cursorAt: {top: 10, left: 150},
-      receive: function(e, ui) {
-        ui.helper.first().removeAttr('style'); // undo styling set by jqueryUI
-      },
-      helper: function (e, item) { //create custom helper
-        if (!item.hasClass('selected')) item.addClass('selected');
-
-        // clone selected items before hiding
-        var $elements = $('.selected').not('.ui-sortable-placeholder').clone();
-        //hide selected items
-        item.siblings('.selected').addClass('hidden');
-        var $helper = $('<ul class="feedHelper">');
-
-        return $helper.append($elements);
-      },
-      start: function (e, ui) {
-
-        // Drag begins
-        var $elements = ui.item.siblings('.selected.hidden').not('.ui-sortable-placeholder');
-        // Store the selected items to item being dragged
-        ui.item.data('items', $elements);
-        // Size the placeHolder
-        $('.ui-sortable-placeholder').css('height', ui.item.height());
-
-      },
-      update: function (e, ui) {
-        //manually add the selected items before the one actually being dragged
-        ui.item.before(ui.item.data('items'));
-      },
-      stop: function (e, ui) {
-        //show the selected items after the operation
-        ui.item.siblings('.selected').removeClass('hidden');
-        //unselect since the operation is complete
-        $('.selected').removeClass('selected ui-state-hover');
-        $(this).find('i.feedSelect').removeClass('icon-ok').addClass('icon-check-empty-1');
-        PTL.tab.saveTabs();
-
-      }
-    }).disableSelection();
-
-    $sortable.appendTo($tabPanel);
-    $tabPanel.appendTo($tabs);
-
-    if (PTL.qstring) {
-      PTL.feed.make($('.tabSort').first(), PTL.qstring, 'mixed', 8, true);
-      PTL.qstring = null;
-    }
-
-    var $thisTabLink = $('<a>')
+    var $tabLink = $('<a>')
         .attr('href', '#tab-' + tabIndex)
         .append(name);
 
-    var $thisTab = $('<li>')
-        .attr('class', 'modal mobTab translate')
+    var $tab = $('<li>')
+        .attr('class', 'modal tab-name translate')
+        .data('id', 'tab-' + tabIndex++)
         .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
         .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
-    $thisTabLink.appendTo($thisTab);
-    $tabCloser.appendTo($thisTab);
+    var $tabNames = $('#tabs ul#tab-names');
 
-    var $tabUl = $('#tabs ul#tabUl');
-
-    $thisTab.droppable({
+    $tab.droppable({
       tolerance: 'pointer',
-      accept: 'ul, .tabSort li',
+      accept: 'ul, .column li',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
         var $item = $(this);
-        var $index = $('li.mobTab').index(this);
+        var $index = $('li.tab-name').index(this);
         var $elements = ui.draggable.data('items');
         var $list = $($item.find('a').attr('href'))
-            .find('.tabSort');
+            .find('.column').first();
         $elements.show().hide('slow');
 
         ui.draggable.show().hide('fade', 300, function () {
+
+          console.log('$list: (%s)', $item.find('a').attr('href'));
 
           // if ($('#tabDropActivate').prop('checked'))
           $tabs.tabs('option', 'active', $index);
@@ -283,19 +186,127 @@ PTL.tab = {
 
         });
       }
-    }).appendTo($tabUl);
+    });
 
-    $tabUl.find('#newTabButton').appendTo($tabUl);
+    $tab.append($tabLink,
+                $tabCloser);
 
-    if(typeof feeds != 'undefined') {
-      feeds.forEach(function(feed) {
-        PTL.feed.make($sortable, feed.url, feed.type, feed.limit, false, progress);
-      });
+    $tab.appendTo($tabNames);
+    $tabNames.find('#new-group').appendTo($tabNames);
+
+    var newTab = false;
+
+    if (!columns || columns.length <= 0) {
+      newTab = true;
+      columns = ['empty'];
     }
 
+    var colIndex = 1,
+        nbOfColumnsInTab = columns.length;
+
+    columns.forEach(function(sources) {
+
+      console.log('panel: (%s) cols: %s', $tabPanel.attr('id'), nbOfColumnsInTab);
+
+      var $column = PTL.col.add(colIndex++);
+
+      $column.appendTo($tabPanel);
+
+      if (!newTab) {
+        sources.forEach(function(source) {
+
+          var url = PTL.util.isUrl(source.url) ? source.url : PTL.tr('Unrecognized URL'),
+              type = PTL.sourceTypes.includes(source.type) ? source.type : 'mixed',
+              limit = Number.isInteger(source.limit) ? source.limit : 8;
+
+          PTL.src.add($column, url, type, limit, false, progress);
+        });
+      }
+
+      if (nbOfColumnsInTab <2) {
+        $column.find('.col-del').addClass('ui-state-disabled');
+      }
+
+    });
+
+    $tabPanel.appendTo($tabs);
+
     $tabs.tabs('refresh');
-    $tabs.tabs( "option", "active", tabIndex - 1);
-    tabIndex++;
+    $tabs.tabs( "option", "active", 0);
+
+    // $('#ui-id-1').focus();
+  },
+  list:function(type) {
+
+    var $groupNodes = $('#tab-names > li.tab-name'),
+        groups = [];
+
+    console.log('$groupNodes in: (%s)', $groupNodes.length);
+
+    $groupNodes.each(function() {
+
+      var group = {},
+          columns = [],
+          $groupNode = $(this),
+          $columnNodes = $($groupNode.children().attr('href') + ' ul.column');
+
+      group.name = $groupNode.children('a').text();
+
+      if (type && type === 'all')
+        group.pane = $groupNode.data('id');
+
+      $columnNodes.each(function() {
+
+        var column = [],
+            $srcNodes = $(this).children('li.feed');
+
+        $srcNodes.each(function() {
+          var source = {};
+
+          var $dataStore = $(this).find('.dataStore');
+          source.url = $dataStore.data('url');
+          source.type = $dataStore.data('type');
+          source.limit = $dataStore.data('limit');
+          column.push(source);
+        });
+        columns.push(column);
+
+      });
+      group.columns = columns;
+      groups.push(group);
+    });
+
+    console.log('$groupNodes out: (%s)', $groupNodes.length);
+
+    return groups;
+
+  },
+  makeNewTabButton:function($tabs) {
+
+    var $newTabButton = $('<li>')
+        .attr('id', 'new-group')
+        .attr('class', 'translate new-group hidden')
+        .data('title', 'Add a new group')
+        .attr('title', PTL.tr('Add a new group'));
+
+    var $newTabButtonLink = $('<a>')
+    // .attr('tabindex', '-1')
+        .attr('href', '#disabled');
+
+    var $newTabButtonIcon = $('<i>')
+        .attr('class', 'icon-plus');
+
+    $newTabButtonLink.bind('click', function(event) {
+      event.stopImmediatePropagation();
+
+      PTL.tab.add($tabs);
+
+      return false;
+    });
+
+    $newTabButtonIcon.appendTo($newTabButtonLink);
+    $newTabButtonLink.appendTo($newTabButton);
+    $newTabButton.appendTo($tabs.find('ul#tab-names'));
 
   }
 };

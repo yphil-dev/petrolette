@@ -13,7 +13,7 @@ var express = require('express'),
 // require('request').debug = true;
 
 router.get('/', function(req, res) {
-  res.render('index', {qstring:req.query.source});
+  res.render('index', {queryString:req.query.source});
 });
 
 router.get('/about/javascript', function(req, res) {
