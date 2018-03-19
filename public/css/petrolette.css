@@ -565,6 +565,10 @@ fieldset {
   border: 3px solid var(--ui-color-sep);
 }
 
+.ui-button:not(.ui-spinner-button) {
+  margin-right: .4em;
+}
+
 .grow {
   flex: 1 0 auto !important;
 }
