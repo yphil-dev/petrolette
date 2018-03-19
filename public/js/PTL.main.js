@@ -8,8 +8,6 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      PTL.util.console(PTL.tr('Pétrolette starting up OK'));
-
       var $menu = $('nav#side-menu'),
           $overlay = $('#overlay'),
           $sourceCodeButton = $('button#sourceCode'),
@@ -30,17 +28,7 @@ var PTL = (function() {
 
       PTL.sync.attachWidget();
 
-      $('button').button();
-
-      $('h3.rs-small-headline, h1.rs-big-headline').text(PTL.tr('Connection to storage'));
-      $('span.rs-sub-headline').text(PTL.tr('To synchronize the sources across devices'));
-      $('div.rs-sign-in-error').text(PTL.tr('To synchronize the sources across devices'));
-
-      $('input.rs-connect')
-        .val(PTL.tr('Synchronize'))
-        .button();
-
-      $('a.rs-help').text(PTL.tr('More info'));
+      // $('button').button();
 
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
@@ -226,8 +214,9 @@ var PTL = (function() {
         reader.onload = (function() {
           return function(e) {
             if (PTL.util.isPTLStruct(e.target.result)) {
-              PTL.tab.empty();
-              // PTL.tab.populate(JSON.parse(e.target.result), true);
+              PTL.tab.empty(function() {
+                PTL.tab.populate(JSON.parse(e.target.result), true);
+              });
             }
           };
         })(f);

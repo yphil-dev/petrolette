@@ -236,15 +236,11 @@ PTL.src = {
 
       $feedBody.empty();
 
-      console.log('Ya!');
-
     }).done(function(data) {
 
       $feedLink.text(data.feedTitle || feedUrl)
         .attr('href', data.feedLink)
         .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
-
-      console.log('Yo!', data);
 
       if (data.error) {
 
