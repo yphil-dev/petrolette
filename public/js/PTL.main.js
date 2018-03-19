@@ -145,6 +145,17 @@ var PTL = (function() {
       $.fancybox.defaults.transitionEffect = gallerySlideTransition;
       $.fancybox.defaults.slideShow.speed = gallerySlideshowSpeed;
 
+      $.fancybox.defaults.buttons =  [
+        'slideShow',
+        'fullScreen',
+        'thumbs',
+        'download',
+        'zoom',
+        'close'
+      ];
+
+      $.fancybox.defaults.wheel = 'auto';
+
       $menu.find('select#gallerySlideTransition').change(function() {
         $.fancybox.defaults.transitionEffect = $(this).val();
         PTL.prefs.writeConfig('gallerySlideTransition', $(this).val());
