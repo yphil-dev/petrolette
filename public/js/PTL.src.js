@@ -244,7 +244,7 @@ PTL.src = {
 
       if (data.error) {
 
-        PTL.util.console(PTL.tr('Problem reading source [%1] Error type [%2]', feedUrl), 'warning');
+        PTL.util.console(PTL.tr('Problem reading source [%1] Error type [%2]', feedUrl, data.error), 'warning');
 
         var $w3cLink = $('<a>'),
             $validCssIcon = $('<i>');

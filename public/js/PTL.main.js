@@ -28,7 +28,7 @@ var PTL = (function() {
 
       PTL.sync.attachWidget();
 
-      // $('button').button();
+      $('button').button();
 
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
