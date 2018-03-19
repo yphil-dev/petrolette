@@ -569,6 +569,10 @@ fieldset {
   margin-right: .4em;
 }
 
+.ui-button.last {
+  margin-right: 0;
+}
+
 .grow {
   flex: 1 0 auto !important;
 }
@@ -791,10 +795,6 @@ nav#side-menu #gallerySlideTransition {
 
 .twin {
   flex: 1;
-}
-
-.last {
-  margin-right: 0;
 }
 
 span.ui-spinner,
