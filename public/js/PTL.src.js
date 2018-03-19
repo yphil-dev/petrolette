@@ -407,7 +407,7 @@ PTL.src = {
           $imageLink
             .attr('data-fancybox', 'gallery')
             .attr('data-fancybox-group', $panel.attr('id'))
-            .attr('data-caption', item.title);
+            .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + item.title + '</a>');
 
           $image
             .attr('src', imageUrl);
