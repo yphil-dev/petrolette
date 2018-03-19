@@ -12,14 +12,11 @@ PTL.col = {
 
     $column.hide('fast', function() {
 
-      var $column = $(this);
-
       if (nbOfColumnsInTab <= 2) {
-        // console.log('wopop!: (%s)');
-        $panel.find('.col-del').hide();
+        $panel.find('.col-del').addClass('ui-state-disabled');
       }
 
-      $column.remove();
+      $(this).remove();
 
       PTL.tab.saveTabs();
 
@@ -45,14 +42,14 @@ PTL.col = {
     var $srcNewButton = $('<button>')
         .attr('title', PTL.tr('Add a source to this column'))
         .data('title', 'Add a source to this column')
-        .attr('class', 'icon-plus unique translate new-source-button button-column')
+        .attr('class', 'icon-plus unique translate new-source-button button-column last')
         .button()
         .data('colIndex', colIndex);
 
     var $colNewButton = $('<button>')
         .attr('title', PTL.tr('Add a column'))
         .data('title', 'Add a column')
-        .attr('class', 'icon-plus twin translate')
+        .attr('class', 'icon-plus twin translate last')
         .button()
         .data('colIndex', colIndex);
 
@@ -77,19 +74,19 @@ PTL.col = {
 
     });
 
-      $colNewButton.bind('click', function() {
+    $colNewButton.bind('click', function() {
 
-        var $column = $(this).parent().parent(),
+      var $column = $(this).parent().parent(),
             $panel = $column.parent(),
             colIndex = $panel.find('.column').index($column);
 
-        var $newColumn = PTL.col.add(colIndex, true);
+      var $newColumn = PTL.col.add(colIndex, true);
 
-        $panel.find('button.col-del').show();
+      $panel.find('button.col-del').removeClass('ui-state-disabled');
 
-        $newColumn.insertAfter($column);
+      $newColumn.insertAfter($column);
 
-      });
+    });
 
     $column.sortable({
       cursor: 'move',

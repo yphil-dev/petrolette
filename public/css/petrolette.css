@@ -376,11 +376,6 @@ li.source-item.error > strong.key {
   margin:0;
 }
 
-#gallerySpeedSlider,
-#source-limit {
-  margin-right: 0;
-}
-
 #overlay {
   position: fixed;
   top: 0;
@@ -515,13 +510,21 @@ nav#side-menu,
 /*   cursor: pointer; */
 /* } */
 
-i.tab-closer {
+i.tab-icon {
   cursor: pointer;
   display: none;
   font-size: .7em;
   position:absolute;
   right: 3px;
-  top: 3px;
+  /* top: 3px; */
+}
+
+i.tab-closer {
+  top: 2px;
+}
+
+i.tab-edit {
+  top: 20px;
 }
 
 button#feed-guess,
@@ -556,6 +559,14 @@ fieldset {
 
 .ui-state-default {
   border: 3px solid var(--ui-color-sep);
+}
+
+.grow {
+  flex: 1 0 auto !important;
+}
+
+.ui-button {
+  margin-right: .4em;
 }
 
 .ui-slider-handle.ui-state-active,
@@ -755,11 +766,6 @@ nav#side-menu #gallerySlideTransition {
 
 .twin {
   flex: 1;
-}
-
-.grow {
-  flex: 1 0 auto !important;
-  margin-right: .4em;
 }
 
 .last {

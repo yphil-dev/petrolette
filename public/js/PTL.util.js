@@ -110,7 +110,7 @@ PTL.util = {
     }
 
     if (isOldPTLStruct) {
-      PTL.util.console(PTL.tr('Old Pétrolette file format: converting'), 'warning');
+      PTL.util.console(PTL.tr('Old sources file format: converting'), 'warning');
       PTL.util.isOldPTLStruct(o);
     }
 

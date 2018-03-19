@@ -14,7 +14,7 @@ PTL.tab = {
         $(document).prop('title', $(this).find('.ui-tabs-active')
                          .text() + ' | Pétrolette');
 
-        $('.tab-closer').show();
+        $('.tab-icon').show();
 
       }
     });
@@ -139,7 +139,7 @@ PTL.tab = {
     name = name || 'Group ' + tabIndex;
 
     var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel tab-closer translate dangerous hidden')
+        .attr('class', 'icon-cancel tab-icon tab-closer translate dangerous hidden')
         .data('title', PTL.tr('Delete the [%1] tab', name))
         .attr('title', PTL.tr('Delete the [%1] tab', name));
 
@@ -168,7 +168,7 @@ PTL.tab = {
         var $index = $('li.tab-name').index(this);
         var $elements = ui.draggable.data('items');
         var $list = $($item.find('a').attr('href'))
-            .find('.column');
+            .find('.column').first();
         $elements.show().hide('slow');
 
         ui.draggable.show().hide('fade', 300, function () {
@@ -188,8 +188,9 @@ PTL.tab = {
       }
     });
 
-    $tabLink.appendTo($tab);
-    $tabCloser.appendTo($tab);
+    $tab.append($tabLink,
+                $tabCloser);
+
     $tab.appendTo($tabNames);
     $tabNames.find('#new-group').appendTo($tabNames);
 
@@ -223,7 +224,7 @@ PTL.tab = {
       }
 
       if (nbOfColumnsInTab <2) {
-        $column.find('.col-del').addClass('hidden');
+        $column.find('.col-del').addClass('ui-state-disabled');
       }
 
     });
