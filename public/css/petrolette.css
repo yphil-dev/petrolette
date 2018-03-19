@@ -510,6 +510,10 @@ nav#side-menu,
 /*   cursor: pointer; */
 /* } */
 
+.ui-tabs {
+  padding: 0;
+}
+
 i.tab-icon {
   cursor: pointer;
   display: none;
@@ -641,6 +645,7 @@ fieldset {
   background-color: var(--ui-color-sec);
 }
 
+a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover,
 .ui-button:active,
 .ui-button.ui-state-active:hover,
 .null {
@@ -703,10 +708,16 @@ button.ui-state-error {
   background-color: var(--ui-color-success);
 }
 
-.ui-dialog-titlebar-help {
-  right: 30px;
+.ui-dialog .ui-dialog-titlebar-help {
   background-color: var(--ui-color-success);
   color: var(--ui-color-pri);
+  height: 20px;
+  margin: -10px 0 0 0;
+  padding: 1px;
+  position: absolute;
+  right: 2.5em;
+  top: 50%;
+  width: 20px;
 }
 
 /* .ui-visual-focus { */
@@ -837,7 +848,11 @@ div.testFlex {
 .column {
   white-space: initial;
   transition: all .3s linear;
+  margin: 0 .2em;
 }
+
+/* .column:first-child { margin-left: 0 !important; } */
+/* .column:last-child { margin-right: 0 !important; } */
 
 .new-source-button {
   margin-bottom: 0 !important;;
@@ -933,21 +948,20 @@ ul.column div.buttons > button {
 li.feed {
   position:relative;
   background: var(--color-qua);
-  z-index: 2;
+  /* z-index: 2; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 600 !important;
   margin: 0 0 .4em 0;
-  /* page-break-after: always; */
-  /* page-break-before: always; */
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-  break-inside: avoid;
 }
 
 .selected,
 li.feed {
   min-height:20px !important;
   width: 100%;
+}
+
+.selected {
+  background: none !important;
 }
 
 .source-body {

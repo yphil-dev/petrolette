@@ -195,7 +195,12 @@ PTL.dialog = {
               $guessSpinner = $dialog.find('button#feed-guess > i'),
               $guessField = $dialog.find('input#feed-guess'),
               $okButton = $dialog.find('.ui-dialog-buttonpane'),
-              $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-help"></span><span class="ui-button-icon-space"> </span>Help</button>');
+              $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-help"></span><span class="ui-button-icon-space"> </span>Help</button>');
+
+
+          // var $helpSpan = $('<span>').attr('class', 'ui-button-icon ui-icon ui-icon-help');
+
+          // var $helpButton = $('<button').attr('title', 'Help').append($helpSpan);
 
           $('#killFeedChbox').button();
 
