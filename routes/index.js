@@ -111,7 +111,6 @@ router.get('/feedicon', function(req, res) {
 
   favicon(req.query.url, function(err, iconUrl) {
 
-
     if (iconUrl) {
 
       res.send(iconUrl);

@@ -733,12 +733,9 @@ PTL.dialog = {
             title: PTL.tr('Ok'),
             class: 'translate',
             click: function() {
-
               $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
               PTL.tab.saveTabs();
-              // PTL.dialog.kill($dialog);
               PTL.dialog.kill($dialog);
-
             }
           }
         ],
