@@ -45,7 +45,8 @@ PTL.i18n = {
 };
 
 PTL.i18n.translations = {
-  "test" : { fr: "samarche", ja: "追加", es: "Esta Muy bien" },
+
+  "Pétrolette starting up OK" : { fr: "Pétrolette démarrage OK", ja: "Pétroletteが起動する", es: "Pétrolette iniciando OK" },
 
   "They'll sell the Internet" : { fr: "Ils vendront Internet", ja: "彼らはインターネットを売るだろう", es: "Venderán Internet" },
   "when we're done filling it up" : { fr: "quand on aura fini de le remplir", ja: "私たちがそれを埋めるとき", es: "cuando terminemos de llenarlo" },
@@ -144,7 +145,7 @@ PTL.i18n.translations = {
 
   "Example sources" : { fr: "Exemples de sources" , ja: "情報源の例", es: "Ejemplos de fuentes" },
 
-  "Found %1 groups containing %2 sources" : { fr: "%1 groupes contenant %2 sources" , ja: "%2つのソースを含む%1つのグループが見つかりました", es: "Se encontraron %1 grupos que contienen %2 fuentes" },
+  "Data structure OK: %1 groups containing %2 sources" : { fr: "Structure de données OK: %1 groupes contenant %2 sources" , ja: "データ構造OK：%2のソースを含むグループ%1", es: "Estructura de datos OK: %1 grupos que contienen %2 fuentes" },
   "Invalid file" : { fr: "Fichier non valide" , ja: "無効なファイル", es: "Archivo inválido" },
 
   "Edit group" : { fr: "Modifier groupe" , ja: "グループの編集", es: "Editar grupo" },

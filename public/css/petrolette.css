@@ -95,7 +95,7 @@ body {
 
 #no-script {
   padding: 1em 0;
-  margin: 25% auto;
+  margin: 3vh auto;
   background: var(--ui-color-qua);
 }
 
@@ -393,7 +393,7 @@ li.source-item.error > strong.key {
 
 .hidden,
 .invisible {
-  display:none !important;
+  display:none;
 }
 
 input {
@@ -449,6 +449,11 @@ legend {
 
 .menu legend {
   font-size: 9pt;
+}
+
+.js-enabled-only {
+  display: none;
+  /* visibility: hidden; */
 }
 
 nav#side-menu {

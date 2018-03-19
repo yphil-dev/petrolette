@@ -96,7 +96,7 @@ PTL.tab = {
 
     console.log('nbOfGroups, nbOfSources: (%s) %s', nbOfGroups, nbOfSources);
 
-    PTL.util.console(PTL.tr('Found %1 groups containing %2 sources', nbOfGroups, nbOfSources), 'success');
+    PTL.util.console(PTL.tr('Data structure OK: %1 groups containing %2 sources', nbOfGroups, nbOfSources), 'success');
 
     progress.init(nbOfSources);
 
@@ -207,11 +207,8 @@ PTL.tab = {
     var newTab = false;
 
     if (!columns || columns.length <= 0) {
-      console.log('there is no columns: (%s)');
-      console.log('undefined: (%s)');
       newTab = true;
       columns = ['empty'];
-      console.log('undefined');
     }
 
     var colIndex = 1,
@@ -219,10 +216,9 @@ PTL.tab = {
 
     columns.forEach(function(sources) {
 
-      var $column = PTL.col.add(colIndex++, nbOfColumnsInTab);
+      var $column = PTL.col.add($tabPanel, colIndex++, nbOfColumnsInTab);
 
       $column.appendTo($tabPanel);
-
 
       if (!newTab) {
         sources.forEach(function(source) {

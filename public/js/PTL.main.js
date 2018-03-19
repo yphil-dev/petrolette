@@ -8,7 +8,7 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      PTL.util.console(PTL.tr('Pétrolette starting up'));
+      PTL.util.console(PTL.tr('Pétrolette starting up OK'));
 
       var $menu = $('nav#side-menu'),
           $overlay = $('#overlay'),
@@ -19,6 +19,10 @@ var PTL = (function() {
           $langMenu = $('select#language'),
           $slider = $('div#gallerySpeedSlider'),
           $spinner = $('#gallerySpeedSpinner');
+
+      $('noscript').hide();
+
+      $('.js-enabled-only').show();
 
       $('#console').click(function() {
         $(this).toggleClass('expanded');

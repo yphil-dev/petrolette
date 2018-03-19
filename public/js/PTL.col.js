@@ -16,7 +16,7 @@ PTL.col = {
 
     });
   },
-  add: function(colIndex, nbOfColumnsInTab, newCol) {
+  add: function($tabPanel, colIndex, nbOfColumnsInTab, newCol) {
 
     var $colButtons = $('<div>')
         .attr('class', 'buttons flex-box');
@@ -50,7 +50,7 @@ PTL.col = {
     var $colDelButton = $('<button>')
         .attr('title', PTL.tr('Remove this column'))
         .data('title', 'Remove this column')
-        .attr('class', 'col-del icon-minus twin')
+        .attr('class', 'col-del icon-minus twin hidden')
         .data('colIndex', colIndex)
         .button();
 
@@ -78,7 +78,7 @@ PTL.col = {
             nbOfColumnsInTab = $columnsInTab.length,
             colIndex = $panel.find('.column').index($column);
 
-        var $newColumn = PTL.col.add(colIndex, nbOfColumnsInTab, true);
+        var $newColumn = PTL.col.add($panel, colIndex, nbOfColumnsInTab, true);
 
         PTL.util.reOrderColButtons($(this));
 
@@ -133,14 +133,20 @@ PTL.col = {
 
     $colButtons.append($colLegend);
 
-    if (nbOfColumnsInTab > 1 || newCol) $colButtons.append($colDelButton);
+    // $colButtons.append($colDelButton);
 
+      // $colButtons.append($colDelButton);
 
-    $colButtons.append($colNewButton);
+    $colButtons.append($colDelButton, $colNewButton);
 
     $colButtons.append($srcLegend);
 
     $colButtons.append($srcNewButton);
+
+    if (nbOfColumnsInTab > 1 || newCol) {
+      $colDelButton.removeClass('hidden');
+      $tabPanel.find('.col-del').removeClass('hidden');
+    }
 
     // PTL.tab.saveTabs();
 

@@ -100,16 +100,14 @@ PTL.sync = (function() {
 
           if (PTL.util.isValidSourcesFile(JSON.parse(data))) {
 
-            console.info('Pétrolette | ' + PTL.tr('Remote file validation OK'));
+            PTL.util.console(PTL.tr('Remote file validation OK'), 'success');
 
             // return
             PTL.tab.populate(JSON.parse(data));
 
           } else {
-
-            console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults', data));
+            PTL.util.console(PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults', data), 'warning');
             PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('sources')));
-
           }
 
         })
