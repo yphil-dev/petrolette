@@ -132,6 +132,7 @@ PTL.tab = {
   },
   add:function($tabs, name, columns, progress) {
 
+    $('#load-spinner').fadeOut('fast');
     $('#new-group').removeClass('hidden');
 
     var tabIndex = $('ul#tab-names li.tab-name').length + 1;
