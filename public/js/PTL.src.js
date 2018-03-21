@@ -127,7 +127,6 @@ PTL.src = {
 
         // $feedIcon.css('background-image', iconImg);
 
-
         if ($(this).data('img') !== 'none') {
           $feedToggle.css('background-image', $(this).data('img'));
         } else {
