@@ -98,43 +98,56 @@ router.get('/feed', function(req, res) {
 
 });
 
-router.get('/feedicon', function(req, res) {
 
-  // var p = Url.parse(req.query.url),
-  // fileName = p.host + "-" + p.path;
+// var p = Url.parse(req.query.url),
+// fileName = p.host + "-" + p.path;
 
-  // fs.exists(path.join(cacheDir, fileName), (exists) => {
-  //   if (!exists) {
-  //     console.log('path.join(cacheDir, fileName) does not exist');
-  //     // fs.mkdirSync(cacheDir);
-  //   }
-  // });
+// fs.exists(path.join(cacheDir, fileName), (exists) => {
+//   if (!exists) {
+//     console.log('path.join(cacheDir, fileName) does not exist');
+//     // fs.mkdirSync(cacheDir);
+//   }
+// });
+
+router.get('/favicon', function(req, res) {
 
   favicon(req.query.url, function(err, iconUrl) {
 
     if (iconUrl) {
 
-      res.send(iconUrl);
+      var u = Url.parse(iconUrl)
 
-      var u = Url.parse(iconUrl);
+      // console.log('fileName: (%s)', u.host);
 
-      var fileName = u.host + '.' + u.pathname.replace(/(^\/|\/$)/g,'');
+      request.get({url: iconUrl}, function (err, response, body) {
 
-      // console.log('(%s) is not in (%s)', fileName, cacheDir);
+        if (!err) {
+          var cleanHost = u.host.replace(/\//g, '');
+          var cleanPath = u.pathname.replace(/\//g, '');
+          // var fileName = '/tmp/' + cleanHost + cleanPath;
+
+          var fileName = path.join(cacheDir, cleanHost, cleanPath);
+
+          // console.log('u: (%s)', JSON.stringify(u));
+
+          // console.log('OK iconUrl: %s (path %s)', iconUrl, fileName);
 
 
-      var download = function(iconUrl, fileName, cb) {
-        var file = fs.createWriteStream(fileName);
-        var request = http.get(iconUrl, function(response) {
-          response.pipe(file);
-          file.on('finish', function() {
-            file.close(cb);  // close() is async, call cb after close completes.
+          fs.writeFile(fileName, body, function(err) {
+            if(err)
+              console.log("The file (%s) was NOT saved!", err);
+            else
+              console.log("The file (%s) was saved!", fileName);
           });
-        }).on('error', function(err) { // Handle errors
-          fs.unlink(fileName); // Delete the file async. (But we don't check the result)
-          if (cb) cb(err.message);
-        });
-      };
+
+        } else {
+          console.log('### NOK iconUrl: %s (type %s) err: %s', iconUrl, typeof response.body, err);
+        }
+
+
+      });
+
+      res.send(iconUrl);
 
     } else {
       res.status(500).send('No icon found');
@@ -145,7 +158,7 @@ router.get('/feedicon', function(req, res) {
 
 router.get('/discover', function(req, res) {
 
-    feedrat(req.query.url, function(err, feed) {
+  feedrat(req.query.url, function(err, feed) {
 
         if (feed) {
           res.send(feed);

@@ -202,7 +202,7 @@ PTL.src = {
     $refreshButton.addClass('spin');
     $feedLink.removeClass('danger');
 
-    $.get("/feedicon", {
+    $.get("/favicon", {
       url: decodeURI(feedHost),
       dataType: "json",
       timeout: 2000
