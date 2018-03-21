@@ -192,8 +192,8 @@ PTL.tab = {
 
           console.log('$list: (%s)', $item.find('a').attr('href'));
 
-          // if ($('#tabDropActivate').prop('checked'))
-          $tabs.tabs('option', 'active', $index);
+          if (PTL.prefs.readConfig('tabDropActivate') === 'true')
+            $tabs.tabs('option', 'active', $index);
 
           $(this).prependTo($list).show('fade', 800).before($elements.show('fade', 800));
 

@@ -616,10 +616,9 @@ PTL.dialog = {
               PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
 
-              if ($.parseJSON(PTL.prefs.readConfig('tabs')).length > 0) {
+              if ($.parseJSON(PTL.prefs.readConfig('sources')).length > 0) {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
               } else {
-                console.error('Zero tabs!');
                 PTL.util.console(PTL.tr('Zero tabs!'), 'error');
               }
 

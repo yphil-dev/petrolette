@@ -22,7 +22,10 @@
   --var-controls-width: 150px;
   --var-controls-font-size: 16pt;
   --var-controls-toggle-size: 22px;
-  --var-controls-flex-basis: 100px;
+
+  --column-flex: 1 1 0;
+  --columns-buttons-display: initial;
+
   --dialog-flex-direction: row;
   --var-controls-toggle-margin: -2px 0 0 -2px;
   --handle-flex-shrink: 0;
@@ -48,7 +51,9 @@
     --var-controls-toggle-size: 42px;
     --var-controls-toggle-margin: -2px 0 0 -2px;
 
-    --var-controls-flex-basis: 60px;
+    --column-flex: 1 0 auto;
+    --columns-buttons-display: none;
+
     --dialog-flex-direction: column;
 
     --handle-flex-shrink: 1;
@@ -921,13 +926,16 @@ li.tab-name,
 ul.column {
   min-height: 120px;
   margin: .2em;
-  flex: 1;
+  /* flex: 1 1 0; */
+  /* flex: 1 0 auto; */
+  flex: var(--column-flex);
   align-content: center;
   position:relative;
   padding: 0 0 150px 0;
 }
 
 ul.column div.buttons {
+  display: var(--columns-buttons-display);
   border-radius: 3px;
   border: 3px dashed var(--ui-color-sep);
   color: var(--ui-color-sep);
