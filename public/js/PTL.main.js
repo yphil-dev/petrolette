@@ -42,8 +42,6 @@ var PTL = (function() {
 
         var $column;
 
-        console.log('this: (%s)', $(this).attr('class'));
-
         if ($(this).hasClass('button-column')) {
           $column = $(this).parent().parent();
         } else {
