@@ -7,6 +7,7 @@ var express = require('express'),
     Url = require('url'),
     fs = require('fs'),
     path = require('path'),
+    http = require('http'),
     packageJson = require('../package.json'),
     cacheDir = path.join(__dirname, packageJson.cacheDirName);
 
@@ -111,7 +112,6 @@ router.get('/feedicon', function(req, res) {
 
   favicon(req.query.url, function(err, iconUrl) {
 
-
     if (iconUrl) {
 
       res.send(iconUrl);
@@ -120,20 +120,21 @@ router.get('/feedicon', function(req, res) {
 
       var fileName = u.host + '.' + u.pathname.replace(/(^\/|\/$)/g,'');
 
-      console.log('(%s) is not in (%s)', fileName, cacheDir);
+      // console.log('(%s) is not in (%s)', fileName, cacheDir);
 
-      // console.log('icon! (%s) Name: %s', iconUrl, root);
 
-      // var s = fs.ReadStream(u);
-      // s.on('data', function(d) {
-      //   shasum.update(d);
-      // });
-
-      // s.on('end', function() {
-      //   var d = shasum.digest('hex');
-      //   console.log('plop! ' + d + '  ' + u);
-      // });
-
+      var download = function(iconUrl, fileName, cb) {
+        var file = fs.createWriteStream(fileName);
+        var request = http.get(iconUrl, function(response) {
+          response.pipe(file);
+          file.on('finish', function() {
+            file.close(cb);  // close() is async, call cb after close completes.
+          });
+        }).on('error', function(err) { // Handle errors
+          fs.unlink(fileName); // Delete the file async. (But we don't check the result)
+          if (cb) cb(err.message);
+        });
+      };
 
     } else {
       res.status(500).send('No icon found');

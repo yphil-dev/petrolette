@@ -393,9 +393,9 @@ PTL.src = {
 
         if (imageUrl) {
 
-          if (imageUrl[0] == "/") {
-            imageUrl = feedHost + imageUrl;
-          }
+          // if (imageUrl[0] == "/") {
+          //   imageUrl = feedHost + imageUrl;
+          // }
 
           $imageLink
             .attr('href', imageUrl);
