@@ -156,7 +156,7 @@ PTL.tab = {
     name = name || 'Group ' + tabIndex;
 
     var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel tab-icon tab-closer translate dangerous hidden')
+        .attr('class', 'icon-cancel tab-icon tab-closer translate hidden')
         .data('title', PTL.tr('Delete the [%1] tab', name))
         .attr('title', PTL.tr('Delete the [%1] tab', name));
 
