@@ -17,7 +17,7 @@ PTL.src = {
         .attr('title', PTL.tr('Select this source (%1)', url));
 
     var $feedDelete = $('<i>')
-        .attr('class', 'source-control translate icon-cancel source-delete dangerous')
+        .attr('class', 'source-control translate icon-cancel source-delete')
         .data('title', 'Delete this source (%1)', url)
         .attr('title', PTL.tr('Delete this source (%1)', url));
 
