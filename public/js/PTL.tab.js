@@ -130,14 +130,10 @@ PTL.tab = {
           thisColSources.push(thisSource);
           allSources.push(thisColSources);
 
-          // console.log('URL: %s, Type: %s, Limit: %s', v.url, v.type, v.limit);
         });
         thisTabCols.push(thisColSources);
       });
       PTL.tab.add($('#tabs'), thisGroup.name, thisTabCols, progress);
-
-      // console.log('thisTabColsA: (%s)', JSON.stringify(thisTabCols));
-      // console.log('Group: %s, %s cols, %s sources', ThisGroup.name, cols, sources);
     });
 
     $('#new-group').removeClass('hidden');
@@ -189,8 +185,6 @@ PTL.tab = {
         $elements.show().hide('slow');
 
         ui.draggable.show().hide('fade', 300, function () {
-
-          console.log('$list: (%s)', $item.find('a').attr('href'));
 
           if (PTL.prefs.readConfig('tabDropActivate') === 'true')
             $tabs.tabs('option', 'active', $index);

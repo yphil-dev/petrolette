@@ -21,16 +21,16 @@ router.get('/about/javascript', function(req, res) {
   res.render('javascript');
 });
 
-router.use(function(req,res,next){
-  var _send = res.send;
-  var sent = false;
-  res.send = function(data){
-    if(sent) return;
-    _send.bind(res)(data);
-    sent = true;
-  };
-  next();
-});
+// router.use(function(req,res,next){
+//   var _send = res.send;
+//   var sent = false;
+//   res.send = function(data){
+//     if(sent) return;
+//     _send.bind(res)(data);
+//     sent = true;
+//   };
+//   next();
+// });
 
 function getFeed (urlfeed, callback) {
 
@@ -98,43 +98,63 @@ router.get('/feed', function(req, res) {
 
 });
 
-router.get('/feedicon', function(req, res) {
 
-  // var p = Url.parse(req.query.url),
-  // fileName = p.host + "-" + p.path;
+// var p = Url.parse(req.query.url),
+// fileName = p.host + "-" + p.path;
 
-  // fs.exists(path.join(cacheDir, fileName), (exists) => {
-  //   if (!exists) {
-  //     console.log('path.join(cacheDir, fileName) does not exist');
-  //     // fs.mkdirSync(cacheDir);
-  //   }
-  // });
+// fs.exists(path.join(cacheDir, fileName), (exists) => {
+//   if (!exists) {
+//     console.log('path.join(cacheDir, fileName) does not exist');
+//     // fs.mkdirSync(cacheDir);
+//   }
+// });
+
+console.log('####### START');
+
+router.get('/favicon', function(req, res) {
 
   favicon(req.query.url, function(err, iconUrl) {
 
     if (iconUrl) {
 
+
+
+
+      if (!iconUrl.startsWith('..') && Url.parse(iconUrl)) {
+        console.log('iconUrl OK: (%s)', iconUrl);
+
+        var u = Url.parse(iconUrl);
+
+        var cleanHost = u.host.replace(/\//g, ''),
+            cleanPath = u.path.replace(/\//g, ''),
+            fileName;
+
+        // fileName = path.join('/tmp/cache', cleanHost + '.' + cleanPath);
+        fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
+
+        if (fs.createWriteStream(fileName)) {
+          // fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
+          // let stream = fs.createWriteStream(fileName);
+
+          // stream.on('finish', function () {
+          //   console.log("SAVED %s (%s)", fileName, iconUrl);
+          // }).on('error', function (err) {
+          //   console.log("NOT SAVED %s (%s)", fileName, err);
+          // });
+
+          // request(iconUrl).pipe(stream);
+
+          console.log('STREAM OK: (%s)', iconUrl);
+        } else {
+          console.log('STREAM NOT OK: (%s)', iconUrl);
+        }
+
+
+      } else {
+        console.log('iconUrl NOT OK: (%s)', iconUrl);
+      }
+
       res.send(iconUrl);
-
-      var u = Url.parse(iconUrl);
-
-      var fileName = u.host + '.' + u.pathname.replace(/(^\/|\/$)/g,'');
-
-      // console.log('(%s) is not in (%s)', fileName, cacheDir);
-
-
-      var download = function(iconUrl, fileName, cb) {
-        var file = fs.createWriteStream(fileName);
-        var request = http.get(iconUrl, function(response) {
-          response.pipe(file);
-          file.on('finish', function() {
-            file.close(cb);  // close() is async, call cb after close completes.
-          });
-        }).on('error', function(err) { // Handle errors
-          fs.unlink(fileName); // Delete the file async. (But we don't check the result)
-          if (cb) cb(err.message);
-        });
-      };
 
     } else {
       res.status(500).send('No icon found');
@@ -145,7 +165,7 @@ router.get('/feedicon', function(req, res) {
 
 router.get('/discover', function(req, res) {
 
-    feedrat(req.query.url, function(err, feed) {
+  feedrat(req.query.url, function(err, feed) {
 
         if (feed) {
           res.send(feed);
