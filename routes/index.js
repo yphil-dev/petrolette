@@ -21,16 +21,16 @@ router.get('/about/javascript', function(req, res) {
   res.render('javascript');
 });
 
-router.use(function(req,res,next){
-  var _send = res.send;
-  var sent = false;
-  res.send = function(data){
-    if(sent) return;
-    _send.bind(res)(data);
-    sent = true;
-  };
-  next();
-});
+// router.use(function(req,res,next){
+//   var _send = res.send;
+//   var sent = false;
+//   res.send = function(data){
+//     if(sent) return;
+//     _send.bind(res)(data);
+//     sent = true;
+//   };
+//   next();
+// });
 
 function getFeed (urlfeed, callback) {
 
@@ -110,49 +110,36 @@ router.get('/feed', function(req, res) {
 // });
 
 router.get('/favicon', function(req, res) {
-
   favicon(req.query.url, function(err, iconUrl) {
-
     if (iconUrl) {
-
-      var u = Url.parse(iconUrl)
-
-      // console.log('fileName: (%s)', u.host);
-
+      var u = Url.parse(iconUrl);
       request.get({url: iconUrl}, function (err, response, body) {
 
-        if (!err) {
-          var cleanHost = u.host.replace(/\//g, '');
-          var cleanPath = u.pathname.replace(/\//g, '');
-          // var fileName = '/tmp/' + cleanHost + cleanPath;
+        if (!err && typeof body !== 'undefined') {
+          var h = u.host.replace(/\//g, ''),
+              p = u.path.replace(/\//g, ''),
+              fileName;
 
-          var fileName = path.join(cacheDir, cleanHost, cleanPath);
+          counter++;
 
-          // console.log('u: (%s)', JSON.stringify(u));
-
-          // console.log('OK iconUrl: %s (path %s)', iconUrl, fileName);
-
+          // fileName = path.join('/tmp', h + '.' + p);
+          // fileName = path.join(__dirname, '..', 'cache', h + '.' + p);
+          fileName = path.join(__dirname, '..', 'cache', counter.toString());
 
           fs.writeFile(fileName, body, function(err) {
             if(err)
-              console.log("The file (%s) was NOT saved!", err);
+              console.log(err);
             else
-              console.log("The file (%s) was saved!", fileName);
+              console.log("SAVED! (%s)", fileName);
           });
-
         } else {
-          console.log('### NOK iconUrl: %s (type %s) err: %s', iconUrl, typeof response.body, err);
+          console.log('### ERROR iconUrl: (%s) err: (%s)', iconUrl, err);
         }
-
-
       });
-
       res.send(iconUrl);
-
     } else {
       res.status(500).send('No icon found');
     }
-
   });
 });
 
