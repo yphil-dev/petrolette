@@ -129,26 +129,18 @@ router.get('/favicon', function(req, res) {
             cleanPath = u.path.replace(/\//g, ''),
             fileName;
 
-        fileName = path.join('/tmp/', cleanHost + '.' + cleanPath);
+        fileName = path.join('/tmp/cache', cleanHost + '.' + cleanPath);
         // fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
 
-        if (fs.createWriteStream(fileName)) {
-          fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
-          let stream = fs.createWriteStream(fileName);
+        let stream = fs.createWriteStream(fileName);
 
-          stream.on('finish', function () {
-            console.log("SAVED %s (%s)", fileName, iconUrl);
-          }).on('error', function (err) {
-            console.log("NOT SAVED %s (%s)", fileName, err);
-          });
+        stream.on('finish', function () {
+          console.log("SAVED %s (%s)", fileName, iconUrl);
+        }).on('error', function (err) {
+          console.log("NOT SAVED %s (%s)", fileName, err);
+        });
 
-          request(iconUrl).pipe(stream);
-
-          console.log('STREAM OK: (%s)', iconUrl);
-        } else {
-          console.log('STREAM NOT OK: (%s)', iconUrl);
-        }
-
+        request(iconUrl).pipe(stream);
 
       } else {
         console.log('iconUrl NOT OK: (%s)', iconUrl);
