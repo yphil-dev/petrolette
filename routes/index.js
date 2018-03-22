@@ -109,37 +109,57 @@ router.get('/feed', function(req, res) {
 //   }
 // });
 
+console.log('####### START');
+
 router.get('/favicon', function(req, res) {
+
   favicon(req.query.url, function(err, iconUrl) {
+
     if (iconUrl) {
-      var u = Url.parse(iconUrl);
-      request.get({url: iconUrl}, function (err, response, body) {
 
-        if (!err && typeof body !== 'undefined') {
-          var h = u.host.replace(/\//g, ''),
-              p = u.path.replace(/\//g, ''),
-              fileName;
 
-          counter++;
 
-          // fileName = path.join('/tmp', h + '.' + p);
-          // fileName = path.join(__dirname, '..', 'cache', h + '.' + p);
-          fileName = path.join(__dirname, '..', 'cache', counter.toString());
 
-          fs.writeFile(fileName, body, function(err) {
-            if(err)
-              console.log(err);
-            else
-              console.log("SAVED! (%s)", fileName);
-          });
+      if (!iconUrl.startsWith('..') && Url.parse(iconUrl)) {
+        console.log('iconUrl OK: (%s)', iconUrl);
+
+        var u = Url.parse(iconUrl);
+
+        var cleanHost = u.host.replace(/\//g, ''),
+            cleanPath = u.path.replace(/\//g, ''),
+            fileName;
+
+        // fileName = path.join('/tmp/cache', cleanHost + '.' + cleanPath);
+        fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
+
+        if (fs.createWriteStream(fileName)) {
+          // fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
+          // let stream = fs.createWriteStream(fileName);
+
+          // stream.on('finish', function () {
+          //   console.log("SAVED %s (%s)", fileName, iconUrl);
+          // }).on('error', function (err) {
+          //   console.log("NOT SAVED %s (%s)", fileName, err);
+          // });
+
+          // request(iconUrl).pipe(stream);
+
+          console.log('STREAM OK: (%s)', iconUrl);
         } else {
-          console.log('### ERROR iconUrl: (%s) err: (%s)', iconUrl, err);
+          console.log('STREAM NOT OK: (%s)', iconUrl);
         }
-      });
+
+
+      } else {
+        console.log('iconUrl NOT OK: (%s)', iconUrl);
+      }
+
       res.send(iconUrl);
+
     } else {
       res.status(500).send('No icon found');
     }
+
   });
 });
 

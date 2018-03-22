@@ -205,9 +205,9 @@ PTL.src = {
     $.get("/favicon", {
       url: decodeURI(feedHost),
       dataType: "json",
-      timeout: 2000
+      timeout: 9999
     }, function(icon) {
-
+      console.log('icon: (%s)', icon);
     }).done(function(icon) {
 
       $feedToggle.css('background-image','url("' + icon + '")');
@@ -223,7 +223,8 @@ PTL.src = {
         $feedToggle.css('background-image', 'none');
       };
 
-    }).fail(function() {
+    }).fail(function(err) {
+      console.log('err: %s (%s)', err.statusText, feedHost);
       $feedIcon.addClass('icon-rss');
       $feedToggle.css('background-image', 'none');
     });

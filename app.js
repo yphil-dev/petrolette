@@ -3,9 +3,6 @@ var express = require('express'),
     index = require('./routes/index'),
     app = express();
 
-
-var counter = 0;
-
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
