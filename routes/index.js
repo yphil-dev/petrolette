@@ -117,34 +117,31 @@ router.get('/favicon', function(req, res) {
 
     if (iconUrl) {
 
+      // if (!iconUrl.startsWith('..') && Url.parse(iconUrl)) {
+      //   console.log('iconUrl OK: (%s)', iconUrl);
 
+      //   var u = Url.parse(iconUrl);
 
+      //   var cleanHost = u.host.replace(/\//g, ''),
+      //       cleanPath = u.path.replace(/\//g, ''),
+      //       fileName;
 
-      if (!iconUrl.startsWith('..') && Url.parse(iconUrl)) {
-        console.log('iconUrl OK: (%s)', iconUrl);
+      //   fileName = path.join('/tmp/cache', cleanHost + '.' + cleanPath);
+      //   // fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
 
-        var u = Url.parse(iconUrl);
+      //   let stream = fs.createWriteStream(fileName);
 
-        var cleanHost = u.host.replace(/\//g, ''),
-            cleanPath = u.path.replace(/\//g, ''),
-            fileName;
+      //   stream.on('finish', function () {
+      //     console.log("SAVED %s (%s)", fileName, iconUrl);
+      //   }).on('error', function (err) {
+      //     console.log("NOT SAVED %s (%s)", fileName, err);
+      //   });
 
-        fileName = path.join('/tmp/cache', cleanHost + '.' + cleanPath);
-        // fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
+      //   request(iconUrl).pipe(stream);
 
-        let stream = fs.createWriteStream(fileName);
-
-        stream.on('finish', function () {
-          console.log("SAVED %s (%s)", fileName, iconUrl);
-        }).on('error', function (err) {
-          console.log("NOT SAVED %s (%s)", fileName, err);
-        });
-
-        request(iconUrl).pipe(stream);
-
-      } else {
-        console.log('iconUrl NOT OK: (%s)', iconUrl);
-      }
+      // } else {
+      //   console.log('iconUrl NOT OK: (%s)', iconUrl);
+      // }
 
       res.send(iconUrl);
 
