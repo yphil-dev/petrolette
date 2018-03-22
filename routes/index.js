@@ -129,8 +129,8 @@ router.get('/favicon', function(req, res) {
             cleanPath = u.path.replace(/\//g, ''),
             fileName;
 
-        // fileName = path.join('/tmp/cache', cleanHost + '.' + cleanPath);
-        fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
+        fileName = path.join('/tmp/', cleanHost + '.' + cleanPath);
+        // fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
 
         if (fs.createWriteStream(fileName)) {
           // fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
