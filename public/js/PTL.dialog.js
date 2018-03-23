@@ -58,7 +58,7 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  feedPrefs:function($button, isNewFeed) {
+  feedPrefs:function($button, isNewFeed, isQueryString) {
 
     $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
 
@@ -67,8 +67,6 @@ PTL.dialog = {
       var $dialog = $(this),
           $dataStore = $button.parent().parent(),
           $feed = $dataStore.parent().parent(),
-          feedId = $feed.attr('id'),
-          feedName = $feed.find('.source-title').text(),
           allGroups = PTL.tab.list('all'),
           $thisGroup =  $feed.parent().parent(),
           $groupMenu = $dialog.find('select#feedGroup');
@@ -259,7 +257,7 @@ PTL.dialog = {
 
           $('input:radio, input:checkbox').checkboxradio({
             icon: false
-          });
+            });
 
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
             .checkboxradio('refresh');
@@ -472,17 +470,17 @@ PTL.dialog = {
                               .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
           var $kbShortCutsPanel = $('<table>')
-                          .attr('class', 'keyboard-shortcuts')
-                          .append($('<tr>')
-                                  .append($('<th>')
-                                          .text('Key'))
-                                  .append($('<th>')
-                                          .text('Command')))
-                          .append($('<tr>')
-                                  .append($('<td>')
-                                          .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">UP</kbd></kbd>'))
-                                  .append($('<td>')
-                                          .text(PTL.tr('Move focus to associated tab.'))))
+              .attr('class', 'keyboard-shortcuts')
+              .append($('<tr>')
+                      .append($('<th>')
+                              .text('Key'))
+                      .append($('<th>')
+                              .text('Command')))
+              .append($('<tr>')
+                      .append($('<td>')
+                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">UP</kbd></kbd>'))
+                      .append($('<td>')
+                              .text(PTL.tr('Move focus to associated tab.'))))
               .append($('<tr>')
                       .append($('<td>')
                               .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
@@ -541,7 +539,7 @@ PTL.dialog = {
             title: PTL.tr('Add source'),
             class: "translate",
             click: function() {
-              PTL.src.add($('.column').first(), sourceUrl, 'mixed', 8, true);
+              PTL.src.add($('.column').first(), sourceUrl, 'mixed', 8, true, false);
               PTL.dialog.kill($dialog);
             }
           }

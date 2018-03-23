@@ -52,7 +52,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.src.add($column, 'New Feed', 'mixed', 8, true);
+        PTL.src.add($column, 'New Feed', 'mixed', 8, true, false);
       });
 
       $sourceCodeButton.click(function(event) {

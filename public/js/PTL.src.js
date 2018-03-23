@@ -2,7 +2,7 @@
 
 PTL.src = {
 
-  add:function($column, url, type, limit, clickNew, progress) {
+  add:function($column, url, type, limit, clickNew, isQueryString, progress) {
 
     var feedIndex = $('#tabs').find('.feed').length;
 
@@ -121,19 +121,19 @@ PTL.src = {
       $(this).data('img', iconImg);
 
     },
-      function() {
+                   function() {
 
-        $feedIcon.removeClass('icon-down-big');
+                     $feedIcon.removeClass('icon-down-big');
 
-        // $feedIcon.css('background-image', iconImg);
+                     // $feedIcon.css('background-image', iconImg);
 
-        if ($(this).data('img') !== 'none') {
-          $feedToggle.css('background-image', $(this).data('img'));
-        } else {
-          $feedIcon.addClass('icon-rss');
-        }
+                     if ($(this).data('img') !== 'none') {
+                       $feedToggle.css('background-image', $(this).data('img'));
+                     } else {
+                       $feedIcon.addClass('icon-rss');
+                     }
 
-      });
+                   });
 
     if (!PTL.util.isMobile()) {
       $selectDiv.addClass('collapsible');
@@ -168,7 +168,7 @@ PTL.src = {
 
     if (clickNew) {
       $feed.prependTo($column);
-      PTL.dialog.feedPrefs($feedPrefs, true);
+      PTL.dialog.feedPrefs($feedPrefs, true, isQueryString);
     } else {
       $feed.appendTo($column);
       $feedReload.click();
@@ -207,8 +207,7 @@ PTL.src = {
       dataType: "json",
       timeout: 2000
     }, function(icon) {
-      console.log('icon: (%s)', icon);
-      console.log('ICON: (%s)', icon);
+      // console.log('ICON: (%s)', icon);
     }).done(function(icon) {
 
       $feedToggle.css('background-image','url("' + icon + '")');
