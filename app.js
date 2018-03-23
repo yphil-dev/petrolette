@@ -1,7 +1,12 @@
 var express = require('express'),
     path = require('path'),
     index = require('./routes/index'),
+    fs = require('fs'),
     app = express();
+
+if (!fs.existsSync(process.env.FAVICONS_CACHE_DIR)){
+  fs.mkdirSync(process.env.FAVICONS_CACHE_DIR);
+}
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);

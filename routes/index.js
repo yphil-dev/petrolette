@@ -6,10 +6,7 @@ var express = require('express'),
     feedrat = require('feedrat'),
     Url = require('url'),
     fs = require('fs'),
-    path = require('path'),
-    http = require('http'),
-    packageJson = require('../package.json'),
-    cacheDir = path.join(__dirname, packageJson.cacheDirName);
+    path = require('path');
 
 // require('request').debug = true;
 
@@ -98,57 +95,43 @@ router.get('/feed', function(req, res) {
 
 });
 
-
-// var p = Url.parse(req.query.url),
-// fileName = p.host + "-" + p.path;
-
-// fs.exists(path.join(cacheDir, fileName), (exists) => {
-//   if (!exists) {
-//     console.log('path.join(cacheDir, fileName) does not exist');
-//     // fs.mkdirSync(cacheDir);
-//   }
-// });
-
 console.log('####### START');
+
+router.use('/favicon', function (req, res, next) {
+  console.log('Request:', req.method);
+  next();
+});
 
 router.get('/favicon', function(req, res) {
 
   favicon(req.query.url, function(err, iconUrl) {
-
     if (iconUrl) {
 
-      // if (!iconUrl.startsWith('..') && Url.parse(iconUrl)) {
-      //   console.log('iconUrl OK: (%s)', iconUrl);
+      if (!iconUrl.startsWith('..') && Url.parse(iconUrl)) {
 
-      //   var u = Url.parse(iconUrl);
+        var u = Url.parse(iconUrl),
+            h = u.host.replace(/\//g, ''),
+            p = u.path.replace(/\//g, ''),
+            fileName;
 
-      //   var cleanHost = u.host.replace(/\//g, ''),
-      //       cleanPath = u.path.replace(/\//g, ''),
-      //       fileName;
+        fileName = path.join(process.env.FAVICONS_CACHE_DIR, h + '.' + p);
 
-      //   fileName = path.join('/tmp/cache', cleanHost + '.' + cleanPath);
-      //   // fileName = path.join(__dirname, '..', 'cache', cleanHost + '.' + cleanPath);
+        let stream = fs.createWriteStream(fileName);
+        stream.on('finish', function () {
+          console.log("SAVED %s (%s)", fileName, iconUrl);
+        }).on('error', function (err) {
+          console.log("NOT SAVED %s (%s)", fileName, err);
+        });
+        request(iconUrl).pipe(stream);
 
-      //   let stream = fs.createWriteStream(fileName);
-
-      //   stream.on('finish', function () {
-      //     console.log("SAVED %s (%s)", fileName, iconUrl);
-      //   }).on('error', function (err) {
-      //     console.log("NOT SAVED %s (%s)", fileName, err);
-      //   });
-
-      //   request(iconUrl).pipe(stream);
-
-      // } else {
-      //   console.log('iconUrl NOT OK: (%s)', iconUrl);
-      // }
+      } else {
+        console.log('iconUrl NOT OK: (%s)', iconUrl);
+      }
 
       res.send(iconUrl);
-
     } else {
       res.status(500).send('No icon found');
     }
-
   });
 });
 
