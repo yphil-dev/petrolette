@@ -26,6 +26,10 @@ var PTL = (function() {
         $(this).toggleClass('expanded');
       });
 
+      $('body').on('click','.help-bookmarklet', function(event) {
+        event.preventDefault();
+      });
+
       PTL.sync.attachWidget();
 
       $('button').button();
@@ -52,7 +56,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.src.add($column, 'New Feed', 'mixed', 8, true, false);
+        PTL.src.add($column, PTL.tr('New source'), 'mixed', 8, true, false);
       });
 
       $sourceCodeButton.click(function(event) {
