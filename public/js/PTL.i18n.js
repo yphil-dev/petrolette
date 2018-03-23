@@ -165,6 +165,10 @@ PTL.i18n.translations = {
 
   "Click on a group tab to display it." : { fr: "Cliquer sur l'onglet d'un groupe pour l'afficher." , ja: "グループタブをクリックして表示します。", es: "Haga clic en una pestaña de grupo para mostrarla." },
 
+  "You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette" : { fr: "Vous pouvez également faire glisser ce bouton dans la barre d'outils de votre navigateur et cliquer dessus lorsque vous souhaitez ajouter un site Web à Pétrolette" , ja: "このボタンをブックマークツールバーにドラッグして、Pétroletteにウェブサイトを追加するときにクリックすることもできます", es: "También puede arrastrar este botón a la barra de herramientas de su marcador y hacer clic en él cuando desee agregar un sitio web a Pétrolette." },
+  "Add to Pétrolette" : { fr: "Ajouter à Pétrolette" , ja: "Pétroletteに追加", es: "Agregar a Pétrolette" },
+  "Drag to the bookmark bar" : { fr: "Glisser dans la barre de favoris" , ja: "ブックマークバーにドラッグ", es: "Arrastre a la barra de marcador" },
+
   "Click on the current/selected group tab to change its name and position." : { fr: "Cliquer sur le groupe sélectionné pour changer son nom et sa position." , ja: "現在の/選択したグループタブをクリックして、名前と位置を変更します。", es: "Haga clic en la pestaña del grupo actual / seleccionado para cambiar su nombre y posición." },
 
   "This is a source. More info: %1" : { fr: "Ceci est une source. Plus d'infos: %1" , ja: "これはソースです 詳細情報：%1", es: "Esta es una fuente. Más info: %1" },
