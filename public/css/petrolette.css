@@ -719,6 +719,10 @@ button.ui-state-error {
   padding: .4em;
 }
 
+.dialog .help-bookmarklet {
+  cursor: grab;
+}
+
 .dialog button.help-button:focus,
 .dialog button.help-button:hover {
   color: var(--color-ui-pri);
