@@ -221,6 +221,15 @@ PTL.tab = {
 
       $column.appendTo($tabPanel);
 
+      if (PTL.queryString) {
+
+        PTL.src.add($column, PTL.queryString, 'mixed', 8, true, true);
+
+        // PTL.dialog.addSource(PTL.queryString);
+        // console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.util.isUrl(PTL.queryString));
+        PTL.queryString = null;
+      }
+
       if (!newTab) {
         sources.forEach(function(source) {
 
@@ -228,7 +237,7 @@ PTL.tab = {
               type = PTL.sourceTypes.includes(source.type) ? source.type : 'mixed',
               limit = Number.isInteger(source.limit) ? source.limit : 8;
 
-          PTL.src.add($column, url, type, limit, false, progress);
+          PTL.src.add($column, url, type, limit, false, false, progress);
         });
       }
 
