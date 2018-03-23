@@ -32,6 +32,5 @@
     "feedparser": "2.2.9",
     "feedrat": "latest",
     "pm2": "2.8.0"
-  },
-  "cacheDirName": "favicon-cache"
+  }
 }

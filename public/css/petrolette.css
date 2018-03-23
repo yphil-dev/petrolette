@@ -719,6 +719,7 @@ button.ui-state-error {
   padding: .4em;
 }
 
+.source-header > .source-handle,
 .dialog .help-bookmarklet {
   cursor: grab;
 }
@@ -1035,7 +1036,6 @@ li.feed {
   background-color: transparent;
   border-left: 3px dotted var(--color-oct);
   border-right: 3px dotted var(--color-oct);
-  cursor:move;
   flex-basis: 4px;
   flex-grow: 0;
   flex-shrink: var(--handle-flex-shrink);
@@ -1087,8 +1087,16 @@ li.feed {
   margin: var(--controls-toggle-margin);
 }
 
+.help-rss {
+  color: var(--color-ui-pri) !important;
+}
+
 .icon-rss {
-  color: var(--color-ui-rss);
+  color: var(--color-ui-rss) !important;
+}
+
+.icon-rss {
+  color: var(--color-ui-rss) !important;
 }
 
 li.source-item {
@@ -1291,6 +1299,10 @@ div#logo-title > .logo-title > a:visited,
 div#logo-title {
   display:flex;
   float: right;
+}
+
+.icon-petrolette {
+  color: var(--color-ui-sec) !important;
 }
 
 .logoType i.icon-petrolette {

@@ -193,7 +193,7 @@ PTL.util = {
         },
         {
           element: 'li.feed',
-          intro: PTL.tr('This is a source. ') + '<a href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('More info') + '</a>'
+          intro: PTL.tr('This is a source. ') + '<a class="ui-button ui-corner-all icon-rss" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('More info') + '</a>'
         },
         {
           element: 'div#newSourceButton',
@@ -230,7 +230,7 @@ PTL.util = {
       steps: [
         {
           element: 'input#feed-guess',
-          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="rssDocLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('source') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a source from your search query.">' + PTL.tr('Heck, enter anything, and Pétrolette will build a source from your search query.') + '</span>',
+          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('source') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a source from your search query.">' + PTL.tr('Heck, enter anything, and Pétrolette will build a source from your search query.') + '</span>',
           position: 'bottom'
         },
         {

@@ -77,10 +77,10 @@ PTL.dialog = {
         }
       });
 
-      $('.rssDocLink').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
+      $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
       $dialog.dialog({
-        title: PTL.tr('Source'),
+        title: isNewFeed ? PTL.tr('New source') : PTL.tr('Source'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: true,
