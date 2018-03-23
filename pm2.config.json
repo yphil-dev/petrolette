@@ -1,0 +1,17 @@
+{
+  "apps" : [{
+    "name"            : "petrolette",
+    "script"          : "./bin/www",
+    "watch"           : true,
+    "ignore_watch"    : ["favicons-cache"],
+    "favicons_cache"  : "favicons-cache",
+    "log_date_format" : "YYYY-MM-DD HH:mm",
+    "env": {
+      "PORT": 8666,
+      "FAVICONS_CACHE_DIR": "favicons-cache"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
+    }
+  }]
+}

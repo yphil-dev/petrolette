@@ -205,14 +205,16 @@ PTL.src = {
     $.get("/favicon", {
       url: decodeURI(feedHost),
       dataType: "json",
-      timeout: 9999
+      timeout: 2000
     }, function(icon) {
       console.log('icon: (%s)', icon);
+      console.log('ICON: (%s)', icon);
     }).done(function(icon) {
 
       $feedToggle.css('background-image','url("' + icon + '")');
       $feedIcon.removeClass('icon-rss');
       $header.data('img',icon);
+
 
       var img = new Image();
 
