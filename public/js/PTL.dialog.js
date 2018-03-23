@@ -257,7 +257,7 @@ PTL.dialog = {
 
           $('input:radio, input:checkbox').checkboxradio({
             icon: false
-            });
+          });
 
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
             .checkboxradio('refresh');
