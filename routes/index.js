@@ -1,17 +1,13 @@
 var express = require('express'),
     router = express.Router(),
-    favicon = require('favicon'),
+    favrat = require('favrat'),
     FeedParser = require('feedparser'),
     request = require('request'),
     feedrat = require('feedrat'),
-    Url = require('url'),
     fs = require('fs'),
     path = require('path'),
     crypto = require('crypto'),
     pjson = require('../package.json');
-
-console.log(pjson.version);
-// require('request').debug = true;
 
 router.get('/', function(req, res) {
   res.render('index', {
@@ -23,17 +19,6 @@ router.get('/', function(req, res) {
 router.get('/about/javascript', function(req, res) {
   res.render('javascript');
 });
-
-// router.use(function(req,res,next){
-//   var _send = res.send;
-//   var sent = false;
-//   res.send = function(data){
-//     if(sent) return;
-//     _send.bind(res)(data);
-//     sent = true;
-//   };
-//   next();
-// });
 
 function getFeed (urlfeed, callback) {
 
@@ -103,14 +88,9 @@ router.get('/feed', function(req, res) {
 
 console.log('####### START');
 
-// router.use('/favicon', function (req, res, next) {
-//   console.log('Request:', req.method);
-//   next();
-// });
-
 router.get('/favicon', function(req, res) {
 
-  favicon(req.query.url, function(err, iconUrl) {
+  favrat(req.query.url, function(err, iconUrl) {
 
     if (iconUrl) {
 
@@ -121,10 +101,14 @@ router.get('/favicon', function(req, res) {
 
       console.log('# %s (%s)', iconUrl, fileName);
 
+
+      // res.send(iconUrl);
+
       if (fs.existsSync(filePath)) {
         console.log('File exists');
-        res.contentType(fileName);
+        res.contentType(filePath);
         res.send('/favicons/' + fileName);
+
       } else {
 
         res.send(iconUrl);

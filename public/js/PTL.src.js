@@ -192,7 +192,8 @@ PTL.src = {
         $feedIcon = $feed.find('.source-toggle > i');
 
     var l = PTL.util.getLocation(feedUrl),
-        feedHost = l.protocol + '//' + l.hostname,
+        feedProtocol = l.protocol + '//' || '//',
+        feedHost = feedProtocol + l.hostname,
         subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
     if (subdomain === 'rss' || subdomain === 'feeds') {
@@ -207,8 +208,9 @@ PTL.src = {
       dataType: "json",
       timeout: 2000
     }, function(icon) {
-      // console.log('ICON: (%s)', icon);
+      // console.log('feedHost: %s (icon %s)', feedHost, icon);
     }).done(function(icon) {
+
 
       $feedToggle.css('background-image','url("' + icon + '")');
       $feedIcon.removeClass('icon-rss');
@@ -220,13 +222,13 @@ PTL.src = {
       img.src = icon;
 
       img.onerror = function() {
-        $feedIcon.addClass('icon-rss');
+        $feedIcon.addClass('icon-rss yowza');
         $feedToggle.css('background-image', 'none');
       };
 
     }).fail(function(err) {
       console.log('err: %s (%s)', err.statusText, feedHost);
-      $feedIcon.addClass('icon-rss');
+      $feedIcon.addClass('icon-rss yowzo');
       $feedToggle.css('background-image', 'none');
     });
 
@@ -314,6 +316,7 @@ PTL.src = {
         var $description = $.parseHTML(item.description);
 
         var imageUrl;
+
 
         var $imageLink = $('<a>').attr('target', '_blank'),
             $itemLink = $('<a>').attr('target', '_blank'),
@@ -406,6 +409,12 @@ PTL.src = {
             .attr('data-fancybox-group', $panel.attr('id'))
             .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + item.title + '</a>');
 
+          var isAbsolutePath = new RegExp('^(?:[a-z]+:)?//', 'i');
+
+          if (!isAbsolutePath.test(imageUrl)) {
+            imageUrl = feedHost + imageUrl;
+          }
+
           $image
             .attr('src', imageUrl);
 
@@ -422,6 +431,8 @@ PTL.src = {
         $itemLink.appendTo($itemDiv);
         $itemDiv.appendTo($sourceItem);
         $sourceItem.appendTo($feedBody);
+
+
 
       });
 
