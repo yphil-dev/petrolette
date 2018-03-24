@@ -6,12 +6,17 @@ var express = require('express'),
     feedrat = require('feedrat'),
     Url = require('url'),
     fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    pjson = require('../package.json');
 
+console.log(pjson.version);
 // require('request').debug = true;
 
 router.get('/', function(req, res) {
-  res.render('index', {queryString:req.query.source});
+  res.render('index', {
+    queryString:req.query.source,
+    version: pjson.version
+  });
 });
 
 router.get('/about/javascript', function(req, res) {
