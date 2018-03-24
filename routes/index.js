@@ -7,6 +7,7 @@ var express = require('express'),
     Url = require('url'),
     fs = require('fs'),
     path = require('path'),
+    crypto = require('crypto'),
     pjson = require('../package.json');
 
 console.log(pjson.version);
@@ -113,40 +114,34 @@ router.get('/favicon', function(req, res) {
 
     if (iconUrl) {
 
-      res.send(iconUrl);
+      var hash = crypto.createHash('md5').update(iconUrl).digest('hex');
 
-      // var u = Url.parse(iconUrl),
-      //     h = u.host.replace(/\//g, ''),
-      //     p = u.path.replace(/\//g, ''),
-      //     fileName = path.join(process.env.FAVICONS_CACHE_DIR, h + '.' + p);
+      var fileName = hash + '.favicon';
+      var filePath = path.join(process.env.FAVICONS_CACHE_DIR, fileName);
 
-      // let checkFileExists = s => new Promise(r=>fs.access(s, fs.F_OK, e => r(!e)));
+      console.log('# %s (%s)', iconUrl, fileName);
 
-      // checkFileExists(fileName)
-      // .then(bool => console.log('file exists: ${fileName}'));
+      if (fs.existsSync(filePath)) {
+        console.log('File exists');
+        res.contentType(fileName);
+        res.send('/favicons/' + fileName);
+      } else {
 
-      // fs.existsSync(fileName, function(err) {
-      //   if(!err) {
-      //     console.log('File exists');
-      //     res.send(fileName);
-      //   } else {
+        res.send(iconUrl);
 
-      //     let stream = fs.createWriteStream(fileName);
+        console.log('File does NOT exist');
 
-      //     request(iconUrl).pipe(stream);
+        let stream = fs.createWriteStream(filePath);
 
-      //     stream.on('finish', function () {
-      //       console.log("SAVED %s (%s)", fileName, iconUrl);
-      //       res.send(iconUrl);
-      //     }).on('error', function (err) {
-      //       res.send(fileName);
-      //       console.log("NOT SAVED %s (%s)", fileName, err);
-      //     });
+        request(iconUrl).pipe(stream);
 
-      //     console.log('Some other error: ', err.code);
-      //   }
-      // });
+        stream.on('finish', function () {
+          console.log("SAVED %s to %s (%s)", fileName, filePath, iconUrl);
+        }).on('error', function (err) {
+          console.log("NOT SAVED %s (%s)", fileName, err);
+        });
 
+      }
 
     } else {
       res.status(500).send('No icon found');
