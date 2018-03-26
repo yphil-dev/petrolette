@@ -13,7 +13,10 @@
   },
   "scripts": {
     "start": "pm2 start pm2.config.json",
+    "restart": "pm2 restart pm2.config.json",
     "stop": "pm2 stop petrolette",
+    "show": "pm2 show petrolette",
+    "logs": "pm2 logs petrolette",
     "postinstall": "bower install"
   },
   "dependencies": {
@@ -21,6 +24,7 @@
     "ejs": "2.5.7",
     "express": "4.16.2",
     "feedparser": "2.2.9",
+    "favrat": "latest",
     "feedrat": "latest",
     "pm2": "2.8.0"
   }
