@@ -105,6 +105,7 @@ router.get('/favicon', function(req, res) {
 
       res.send(iconUrl);
 
+
       // if (fs.existsSync(filePath)) {
       //   res.send('/favicons/' + fileName);
 
