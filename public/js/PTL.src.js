@@ -204,28 +204,16 @@ PTL.src = {
 
     $.get("/favicon", {
       url: decodeURI(feedHost),
-      dataType: "json",
-      timeout: 2000
-    }, function(icon) {
+      dataType: "json"
+    }, function() {
       // console.log('feedHost: %s (icon %s)', feedHost, icon);
+      $feedIcon.removeClass('icon-rzz');
     }).done(function(icon) {
 
-
-      $feedToggle.css('background-image','url("' + icon + '")');
-      $feedIcon.removeClass('icon-rzz');
+      $feedToggle.css('background-image','url(' + icon + ')');
       $header.data('img',icon);
 
-      // var img = new Image();
-
-      // img.src = icon;
-
-      // img.onerror = function() {
-      //   $feedIcon.addClass('icon-rzz yowza');
-      //   $feedToggle.css('background-image', 'none');
-      // };
-
-    }).fail(function(err) {
-      // console.log('err: %s (%s)', err.statusText, feedHost);
+    }).fail(function() {
       $feedIcon.addClass('icon-rzz yowzo');
       $feedToggle.css('background-image', 'none');
     });
