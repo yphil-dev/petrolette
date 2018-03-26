@@ -33,16 +33,16 @@ PTL.col = {
 
     var $srcLegend = $('<legend>')
         .attr('class', 'legend unique')
-        .text(PTL.tr('Source'));
+        .text(PTL.tr('Feed'));
 
     var $column = $('<ul>')
         .attr('class', 'column')
         .append($colButtons);
 
     var $srcNewButton = $('<button>')
-        .attr('title', PTL.tr('Add a source to this column'))
-        .data('title', 'Add a source to this column')
-        .attr('class', 'icon-plus unique translate new-source-button button-column last')
+        .attr('title', PTL.tr('Add a feed to this column'))
+        .data('title', 'Add a feed to this column')
+        .attr('class', 'icon-plus unique translate new-feed-button button-column last')
         .button()
         .data('colIndex', colIndex);
 
@@ -63,10 +63,10 @@ PTL.col = {
     $colDelButton.bind('click', function() {
 
       var $column = $(this).parent().parent(),
-          $sourcesInCol = $column.find('.feed'),
-          nbOfSourcesInCol = $sourcesInCol.length;
+          $feedsInCol = $column.find('.feed'),
+          nbOfFeedsInCol = $feedsInCol.length;
 
-      if (nbOfSourcesInCol < 1) {
+      if (nbOfFeedsInCol < 1) {
         PTL.col.del($column);
       } else {
         PTL.dialog.killColumn($(this));
@@ -90,7 +90,7 @@ PTL.col = {
 
     $column.sortable({
       cursor: 'move',
-      handle: ".source-handle",
+      handle: ".feed-handle",
       connectWith: ".column",
       cursorAt: {top: 10, left: 32},
       receive: function(e, ui) {
@@ -123,7 +123,7 @@ PTL.col = {
         ui.item.siblings('.selected').removeClass('hidden');
         //unselect since the operation is complete
         $('.selected').removeClass('selected ui-state-hover');
-        $(this).find('i.source-select').removeClass('icon-ok').addClass('icon-check-empty-1');
+        $(this).find('i.feed-select').removeClass('icon-ok').addClass('icon-check-empty-1');
         PTL.tab.saveTabs();
       }
       }).disableSelection();

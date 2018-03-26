@@ -47,7 +47,7 @@ PTL.prefs = (function() {
     'gallerySlideTransition': 'fade',
     'gallerySlideshowSpeed': 3000,
     'lang': 'en',
-    'sources': JSON.stringify(newList),
+    'feeds': JSON.stringify(newList),
     'tabDropActivate': true,
     'theme': 'night',
     'writeTime': Date.now()
@@ -67,7 +67,7 @@ PTL.prefs = (function() {
 
       $('div#logo-title i').addClass('writing');
 
-      if (key === 'sources') {
+      if (key === 'feeds') {
         localStorage.setItem('writeTime', Date.now());
       }
 

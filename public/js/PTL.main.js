@@ -4,7 +4,7 @@ var PTL = (function() {
 
   return {
     // language: Prefs.readConfig('lang'),
-    sourceTypes: ['text', 'mixed', 'photo'],
+    feedTypes: ['text', 'mixed', 'photo'],
     language: 'en',
     start : function() {
 
@@ -12,7 +12,7 @@ var PTL = (function() {
 
       var $menu = $('nav#side-menu'),
           $overlay = $('#overlay'),
-          $sourceCodeButton = $('button#sourceCode'),
+          $feedCodeButton = $('button#feedCode'),
           $importButton = $("button#fileImport"),
           $fileImportInput = $("input#fileImport"),
           $saveButton = $('#saveTabs'),
@@ -44,7 +44,7 @@ var PTL = (function() {
         PTL.dialog.help();
       });
 
-      $('body').on('click','.new-source-button', function() {
+      $('body').on('click','.new-feed-button', function() {
 
         var $column;
 
@@ -58,10 +58,10 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.src.add($column, PTL.tr('New source'), 'mixed', 8, true, false);
+        PTL.src.add($column, PTL.tr('New feed'), 'mixed', 8, true, false);
       });
 
-      $sourceCodeButton.click(function(event) {
+      $feedCodeButton.click(function(event) {
         event.preventDefault();
         window.open('https://framagit.org/yphil/petrolette');
       });

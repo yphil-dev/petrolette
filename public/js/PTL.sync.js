@@ -33,7 +33,7 @@ PTL.sync = (function() {
 
   var syncDirectory = 'petrolette';
 
-  var Sources = {
+  var Feeds = {
     name: syncDirectory, builder: function(privateClient, publicClient) {
 
       return {
@@ -44,8 +44,8 @@ PTL.sync = (function() {
                 return file.data;
               });
           },
-          write: function (sources) {
-            return privateClient.storeFile('text/plain', 'petrolette.conf', sources);
+          write: function (feeds) {
+            return privateClient.storeFile('text/plain', 'petrolette.conf', feeds);
           }
         }
       };
@@ -55,7 +55,7 @@ PTL.sync = (function() {
   const remoteStorage = new RemoteStorage({
     // logging: true,
     // cordovaRedirectUri: 'http://petrolette.space',
-    modules: [ Sources ]
+    modules: [ Feeds ]
   });
 
   // remoteStorage.setApiKeys({
@@ -98,7 +98,7 @@ PTL.sync = (function() {
       remoteStorage.petrolette.read()
         .then((data) => {
 
-          if (PTL.util.isValidSourcesFile(JSON.parse(data))) {
+          if (PTL.util.isValidFeedsFile(JSON.parse(data))) {
 
             console.info('Pétrolette | ' + PTL.tr('Remote file validation OK'));
 
@@ -108,7 +108,7 @@ PTL.sync = (function() {
           } else {
 
             console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults', data));
-            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('sources')));
+            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
 
           }
 
@@ -117,14 +117,14 @@ PTL.sync = (function() {
 
           PTL.util.console(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err), 'warning');
 
-          PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('sources')));
+          PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
 
         });
 
     },
-    writeSync:function(sources) {
+    writeSync:function(feeds) {
 
-      remoteStorage.petrolette.write(sources)
+      remoteStorage.petrolette.write(feeds)
         .then((data) => {
           console.info('Writing to remote storage OK', data);
           PTL.util.console(PTL.tr('Writing to remote storage OK'), 'success');

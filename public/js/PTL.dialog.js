@@ -39,7 +39,7 @@ PTL.dialog = {
 
           $(this).find('.help-button').button();
 
-          $(this).find('.help-bookmarklet').attr('href', 'javascript:void(window.open("' + document.URL + '?source=" + window.location.href))');
+          $(this).find('.help-bookmarklet').attr('href', 'javascript:void(window.open("' + document.URL + '?feed=" + window.location.href))');
 
           $('.help-tour').on('click', function() {
             PTL.sideMenu('close');
@@ -82,7 +82,7 @@ PTL.dialog = {
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
       $dialog.dialog({
-        title: isNewFeed ? PTL.tr('New source') : PTL.tr('Source'),
+        title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: true,
@@ -184,13 +184,13 @@ PTL.dialog = {
 
             $guessButton
               .addClass('ui-state-error')
-              .attr('title', PTL.tr('No valid source found at this address')) ;
+              .attr('title', PTL.tr('No valid feed found at this address')) ;
 
             $okButton.addClass('ui-state-error');
           }
 
           var $tabFeedId = $('li#' + $dataStore.data('id')),
-              $sourceRefresh = $tabFeedId.find('.sourceRefresh'),
+              $feedRefresh = $tabFeedId.find('.feedRefresh'),
               $guessButton = $dialog.find('button#feed-guess').button(),
               $guessSpinner = $dialog.find('button#feed-guess > i'),
               $guessField = $dialog.find('input#feed-guess'),
@@ -246,7 +246,7 @@ PTL.dialog = {
 
               $guessButton
                 .addClass('ui-state-success')
-                .attr('title', PTL.tr('Valid source found! Now just press OK')) ;
+                .attr('title', PTL.tr('Valid feed found! Now just press OK')) ;
 
             }).fail(function(feed, status) {
               guessError();
@@ -292,7 +292,7 @@ PTL.dialog = {
           });
 
           $dialog.on('submit', function () {
-            PTL.src.populate($sourceRefresh);
+            PTL.src.populate($feedRefresh);
 
             PTL.tab.saveTabs();
 
@@ -324,8 +324,8 @@ PTL.dialog = {
           $columnsInTab = $panel.find('.column'),
           nbOfColumnsInTab = $columnsInTab.length,
           colIndex = $panel.find('.column').index($column),
-          $sourcesInCol = $column.find('.feed'),
-          nbOfSourcesInCol = $sourcesInCol.length,
+          $feedsInCol = $column.find('.feed'),
+          nbOfFeedsInCol = $feedsInCol.length,
           $icon = $dialog.find('div.icon > i');
 
       $icon.addClass('icon-trash-empty danger');
@@ -366,8 +366,8 @@ PTL.dialog = {
           $dialog.find('h1').text(PTL.tr('Really delete this column?'));
           $dialog.find('h2#name').text(PTL.tr('Index'));
           $dialog.find('p#name').text((colIndex + 1));
-          $dialog.find('h2#number').text(PTL.tr('Number of sources'));
-          $dialog.find('p#number').text(nbOfSourcesInCol);
+          $dialog.find('h2#number').text(PTL.tr('Number of feeds'));
+          $dialog.find('p#number').text(nbOfFeedsInCol);
 
         }
       });
@@ -506,7 +506,7 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  addSource:function(sourceUrl) {
+  addFeed:function(feedUrl) {
 
     $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
@@ -520,7 +520,7 @@ PTL.dialog = {
       // console.log('There is %s cols in the %s panel', nbOfColumnsInTab, $panel.attr('id'));
 
       $dialog.dialog({
-        title: PTL.tr('Add source'),
+        title: PTL.tr('Add feed'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
@@ -538,22 +538,22 @@ PTL.dialog = {
           },
           {
             text:  PTL.tr('Add'),
-            title: PTL.tr('Add source'),
+            title: PTL.tr('Add feed'),
             class: "translate",
             click: function() {
-              PTL.src.add($('.column').first(), sourceUrl, 'mixed', 8, true, false);
+              PTL.src.add($('.column').first(), feedUrl, 'mixed', 8, true, false);
               PTL.dialog.kill($dialog);
             }
           }
         ],
         open: function () {
 
-          if (!PTL.util.isUrl(sourceUrl)) {
+          if (!PTL.util.isUrl(feedUrl)) {
             h1 = 'Whoops!';
-            h2 = PTL.tr('Unrecognized URL: %1', sourceUrl);
+            h2 = PTL.tr('Unrecognized URL: %1', feedUrl);
           } else {
             isUrl = true;
-            h1 = PTL.tr('New source');
+            h1 = PTL.tr('New feed');
             h2 = PTL.tr('URL');
           }
 
@@ -563,7 +563,7 @@ PTL.dialog = {
 
           $dialog.find('h1').text(h1);
           $dialog.find('h2#name').text(h2);
-          $dialog.find('p#name').text((sourceUrl));
+          $dialog.find('p#name').text((feedUrl));
 
         }
       });
@@ -616,7 +616,7 @@ PTL.dialog = {
               PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
 
-              if ($.parseJSON(PTL.prefs.readConfig('sources')).length > 0) {
+              if ($.parseJSON(PTL.prefs.readConfig('feeds')).length > 0) {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
               } else {
                 PTL.util.console(PTL.tr('Zero tabs!'), 'error');
@@ -634,7 +634,7 @@ PTL.dialog = {
           $dialog.find('h1').text(PTL.tr('Really delete this group?'));
           $dialog.find('h2#name').text(PTL.tr('Name'));
           $dialog.find('p#name').text($a.text());
-          $dialog.find('h2#number').text(PTL.tr('Number of sources'));
+          $dialog.find('h2#number').text(PTL.tr('Number of feeds'));
           $dialog.find('p#number').text($selectedPanel.find('li.feed').length);
 
         }
@@ -650,7 +650,7 @@ PTL.dialog = {
       var $dialog = $(this),
           $thisFeed = $button.parent().parent().parent().parent(),
           thisFeedId = $button.parent().parent().parent().parent().attr('id'),
-          thisFeedName = $button.parent().parent().parent().find('.source-title').text(),
+          thisFeedName = $button.parent().parent().parent().find('.feed-title').text(),
           $icon = $dialog.find('div.icon > i');
 
       $icon.addClass('icon-trash-empty danger');
@@ -658,7 +658,7 @@ PTL.dialog = {
       console.log('feedId: %s, thisFeedName: %s', thisFeedId, thisFeedName);
 
       $dialog.dialog({
-        title: PTL.tr('Delete source'),
+        title: PTL.tr('Delete feed'),
         autoOpen: false,
         closeOnEscape: true,
         resizable: false,
@@ -693,7 +693,7 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text(PTL.tr('Really delete this source?'));
+          $dialog.find('h1').text(PTL.tr('Really delete this feed?'));
           $dialog.find('h2#name').text(PTL.tr('Name'));
           $dialog.find('p#name').text(thisFeedName);
 
