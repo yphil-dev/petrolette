@@ -1092,11 +1092,11 @@ li.feed {
   color: var(--color-ui-pri) !important;
 }
 
-.icon-rss {
+.icon-rzz {
   color: var(--color-ui-rss) !important;
 }
 
-.icon-rss {
+.icon-rzz {
   color: var(--color-ui-rss) !important;
 }
 
@@ -1279,8 +1279,8 @@ div.introjs-helperLayer {
 div#logo-title > .logo-title > a:link,
 div#logo-title > .logo-title > a:visited,
 .topnav i,
-#scroll-top,
-#scroll-top i {
+#backtop,
+#backtop i {
   transition: all .3s linear;
 }
 
@@ -1361,7 +1361,7 @@ div#logo-title > .logo-title > a:hover {
   top: 22px;
 }
 
-#scroll-top {
+#backtop {
   z-index: 2;
   background: var(--color-ui-qua);
   border-radius: 35px;
@@ -1377,7 +1377,7 @@ div#logo-title > .logo-title > a:hover {
   width: 50px;
 }
 
-#scroll-top i {
+#backtop i {
   color: var(--color-ui-pri);
   font-size: 19px;
   left: 18px;
@@ -1386,11 +1386,11 @@ div#logo-title > .logo-title > a:hover {
   top: 13px;
 }
 
-#scroll-top:hover {
+#backtop:hover {
   opacity: 1;
 }
 
-#scroll-top:hover i {
+#backtop:hover i {
   color: var(--color-ui-sec);
   top: 5px;
 }

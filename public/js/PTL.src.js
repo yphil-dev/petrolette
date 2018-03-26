@@ -7,7 +7,7 @@ PTL.src = {
     var feedIndex = $('#tabs').find('.feed').length;
 
     var $feedIcon = $('<i>')
-        .attr('class', 'source-control feedIcon icon-rss rotate translate')
+        .attr('class', 'source-control feedIcon icon-rzz rotate translate')
         .data('title', 'Fold / unfold this source (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this source (%1)', url));
 
@@ -116,7 +116,7 @@ PTL.src = {
       $feedToggle.css('background-image', 'none');
 
       $feedIcon.addClass('icon-down-big');
-      $feedIcon.removeClass('icon-rss');
+      $feedIcon.removeClass('icon-rzz');
 
       $(this).data('img', iconImg);
 
@@ -129,7 +129,7 @@ PTL.src = {
       if ($(this).data('img') !== 'none') {
         $feedToggle.css('background-image', $(this).data('img'));
       } else {
-        $feedIcon.addClass('icon-rss');
+        $feedIcon.addClass('icon-rzz');
       }
 
     });
@@ -212,7 +212,7 @@ PTL.src = {
 
 
       $feedToggle.css('background-image','url("' + icon + '")');
-      $feedIcon.removeClass('icon-rss');
+      $feedIcon.removeClass('icon-rzz');
       $header.data('img',icon);
 
       // var img = new Image();
@@ -220,13 +220,13 @@ PTL.src = {
       // img.src = icon;
 
       // img.onerror = function() {
-      //   $feedIcon.addClass('icon-rss yowza');
+      //   $feedIcon.addClass('icon-rzz yowza');
       //   $feedToggle.css('background-image', 'none');
       // };
 
     }).fail(function(err) {
       // console.log('err: %s (%s)', err.statusText, feedHost);
-      $feedIcon.addClass('icon-rss yowzo');
+      $feedIcon.addClass('icon-rzz yowzo');
       $feedToggle.css('background-image', 'none');
     });
 
@@ -361,7 +361,7 @@ PTL.src = {
 
         if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
 
-          imageUrl = item.enclosures[0].url;
+          // imageUrl = item.enclosures[0].url;
 
           if (item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
 

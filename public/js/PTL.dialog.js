@@ -515,7 +515,7 @@ PTL.dialog = {
           isUrl = false,
           h1, h2;
 
-      $icon.addClass('icon-rss');
+      $icon.addClass('icon-rzz');
 
       // console.log('There is %s cols in the %s panel', nbOfColumnsInTab, $panel.attr('id'));
 

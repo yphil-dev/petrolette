@@ -50,13 +50,13 @@ PTL.tab = {
 
     $(window).scroll(function() {
       if ($(this).scrollTop() >= 50) {
-        $('#scroll-top').fadeIn(200);
+        $('#backtop').fadeIn(200);
       } else {
-        $('#scroll-top').fadeOut(200);
+        $('#backtop').fadeOut(200);
       }
     });
 
-    $('#scroll-top').click(function() {
+    $('#backtop').click(function() {
       $('body,html').animate({
         scrollTop : 0
       }, 500);
