@@ -43,7 +43,7 @@ PTL.tab = {
     });
 
     if (PTL.util.isMobile()) {
-      $tabs.find('.source-controls > div').removeClass('collapsible');
+      $tabs.find('.feed-controls > div').removeClass('collapsible');
     }
 
     $tabs.find('.collapsible').show('fast');
@@ -72,14 +72,14 @@ PTL.tab = {
 
   },
   saveTabs:function() {
-    var sources = PTL.tab.list();
-    PTL.prefs.writeConfig('sources', JSON.stringify(sources));
-    PTL.sync.writeSync(JSON.stringify(sources));
+    var feeds = PTL.tab.list();
+    PTL.prefs.writeConfig('feeds', JSON.stringify(feeds));
+    PTL.sync.writeSync(JSON.stringify(feeds));
   },
-  populate:function(sources) {
+  populate:function(feeds) {
 
     $('h1.rs-big-headline, h3.rs-small-headline').text(PTL.tr('Connection to storage'));
-    $('div.rs-sign-in-error, span.rs-sub-headline').text(PTL.tr('To synchronize the sources across devices'));
+    $('div.rs-sign-in-error, span.rs-sub-headline').text(PTL.tr('To synchronize the feeds across devices'));
     $('input.rs-connect')
       .val(PTL.tr('Synchronize'))
       .button();
@@ -87,51 +87,51 @@ PTL.tab = {
 
     PTL.util.console(PTL.tr('Pétrolette starting up OK'), 'success');
 
-    if (!sources || sources.length <= 0) {
-      PTL.util.console(PTL.tr('No sources found'), 'warning');
-      sources = ['empty'];
+    if (!feeds || feeds.length <= 0) {
+      PTL.util.console(PTL.tr('No feeds found'), 'warning');
+      feeds = ['empty'];
     }
 
     var nbOfGroups = 0,
-        nbOfSources = 0,
+        nbOfFeeds = 0,
         progress = PTL.util.buildProgress();
 
-    sources.forEach(function(group) {
+    feeds.forEach(function(group) {
       nbOfGroups++;
       $.each(group.columns, function(k, v) {
         $.each(v, function() {
-          nbOfSources++;
+          nbOfFeeds++;
         });
       });
     });
 
-    PTL.util.console(PTL.tr('Data structure OK: %1 groups containing %2 sources', nbOfGroups, nbOfSources), 'success');
+    PTL.util.console(PTL.tr('Data structure OK: %1 groups containing %2 feeds', nbOfGroups, nbOfFeeds), 'success');
 
-    progress.init(nbOfSources);
+    progress.init(nbOfFeeds);
 
-    sources.forEach(function(group) {
+    feeds.forEach(function(group) {
 
       var thisGroup = {},
-          allSources = [],
+          allFeeds = [],
           thisTabCols = [];
 
       thisGroup.name = group.name;
 
       $.each(group.columns, function(k, v) {
 
-        var thisColSources = [];
+        var thisColFeeds = [];
 
         $.each(v, function( k, v ) {
-          var thisSource = {};
-          thisSource.url = v.url;
-          thisSource.type = v.type;
-          thisSource.limit = v.limit;
+          var thisFeed = {};
+          thisFeed.url = v.url;
+          thisFeed.type = v.type;
+          thisFeed.limit = v.limit;
 
-          thisColSources.push(thisSource);
-          allSources.push(thisColSources);
+          thisColFeeds.push(thisFeed);
+          allFeeds.push(thisColFeeds);
 
         });
-        thisTabCols.push(thisColSources);
+        thisTabCols.push(thisColFeeds);
       });
       PTL.tab.add($('#tabs'), thisGroup.name, thisTabCols, progress);
     });
@@ -215,7 +215,7 @@ PTL.tab = {
     var colIndex = 1,
         nbOfColumnsInTab = columns.length;
 
-    columns.forEach(function(sources) {
+    columns.forEach(function(feeds) {
 
       var $column = PTL.col.add(colIndex++);
 
@@ -225,17 +225,17 @@ PTL.tab = {
 
         PTL.src.add($column, PTL.queryString, 'mixed', 8, true, true);
 
-        // PTL.dialog.addSource(PTL.queryString);
+        // PTL.dialog.addFeed(PTL.queryString);
         // console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.util.isUrl(PTL.queryString));
         PTL.queryString = null;
       }
 
       if (!newTab) {
-        sources.forEach(function(source) {
+        feeds.forEach(function(feed) {
 
-          var url = PTL.util.isUrl(source.url) ? source.url : PTL.tr('Unrecognized URL'),
-              type = PTL.sourceTypes.includes(source.type) ? source.type : 'mixed',
-              limit = Number.isInteger(source.limit) ? source.limit : 8;
+          var url = PTL.util.isUrl(feed.url) ? feed.url : PTL.tr('Unrecognized URL'),
+              type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
+              limit = Number.isInteger(feed.limit) ? feed.limit : 8;
 
           PTL.src.add($column, url, type, limit, false, false, progress);
         });
@@ -278,13 +278,13 @@ PTL.tab = {
             $srcNodes = $(this).children('li.feed');
 
         $srcNodes.each(function() {
-          var source = {};
+          var feed = {};
 
           var $dataStore = $(this).find('.dataStore');
-          source.url = $dataStore.data('url');
-          source.type = $dataStore.data('type');
-          source.limit = $dataStore.data('limit');
-          column.push(source);
+          feed.url = $dataStore.data('url');
+          feed.type = $dataStore.data('type');
+          feed.limit = $dataStore.data('limit');
+          column.push(feed);
         });
         columns.push(column);
 

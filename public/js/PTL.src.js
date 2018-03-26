@@ -7,31 +7,31 @@ PTL.src = {
     var feedIndex = $('#tabs').find('.feed').length;
 
     var $feedIcon = $('<i>')
-        .attr('class', 'source-control feedIcon icon-rzz rotate translate')
-        .data('title', 'Fold / unfold this source (%1)', url)
-        .attr('title', PTL.tr('Fold / unfold this source (%1)', url));
+        .attr('class', 'feed-control feedIcon icon-rzz rotate translate')
+        .data('title', 'Fold / unfold this feed (%1)', url)
+        .attr('title', PTL.tr('Fold / unfold this feed (%1)', url));
 
     var $feedSelect = $('<i>')
-        .attr('class', 'source-control translate icon-uncheck source-select')
-        .data('title', 'Select this source (%1)', url)
-        .attr('title', PTL.tr('Select this source (%1)', url));
+        .attr('class', 'feed-control translate icon-uncheck feed-select')
+        .data('title', 'Select this feed (%1)', url)
+        .attr('title', PTL.tr('Select this feed (%1)', url));
 
     var $feedDelete = $('<i>')
-        .attr('class', 'source-control translate icon-cancel source-delete')
-        .data('title', 'Delete this source (%1)', url)
-        .attr('title', PTL.tr('Delete this source (%1)', url));
+        .attr('class', 'feed-control translate icon-cancel feed-delete')
+        .data('title', 'Delete this feed (%1)', url)
+        .attr('title', PTL.tr('Delete this feed (%1)', url));
 
     var $feedPrefs = $('<i>')
-        .attr('class', 'source-control translate icon-pencil source-edit')
-        .data('title', PTL.tr('Change this source (%1) parameters', url))
-        .attr('title', PTL.tr('Change this source (%1) parameters', url));
+        .attr('class', 'feed-control translate icon-pencil feed-edit')
+        .data('title', PTL.tr('Change this feed (%1) parameters', url))
+        .attr('title', PTL.tr('Change this feed (%1) parameters', url));
 
     var $feedReload = $('<i>')
-        .attr('class', 'source-control translate icon-arrows-cw source-refresh')
-        .data('title', PTL.tr('Refresh this source (%1)', url))
-        .attr('title', PTL.tr('Refresh this source (%1)', url));
+        .attr('class', 'feed-control translate icon-arrows-cw feed-refresh')
+        .data('title', PTL.tr('Refresh this feed (%1)', url))
+        .attr('title', PTL.tr('Refresh this feed (%1)', url));
 
-    var $feedControls = $('<div>').attr('class', 'source-controls dataStore')
+    var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
         .data('id', 'feed-' + feedIndex)
         .data('index', feedIndex)
         .data('url', url)
@@ -40,7 +40,7 @@ PTL.src = {
 
     $feedIcon.click(function() {
       $(this).toggleClass('down');
-      $(this).parent().parent().parent().children('div.source-body').slideToggle(350);
+      $(this).parent().parent().parent().children('div.feed-body').slideToggle(350);
     });
 
     $feedSelect.click(function() {
@@ -61,10 +61,10 @@ PTL.src = {
     });
 
     var $feedBody = $('<div>')
-        .attr('class', 'source-body');
+        .attr('class', 'feed-body');
 
     var $feedBodyUl = $('<ul>')
-        .attr('class', 'source-body');
+        .attr('class', 'feed-body');
 
     var $feed = $('<li>')
         .attr('id', 'feed-' + feedIndex)
@@ -74,15 +74,15 @@ PTL.src = {
         .data('limit', limit);
 
     var $header = $('<div>')
-        .attr('class', 'source-header');
+        .attr('class', 'feed-header');
 
     var $feedToggle = $('<div>')
-        .attr('class', 'source-toggle');
+        .attr('class', 'feed-toggle');
 
     var $feedHandle = $('<div>')
-        .data('title', PTL.tr('Move this source (%1)', url))
-        .attr('title', PTL.tr('Move this source (%1)', url))
-        .attr('class', 'source-handle');
+        .data('title', PTL.tr('Move this feed (%1)', url))
+        .attr('title', PTL.tr('Move this feed (%1)', url))
+        .attr('class', 'feed-handle');
 
     var $selectDiv = $('<div>'),
         $deleteDiv = $('<div>'),
@@ -91,7 +91,7 @@ PTL.src = {
 
     var $titleDiv = $('<div>')
         .attr('title', url)
-        .attr('class', 'source-title truncate');
+        .attr('class', 'feed-title truncate');
 
     var $titleLink = $('<a>')
         .attr('href', url)
@@ -177,18 +177,18 @@ PTL.src = {
   populate:function($button, progress) {
 
     var $dataStore = $button.parent().parent(),
-        $refreshButton = $dataStore.find('i.source-refresh'),
+        $refreshButton = $dataStore.find('i.feed-refresh'),
         $header = $dataStore.parent(),
         $panel = $dataStore.parent().parent().parent(),
         $feed = $dataStore.parent().parent(),
-        $feedTitle = $feed.children().children('.source-title'),
+        $feedTitle = $feed.children().children('.feed-title'),
         $feedLink = $feedTitle.children('a'),
-        $feedBody = $feed.children().children('ul.source-body'),
+        $feedBody = $feed.children().children('ul.feed-body'),
         feedUrl = $dataStore.data('url'),
         feedType = $dataStore.data('type'),
         feedLimit = $dataStore.data('limit'),
-        $feedToggle = $feed.find('.source-toggle'),
-        $feedIcon = $feed.find('.source-toggle > i');
+        $feedToggle = $feed.find('.feed-toggle'),
+        $feedIcon = $feed.find('.feed-toggle > i');
 
     var l = PTL.util.getLocation(feedUrl),
         feedProtocol = l.protocol + '//' || '//',
@@ -207,11 +207,11 @@ PTL.src = {
       dataType: "json"
     }, function() {
       // console.log('feedHost: %s (icon %s)', feedHost, icon);
-      $feedIcon.removeClass('icon-rzz');
     }).done(function(icon) {
 
       $feedToggle.css('background-image','url(' + icon + ')');
-      $header.data('img',icon);
+      $feedIcon.removeClass('icon-rzz');
+      $header.data('img', icon);
 
     }).fail(function() {
       $feedIcon.addClass('icon-rzz yowzo');
@@ -233,7 +233,7 @@ PTL.src = {
 
       if (data.error) {
 
-        PTL.util.console(PTL.tr('Problem reading source [%1] Error type [%2]', feedUrl, data.error), 'warning');
+        PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, data.error), 'warning');
 
         var $w3cLink = $('<a>'),
             $validCssIcon = $('<i>');
@@ -242,7 +242,7 @@ PTL.src = {
 
         $validCssIcon
           .attr('class', 'item-icon icon-w3c')
-          .attr('titre', PTL.tr('Validate /verify this source file with the W3C'));
+          .attr('titre', PTL.tr('Validate /verify this feed file with the W3C'));
 
         $validCssIcon.appendTo($w3cLink);
         $w3cLink.appendTo($feedBody);
@@ -275,7 +275,7 @@ PTL.src = {
             .text(PTL.tr('validate'));
 
         var $errorItem = $('<li>')
-            .attr('class', 'source-item error')
+            .attr('class', 'feed-item error')
             .append($errorTitle)
             .append('&nbsp;')
             .append($errorLink)
@@ -303,7 +303,6 @@ PTL.src = {
 
         var imageUrl;
 
-
         var $imageLink = $('<a>').attr('target', '_blank'),
             $itemLink = $('<a>').attr('target', '_blank'),
             $soundLink = $('<a>').attr('target', '_blank'),
@@ -318,8 +317,8 @@ PTL.src = {
 
         var $itemDiv = $('<div>')
             .attr('class', 'itemDiv'),
-            $sourceItem = $('<li>')
-            .attr('class', 'source-item')
+            $feedItem = $('<li>')
+            .attr('class', 'feed-item')
             .attr('title', $summary.trim());
 
         if (item.comments) {
@@ -373,12 +372,12 @@ PTL.src = {
         }
 
         $itemLink
-          .attr('class', 'ui-helper-clearfix source-link')
+          .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', item.link)
           .append(item.title);
 
         if (index % 2 === 0) {
-          $sourceItem.addClass('mobFeedEven');
+          $feedItem.addClass('mobFeedEven');
         }
 
         if (imageUrl) {
@@ -415,8 +414,8 @@ PTL.src = {
         }
 
         $itemLink.appendTo($itemDiv);
-        $itemDiv.appendTo($sourceItem);
-        $sourceItem.appendTo($feedBody);
+        $itemDiv.appendTo($feedItem);
+        $feedItem.appendTo($feedBody);
 
 
 
@@ -431,7 +430,7 @@ PTL.src = {
         .data('content', PTL.tr("Error"));
 
       $feedBody
-        .html('<li class="source-item"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
+        .html('<li class="feed-item"><strong class="translate" data-content="' + PTL.tr("Error") + '">' + PTL.tr("Error") + '</strong> (' + feedUrl + ')</li>');
 
       // WP.tr('add %1', WP.tr('truck') );
 
