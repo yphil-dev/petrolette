@@ -3,7 +3,7 @@
     "name"            : "petrolette",
     "script"          : "./bin/www",
     "watch"           : true,
-    "ignore_watch"    : ["favicons-cache"],
+    "ignore_watch"    : ["*#", "favicons-cache"],
     "log_date_format" : "YYYY-MM-DD HH:mm",
     "env" : {
       "PORT" : 8666,

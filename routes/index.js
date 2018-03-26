@@ -1,33 +1,28 @@
 var express = require('express'),
     router = express.Router(),
-    favicon = require('favicon'),
+    favrat = require('favrat'),
     FeedParser = require('feedparser'),
     request = require('request'),
     feedrat = require('feedrat'),
-    Url = require('url'),
     fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    crypto = require('crypto'),
+    pjson = require('../package.json');
 
-// require('request').debug = true;
+const defaults = {
+  encoding: null
+};
 
 router.get('/', function(req, res) {
-  res.render('index', {queryString:req.query.source});
+  res.render('index', {
+    queryString:req.query.source,
+    version: pjson.version
+  });
 });
 
 router.get('/about/javascript', function(req, res) {
   res.render('javascript');
 });
-
-// router.use(function(req,res,next){
-//   var _send = res.send;
-//   var sent = false;
-//   res.send = function(data){
-//     if(sent) return;
-//     _send.bind(res)(data);
-//     sent = true;
-//   };
-//   next();
-// });
 
 function getFeed (urlfeed, callback) {
 
@@ -97,51 +92,26 @@ router.get('/feed', function(req, res) {
 
 console.log('####### START');
 
-// router.use('/favicon', function (req, res, next) {
-//   console.log('Request:', req.method);
-//   next();
-// });
-
 router.get('/favicon', function(req, res) {
 
-  favicon(req.query.url, function(err, iconUrl) {
+  favrat(req.query.url, function(err, iconUrl) {
 
     if (iconUrl) {
 
+      var hash = crypto.createHash('md5').update(iconUrl).digest('hex');
+
+      var fileName = hash + '.favicon';
+      var filePath = path.join(process.env.FAVICONS_CACHE_DIR, fileName);
+
       res.send(iconUrl);
 
-      // var u = Url.parse(iconUrl),
-      //     h = u.host.replace(/\//g, ''),
-      //     p = u.path.replace(/\//g, ''),
-      //     fileName = path.join(process.env.FAVICONS_CACHE_DIR, h + '.' + p);
+      // if (fs.existsSync(filePath)) {
+      //   res.send('/favicons/' + fileName);
 
-      // let checkFileExists = s => new Promise(r=>fs.access(s, fs.F_OK, e => r(!e)));
-
-      // checkFileExists(fileName)
-      // .then(bool => console.log('file exists: ${fileName}'));
-
-      // fs.existsSync(fileName, function(err) {
-      //   if(!err) {
-      //     console.log('File exists');
-      //     res.send(fileName);
-      //   } else {
-
-      //     let stream = fs.createWriteStream(fileName);
-
-      //     request(iconUrl).pipe(stream);
-
-      //     stream.on('finish', function () {
-      //       console.log("SAVED %s (%s)", fileName, iconUrl);
-      //       res.send(iconUrl);
-      //     }).on('error', function (err) {
-      //       res.send(fileName);
-      //       console.log("NOT SAVED %s (%s)", fileName, err);
-      //     });
-
-      //     console.log('Some other error: ', err.code);
-      //   }
-      // });
-
+      // } else {
+      //   res.send(iconUrl);
+      //   request.get(iconUrl).pipe(fs.createWriteStream(filePath));
+      // }
 
     } else {
       res.status(500).send('No icon found');

@@ -417,7 +417,7 @@ input#feed-guess {
   margin-right: .4em;
 }
 
-.deadCenter {
+.dead-center {
   height: 300px;
   left: 50%;
   margin-left: -150px;
@@ -667,6 +667,7 @@ a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover,
 .ui-button.ui-state-active:hover,
 .null {
   border: 3px solid var(--color-ui-sec);
+  color: var(--color-ui-pri);
   background-color: var(--color-ui-sec);
 }
 
@@ -1302,7 +1303,7 @@ div#logo-title {
 }
 
 .icon-petrolette {
-  color: var(--color-ui-sec) !important;
+  color: var(--color-ui-sec);
 }
 
 .logoType i.icon-petrolette {
