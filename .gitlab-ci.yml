@@ -1,9 +1,6 @@
 image: node:6
 before_script:
-  - npm version
-
-after_script:
-  - npm version
+  - npm update
 
 stages:
   - build
@@ -11,6 +8,6 @@ stages:
 job1:
   stage: build
   script:
-    - npm install
+    - npm start
   only:
     - master
