@@ -192,7 +192,7 @@ PTL.util = {
         },
         {
           element: 'li.feed',
-          intro: PTL.tr('This is a source. ') + '<a class="ui-button ui-corner-all icon-rss" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('More info') + '</a>'
+          intro: PTL.tr('This is a source. ') + '<a class="ui-button ui-corner-all icon-rzz" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('More info') + '</a>'
         },
         {
           element: 'div#newSourceButton',

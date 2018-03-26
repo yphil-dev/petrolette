@@ -8,6 +8,8 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
+
+
       var $menu = $('nav#side-menu'),
           $overlay = $('#overlay'),
           $sourceCodeButton = $('button#sourceCode'),

@@ -103,15 +103,18 @@ router.get('/favicon', function(req, res) {
       var fileName = hash + '.favicon';
       var filePath = path.join(process.env.FAVICONS_CACHE_DIR, fileName);
 
-      res.send(iconUrl);
+      if (fs.existsSync(filePath)) {
+        res.send('/favicons/' + fileName);
+      } else {
+        var p = new Promise(resolve => request(iconUrl)
+                            .pipe(fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'}))
+                            .on('finish', resolve({filePath, iconUrl})));
 
-      // if (fs.existsSync(filePath)) {
-      //   res.send('/favicons/' + fileName);
-
-      // } else {
-      //   res.send(iconUrl);
-      //   request.get(iconUrl).pipe(fs.createWriteStream(filePath));
-      // }
+        p.then(function(r) {
+          console.log('Finished copying %s (%s)', r.filePath, r.iconUrl);
+          res.send('/favicons/' + fileName);
+        });
+      }
 
     } else {
       res.status(500).send('No icon found');
@@ -123,13 +126,13 @@ router.get('/discover', function(req, res) {
 
   feedrat(req.query.url, function(err, feed) {
 
-        if (feed) {
-          res.send(feed);
-        } else {
-            res.status(500).send('No feed found');
-        }
+    if (feed) {
+      res.send(feed);
+    } else {
+      res.status(500).send('No feed found');
+    }
 
-    });
+  });
 });
 
 
