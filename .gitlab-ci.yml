@@ -9,5 +9,6 @@ job1:
   stage: build
   script:
     - npm start
+    - npm stop
   only:
     - master
