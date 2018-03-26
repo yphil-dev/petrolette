@@ -120,20 +120,19 @@ PTL.src = {
 
       $(this).data('img', iconImg);
 
-    },
-                   function() {
+    }, function() {
 
-                     $feedIcon.removeClass('icon-down-big');
+      $feedIcon.removeClass('icon-down-big');
 
-                     // $feedIcon.css('background-image', iconImg);
+      // $feedIcon.css('background-image', iconImg);
 
-                     if ($(this).data('img') !== 'none') {
-                       $feedToggle.css('background-image', $(this).data('img'));
-                     } else {
-                       $feedIcon.addClass('icon-rss');
-                     }
+      if ($(this).data('img') !== 'none') {
+        $feedToggle.css('background-image', $(this).data('img'));
+      } else {
+        $feedIcon.addClass('icon-rss');
+      }
 
-                   });
+    });
 
     if (!PTL.util.isMobile()) {
       $selectDiv.addClass('collapsible');
@@ -216,18 +215,17 @@ PTL.src = {
       $feedIcon.removeClass('icon-rss');
       $header.data('img',icon);
 
+      // var img = new Image();
 
-      var img = new Image();
+      // img.src = icon;
 
-      img.src = icon;
-
-      img.onerror = function() {
-        $feedIcon.addClass('icon-rss yowza');
-        $feedToggle.css('background-image', 'none');
-      };
+      // img.onerror = function() {
+      //   $feedIcon.addClass('icon-rss yowza');
+      //   $feedToggle.css('background-image', 'none');
+      // };
 
     }).fail(function(err) {
-      console.log('err: %s (%s)', err.statusText, feedHost);
+      // console.log('err: %s (%s)', err.statusText, feedHost);
       $feedIcon.addClass('icon-rss yowzo');
       $feedToggle.css('background-image', 'none');
     });

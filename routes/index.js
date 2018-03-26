@@ -9,6 +9,10 @@ var express = require('express'),
     crypto = require('crypto'),
     pjson = require('../package.json');
 
+const defaults = {
+  encoding: null
+};
+
 router.get('/', function(req, res) {
   res.render('index', {
     queryString:req.query.source,
@@ -99,33 +103,15 @@ router.get('/favicon', function(req, res) {
       var fileName = hash + '.favicon';
       var filePath = path.join(process.env.FAVICONS_CACHE_DIR, fileName);
 
-      console.log('# %s (%s)', iconUrl, fileName);
+      res.send(iconUrl);
 
+      // if (fs.existsSync(filePath)) {
+      //   res.send('/favicons/' + fileName);
 
-      // res.send(iconUrl);
-
-      if (fs.existsSync(filePath)) {
-        console.log('File exists');
-        res.contentType(filePath);
-        res.send('/favicons/' + fileName);
-
-      } else {
-
-        res.send(iconUrl);
-
-        console.log('File does NOT exist');
-
-        let stream = fs.createWriteStream(filePath);
-
-        request(iconUrl).pipe(stream);
-
-        stream.on('finish', function () {
-          console.log("SAVED %s to %s (%s)", fileName, filePath, iconUrl);
-        }).on('error', function (err) {
-          console.log("NOT SAVED %s (%s)", fileName, err);
-        });
-
-      }
+      // } else {
+      //   res.send(iconUrl);
+      //   request.get(iconUrl).pipe(fs.createWriteStream(filePath));
+      // }
 
     } else {
       res.status(500).send('No icon found');

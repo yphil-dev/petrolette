@@ -39,6 +39,8 @@ PTL.dialog = {
 
           $(this).find('.help-button').button();
 
+          $(this).find('.help-bookmarklet').attr('href', 'javascript:void(window.open("' + document.URL + '?source=" + window.location.href))');
+
           $('.help-tour').on('click', function() {
             PTL.sideMenu('close');
             PTL.dialog.kill($dialog);
