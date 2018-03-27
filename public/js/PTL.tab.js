@@ -222,21 +222,15 @@ PTL.tab = {
       $column.appendTo($tabPanel);
 
       if (PTL.queryString) {
-
-        PTL.feed.add($column, PTL.queryString, 'mixed', 8, true, true);
-
-        // PTL.dialog.addFeed(PTL.queryString);
-        // console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.util.isUrl(PTL.queryString));
+        PTL.feed.add($column, encodeURI(PTL.queryString), 'mixed', 8, true, true);
         PTL.queryString = null;
       }
 
       if (!newTab) {
         feeds.forEach(function(feed) {
-
           var url = PTL.util.isUrl(feed.url) ? feed.url : PTL.tr('Unrecognized URL'),
               type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
               limit = Number.isInteger(feed.limit) ? feed.limit : 8;
-
           PTL.feed.add($column, url, type, limit, false, false, progress);
         });
       }
