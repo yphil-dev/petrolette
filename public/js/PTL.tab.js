@@ -223,7 +223,7 @@ PTL.tab = {
 
       if (PTL.queryString) {
 
-        PTL.src.add($column, PTL.queryString, 'mixed', 8, true, true);
+        PTL.feed.add($column, PTL.queryString, 'mixed', 8, true, true);
 
         // PTL.dialog.addFeed(PTL.queryString);
         // console.log('PTL.queryString : (%s) isUrl: (%s)', PTL.queryString, PTL.util.isUrl(PTL.queryString));
@@ -237,7 +237,7 @@ PTL.tab = {
               type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
               limit = Number.isInteger(feed.limit) ? feed.limit : 8;
 
-          PTL.src.add($column, url, type, limit, false, false, progress);
+          PTL.feed.add($column, url, type, limit, false, false, progress);
         });
       }
 

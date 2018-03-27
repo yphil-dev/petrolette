@@ -1,6 +1,6 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
-PTL.src = {
+PTL.feed = {
 
   add:function($column, url, type, limit, clickNew, isQueryString, progress) {
 
@@ -55,7 +55,7 @@ PTL.src = {
         .data('title', PTL.tr('Refresh this feed (%1)', url))
         .attr('title', PTL.tr('Refresh this feed (%1)', url))
         .click(function() {
-          PTL.src.populate($(this), progress);
+          PTL.feed.populate($(this), progress);
         });
 
     var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
