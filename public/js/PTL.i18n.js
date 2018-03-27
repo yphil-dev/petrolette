@@ -379,6 +379,8 @@ PTL.i18n.translations = {
 
   "Really delete this feed? (%1)" : { fr: "Réellement supprimer ce flux (%1) ?", ja: "本当にこのフィードを削除しますか？  (%1)", es: "¿Realmente borraste este feed? (%1)" },
 
+  "Really delete this feed?" : { fr: "Réellement supprimer ce flux ?", ja: "本当にこのフィードを削除しますか？", es: "¿Realmente borraste este feed?" },
+
   "Really delete this column?" : { fr: "Vraiment supprimer cette colonne ?", ja: "本当にこの列を削除しますか？", es: "¿Realmente borras esta columna?" },
 
   "Really delete this group?" : { fr: "Vraiment supprimer ce groupe ?", ja: "本当にこのグループを削除しますか？", es: "¿Eliminar realmente este grupo?" },

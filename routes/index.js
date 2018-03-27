@@ -11,9 +11,22 @@ const express = require('express'),
 
 console.log('####### START');
 
+function escape(s) {
+  if (s) {
+    return s.replace(/[&"<>]/g, function (c) {
+      return {
+        '&': "&amp;",
+        '"': "&quot;",
+        '<': "&lt;",
+        '>': "&gt;"
+      }[c];
+    });
+  }
+}
+
 router.get('/', function(req, res) {
   res.render('index', {
-    queryString:req.query.source,
+    queryString:escape(req.query.feed),
     version: pjson.version
   });
 });

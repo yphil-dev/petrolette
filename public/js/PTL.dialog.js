@@ -39,7 +39,7 @@ PTL.dialog = {
 
           $(this).find('.help-button').button();
 
-          $(this).find('.help-bookmarklet').attr('href', 'javascript:void(window.open("' + document.URL + '?feed=" + window.location.href))');
+          $(this).find('.help-bookmarklet').attr('href', 'javascript:void(window.open("' + document.domain + '?feed=" + window.location.href))');
 
           $('.help-tour').on('click', function() {
             PTL.sideMenu('close');
@@ -137,7 +137,7 @@ PTL.dialog = {
 
               } else {
 
-                PTL.src.populate($button);
+                PTL.feed.populate($button);
               }
 
               PTL.tab.saveTabs();
@@ -292,7 +292,7 @@ PTL.dialog = {
           });
 
           $dialog.on('submit', function () {
-            PTL.src.populate($feedRefresh);
+            PTL.feed.populate($feedRefresh);
 
             PTL.tab.saveTabs();
 
@@ -541,7 +541,7 @@ PTL.dialog = {
             title: PTL.tr('Add feed'),
             class: "translate",
             click: function() {
-              PTL.src.add($('.column').first(), feedUrl, 'mixed', 8, true, false);
+              PTL.feed.add($('.column').first(), feedUrl, 'mixed', 8, true, false);
               PTL.dialog.kill($dialog);
             }
           }
