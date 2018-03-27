@@ -213,7 +213,7 @@ PTL.i18n.translations = {
 
   "Pétrolette uses a time-tested technology" : { fr: "Pétrolette fonctionne sur une technologie éprouvée" , ja: "Pétroletteは時間を守った技術を使用しています", es: "Pétrolette utiliza una tecnología probada" },
 
-  "Create feeds and organize them into groups." : { fr: "Créez des flux et organisez-les en groupes." , ja: "ソースを作成し、それらをグループに編成する。", es: "Crea fuentes y organízalas en grupos." },
+  "Create feeds and organize them into groups." : { fr: "Vos sites d'info habituels produisent un flux d'info pour faciliter l'accès à leur contenu ; Pétrolette maintient ces sources à jour." , ja: "ソースを作成し、それらをグループに編成する。", es: "Crea fuentes y organízalas en grupos." },
 
   "What is a group?" : { fr: "Qu'est-ce qu'un groupe ?" , ja: "グループとは何ですか？", es: "¿Qué es un grupo?" },
 

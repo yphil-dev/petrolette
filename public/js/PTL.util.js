@@ -203,7 +203,7 @@ PTL.util = {
           intro: PTL.tr('Refresh / reload this feed.')
         },
         {
-          element: 'li#feed-0 i.feed-control.feed-edit',
+          element: '.feed-edit',
           intro: PTL.tr('Configure this feed.')
         },
         {
@@ -323,7 +323,7 @@ PTL.util = {
     } else {
       dialog.exit();
       $('#menu > .handle').click();
-      $('#feed-0').find('.collapsible').show('fade', 'fast');
+      $('.feed').first().find('.collapsible').show('fade', 'fast');
       ui.start();
     }
 

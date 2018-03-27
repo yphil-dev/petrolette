@@ -1,17 +1,15 @@
-var express = require('express'),
-    router = express.Router(),
-    favrat = require('favrat'),
-    FeedParser = require('feedparser'),
-    request = require('request'),
-    feedrat = require('feedrat'),
-    fs = require('fs'),
-    path = require('path'),
-    crypto = require('crypto'),
-    pjson = require('../package.json');
+const express = require('express'),
+      router = express.Router(),
+      favrat = require('favrat'),
+      FeedParser = require('feedparser'),
+      request = require('request'),
+      feedrat = require('feedrat'),
+      fs = require('fs'),
+      path = require('path'),
+      crypto = require('crypto'),
+      pjson = require('../package.json');
 
-const defaults = {
-  encoding: null
-};
+console.log('####### START');
 
 router.get('/', function(req, res) {
   res.render('index', {
@@ -51,10 +49,6 @@ function getFeed (urlfeed, callback) {
     }
   });
 
-  req.on ('error', function (res) {
-    // console.log ('getFeed: Error read %s (%s) .', urlfeed, res);
-  });
-
   feedparser.on ('readable', function () {
     try {
       var item = this.read ();
@@ -69,8 +63,7 @@ function getFeed (urlfeed, callback) {
     var meta = this.meta;
     callback ('Feed OK', feedItems, meta.title, meta.link);
   }).on ('error', function (err) {
-    // console.log ("getFeed: Error reading (%s) feed: %s.", urlfeed, err.message);
-    callback ('Bad feed');
+    callback ('Bad feed: ', err);
   });
 }
 
@@ -86,33 +79,31 @@ router.get('/feed', function(req, res) {
     } else {
       res.send({error:err});
     }
-    });
+  });
 
 });
 
-console.log('####### START');
-
 router.get('/favicon', function(req, res) {
 
-  favrat(req.query.url, function(err, iconUrl) {
+  favrat(req.query.url, function(err, url) {
 
-    if (iconUrl) {
+    if (url) {
 
-      var hash = crypto.createHash('md5').update(iconUrl).digest('hex');
+      if (!url.startsWith('http')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 
-      var fileName = hash + '.favicon';
-      var filePath = path.join(process.env.FAVICONS_CACHE_DIR, fileName);
+      const hash = crypto.createHash('md5').update(url).digest('hex'),
+            fileName = hash + '.favicon',
+            filePath = path.join(process.env.FAVICONS_CACHE_DIR, fileName);
 
       if (fs.existsSync(filePath)) {
         res.send('/favicons/' + fileName);
       } else {
-        var p = new Promise(resolve => request(iconUrl)
+        var p = new Promise(resolve => request(url)
                             .pipe(fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'}))
-                            .on('finish', resolve({filePath, iconUrl})));
+                            .on('finish', resolve({fileName, url})));
 
         p.then(function(r) {
-          console.log('Finished copying %s (%s)', r.filePath, r.iconUrl);
-          res.send('/favicons/' + fileName);
+          res.send('/favicons/' + r.fileName);
         });
       }
 
@@ -134,6 +125,5 @@ router.get('/discover', function(req, res) {
 
   });
 });
-
 
 module.exports = router;
