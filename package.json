@@ -17,7 +17,7 @@
     "stop": "pm2 stop petrolette",
     "show": "pm2 show petrolette",
     "logs": "pm2 logs petrolette",
-    "postinstall": "npm i -f pm2 && bower install"
+    "postinstall": "npm i -f && bower install"
   },
   "dependencies": {
     "bower": "1.8.2",
