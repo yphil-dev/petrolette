@@ -6,8 +6,6 @@ var express = require('express'),
 
 var bodyParser = require('body-parser');
 
-
-
 if (!fs.existsSync(path.join(__dirname, process.env.FAVICONS_CACHE_DIR))){
   fs.mkdirSync(path.join(__dirname, process.env.FAVICONS_CACHE_DIR));
 }
