@@ -604,19 +604,6 @@ fieldset {
   background-color: var(--color-ui-sec);
 }
 
-
-/* .rs-button:hover { */
-/*   border-color: var(--color-ui-sec) !important; */
-/* } */
-
-/* .rs-button.rs-sync:hover svg { */
-/*   fill: var(--color-ui-sec) !important; */
-/* } */
-
-/* .rs-button.rs-disconnect:hover svg { */
-/*   fill: var(--color-ui-danger) !important; */
-/* } */
-
 #console,
 .ui-button:hover,
 .ui-slider-handle.ui-state-default,
