@@ -26,7 +26,7 @@ function escape(s) {
 
 router.get('/', function(req, res) {
   res.render('index', {
-    queryString:escape(req.query.feed),
+    queryString:escape(req.query.add),
     version: pjson.version
   });
 });

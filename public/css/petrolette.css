@@ -278,6 +278,10 @@ a:active {
   border-right: 1px solid var(--color-sep) !important;
 }
 
+.ui-tab.ui-state-active {
+  border-right: none !important;
+}
+
 .ui-tab#new-group:hover,
 .ui-tab.ui-state-hover {
   background: var(--color-sep);
@@ -614,17 +618,9 @@ fieldset {
 /* } */
 
 #console,
-.ui-state-hover,
-.ui-widget-content .ui-state-hover,
-.ui-widget-header .ui-state-hover,
-.ui-state-focus,
-.ui-widget-content .ui-state-focus,
-.ui-widget-header .ui-state-focus,
 .ui-button:hover,
+.ui-slider-handle.ui-state-default,
 .ui-button:focus,
-.ui-state-default,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default,
 .ui-button.ui-state-disabled:hover,
 .ui-button.ui-state-disabled:active,
 .ui-button {
@@ -662,7 +658,9 @@ fieldset {
   background-color: var(--color-ui-sec);
 }
 
-a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover,
 .ui-button:active,
 .ui-button.ui-state-active:hover,
 .null {

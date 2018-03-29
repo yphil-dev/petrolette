@@ -174,7 +174,7 @@ PTL.i18n.translations = {
   "This is a feed. More info: %1" : { fr: "Ceci est un flux. Plus d'infos: %1" , ja: "これはソースです 詳細情報：%1", es: "Esta es una fuente. Más info: %1" },
   "Click this button to add a group." : { fr: "Cliquez sur ce bouton pour ajouter un groupe." , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo." },
 
-  "Feed code" : { fr: "Code source" , ja: "ソースコード", es: "Código fuente" },
+  "Source code" : { fr: "Code source" , ja: "ソースコード", es: "Código fuente" },
 
   "Click to add a feed." : { fr: "Cliquer pour ajouter un flux" , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente" },
 
