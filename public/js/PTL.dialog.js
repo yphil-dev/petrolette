@@ -130,7 +130,7 @@ PTL.dialog = {
                 .data('url', newUrl)
                 .data('type', newType);
 
-              if ($('input[name=killFeedChbox]:checked').val() === 'on') {
+              if ($('input[name=kill-feed-check]:checked').val() === 'on') {
 
                 $feed.hide('fade', 1000, function() {
                   $feed.remove();
@@ -196,16 +196,21 @@ PTL.dialog = {
               $guessSpinner = $dialog.find('button#feed-guess > i'),
               $guessField = $dialog.find('input#feed-guess'),
               $okButton = $dialog.find('.ui-dialog-buttonpane'),
-              $helpButton = $('<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-help" title="Help"><span class="ui-button-icon ui-icon ui-icon-help"></span><span class="ui-button-icon-space"> </span>Help</button>');
+              $helpMiniButtonIcon,
+              $helpMiniButton;
 
+          $helpMiniButtonIcon = $('<span>')
+            .attr('class', 'ui-button-icon ui-icon ui-icon-help');
 
-          // var $helpSpan = $('<span>').attr('class', 'ui-button-icon ui-icon ui-icon-help');
+          $helpMiniButton = $('<button>')
+            .attr('class', 'ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-help')
+            .attr('title', PTL.tr('How does it work?'))
+            .attr('type', 'button')
+            .append($helpMiniButtonIcon);
 
-          // var $helpButton = $('<button').attr('title', 'Help').append($helpSpan);
+          $('#kill-feed-check').button();
 
-          $('#killFeedChbox').button();
-
-          $dialog.parent().find('.ui-dialog-titlebar').append($helpButton);
+          $dialog.parent().find('.ui-dialog-titlebar').append($helpMiniButton);
 
           if (!PTL.util.isMobile()) {
             $guessField.click(function() {
@@ -213,7 +218,7 @@ PTL.dialog = {
             });
           }
 
-          $helpButton.on('click', function() {
+          $helpMiniButton.on('click', function() {
 
             PTL.util.help('dialog');
 
