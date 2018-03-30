@@ -221,7 +221,6 @@ PTL.tab = {
 
       $column.appendTo($tabPanel);
 
-
       if (PTL.queryString) {
         PTL.feed.add($column, encodeURI(PTL.queryString), 'mixed', 8, true, true);
         PTL.queryString = null;
@@ -229,16 +228,13 @@ PTL.tab = {
 
       if (!newTab) {
         feeds.forEach(function(feed) {
-          var url = PTL.util.isUrl(feed.url) ? feed.url : PTL.tr('Unrecognized URL'),
-              type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
+          var type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
               limit = Number.isInteger(feed.limit) ? feed.limit : 8;
-          PTL.feed.add($column, url, type, limit, false, false, progress);
+          PTL.feed.add($column, feed.url, type, limit, false, false, progress);
         });
       }
 
-      if (nbOfColumnsInTab <2) {
-        $column.find('.col-del').addClass('ui-state-disabled');
-      }
+      if (nbOfColumnsInTab <2) $column.find('.col-del').addClass('ui-state-disabled');
 
     });
 
@@ -246,9 +242,6 @@ PTL.tab = {
 
     $tabs.tabs('refresh');
     $tabs.tabs( "option", "active", 0);
-    // PTL.tab.saveTabs();
-
-    // $('#ui-id-1').focus();
   },
   list:function(type) {
 

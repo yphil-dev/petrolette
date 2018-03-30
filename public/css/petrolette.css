@@ -188,7 +188,6 @@ div.dialog {
   position:relative;
   text-align:left;
   transition: height .3s ease-in-out;
-  width: 100%;
 }
 
 #console.expanded {
