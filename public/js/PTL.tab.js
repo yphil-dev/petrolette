@@ -285,6 +285,34 @@ PTL.tab = {
     });
 
     return groups;
+  },
+  makeNewTabButton:function($tabs) {
+
+    var $newTabButton = $('<li>')
+        .attr('id', 'new-group')
+        .attr('class', 'translate new-group hidden')
+        .data('title', 'Add a new group')
+        .attr('title', PTL.tr('Add a new group'));
+
+    var $newTabButtonLink = $('<a>')
+    // .attr('tabindex', '-1')
+        .attr('href', '#disabled');
+
+    var $newTabButtonIcon = $('<i>')
+        .attr('class', 'icon-plus');
+
+    $newTabButtonLink.bind('click', function(event) {
+      event.stopImmediatePropagation();
+
+      PTL.tab.add($tabs);
+
+      return false;
+    });
+
+    $newTabButtonIcon.appendTo($newTabButtonLink);
+    $newTabButtonLink.appendTo($newTabButton);
+    $newTabButton.appendTo($tabs.find('ul#tab-names'));
+
 
   }
 };
