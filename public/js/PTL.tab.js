@@ -65,6 +65,8 @@ PTL.tab = {
     });
 
 
+    PTL.tab.makeNewTabButton($tabs);
+
     PTL.sync.readSync();
 
     $("#theme").attr({href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
