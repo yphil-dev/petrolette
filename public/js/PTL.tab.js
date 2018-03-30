@@ -311,5 +311,6 @@ PTL.tab = {
     $newTabButtonLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tab-names'));
 
+
   }
 };
