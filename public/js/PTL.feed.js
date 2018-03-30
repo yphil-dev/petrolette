@@ -283,11 +283,18 @@ PTL.feed = {
           imageUrl = $tempDom.find('img').attr('src');
         }
 
-        if (typeof item.image.url !== 'undefined') {
-          imageUrl = item.image.url;
-        }
+        // if (typeof item.image.url !== 'undefined') {
+        //   console.log('whoa!: (%s)');
+        // }
 
         if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
+
+          // console.log('enclosures: (%s)', item.enclosures[0].url.match(/\.(jpg|png|jpeg|gif)$/));
+
+          // if (item.enclosures.url.match(/\.(jpg|png|jpeg|gif)$/)) {
+          //   imageUrl = item.enclosures.url;
+          // }
+
 
           if (item.enclosures[0].url.match(/\.(jpg|png|jpeg|gif)$/)) {
             imageUrl = item.enclosures[0].url;
