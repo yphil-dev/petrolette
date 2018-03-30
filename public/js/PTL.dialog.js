@@ -32,8 +32,6 @@ PTL.dialog = {
         ],
         open: function () {
 
-          PTL.util.translate();
-
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
           });
@@ -64,8 +62,6 @@ PTL.dialog = {
   feedPrefs:function($button, isNewFeed, isQueryString) {
 
     $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
-
-      PTL.util.translate();
 
       var $dialog = $(this),
           $dataStore = $button.parent().parent(),
@@ -732,8 +728,6 @@ PTL.dialog = {
           }
         ],
         open: function() {
-
-          PTL.util.translate();
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);

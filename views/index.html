@@ -61,9 +61,6 @@
 
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
-
-    <script src="/bower/jquery.hotkeys/jquery.hotkeys.js"></script>
-
     <script src="/bower/intro.js/minified/intro.min.js"></script>
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="/bower/remotestorage/release/remotestorage.js"></script>
@@ -348,7 +345,18 @@
     <main>
 
       <div id="tabs">
-        <ul id="tab-names"></ul>
+        <ul id="tab-names">
+
+          <li id="new-tab"
+              class="translate hidden"
+              title="Add a new group"
+              data-title="Add a new group">
+            <a href="#disabled">
+            <i class="icon-plus"></i>
+            </a>
+          </li>
+
+        </ul>
       </div>
 
       <noscript>
