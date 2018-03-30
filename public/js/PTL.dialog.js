@@ -149,8 +149,6 @@ PTL.dialog = {
         ],
         open: function() {
 
-          // $('.ui-dialog :button').focus();
-
           $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
             PTL.dialog.kill($dialog);
             if (isNewFeed) {
@@ -196,8 +194,12 @@ PTL.dialog = {
               $guessSpinner = $dialog.find('button#feed-guess > i'),
               $guessField = $dialog.find('input#feed-guess'),
               $okButton = $dialog.find('.ui-dialog-buttonpane'),
+              $killFeedFieldset = $('fieldset#kill-feed'),
               $helpMiniButtonIcon,
-              $helpMiniButton;
+              $helpMiniButton,
+              oldUrl = $dataStore.data('url'),
+              oldType = $dataStore.data('type'),
+              oldLimit = $dataStore.data('limit');
 
           $helpMiniButtonIcon = $('<span>')
             .attr('class', 'ui-button-icon ui-icon ui-icon-help');
@@ -206,27 +208,20 @@ PTL.dialog = {
             .attr('class', 'ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-help')
             .attr('title', PTL.tr('How does it work?'))
             .attr('type', 'button')
-            .append($helpMiniButtonIcon);
+            .append($helpMiniButtonIcon)
+            .on('click', function() {
+              PTL.util.help('dialog');
+            }).appendTo($dialog.parent().find('.ui-dialog-titlebar'));
 
-          $('#kill-feed-check').button();
-
-          $dialog.parent().find('.ui-dialog-titlebar').append($helpMiniButton);
+          if (isNewFeed) {
+            $killFeedFieldset.remove();
+          }
 
           if (!PTL.util.isMobile()) {
             $guessField.click(function() {
               $(this).select();
             });
           }
-
-          $helpMiniButton.on('click', function() {
-
-            PTL.util.help('dialog');
-
-          });
-
-          var oldUrl = $dataStore.data('url'),
-              oldType = $dataStore.data('type'),
-              oldLimit = $dataStore.data('limit');
 
           $guessButton.click(function() {
 
@@ -241,7 +236,6 @@ PTL.dialog = {
               timeout: 1200
             }, function() {
               $guessSpinner.removeClass('spin icon-cog');
-
             }).done(function(feed, status) {
 
               $guessField.val(feed);
@@ -256,7 +250,6 @@ PTL.dialog = {
 
             }).fail(function(feed, status) {
               guessError();
-
             });
 
           });
@@ -270,12 +263,12 @@ PTL.dialog = {
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
             .checkboxradio('refresh');
 
-          $spinner.on( 'spinstop', function() {
-            $dialog.find('div#feedLimit').slider( 'option', 'value', $(this).val());
-            $dialog.find('.ui-slider-handle').text($(this).val());
-          });
-
-          $spinner.spinner( 'value', oldLimit);
+          $spinner
+            .spinner( 'value', oldLimit)
+            .on( 'spinstop', function() {
+              $dialog.find('div#feedLimit').slider( 'option', 'value', $(this).val());
+              $dialog.find('.ui-slider-handle').text($(this).val());
+            });
 
           $dialog.find('div#feedLimit').slider({
             value: oldLimit,
@@ -299,14 +292,10 @@ PTL.dialog = {
 
           $dialog.on('submit', function () {
             PTL.feed.populate($feedRefresh);
-
             PTL.tab.saveTabs();
-
             $(this).dialog('destroy');
             return false;
           });
-
-          // $dialog.find('#feed-guess').select();
 
         }
       });
