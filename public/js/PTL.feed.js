@@ -155,7 +155,7 @@ PTL.feed = {
         $feedIcon = $feed.find('.feed-toggle > i');
 
     var l = PTL.util.getLocation(feedUrl),
-        feedProtocol = l.protocol + '//' || '//',
+        feedProtocol = l.protocol ? l.protocol + '//' : '//',
         feedHost = feedProtocol + l.hostname,
         subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
@@ -317,6 +317,10 @@ PTL.feed = {
           .append(item.title);
 
         if (imageUrl) {
+
+          if (!PTL.util.isUrl(imageUrl)) {
+            imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
+          }
 
           $imageLink
             .attr('href', imageUrl)

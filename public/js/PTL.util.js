@@ -26,8 +26,8 @@ PTL.util = {
     }
 
   },
-  isUrl:function(url) {
-    return (url.indexOf('http') === 0);
+  isUrl:function(u) {
+    return new RegExp('^(?:[a-z]+:)?//', 'i').test(u);
   },
   isOldPTLStruct:function(o) {
     PTL.tab.empty();
