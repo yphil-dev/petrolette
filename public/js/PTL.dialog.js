@@ -213,9 +213,7 @@ PTL.dialog = {
               PTL.util.help('dialog');
             }).appendTo($dialog.parent().find('.ui-dialog-titlebar'));
 
-          if (isNewFeed) {
-            $killFeedFieldset.remove();
-          }
+          if (isNewFeed) $killFeedFieldset.remove();
 
           if (!PTL.util.isMobile()) {
             $guessField.click(function() {
@@ -236,7 +234,7 @@ PTL.dialog = {
               timeout: 1200
             }, function() {
               $guessSpinner.removeClass('spin icon-cog');
-            }).done(function(feed, status) {
+            }).done(function(feed) {
 
               $guessField.val(feed);
 
@@ -248,7 +246,7 @@ PTL.dialog = {
                 .addClass('ui-state-success')
                 .attr('title', PTL.tr('Valid feed found! Now just press OK')) ;
 
-            }).fail(function(feed, status) {
+            }).fail(function() {
               guessError();
             });
 
