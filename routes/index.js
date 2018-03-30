@@ -46,7 +46,7 @@ function getFeed (urlfeed, callback) {
   };
 
   // var req = request (urlfeed);
-  var req = request (options);
+  var req = request(options);
 
   var feedparser = new FeedParser ();
   var feedItems = [];

@@ -127,7 +127,7 @@ PTL.sync = (function() {
       remoteStorage.petrolette.write(feeds)
         .then((data) => {
           console.info('Writing to remote storage OK', data);
-          PTL.util.console(PTL.tr('Writing to remote storage OK'), 'success');
+          // PTL.util.console(PTL.tr('Writing to remote storage OK'), 'success');
 
         })
         .catch((err) => {

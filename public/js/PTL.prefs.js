@@ -4,44 +4,70 @@ PTL.prefs = (function() {
 
   var newList =
       [
-        {"name":"News",
+        {"name":"news",
          "columns": [
            [
-             {"url":"http://xkcd.com/rss.xml","type":"mixed","limit": 8}
+             {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4}
            ],
            [
-             {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8},
-             {"url":"https://www.reddit.com/.rss","type":"photo","limit": 4}
+             {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 8},
+             {"url":"http://feeds.reuters.com/Reuters/worldNews","type":"text","limit": 16},
            ],
            [
-             {"url":"http://www.lemonde.fr/rss/une.xml","type":"photo","limit": 4},
-             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+             {"url":"http://www.lemonde.fr/rss/une.xml","type":"photo","limit": 4}
            ]
          ]
         },
-        {"name":"Comics",
+        {"name":"tek",
          "columns": [
            [
-             {"url":"http://feeds.nature.com/nature/rss/current","type":"text","limit": 16},
+             {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 4},
+             {"url":"http://feeds.feedburner.com/thechangelog","type":"mixed","limit": 4}
+           ],
+           [
+             {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8},
              {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 16},
-             {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 16},
+           ],
+           [
+             {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"photo","limit": 4}
+           ]
+         ]
+        },
+        {"name":"imgs",
+         "columns": [
+           [
+             {"url":"https://www.reddit.com/r/EarthPorn.rss","type":"photo","limit": 16},
+             {"url":"http://cabinporn.com/rss/","type":"photo","limit": 16},
 
              {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
            ]
          ]
         },
-        {"name":"Two",
+        {"name":"comics",
          "columns": [
            [
+             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8}
+           ],
+           [
+             {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 8}
+           ]
+         ]
+        },
+        {"name":"music",
+         "columns": [
+           [
+             {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 16},
              {"url":"http://phdcomics.com/gradfeed.php","type":"photo","limit": 4}
            ],
            [
-             {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8},
-             {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
-           ]
+             {"url":"https://www.rollingstone.com/music/rss","type":"photo","limit": 8},
+             {"url":"http://planet.linuxaudio.org/rss20.xml","type":"photo","limit": 8}
+           ],
+           [
+             {"url":"https://dangerousminds.net/atom","type":"photo","limit": 8}           ]
          ]
         }
-  ];
+      ];
 
   var defaults = {
     'gallerySlideTransition': 'fade',
