@@ -28,11 +28,9 @@ PTL.feed = {
         .data('title', 'Select this feed (%1)', url)
         .attr('title', PTL.tr('Select this feed (%1)', url))
         .click(function() {
-
           $(this).parent().parent().parent().parent()
             .toggleClass('selected');
-
-          $(this).toggleClass('icon-ok').toggleClass('icon-uncheck');
+          $(this).toggleClass('icon-ok icon-uncheck');
         });
 
     var $deleteIcon = $('<i>')

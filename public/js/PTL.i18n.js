@@ -29,18 +29,10 @@
 
 PTL.i18n = {
   trans : function(term) {
-
-    // if (PTL.language === 'en') {
-    //   return term;
-    // } else {
-    //   return PTL.i18n.translations[term][PTL.language];
-    // }
-
     var terms = {};
     terms[ PTL.language ] = PTL.tr(term);
 
     return terms;
-
   }
 };
 

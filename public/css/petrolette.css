@@ -965,22 +965,18 @@ li.feed {
   margin: 0 0 .4em 0;
 }
 
-.selected,
 li.feed {
   min-height:20px !important;
   width: 100%;
 }
 
-.selected {
+li.feed.selected {
   background: none !important;
+  opacity: 0.8;
 }
 
 .feed-body {
   margin: 0;
-}
-
-.selected .feed-body {
-  opacity: 0.8;
 }
 
 .truncate {

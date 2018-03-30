@@ -152,7 +152,7 @@ PTL.util = {
   },
   moveEltRight:function($elt) {
 
-    if (!$elt.next().hasClass('new-group')) {
+    if (!$elt.next().is('#new-tab')) {
       $elt.insertAfter($elt.next());
     }
 

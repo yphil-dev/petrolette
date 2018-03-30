@@ -3,22 +3,19 @@
 PTL.tab = {
   init:function() {
 
-
     $('#load-spinner').fadeIn('fast');
 
     PTL.language = PTL.prefs.readConfig('lang');
 
+    PTL.util.translate();
+
     var $tabs = $('#tabs').tabs({
       heightStyle: 'content',
       activate: function(event, ui) {
-
         ui.newPanel.css("display","flex");
-
         $(document).prop('title', $(this).find('.ui-tabs-active')
                          .text() + ' | Pétrolette');
-
         $('.tab-icon').show();
-
       }
     });
 
@@ -62,13 +59,17 @@ PTL.tab = {
       }, 500);
     });
 
-    PTL.tab.makeNewTabButton($tabs);
+    $('#new-group').bind('click', function(event) {
+      event.stopImmediatePropagation();
+      PTL.tab.add($tabs);
+    });
 
-    $('#load-spinner').fadeOut('slow');
 
     PTL.sync.readSync();
 
     $("#theme").attr({href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
+
+    $('#load-spinner').fadeOut(999);
 
   },
   saveTabs:function() {
@@ -174,7 +175,7 @@ PTL.tab = {
 
     $tab.droppable({
       tolerance: 'pointer',
-      accept: 'ul, .column li',
+      accept: 'li.feed.selected',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
         var $item = $(this);
@@ -185,6 +186,8 @@ PTL.tab = {
         $elements.show().hide('slow');
 
         ui.draggable.show().hide('fade', 300, function () {
+
+          $item.find('.collapsible').show('fade', 'fast');
 
           if (PTL.prefs.readConfig('tabDropActivate') === 'true')
             $tabs.tabs('option', 'active', $index);
@@ -282,34 +285,6 @@ PTL.tab = {
     });
 
     return groups;
-
-  },
-  makeNewTabButton:function($tabs) {
-
-    var $newTabButton = $('<li>')
-        .attr('id', 'new-group')
-        .attr('class', 'translate new-group hidden')
-        .data('title', 'Add a new group')
-        .attr('title', PTL.tr('Add a new group'));
-
-    var $newTabButtonLink = $('<a>')
-    // .attr('tabindex', '-1')
-        .attr('href', '#disabled');
-
-    var $newTabButtonIcon = $('<i>')
-        .attr('class', 'icon-plus');
-
-    $newTabButtonLink.bind('click', function(event) {
-      event.stopImmediatePropagation();
-
-      PTL.tab.add($tabs);
-
-      return false;
-    });
-
-    $newTabButtonIcon.appendTo($newTabButtonLink);
-    $newTabButtonLink.appendTo($newTabButton);
-    $newTabButton.appendTo($tabs.find('ul#tab-names'));
 
   }
 };
