@@ -65,19 +65,16 @@ PTL.sync = (function() {
 
   remoteStorage.on('connected', function() {
     PTL.synchronized = true;
-    console.info('Pétrolette | ' + PTL.tr('Connected to remote storage'));
     PTL.util.console(PTL.tr('Connected to remote storage'), 'ok');
   });
 
   remoteStorage.on('not-connected', function() {
     PTL.synchronized = false;
-    console.info('Pétrolette | ' + PTL.tr('NOT connected to remote storage'));
     PTL.util.console(PTL.tr('NOT connected to remote storage'), 'warning');
   });
 
   remoteStorage.on('disconnected', function() {
     PTL.synchronized = false;
-    console.warn('Pétrolette | ' + PTL.tr('Disconnected from remote storage'));
     PTL.util.console(PTL.tr('Disconnected from remote storage'), 'warning');
 
   });
@@ -100,9 +97,6 @@ PTL.sync = (function() {
 
           if (PTL.util.isValidFeedsFile(JSON.parse(data))) {
 
-            console.info('Pétrolette | ' + PTL.tr('Remote file validation OK'));
-
-            // return
             PTL.tab.populate(JSON.parse(data));
 
           } else {
@@ -125,11 +119,6 @@ PTL.sync = (function() {
     writeSync:function(feeds) {
 
       remoteStorage.petrolette.write(feeds)
-        .then((data) => {
-          console.info('Writing to remote storage OK', data);
-          // PTL.util.console(PTL.tr('Writing to remote storage OK'), 'success');
-
-        })
         .catch((err) => {
           PTL.util.console(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
         });
