@@ -230,10 +230,12 @@ var PTL = (function() {
         height: 'auto',
         width: PTL.util.vWidth(),
         modal: true,
-        bgiframe: true,
-        show: 'fade',
         autoOpen: true
       });
+
+      $.ui.dialog.prototype._init = function() {
+        PTL.util.translate();
+      };
 
     },
     sideMenu: function(action) {
