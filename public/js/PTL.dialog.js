@@ -1,6 +1,5 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
-
 PTL.dialog = {
   kill:function($dialog) {
     $dialog.dialog('destroy');
@@ -53,7 +52,7 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  feedPrefs:function($button, isNewFeed, isQueryString) {
+  feedPrefs:function($button, isNewFeed) {
 
     $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
 
