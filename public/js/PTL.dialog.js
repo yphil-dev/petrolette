@@ -14,12 +14,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Help'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: false,
-        height: 'auto',
-        width: PTL.util.vWidth(),
-        modal: true,
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -31,6 +25,8 @@ PTL.dialog = {
           }
         ],
         open: function () {
+
+          PTL.util.translate();
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -63,6 +59,8 @@ PTL.dialog = {
 
     $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
 
+      PTL.util.translate();
+
       var $dialog = $(this),
           $dataStore = $button.parent().parent(),
           $feed = $dataStore.parent().parent(),
@@ -80,12 +78,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: true,
-        height: 'auto',
-        width: PTL.util.vWidth(),
-        modal: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -321,12 +313,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete column'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: false,
-        height: 'auto',
-        width: PTL.util.vWidth(),
-        modal: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -375,12 +361,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Keyboard shortcuts'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: false,
-        height: 'auto',
-        width: '95%',
-        modal: true,
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -510,12 +490,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Add feed'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: false,
-        height: 'auto',
-        width: PTL.util.vWidth(),
-        modal: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -578,12 +552,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete group'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: false,
-        height: 'auto',
-        width: PTL.util.vWidth(),
-        modal: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -648,12 +616,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete feed'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: false,
-        height: 'auto',
-        width: PTL.util.vWidth(),
-        modal: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -701,12 +663,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Group'),
-        autoOpen: false,
-        closeOnEscape: true,
-        resizable: false,
-        height: 'auto',
-        width: PTL.util.vWidth(),
-        modal: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -728,6 +684,8 @@ PTL.dialog = {
           }
         ],
         open: function() {
+
+          PTL.util.translate();
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);

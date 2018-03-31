@@ -8,8 +8,6 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-
-
       var $menu = $('nav#side-menu'),
           $overlay = $('#overlay'),
           $feedCodeButton = $('button#feedCode'),
@@ -225,6 +223,18 @@ var PTL = (function() {
 
         reader.readAsText(f);
       });
+
+      $.extend($.ui.dialog.prototype.options, {
+        closeOnEscape: true,
+        resizable: true,
+        height: 'auto',
+        width: PTL.util.vWidth(),
+        modal: true,
+        bgiframe: true,
+        show: 'fade',
+        autoOpen: true
+      });
+
     },
     sideMenu: function(action) {
 
