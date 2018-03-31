@@ -248,7 +248,12 @@ PTL.feed = {
         if (index == parseInt(feedLimit)) return false;
 
         var $description = $.parseHTML(item.description),
-            imageUrl;
+            imageUrl,
+            imgTypes = ['image',
+                        'image/jpg',
+                        'image/jpeg',
+                        'image/gif',
+                        'image/png'];
 
         var $imageLink = $('<a>').attr('target', '_blank'),
             $itemLink = $('<a>').attr('target', '_blank'),
@@ -273,21 +278,36 @@ PTL.feed = {
 
         var $tempDom = $('<null>').append($description);
 
-        if (typeof $tempDom.find('span a').attr('href') !== 'undefined') {
+        console.log('item: (%s)', JSON.stringify(item));
+
+        if (item.image && typeof item.image.url !== 'undefined') {
+          // console.log('#### item.image: (%s)', feedHost);
+          imageUrl = item.image.url;
+        }
+
+        if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
           if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
             imageUrl = $tempDom.find('span a').attr('href');
+            // console.log('#### $tempDom A: (%s)', feedHost);
           }
         }
 
         if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
           imageUrl = $tempDom.find('img').attr('src');
+          // console.log('#### $tempDom IMG: (%s)', feedHost);
         }
 
-        // if (typeof item.image.url !== 'undefined') {
-        //   console.log('whoa!: (%s)');
-        // }
-
         if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
+
+          // console.log('item.enclosures[0].type: (%s)', item.enclosures[0].type);
+
+          if (!imageUrl && imgTypes.indexOf(item.enclosures[0].type) > -1) {
+
+            imageUrl = item.enclosures[0].url;
+            // console.log('#### YESS: (%s)', feedHost);
+          }
+
+
 
           // console.log('enclosures: (%s)', item.enclosures[0].url.match(/\.(jpg|png|jpeg|gif)$/));
 
@@ -296,9 +316,12 @@ PTL.feed = {
           // }
 
 
-          if (item.enclosures[0].url.match(/\.(jpg|png|jpeg|gif)$/)) {
-            imageUrl = item.enclosures[0].url;
-          }
+          // console.log('item.enclosures: %s (%s): %s', JSON.stringify(item.enclosures[0].type), feedUrl, item.enclosures[0].url.match(/\.(jpg|png|jpeg|gif)$/));
+
+
+          // if (item.enclosures[0].url.match(/\.(jpg|png|jpeg|gif)$/)) {
+          //   imageUrl = item.enclosures[0].url;
+          // }
 
           if (item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
             $soundLink
