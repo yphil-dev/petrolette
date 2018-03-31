@@ -94,8 +94,6 @@ var PTL = (function() {
         event.preventDefault();
       });
 
-      PTL.util.translate();
-
       $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
 
       $langMenu.change(function() {

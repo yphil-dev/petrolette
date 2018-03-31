@@ -3,10 +3,11 @@
 PTL.tab = {
   init:function() {
 
-
     $('#load-spinner').fadeIn('fast');
 
     PTL.language = PTL.prefs.readConfig('lang');
+
+    PTL.util.translate();
 
     var $tabs = $('#tabs').tabs({
       heightStyle: 'content',
