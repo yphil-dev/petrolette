@@ -34,7 +34,7 @@ Pétrolette is given to you by the Free, Libre & Open-Source movement. I worked 
 ### Installation
 
 ```sh
-git clone https://yphil@bitbucket.org/yphil/petrolette.git
+git clone https://framagit.org/yphil/petrolette
 cd petrolette
 npm install
 npm start
