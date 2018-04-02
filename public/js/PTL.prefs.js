@@ -10,7 +10,7 @@ PTL.prefs = (function() {
        ],
        [
          {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 8},
-         {"url":"http://feeds.reuters.com/Reuters/worldNews","type":"text","limit": 16},
+         {"url":"http://feeds.reuters.com/Reuters/worldNews","type":"text","limit": 16}
        ],
        [
          {"url":"http://www.lemonde.fr/rss/une.xml","type":"mixed","limit": 4}
@@ -25,7 +25,7 @@ PTL.prefs = (function() {
        ],
        [
          {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8},
-         {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 16},
+         {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 16}
        ],
        [
          {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"photo","limit": 4},
