@@ -319,7 +319,7 @@ PTL.feed = {
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', item.link)
-          .append(item.title);
+          .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
         if (imageUrl) {
 
