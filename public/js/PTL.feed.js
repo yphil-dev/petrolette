@@ -247,8 +247,11 @@ PTL.feed = {
 
         if (index == parseInt(feedLimit)) return false;
 
+        console.log('i: (%s)', JSON.stringify(item));
+
         var $description = $.parseHTML(item.description),
             imageUrl,
+            imageUrls = [],
             imgTypes = ['image',
                         'image/jpg',
                         'image/jpeg',
@@ -261,7 +264,7 @@ PTL.feed = {
             $commentsLink = $('<a>').attr('target', '_blank'),
             $commentsIcon = $('<i>'),
             $soundIcon = $('<i>'),
-            $image = $('<img>'),
+            $image,
             $summary = $('<null>').append(item.summary || item.description).text(),
             $itemDiv = $('<div>').attr('class', 'itemDiv'),
             $feedItem = $('<li>').attr('class', 'feed-item').attr('title', $summary.trim());
@@ -278,7 +281,20 @@ PTL.feed = {
 
         var $tempDom = $('<null>').append($description);
 
-        if (item.image && typeof item.image.url !== 'undefined') {
+        if (item['mastodon:scope']) {
+          if (item['activity:object']) {
+            var links = item['activity:object'].link;
+            for (var i = 0, len = links.length; i < len; i++) {
+              console.log('links[i]: %s (%s, %s)', links[i]['@'].type, $summary.trim(), links[i]['@'].href);
+              if (imgTypes.indexOf(links[i]['@'].type) > -1) {
+                imageUrl = links[i]['@'].href;
+                imageUrls.push(links[i]['@'].href);
+              }
+            }
+          }
+        }
+
+        if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
           imageUrl = item.image.url;
         }
 
@@ -319,7 +335,26 @@ PTL.feed = {
           .attr('href', item.link)
           .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
-        if (imageUrl) {
+        if (imageUrls) {
+
+          $image = $('<div>')
+            .attr('class', 'ptl-img')
+            .appendTo($imageLink);
+
+          for (var i = 0, len = imageUrls.length; i < len; i++) {
+            console.log('imageUrls: (%s)', imageUrls[i]);
+
+            $('<a>')
+              .attr('href', imageUrls[i])
+              .attr('data-fancybox', 'gallery')
+              .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + $summary.trim() + '</a>')
+              .appendTo($image)
+              .append($('<img>')
+                      .attr('src', imageUrls[i])
+                      .appendTo($image));
+          }
+
+        } else if (imageUrl) {
 
           if (!PTL.util.isUrl(imageUrl)) {
             imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
@@ -328,17 +363,18 @@ PTL.feed = {
           $imageLink
             .attr('href', imageUrl)
             .attr('data-fancybox', 'gallery')
-            .attr('data-fancybox-group', $panel.attr('id'))
             .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + item.title + '</a>');
 
-          $image
+          $image = $('<img>')
             .attr('src', imageUrl)
+            .attr('class', 'ptl-img')
             .appendTo($imageLink);
 
-          if (!new RegExp('^(?:[a-z]+:)?//', 'i').test(imageUrl)) imageUrl = feedHost + imageUrl;
-          if (feedType == 'photo') $image.addClass('full');
-          if (feedType !== 'text') $imageLink.appendTo($itemDiv);
         }
+
+        if (!new RegExp('^(?:[a-z]+:)?//', 'i').test(imageUrl)) imageUrl = feedHost + imageUrl;
+        if ($image && feedType == 'photo') $image.addClass('full');
+        if (feedType !== 'text') $imageLink.appendTo($itemDiv);
 
         $itemLink.appendTo($itemDiv);
         $itemDiv.appendTo($feedItem);
