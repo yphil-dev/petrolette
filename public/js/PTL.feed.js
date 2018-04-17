@@ -249,11 +249,11 @@ PTL.feed = {
 
         if (index == parseInt(feedLimit)) return false;
 
-        console.log('i: (%s)', JSON.stringify(item));
+        // console.log('i: (%s)', JSON.stringify(item));
 
         var $description = $.parseHTML(item.description),
             imageUrl,
-            imageUrls = [],
+            // imageUrls = [],
             imgTypes = ['image',
                         'image/jpg',
                         'image/jpeg',
@@ -287,11 +287,13 @@ PTL.feed = {
           if (item['activity:object']) {
             var links = item['activity:object'].link;
             for (var i = 0, len = links.length; i < len; i++) {
-              console.log('links[i]: %s (%s, %s)', links[i]['@'].type, $summary.trim(), links[i]['@'].href);
+              // console.log('links[i]: %s (%s, %s)', links[i]['@'].type, $summary.trim(), links[i]['@'].href);
+
               if (imgTypes.indexOf(links[i]['@'].type) > -1) {
                 imageUrl = links[i]['@'].href;
                 imageUrls.push(links[i]['@'].href);
               }
+
             }
           }
         }
@@ -337,14 +339,16 @@ PTL.feed = {
           .attr('href', item.link)
           .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
-        if (imageUrls) {
+        if (typeof imageUrls != 'undefined') {
+
+          console.log('imageUrls');
 
           $image = $('<div>')
             .attr('class', 'ptl-img')
             .appendTo($imageLink);
 
           for (var i = 0, len = imageUrls.length; i < len; i++) {
-            console.log('imageUrls: (%s)', imageUrls[i]);
+            // console.log('imageUrls: (%s)', imageUrls[i]);
 
             $('<a>')
               .attr('href', imageUrls[i])
@@ -357,6 +361,8 @@ PTL.feed = {
           }
 
         } else if (imageUrl) {
+
+          console.log('imageUrl: (%s)', imageUrl);
 
           if (!PTL.util.isUrl(imageUrl)) {
             imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
