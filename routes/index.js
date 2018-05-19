@@ -74,8 +74,7 @@ function getFeed (urlfeed, callback) {
     }
   }).on ('end', function () {
     var meta = this.meta;
-    callback ('Feed OK', feedItems, meta.title, meta.link);
-    return;
+    return callback ('Feed OK', feedItems, meta.title, meta.link);
   }).on ('error', function (err) {
     callback ('Bad feed: ' + err);
   });
