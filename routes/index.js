@@ -89,6 +89,7 @@ router.get('/feed', function(req, res) {
         feedLink: feedLink,
         feedTitle: feedTitle
       });
+      res.end();
     } else {
       res.send({error:err});
     }
