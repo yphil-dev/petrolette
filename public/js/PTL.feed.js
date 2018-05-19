@@ -339,7 +339,7 @@ PTL.feed = {
 
         if (typeof imageUrls != 'undefined') {
 
-          console.log('imageUrls');
+          // console.log('imageUrls');
 
           $image = $('<div>')
             .attr('class', 'ptl-img')
@@ -360,7 +360,7 @@ PTL.feed = {
 
         } else if (imageUrl) {
 
-          console.log('imageUrl: (%s)', imageUrl);
+          // console.log('imageUrl: (%s)', imageUrl);
 
           if (!PTL.util.isUrl(imageUrl)) {
             imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
