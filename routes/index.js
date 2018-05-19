@@ -52,7 +52,7 @@ function getFeed (urlfeed, callback) {
   var feedItems = [];
   req.on ('response', function (res) {
     var stream = this;
-    if (res.statusCode === 200 && res.headers['content-type'].includes('xml')) {
+    if (res && typeof res !== 'undefined' && res.statusCode === 200 && res.headers['content-type'] && res.headers['content-type'].includes('xml')) {
       stream.pipe (feedparser);
 
     } else {
