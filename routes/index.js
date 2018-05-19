@@ -84,14 +84,14 @@ router.get('/feed', function(req, res) {
 
   getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
     if (feedItems) {
-      res.send({
+      return res.send({
         feedItems: feedItems,
         feedLink: feedLink,
         feedTitle: feedTitle
       });
-      res.end();
+      // res.end();
     } else {
-      res.send({error:err});
+      return res.send({error:err});
     }
   });
 
