@@ -57,7 +57,7 @@ function getFeed (urlfeed, callback) {
 
     } else {
       // console.log ('getFeed: Content-type Error read %s (%s) .', urlfeed, res.headers['content-type']);
-      callback (res.headers['content-type']);
+      // callback (res.headers['content-type']);
       return;
     }
   });
@@ -75,8 +75,9 @@ function getFeed (urlfeed, callback) {
   }).on ('end', function () {
     var meta = this.meta;
     callback ('Feed OK', feedItems, meta.title, meta.link);
+    return;
   }).on ('error', function (err) {
-    callback ('Bad feed: ', err);
+    callback ('Bad feed: ' + err);
   });
 }
 
@@ -84,14 +85,13 @@ router.get('/feed', function(req, res) {
 
   getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
     if (feedItems) {
-      return res.send({
+      res.send({
         feedItems: feedItems,
         feedLink: feedLink,
         feedTitle: feedTitle
       });
-      // res.end();
     } else {
-      return res.send({error:err});
+      res.send({error:err});
     }
   });
 
