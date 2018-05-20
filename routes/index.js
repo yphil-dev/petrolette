@@ -45,11 +45,15 @@ function getFeed (urlfeed, callback) {
     }
   };
 
-  // var req = request (urlfeed);
-  var req = request(options);
+  var req = request (urlfeed);
+  // var req = request(options);
 
   var feedparser = new FeedParser ();
   var feedItems = [];
+
+  req.setHeader('user-agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36');
+  req.setHeader('accept', 'text/html,application/xhtml+xml');
+
   req.on ('response', function (res) {
     var stream = this;
     if (res && typeof res !== 'undefined' && res.statusCode === 200 && res.headers['content-type'] && res.headers['content-type'].includes('xml')) {
