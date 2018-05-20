@@ -74,7 +74,7 @@ function getFeed (urlfeed, callback) {
     }
   }).on ('end', function () {
     var meta = this.meta;
-    return callback ('Feed OK', feedItems, meta.title, meta.link);
+    callback (null, feedItems, meta.title, meta.link);
   }).on ('error', function (err) {
     callback ('Bad feed: ' + err);
   });
@@ -83,8 +83,8 @@ function getFeed (urlfeed, callback) {
 router.get('/feed', function(req, res) {
 
   getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
-    if (feedItems) {
-      return res.send({
+    if (!err) {
+      res.send({
         feedItems: feedItems,
         feedLink: feedLink,
         feedTitle: feedTitle
