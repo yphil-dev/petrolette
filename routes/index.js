@@ -61,7 +61,7 @@ function getFeed (urlfeed, callback) {
       // console.log ('getFeed: Content-type Error read %s (%s) .', urlfeed, res.headers['content-type']);
       // callback (res.headers['content-type']);
       callback ('Bad feed: ');
-      // return;
+      return;
     }
   });
 
