@@ -9,6 +9,8 @@ const express = require('express'),
       crypto = require('crypto'),
       pjson = require('../package.json');
 
+require('events').EventEmitter.defaultMaxListeners = 15;
+
 console.log('####### START');
 
 function escape(s) {
@@ -39,7 +41,7 @@ function getFeed (urlfeed, callback) {
 
   var options = {
     url: urlfeed,
-    maxRedirects:100,
+    jar: true, // enable cookie    maxRedirects:2,
     headers: {
       'User-Agent': 'Mozilla/5.0',
       'Accept': 'application/rss+xml, application/rdf+xml;q=0.8, application/atom+xml;q=0.6, application/xml;q=0.4, text/xml;q=0.4'
@@ -48,10 +50,16 @@ function getFeed (urlfeed, callback) {
 
   // var req = request (urlfeed);
   var req = request(options);
-  req.setMaxListeners(0);
+
+  if (!req) {
+    console.log('erreur');
+  }
+
+  // req.setMaxListeners(0);
 
   var feedparser = new FeedParser ();
   var feedItems = [];
+  // TODO: on('error')
   req.on ('response', function (res) {
     var stream = this;
     if (res && typeof res !== 'undefined' && res.statusCode === 200 && res.headers['content-type'] && res.headers['content-type'].includes('xml')) {
@@ -78,6 +86,7 @@ function getFeed (urlfeed, callback) {
   }).on ('end', function () {
     var meta = this.meta;
     callback ('Feed OK', feedItems, meta.title, meta.link);
+    return;
   }).on ('error', function (err) {
     callback ('Bad feed: ', err);
   });
