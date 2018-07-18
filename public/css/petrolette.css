@@ -985,6 +985,9 @@ li.feed {
 
 .truncate {
   overflow: hidden;
+  display: block;
+  width: 100px;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
