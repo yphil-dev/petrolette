@@ -176,6 +176,7 @@ div.dialog {
 }
 
 #console {
+  max-width:250px;
   border-radius: 3px;
   background-color: var(--color-ui-console-bg);
   color: var(--color-ui-console-fg);
