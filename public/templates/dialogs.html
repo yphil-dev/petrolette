@@ -1,20 +1,20 @@
 <div id="feedPrefs">
   <form>
     <fieldset class="ui-widget ui-widget-content ui-corner-all">
-      <legend data-title="Feed Location (URL)"
-              data-content="Feed Location (URL)"
-              class="ui-corner-top translate">Feed Location (URL)</legend>
+      <legend data-content="Location"
+              class="ui-corner-top translate">Location</legend>
 
       <div id="feed-guess" class="flex-box">
         <input name="guess"
                id="feed-guess"
                placeholder="URL (https://reddit.com)"
-               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed"
+               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
                value=""
                class="ui-widget-content grow ui-corner-all translate"
         />
         <button id="feed-guess"
-                class="shrink"
+                data-title="Find the feed for this URL, or build a new one from the search query"
+                class="shrink translate"
                 type="button">
           <i class="icon-flashlight"></i>
         </button>
@@ -24,55 +24,53 @@
 
     <fieldset id="feedGroup" class="prefsForm ui-widget ui-widget-content ui-corner-all">
 
-      <legend data-title="Feed group"
-              data-content="Feed group"
-              class="ui-corner-top translate">Feed group
+      <legend data-content="Group"
+              class="ui-corner-top translate">Group
       </legend>
 
       <select id="feedGroup"
               class="unique translate"
               name="Group"
-              data-title="Group"
-              title="Group">
+              data-title="Move the current feed in this group">
       </select>
 
     </fieldset>
 
     <fieldset id="feedType" class="prefsForm ui-widget ui-widget-content ui-corner-all">
 
-      <legend data-title="Feed type"
-              data-content="Feed type"
-              class="ui-corner-top translate">Feed type
+      <legend data-content="Type"
+              class="ui-corner-top translate">Type
       </legend>
 
       <div id="feedType"
            class="flex-box">
 
-        <label data-title="Text"
+        <label data-title="Display only text"
                data-content="Text"
                class="translate grow"
                for="text" >Text</label>
         <input type="radio" name="radio-1" id="text">
 
-        <label data-title="Mixed"
+        <label data-title="Display text and image"
                data-content="Mixed"
                for="mixed"
                class="translate grow">Mixed</label>
         <input type="radio" name="radio-1" id="mixed">
 
-        <label data-title="Photo"
-               data-content="Photo"
+        <label data-title="Display only image"
+               data-content="Image"
                class="last translate grow"
-               for="photo">Photo</label>
+               for="photo">Image</label>
         <input type="radio" name="radio-1" id="photo">
 
       </div>
     </fieldset>
 
     <fieldset id="feedLimit" class="ui-widget ui-widget-content ui-corner-all">
-      <legend data-content="Number of items"
-              class="ui-corner-top translate">Number of items</legend>
-      <div class="flex-box">
+      <legend data-content="Items"
+              class="ui-corner-top translate">Items</legend>
+      <div class="flex-box translate"
+           data-title="Number of items displayed in this feed">
         <div class="feedLimit grow">
           <label for="feedLimit" class="ui-helper-hidden">
             <input type="text" id="feedLimit" />
@@ -89,9 +87,8 @@
 
     <fieldset id="kill-feed" class="prefsForm ui-widget ui-widget-content ui-corner-all">
 
-      <legend data-title="Delete this feed"
-              data-content="Delete this feed"
-              class="ui-corner-top translate">Delete this feed
+      <legend data-content="Delete"
+              class="ui-corner-top translate">Delete
       </legend>
 
       <div id="feedDel"
@@ -100,9 +97,8 @@
         <label id="kill-feed"
                class="dangerous translate last"
                for="kill-feed-check"
-               data-title="Delete feed"
-               title="Delete feed"
-               data-content="Delete this feed">
+               data-title="Delete this feed"
+               data-content="Delete">
           Delete this feed
         </label>
 

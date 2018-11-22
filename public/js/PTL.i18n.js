@@ -52,7 +52,7 @@ PTL.i18n.translations = {
   "Click here to add some." : { fr: "Cliquez ici pour en ajouter.", ja: "いくつか追加するにはここをクリックしてください。", es: "Haga clic aquí para agregar algunos." },
   "Group" : { fr: "Groupe", ja: "グループ", es: "Grupo" },
 
-  "Find the website\'s feed, or build a new one from the seach query." : { fr: "Trouver le flux du site web, ou construire un flux à partir des termes de recherche." , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web." },
+  "Find the feed for this URL, or build a new one from the search query" : { fr: "Trouver le flux du site web, ou construire un flux à partir des termes de recherche" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
   "Move this feed to another group." : { fr: "Déplacer ce flux dans un autre groupe." , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo." },
   "The type of feed: It can be all text, all image, or mixed." : { fr: "Quel type de flux ? Tout le texte, toute l'image, ou les deux.", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de flux? Todo el texto, toda la imagen o mixto." },
   "How many new items should this feed display at a time?" : { fr: "Combien de nouveaux articles dans ce flux ?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el feed a la vez?" },
@@ -325,7 +325,9 @@ PTL.i18n.translations = {
 
   "Index" : { fr: "Indice", ja: "インデックス", es: "Índice" },
 
-  "Number of items" : { fr: "Nombre d'articles", ja: "タイトル数", es: "Cantidad de títulos" },
+  "Items" : { fr: "Articles", ja: "記事", es: "Elementos" },
+
+  "Number of items displayed in this feed" : { fr: "Nombre d'articles affichés dans ce flux", ja: "このソースの項目数", es: "Número de elementos en este fuente" },
   "Number of feeds" : { fr: "Nombre de flux", ja: "ソース数", es: "Cantidad de fuentes" },
 
   "Just answer the question" : { fr: "Répond juste à la question", ja: "ちょうど質問に答える", es: "Solo responde la pregunta" },
@@ -339,10 +341,17 @@ PTL.i18n.translations = {
 
   "Found %1 feeds in %2 columns in %3 groups" : { fr: "Trouvé %1 flux dans %2 colonnes dans %3 groupes", ja: "%3つのグループで%2つの列に%1つのソースが見つかりました", es: "Se encontraron %1 fuentes en %2 columnas en %3 grupos" },
 
-  "Feed Location (URL)" : { fr: "Adresse du flux (URL)", ja: "場所（URL）", es: "Ubicación (URL)" },
-  "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez l'adresse / URL d'un site Web, puis cliquez sur Rechercher, ou entrez directement l'adresse d'une", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del" },
+  "Location" : { fr: "Adresse", ja: "ロケーション", es: "Ubicación" },
 
-  "Heck, enter anything, and Pétrolette will build a feed from your search query." : { fr: "Bon, entrez n'importe quoi, et Pétrolette construira un flux à partir de votre requête de recherche.", ja: "何かを入力すると、Pétroletteは検索クエリからソースを作成します。]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Diablos, ingrese cualquier cosa, y Pétrolette construirá una fuente a partir de su consulta de búsqueda." },
+  "Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK" : { fr: "Entrer l'adresse / URL d'un site Web, puis cliquer sur Rechercher et valider, ou directement l'adresse d'un flux et valider", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del fuente" },
+
+  "Heck, enter anything, and Pétrolette will build a feed from your search query" : { fr: "Bon, entrez n'importe quoi, et Pétrolette construira un flux à partir de votre requête de recherche", ja: "何かを入力すると、Pétroletteは検索クエリからソースを作成します。]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Diablos, ingrese cualquier cosa, y Pétrolette construirá una fuente a partir de su consulta de búsqueda" },
+
+  "Move the current feed in this group" : { fr: "Déplacer le flux courant dans ce groupe", ja: "このグループの現在のフィードを移動する", es: "Mueve el fuente actual en este grupo" },
+
+  "Display only text" : { fr: "Affichage du texte seul", ja: "テキストのみ", es: "visualización del solo texto" },
+  "Display text and image" : { fr: "Affichage du texte et de l'image", ja: "テキストとイメージ", es: "visualización del texto e imagen" },
+  "Display only image" : { fr: "Affichage de l'image seule", ja: "画像のみ", es: "visualización del solo imagen" },
 
   "Validate /verify this feed file with the W3C" : { fr: "Valider / vérifier ce fichier flux avec le W3C", ja: "このソースファイルをW3Cで検証/検証する", es: "Validar / verificar este archivo fuente con el W3C" },
 
