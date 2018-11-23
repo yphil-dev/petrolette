@@ -149,7 +149,6 @@ PTL.tab = {
   },
   add:function($tabs, name, columns, progress) {
 
-
     var tabIndex = $('ul#tab-names li.tab-name').length + 1;
 
     name = name || 'Group ' + tabIndex;
