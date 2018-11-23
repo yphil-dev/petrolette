@@ -207,7 +207,7 @@ PTL.dialog = {
           $guessButton.click(function() {
 
             $guessSpinner
-              .removeClass('icon-ok icon-cancel-circled icon-flashlight ui-state-success ui-state-error')
+              .removeClass('icon-ok icon-cancel-circled icon-search ui-state-success ui-state-error')
               .addClass('spin icon-cog');
             $guessButton.removeClass('icon-ok ui-state-success ui-state-error');
 
