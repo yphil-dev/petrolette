@@ -315,12 +315,12 @@ PTL.feed = {
             imageUrl = item.enclosures[0].url;
           }
 
-          if (item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
+          if (item.enclosures[0].url.match(/\.(ogg|mp3|mp4)$/)) {
             $soundLink
               .attr('href', item.enclosures[0].url)
               .appendTo($itemDiv);
             $soundIcon
-              .attr('class', 'item-icon icon-volume')
+              .attr('class', 'item-icon icon-play')
               .appendTo($soundLink);
           }
         }
