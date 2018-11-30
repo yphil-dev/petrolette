@@ -704,7 +704,7 @@ PTL.dialog = {
             PTL.util.moveEltRight($tab);
           });
 
-          $tabNameLegend.text(PTL.tr('Group name'));
+          $tabNameLegend.text(PTL.tr('Name'));
 
           $tabName.val($(this).data('tabName'));
 
