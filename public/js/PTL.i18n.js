@@ -43,6 +43,7 @@ PTL.i18n.translations = {
   "Cancel": { fr: "Annuler", ja: "取り消す", es: "Cancelar" },
   "Delete": { fr: "Supprimer", ja: "削除", es: "Eliminar" },
   "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
+  "Position": { fr: "Position", ja: "ポジション", es: "Posición" },
   "Ok": { fr: "Ok", ja: "Ok", es: "Ok" },
   "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
 
@@ -394,7 +395,7 @@ PTL.i18n.translations = {
   "Delete all" : { fr: "Supprimer tout", ja: "すべて削除", es: "Eliminar todos" },
 
   "Really delete this group? (%1, %2 feeds)" : { fr: "Réellement supprimer ce groupe (%1, %2 flux) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta grupo? (%1, %2 feeds)" },
-  "Change this feed (%1) parameters" : { fr: "Changer les paramètres de ce flux (%1)", ja: "このソース（%1）パラメータを変更する", es: "Establezca estos parámetros fuente %1" },
+  "Edit this feed (%1) parameters" : { fr: "Modifier les paramètres de ce flux (%1)", ja: "このソース（%1）パラメータを変更する", es: "Establezca estos parámetros fuente %1" },
   "Refresh this feed (%1)" : { fr: "Actualiser ce flux (%1)", ja: "このソースをリフレッシュしてください (%1)", es: "Actualiza esta fuente (%1)" },
   "Last" : { fr: "Dernier", ja: "zz" }
 };
