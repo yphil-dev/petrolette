@@ -268,6 +268,8 @@ PTL.i18n.translations = {
   "If this is set, when you drag & drop one or more feed(s) in a group, said group opens" : { fr: "Ouvrir le groupe où un flux est déposée" , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir grupo en donde se pone un canal" },
 
   // Messages d'erreurs
+  "Empty feed" : { fr: "Source vide" , ja: "空のソース", es: "fuente vacía" },
+
   "View Pétrolette according to the time of day." : { fr: "Voir Pétrolette selon l'heure de la journée." , ja: "時刻に応じてPétroletteを表示する", es: "Ver Pétrolette según la hora del día." },
 
   "Reset Pétrolette according to your political mood of the week." : { fr: "Réinitialiser Pétrolette selon votre humeur politique de la semaine." , ja: "今週のあなたの政治的な気分に合わせてPétroletteをリセットする", es: "Restablece Pétrolette según tu estado de ánimo político de la semana." },

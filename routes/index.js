@@ -91,23 +91,10 @@ function getParams(str) {
 
 function getFeed (urlfeed, callback) {
 
-  var options = {
-    url: urlfeed,
-    jar: true, // enable cookie    maxRedirects:2,
-    headers: {
-      'User-Agent': 'Mozilla/5.0',
-      'Accept': 'application/rss+xml, application/rdf+xml;q=0.8, application/atom+xml;q=0.6, application/xml;q=0.4, text/xml;q=0.4'
-    }
-  };
-
-  // var rreq = request(urlfeed);
-  var req = request(options);
-
-  if (!req) {
-    console.log('erreur');
-  }
-
-  // req.setMaxListeners(0);
+  var req = request(urlfeed, {timeout: 10000, pool: false});
+  req.setMaxListeners(50);
+  req.setHeader('user-agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36');
+  req.setHeader('accept', 'text/html,application/xhtml+xml');
 
   var feedparser = new FeedParser ();
   var feedItems = [];
@@ -119,8 +106,8 @@ function getFeed (urlfeed, callback) {
     })
     .on ('response', function (res) {
 
-      // try {
-      var stream = this;
+      if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
+
       if (res && typeof res !== 'undefined' && res.statusCode === 200 && res.headers['content-type'] && res.headers['content-type'].includes('xml')) {
 
 
@@ -131,18 +118,9 @@ function getFeed (urlfeed, callback) {
 
         res.pipe (feedparser);
 
-      } else {
-        console.log (' %s status: %s, content-type: %s', urlfeed, res.statusCode, res.headers['content-type']);
-        // callback (res.headers['content-type']);
-        callback (res.statusCode);
-        // return;
       }
-      // }
-      // catch (err) {
-         // console.log('ERR (%s)', err.message);
-         // }
 
-        });
+    });
 
   feedparser
     .on ('readable', function () {
@@ -174,15 +152,11 @@ function getFeed (urlfeed, callback) {
 
 router.get('/feed', function(req, res) {
 
-  if (res.headersSent) return;
-
-  console.log('getFeed (%s)', req.query.feedurl);
-
   var myreq = request(req.query.feedurl);
 
   myreq
     .on('error', function(error) {
-      console.log('Oh My (%s) [%s]',req.query.feedurl, error.code);
+      // The only way so far to catch a DNS error
       res.send({error:error.code});
     })
     .on('response', function(response) {
@@ -191,9 +165,7 @@ router.get('/feed', function(req, res) {
 
       // console.log('RESPONSE (%s) [%s]', req.query.feedurl, JSON.stringify(response));
 
-      if (response.statusCode == 200) {
-
-        getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
+      getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
 
           console.log('ERR: (%s)', err);
 
@@ -214,9 +186,6 @@ router.get('/feed', function(req, res) {
 
         });
 
-      }
-
-      // console.log(response.headers['content-type']);
     });
 
 

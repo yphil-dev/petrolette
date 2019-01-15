@@ -182,7 +182,7 @@ PTL.feed = {
 
       if (data.error || data.feedItems.length == 0) {
 
-        var message = data.error? data.error : 'This feed is empty';
+        var message = data.error? data.error : PTL.tr('Empty feed');
 
         PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
 
@@ -227,8 +227,8 @@ PTL.feed = {
 
           var $errorItem = $('<li>')
               .attr('class', 'feed-item error')
-              .append($errorTitle)
-              .append('&nbsp;')
+        // .append($errorTitle)
+        // .append('&nbsp;')
               .append($errorLink)
               .append('&nbsp; (')
               .append($validateLink)
