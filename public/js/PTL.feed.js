@@ -172,76 +172,98 @@ PTL.feed = {
 
       $feedBody.empty();
 
+    }).fail(function(error) {
+      console.log('ERROR!!');
     }).done(function(data) {
 
       $feedLink.text(data.feedTitle || feedUrl)
-        .attr('href', data.feedLink)
-        .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
+          .attr('href', data.feedLink)
+          .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
 
-      if (data.error) {
+      if (data.error || data.feedItems.length == 0) {
 
-        PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, data.error), 'warning');
+        var message = data.error? data.error : 'This feed is empty';
+
+        PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
 
         var $w3cLink = $('<a>'),
             $validCssIcon = $('<i>');
 
         $validCssIcon
-          .attr('class', 'item-icon icon-w3c')
-          .attr('titre', PTL.tr('Validate /verify this feed file with the W3C'))
-          .appendTo($w3cLink);
+            .attr('class', 'item-icon icon-w3c')
+            .attr('titre', PTL.tr('Validate /verify this feed file with the W3C'))
+            .appendTo($w3cLink);
 
-        $w3cLink
-          .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-          .appendTo($feedBody);
+          $w3cLink
+            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
+            .appendTo($feedBody);
 
-        $feedLink
-          .text(PTL.tr('Error'))
-          .addClass('translate danger')
-          .data('content', PTL.tr('Error'));
+          $feedLink
+            .text(PTL.tr('Error'))
+            .addClass('translate danger')
+            .data('content', PTL.tr('Error'));
 
-        var $errorTitle = $('<strong>')
-            .attr('class', 'translate key')
-            .data('content', PTL.tr('Error'))
-            .text(PTL.tr('Error'));
+          var $errorTitle = $('<strong>')
+              .attr('class', 'translate key')
+              .data('content', PTL.tr('Error'))
+              .text(PTL.tr('Error'));
 
-        var $key = $('<strong>')
-            .attr('class', 'translate key')
-            .data('content', PTL.tr('Type'))
-            .text(PTL.tr('Type'));
+          var $key = $('<strong>')
+              .attr('class', 'translate key')
+              .data('content', PTL.tr('Type'))
+              .text(PTL.tr('Type'));
 
-        var $value = $('<strong>')
-            .attr('class', 'value')
-            .text(data.error);
+          var $value = $('<strong>')
+              .attr('class', 'value')
+              .text(message);
 
         var $errorLink = $('<a>')
-            .attr('href', feedUrl)
-            .text(feedUrl);
+              .attr('href', feedUrl)
+              .text(feedUrl);
 
-        var $validateLink = $('<a>')
-            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-            .text(PTL.tr('validate'));
+          var $validateLink = $('<a>')
+              .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
+              .text(PTL.tr('validate'));
 
-        var $errorItem = $('<li>')
-            .attr('class', 'feed-item error')
-            .append($errorTitle)
-            .append('&nbsp;')
-            .append($errorLink)
-            .append('&nbsp; (')
-            .append($validateLink)
-            .append(')<br/>')
-            .append($key)
-            .append('&nbsp;')
-            .append($value);
+          var $errorItem = $('<li>')
+              .attr('class', 'feed-item error')
+              .append($errorTitle)
+              .append('&nbsp;')
+              .append($errorLink)
+              .append('&nbsp; (')
+              .append($validateLink)
+              .append(')<br/>')
+              .append($key)
+              .append('&nbsp;')
+              .append($value);
 
-        $feedBody
-          .append($errorItem);
+          $feedBody
+            .append($errorItem);
 
-        $feedIcon.addClass('icon-rzz yowzo');
-        $feedToggle.css('background-image', 'none');
+          $feedIcon.addClass('icon-rzz yowzo');
+          $feedToggle.css('background-image', 'none');
 
-        return;
+          return;
 
-      }
+        } else {
+
+          $.get("/favicon", {
+            url: decodeURI(feedHost),
+            dataType: "json"
+          }, function() {
+            // console.log('feedHost: %s (icon %s)', feedHost, icon);
+          }).done(function(icon) {
+
+            $feedToggle.css('background-image','url(' + icon + ')');
+            $feedIcon.removeClass('icon-rzz');
+            $header.data('img', icon);
+
+          }).fail(function() {
+            $feedIcon.addClass('icon-rzz yowzo');
+            $feedToggle.css('background-image', 'none');
+          });
+
+        }
 
       $.each(data.feedItems, function(index, item) {
 
@@ -395,22 +417,6 @@ PTL.feed = {
       if (progress) progress.increment();
       $refreshButton.removeClass('spin');
 
-    });
-
-    $.get("/favicon", {
-      url: decodeURI(feedHost),
-      dataType: "json"
-    }, function() {
-      // console.log('feedHost: %s (icon %s)', feedHost, icon);
-    }).done(function(icon) {
-
-      $feedToggle.css('background-image','url(' + icon + ')');
-      $feedIcon.removeClass('icon-rzz');
-      $header.data('img', icon);
-
-    }).fail(function() {
-      $feedIcon.addClass('icon-rzz yowzo');
-      $feedToggle.css('background-image', 'none');
     });
 
   }
