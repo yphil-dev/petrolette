@@ -4,7 +4,6 @@ const express = require('express'),
       FeedParser = require('feedparser'),
       request = require('request'),
       feedrat = require('feedrat'),
-      http = require("http"),
       fs = require('fs'),
       path = require('path'),
       crypto = require('crypto'),
@@ -17,13 +16,7 @@ require('events').EventEmitter.defaultMaxListeners = 15;
 console.log('####### START');
 
 process.on('uncaughtException', function(err) {
-  console.log('### BIG ONE (%s) : ', err);
-});
-
-var d = require('domain').create();
-d.on('error', function(err){
-  // handle the error safely
-  console.log(err);
+  console.log('### uncaughtException (%s) : ', err);
 });
 
 function escape(s) {
@@ -101,34 +94,22 @@ function getFeed (urlfeed, callback) {
 
   req
     .on ('error', function (err) {
-      console.log('RHA (%s)', err);
-      // callback ('err');
+      callback(err.toString());
     })
     .on ('response', function (res) {
-
       if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
-
-      if (res && typeof res !== 'undefined' && res.statusCode === 200 && res.headers['content-type'] && res.headers['content-type'].includes('xml')) {
-
-
-        var encoding = res.headers['content-encoding'] || 'identity',
-            charset = getParams(res.headers['content-type'] || '').charset;
-        res = maybeDecompress(res, encoding);
-        res = maybeTranslate(res, charset);
-
-        res.pipe (feedparser);
-
-      }
-
+      var encoding = res.headers['content-encoding'] || 'identity',
+          charset = getParams(res.headers['content-type'] || '').charset;
+      res = maybeDecompress(res, encoding);
+      res = maybeTranslate(res, charset);
+      res.pipe (feedparser);
     });
 
   feedparser
     .on ('readable', function () {
       try {
         var item = this.read ();
-        if (item !== null) { //2/9/17 by DW
-          feedItems.push (item);
-        }
+        if (item !== null) feedItems.push (item);
       }
       catch (err) {
         console.log('ERR (%s)', err.message);
@@ -141,12 +122,9 @@ function getFeed (urlfeed, callback) {
     .on ('end', function () {
       var meta = this.meta;
 
-    callback ('Feed OK', feedItems, meta.title, meta.link);
+      callback ('Feed OK', feedItems, meta.title, meta.link);
 
-    // d.run(function(){
-    // });
-
-    return;
+      return;
   });
 }
 
@@ -161,30 +139,23 @@ router.get('/feed', function(req, res) {
     })
     .on('response', function(response) {
 
-      console.log ('### %s status: %s, content-type: %s', req.query.feedurl, response.statusCode, response.headers['content-type']);
-
-      // console.log('RESPONSE (%s) [%s]', req.query.feedurl, JSON.stringify(response));
-
       getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
 
-          console.log('ERR: (%s)', err);
+        if (feedItems && !res.headersSent) {
+          console.log('Sending (%s) - %s Header status: (%s)', req.query.feedurl, new Date().getTime(), res.headersSent);
+          res.send({
+            feedItems: feedItems,
+            feedLink: feedLink,
+            feedTitle: feedTitle
+          });
 
-          if (feedItems && !res.headersSent) {
-            console.log('Sending (%s) - %s Header status: (%s)', req.query.feedurl, new Date().getTime(), res.headersSent);
-            res.send({
-                feedItems: feedItems,
-                feedLink: feedLink,
-                feedTitle: feedTitle
-              });
+          return;
 
-            return;
+        } else if (!res.headersSent) {
+          res.send({error:err});
+        }
 
-          } else if (!res.headersSent) {
-            res.send({error:err});
-          } else {
-          }
-
-        });
+      });
 
     });
 

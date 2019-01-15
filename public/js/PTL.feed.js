@@ -198,46 +198,39 @@ PTL.feed = {
             .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
             .appendTo($feedBody);
 
-          $feedLink
-            .text(PTL.tr('Error'))
-            .addClass('translate danger')
-            .data('content', PTL.tr('Error'));
+        $feedLink
+          .text(PTL.tr('Error'))
+          .addClass('translate danger')
+          .data('content', PTL.tr('Error'));
 
-          var $errorTitle = $('<strong>')
-              .attr('class', 'translate key')
-              .data('content', PTL.tr('Error'))
-              .text(PTL.tr('Error'));
-
-          var $key = $('<strong>')
+        var $key = $('<strong>')
               .attr('class', 'translate key')
               .data('content', PTL.tr('Type'))
               .text(PTL.tr('Type'));
 
-          var $value = $('<strong>')
-              .attr('class', 'value')
-              .text(message);
+        var $value = $('<strong>')
+            .attr('class', 'value')
+            .text(message);
 
         var $errorLink = $('<a>')
-              .attr('href', feedUrl)
-              .text(feedUrl);
+            .attr('href', feedUrl)
+            .text(feedUrl);
 
-          var $validateLink = $('<a>')
-              .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-              .text(PTL.tr('validate'));
+        var $validateLink = $('<a>')
+            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
+            .text(PTL.tr('validate'));
 
-          var $errorItem = $('<li>')
-              .attr('class', 'feed-item error')
-        // .append($errorTitle)
-        // .append('&nbsp;')
-              .append($errorLink)
-              .append('&nbsp; (')
-              .append($validateLink)
-              .append(')<br/>')
-              .append($key)
-              .append('&nbsp;')
-              .append($value);
+        var $errorItem = $('<li>')
+            .attr('class', 'feed-item error')
+            .append($errorLink)
+            .append('&nbsp; (')
+            .append($validateLink)
+            .append(')<br/>')
+            .append($key)
+            .append('&nbsp;')
+            .append($value);
 
-          $feedBody
+        $feedBody
             .append($errorItem);
 
           $feedIcon.addClass('icon-rzz yowzo');
