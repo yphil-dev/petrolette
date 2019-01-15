@@ -20,25 +20,24 @@ PTL.prefs = (function() {
     {"name":"tek",
      "columns": [
        [
-         {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 4},
-         {"url":"http://feeds.feedburner.com/thechangelog","type":"mixed","limit": 4}
+         {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 8},
+         {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8}
        ],
        [
-         {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8},
-         {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 16}
-       ],
-       [
-         {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"photo","limit": 4},
+         {"url":"https://hacks.mozilla.org/feed/","type":"mixed","limit": 4},
          {"url":"https://thepiratebay.org/rss/top100/202","type":"text","limit": 12}
+       ],
+       [
+         {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 4},
+         {"url":"http://feeds.feedburner.com/thechangelog","type":"text","limit": 4}
        ]
      ]
     },
-    {"name":"imgs",
+    {"name":"img",
      "columns": [
        [
          {"url":"https://www.reddit.com/r/EarthPorn.rss","type":"photo","limit": 16},
-         {"url":"http://cabinporn.com/rss/","type":"photo","limit": 16},
-         {"url":"http://superphazed.tumblr.com/rss","type":"photo","limit": 8}
+         {"url":"http://cabinporn.com/rss/","type":"photo","limit": 16}
        ]
      ]
     },

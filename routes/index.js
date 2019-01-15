@@ -7,11 +7,17 @@ const express = require('express'),
       fs = require('fs'),
       path = require('path'),
       crypto = require('crypto'),
-      pjson = require('../package.json');
+      pjson = require('../package.json'),
+      Iconv = require('iconv').Iconv,
+      zlib = require('zlib');
 
 require('events').EventEmitter.defaultMaxListeners = 15;
 
 console.log('####### START');
+
+process.on('uncaughtException', function(err) {
+  console.log('### uncaughtException (%s) : ', err);
+});
 
 function escape(s) {
   if (s) {
@@ -37,74 +43,122 @@ router.get('/about/javascript', function(req, res) {
   res.render('javascript');
 });
 
+function maybeDecompress (res, encoding) {
+  var decompress;
+  if (encoding.match(/\bdeflate\b/)) {
+    decompress = zlib.createInflate();
+  } else if (encoding.match(/\bgzip\b/)) {
+    decompress = zlib.createGunzip();
+  }
+  return decompress ? res.pipe(decompress) : res;
+}
+
+function maybeTranslate (res, charset) {
+  var iconv;
+  // Use iconv if its not utf8 already.
+  if (!iconv && charset && !/utf-*8/i.test(charset)) {
+    try {
+      iconv = new Iconv(charset, 'utf-8');
+      console.log('Converting from charset %s to utf-8', charset);
+      iconv.on('error', done);
+      // If we're using iconv, stream will be the output of iconv
+      // otherwise it will remain the output of request
+      res = res.pipe(iconv);
+    } catch(err) {
+      res.emit('error', err);
+    }
+  }
+  return res;
+}
+
+function getParams(str) {
+  var params = str.split(';').reduce(function (params, param) {
+    var parts = param.split('=').map(function (part) { return part.trim(); });
+    if (parts.length === 2) {
+      params[parts[0]] = parts[1];
+    }
+    return params;
+  }, {});
+  return params;
+}
+
 function getFeed (urlfeed, callback) {
 
-  var options = {
-    url: urlfeed,
-    jar: true, // enable cookie    maxRedirects:2,
-    headers: {
-      'User-Agent': 'Mozilla/5.0',
-      'Accept': 'application/rss+xml, application/rdf+xml;q=0.8, application/atom+xml;q=0.6, application/xml;q=0.4, text/xml;q=0.4'
-    }
-  };
-
-  // var req = request (urlfeed);
-  var req = request(options);
-
-  if (!req) {
-    console.log('erreur');
-  }
-
-  // req.setMaxListeners(0);
+  var req = request(urlfeed, {timeout: 10000, pool: false});
+  req.setMaxListeners(50);
+  req.setHeader('user-agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36');
+  req.setHeader('accept', 'text/html,application/xhtml+xml');
 
   var feedparser = new FeedParser ();
   var feedItems = [];
-  // TODO: on('error')
-  req.on ('response', function (res) {
-    var stream = this;
-    if (res && typeof res !== 'undefined' && res.statusCode === 200 && res.headers['content-type'] && res.headers['content-type'].includes('xml')) {
-      stream.pipe (feedparser);
 
-    } else {
-      // console.log ('getFeed: Content-type Error read %s (%s) .', urlfeed, res.headers['content-type']);
-      // callback (res.headers['content-type']);
-      callback ('Bad feed: ');
-      return;
-    }
-  });
+  req
+    .on ('error', function (err) {
+      callback(err.toString());
+    })
+    .on ('response', function (res) {
+      if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
+      var encoding = res.headers['content-encoding'] || 'identity',
+          charset = getParams(res.headers['content-type'] || '').charset;
+      res = maybeDecompress(res, encoding);
+      res = maybeTranslate(res, charset);
+      res.pipe (feedparser);
+    });
 
-  feedparser.on ('readable', function () {
-    try {
-      var item = this.read ();
-      if (item !== null) { //2/9/17 by DW
-        feedItems.push (item);
+  feedparser
+    .on ('readable', function () {
+      try {
+        var item = this.read ();
+        if (item !== null) feedItems.push (item);
       }
-    }
-    catch (err) {
-      // console.log ('getFeed: err.message == ' + err.message);
-    }
-  }).on ('end', function () {
-    var meta = this.meta;
-    callback ('Feed OK', feedItems, meta.title, meta.link);
-    return;
-  }).on ('error', function (err) {
-    callback ('Bad feed: ', err);
+      catch (err) {
+        console.log('ERR (%s)', err.message);
+      }
+    })
+    .on ('error', function (err) {
+      console.log('HUM (%s)', err);
+      // callback ('err');
+    })
+    .on ('end', function () {
+      var meta = this.meta;
+
+      callback ('Feed OK', feedItems, meta.title, meta.link);
+
+      return;
   });
 }
 
 router.get('/feed', function(req, res) {
 
-  getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
-    if (feedItems) {
-      res.send({
-        feedItems: feedItems,
-        feedLink: feedLink,
-        feedTitle: feedTitle
+  var myreq = request(req.query.feedurl);
+
+  myreq
+    .on('error', function(error) {
+      // The only way so far to catch a DNS error
+      res.send({error:error.code});
+    })
+    .on('response', function(response) {
+
+      getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
+
+        if (feedItems && !res.headersSent) {
+          console.log('Sending (%s) - %s Header status: (%s)', req.query.feedurl, new Date().getTime(), res.headersSent);
+          res.send({
+            feedItems: feedItems,
+            feedLink: feedLink,
+            feedTitle: feedTitle
+          });
+
+          return;
+
+        } else if (!res.headersSent) {
+          res.send({error:err});
+        }
+
       });
-    } else {
-      res.send({error:err});
-    }
-  });
+
+    });
+
 
 });
 
