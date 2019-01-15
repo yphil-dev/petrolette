@@ -116,7 +116,8 @@ function getFeed (urlfeed, callback) {
       }
     })
     .on ('error', function (err) {
-      console.log('HUM (%s)', err);
+      var meta = this.meta;
+      console.log('HUM (%s)', err, meta.title);
       // callback ('err');
     })
     .on ('end', function () {
@@ -130,9 +131,9 @@ function getFeed (urlfeed, callback) {
 
 router.get('/feed', function(req, res) {
 
-  var myreq = request(req.query.feedurl);
+  var dnsreq = request(req.query.feedurl);
 
-  myreq
+  dnsreq
     .on('error', function(error) {
       // The only way so far to catch a DNS error
       res.send({error:error.code});
@@ -142,24 +143,18 @@ router.get('/feed', function(req, res) {
       getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
 
         if (feedItems && !res.headersSent) {
-          console.log('Sending (%s) - %s Header status: (%s)', req.query.feedurl, new Date().getTime(), res.headersSent);
           res.send({
             feedItems: feedItems,
             feedLink: feedLink,
             feedTitle: feedTitle
           });
-
           return;
 
         } else if (!res.headersSent) {
           res.send({error:err});
         }
-
       });
-
     });
-
-
 });
 
 router.get('/favicon', function(req, res) {
