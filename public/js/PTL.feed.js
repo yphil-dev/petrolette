@@ -231,7 +231,7 @@ PTL.feed = {
             .append($value);
 
         $feedBody
-            .append($errorItem);
+          .append($errorItem);
 
           $feedIcon.addClass('icon-rzz yowzo');
           $feedToggle.css('background-image', 'none');
