@@ -148,7 +148,7 @@ router.get('/feed', function(req, res) {
             feedLink: feedLink,
             feedTitle: feedTitle
           });
-          return;
+          // return;
 
         } else if (!res.headersSent) {
           res.send({error:err});

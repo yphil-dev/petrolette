@@ -1,6 +1,6 @@
 {
   "apps" : [{
-    "name"            : "petrolette",
+    "name"            : "ptl",
     "script"          : "./bin/www",
     "watch"           : true,
     "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],

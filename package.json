@@ -14,9 +14,9 @@
   "scripts": {
     "start": "pm2 start pm2.config.json",
     "restart": "pm2 restart pm2.config.json",
-    "stop": "pm2 stop petrolette",
-    "show": "pm2 show petrolette",
-    "logs": "pm2 logs petrolette",
+    "stop": "pm2 stop ptl",
+    "show": "pm2 show ptl",
+    "logs": "pm2 logs ptl",
     "postinstall": "bower install"
   },
   "dependencies": {
