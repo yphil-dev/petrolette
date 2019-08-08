@@ -6,7 +6,7 @@
     "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
     "log_date_format" : "YYYY-MM-DD HH:mm",
     "env" : {
-      "PORT" : 8080,
+      "PORT" : 8000,
       "FAVICONS_CACHE_DIR": "favicons-cache"
     },
     "env_production" : {
