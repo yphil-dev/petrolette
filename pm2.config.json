@@ -1,16 +1,21 @@
 {
-  "apps" : [{
-    "name"            : "ptl",
-    "script"          : "./bin/www",
-    "watch"           : true,
-    "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
-    "log_date_format" : "YYYY-MM-DD HH:mm",
-    "env" : {
-      "PORT" : 8000,
-      "FAVICONS_CACHE_DIR": "favicons-cache"
-    },
-    "env_production" : {
-      "NODE_ENV": "production"
+  "apps" : [
+    {
+      "name"            : "petrolette",
+      "script"          : "./bin/www",
+      "watch"           : true,
+      "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
+      "log_date_format" : "YYYY-MM-DD HH:mm",
+      "env" : {
+        "PORT" : 8080,
+        "NODE_ENV": "dev",
+        "FAVICONS_CACHE_DIR": "favicons-cache"
+      },
+      "env_ssl" : {
+        "PORT" : 8080,
+        "NODE_ENV": "ssl",
+        "FAVICONS_CACHE_DIR": "favicons-cache"
+      }
     }
-  }]
+  ]
 }
