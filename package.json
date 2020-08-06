@@ -13,10 +13,11 @@
   },
   "scripts": {
     "start": "pm2 start pm2.config.json",
+    "start-ssl": "pm2 start pm2.config.json --env ssl",
     "restart": "pm2 restart pm2.config.json",
-    "stop": "pm2 stop ptl",
-    "show": "pm2 show ptl",
-    "logs": "pm2 logs ptl",
+    "stop": "pm2 stop petrolette",
+    "show": "pm2 show petrolette",
+    "log": "pm2 logs petrolette",
     "postinstall": "bower install"
   },
   "dependencies": {
