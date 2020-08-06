@@ -117,7 +117,7 @@ function getFeed (urlfeed, callback) {
     })
     .on ('error', function (err) {
       var meta = this.meta;
-      console.log('HUM (%s)', err, meta.title);
+      console.log('HUUM (%s) %s %s', err, meta.title, urlfeed);
       // callback ('err');
     })
     .on ('end', function () {

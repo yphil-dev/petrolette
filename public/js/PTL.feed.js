@@ -260,6 +260,9 @@ PTL.feed = {
 
       $.each(data.feedItems, function(index, item) {
 
+        // PTL.util.console('PLOP', 'warning');
+
+
         if (index == parseInt(feedLimit)) return false;
 
         // console.log('i: (%s)', JSON.stringify(item));
@@ -326,7 +329,15 @@ PTL.feed = {
         }
 
         if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
-          if (!imageUrl && imgTypes.indexOf(item.enclosures[0].type) > -1) {
+
+
+          if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
+            console.log('Wopop on %s!: (%s) imageUrl: %s', feedUrl, item.enclosures[0].url, imageUrl);
+            imageUrl = item.enclosures[0].url;
+
+          }
+
+          if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
             imageUrl = item.enclosures[0].url;
           }
 
