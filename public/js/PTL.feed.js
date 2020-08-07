@@ -173,7 +173,7 @@ PTL.feed = {
       $feedBody.empty();
 
     }).fail(function(error) {
-      console.log('ERROR!!');
+      PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
     }).done(function(data) {
 
       $feedLink.text(data.feedTitle || feedUrl)
@@ -282,22 +282,16 @@ PTL.feed = {
                         'image/gif',
                         'image/png'];
 
-
-        console.log('DESCRIPTION!! (%s)', feedUrl);
-
         if (item.summary){
-          console.log('item.summary : %s', item.summary)
           summary = item.summary;
         }
 
         if (item.description){
-          console.log('item.description : %s', item.description)
           summary = item.description;
         }
 
         if (item['media:group']) {
           if (item['media:group']['media:description']) {
-            console.log('group : %s', item['media:group']['media:description']["#"])
             summary = item['media:group']['media:description']["#"];
           }
         }

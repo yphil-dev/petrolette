@@ -36,8 +36,8 @@ PTL.prefs = (function() {
     {"name":"img",
      "columns": [
        [
-         {"url":"https://www.reddit.com/r/EarthPorn.rss","type":"photo","limit": 16},
-         {"url":"http://cabinporn.com/rss/","type":"photo","limit": 16}
+         {"url":"http://cabinporn.com/rss/","type":"photo","limit": 16},
+         {"url":"https://www.reddit.com/r/EarthPorn.rss","type":"photo","limit": 16}
        ]
      ]
     },
