@@ -38,7 +38,7 @@ git clone https://framagit.org/yphil/petrolette
 cd petrolette
 npm install
 npm start
-firefox http://localhost:8000
+firefox http://localhost:8080
 
 ```
 
