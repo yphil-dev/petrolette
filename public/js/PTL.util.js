@@ -29,6 +29,10 @@ PTL.util = {
   isUrl:function(u) {
     return new RegExp('^(?:[a-z]+:)?//', 'i').test(u);
   },
+  sanitizeInput:function(i) {
+    var doc = new DOMParser().parseFromString(i, 'text/html');
+    return doc.body.textContent || "";
+  },
   isOldPTLStruct:function(o) {
     PTL.tab.empty();
     var groups = [],

@@ -263,11 +263,17 @@ PTL.feed = {
         // PTL.util.console('PLOP', 'warning');
 
 
+        // function strip(html){
+        //   var doc = new DOMParser().parseFromString(html, 'text/html');
+        //   return doc.body.textContent || "";
+        // }
+
         if (index == parseInt(feedLimit)) return false;
 
         // console.log('i: (%s)', JSON.stringify(item));
 
         var $description = $.parseHTML(item.description),
+            summary,
             imageUrl,
             // imageUrls = [],
             imgTypes = ['image',
@@ -276,6 +282,26 @@ PTL.feed = {
                         'image/gif',
                         'image/png'];
 
+
+        console.log('DESCRIPTION!! (%s)', feedUrl);
+
+        if (item.summary){
+          console.log('item.summary : %s', item.summary)
+          summary = item.summary;
+        }
+
+        if (item.description){
+          console.log('item.description : %s', item.description)
+          summary = item.description;
+        }
+
+        if (item['media:group']) {
+          if (item['media:group']['media:description']) {
+            console.log('group : %s', item['media:group']['media:description']["#"])
+            summary = item['media:group']['media:description']["#"];
+          }
+        }
+
         var $imageLink = $('<a>').attr('target', '_blank'),
             $itemLink = $('<a>').attr('target', '_blank'),
             $soundLink = $('<a>').attr('target', '_blank'),
@@ -283,7 +309,7 @@ PTL.feed = {
             $commentsIcon = $('<i>'),
             $soundIcon = $('<i>'),
             $image,
-            $summary = $('<null>').append(item.summary || item.description).text(),
+            $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
             $itemDiv = $('<div>').attr('class', 'itemDiv'),
             $feedItem = $('<li>').attr('class', 'feed-item').attr('title', $summary.trim());
 
@@ -332,9 +358,7 @@ PTL.feed = {
 
 
           if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
-            console.log('Wopop on %s!: (%s) imageUrl: %s', feedUrl, item.enclosures[0].url, imageUrl);
             imageUrl = item.enclosures[0].url;
-
           }
 
           if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
