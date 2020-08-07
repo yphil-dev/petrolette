@@ -13,7 +13,7 @@ const express = require('express'),
 
 require('events').EventEmitter.defaultMaxListeners = 15;
 
-console.log('####### START');
+console.log('####### START ## Version (%s)', pjson.version);
 
 process.on('uncaughtException', function(err) {
   console.log('### uncaughtException (%s) : ', err);
@@ -34,7 +34,7 @@ function escape(s) {
 
 router.get('/', function(req, res) {
   res.render('index', {
-    queryString:escape(req.query.add),
+    queryString: escape(req.query.add),
     version: pjson.version
   });
 });
