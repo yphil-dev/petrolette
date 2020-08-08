@@ -200,6 +200,8 @@ PTL.i18n.translations = {
 
   "What exactly is Pétrolette?" : { fr: "Pétrolette, c'est quoi au juste?" , ja: "Pétroletteとは何ですか？", es: "¿Qué es Pétrolette?" },
 
+  "Welcome to Pétrolette" : { fr: "Bienvenue dans Pétrolette" , ja: "ペトロレットへようこそ", es: "Bienvenido a Pétrolette" },
+
   "How does it work?" : { fr: "Comment ça marche ?" , ja: "どのように機能するのですか？", es: "¿Como funciona?" },
 
   "Take the tour" : { fr: "Visite guidée" , ja: "ガイド付き訪問", es: "Visita guiada" },
