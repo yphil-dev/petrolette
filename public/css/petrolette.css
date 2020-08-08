@@ -49,11 +49,11 @@
 
 @media screen and (max-width: 700px) {
   :root {
-    --header-height: 42px;
+    --header-height: 2.2em;
     --controls-width: 75%;
-    --controls-font-size: 29pt;
-    --controls-toggle-size: 42px;
-    --controls-toggle-margin: -2px 0 0 -2px;
+    --controls-font-size: 2em;
+    --controls-toggle-size: 2em;
+    /* --controls-toggle-margin: -0.5em 0 0 -0.5em; */
 
     --panel-flex: column;
     --column-buttons-display: none;
@@ -1051,7 +1051,7 @@ li.feed.selected {
 .feed-control {
   cursor: pointer;
   font-size: var(--controls-font-size);
-  margin: 0 0 0 2px;
+  /* margin: 0 0 0 2px; */
 }
 
 .feed-header > .feed-toggle {
@@ -1062,7 +1062,7 @@ li.feed.selected {
 
   background-repeat: no-repeat;
   /* background-size: var(--controls-toggle-size) var(--controls-toggle-size); */
-  background-size: cover;
+  background-size: contain;
   /* height: var(--controls-toggle-size); */
   /* width: var(--controls-toggle-size); */
   /* height: var(--controls-toggle-size); */
