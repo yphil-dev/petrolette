@@ -2,443 +2,449 @@
 
 PTL.feed = {
 
-  add:function($column, url, type, limit, clickNew, isQueryString, progress) {
+    add:function($column, url, type, limit, clickNew, isQueryString, progress) {
 
-    var feedIndex = $('#tabs').find('.feed').length;
+        var feedIndex = $('#tabs').find('.feed').length;
 
-    var $feed = $('<li>')
-        .attr('class', 'feed')
-        .data('url', url)
-        .data('type', type)
-        .data('limit', limit);
+        var $feed = $('<li>')
+            .attr('class', 'feed')
+            .data('url', url)
+            .data('type', type)
+            .data('limit', limit);
 
-    var $feedIcon = $('<i>')
-        .attr('class', 'feed-control feedIcon icon-rzz rotate translate')
-        .data('title', 'Fold / unfold this feed (%1)', url)
-        .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
-        .click(function() {
-          $(this).toggleClass('down')
-            .parent().parent().parent()
-            .children('div.feed-body')
-            .slideToggle(350);
-        });
+        var $feedIcon = $('<i>')
+            .attr('class', 'feed-control feedIcon icon-rzz rotate translate')
+            .data('title', 'Fold / unfold this feed (%1)', url)
+            .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
+            .click(function() {
+                $(this).toggleClass('down')
+                    .parent().parent().parent()
+                    .children('div.feed-body')
+                    .slideToggle(350);
+            });
 
-    var $selectIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-uncheck feed-select')
-        .data('title', 'Select this feed (%1)', url)
-        .attr('title', PTL.tr('Select this feed (%1)', url))
-        .click(function() {
-          $(this).parent().parent().parent().parent()
-            .toggleClass('selected');
-          $(this).toggleClass('icon-ok icon-uncheck');
-        });
+        var $selectIcon = $('<i>')
+            .attr('class', 'feed-control translate icon-uncheck feed-select')
+            .data('title', 'Select this feed (%1)', url)
+            .attr('title', PTL.tr('Select this feed (%1)', url))
+            .click(function() {
+                $(this).parent().parent().parent().parent()
+                    .toggleClass('selected');
+                $(this).toggleClass('icon-ok icon-uncheck');
+            });
 
-    var $deleteIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-cancel feed-delete')
-        .data('title', 'Delete this feed (%1)', url)
-        .attr('title', PTL.tr('Delete this feed (%1)', url))
-        .click(function() {
-          PTL.dialog.killFeed($(this));
-        });
+        var $deleteIcon = $('<i>')
+            .attr('class', 'feed-control translate icon-cancel feed-delete')
+            .data('title', 'Delete this feed (%1)', url)
+            .attr('title', PTL.tr('Delete this feed (%1)', url))
+            .click(function() {
+                PTL.dialog.killFeed($(this));
+            });
 
-    var $prefsIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-pencil feed-edit')
-        .data('title', PTL.tr('Change this feed (%1) parameters', url))
-        .attr('title', PTL.tr('Change this feed (%1) parameters', url))
-        .click(function() {
-          PTL.dialog.feedPrefs($(this));
-        });
+        var $prefsIcon = $('<i>')
+            .attr('class', 'feed-control translate icon-pencil feed-edit')
+            .data('title', PTL.tr('Change this feed (%1) parameters', url))
+            .attr('title', PTL.tr('Change this feed (%1) parameters', url))
+            .click(function() {
+                PTL.dialog.feedPrefs($(this));
+            });
 
-    var $reloadIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-arrows-cw feed-refresh')
-        .data('title', PTL.tr('Refresh this feed (%1)', url))
-        .attr('title', PTL.tr('Refresh this feed (%1)', url))
-        .click(function() {
-          PTL.feed.populate($(this), progress);
-        });
+        var $reloadIcon = $('<i>')
+            .attr('class', 'feed-control translate icon-arrows-cw feed-refresh')
+            .data('title', PTL.tr('Refresh this feed (%1)', url))
+            .attr('title', PTL.tr('Refresh this feed (%1)', url))
+            .click(function() {
+                PTL.feed.populate($(this), progress);
+            });
 
-    var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
-        .data('index', feedIndex)
-        .data('url', url)
-        .data('type', type)
-        .data('limit', limit);
+        var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
+            .data('index', feedIndex)
+            .data('url', url)
+            .data('type', type)
+            .data('limit', limit);
 
-    var $feedHandle = $('<div>')
-        .data('title', PTL.tr('Move this feed (%1)', url))
-        .attr('title', PTL.tr('Move this feed (%1)', url))
-        .attr('class', 'feed-handle');
+        var $feedHandle = $('<div>')
+            .data('title', PTL.tr('Move this feed (%1)', url))
+            .attr('title', PTL.tr('Move this feed (%1)', url))
+            .attr('class', 'feed-handle');
 
-    var $feedBody = $('<div>').attr('class', 'feed-body'),
-        $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
-        $header = $('<div>').attr('class', 'feed-header'),
-        $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon),
-        $selectDiv = $('<div>').append($selectIcon),
-        $deleteDiv = $('<div>').append($deleteIcon),
-        $prefsDiv = $('<div>').append($prefsIcon),
-        $reloadDiv = $('<div>').append($reloadIcon);
+        var $feedBody = $('<div>').attr('class', 'feed-body'),
+            $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
+            $header = $('<div>').attr('class', 'feed-header'),
+            $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon),
+            $selectDiv = $('<div>').append($selectIcon),
+            $deleteDiv = $('<div>').append($deleteIcon),
+            $prefsDiv = $('<div>').append($prefsIcon),
+            $reloadDiv = $('<div>').append($reloadIcon);
 
-    var $titleDiv = $('<div>')
-        .attr('title', url)
-        .attr('class', 'feed-title truncate');
+        var $titleDiv = $('<div>')
+            .attr('title', url)
+            .attr('class', 'feed-title truncate');
 
-    var $titleLink = $('<a>')
-        .attr('href', url)
-        .attr('target', '_blank')
-        .html(url);
+        var $titleLink = $('<a>')
+            .attr('href', url)
+            .attr('target', '_blank')
+            .html(url);
 
-    $feedControls.hover (
-      function() {$(this).find('.collapsible').show('fade', 'fast');},
-      function() {$(this).find('.collapsible').hide('fade', 'slow');}
-    );
+        $feedControls.hover (
+            function() {$(this).find('.collapsible').show('fade', 'fast');},
+            function() {$(this).find('.collapsible').hide('fade', 'slow');}
+        );
 
-    $header.hover (function() {
+        $header.hover (function() {
 
-      var iconImg = $feedToggle.css('background-image');
+            var iconImg = $feedToggle.css('background-image');
 
-      $feedToggle.css('background-image', 'none');
-
-      $feedIcon.addClass('icon-down-big').removeClass('icon-rzz');
-
-      $(this).data('img', iconImg);
-
-    }, function() {
-
-      $feedIcon.removeClass('icon-down-big');
-
-      if ($(this).data('img') !== 'none') {
-        $feedToggle.css('background-image', $(this).data('img'));
-      } else {
-        $feedIcon.addClass('icon-rzz');
-      }
-
-    });
-
-    if (!PTL.util.isMobile()) {
-      $selectDiv.addClass('collapsible');
-      $deleteDiv.addClass('collapsible');
-      $prefsDiv.addClass('collapsible');
-
-      $feedControls.append($selectDiv, $deleteDiv);
-    }
-
-    $header.append($feedToggle,
-                   $feedHandle,
-                   $titleDiv.append($titleLink),
-                   $feedControls.append($prefsDiv, $reloadDiv));
-
-    $feed.append($header, $feedBody.append($feedBodyUl));
-
-    if (clickNew) {
-      $feed.prependTo($column);
-      PTL.dialog.feedPrefs($prefsIcon, true, isQueryString);
-    } else {
-      $feed.appendTo($column);
-      $reloadIcon.click();
-    }
-
-  },
-  populate:function($button, progress) {
-
-    var $dataStore = $button.parent().parent(),
-        $refreshButton = $dataStore.find('i.feed-refresh'),
-        $header = $dataStore.parent(),
-        $panel = $dataStore.parent().parent().parent(),
-        $feed = $dataStore.parent().parent(),
-        $feedTitle = $feed.children().children('.feed-title'),
-        $feedLink = $feedTitle.children('a'),
-        $feedBody = $feed.children().children('ul.feed-body'),
-        feedUrl = $dataStore.data('url'),
-        feedType = $dataStore.data('type'),
-        feedLimit = $dataStore.data('limit'),
-        $feedToggle = $feed.find('.feed-toggle'),
-        $feedIcon = $feed.find('.feed-toggle > i');
-
-    var l = PTL.util.getLocation(feedUrl),
-        feedProtocol = l.protocol ? l.protocol + '//' : '//',
-        feedHost = feedProtocol + l.hostname,
-        subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
-
-    if (subdomain === 'rss' || subdomain === 'feeds') {
-      feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
-    }
-
-    $refreshButton.addClass('spin');
-    $feedLink.removeClass('danger');
-
-    $.get("/feed", {
-      feedurl: feedUrl,
-      dataType: 'json'
-    }, function() {
-
-      $feedBody.empty();
-
-    }).fail(function(error) {
-      PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
-    }).done(function(data) {
-
-      $feedLink.text(data.feedTitle || feedUrl)
-          .attr('href', data.feedLink)
-          .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
-
-      if (data.error || data.feedItems.length == 0) {
-
-        var message = data.error? data.error : PTL.tr('Empty feed');
-
-        PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
-
-        var $w3cLink = $('<a>'),
-            $validCssIcon = $('<i>');
-
-        $validCssIcon
-            .attr('class', 'item-icon icon-w3c')
-            .attr('titre', PTL.tr('Validate /verify this feed file with the W3C'))
-            .appendTo($w3cLink);
-
-          $w3cLink
-            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-            .appendTo($feedBody);
-
-        $feedLink
-          .text(PTL.tr('Error'))
-          .addClass('translate danger')
-          .data('content', PTL.tr('Error'));
-
-        var $key = $('<strong>')
-              .attr('class', 'translate key')
-              .data('content', PTL.tr('Type'))
-              .text(PTL.tr('Type'));
-
-        var $value = $('<strong>')
-            .attr('class', 'value')
-            .text(message);
-
-        var $errorLink = $('<a>')
-            .attr('href', feedUrl)
-            .text(feedUrl);
-
-        var $validateLink = $('<a>')
-            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-            .text(PTL.tr('validate'));
-
-        var $errorItem = $('<li>')
-            .attr('class', 'feed-item error')
-            .append($errorLink)
-            .append('&nbsp; (')
-            .append($validateLink)
-            .append(')<br/>')
-            .append($key)
-            .append('&nbsp;')
-            .append($value);
-
-        $feedBody
-          .append($errorItem);
-
-          $feedIcon.addClass('icon-rzz yowzo');
-          $feedToggle.css('background-image', 'none');
-
-          return;
-
-        } else {
-
-          $.get("/favicon", {
-            url: decodeURI(feedHost),
-            dataType: "json"
-          }, function() {
-            // console.log('feedHost: %s (icon %s)', feedHost, icon);
-          }).done(function(icon) {
-
-            $feedToggle.css('background-image','url(' + icon + ')');
-            $feedIcon.removeClass('icon-rzz');
-            $header.data('img', icon);
-
-          }).fail(function() {
-            $feedIcon.addClass('icon-rzz yowzo');
             $feedToggle.css('background-image', 'none');
-          });
 
+            $feedIcon.addClass('icon-down-big').removeClass('icon-rzz');
+
+            $(this).data('img', iconImg);
+
+        }, function() {
+
+            $feedIcon.removeClass('icon-down-big');
+
+            if ($(this).data('img') !== 'none') {
+                $feedToggle.css('background-image', $(this).data('img'));
+            } else {
+                $feedIcon.addClass('icon-rzz');
+            }
+
+        });
+
+        if (!PTL.util.isMobile()) {
+            $selectDiv.addClass('collapsible');
+            $deleteDiv.addClass('collapsible');
+            $prefsDiv.addClass('collapsible');
+
+            $feedControls.append($selectDiv, $deleteDiv);
         }
 
-      $.each(data.feedItems, function(index, item) {
+        $header.append($feedToggle,
+                       $feedHandle,
+                       $titleDiv.append($titleLink),
+                       $feedControls.append($prefsDiv, $reloadDiv));
 
-        // PTL.util.console('PLOP', 'warning');
+        $feed.append($header, $feedBody.append($feedBodyUl));
 
-
-        // function strip(html){
-        //   var doc = new DOMParser().parseFromString(html, 'text/html');
-        //   return doc.body.textContent || "";
-        // }
-
-        if (index == parseInt(feedLimit)) return false;
-
-        // console.log('i: (%s)', JSON.stringify(item));
-
-        var $description = $.parseHTML(item.description),
-            summary,
-            imageUrl,
-            // imageUrls = [],
-            imgTypes = ['image',
-                        'image/jpg',
-                        'image/jpeg',
-                        'image/gif',
-                        'image/png'];
-
-        if (item.summary){
-          summary = item.summary;
+        if (clickNew) {
+            $feed.prependTo($column);
+            PTL.dialog.feedPrefs($prefsIcon, true, isQueryString);
+        } else {
+            $feed.appendTo($column);
+            $reloadIcon.click();
         }
 
-        if (item.description){
-          summary = item.description;
+    },
+    populate:function($button, progress) {
+
+        var $dataStore = $button.parent().parent(),
+            $refreshButton = $dataStore.find('i.feed-refresh'),
+            $header = $dataStore.parent(),
+            $panel = $dataStore.parent().parent().parent(),
+            $feed = $dataStore.parent().parent(),
+            $feedTitle = $feed.children().children('.feed-title'),
+            $feedLink = $feedTitle.children('a'),
+            $feedBody = $feed.children().children('ul.feed-body'),
+            feedUrl = $dataStore.data('url'),
+            feedType = $dataStore.data('type'),
+            feedLimit = $dataStore.data('limit'),
+            $feedToggle = $feed.find('.feed-toggle'),
+            $feedIcon = $feed.find('.feed-toggle > i');
+
+        var l = PTL.util.getLocation(feedUrl),
+            feedProtocol = l.protocol ? l.protocol + '//' : '//',
+            feedHost = feedProtocol + l.hostname,
+            subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
+
+        if (subdomain === 'rss' || subdomain === 'feeds') {
+            feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
         }
 
-        if (item['media:group']) {
-          if (item['media:group']['media:description']) {
-            summary = item['media:group']['media:description']["#"];
-          }
-        }
+        $refreshButton.addClass('spin');
+        $feedLink.removeClass('danger');
 
-        var $imageLink = $('<a>').attr('target', '_blank'),
-            $itemLink = $('<a>').attr('target', '_blank'),
-            $soundLink = $('<a>').attr('target', '_blank'),
-            $commentsLink = $('<a>').attr('target', '_blank'),
-            $commentsIcon = $('<i>'),
-            $soundIcon = $('<i>'),
-            $image,
-            $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
-            $itemDiv = $('<div>').attr('class', 'itemDiv'),
-            $feedItem = $('<li>').attr('class', 'feed-item').attr('title', $summary.trim());
+        $.get("/feed", {
+            feedurl: feedUrl,
+            dataType: 'json'
+        }, function() {
 
-        if (item.comments) {
-          $commentsIcon
-            .attr('class', 'item-icon icon-comments')
-            .appendTo($commentsLink);
+            $feedBody.empty();
 
-          $commentsLink
-            .attr('href', item.comments)
-            .appendTo($itemDiv);
-        }
+        }).fail(function(error) {
+            PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
+        }).done(function(data) {
 
-        var $tempDom = $('<null>').append($description);
+            $feedLink.text(data.feedTitle || feedUrl)
+                .attr('href', data.feedLink)
+                .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
 
-        if (item['mastodon:scope']) {
-          if (item['activity:object']) {
-            var links = item['activity:object'].link;
-            for (var i = 0, len = links.length; i < len; i++) {
-              // console.log('links[i]: %s (%s, %s)', links[i]['@'].type, $summary.trim(), links[i]['@'].href);
+            if (data.error || data.feedItems.length == 0) {
 
-              if (imgTypes.indexOf(links[i]['@'].type) > -1) {
-                imageUrl = links[i]['@'].href;
-                imageUrls.push(links[i]['@'].href);
-              }
+                var message = data.error? data.error : PTL.tr('Empty feed');
+
+                PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
+
+                var $w3cLink = $('<a>'),
+                    $validCssIcon = $('<i>');
+
+                $validCssIcon
+                    .attr('class', 'item-icon icon-w3c')
+                    .attr('titre', PTL.tr('Validate /verify this feed file with the W3C'))
+                    .appendTo($w3cLink);
+
+                $w3cLink
+                    .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
+                    .appendTo($feedBody);
+
+                $feedLink
+                    .text(PTL.tr('Error'))
+                    .addClass('translate danger')
+                    .data('content', PTL.tr('Error'));
+
+                var $key = $('<strong>')
+                    .attr('class', 'translate key')
+                    .data('content', PTL.tr('Type'))
+                    .text(PTL.tr('Type'));
+
+                var $value = $('<strong>')
+                    .attr('class', 'value')
+                    .text(message);
+
+                var $errorLink = $('<a>')
+                    .attr('href', feedUrl)
+                    .text(feedUrl);
+
+                var $validateLink = $('<a>')
+                    .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
+                    .text(PTL.tr('validate'));
+
+                var $errorItem = $('<li>')
+                    .attr('class', 'feed-item error')
+                    .append($errorLink)
+                    .append('&nbsp; (')
+                    .append($validateLink)
+                    .append(')<br/>')
+                    .append($key)
+                    .append('&nbsp;')
+                    .append($value);
+
+                $feedBody
+                    .append($errorItem);
+
+                $feedIcon.addClass('icon-rzz yowzo');
+                $feedToggle.css('background-image', 'none');
+
+                return;
+
+            } else {
+
+                $.get("/favicon", {
+                    url: decodeURI(feedHost),
+                    dataType: "json"
+                }, function() {
+                    // console.log('feedHost: %s (icon %s)', feedHost, icon);
+                }).done(function(icon) {
+
+                    $feedToggle.css('background-image','url(' + icon + ')');
+                    $feedIcon.removeClass('icon-rzz');
+                    $header.data('img', icon);
+
+                }).fail(function() {
+                    $feedIcon.addClass('icon-rzz yowzo');
+                    $feedToggle.css('background-image', 'none');
+                });
 
             }
-          }
-        }
 
-        if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
-          imageUrl = item.image.url;
-        }
+            $.each(data.feedItems, function(index, item) {
 
-        if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
-          if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
-            imageUrl = $tempDom.find('span a').attr('href');
-          }
-        }
+                // PTL.util.console('PLOP', 'warning');
 
-        if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
-          imageUrl = $tempDom.find('img').attr('src');
-        }
 
-        if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
+                // function strip(html){
+                //   var doc = new DOMParser().parseFromString(html, 'text/html');
+                //   return doc.body.textContent || "";
+                // }
 
-          if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
-            imageUrl = item.enclosures[0].url;
-          }
+                if (index == parseInt(feedLimit)) return false;
 
-          if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
-            imageUrl = item.enclosures[0].url;
-          }
+                // console.log('i: (%s)', JSON.stringify(item));
 
-          if (item.enclosures[0].url.match(/\.(ogg|mp3|mp4)$/)) {
-            $soundLink
-              .attr('href', item.enclosures[0].url)
-              .appendTo($itemDiv);
-            $soundIcon
-              .attr('class', 'item-icon icon-play')
-              .appendTo($soundLink);
-          }
-        }
+                var $description = $.parseHTML(item.description),
+                    summary,
+                    imageUrl,
+                    // imageUrls = [],
+                    imgTypes = ['image',
+                                'image/jpg',
+                                'image/jpeg',
+                                'image/gif',
+                                'image/png'];
 
-        if (item['media:group']) {
-          var mgmc = item['media:group']['media:content'];
-          for (var i = 0; i < mgmc.length; i++) {
-            if (mgmc[i]['@'].url) imageUrl = mgmc[i]['@'].url;
-          }
-        }
+                if (item.summary){
+                    summary = item.summary;
+                }
 
-        $itemLink
-          .attr('class', 'ui-helper-clearfix feed-link')
-          .attr('href', item.link)
-          .append(item['mastodon:scope'] ? $summary.trim() : item.title);
+                if (item.description){
+                    // console.log('item.description: (%s) %s', feedUrl, item.description);
+                    summary = item.description;
+                }
 
-        if (typeof imageUrls != 'undefined') {
+                if (item['media:group']) {
+                    if (item['media:group']['media:description']) {
+                        summary = item['media:group']['media:description']["#"];
+                    }
+                }
 
-          // console.log('imageUrls');
+                var $imageLink = $('<a>').attr('target', '_blank'),
+                    $itemLink = $('<a>').attr('target', '_blank'),
+                    $soundLink = $('<a>').attr('target', '_blank'),
+                    $commentsLink = $('<a>').attr('target', '_blank'),
+                    $commentsIcon = $('<i>'),
+                    $soundIcon = $('<i>'),
+                    $image,
+                    $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+                    $itemDiv = $('<div>').attr('class', 'itemDiv'),
+                    $feedItem = $('<li>').attr('class', 'feed-item').attr('title', $summary.trim());
 
-          $image = $('<div>')
-            .attr('class', 'ptl-img')
-            .appendTo($imageLink);
+                if (item.comments) {
+                    $commentsIcon
+                        .attr('class', 'item-icon icon-comments')
+                        .appendTo($commentsLink);
 
-          for (var i = 0, len = imageUrls.length; i < len; i++) {
-            // console.log('imageUrls: (%s)', imageUrls[i]);
+                    $commentsLink
+                        .attr('href', item.comments)
+                        .appendTo($itemDiv);
+                }
 
-            $('<a>')
-              .attr('href', imageUrls[i])
-              .attr('data-fancybox', 'gallery')
-              .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + $summary.trim() + '</a>')
-              .appendTo($image)
-              .append($('<img>')
-                      .attr('src', imageUrls[i])
-                      .appendTo($image));
-          }
+                var $tempDom = $('<null>').append($description);
 
-        } else if (imageUrl) {
+                if (item['mastodon:scope']) {
+                    if (item['activity:object']) {
+                        var links = item['activity:object'].link;
+                        for (var i = 0, len = links.length; i < len; i++) {
+                            // console.log('links[i]: %s (%s, %s)', links[i]['@'].type, $summary.trim(), links[i]['@'].href);
 
-          // console.log('imageUrl: (%s)', imageUrl);
+                            if (imgTypes.indexOf(links[i]['@'].type) > -1) {
+                                imageUrl = links[i]['@'].href;
+                                imageUrls.push(links[i]['@'].href);
+                            }
 
-          if (!PTL.util.isUrl(imageUrl)) {
-            imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
-          }
+                        }
+                    }
+                }
 
-          $imageLink
-            .attr('href', imageUrl)
-            .attr('data-fancybox', 'gallery')
-            .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + item.title + '</a>');
+                if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
+                    imageUrl = item.image.url;
+                }
 
-          $image = $('<img>')
-            .attr('src', imageUrl)
-            .attr('class', 'ptl-img')
-            .appendTo($imageLink);
+                if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
+                    if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
+                        console.log('WOPOP item.description: (%s) %s', feedUrl, item.description);
+                        imageUrl = $tempDom.find('span a').attr('href');
+                    }
+                }
 
-        }
+                if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
+                    imageUrl = $tempDom.find('img').attr('src');
+                    if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
+                        // XKCD summary in the title of the description XML tag
+                        $feedItem.attr('title', $tempDom.find('img').attr('title'));
+                    }
+                }
 
-        if (!new RegExp('^(?:[a-z]+:)?//', 'i').test(imageUrl)) imageUrl = feedHost + imageUrl;
-        if ($image && feedType == 'photo') $image.addClass('full');
-        if (feedType !== 'text') $imageLink.appendTo($itemDiv);
+                if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
 
-        $itemLink.appendTo($itemDiv);
-        $itemDiv.appendTo($feedItem);
-        $feedItem.appendTo($feedBody);
+                    if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
+                        imageUrl = item.enclosures[0].url;
+                    }
 
-        $tempDom.empty();
+                    if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
+                        imageUrl = item.enclosures[0].url;
+                    }
 
-      });
+                    if (item.enclosures[0].url.match(/\.(ogg|mp3|mp4)$/)) {
+                        $soundLink
+                            .attr('href', item.enclosures[0].url)
+                            .appendTo($itemDiv);
+                        $soundIcon
+                            .attr('class', 'item-icon icon-play')
+                            .appendTo($soundLink);
+                    }
+                }
 
-    }).always(function() {
+                if (item['media:group']) {
+                    var mgmc = item['media:group']['media:content'];
+                    for (var i = 0; i < mgmc.length; i++) {
+                        if (mgmc[i]['@'].url) imageUrl = mgmc[i]['@'].url;
+                    }
+                }
 
-      if (progress) progress.increment();
-      $refreshButton.removeClass('spin');
+                $itemLink
+                    .attr('class', 'ui-helper-clearfix feed-link')
+                    .attr('href', item.link)
+                    .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
-    });
+                if (typeof imageUrls != 'undefined') {
 
-  }
+                    // console.log('imageUrls');
+
+                    $image = $('<div>')
+                        .attr('class', 'ptl-img')
+                        .appendTo($imageLink);
+
+                    for (var i = 0, len = imageUrls.length; i < len; i++) {
+                        // console.log('imageUrls: (%s)', imageUrls[i]);
+
+                        $('<a>')
+                            .attr('href', imageUrls[i])
+                            .attr('data-fancybox', 'gallery')
+                            .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + $summary.trim() + '</a>')
+                            .appendTo($image)
+                            .append($('<img>')
+                                    .attr('src', imageUrls[i])
+                                    .appendTo($image));
+                    }
+
+                } else if (imageUrl) {
+
+                    // console.log('imageUrl: (%s)', imageUrl);
+
+                    if (!PTL.util.isUrl(imageUrl)) {
+                        imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
+                    }
+
+                    $imageLink
+                        .attr('href', imageUrl)
+                        .attr('data-fancybox', 'gallery')
+                        .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + item.title + '</a>');
+
+                    $image = $('<img>')
+                        .attr('src', imageUrl)
+                        .attr('class', 'ptl-img')
+                        .appendTo($imageLink);
+
+                }
+
+                if (!new RegExp('^(?:[a-z]+:)?//', 'i').test(imageUrl)) imageUrl = feedHost + imageUrl;
+                if ($image && feedType == 'photo') $image.addClass('full');
+                if (feedType !== 'text') $imageLink.appendTo($itemDiv);
+
+                $itemLink.appendTo($itemDiv);
+                $itemDiv.appendTo($feedItem);
+                $feedItem.appendTo($feedBody);
+
+                $tempDom.empty();
+
+            });
+
+        }).always(function() {
+
+            if (progress) progress.increment();
+            $refreshButton.removeClass('spin');
+
+        });
+
+    }
 };
