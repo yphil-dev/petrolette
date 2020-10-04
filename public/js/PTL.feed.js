@@ -260,14 +260,6 @@ PTL.feed = {
 
             $.each(data.feedItems, function(index, item) {
 
-                // PTL.util.console('PLOP', 'warning');
-
-
-                // function strip(html){
-                //   var doc = new DOMParser().parseFromString(html, 'text/html');
-                //   return doc.body.textContent || "";
-                // }
-
                 if (index == parseInt(feedLimit)) return false;
 
                 // console.log('i: (%s)', JSON.stringify(item));
@@ -282,12 +274,11 @@ PTL.feed = {
                                 'image/gif',
                                 'image/png'];
 
-                if (item.summary){
+                if (item.summary && typeof item.summary !== 'undefined') {
                     summary = item.summary;
                 }
 
-                if (item.description){
-                    // console.log('item.description: (%s) %s', feedUrl, item.description);
+                if (item.description && typeof item.description !== 'undefined'){
                     summary = item.description;
                 }
 
@@ -341,7 +332,6 @@ PTL.feed = {
 
                 if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
                     if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
-                        console.log('WOPOP item.description: (%s) %s', feedUrl, item.description);
                         imageUrl = $tempDom.find('span a').attr('href');
                     }
                 }
@@ -385,6 +375,8 @@ PTL.feed = {
                     .attr('class', 'ui-helper-clearfix feed-link')
                     .attr('href', item.link)
                     .append(item['mastodon:scope'] ? $summary.trim() : item.title);
+
+                console.log('WOPOP item.description: (%s) TITLE: %s, DESC : %s', feedUrl, item['mastodon:scope'] ? $summary.trim() : item.title, item.description);
 
                 if (typeof imageUrls != 'undefined') {
 
