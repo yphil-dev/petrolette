@@ -32,7 +32,9 @@ function escape(s) {
   }
 }
 
+
 router.get('/', function(req, res) {
+  console.log('pjson.version : %s', pjson.version);
   res.render('index', {
     queryString: escape(req.query.add),
     version: pjson.version

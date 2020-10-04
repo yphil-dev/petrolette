@@ -13,9 +13,7 @@ PTL.tab = {
       heightStyle: 'content',
       activate: function(event, ui) {
         ui.newPanel.css("display","flex");
-        $(document).prop('title', $(this).find('.ui-tabs-active')
-                         .text() + ' | Pétrolette');
-        $('.tab-icon').show();
+          $('.tab-icon').show();
       }
     });
 
