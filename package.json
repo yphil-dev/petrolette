@@ -1,11 +1,11 @@
 {
   "name": "petrolette",
   "description": "Fly-by-night news reading webapp.",
-  "version": "1.0.36",
+  "version": "1.0.38",
   "private": true,
   "license": "GPL-3.0-only",
   "engines": {
-    "node": "14.15.3"
+    "node": "^14.15.3"
   },
   "repository": {
     "type": "git",
