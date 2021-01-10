@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "Fly-by-night news reading webapp.",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "private": true,
   "license": "GPL-3.0-only",
   "engines": {
@@ -21,14 +21,14 @@
     "postinstall": "bower install"
   },
   "dependencies": {
-    "body-parser": "1.19.0",
+    "body-parser": "^1.19.0",
     "bower": "latest",
-    "ejs": "3.1.5",
-    "express": "4.17.1",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
     "favrat": "git+https://framagit.org/yphil/favrat.git",
-    "feedparser": "2.2.10",
+    "feedparser": "^2.2.10",
     "feedrat": "git+https://framagit.org/yphil/feedrat.git",
-    "iconv-lite": "0.6.2",
+    "iconv-lite": "^0.6.2",
     "npm": "^7.3.0",
     "request": "latest",
     "pm2": "^4.5.1"
