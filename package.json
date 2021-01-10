@@ -5,7 +5,7 @@
   "private": true,
   "license": "GPL-3.0-only",
   "engines": {
-    "node": "^15.0.0"
+    "node": "*"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "stop": "pm2 stop petrolette",
     "show": "pm2 show petrolette",
     "log": "pm2 logs petrolette",
-    "postinstall": "bower install"
+    "postinstall": "bower install --allow-root"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
