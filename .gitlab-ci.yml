@@ -6,6 +6,7 @@ stages:
 job1:
   stage: build
   script:
+    - npm install
     - npm start
     - npm stop
   only:
