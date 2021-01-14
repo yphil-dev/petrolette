@@ -54,7 +54,7 @@ PTL.feed = {
             .data('title', PTL.tr('Refresh this feed (%1)', url))
             .attr('title', PTL.tr('Refresh this feed (%1)', url))
             .click(function() {
-                PTL.feed.populate($(this), progress);
+              PTL.feed.populate($(this), progress);
             });
 
         var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
@@ -156,21 +156,28 @@ PTL.feed = {
         var l = PTL.util.getLocation(feedUrl),
             feedProtocol = l.protocol ? l.protocol + '//' : '//',
             feedHost = feedProtocol + l.hostname,
+            timeStamp = new Date().toLocaleTimeString(),
             subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
-        if (subdomain === 'rss' || subdomain === 'feeds') {
-            feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
-        }
+      if (subdomain === 'rss' || subdomain === 'feeds') {
+        feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
+      }
 
-        $refreshButton.addClass('spin');
-        $feedLink.removeClass('danger');
+      // console.log('TIMEs: ', timeStamp)
 
-        $.get("/feed", {
-            feedurl: feedUrl,
-            dataType: 'json'
+      $refreshButton.addClass('spin');
+      $feedLink.removeClass('danger');
+
+      // $(" - ", timeStamp).appendTo( ".inner" );
+
+      $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp));
+
+      $.get("/feed", {
+        feedurl: feedUrl,
+        dataType: 'json'
         }, function() {
 
-            $feedBody.empty();
+          $feedBody.empty();
 
         }).fail(function(error) {
             PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
@@ -376,50 +383,48 @@ PTL.feed = {
                     .attr('href', item.link)
                     .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
-                console.log('WOPOP item.description: (%s) TITLE: %s, DESC : %s', feedUrl, item['mastodon:scope'] ? $summary.trim() : item.title, item.description);
+              if (typeof imageUrls != 'undefined') {
 
-                if (typeof imageUrls != 'undefined') {
+                // console.log('imageUrls');
 
-                    // console.log('imageUrls');
+                $image = $('<div>')
+                  .attr('class', 'ptl-img')
+                  .appendTo($imageLink);
 
-                    $image = $('<div>')
-                        .attr('class', 'ptl-img')
-                        .appendTo($imageLink);
+                for (var i = 0, len = imageUrls.length; i < len; i++) {
+                  // console.log('imageUrls: (%s)', imageUrls[i]);
 
-                    for (var i = 0, len = imageUrls.length; i < len; i++) {
-                        // console.log('imageUrls: (%s)', imageUrls[i]);
-
-                        $('<a>')
-                            .attr('href', imageUrls[i])
-                            .attr('data-fancybox', 'gallery')
-                            .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + $summary.trim() + '</a>')
-                            .appendTo($image)
-                            .append($('<img>')
-                                    .attr('src', imageUrls[i])
-                                    .appendTo($image));
-                    }
-
-                } else if (imageUrl) {
-
-                    // console.log('imageUrl: (%s)', imageUrl);
-
-                    if (!PTL.util.isUrl(imageUrl)) {
-                        imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
-                    }
-
-                    $imageLink
-                        .attr('href', imageUrl)
-                        .attr('data-fancybox', 'gallery')
-                        .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + item.title + '</a>');
-
-                    $image = $('<img>')
-                        .attr('src', imageUrl)
-                        .attr('class', 'ptl-img')
-                        .appendTo($imageLink);
-
+                  $('<a>')
+                    .attr('href', imageUrls[i])
+                    .attr('data-fancybox', 'gallery')
+                    .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + $summary.trim() + '</a>')
+                    .appendTo($image)
+                    .append($('<img>')
+                            .attr('src', imageUrls[i])
+                            .appendTo($image));
                 }
 
-                if (!new RegExp('^(?:[a-z]+:)?//', 'i').test(imageUrl)) imageUrl = feedHost + imageUrl;
+              } else if (imageUrl) {
+
+                // console.log('imageUrl: (%s)', imageUrl);
+
+                if (!PTL.util.isUrl(imageUrl)) {
+                  imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
+                }
+
+                $imageLink
+                  .attr('href', imageUrl)
+                  .attr('data-fancybox', 'gallery')
+                  .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + item.title + '</a>');
+
+                $image = $('<img>')
+                  .attr('src', imageUrl)
+                  .attr('class', 'ptl-img')
+                  .appendTo($imageLink);
+
+              }
+
+              if (!new RegExp('^(?:[a-z]+:)?//', 'i').test(imageUrl)) imageUrl = feedHost + imageUrl;
                 if ($image && feedType == 'photo') $image.addClass('full');
                 if (feedType !== 'text') $imageLink.appendTo($itemDiv);
 
