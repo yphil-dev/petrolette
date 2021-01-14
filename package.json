@@ -12,7 +12,7 @@
     "url": "https://framagit.org/yphil/petrolette"
   },
   "scripts": {
-    "start": "pm2 start pm2.config.json",
+    "start": "pm2 start pm2.config.json ; pm2 update",
     "start-ssl": "pm2 start pm2.config.json --env ssl",
     "restart": "pm2 restart pm2.config.json",
     "stop": "pm2 stop petrolette",
