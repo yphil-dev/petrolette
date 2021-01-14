@@ -170,8 +170,6 @@ PTL.feed = {
 
       // $(" - ", timeStamp).appendTo( ".inner" );
 
-      $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp));
-
       $.get("/feed", {
         feedurl: feedUrl,
         dataType: 'json'
@@ -183,7 +181,9 @@ PTL.feed = {
             PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
         }).done(function(data) {
 
-            $feedLink.text(data.feedTitle || feedUrl)
+          $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp));
+
+          $feedLink.text(data.feedTitle || feedUrl)
                 .attr('href', data.feedLink)
                 .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
 
