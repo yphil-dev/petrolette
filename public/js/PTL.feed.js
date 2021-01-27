@@ -43,8 +43,8 @@ PTL.feed = {
 
         var $prefsIcon = $('<i>')
             .attr('class', 'feed-control translate icon-pencil feed-edit')
-            .data('title', PTL.tr('Change this feed (%1) parameters', url))
-            .attr('title', PTL.tr('Change this feed (%1) parameters', url))
+            .data('title', PTL.tr('Modify this feed (%1) parameters', url))
+            .attr('title', PTL.tr('Modify this feed (%1) parameters', url))
             .click(function() {
                 PTL.dialog.feedPrefs($(this));
             });
@@ -156,19 +156,16 @@ PTL.feed = {
         var l = PTL.util.getLocation(feedUrl),
             feedProtocol = l.protocol ? l.protocol + '//' : '//',
             feedHost = feedProtocol + l.hostname,
-            timeStamp = new Date().toLocaleTimeString(),
-            subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
+            dateObj = new Date(),
+            timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds()
+      subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
       if (subdomain === 'rss' || subdomain === 'feeds') {
         feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
       }
 
-      // console.log('TIMEs: ', timeStamp)
-
       $refreshButton.addClass('spin');
       $feedLink.removeClass('danger');
-
-      // $(" - ", timeStamp).appendTo( ".inner" );
 
       $.get("/feed", {
         feedurl: feedUrl,
@@ -180,8 +177,6 @@ PTL.feed = {
         }).fail(function(error) {
             PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
         }).done(function(data) {
-
-          $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp));
 
           $feedLink.text(data.feedTitle || feedUrl)
                 .attr('href', data.feedLink)
@@ -304,95 +299,94 @@ PTL.feed = {
                     $image,
                     $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
                     $itemDiv = $('<div>').attr('class', 'itemDiv'),
-                    $feedItem = $('<li>').attr('class', 'feed-item').attr('title', $summary.trim());
+                    $feedItem = $('<li>').attr('class', 'feed-item');
 
-                if (item.comments) {
-                    $commentsIcon
-                        .attr('class', 'item-icon icon-comments')
-                        .appendTo($commentsLink);
+              if (summary && typeof summary !== 'undefined') {
+                $feedItem.attr('title', $summary.trim());
+              }
 
-                    $commentsLink
-                        .attr('href', item.comments)
-                        .appendTo($itemDiv);
-                }
+              if (item.comments) {
+                $commentsIcon
+                  .attr('class', 'item-icon icon-comments')
+                  .appendTo($commentsLink);
 
-                var $tempDom = $('<null>').append($description);
+                $commentsLink
+                  .attr('href', item.comments)
+                  .appendTo($itemDiv);
+              }
 
-                if (item['mastodon:scope']) {
-                    if (item['activity:object']) {
-                        var links = item['activity:object'].link;
-                        for (var i = 0, len = links.length; i < len; i++) {
-                            // console.log('links[i]: %s (%s, %s)', links[i]['@'].type, $summary.trim(), links[i]['@'].href);
+              var $tempDom = $('<null>').append($description);
 
-                            if (imgTypes.indexOf(links[i]['@'].type) > -1) {
-                                imageUrl = links[i]['@'].href;
-                                imageUrls.push(links[i]['@'].href);
-                            }
-
-                        }
-                    }
-                }
-
-                if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
-                    imageUrl = item.image.url;
-                }
-
-                if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
-                    if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
-                        imageUrl = $tempDom.find('span a').attr('href');
-                    }
-                }
-
-                if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
-                    imageUrl = $tempDom.find('img').attr('src');
-                    if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
-                        // XKCD summary in the title of the description XML tag
-                        $feedItem.attr('title', $tempDom.find('img').attr('title'));
-                    }
-                }
-
-                if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
-
-                    if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
-                        imageUrl = item.enclosures[0].url;
+              if (item['mastodon:scope']) {
+                if (item['activity:object']) {
+                  var links = item['activity:object'].link;
+                  for (var i = 0, len = links.length; i < len; i++) {
+                    if (imgTypes.indexOf(links[i]['@'].type) > -1) {
+                      imageUrl = links[i]['@'].href;
+                      imageUrls.push(links[i]['@'].href);
                     }
 
-                    if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
-                        imageUrl = item.enclosures[0].url;
-                    }
+                  }
+                }
+              }
 
-                    if (item.enclosures[0].url.match(/\.(ogg|mp3|mp4)$/)) {
-                        $soundLink
-                            .attr('href', item.enclosures[0].url)
-                            .appendTo($itemDiv);
-                        $soundIcon
-                            .attr('class', 'item-icon icon-play')
-                            .appendTo($soundLink);
-                    }
+              if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
+                imageUrl = item.image.url;
+              }
+
+              if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
+                if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
+                  imageUrl = $tempDom.find('span a').attr('href');
+                }
+              }
+
+              if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
+                imageUrl = $tempDom.find('img').attr('src');
+                if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
+                  // XKCD summary in the title of the description XML tag
+                  $feedItem.attr('title', $tempDom.find('img').attr('title'));
+                }
+              }
+
+              if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
+
+                if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
+                  imageUrl = item.enclosures[0].url;
                 }
 
-                if (item['media:group']) {
-                    var mgmc = item['media:group']['media:content'];
-                    for (var i = 0; i < mgmc.length; i++) {
-                        if (mgmc[i]['@'].url) imageUrl = mgmc[i]['@'].url;
-                    }
+                if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
+                  imageUrl = item.enclosures[0].url;
                 }
 
-                $itemLink
+                if (item.enclosures[0].url.match(/\.(ogg|mp3|mp4)$/)) {
+                  $soundLink
+                    .attr('href', item.enclosures[0].url)
+                    .appendTo($itemDiv);
+                  $soundIcon
+                    .attr('class', 'item-icon icon-play')
+                    .appendTo($soundLink);
+                }
+              }
+
+              if (item['media:group']) {
+                var mgmc = item['media:group']['media:content'];
+                for (var i = 0; i < mgmc.length; i++) {
+                  if (mgmc[i]['@'].url) imageUrl = mgmc[i]['@'].url;
+                }
+              }
+
+              $itemLink
                     .attr('class', 'ui-helper-clearfix feed-link')
                     .attr('href', item.link)
                     .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
               if (typeof imageUrls != 'undefined') {
 
-                // console.log('imageUrls');
-
                 $image = $('<div>')
                   .attr('class', 'ptl-img')
                   .appendTo($imageLink);
 
                 for (var i = 0, len = imageUrls.length; i < len; i++) {
-                  // console.log('imageUrls: (%s)', imageUrls[i]);
 
                   $('<a>')
                     .attr('href', imageUrls[i])
@@ -405,8 +399,6 @@ PTL.feed = {
                 }
 
               } else if (imageUrl) {
-
-                // console.log('imageUrl: (%s)', imageUrl);
 
                 if (!PTL.util.isUrl(imageUrl)) {
                   imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
@@ -438,8 +430,10 @@ PTL.feed = {
 
         }).always(function() {
 
-            if (progress) progress.increment();
-            $refreshButton.removeClass('spin');
+          $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp));
+
+          if (progress) progress.increment();
+          $refreshButton.removeClass('spin');
 
         });
 
