@@ -6,63 +6,63 @@ PTL.prefs = (function() {
     {"name":"news",
      "columns": [
        [
-         {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4}
+         {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4,"status":"on"}
        ],
        [
-         {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 8},
-         {"url":"http://feeds.reuters.com/Reuters/worldNews","type":"text","limit": 16}
+         {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 8,"status":"on"},
+         {"url":"http://feeds.reuters.com/Reuters/worldNews","type":"text","limit": 16,"status":"on"}
        ],
        [
-         {"url":"http://www.lemonde.fr/rss/une.xml","type":"mixed","limit": 4}
+         {"url":"http://www.lemonde.fr/rss/une.xml","type":"mixed","limit": 4,"status":"on"}
        ]
      ]
     },
     {"name":"tek",
      "columns": [
        [
-         {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 8},
-         {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8}
+         {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 8,"status":"on"},
+         {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8,"status":"on"}
        ],
        [
-         {"url":"https://hacks.mozilla.org/feed/","type":"mixed","limit": 4},
-         {"url":"https://thepiratebay.org/rss/top100/202","type":"text","limit": 12}
+         {"url":"https://hacks.mozilla.org/feed/","type":"mixed","limit": 4,"status":"on"},
+         {"url":"https://thepiratebay.org/rss/top100/202","type":"text","limit": 12,"status":"on"}
        ],
        [
-         {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 4},
-         {"url":"http://feeds.feedburner.com/thechangelog","type":"text","limit": 4}
+         {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 4,"status":"on"},
+         {"url":"http://feeds.feedburner.com/thechangelog","type":"text","limit": 4,"status":"on"}
        ]
      ]
     },
     {"name":"img",
      "columns": [
        [
-         {"url":"http://cabinporn.com/rss/","type":"photo","limit": 16},
-         {"url":"https://www.reddit.com/r/EarthPorn.rss","type":"photo","limit": 16}
+         {"url":"http://cabinporn.com/rss/","type":"photo","limit": 16,"status":"on"},
+         {"url":"https://www.reddit.com/r/EarthPorn.rss","type":"photo","limit": 16,"status":"on"}
        ]
      ]
     },
     {"name":"comics",
      "columns": [
        [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8}
+         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8,"status":"on"}
        ],
        [
-         {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 8}
+         {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 8,"status":"on"}
        ]
      ]
     },
     {"name":"music",
      "columns": [
        [
-         {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 8},
-         {"url":"https://www.youtube.com/feeds/videos.xml?channel_id=UC3I2GFN_F8WudD_2jUZbojA","type":"mixed","limit": 8}
+         {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 8,"status":"on"},
+         {"url":"https://www.youtube.com/feeds/videos.xml?channel_id=UC3I2GFN_F8WudD_2jUZbojA","type":"mixed","limit": 8,"status":"on"}
        ],
        [
-         {"url":"https://www.rollingstone.com/music/rss","type":"photo","limit": 4},
-         {"url":"http://planet.linuxaudio.org/rss20.xml","type":"mixed","limit": 12}
+         {"url":"https://www.rollingstone.com/music/rss","type":"photo","limit": 4,"status":"on"},
+         {"url":"http://planet.linuxaudio.org/rss20.xml","type":"mixed","limit": 12,"status":"on"}
        ],
        [
-         {"url":"https://dangerousminds.net/atom","type":"photo","mixed": 12}
+         {"url":"https://dangerousminds.net/atom","type":"photo","mixed": 12,"status":"on"}
        ]
      ]
     }
@@ -97,6 +97,7 @@ PTL.prefs = (function() {
       }
 
       localStorage.setItem(key, val);
+
       setTimeout(function () {
         $('div#logo-title i').delay('slow').removeClass('writing');
       }, 300);

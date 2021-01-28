@@ -325,7 +325,6 @@ PTL.feed = {
                       imageUrl = links[i]['@'].href;
                       imageUrls.push(links[i]['@'].href);
                     }
-
                   }
                 }
               }
