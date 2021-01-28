@@ -127,6 +127,7 @@ PTL.tab = {
           thisFeed.url = v.url;
           thisFeed.type = v.type;
           thisFeed.limit = v.limit;
+          thisFeed.status = v.status;
 
           thisColFeeds.push(thisFeed);
           allFeeds.push(thisColFeeds);
@@ -224,7 +225,7 @@ PTL.tab = {
       $column.appendTo($tabPanel);
 
       if (PTL.queryString) {
-        PTL.feed.add($column, encodeURI(PTL.queryString), 'mixed', 8, true, true);
+        PTL.feed.add($column, encodeURI(PTL.queryString), 'mixed', 8, 'on', true, true);
         PTL.queryString = null;
       }
 
@@ -232,7 +233,7 @@ PTL.tab = {
         feeds.forEach(function(feed) {
           var type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
               limit = Number.isInteger(feed.limit) ? feed.limit : 8;
-          PTL.feed.add($column, feed.url, type, limit, false, false, progress);
+          PTL.feed.add($column, feed.url, type, limit, feed.status, false, false, progress);
         });
       }
 

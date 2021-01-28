@@ -56,7 +56,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.feed.add($column, PTL.tr('New feed'), 'mixed', 8, true, false);
+        PTL.feed.add($column, PTL.tr('New feed'), 'mixed', 8, 'on', true, false);
       });
 
       $feedCodeButton.click(function(event) {
