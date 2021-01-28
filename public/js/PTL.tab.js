@@ -275,7 +275,10 @@ PTL.tab = {
           feed.url = $dataStore.data('url');
           feed.type = $dataStore.data('type');
           feed.limit = $dataStore.data('limit');
+          feed.status = $dataStore.data('status');
+
           column.push(feed);
+
         });
         columns.push(column);
 
