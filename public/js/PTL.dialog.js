@@ -607,8 +607,6 @@ PTL.dialog = {
 
       $icon.addClass('icon-trash-empty danger');
 
-      console.log('feedId: %s, thisFeedName: %s', thisFeedId, thisFeedName);
-
       $dialog.dialog({
         title: PTL.tr('Delete feed'),
         buttons: [

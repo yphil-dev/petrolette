@@ -10,14 +10,22 @@ PTL.feed = {
         .attr('class', 'feed')
         .data('url', url)
         .data('type', type)
-        .data('limit', limit)
-        .data('status', status);
+        .data('limit', limit);
 
     var $feedIcon = $('<i>')
         .attr('class', 'feed-control feedIcon icon-rzz rotate translate')
         .data('title', 'Fold / unfold this feed (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
         .click(function() {
+
+          if ($feedControls.data('status') == 'on') {
+            $feedControls.data('status', 'off');
+          } else if ($feedControls.data('status') == 'off') {
+            $feedControls.data('status', 'on');
+          }
+
+          PTL.feed.populate($reloadIcon);
+
           $(this).toggleClass('down')
             .parent().parent().parent()
             .children('div.feed-body')
@@ -67,7 +75,7 @@ PTL.feed = {
 
     var $feedHandle = $('<div>')
         .data('title', PTL.tr('Move this feed (%1)', url))
-        .attr('title', PTL.tr('Move this feed (%1)', url))
+        .attr('title', PTL.tr('Move this feed (%1)', url) + ' - ' + $feed.data('status'))
         .attr('class', 'feed-handle');
 
     var $feedBody = $('<div>').attr('class', 'feed-body'),
@@ -156,18 +164,22 @@ PTL.feed = {
             $feedToggle = $feed.find('.feed-toggle'),
             $feedIcon = $feed.find('.feed-toggle > i');
 
-        var l = PTL.util.getLocation(feedUrl),
-            feedProtocol = l.protocol ? l.protocol + '//' : '//',
-            feedHost = feedProtocol + l.hostname,
-            dateObj = new Date(),
-            timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds()
+      console.log('status for %s: %s', feedUrl, $dataStore.data('status'))
+
+      var l = PTL.util.getLocation(feedUrl),
+          feedProtocol = l.protocol ? l.protocol + '//' : '//',
+          feedHost = feedProtocol + l.hostname,
+          dateObj = new Date(),
+          timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds()
       subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
       if (subdomain === 'rss' || subdomain === 'feeds') {
         feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
       }
 
-      $refreshButton.addClass('spin');
+      if ($dataStore.data('status') == 'on') {
+
+        $refreshButton.addClass('spin');
       $feedLink.removeClass('danger');
 
       $.get("/feed", {
@@ -438,6 +450,8 @@ PTL.feed = {
           $refreshButton.removeClass('spin');
 
         });
+
+      }
 
     }
 };
