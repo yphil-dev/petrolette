@@ -13,14 +13,24 @@ PTL.feed = {
         .data('limit', limit);
 
     var $feedIcon = $('<i>')
-        .attr('class', 'feed-control feedIcon icon-rzz rotate translate')
+        .attr('class', 'feed-control feedIcon icon-rss translate')
         .data('title', 'Fold / unfold this feed (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
         .click(function() {
 
+          // Can't just use toggle because we have to pass the div to populate() in order to recreate it with the new data values, just setting them here doesn't work :(
+
           if ($feedControls.data('status') == 'on') {
+            $(this).removeClass('folded')
+              .parent().parent().parent()
+              .children('div.feed-body')
+              .slideUp(350);
             $feedControls.data('status', 'off');
-          } else if ($feedControls.data('status') == 'off') {
+          } else {
+            $(this).addClass('folded')
+              .parent().parent().parent()
+              .children('div.feed-body')
+              .slideDown(350);
             $feedControls.data('status', 'on');
           }
 
@@ -28,10 +38,11 @@ PTL.feed = {
 
           PTL.feed.populate($reloadIcon);
 
-          $(this).toggleClass('down')
-            .parent().parent().parent()
-            .children('div.feed-body')
-            .slideToggle(350);
+          // $(this).toggleClass('down')
+          //   .parent().parent().parent()
+          //   .children('div.feed-body')
+          //   .slideToggle(350);
+
         });
 
     var $selectIcon = $('<i>')
@@ -53,7 +64,7 @@ PTL.feed = {
         });
 
     var $prefsIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-wrench feed-edit')
+        .attr('class', 'feed-control translate icon-cog feed-edit')
         .data('title', PTL.tr('Modify this feed (%1) parameters', url))
         .attr('title', PTL.tr('Modify this feed (%1) parameters', url))
         .click(function() {
@@ -106,21 +117,25 @@ PTL.feed = {
     $header.hover (function() {
 
       var iconImg = $feedToggle.css('background-image');
-
       $feedToggle.css('background-image', 'none');
 
-      $feedIcon.addClass('icon-down').removeClass('icon-rzz');
+      $feedIcon.removeClass('icon-rss').addClass('icon-down');
+
+      if ($feedControls.data('status') == 'off') {
+        console.log('off!');
+        $feedIcon.addClass('folded');
+      }
 
       $(this).data('img', iconImg);
 
     }, function() {
 
-      $feedIcon.removeClass('icon-down');
+      $feedIcon.removeClass('icon-down folded');
 
       if ($(this).data('img') !== 'none') {
         $feedToggle.css('background-image', $(this).data('img'));
       } else {
-        $feedIcon.addClass('icon-rzz');
+        $feedIcon.addClass('icon-rss');
       }
 
     });
@@ -252,7 +267,7 @@ PTL.feed = {
                 $feedBody
                     .append($errorItem);
 
-                $feedIcon.addClass('icon-rzz yowzo');
+                $feedIcon.addClass('icon-rss');
                 $feedToggle.css('background-image', 'none');
 
                 return;
@@ -267,11 +282,11 @@ PTL.feed = {
                 }).done(function(icon) {
 
                     $feedToggle.css('background-image','url(' + icon + ')');
-                    $feedIcon.removeClass('icon-rzz');
+                    $feedIcon.removeClass('icon-rss');
                     $header.data('img', icon);
 
                 }).fail(function() {
-                    $feedIcon.addClass('icon-rzz yowzo');
+                    $feedIcon.addClass('icon-rss');
                     $feedToggle.css('background-image', 'none');
                 });
 

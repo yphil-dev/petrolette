@@ -378,19 +378,16 @@ li.feed-item.error > strong.key {
   transition: all .2s linear;
 }
 
-.rotate.down {
+.fold {
   transform: rotate(-90deg);
 }
 
-.rotate.right {
-  transform: rotate(180deg);
+.folded {
+  display:inline-block;
+  transform: rotate(-90deg);
 }
 
-.rotate.close {
-  transform: rotate(-180deg);
-}
-
-.rotate.open {
+.unfold {
   transform: rotate(90deg);
 }
 
@@ -1077,11 +1074,11 @@ li.feed.selected {
   color: var(--color-ui-pri) !important;
 }
 
-.icon-rzz {
+.icon-rss {
   color: var(--color-ui-rss) !important;
 }
 
-.icon-rzz {
+.icon-rss {
   color: var(--color-ui-rss) !important;
 }
 
