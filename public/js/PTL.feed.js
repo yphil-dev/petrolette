@@ -189,11 +189,11 @@ PTL.feed = {
         feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
       }
 
-      $feedIcon.addClass('fold')
+      $feedIcon.addClass('fold');
 
       if ($dataStore.data('status') == 'on') {
 
-        $feedIcon.removeClass('fold')
+        $feedIcon.removeClass('fold');
 
         $refreshButton.addClass('spin');
         $feedLink.removeClass('danger');
@@ -467,6 +467,8 @@ PTL.feed = {
 
         });
 
+      } else {
+        if (progress) progress.increment();
       }
 
     }
