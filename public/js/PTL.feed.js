@@ -24,6 +24,8 @@ PTL.feed = {
             $feedControls.data('status', 'on');
           }
 
+          PTL.tab.saveTabs();
+
           PTL.feed.populate($reloadIcon);
 
           $(this).toggleClass('down')
@@ -180,9 +182,9 @@ PTL.feed = {
       if ($dataStore.data('status') == 'on') {
 
         $refreshButton.addClass('spin');
-      $feedLink.removeClass('danger');
+        $feedLink.removeClass('danger');
 
-      $.get("/feed", {
+        $.get("/feed", {
         feedurl: feedUrl,
         dataType: 'json'
         }, function() {
@@ -451,6 +453,8 @@ PTL.feed = {
 
         });
 
+      } else {
+        console.log('folded!');
       }
 
     }
