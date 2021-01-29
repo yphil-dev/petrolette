@@ -379,16 +379,20 @@ li.feed-item.error > strong.key {
 }
 
 .fold {
+  display:inline-block;
+  transition: all .2s linear;
   transform: rotate(-90deg);
+}
+
+.unfold {
+  display:inline-block;
+  transition: all .2s linear;
+  transform: rotate(90deg);
 }
 
 .folded {
   display:inline-block;
   transform: rotate(-90deg);
-}
-
-.unfold {
-  transform: rotate(90deg);
 }
 
 [class^="icon-"]::before, [class*=" icon-"]::before {

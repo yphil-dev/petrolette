@@ -21,13 +21,13 @@ PTL.feed = {
           // Can't just use toggle because we have to pass the div to populate() in order to recreate it with the new data values, just setting them here doesn't work :(
 
           if ($feedControls.data('status') == 'on') {
-            $(this).removeClass('folded')
+            $(this).removeClass('fold')
               .parent().parent().parent()
               .children('div.feed-body')
               .slideUp(350);
             $feedControls.data('status', 'off');
           } else {
-            $(this).addClass('folded')
+            $(this).addClass('fold')
               .parent().parent().parent()
               .children('div.feed-body')
               .slideDown(350);
@@ -121,16 +121,11 @@ PTL.feed = {
 
       $feedIcon.removeClass('icon-rss').addClass('icon-down');
 
-      if ($feedControls.data('status') == 'off') {
-        console.log('off!');
-        $feedIcon.addClass('folded');
-      }
-
       $(this).data('img', iconImg);
 
     }, function() {
 
-      $feedIcon.removeClass('icon-down folded');
+      $feedIcon.removeClass('icon-down');
 
       if ($(this).data('img') !== 'none') {
         $feedToggle.css('background-image', $(this).data('img'));
@@ -194,7 +189,11 @@ PTL.feed = {
         feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
       }
 
+      $feedIcon.addClass('fold')
+
       if ($dataStore.data('status') == 'on') {
+
+        $feedIcon.removeClass('fold')
 
         $refreshButton.addClass('spin');
         $feedLink.removeClass('danger');
@@ -468,8 +467,6 @@ PTL.feed = {
 
         });
 
-      } else {
-        console.log('folded!');
       }
 
     }
