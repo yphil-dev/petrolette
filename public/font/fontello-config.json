@@ -19,38 +19,14 @@
       "src": "mfglabs"
     },
     {
-      "uid": "6083c8aa5e3345476a24a28ac1afaa61",
-      "css": "cog",
-      "code": 59395,
-      "src": "elusive"
-    },
-    {
-      "uid": "326dd5dc5899787161184614d04a50b9",
-      "css": "motorcycle",
-      "code": 61980,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "ccddff8e8670dcd130e3cb55fdfc2fd0",
-      "css": "down-open",
-      "code": 59397,
-      "src": "fontawesome"
-    },
-    {
       "uid": "b90d80c250a9bbdd6cd3fe00e6351710",
-      "css": "ok",
+      "css": "checked",
       "code": 59399,
       "src": "iconic"
     },
     {
-      "uid": "cc8e2a0eff0356811984b84a868524f8",
-      "css": "check-empty",
-      "code": 59400,
-      "src": "elusive"
-    },
-    {
       "uid": "4b900d04e8ab8c82f080c1cfbac5772c",
-      "css": "check-empty-1",
+      "css": "checkbox",
       "code": 61590,
       "src": "fontawesome"
     },
@@ -74,33 +50,9 @@
     },
     {
       "uid": "37910a1398001a5ccb541cb2a253a2c7",
-      "css": "right-open",
+      "css": "right-thin",
       "code": 61446,
       "src": "mfglabs"
-    },
-    {
-      "uid": "b714be5a812a474811604f700dfc87ce",
-      "css": "left-open",
-      "code": 61447,
-      "src": "mfglabs"
-    },
-    {
-      "uid": "d84a06c5ce6da9ebdc9b0a5cb94db4c4",
-      "css": "heartbeat",
-      "code": 61982,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "ff933ecda3a1da53071ee6ec224ef8c9",
-      "css": "heart",
-      "code": 59408,
-      "src": "iconic"
-    },
-    {
-      "uid": "1bcc6c6369c3d475fa27115f806ff2ad",
-      "css": "heart-empty",
-      "code": 59409,
-      "src": "websymbols"
     },
     {
       "uid": "c9b928dc82d7d77033644fcf59dca3b3",
@@ -110,7 +62,7 @@
     },
     {
       "uid": "70370693ada58ef0a60fa0984fe8d52a",
-      "css": "plus-1",
+      "css": "plus",
       "code": 59411,
       "src": "entypo"
     },
@@ -119,18 +71,6 @@
       "css": "help-circled",
       "code": 59393,
       "src": "entypo"
-    },
-    {
-      "uid": "bc64550dd022ce21604f97309b346cea",
-      "css": "cog-1",
-      "code": 59405,
-      "src": "entypo"
-    },
-    {
-      "uid": "7336247ba3db350dec8d6c0a47cef966",
-      "css": "cog-3",
-      "code": 59412,
-      "src": "mfglabs"
     },
     {
       "uid": "ivjrs8ijaooc3a2dw4790kb2rx4l6kjh",
@@ -151,46 +91,22 @@
       "src": "entypo"
     },
     {
-      "uid": "0d03db7afd4857accf1821efdc8ea72b",
-      "css": "moon-1",
-      "code": 59421,
-      "src": "entypo"
-    },
-    {
       "uid": "559647a6f430b3aeadbecd67194451dd",
       "css": "menu",
       "code": 61641,
       "src": "fontawesome"
     },
     {
-      "uid": "040e72500c863813088c9f9c9415f8e9",
-      "css": "up",
-      "code": 59394,
-      "src": "mfglabs"
-    },
-    {
       "uid": "mj2pxhfj0eumtbzirpdokhtzk00480uo",
-      "css": "up-1",
+      "css": "up",
       "code": 59396,
       "src": "typicons"
-    },
-    {
-      "uid": "43c4064ec1260d0e55c37e0467c75cbb",
-      "css": "up-2",
-      "code": 59404,
-      "src": "entypo"
     },
     {
       "uid": "06301c50d89b5d3e651bd07ebd6d7de7",
       "css": "cancel",
       "code": 59407,
       "src": "mfglabs"
-    },
-    {
-      "uid": "9e0404ba55575a540164db9a5ad511df",
-      "css": "doc-new",
-      "code": 59424,
-      "src": "elusive"
     },
     {
       "uid": "a73c5deb486c8d66249811642e5d719a",
@@ -212,14 +128,14 @@
     },
     {
       "uid": "zc0c8s0nyweeeo9i8a3rucu7alwxt56r",
-      "css": "wrench-1",
+      "css": "tools",
       "code": 59413,
       "src": "modernpics"
     },
     {
       "uid": "fb598151d4f3bbb37861ac6fdfabb383",
       "css": "petrolette",
-      "code": 59414,
+      "code": 59397,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -229,6 +145,24 @@
       "search": [
         "newlogo-icon"
       ]
+    },
+    {
+      "uid": "1e32e1f8787cf3cb9f52f8850822dcb6",
+      "css": "cogs",
+      "code": 59414,
+      "src": "elusive"
+    },
+    {
+      "uid": "c77fd2fd065b5fe16d6f2b41e190b266",
+      "css": "pencil",
+      "code": 59395,
+      "src": "entypo"
+    },
+    {
+      "uid": "xq9z5jujkqhrf97s70hjek6otohmhr1y",
+      "css": "down",
+      "code": 59394,
+      "src": "typicons"
     }
   ]
 }

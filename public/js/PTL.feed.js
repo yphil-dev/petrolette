@@ -35,13 +35,13 @@ PTL.feed = {
         });
 
     var $selectIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-uncheck feed-select')
+        .attr('class', 'feed-control translate icon-checkbox feed-select')
         .data('title', 'Select this feed (%1)', url)
         .attr('title', PTL.tr('Select this feed (%1)', url))
         .click(function() {
           $(this).parent().parent().parent().parent()
             .toggleClass('selected');
-          $(this).toggleClass('icon-ok icon-uncheck');
+          $(this).toggleClass('icon-checked icon-checkbox');
         });
 
     var $deleteIcon = $('<i>')
@@ -53,7 +53,7 @@ PTL.feed = {
         });
 
     var $prefsIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-pencil feed-edit')
+        .attr('class', 'feed-control translate icon-wrench feed-edit')
         .data('title', PTL.tr('Modify this feed (%1) parameters', url))
         .attr('title', PTL.tr('Modify this feed (%1) parameters', url))
         .click(function() {
@@ -109,13 +109,13 @@ PTL.feed = {
 
       $feedToggle.css('background-image', 'none');
 
-      $feedIcon.addClass('icon-down-big').removeClass('icon-rzz');
+      $feedIcon.addClass('icon-down').removeClass('icon-rzz');
 
       $(this).data('img', iconImg);
 
     }, function() {
 
-      $feedIcon.removeClass('icon-down-big');
+      $feedIcon.removeClass('icon-down');
 
       if ($(this).data('img') !== 'none') {
         $feedToggle.css('background-image', $(this).data('img'));

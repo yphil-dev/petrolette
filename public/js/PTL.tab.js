@@ -62,7 +62,6 @@ PTL.tab = {
       PTL.tab.add($tabs);
     });
 
-
     PTL.tab.makeNewTabButton($tabs);
 
     PTL.sync.readSync();
