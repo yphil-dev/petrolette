@@ -763,12 +763,12 @@ ul.help li.rss:before {
 }
 
 ul.help li.www:before {
-  content: '\e802';
+  content: '\F50D';
   color: var(--color-ui-pri);
 }
 
 ul.help li.search:before {
-  content: '\e812';
+  content: '\0805';
   color: var(--color-ui-success);
 }
 
@@ -778,7 +778,7 @@ ul.help li.export:before {
 }
 
 ul.help li.cloud:before {
-  content: '\e803';
+  content: '\0808';
   color: var(--color-ui-success);
 }
 

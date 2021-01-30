@@ -224,7 +224,7 @@ PTL.util = {
         },
         {
           element: 'div.feed-toggle',
-          intro: PTL.tr('Expand / collapse this feed.')
+          intro: PTL.tr('Fold / unfold this feed.')
         }
       ]
     });

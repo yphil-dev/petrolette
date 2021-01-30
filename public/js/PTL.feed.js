@@ -88,7 +88,7 @@ PTL.feed = {
 
     var $feedHandle = $('<div>')
         .data('title', PTL.tr('Move this feed (%1)', url))
-        .attr('title', PTL.tr('Move this feed (%1)', url) + ' - ' + $feed.data('status'))
+        .attr('title', PTL.tr('Move this feed (%1)', url))
         .attr('class', 'feed-handle');
 
     var $feedBody = $('<div>').attr('class', 'feed-body'),
@@ -99,6 +99,8 @@ PTL.feed = {
         $deleteDiv = $('<div>').append($deleteIcon),
         $prefsDiv = $('<div>').append($prefsIcon),
         $reloadDiv = $('<div>').append($reloadIcon);
+
+    // const feedUrlHost = new URL(url).host;
 
     var $titleDiv = $('<div>')
         .attr('title', url)
@@ -175,8 +177,6 @@ PTL.feed = {
             feedStatus = $dataStore.data('status'),
             $feedToggle = $feed.find('.feed-toggle'),
             $feedIcon = $feed.find('.feed-toggle > i');
-
-      console.log('status for %s: %s', feedUrl, $dataStore.data('status'))
 
       var l = PTL.util.getLocation(feedUrl),
           feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -393,7 +393,7 @@ PTL.feed = {
                     .attr('href', item.enclosures[0].url)
                     .appendTo($itemDiv);
                   $soundIcon
-                    .attr('class', 'item-icon icon-play')
+                    .attr('class', 'item-icon icon-audio')
                     .appendTo($soundLink);
                 }
               }
@@ -460,7 +460,7 @@ PTL.feed = {
 
         }).always(function() {
 
-          $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp) + ' - ' + feedStatus);
+          $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp));
 
           if (progress) progress.increment();
           $refreshButton.removeClass('spin');

@@ -75,12 +75,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "517522647a556192fbc78aa391b7b0c2",
-      "css": "cancel-circled-outline",
-      "code": 59403,
-      "src": "typicons"
-    },
-    {
       "uid": "70370693ada58ef0a60fa0984fe8d52a",
       "css": "plus",
       "code": 59411,
@@ -91,30 +85,6 @@
       "css": "minus",
       "code": 59408,
       "src": "entypo"
-    },
-    {
-      "uid": "de9a631a7d18106aea1c89ba51b1990a",
-      "css": "help-circled",
-      "code": 59393,
-      "src": "entypo"
-    },
-    {
-      "uid": "3327862df439988139b61814143b7a42",
-      "css": "cancel-circled",
-      "code": 59401,
-      "src": "typicons"
-    },
-    {
-      "uid": "ivjrs8ijaooc3a2dw4790kb2rx4l6kjh",
-      "css": "volume-down",
-      "code": 59418,
-      "src": "modernpics"
-    },
-    {
-      "uid": "rrb2e7qiu68cw7itzq0wzm2hugw1u4lu",
-      "css": "volume-up",
-      "code": 59419,
-      "src": "modernpics"
     },
     {
       "uid": "ec21fe3492bb04d9e29103c319556ed8",
@@ -157,6 +127,30 @@
       "css": "cog",
       "code": 59394,
       "src": "elusive"
+    },
+    {
+      "uid": "5d9730dc93976d27eb07914eab50a507",
+      "css": "audio",
+      "code": 59393,
+      "src": "elusive"
+    },
+    {
+      "uid": "9cc990bbcac7aa8504078b3f49df79b1",
+      "css": "comments",
+      "code": 62075,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "1e89103762be72b0720eda0468e62b90",
+      "css": "globe",
+      "code": 2053,
+      "src": "linecons"
+    },
+    {
+      "uid": "e9bce795d01ef5a058c63cab0a03dc66",
+      "css": "cloud",
+      "code": 2056,
+      "src": "typicons"
     }
   ]
 }

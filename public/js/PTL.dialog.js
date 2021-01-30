@@ -207,14 +207,14 @@ PTL.dialog = {
           $guessButton.click(function() {
 
             $guessSpinner
-              .removeClass('icon-ok icon-cancel-circled icon-search ui-state-success ui-state-error')
+              .removeClass('icon-checked icon-cancel-circled icon-search ui-state-success ui-state-error')
               .addClass('spin icon-cog');
-            $guessButton.removeClass('icon-ok ui-state-success ui-state-error');
+            $guessButton.removeClass('icon-checked ui-state-success ui-state-error');
 
             $.get('/discover', {
               url: $guessField.val(),
               dataType: 'json',
-              timeout: 1200
+              timeout: 800
             }, function() {
               $guessSpinner.removeClass('spin icon-cog');
             }).done(function(feed) {
@@ -223,7 +223,7 @@ PTL.dialog = {
 
               $guessSpinner
                 .removeClass('ui-state-error')
-                .addClass('icon-ok ui-state-success');
+                .addClass('icon-checked ui-state-success');
 
               $guessButton
                 .addClass('ui-state-success')
