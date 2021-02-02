@@ -95,7 +95,7 @@ function getFeed (urlfeed, callback) {
 
   req
     .on ('error', function (err) {
-      callback(err.message);
+      callback(err);
     })
     .on ('response', function (res) {
       if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));

@@ -7,3 +7,7 @@ The font is a custom one, containing only the dozen of glyphs used throughout th
 `cd petrolette/tmp`
 
 `rm -rfv fontello-* ; unzip fontello.zip && cp -fv fontello-*/config.json ../public/font/fontello-config.json && cp -fv fontello-*/css/fontello.css ../public/css/ && cp -fv fontello-*/font/* ../public/font/ && cp -fv fontello-*/font/fontello.ttf ~/.fonts/`
+
+## Install
+
+`iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8000`
