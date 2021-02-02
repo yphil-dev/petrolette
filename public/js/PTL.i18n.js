@@ -186,7 +186,7 @@ PTL.i18n.translations = {
   "Select this feed (for drag & drop)." : { fr: "Sélectionner ce flux (pour le glisser-déposer)." , ja: "このソースを選択します（ドラッグ＆ドロップ用）。", es: "Seleccione esta fuente (para arrastrar y soltar)." },
   "Drag here to move this feed (and all other selected feeds) within this group, or into another." : { fr: "Attraper ici pour déplacer ce flux (et toutes les autres flux sélectionnées) dans ce groupe ou dans un autre." , ja: "ここでドラッグすると、このグループ内のこのソース（および他のすべての選択されたソース）を別のグループに移動できます。", es: "Arrastre aquí para mover esta fuente (y todas las demás fuentes seleccionadas) dentro de este grupo o dentro de otra." },
 
-  "Expand / collapse this feed." : { fr: "Ouvrir / fermer ce flux." , ja: "このソースを展開/折りたたむ。", es: "Expandir / contraer esta fuente." },
+  "Fold / unfold this feed." : { fr: "Plier / déplier ce flux." , ja: "このソースを展開/折りたたむ。", es: "Expandir / contraer esta fuente." },
 
   "Pétrolette allows you to sync data with a storage of your choice ; " : { fr: "Synchroniser Pétrolette avec le stockage de votre choix ; " , ja: "Pétroletteでは、選択したストレージにデータを同期させることができます。 ; ", es: "Pétrolette le permite sincronizar datos con un almacenamiento de su elección ; " },
 

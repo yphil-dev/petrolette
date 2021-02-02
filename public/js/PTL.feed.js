@@ -2,124 +2,148 @@
 
 PTL.feed = {
 
-    add:function($column, url, type, limit, clickNew, isQueryString, progress) {
+  add:function($column, url, type, limit, status, clickNew, isQueryString, progress) {
 
-        var feedIndex = $('#tabs').find('.feed').length;
+    var feedIndex = $('#tabs').find('.feed').length;
 
-        var $feed = $('<li>')
-            .attr('class', 'feed')
-            .data('url', url)
-            .data('type', type)
-            .data('limit', limit);
+    var $feed = $('<li>')
+        .attr('class', 'feed')
+        .data('url', url)
+        .data('type', type)
+        .data('limit', limit);
 
-        var $feedIcon = $('<i>')
-            .attr('class', 'feed-control feedIcon icon-rzz rotate translate')
-            .data('title', 'Fold / unfold this feed (%1)', url)
-            .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
-            .click(function() {
-                $(this).toggleClass('down')
-                    .parent().parent().parent()
-                    .children('div.feed-body')
-                    .slideToggle(350);
-            });
+    var $feedIcon = $('<i>')
+        .attr('class', 'feed-control feedIcon icon-rss translate')
+        .data('title', 'Fold / unfold this feed (%1)', url)
+        .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
+        .click(function() {
 
-        var $selectIcon = $('<i>')
-            .attr('class', 'feed-control translate icon-uncheck feed-select')
-            .data('title', 'Select this feed (%1)', url)
-            .attr('title', PTL.tr('Select this feed (%1)', url))
-            .click(function() {
-                $(this).parent().parent().parent().parent()
-                    .toggleClass('selected');
-                $(this).toggleClass('icon-ok icon-uncheck');
-            });
+          // Can't just use toggle because we have to pass the div to populate() in order to recreate it with the new data values, just setting them here doesn't work :(
 
-        var $deleteIcon = $('<i>')
-            .attr('class', 'feed-control translate icon-cancel feed-delete')
-            .data('title', 'Delete this feed (%1)', url)
-            .attr('title', PTL.tr('Delete this feed (%1)', url))
-            .click(function() {
-                PTL.dialog.killFeed($(this));
-            });
+          if ($feedControls.data('status') == 'on') {
+            $(this).removeClass('fold')
+              .parent().parent().parent()
+              .children('div.feed-body')
+              .slideUp(350);
+            $feedControls.data('status', 'off');
+          } else {
+            $(this).addClass('fold')
+              .parent().parent().parent()
+              .children('div.feed-body')
+              .slideDown(350);
+            $feedControls.data('status', 'on');
+          }
 
-        var $prefsIcon = $('<i>')
-            .attr('class', 'feed-control translate icon-pencil feed-edit')
-            .data('title', PTL.tr('Modify this feed (%1) parameters', url))
-            .attr('title', PTL.tr('Modify this feed (%1) parameters', url))
-            .click(function() {
-                PTL.dialog.feedPrefs($(this));
-            });
+          PTL.tab.saveTabs();
 
-        var $reloadIcon = $('<i>')
-            .attr('class', 'feed-control translate icon-arrows-cw feed-refresh')
-            .data('title', PTL.tr('Refresh this feed (%1)', url))
-            .attr('title', PTL.tr('Refresh this feed (%1)', url))
-            .click(function() {
-              PTL.feed.populate($(this), progress);
-            });
+          PTL.feed.populate($reloadIcon);
 
-        var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
-            .data('index', feedIndex)
-            .data('url', url)
-            .data('type', type)
-            .data('limit', limit);
-
-        var $feedHandle = $('<div>')
-            .data('title', PTL.tr('Move this feed (%1)', url))
-            .attr('title', PTL.tr('Move this feed (%1)', url))
-            .attr('class', 'feed-handle');
-
-        var $feedBody = $('<div>').attr('class', 'feed-body'),
-            $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
-            $header = $('<div>').attr('class', 'feed-header'),
-            $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon),
-            $selectDiv = $('<div>').append($selectIcon),
-            $deleteDiv = $('<div>').append($deleteIcon),
-            $prefsDiv = $('<div>').append($prefsIcon),
-            $reloadDiv = $('<div>').append($reloadIcon);
-
-        var $titleDiv = $('<div>')
-            .attr('title', url)
-            .attr('class', 'feed-title truncate');
-
-        var $titleLink = $('<a>')
-            .attr('href', url)
-            .attr('target', '_blank')
-            .html(url);
-
-        $feedControls.hover (
-            function() {$(this).find('.collapsible').show('fade', 'fast');},
-            function() {$(this).find('.collapsible').hide('fade', 'slow');}
-        );
-
-        $header.hover (function() {
-
-            var iconImg = $feedToggle.css('background-image');
-
-            $feedToggle.css('background-image', 'none');
-
-            $feedIcon.addClass('icon-down-big').removeClass('icon-rzz');
-
-            $(this).data('img', iconImg);
-
-        }, function() {
-
-            $feedIcon.removeClass('icon-down-big');
-
-            if ($(this).data('img') !== 'none') {
-                $feedToggle.css('background-image', $(this).data('img'));
-            } else {
-                $feedIcon.addClass('icon-rzz');
-            }
+          // $(this).toggleClass('down')
+          //   .parent().parent().parent()
+          //   .children('div.feed-body')
+          //   .slideToggle(350);
 
         });
 
-        if (!PTL.util.isMobile()) {
-            $selectDiv.addClass('collapsible');
-            $deleteDiv.addClass('collapsible');
-            $prefsDiv.addClass('collapsible');
+    var $selectIcon = $('<i>')
+        .attr('class', 'feed-control translate icon-checkbox feed-select')
+        .data('title', 'Select this feed (%1)', url)
+        .attr('title', PTL.tr('Select this feed (%1)', url))
+        .click(function() {
+          $(this).parent().parent().parent().parent()
+            .toggleClass('selected');
+          $(this).toggleClass('icon-checked icon-checkbox');
+        });
 
-            $feedControls.append($selectDiv, $deleteDiv);
-        }
+    var $deleteIcon = $('<i>')
+        .attr('class', 'feed-control translate icon-cancel feed-delete')
+        .data('title', 'Delete this feed (%1)', url)
+        .attr('title', PTL.tr('Delete this feed (%1)', url))
+        .click(function() {
+          PTL.dialog.killFeed($(this));
+        });
+
+    var $prefsIcon = $('<i>')
+        .attr('class', 'feed-control translate icon-cog feed-edit')
+        .data('title', PTL.tr('Modify this feed (%1) parameters', url))
+        .attr('title', PTL.tr('Modify this feed (%1) parameters', url))
+        .click(function() {
+          PTL.dialog.feedPrefs($(this));
+        });
+
+    var $reloadIcon = $('<i>')
+        .attr('class', 'feed-control translate icon-arrows-cw feed-refresh')
+        .data('title', PTL.tr('Refresh this feed (%1)', url))
+        .attr('title', PTL.tr('Refresh this feed (%1)', url))
+        .click(function() {
+          PTL.feed.populate($(this), progress);
+        });
+
+    var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
+        .data('index', feedIndex)
+        .data('url', url)
+        .data('type', type)
+        .data('limit', limit)
+        .data('status', status);
+
+    var $feedHandle = $('<div>')
+        .data('title', PTL.tr('Move this feed (%1)', url))
+        .attr('title', PTL.tr('Move this feed (%1)', url))
+        .attr('class', 'feed-handle');
+
+    var $feedBody = $('<div>').attr('class', 'feed-body'),
+        $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
+        $header = $('<div>').attr('class', 'feed-header'),
+        $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon),
+        $selectDiv = $('<div>').append($selectIcon),
+        $deleteDiv = $('<div>').append($deleteIcon),
+        $prefsDiv = $('<div>').append($prefsIcon),
+        $reloadDiv = $('<div>').append($reloadIcon);
+
+    // const feedUrlHost = new URL(url).host;
+
+    var $titleDiv = $('<div>')
+        .attr('title', url)
+        .attr('class', 'feed-title truncate');
+
+    var $titleLink = $('<a>')
+        .attr('href', url)
+        .attr('target', '_blank')
+        .html(url);
+
+    $feedControls.hover (
+      function() {$(this).find('.collapsible').show('fade', 'fast');},
+      function() {$(this).find('.collapsible').hide('fade', 'slow');}
+    );
+
+    $header.hover (function() {
+
+      var iconImg = $feedToggle.css('background-image');
+      $feedToggle.css('background-image', 'none');
+
+      $feedIcon.removeClass('icon-rss').addClass('icon-down');
+
+      $(this).data('img', iconImg);
+
+    }, function() {
+
+      $feedIcon.removeClass('icon-down');
+
+      if ($(this).data('img') !== 'none') {
+        $feedToggle.css('background-image', $(this).data('img'));
+      } else {
+        $feedIcon.addClass('icon-rss');
+      }
+
+    });
+
+    if (!PTL.util.isMobile()) {
+      $selectDiv.addClass('collapsible');
+      $deleteDiv.addClass('collapsible');
+      $prefsDiv.addClass('collapsible');
+
+      $feedControls.append($selectDiv, $deleteDiv);
+    }
 
         $header.append($feedToggle,
                        $feedHandle,
@@ -150,24 +174,31 @@ PTL.feed = {
             feedUrl = $dataStore.data('url'),
             feedType = $dataStore.data('type'),
             feedLimit = $dataStore.data('limit'),
+            feedStatus = $dataStore.data('status'),
             $feedToggle = $feed.find('.feed-toggle'),
             $feedIcon = $feed.find('.feed-toggle > i');
 
-        var l = PTL.util.getLocation(feedUrl),
-            feedProtocol = l.protocol ? l.protocol + '//' : '//',
-            feedHost = feedProtocol + l.hostname,
-            dateObj = new Date(),
-            timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds()
+      var l = PTL.util.getLocation(feedUrl),
+          feedProtocol = l.protocol ? l.protocol + '//' : '//',
+          feedHost = feedProtocol + l.hostname,
+          dateObj = new Date(),
+          timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds()
       subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
       if (subdomain === 'rss' || subdomain === 'feeds') {
         feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
       }
 
-      $refreshButton.addClass('spin');
-      $feedLink.removeClass('danger');
+      $feedIcon.addClass('fold');
 
-      $.get("/feed", {
+      if ($dataStore.data('status') == 'on') {
+
+        $feedIcon.removeClass('fold');
+
+        $refreshButton.addClass('spin');
+        $feedLink.removeClass('danger');
+
+        $.get("/feed", {
         feedurl: feedUrl,
         dataType: 'json'
         }, function() {
@@ -235,7 +266,7 @@ PTL.feed = {
                 $feedBody
                     .append($errorItem);
 
-                $feedIcon.addClass('icon-rzz yowzo');
+                $feedIcon.addClass('icon-rss');
                 $feedToggle.css('background-image', 'none');
 
                 return;
@@ -250,11 +281,11 @@ PTL.feed = {
                 }).done(function(icon) {
 
                     $feedToggle.css('background-image','url(' + icon + ')');
-                    $feedIcon.removeClass('icon-rzz');
+                    $feedIcon.removeClass('icon-rss');
                     $header.data('img', icon);
 
                 }).fail(function() {
-                    $feedIcon.addClass('icon-rzz yowzo');
+                    $feedIcon.addClass('icon-rss');
                     $feedToggle.css('background-image', 'none');
                 });
 
@@ -325,7 +356,6 @@ PTL.feed = {
                       imageUrl = links[i]['@'].href;
                       imageUrls.push(links[i]['@'].href);
                     }
-
                   }
                 }
               }
@@ -363,7 +393,7 @@ PTL.feed = {
                     .attr('href', item.enclosures[0].url)
                     .appendTo($itemDiv);
                   $soundIcon
-                    .attr('class', 'item-icon icon-play')
+                    .attr('class', 'item-icon icon-audio')
                     .appendTo($soundLink);
                 }
               }
@@ -436,6 +466,10 @@ PTL.feed = {
           $refreshButton.removeClass('spin');
 
         });
+
+      } else {
+        if (progress) progress.increment();
+      }
 
     }
 };

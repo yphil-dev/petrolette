@@ -378,16 +378,21 @@ li.feed-item.error > strong.key {
   transition: all .2s linear;
 }
 
-.rotate.down {
+.fold {
+  display:inline-block;
+  transition: all .2s linear;
   transform: rotate(-90deg);
 }
 
-.rotate.right {
-  transform: rotate(180deg);
+.unfold {
+  display:inline-block;
+  transition: all .2s linear;
+  transform: rotate(90deg);
 }
 
-.rotate.close {
-  transform: rotate(-180deg);
+.folded {
+  display:inline-block;
+  transform: rotate(-90deg);
 }
 
 [class^="icon-"]::before, [class*=" icon-"]::before {
@@ -758,12 +763,12 @@ ul.help li.rss:before {
 }
 
 ul.help li.www:before {
-  content: '\e802';
+  content: '\F50D';
   color: var(--color-ui-pri);
 }
 
 ul.help li.search:before {
-  content: '\e812';
+  content: '\0805';
   color: var(--color-ui-success);
 }
 
@@ -773,7 +778,7 @@ ul.help li.export:before {
 }
 
 ul.help li.cloud:before {
-  content: '\e803';
+  content: '\0808';
   color: var(--color-ui-success);
 }
 
@@ -997,10 +1002,6 @@ li.feed.selected {
   padding:0;
 }
 
-.open {
-  transform: rotate(180deg);
-}
-
 .column .ui-sortable-placeholder {
   visibility: visible !important;
   outline: 3px dashed var(--color-qui);
@@ -1077,11 +1078,11 @@ li.feed.selected {
   color: var(--color-ui-pri) !important;
 }
 
-.icon-rzz {
+.icon-rss {
   color: var(--color-ui-rss) !important;
 }
 
-.icon-rzz {
+.icon-rss {
   color: var(--color-ui-rss) !important;
 }
 
