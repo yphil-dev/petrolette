@@ -112,7 +112,7 @@
     },
     {
       "uid": "a73c5deb486c8d66249811642e5d719a",
-      "css": "arrows-cw",
+      "css": "refresh",
       "code": 59392,
       "src": "fontawesome"
     },
@@ -151,6 +151,18 @@
       "css": "cloud",
       "code": 2056,
       "src": "typicons"
+    },
+    {
+      "uid": "c91522256a4c3972e9a2765b995b7252",
+      "css": "pin",
+      "code": 59398,
+      "src": "zocial"
+    },
+    {
+      "uid": "7cf0c6fefa5327473dec91427434ae26",
+      "css": "block",
+      "code": 59400,
+      "src": "iconic"
     }
   ]
 }
