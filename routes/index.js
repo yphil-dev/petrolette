@@ -96,7 +96,7 @@ function getFeed (urlfeed, callback) {
 
   req
     .on ('error', function (err) {
-      callback(err.toString());
+      callback(err.message);
     })
     .on ('response', function (res) {
       if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
@@ -119,8 +119,8 @@ function getFeed (urlfeed, callback) {
     })
     .on ('error', function (err) {
       var meta = this.meta;
-      console.log('HUUM (%s) %s %s', err, meta.title, urlfeed);
-      // callback ('err');
+      console.log('HUUM (%s) %s %s', err.message, meta.title, urlfeed);
+      callback (err.message);
     })
     .on ('end', function () {
       var meta = this.meta;
@@ -138,6 +138,7 @@ router.get('/feed', function(req, res) {
   dnsreq
     .on('error', function(error) {
       // The only way so far to catch a DNS error
+      console.log('Err: %s (%s)', {error:error.code}, req.query.feedurl);
       res.send({error:error.code});
     })
     .on('response', function(response) {

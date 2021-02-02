@@ -4,6 +4,7 @@
   "version": "1.0.46",
   "private": true,
   "license": "GPL-3.0-only",
+  "FAVICONS_CACHE_DIR": "favicons-cache",
   "engines": {
     "node": "*"
   },
@@ -12,12 +13,12 @@
     "url": "https://framagit.org/yphil/petrolette"
   },
   "scripts": {
-    "start": "pm2 start pm2.config.json ; pm2 update",
-    "start-ssl": "pm2 start pm2.config.json --env ssl",
-    "restart": "pm2 restart pm2.config.json",
-    "stop": "pm2 stop petrolette",
-    "show": "pm2 show petrolette",
-    "log": "pm2 logs petrolette",
+    "start": "./node_modules/pm2/bin/pm2 start pm2.config.json ; ./node_modules/pm2/bin/pm2 update",
+    "start-ssl": "./node_modules/pm2/bin/pm2 start pm2.config.json --env ssl",
+    "restart": "./node_modules/pm2/bin/pm2 restart pm2.config.json",
+    "stop": "./node_modules/pm2/bin/pm2 stop petrolette",
+    "show": "./node_modules/pm2/bin/pm2 show petrolette",
+    "logs": "./node_modules/pm2/bin/pm2 logs petrolette",
     "postinstall": "bower install --allow-root"
   },
   "dependencies": {
@@ -31,7 +32,7 @@
     "gitlab-runner": "0.0.10",
     "iconv": "^3.0.0",
     "npm": "^7.3.0",
-    "pm2": "^4.5.2",
+    "pm2": "^4.5.1",
     "request": "latest"
   }
 }
