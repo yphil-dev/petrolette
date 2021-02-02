@@ -26,12 +26,16 @@ PTL.feed = {
               .children('div.feed-body')
               .slideUp(350);
             $feedControls.data('status', 'off');
+            $reloadIcon.removeClass('icon-refresh');
+            $reloadIcon.addClass('icon-pin');
           } else {
             $(this).addClass('fold')
               .parent().parent().parent()
               .children('div.feed-body')
               .slideDown(350);
             $feedControls.data('status', 'on');
+            $reloadIcon.removeClass('icon-pin');
+            $reloadIcon.addClass('icon-refresh');
           }
 
           PTL.tab.saveTabs();
@@ -72,7 +76,7 @@ PTL.feed = {
         });
 
     var $reloadIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-arrows-cw feed-refresh')
+        .attr('class', 'feed-control translate icon-refresh feed-refresh')
         .data('title', PTL.tr('Refresh this feed (%1)', url))
         .attr('title', PTL.tr('Refresh this feed (%1)', url))
         .click(function() {
@@ -85,6 +89,14 @@ PTL.feed = {
         .data('type', type)
         .data('limit', limit)
         .data('status', status);
+
+    if ($feedControls.data('status') == 'on') {
+      $reloadIcon.removeClass('icon-pin');
+      $reloadIcon.addClass('icon-refresh');
+    } else {
+      $reloadIcon.removeClass('icon-refresh');
+      $reloadIcon.addClass('icon-pin');
+    }
 
     var $feedHandle = $('<div>')
         .data('title', PTL.tr('Move this feed (%1)', url))
@@ -182,8 +194,8 @@ PTL.feed = {
           feedProtocol = l.protocol ? l.protocol + '//' : '//',
           feedHost = feedProtocol + l.hostname,
           dateObj = new Date(),
-          timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds()
-      subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
+          timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds(),
+          subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
       if (subdomain === 'rss' || subdomain === 'feeds') {
         feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
