@@ -4,7 +4,7 @@ var app = require('../app');
 var debug = require('debug')('petrolette:server');
 var http = require('http');
 const fs = require('fs');
-var port = normalizePort(process.env.PORT || '8000');
+var port = normalizePort('8000');
 app.set('port', port);
 
 function isLocal() {
@@ -68,11 +68,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
   case 'EACCES':
-    console.error(bind + ' requires elevated privileges');
+    console.error('## ' + bind + ' requires elevated privileges');
     process.exit(1);
     break;
   case 'EADDRINUSE':
-    console.error(bind + ' is already in use');
+    console.error('## ' + bind + ' is already in use');
     process.exit(1);
     break;
   default:
