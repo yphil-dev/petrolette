@@ -34,7 +34,6 @@ function escape(s) {
 
 
 router.get('/', function(req, res) {
-  console.log('pjson.version : %s', pjson.version);
   res.render('index', {
     queryString: escape(req.query.add),
     version: pjson.version
@@ -132,6 +131,8 @@ function getFeed (urlfeed, callback) {
 }
 
 router.get('/feed', function(req, res) {
+
+  console.log('GET');
 
   var dnsreq = request(req.query.feedurl);
 
