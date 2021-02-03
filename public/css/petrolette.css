@@ -433,7 +433,7 @@ div#searchUrlString {
   /* flex-direction: row; */
 }
 
-#search-url-string-input {
+#searchUrlStringInput {
   /* flex-wrap: nowrap; */
   /* flex-grow: 4; */
   box-sizing: border-box;

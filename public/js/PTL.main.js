@@ -16,14 +16,23 @@ var PTL = (function() {
           $saveButton = $('#saveTabs'),
           $langMenu = $('select#language'),
           $slider = $('div#gallerySpeedSlider'),
+          $searchUrlOkButton = $('button#searchUrlOkButton'),
+          $searchUrlRestoreDefaultButton = $('button#searchUrlRestoreDefaultButton'),
           $searchUrlStringInput = $('input#searchUrlStringInput'),
           $spinner = $('#gallerySpeedSpinner');
 
 
-      var searchUrlString = PTL.prefs.readConfig('searchUrlString');
+      $searchUrlStringInput.val(PTL.prefs.readConfig('searchUrlString'));
 
-      $searchUrlStringInput.val(searchUrlString);
+      $searchUrlRestoreDefaultButton.click(function(){
+        console.log('val %s', $searchUrlStringInput.val());
+        $searchUrlStringInput.val(PTL.prefs.readConfig('searchUrlStringDefault'));
+      });
 
+      $searchUrlOkButton.click(function(){
+        PTL.prefs.writeConfig('searchUrlString', $searchUrlStringInput.val());
+        console.log('val %s', $searchUrlStringInput.val());
+      });
 
       $('noscript').hide();
 
