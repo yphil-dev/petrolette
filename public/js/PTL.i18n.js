@@ -69,7 +69,7 @@ PTL.i18n.translations = {
   "Slideshow speed" : { fr: "Vitesse du diaporama" , ja: "スライドショーのスピード", es: "Velocidad de la presentación" },
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
-  "WtF?" : { fr: "Heu?" , ja: "ハァッ？", es: "Eh?" },
+  "Documentation" : { fr: "Documentation" , ja: "ドキュメンテーション", es: "Documentación" },
 
   "JS Licences" : { fr: "Licences JS" , ja: "JSライセンス", es: "Licencias JS" },
 
@@ -168,6 +168,7 @@ PTL.i18n.translations = {
   "Click this button to add a group." : { fr: "Cliquez sur ce bouton pour ajouter un groupe." , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo." },
 
   "Source code" : { fr: "Code source" , ja: "ソースコード", es: "Código fuente" },
+  "Use the force - read the Source" : { fr: "Utilise la Force, lis le Source" , ja: "力を使って、ソースを読んでください", es: "Usa la fuerza, lee la Fuente" },
 
   "Click to add a feed." : { fr: "Cliquer pour ajouter un flux" , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente" },
 
@@ -197,8 +198,6 @@ PTL.i18n.translations = {
   "Add a new group" : { fr: "Ajouter un nouveau groupe" , ja: "グループを追加します", es: "Agrega un grupo nuevo" },
 
   "Add a feed" : { fr: "Ajouter un flux" , ja: "ソースを追加します", es: "Agrega una fuente" },
-
-  "What exactly is Pétrolette?" : { fr: "Pétrolette, c'est quoi au juste?" , ja: "Pétroletteとは何ですか？", es: "¿Qué es Pétrolette?" },
 
   "Welcome to Pétrolette" : { fr: "Bienvenue dans Pétrolette" , ja: "ペトロレットへようこそ", es: "Bienvenido a Pétrolette" },
 

@@ -98,8 +98,8 @@
         </div>
 
         <div class="menuBarItem logoType translate help-button js-enabled-only"
-             title="What exactly is Pétrolette?"
-             data-title="What exactly is Pétrolette?">
+             title="Documentation"
+             data-title="Documentation">
           <i class="logoType icon-help"></i>
           <span class="text translate"
                 data-content="Help">
@@ -245,7 +245,7 @@
           <div class="flex-box">
             <div class="grow">
               <label for="gallerySpeed" class="ui-helper-hidden">
-                <input type="text" id="gallerySpeed" />
+                <input type="text" id=""gallerySpeed" />
               </label>
               <div id="gallerySpeedSlider"
                    data-title="Slideshow speed"
@@ -294,18 +294,18 @@
 
           <div class="flex-box">
             <a href="https://framagit.org/yphil/petrolette"
-               class="ui-button ui-widget ui-corner-all unique icon-petrolette translate"
-               data-title="Source code"
-               data-content="Source code"
-               title="Source code">
+               class="ui-button ui-widget ui-corner-all unique translate"
+               data-title="Use the force - read the Source"
+               title="Use the force - read the Source"
+               data-content="Source code">
               Source code
             </a>
             <button id="help"
                     class="grow translate help-button"
-                    data-title="What exactly is Pétrolette?"
-                    title="What exactly is Pétrolette?"
-                    data-content="WtF?">
-              WtF?
+                    data-title="Documentation"
+                    data-content="Help"
+                    title="Documentation">
+              Help
             </button>
             <a href="https://liberapay.com/yPhil/donate"
                class="ui-button ui-widget ui-corner-all translate last"
@@ -322,6 +322,43 @@
                data-content="JS Licences">
               JS Licence info
             </a>
+          </div>
+
+        </fieldset>
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <legend id="languageLegend"
+                  class="ui-corner-top translate"
+                  data-content="Search URL string">
+            Search URL string
+          </legend>
+          <div class="flex-box">
+            <!-- <input type="text" id="searchUrlString" class="grow" /> -->
+            <input name="searchUrlString"
+                   id="search-url-string-input"
+                   class="unique ui-widget-content ui-corner-all translate"
+                   placeholder="plop"
+                   data-title="plip"
+                   value=""
+                   title="zz"
+            />
+
+            <button id="search-url-ok"
+                    data-title="OK"
+                    class="translate ui-button ui-corner-all ui-widget"
+                    type="button"
+                    title="OK">
+              Ok
+            </button>
+
+            <button id="search-url-restore-default"
+                    data-title="Restore default"
+                    class="last grow translate ui-button ui-corner-all ui-widget"
+                    type="button"
+                    title="Restore default">
+              Restore default
+            </button>
+
           </div>
         </fieldset>
 
