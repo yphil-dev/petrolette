@@ -427,6 +427,23 @@ input#feed-guess {
   margin-right: .4em;
 }
 
+div#searchUrlString {
+  display:flex;
+  /* flex-wrap: nowrap; */
+  /* flex-direction: row; */
+}
+
+#search-url-string-input {
+  /* flex-wrap: nowrap; */
+  /* flex-grow: 4; */
+  box-sizing: border-box;
+  width: min-content;
+  flex-shrink: 1;
+  flex: 1;
+  margin: 0 .4em .4em 0;
+  width: 100%;
+}
+
 .dead-center {
   height: 300px;
   left: 50%;
