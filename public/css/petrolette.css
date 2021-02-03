@@ -472,6 +472,7 @@ nav#side-menu {
   transition: all .1s ease-out;
   width: var(--side-menu-width-expanded);
   z-index:11;
+  overflow: auto;
 }
 
 nav#side-menu.expanded {
