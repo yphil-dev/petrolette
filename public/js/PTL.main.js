@@ -8,7 +8,7 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      var $menu = $('nav#side-menu'),
+      var $menu = $('nav#sideMenu'),
           $overlay = $('#overlay'),
           $feedCodeButton = $('button#feedCode'),
           $importButton = $("button#fileImport"),
@@ -16,7 +16,14 @@ var PTL = (function() {
           $saveButton = $('#saveTabs'),
           $langMenu = $('select#language'),
           $slider = $('div#gallerySpeedSlider'),
+          $searchUrlStringInput = $('input#searchUrlStringInput'),
           $spinner = $('#gallerySpeedSpinner');
+
+
+      var searchUrlString = PTL.prefs.readConfig('searchUrlString');
+
+      $searchUrlStringInput.val(searchUrlString);
+
 
       $('noscript').hide();
 
@@ -241,7 +248,7 @@ var PTL = (function() {
     sideMenu: function(action) {
 
       var $overlay = $('#overlay'),
-          $sideMenu = $('nav#side-menu');
+          $sideMenu = $('nav#sideMenu');
 
       if (action == 'open') {
         $overlay.removeClass('hidden');

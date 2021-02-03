@@ -72,6 +72,7 @@ PTL.prefs = (function() {
     'gallerySlideTransition': 'fade',
     'gallerySlideshowSpeed': 3000,
     'lang': 'en',
+    'searchUrlString': 'https://trouvons.org/?format=rss&categories=news&q=',
     'feeds': JSON.stringify(newList),
     'tabDropActivate': true,
     'theme': 'night',
