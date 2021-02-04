@@ -8,7 +8,7 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      var $menu = $('nav#side-menu'),
+      var $menu = $('nav#sideMenu'),
           $overlay = $('#overlay'),
           $feedCodeButton = $('button#feedCode'),
           $importButton = $("button#fileImport"),
@@ -16,7 +16,23 @@ var PTL = (function() {
           $saveButton = $('#saveTabs'),
           $langMenu = $('select#language'),
           $slider = $('div#gallerySpeedSlider'),
+          $searchPrefixOkButton = $('button#searchPrefixOkButton'),
+          $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
+          $searchPrefixInput = $('input#searchPrefixInput'),
           $spinner = $('#gallerySpeedSpinner');
+
+
+      $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefix'));
+
+      $searchPrefixRestoreButton.click(function(){
+        console.log('val %s', $searchPrefixInput.val());
+        $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefixDefault'));
+      });
+
+      $searchPrefixOkButton.click(function(){
+        PTL.prefs.writeConfig('searchPrefix', $searchPrefixInput.val());
+        console.log('val %s', $searchPrefixInput.val());
+      });
 
       $('noscript').hide();
 
@@ -241,7 +257,7 @@ var PTL = (function() {
     sideMenu: function(action) {
 
       var $overlay = $('#overlay'),
-          $sideMenu = $('nav#side-menu');
+          $sideMenu = $('nav#sideMenu');
 
       if (action == 'open') {
         $overlay.removeClass('hidden');

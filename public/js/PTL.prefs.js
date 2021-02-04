@@ -9,8 +9,8 @@ PTL.prefs = (function() {
          {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4,"status":"on"}
        ],
        [
-         {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 8,"status":"on"},
-         {"url":"http://feeds.reuters.com/Reuters/worldNews","type":"text","limit": 16,"status":"on"}
+         {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 6,"status":"off"},
+         {"url":"https://www.npr.org/rss/rss.php?id=1001","type":"mixed","limit": 4,"status":"on"}
        ],
        [
          {"url":"http://www.lemonde.fr/rss/une.xml","type":"mixed","limit": 4,"status":"on"}
@@ -25,19 +25,19 @@ PTL.prefs = (function() {
        ],
        [
          {"url":"https://hacks.mozilla.org/feed/","type":"mixed","limit": 4,"status":"on"},
-         {"url":"https://thepiratebay.org/rss/top100/202","type":"text","limit": 12,"status":"on"}
+         {"url":"http://feeds.arstechnica.com/arstechnica/index","type":"text","limit": 12,"status":"on"}
        ],
        [
          {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 4,"status":"on"},
-         {"url":"http://feeds.feedburner.com/thechangelog","type":"text","limit": 4,"status":"on"}
+         {"url":"http://feeds.feedburner.com/thechangelog","type":"text","limit": 4,"status":"off"}
        ]
      ]
     },
     {"name":"img",
      "columns": [
        [
-         {"url":"http://cabinporn.com/rss/","type":"photo","limit": 16,"status":"on"},
-         {"url":"https://www.reddit.com/r/EarthPorn.rss","type":"photo","limit": 16,"status":"on"}
+         {"url":"http://cabinporn.com/rss/","type":"photo","limit": 3,"status":"off"},
+         {"url":"http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss","type":"photo","limit": 3,"status":"on"}
        ]
      ]
     },
@@ -62,7 +62,7 @@ PTL.prefs = (function() {
          {"url":"http://planet.linuxaudio.org/rss20.xml","type":"mixed","limit": 12,"status":"on"}
        ],
        [
-         {"url":"https://dangerousminds.net/atom","type":"photo","mixed": 12,"status":"on"}
+         {"url":"https://feeds.feedburner.com/dangerousminds/dot/net","type":"photo","mixed": 12,"status":"on"}
        ]
      ]
     }
@@ -72,6 +72,8 @@ PTL.prefs = (function() {
     'gallerySlideTransition': 'fade',
     'gallerySlideshowSpeed': 3000,
     'lang': 'en',
+    'searchPrefix': 'https://trouvons.org/?format=rss&categories=news&q=',
+    'searchPrefixDefault': 'https://trouvons.org/?format=rss&categories=news&q=',
     'feeds': JSON.stringify(newList),
     'tabDropActivate': true,
     'theme': 'night',
