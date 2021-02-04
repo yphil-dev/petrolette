@@ -233,12 +233,7 @@ PTL.dialog = {
                 .attr('title', PTL.tr('Valid feed found! Now just press OK')) ;
 
             }).always(function(req, status, xhr) {
-
-              if (status === 'error')
-                guessError();
-
-              console.log('status: %s', status);
-
+              if (status === 'error') guessError();
             });
 
           });

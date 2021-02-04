@@ -192,7 +192,6 @@ router.get('/favicon', function(req, res) {
 
 router.get('/discover', function(req, res) {
 
-
   feedrat(req.query.url, req.query.searchPrefix, function(err, feed) {
 
     if (feed) {
