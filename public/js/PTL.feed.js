@@ -227,7 +227,9 @@ PTL.feed = {
 
           if (data.error || data.feedItems.length == 0) {
 
-            var message = data.error? data.error : PTL.tr('Empty feed');
+            console.log('data: ', data.error.code);
+
+            var message = data.error.code ? data.error.code : PTL.tr('Empty feed');
 
             PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
 

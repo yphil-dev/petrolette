@@ -1,11 +1,11 @@
 :root {
-  --color-pri: #3C4440;
-  --color-sec: #19B5FE;
+  --color-pri: #2F365F;
+  --color-sec: #F0EFF4;
   --color-ter: #FFDC00;
-  --color-qua: #7395AE;
+  --color-qua: #8CA9D3;
   --color-qui: #788780; /* visited links */
-  --color-sen: #C3DCD9;
-  --color-sep: #eeeeee;
+  --color-sen: #647295;
+  --color-sep: #F0EFF4;
   --color-oct: #7C818C;
   --color-non: #e3eff3;
   --color-den: #94c2d1;

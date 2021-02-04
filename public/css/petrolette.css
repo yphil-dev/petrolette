@@ -338,7 +338,7 @@ i.dangerous:hover {
 
 .feed-header > .feed-title > a:link,
 .feed-header > .feed-title > a:visited  {
-  color: var(--color-pri);
+  color: var(--color-sec);
 }
 
 .feed-header > .feed-title > a.danger:link,
@@ -1167,9 +1167,9 @@ a.feed-link:hover {
 }
 
 li.feed div.feed-body {
-  border-right: 1px solid var(--color-non);
-  border-bottom: 1px solid var(--color-non);
-  border-left: 1px solid var(--color-non);
+  border-right: 1px solid var(--color-sen);
+  border-bottom: 1px solid var(--color-sen);
+  border-left: 1px solid var(--color-sen);
 }
 
 li.feed:hover div.feed-body {
