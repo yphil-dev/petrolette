@@ -101,7 +101,7 @@
 
 body {
   color: var(--color-pri);
-  background-color: var(--color-oct);
+  background-color: var(--color-qua);
   font-family: Arial,Helvetica,sans-serif;
   margin:0;
 }
@@ -315,13 +315,10 @@ a:active {
   color: var(--color-sec);
 }
 
-.ui-tab.ui-state-active {
-  background: var(--color-oct);
-}
-
+.ui-tab.ui-state-active,
 #tab-names,
 #tabs {
-  background: none;
+  background: var(--color-qua);
 }
 
 i.item-icon {
