@@ -233,12 +233,12 @@ PTL.util = {
       steps: [
         {
           element: 'input#feed-guess',
-          intro: '<span class="translate" data-content="Enter a website address/URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a feed from your search query.">' + PTL.tr('Heck, enter anything, and Pétrolette will build a feed from your search query.') + '</span>',
+          intro: '<span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a feed from your search query">' + PTL.tr('Heck, enter anything, and Pétrolette will build a feed from your search query') + '</span>',
           position: 'bottom'
         },
         {
           element: 'button#feed-guess',
-          intro: PTL.tr('Find the website\'s feed, or build a new one from the seach query.'),
+          intro: PTL.tr('Find the feed of this website, or build a new one from the search terms.'),
           position: 'left'
         },
         {

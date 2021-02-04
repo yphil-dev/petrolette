@@ -90,8 +90,8 @@ PTL.dialog = {
             }
           },
           {
-            text: PTL.tr('Ok'),
-            title: PTL.tr('Ok'),
+            text: PTL.tr('OK'),
+            title: PTL.tr('OK'),
             class: 'translate button-ok',
             click: function() {
 

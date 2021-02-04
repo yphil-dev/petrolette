@@ -134,8 +134,7 @@
       <div id="sideMenu" class="plip">
 
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="languageLegend"
-                  class="ui-corner-top translate"
+          <legend class="ui-corner-top translate"
                   data-content="Language">
             Language
           </legend>
@@ -245,7 +244,7 @@
           <div class="flex-box">
             <div class="grow">
               <label for="gallerySpeed" class="ui-helper-hidden">
-                <input type="text" id=""gallerySpeed" />
+                <input type="text" id="gallerySpeed" />
               </label>
               <div id="gallerySpeedSlider"
                    data-title="Slideshow speed"
@@ -327,35 +326,36 @@
         </fieldset>
 
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="languageLegend"
-                  class="ui-corner-top translate"
-                  data-content="Search URL string">
-            Search URL string
+          <legend class="ui-corner-top translate"
+                  data-content="Search prefix"
+                  data-title="Search prefix">
+            Search prefix
           </legend>
           <div class="flex-box">
             <!-- <input type="text" id="searchPrefix" class="grow" /> -->
             <input name="searchPrefix"
                    id="searchPrefixInput"
                    class="unique ui-widget-content ui-corner-all translate"
-                   placeholder="plop"
-                   data-title="plip"
-                   value=""
-                   title="zz"
-            />
+                   placeholder="Search prefix"
+                   data-title="Search prefix"
+                   title="Search prefix"
+                   value="" />
 
             <button id="searchPrefixOkButton"
-                    data-title="OK"
                     class="translate ui-button ui-corner-all ui-widget"
-                    type="button"
-                    title="OK">
-              Ok
+                    data-title="OK"
+                    data-content="OK"
+                    title="OK"
+                    type="button">
+              OK
             </button>
 
             <button id="searchPrefixRestoreButton"
-                    data-title="Restore default"
+                    data-title="Restore default search prefix"
+                    data-content="Restore default"
                     class="last grow translate ui-button ui-corner-all ui-widget"
                     type="button"
-                    title="Restore default">
+                    title="Restore default search prefix">
               Restore default
             </button>
 
@@ -363,8 +363,7 @@
         </fieldset>
 
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="languageLegend"
-                  class="ui-corner-top translate"
+          <legend class="ui-corner-top translate"
                   data-content="Console">
             Console
           </legend>

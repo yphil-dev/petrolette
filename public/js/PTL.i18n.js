@@ -44,7 +44,7 @@ PTL.i18n.translations = {
   "Delete": { fr: "Supprimer", ja: "削除", es: "Eliminar" },
   "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
   "Position": { fr: "Position", ja: "ポジション", es: "Posición" },
-  "Ok": { fr: "Ok", ja: "Ok", es: "Ok" },
+  "OK": { fr: "OK", ja: "入る", es: "OK" },
   "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
 
   // Pétrolette
@@ -70,12 +70,19 @@ PTL.i18n.translations = {
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
   "Documentation" : { fr: "Documentation" , ja: "ドキュメンテーション", es: "Documentación" },
-
   "JS Licences" : { fr: "Licences JS" , ja: "JSライセンス", es: "Licencias JS" },
+
+  "Console" : { fr: "Console" , ja: "コンソール", es: "Consola" },
 
   "JavaScript licencing information" : { fr: "Informations de licence JavaScript" , ja: "JavaScriptのライセンス情報", es: "Información de licencia de JavaScript" },
 
   "Send your love to Pétrolette" : { fr: "Aider Pétrolette" , ja: "Pétroletteにあなたの愛を送る", es: "Envíale tu amor a Pétrolette" },
+
+  "Search prefix" : { fr: "Préfixe de recherche" , ja: "検索プレフィックス", es: "Prefijo de búsqueda" },
+
+  "Restore default" : { fr: "Rétablir défaut" , ja: "デフォルトを復元", es: "Restaurar predet." },
+
+  "Restore default search prefix" : { fr: "Rétablir le préfixe de recherche par défaut" , ja: "デフォルトの検索プレフィックスを復元", es: "Restaurar el prefijo de búsqueda predeterminado" },
 
   "English" : { fr: "English" , ja: "English", es: "English" },
   "Français" : { fr: "Français" , ja: "Français", es: "Français" },
@@ -320,6 +327,10 @@ PTL.i18n.translations = {
   "Flux: Kill" : { fr: "Feed: Supprimer", ja: "フィード：削除", es: "Flux: Eliminar" },
   "Feed: Parameters" : { fr: "Flux: Paramètres", ja: "フィード：パラメータ", es: "Feed: Parámetros" },
   "Feed type" : { fr: "Type de flux", ja: "フィードの種類", es: "Tipo de flux" },
+
+  "Type" : { fr: "Type", ja: "タイプ", es: "Tipo" },
+
+
   "Feed group" : { fr: "Groupe du flux", ja: "ソースグループ", es: "Grupo fuente" },
 
   "Mixed" : { fr: "Mixte", ja: "混合", es: "Mezclado" },
@@ -349,7 +360,16 @@ PTL.i18n.translations = {
 
   "Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK" : { fr: "Entrer l'adresse / URL d'un site Web, puis cliquer sur Rechercher et valider, ou directement l'adresse d'un flux et valider", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del fuente" },
 
+
+  "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez une adresse / URL de site Web et cliquez sur Rechercher, puis sur OK, ou entrez simplement l'URL du", ja: "ウェブサイトのアドレス/ URLを入力して[検索]、[OK]の順にクリックするか、単にURLを入力します", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego OK, o simplemente ingrese la URL del" },
+
   "Heck, enter anything, and Pétrolette will build a feed from your search query" : { fr: "Bon, entrez n'importe quoi, et Pétrolette construira un flux à partir de votre requête de recherche", ja: "何かを入力すると、Pétroletteは検索クエリからソースを作成します。]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Diablos, ingrese cualquier cosa, y Pétrolette construirá una fuente a partir de su consulta de búsqueda" },
+
+
+
+  "Find the feed of this website, or build a new one from the search terms." : { fr: "Recherchez le flux de ce site Web ou créez-en un nouveau à partir des termes recherche.", ja: "このウェブサイトのフィードを見つけるか、検索用語から新しいフィードを作成してください。", es: "Busque el feed de este sitio web o cree uno nuevo a partir de los términos de búsqueda." },
+
+
 
   "Move the current feed in this group" : { fr: "Déplacer le flux courant dans ce groupe", ja: "このグループの現在のフィードを移動する", es: "Mueve el fuente actual en este grupo" },
 
