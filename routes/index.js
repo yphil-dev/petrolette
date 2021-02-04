@@ -4,6 +4,7 @@ const express = require('express'),
       FeedParser = require('feedparser'),
       request = require('request'),
       feedrat = require('feedrat'),
+      // feedrat = require(__dirname + '/../../feedrat/'),
       fs = require('fs'),
       path = require('path'),
       crypto = require('crypto'),
@@ -132,14 +133,12 @@ function getFeed (urlfeed, callback) {
 
 router.get('/feed', function(req, res) {
 
-  console.log('GET');
-
   var dnsreq = request(req.query.feedurl);
 
   dnsreq
     .on('error', function(error) {
       // The only way so far to catch a DNS error
-      console.log('Err: %s (%s)', {error:error.code}, req.query.feedurl);
+      // console.log('Err: %s (%s)', {error:error.code}, req.query.feedurl);
       res.send({error:error.code});
     })
     .on('response', function(response) {
@@ -193,10 +192,14 @@ router.get('/favicon', function(req, res) {
 
 router.get('/discover', function(req, res) {
 
-  feedrat(req.query.url, function(err, feed) {
+
+  feedrat(req.query.url, req.query.searchPrefix, function(err, feed) {
 
     if (feed) {
       res.send(feed);
+    } else if (err) {
+      console.log('err: %s', err);
+      res.status(500).send(err.code);
     } else {
       res.status(500).send('No feed found');
     }

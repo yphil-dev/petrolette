@@ -16,22 +16,22 @@ var PTL = (function() {
           $saveButton = $('#saveTabs'),
           $langMenu = $('select#language'),
           $slider = $('div#gallerySpeedSlider'),
-          $searchUrlOkButton = $('button#searchUrlOkButton'),
-          $searchUrlRestoreDefaultButton = $('button#searchUrlRestoreDefaultButton'),
-          $searchUrlStringInput = $('input#searchUrlStringInput'),
+          $searchPrefixOkButton = $('button#searchPrefixOkButton'),
+          $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
+          $searchPrefixInput = $('input#searchPrefixInput'),
           $spinner = $('#gallerySpeedSpinner');
 
 
-      $searchUrlStringInput.val(PTL.prefs.readConfig('searchUrlString'));
+      $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefix'));
 
-      $searchUrlRestoreDefaultButton.click(function(){
-        console.log('val %s', $searchUrlStringInput.val());
-        $searchUrlStringInput.val(PTL.prefs.readConfig('searchUrlStringDefault'));
+      $searchPrefixRestoreButton.click(function(){
+        console.log('val %s', $searchPrefixInput.val());
+        $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefixDefault'));
       });
 
-      $searchUrlOkButton.click(function(){
-        PTL.prefs.writeConfig('searchUrlString', $searchUrlStringInput.val());
-        console.log('val %s', $searchUrlStringInput.val());
+      $searchPrefixOkButton.click(function(){
+        PTL.prefs.writeConfig('searchPrefix', $searchPrefixInput.val());
+        console.log('val %s', $searchPrefixInput.val());
       });
 
       $('noscript').hide();

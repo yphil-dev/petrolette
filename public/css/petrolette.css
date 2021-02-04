@@ -427,13 +427,13 @@ input#feed-guess {
   margin-right: .4em;
 }
 
-div#searchUrlString {
+div#searchPrefix {
   display:flex;
   /* flex-wrap: nowrap; */
   /* flex-direction: row; */
 }
 
-#searchUrlStringInput {
+#searchPrefixInput {
   /* flex-wrap: nowrap; */
   /* flex-grow: 4; */
   box-sizing: border-box;

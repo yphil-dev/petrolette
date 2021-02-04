@@ -162,7 +162,7 @@ PTL.dialog = {
 
           function guessError () {
             $guessSpinner.removeClass('icon-cog spin ui-state-success')
-              .addClass('icon-cancel-circled');
+              .addClass('icon-error');
 
             $guessButton
               .addClass('ui-state-error')
@@ -207,17 +207,20 @@ PTL.dialog = {
           $guessButton.click(function() {
 
             $guessSpinner
-              .removeClass('icon-checked icon-cancel-circled icon-search ui-state-success ui-state-error')
+              .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
               .addClass('spin icon-cog');
             $guessButton.removeClass('icon-checked ui-state-success ui-state-error');
 
             $.get('/discover', {
-              url: $guessField.val(),
               dataType: 'json',
-              timeout: 800
-            }, function() {
-              $guessSpinner.removeClass('spin icon-cog');
+              url: $guessField.val(),
+              searchPrefix: PTL.prefs.readConfig('searchPrefix'),
+              timeout: 2000
+            }).fail(function(req, status, xhr) {
+              console.log('fail!!');
+              guessError();
             }).done(function(feed) {
+              $guessSpinner.removeClass('spin icon-cog');
 
               $guessField.val(feed);
 
@@ -229,8 +232,13 @@ PTL.dialog = {
                 .addClass('ui-state-success')
                 .attr('title', PTL.tr('Valid feed found! Now just press OK')) ;
 
-            }).fail(function() {
-              guessError();
+            }).always(function(req, status, xhr) {
+
+              if (status === 'error')
+                guessError();
+
+              console.log('status: %s', status);
+
             });
 
           });
