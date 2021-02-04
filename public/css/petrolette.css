@@ -780,27 +780,27 @@ ul.help li:before {
 }
 
 ul.help li.rss:before {
-  content: '\f143';
+  content: '\E814';
   color: var(--color-ui-sen);
 }
 
 ul.help li.www:before {
-  content: '\F50D';
+  content: '\E823';
   color: var(--color-ui-pri);
 }
 
 ul.help li.search:before {
-  content: '\0805';
+  content: '\E813';
   color: var(--color-ui-success);
 }
 
 ul.help li.export:before {
-  content: '\f02e';
+  content: '\E803';
   color: var(--color-ui-sen);
 }
 
 ul.help li.cloud:before {
-  content: '\0808';
+  content: '\E824';
   color: var(--color-ui-success);
 }
 
