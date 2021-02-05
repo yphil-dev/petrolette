@@ -1,4 +1,7 @@
 :root {
+
+  --color-highlight: 255, 0, 0;
+
   --color-ui-pri: #f4f4f4;
   --color-ui-sec: #19B5FE;
   --color-ui-ter: #C0B283;
@@ -257,9 +260,25 @@ a:visited {
   color: var(--color-qui);
 }
 
+
+.ui-tab.ui-state-hover a,
 a:hover,
 a:active {
   color: var(--color-sec);
+}
+
+.ui-tab#new-group:hover,
+.ui-tab.ui-state-hover {
+  background: var(--color-sep);
+}
+
+.ui-tab.ui-state-active a,
+.ui-tab.ui-state-default a {
+  color: var(--color-pri);
+}
+
+.ui-tab.ui-state-default a:hover {
+  color: var(--color-ter) !important;
 }
 
 .ui-tab {
@@ -271,13 +290,8 @@ a:active {
 }
 
 .ui-tab#new-group {
-  background-color: var(--color-qua);
+  background-color: var(--color-non);
 }
-
-/* .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active { */
-/*   font-weight: normal; */
-/*   color: #454545; */
-/* } */
 
 .ui-button.ui-state-disabled,
 .ui-tab.ui-state-default {
@@ -288,38 +302,6 @@ a:active {
 
 .ui-tab.ui-state-active {
   border-right: none !important;
-}
-
-.ui-tab#new-group:hover,
-.ui-tab.ui-state-hover {
-  background: var(--color-sep);
-}
-
-.ui-tab.ui-state-default a:link,
-.ui-tab.ui-state-default a:visited,
-.ui-tab.ui-state-default a:hover,
-.ui-tab.ui-state-default a:active {
-  color: var(--color-pri);
-}
-
-.ui-tab.ui-state-active a:link,
-.ui-tab.ui-state-active a:visited,
-.ui-tab.ui-state-active a:hover,
-.ui-tab.ui-state-active a:active {
-  color: var(--color-pri);
-}
-
-.ui-tab.ui-state-hover a:link,
-.ui-tab.ui-state-hover a:visited,
-.ui-tab.ui-state-hover a:hover,
-.ui-tab.ui-state-hover a:active {
-  color: var(--color-sec);
-}
-
-.ui-tab.ui-state-hover a,
-.ui-tab.ui-state-active a {
-  cursor: pointer !important;
-  color: var(--color-sec);
 }
 
 .ui-tab.ui-state-active,
@@ -1030,7 +1012,6 @@ li.feed.selected {
 }
 
 .feed-header > .feed-title {
-  color: var(--color-ter);
   flex-basis: auto;
   flex-grow: 4;
   flex-shrink: 1;
@@ -1151,12 +1132,12 @@ li.feed-item > div.itemDiv > a > .ptl-img.full {
 
 table tr,
 li.feed-item {
-  background-color: var(--color-sep);
+  background-color: var(--color-non);
 }
 
 table tr:nth-child(even),
 li.feed-item:nth-child(even) {
-  background-color: var(--color-non);
+  filter: brightness(0.9);
 }
 
 table tr:nth-child(even),
