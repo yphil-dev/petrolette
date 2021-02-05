@@ -28,11 +28,15 @@ PTL.col = {
         .attr('class', 'buttons flex-box');
 
     var $colLegend = $('<legend>')
-        .attr('class', 'legend legend-col unique')
+        .attr('class', 'legend legend-col unique translate')
+        .data('title', 'Column')
+        .data('content', 'Column')
         .text(PTL.tr('Column'));
 
     var $srcLegend = $('<legend>')
-        .attr('class', 'legend unique')
+        .data('title', 'Feed')
+        .data('content', 'Feed')
+        .attr('class', 'legend unique translate')
         .text(PTL.tr('Feed'));
 
     var $column = $('<ul>')
