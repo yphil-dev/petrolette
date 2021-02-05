@@ -6,13 +6,15 @@ PTL.prefs = (function() {
     {"name":"news",
      "columns": [
        [
-         {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4,"status":"on"}
+         {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4,"status":"on"},
+         {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 1,"status":"on"}
        ],
        [
          {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 6,"status":"off"},
          {"url":"https://www.npr.org/rss/rss.php?id=1001","type":"mixed","limit": 4,"status":"on"}
        ],
        [
+         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 1,"status":"on"},
          {"url":"http://www.lemonde.fr/rss/une.xml","type":"mixed","limit": 4,"status":"on"}
        ]
      ]
@@ -41,13 +43,14 @@ PTL.prefs = (function() {
        ]
      ]
     },
-    {"name":"comics",
+    {"name":"social",
      "columns": [
        [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 8,"status":"on"}
+         {"url":"https://framasphere.org/public/xaccrocheur.atom","type":"mixed","limit": 8,"status":"on"}
        ],
        [
-         {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 8,"status":"on"}
+         {"url":"https://framapiaf.org/@yphil.rss","type":"mixed","limit": 8,"status":"on"},
+         {"url":"https://botsin.space/@tinyskylines.rss","type":"photo","limit": 3,"status":"on"}
        ]
      ]
     },
