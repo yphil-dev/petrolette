@@ -149,7 +149,7 @@ PTL.tab = {
 
     var tabIndex = $('ul#tab-names li.tab-name').length + 1;
 
-    name = name || 'Group ' + tabIndex;
+    name = name || 'Tab ' + tabIndex;
 
     var $tabCloser = $('<i>')
         .attr('class', 'icon-cancel tab-icon tab-closer translate hidden')
@@ -293,8 +293,8 @@ PTL.tab = {
     var $newTabButton = $('<li>')
         .attr('id', 'new-group')
         .attr('class', 'translate new-group hidden')
-        .data('title', 'Add a new group')
-        .attr('title', PTL.tr('Add a new group'));
+        .data('title', 'Add a new tab')
+        .attr('title', PTL.tr('Add a new tab'));
 
     var $newTabButtonLink = $('<a>')
     // .attr('tabindex', '-1')

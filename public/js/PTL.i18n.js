@@ -62,7 +62,12 @@ PTL.i18n.translations = {
 
   "Feed" : { fr: "Flux" , ja: "ソース", es: "Fuente" },
   "Feeds" : { fr: "Flux" , ja: "ソース", es: "Fuentes" },
-  "Groups" : { fr: "Groupes" , ja: "タブ", es: "Grupos" },
+
+  "Tab" : { fr: "Onglet" , ja: "フォルダ", es: "Carpeta" },
+  "Tab " : { fr: "Onglet " , ja: "フォルダ ", es: "Carpeta " },
+  "Tabs" : { fr: "Onglets" , ja: "フォルダー", es: "Carpetas" },
+
+
   "Theme" : { fr: "Thème" , ja: "テーマ", es: "Tema" },
   "Language" : { fr: "Langue" , ja: "言語", es: "Idioma" },
   "Image gallery" : { fr: "Galerie d'images" , ja: "イメージギャラリー", es: "Galería de imágenes" },
@@ -77,6 +82,10 @@ PTL.i18n.translations = {
   "JavaScript licencing information" : { fr: "Informations de licence JavaScript" , ja: "JavaScriptのライセンス情報", es: "Información de licencia de JavaScript" },
 
   "Send your love to Pétrolette" : { fr: "Aider Pétrolette" , ja: "Pétroletteにあなたの愛を送る", es: "Envíale tu amor a Pétrolette" },
+
+
+  "Support" : { fr: "Soutien" , ja: "サポート", es: "Apoyo" },
+
 
   "Search prefix" : { fr: "Préfixe de recherche" , ja: "検索プレフィックス", es: "Prefijo de búsqueda" },
 
@@ -181,12 +190,6 @@ PTL.i18n.translations = {
 
   "Refresh / reload this feed." : { fr: "Actualiser / recharger ce flux." , ja: "このソースを更新/再読み込みしてください。", es: "Actualiza / recarga esta fuente." },
 
-  "Configure this feed." : { fr: "Configurer ce flux." , ja: "このソースを設定します。", es: "Configura esta fuente." },
-
-  "Delete this feed." : { fr: "Supprimer ce flux." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
-
-  "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar esta fuente" },
-
   "feeds loaded" : { fr: "flux chargés" , ja: "ソースが読み込まれました", es: "fuentes cargadas" },
 
   "Wait! Are you sure?" : { fr: "Stop ! Sur ?" , ja: "待つ！ 本気ですか？", es: "¡Espere! ¿Estás seguro?" },
@@ -200,33 +203,30 @@ PTL.i18n.translations = {
 
   "Read more." : { fr: "En savoir plus" , ja: "続きを読む。", es: "Lee mas." },
 
-  "Add a feed or a group." : { fr: "Ajouter un flux ou un groupe." , ja: "ソースまたはグループを追加する", es: "Agrega una fuente o un grupo." },
-
-  "Add a new group" : { fr: "Ajouter un nouveau groupe" , ja: "グループを追加します", es: "Agrega un grupo nuevo" },
+  "Add a new tab" : { fr: "Ajouter un nouvel onglet" , ja: "新しいタブを追加する", es: "Agregar una nueva carpeta" },
+  "New tab" : { fr: "Nouvel onglet", ja: "新しいタブ", es: "Nueva carpeta" },
 
   "Add a feed" : { fr: "Ajouter un flux" , ja: "ソースを追加します", es: "Agrega una fuente" },
+  "New feed" : { fr: "Nouveau flux", ja: "新しい情報源", es: "Nueva fuente" },
 
   "Welcome to Pétrolette" : { fr: "Bienvenue dans Pétrolette" , ja: "ペトロレットへようこそ", es: "Bienvenido a Pétrolette" },
 
   "How does it work?" : { fr: "Comment ça marche ?" , ja: "どのように機能するのですか？", es: "¿Como funciona?" },
-
   "Take the tour" : { fr: "Visite guidée" , ja: "ガイド付き訪問", es: "Visita guiada" },
-
   "Pétrolette uses a time-tested technology" : { fr: "Pétrolette fonctionne sur une technologie éprouvée" , ja: "Pétroletteは時間を守った技術を使用しています", es: "Pétrolette utiliza una tecnología probada" },
-
   "Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them." : { fr: "Les sites produisent un flux d'info pour faciliter l'accès à leur contenu ; Pétrolette actualise ces sources et les affiche." , ja: "ウェブサイトは、コンテンツへのアクセスを容易にするために、見出しのフィードを提供します。 Pétroletteが更新して表示する", es: "Los sitios web proporcionan información sobre sus titulares para facilitar el acceso a su contenido; Pétrolette las actualiza y las muestra." },
-
-  "What is a group?" : { fr: "Qu'est-ce qu'un groupe ?" , ja: "グループとは何ですか？", es: "¿Qué es un grupo?" },
 
   "Just a container for your feeds. Specifically, a tab that you can create, (re)name, move, and delete just like usual." : { fr: "Juste un conteneur pour vos flux ; plus précisément, un onglet que vous pouvez créer, (re) nommer, déplacer et supprimer comme d'habitude." , ja: "あなたのソースのためのちょうど容器。 具体的には、作成したり、名前を変更したり、移動したり、削除したりするタブです。", es: "Solo un contenedor para tus fuentes. Específicamente, una pestaña que puede crear, (re) nombrar, mover y eliminar como siempre." },
 
   "What is a feed?" : { fr: "Qu'est-ce qu'un flux ?" , ja: "情報源とは何ですか？", es: "¿Qué es una fuente?" },
 
-  "What is a feed? How do I create one?" : { fr: "Qu'est-ce qu'un flux ? Comment en créer une ?" , ja: "情報源とは何ですか？ どのように作成するのですか？", es: "¿Qué es una fuente? ¿Cómo creo uno?" },
+  "What is a tab?" : { fr: "Qu'est-ce qu'un onglet ?" , ja: "フォルダとは何ですか？", es: "¿Qué es una carpeta?" },
+
+  "What is a feed? How do I create one?" : { fr: "Qu'est-ce qu'un flux ? Comment en créer un ?" , ja: "情報源とは何ですか？ どのように作成するのですか？", es: "¿Qué es una fuente? ¿Cómo creo uno?" },
 
   "Click the «New feed» button." : { fr: "Cliquez sur le bouton «nouveau flux»." , ja: "«新しいソース»ボタンをクリックします。", es: "¿Qué es una fuente?" },
 
-  "Why didn't I have to register? Where are my groups and feeds saved?" : { fr: "Pourquoi n'ai-je pas dû m'inscrire ou me connecter? Où sont sauvegardés mes groupes et mes flux?" , ja: "なぜ私は登録やサインインをしなければならなかったのですか？ 私のグループとソースはどこに保存されていますか？", es: "¿Por qué no tengo que registrarme o iniciar sesión? ¿Dónde se guardan mis grupos y fuentes?" },
+  "Why didn't I have to register? Where are my tabs and feeds saved?" : { fr: "Pourquoi n'ai-je pas dû m'inscrire ou me connecter? Où sont sauvegardés mes onglets et mes flux?" , ja: "なぜ私は登録やサインインをしなければならなかったのですか？ 私のグループとソースはどこに保存されていますか？", es: "¿Por qué no tengo que registrarme o iniciar sesión? ¿Dónde se guardan mis carpetas y fuentes?" },
 
   "Your feeds are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other feeds." : { fr: "Vos flux sont enregistrées dans votre navigateur. Allez-y, essayez de visiter http://petrolette.space avec un autre navigateur Web, et vous verrez d'autres flux." , ja: "ソースはブラウザに保存されます。 他のWebブラウザでhttp://petrolette.spaceにアクセスしてみると、他のソースが表示されます。", es: "Tus fuentes se guardan en tu navegador. Adelante, intente visitar http://petrolette.space con otro navegador web, y verá otras fuentes." },
 
@@ -254,7 +254,7 @@ PTL.i18n.translations = {
 
   "Learn how to use" : { fr: "Apprenez à utiliser" , ja: "タブとソース、および一般的なPétroletteの使い方を学んでください。", es: "Aprenda cómo usar" },
   "and Pétrolette in general." : { fr: "et Pétrolette en général." , ja: "Pétroletteの使い方を学んでください。", es: "y Pétrolette en general." },
-  "the groups and the feeds" : { fr: "les groupes et les flux" , ja: "タブとソース", es: "las grupos y las fuentes" },
+  "the tabs and the feeds" : { fr: "les onglets et les flux" , ja: "フォルダとフィード", es: "las carpetas y las fuentes" },
 
 
 
@@ -269,8 +269,9 @@ PTL.i18n.translations = {
   "Hell, Yeah" : { fr: "Peste, Ouais" , ja: "地獄、うん。", es: "Diablos, Sí" },
   "Huh, Next question" : { fr: "Euh, Question suivante" , ja: "あ、次の質問", es: "Eh, Siguiente pregunta" },
 
-  "Open / import groups and feeds" : { fr: "Ouvrir / importer groupes et flux" , ja: "タブを開く/インポートする", es: "Abrir / importar grupos y canales RSS" },
-  "Save / export groups and feeds" : { fr: "Enregistrer / exporter groupes et flux" , ja: "タブとフィードの保存/エクスポート", es: "Guardar archivo de groups y feeds" },
+  "Open / import tabs and feeds" : { fr: "Ouvrir / importer onglets et flux" , ja: "フォルダとフィードを開く/インポートする", es: "Abrir / importar carpetas y canales RSS" },
+  "Save / export tabs and feeds" : { fr: "Enregistrer / exporter onglets et flux" , ja: "タブとフィードを保存/エクスポートする", es: "Guardar archivo de carpetas y feeds" },
+
   "Open group on feed drop" : { fr: "Ouvrir nouveau groupe" , ja: "ドロップ時にタブを開く", es: "Abrir grupo en drop" },
 
   "If this is set, when you drag & drop one or more feed(s) in a group, said group opens" : { fr: "Ouvrir le groupe où un flux est déposée" , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir grupo en donde se pone un canal" },
@@ -383,8 +384,6 @@ PTL.i18n.translations = {
   "Valid feed found! Now just press OK" : { fr: "Flux valide trouvée ! Maintenant, appuyez simplement sur OK", ja: "有効なソースが見つかりました！ OKを押すだけです", es: "¡Se ha encontrado una fuente válida! Ahora solo presione OK" },
 
   // New Content
-  "New group" : { fr: "Nouveau groupe", ja: "新しい集団", es: "Nuevo grupo" },
-  "New feed" : { fr: "Nouveau flux", ja: "新しい情報源", es: "Nueva fuente" },
 
   "Add news feeds" : { fr: "Ajouter des flux d'actualités", ja: "ニュースソースを追加", es: "Agregar fuentes de noticias" },
   "Add misc feeds" : { fr: "Ajouter des flux divers", ja: "その他のソースを追加", es: "Agregar fuentes diferentes" },
@@ -394,9 +393,15 @@ PTL.i18n.translations = {
   "Add a new feed to [%1]" : { fr: "Ajouter un flux à [%1]", ja: "新しいRSSフィードを追加する", es: "Agregue un nuevo feed a [%1]" },
 
   "Select this feed (%1)" : { fr: "Sélectionner ce flux (%1)", ja: "RSS(%1)フィードを選択", es: "Selecciona este feed (%1)" },
-  "Delete this feed" : { fr: "Supprimer ce flux", ja: "このRSSフィードを削除", es: "Eliminar este feed rss" },
 
-  "Delete group" : { fr: "Supprimer groupe", ja: "グループを削除する", es: "Eliminar grupo" },
+
+  "Configure this feed." : { fr: "Configurer ce flux." , ja: "このソースを設定します。", es: "Configura esta fuente." },
+
+  "Delete this feed." : { fr: "Supprimer ce flux." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
+
+  "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar esta fuente" },
+
+  "Delete tab" : { fr: "Supprimer onglet", ja: "フォルダを削除", es: "eliminar carpeta" },
 
   "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },
 
@@ -408,7 +413,11 @@ PTL.i18n.translations = {
 
   "Really delete this column?" : { fr: "Vraiment supprimer cette colonne ?", ja: "本当にこの列を削除しますか？", es: "¿Realmente borras esta columna?" },
 
-  "Really delete this group?" : { fr: "Vraiment supprimer ce groupe ?", ja: "本当にこのグループを削除しますか？", es: "¿Eliminar realmente este grupo?" },
+
+
+  "Really delete this tab?" : { fr: "Supprimer définitivement cet onglet ?", ja: "本当にこのフォルダを削除しますか？", es: "¿De verdad borras esta carpeta?" },
+
+
 
   "Fold / unfold this feed (%1)" : { fr: "Plier / déplier ce flux (%1)", ja: "ウーブリール - ファーマー (%1)", es: "Abrir / cerrar esta fuente (%1)" },
 

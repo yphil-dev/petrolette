@@ -549,7 +549,7 @@ PTL.dialog = {
       $icon.addClass('icon-trash-empty danger');
 
       $dialog.dialog({
-        title: PTL.tr('Delete group'),
+        title: PTL.tr('Delete tab'),
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -586,7 +586,7 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text(PTL.tr('Really delete this group?'));
+          $dialog.find('h1').text(PTL.tr('Really delete this tab?'));
           $dialog.find('h2#name').text(PTL.tr('Name'));
           $dialog.find('p#name').text($a.text());
           $dialog.find('h2#number').text(PTL.tr('Number of feeds'));
@@ -658,7 +658,7 @@ PTL.dialog = {
       var $dialog = $(this);
 
       $dialog.dialog({
-        title: PTL.tr('Group'),
+        title: PTL.tr('Tab'),
         buttons: [
           {
             text: PTL.tr('Cancel'),
