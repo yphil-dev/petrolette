@@ -21,7 +21,6 @@ var PTL = (function() {
           $searchPrefixInput = $('input#searchPrefixInput'),
           $spinner = $('#gallerySpeedSpinner');
 
-
       $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefix'));
 
       $searchPrefixRestoreButton.click(function(){

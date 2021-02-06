@@ -229,6 +229,7 @@ a:active {
 }
 
 .ui-tab.ui-state-default a:hover {
+  cursor: pointer !important;
   color: var(--color-ter) !important;
 }
 
@@ -251,11 +252,14 @@ li {
   background-color: var(--color-non);
 }
 
-.ui-button.ui-state-disabled,
 .ui-tab.ui-state-default {
   color: var(--color-non);
   background: var(--color-non);
   border-right: 1px solid var(--color-sep) !important;
+}
+
+.ui-button.ui-state-disabled {
+  filter: brightness(0.5);
 }
 
 .ui-tab.ui-state-active {
@@ -1220,7 +1224,7 @@ div.introjs-helperLayer {
 /* IntroJS (help tooltips) */
 .introjs-tooltip {
   background-color: var(--color-ui-qua) !important;
-  color: var(--color-pri);
+  color: var(--color-sec) !important;
 }
 
 .introjs-bullets ul li a.active,
@@ -1426,3 +1430,15 @@ table th {
   background-color: #4CAF50;
   color: white;
 }
+
+#liberapay {
+  flex-wrap: nowrap;
+}
+
+#liberapay a {
+  flex: 0 0 0;
+}
+
+/* #liberapay a:first-of-type { */
+/*   margin-right: .4em; */
+/* } */

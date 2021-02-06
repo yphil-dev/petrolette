@@ -18,7 +18,7 @@ PTL.feed = {
         .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
         .click(function() {
 
-          // Can't just use toggle because we have to pass the div to populate() in order to recreate it with the new data values, just setting them here doesn't work :(
+          // Can't just use toggle because we have to pass the div to populate() in order to recreate it with the new data values, just setting data-* here doesn't work :(
 
           if ($feedControls.data('status') == 'on') {
             $(this).removeClass('fold')
