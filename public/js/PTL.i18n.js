@@ -216,6 +216,11 @@ PTL.i18n.translations = {
   "Pétrolette uses a time-tested technology" : { fr: "Pétrolette fonctionne sur une technologie éprouvée" , ja: "Pétroletteは時間を守った技術を使用しています", es: "Pétrolette utiliza una tecnología probada" },
   "Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them." : { fr: "Les sites produisent un flux d'info pour faciliter l'accès à leur contenu ; Pétrolette actualise ces sources et les affiche." , ja: "ウェブサイトは、コンテンツへのアクセスを容易にするために、見出しのフィードを提供します。 Pétroletteが更新して表示する", es: "Los sitios web proporcionan información sobre sus titulares para facilitar el acceso a su contenido; Pétrolette las actualiza y las muestra." },
 
+
+  "The website publishes a new article" : { fr: "Le site publie un nouvel article" , ja: "ウェブサイトは新しい記事を公開します", es: "El sitio web publica un nuevo artículo" },
+  "Its RSS feed is updated" : { fr: "Son flux RSS est mis à jour" , ja: "そのRSSフィードが更新されます", es: "Su feed RSS está actualizado" },
+  "At the next refresh, Pétrolette displays a new link to this article" : { fr: "Lors du prochain rafraîchissement, Pétrolette affiche un nouveau lien vers cet article'article" , ja: "次の更新時に、Pétroletteはこの記事への新しいリンクを表示します", es: "En la próxima actualización, Pétrolette muestra un nuevo enlace a este artículo." },
+
   "Just a container for your feeds. Specifically, a tab that you can create, (re)name, move, and delete just like usual." : { fr: "Juste un conteneur pour vos flux ; plus précisément, un onglet que vous pouvez créer, (re) nommer, déplacer et supprimer comme d'habitude." , ja: "あなたのソースのためのちょうど容器。 具体的には、作成したり、名前を変更したり、移動したり、削除したりするタブです。", es: "Solo un contenedor para tus fuentes. Específicamente, una pestaña que puede crear, (re) nombrar, mover y eliminar como siempre." },
 
   "What is a feed?" : { fr: "Qu'est-ce qu'un flux ?" , ja: "情報源とは何ですか？", es: "¿Qué es una fuente?" },

@@ -743,6 +743,10 @@ button.ui-state-error {
 /*   box-shadow: none; */
 /* } */
 
+#helpDialog a {
+  text-decoration: underline;
+}
+
 ul.help {
   /* list-style-type: circle; */
   list-style-type: none;
@@ -763,8 +767,18 @@ ul.help li:before {
 }
 
 ul.help li.rss:before {
-  content: '\E814';
+  content: '\E807';
   color: var(--color-ui-sen);
+}
+
+ul.help li.publish:before {
+  content: '\E826';
+  color: var(--color-ui-success);
+}
+
+ul.help li.refresh:before {
+  content: '\E817';
+  color: var(--color-ui-sec);
 }
 
 ul.help li.www:before {

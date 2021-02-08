@@ -7,15 +7,16 @@ PTL.prefs = (function() {
      "columns": [
        [
          {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4,"status":"on"},
-         {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 1,"status":"on"}
+         {"url":"http://www.lemonde.fr/rss/une.xml","type":"mixed","limit": 4,"status":"on"}
        ],
        [
          {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 6,"status":"off"},
+         {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 6,"status":"off"},
          {"url":"https://www.npr.org/rss/rss.php?id=1001","type":"mixed","limit": 4,"status":"on"}
        ],
        [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 1,"status":"on"},
-         {"url":"http://www.lemonde.fr/rss/une.xml","type":"mixed","limit": 4,"status":"on"}
+         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 2,"status":"on"},
+         {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 2,"status":"on"}
        ]
      ]
     },
@@ -57,7 +58,8 @@ PTL.prefs = (function() {
     {"name":"music",
      "columns": [
        [
-         {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 8,"status":"on"},
+         {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 8,"status":"off"},
+         {"url":"https://tube.netzspielplatz.de/feeds/videos.xml?videoChannelId=8984","type":"mixed","limit": 8,"status":"on"},
          {"url":"https://www.youtube.com/feeds/videos.xml?channel_id=UC3I2GFN_F8WudD_2jUZbojA","type":"mixed","limit": 8,"status":"on"}
        ],
        [
@@ -65,7 +67,7 @@ PTL.prefs = (function() {
          {"url":"http://planet.linuxaudio.org/rss20.xml","type":"mixed","limit": 12,"status":"on"}
        ],
        [
-         {"url":"https://feeds.feedburner.com/dangerousminds/dot/net","type":"photo","mixed": 12,"status":"on"}
+         {"url":"https://feeds.feedburner.com/dangerousminds/dot/net","type":"photo","mixed": 4,"status":"on"}
        ]
      ]
     }
