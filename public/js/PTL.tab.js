@@ -305,6 +305,12 @@ PTL.tab = {
     var $newTabButtonIcon = $('<i>')
         .attr('class', 'icon-plus');
 
+    $newTabButton.focus(function() {
+
+      $('#newTabButtonTooltip').tooltip().css('display', 'inline').fadeOut(2500);
+
+    });
+
     $newTabButtonLink.bind('click', function(event) {
       event.stopImmediatePropagation();
 

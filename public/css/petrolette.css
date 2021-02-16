@@ -354,7 +354,7 @@ ul.help li {
 }
 
 .ui-tab.ui-state-active {
-  border-right: none !important;
+  border-top: 1px solid var(--color-ui-danger) !important;
 }
 
 .ui-tab.ui-state-hover a {
@@ -498,6 +498,18 @@ li.feed-item.error > strong.key {
 
 #new-group.hidden {
   display: none !important;
+}
+
+#newTabButtonTooltip {
+  position: absolute;
+  top: 4em;
+  right: 2em;
+  z-index: 25;
+  padding: 0.4em;
+  color: var(--color-ui-pri);
+  background-color: var(--color-ui-qua);
+  border: 3px solid var(--color-ui-sec);
+  border-radius: 3px;
 }
 
 input {
@@ -965,11 +977,27 @@ div.questionDialog > div.icon {
   margin: 0 !important;
 }
 
-li.tab-name,
-#new-group {
+li.ui-tabs-tab {
   margin: 0 0 0 0 !important;
-  border: 0 !important;
   border-radius: 0 !important;
+  border-left: 0 !important;
+  border-top: 0 !important;
+  border-right: 1px solid var(--color-sep) !important;
+  outline-width: 0 !important;
+}
+
+li.tab-name:first-child {
+  border-left: 1px solid var(--color-sep) !important;
+}
+
+/* :focus-visible */
+
+/* li.tab-name:not(.ui-tabs-active), */
+/* #new-group { */
+/*   border-top: 0 !important; */
+/* } */
+
+li.tab-name:focus {
 }
 
 /* Panel */
