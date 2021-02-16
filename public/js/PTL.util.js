@@ -1,6 +1,29 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.util = {
+  nagUser:function() {
+
+    PTL.util.console(PTL.tr('Pétrolette needs you'), 'success');
+
+    var nextNag = PTL.prefs.readConfig('nextNag');
+    const dateNow = Date.now();
+
+    if (nextNag === 0) {
+      nextNag = dateNow;
+      console.log('dateNow: %s (%s)', dateNow);
+      PTL.prefs.writeConfig('nextNag', dateNow);
+      PTL.dialog.nagUser();
+    }
+
+    if (dateNow > nextNag) {
+      console.log('YUP nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
+      PTL.prefs.writeConfig('nextNag', dateNow + 300000);
+      PTL.dialog.nagUser();
+    } else {
+      console.log('NOPE nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
+    }
+
+  },
   console:function(output, type) {
 
     var $lines = $('#console div');

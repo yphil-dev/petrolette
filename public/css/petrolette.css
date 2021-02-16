@@ -721,9 +721,9 @@ th {
   border: none !important;
 }
 
-.ui-widget-content {
-  color: var(--color-ui-pri) !important;
-}
+/* .ui-widget-content { */
+/*   color: var(--color-ui-pri) !important; */
+/* } */
 
 button.ui-state-success {
   background-color: var(--color-ui-success) !important;

@@ -7,62 +7,81 @@ PTL.dialog = {
   },
   nagUser:function() {
 
-    if ($('#dialogs').length <= 1) {
-      PTL.util.console(PTL.tr('Prevented the nag window to pop open because there is already a window opened'), 'success');
-    } else {
+    $('#dialogs').load('/static/templates/dialogs.html #nagDialog', function() {
 
-      $('#dialogs').load('/static/templates/dialogs.html #nagDialog', function() {
+      var $dialog = $(this);
 
-        var $dialog = $(this),
-            $icon = $dialog.find('div.icon > i');
+      var $nag1 = $('<div>').attr('class', 'dialogContent')
+          .append($('<div>').attr('class', 'dialogImage')
+                  .append($('<span>')
+                          .attr('class', 'huge dialogImage')
+                          .text('🍏')))
+          .append($('<div>').attr('class', 'dialogText')
+                  .append($('<h1>').text(PTL.tr('Pétrolette needs you')))
+                  .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
+                  .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
+                  .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
-        $icon.addClass('icon-petrolette danger');
+      var $nag2 = $('<div>').attr('class', 'dialogContent')
+          .append($('<div>').attr('class', 'dialogImage')
+                  .append($('<span>')
+                          .attr('class', 'huge dialogImage')
+                          .text('🌴')))
+          .append($('<div>').attr('class', 'dialogText')
+                  .append($('<h1>').text(PTL.tr('Pétrolette is cool')))
+                  .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
+                  .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
+                  .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
-        $dialog.dialog({
-          title: PTL.tr('Support Pétrolette'),
-          buttons: [
-            {
-              text: PTL.tr('Cancel'),
-              title: PTL.tr('Cancel'),
-              class: 'ui-state-default translate',
-              click: function() {
-                PTL.dialog.kill($dialog);
-              }
-            },
-            {
-              text: PTL.tr('Donate'),
-              title: PTL.tr('Send your love to Pétrolette'),
-              class: 'ui-state-active translate',
-              click: function() {
-                window.location.href = 'https://liberapay.com/yPhil/donate';
-              }
-            }
-          ],
-          open: function () {
+      var $nag3 = $('<div>').attr('class', 'dialogContent')
+          .append($('<div>').attr('class', 'dialogImage')
+                  .append($('<span>')
+                          .attr('class', 'huge dialogImage')
+                          .text('🌱')))
+          .append($('<div>').attr('class', 'dialogText')
+                  .append($('<h1>').text(PTL.tr('Pétrolette is growing')))
+                  .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
+                  .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
+                  .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
-            $('.ui-widget-overlay').on('click', function() {
+      var $nags = [$nag1, $nag2, $nag3];
+
+      var random = Math.floor(Math.random() * $nags.length);
+
+      $dialog.append($nags[random]);
+
+      $dialog.dialog({
+        title: PTL.tr('Support Pétrolette'),
+        buttons: [
+          {
+            text: PTL.tr('Cancel'),
+            title: PTL.tr('Cancel'),
+            class: 'ui-state-default translate',
+            click: function() {
               PTL.dialog.kill($dialog);
-            });
-
-            var firstParagraph = 'Pétrolette is free software. However the development requires a lot of time and a lot of work.',
-                secondParagraph = 'In order to keep developing Pétrolette with new features I need your help.',
-                thirdParagraph = 'Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.';
-
-            var $contentDiv = $dialog.find('div.content'),
-                $h1 = $('<h1>').text(PTL.tr('Pétrolette needs you')),
-                $firstParagraph = $('<p>').text(PTL.tr(firstParagraph)),
-                $secondParagraph = $('<p>').text(PTL.tr(secondParagraph)),
-                $thirdParagraph = $('<p>').text(PTL.tr(thirdParagraph));
-
-            $contentDiv.append($h1, $firstParagraph, $secondParagraph, $thirdParagraph);
-
+            }
+          },
+          {
+            text: PTL.tr('Donate'),
+            title: PTL.tr('Send your love to Pétrolette'),
+            class: 'ui-state-active translate',
+            click: function() {
+              window.location.href = 'https://liberapay.com/yPhil/donate';
+            }
           }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+        }
         });
 
         $dialog.dialog('open');
 
       });
-    }
   },
   help:function() {
 

@@ -448,6 +448,12 @@
 
        PTL.tab.init();
 
+       (function(){
+         setTimeout(function(){
+           PTL.util.nagUser();
+         }, 60000);
+       })();
+
      });
 
     </script>
