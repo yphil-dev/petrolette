@@ -307,42 +307,42 @@ PTL.feed = {
 
                 if (index == parseInt(feedLimit)) return false;
 
-                // console.log('i: (%s)', JSON.stringify(item));
+              // console.log('i: (%s)', JSON.stringify(item));
 
-                var $description = $.parseHTML(item.description),
-                    summary,
-                    imageUrl,
-                    imageUrls = [],
-                    imgTypes = ['image',
-                                'image/jpg',
-                                'image/jpeg',
-                                'image/gif',
-                                'image/png'];
+              var $description = $.parseHTML(item.description),
+                  summary,
+                  imageUrl,
+                  imageUrls = [],
+                  imgTypes = ['image',
+                              'image/jpg',
+                              'image/jpeg',
+                              'image/gif',
+                              'image/png'];
 
-                if (item.summary && typeof item.summary !== 'undefined') {
-                    summary = item.summary;
+              if (item.summary && typeof item.summary !== 'undefined') {
+                summary = item.summary;
+              }
+
+              if (item.description && typeof item.description !== 'undefined'){
+                summary = item.description;
+              }
+
+              if (item['media:group']) {
+                if (item['media:group']['media:description']) {
+                  summary = item['media:group']['media:description']["#"];
                 }
+              }
 
-                if (item.description && typeof item.description !== 'undefined'){
-                    summary = item.description;
-                }
-
-                if (item['media:group']) {
-                    if (item['media:group']['media:description']) {
-                        summary = item['media:group']['media:description']["#"];
-                    }
-                }
-
-                var $imageLink = $('<a>').attr('target', '_blank'),
-                    $itemLink = $('<a>').attr('target', '_blank'),
-                    $soundLink = $('<a>').attr('target', '_blank'),
-                    $commentsLink = $('<a>').attr('target', '_blank'),
-                    $commentsIcon = $('<i>'),
-                    $soundIcon = $('<i>'),
-                    $image,
-                    $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
-                    $itemDiv = $('<div>').attr('class', 'itemDiv'),
-                    $feedItem = $('<li>').attr('class', 'feed-item');
+              var $imageLink = $('<a>').attr('target', '_blank'),
+                  $itemLink = $('<a>').attr('target', '_blank'),
+                  $soundLink = $('<a>').attr('target', '_blank'),
+                  $commentsLink = $('<a>').attr('target', '_blank'),
+                  $commentsIcon = $('<i>'),
+                  $soundIcon = $('<i>'),
+                  $image,
+                  $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+                  $itemDiv = $('<div>').attr('class', 'itemDiv'),
+                  $feedItem = $('<li>').attr('class', 'feed-item');
 
               if (summary && typeof summary !== 'undefined') {
                 $feedItem.attr('title', $summary.trim());
@@ -390,7 +390,7 @@ PTL.feed = {
                 }
               }
 
-              if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
+              if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
 
                 if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
                   imageUrl = item.enclosures[0].url;
@@ -418,9 +418,9 @@ PTL.feed = {
               }
 
               $itemLink
-                    .attr('class', 'ui-helper-clearfix feed-link')
-                    .attr('href', item.link)
-                    .append(item['mastodon:scope'] ? $summary.trim() : item.title);
+                .attr('class', 'ui-helper-clearfix feed-link')
+                .attr('href', item.link || item.enclosures[0].url)
+                .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
               if (imageUrls && imageUrls.length >= 1) {
 
@@ -463,7 +463,7 @@ PTL.feed = {
               if ($image && feedType == 'photo') $image.addClass('full');
               if (feedType !== 'text') $imageLink.appendTo($itemDiv);
 
-                $itemLink.appendTo($itemDiv);
+              $itemLink.appendTo($itemDiv);
                 $itemDiv.appendTo($feedItem);
                 $feedItem.appendTo($feedBody);
 

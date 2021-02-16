@@ -27,6 +27,7 @@ PTL.tab = {
     });
 
     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
+      console.log('plop!: %s (%s)');
       e.preventDefault();
       if (e.which === 1) {
         PTL.dialog.editGroup($(this));
@@ -139,7 +140,7 @@ PTL.tab = {
 
     $('#new-group').removeClass('hidden');
 
-    $('#tabs').find('li[tabindex="0"]').focus();
+    $('#tabs').find('li[tabindex="0"]:first-child').focus();
 
   },
   empty:function(callback) {

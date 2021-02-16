@@ -11,6 +11,7 @@ PTL.prefs = (function() {
        ],
        [
          {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 6,"status":"off"},
+         {"url":"https://rss.art19.com/apology-line","type":"text","limit": 6,"status":"on"},
          {"url":"https://www.npr.org/rss/rss.php?id=1001","type":"mixed","limit": 4,"status":"on"}
        ],
        [
