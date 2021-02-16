@@ -8,6 +8,8 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
+      PTL.util.console(PTL.tr('Pétrolette starting up OK'), 'success');
+
       var $menu = $('nav#sideMenu'),
           $overlay = $('#overlay'),
           $feedCodeButton = $('button#feedCode'),
@@ -56,7 +58,7 @@ var PTL = (function() {
 
       $('body').on('click','.help-button', function() {
         // PTL.dialog.help();
-        PTL.dialog.nagUser();
+        PTL.util.nagUser();
       });
 
       $('body').on('click','.new-feed-button', function() {

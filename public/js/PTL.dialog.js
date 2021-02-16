@@ -8,13 +8,17 @@ PTL.dialog = {
   nagUser:function() {
 
     var $dialogs = $('#dialogs'),
-        isOpen = $dialogs.length > 0;
+        isOpen = $dialogs.dialog('instance') === 'undefined';
 
     if (isOpen) {
+
+      // PTL.dialog.kill($dialog);
 
       PTL.util.console(PTL.tr('A window is already open, so not nagging'), 'warning');
 
     } else {
+
+      $dialogs.val('');
 
       $dialogs.load('/static/templates/dialogs.html #nagDialog', function() {
 
@@ -27,20 +31,23 @@ PTL.dialog = {
                             .text('🍏')))
             .append($('<div>').attr('class', 'dialogText')
                     .append($('<h1>').text(PTL.tr('Pétrolette needs you')))
+                    .append($('<h2>').text(PTL.tr('Help me pay the bills'))
+                            .append($('<span>').attr('class', 'dialogHeaderIcon')
+                                    .text('💸')))
                     .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
                     .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
                     .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
         var $nag2 = $('<div>').attr('class', 'dialogContent')
             .append($('<div>').attr('class', 'dialogImage')
-                    .append($('<span>')
-                            .attr('class', 'huge dialogImage')
+                    .append($('<span>').attr('class', 'huge dialogImage')
                             .text('🌴')))
             .append($('<div>').attr('class', 'dialogText')
                     .append($('<h1>').text(PTL.tr('Pétrolette is cool')))
-                    .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
-                    .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
-                    .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
+                    .append($('<h2>').text(PTL.tr('Pétrolette is cool')).append($('<span>').text('🌤')))
+                    .append($('<p>').text(PTL.tr('Pétrolette is designed from the outset to respect the user: It does not embed any tracker or statistical tool, and does not call on any online resource.')))
+                    .append($('<p>').text(PTL.tr('Pétrolette is completely transparent, its source code is directly available.')))
+                    .append($('<p>').text(PTL.tr('This site is just a test instance ; You can install Pétrolette on your own server and manage it on your own.'))));
 
         var $nag3 = $('<div>').attr('class', 'dialogContent')
             .append($('<div>').attr('class', 'dialogImage')
@@ -49,7 +56,36 @@ PTL.dialog = {
                             .text('🌱')))
             .append($('<div>').attr('class', 'dialogText')
                     .append($('<h1>').text(PTL.tr('Pétrolette is growing')))
-                    .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
+                    .append($('<h2>').text(PTL.tr('Early and often'))
+                            .append($('<span>').attr('class', 'dialogHeaderIcon')
+                                    .text('⏱')))
+                    .append($('<p>').text(PTL.tr('A lot of exciting things are in the pipeline:'))
+                            .append($('<ul>').attr('class', 'dialogTextList')
+                                    .append($('<li>')
+                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/72')
+                                                    .append($('<span>')
+                                                            .attr('class', 'translate')
+                                                            .text(PTL.tr('Dedicated feeds')))))
+                                    .append($('<li>')
+                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/48')
+                                                    .append($('<span>')
+                                                            .attr('class', 'translate')
+                                                            .text(PTL.tr('Even better mobile device experience')))))
+                                    .append($('<li>')
+                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/59')
+                                                    .append($('<span>')
+                                                            .attr('class', 'translate')
+                                                            .text(PTL.tr('HTTPS / SSL')))))
+                                    .append($('<li>')
+                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/63')
+                                                    .append($('<span>')
+                                                            .attr('class', 'translate')
+                                                            .text(PTL.tr('Asynchronous / infinite loading of feed items')))))
+                                    .append($('<li>')
+                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue')
+                                                    .append($('<span>')
+                                                            .attr('class', 'translate')
+                                                            .text(PTL.tr('Any improvement or proposal you have for Pétrolette')))))))
                     .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
                     .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 

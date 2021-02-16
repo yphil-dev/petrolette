@@ -3,17 +3,17 @@
 PTL.util = {
   nagUser:function() {
 
-    PTL.util.console(PTL.tr('Pétrolette needs you'), 'success');
-
     var nextNag = PTL.prefs.readConfig('nextNag');
     const dateNow = Date.now();
 
+    PTL.util.console(PTL.tr('Pétrolette needs you, nextNag is ' + nextNag), 'success');
+
+    // PTL.dialog.nagUser();
+
     if (nextNag === 0) {
-      nextNag = dateNow;
-      console.log('dateNow: %s (%s)', dateNow);
-      PTL.prefs.writeConfig('nextNag', dateNow);
       PTL.dialog.nagUser();
-      return;
+      console.log('dateNow: %s (%s)', dateNow);
+      PTL.prefs.writeConfig('nextNag', dateNow + 300000);
     }
 
     if (dateNow > nextNag) {

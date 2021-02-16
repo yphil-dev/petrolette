@@ -86,8 +86,6 @@ PTL.tab = {
       .button();
     $('a.rs-help').text(PTL.tr(' More info'));
 
-    PTL.util.console(PTL.tr('Pétrolette starting up OK'), 'success');
-
     if (!feeds || feeds.length <= 0) {
       PTL.util.console(PTL.tr('No feeds found'), 'warning');
       feeds = ['empty'];

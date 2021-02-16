@@ -96,17 +96,37 @@ PTL.i18n.translations = {
 
   "Support Pétrolette" : { fr: "Soutenir Pétrolette" , ja: "ペトロレットのサポート", es: "Soporte Pétrolette" },
 
-
-  "Pétrolette is free software. However the development requires a lot of time and a lot of work." : { fr: "Pétrolette est un logiciel libre. Cependant, le développement demande beaucoup de temps et beaucoup de travail." , ja: "Pétroletteはフリーソフトウェアです。 ただし、開発には多くの時間と作業が必要です。", es: "Pétrolette es un software gratuito. Sin embargo, el desarrollo requiere mucho tiempo y mucho trabajo." },
-
-
-  "In order to keep developing Pétrolette with new features I need your help." : { fr: "Afin de continuer à développer Pétrolette avec de nouvelles fonctionnalités, j'ai besoin de votre aide." , ja: "新しい機能を備えたペトロレットを開発し続けるために、私はあなたの助けが必要です。", es: "Para seguir desarrollando Pétrolette con nuevas funciones, necesito su ayuda." },
-
-  "Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot." : { fr: "Pensez à soutenir le projet Pétrolette en envoyant un don. Même la plus petite quantité aidera beaucoup." , ja: "寄付を送って、ペトロレットプロジェクトを支援することを検討してください。 少量でも大いに役立ちます。", es: "Considere apoyar el proyecto Pétrolette enviando una donación. Incluso la cantidad más pequeña ayudará mucho." },
-
-
   "Pétrolette needs you" : { fr: "Pétrolette a besoin de vous" , ja: "ペトロレットはあなたを必要としています", es: "Pétrolette te necesita" },
 
+  "Help me pay the bills" : { fr: "Aide-moi à payer les factures" , ja: "手形を支払うのを手伝ってください", es: "Ayúdame a pagar las facturas" },
+
+  "Pétrolette is free software. However the development requires a lot of time and a lot of work." : { fr: "Pétrolette est un logiciel libre. Cependant, le développement demande beaucoup de temps et beaucoup de travail." , ja: "Pétroletteはフリーソフトウェアです。 ただし、開発には多くの時間と作業が必要です。", es: "Pétrolette es un software gratuito. Sin embargo, el desarrollo requiere mucho tiempo y mucho trabajo." },
+  "In order to keep developing Pétrolette with new features I need your help." : { fr: "Afin de continuer à développer Pétrolette avec de nouvelles fonctionnalités, j'ai besoin de votre aide." , ja: "新しい機能を備えたペトロレットを開発し続けるために、私はあなたの助けが必要です。", es: "Para seguir desarrollando Pétrolette con nuevas funciones, necesito su ayuda." },
+  "Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot." : { fr: "Pensez à soutenir le projet Pétrolette en envoyant un don. Même la plus petite quantité aidera beaucoup." , ja: "寄付を送って、ペトロレットプロジェクトを支援することを検討してください。 少量でも大いに役立ちます。", es: "Considere apoyar el proyecto Pétrolette enviando una donación. Incluso la cantidad más pequeña ayudará mucho." },
+
+  "Pétrolette is cool" : { fr: "Pétrolette est cool" , ja: "「ペトロレット」はかっこいい", es: "Pétrolette es genial" },
+  "Free as the wind" : { fr: "Libre comme l'air" , ja: "風のように自由", es: "Libre como el viento" },
+  "Pétrolette is designed from the outset to respect the user: It does not embed any tracker or statistical tool, and does not call on any online resource." : { fr: "Pétrolette est conçu dés le départ pour réspecter l'utilisateur : Il n'embarque aucun pisteur ni outil de statistique, et ne fait appel à aucun ressource en ligne." , ja: "Pétroletteは最初からユーザーを尊重するように設計されています。トラッカーや統計ツールを組み込んでおらず、オンラインリソースを必要としません。", es: "Pétrolette está diseñada desde el principio para respetar al usuario: no incorpora ningún rastreador o herramienta estadística, y no recurre a ningún recurso en línea." },
+  "Pétrolette is completely transparent, its source code is directly available." : { fr: "Pétrolette est totalement transparent, son code source est directement disponible." , ja: "Pétroletteは完全に透過的であり、そのソースコードは直接入手できます。", es: "Pétrolette es completamente transparente, su código fuente está disponible directamente." },
+  "This site is just a test instance ; You can install Pétrolette on your own server and manage it on your own." : { fr: "Ce site n'est qu'une instance de test ; vous pouvez installer Pétrolette sur votre propre serveur et le gérer vous-même." , ja: "このサイトは単なるテストインスタンスです。 Pétroletteを自分のサーバーにインストールして、自分で管理することができます。", es: "Este sitio es solo una instancia de prueba; puede instalar Pétrolette en su propio servidor y administrarlo por su cuenta." },
+
+
+  "Pétrolette is growing" : { fr: "Pétrolette grandit" , ja: "ペトロレットは成長しています", es: "Pétrolette está creciendo" },
+
+  "A lot of exciting things are in the pipeline:" : { fr: "Beaucoup de choses passionnantes sont en préparation:" , ja: "多くのエキサイティングなことがパイプラインにあります。", es: "Hay muchas cosas interesantes en proceso:" },
+
+  "Dedicated feeds" : { fr: "Flux dédiés" , ja: "専用フィード", es: "Fuentes dedicados" },
+
+  "Even better mobile device experience" : { fr: "Expérience mobile encore meilleure" , ja: "さらに優れたモバイルデバイスエクスペリエンス", es: "Experiencia de dispositivo móvil aún mejor" },
+
+  "Asynchronous / infinite loading of feed items" : { fr: "Chargement asynchrone / infini des éléments de flux" , ja: "フィードアイテムの非同期/無限ロード", es: "Carga asincrónica / infinita de elementos del fuente" },
+
+
+  "Any improvement or proposal you have for Pétrolette" : { fr: "Toute amélioration ou proposition que vous avez pour Pétrolette" , ja: "Pétroletteの改善点や提案", es: "Cualquier mejora o propuesta que tengas para Pétrolette" },
+
+  "Early and often" : { fr: "Tôt et souvent" , ja: "早くそして頻繁に", es: "Temprano y a menudo" },
+
+  "Full weather report" : { fr: "Bulletin météo complet" , ja: "完全な天気予報", es: "Informe meteorológico completo" },
 
   "Search prefix" : { fr: "Préfixe de recherche" , ja: "検索プレフィックス", es: "Prefijo de búsqueda" },
 
@@ -131,9 +151,6 @@ PTL.i18n.translations = {
   "Donate" : { fr: "Donation" , ja: "寄付する", es: "Donar" },
   "Open" : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
   "Save" : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
-
-  "Open" : { fr: "Ouvrir" , ja: "インポート", es: "Importar" },
-  "Save" : { fr: "Sauver" , ja: "輸出する", es: "Exportar" },
 
   "Rename Group" : { fr: "Groupe: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la grupo" },
   "Add" : { fr: "Ajouter" , ja: "追加", es: "Añadir" },

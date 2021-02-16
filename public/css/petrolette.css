@@ -314,6 +314,10 @@ ul {
   list-style-type: none;
 }
 
+ul.dialogTextList {
+  list-style-type: lower-greek;
+}
+
 .ui-tab,
 .ui-tabs,
 ul,
@@ -348,7 +352,7 @@ ul.help li {
 }
 
 .ui-tab.ui-state-default {
-  color: var(--color-non);
+  color: var(--color-pri);
   background: var(--color-non);
   border-right: 1px solid var(--color-sep) !important;
 }
@@ -1052,7 +1056,7 @@ ul.column div.buttons > button {
 
 li.feed {
   position: relative;
-  background: var(--color-qua);
+  /* background: var(--color-qua); */
 
   /* z-index: 2; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -1148,17 +1152,30 @@ li.feed {
   color: var(--color-ui-rss) !important;
 }
 
+table tr {
+  padding: 0.5em;
+}
+
 li.feed-item {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
-  color: var(--color-pri);
   font-size: 10pt;
   hyphens: auto;
   overflow-wrap: break-word;
   padding: 0.2rem;
   word-break: break-word;
   word-wrap: break-word;
+  background-color: var(--color-sen);
+}
+
+table tr:nth-child(even),
+li.feed-item:nth-child(even) {
+  background-color: var(--color-sep);
+}
+
+li.feed-item:hover {
+  background-color: var(--color-oct);
 }
 
 li.feed-item > div.itemDiv > a > .ptl-img {
@@ -1187,37 +1204,18 @@ table {
   white-space: nowrap;
 }
 
-table tr {
-  padding: 0.5em;
-}
-
-table tr:nth-child(even),
-li.feed-item:nth-child(even) {
-  background-color: var(--color-sep);
-}
-
-li.feed-item:nth-child(even) {
-  background-color: var(--color-sen);
-}
-
 li.feed div.feed-body {
-  border-right: 1px solid var(--color-non);
-  border-bottom: 1px solid var(--color-non);
-  border-left: 1px solid var(--color-non);
+  border-right: 1px solid var(--color-oct);
+  border-bottom: 1px solid var(--color-oct);
+  border-left: 1px solid var(--color-oct);
 }
 
 li.feed:hover div.feed-body {
-  border-color: var(--color-sep);
-}
-
-li.feed-item:hover {
-  background-color: var(--color-oct);
-
-  /* color: var(--color-sep); */
+  border-color: var(--color-non);
 }
 
 a.feed-link:hover {
-  color: var(--color-sec) !important;
+  /* color: var(--color-sec) !important; */
 }
 
 .feed-header > .feed-handle:hover {
