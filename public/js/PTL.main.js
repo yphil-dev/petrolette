@@ -37,10 +37,6 @@ var PTL = (function() {
 
       $('.js-enabled-only').show();
 
-      $('#console').click(function() {
-        $(this).toggleClass('expanded');
-      });
-
       $('body').on('click','.help-bookmarklet', function(event) {
         event.preventDefault();
       });

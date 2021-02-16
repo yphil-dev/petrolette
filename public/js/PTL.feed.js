@@ -312,7 +312,7 @@ PTL.feed = {
                 var $description = $.parseHTML(item.description),
                     summary,
                     imageUrl,
-                    // imageUrls = [],
+                    imageUrls = [],
                     imgTypes = ['image',
                                 'image/jpg',
                                 'image/jpeg',
@@ -422,7 +422,9 @@ PTL.feed = {
                     .attr('href', item.link)
                     .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
-              if (typeof imageUrls != 'undefined') {
+              if (imageUrls && imageUrls.length >= 1) {
+
+                console.log('imageUrls.length: %s (%s)',imageUrls.length);
 
                 $image = $('<div>')
                   .attr('class', 'ptl-img')
@@ -440,11 +442,9 @@ PTL.feed = {
                             .appendTo($image));
                 }
 
-              } else if (imageUrl) {
+              } else if (imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
-                if (!PTL.util.isUrl(imageUrl)) {
-                  imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
-                }
+                if (!PTL.util.isUrl(imageUrl)) imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
 
                 $imageLink
                   .attr('href', imageUrl)
@@ -456,11 +456,12 @@ PTL.feed = {
                   .attr('class', 'ptl-img')
                   .appendTo($imageLink);
 
+                if (PTL.prefs.readConfig('brokenImages') === 'hide') $image.attr('onerror', "this.style.display='none'");
+
               }
 
-              if (!new RegExp('^(?:[a-z]+:)?//', 'i').test(imageUrl)) imageUrl = feedHost + imageUrl;
-                if ($image && feedType == 'photo') $image.addClass('full');
-                if (feedType !== 'text') $imageLink.appendTo($itemDiv);
+              if ($image && feedType == 'photo') $image.addClass('full');
+              if (feedType !== 'text') $imageLink.appendTo($itemDiv);
 
                 $itemLink.appendTo($itemDiv);
                 $itemDiv.appendTo($feedItem);

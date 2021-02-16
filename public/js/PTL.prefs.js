@@ -11,12 +11,11 @@ PTL.prefs = (function() {
        ],
        [
          {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 6,"status":"off"},
-         {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 6,"status":"off"},
          {"url":"https://www.npr.org/rss/rss.php?id=1001","type":"mixed","limit": 4,"status":"on"}
        ],
        [
-         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 2,"status":"on"},
-         {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 2,"status":"on"}
+         {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 1,"status":"on"},
+         {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 2,"status":"on"}
        ]
      ]
     },
@@ -40,17 +39,26 @@ PTL.prefs = (function() {
      "columns": [
        [
          {"url":"http://cabinporn.com/rss/","type":"photo","limit": 3,"status":"off"},
-         {"url":"http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss","type":"photo","limit": 3,"status":"on"}
+         {"url":"http://blog.theanimalrescuesite.greatergood.com/feed/","type":"photo","limit": 3,"status":"on"}
+       ],
+       [
+         {"url":"http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss","type":"photo","limit": 3,"status":"on"},
+         {"url":"https://www.youtube.com/feeds/videos.xml?user=AnimalPlanetTV","type":"mixed","limit": 3,"status":"off"}
+
+
+
+
        ]
+
      ]
     },
     {"name":"social",
      "columns": [
        [
-         {"url":"https://framasphere.org/public/xaccrocheur.atom","type":"mixed","limit": 8,"status":"on"}
+         {"url":"https://framasphere.org/public/librazik.atom","type":"mixed","limit": 8,"status":"on"}
        ],
        [
-         {"url":"https://framapiaf.org/@yphil.rss","type":"mixed","limit": 8,"status":"on"},
+         {"url":"https://mastodon.social/@unfa.rss","type":"mixed","limit": 8,"status":"on"},
          {"url":"https://botsin.space/@tinyskylines.rss","type":"photo","limit": 3,"status":"on"}
        ]
      ]
@@ -59,12 +67,12 @@ PTL.prefs = (function() {
      "columns": [
        [
          {"url":"http://createdigitalmusic.com/feed/","type":"mixed","limit": 8,"status":"off"},
-         {"url":"https://tube.netzspielplatz.de/feeds/videos.xml?videoChannelId=8984","type":"mixed","limit": 8,"status":"on"},
-         {"url":"https://www.youtube.com/feeds/videos.xml?channel_id=UC3I2GFN_F8WudD_2jUZbojA","type":"mixed","limit": 8,"status":"on"}
+         {"url":"http://planet.linuxaudio.org/rss20.xml","type":"mixed","limit": 8,"status":"on"},
+         {"url":"https://www.youtube.com/feeds/videos.xml?channel_id=UCAYKj_peyESIMDp5LtHlH2A","type":"mixed","limit": 8,"status":"on"}
        ],
        [
          {"url":"https://www.rollingstone.com/music/rss","type":"photo","limit": 4,"status":"on"},
-         {"url":"http://planet.linuxaudio.org/rss20.xml","type":"mixed","limit": 12,"status":"on"}
+         {"url":"http://www.premierguitar.com/rss/1","type":"mixed","limit": 12,"status":"on"}
        ],
        [
          {"url":"https://feeds.feedburner.com/dangerousminds/dot/net","type":"photo","mixed": 4,"status":"on"}

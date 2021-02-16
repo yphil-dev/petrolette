@@ -57,7 +57,20 @@
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/minified/introjs.min.css" />
 
-    <link rel="stylesheet" href="/static/css/petrolette.css">
+    <!-- https://css-tricks.com/how-to-load-fonts-in-a-way-that-fights-fout-and-makes-lighthouse-happy/ -->
+
+    <link rel="preload"
+          as="style"
+          href="/static/css/petrolette.css" />
+
+    <link rel="stylesheet"
+          href="/static/css/petrolette.css"
+          media="print" onload="this.media='all'" />
+
+    <noscript>
+      <link rel="stylesheet"
+            href="/static/css/petrolette.css" />
+    </noscript>
 
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <script src="/bower/jquery-ui/jquery-ui.min.js"></script>

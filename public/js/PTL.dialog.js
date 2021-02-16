@@ -7,81 +7,92 @@ PTL.dialog = {
   },
   nagUser:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #nagDialog', function() {
+    var $dialogs = $('#dialogs'),
+        isOpen = $dialogs.length > 0;
 
-      var $dialog = $(this);
+    if (isOpen) {
 
-      var $nag1 = $('<div>').attr('class', 'dialogContent')
-          .append($('<div>').attr('class', 'dialogImage')
-                  .append($('<span>')
-                          .attr('class', 'huge dialogImage')
-                          .text('🍏')))
-          .append($('<div>').attr('class', 'dialogText')
-                  .append($('<h1>').text(PTL.tr('Pétrolette needs you')))
-                  .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
-                  .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
-                  .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
+      PTL.util.console(PTL.tr('A window is already open, so not nagging'), 'warning');
 
-      var $nag2 = $('<div>').attr('class', 'dialogContent')
-          .append($('<div>').attr('class', 'dialogImage')
-                  .append($('<span>')
-                          .attr('class', 'huge dialogImage')
-                          .text('🌴')))
-          .append($('<div>').attr('class', 'dialogText')
-                  .append($('<h1>').text(PTL.tr('Pétrolette is cool')))
-                  .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
-                  .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
-                  .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
+    } else {
 
-      var $nag3 = $('<div>').attr('class', 'dialogContent')
-          .append($('<div>').attr('class', 'dialogImage')
-                  .append($('<span>')
-                          .attr('class', 'huge dialogImage')
-                          .text('🌱')))
-          .append($('<div>').attr('class', 'dialogText')
-                  .append($('<h1>').text(PTL.tr('Pétrolette is growing')))
-                  .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
-                  .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
-                  .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
+      $dialogs.load('/static/templates/dialogs.html #nagDialog', function() {
 
-      var $nags = [$nag1, $nag2, $nag3];
+        var $dialog = $(this);
 
-      var random = Math.floor(Math.random() * $nags.length);
+        var $nag1 = $('<div>').attr('class', 'dialogContent')
+            .append($('<div>').attr('class', 'dialogImage')
+                    .append($('<span>')
+                            .attr('class', 'huge dialogImage')
+                            .text('🍏')))
+            .append($('<div>').attr('class', 'dialogText')
+                    .append($('<h1>').text(PTL.tr('Pétrolette needs you')))
+                    .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
+                    .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
+                    .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
-      $dialog.append($nags[random]);
+        var $nag2 = $('<div>').attr('class', 'dialogContent')
+            .append($('<div>').attr('class', 'dialogImage')
+                    .append($('<span>')
+                            .attr('class', 'huge dialogImage')
+                            .text('🌴')))
+            .append($('<div>').attr('class', 'dialogText')
+                    .append($('<h1>').text(PTL.tr('Pétrolette is cool')))
+                    .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
+                    .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
+                    .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
-      $dialog.dialog({
-        title: PTL.tr('Support Pétrolette'),
-        buttons: [
-          {
-            text: PTL.tr('Cancel'),
-            title: PTL.tr('Cancel'),
-            class: 'ui-state-default translate',
-            click: function() {
+        var $nag3 = $('<div>').attr('class', 'dialogContent')
+            .append($('<div>').attr('class', 'dialogImage')
+                    .append($('<span>')
+                            .attr('class', 'huge dialogImage')
+                            .text('🌱')))
+            .append($('<div>').attr('class', 'dialogText')
+                    .append($('<h1>').text(PTL.tr('Pétrolette is growing')))
+                    .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
+                    .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
+                    .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
+
+        var $nags = [$nag1, $nag2, $nag3];
+
+        var random = Math.floor(Math.random() * $nags.length);
+
+        $dialog.append($nags[random]);
+
+        $dialog.dialog({
+          title: PTL.tr('Support Pétrolette'),
+          buttons: [
+            {
+              text: PTL.tr('Cancel'),
+              title: PTL.tr('Cancel'),
+              class: 'ui-state-default translate',
+              click: function() {
+                PTL.dialog.kill($dialog);
+              }
+            },
+            {
+              text: PTL.tr('Donate'),
+              title: PTL.tr('Send your love to Pétrolette'),
+              class: 'translate ui-state-focus',
+              click: function() {
+                window.location.href = 'https://liberapay.com/yPhil/donate';
+              }
+            }
+          ],
+          open: function () {
+
+            $('.ui-widget-overlay').on('click', function() {
               PTL.dialog.kill($dialog);
-            }
-          },
-          {
-            text: PTL.tr('Donate'),
-            title: PTL.tr('Send your love to Pétrolette'),
-            class: 'ui-state-active translate',
-            click: function() {
-              window.location.href = 'https://liberapay.com/yPhil/donate';
-            }
+            });
+
           }
-        ],
-        open: function () {
-
-          $('.ui-widget-overlay').on('click', function() {
-            PTL.dialog.kill($dialog);
-          });
-
-        }
         });
 
         $dialog.dialog('open');
 
       });
+    }
+
   },
   help:function() {
 
@@ -295,7 +306,6 @@ PTL.dialog = {
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
             }).fail(function(req, status, xhr) {
-              console.log('fail!!');
               guessError();
             }).done(function(feed) {
               $guessSpinner.removeClass('spin icon-cog');
@@ -373,7 +383,7 @@ PTL.dialog = {
   },
   killColumn:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
           $column = $button.parent().parent(),
@@ -383,7 +393,7 @@ PTL.dialog = {
           colIndex = $panel.find('.column').index($column),
           $feedsInCol = $column.find('.feed'),
           nbOfFeedsInCol = $feedsInCol.length,
-          $icon = $dialog.find('div.icon > i');
+          $icon = $dialog.find('div.dialogImage > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -393,7 +403,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Cancel'),
             title: PTL.tr('Cancel'),
-            class: 'translate',
+            class: 'translate ui-state-focus',
             click: function() {
               PTL.dialog.kill($dialog);
             }
@@ -428,7 +438,7 @@ PTL.dialog = {
   },
   kbShortcuts:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
           $iconDiv = $dialog.find('div.icon');
@@ -553,10 +563,10 @@ PTL.dialog = {
   },
   addFeed:function(feedUrl) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
-          $icon = $dialog.find('div.icon > i'),
+          $icon = $dialog.find('div.dialogImage > i'),
           isUrl = false,
           h1, h2;
 
@@ -612,7 +622,7 @@ PTL.dialog = {
   },
   killTab:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
           $tabs = $('#tabs'),
@@ -622,7 +632,7 @@ PTL.dialog = {
           $selectedPanel = $tabs.find(tabId),
           selectedTabIndex = $tabs.tabs('option', 'active'),
           previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1,
-          $icon = $dialog.find('div.icon > i');
+          $icon = $dialog.find('div.dialogImage > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -632,7 +642,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Cancel'),
             title: PTL.tr('Cancel'),
-            class: 'translate',
+            class: 'translate ui-state-focus',
             click: function() {
               PTL.dialog.kill($dialog);
             }
@@ -678,13 +688,13 @@ PTL.dialog = {
   },
   killFeed:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
           $thisFeed = $button.parent().parent().parent().parent(),
           thisFeedId = $button.parent().parent().parent().parent().attr('id'),
           thisFeedName = $button.parent().parent().parent().find('.feed-title').text(),
-          $icon = $dialog.find('div.icon > i');
+          $icon = $dialog.find('div.dialogImage > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -702,7 +712,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Delete'),
             title: PTL.tr('Wait! Are you sure?'),
-            class: 'dangerous translate',
+            class: 'translate',
             click: function() {
               $thisFeed.hide('fade', 1000, function() {
                 $(this).remove();
@@ -726,6 +736,7 @@ PTL.dialog = {
       });
 
       $dialog.data('feedId', thisFeedId).dialog('open');
+
     });
 
   },

@@ -13,6 +13,7 @@ PTL.util = {
       console.log('dateNow: %s (%s)', dateNow);
       PTL.prefs.writeConfig('nextNag', dateNow);
       PTL.dialog.nagUser();
+      return;
     }
 
     if (dateNow > nextNag) {

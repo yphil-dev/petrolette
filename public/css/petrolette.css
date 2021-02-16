@@ -396,6 +396,12 @@ li.feed-item:not(.error) a {
   background: var(--color-qua);
 }
 
+/* button.ui-state-focus { */
+
+/*   border: 3px solid var(--color-ui-sec) !important; */
+
+/* } */
+
 i.item-icon {
   float: right;
   margin: 0.2em;
@@ -601,17 +607,6 @@ nav#sideMenu.expanded {
   padding: 0 0.2em;
   text-align: left;
 }
-
-#console.expanded {
-  height: 120px;
-  cursor: n-resize;
-}
-
-/* fieldset.retracted { */
-
-/*   height: 0; */
-
-/* } */
 
 #console > div > span.prompt {
   margin-right: 3px;
