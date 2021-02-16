@@ -130,14 +130,20 @@
       </div>
     </nav>
 
+
+
     <nav id="sideMenu" class="menu">
+
       <div id="sideMenu" class="plip">
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Language">Language
+          </span>
+        </legend>
+
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend class="ui-corner-top translate"
-                  data-content="Language">
-            Language
-          </legend>
           <select id="language"
                   class="unique translate"
                   name="language"
@@ -163,12 +169,13 @@
           </select>
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Feeds">Feeds
+          </span>
+        </legend>
         <fieldset class="ui-widget ui-widget-content ui-corner-all">
-          <legend id="tabsLegend"
-                  class="ui-corner-top translate"
-                  data-content="Feeds">
-            Feeds
-          </legend>
           <div class="flex-box">
             <input id="fileImport"
                    type="file"
@@ -192,50 +199,39 @@
           <div id="progress-bar"><div class="progress-label"></div></div>
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Theme">Theme
+          </span>
+        </legend>
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="themeLegend"
-                  class="ui-corner-top translate"
-                  data-content="Theme">
-            Theme
-          </legend>
           <div id="themeBox"
                class="flex-box">
-            <label id="dayLabel"
-                   class="grow translate"
-                   for="day"
-                   data-title="Day theme"
-                   title="Day theme"
-                   data-content="Day">
-              Day
-            </label>
-            <input id="day"
-                   class="themeSwitcher checkboxradio"
-                   type="radio"
-                   name="radio-1"
-                   value="day">
-            <label id="nightLabel"
-                   class="grow translate last"
-                   for="night"
-                   data-title="Night theme"
-                   title="Night theme"
-                   data-content="Night">
-              Night
-            </label>
-            <input id="night"
-                   class="themeSwitcher checkboxradio noBottom"
-                   type="radio"
-                   name="radio-1"
-                   value="night">
           </div>
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Broken images">Broken images
+          </span>
+        </legend>
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <div id="brokenImagesBox"
+               class="flex-box">
+          </div>
+        </fieldset>
+
+
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Image gallery">Image gallery
+          </span>
+        </legend>
         <fieldset id="galleryBox"
                   class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="imageGalleryLegend"
-                  class="ui-corner-top translate"
-                  data-content="Image gallery">
-            Image gallery
-          </legend>
           <label class="ui-helper-hidden"
                  for="gallerySlideshowSpeedValue"></label>
           <span id="gallerySlideshowSpeedValue"
@@ -284,13 +280,15 @@
           </div>
         </fieldset>
 
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="helpLegend"
-                  data-content="Help"
-                  class="ui-corner-top translate">
-            Help
-          </legend>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Help">Help
+          </span>
+        </legend>
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
           <div class="flex-box">
             <a href="https://framagit.org/yphil/petrolette"
                class="ui-button ui-widget ui-corner-all unique translate"
@@ -322,15 +320,15 @@
               JS Licence info
             </a>
           </div>
-
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Search prefix">Search prefix
+          </span>
+        </legend>
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend class="ui-corner-top translate"
-                  data-content="Search prefix"
-                  data-title="Search prefix">
-            Search prefix
-          </legend>
           <div class="flex-box">
             <!-- <input type="text" id="searchPrefix" class="grow" /> -->
             <input name="searchPrefix"
@@ -340,7 +338,6 @@
                    data-title="Search prefix"
                    title="Search prefix"
                    value="" />
-
             <button id="searchPrefixOkButton"
                     class="translate ui-button ui-corner-all ui-widget"
                     data-title="OK"
@@ -358,19 +355,16 @@
                     title="Restore default search prefix">
               Restore default
             </button>
-
           </div>
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Support">Support
+          </span>
+        </legend>
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend class="ui-corner-top translate"
-                  data-content="Support"
-                  data-title="Send your love to Pétrolette"
-                  title="Send your love to Pétrolette"
-          >
-            Support
-          </legend>
-
           <div class="flex-box" id="liberapay">
             <a href="https://liberapay.com/yPhil/">
               <img src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
@@ -379,14 +373,15 @@
               <img src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
             </a>
           </div>
-
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Console">Console
+          </span>
+        </legend>
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend class="ui-corner-top translate"
-                  data-content="Console">
-            Console
-          </legend>
           <div
             class="unique"
             data-title="Click to toggle"
@@ -394,7 +389,6 @@
             id="console">
           </div>
         </fieldset>
-
       </div>
     </nav>
 

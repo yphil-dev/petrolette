@@ -5,6 +5,65 @@ PTL.dialog = {
     $dialog.dialog('destroy');
     $('#dialogs').empty();
   },
+  nagUser:function() {
+
+    if ($('#dialogs').length <= 1) {
+      PTL.util.console(PTL.tr('Prevented the nag window to pop open because there is already a window opened'), 'success');
+    } else {
+
+      $('#dialogs').load('/static/templates/dialogs.html #nagDialog', function() {
+
+        var $dialog = $(this),
+            $icon = $dialog.find('div.icon > i');
+
+        $icon.addClass('icon-petrolette danger');
+
+        $dialog.dialog({
+          title: PTL.tr('Support Pétrolette'),
+          buttons: [
+            {
+              text: PTL.tr('Cancel'),
+              title: PTL.tr('Cancel'),
+              class: 'ui-state-default translate',
+              click: function() {
+                PTL.dialog.kill($dialog);
+              }
+            },
+            {
+              text: PTL.tr('Donate'),
+              title: PTL.tr('Send your love to Pétrolette'),
+              class: 'ui-state-active translate',
+              click: function() {
+                window.location.href = 'https://liberapay.com/yPhil/donate';
+              }
+            }
+          ],
+          open: function () {
+
+            $('.ui-widget-overlay').on('click', function() {
+              PTL.dialog.kill($dialog);
+            });
+
+            var firstParagraph = 'Pétrolette is free software. However the development requires a lot of time and a lot of work.',
+                secondParagraph = 'In order to keep developing Pétrolette with new features I need your help.',
+                thirdParagraph = 'Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.';
+
+            var $contentDiv = $dialog.find('div.content'),
+                $h1 = $('<h1>').text(PTL.tr('Pétrolette needs you')),
+                $firstParagraph = $('<p>').text(PTL.tr(firstParagraph)),
+                $secondParagraph = $('<p>').text(PTL.tr(secondParagraph)),
+                $thirdParagraph = $('<p>').text(PTL.tr(thirdParagraph));
+
+            $contentDiv.append($h1, $firstParagraph, $secondParagraph, $thirdParagraph);
+
+          }
+        });
+
+        $dialog.dialog('open');
+
+      });
+    }
+  },
   help:function() {
 
     $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {

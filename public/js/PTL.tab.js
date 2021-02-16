@@ -139,6 +139,8 @@ PTL.tab = {
 
     $('#new-group').removeClass('hidden');
 
+    $('#tabs').find('li[tabindex="0"]').focus();
+
   },
   empty:function(callback) {
     $('div#tabs ul li').remove();

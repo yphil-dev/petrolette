@@ -45,6 +45,11 @@ var PTL = (function() {
         event.preventDefault();
       });
 
+      $('#sideMenu legend').click(function() {
+        $(this).children('i').toggleClass('unfold');
+        $(this).next().slideToggle(50);
+      });
+
       PTL.sync.attachWidget();
 
       $('button').button();
@@ -126,19 +131,77 @@ var PTL = (function() {
         return false;
       });
 
-      $(".checkboxradio").checkboxradio({
-        icon: false
-      });
+      var $themeBox = $('div#themeBox'),
+          $dayLabel = $('<label>')
+          .attr('for', 'day')
+          .attr('class', 'translate')
+          .data('content', PTL.tr('Day'))
+          .text(PTL.tr('Day')),
+          $dayInput = $('<input>')
+          .attr('id', 'day')
+          .attr('class', 'themeSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-1')
+          .attr('value', 'day'),
+          $nightLabel = $('<label>')
+          .attr('for', 'night')
+          .attr('class', 'translate')
+          .data('content', PTL.tr('Night'))
+          .text(PTL.tr('Night')),
+          $nightInput = $('<input>')
+          .attr('id', 'night')
+          .attr('class', 'themeSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-1')
+          .attr('value', 'night');
 
-      $(this).find('input#' + PTL.prefs.readConfig('theme')).prop("checked", true)
-        .checkboxradio('refresh');
+      $themeBox.append($dayLabel, $dayInput, $nightLabel, $nightInput);
+
+      $menu.find('.themeSwitcher').checkboxradio({icon: true});
+
+      $menu.find("input#" + PTL.prefs.readConfig('theme')).attr("checked", true);
+
+      $menu.find('.themeSwitcher').checkboxradio('refresh');
 
       $('.themeSwitcher').change(function() {
-
         $("#theme").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
-
         PTL.prefs.writeConfig('theme', $(this).attr('value'));
+      });
 
+      var $brokenImagesBox = $('div#brokenImagesBox'),
+          $showLabel = $('<label>')
+          .attr('class', 'translate')
+          .attr('for', 'show')
+          .data('content', PTL.tr('Show'))
+          .text(PTL.tr('Show')),
+          $showInput = $('<input>')
+          .attr('id', 'show')
+          .attr('class', 'brokenImagesSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-2')
+          .attr('value', 'show'),
+          $hideLabel = $('<label>')
+          .attr('class', 'translate')
+          .attr('for', 'hide')
+          .data('content', PTL.tr('Hide'))
+          .text(PTL.tr('Hide')),
+          $hideInput = $('<input>')
+          .attr('id', 'hide')
+          .attr('class', 'brokenImagesSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-2')
+          .attr('value', 'hide');
+
+      $brokenImagesBox.append($showLabel, $showInput, $hideLabel, $hideInput);
+
+      $menu.find('.brokenImagesSwitcher').checkboxradio({icon: true});
+
+      $menu.find("input#" + PTL.prefs.readConfig('brokenImages')).attr("checked", true);
+
+      $menu.find('.brokenImagesSwitcher').checkboxradio('refresh');
+
+      $('.brokenImagesSwitcher').change(function() {
+        PTL.prefs.writeConfig('brokenImages', $(this).attr('value'));
       });
 
       var gallerySlideshowSpeed = PTL.prefs.readConfig('gallerySlideshowSpeed');

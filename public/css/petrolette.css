@@ -589,20 +589,17 @@ nav#sideMenu.expanded {
 }
 
 #console {
-  border: 3px solid var(--color-ui-sep);
-  max-width: 250px;
+  border: 3px solid var(--color-ui-qui);
+  resize: vertical;
   border-radius: 3px;
   background-color: var(--color-ui-console-bg);
   color: var(--color-ui-console-fg);
-  cursor: s-resize;
   font-family: monospace;
-  height: 2.5em;
+  min-height: 2.5em;
   overflow-wrap: break-word;
-  overflow-y: scroll;
+  overflow: auto; /* something other than visible */
   padding: 0 0.2em;
-  position: relative;
   text-align: left;
-  transition: height 0.3s ease-in-out;
 }
 
 #console.expanded {
@@ -722,6 +719,10 @@ th {
 .ui-widget-content,
 .ui-widget-header {
   border: none !important;
+}
+
+.ui-widget-content {
+  color: var(--color-ui-pri) !important;
 }
 
 button.ui-state-success {
