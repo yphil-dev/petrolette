@@ -1,11 +1,10 @@
-var express = require('express'),
-    path = require('path'),
-    index = require('./routes/index'),
-    fs = require('fs'),
-    pjson = require('./package.json'),
-    app = express();
-
-var bodyParser = require('body-parser');
+const express = require('express'),
+      path = require('path'),
+      index = require('./routes/index'),
+      fs = require('fs'),
+      pjson = require('./package.json'),
+      app = express(),
+      bodyParser = require('body-parser');
 
 if (!fs.existsSync(path.join(__dirname, pjson.FAVICONS_CACHE_DIR))){
   fs.mkdirSync(path.join(__dirname, pjson.FAVICONS_CACHE_DIR));
