@@ -81,7 +81,9 @@ PTL.prefs = (function() {
     'searchPrefixDefault': 'https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=',
     'feeds': JSON.stringify(newList),
     'tabDropActivate': true,
+    'brokenImages': 'hide',
     'theme': 'night',
+    'nextNag': 0,
     'writeTime': Date.now()
   };
 

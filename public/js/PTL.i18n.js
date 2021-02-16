@@ -40,6 +40,8 @@ PTL.i18n.translations = {
 
   "Pétrolette starting up OK" : { fr: "Pétrolette démarrage OK", ja: "Pétroletteが起動する", es: "Pétrolette iniciando OK" },
 
+  "Pétrolette init finished OK" : { fr: "Pétrolette démarrage terminé OK", ja: "ペトロレットの初期化は正常に終了しました", es: "La inicialización de Pétrolette terminó bien" },
+
   "Cancel": { fr: "Annuler", ja: "取り消す", es: "Cancelar" },
   "Delete": { fr: "Supprimer", ja: "削除", es: "Eliminar" },
   "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
@@ -73,6 +75,12 @@ PTL.i18n.translations = {
   "Image gallery" : { fr: "Galerie d'images" , ja: "イメージギャラリー", es: "Galería de imágenes" },
   "Slideshow speed" : { fr: "Vitesse du diaporama" , ja: "スライドショーのスピード", es: "Velocidad de la presentación" },
   "Slide transition" : { fr: "Transition image" , ja: "画像の遷移", es: "Transición de imagen" },
+
+  "Broken images" : { fr: "Images cassées" , ja: "壊れた画像", es: "Imágenes rotas" },
+  "Show" : { fr: "Montrer" , ja: "公演", es: "Mostrar" },
+  "Hide" : { fr: "Cacher" , ja: "隠す", es: "Esconder" },
+
+
   "Help" : { fr: "Aide" , ja: "助けて", es: "Ayuda" },
   "Documentation" : { fr: "Documentation" , ja: "ドキュメンテーション", es: "Documentación" },
   "JS Licences" : { fr: "Licences JS" , ja: "JSライセンス", es: "Licencias JS" },
@@ -85,6 +93,19 @@ PTL.i18n.translations = {
 
 
   "Support" : { fr: "Soutien" , ja: "サポート", es: "Apoyo" },
+
+  "Support Pétrolette" : { fr: "Soutenir Pétrolette" , ja: "ペトロレットのサポート", es: "Soporte Pétrolette" },
+
+
+  "Pétrolette is free software. However the development requires a lot of time and a lot of work." : { fr: "Pétrolette est un logiciel libre. Cependant, le développement demande beaucoup de temps et beaucoup de travail." , ja: "Pétroletteはフリーソフトウェアです。 ただし、開発には多くの時間と作業が必要です。", es: "Pétrolette es un software gratuito. Sin embargo, el desarrollo requiere mucho tiempo y mucho trabajo." },
+
+
+  "In order to keep developing Pétrolette with new features I need your help." : { fr: "Afin de continuer à développer Pétrolette avec de nouvelles fonctionnalités, j'ai besoin de votre aide." , ja: "新しい機能を備えたペトロレットを開発し続けるために、私はあなたの助けが必要です。", es: "Para seguir desarrollando Pétrolette con nuevas funciones, necesito su ayuda." },
+
+  "Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot." : { fr: "Pensez à soutenir le projet Pétrolette en envoyant un don. Même la plus petite quantité aidera beaucoup." , ja: "寄付を送って、ペトロレットプロジェクトを支援することを検討してください。 少量でも大いに役立ちます。", es: "Considere apoyar el proyecto Pétrolette enviando una donación. Incluso la cantidad más pequeña ayudará mucho." },
+
+
+  "Pétrolette needs you" : { fr: "Pétrolette a besoin de vous" , ja: "ペトロレットはあなたを必要としています", es: "Pétrolette te necesita" },
 
 
   "Search prefix" : { fr: "Préfixe de recherche" , ja: "検索プレフィックス", es: "Prefijo de búsqueda" },
@@ -433,6 +454,5 @@ PTL.i18n.translations = {
 
   "Really delete this group? (%1, %2 feeds)" : { fr: "Réellement supprimer ce groupe (%1, %2 flux) ?", ja: "本当にこのタブを削除しますか？ (%1, %2 フィード)", es: "¿Realmente borras esta grupo? (%1, %2 feeds)" },
   "Edit this feed (%1) parameters" : { fr: "Modifier les paramètres de ce flux (%1)", ja: "このソース（%1）パラメータを変更する", es: "Establezca estos parámetros fuente %1" },
-  "Refresh this feed (%1)" : { fr: "Actualiser ce flux (%1)", ja: "このソースをリフレッシュしてください (%1)", es: "Actualiza esta fuente (%1)" },
-  "Last" : { fr: "Dernier", ja: "zz" }
+  "Refresh this feed (%1 - %2)" : { fr: "Actualiser ce flux (%1 - %2)", ja: "このソースをリフレッシュしてください (%1 - %2)", es: "Actualiza esta fuente (%1 - %2)" }
 };
