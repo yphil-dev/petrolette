@@ -131,7 +131,7 @@ a:visited {
 
 a:hover,
 a:active {
-  color: var(--color-pri) !important;
+  color: var(--color-ter) !important;
 }
 
 .introjs-tooltip a:hover,
@@ -413,12 +413,13 @@ i.item-icon {
 
 i.tab-closer {
   top: 2px;
+  color: var(--color-non);
 }
 
 i.rotate:hover,
 i.tab-closer:hover,
 i.feed-control:hover {
-  color: var(--color-ui-sec);
+  color: var(--color-ui-sen);
 }
 
 i.danger,

@@ -1,13 +1,13 @@
 :root {
   --color-pri: #000000;
-  --color-sec: #3700B3;
-  --color-ter: #FFFFFF;
+  --color-sec: #007fff;
+  --color-ter: #CCCCCC;
   --color-qua: #FFFFFF;
   --color-qui: #c2c8d6; /* visited links */
   --color-sen: #FFFFFF;
-  --color-sep: #BBBBBB;
-  --color-oct: #DDDDDD;
-  --color-non: #6200EE;
+  --color-sep: #EEEEEE;
+  --color-oct: #CCCCCC;
+  --color-non: #19b5fe;
   --color-den: #94c2d1;
   --color-danger: #B00020;
 }
