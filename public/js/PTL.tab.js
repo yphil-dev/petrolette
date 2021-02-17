@@ -13,7 +13,7 @@ PTL.tab = {
       heightStyle: 'content',
       activate: function(event, ui) {
         ui.newPanel.css("display","flex");
-          $('.tab-icon').show();
+        $('.tab-icon').show();
       }
     });
 
@@ -321,7 +321,6 @@ PTL.tab = {
     $newTabButtonIcon.appendTo($newTabButtonLink);
     $newTabButtonLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tab-names'));
-
 
   }
 };

@@ -18,7 +18,6 @@ PTL.dialog = {
 
     } else {
 
-      $dialogs.val('');
 
       $dialogs.load('/static/templates/dialogs.html #nagDialog', function() {
 
@@ -32,9 +31,15 @@ PTL.dialog = {
             .append($('<div>').attr('class', 'dialogText')
                     .append($('<h1>').text(PTL.tr('Pétrolette needs you')))
                     .append($('<h2>').text(PTL.tr('Help me pay the bills'))
-                            .append($('<span>').attr('class', 'dialogHeaderIcon')
-                                    .text('💸')))
-                    .append($('<p>').text(PTL.tr('Pétrolette is free software. However the development requires a lot of time and a lot of work.')))
+                            .append($('<span>').attr('class', 'dialogHeaderIcon')))
+                    .append($('<p>')
+                            .text(PTL.tr('Pétrolette is free software. However the development requires '))
+                            .append($('<a>')
+                                    .attr('href', 'https://www.youtube.com/watch?v=JlbMEx9H6FE')
+                                    .text(PTL.tr(' a lot of time ')))
+                            .append($('<span>').text(PTL.tr(' and ')))
+                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/commits/master').text(PTL.tr(' a lot of work')))
+                            .append($('<span>').text(PTL.tr('.'))))
                     .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
                     .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
@@ -44,7 +49,7 @@ PTL.dialog = {
                             .text('🌴')))
             .append($('<div>').attr('class', 'dialogText')
                     .append($('<h1>').text(PTL.tr('Pétrolette is cool')))
-                    .append($('<h2>').text(PTL.tr('Pétrolette is cool')).append($('<span>').text('🌤')))
+                    .append($('<h2>').text(PTL.tr('Free as the wind')))
                     .append($('<p>').text(PTL.tr('Pétrolette is designed from the outset to respect the user: It does not embed any tracker or statistical tool, and does not call on any online resource.')))
                     .append($('<p>').text(PTL.tr('Pétrolette is completely transparent, its source code is directly available.')))
                     .append($('<p>').text(PTL.tr('This site is just a test instance ; You can install Pétrolette on your own server and manage it on your own.'))));
@@ -56,9 +61,7 @@ PTL.dialog = {
                             .text('🌱')))
             .append($('<div>').attr('class', 'dialogText')
                     .append($('<h1>').text(PTL.tr('Pétrolette is growing')))
-                    .append($('<h2>').text(PTL.tr('Early and often'))
-                            .append($('<span>').attr('class', 'dialogHeaderIcon')
-                                    .text('⏱')))
+                    .append($('<h2>').text(PTL.tr('Early and often')))
                     .append($('<p>').text(PTL.tr('A lot of exciting things are in the pipeline:'))
                             .append($('<ul>').attr('class', 'dialogTextList')
                                     .append($('<li>')
@@ -89,14 +92,17 @@ PTL.dialog = {
                     .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
                     .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
-        var $nags = [$nag1, $nag2, $nag3];
+        var $nags = [$nag1];
 
         var random = Math.floor(Math.random() * $nags.length);
 
-        $dialog.append($nags[random]);
+        $dialogs.html('').empty().append($nags[random]);
+
+        // $dialog.append($nags[random]);
 
         $dialog.dialog({
           title: PTL.tr('Support Pétrolette'),
+          autoOpen: true,
           buttons: [
             {
               text: PTL.tr('Cancel'),
@@ -110,8 +116,9 @@ PTL.dialog = {
               text: PTL.tr('Donate'),
               title: PTL.tr('Send your love to Pétrolette'),
               class: 'translate ui-state-focus',
-              click: function() {
-                window.location.href = 'https://liberapay.com/yPhil/donate';
+              click: function(e) {
+                e.preventDefault();
+                window.open('https://liberapay.com/yPhil/donate');
               }
             }
           ],
