@@ -28,7 +28,7 @@ PTL.prefs = (function() {
        ],
        [
          {"url":"https://hacks.mozilla.org/feed/","type":"mixed","limit": 4,"status":"on"},
-         {"url":"http://feeds.arstechnica.com/arstechnica/index","type":"text","limit": 12,"status":"on"}
+         {"url":"http://feeds.arstechnica.com/arstechnica/index","type":"mixed","limit": 8,"status":"on"}
        ],
        [
          {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 4,"status":"on"},
@@ -45,10 +45,6 @@ PTL.prefs = (function() {
        [
          {"url":"http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss","type":"photo","limit": 3,"status":"on"},
          {"url":"https://www.youtube.com/feeds/videos.xml?user=AnimalPlanetTV","type":"mixed","limit": 3,"status":"off"}
-
-
-
-
        ]
 
      ]

@@ -323,12 +323,6 @@ PTL.dialog = {
 
           if (isNewFeed) $killFeedFieldset.remove();
 
-          if (!PTL.util.isMobile()) {
-            $guessField.click(function() {
-              $(this).select();
-            });
-          }
-
           $guessButton.click(function() {
 
             $guessSpinner
@@ -817,10 +811,6 @@ PTL.dialog = {
           var $tabRight = $dialog.find('button#right');
 
           var $tab = $('a#' + $(this).data('tabId')).parent('li');
-
-          $tabName.click(function() {
-            $(this).select();
-          });
 
           $tabLeft.button().click(function() {
             PTL.util.moveEltLeft($tab);
