@@ -14,7 +14,7 @@ const express = require('express'),
 
 require('events').EventEmitter.defaultMaxListeners = 15;
 
-console.log('####### START ## Version (%s)', pjson.version);
+// console.log('####### START ## Version (%s)', pjson.version);
 
 process.on('uncaughtException', function(err) {
   console.log('### uncaughtException (%s) : ', err);

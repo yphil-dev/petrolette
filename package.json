@@ -29,8 +29,8 @@
     "favrat": "git+https://framagit.org/yphil/favrat.git",
     "feedparser": "^2.2.10",
     "feedrat": "git+https://framagit.org/yphil/feedrat.git",
-    "gitlab-runner": "0.0.10",
     "iconv": "^3.0.0",
+    "morgan": "^1.10.0",
     "npm": "^7.5.2",
     "pm2": "^4.5.4",
     "request": "latest"
