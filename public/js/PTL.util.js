@@ -281,7 +281,7 @@ PTL.util = {
           position: 'top'
         },
         {
-          element: 'fieldset#killFeed',
+          element: 'label#kill-feed',
           intro: PTL.tr('Delete this feed'),
           position: 'top'
         }

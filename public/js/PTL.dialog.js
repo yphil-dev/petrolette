@@ -92,7 +92,7 @@ PTL.dialog = {
                     .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
                     .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
 
-        var $nags = [$nag1];
+        var $nags = [$nag1, $nag2, $nag3];
 
         var random = Math.floor(Math.random() * $nags.length);
 
@@ -478,9 +478,9 @@ PTL.dialog = {
     $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
-          $iconDiv = $dialog.find('div.icon');
+          $dialogImageDiv = $dialog.find('div.dialogImage');
 
-      $iconDiv.remove();
+      $dialogImageDiv.remove();
 
       $dialog.dialog({
         title: PTL.tr('Keyboard shortcuts'),
@@ -559,7 +559,7 @@ PTL.dialog = {
                               .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
               .append($('<tr>')
                       .append($('<td>')
-                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE DOWN</kbd></kbd>'))
+                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
                       .append($('<td>')
                               .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
@@ -582,7 +582,7 @@ PTL.dialog = {
                               .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
               .append($('<tr>')
                       .append($('<td>')
-                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE DOWN</kbd></kbd>'))
+                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
                       .append($('<td>')
                               .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 

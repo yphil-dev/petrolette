@@ -170,7 +170,7 @@ router.get('/favicon', function(req, res) {
 
       const hash = crypto.createHash('md5').update(url).digest('hex'),
             fileName = hash + '.favicon',
-            filePath = path.join(process.env.FAVICONS_CACHE_DIR, fileName);
+            filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
       if (fs.existsSync(filePath)) {
         res.send('/favicons/' + fileName);

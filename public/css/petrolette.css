@@ -44,7 +44,8 @@
   --controls-toggle-margin: -2px 0 0 -2px;
   --handle-flex-shrink: 0;
   --handle-visibility: visible;
-  --title-margin-left: 4px;
+  --title-padding-top: 0.3em;
+  --title-margin-left: 0.2em;
   --color-ui-danger: #c63d0f;
   --color-ui-success: #4db53c;
   --color-ui-warning: #ff8700;
@@ -58,6 +59,7 @@
     --controls-width: 75%;
     --controls-font-size: 2em;
     --controls-toggle-size: 2em;
+    --feed-title-font-size: 1.2em;
 
     /* --controls-toggle-margin: -0.5em 0 0 -0.5em; */
 
@@ -261,10 +263,12 @@ a:active {
   flex-basis: auto;
   flex-grow: 4;
   flex-shrink: 1;
-  font-family: BebasNeueRegular, Helvetica, Arial, sans-serif;
-  font-size: var(--controls-font-size);
-  font-style: italic;
-  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--feed-title-font-size);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: var(--title-padding-top);
+  font-style: oblique;
   margin-left: var(--title-margin-left);
 }
 
@@ -802,6 +806,7 @@ button.ui-state-success {
 
 ul.help {
   /* list-style-type: circle; */
+  color: var(--color-pri);
   list-style-type: none;
   list-style-position: outside;
   margin: 0 0 0 1em;

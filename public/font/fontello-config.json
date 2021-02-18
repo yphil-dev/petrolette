@@ -2,7 +2,7 @@
   "name": "",
   "css_prefix_text": "icon-",
   "css_use_suffix": false,
-  "hinting": true,
+  "hinting": false,
   "units_per_em": 1000,
   "ascent": 850,
   "glyphs": [
@@ -163,24 +163,6 @@
       "css": "error",
       "code": 59429,
       "src": "elusive"
-    },
-    {
-      "uid": "f978da58836f23373882916f05fb70b4",
-      "css": "publish1",
-      "code": 59430,
-      "src": "linecons"
-    },
-    {
-      "uid": "56da5324fc5a04f131ab65668c36b931",
-      "css": "publish2",
-      "code": 59431,
-      "src": "typicons"
-    },
-    {
-      "uid": "da0fd38d651815e3a12f6c030ff1fe5b",
-      "css": "publish3",
-      "code": 59432,
-      "src": "entypo"
     }
   ]
 }

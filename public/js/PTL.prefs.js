@@ -6,32 +6,45 @@ PTL.prefs = (function() {
     {"name":"news",
      "columns": [
        [
-         {"url":"http://rss.nytimes.com/services/xml/rss/nyt/World.xml","type":"mixed","limit": 4,"status":"on"},
-         {"url":"http://www.lemonde.fr/rss/une.xml","type":"mixed","limit": 4,"status":"on"}
+         {"url":"https://www.sciencemag.org/rss/weekly_news_email.xml","type":"photo","limit": 1,"status":"off"},
+         {"url":"http://rss.sciam.com/ScientificAmerican-Global","type":"mixed","limit": 6,"status":"on"},
+         {"url":"https://www.popsci.com/arcio/rss/","type":"mixed","limit": 6,"status":"off"},
+
+         {"url":"https://www.wired.com/category/science/feed","type":"mixed","limit": 8,"status":"on"}
        ],
        [
          {"url":"https://www.reddit.com/r/worldnews.rss","type":"mixed","limit": 6,"status":"off"},
-         {"url":"https://rss.art19.com/apology-line","type":"text","limit": 6,"status":"on"},
+         {"url":"https://rss.art19.com/apology-line","type":"text","limit": 4,"status":"off"},
+         {"url":"http://feeds.feedburner.com/sciencealert-latestnews","type":"mixed","limit": 6,"status":"on"},
          {"url":"https://www.npr.org/rss/rss.php?id=1001","type":"mixed","limit": 4,"status":"on"}
        ],
        [
          {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 1,"status":"on"},
+         {"url":"http://explainxkcd.com/rss.xml","type":"photo","limit": 4,"status":"on"},
          {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 2,"status":"on"}
+       ],
+       [
+         {"url":"https://www.yellowtrace.com.au/category/architecture/feed/","type":"photo","limit": 2,"status":"off"},
+         {"url":"https://www.ignant.com/category/architecture/feed/","type":"photo","limit": 6,"status":"on"}
        ]
      ]
     },
     {"name":"tek",
      "columns": [
        [
+         {"url":"http://feeds.bbci.co.uk/news/technology/rss.xml","type":"mixed","limit": 6,"status":"on"},
          {"url":"http://feeds.feedburner.com/hackaday/LgoM/","type":"mixed","limit": 8,"status":"on"},
-         {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8,"status":"on"}
+
+         {"url":"https://hackernoon.com/feed","type":"mixed","limit": 8,"status":"off"}
        ],
        [
          {"url":"https://hacks.mozilla.org/feed/","type":"mixed","limit": 4,"status":"on"},
-         {"url":"http://feeds.arstechnica.com/arstechnica/index","type":"mixed","limit": 8,"status":"on"}
+         {"url":"http://feeds.arstechnica.com/arstechnica/index","type":"mixed","limit": 6,"status":"on"}
        ],
        [
-         {"url":"https://www.reddit.com/.rss","type":"mixed","limit": 4,"status":"on"},
+         {"url":"https://www.technologyreview.com/topnews.rss","type":"mixed","limit": 4,"status":"on"},
+         {"url":"https://www.techmeme.com/feed.xml?x=1","type":"mixed","limit": 4,"status":"on"},
+
          {"url":"http://feeds.feedburner.com/thechangelog","type":"text","limit": 4,"status":"off"}
        ]
      ]
@@ -40,11 +53,11 @@ PTL.prefs = (function() {
      "columns": [
        [
          {"url":"http://cabinporn.com/rss/","type":"photo","limit": 3,"status":"off"},
-         {"url":"http://blog.theanimalrescuesite.greatergood.com/feed/","type":"photo","limit": 3,"status":"on"}
+         {"url":"https://iso.500px.com/feed/","type":"photo","limit": 3,"status":"on"}
        ],
        [
-         {"url":"http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss","type":"photo","limit": 3,"status":"on"},
-         {"url":"https://www.youtube.com/feeds/videos.xml?user=AnimalPlanetTV","type":"mixed","limit": 3,"status":"off"}
+         {"url":"http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss","type":"photo","limit": 3,"status":"off"},
+         {"url":"https://mastodon.social/@256.rss","type":"photo","limit": 3,"status":"on"}
        ]
 
      ]
@@ -52,7 +65,14 @@ PTL.prefs = (function() {
     {"name":"social",
      "columns": [
        [
-         {"url":"https://framasphere.org/public/librazik.atom","type":"mixed","limit": 8,"status":"on"}
+         {"url":"https://mastodon.social/@Gargron.rss","type":"mixed","limit": 8,"status":"off"},
+         {"url":"https://bitcoinhackers.org/@mastodonusercount.rss","type":"photo","limit": 1,"status":"on"},
+         {"url":"https://tenforward.social/@packetcat/tagged/nowplaying.rss","type":"mixed","limit": 8,"status":"on"}
+       ],
+       [
+         {"url":"https://framasphere.org/public/librazik.atom","type":"mixed","limit": 8,"status":"on"},
+         {"url":"https://botsin.space/@hackaday","type":"photo","limit": 3,"status":"on"}
+
        ],
        [
          {"url":"https://mastodon.social/@unfa.rss","type":"mixed","limit": 8,"status":"on"},
