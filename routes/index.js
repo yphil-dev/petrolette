@@ -10,7 +10,8 @@ const express = require('express'),
       crypto = require('crypto'),
       pjson = require('../package.json'),
       Iconv = require('iconv').Iconv,
-      zlib = require('zlib');
+      zlib = require('zlib'),
+      morgan = require('morgan');
 
 require('events').EventEmitter.defaultMaxListeners = 15;
 
@@ -32,18 +33,6 @@ function escape(s) {
     });
   }
 }
-
-
-router.get('/', function(req, res) {
-  res.render('index', {
-    queryString: escape(req.query.add),
-    version: pjson.version
-  });
-});
-
-router.get('/about/javascript', function(req, res) {
-  res.render('javascript');
-});
 
 function maybeDecompress (res, encoding) {
   var decompress;
@@ -203,6 +192,19 @@ router.get('/discover', function(req, res) {
       res.status(500).send('No feed found');
     }
 
+  });
+});
+
+router.get('/about/javascript', function(req, res) {
+  res.render('javascript');
+});
+
+router.use(morgan('combined'));
+
+router.get('/', function(req, res) {
+  res.render('index', {
+    queryString: escape(req.query.add),
+    version: pjson.version
   });
 });
 
