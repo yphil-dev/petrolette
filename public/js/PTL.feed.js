@@ -91,11 +91,11 @@ PTL.feed = {
         .data('status', status);
 
     if ($feedControls.data('status') == 'on') {
-      $reloadIcon.removeClass('icon-pin');
-      $reloadIcon.addClass('icon-refresh');
+      $reloadIcon.removeClass('icon-pin')
+        .addClass('icon-refresh');
     } else {
-      $reloadIcon.removeClass('icon-refresh');
-      $reloadIcon.addClass('icon-pin');
+      $reloadIcon.removeClass('icon-refresh')
+        .addClass('icon-pin');
     }
 
     var $feedHandle = $('<div>')
@@ -202,6 +202,7 @@ PTL.feed = {
       }
 
       $feedIcon.addClass('fold');
+      $button.removeClass('spin');
 
       if ($dataStore.data('status') == 'on') {
 
