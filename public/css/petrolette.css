@@ -13,21 +13,12 @@
   src: url("/static/font/BebasNeue.otf") format("opentype");
 }
 
-
 @font-face {
   font-family: feedTitleAlt;
   font-style: normal;
   font-weight: normal;
   src: url("/static/font/BebasNeue.otf") format("opentype");
 }
-
-
-/* .feed-header > .feed-title { */
-/*   text-transform: uppercase; */
-/*   font-weight: bold; */
-/*   letter-spacing: -1.3pt; */
-/* } */
-
 
 :root {
   --color-highlight: 255, 0, 0;
@@ -47,7 +38,8 @@
   --color-ui-console-success: #859900;
   --color-ui-console-warning: #B58900;
   --color-ui-rss: #F26522;
-  --controls-toggle-margin: -4px 0 0 -2px;
+  --controls-toggle-margin: 0 0 0 -2px;
+  --controls-toggled-margin: -2px -2px 0 0;
   --color-ui-danger: #C63D0F;
   --color-ui-success: #4DB53C;
   --color-ui-warning: #FF8700;
@@ -56,7 +48,7 @@
 
   --side-menu-width-expanded: 275px;
   --side-menu-width: -291px;
-  --header-height: 26px;
+  --header-height: 24px;
   --controls-width: 150px;
   --controls-font-size: 16pt;
   --controls-toggle-size: 22px;
@@ -111,6 +103,20 @@ body {
   margin: 0;
 }
 
+a:link {
+  color: var(--color-pri);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--color-qui);
+}
+
+a:hover,
+a:active {
+  color: var(--color-ter);
+}
+
 /* div.questionDialog > div { */
 
 /*   flex: 1 1 auto; */
@@ -135,28 +141,16 @@ body {
   transition: all 0.2s linear;
 }
 
-.feed-header > .feed-toggle i {
-  /* margin: var(--controls-toggle-margin); */
+.fold {
+  display: inline-block;
+  transition: all 0.2s linear;
+  transform: rotate(-90deg);
 }
 
-a:link {
-  color: var(--color-pri);
-  text-decoration: none;
-}
-
-a:visited {
-  color: var(--color-qui);
-}
-
-a:hover,
-a:active {
-  color: var(--color-ter);
-}
-
-.introjs-tooltip a:hover,
-.introjs-tooltip a i:hover,
-.introjs-tooltip a i:active {
-  color: var(--color-ui-sec);
+.unfold {
+  display: inline-block;
+  transition: all 0.2s linear;
+  transform: rotate(90deg);
 }
 
 /* MenuBar */
@@ -473,18 +467,6 @@ li.feed-item.error > strong.key {
   transition: all 0.2s linear;
 }
 
-.fold {
-  display: inline-block;
-  transition: all 0.2s linear;
-  transform: rotate(-90deg);
-}
-
-.unfold {
-  display: inline-block;
-  transition: all 0.2s linear;
-  transform: rotate(90deg);
-}
-
 /* .folded { */
 /*   display: inline-block; */
 /*   transform: rotate(-90deg); */
@@ -556,7 +538,7 @@ select {
 
 fieldset,
 legend {
-  background: none;
+  background: var(--color-ui-qua) !important;
   color: var(--color-ui-pri);
 }
 
@@ -705,6 +687,7 @@ fieldset {
   padding-left: 0.4em;
   padding-right: 0.4em;
   width: available;
+  background: var(--color-ui-qua);
 }
 
 .ui-button:not(.ui-spinner-button) {
@@ -738,10 +721,6 @@ th {
 .ui-widget-content,
 .ui-widget-header {
   border: none !important;
-}
-
-fieldset {
-  background-color: var(--color-ui-qua) !important;
 }
 
 /* .ui-widget-content { */
@@ -821,7 +800,7 @@ ul.help {
 }
 
 ul.help li::before {
-  font-family: "fontello", Impact, fantasy;
+  font-family: fontello, Impact, fantasy;
   margin: 0 0.5em 0 0;
   color: var(--color-ui-sen);
   font-size: 1.5em;
@@ -1014,9 +993,6 @@ li.tab-name:first-child {
 /*   border-top: 0 !important; */
 /* } */
 
-li.tab-name:focus {
-}
-
 /* Panel */
 
 .panel {
@@ -1072,7 +1048,7 @@ li.feed {
   /* background: var(--color-qua); */
 
   /* z-index: 2; */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin: 0 0 0.4em 0;
   min-height: 20px !important;
   width: 100%;
@@ -1143,21 +1119,16 @@ li.feed {
 }
 
 .feed-header > .feed-toggle {
-  margin: 2px;
-  flex-basis: auto;
-  flex-grow: 0;
-  flex-shrink: 1;
+  margin: 1px 1px 0 0;
   background-repeat: no-repeat;
-
-  /* background-size: var(--controls-toggle-size) var(--controls-toggle-size); */
   background-size: contain;
-
-  /* height: var(--controls-toggle-size); */
-
-  /* width: var(--controls-toggle-size); */
-
-  /* height: var(--controls-toggle-size); */
   min-width: var(--controls-toggle-size) !important;
+}
+
+i.feedIcon {
+  font-size: 14pt;
+  text-rendering: auto;
+  margin-bottom: 1px !important;
 }
 
 .icon-rss {
@@ -1224,10 +1195,6 @@ li.feed:hover div.feed-body {
   border-color: var(--color-non);
 }
 
-a.feed-link:hover {
-  /* color: var(--color-sec) !important; */
-}
-
 .feed-header > .feed-handle:hover {
   border-color: var(--color-sec);
 }
@@ -1286,7 +1253,7 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
   margin: 0 0 0.4em 0;
   padding-left: 0;
   border-radius: 3px;
-  background-color: #ededed;
+  background-color: #EDEDED;
 }
 
 div#logo-title {
