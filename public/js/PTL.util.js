@@ -13,12 +13,12 @@ PTL.util = {
     if (nextNag === 0) {
       PTL.dialog.nagUser();
       console.log('dateNow: %s (%s)', dateNow);
-      PTL.prefs.writeConfig('nextNag', dateNow + 300000);
+      PTL.prefs.writeConfig('nextNag', dateNow + 43200000); // 12 hours
     }
 
     if (dateNow > nextNag) {
       console.log('YUP nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
-      PTL.prefs.writeConfig('nextNag', dateNow + 300000);
+      PTL.prefs.writeConfig('nextNag', dateNow + 43200000);
       PTL.dialog.nagUser();
     } else {
       console.log('NOPE nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
