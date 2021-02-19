@@ -26,16 +26,16 @@ PTL.feed = {
               .children('div.feed-body')
               .slideUp(350);
             $feedControls.data('status', 'off');
-            $reloadIcon.removeClass('icon-refresh');
-            $reloadIcon.addClass('icon-pin');
+            $reloadIcon.removeClass('icon-refresh')
+              .addClass('icon-pin');
           } else {
             $(this).addClass('fold')
               .parent().parent().parent()
               .children('div.feed-body')
               .slideDown(350);
             $feedControls.data('status', 'on');
-            $reloadIcon.removeClass('icon-pin');
-            $reloadIcon.addClass('icon-refresh');
+            $reloadIcon.removeClass('icon-pin')
+              .addClass('icon-refresh');
           }
 
           PTL.tab.saveTabs();

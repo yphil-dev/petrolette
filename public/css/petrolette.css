@@ -143,7 +143,7 @@ a:active {
 
 .fold {
   display: inline-block;
-  transition: all 0.2s linear;
+  /* transition: all 0.2s linear; */
   transform: rotate(-90deg);
 }
 
@@ -425,7 +425,7 @@ i.tab-closer {
 i.rotate:hover,
 i.tab-closer:hover,
 i.feed-control:hover {
-  color: var(--color-ui-sen);
+  color: var(--color-ui-sec);
 }
 
 i.danger,
@@ -1126,6 +1126,7 @@ li.feed {
 }
 
 i.feedIcon {
+  transition: all 0.2s linear !important;
   font-size: 14pt;
   text-rendering: auto;
   margin-bottom: 1px !important;
