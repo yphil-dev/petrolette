@@ -144,7 +144,7 @@ var PTL = (function() {
           .attr('value', 'day'),
           $nightLabel = $('<label>')
           .attr('for', 'night')
-          .attr('class', 'translate')
+          .attr('class', 'translate last')
           .data('content', PTL.tr('Night'))
           .text(PTL.tr('Night')),
           $nightInput = $('<input>')
@@ -180,7 +180,7 @@ var PTL = (function() {
           .attr('name', 'radio-2')
           .attr('value', 'show'),
           $hideLabel = $('<label>')
-          .attr('class', 'translate')
+          .attr('class', 'translate last')
           .attr('for', 'hide')
           .data('content', PTL.tr('Hide'))
           .text(PTL.tr('Hide')),

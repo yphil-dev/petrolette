@@ -688,7 +688,7 @@ fieldset {
   padding-bottom: 0.4em;
   padding-left: 0.4em;
   padding-right: 0.4em;
-  width: -moz-available;
+  width: available;
 }
 
 .ui-button:not(.ui-spinner-button) {
