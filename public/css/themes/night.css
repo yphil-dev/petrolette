@@ -1,13 +1,16 @@
 :root {
-  --color-pri: #FFFFFF;
-  --color-sec: #1F262E;
-  --color-ter: #FF4136;
-  --color-qua: #29323C;
-  --color-qui: #B0C4DE; /* visited links */
-  --color-sen: #383C4A;
-  --color-sep: #424657;
-  --color-oct: #404552;
-  --color-non: #4D5266;
-  --color-den: #5A6172;
-  --color-danger: #660000;
+  --color-fg1: #FFFFFF; /* Normal text */
+  --color-fg2: #FF4136; /* Links */
+  --color-fg3: #404552; /* Visited links */
+  --color-fg4: #404552; /* Separators */
+  --color-fg5: #F77F00; /* Feed controls */
+  --color-fg6: #eae2b7; /* Feed title */
+  --color-bg1: #29323C; /* Body */
+  --color-bg2: #1F262E; /* Feed header */
+  --color-bg3: #383C4A; /* Feed item BG */
+  --color-bg4: #424657; /* Feed item BG alternate */
+  --color-hl1: #1F262E;
+  --color-hl2: #000000;
+  --color-hl3: #000000;
+  --color-danger: #FF0000;
 }

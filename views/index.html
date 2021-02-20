@@ -6,6 +6,13 @@
 
     <meta charset="UTF-8">
 
+
+    <link rel="preload" href="/static/font/plop/6cdc4cc6b38c8e89e8721abe8aed4ab9.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="preload"
+          as="style"
+          href="/static/css/petrolette.css" />
+
     <script>
      /*
         @licstart  The following is the entire license notice for the
@@ -57,10 +64,6 @@
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/dist/minified/introjs.min.css" />
 
-    <link rel="preload"
-          as="style"
-          href="/static/css/petrolette.css" />
-
     <link rel="stylesheet"
           href="/static/css/petrolette.css"
           media="print" onload="this.media='all'" />
@@ -77,6 +80,8 @@
     <script src="/bower/remotestorage/release/remotestorage.js"></script>
     <script src="/bower/rs-widget/build/widget.js"></script>
 
+    <script src="/bower/bLazy/blazy.js"></script>
+
     <script src="/static/js/PTL.main.js"></script>
     <script src="/static/js/PTL.prefs.js"></script>
     <script src="/static/js/PTL.i18n.js"></script>
@@ -87,7 +92,7 @@
 
     <div id="overlay" class="hidden"></div>
 
-    <nav id="top-menu" class="menu">
+    <nav style="display:none;" id="top-menu" class="menu">
       <div class="topnav" id="topnav">
 
         <div id="menuButton"
@@ -136,7 +141,7 @@
 
 
 
-    <nav id="sideMenu" class="menu">
+    <nav style="display:none;" id="sideMenu" class="menu">
 
       <div id="sideMenu" class="plip">
 
@@ -184,7 +189,7 @@
             <input id="fileImport"
                    type="file"
                    style="display: none;" />
-            <button id="fileImport"
+            <button id="fileImportButton"
                     class="grow translate"
                     data-title="Open / import tabs and feeds"
                     data-content="Open">
@@ -371,10 +376,10 @@
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
           <div class="flex-box" id="liberapay">
             <a href="https://liberapay.com/yPhil/">
-              <img src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
+              <img width="167" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
             </a>
             <a href="https://liberapay.com/yPhil/">
-              <img src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
+              <img width="85" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
             </a>
           </div>
         </fieldset>
@@ -407,10 +412,10 @@
 
       <noscript>
         <div id="no-script">
-          <h1>Uh-oh</h1>
-          <h3>Pétrolette cannot work without javascript.</h3>
+          <h1 color="blue">Pétrolette</h1>
+          <h3>...Cannot work without JavaScript and CSS.</h3>
           <p>
-            All JS code on Pétrolette is FLOSS : <a href="/about/javascript" data-jslicense="1">JavaScript license information</a>.
+            NB: All JS code on Pétrolette is Free, Libre and Open-Source Software : <a href="/about/javascript" data-jslicense="1">Read JavaScript Modules license information</a>.
           </p>
         </div>
       </noscript>
@@ -421,7 +426,7 @@
         <i class="icon-up"></i>
       </span>
 
-      <div id="load-spinner"
+      <div style="display:none;" id="load-spinner"
            class="dead-center hidden">
         <div>
           <i class="icon-refresh spin"></i>
@@ -439,6 +444,38 @@
     <script src="/static/js/PTL.sync.js"></script>
 
     <script>
+     window.onload = function() {
+
+       $.fn.isOnScreen = function(){
+         var win = $(window)
+         var viewport = {
+           top : win.scrollTop(),
+           left : win.scrollLeft()
+         }
+         viewport.right = viewport.left + win.width()
+         viewport.bottom = viewport.top + win.height()
+         var bounds = this.offset()
+         bounds.right = bounds.left + this.outerWidth()
+         bounds.bottom = bounds.top + this.outerHeight()
+         return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom))
+       }
+
+       function lazyload() {
+         $('.lazyload').each(function() {
+           var element = $(this)
+           if (element.isOnScreen()) {
+             element.attr('src', element.data('src'))
+             element.removeClass('lazyload')
+           }
+         })
+       }
+
+
+       lazyload()
+       $(window).scroll(function() {
+         lazyload()
+       })
+     }
 
      $(document).ready(function() {
        PTL.start();
@@ -452,6 +489,8 @@
            PTL.util.nagUser();
          }, 60000);
        })();
+
+       var bLazy = new Blazy();
 
      });
 

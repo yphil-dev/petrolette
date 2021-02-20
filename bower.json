@@ -23,7 +23,8 @@
     "fancybox": "3.5.7",
     "intro.js": "^3.3.1",
     "remotestorage": "rs#1.1.0",
-    "rs-widget": "1.3.0"
+    "rs-widget": "1.3.0",
+    "bLazy": "blazy#^1.8.2"
   },
   "resolutions": {
     "intro.js": "^3.3.1"

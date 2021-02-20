@@ -1,13 +1,30 @@
 :root {
-  --color-pri: #000000;
-  --color-sec: #007fff;
-  --color-ter: #CCCCCC;
-  --color-qua: #FFFFFF;
-  --color-qui: #c2c8d6; /* visited links */
+  --color-pri: #111133;
+  --color-sec: #EEEEFF;
+  --color-ter: #007FFF;
+  --color-qua: #EEEEEF;
+  --color-qui: #C2C8D6; /* visited links */
   --color-sen: #FFFFFF;
-  --color-sep: #EEEEEE;
+  --color-sep: #C2C8D6;
   --color-oct: #CCCCCC;
-  --color-non: #19b5fe;
-  --color-den: #94c2d1;
+  --color-non: #EEEEFF;
+  --color-den: #94C2D1;
   --color-danger: #B00020;
+
+  --color-fg1: #111133; /* Normal text / Links */
+  --color-fg2: #E76F51; /* Active / Hover Links */
+  --color-fg3: #404552; /* Visited links */
+  --color-fg4: #264653; /* Separators */
+  --color-fg5: #E9C46A; /* Feed controls */
+  --color-fg6: #2A9D8F; /* Feed title */
+
+  --color-bg1: #EEEEFF; /* Body */
+  --color-bg2: #264653; /* Feed header */
+  --color-bg3: #FDFFFF; /* Feed item BG */
+  --color-bg4: #EEEEEE; /* Feed item BG alternate */
+  --color-hl1: #1F262E;
+  --color-hl2: #000000;
+  --color-hl3: #000000;
+  --color-danger: #BB0000;
+
 }

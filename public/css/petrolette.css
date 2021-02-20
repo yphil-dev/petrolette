@@ -14,10 +14,13 @@
 }
 
 @font-face {
-  font-family: feedTitleAlt;
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/font/BebasNeue.otf") format("opentype");
+  font-family: "Aveny T WEB";
+  src: url("/static/font/plop/6cdc4cc6b38c8e89e8721abe8aed4ab9.eot"); /* IE9*/
+  src: url("/static/font/plop/6cdc4cc6b38c8e89e8721abe8aed4ab9.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/static/font/plop/6cdc4cc6b38c8e89e8721abe8aed4ab9.woff2") format("woff2"), /* chrome、firefox */
+       url("/static/font/plop/6cdc4cc6b38c8e89e8721abe8aed4ab9.woff") format("woff"), /* chrome、firefox */
+       url("/static/font/plop/6cdc4cc6b38c8e89e8721abe8aed4ab9.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+       url("/static/font/plop/6cdc4cc6b38c8e89e8721abe8aed4ab9.svg#Aveny T WEB") format("svg"); /* iOS 4.1- */
 }
 
 :root {
@@ -71,9 +74,9 @@
     --side-menu-width: -999px;
     --header-height: 2.2em;
     --controls-width: 75%;
-    --controls-font-size: 3em;
+    --controls-font-size: 2em;
     --controls-toggle-size: 2em;
-    --feed-title-font-size: 16pt;
+    --feed-title-font-size: 2em;
     --panel-flex: column;
     --column-buttons-display: none;
     --column-padding: 0;
@@ -97,24 +100,24 @@
 }
 
 body {
-  color: var(--color-pri);
-  background-color: var(--color-qua);
+  color: var(--color-fg1);
+  background-color: var(--color-bg1);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
 
 a:link {
-  color: var(--color-pri);
+  color: var(--color-fg1);
   text-decoration: none;
 }
 
 a:visited {
-  color: var(--color-qui);
+  color: var(--color-fg3);
 }
 
 a:hover,
 a:active {
-  color: var(--color-ter);
+  color: var(--color-fg2);
 }
 
 /* div.questionDialog > div { */
@@ -133,7 +136,7 @@ a:active {
 }
 
 #load-spinner > div {
-  color: var(--color-pri);
+  color: var(--color-fg1);
   font-size: 12pt;
 }
 
@@ -149,7 +152,7 @@ a:active {
 
 .unfold {
   display: inline-block;
-  transition: all 0.2s linear;
+  transition: transform 0.2s linear;
   transform: rotate(90deg);
 }
 
@@ -210,10 +213,11 @@ a:active {
 
 #backToTop,
 #backToTop i {
-  transition: all 0.3s linear;
+  transition: opacity 0.3s linear;
 }
 
 #backToTop {
+  cursor: pointer;
   z-index: 2;
   background: var(--color-ui-qua);
   border-radius: 35px;
@@ -252,7 +256,7 @@ a:active {
 
 #load-spinner > div > div {
   margin: 2em 0 0 0;
-  color: var(--color-pri);
+  color: var(--color-fg1);
   font-size: 12pt;
 }
 
@@ -273,13 +277,19 @@ a:active {
 }
 
 .feed-header > .feed-title {
+  /* padding-top: 0.2em; */
+  vertical-align: middle;
   flex-basis: auto;
   flex-grow: 4;
   flex-shrink: 1;
-  font-family: BebasNeueRegular, Helvetica, sans-serif;
+  font-family: "Aveny T WEB", Arial, sans-serif;
+  /* font-style: normal; */
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
   font-size: var(--feed-title-font-size);
   text-transform: uppercase;
-  margin-top: var(--title-padding-top);
+  /* margin-top: var(--title-padding-top); */
   font-style: oblique;
   margin-left: var(--title-margin-left);
 }
@@ -364,16 +374,16 @@ ul.help li {
 
 .ui-tab#new-group {
   width: 40px;
-  background-color: var(--color-non);
+  background-color: var(--color-fg4);
 }
 
 .ui-tab.ui-state-default {
-  color: var(--color-pri);
-  background: var(--color-non);
+  color: var(--color-fg1);
+  background: var(--color-bg1);
 }
 
 .ui-tab.ui-state-hover a {
-  color: var(--color-sec);
+  color: var(--color-hl1);
 }
 
 .ui-tab#new-group:hover,
@@ -382,8 +392,15 @@ ul.help li {
 }
 
 .ui-tab.ui-state-active a,
+.ui-tab.ui-state-active i,
 .ui-tab.ui-state-default a {
-  color: var(--color-pri);
+  color: var(--color-fg1);
+}
+
+html body main div#tabs.ui-tabs.ui-corner-all.ui-widget.ui-widget-content ul#tab-names.ui-tabs-nav.ui-corner-all.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-sortable li.modal.tab-name.translate.ui-droppable.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab a#ui-id-5.ui-tabs-anchor
+
+.ui-tab.ui-state-active i:hover {
+  color: var(--color-fg2);
 }
 
 .ui-tab.ui-state-active {
@@ -397,13 +414,13 @@ li.feed-item:not(.error) a {
 
 .ui-tab.ui-state-default a:hover {
   cursor: pointer !important;
-  color: var(--color-ter) !important;
+  color: var(--color-fg2) !important;
 }
 
 .ui-tab.ui-state-active,
 #tab-names,
 #tabs {
-  background: var(--color-qua);
+  background: var(--color-bg3);
 }
 
 /* button.ui-state-focus { */
@@ -419,7 +436,7 @@ i.item-icon {
 
 i.tab-closer {
   top: 2px;
-  color: var(--color-non);
+  color: var(--color-bg1);
 }
 
 i.rotate:hover,
@@ -433,9 +450,8 @@ i.dangerous:hover {
   color: var(--color-ui-danger);
 }
 
-.feed-header > .feed-title > a:link,
-.feed-header > .feed-title > a:visited {
-  color: var(--color-ter);
+.feed-header > .feed-title > a:link {
+  color: var(--color-fg6);
 }
 
 .feed-header > .feed-title > a.danger:link,
@@ -445,11 +461,15 @@ i.dangerous:hover {
 
 .feed-header > .feed-title > a.danger:hover,
 .feed-header > .feed-title > a:hover {
-  color: var(--color-pri) !important;
+  color: var(--color-fg2) !important;
 }
 
 li.feed-item.error > strong.key {
-  color: var(--color-ui-danger);
+  color: var(--color-fg1);
+}
+
+li.feed-item.error > strong.value {
+  color: var(--color-danger);
 }
 
 .spin {
@@ -464,7 +484,7 @@ li.feed-item.error > strong.key {
 
 .rotate {
   display: inline-block;
-  transition: all 0.2s linear;
+  transition: transform 0.2s linear;
 }
 
 /* .folded { */
@@ -557,7 +577,7 @@ nav#sideMenu {
   padding: 45px 0 0 0;
   position: fixed;
   top: 0;
-  transition: all 0.1s ease-out;
+  transition: left 0.1s ease-out;
   width: var(--side-menu-width-expanded);
   z-index: 11;
   overflow: auto;
@@ -648,12 +668,9 @@ nav#sideMenu,
 
 i.tab-icon {
   cursor: pointer;
-  display: none;
   font-size: 0.7em;
   position: absolute;
   right: 3px;
-
-  /* top: 3px; */
 }
 
 /* i.tab-edit { */
@@ -793,7 +810,7 @@ button.ui-state-success {
 
 ul.help {
   /* list-style-type: circle; */
-  color: var(--color-pri);
+  color: var(--color-ui-pri);
   list-style-type: none;
   list-style-position: outside;
   margin: 0 0 0 1em;
@@ -930,7 +947,7 @@ label:last-child {
 
 .column {
   white-space: initial;
-  transition: all 0.3s linear;
+  transition: transform 0.3s linear;
   margin: 0 0.2em;
 }
 
@@ -978,12 +995,12 @@ li.ui-tabs-tab {
   border-radius: 0 !important;
   border-left: 0 !important;
   border-top: 0 !important;
-  border-right: 1px solid var(--color-sep) !important;
+  border-right: 1px solid var(--color-fg4) !important;
   outline-width: 0 !important;
 }
 
 li.tab-name:first-child {
-  border-left: 1px solid var(--color-sep) !important;
+  border-left: 1px solid var(--color-fg4) !important;
 }
 
 /* :focus-visible */
@@ -1045,7 +1062,7 @@ ul.column div.buttons > button {
 
 li.feed {
   position: relative;
-  /* background: var(--color-qua); */
+  /* background: var(--color-bg1); */
 
   /* z-index: 2; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -1054,13 +1071,10 @@ li.feed {
   width: 100%;
 }
 
-/* li.feed.selected { */
-
-/*   background: none !important; */
-
-/*   opacity: 0.8; */
-
-/* } */
+li.feed.selected {
+  background: none !important;
+  opacity: 0.6;
+}
 
 .feed-body {
   margin: 0;
@@ -1075,11 +1089,11 @@ li.feed {
 }
 
 .feed-header {
-  background-color: var(--color-sec);
-  color: var(--color-ter);
-  transition: all 0.3s linear;
   display: flex;
   flex-direction: row;
+  background-color: var(--color-bg2);
+  color: var(--color-fg5);
+  transition: all 0.3s linear;
   height: var(--header-height);
   max-height: var(--header-height);
   padding: 0;
@@ -1087,13 +1101,13 @@ li.feed {
 
 .column .ui-sortable-placeholder {
   visibility: visible !important;
-  outline: 3px dashed var(--color-qui);
+  outline: 3px dashed var(--color-fg2);
 }
 
 .feed-header > .feed-handle {
   background-color: transparent;
-  border-left: 3px dotted var(--color-oct);
-  border-right: 3px dotted var(--color-oct);
+  border-left: 3px dotted var(--color-fg2);
+  border-right: 3px dotted var(--color-fg2);
   flex-basis: 4px;
   flex-grow: 0;
   flex-shrink: var(--handle-flex-shrink);
@@ -1126,7 +1140,7 @@ li.feed {
 }
 
 i.feedIcon {
-  transition: all 0.2s linear !important;
+  transition: transform 0.2s linear !important;
   font-size: 14pt;
   text-rendering: auto;
   margin-bottom: 1px !important;
@@ -1148,32 +1162,37 @@ li.feed-item {
   padding: 0.2em;
   word-break: break-word;
   word-wrap: break-word;
-  background-color: var(--color-sen);
+  background-color: var(--color-bg3);
 }
 
 table tr:nth-child(even),
 li.feed-item:nth-child(even) {
-  background-color: var(--color-sep);
+  background-color: var(--color-bg4);
 }
 
 li.feed-item:hover {
-  background-color: var(--color-oct);
+  background-color: var(--color-fg3);
 }
 
 li.feed-item > div.itemDiv > a > .ptl-img {
   float: left;
-  margin: 0 0.2rem 0.2rem 0;
+  height: auto;
   width: 30%;
-  max-width: 30%;
+  background-size: cover;
+  margin: 0 0.2rem 0.2rem 0;
+  /* width: 30%; */
+  /* max-width: 30%; */
 }
 
 li.feed-item img:hover {
-  outline: 1px solid var(--color-ter);
+  outline: 1px solid var(--color-fg2);
 }
 
 li.feed-item > div.itemDiv > a > .ptl-img.full > a img,
 li.feed-item > div.itemDiv > a > .ptl-img.full {
   min-width: 100%;
+  height: auto;
+  width: 100%;
 }
 
 table {
@@ -1187,17 +1206,17 @@ table {
 }
 
 li.feed div.feed-body {
-  border-right: 1px solid var(--color-oct);
-  border-bottom: 1px solid var(--color-qua);
-  border-left: 1px solid var(--color-oct);
+  border-right: 1px solid var(--color-fg3);
+  border-bottom: 1px solid var(--color-bg1);
+  border-left: 1px solid var(--color-fg3);
 }
 
 li.feed:hover div.feed-body {
-  border-color: var(--color-non);
+  border-color: var(--color-bg2);
 }
 
 .feed-header > .feed-handle:hover {
-  border-color: var(--color-sec);
+  border-color: var(--color-hl1);
 }
 
 /* Responsive */
@@ -1205,7 +1224,7 @@ li.feed:hover div.feed-body {
 @media (hover: none) {
   a:active,
   a:hover {
-    color: var(--color-pri) !important;
+    color: var(--color-fg1) !important;
   }
 
   li.feed-item:hover {
@@ -1230,7 +1249,7 @@ div.introjs-helperLayer {
 }
 
 .fancybox-thumbs {
-  background-color: var(--color-non) !important;
+  background-color: var(--color-fg4) !important;
 }
 
 /* IntroJS (help tooltips) */
@@ -1243,7 +1262,7 @@ div.introjs-helperLayer {
 /* Gallery */
 
 div.fancybox-caption a.ui-button.ui-corner-all {
-  color: var(--color-qua);
+  color: var(--color-bg1);
 }
 
 div.fancybox-caption a.ui-button.ui-corner-all:hover {

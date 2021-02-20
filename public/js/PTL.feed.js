@@ -39,13 +39,7 @@ PTL.feed = {
           }
 
           PTL.tab.saveTabs();
-
           PTL.feed.populate($reloadIcon);
-
-          // $(this).toggleClass('down')
-          //   .parent().parent().parent()
-          //   .children('div.feed-body')
-          //   .slideToggle(350);
 
         });
 
@@ -440,6 +434,7 @@ PTL.feed = {
                     .appendTo($image)
                     .append($('<img>')
                             .attr('src', imageUrls[i])
+                            .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
                             .appendTo($image));
                 }
 
@@ -454,7 +449,8 @@ PTL.feed = {
 
                 $image = $('<img>')
                   .attr('src', imageUrl)
-                  .attr('class', 'ptl-img')
+                  .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
+                  .attr('class', 'ptl-img b-lazy')
                   .appendTo($imageLink);
 
                 if (PTL.prefs.readConfig('brokenImages') === 'hide') $image.attr('onerror', "this.style.display='none'");
