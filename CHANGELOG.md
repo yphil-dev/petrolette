@@ -5,15 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v1.1.2](https://framagit.org/yphil/petrolette/compare/v1.2...v1.1.2)
+## [v1.1.2](https://framagit.org/yphil/petrolette/compare/v1.1.2...v1.1.2)
 
 ### Commits
 
-- Version %s "Mon ami le gilet jaune" - 30/11/2018 13:35:53 [`644a9f1`](https://framagit.org/yphil/petrolette/commit/644a9f127feeef4900c7c45ebea70ae2d8c67ba2)
+- Error handling: npm run errors in package.json [`8115ed7`](https://framagit.org/yphil/petrolette/commit/8115ed70ff39ae1874b8e3d2fde7305e3f8f00ee)
 - (auto) Changelog tests [`3e7411a`](https://framagit.org/yphil/petrolette/commit/3e7411a0970676f7affc35fc3dc610f0cd202c58)
 - Big conflict ahead [`b06e675`](https://framagit.org/yphil/petrolette/commit/b06e675ba520073dce0e0e324d5ec27c09d358a3)
-
-## [v1.2](https://framagit.org/yphil/petrolette/compare/v1.1.2...v1.2) - 2018-01-23
 
 ## [v1.1.2](https://framagit.org/yphil/petrolette/compare/v1.0.46...v1.1.2) - 2021-02-02
 
