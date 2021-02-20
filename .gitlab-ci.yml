@@ -9,5 +9,3 @@ job1:
     - npm install
     - npm start
     - npm stop
-  only:
-    - master
