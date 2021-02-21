@@ -19,13 +19,6 @@ describe('Pétrolette', function() {
     });
   });
 
-  it('Intro.js is installed and built', function(done) {
-    fs.access(__dirname + '/../bower_components/intro.js/dist/minified/intro.min.js', function(err) {
-      if (err) return done(err);
-      done();
-    });
-  });
-
   it('Pétrolette server is running', function(done) {
     request('http://localhost:8000', { json: true }, (err, res, body) => {
       if (err) return done(err);
