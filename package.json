@@ -21,7 +21,7 @@
     "logs": "./node_modules/pm2/bin/pm2 logs petrolette",
     "errors": "./node_modules/pm2/bin/pm2 logs --err --format",
     "test": "mocha --timeout 30s",
-    "postinstall": "bower install --allow-root"
+    "postinstall": "bower install --allow-root && cd ./node_modules/favrat ; npm i && cd ../feedrat ; npm i"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
