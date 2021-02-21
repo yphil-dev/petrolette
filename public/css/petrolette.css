@@ -705,7 +705,7 @@ i.tab-icon {
   margin: 0;
 }
 
-button#feed-guess {
+button#feedGuessButton {
   margin-left: 0.4em;
 }
 
@@ -745,8 +745,7 @@ fieldset {
   flex: 1 0 auto !important;
 }
 
-#console:hover,
-#feedGroup:focus {
+#console:hover {
   border: 3px solid var(--color-ui-sec);
 }
 

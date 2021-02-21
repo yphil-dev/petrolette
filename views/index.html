@@ -6,6 +6,8 @@
 
     <meta charset="UTF-8">
 
+    <link rel="preload" as="script" href="/bower/jquery/dist/jquery.min.js">
+    <link rel="preload" as="script" href="/bower/jquery-ui/jquery-ui.min.js">
 
     <link rel="preload" as="font" crossorigin href="/static/font/BebasNeue.otf">
     <link rel="preload" as="font" crossorigin href="/static/font/Lobster.otf">
@@ -73,90 +75,13 @@
 
     <script src="/bower/jquery/dist/jquery.min.js"></script>
 
-    <!-- <script src="/bower/jquery-ui/jquery-ui.js"></script>
-    -->
-
-    <!-- <script src="/bower/jquery-ui/ui/core.js"></script>
-    -->
-
-    <script src="/bower/jquery-ui/ui/version.js"></script>
-    <script src="/bower/jquery-ui/ui/data.js"></script>
-    <script src="/bower/jquery-ui/ui/disable-selection.js"></script>
-    <script src="/bower/jquery-ui/ui/focusable.js"></script>
-    <script src="/bower/jquery-ui/ui/form.js"></script>
-    <script src="/bower/jquery-ui/ui/ie.js"></script>
-    <script src="/bower/jquery-ui/ui/keycode.js"></script>
-    <script src="/bower/jquery-ui/ui/labels.js"></script>
-    <!-- <script src="/bower/jquery-ui/ui/jquery-1-7.js"></script> -->
-    <script src="/bower/jquery-ui/ui/plugin.js"></script>
-    <script src="/bower/jquery-ui/ui/safe-active-element.js"></script>
-    <script src="/bower/jquery-ui/ui/safe-blur.js"></script>
-    <script src="/bower/jquery-ui/ui/scroll-parent.js"></script>
-    <script src="/bower/jquery-ui/ui/tabbable.js"></script>
-    <script src="/bower/jquery-ui/ui/unique-id.js"></script>
-
-
-    <script src="/bower/jquery-ui/ui/position.js"></script>
-
-    <script src="/bower/jquery-ui/ui/form-reset-mixin.js"></script>
-
-    <script src="/bower/jquery-ui/ui/effect.js"></script>
-
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-blind.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-bounce.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-clip.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-drop.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-explode.js"></script> -->
-    <script src="/bower/jquery-ui/ui/effects/effect-fade.js"></script>
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-fold.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-highlight.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-puff.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-pulsate.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-scale.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-shake.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-size.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-slide.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/effects/effect-transfer.js"></script>
-    -->
-    <script src="/bower/jquery-ui/ui/widget.js"></script>
-
-    <!-- <script src="/bower/jquery-ui/ui/widgets/accordion.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/widgets/autocomplete.js"></script> -->
-    <script src="/bower/jquery-ui/ui/widgets/button.js"></script>
-    <script src="/bower/jquery-ui/ui/widgets/checkboxradio.js"></script>
-    <!-- <script src="/bower/jquery-ui/ui/widgets/controlgroup.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/widgets/datepicker.js"></script> -->
-    <script src="/bower/jquery-ui/ui/widgets/dialog.js"></script>
-
-    <script src="/bower/jquery-ui/ui/widgets/droppable.js"></script>
-    <!-- <script src="/bower/jquery-ui/ui/widgets/menu.js"></script> -->
-    <script src="/bower/jquery-ui/ui/widgets/mouse.js"></script>
-    <script src="/bower/jquery-ui/ui/widgets/progressbar.js"></script>
-    <script src="/bower/jquery-ui/ui/widgets/resizable.js"></script>
-    <!-- <script src="/bower/jquery-ui/ui/widgets/selectable.js"></script> -->
-    <!-- <script src="/bower/jquery-ui/ui/widgets/selectmenu.js"></script> -->
-    <script src="/bower/jquery-ui/ui/widgets/slider.js"></script>
-    <script src="/bower/jquery-ui/ui/widgets/sortable.js"></script>
-    <script src="/bower/jquery-ui/ui/widgets/spinner.js"></script>
-    <script src="/bower/jquery-ui/ui/widgets/tabs.js"></script>
-    <!-- <script src="/bower/jquery-ui/ui/widgets/tooltip.js"></script> -->
-    <script src="/bower/jquery-ui/ui/widgets/draggable.js"></script>
-    <!--
-         <script src="/bower/jquery-ui/ui/escape-selector.js"></script>
-         <script src="/bower/jquery-ui/ui/form.js"></script>
-         <script src="/bower/jquery-ui/ui/ie.js"></script>
-         <script src="/bower/jquery-ui/ui/plugin.js"></script>
-         <script src="/bower/jquery-ui/ui/safe-active-element.js"></script>
-         <script src="/bower/jquery-ui/ui/safe-blur.js"></script>
-         <script src="/bower/jquery-ui/ui/version.js"></script>
-    -->
+    <link rel="preload" href="/bower/jquery-ui/jquery-ui.min.js" as="script">
+    <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
 
     <script src="/bower/intro.js/dist/minified/intro.min.js"></script>
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="/bower/remotestorage/release/remotestorage.js"></script>
     <script src="/bower/rs-widget/build/widget.js"></script>
-
-    <script src="/bower/bLazy/blazy.js"></script>
 
     <script src="/static/js/PTL.main.js"></script>
     <script src="/static/js/PTL.prefs.js"></script>
@@ -540,8 +465,6 @@
            PTL.util.nagUser();
          }, 60000);
        })();
-
-       var bLazy = new Blazy();
 
      });
 

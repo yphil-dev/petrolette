@@ -261,12 +261,12 @@ PTL.util = {
           position: 'bottom'
         },
         {
-          element: 'button#feed-guess',
+          element: 'button#feedGuessButton',
           intro: PTL.tr('Find the feed of this website, or build a new one from the search terms.'),
           position: 'left'
         },
         {
-          element: 'fieldset#feedGroup',
+          element: 'fieldset#feedGroupFieldset',
           intro: PTL.tr('Move this feed to another group.'),
           position: 'bottom'
         },
