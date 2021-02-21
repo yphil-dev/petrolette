@@ -5,6 +5,29 @@ PTL.dialog = {
     $dialog.dialog('destroy');
     $('#dialogs').empty();
   },
+  nagUser:function() {
+
+    const $beggar = $('#beggar'),
+          $beggarH4 = $('#beggar > h4'),
+          $beggarOkButton = $('#beggar > #beggarOkButton'),
+          $beggarNoButton = $('#beggar > #beggarNoButton');
+
+    $beggarOkButton.on('click', function() {
+      $beggar.fadeOut('fast');
+      window.open('https://liberapay.com/yPhil/donate');
+    });
+
+    $beggarH4.on('click', function() {
+      $beggar.fadeOut('fast');
+    });
+
+    $beggarNoButton.on('click', function() {
+      $beggar.fadeOut('fast');
+    });
+
+    $beggar.fadeIn('fast');
+
+  },
   help:function() {
 
     $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {
@@ -198,12 +221,6 @@ PTL.dialog = {
 
           if (isNewFeed) $killFeedFieldset.remove();
 
-          if (!PTL.util.isMobile()) {
-            $guessField.click(function() {
-              $(this).select();
-            });
-          }
-
           $guessButton.click(function() {
 
             $guessSpinner
@@ -217,7 +234,6 @@ PTL.dialog = {
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
             }).fail(function(req, status, xhr) {
-              console.log('fail!!');
               guessError();
             }).done(function(feed) {
               $guessSpinner.removeClass('spin icon-cog');
@@ -295,7 +311,7 @@ PTL.dialog = {
   },
   killColumn:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
           $column = $button.parent().parent(),
@@ -305,7 +321,7 @@ PTL.dialog = {
           colIndex = $panel.find('.column').index($column),
           $feedsInCol = $column.find('.feed'),
           nbOfFeedsInCol = $feedsInCol.length,
-          $icon = $dialog.find('div.icon > i');
+          $icon = $dialog.find('div.dialogImage > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -315,7 +331,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Cancel'),
             title: PTL.tr('Cancel'),
-            class: 'translate',
+            class: 'translate ui-state-focus',
             click: function() {
               PTL.dialog.kill($dialog);
             }
@@ -350,12 +366,12 @@ PTL.dialog = {
   },
   kbShortcuts:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
-          $iconDiv = $dialog.find('div.icon');
+          $dialogImageDiv = $dialog.find('div.dialogImage');
 
-      $iconDiv.remove();
+      $dialogImageDiv.remove();
 
       $dialog.dialog({
         title: PTL.tr('Keyboard shortcuts'),
@@ -434,7 +450,7 @@ PTL.dialog = {
                               .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
               .append($('<tr>')
                       .append($('<td>')
-                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE DOWN</kbd></kbd>'))
+                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
                       .append($('<td>')
                               .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
@@ -457,7 +473,7 @@ PTL.dialog = {
                               .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
               .append($('<tr>')
                       .append($('<td>')
-                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE DOWN</kbd></kbd>'))
+                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
                       .append($('<td>')
                               .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
@@ -475,10 +491,10 @@ PTL.dialog = {
   },
   addFeed:function(feedUrl) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
-          $icon = $dialog.find('div.icon > i'),
+          $icon = $dialog.find('div.dialogImage > i'),
           isUrl = false,
           h1, h2;
 
@@ -534,7 +550,7 @@ PTL.dialog = {
   },
   killTab:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
           $tabs = $('#tabs'),
@@ -544,7 +560,7 @@ PTL.dialog = {
           $selectedPanel = $tabs.find(tabId),
           selectedTabIndex = $tabs.tabs('option', 'active'),
           previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1,
-          $icon = $dialog.find('div.icon > i');
+          $icon = $dialog.find('div.dialogImage > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -554,7 +570,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Cancel'),
             title: PTL.tr('Cancel'),
-            class: 'translate',
+            class: 'translate ui-state-focus',
             click: function() {
               PTL.dialog.kill($dialog);
             }
@@ -600,13 +616,13 @@ PTL.dialog = {
   },
   killFeed:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       var $dialog = $(this),
           $thisFeed = $button.parent().parent().parent().parent(),
           thisFeedId = $button.parent().parent().parent().parent().attr('id'),
           thisFeedName = $button.parent().parent().parent().find('.feed-title').text(),
-          $icon = $dialog.find('div.icon > i');
+          $icon = $dialog.find('div.dialogImage > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -624,7 +640,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Delete'),
             title: PTL.tr('Wait! Are you sure?'),
-            class: 'dangerous translate',
+            class: 'translate',
             click: function() {
               $thisFeed.hide('fade', 1000, function() {
                 $(this).remove();
@@ -648,6 +664,7 @@ PTL.dialog = {
       });
 
       $dialog.data('feedId', thisFeedId).dialog('open');
+
     });
 
   },
@@ -692,10 +709,6 @@ PTL.dialog = {
           var $tabRight = $dialog.find('button#right');
 
           var $tab = $('a#' + $(this).data('tabId')).parent('li');
-
-          $tabName.click(function() {
-            $(this).select();
-          });
 
           $tabLeft.button().click(function() {
             PTL.util.moveEltLeft($tab);

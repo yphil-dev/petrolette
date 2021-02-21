@@ -8,10 +8,14 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      var $menu = $('nav#sideMenu'),
+      PTL.util.console(PTL.tr('Pétrolette starting up OK'), 'success');
+
+
+
+      var $sideMenu = $('nav#sideMenu'),
           $overlay = $('#overlay'),
           $feedCodeButton = $('button#feedCode'),
-          $importButton = $("button#fileImport"),
+          $importButton = $("button#fileImportButton"),
           $fileImportInput = $("input#fileImport"),
           $saveButton = $('#saveTabs'),
           $langMenu = $('select#language'),
@@ -19,7 +23,11 @@ var PTL = (function() {
           $searchPrefixOkButton = $('button#searchPrefixOkButton'),
           $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
           $searchPrefixInput = $('input#searchPrefixInput'),
-          $spinner = $('#gallerySpeedSpinner');
+          $spinner = $('#gallerySpeedSpinner'),
+          $topMenu = $('nav#top-menu');
+
+      $topMenu.removeAttr('style');
+      $sideMenu.removeAttr('style');
 
       $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefix'));
 
@@ -37,12 +45,13 @@ var PTL = (function() {
 
       $('.js-enabled-only').show();
 
-      $('#console').click(function() {
-        $(this).toggleClass('expanded');
-      });
-
       $('body').on('click','.help-bookmarklet', function(event) {
         event.preventDefault();
+      });
+
+      $('#sideMenu legend').click(function() {
+        $(this).children('i').toggleClass('unfold');
+        $(this).next().slideToggle(50);
       });
 
       PTL.sync.attachWidget();
@@ -126,19 +135,77 @@ var PTL = (function() {
         return false;
       });
 
-      $(".checkboxradio").checkboxradio({
-        icon: false
-      });
+      var $themeBox = $('div#themeBox'),
+          $dayLabel = $('<label>')
+          .attr('for', 'day')
+          .attr('class', 'translate')
+          .data('content', PTL.tr('Day'))
+          .text(PTL.tr('Day')),
+          $dayInput = $('<input>')
+          .attr('id', 'day')
+          .attr('class', 'themeSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-1')
+          .attr('value', 'day'),
+          $nightLabel = $('<label>')
+          .attr('for', 'night')
+          .attr('class', 'translate last')
+          .data('content', PTL.tr('Night'))
+          .text(PTL.tr('Night')),
+          $nightInput = $('<input>')
+          .attr('id', 'night')
+          .attr('class', 'themeSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-1')
+          .attr('value', 'night');
 
-      $(this).find('input#' + PTL.prefs.readConfig('theme')).prop("checked", true)
-        .checkboxradio('refresh');
+      $themeBox.append($dayLabel, $dayInput, $nightLabel, $nightInput);
+
+      $sideMenu.find('.themeSwitcher').checkboxradio({icon: true});
+
+      $sideMenu.find("input#" + PTL.prefs.readConfig('theme')).attr("checked", true);
+
+      $sideMenu.find('.themeSwitcher').checkboxradio('refresh');
 
       $('.themeSwitcher').change(function() {
-
         $("#theme").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
-
         PTL.prefs.writeConfig('theme', $(this).attr('value'));
+      });
 
+      var $brokenImagesBox = $('div#brokenImagesBox'),
+          $showLabel = $('<label>')
+          .attr('class', 'translate')
+          .attr('for', 'show')
+          .data('content', PTL.tr('Show'))
+          .text(PTL.tr('Show')),
+          $showInput = $('<input>')
+          .attr('id', 'show')
+          .attr('class', 'brokenImagesSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-2')
+          .attr('value', 'show'),
+          $hideLabel = $('<label>')
+          .attr('class', 'translate last')
+          .attr('for', 'hide')
+          .data('content', PTL.tr('Hide'))
+          .text(PTL.tr('Hide')),
+          $hideInput = $('<input>')
+          .attr('id', 'hide')
+          .attr('class', 'brokenImagesSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-2')
+          .attr('value', 'hide');
+
+      $brokenImagesBox.append($showLabel, $showInput, $hideLabel, $hideInput);
+
+      $sideMenu.find('.brokenImagesSwitcher').checkboxradio({icon: true});
+
+      $sideMenu.find("input#" + PTL.prefs.readConfig('brokenImages')).attr("checked", true);
+
+      $sideMenu.find('.brokenImagesSwitcher').checkboxradio('refresh');
+
+      $('.brokenImagesSwitcher').change(function() {
+        PTL.prefs.writeConfig('brokenImages', $(this).attr('value'));
       });
 
       var gallerySlideshowSpeed = PTL.prefs.readConfig('gallerySlideshowSpeed');
@@ -159,12 +226,12 @@ var PTL = (function() {
 
       $.fancybox.defaults.wheel = 'auto';
 
-      $menu.find('select#gallerySlideTransition').change(function() {
+      $sideMenu.find('select#gallerySlideTransition').change(function() {
         $.fancybox.defaults.transitionEffect = $(this).val();
         PTL.prefs.writeConfig('gallerySlideTransition', $(this).val());
       });
 
-      $menu.find('select#gallerySlideTransition').val(gallerySlideTransition);
+      $sideMenu.find('select#gallerySlideTransition').val(gallerySlideTransition);
 
       if (PTL.prefs.readConfig('tabDropActivate') === 'true')
         $('input#tabDropActivate').prop('checked', true).checkboxradio('refresh');

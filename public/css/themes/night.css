@@ -1,13 +1,17 @@
 :root {
-  --color-pri: #ffffff;
-  --color-sec: #FF4136;
-  --color-ter: #FF4136;
-  --color-qua: #29323c;
-  --color-qui: #B0C4DE; /* visited links */
-  --color-sen: #383C4A;
-  --color-sep: #4B5162;
-  --color-oct: #7C818C;
-  --color-non: #404552;
-  --color-den: #5a6172;
-  --color-danger: #660000;
+  --color-fg1: #FFFFFF; /* Normal text */
+  --color-fg2: #FF4136; /* Links */
+  --color-fg3: #CCCCCC; /* Visited links */
+  --color-fg4: #404552; /* Separators */
+  --color-fg5: #F77F00; /* Feed controls */
+  --color-fg6: #eae2b7; /* Feed title */
+  --color-bg1: #29323C; /* Body / Feed border  */
+  --color-bg2: #1F262E; /* Feed header */
+  --color-bg3: #383C4A; /* Feed item BG */
+  --color-bg4: #424657; /* Feed item BG alternate */
+  --color-bg5: #1F262E; /* Feed item BG hover */
+  --color-hl1: #1F262E;
+  --color-hl2: #000000;
+  --color-hl3: #000000;
+  --color-danger: #FF0000;
 }

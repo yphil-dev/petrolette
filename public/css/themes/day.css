@@ -1,13 +1,30 @@
 :root {
-  --color-pri: #2F365F;
-  --color-sec: #F0EFF4;
-  --color-ter: #333333;
-  --color-qua: #8CA9D3;
-  --color-qui: #788780; /* visited links */
-  --color-sen: #647295;
-  --color-sep: #647295;
-  --color-oct: #7C818C;
-  --color-non: #e3eff3;
-  --color-den: #94c2d1;
-  --color-danger: #660000;
+  --color-pri: #111133;
+  --color-sec: #EEEEFF;
+  --color-ter: #007FFF;
+  --color-qua: #EEEEEF;
+  --color-qui: #C2C8D6; /* visited links */
+  --color-sen: #FFFFFF;
+  --color-sep: #C2C8D6;
+  --color-oct: #CCCCCC;
+  --color-non: #EEEEFF;
+  --color-den: #94C2D1;
+  --color-danger: #B00020;
+
+  --color-fg1: #111133; /* Normal text / Links */
+  --color-fg2: #E76F51; /* Active / Hover Links */
+  --color-fg3: #404552; /* Visited links */
+  --color-fg4: #264653; /* Separators */
+  --color-fg5: #F4D35E; /* Feed controls */
+  --color-fg6: #EE964B; /* Feed title */
+
+  --color-bg1: #EEEEFF; /* Body */
+  --color-bg2: #086375; /* Feed header */
+  --color-bg3: #D7DAE5; /* Feed item BG */
+  --color-bg4: #EEEEEE; /* Feed item BG alternate */
+  --color-hl1: #1C0B19;
+  --color-hl2: #FF0000; /* Feed controls hover */
+  --color-hl3: #000000;
+  --color-danger: #BB0000;
+
 }

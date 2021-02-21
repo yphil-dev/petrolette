@@ -13,7 +13,7 @@ PTL.tab = {
       heightStyle: 'content',
       activate: function(event, ui) {
         ui.newPanel.css("display","flex");
-          $('.tab-icon').show();
+        $('.tab-icon').show();
       }
     });
 
@@ -27,6 +27,7 @@ PTL.tab = {
     });
 
     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
+      console.log('plop!: %s (%s)');
       e.preventDefault();
       if (e.which === 1) {
         PTL.dialog.editGroup($(this));
@@ -45,13 +46,13 @@ PTL.tab = {
 
     $(window).scroll(function() {
       if ($(this).scrollTop() >= 50) {
-        $('#backtop').fadeIn(200);
+        $('#backToTop').fadeIn(200);
       } else {
-        $('#backtop').fadeOut(200);
+        $('#backToTop').fadeOut(200);
       }
     });
 
-    $('#backtop').click(function() {
+    $('#backToTop').click(function() {
       $('body,html').animate({
         scrollTop : 0
       }, 500);
@@ -84,8 +85,6 @@ PTL.tab = {
       .val(PTL.tr('Synchronize'))
       .button();
     $('a.rs-help').text(PTL.tr(' More info'));
-
-    PTL.util.console(PTL.tr('Pétrolette starting up OK'), 'success');
 
     if (!feeds || feeds.length <= 0) {
       PTL.util.console(PTL.tr('No feeds found'), 'warning');
@@ -139,6 +138,8 @@ PTL.tab = {
 
     $('#new-group').removeClass('hidden');
 
+    $('#tabs').find('li[tabindex="0"]:first-child').focus();
+
   },
   empty:function(callback) {
     $('div#tabs ul li').remove();
@@ -152,7 +153,7 @@ PTL.tab = {
     name = name || 'Tab ' + tabIndex;
 
     var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel tab-icon tab-closer translate hidden')
+        .attr('class', 'icon-cancel tab-icon tab-closer translate')
         .data('title', PTL.tr('Delete the [%1] tab', name))
         .attr('title', PTL.tr('Delete the [%1] tab', name));
 
@@ -303,6 +304,12 @@ PTL.tab = {
     var $newTabButtonIcon = $('<i>')
         .attr('class', 'icon-plus');
 
+    $newTabButton.focus(function() {
+
+      $('#newTabButtonTooltip').tooltip().css('display', 'inline').fadeOut(2500);
+
+    });
+
     $newTabButtonLink.bind('click', function(event) {
       event.stopImmediatePropagation();
 
@@ -314,7 +321,6 @@ PTL.tab = {
     $newTabButtonIcon.appendTo($newTabButtonLink);
     $newTabButtonLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tab-names'));
-
 
   }
 };

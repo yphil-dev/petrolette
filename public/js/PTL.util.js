@@ -1,6 +1,30 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.util = {
+  nagUser:function() {
+
+    var nextNag = PTL.prefs.readConfig('nextNag');
+    const dateNow = Date.now();
+
+    PTL.util.console(PTL.tr('Pétrolette needs you, nextNag is ' + nextNag), 'success');
+
+    // PTL.dialog.nagUser();
+
+    if (nextNag === 0) {
+      PTL.dialog.nagUser();
+      console.log('dateNow: %s (%s)', dateNow);
+      PTL.prefs.writeConfig('nextNag', dateNow + 43200000); // 12 hours
+    }
+
+    if (dateNow > nextNag) {
+      console.log('YUP nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
+      PTL.prefs.writeConfig('nextNag', dateNow + 43200000);
+      PTL.dialog.nagUser();
+    } else {
+      console.log('NOPE nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
+    }
+
+  },
   console:function(output, type) {
 
     var $lines = $('#console div');
@@ -237,12 +261,12 @@ PTL.util = {
           position: 'bottom'
         },
         {
-          element: 'button#feed-guess',
+          element: 'button#feedGuessButton',
           intro: PTL.tr('Find the feed of this website, or build a new one from the search terms.'),
           position: 'left'
         },
         {
-          element: 'fieldset#feedGroup',
+          element: 'fieldset#feedGroupFieldset',
           intro: PTL.tr('Move this feed to another group.'),
           position: 'bottom'
         },
@@ -252,12 +276,12 @@ PTL.util = {
           position: 'top'
         },
         {
-          element: 'fieldset#feedLimit',
+          element: 'fieldset#feedLimitFieldset',
           intro: PTL.tr('How many new items should this feed display at a time?'),
           position: 'top'
         },
         {
-          element: 'fieldset#killFeed',
+          element: 'label#kill-feed',
           intro: PTL.tr('Delete this feed'),
           position: 'top'
         }

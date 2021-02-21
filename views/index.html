@@ -6,6 +6,15 @@
 
     <meta charset="UTF-8">
 
+    <link rel="preload" as="script" href="/bower/jquery/dist/jquery.min.js">
+    <link rel="preload" as="script" href="/bower/jquery-ui/jquery-ui.min.js">
+
+    <link rel="preload" as="font" crossorigin href="/static/font/BebasNeue.otf">
+    <link rel="preload" as="font" crossorigin href="/static/font/Lobster_1.3.otf">
+
+    <link rel="preload" as="style" href="/static/css/fontello.css" />
+    <link rel="preload" as="style" href="/static/css/petrolette.css" />
+
     <script>
      /*
         @licstart  The following is the entire license notice for the
@@ -37,7 +46,7 @@
     <meta property="og:title" content="Pétrolette">
     <meta property="og:description" content="The fly-by-night news reader">
     <meta name="description" content="The fly-by-night news reader" />
-    <meta property="og:image" content="http://takeoff.petrolette.space/img/screenshot-desktop.png">
+    <meta property="og:image" content="https://framagit.org/yphil/assets/-/raw/main/img/petrolette.png">
     <meta property="og:url" content="http://petrolette.space">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -55,13 +64,23 @@
     <link id="theme" rel="stylesheet" href="/static/css/themes/night.css">
     <link rel="stylesheet" href="/static/css/fontello.css">
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
-    <link rel="stylesheet" href="/bower/intro.js/minified/introjs.min.css" />
+    <link rel="stylesheet" href="/bower/intro.js/dist/minified/introjs.min.css" />
 
-    <link rel="stylesheet" href="/static/css/petrolette.css">
+    <link rel="stylesheet"
+          href="/static/css/petrolette.css"
+          media="print" onload="this.media='all'" />
+
+    <noscript>
+      <link rel="stylesheet"
+            href="/static/css/petrolette.css" />
+    </noscript>
 
     <script src="/bower/jquery/dist/jquery.min.js"></script>
+
+    <link rel="preload" href="/bower/jquery-ui/jquery-ui.min.js" as="script">
     <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/bower/intro.js/minified/intro.min.js"></script>
+
+    <script src="/bower/intro.js/dist/minified/intro.min.js"></script>
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="/bower/remotestorage/release/remotestorage.js"></script>
     <script src="/bower/rs-widget/build/widget.js"></script>
@@ -83,7 +102,7 @@
       <i class="ui-icon"></i>
     </div>
 
-    <nav id="top-menu" class="menu">
+    <nav style="display:none;" id="top-menu" class="menu">
       <div class="topnav" id="topnav">
 
         <div id="menuButton"
@@ -130,14 +149,20 @@
       </div>
     </nav>
 
-    <nav id="sideMenu" class="menu">
+
+
+    <nav style="display:none;" id="sideMenu" class="menu">
+
       <div id="sideMenu" class="plip">
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Language">Language
+          </span>
+        </legend>
+
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend class="ui-corner-top translate"
-                  data-content="Language">
-            Language
-          </legend>
           <select id="language"
                   class="unique translate"
                   name="language"
@@ -163,17 +188,18 @@
           </select>
         </fieldset>
 
-        <fieldset class="ui-widget ui-widget-content ui-corner-all">
-          <legend id="tabsLegend"
-                  class="ui-corner-top translate"
-                  data-content="Feeds">
-            Feeds
-          </legend>
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Feeds">Feeds
+          </span>
+        </legend>
+        <fieldset class="feedsMenuForm ui-widget ui-widget-content ui-corner-all">
           <div class="flex-box">
             <input id="fileImport"
                    type="file"
                    style="display: none;" />
-            <button id="fileImport"
+            <button id="fileImportButton"
                     class="grow translate"
                     data-title="Open / import tabs and feeds"
                     data-content="Open">
@@ -192,50 +218,39 @@
           <div id="progress-bar"><div class="progress-label"></div></div>
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Theme">Theme
+          </span>
+        </legend>
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="themeLegend"
-                  class="ui-corner-top translate"
-                  data-content="Theme">
-            Theme
-          </legend>
           <div id="themeBox"
                class="flex-box">
-            <label id="dayLabel"
-                   class="grow translate"
-                   for="day"
-                   data-title="Day theme"
-                   title="Day theme"
-                   data-content="Day">
-              Day
-            </label>
-            <input id="day"
-                   class="themeSwitcher checkboxradio"
-                   type="radio"
-                   name="radio-1"
-                   value="day">
-            <label id="nightLabel"
-                   class="grow translate last"
-                   for="night"
-                   data-title="Night theme"
-                   title="Night theme"
-                   data-content="Night">
-              Night
-            </label>
-            <input id="night"
-                   class="themeSwitcher checkboxradio noBottom"
-                   type="radio"
-                   name="radio-1"
-                   value="night">
           </div>
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Broken images">Broken images
+          </span>
+        </legend>
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <div id="brokenImagesBox"
+               class="flex-box">
+          </div>
+        </fieldset>
+
+
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Image gallery">Image gallery
+          </span>
+        </legend>
         <fieldset id="galleryBox"
                   class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="imageGalleryLegend"
-                  class="ui-corner-top translate"
-                  data-content="Image gallery">
-            Image gallery
-          </legend>
           <label class="ui-helper-hidden"
                  for="gallerySlideshowSpeedValue"></label>
           <span id="gallerySlideshowSpeedValue"
@@ -284,13 +299,15 @@
           </div>
         </fieldset>
 
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend id="helpLegend"
-                  data-content="Help"
-                  class="ui-corner-top translate">
-            Help
-          </legend>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Help">Help
+          </span>
+        </legend>
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
           <div class="flex-box">
             <a href="https://framagit.org/yphil/petrolette"
                class="ui-button ui-widget ui-corner-all unique translate"
@@ -322,15 +339,15 @@
               JS Licence info
             </a>
           </div>
-
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Search prefix">Search prefix
+          </span>
+        </legend>
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend class="ui-corner-top translate"
-                  data-content="Search prefix"
-                  data-title="Search prefix">
-            Search prefix
-          </legend>
           <div class="flex-box">
             <!-- <input type="text" id="searchPrefix" class="grow" /> -->
             <input name="searchPrefix"
@@ -340,7 +357,6 @@
                    data-title="Search prefix"
                    title="Search prefix"
                    value="" />
-
             <button id="searchPrefixOkButton"
                     class="translate ui-button ui-corner-all ui-widget"
                     data-title="OK"
@@ -358,35 +374,33 @@
                     title="Restore default search prefix">
               Restore default
             </button>
-
           </div>
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Support">Support
+          </span>
+        </legend>
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend class="ui-corner-top translate"
-                  data-content="Support"
-                  data-title="Send your love to Pétrolette"
-                  title="Send your love to Pétrolette"
-          >
-            Support
-          </legend>
-
           <div class="flex-box" id="liberapay">
             <a href="https://liberapay.com/yPhil/">
-              <img src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
+              <img width="167" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
             </a>
             <a href="https://liberapay.com/yPhil/">
-              <img src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
+              <img width="85" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
             </a>
           </div>
-
         </fieldset>
 
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Console">Console
+          </span>
+        </legend>
         <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <legend class="ui-corner-top translate"
-                  data-content="Console">
-            Console
-          </legend>
           <div
             class="unique"
             data-title="Click to toggle"
@@ -394,7 +408,6 @@
             id="console">
           </div>
         </fieldset>
-
       </div>
     </nav>
 
@@ -409,26 +422,21 @@
 
       <noscript>
         <div id="no-script">
-          <h1>Uh-oh</h1>
-          <h3>Pétrolette cannot work without javascript.</h3>
-          <ul>
-            <li>
-              <a href="/about/javascript" data-jslicense="1">JavaScript license information</a>
-            </li>
-            <li>
-              Use the force, read <a href="https://framagit.org/yphil/petrolette">the source</a>.
-            </li>
-          </ul>
+          <h1 color="blue">Pétrolette</h1>
+          <h3>...Cannot work without JavaScript and CSS.</h3>
+          <p>
+            NB: All JS code on Pétrolette is Free, Libre and Open-Source Software : <a href="/about/javascript" data-jslicense="1">Read JavaScript Modules license information</a>.
+          </p>
         </div>
       </noscript>
 
       <div id="dialogs"></div>
 
-      <span id="backtop">
+      <span id="backToTop">
         <i class="icon-up"></i>
       </span>
 
-      <div id="load-spinner"
+      <div style="display:none;" id="load-spinner"
            class="dead-center hidden">
         <div>
           <i class="icon-refresh spin"></i>
@@ -454,8 +462,39 @@
 
        PTL.tab.init();
 
+       (function(){
+         setTimeout(function(){
+           PTL.util.nagUser();
+         }, 60000);
+       })();
+
      });
 
     </script>
+
+    <span id="newTabButtonTooltip" class="translate" style="display:none">Click this button or press <kbd class="key">ENTER</kbd> to add a tab</span>
+
+    <div id="beggar" style="display:none" class="flex-box">
+      <span>🍏</span>
+      <h4 class="translate" data-content="Pétrolette needs you">Pétrolette needs you</h4>
+      <p>
+        <span class="translate"
+              data-content="Pétrolette is free software. However the development requires">
+          Pétrolette is free software. However the development requires</span> <span><a class="translate beggarLink" data-content="a lot of time" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">a lot of time</a></span> <span class="translate" data-content="and">and</span> <a class="translate beggarLink" data-content="a lot of work" href="https://framagit.org/yphil/petrolette/-/commits/master">a lot of work</a>. <span data-content="In order to keep developing Pétrolette with new features I need your help." class="translate">In order to keep developing Pétrolette with new features I need your help.</span>
+      </p>
+      <p class="translate" data-content="Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.">
+        Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.
+      </p>
+
+      <a id="beggarNoButton" href="https://liberapay.com/yPhil/donate"
+         class="ui-button ui-corner-all unique translate"
+         data-title="Donate"
+         title="Donate"
+         data-content="Ok">
+        Ok
+      </a>
+
+    </div>
+
   </body>
 </html>

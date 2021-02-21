@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
-var app = require('../app');
-var debug = require('debug')('petrolette:server');
-var http = require('http');
-const fs = require('fs');
-var port = normalizePort('8000');
+const app = require('../app'),
+      debug = require('debug')('petrolette:server'),
+      http = require('http'),
+      fs = require('fs'),
+      port = normalizePort('8000');
+
 app.set('port', port);
 
 function isLocal() {
@@ -16,8 +17,8 @@ function isLocal() {
   }
 }
 
-console.log('### ENV: ' + process.env.NODE_ENV);
-console.log('## PORT: ' + port);
+// console.log('### ENV: ' + process.env.NODE_ENV);
+// console.log('## PORT: ' + port);
 
 // if (!isLocal) {
 

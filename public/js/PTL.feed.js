@@ -26,26 +26,20 @@ PTL.feed = {
               .children('div.feed-body')
               .slideUp(350);
             $feedControls.data('status', 'off');
-            $reloadIcon.removeClass('icon-refresh');
-            $reloadIcon.addClass('icon-pin');
+            $reloadIcon.removeClass('icon-refresh')
+              .addClass('icon-pin');
           } else {
             $(this).addClass('fold')
               .parent().parent().parent()
               .children('div.feed-body')
               .slideDown(350);
             $feedControls.data('status', 'on');
-            $reloadIcon.removeClass('icon-pin');
-            $reloadIcon.addClass('icon-refresh');
+            $reloadIcon.removeClass('icon-pin')
+              .addClass('icon-refresh');
           }
 
           PTL.tab.saveTabs();
-
           PTL.feed.populate($reloadIcon);
-
-          // $(this).toggleClass('down')
-          //   .parent().parent().parent()
-          //   .children('div.feed-body')
-          //   .slideToggle(350);
 
         });
 
@@ -91,11 +85,11 @@ PTL.feed = {
         .data('status', status);
 
     if ($feedControls.data('status') == 'on') {
-      $reloadIcon.removeClass('icon-pin');
-      $reloadIcon.addClass('icon-refresh');
+      $reloadIcon.removeClass('icon-pin')
+        .addClass('icon-refresh');
     } else {
-      $reloadIcon.removeClass('icon-refresh');
-      $reloadIcon.addClass('icon-pin');
+      $reloadIcon.removeClass('icon-refresh')
+        .addClass('icon-pin');
     }
 
     var $feedHandle = $('<div>')
@@ -116,7 +110,7 @@ PTL.feed = {
 
     var $titleDiv = $('<div>')
         .attr('title', url)
-        .attr('class', 'feed-title truncate');
+        .attr('class', 'feed-title trucate');
 
     var $titleLink = $('<a>')
         .attr('href', url)
@@ -124,8 +118,8 @@ PTL.feed = {
         .html(url);
 
     $feedControls.hover (
-      function() {$(this).find('.collapsible').show('fade', 'fast');},
-      function() {$(this).find('.collapsible').hide('fade', 'slow');}
+      function() {$(this).find('.collapsible').show();},
+      function() {$(this).find('.collapsible').hide('fade', 'fast');}
     );
 
     $header.hover (function() {
@@ -202,6 +196,7 @@ PTL.feed = {
       }
 
       $feedIcon.addClass('fold');
+      $button.removeClass('spin');
 
       if ($dataStore.data('status') == 'on') {
 
@@ -307,42 +302,42 @@ PTL.feed = {
 
                 if (index == parseInt(feedLimit)) return false;
 
-                // console.log('i: (%s)', JSON.stringify(item));
+              // console.log('i: (%s)', JSON.stringify(item));
 
-                var $description = $.parseHTML(item.description),
-                    summary,
-                    imageUrl,
-                    // imageUrls = [],
-                    imgTypes = ['image',
-                                'image/jpg',
-                                'image/jpeg',
-                                'image/gif',
-                                'image/png'];
+              var $description = $.parseHTML(item.description),
+                  summary,
+                  imageUrl,
+                  imageUrls = [],
+                  imgTypes = ['image',
+                              'image/jpg',
+                              'image/jpeg',
+                              'image/gif',
+                              'image/png'];
 
-                if (item.summary && typeof item.summary !== 'undefined') {
-                    summary = item.summary;
+              if (item.summary && typeof item.summary !== 'undefined') {
+                summary = item.summary;
+              }
+
+              if (item.description && typeof item.description !== 'undefined'){
+                summary = item.description;
+              }
+
+              if (item['media:group']) {
+                if (item['media:group']['media:description']) {
+                  summary = item['media:group']['media:description']["#"];
                 }
+              }
 
-                if (item.description && typeof item.description !== 'undefined'){
-                    summary = item.description;
-                }
-
-                if (item['media:group']) {
-                    if (item['media:group']['media:description']) {
-                        summary = item['media:group']['media:description']["#"];
-                    }
-                }
-
-                var $imageLink = $('<a>').attr('target', '_blank'),
-                    $itemLink = $('<a>').attr('target', '_blank'),
-                    $soundLink = $('<a>').attr('target', '_blank'),
-                    $commentsLink = $('<a>').attr('target', '_blank'),
-                    $commentsIcon = $('<i>'),
-                    $soundIcon = $('<i>'),
-                    $image,
-                    $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
-                    $itemDiv = $('<div>').attr('class', 'itemDiv'),
-                    $feedItem = $('<li>').attr('class', 'feed-item');
+              var $imageLink = $('<a>').attr('target', '_blank'),
+                  $itemLink = $('<a>').attr('target', '_blank'),
+                  $soundLink = $('<a>').attr('target', '_blank'),
+                  $commentsLink = $('<a>').attr('target', '_blank'),
+                  $commentsIcon = $('<i>'),
+                  $soundIcon = $('<i>'),
+                  $image,
+                  $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+                  $itemDiv = $('<div>').attr('class', 'itemDiv'),
+                  $feedItem = $('<li>').attr('class', 'feed-item');
 
               if (summary && typeof summary !== 'undefined') {
                 $feedItem.attr('title', $summary.trim());
@@ -390,7 +385,7 @@ PTL.feed = {
                 }
               }
 
-              if (typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
+              if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
 
                 if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
                   imageUrl = item.enclosures[0].url;
@@ -418,11 +413,13 @@ PTL.feed = {
               }
 
               $itemLink
-                    .attr('class', 'ui-helper-clearfix feed-link')
-                    .attr('href', item.link)
-                    .append(item['mastodon:scope'] ? $summary.trim() : item.title);
+                .attr('class', 'ui-helper-clearfix feed-link')
+                .attr('href', item.link || item.enclosures[0].url)
+                .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
-              if (typeof imageUrls != 'undefined') {
+              if (imageUrls && imageUrls.length >= 1) {
+
+                console.log('imageUrls.length: %s (%s)',imageUrls.length);
 
                 $image = $('<div>')
                   .attr('class', 'ptl-img')
@@ -437,14 +434,13 @@ PTL.feed = {
                     .appendTo($image)
                     .append($('<img>')
                             .attr('src', imageUrls[i])
+                            .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
                             .appendTo($image));
                 }
 
-              } else if (imageUrl) {
+              } else if (imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
-                if (!PTL.util.isUrl(imageUrl)) {
-                  imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
-                }
+                if (!PTL.util.isUrl(imageUrl)) imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
 
                 $imageLink
                   .attr('href', imageUrl)
@@ -453,16 +449,18 @@ PTL.feed = {
 
                 $image = $('<img>')
                   .attr('src', imageUrl)
-                  .attr('class', 'ptl-img')
+                  .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
+                  .attr('class', 'ptl-img b-lazy')
                   .appendTo($imageLink);
+
+                if (PTL.prefs.readConfig('brokenImages') === 'hide') $image.attr('onerror', "this.style.display='none'");
 
               }
 
-              if (!new RegExp('^(?:[a-z]+:)?//', 'i').test(imageUrl)) imageUrl = feedHost + imageUrl;
-                if ($image && feedType == 'photo') $image.addClass('full');
-                if (feedType !== 'text') $imageLink.appendTo($itemDiv);
+              if ($image && feedType == 'photo') $image.addClass('full');
+              if (feedType !== 'text') $imageLink.appendTo($itemDiv);
 
-                $itemLink.appendTo($itemDiv);
+              $itemLink.appendTo($itemDiv);
                 $itemDiv.appendTo($feedItem);
                 $feedItem.appendTo($feedBody);
 

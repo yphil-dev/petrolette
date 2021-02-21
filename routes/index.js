@@ -10,39 +10,16 @@ const express = require('express'),
       crypto = require('crypto'),
       pjson = require('../package.json'),
       Iconv = require('iconv').Iconv,
-      zlib = require('zlib');
+      sanitize = require('sanitize').middleware,
+      zlib = require('zlib'),
+      morgan = require('morgan');
 
 require('events').EventEmitter.defaultMaxListeners = 15;
 
-console.log('####### START ## Version (%s)', pjson.version);
+console.error('####### Pétrolette (re)START ## Version (%s)', pjson.version);
 
 process.on('uncaughtException', function(err) {
-  console.log('### uncaughtException (%s) : ', err);
-});
-
-function escape(s) {
-  if (s) {
-    return s.replace(/[&"<>]/g, function (c) {
-      return {
-        '&': "&amp;",
-        '"': "&quot;",
-        '<': "&lt;",
-        '>': "&gt;"
-      }[c];
-    });
-  }
-}
-
-
-router.get('/', function(req, res) {
-  res.render('index', {
-    queryString: escape(req.query.add),
-    version: pjson.version
-  });
-});
-
-router.get('/about/javascript', function(req, res) {
-  res.render('javascript');
+  console.error('### Pétrolette uncaughtException: %s', err);
 });
 
 function maybeDecompress (res, encoding) {
@@ -119,7 +96,7 @@ function getFeed (urlfeed, callback) {
     })
     .on ('error', function (err) {
       var meta = this.meta;
-      console.log('HUUM (%s) %s %s', err.message, meta.title, urlfeed);
+      console.error('HUUM (%s) %s %s', err.message, meta.title, urlfeed);
       callback (err.message);
     })
     .on ('end', function () {
@@ -131,6 +108,8 @@ function getFeed (urlfeed, callback) {
   });
 }
 
+router.use(sanitize);
+
 router.get('/feed', function(req, res) {
 
   var dnsreq = request(req.query.feedurl);
@@ -138,7 +117,7 @@ router.get('/feed', function(req, res) {
   dnsreq
     .on('error', function(error) {
       // The only way so far to catch a DNS error
-      // console.log('Err: %s (%s)', {error:error.code}, req.query.feedurl);
+      console.error('Err: %s (%s)', {error:error.code}, req.query.feedurl);
       res.send({error:error.code});
     })
     .on('response', function(response) {
@@ -170,7 +149,7 @@ router.get('/favicon', function(req, res) {
 
       const hash = crypto.createHash('md5').update(url).digest('hex'),
             fileName = hash + '.favicon',
-            filePath = path.join(process.env.FAVICONS_CACHE_DIR, fileName);
+            filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
       if (fs.existsSync(filePath)) {
         res.send('/favicons/' + fileName);
@@ -203,6 +182,19 @@ router.get('/discover', function(req, res) {
       res.status(500).send('No feed found');
     }
 
+  });
+});
+
+router.get('/about/javascript', function(req, res) {
+  res.render('javascript');
+});
+
+router.use(morgan('combined'));
+
+router.get('/', function(req, res) {
+  res.render('index', {
+    queryString: req.query.add,
+    version: pjson.version
   });
 });
 
