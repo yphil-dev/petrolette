@@ -20,6 +20,7 @@
     "show": "./node_modules/pm2/bin/pm2 show petrolette",
     "logs": "./node_modules/pm2/bin/pm2 logs petrolette",
     "errors": "./node_modules/pm2/bin/pm2 logs --err --format",
+    "test": "mocha --timeout 30s",
     "postinstall": "bower install --allow-root"
   },
   "dependencies": {
@@ -36,5 +37,9 @@
     "npm": "^7.5.2",
     "pm2": "^4.5.4",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "mocha": "^8.3.0",
+    "should": "^13.2.3"
   }
 }

@@ -7,134 +7,25 @@ PTL.dialog = {
   },
   nagUser:function() {
 
-    var $dialogs = $('#dialogs'),
-        isOpen = $dialogs.dialog('instance') === 'undefined';
+    const $beggar = $('#beggar'),
+          $beggarH4 = $('#beggar > h4'),
+          $beggarOkButton = $('#beggar > #beggarOkButton'),
+          $beggarNoButton = $('#beggar > #beggarNoButton');
 
-    if (isOpen) {
+    $beggarOkButton.on('click', function() {
+      $beggar.fadeOut('fast');
+      window.open('https://liberapay.com/yPhil/donate');
+    });
 
-      // PTL.dialog.kill($dialog);
+    $beggarH4.on('click', function() {
+      $beggar.fadeOut('fast');
+    });
 
-      PTL.util.console(PTL.tr('A window is already open, so not nagging'), 'warning');
+    $beggarNoButton.on('click', function() {
+      $beggar.fadeOut('fast');
+    });
 
-    } else {
-
-
-      $dialogs.load('/static/templates/dialogs.html #nagDialog', function() {
-
-        var $dialog = $(this);
-
-        var $nag1 = $('<div>').attr('class', 'dialogContent')
-            .append($('<div>').attr('class', 'dialogImage')
-                    .append($('<span>')
-                            .attr('class', 'huge dialogImage')
-                            .text('🍏')))
-            .append($('<div>').attr('class', 'dialogText')
-                    .append($('<h1>').text(PTL.tr('Pétrolette needs you')))
-                    .append($('<h2>').text(PTL.tr('Help me pay the bills'))
-                            .append($('<span>').attr('class', 'dialogHeaderIcon')))
-                    .append($('<p>')
-                            .text(PTL.tr('Pétrolette is free software. However the development requires '))
-                            .append($('<a>')
-                                    .attr('href', 'https://www.youtube.com/watch?v=JlbMEx9H6FE')
-                                    .text(PTL.tr(' a lot of time ')))
-                            .append($('<span>').text(PTL.tr(' and ')))
-                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/commits/master').text(PTL.tr(' a lot of work')))
-                            .append($('<span>').text(PTL.tr('.'))))
-                    .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
-                    .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
-
-        var $nag2 = $('<div>').attr('class', 'dialogContent')
-            .append($('<div>').attr('class', 'dialogImage')
-                    .append($('<span>').attr('class', 'huge dialogImage')
-                            .text('🌴')))
-            .append($('<div>').attr('class', 'dialogText')
-                    .append($('<h1>').text(PTL.tr('Pétrolette is cool')))
-                    .append($('<h2>').text(PTL.tr('Free as the wind')))
-                    .append($('<p>').text(PTL.tr('Pétrolette is designed from the outset to respect the user: It does not embed any tracker or statistical tool, and does not call on any online resource.')))
-                    .append($('<p>').text(PTL.tr('Pétrolette is completely transparent, its source code is directly available.')))
-                    .append($('<p>').text(PTL.tr('This site is just a test instance ; You can install Pétrolette on your own server and manage it on your own.'))));
-
-        var $nag3 = $('<div>').attr('class', 'dialogContent')
-            .append($('<div>').attr('class', 'dialogImage')
-                    .append($('<span>')
-                            .attr('class', 'huge dialogImage')
-                            .text('🌱')))
-            .append($('<div>').attr('class', 'dialogText')
-                    .append($('<h1>').text(PTL.tr('Pétrolette is growing')))
-                    .append($('<h2>').text(PTL.tr('Early and often')))
-                    .append($('<p>').text(PTL.tr('A lot of exciting things are in the pipeline:'))
-                            .append($('<ul>').attr('class', 'dialogTextList')
-                                    .append($('<li>')
-                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/72')
-                                                    .append($('<span>')
-                                                            .attr('class', 'translate')
-                                                            .text(PTL.tr('Dedicated feeds')))))
-                                    .append($('<li>')
-                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/48')
-                                                    .append($('<span>')
-                                                            .attr('class', 'translate')
-                                                            .text(PTL.tr('Even better mobile device experience')))))
-                                    .append($('<li>')
-                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/59')
-                                                    .append($('<span>')
-                                                            .attr('class', 'translate')
-                                                            .text(PTL.tr('HTTPS / SSL')))))
-                                    .append($('<li>')
-                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/63')
-                                                    .append($('<span>')
-                                                            .attr('class', 'translate')
-                                                            .text(PTL.tr('Asynchronous / infinite loading of feed items')))))
-                                    .append($('<li>')
-                                            .append($('<a>').attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue')
-                                                    .append($('<span>')
-                                                            .attr('class', 'translate')
-                                                            .text(PTL.tr('Any improvement or proposal you have for Pétrolette')))))))
-                    .append($('<p>').text(PTL.tr('In order to keep developing Pétrolette with new features I need your help.')))
-                    .append($('<p>').text(PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.'))));
-
-        var $nags = [$nag1, $nag2, $nag3];
-
-        var random = Math.floor(Math.random() * $nags.length);
-
-        $dialogs.html('').empty().append($nags[random]);
-
-        // $dialog.append($nags[random]);
-
-        $dialog.dialog({
-          title: PTL.tr('Support Pétrolette'),
-          autoOpen: true,
-          buttons: [
-            {
-              text: PTL.tr('Cancel'),
-              title: PTL.tr('Cancel'),
-              class: 'ui-state-default translate',
-              click: function() {
-                PTL.dialog.kill($dialog);
-              }
-            },
-            {
-              text: PTL.tr('Donate'),
-              title: PTL.tr('Send your love to Pétrolette'),
-              class: 'translate ui-state-focus',
-              click: function(e) {
-                e.preventDefault();
-                window.open('https://liberapay.com/yPhil/donate');
-              }
-            }
-          ],
-          open: function () {
-
-            $('.ui-widget-overlay').on('click', function() {
-              PTL.dialog.kill($dialog);
-            });
-
-          }
-        });
-
-        $dialog.dialog('open');
-
-      });
-    }
+    $beggar.fadeIn('fast');
 
   },
   help:function() {

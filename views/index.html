@@ -73,8 +73,92 @@
             href="/static/css/petrolette.css" />
     </noscript>
 
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
-    <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/bower/jquery/dist/jquery.js"></script>
+
+    <!-- <script src="/bower/jquery-ui/jquery-ui.js"></script>
+    -->
+
+    <script src="/bower/jquery-ui/ui/version.js"></script>
+    <script src="/bower/jquery-ui/ui/core.js"></script>
+    <script src="/bower/jquery-ui/ui/data.js"></script>
+    <script src="/bower/jquery-ui/ui/disable-selection.js"></script>
+    <script src="/bower/jquery-ui/ui/focusable.js"></script>
+    <script src="/bower/jquery-ui/ui/form.js"></script>
+    <script src="/bower/jquery-ui/ui/ie.js"></script>
+    <script src="/bower/jquery-ui/ui/keycode.js"></script>
+    <script src="/bower/jquery-ui/ui/labels.js"></script>
+    <script src="/bower/jquery-ui/ui/labels.js"></script>
+    <script src="/bower/jquery-ui/ui/jquery-1-7.js"></script>
+    <script src="/bower/jquery-ui/ui/plugin.js"></script>
+    <script src="/bower/jquery-ui/ui/safe-active-element.js"></script>
+    <script src="/bower/jquery-ui/ui/safe-blur.js"></script>
+    <script src="/bower/jquery-ui/ui/scroll-parent.js"></script>
+    <script src="/bower/jquery-ui/ui/tabbable.js"></script>
+    <script src="/bower/jquery-ui/ui/unique-id.js"></script>
+
+    <script src="/bower/jquery-ui/ui/widget.js"></script>
+    <script src="/bower/jquery-ui/ui/position.js"></script>
+    <script src="/bower/jquery-ui/ui/effect.js"></script>
+
+    <script src="/bower/jquery-ui/ui/effects/"></script>
+
+    <script src="/bower/jquery-ui/ui/effects/effect-blind.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-bounce.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-clip.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-drop.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-explode.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-fade.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-fold.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-highlight.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-puff.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-pulsate.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-scale.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-shake.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-size.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-slide.js"></script>
+    <script src="/bower/jquery-ui/ui/effects/effect-transfer.js"></script>
+
+
+    <script src="/bower/jquery-ui/ui/form-reset-mixin.js"></script>
+    <script src="/bower/jquery-ui/ui/keycode.js"></script>
+    <script src="/bower/jquery-ui/ui/labels.js"></script>
+    <script src="/bower/jquery-ui/ui/scroll-parent.js"></script>
+    <script src="/bower/jquery-ui/ui/tabbable.js"></script>
+    <script src="/bower/jquery-ui/ui/unique-id.js"></script>
+
+
+    <script src="/bower/jquery-ui/ui/widgets/accordion.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/accordion.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/autocomplete.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/button.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/checkboxradio.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/controlgroup.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/datepicker.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/dialog.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/draggable.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/droppable.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/menu.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/mouse.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/progressbar.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/resizable.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/resizable.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/selectmenu.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/slider.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/sortable.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/spinner.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/tabs.js"></script>
+    <script src="/bower/jquery-ui/ui/widgets/tooltip.js"></script>
+
+    <!--
+         <script src="/bower/jquery-ui/ui/escape-selector.js"></script>
+         <script src="/bower/jquery-ui/ui/form.js"></script>
+         <script src="/bower/jquery-ui/ui/ie.js"></script>
+         <script src="/bower/jquery-ui/ui/plugin.js"></script>
+         <script src="/bower/jquery-ui/ui/safe-active-element.js"></script>
+         <script src="/bower/jquery-ui/ui/safe-blur.js"></script>
+         <script src="/bower/jquery-ui/ui/version.js"></script>
+    -->
+
     <script src="/bower/intro.js/dist/minified/intro.min.js"></script>
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="/bower/remotestorage/release/remotestorage.js"></script>
@@ -444,38 +528,6 @@
     <script src="/static/js/PTL.sync.js"></script>
 
     <script>
-     window.onload = function() {
-
-       $.fn.isOnScreen = function(){
-         var win = $(window)
-         var viewport = {
-           top : win.scrollTop(),
-           left : win.scrollLeft()
-         }
-         viewport.right = viewport.left + win.width()
-         viewport.bottom = viewport.top + win.height()
-         var bounds = this.offset()
-         bounds.right = bounds.left + this.outerWidth()
-         bounds.bottom = bounds.top + this.outerHeight()
-         return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom))
-       }
-
-       function lazyload() {
-         $('.lazyload').each(function() {
-           var element = $(this)
-           if (element.isOnScreen()) {
-             element.attr('src', element.data('src'))
-             element.removeClass('lazyload')
-           }
-         })
-       }
-
-
-       lazyload()
-       $(window).scroll(function() {
-         lazyload()
-       })
-     }
 
      $(document).ready(function() {
        PTL.start();
@@ -495,6 +547,30 @@
      });
 
     </script>
+
     <span id="newTabButtonTooltip" class="translate" style="display:none">Click this button or press <kbd class="key">ENTER</kbd> to add a tab</span>
+
+    <div id="beggar" style="display:none" class="flex-box">
+      <span>🍏</span>
+      <h4 class="translate" data-content="Pétrolette needs you">Pétrolette needs you</h4>
+      <p>
+        <span class="translate"
+              data-content="Pétrolette is free software. However the development requires">
+          Pétrolette is free software. However the development requires</span> <span><a class="translate beggarLink" data-content="a lot of time" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">a lot of time</a></span> <span class="translate" data-content="and">and</span> <a class="translate beggarLink" data-content="a lot of work" href="https://framagit.org/yphil/petrolette/-/commits/master">a lot of work</a>. <span data-content="In order to keep developing Pétrolette with new features I need your help." class="translate">In order to keep developing Pétrolette with new features I need your help.</span>
+      </p>
+      <p class="translate" data-content="Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.">
+        Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.
+      </p>
+
+      <a id="beggarNoButton" href="https://liberapay.com/yPhil/donate"
+         class="ui-button ui-corner-all unique translate"
+         data-title="Donate"
+         title="Donate"
+         data-content="Ok">
+        Ok
+      </a>
+
+    </div>
+
   </body>
 </html>

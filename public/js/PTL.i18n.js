@@ -100,10 +100,10 @@ PTL.i18n.translations = {
 
   "Help me pay the bills" : { fr: "Aide-moi à payer les factures" , ja: "手形を支払うのを手伝ってください", es: "Ayúdame a pagar las facturas" },
 
-  "Pétrolette is free software. However the development requires " : { fr: "Pétrolette est un logiciel libre. Cependant, le développement demande " , ja: "Pétroletteはフリーソフトウェアです。 ただし、開発には多くの時間と作業が必要です。", es: "Pétrolette es un software gratuito. Sin embargo, el desarrollo requiere " },
-  " a lot of time " : { fr: " beaucoup de temps " , ja: "多くの時間", es: " mucho tiempo " },
-  " and " : { fr: " et " , ja: "そして", es: " y " },
-  " a lot of work" : { fr: " beaucoup de travail" , ja: "多くの作業", es: " mucho trabajo" },
+  "Pétrolette is free software. However the development requires" : { fr: "Pétrolette est un logiciel libre. Cependant, le développement demande" , ja: "Pétroletteはフリーソフトウェアです。 ただし、開発には多くの時間と作業が必要です。", es: "Pétrolette es un software gratuito. Sin embargo, el desarrollo requiere" },
+  "a lot of time" : { fr: "beaucoup de temps" , ja: "多くの時間", es: "mucho tiempo" },
+  "and" : { fr: "et" , ja: "そして", es: "y" },
+  "a lot of work" : { fr: "beaucoup de travail" , ja: "多くの作業", es: "mucho trabajo" },
 
   "In order to keep developing Pétrolette with new features I need your help." : { fr: "Afin de continuer à développer Pétrolette avec de nouvelles fonctionnalités, j'ai besoin de votre aide." , ja: "新しい機能を備えたペトロレットを開発し続けるために、私はあなたの助けが必要です。", es: "Para seguir desarrollando Pétrolette con nuevas funciones, necesito su ayuda." },
   "Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot." : { fr: "Pensez à soutenir le projet Pétrolette en envoyant un don. Même la plus petite quantité aidera beaucoup." , ja: "寄付を送って、ペトロレットプロジェクトを支援することを検討してください。 少量でも大いに役立ちます。", es: "Considere apoyar el proyecto Pétrolette enviando una donación. Incluso la cantidad más pequeña ayudará mucho." },

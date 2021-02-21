@@ -277,21 +277,34 @@ a:active {
 }
 
 .feed-header > .feed-title {
-  /* padding-top: 0.2em; */
-  vertical-align: middle;
   flex-basis: auto;
   flex-grow: 4;
   flex-shrink: 1;
-  font-family: "Aveny T WEB", Arial, sans-serif;
-  /* font-style: normal; */
+  /* display:flex; */
+  /* align-items: center; */
+  /* font-family: "Aveny T WEB", Arial, sans-serif; */
+  font-family: BebasNeueRegular, Verdana, sans-serif !important;
+  /* font-stretch: ultra-condensed; */
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
   font-size: var(--feed-title-font-size);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   /* margin-top: var(--title-padding-top); */
   font-style: oblique;
+  /* height: 30px; */
   margin-left: var(--title-margin-left);
+  text-overflow: ellipsis;
+
+  color: var(--color-fg6);
+
+  overflow: hidden;
+  display: block;
+  width: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
 }
 
 #preload > .feed-title {
@@ -374,7 +387,7 @@ ul.help li {
 
 .ui-tab#new-group {
   width: 40px;
-  background-color: var(--color-fg4);
+  background-color: var(--color-bg1);
 }
 
 .ui-tab.ui-state-default {
@@ -397,8 +410,6 @@ ul.help li {
   color: var(--color-fg1);
 }
 
-html body main div#tabs.ui-tabs.ui-corner-all.ui-widget.ui-widget-content ul#tab-names.ui-tabs-nav.ui-corner-all.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-sortable li.modal.tab-name.translate.ui-droppable.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab a#ui-id-5.ui-tabs-anchor
-
 .ui-tab.ui-state-active i:hover {
   color: var(--color-fg2);
 }
@@ -410,6 +421,14 @@ html body main div#tabs.ui-tabs.ui-corner-all.ui-widget.ui-widget-content ul#tab
 li.feed-item:not(.error) a {
   display: block;
   width: 100%;
+}
+
+i.feed-control {
+  color: var(--color-fg1);
+}
+
+i.feed-control:hover {
+  color: var(--color-fg5);
 }
 
 .ui-tab.ui-state-default a:hover {
@@ -434,15 +453,17 @@ i.item-icon {
   margin: 0.2em;
 }
 
-i.tab-closer {
+.ui-tab i.tab-closer {
   top: 2px;
   color: var(--color-bg1);
 }
 
-i.rotate:hover,
-i.tab-closer:hover,
-i.feed-control:hover {
-  color: var(--color-ui-sec);
+.ui-tab.ui-state-active i {
+  color: var(--color-fg1);
+}
+
+.ui-tab.ui-state-active {
+  border-top: 1px solid var(--color-ui-danger) !important;
 }
 
 i.danger,
@@ -450,7 +471,8 @@ i.dangerous:hover {
   color: var(--color-ui-danger);
 }
 
-.feed-header > .feed-title > a:link {
+.feed-header > .feed-title > a:link,
+.feed-header > .feed-title > a:visited {
   color: var(--color-fg6);
 }
 
@@ -1080,19 +1102,11 @@ li.feed.selected {
   margin: 0;
 }
 
-.truncate {
-  overflow: hidden;
-  display: block;
-  width: 100px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
 .feed-header {
   display: flex;
   flex-direction: row;
   background-color: var(--color-bg2);
-  color: var(--color-fg5);
+  /* color: var(--color-fg5); */
   transition: all 0.3s linear;
   height: var(--header-height);
   max-height: var(--header-height);
@@ -1106,8 +1120,8 @@ li.feed.selected {
 
 .feed-header > .feed-handle {
   background-color: transparent;
-  border-left: 3px dotted var(--color-fg2);
-  border-right: 3px dotted var(--color-fg2);
+  border-left: 3px dotted var(--color-fg4);
+  border-right: 3px dotted var(--color-fg4);
   flex-basis: 4px;
   flex-grow: 0;
   flex-shrink: var(--handle-flex-shrink);
@@ -1171,7 +1185,7 @@ li.feed-item:nth-child(even) {
 }
 
 li.feed-item:hover {
-  background-color: var(--color-fg3);
+  background-color: var(--color-bg5);
 }
 
 li.feed-item > div.itemDiv > a > .ptl-img {
@@ -1206,13 +1220,13 @@ table {
 }
 
 li.feed div.feed-body {
-  border-right: 1px solid var(--color-fg3);
-  border-bottom: 1px solid var(--color-bg1);
-  border-left: 1px solid var(--color-fg3);
+  border-right: 1px solid var(--color-bg1);
+  border-bottom: 1px solid var(--color-bg2);
+  border-left: 1px solid var(--color-bg1);
 }
 
 li.feed:hover div.feed-body {
-  border-color: var(--color-bg2);
+  border-color: var(--color-bg5);
 }
 
 .feed-header > .feed-handle:hover {
@@ -1262,7 +1276,7 @@ div.introjs-helperLayer {
 /* Gallery */
 
 div.fancybox-caption a.ui-button.ui-corner-all {
-  color: var(--color-bg1);
+  color: var(--color-ui-qua);
 }
 
 div.fancybox-caption a.ui-button.ui-corner-all:hover {
@@ -1357,3 +1371,46 @@ div#logo-title > .logo-title > a:hover {
 #js p {
   margin-left: 40px;
 }
+
+#beggar {
+  background-color: var(--color-ui-qua);
+  border: 1px solid var(--color-ui-oct);
+  border-radius: 5px;
+  width: 22rem;
+  /* height: 220px; */
+  max-width: 100%;
+  padding: 2em;
+  position: sticky;
+  bottom: 16px;
+  left: 16px;
+  z-index: 30;
+  flex-direction: column;
+}
+
+#beggar > span {
+  font-size: 6em;
+}
+
+#beggar > a.ui-button {
+  margin-top: 1em;
+}
+
+#beggar > p {
+  color: var(--color-ui-pri);
+  margin: 0 0 0.2em 0;
+  font-size: 11pt;
+}
+
+#beggar a.beggarLink:link,
+#beggar a.beggarLink:visited {
+  text-decoration: underline !important;
+  color: var(--color-ui-sec);
+}
+
+#beggar a.beggarLink:hover {
+  color: var(--color-ui-sen);
+}
+
+/* #beggar > h4 { */
+/*   margin-top: 0; */
+/* } */

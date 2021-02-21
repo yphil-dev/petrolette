@@ -64,7 +64,6 @@ var PTL = (function() {
 
       $('body').on('click','.help-button', function() {
         PTL.dialog.help();
-        // PTL.util.nagUser();
       });
 
       $('body').on('click','.new-feed-button', function() {

@@ -110,7 +110,7 @@ PTL.feed = {
 
     var $titleDiv = $('<div>')
         .attr('title', url)
-        .attr('class', 'feed-title truncate');
+        .attr('class', 'feed-title trucate');
 
     var $titleLink = $('<a>')
         .attr('href', url)
@@ -118,8 +118,8 @@ PTL.feed = {
         .html(url);
 
     $feedControls.hover (
-      function() {$(this).find('.collapsible').show('fade', 'fast');},
-      function() {$(this).find('.collapsible').hide('fade', 'slow');}
+      function() {$(this).find('.collapsible').show();},
+      function() {$(this).find('.collapsible').hide('fade', 'fast');}
     );
 
     $header.hover (function() {
