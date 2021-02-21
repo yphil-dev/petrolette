@@ -413,9 +413,9 @@ ul.help li {
   color: var(--color-fg2);
 }
 
-.ui-tab.ui-state-active {
-  border-top: 1px solid var(--color-ui-danger) !important;
-}
+/* .ui-tab.ui-state-active { */
+/*   border-top: 1px solid var(--color-ui-danger) !important; */
+/* } */
 
 li.feed-item:not(.error) a {
   display: block;
@@ -423,11 +423,11 @@ li.feed-item:not(.error) a {
 }
 
 i.feed-control {
-  color: var(--color-fg1);
+  color: var(--color-fg5);
 }
 
 i.feed-control:hover {
-  color: var(--color-fg5);
+  color: var(--color-fg2);
 }
 
 .ui-tab.ui-state-default a:hover {
@@ -459,10 +459,6 @@ i.item-icon {
 
 .ui-tab.ui-state-active i {
   color: var(--color-fg1);
-}
-
-.ui-tab.ui-state-active {
-  border-top: 1px solid var(--color-ui-danger) !important;
 }
 
 i.danger,
@@ -1327,7 +1323,6 @@ div#logo-title > .logo-title {
   display: var(--logo-display);
   font-family: LobsterRegular, Helvetica, Arial, sans-serif;
   font-size: 36pt;
-  margin: -6px 0 0 0;
 }
 
 #liberapay {

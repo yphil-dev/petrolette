@@ -9,7 +9,7 @@
 [![Liberapay](https://framagit.org/yphil/petrolette/-/pipelineshttps://img.shields.io/badge/donate-Liberapay-yellow.svg)](https://liberapay.com/yPhil/donate)
 [![PayPal Donate](https://img.shields.io/badge/donate-PayPal.me-ff69b4.svg)](https://www.paypal.me/yphil)
 
-![Pétrolette](https://bytebucket.org/yphil/takeoff.petrolette.space/raw/c51580164590798635d8cbc251de32ba43ea6abb/images/petrolette.png)
+![Pétrolette](https://framagit.org/yphil/assets/-/raw/main/img/petrolette.png)
 
 [Pétrolette Official website](http://takeoff.petrolette.space)
 
