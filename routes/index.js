@@ -10,29 +10,17 @@ const express = require('express'),
       crypto = require('crypto'),
       pjson = require('../package.json'),
       Iconv = require('iconv').Iconv,
+      sanitize = require('sanitize').middleware,
       zlib = require('zlib'),
       morgan = require('morgan');
 
 require('events').EventEmitter.defaultMaxListeners = 15;
 
-// console.log('####### START ## Version (%s)', pjson.version);
+console.error('####### Pétrolette (re)START ## Version (%s)', pjson.version);
 
 process.on('uncaughtException', function(err) {
-  console.log('### uncaughtException (%s) : ', err);
+  console.error('### Pétrolette uncaughtException: %s', err);
 });
-
-function escape(s) {
-  if (s) {
-    return s.replace(/[&"<>]/g, function (c) {
-      return {
-        '&': "&amp;",
-        '"': "&quot;",
-        '<': "&lt;",
-        '>': "&gt;"
-      }[c];
-    });
-  }
-}
 
 function maybeDecompress (res, encoding) {
   var decompress;
@@ -120,6 +108,8 @@ function getFeed (urlfeed, callback) {
   });
 }
 
+router.use(sanitize);
+
 router.get('/feed', function(req, res) {
 
   var dnsreq = request(req.query.feedurl);
@@ -127,7 +117,7 @@ router.get('/feed', function(req, res) {
   dnsreq
     .on('error', function(error) {
       // The only way so far to catch a DNS error
-      // console.log('Err: %s (%s)', {error:error.code}, req.query.feedurl);
+      console.error('Err: %s (%s)', {error:error.code}, req.query.feedurl);
       res.send({error:error.code});
     })
     .on('response', function(response) {
@@ -203,7 +193,7 @@ router.use(morgan('combined'));
 
 router.get('/', function(req, res) {
   res.render('index', {
-    queryString: escape(req.query.add),
+    queryString: req.query.add,
     version: pjson.version
   });
 });

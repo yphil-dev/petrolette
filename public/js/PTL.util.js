@@ -276,7 +276,7 @@ PTL.util = {
           position: 'top'
         },
         {
-          element: 'fieldset#feedLimit',
+          element: 'fieldset#feedLimitFieldset',
           intro: PTL.tr('How many new items should this feed display at a time?'),
           position: 'top'
         },

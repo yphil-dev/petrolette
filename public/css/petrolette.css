@@ -851,7 +851,7 @@ ul.help li.rss::before {
 
 ul.help li.publish::before {
   content: "\E826";
-  color: var(--color-ui-success);
+  color: var(--color-ui-pri);
 }
 
 ul.help li.refresh::before {
