@@ -21,6 +21,7 @@
     "logs": "./node_modules/pm2/bin/pm2 logs petrolette",
     "errors": "./node_modules/pm2/bin/pm2 logs --err --format",
     "test": "mocha --timeout 30s",
+    "coverage": "nyc npm test",
     "postinstall": "bower install --allow-root && cd ./node_modules/favrat ; npm i && cd ../feedrat ; npm i"
   },
   "dependencies": {
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "mocha": "^8.3.0",
+    "nyc": "^15.1.0",
     "should": "^13.2.3",
     "uglify-js": "^3.12.8"
   }
