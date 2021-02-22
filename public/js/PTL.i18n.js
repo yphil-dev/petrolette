@@ -156,7 +156,7 @@ PTL.i18n.translations = {
   "Open" : { fr: "Ouvrir" , ja: "負荷", es: "Carga" },
   "Save" : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
 
-  "Rename Group" : { fr: "Groupe: Renommer" , ja: "名前の変更タブ", es: "Cambiar el nombre de la grupo" },
+  "Rename tab" : { fr: "Renommer l'onglet" , ja: "名前の変更タブ", es: "Cambiar el nombre de la pestaña" },
   "Add" : { fr: "Ajouter" , ja: "追加", es: "Añadir" },
   "Add feed" : { fr: "Ajouter flux" , ja: "ソースを追加", es: "Agregue fuente" },
   "Add feeds" : { fr: "Ajouter flux" , ja: "ソースを追加", es: "Agregue fuentes" },
@@ -212,15 +212,28 @@ PTL.i18n.translations = {
   "Skip" : { fr: "Passer" , ja: "スキップ", es: "Omitir" },
   "Got it!" : { fr: "Compris !" , ja: "理解！", es: "Entendido!" },
 
-  "This is a group. It contains feeds." : { fr: "Ceci est un groupe ; un groupe contient des flux." , ja: "これはタブです。 それはソースを含んでいます。", es: "Esta es una grupo. Contiene fuentes." },
+  "This is a tab. It contains feeds." : { fr: "Ceci est un onglet, qui contient des flux." , ja: "これはタブです。 それはソースを含んでいます。", es: "Esta es una grupo. Contiene fuentes." },
 
-  "Click on a group tab to display it." : { fr: "Cliquer sur l'onglet d'un groupe pour l'afficher." , ja: "グループタブをクリックして表示します。", es: "Haga clic en una pestaña de grupo para mostrarla." },
+  "Click on a group tab to display it ; Click the current/selected group tab to change its name and position. Drag to sort tabs." : { fr: "Cliquer sur l'onglet d'un groupe pour l'afficher ; cliquer sur le l'onglet courant pour changer son nom et sa position. Faites glisser pour réorganiser les onglets." , ja: "グループタブをクリックして表示します。現在の/選択したグループタブをクリックして、名前と位置を変更します。ドラッグしてタブを並べ替えます。", es: "Haga clic en una pestaña de grupo para mostrarla. Haga clic en la pestaña del grupo actual / seleccionado para cambiar su nombre y posición. Arrastra para reordenar las pestañas." },
+
+  "That's what it's all about" : { fr: "C'est de ça qu'il s'agit" , ja: "それがすべてです", es: "Eso es lo que se trata" },
+
+  "Keep everything tidy" : { fr: "Tout est bien rangé" , ja: "すべてを整頓してください", es: "Mantenga todo ordenado" },
+
+  "Well you know how a tab works" : { fr: "Un onglet pour les rassembler tous" , ja: "あなたはタブがどのように機能するか知っています", es: "Sabes como funciona una pestaña" },
+
+  "Add a new feed" : { fr: "Ajouter un nouveau flux" , ja: "新しいフィードを追加する", es: "Agregar un nuevo fuente" },
+
+  "Get the latest articles." : { fr: "Voir les derniers articles." , ja: "最新の記事を入手する。", es: "Obtenga los últimos artículos." },
+  "B-bye" : { fr: "Au revoir" , ja: "さようなら", es: "Adios" },
+  "Grip handle" : { fr: "Poignée" , ja: "グリップハンドル", es: "Mango" },
+
+  "Folded feeds are not loaded at startup, so as to speed things up." : { fr: "Les flux pliés ne sont pas chargés au démarrage, afin d'accélérer les choses." , ja: "折りたたまれたフィードは、処理を高速化するために、起動時に読み込まれません。", es: "Los feeds doblados no se cargan al inicio, para acelerar las cosas." },
+
 
   "You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette" : { fr: "Vous pouvez également faire glisser ce bouton dans la barre d'outils de votre navigateur et cliquer dessus lorsque vous souhaitez ajouter un site Web à Pétrolette" , ja: "このボタンをブックマークツールバーにドラッグして、Pétroletteにウェブサイトを追加するときにクリックすることもできます", es: "También puede arrastrar este botón a la barra de herramientas de su marcador y hacer clic en él cuando desee agregar un sitio web a Pétrolette." },
   "Add to Pétrolette" : { fr: "Ajouter à Pétrolette" , ja: "Pétroletteに追加", es: "Agregar a Pétrolette" },
   "Drag to the bookmark bar" : { fr: "Glisser dans la barre de favoris" , ja: "ブックマークバーにドラッグ", es: "Arrastre a la barra de marcador" },
-
-  "Click on the current/selected group tab to change its name and position." : { fr: "Cliquer sur le groupe sélectionné pour changer son nom et sa position." , ja: "現在の/選択したグループタブをクリックして、名前と位置を変更します。", es: "Haga clic en la pestaña del grupo actual / seleccionado para cambiar su nombre y posición." },
 
   "This is a feed. More info: %1" : { fr: "Ceci est un flux. Plus d'infos: %1" , ja: "これはソースです 詳細情報：%1", es: "Esta es una fuente. Más info: %1" },
   "Click this button to add a tab" : { fr: "Cliquez sur ce bouton pour ajouter un onglet" , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo" },
@@ -228,16 +241,16 @@ PTL.i18n.translations = {
   "Source code" : { fr: "Code source" , ja: "ソースコード", es: "Código fuente" },
   "Use the force - read the Source" : { fr: "Utilise la Force, lis le Source" , ja: "力を使って、ソースを読んでください", es: "Usa la fuerza, lee la Fuente" },
 
-  "Click to add a feed." : { fr: "Cliquer pour ajouter un flux" , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente" },
+  "Click to add a feed" : { fr: "Cliquer pour ajouter un flux" , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente" },
 
-  "Refresh / reload this feed." : { fr: "Actualiser / recharger ce flux." , ja: "このソースを更新/再読み込みしてください。", es: "Actualiza / recarga esta fuente." },
+  "Refresh / reload this feed" : { fr: "Actualiser / recharger ce flux" , ja: "このソースを更新/再読み込みしてください。", es: "Actualiza / recarga esta fuente" },
 
   "feeds loaded" : { fr: "flux chargés" , ja: "ソースが読み込まれました", es: "fuentes cargadas" },
 
   "Wait! Are you sure?" : { fr: "Stop ! Sur ?" , ja: "待つ！ 本気ですか？", es: "¡Espere! ¿Estás seguro?" },
 
   "Select this feed (for drag & drop)." : { fr: "Sélectionner ce flux (pour le glisser-déposer)." , ja: "このソースを選択します（ドラッグ＆ドロップ用）。", es: "Seleccione esta fuente (para arrastrar y soltar)." },
-  "Drag here to move this feed (and all other selected feeds) within this group, or into another." : { fr: "Attraper ici pour déplacer ce flux (et toutes les autres flux sélectionnées) dans ce groupe ou dans un autre." , ja: "ここでドラッグすると、このグループ内のこのソース（および他のすべての選択されたソース）を別のグループに移動できます。", es: "Arrastre aquí para mover esta fuente (y todas las demás fuentes seleccionadas) dentro de este grupo o dentro de otra." },
+  "Drag here to move this feed (and all other selected feeds) within this tab, or into another." : { fr: "Attraper ici pour déplacer ce flux (et toutes les autres flux sélectionnées) dans cet onglet ou dans un autre." , ja: "ここでドラッグすると、このグループ内のこのソース（および他のすべての選択されたソース）を別のグループに移動できます。", es: "Arrastre aquí para mover esta fuente (y todas las demás fuentes seleccionadas) dentro de este grupo o dentro de otra." },
 
   "Fold / unfold this feed." : { fr: "Plier / déplier ce flux." , ja: "このソースを展開/折りたたむ。", es: "Expandir / contraer esta fuente." },
 
@@ -442,9 +455,9 @@ PTL.i18n.translations = {
   "Select this feed (%1)" : { fr: "Sélectionner ce flux (%1)", ja: "RSS(%1)フィードを選択", es: "Selecciona este feed (%1)" },
 
 
-  "Configure this feed." : { fr: "Configurer ce flux." , ja: "このソースを設定します。", es: "Configura esta fuente." },
+  "Configure this feed" : { fr: "Configurer ce flux." , ja: "このソースを設定します。", es: "Configura esta fuente." },
 
-  "Delete this feed." : { fr: "Supprimer ce flux." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
+  "Delete this feed" : { fr: "Supprimer ce flux." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
 
   "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar esta fuente" },
 

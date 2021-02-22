@@ -207,48 +207,54 @@ PTL.util = {
     ui.setOptions({
       steps: [
         {
-          element: 'li[aria-controls=tab-1]',
-          intro: PTL.tr('This is a group. It contains feeds.')
-        },
-        {
-          element: 'li[aria-controls=tab-2]',
-          intro: PTL.tr('Click on a group tab to display it.')
-        },
-        {
-          element: 'li[aria-controls=tab-1]',
-          intro: PTL.tr('Click on the current/selected group tab to change its name and position.')
-        },
-        {
+          title: 'That is what it is all about',
           element: 'li.feed',
-          intro: PTL.tr('This is a feed. ') + '<a class="ui-button ui-corner-all icon-rzz" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('More info') + '</a>'
+          intro: PTL.tr('This is a feed. ') + '<a class="helpLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-help"></i></a>'
         },
         {
+          title: PTL.tr('Keep everything tidy'),
+          element: 'li[aria-controls=tab-1]',
+          intro: PTL.tr('This is a tab. It contains feeds.')
+        },
+        {
+          title: PTL.tr('Well you know how a tab works') + ' 😉',
+          element: 'li[aria-controls=tab-2]',
+          intro: PTL.tr('Click on a group tab to display it ; Click the current/selected group tab to change its name and position.')
+        },
+        {
+          title: PTL.tr('Add a new feed.'),
           element: 'div#newFeedButton',
           intro: PTL.tr('Click to add a feed.')
         },
         {
+          title: PTL.tr('Refresh / reload this feed.'),
           element: '.feed-refresh',
-          intro: PTL.tr('Refresh / reload this feed.')
+          intro: PTL.tr('Get the latest articles.')
         },
         {
+          title: PTL.tr('Configure this feed.'),
           element: '.feed-edit',
-          intro: PTL.tr('Configure this feed.')
+          intro: PTL.tr('Configure this feed')
         },
         {
+          title: PTL.tr('B-bye!'),
           element: '.feed-delete',
-          intro: PTL.tr('Delete this feed.')
+          intro: PTL.tr('Delete this feed')
         },
         {
+          title: PTL.tr('Select this feed (for drag & drop).'),
           element: '.feed-select',
-          intro: PTL.tr('Select this feed (for drag & drop).')
+          intro: PTL.tr('Keep everything tidy')
         },
         {
+          title: 'Grip handle',
           element: '.feed-handle',
-          intro: PTL.tr('Drag here to move this feed (and all other selected feeds) within this group, or into another.')
+          intro: PTL.tr('Drag here to move this feed (and all other selected feeds) within this tab, or into another.')
         },
         {
+          title: PTL.tr('Fold / unfold this feed.'),
           element: 'div.feed-toggle',
-          intro: PTL.tr('Fold / unfold this feed.')
+          intro: PTL.tr('Folded feeds are not loaded at startup, so as to speed things up.')
         }
       ]
     });

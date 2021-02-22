@@ -1251,13 +1251,12 @@ h1.introjs-tooltip-title {
 }
 
 .introjs-tooltiptext a {
-  color: var(--color-ui-pri) !important;
-  text-decoration: underline !important;
+  color: var(--color-ui-sen) !important;
+  /* text-decoration: underline !important; */
 }
 
 .introjs-tooltiptext a:hover {
   color: var(--color-ui-sec) !important;
-  text-decoration: underline !important;
 }
 
 .introjs-skipbutton:hover {

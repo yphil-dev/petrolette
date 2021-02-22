@@ -19,7 +19,7 @@ News feeds are organized into tabs, which can contain an infinite number of colu
 
 To view the same feeds on your phone, either export / import the `petrolette.conf` file, or (recommended) use the user's personal cloud synchronization feature.
 
-![Petrolette](https://framagit.org/yphil/assets/-/raw/main/img/petrolette.png)
+![Petrolette](https://framagit.org/yphil/assets/-/raw/master/img/petrolette.png)
 
 ## Features
 

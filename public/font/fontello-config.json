@@ -94,7 +94,7 @@
     },
     {
       "uid": "3a230e539a4f3b904debd04c6c155034",
-      "css": "help",
+      "css": "question",
       "code": 59412,
       "src": "entypo"
     },
@@ -169,6 +169,12 @@
       "css": "note",
       "code": 59430,
       "src": "linecons"
+    },
+    {
+      "uid": "de9a631a7d18106aea1c89ba51b1990a",
+      "css": "help",
+      "code": 59431,
+      "src": "entypo"
     }
   ]
 }
