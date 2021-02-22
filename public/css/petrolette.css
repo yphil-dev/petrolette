@@ -73,7 +73,7 @@
     --side-menu-width: -999px;
     --header-height: 2.2em;
     --controls-width: 75%;
-    --controls-font-size: 16pt;
+    --controls-font-size: 22pt;
     --controls-toggle-size: 28pt;
     --feed-title-font-size: 22pt;
     --panel-flex: column;
@@ -1153,7 +1153,7 @@ li.feed.selected {
 
 i.feedIcon {
   transition: transform 0.2s linear !important;
-  font-size: var(--controls-toggle-size);
+  font-size: var(--controls-font-size);
   text-rendering: auto;
   /* margin-top: -2px !important; */
 }
