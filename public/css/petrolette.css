@@ -73,9 +73,9 @@
     --side-menu-width: -999px;
     --header-height: 2.2em;
     --controls-width: 75%;
-    --controls-font-size: 2em;
-    --controls-toggle-size: 2em;
-    --feed-title-font-size: 2em;
+    --controls-font-size: 16pt;
+    --controls-toggle-size: 28pt;
+    --feed-title-font-size: 22pt;
     --panel-flex: column;
     --column-buttons-display: none;
     --column-padding: 0;
@@ -1142,12 +1142,10 @@ li.feed.selected {
 .feed-control {
   cursor: pointer;
   font-size: var(--controls-font-size);
-
-  /* margin: 0 0 0 2px; */
 }
 
 .feed-header > .feed-toggle {
-  margin: 1px 1px 0 0;
+  /* margin: 2px; */
   background-repeat: no-repeat;
   background-size: contain;
   min-width: var(--controls-toggle-size) !important;
@@ -1155,9 +1153,9 @@ li.feed.selected {
 
 i.feedIcon {
   transition: transform 0.2s linear !important;
-  font-size: 14pt;
+  font-size: var(--controls-toggle-size);
   text-rendering: auto;
-  margin-bottom: 1px !important;
+  /* margin-top: -2px !important; */
 }
 
 .icon-rss {
@@ -1403,7 +1401,7 @@ div#logo-title > .logo-title > a:hover {
   background-color: var(--color-ui-qua);
   border: 1px solid var(--color-ui-oct);
   border-radius: 5px;
-  width: 22rem;
+  width: 320px;
   /* height: 220px; */
   max-width: 100%;
   padding: 2em;
