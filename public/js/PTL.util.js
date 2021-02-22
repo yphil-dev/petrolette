@@ -1,17 +1,17 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.util = {
-  nagUser:function() {
+  beg:function() {
 
     var nextNag = PTL.prefs.readConfig('nextNag');
     const dateNow = Date.now();
 
     PTL.util.console(PTL.tr('Pétrolette needs you, nextNag is ' + nextNag), 'success');
 
-    // PTL.dialog.nagUser();
+    // PTL.dialog.beg();
 
     if (nextNag === 0) {
-      PTL.dialog.nagUser();
+      PTL.dialog.beg();
       console.log('dateNow: %s (%s)', dateNow);
       PTL.prefs.writeConfig('nextNag', dateNow + 43200000); // 12 hours
     }
@@ -19,7 +19,7 @@ PTL.util = {
     if (dateNow > nextNag) {
       console.log('YUP nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
       PTL.prefs.writeConfig('nextNag', dateNow + 43200000);
-      PTL.dialog.nagUser();
+      PTL.dialog.beg();
     } else {
       console.log('NOPE nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
     }
@@ -207,9 +207,13 @@ PTL.util = {
     ui.setOptions({
       steps: [
         {
-          title: 'That is what it is all about',
+          title: PTL.tr('Welcome to Pétrolette'),
+          intro: PTL.tr('Learn to use it in a few easy steps') + ' 👋'
+        },
+        {
+          title: PTL.tr("That's what it's all about"),
           element: 'li.feed',
-          intro: PTL.tr('This is a feed. ') + '<a class="helpLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-help"></i></a>'
+          intro: PTL.tr('This is an RSS feed.') + ' <a class="helpLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-help"></i></a>'
         },
         {
           title: PTL.tr('Keep everything tidy'),
@@ -219,32 +223,27 @@ PTL.util = {
         {
           title: PTL.tr('Well you know how a tab works') + ' 😉',
           element: 'li[aria-controls=tab-2]',
-          intro: PTL.tr('Click on a group tab to display it ; Click the current/selected group tab to change its name and position.')
+          intro: PTL.tr('Click on a group tab to display it ; Click the current/selected group tab to change its name and position. Drag to sort tabs.')
         },
         {
-          title: PTL.tr('Add a new feed.'),
+          title: PTL.tr('Add a new feed'),
           element: 'div#newFeedButton',
           intro: PTL.tr('Click to add a feed.')
         },
         {
-          title: PTL.tr('Refresh / reload this feed.'),
+          title: PTL.tr('Refresh / reload this feed'),
           element: '.feed-refresh',
           intro: PTL.tr('Get the latest articles.')
         },
         {
-          title: PTL.tr('Configure this feed.'),
+          title: PTL.tr('Configure this feed'),
           element: '.feed-edit',
-          intro: PTL.tr('Configure this feed')
+          intro: PTL.tr('Configure this feed.')
         },
         {
-          title: PTL.tr('B-bye!'),
-          element: '.feed-delete',
-          intro: PTL.tr('Delete this feed')
-        },
-        {
-          title: PTL.tr('Select this feed (for drag & drop).'),
+          title: PTL.tr('Keep everything tidy'),
           element: '.feed-select',
-          intro: PTL.tr('Keep everything tidy')
+          intro: PTL.tr('Select this feed (for drag & drop).')
         },
         {
           title: 'Grip handle',
@@ -255,6 +254,16 @@ PTL.util = {
           title: PTL.tr('Fold / unfold this feed.'),
           element: 'div.feed-toggle',
           intro: PTL.tr('Folded feeds are not loaded at startup, so as to speed things up.')
+        },
+        {
+          title: PTL.tr('B-bye!'),
+          element: '.feed-delete',
+          intro: PTL.tr('Delete this feed.')
+        },
+        {
+          title: PTL.tr('You are in control now'),
+          element: 'div#menuButton',
+          intro: PTL.tr('Use the menu to configure Pétrolette')
         }
       ]
     });
@@ -346,10 +355,6 @@ PTL.util = {
     dialog.setOption('overlayOpacity', 0);
     ui.setOption('overlayOpacity', 0.2);
 
-    ui.setOption('hideNext', true);
-    ui.setOption('hidePrev', true);
-    ui.setOption('showStepNumbers', false);
-
     dialog.setOption('hideNext', true);
     dialog.setOption('hidePrev', true);
 
@@ -367,7 +372,7 @@ PTL.util = {
       ui.start();
     }
 
-    $('.introjs-button').button();
+    // $('.introjs-button').button();
 
   },
   translate:function() {

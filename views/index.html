@@ -464,7 +464,7 @@
 
        (function(){
          setTimeout(function(){
-           PTL.util.nagUser();
+           PTL.util.beg();
          }, 60000);
        })();
 
@@ -486,13 +486,22 @@
         Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.
       </p>
 
-      <a id="beggarNoButton" href="https://liberapay.com/yPhil/donate"
+      <a href="https://liberapay.com/yPhil/donate"
+         id="beggarOkButton"
          class="ui-button ui-corner-all unique translate"
          data-title="Donate"
          title="Donate"
-         data-content="Ok">
-        Ok
+         data-content="Donate">
+        Donate
       </a>
+
+      <button id="beggarTourButton"
+              class="ui-button ui-corner-all unique translate"
+              data-title="Take the tour"
+              title="Take the tour"
+              data-content="Take the tour">
+        Take the tour
+      </button>
 
     </div>
 

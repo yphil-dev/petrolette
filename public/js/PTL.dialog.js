@@ -5,12 +5,12 @@ PTL.dialog = {
     $dialog.dialog('destroy');
     $('#dialogs').empty();
   },
-  nagUser:function() {
+  beg:function() {
 
     const $beggar = $('#beggar'),
           $beggarH4 = $('#beggar > h4'),
           $beggarOkButton = $('#beggar > #beggarOkButton'),
-          $beggarNoButton = $('#beggar > #beggarNoButton');
+          $beggarTourButton = $('#beggar > #beggarTourButton');
 
     $beggarOkButton.on('click', function() {
       $beggar.fadeOut('fast');
@@ -21,8 +21,13 @@ PTL.dialog = {
       $beggar.fadeOut('fast');
     });
 
-    $beggarNoButton.on('click', function() {
+    $beggarTourButton.on('click', function() {
       $beggar.fadeOut('fast');
+
+      PTL.sideMenu('close');
+      $('#tabs').tabs('option', 'active', 0);
+      PTL.util.help('ui');
+
     });
 
     $beggar.fadeIn('fast');

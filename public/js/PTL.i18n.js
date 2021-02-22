@@ -236,12 +236,21 @@ PTL.i18n.translations = {
   "Drag to the bookmark bar" : { fr: "Glisser dans la barre de favoris" , ja: "ブックマークバーにドラッグ", es: "Arrastre a la barra de marcador" },
 
   "This is a feed. More info: %1" : { fr: "Ceci est un flux. Plus d'infos: %1" , ja: "これはソースです 詳細情報：%1", es: "Esta es una fuente. Más info: %1" },
+
+  "This is an RSS feed." : { fr: "Ceci est un flux RSS." , ja: "これはソースです 詳細情報", es: "Esta es una fuente." },
+
   "Click this button to add a tab" : { fr: "Cliquez sur ce bouton pour ajouter un onglet" , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo" },
 
   "Source code" : { fr: "Code source" , ja: "ソースコード", es: "Código fuente" },
   "Use the force - read the Source" : { fr: "Utilise la Force, lis le Source" , ja: "力を使って、ソースを読んでください", es: "Usa la fuerza, lee la Fuente" },
 
   "Click to add a feed" : { fr: "Cliquer pour ajouter un flux" , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente" },
+
+  "Click to add a feed." : { fr: "Cliquer pour ajouter un flux." , ja: "ソースを追加するにはクリックしてください", es: "Haga clic para agregar una fuente." },
+
+  "You are in control now" : { fr: "Vous êtes à la barre maintenant" , ja: "あなたは今コントロールしています", es: "Tu tienes el control ahora" },
+
+  "Use the menu to configure Pétrolette" : { fr: "Utilisez le menu pour configurer Pétrolette" , ja: "メニューを使用してPétroletteを構成します", es: "Usa el menú para configurar Pétrolette" },
 
   "Refresh / reload this feed" : { fr: "Actualiser / recharger ce flux" , ja: "このソースを更新/再読み込みしてください。", es: "Actualiza / recarga esta fuente" },
 
@@ -265,6 +274,8 @@ PTL.i18n.translations = {
   "New feed" : { fr: "Nouveau flux", ja: "新しい情報源", es: "Nueva fuente" },
 
   "Welcome to Pétrolette" : { fr: "Bienvenue dans Pétrolette" , ja: "ペトロレットへようこそ", es: "Bienvenido a Pétrolette" },
+
+  "Learn to use it in a few easy steps" : { fr: "Apprenez à l'utiliser en quelques étapes faciles" , ja: "いくつかの簡単なステップでそれを使用することを学ぶ", es: "Aprenda a usarlo en unos sencillos pasos" },
 
   "How does it work?" : { fr: "Comment ça marche ?" , ja: "どのように機能するのですか？", es: "¿Como funciona?" },
   "Take the tour" : { fr: "Visite guidée" , ja: "ガイド付き訪問", es: "Visita guiada" },
@@ -455,9 +466,13 @@ PTL.i18n.translations = {
   "Select this feed (%1)" : { fr: "Sélectionner ce flux (%1)", ja: "RSS(%1)フィードを選択", es: "Selecciona este feed (%1)" },
 
 
-  "Configure this feed" : { fr: "Configurer ce flux." , ja: "このソースを設定します。", es: "Configura esta fuente." },
+  "Configure this feed" : { fr: "Configurer ce flux" , ja: "このソースを設定します", es: "Configura esta fuente" },
 
-  "Delete this feed" : { fr: "Supprimer ce flux." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
+  "Configure this feed." : { fr: "Configurer ce flux." , ja: "このソースを設定します。", es: "Configura esta fuente." },
+
+  "Delete this feed" : { fr: "Supprimer ce flux" , ja: "このソースを削除してください", es: "Eliminar esta fuente" },
+
+  "Delete this feed." : { fr: "Supprimer ce flux." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
 
   "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar esta fuente" },
 

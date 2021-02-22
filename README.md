@@ -38,7 +38,7 @@ To view the same feeds on your phone, either export / import the `petrolette.con
 
 ### Client-side
 
-- [The "folded" flows remain so, considerably speeding up the start-up](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.feed.js#L201)
+- [The "folded" feeds remain so, considerably speeding up the start-up](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.feed.js#L201)
 - [Configurable search feed engine](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.prefs.js#L105)
 - [Scrollable menu, collapsible elements](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.main.js#L52)
 - [New themes](https://framagit.org/yphil/petrolette/-/blob/master/public/css/themes/night.css)

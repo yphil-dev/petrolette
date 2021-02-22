@@ -1284,8 +1284,10 @@ div.introjs-helperLayer {
 /* IntroJS (help tooltips) */
 .introjs-tooltip {
   background-color: var(--color-ui-qua) !important;
-  border: 1px solid var(--color-ui-sep);
+  border: 1px solid var(--color-ui-oct);
   color: var(--color-ui-pri) !important;
+  width: 360px !important;
+  max-width: 360px !important;
 }
 
 /* Gallery */
@@ -1390,7 +1392,7 @@ div#logo-title > .logo-title > a:hover {
   background-color: var(--color-ui-qua);
   border: 1px solid var(--color-ui-oct);
   border-radius: 5px;
-  width: 320px;
+  width: 360px;
   /* height: 220px; */
   max-width: 100%;
   padding: 2em;
@@ -1406,7 +1408,7 @@ div#logo-title > .logo-title > a:hover {
 }
 
 #beggar > a.ui-button {
-  margin-top: 1em;
+  margin: 1em 0 0.5em 0;
 }
 
 #beggar > p {
