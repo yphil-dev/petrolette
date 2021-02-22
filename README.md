@@ -11,6 +11,8 @@
 
 <!-- [![coverage](https://framagit.org/yphil/petrolette/badges/master/coverage.svg)](https://framagit.org/yphil/petrolette/-/pipelines) -->
 
+## Welcome to the Internet
+
 [Pétrolette](http://petrolette.space) is a news reading home page, [free](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). It is immediately usable **without registration** with the same URL on the desktop or a mobile device.
 
 News feeds are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser cache.
