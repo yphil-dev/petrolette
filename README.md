@@ -11,7 +11,7 @@
 
 ![Pétrolette](https://framagit.org/yphil/assets/-/raw/main/img/petrolette.png)
 
-[Pétrolette Official website](http://takeoff.petrolette.space)
+[Pétrolette Official website](http://petrolette.space)
 
 Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/decollage-de-la-petrolette-de-l-espace) ; Test instance [here](http://petrolette.space/).
 
@@ -40,6 +40,11 @@ npm install
 npm start
 xdg-open http://localhost:8000
 
+```
+#### Testing
+
+```javascript
+npm test
 ```
 
 ### LICENSE
