@@ -134,7 +134,9 @@ PTL.dialog = {
                 });
               }
 
-              var newUrl = $(this).find('input#feed-guess').val(),
+              let clean = DOMPurify.sanitize('<%= queryString %>');
+
+              var newUrl = DOMPurify.sanitize($(this).find('input#feed-guess').val()),
                   newType = $('#feedType :radio:checked').attr('id');
 
               $dataStore

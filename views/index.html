@@ -84,6 +84,7 @@
     <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="/bower/remotestorage/release/remotestorage.js"></script>
     <script src="/bower/rs-widget/build/widget.js"></script>
+    <script src="/bower/DOMPurify/dist/purify.min.js"></script>
 
     <script src="/static/js/PTL.main.js"></script>
     <script src="/static/js/PTL.prefs.js"></script>
@@ -458,7 +459,9 @@
      $(document).ready(function() {
        PTL.start();
 
-       PTL.queryString = '<%= queryString %>';
+       let clean = DOMPurify.sanitize('<%= queryString %>');
+
+       PTL.queryString = clean;
 
        PTL.tab.init();
 
