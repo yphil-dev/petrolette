@@ -11,27 +11,60 @@
 
 <!-- [![coverage](https://framagit.org/yphil/petrolette/badges/master/coverage.svg)](https://framagit.org/yphil/petrolette/-/pipelines) -->
 
-![Pétrolette](https://framagit.org/yphil/assets/-/raw/main/img/petrolette.png)
+[Pétrolette](http://petrolette.space) is a news reading home page, [free](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). It is immediately usable **without registration** with the same URL on the desktop or a mobile device.
 
-[Pétrolette Official website](http://petrolette.space)
+News feeds are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser cache.
 
-Read about it in French [ici](https://linuxfr.org/users/philippemc/journaux/decollage-de-la-petrolette-de-l-espace) ; Test instance [here](http://petrolette.space/).
+To view the same feeds on your phone, either export / import the `petrolette.conf` file, or (recommended) use the user's personal cloud synchronization feature.
 
-## Pétrolette is a track-free online news reader
+![Petrolette](https://framagit.org/yphil/assets/-/raw/main/img/petrolette.png)
 
-[Pétrolette](http://takeoff.petrolette.space/) is a #paranoid news reader : home page, usable **right away** (no installation, no registration, nothing) **totally free of charge**. It doesn’t ask you to register or create any sort of account, and won’t even ask your name. What you are reading is nobody’s (and certainly not GAFAM’s) business.
+## Features
 
-- Add your sources ([exemple of a source](https://hackernoon.com/feed)) ;
-- Organize them by creating groups and dragging & droppin’ sources in them ;
-- If you don’t know the address/location of the source, just enter a URL like “http://www.nytimes.com” and Pétrolette will search the NYT domain and find its source: (it’s http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml) ;
-- If you don’t have an URL, **you can even enter any term**, like "bitcoin crash" or "Zombie outbreak" and Pétrolette will build a "search source" that gets updated every time something happens.
-- Check the code, it’s #open.
+- Reads modern feeds (Atom, Media-RSS, etc.)
+- Searches for feeds in a page / website
+- Direct link to the article's resources (image, video, sound) for opening in an external reader
+- Advanced image management
+- Import / Export of the feeds file
+- Online synchronization (Cloud)
+- Construction of web search feeds
+- Mobile / responsive interface
+- Bookmarklet for adding the feed of a site to Pétrolette on the fly
+- Compatible with FLOSS browsers (uncompressed executable files, licenses available directly and in standard format)
 
-Pétrolette is a fantastic #news monitoring tool. Do you have researches to make, do you need to monitor tens of video channels, or you need your animals, flowers, all things nature hi-res pictures fix very day? Do you know that [NASA publishes tons of sources](https://www.nasa.gov/content/nasa-rss-feeds#what)?
+## New
 
-Pétrolette helps you discover new sources of information ; you read it everyday on your desktop or your phone/whatnot, this is your. Private News. Portal.
+### Client-side
 
-Pétrolette is given to you by the Free, Libre & Open-Source movement. I worked months on it (well, I needed it in the 1st place, I use it every hour of every day) and now I’m offering it to you ; [HELP me make it even better](https://liberapay.com/yPhil/donate) (yes, it’s possible) !!
+- [The "folded" flows remain so, considerably speeding up the start-up](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.feed.js#L201)
+- [Configurable search feed engine](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.prefs.js#L105)
+- [Scrollable menu, collapsible elements](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.main.js#L52)
+- [New themes](https://framagit.org/yphil/petrolette/-/blob/master/public/css/themes/night.css)
+
+### Server-side
+
+- [Compression](http://expressjs.com/en/advanced/best-practice-performance.html#use-gzip-compression)
+- [Process management](https://pm2.keymetrics.io/)
+- [CI / CD unit tests](https://framagit.org/yphil/petrolette/-/pipelines)
+- Reinforced security on the test instance ([Sanitize](https://github.com/pocketly/node-sanitize), [Helmet](https://expressjs.com/en/advanced/best-practice-security .html # use-helmet), etc.)
+
+### Companion libs
+
+- Rewrite of [Feedrat](https://framagit.org/yphil/feedrat) and [Favrat](https://framagit.org/yphil/favrat) in async / Await
+- [Installation directly from the repository (C-to-D no longer with npm)](https://framagit.org/yphil/petrolette/-/blob/master/package.json#L27)
+- CI / CD unit tests ([Feedrat](https://framagit.org/yphil/feedrat/-/pipelines) / [Favrat](https://framagit.org/yphil/favrat/-/pipelines))
+
+## In the pipe
+
+- [SSL / HTTPS](https://framagit.org/yphil/petrolette/-/issues/59)
+- [HTTP2](https://http2.github.io/faq/)
+- [Import Netvibes](https://framagit.org/yphil/petrolette/-/issues/65)
+- [Redesign of the flow configuration system](https://framagit.org/yphil/petrolette/-/issues/74)
+- [Recurrent search by keywords](https://framagit.org/yphil/petrolette/-/issues/70)
+- [Infinite / asynchronous scrolling in flows](https://framagit.org/yphil/petrolette/-/issues/63)
+- [User themes](https://framagit.org/yphil/petrolette/-/issues/75)
+- [Dedicated feeds for participating users](https://framagit.org/yphil/petrolette/-/issues/72)
+
 
 ### Installation
 
