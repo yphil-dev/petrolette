@@ -573,14 +573,17 @@ select {
   height: 30px;
 }
 
-fieldset,
-legend {
+fieldset {
   background: var(--color-ui-qua) !important;
   color: var(--color-ui-pri);
 }
 
 .menu legend {
   font-size: 9pt;
+}
+
+legend {
+  color: var(--color-ui-pri);
 }
 
 .js-enabled-only {
@@ -884,11 +887,14 @@ ul.help li.cloud::before {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: -moz-available;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
 }
 
 .flex-box > label {
   flex: 1;
+  flex-grow: 4;
 }
 
 nav#sideMenu .flex-box > * {
@@ -1247,6 +1253,34 @@ li.feed:hover div.feed-body {
   }
 }
 
+.introjs-skipbutton {
+  color: var(--color-ui-pri) !important;
+  font-size: 9pt;
+}
+
+h1.introjs-tooltip-title {
+  color: var(--color-ui-sec) !important;
+}
+
+.introjs-tooltiptext a {
+  color: var(--color-ui-pri) !important;
+  text-decoration: underline !important;
+}
+
+.introjs-tooltiptext a:hover {
+  color: var(--color-ui-sec) !important;
+  text-decoration: underline !important;
+}
+
+.introjs-skipbutton:hover {
+  color: var(--color-ui-sec) !important;
+}
+
+.introjs-tooltipbuttons {
+  border-top: none;
+}
+
+
 span.introjs-helperNumberLayer {
   /* background: linear-gradient(to bottom,#ff3019 0,#cf0404 100%); */
   background: var(--color-ui-sec);
@@ -1397,11 +1431,11 @@ div#logo-title > .logo-title > a:hover {
 #beggar a.beggarLink:link,
 #beggar a.beggarLink:visited {
   text-decoration: underline !important;
-  color: var(--color-ui-sec);
+  color: var(--color-ui-pri);
 }
 
 #beggar a.beggarLink:hover {
-  color: var(--color-ui-sen);
+  color: var(--color-ui-sec);
 }
 
 /* #beggar > h4 { */
