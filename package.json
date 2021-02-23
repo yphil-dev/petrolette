@@ -13,13 +13,13 @@
     "url": "https://framagit.org/yphil/petrolette"
   },
   "scripts": {
-    "start": "./node_modules/pm2/bin/pm2 start pm2.config.json ; ./node_modules/pm2/bin/pm2 update",
-    "start-ssl": "./node_modules/pm2/bin/pm2 start pm2.config.json --env ssl",
-    "restart": "./node_modules/pm2/bin/pm2 restart pm2.config.json",
-    "stop": "./node_modules/pm2/bin/pm2 stop petrolette",
-    "show": "./node_modules/pm2/bin/pm2 show petrolette",
-    "logs": "./node_modules/pm2/bin/pm2 logs petrolette",
-    "errors": "./node_modules/pm2/bin/pm2 logs --err --format",
+    "start": "pm2 start pm2.config.json ; pm2 update",
+    "start-ssl": "pm2 start pm2.config.json --env ssl",
+    "restart": "pm2 restart pm2.config.json",
+    "stop": "pm2 stop petrolette",
+    "show": "pm2 show petrolette",
+    "logs": "pm2 logs petrolette",
+    "errors": "pm2 logs --err --format",
     "test": "mocha --timeout 30s",
     "coverage": "nyc npm test",
     "postinstall": "bower install --allow-root && cd ./node_modules/favrat ; npm i && cd ../feedrat ; npm i"
