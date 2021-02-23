@@ -203,8 +203,8 @@ PTL.dialog = {
 
           var $tabFeedId = $('li#' + $dataStore.data('id')),
               $feedRefresh = $tabFeedId.find('.feedRefresh'),
-              $guessButton = $dialog.find('button#feed-guess').button(),
-              $guessSpinner = $dialog.find('button#feed-guess > i'),
+              $guessButton = $dialog.find('button#feedGuessButton').button(),
+              $guessSpinner = $dialog.find('button#feedGuessButton > i'),
               $guessField = $dialog.find('input#feed-guess'),
               $okButton = $dialog.find('.ui-dialog-buttonpane'),
               $killFeedFieldset = $('fieldset#kill-feed'),
