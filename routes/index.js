@@ -171,6 +171,11 @@ router.get('/favicon', function(req, res) {
 
 router.use(morgan('combined'));
 
+router.get('/robots.txt', function (req, res) {
+  res.type('text/plain');
+  res.send("User-agent: *\nDisallow: /");
+});
+
 router.get('/discover', function(req, res) {
 
   feedrat(req.query.url, req.query.searchPrefix, function(err, feed) {
