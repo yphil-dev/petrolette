@@ -35,12 +35,12 @@ describe('Pétrolette', function() {
     });
   });
 
-  it('Pétrolette is returning a favicon', function(done) {
-    request('http://localhost:8000/favicon/?url=http://lemonde.fr', { json: true }, (err, res, body) => {
-      if (err) return done(err);
-      body.should.eql('https://www.lemonde.fr/favicon.ico');
-      done();
-    });
-  });
+  // it('Pétrolette is returning a favicon', function(done) {
+  //   request('http://localhost:8000/favicon/?url=http://lemonde.fr', { json: true }, (err, res, body) => {
+  //     if (err) return done(err);
+  //     body.should.eql('https://www.lemonde.fr/favicon.ico');
+  //     done();
+  //   });
+  // });
 
 });
