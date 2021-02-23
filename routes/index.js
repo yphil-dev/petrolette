@@ -169,6 +169,8 @@ router.get('/favicon', function(req, res) {
   });
 });
 
+router.use(morgan('combined'));
+
 router.get('/discover', function(req, res) {
 
   feedrat(req.query.url, req.query.searchPrefix, function(err, feed) {
@@ -188,8 +190,6 @@ router.get('/discover', function(req, res) {
 router.get('/about/javascript', function(req, res) {
   res.render('javascript');
 });
-
-router.use(morgan('combined'));
 
 router.get('/', function(req, res) {
   res.render('index', {
