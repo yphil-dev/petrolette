@@ -2,7 +2,7 @@
   "apps" : [
     {
       "name"            : "petrolette",
-      "script"          : "./bin/www",
+      "script"          : "./http/server.js",
       "watch"           : true,
       "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
       "time"            : false,
