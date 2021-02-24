@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const app = require('../petrolette'),
+const petrolette = require('../petrolette'),
       debug = require('debug')('petrolette:server'),
       http = require('http'),
       fs = require('fs'),
       port = normalizePort('8000');
 
-app.set('port', port);
+petrolette.set('port', port);
 
 function isLocal() {
   switch( window.location.protocol ) {
@@ -33,7 +33,7 @@ function isLocal() {
 
 // const options = isLocal() ? '' : {cert: fs.readFileSync('../cert/fullchain.pem'), key: fs.readFileSync('../cert/privkey.pem')};
 
-var server = http.createServer(app);
+var server = http.createServer(petrolette);
 
 server.listen(port);
 server.on('error', onError);
