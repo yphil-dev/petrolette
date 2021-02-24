@@ -1,6 +1,6 @@
 const express = require('express'),
       path = require('path'),
-      index = require('./routes/index'),
+      index = require('./routes/router'),
       fs = require('fs'),
       pjson = require('./package.json'),
       bodyParser = require('body-parser'),
@@ -11,7 +11,6 @@ const express = require('express'),
 if (!fs.existsSync(path.join(__dirname, pjson.FAVICONS_CACHE_DIR))){
   fs.mkdirSync(path.join(__dirname, pjson.FAVICONS_CACHE_DIR));
 }
-
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);

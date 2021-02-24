@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const app = require('../app'),
+const app = require('../petrolette'),
       debug = require('debug')('petrolette:server'),
       http = require('http'),
       fs = require('fs'),
