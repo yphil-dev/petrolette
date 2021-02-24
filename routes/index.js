@@ -110,6 +110,14 @@ function getFeed (urlfeed, callback) {
 
 router.use(sanitize);
 
+router.use(function(req, res) {
+  res.send('404: Page not Found', 404);
+});
+
+router.use(function(error, req, res, next) {
+  res.send('500: Internal Server Error', 500);
+});
+
 router.get('/feed', function(req, res) {
 
   var dnsreq = request(req.query.feedurl);

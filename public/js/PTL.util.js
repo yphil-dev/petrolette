@@ -271,39 +271,39 @@ PTL.util = {
     dialog.setOptions({
       steps: [
         {
-          title: 'Everything starts here',
+          title: PTL.tr('Everything starts here'),
           element: 'input#feed-guess',
           intro: '<span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a feed from your search query">' + PTL.tr('Heck, enter anything, and Pétrolette will build a feed from your search query') + '</span>',
           position: 'bottom'
         },
         {
-          title: 'Find the feed!',
+          title: PTL.tr('Find the feed!'),
           element: 'button#feedGuessButton',
           intro: PTL.tr('Find the feed of this website, or build a new one from the search terms.'),
           position: 'left'
         },
         {
-          title: 'Keep everything tidy',
+          title: PTL.tr('Keep everything tidy'),
           element: 'fieldset#feedGroupFieldset',
           intro: PTL.tr('Move this feed to another group.'),
           position: 'bottom'
         },
         {
-          title: 'Feed type',
+          title: PTL.tr('Feed type'),
           element: 'fieldset#feedType',
           intro: PTL.tr('The type of feed: It can be all text, all image, or mixed.'),
           position: 'top'
         },
         {
-          title: 'Number of items',
+          title: PTL.tr('Number of items'),
           element: 'fieldset#feedLimitFieldset',
           intro: PTL.tr('How many new items should this feed display at a time?'),
           position: 'top'
         },
         {
-          title: 'B-bye!',
-          element: 'label#kill-feed',
-          intro: PTL.tr('Delete this feed'),
+          title: PTL.tr('You are in control now'),
+          element: '.button-ok',
+          intro: PTL.tr('Ok'),
           position: 'top'
         }
       ]
