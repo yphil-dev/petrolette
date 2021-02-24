@@ -101,6 +101,7 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
+        width: 600,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -214,14 +215,15 @@ PTL.dialog = {
               oldType = $dataStore.data('type'),
               oldLimit = $dataStore.data('limit');
 
-          $helpMiniButtonIcon = $('<span>')
-            .attr('class', 'ui-button-icon ui-icon ui-icon-help');
+          // $helpMiniButtonIcon = $('<div>')
+          //   .attr('class', 'helpMiniButtonIcon');
 
           $helpMiniButton = $('<button>')
-            .attr('class', 'ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-help')
+            .attr('class', 'ui-button ui-corner-all ui-widget')
+            .attr('id', 'helpMiniButton')
             .attr('title', PTL.tr('How does it work?'))
             .attr('type', 'button')
-            .append($helpMiniButtonIcon)
+            .text(PTL.tr('Take the tour'))
             .on('click', function() {
               PTL.util.help('dialog');
             }).appendTo($dialog.parent().find('.ui-dialog-titlebar'));

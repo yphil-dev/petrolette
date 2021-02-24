@@ -783,35 +783,18 @@ button.ui-state-success {
   cursor: grab;
 }
 
-.dialog button.help-button:focus,
-.dialog button.help-button:hover {
-  color: var(--color-ui-pri);
+#helpMiniButton {
+  font-size: 9pt;
+  font-weight: bold;
   background-color: var(--color-ui-success);
-}
-
-.ui-dialog .ui-dialog-titlebar-help {
-  background-color: var(--color-ui-success);
-  color: var(--color-ui-pri);
+  /* border-color: var(--color-ui-danger); */
   height: 20px;
-  margin: -10px 0 0 0;
   padding: 1px;
   position: absolute;
-  right: 2.5em;
-  top: 50%;
-  width: 20px;
+  right: 2.8em;
+  top: 8px;
+  width: 120px;
 }
-
-/* .ui-visual-focus { */
-
-/*   box-shadow: none; */
-
-/* } */
-
-/* li.feed-item > div.itemDiv > a > div.ptl-img > a { */
-
-/*   display: inline; */
-
-/* } */
 
 #helpDialog a {
   text-decoration: underline;

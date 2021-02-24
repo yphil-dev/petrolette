@@ -51,7 +51,7 @@ var PTL = (function() {
 
       $('#sideMenu legend').click(function() {
         $(this).children('i').toggleClass('unfold');
-        $(this).next().slideToggle(50);
+        $(this).next().toggle(50);
       });
 
       PTL.sync.attachWidget();
@@ -81,7 +81,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.feed.add($column, PTL.tr('New feed'), 'mixed', 8, 'on', true, false);
+        PTL.feed.add($column, '', 'mixed', 8, 'on', true, false);
       });
 
       $feedCodeButton.click(function(event) {
