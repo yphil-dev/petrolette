@@ -455,8 +455,7 @@ i.item-icon {
   color: var(--color-fg1);
 }
 
-i.danger,
-i.dangerous:hover {
+.dangerous:hover {
   color: var(--color-ui-danger);
 }
 

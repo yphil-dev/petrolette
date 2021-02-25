@@ -13,9 +13,7 @@ PTL.util = {
         xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
         xmlDoc.async = "false";
       }
-
       var json_str = jsontoStr(setJsonObj(xmlDoc));
-
       return (typeof(rstr) == 'undefined') ? JSON.parse(json_str) : json_str;
     };
 
@@ -65,13 +63,14 @@ PTL.util = {
   },
   importNetVibes:function(xml) {
 
-    var xml2json = new PTL.util.XMLtoJSON();
+    var xml2json = new PTL.util.XMLtoJSON(),
+        objson = xml2json.fromStr(xml);
 
-    var objson = xml2json.fromStr(xml);
+    var dbparsed = JSON.stringify(objson);
 
     console.log('ALL: %s (%s)', JSON.stringify(objson));
 
-    console.log('plop!: %s (%s)', objson.opml.attributes);
+    console.log('plop!: %s (%s)', objson.opml["@attributes"].version);
 
   },
   beg:function() {
@@ -87,7 +86,7 @@ PTL.util = {
     if (nextNag === 0) {
       PTL.dialog.beg();
       console.log('dateNow: %s (%s)', dateNow);
-      PTL.prefs.writeConfig('nextNag', dateNow + 43200000); // 12 hours
+      PTL.prefs.writeConfig('nextNag', dateNow + 86400000); // 24 hours
     }
 
     if (dateNow > nextNag) {

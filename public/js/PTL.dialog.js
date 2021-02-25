@@ -649,7 +649,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Delete'),
             title: PTL.tr('Wait! Are you sure?'),
-            class: 'translate',
+            class: 'dangerous translate',
             click: function() {
               $thisFeed.hide('fade', 1000, function() {
                 $(this).remove();
