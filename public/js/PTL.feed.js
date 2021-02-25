@@ -106,16 +106,14 @@ PTL.feed = {
         $prefsDiv = $('<div>').append($prefsIcon),
         $reloadDiv = $('<div>').append($reloadIcon);
 
-    // const feedUrlHost = new URL(url).host;
-
     var $titleDiv = $('<div>')
-        .attr('title', url)
+        .attr('title', url || PTL.tr('New feed'))
         .attr('class', 'feed-title trucate');
 
     var $titleLink = $('<a>')
         .attr('href', url)
         .attr('target', '_blank')
-        .html(url);
+        .html(url || PTL.tr('New feed'));
 
     $feedControls.hover (
       function() {$(this).find('.collapsible').show();},
@@ -160,7 +158,7 @@ PTL.feed = {
 
         if (clickNew) {
             $feed.prependTo($column);
-            PTL.dialog.feedPrefs($prefsIcon, true, isQueryString);
+          PTL.dialog.feedPrefs($prefsIcon, true, isQueryString);
         } else {
             $feed.appendTo($column);
             $reloadIcon.click();

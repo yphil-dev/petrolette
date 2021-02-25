@@ -417,7 +417,7 @@ i.feed-control {
 }
 
 i.feed-control:hover {
-  color: var(--color-fg2);
+  color: var(--color-fg6);
 }
 
 .ui-tab.ui-state-default a:hover {
@@ -445,6 +445,10 @@ i.item-icon {
 .ui-tab i.tab-closer {
   top: 2px;
   color: var(--color-bg1);
+}
+
+.ui-tab i.tab-closer:hover {
+  color: var(--color-danger);
 }
 
 .ui-tab.ui-state-active i {

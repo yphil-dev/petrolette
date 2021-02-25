@@ -34,33 +34,6 @@ var options = {
 
 router.use(sanitize);
 
-router.get('/parser', function (req, res) {
-
-  console.error('plop!!!: %s (%s)', req.query.x);
-
-  // var xml = req.query.xml;
-
-  // // console.error('xml: %s (%s)',xml, req);
-
-  // var json = parser.toJson(xml);
-
-  // if (json) {
-  //   res.send(json);
-  // } else if (err) {
-  //   console.log('err: %s (%s)', err, res);
-  //   res.status(500).send(err.code);
-  // } else {
-  //   res.status(500).send('Bad file');
-  // }
-
-  // var xml = "<foo attr=\"value\">bar</foo>";
-  // console.error("##### input -> %s", xml, req.query.plop);
-
-  // xml to json
-  // console.error("##### to json -> %s", json);
-
-});
-
 router.get('/feed', function(req, res) {
 
   var dnsreq = request(req.query.feedurl);
