@@ -27,7 +27,7 @@ PTL.tab = {
     });
 
     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
-      console.log('plop!: %s (%s)');
+      // console.log('plop!: %s (%s)');
       e.preventDefault();
       if (e.which === 1) {
         PTL.dialog.editGroup($(this));

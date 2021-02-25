@@ -11,7 +11,7 @@ const express = require('express'),
       pjson = require('../package.json'),
       Iconv = require('iconv').Iconv,
       sanitize = require('sanitize').middleware,
-      zlib = require('zlib'),
+      parser = require('xml2json'),
       morgan = require('morgan');
 
 require('events').EventEmitter.defaultMaxListeners = 15;
@@ -22,7 +22,44 @@ process.on('uncaughtException', function(err) {
   console.error('### Pétrolette uncaughtException: %s', err);
 });
 
+var options = {
+  object: false,
+  reversible: false,
+  coerce: true,
+  sanitize: false,
+  trim: false,
+  arrayNotation: false,
+  alternateTextNode: false
+};
+
 router.use(sanitize);
+
+router.get('/parser', function (req, res) {
+
+  console.error('plop!!!: %s (%s)', req.query.x);
+
+  // var xml = req.query.xml;
+
+  // // console.error('xml: %s (%s)',xml, req);
+
+  // var json = parser.toJson(xml);
+
+  // if (json) {
+  //   res.send(json);
+  // } else if (err) {
+  //   console.log('err: %s (%s)', err, res);
+  //   res.status(500).send(err.code);
+  // } else {
+  //   res.status(500).send('Bad file');
+  // }
+
+  // var xml = "<foo attr=\"value\">bar</foo>";
+  // console.error("##### input -> %s", xml, req.query.plop);
+
+  // xml to json
+  // console.error("##### to json -> %s", json);
+
+});
 
 router.get('/feed', function(req, res) {
 

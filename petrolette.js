@@ -1,6 +1,6 @@
 const express = require('express'),
       path = require('path'),
-      index = require('./routes/router'),
+      router = require('./routes/router'),
       fs = require('fs'),
       pjson = require('./package.json'),
       bodyParser = require('body-parser'),
@@ -24,7 +24,7 @@ app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DI
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 
-app.use('/', index);
+app.use('/', router);
 
 app.use(helmet.originAgentCluster());
 app.use(helmet.noSniff());

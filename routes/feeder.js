@@ -1,7 +1,8 @@
 const request = require('request'),
+      zlib = require('zlib'),
       FeedParser = require('feedparser');
 
-exports.getFeed = getFeed; 
+exports.getFeed = getFeed;
 
 function maybeDecompress (res, encoding) {
   var decompress;
@@ -77,7 +78,7 @@ function getFeed (urlfeed, callback) {
     })
     .on ('error', function (err) {
       var meta = this.meta;
-      console.error('HUUM (%s) %s %s', err.message, meta.title, urlfeed);
+      console.error('Error reading feed [%s] (%s)', err.message, urlfeed);
       callback (err.message);
     })
     .on ('end', function () {

@@ -300,6 +300,8 @@ var PTL = (function() {
               PTL.tab.empty(function() {
                 PTL.tab.populate(JSON.parse(e.target.result), true);
               });
+            } else {
+              PTL.util.importNetVibes(e.target.result);
             }
           };
         })(f);
