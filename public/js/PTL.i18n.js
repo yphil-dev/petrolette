@@ -42,18 +42,21 @@ PTL.i18n.translations = {
 
   "Pétrolette init finished OK" : { fr: "Pétrolette démarrage terminé OK", ja: "ペトロレットの初期化は正常に終了しました", es: "La inicialización de Pétrolette terminó bien" },
 
+  "OK": { fr: "OK", ja: "入る", es: "OK" },
   "Cancel": { fr: "Annuler", ja: "取り消す", es: "Cancelar" },
   "Delete": { fr: "Supprimer", ja: "削除", es: "Eliminar" },
   "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
   "Position": { fr: "Position", ja: "ポジション", es: "Posición" },
-  "OK": { fr: "OK", ja: "入る", es: "OK" },
   "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
+  "Sorry": { fr: "Désolé", ja: "ごめんなさい", es: "Perdón" },
 
   // Pétrolette
 
   "Whoops, no feeds!" : { fr: "Oups, pas de flux!", ja: "うわー、ソースはありません！", es: "¡Ups, sin fuentes!" },
   "Click here to add some." : { fr: "Cliquez ici pour en ajouter.", ja: "いくつか追加するにはここをクリックしてください。", es: "Haga clic aquí para agregar algunos." },
   "Group" : { fr: "Groupe", ja: "グループ", es: "Grupo" },
+
+  "Pétrolette can't read this file" : { fr: "Pétrolette ne pavient pas à lire ce fichier", ja: "Pétroletteはこのファイルを読み取ることができません", es: "Pétrolette no puede leer este archivo" },
 
   "Find the feed for this URL, or build a new one from the search query" : { fr: "Trouver le flux du site web, ou construire un flux à partir des termes de recherche" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
   "Move this feed to another group." : { fr: "Déplacer ce flux dans un autre groupe." , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo." },

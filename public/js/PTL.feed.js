@@ -218,7 +218,7 @@ PTL.feed = {
             .attr('href', data.feedLink)
             .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
 
-          if (data.error || data.feedItems.length == 0) {
+          if (data.error || (data.feedItems && data.feedItems.length == 0)) {
 
             var message = data.error.code ? data.error.code : PTL.tr('Empty feed');
 

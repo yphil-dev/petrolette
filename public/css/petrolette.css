@@ -1416,3 +1416,19 @@ div#logo-title > .logo-title > a:hover {
 /* #beggar > h4 { */
 /*   margin-top: 0; */
 /* } */
+
+
+#notify {
+  background-color: var(--color-ui-qua);
+  border: 1px solid var(--color-ui-sec);
+  border-radius: 5px;
+  width: 200px;
+  /* height: 220px; */
+  /* max-width: 100%; */
+  padding: 1em;
+  position: sticky;
+  bottom: 16px;
+  left: 16px;
+  z-index: 30;
+  /* flex-direction: column; */
+}

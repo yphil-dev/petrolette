@@ -33,6 +33,22 @@ PTL.dialog = {
     $beggar.fadeIn('fast');
 
   },
+  notify:function(title, text) {
+
+    const $notify = $('#notify'),
+          $h4 = $('#notify > h4').text(title),
+          $text = $('#notify > p').text(text);
+
+    $notify.fadeIn('fast', 'linear', function() {
+      setTimeout(function() {
+        $notify.fadeOut('slow');}, 5000);
+    });
+
+    $notify.click(function () {
+      $(this).fadeOut('fast');
+    });
+
+  },
   help:function() {
 
     $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {
@@ -59,7 +75,8 @@ PTL.dialog = {
 
           $(this).find('.help-button').button();
 
-          $(this).find('.help-bookmarklet').attr('href', 'javascript:void(window.open("' + window.location.href + '?add=" + window.location.href))');
+          $(this).find('.help-bookmarklet')
+            .attr('href', 'javascript:void(window.open("' + window.location.href + '?add=" + window.location.href))');
 
           $('.help-tour').on('click', function() {
             PTL.sideMenu('close');
@@ -73,6 +90,44 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
             PTL.dialog.kbShortcuts();
           });
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
+  },
+  importFeeds:function() {
+
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+
+      var $dialog = $(this),
+          $icon = $dialog.find('div.dialogImage > i');
+
+      $icon.addClass('icon-trash-empty danger');
+
+      $dialog.dialog({
+        title: PTL.tr('Import feeds'),
+        width: 600,
+        buttons: [
+          {
+            text: PTL.tr('Ok'),
+            title: PTL.tr('Ok'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+          $dialog.find('h1').text(PTL.tr('Invalid file'));
+          $dialog.find('h2#name').text('this file blah');
+          $dialog.find('p#number').text('sorry');
 
         }
       });
@@ -626,6 +681,8 @@ PTL.dialog = {
   killFeed:function($button) {
 
     $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+
+      console.log('plop: %s (%s)');
 
       var $dialog = $(this),
           $thisFeed = $button.parent().parent().parent().parent(),

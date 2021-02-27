@@ -140,6 +140,8 @@ PTL.tab = {
 
     $('#tabs').find('li[tabindex="0"]:first-child').focus();
 
+    PTL.tab.saveTabs();
+
   },
   empty:function(callback) {
     $('div#tabs ul li').remove();

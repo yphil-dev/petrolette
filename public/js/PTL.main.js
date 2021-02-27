@@ -296,13 +296,19 @@ var PTL = (function() {
 
         reader.onload = (function() {
           return function(e) {
+
+            console.log('PTL.util.isPTLStruct(e.target.result): %s (%s)', PTL.util.isPTLStruct(e.target.result));
+
             if (PTL.util.isPTLStruct(e.target.result)) {
               PTL.tab.empty(function() {
                 PTL.tab.populate(JSON.parse(e.target.result), true);
               });
+            } else if (PTL.util.isNV(e.target.result)) {
+              PTL.util.importNV(e.target.result);
             } else {
-              PTL.util.importNetVibes(e.target.result);
+              PTL.dialog.notify(PTL.tr('Sorry'), PTL.tr("Pétrolette can't read this file"));
             }
+
           };
         })(f);
 
