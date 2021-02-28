@@ -62,11 +62,11 @@ PTL.util = {
     };
   },
   isNV:function(xml) {
-    return xml.startsWith('<opml version="1.0">', 38);
+    return xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>');
   },
   importNV:function(xml) {
 
-    console.log('XML!!: %s (%s)', n);
+    // console.log('XML!!: %s (%s)', n);
 
     var xml2json = new PTL.util.XMLtoJSON(),
         objson = xml2json.fromStr(xml);
@@ -109,20 +109,6 @@ PTL.util = {
     });
 
   },
-  importFeeds:function(xml) {
-
-    var xml2json = new PTL.util.XMLtoJSON(),
-        objson = xml2json.fromStr(xml);
-
-    var dbparsed = JSON.stringify(objson);
-
-    console.log('ALL: %s (%s)', JSON.stringify(objson));
-
-    // objson.opml["@attributes"].version
-
-    console.log('plop!: %s (%s)', objson.opml["@attributes"].version);
-
-  },
   beg:function() {
 
     var nextNag = PTL.prefs.readConfig('nextNag');
@@ -131,20 +117,14 @@ PTL.util = {
 
     PTL.util.console(PTL.tr('Pétrolette needs you, nextNag is ' + nextNag), 'success');
 
-    // PTL.dialog.beg();
-
     if (nextNag === 0) {
       PTL.dialog.beg();
-      console.log('dateNow: %s (%s)', dateNow);
       PTL.prefs.writeConfig('nextNag', dateNow + 86400000); // 24 hours
     }
 
     if (dateNow > nextNag) {
-      console.log('YUP nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
       PTL.prefs.writeConfig('nextNag', dateNow + 43200000);
       PTL.dialog.beg();
-    } else {
-      console.log('NOPE nextNag: %s dateNow: %s (< %s)', nextNag, dateNow, nextNag + 120000 < dateNow);
     }
 
   },
@@ -154,7 +134,7 @@ PTL.util = {
 
     var d = new Date();
 
-    console.info('Pétrolette | %s (%s)', output, d.toLocaleString());
+    // console.info('Pétrolette | %s (%s)', output, d.toLocaleString());
 
     var $prompt = $('<span>')
         .attr('class', 'prompt')
@@ -265,13 +245,6 @@ PTL.util = {
       // console.log('Might be XML: %s', o);
 
     }
-
-    // if (isOldPTLStruct) {
-    //   PTL.util.console(PTL.tr('Old feeds file format: converting'), 'warning');
-    //   PTL.util.isOldPTLStruct(o);
-    //   }
-
-    console.log('isJson: %s (%s)', isJson);
 
     return isJson;
 

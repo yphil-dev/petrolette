@@ -97,44 +97,6 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  importFeeds:function() {
-
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
-
-      var $dialog = $(this),
-          $icon = $dialog.find('div.dialogImage > i');
-
-      $icon.addClass('icon-trash-empty danger');
-
-      $dialog.dialog({
-        title: PTL.tr('Import feeds'),
-        width: 600,
-        buttons: [
-          {
-            text: PTL.tr('Ok'),
-            title: PTL.tr('Ok'),
-            class: 'translate',
-            click: function() {
-              PTL.dialog.kill($dialog);
-            }
-          }
-        ],
-        open: function () {
-
-          $('.ui-widget-overlay').on('click', function() {
-            PTL.dialog.kill($dialog);
-          });
-
-          $dialog.find('h1').text(PTL.tr('Invalid file'));
-          $dialog.find('h2#name').text('this file blah');
-          $dialog.find('p#number').text('sorry');
-
-        }
-      });
-
-      $dialog.dialog('open');
-    });
-  },
   feedPrefs:function($button, isNewFeed) {
 
     $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {

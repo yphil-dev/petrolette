@@ -297,8 +297,6 @@ var PTL = (function() {
         reader.onload = (function() {
           return function(e) {
 
-            console.log('PTL.util.isPTLStruct(e.target.result): %s (%s)', PTL.util.isPTLStruct(e.target.result));
-
             if (PTL.util.isPTLStruct(e.target.result)) {
               PTL.tab.empty(function() {
                 PTL.tab.populate(JSON.parse(e.target.result), true);
