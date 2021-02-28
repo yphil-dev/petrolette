@@ -85,9 +85,7 @@ PTL.util = {
 
         for (var nbOfFeeds in feeds) {
           var thisFeed = {};
-
           totalNbOfFeed++;
-
           thisFeed.status = "on";
           thisFeed.limit = 6;
           thisFeed.type = "mixed";
