@@ -66,15 +66,15 @@ PTL.util = {
   importNV:function(xml) {
 
     var xml2json = new PTL.util.XMLtoJSON(),
-        objson = xml2json.fromStr(xml);
-
-    var dbparsed = JSON.stringify(objson);
-
-    var all = objson.opml.body.outline,
+        objson = xml2json.fromStr(xml),
+        dbparsed = JSON.stringify(objson),
+        all = objson.opml.body.outline,
         allTabs = [];
 
-    for (var i in all) {
-      var tabs = all[i],
+    var totalNbOfFeed = 0;
+
+    for (var nbOfTabs in all) {
+      var tabs = all[nbOfTabs],
           feeds = tabs.outline;
 
       for (var key in tabs.outline[0]) {
@@ -83,14 +83,16 @@ PTL.util = {
             thisTabFeeds = [],
             thisColFeeds = [];
 
-        for (var i in feeds) {
+        for (var nbOfFeeds in feeds) {
           var thisFeed = {};
+
+          totalNbOfFeed++;
 
           thisFeed.status = "on";
           thisFeed.limit = 6;
           thisFeed.type = "mixed";
-          thisFeed.url = feeds[i]["@attributes"].xmlUrl;
-          thisIndex = Number(feeds[i]["@attributes"].col) - 1;
+          thisFeed.url = feeds[nbOfFeeds]["@attributes"].xmlUrl;
+          thisIndex = Number(feeds[nbOfFeeds]["@attributes"].col) - 1;
           if (!thisColFeeds[thisIndex]) thisColFeeds[thisIndex] = [];
           thisColFeeds[thisIndex].push(thisFeed);
         }
@@ -103,7 +105,7 @@ PTL.util = {
 
     PTL.tab.empty(function() {
       PTL.tab.populate(allTabs, true);
-      PTL.util.console(PTL.tr('File OK'), 'success');
+      PTL.util.console(PTL.tr('Found %1 groups containing %2 feeds', nbOfTabs +1, totalNbOfFeed), 'success');
     });
 
   },
@@ -196,7 +198,7 @@ PTL.util = {
     try {
       var json = JSON.parse(o);
 
-      PTL.util.console(PTL.tr('File OK'), 'success');
+      PTL.util.console(PTL.tr('Valid Pétrolette feeds file'), 'success');
 
       isJson = true;
 
@@ -222,7 +224,7 @@ PTL.util = {
 
     }  catch(e) {
       isJson = false;
-      PTL.util.console(PTL.tr('Invalid file'), 'error');
+      PTL.util.console(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning');
     }
 
     if (isJson) {

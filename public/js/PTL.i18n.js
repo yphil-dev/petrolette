@@ -56,8 +56,6 @@ PTL.i18n.translations = {
   "Click here to add some." : { fr: "Cliquez ici pour en ajouter.", ja: "いくつか追加するにはここをクリックしてください。", es: "Haga clic aquí para agregar algunos." },
   "Group" : { fr: "Groupe", ja: "グループ", es: "Grupo" },
 
-  "Pétrolette can't read this file" : { fr: "Pétrolette ne pavient pas à lire ce fichier", ja: "Pétroletteはこのファイルを読み取ることができません", es: "Pétrolette no puede leer este archivo" },
-
   "Find the feed for this URL, or build a new one from the search query" : { fr: "Trouver le flux du site web, ou construire un flux à partir des termes de recherche" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
   "Move this feed to another group." : { fr: "Déplacer ce flux dans un autre groupe." , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo." },
   "The type of feed: It can be all text, all image, or mixed." : { fr: "Quel type de flux ? Tout le texte, toute l'image, ou les deux.", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de flux? Todo el texto, toda la imagen o mixto." },
@@ -197,7 +195,14 @@ PTL.i18n.translations = {
   "Example feeds" : { fr: "Exemples de flux" , ja: "情報源の例", es: "Ejemplos de fuentes" },
 
   "Data structure OK: %1 groups containing %2 feeds" : { fr: "Structure de données OK: %1 groupes contenant %2 flux" , ja: "データ構造OK：%2のソースを含むグループ%1", es: "Estructura de datos OK: %1 grupos que contienen %2 fuentes" },
+
   "Invalid file" : { fr: "Fichier non valide" , ja: "無効なファイル", es: "Archivo inválido" },
+
+  "This is not a valid Pétrolette feeds file" : { fr: "Ceci n'est pas un fichier de flux Pétrolette valide" , ja: "これは有効なPétroletteフィードファイルではありません", es: "Este no es un archivo de feeds de Pétrolette válido" },
+
+  "Valid Pétrolette feeds file" : { fr: "Fichier de flux Pétrolette valide" , ja: "これは有効なPétroletteフィードファイルです", es: "Archivo de feeds de Pétrolette válido" },
+
+  "Pétrolette can't read this file" : { fr: "Pétrolette ne pavient pas à lire ce fichier", ja: "Pétroletteはこのファイルを読み取ることができません", es: "Pétrolette no puede leer este archivo" },
 
   "Edit group" : { fr: "Modifier groupe" , ja: "グループの編集", es: "Editar grupo" },
   "Group name" : { fr: "Nom du groupe" , ja: "グループ名", es: "Nombre de la grupo" },
