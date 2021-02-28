@@ -5,7 +5,7 @@ PTL.util = {
 
     this.fromStr = function(xml, rstr) {
       var xmlDoc;
-      if(window.DOMParser) {
+      if (window.DOMParser) {
         var getxml = new DOMParser();
         xmlDoc = getxml.parseFromString(xml,"text/xml");
       }
@@ -49,7 +49,6 @@ PTL.util = {
       return js_obj;
     };
 
-    // https://coursesweb.net/javascript/convert-xml-json-javascript_s2
     var jsontoStr = function(js_obj) {
       var rejsn = JSON.stringify(js_obj, undefined, 2)
           .replace(/(\\t|\\r|\\n)/g, '')
@@ -65,8 +64,6 @@ PTL.util = {
     return xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>');
   },
   importNV:function(xml) {
-
-    // console.log('XML!!: %s (%s)', n);
 
     var xml2json = new PTL.util.XMLtoJSON(),
         objson = xml2json.fromStr(xml);
@@ -106,6 +103,7 @@ PTL.util = {
 
     PTL.tab.empty(function() {
       PTL.tab.populate(allTabs, true);
+      PTL.util.console(PTL.tr('File OK'), 'success');
     });
 
   },
