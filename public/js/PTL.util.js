@@ -111,11 +111,10 @@ PTL.util = {
   },
   beg:function() {
 
-    var nextNag = PTL.prefs.readConfig('nextNag');
-    const dateNow = Date.now();
+    const dateNow = Date.now(),
+          nextNag = PTL.prefs.readConfig('nextNag');
 
-
-    PTL.util.console(PTL.tr('Pétrolette needs you, nextNag is ' + nextNag), 'success');
+    PTL.util.console(PTL.tr('Pétrolette needs you'), 'success');
 
     if (nextNag === 0) {
       PTL.dialog.beg();
