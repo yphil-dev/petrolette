@@ -87,7 +87,7 @@ PTL.tab = {
     $('a.rs-help').text(PTL.tr(' More info'));
 
     if (!feeds || feeds.length <= 0) {
-      PTL.util.console(PTL.tr('No feeds found'), 'warning');
+      PTL.util.say(PTL.tr('No feeds found'), 'warning');
       feeds = ['empty'];
     }
 
@@ -104,7 +104,7 @@ PTL.tab = {
       });
     });
 
-    PTL.util.console(PTL.tr('Data structure OK: %1 groups containing %2 feeds', nbOfGroups, nbOfFeeds), 'success');
+    PTL.util.say(PTL.tr('Data structure OK: %1 groups containing %2 feeds', nbOfGroups, nbOfFeeds), 'success');
 
     progress.init(nbOfFeeds);
 

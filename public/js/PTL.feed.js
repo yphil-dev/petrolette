@@ -211,7 +211,7 @@ PTL.feed = {
           $feedBody.empty();
 
         }).fail(function(error) {
-            PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
+          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
         }).done(function(data) {
 
           $feedLink.text(data.feedTitle || feedUrl)
@@ -222,7 +222,7 @@ PTL.feed = {
 
             var message = (data.error && data.error.code) ? data.error.code : PTL.tr('Empty feed');
 
-            PTL.util.console(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
+            PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
 
             var $w3cLink = $('<a>'),
                 $validCssIcon = $('<i>');

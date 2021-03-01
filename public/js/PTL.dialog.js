@@ -616,7 +616,7 @@ PTL.dialog = {
               if ($.parseJSON(PTL.prefs.readConfig('feeds')).length > 0) {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
               } else {
-                PTL.util.console(PTL.tr('Zero tabs!'), 'error');
+                PTL.util.say(PTL.tr('Zero tabs!'), 'error');
               }
 
             }

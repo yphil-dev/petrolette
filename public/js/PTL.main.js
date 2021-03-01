@@ -8,9 +8,7 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      PTL.util.console(PTL.tr('Pétrolette starting up OK'), 'success');
-
-
+      PTL.util.say(PTL.tr('Pétrolette starting up OK'), 'success');
 
       var $sideMenu = $('nav#sideMenu'),
           $overlay = $('#overlay'),
@@ -304,7 +302,7 @@ var PTL = (function() {
             } else if (PTL.util.isNV(e.target.result)) {
               PTL.util.importNV(e.target.result);
             } else {
-              PTL.dialog.notify(PTL.tr('Sorry'), PTL.tr("Pétrolette can't read this file"));
+              PTL.util.say(PTL.tr("Pétrolette can't read this file"), 'warning', true);
             }
 
           };

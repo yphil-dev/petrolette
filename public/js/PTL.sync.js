@@ -65,17 +65,17 @@ PTL.sync = (function() {
 
   remoteStorage.on('connected', function() {
     PTL.synchronized = true;
-    PTL.util.console(PTL.tr('Connected to remote storage'), 'ok');
+    PTL.util.say(PTL.tr('Connected to remote storage'), 'ok');
   });
 
   remoteStorage.on('not-connected', function() {
     PTL.synchronized = false;
-    PTL.util.console(PTL.tr('NOT connected to remote storage'), 'warning');
+    PTL.util.say(PTL.tr('NOT connected to remote storage'), 'warning');
   });
 
   remoteStorage.on('disconnected', function() {
     PTL.synchronized = false;
-    PTL.util.console(PTL.tr('Disconnected from remote storage'), 'warning');
+    PTL.util.say(PTL.tr('Disconnected from remote storage'), 'warning');
 
   });
 
@@ -109,7 +109,7 @@ PTL.sync = (function() {
         })
         .catch((err) => {
 
-          PTL.util.console(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err), 'warning');
+          PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err), 'warning');
 
           PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
 
@@ -120,7 +120,7 @@ PTL.sync = (function() {
 
       remoteStorage.petrolette.write(feeds)
         .catch((err) => {
-          PTL.util.console(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
+          PTL.util.say(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
         });
 
     }

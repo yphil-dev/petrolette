@@ -103,7 +103,7 @@ PTL.util = {
 
     PTL.tab.empty(function() {
       PTL.tab.populate(allTabs, true);
-      PTL.util.console(PTL.tr('Found %1 groups containing %2 feeds', nbOfTabs +1, totalNbOfFeed), 'success');
+      PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', nbOfTabs +1, totalNbOfFeed), 'success', true);
     });
 
   },
@@ -112,7 +112,7 @@ PTL.util = {
     const dateNow = Date.now(),
           nextNag = PTL.prefs.readConfig('nextNag');
 
-    PTL.util.console(PTL.tr('Pétrolette needs you'), 'success');
+    PTL.util.say(PTL.tr('Pétrolette needs you'), 'success');
 
     if (nextNag === 0) {
       PTL.dialog.beg();
@@ -125,18 +125,17 @@ PTL.util = {
     }
 
   },
-  console:function(output, type) {
+  say:function(text, type, notify) {
 
-    var $lines = $('#console div');
+    const $lines = $('#console div'),
+          d = new Date();
 
-    var d = new Date();
-
-    // console.info('Pétrolette | %s (%s)', output, d.toLocaleString());
+    if (notify) PTL.dialog.notify(PTL.tr(type[0].toUpperCase() + type.substring(1)), PTL.tr(text));
 
     var $prompt = $('<span>')
         .attr('class', 'prompt')
         .text('#');
-    var $line = $('<span>').text(output);
+    var $line = $('<span>').text(text);
 
     $('#console').append($('<div>')
                          .attr('class', type || 'normal')
@@ -145,13 +144,19 @@ PTL.util = {
 
     $('#console').animate({scrollTop: $('#console').prop("scrollHeight")}, 500);
 
-    if ($lines.length > 50) {
-      $lines.last().remove();
-    }
+    if ($lines.length > 50) $lines.last().remove();
 
   },
   isUrl:function(u) {
-    return new RegExp('^(?:[a-z]+:)?//', 'i').test(u);
+    // return new RegExp('^(?:[a-z]+:)?//', 'i').test(u);
+
+    try {
+      new Url.URL(s);
+      return true;
+    } catch (err) {
+      return false;
+    }
+
   },
   sanitizeInput:function(i) {
     var doc = new DOMParser().parseFromString(i, 'text/html');
@@ -181,7 +186,7 @@ PTL.util = {
       groups.push(group);
     });
 
-    PTL.util.console(PTL.tr('Found %1 groups containing %2 feeds', nbGroups, nbFeeds), 'success');
+    PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', nbGroups, nbFeeds), 'success');
 
     PTL.tab.populate(groups, true);
   },
@@ -195,10 +200,8 @@ PTL.util = {
     try {
       var json = JSON.parse(o);
 
-      PTL.util.console(PTL.tr('Valid Pétrolette feeds file'), 'success');
-
+      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success');
       isJson = true;
-
       json.forEach(function(group) {
 
         groups.push(group);
@@ -221,21 +224,21 @@ PTL.util = {
 
     }  catch(e) {
       isJson = false;
-      PTL.util.console(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning');
+      PTL.util.say(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning');
     }
 
     if (isJson) {
 
       if (groups.length < 1) {
-        // PTL.util.console(PTL.tr('Found valid json file, but no groups in it'), 'warning');
+        // PTL.util.say(PTL.tr('Found valid json file, but no groups in it'), 'warning');
       }
 
       if (isJson && groups.length > 0 && feeds.length < 1) {
-        // PTL.util.console(PTL.tr('Valid json file with %1 groups in it, but you should put feeds in it', groups.length), 'warning');
+        // PTL.util.say(PTL.tr('Valid json file with %1 groups in it, but you should put feeds in it', groups.length), 'warning');
       }
 
       if (isJson && groups.length > 0 && feeds.length > 0)  {
-        // PTL.util.console(PTL.tr('Found %1 groups containing %2 feeds', groups.length, feeds.length), 'ok');
+        // PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', groups.length, feeds.length), 'ok');
       }
     } else {
 
@@ -393,149 +396,149 @@ PTL.util = {
           intro: PTL.tr('The type of feed: It can be all text, all image, or mixed.'),
           position: 'top'
         },
-            {
-              title: PTL.tr('Number of items'),
-              element: 'fieldset#feedLimitFieldset',
-              intro: PTL.tr('How many new items should this feed display at a time?'),
-              position: 'top'
-            },
-            {
-              title: PTL.tr('You are in control now'),
-              element: '.button-ok',
-              intro: PTL.tr('Ok'),
-              position: 'top'
-            }
-          ]
-        });
-
-        menu.setOptions({
-          steps: [
-            {
-              element: 'button#fileImport',
-              intro: PTL.tr('Open / import tabs and feeds.')
-            },
-            {
-              element: 'button#saveTabs',
-              intro: PTL.tr('Save / Export tabs and feeds.')
-            },
-            {
-              element: 'label#dropTabLabel',
-              intro: PTL.tr('If this is set, when you drag & drop one or more feed(s) in a tab, said tab opens.')
-            },
-            {
-              element: 'div#themeBox',
-              intro: PTL.tr('View Pétrolette according to the time of day.')
-            },
-            {
-              element: 'fieldset#galleryBox',
-              intro: PTL.tr('When you click an image, you can view it in a gallery, and start a slideshow.')
-            },
-            {
-              element: 'button#profile',
-              intro: PTL.tr('Reset Pétrolette according to your political mood of the week.')
-            },
-            {
-              element: 'button#donate',
-              intro: PTL.tr('Help Pétrolette according to your spiritual mood of the day.')
-            }
-          ]
-        });
-
-        ui.setOption('prevLabel', PTL.tr('Prev'));
-        ui.setOption('nextLabel', PTL.tr('Next'));
-        ui.setOption('skipLabel', PTL.tr('Skip'));
-        ui.setOption('doneLabel', PTL.tr('Got it!'));
-
-        dialog.setOption('prevLabel', PTL.tr('Prev'));
-        dialog.setOption('nextLabel', PTL.tr('Next'));
-        dialog.setOption('skipLabel', PTL.tr('Skip'));
-        dialog.setOption('doneLabel', PTL.tr('Got it!'));
-
-        dialog.setOption('overlayOpacity', 0);
-        ui.setOption('overlayOpacity', 0.2);
-
-        dialog.setOption('hideNext', true);
-        dialog.setOption('hidePrev', true);
-
-        if (type === 'menu') {
-          dialog.exit();
-          menu.start();
-          $('.introjs-fixParent').css('position', 'absolute');
-        } else if (type === 'dialog') {
-          menu.exit();
-          dialog.start();
-        } else {
-          dialog.exit();
-          $('#menu > .handle').click();
-          $('.feed').first().find('.collapsible').show('fade', 'fast');
-          ui.start();
+        {
+          title: PTL.tr('Number of items'),
+          element: 'fieldset#feedLimitFieldset',
+          intro: PTL.tr('How many new items should this feed display at a time?'),
+          position: 'top'
+        },
+        {
+          title: PTL.tr('You are in control now'),
+          element: '.button-ok',
+          intro: PTL.tr('Ok'),
+          position: 'top'
         }
+      ]
+    });
 
-        // $('.introjs-button').button();
+    menu.setOptions({
+      steps: [
+        {
+          element: 'button#fileImport',
+          intro: PTL.tr('Open / import tabs and feeds.')
+        },
+        {
+          element: 'button#saveTabs',
+          intro: PTL.tr('Save / Export tabs and feeds.')
+        },
+        {
+          element: 'label#dropTabLabel',
+          intro: PTL.tr('If this is set, when you drag & drop one or more feed(s) in a tab, said tab opens.')
+        },
+        {
+          element: 'div#themeBox',
+          intro: PTL.tr('View Pétrolette according to the time of day.')
+        },
+        {
+          element: 'fieldset#galleryBox',
+          intro: PTL.tr('When you click an image, you can view it in a gallery, and start a slideshow.')
+        },
+        {
+          element: 'button#profile',
+          intro: PTL.tr('Reset Pétrolette according to your political mood of the week.')
+        },
+        {
+          element: 'button#donate',
+          intro: PTL.tr('Help Pétrolette according to your spiritual mood of the day.')
+        }
+      ]
+    });
 
-      },
-      translate:function() {
+    ui.setOption('prevLabel', PTL.tr('Prev'));
+    ui.setOption('nextLabel', PTL.tr('Next'));
+    ui.setOption('skipLabel', PTL.tr('Skip'));
+    ui.setOption('doneLabel', PTL.tr('Got it!'));
 
-        $('.translate').each(function() {
+    dialog.setOption('prevLabel', PTL.tr('Prev'));
+    dialog.setOption('nextLabel', PTL.tr('Next'));
+    dialog.setOption('skipLabel', PTL.tr('Skip'));
+    dialog.setOption('doneLabel', PTL.tr('Got it!'));
 
-          if ($(this).data('title')) {
-            $(this).prop('title', PTL.tr($(this).data('title')));
-          }
+    dialog.setOption('overlayOpacity', 0);
+    ui.setOption('overlayOpacity', 0.2);
 
-          if ($(this).data('content')) {
-            $(this).text(PTL.tr($(this).data('content')));
-          }
+    dialog.setOption('hideNext', true);
+    dialog.setOption('hidePrev', true);
 
-        });
+    if (type === 'menu') {
+      dialog.exit();
+      menu.start();
+      $('.introjs-fixParent').css('position', 'absolute');
+    } else if (type === 'dialog') {
+      menu.exit();
+      dialog.start();
+    } else {
+      dialog.exit();
+      $('#menu > .handle').click();
+      $('.feed').first().find('.collapsible').show('fade', 'fast');
+      ui.start();
+    }
 
-      },
-      getLocation: function(href) {
-        var l = document.createElement("a");
-        l.href = href;
-        return l;
-      },
-      buildProgress : function() {
+    // $('.introjs-button').button();
 
-        var progress = { step: 0 };
+  },
+  translate:function() {
 
-        progress.init = function( steps ) {
+    $('.translate').each(function() {
 
-          var $progressBar = $('#progress-bar');
-          this.progressBar = $progressBar;
-
-          var $progressLabel = $('.progress-label');
-          this.progressLabel =  $progressLabel.removeClass('on');
-
-          $progressBar.progressbar({
-            value: 1,
-            complete: function() {
-              $progressLabel.addClass('on');
-            }
-          });
-
-          this.steps = steps - 1;
-        };
-        progress.increment = function() {
-
-          this.progressBar.progressbar('value', Math.ceil(100 * this.step / this.steps));
-          this.progressLabel.text(this.step + '/' + this.steps + ' ' + PTL.tr('feeds loaded'));
-
-          this.step++;
-
-        };
-
-        return progress;
-      },
-      milliToSecs : function(s) {
-        var ms = s % 1000;
-        s = (s - ms) / 1000;
-        var secs = s % 60;
-        s = (s - secs) / 60;
-        // var mins = s % 60;
-        // var hrs = (s - mins) / 60;
-
-        return parseFloat(secs + '.' + ms.toFixed(1));
+      if ($(this).data('title')) {
+        $(this).prop('title', PTL.tr($(this).data('title')));
       }
+
+      if ($(this).data('content')) {
+        $(this).text(PTL.tr($(this).data('content')));
+      }
+
+    });
+
+  },
+  getLocation: function(href) {
+    var l = document.createElement("a");
+    l.href = href;
+    return l;
+  },
+  buildProgress : function() {
+
+    var progress = { step: 0 };
+
+    progress.init = function( steps ) {
+
+      var $progressBar = $('#progress-bar');
+      this.progressBar = $progressBar;
+
+      var $progressLabel = $('.progress-label');
+      this.progressLabel =  $progressLabel.removeClass('on');
+
+      $progressBar.progressbar({
+        value: 1,
+        complete: function() {
+          $progressLabel.addClass('on');
+        }
+      });
+
+      this.steps = steps - 1;
     };
+    progress.increment = function() {
+
+      this.progressBar.progressbar('value', Math.ceil(100 * this.step / this.steps));
+      this.progressLabel.text(this.step + '/' + this.steps + ' ' + PTL.tr('feeds loaded'));
+
+      this.step++;
+
+    };
+
+    return progress;
+  },
+  milliToSecs : function(s) {
+    var ms = s % 1000;
+    s = (s - ms) / 1000;
+    var secs = s % 60;
+    s = (s - secs) / 60;
+    // var mins = s % 60;
+    // var hrs = (s - mins) / 60;
+
+    return parseFloat(secs + '.' + ms.toFixed(1));
+  }
+};
 
 // @license-end
