@@ -183,8 +183,6 @@ PTL.feed = {
         $feedToggle = $feed.find('.feed-toggle'),
         $feedIcon = $feed.find('.feed-toggle > i');
 
-    console.log('feedLimit: %s (%s)', feedLimit);
-
     $feedBody.css('height', feedLimit);
 
     var l = PTL.util.getLocation(feedUrl),

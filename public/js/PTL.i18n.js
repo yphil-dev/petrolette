@@ -420,7 +420,7 @@ PTL.i18n.translations = {
 
   "Index" : { fr: "Indice", ja: "インデックス", es: "Índice" },
 
-  "Items" : { fr: "Articles", ja: "記事", es: "Elementos" },
+  "Height" : { fr: "Hauteur", ja: "高さ", es: "Altura" },
 
   "Number of items displayed in this feed" : { fr: "Nombre d'articles affichés dans ce flux", ja: "このソースの項目数", es: "Número de elementos en este fuente" },
   "Number of feeds" : { fr: "Nombre de flux", ja: "ソース数", es: "Cantidad de fuentes" },
