@@ -299,7 +299,7 @@ PTL.dialog = {
           $dialog.find('div#feedLimit').slider({
             value: oldLimit,
             min: 1,
-            max: 128,
+            max: 600,
             step: 1,
             create: function() {
               $('input#feedLimit').val(oldLimit);
@@ -317,7 +317,7 @@ PTL.dialog = {
           });
 
           $dialog.on('submit', function () {
-            PTL.feed.populate($feedRefresh);
+            PTL.feed.populate($feedRefresh, $dataStore.data('limit'));
             PTL.tab.saveTabs();
             $(this).dialog('destroy');
             return false;
