@@ -24,7 +24,7 @@ PTL.feed = {
             $(this).removeClass('fold')
               .parent().parent().parent()
               .children('div.feed-body')
-              .slideUp(350);
+              .addClass('folded');
             $feedControls.data('status', 'off');
             $reloadIcon.removeClass('icon-refresh')
               .addClass('icon-pin');
@@ -32,7 +32,7 @@ PTL.feed = {
             $(this).addClass('fold')
               .parent().parent().parent()
               .children('div.feed-body')
-              .slideDown(350);
+              .removeClass('folded');
             $feedControls.data('status', 'on');
             $reloadIcon.removeClass('icon-pin')
               .addClass('icon-refresh');
@@ -200,7 +200,6 @@ PTL.feed = {
       if ($dataStore.data('status') == 'on') {
 
         $feedIcon.removeClass('fold');
-
         $refreshButton.addClass('spin');
         $feedLink.removeClass('danger');
 
@@ -447,10 +446,12 @@ PTL.feed = {
                   .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
                 $image = $('<img>')
-                  .attr('src', imageUrl)
+                  .attr('src', '/static/images/loading.jpg')
+                  .attr('data-srcset', imageUrl)
+                  .attr('srcset', 'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==')
                   .attr('title', $summary.trim())
                   .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
-                  .attr('class', 'ptl-img b-lazy')
+                  .attr('class', 'ptl-img responsively-lazy')
                   .appendTo($imageLink);
 
                 if (PTL.prefs.readConfig('brokenImages') === 'hide') $image.attr('onerror', "this.style.display='none'");
@@ -478,6 +479,12 @@ PTL.feed = {
         });
 
       } else {
+
+        $dataStore
+          .parent()
+          .parent()
+          .children('div.feed-body')
+          .addClass('folded');
 
         const u = new URL(feedUrl);
 

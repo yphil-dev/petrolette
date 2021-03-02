@@ -240,7 +240,7 @@ PTL.dialog = {
             .attr('id', 'helpMiniButton')
             .attr('title', PTL.tr('How does it work?'))
             .attr('type', 'button')
-            .text(PTL.tr('Take the tour'))
+            .text(PTL.tr('Help'))
             .on('click', function() {
               PTL.util.help('dialog');
             }).appendTo($dialog.parent().find('.ui-dialog-titlebar'));
