@@ -189,9 +189,10 @@ PTL.feed = {
           timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds(),
           subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
-      if (subdomain === 'rss' || subdomain === 'feeds') {
-        feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
-      }
+      // if (subdomain === 'rss' || subdomain === 'feeds') {
+      //   console.log('wopop!: %s (%s)', subdomain);
+      //   feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
+      // }
 
       $feedIcon.addClass('fold');
       $button.removeClass('spin');
@@ -438,7 +439,7 @@ PTL.feed = {
 
               } else if (imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
-                if (!PTL.util.isUrl(imageUrl)) imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
+                // if (!PTL.util.isUrl(imageUrl)) imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
 
                 $imageLink
                   .attr('href', imageUrl)
