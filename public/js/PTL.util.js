@@ -97,8 +97,8 @@ PTL.util = {
         thisTabFeeds.push(thisColFeeds);
         thisTab.columns = thisColFeeds;
         thisTab.name = tab.title;
+        allTabs.push(thisTab);
       }
-      allTabs.push(thisTab);
     }
 
     PTL.tab.empty(function() {
