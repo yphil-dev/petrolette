@@ -397,6 +397,23 @@ PTL.feed = {
             }
 
             if (item.enclosures[0].url.match(/\.(ogg|mp3|mp4)$/)) {
+
+              var soundPlayer      = document.createElement('audio');
+              soundPlayer.id       = 'audio-player';
+              soundPlayer.controls = 'controls';
+              soundPlayer.src      = item.enclosures[0].url;
+              soundPlayer.type     = 'audio/mpeg';
+
+              if (item.enclosures[0].url.match(/\.(ogg)$/)) {
+                console.log('ogg!: %s (%s)');
+                soundPlayer.type     = 'application/ogg';
+              } else {
+                console.log('mpeg!: %s (%s)');
+                soundPlayer.type     = 'audio/mpeg';
+              }
+
+              $itemDiv.append(soundPlayer);
+
               $soundLink
                 .attr('href', item.enclosures[0].url)
                 .appendTo($itemDiv);
