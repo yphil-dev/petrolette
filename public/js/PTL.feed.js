@@ -429,7 +429,7 @@ PTL.feed = {
                   $('<a>')
                     .attr('href', imageUrls[i])
                     .attr('data-fancybox', 'gallery')
-                    .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + $summary.trim() + '</a>')
+                  // .attr('data-caption', $imageLinkButton)
                     .appendTo($image)
                     .append($('<img>')
                             .attr('src', imageUrls[i])
@@ -439,15 +439,16 @@ PTL.feed = {
 
               } else if (imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
-                // if (!PTL.util.isUrl(imageUrl)) imageUrl = feedHost + '/' + imageUrl.substring(imageUrl.indexOf("/") + 1);
-
+                // Can't pass a JQ object as the button
                 $imageLink
                   .attr('href', imageUrl)
+                  .attr('title', $summary.trim())
                   .attr('data-fancybox', 'gallery')
-                  .attr('data-caption', '<a class="ui-button ui-corner-all" href="' + item.link + '">' + item.title + '</a>');
+                  .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
                 $image = $('<img>')
                   .attr('src', imageUrl)
+                  .attr('title', $summary.trim())
                   .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
                   .attr('class', 'ptl-img b-lazy')
                   .appendTo($imageLink);
