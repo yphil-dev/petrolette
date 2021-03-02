@@ -480,7 +480,7 @@ PTL.i18n.translations = {
 
   "Delete this feed" : { fr: "Supprimer ce flux" , ja: "このソースを削除してください", es: "Eliminar esta fuente" },
 
-  "Delete this feed." : { fr: "Supprimer ce flux." , ja: "このソースを削除してください。", es: "Eliminar esta fuente." },
+  "Delete the [%1] tab" : { fr: "Supprimer l'onglet [%1]" , ja: "本当にこのフォルダを削除しますか？", es: "Eliminar el carpeta [%1]" },
 
   "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar esta fuente" },
 
@@ -495,7 +495,6 @@ PTL.i18n.translations = {
   "Really delete this feed?" : { fr: "Réellement supprimer ce flux ?", ja: "本当にこのフィードを削除しますか？", es: "¿Realmente borraste este feed?" },
 
   "Really delete this column?" : { fr: "Vraiment supprimer cette colonne ?", ja: "本当にこの列を削除しますか？", es: "¿Realmente borras esta columna?" },
-
 
 
   "Really delete this tab?" : { fr: "Supprimer définitivement cet onglet ?", ja: "本当にこのフォルダを削除しますか？", es: "¿De verdad borras esta carpeta?" },

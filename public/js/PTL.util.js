@@ -89,8 +89,8 @@ PTL.util = {
           thisFeed.status = "on";
           thisFeed.limit = 6;
           thisFeed.type = "mixed";
-          thisFeed.url = feeds[nbOfFeeds]["@attributes"].xmlUrl;
-          thisIndex = Number(feeds[nbOfFeeds]["@attributes"].col) - 1;
+          thisFeed.url = DOMPurify.sanitize(feeds[nbOfFeeds]["@attributes"].xmlUrl);
+          thisIndex = DOMPurify.sanitize(Number(feeds[nbOfFeeds]["@attributes"].col)) - 1;
           if (!thisColFeeds[thisIndex]) thisColFeeds[thisIndex] = [];
           thisColFeeds[thisIndex].push(thisFeed);
         }
