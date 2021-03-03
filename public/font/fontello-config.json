@@ -9,7 +9,7 @@
     {
       "uid": "fb598151d4f3bbb37861ac6fdfabb383",
       "css": "petrolette",
-      "code": 59393,
+      "code": 59402,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -23,7 +23,7 @@
     {
       "uid": "348b04ea17f646fbc6a46e20ebe4fe12",
       "css": "download",
-      "code": 59394,
+      "code": 59403,
       "src": "mfglabs"
     },
     {
@@ -135,16 +135,16 @@
       "src": "zocial"
     },
     {
-      "uid": "5d9730dc93976d27eb07914eab50a507",
-      "css": "audio",
-      "code": 59425,
-      "src": "elusive"
-    },
-    {
       "uid": "9cc990bbcac7aa8504078b3f49df79b1",
       "css": "comments",
       "code": 59426,
       "src": "fontawesome"
+    },
+    {
+      "uid": "7480a298ce334eef70193895e799c3fd",
+      "css": "audio",
+      "code": 59425,
+      "src": "elusive"
     },
     {
       "uid": "1e89103762be72b0720eda0468e62b90",
@@ -174,6 +174,18 @@
       "uid": "de9a631a7d18106aea1c89ba51b1990a",
       "css": "help",
       "code": 59431,
+      "src": "entypo"
+    },
+    {
+      "uid": "2f9f67ee4354feef8c1f51e03bac6ef3",
+      "css": "buoy",
+      "code": 59432,
+      "src": "entypo"
+    },
+    {
+      "uid": "6341ebcbe1ed1f6777c1b9527ead368e",
+      "css": "video",
+      "code": 59433,
       "src": "entypo"
     }
   ]
