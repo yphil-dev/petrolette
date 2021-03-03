@@ -402,7 +402,7 @@ PTL.feed = {
               audioPlayer.id       = 'audio-player';
               audioPlayer.controls = 'controls';
               audioPlayer.src      = item.enclosures[0].url;
-              audioyPlayer.type     = item.enclosures[0].type;
+              audioPlayer.type     = item.enclosures[0].type;
 
               $itemDiv.append(audioPlayer);
 
