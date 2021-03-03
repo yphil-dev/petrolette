@@ -1191,13 +1191,27 @@ li.feed div.feed-body {
   border-right: 1px solid var(--color-bg1);
   margin: 0;
   /* height: 150px; */
-  overflow: hidden;
+  overflow-y: auto;
   /* resize: vertical; */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ui-pri) var(--color-ui-qua);
 }
 
-li.feed div.feed-body:hover {
-  overflow-y: scroll;
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
 }
+
+*::-webkit-scrollbar-track {
+  background: var(--color-ui-qua);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-ui-pri);
+  border-radius: 20px;
+  border: 3px solid var(--color-ui-qua);
+}
+
 
 .folded {
   height: 0 !important;
@@ -1449,26 +1463,6 @@ div#logo-title > .logo-title > a:hover {
   left: 16px;
   z-index: 30;
   /* flex-direction: column; */
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-ui-pri) var(--color-ui-qua);
-}
-
-/* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 12px;
-}
-
-*::-webkit-scrollbar-track {
-  background: var(--color-ui-qua);
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: var(--color-ui-pri);
-  border-radius: 20px;
-  border: 3px solid var(--color-ui-qua);
 }
 
 audio {
