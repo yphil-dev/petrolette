@@ -1194,7 +1194,11 @@ li.feed div.feed-body {
   overflow-y: auto;
   /* resize: vertical; */
   scrollbar-width: thin;
-  scrollbar-color: var(--color-ui-pri) var(--color-ui-qua);
+  scrollbar-color: var(--color-fg4) var(--color-bg1);
+}
+
+li.feed div.feed-body:hover {
+  scrollbar-color: var(--color-fg5) var(--color-bg1);
 }
 
 /* Works on Chrome, Edge, and Safari */
