@@ -301,7 +301,7 @@ PTL.feed = {
 
         $.each(data.feedItems, function(index, item) {
 
-          // if (index == parseInt(feedLimit)) return false;
+          if (index == 30) return false;
 
           // console.log('i: (%s)', JSON.stringify(item));
 
@@ -396,23 +396,38 @@ PTL.feed = {
               imageUrl = item.enclosures[0].url;
             }
 
-            if (item.enclosures[0].url.match(/\.(ogg|mp3|mp4)$/)) {
+            console.log('JSON.stringify(item.enclosures): %s (%s)', JSON.stringify(item.enclosures));
 
-              var soundPlayer      = document.createElement('audio');
-              soundPlayer.id       = 'audio-player';
-              soundPlayer.controls = 'controls';
-              soundPlayer.src      = item.enclosures[0].url;
-              soundPlayer.type     = 'audio/mpeg';
+            if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
 
-              if (item.enclosures[0].url.match(/\.(ogg)$/)) {
-                console.log('ogg!: %s (%s)');
-                soundPlayer.type     = 'application/ogg';
-              } else {
-                console.log('mpeg!: %s (%s)');
-                soundPlayer.type     = 'audio/mpeg';
-              }
+              var audioPlayer      = document.createElement('audio');
+              audioPlayer.id       = 'audio-player';
+              audioPlayer.controls = 'controls';
+              audioPlayer.src      = item.enclosures[0].url;
+              audioPlayer.type     = item.enclosures[0].type;
 
-              $itemDiv.append(soundPlayer);
+              // var $audioPlayer = $('<div>');
+
+              // $audioPlayer.html('<audio id="audio-player" controls="controls" src="' + item.enclosures[0].url + '" type="audio/ogg">');
+
+              // console.log('audio/mp3: %s (%s)', MediaSource.isTypeSupported('video/mp4'));
+
+              // console.log('item.enclosures: %s (%s)', JSON.stringify(item.enclosures[0].type), JSON.stringify(item.enclosures[0].url));
+
+              // if (JSON.stringify(item.enclosures[0].type) === 'audio/mpeg') {
+              //   console.log('plop!: %s (%s)');
+              // }
+
+              // if (item.enclosures[0].url.match(/\.(ogg)$/)) {
+              //   console.log('ogg!: %s (%s)');
+              //   soundPlayer.type     = 'application/ogg';
+              // } else {
+              //   console.log('mpeg!: %s (%s)');
+              //   soundPlayer.type     = 'audio/mpeg';
+              // }
+
+              // $itemDiv.append($audioPlayer);
+              $itemDiv.append(audioPlayer);
 
               $soundLink
                 .attr('href', item.enclosures[0].url)
