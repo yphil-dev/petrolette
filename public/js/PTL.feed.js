@@ -399,7 +399,7 @@ PTL.feed = {
             if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
 
               var audioPlayer      = document.createElement('audio');
-              audioPlayer.id       = 'audio-player';
+              // audioPlayer.id       = 'audio-player';
               audioPlayer.controls = 'controls';
               audioPlayer.src      = item.enclosures[0].url;
               audioPlayer.type     = item.enclosures[0].type;

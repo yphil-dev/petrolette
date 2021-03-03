@@ -1397,8 +1397,19 @@ div#logo-title > .logo-title > a:hover {
   flex-direction: column;
 }
 
-#beggar > span {
+#beggar > span.beggarIcon {
   font-size: 6em;
+}
+
+#beggar > span.beggarClose {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  cursor: pointer;
+}
+
+#beggar > span.beggarClose:hover {
+  color: var(--color-ui-sec);
 }
 
 #beggar > a.ui-button {
