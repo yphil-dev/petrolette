@@ -7,6 +7,7 @@ PTL.prefs = (function() {
      "columns": [
        [
          {"url":"https://www.sciencemag.org/rss/weekly_news_email.xml","type":"photo","limit": 200,"status":"off"},
+         {"url":"https://www.youtube.com/feeds/videos.xml?channel_id=UCAYKj_peyESIMDp5LtHlH2A","type":"mixed","limit": 140,"status":"on"},
          {"url":"https://www.popsci.com/arcio/rss/","type":"mixed","limit": 300,"status":"on"},
 
          {"url":"https://www.wired.com/category/science/feed","type":"mixed","limit": 300,"status":"on"}

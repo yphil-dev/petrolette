@@ -282,6 +282,8 @@ PTL.feed = {
 
         } else {
 
+          $feedBody.css('height', feedLimit);
+
           $.get("/favicon", {
             url: decodeURI(feedHost),
             dataType: "json"
