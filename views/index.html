@@ -15,6 +15,8 @@
     <link rel="preload" as="style" href="/static/css/fontello.css" />
     <link rel="preload" as="style" href="/static/css/petrolette.css" />
 
+    <link rel="preload" href="/static/images/loading.gif" as="image">
+
     <script>
      /*
         @licstart  The following is the entire license notice for the
@@ -44,9 +46,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta property="og:title" content="Pétrolette">
-    <meta property="og:description" content="The news reader that doesn't know you">
-    <meta name="description" content="The news reader that doesn't know you" />
-    <meta property="og:image" content="https://framagit.org/yphil/assets/-/raw/main/img/petrolette.png">
+    <meta property="og:description" content="The news / RSS reader that doesn't know you.">
+    <meta name=”twitter:creator” content=”@yassinphilip”>
+    <meta name="description" content="The news reader that doesn't know you." />
+    <meta property="og:image" content="https://yphil.bitbucket.io/images/misc/petrolette-screenshot.png">
     <meta property="og:url" content="http://petrolette.space">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -484,7 +487,8 @@
     </div>
 
     <div id="beggar" style="display:none" class="flex-box">
-      <span>🍏</span>
+      <span class="beggarClose icon-cancel"></span>
+      <span class="beggarIcon">🍏</span>
       <h4 class="translate" data-content="Pétrolette needs you">Pétrolette needs you</h4>
       <p>
         <span class="translate"

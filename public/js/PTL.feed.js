@@ -183,7 +183,6 @@ PTL.feed = {
         $feedToggle = $feed.find('.feed-toggle'),
         $feedIcon = $feed.find('.feed-toggle > i');
 
-    $feedBody.css('height', feedLimit);
 
     var l = PTL.util.getLocation(feedUrl),
         feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -277,9 +276,13 @@ PTL.feed = {
           $feedIcon.addClass('icon-rss');
           $feedToggle.css('background-image', 'none');
 
+          $feedBody.css('height', '');
+
           return;
 
         } else {
+
+          $feedBody.css('height', feedLimit);
 
           $.get("/favicon", {
             url: decodeURI(feedHost),
@@ -331,10 +334,12 @@ PTL.feed = {
 
           var $imageLink = $('<a>').attr('target', '_blank'),
               $itemLink = $('<a>').attr('target', '_blank'),
-              $soundLink = $('<a>').attr('target', '_blank'),
+              $audioLink = $('<a>').attr('target', '_blank'),
+              $videoLink = $('<a>').attr('target', '_blank'),
               $commentsLink = $('<a>').attr('target', '_blank'),
               $commentsIcon = $('<i>'),
-              $soundIcon = $('<i>'),
+              $audioIcon = $('<i>'),
+              $videoIcon = $('<i>'),
               $image,
               $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
@@ -396,45 +401,39 @@ PTL.feed = {
               imageUrl = item.enclosures[0].url;
             }
 
-            console.log('JSON.stringify(item.enclosures): %s (%s)', JSON.stringify(item.enclosures));
+            if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(mp4|webm)$/)) {
+
+              var videoPlayer      = document.createElement('video');
+              videoPlayer.controls = 'controls';
+              videoPlayer.src      = item.enclosures[0].url;
+              videoPlayer.type     = item.enclosures[0].type;
+
+              $itemDiv.append(videoPlayer);
+
+              $videoLink
+                .attr('href', item.enclosures[0].url)
+                .appendTo($itemDiv);
+              $videoIcon
+                .attr('class', 'item-icon icon-video')
+                .appendTo($videoLink);
+            }
 
             if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
 
               var audioPlayer      = document.createElement('audio');
-              audioPlayer.id       = 'audio-player';
               audioPlayer.controls = 'controls';
               audioPlayer.src      = item.enclosures[0].url;
               audioPlayer.type     = item.enclosures[0].type;
+              // audioPlayer.preload  = 'metadata';
 
-              // var $audioPlayer = $('<div>');
-
-              // $audioPlayer.html('<audio id="audio-player" controls="controls" src="' + item.enclosures[0].url + '" type="audio/ogg">');
-
-              // console.log('audio/mp3: %s (%s)', MediaSource.isTypeSupported('video/mp4'));
-
-              // console.log('item.enclosures: %s (%s)', JSON.stringify(item.enclosures[0].type), JSON.stringify(item.enclosures[0].url));
-
-              // if (JSON.stringify(item.enclosures[0].type) === 'audio/mpeg') {
-              //   console.log('plop!: %s (%s)');
-              // }
-
-              // if (item.enclosures[0].url.match(/\.(ogg)$/)) {
-              //   console.log('ogg!: %s (%s)');
-              //   soundPlayer.type     = 'application/ogg';
-              // } else {
-              //   console.log('mpeg!: %s (%s)');
-              //   soundPlayer.type     = 'audio/mpeg';
-              // }
-
-              // $itemDiv.append($audioPlayer);
               $itemDiv.append(audioPlayer);
 
-              $soundLink
+              $audioLink
                 .attr('href', item.enclosures[0].url)
                 .appendTo($itemDiv);
-              $soundIcon
+              $audioIcon
                 .attr('class', 'item-icon icon-audio')
-                .appendTo($soundLink);
+                .appendTo($audioLink);
             }
           }
 
@@ -481,9 +480,9 @@ PTL.feed = {
               .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
             $image = $('<img>')
-              .attr('src', '/static/images/loading.jpg')
+              .attr('src', '/static/images/loading.gif')
               .attr('data-srcset', imageUrl)
-              .attr('srcset', 'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==')
+              .attr('srcset', '/static/images/loading.gif')
               .attr('title', $summary.trim())
               .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
               .attr('class', 'ptl-img responsively-lazy')
