@@ -183,7 +183,6 @@ PTL.feed = {
         $feedToggle = $feed.find('.feed-toggle'),
         $feedIcon = $feed.find('.feed-toggle > i');
 
-    $feedBody.css('height', feedLimit);
 
     var l = PTL.util.getLocation(feedUrl),
         feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -277,9 +276,13 @@ PTL.feed = {
           $feedIcon.addClass('icon-rss');
           $feedToggle.css('background-image', 'none');
 
+          $feedBody.css('height', '');
+
           return;
 
         } else {
+
+          $feedBody.css('height', feedLimit);
 
           $.get("/favicon", {
             url: decodeURI(feedHost),
@@ -301,7 +304,7 @@ PTL.feed = {
 
         $.each(data.feedItems, function(index, item) {
 
-          // if (index == parseInt(feedLimit)) return false;
+          if (index == 30) return false;
 
           // console.log('i: (%s)', JSON.stringify(item));
 
@@ -331,10 +334,12 @@ PTL.feed = {
 
           var $imageLink = $('<a>').attr('target', '_blank'),
               $itemLink = $('<a>').attr('target', '_blank'),
-              $soundLink = $('<a>').attr('target', '_blank'),
+              $audioLink = $('<a>').attr('target', '_blank'),
+              $videoLink = $('<a>').attr('target', '_blank'),
               $commentsLink = $('<a>').attr('target', '_blank'),
               $commentsIcon = $('<i>'),
-              $soundIcon = $('<i>'),
+              $audioIcon = $('<i>'),
+              $videoIcon = $('<i>'),
               $image,
               $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
@@ -396,13 +401,39 @@ PTL.feed = {
               imageUrl = item.enclosures[0].url;
             }
 
-            if (item.enclosures[0].url.match(/\.(ogg|mp3|mp4)$/)) {
-              $soundLink
+            if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(mp4|webm)$/)) {
+
+              var videoPlayer      = document.createElement('video');
+              videoPlayer.controls = 'controls';
+              videoPlayer.src      = item.enclosures[0].url;
+              videoPlayer.type     = item.enclosures[0].type;
+
+              $itemDiv.append(videoPlayer);
+
+              $videoLink
                 .attr('href', item.enclosures[0].url)
                 .appendTo($itemDiv);
-              $soundIcon
+              $videoIcon
+                .attr('class', 'item-icon icon-video')
+                .appendTo($videoLink);
+            }
+
+            if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
+
+              var audioPlayer      = document.createElement('audio');
+              audioPlayer.controls = 'controls';
+              audioPlayer.src      = item.enclosures[0].url;
+              audioPlayer.type     = item.enclosures[0].type;
+              // audioPlayer.preload  = 'metadata';
+
+              $itemDiv.append(audioPlayer);
+
+              $audioLink
+                .attr('href', item.enclosures[0].url)
+                .appendTo($itemDiv);
+              $audioIcon
                 .attr('class', 'item-icon icon-audio')
-                .appendTo($soundLink);
+                .appendTo($audioLink);
             }
           }
 
@@ -449,9 +480,9 @@ PTL.feed = {
               .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
             $image = $('<img>')
-              .attr('src', '/static/images/loading.jpg')
+              .attr('src', '/static/images/loading.gif')
               .attr('data-srcset', imageUrl)
-              .attr('srcset', 'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==')
+              .attr('srcset', '/static/images/loading.gif')
               .attr('title', $summary.trim())
               .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
               .attr('class', 'ptl-img responsively-lazy')

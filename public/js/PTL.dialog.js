@@ -9,6 +9,7 @@ PTL.dialog = {
 
     const $beggar = $('#beggar'),
           $beggarH4 = $('#beggar > h4'),
+          $beggarClose = $('#beggar > span.beggarClose'),
           $beggarOkButton = $('#beggar > #beggarOkButton'),
           $beggarTourButton = $('#beggar > #beggarTourButton');
 
@@ -17,7 +18,7 @@ PTL.dialog = {
       window.open('https://liberapay.com/yPhil/donate');
     });
 
-    $beggarH4.on('click', function() {
+    $beggarClose.on('click', function() {
       $beggar.fadeOut('fast');
     });
 
@@ -544,7 +545,7 @@ PTL.dialog = {
             title: PTL.tr('Add feed'),
             class: "translate",
             click: function() {
-              PTL.feed.add($('.column').first(), feedUrl, 'mixed', 8, 'on', true, false);
+              PTL.feed.add($('.column').first(), feedUrl, 'mixed', 450, 'on', true, false);
               PTL.dialog.kill($dialog);
             }
           }

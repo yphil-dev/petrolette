@@ -97,7 +97,7 @@ router.use(morgan('combined'));
 
 router.get('/robots.txt', function (req, res) {
   res.type('text/plain');
-  res.send("User-agent: *\nDisallow: /");
+  res.send("User-agent: *\nDisallow: /feed\nDisallow: /discover\nDisallow: /favicon");
 });
 
 router.get('/discover', function(req, res) {
