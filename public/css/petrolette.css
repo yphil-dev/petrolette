@@ -595,6 +595,12 @@ nav#sideMenu {
   width: var(--side-menu-width-expanded);
   z-index: 11;
   overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-fg4) var(--color-bg1);
+}
+
+nav#sideMenu:hover {
+  scrollbar-color: var(--color-fg5) var(--color-bg1);
 }
 
 nav#sideMenu.expanded {
