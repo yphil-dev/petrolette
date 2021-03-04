@@ -596,11 +596,11 @@ nav#sideMenu {
   z-index: 11;
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-fg4) var(--color-bg1);
+  scrollbar-color: var(--color-ui-oct) var(--color-ui-qua);
 }
 
 nav#sideMenu:hover {
-  scrollbar-color: var(--color-fg5) var(--color-bg1);
+  scrollbar-color: var(--color-ui-sec) var(--color-ui-qua);
 }
 
 nav#sideMenu.expanded {
