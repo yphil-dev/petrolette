@@ -97,7 +97,7 @@ PTL.feed = {
         .attr('title', PTL.tr('Move this feed (%1)', url))
         .attr('class', 'feed-handle');
 
-    var $feedBody = $('<div>').attr('class', 'feed-body'),
+    var $feedBody = $('<div>').attr('class', 'feed-body').css('height', limit),
         $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
         $header = $('<div>').attr('class', 'feed-header'),
         $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon),
@@ -276,6 +276,8 @@ PTL.feed = {
           $feedIcon.addClass('icon-rss');
           $feedToggle.css('background-image', 'none');
 
+          $feedBody.css('height', '');
+
           return;
 
         } else {
@@ -420,7 +422,7 @@ PTL.feed = {
               audioPlayer.controls = 'controls';
               audioPlayer.src      = item.enclosures[0].url;
               audioPlayer.type     = item.enclosures[0].type;
-              audioPlayer.preload  = 'metadata';
+              // audioPlayer.preload  = 'metadata';
 
               $itemDiv.append(audioPlayer);
 
@@ -498,8 +500,6 @@ PTL.feed = {
           $tempDom.empty();
 
         });
-
-        $feedBody.animate({height: feedLimit});
 
       }).always(function() {
 

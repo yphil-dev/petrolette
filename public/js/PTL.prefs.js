@@ -22,6 +22,7 @@ PTL.prefs = (function() {
          {"url":"http://explainxkcd.com/rss.xml","type":"photo","limit": 60,"status":"on"}
        ],
        [
+         {"url":"http://faif.us/feeds/cast-ogg/","type":"text","limit": 250,"status":"on"},
          {"url":"https://www.yellowtrace.com.au/category/architecture/feed/","type":"photo","limit": 200,"status":"off"},
          {"url":"https://www.ignant.com/category/architecture/feed/","type":"photo","limit": 300,"status":"on"}
        ]

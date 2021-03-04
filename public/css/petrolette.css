@@ -775,6 +775,7 @@ button.ui-state-success {
 
 .feed-header > .feed-handle,
 .dialog .help-bookmarklet {
+  cursor: -webkit-grab;
   cursor: grab;
 }
 
@@ -1188,6 +1189,7 @@ table {
 }
 
 li.feed div.feed-body {
+  will-change: contents;
   border-bottom: 1px solid var(--color-bg2);
   border-left: 1px solid var(--color-bg1);
   border-right: 1px solid var(--color-bg1);
