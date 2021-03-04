@@ -97,7 +97,7 @@ PTL.feed = {
         .attr('title', PTL.tr('Move this feed (%1)', url))
         .attr('class', 'feed-handle');
 
-    var $feedBody = $('<div>').attr('class', 'feed-body').css('height', limit),
+    var $feedBody = $('<div>').attr('class', 'feed-body'),
         $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
         $header = $('<div>').attr('class', 'feed-header'),
         $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon),
@@ -183,7 +183,6 @@ PTL.feed = {
         $feedToggle = $feed.find('.feed-toggle'),
         $feedIcon = $feed.find('.feed-toggle > i');
 
-    $feedBody.css('height', feedLimit);
 
     var l = PTL.util.getLocation(feedUrl),
         feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -399,10 +398,8 @@ PTL.feed = {
             }
 
             if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(mp4|webm)$/)) {
-              console.log('Video: %s (%s)', item.enclosures[0].url, item.enclosures[0].type);
 
               var videoPlayer      = document.createElement('video');
-              // videoPlayer.id       = 'video-player';
               videoPlayer.controls = 'controls';
               videoPlayer.src      = item.enclosures[0].url;
               videoPlayer.type     = item.enclosures[0].type;
@@ -420,7 +417,6 @@ PTL.feed = {
             if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
 
               var audioPlayer      = document.createElement('audio');
-              // audioPlayer.id       = 'audio-player';
               audioPlayer.controls = 'controls';
               audioPlayer.src      = item.enclosures[0].url;
               audioPlayer.type     = item.enclosures[0].type;
@@ -502,6 +498,8 @@ PTL.feed = {
           $tempDom.empty();
 
         });
+
+        $feedBody.animate({height: feedLimit});
 
       }).always(function() {
 
