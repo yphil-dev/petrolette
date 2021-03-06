@@ -243,7 +243,6 @@ PTL.feed = {
             .addClass('translate danger')
             .data('content', PTL.tr('Error'));
 
-
           var $feedErrorReportButton = $('<a>')
               .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')
               .attr('class', 'translate ui-button ui-widget ui-corner-all feedErrorReportButton')
