@@ -633,15 +633,18 @@ nav#sideMenu.expanded {
 }
 
 #console {
-  border: 3px solid var(--color-ui-qui);
+  border: 3px solid var(--color-ui-pri);
   resize: vertical;
+  height: 200px;
+  min-height: 2.5em;
+  max-width: 250px;
+  scrollbar-width: thin;
   border-radius: 3px;
-  background-color: var(--color-ui-console-bg);
+  /* background-color: var(--color-ui-console-bg); */
   color: var(--color-ui-console-fg);
   font-family: monospace;
-  min-height: 2.5em;
   overflow-wrap: break-word;
-  overflow: auto; /* something other than visible */
+  overflow: auto;
   padding: 0 0.2em;
   text-align: left;
 }
@@ -649,7 +652,7 @@ nav#sideMenu.expanded {
 #console > div > span.prompt {
   margin-right: 3px;
   font-weight: 900;
-  color: var(--color-ui-console-fg);
+  color: var(--color-ui-console-bg);
 }
 
 #console div.normal {
@@ -732,10 +735,6 @@ fieldset.feedsMenuForm {
 
 .grow {
   flex: 1 0 auto !important;
-}
-
-#console:hover {
-  border: 3px solid var(--color-ui-sec);
 }
 
 .ui-widget-header,
