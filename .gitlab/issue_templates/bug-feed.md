@@ -1,7 +1,3 @@
-## Summary
-
-### URL of the broken feed:
-
-/label ~bug
+/label ~bug-feed
 /cc @yphil
 /assign @yphil
