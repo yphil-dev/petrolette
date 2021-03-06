@@ -710,6 +710,14 @@ button#feedGuessButton {
   margin-left: 0.4em;
 }
 
+a.feedErrorReportButton,
+a.validateFeedButton {
+  /* box-sizing: border-box; */
+  /* width: 100%; */
+  /* padding:0; */
+  flex: 1;
+}
+
 fieldset.menuForm {
   display: flex;
   height: 100%;
@@ -721,7 +729,7 @@ fieldset.feedsMenuForm {
   background-color: var(--color-ui-qua) !important;
 }
 
-.ui-button:not(.ui-spinner-button) {
+.ui-button:not(.ui-spinner-button, .feedGuessButton, .feedErrorReportButton) {
   margin-right: 0.4em;
 }
 

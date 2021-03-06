@@ -384,6 +384,10 @@ PTL.i18n.translations = {
 
   "To synchronize the feeds across devices" : { fr: "Pour synchroniser les flux sur plusieurs appareils" , ja: "デバイス間でソースを同期するには", es: "Para sincronizar las fuentes en todos los dispositivos" },
 
+
+
+
+
   "Remote file validation NOT OK (error [%1]) now reading from browser cache" : { fr: "Validation de fichier à distance NOT OK (erreur [%1]) lecture depuis le cache du navigateur" , ja: "リモートファイルの検証NOT OK（エラー[%1]）がブラウザのキャッシュから読み込み中です", es: "La validación remota de archivos NO está OK (error [%1]) leyendo desde el caché del navegador" },
 
   "Reading feeds and preferences from browser cache" : { fr: "Lecture des flux et des préférences depuis le cache du navigateur" , ja: "ブラウザのキャッシュからソースと設定を読み込む", es: "Leer las fuentes y preferencias de la memoria caché del navegador" },
@@ -458,6 +462,12 @@ PTL.i18n.translations = {
   "Display only image" : { fr: "Affichage de l'image seule", ja: "画像のみ", es: "visualización del solo imagen" },
 
   "Validate /verify this feed file with the W3C" : { fr: "Valider / vérifier ce fichier flux avec le W3C", ja: "このソースファイルをW3Cで検証/検証する", es: "Validar / verificar este archivo fuente con el W3C" },
+
+  "Validate" : { fr: "Valider", ja: "検証", es: "Validar" },
+
+  "Report" : { fr: "Signaler" , ja: "報告する", es: "Reporte" },
+
+  "Report feed error" : { fr: "Signaler un flux en erreur" , ja: "レポートソースエラー", es: "Informe de error de la fuente" },
 
   "No valid feed found at this address" : { fr: "Aucun flux valide découverte à cette adresse", ja: "このアドレスに有効なソースが見つかりません", es: "No se encontró una fuente válida en esta dirección" },
   "Valid feed found! Now just press OK" : { fr: "Flux valide trouvée ! Maintenant, appuyez simplement sur OK", ja: "有効なソースが見つかりました！ OKを押すだけです", es: "¡Se ha encontrado una fuente válida! Ahora solo presione OK" },
