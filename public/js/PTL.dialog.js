@@ -105,6 +105,7 @@ PTL.dialog = {
       var $dialog = $(this),
           $dataStore = $button.parent().parent(),
           $feed = $dataStore.parent().parent(),
+          $feedBody = $dataStore.parent().next('div.feed-body'),
           allGroups = PTL.tab.list('all'),
           $thisGroup =  $feed.parent().parent(),
           $groupMenu = $dialog.find('select#feedGroup');
@@ -309,6 +310,7 @@ PTL.dialog = {
             slide: function( event, ui ) {
               $(this).val(ui.value);
               $(this).find('.ui-slider-handle').text(ui.value);
+              $feedBody.css('height', ui.value + 'px');
               $('input#feedLimitSpinner').val(ui.value);
             },
             change: function( event, ui ) {

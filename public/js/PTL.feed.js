@@ -243,6 +243,14 @@ PTL.feed = {
             .addClass('translate danger')
             .data('content', PTL.tr('Error'));
 
+          var $feedErrorReportButton = $('<a>')
+              .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')
+              .attr('class', 'translate ui-button ui-widget ui-corner-all feedErrorReportButton')
+              .attr('title', PTL.tr('Report feed error'))
+              .data('title', PTL.tr('Report feed error'))
+              .data('content', PTL.tr('Report'))
+              .text(PTL.tr('Report'));
+
           var $key = $('<strong>')
               .attr('class', 'translate key')
               .data('content', PTL.tr('Type'))
@@ -256,19 +264,27 @@ PTL.feed = {
               .attr('href', feedUrl)
               .text(feedUrl);
 
-          var $validateLink = $('<a>')
+          var $errorButtonsFlexBox = $('<a>')
+              .attr('class', 'translate flex-box');
+
+          var $validateFeedButton = $('<a>')
+              .attr('class', 'translate ui-button ui-widget ui-corner-all validateFeedButton')
               .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-              .text(PTL.tr('validate'));
+              .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
+              .data('title', PTL.tr('Validate /verify this feed file with the W3C'))
+              .data('content', PTL.tr('Validate'))
+              .text(PTL.tr('Validate'));
+
+          $errorButtonsFlexBox.append($validateFeedButton, $feedErrorReportButton);
 
           var $errorItem = $('<li>')
               .attr('class', 'feed-item error')
-              .append($errorLink)
-              .append('&nbsp; (')
-              .append($validateLink)
-              .append(')<br/>')
-              .append($key)
+          // .append($errorLink)
               .append('&nbsp;')
-              .append($value);
+              .append($key)
+              .append(':&nbsp;')
+              .append($value)
+              .append($errorButtonsFlexBox);
 
           $feedBodyUl
             .append($errorItem);
@@ -424,7 +440,7 @@ PTL.feed = {
               audioPlayer.controls = 'controls';
               audioPlayer.src      = item.enclosures[0].url;
               audioPlayer.type     = item.enclosures[0].type;
-              // audioPlayer.preload  = 'metadata';
+              audioPlayer.preload  = 'none';
 
               $itemDiv.append(audioPlayer);
 
