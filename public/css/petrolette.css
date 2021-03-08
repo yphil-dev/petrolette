@@ -1216,21 +1216,22 @@ li.feed div.feed-body {
   scrollbar-color: var(--color-fg4) var(--color-bg1);
 }
 
-li.feed div.feed-body:hover {
-  scrollbar-color: var(--color-fg5) var(--color-bg1);
-}
-
 /* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
+li.feed div.feed-body::-webkit-scrollbar {
   width: 4px;
 }
 
-*::-webkit-scrollbar-track {
-  background: var(--color-ui-qua);
+li.feed div.feed-body::-webkit-scrollbar-track {
+  color: var(--color-fg4);
+  background: var(--color-bg1);
 }
 
-*::-webkit-scrollbar-thumb {
-  background-color: var(--color-ui-pri);
+li.feed div.feed-body::-webkit-scrollbar-thumb {
+  background-color: var(--color-fg4);
+}
+
+li.feed div.feed-body:hover {
+  scrollbar-color: var(--color-fg6) var(--color-bg1);
 }
 
 .folded {
