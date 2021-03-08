@@ -120,7 +120,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
-        width: 600,
         buttons: [
           {
             text: PTL.tr('Cancel'),

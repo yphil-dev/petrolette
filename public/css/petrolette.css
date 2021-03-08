@@ -59,7 +59,7 @@
 
 @media screen and (max-width: 700px) {
   :root {
-    --side-menu-width-expanded: 100%;
+    --side-menu-width-expanded: 90%;
     --side-menu-width: -999px;
     --header-height: 2.2em;
     --controls-width: 75%;
@@ -123,10 +123,6 @@ a:active {
   font-size: 12pt;
 }
 
-.topnav i {
-  transition: all 0.2s linear;
-}
-
 .fold {
   display: inline-block;
 
@@ -140,12 +136,14 @@ a:active {
   transform: rotate(90deg);
 }
 
-/* MenuBar */
+/* TOP Menu navBar */
+
 .topnav {
-  position: relative;
+  /* position: relative; */
   z-index: 20;
   background-color: var(--color-ui-qua);
-
+  display: flex;
+  flex-direction: row;
   /* color: var(--color-ui-sec); */
   overflow: hidden;
   height: 45px;
@@ -154,18 +152,92 @@ a:active {
 .topnav > div.menuBarItem {
   color: var(--color-ui-pri);
   cursor: pointer;
-  float: left;
-  margin: 0;
-  min-width: 60px;
-  padding: 16px 6px;
-  position: relative;
   text-align: center;
+}
+
+.topnav .navLeft {
+  order: 1;
+}
+
+.topnav .navCenter {
+  order: 2;
+  flex-grow: 5;
+}
+
+.topnav .navRight {
+  order: 3;
+}
+
+.topnav > div.menuBarItem > i {
+  display: block;
+  color: var(--color-ui-sec);
+  font-size: 16pt;
+  margin: 8px 8px 8px 12px;
+}
+
+.topnav > div.menuBarItem > input {
+  margin: 8px 8px 8px 12px;
+}
+
+.topnav > div.menuBarItem:hover {
+  background-color: var(--color-ui-qua);
+}
+
+.topnav > div.menuBarItem:hover i {
+  color: var(--color-ui-pri);
+}
+
+.topnav > div.menuBarItem:hover .text {
+  /* display: none; */
+  visibility: hidden;
 }
 
 .topnav > div.menuBarItem > .text {
   position: relative;
   z-index: 10;
 }
+
+
+div#logo-title {
+  display: flex;
+}
+
+.icon-petrolette {
+  color: var(--color-ui-sec);
+}
+
+.logoType i.icon-petrolette {
+  display: block;
+  cursor: pointer;
+  font-size: 24pt;
+  margin: 6px 12px 6px 6px;
+  color: var(--color-ui-sec);
+}
+
+i.icon-petrolette:hover,
+i.icon-petrolette.writing {
+  color: var(--color-ui-pri);
+}
+
+i.icon-petrolette::before {
+  font-style: italic !important;
+}
+
+i.icon-petrolette:hover {
+  font-style: normal !important;
+}
+
+div#logo-title > div {
+  flex: 1 0;
+}
+
+div#logo-title > .logo-title {
+  color: var(--color-ui-pri);
+  display: var(--logo-display);
+  font-family: LobsterRegular, Helvetica, Arial, sans-serif;
+  font-size: 36pt;
+}
+
 
 .introjs-tooltiptext a {
   color: var(--color-ui-sen) !important;
@@ -185,30 +257,8 @@ a:active {
   color: var(--color-fg1);
 }
 
-.topnav > div.menuBarItem > i {
-  color: var(--color-ui-qua);
-  font-size: 32pt;
-  left: 21px;
-  position: absolute;
-  top: 0;
-  z-index: 5;
-}
-
 .ui-tab.ui-state-active i:hover {
   color: var(--color-fg2);
-}
-
-.topnav > div.menuBarItem:hover .text {
-  /* display: none; */
-  visibility: hidden;
-}
-
-.topnav > div.menuBarItem:hover {
-  background-color: var(--color-ui-qua);
-}
-
-.topnav > div.menuBarItem:hover i {
-  color: var(--color-ui-sec);
 }
 
 [class ^= "icon-"]::before,
@@ -591,7 +641,7 @@ nav#sideMenu {
   border: none;
   height: 100%;
   left: var(--side-menu-width);
-  padding: 45px 0 0 0;
+  padding: 0;
   position: fixed;
   top: 0;
   transition: left 0.1s ease-out;
@@ -603,7 +653,7 @@ nav#sideMenu {
 }
 
 nav#sideMenu,
-#topnav,
+.topnav,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane {
   background: var(--color-ui-qua);
@@ -732,8 +782,16 @@ fieldset.feedsMenuForm {
   background-color: var(--color-ui-qua) !important;
 }
 
-.ui-button:not(.ui-spinner-button, .feedGuessButton, .feedErrorReportButton) {
+/* .ui-button:not(.ui-spinner-button, .feedGuessButton, .feedErrorReportButton) { */
+/*   margin-right: 0.4em; */
+/* } */
+
+.buttonLeft {
   margin-right: 0.4em;
+}
+
+.buttonRight {
+  margin-left: 0.4em;
 }
 
 .rs-button {
@@ -881,10 +939,6 @@ ul.help li.cloud::before {
   flex-grow: 4;
 }
 
-nav#sideMenu .flex-box > * {
-  margin-bottom: 0.4em;
-}
-
 #gallerySlideTransition {
   margin-top: 2px;
 }
@@ -961,14 +1015,6 @@ label:last-child {
   white-space: initial;
   transition: transform 0.3s linear;
   margin: 0 0.2em;
-}
-
-/* .column:first-child { margin-left: 0 !important; } */
-
-/* .column:last-child { margin-right: 0 !important; } */
-
-.new-feed-button {
-  margin-bottom: 0 !important;
 }
 
 .ui-dialog.ui-corner-all {
@@ -1326,47 +1372,6 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
   background-color: #EDEDED;
 }
 
-div#logo-title {
-  display: flex;
-  float: right;
-}
-
-.icon-petrolette {
-  color: var(--color-ui-sec);
-}
-
-.logoType i.icon-petrolette {
-  display: block;
-  cursor: pointer;
-  font-size: 24pt;
-  margin: 6px 12px 6px 6px;
-  color: var(--color-ui-sec);
-}
-
-i.icon-petrolette:hover,
-i.icon-petrolette.writing {
-  color: var(--color-ui-pri);
-}
-
-i.icon-petrolette::before {
-  font-style: italic !important;
-}
-
-i.icon-petrolette:hover {
-  font-style: normal !important;
-}
-
-div#logo-title > div {
-  flex: 1 0;
-}
-
-div#logo-title > .logo-title {
-  color: var(--color-ui-pri);
-  display: var(--logo-display);
-  font-family: LobsterRegular, Helvetica, Arial, sans-serif;
-  font-size: 36pt;
-}
-
 #liberapay {
   flex-wrap: nowrap;
 }
@@ -1491,3 +1496,50 @@ video {
 div.itemDiv {
   max-width: auto;
 }
+
+#ptlSearch {
+  display: flex;
+  flex-direction: row;
+}
+
+#ptlSearch .ptlSearchButton {
+  flex: 1;
+}
+
+#ptlSearch input {
+  transition: opacity 0.2s linear;
+  flex: 2;
+}
+
+/* .ptlSearch .search { */
+/*   width: 100%; */
+/*   display: flex; */
+/* } */
+
+/* .ptlSearch .searchTerm { */
+/*   width: 100%; */
+/*   border: 1px solid var(--color-ui-qua); */
+/*   background-color: var(--color-ui-qua); */
+/*   border-right: none; */
+/*   border-radius: 3px 0 0 3px; */
+/*   outline: none; */
+/*   color: var(--color-ui-pri); */
+/* } */
+
+/* .ptlSearch .searchTerm:focus { */
+/*   color: var(--color-ui-sec); */
+/*   border: 1px solid var(--color-ui-qui); */
+/*   background-color: var(--color-ui-pri); */
+/* } */
+
+/* .ptlSearch .searchButton { */
+/*   width: 40px; */
+/*   /\* height: 15px; *\/ */
+/*   border: 1px solid var(--color-ui-qui); */
+/*   background: var(--color-ui-qua); */
+/*   text-align: center; */
+/*   color: var(--color-ui-pri); */
+/*   border-radius: 0 3px 3px 0; */
+/*   cursor: pointer; */
+/*   /\* font-size: 20px; *\/ */
+/* } */

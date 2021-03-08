@@ -58,6 +58,12 @@ var PTL = (function() {
         $(this).next().toggle(50);
       });
 
+      $('#ptlSearch').hover(function() {
+        $(this).children('input').css({'opacity': '1'});
+      }, function() {
+        $(this).children('input').css({'opacity': '0'});
+      });
+
       PTL.sync.attachWidget();
 
       $('button').button();

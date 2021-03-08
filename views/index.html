@@ -111,38 +111,42 @@
       <div class="topnav" id="topnav">
 
         <div id="menuButton"
-             class="menuBarItem logoType translate js-enabled-only"
+             class="menuBarItem translate js-enabled-only navLeft"
              title="Set Pétrolette preferences/options"
              data-title="Set Pétrolette preferences/options">
-          <i class="logoType icon-menu"></i>
-          <span class="text translate"
-                data-content="Menu">
-            Menu
-          </span>
-        </div>
-
-        <div class="menuBarItem logoType translate help-button js-enabled-only"
-             title="Documentation"
-             data-title="Documentation">
-          <i class="logoType icon-question"></i>
-          <span class="text translate"
-                data-content="Help">
-            Help
-          </span>
+          <i class="icon-menu"></i>
+          <!-- <span class="text translate"
+               data-content="Menu">
+               Menu
+               </span> -->
         </div>
 
         <div id="newFeedButton"
-             class="menuBarItem logoType translate new-feed-button js-enabled-only"
+             class="menuBarItem translate new-feed-button js-enabled-only navLeft"
              title="Add a feed"
              data-title="Add a feed">
-          <i class="logoType icon-plus"></i>
-          <span class="text translate"
-                data-content="Feed">
-            Feed
-          </span>
+          <i class="icon-plus"></i>
+          <!-- <span class="text translate"
+               data-content="Feed">
+               Feed
+               </span> -->
         </div>
 
-        <div id="logo-title" title="Pétrolette <%= version %>">
+        <div id="ptlSearch" class="menuBarItem navLeft">
+          <i class="icon-search"></i>
+          <input
+            class="ui-widget-content ui-corner-all translate"
+            style="opacity:0"
+            type="text"
+            placeholder="What are you looking for?">
+        </div>
+
+        <div class="menuBarItem navCenter">
+        </div>
+
+        <div id="logo-title"
+             class="navRight"
+             title="Pétrolette <%= version %>">
           <div class="logo-title">
             <a href="#">Pétrolette</a>
           </div>
@@ -154,11 +158,50 @@
       </div>
     </nav>
 
-
-
     <nav style="display:none;" id="sideMenu" class="menu">
 
       <div id="sideMenu" class="plip">
+
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Help">Help
+          </span>
+        </legend>
+
+        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+          <div class="flex-box">
+            <a href="https://framagit.org/yphil/petrolette"
+               class="ui-button ui-widget ui-corner-all unique translate"
+               data-title="Use the force - read the Source"
+               title="Use the force - read the Source"
+               data-content="Source code">
+              Source code
+            </a>
+            <button id="help"
+                    class="grow translate help-button"
+                    data-title="Documentation"
+                    data-content="Help"
+                    title="Documentation">
+              Help
+            </button>
+            <a href="https://liberapay.com/yPhil/donate"
+               class="ui-button ui-widget ui-corner-all translate last"
+               data-title="Send your love to Pétrolette"
+               title="Send your love to Pétrolette"
+               data-content="Donate">
+              Donate
+            </a>
+            <a href="/about/javascript"
+               data-jslicense="1"
+               class="ui-button ui-widget ui-corner-all unique translate"
+               data-title="JavaScript license information"
+               title="JavaScript license information"
+               data-content="JS Licences">
+              JS Licence info
+            </a>
+          </div>
+        </fieldset>
 
         <legend class="ui-corner-top hover">
           <i class="icon-right rotate unfold"></i>
@@ -301,48 +344,6 @@
                       data-content="Rotate"
                       value="rotate">Rotate</option>
             </select>
-          </div>
-        </fieldset>
-
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Help">Help
-          </span>
-        </legend>
-
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
-          <div class="flex-box">
-            <a href="https://framagit.org/yphil/petrolette"
-               class="ui-button ui-widget ui-corner-all unique translate"
-               data-title="Use the force - read the Source"
-               title="Use the force - read the Source"
-               data-content="Source code">
-              Source code
-            </a>
-            <button id="help"
-                    class="grow translate help-button"
-                    data-title="Documentation"
-                    data-content="Help"
-                    title="Documentation">
-              Help
-            </button>
-            <a href="https://liberapay.com/yPhil/donate"
-               class="ui-button ui-widget ui-corner-all translate last"
-               data-title="Send your love to Pétrolette"
-               title="Send your love to Pétrolette"
-               data-content="Donate">
-              Donate
-            </a>
-            <a href="/about/javascript"
-               data-jslicense="1"
-               class="ui-button ui-widget ui-corner-all unique translate"
-               data-title="JavaScript license information"
-               title="JavaScript license information"
-               data-content="JS Licences">
-              JS Licence info
-            </a>
           </div>
         </fieldset>
 
