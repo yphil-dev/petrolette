@@ -32,11 +32,13 @@ var PTL = (function() {
       $searchPrefixRestoreButton.click(function(){
         console.log('val %s', $searchPrefixInput.val());
         $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefixDefault'));
+        PTL.util.say(PTL.tr('Restored search prefix to default value'), 'success', true);
       });
 
       $searchPrefixOkButton.click(function(){
-        PTL.prefs.writeConfig('searchPrefix', $searchPrefixInput.val());
-        console.log('val %s', $searchPrefixInput.val());
+        const clean = DOMPurify.sanitize($searchPrefixInput.val());
+        PTL.prefs.writeConfig('searchPrefix', clean);
+        PTL.util.say(PTL.tr('Search prefix') + ': ' + clean, 'success', true);
       });
 
       $('noscript').hide();

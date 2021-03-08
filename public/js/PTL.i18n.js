@@ -139,6 +139,9 @@ PTL.i18n.translations = {
 
   "Restore default search prefix" : { fr: "Rétablir le préfixe de recherche par défaut" , ja: "デフォルトの検索プレフィックスを復元", es: "Restaurar el prefijo de búsqueda predeterminado" },
 
+  "Restored search prefix to default value" : { fr: "Préfixe de recherche restauré à la valeur par défaut" , ja: "復元された検索プレフィックスをデフォルト値に復元しました", es: "Prefijo de búsqueda restaurado al valor predeterminado" },
+
+
   "English" : { fr: "English" , ja: "English", es: "English" },
   "Français" : { fr: "Français" , ja: "Français", es: "Français" },
   "日本語" : { fr: "日本語" , ja: "日本語", es: "日本語" },

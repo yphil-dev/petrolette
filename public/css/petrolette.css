@@ -732,9 +732,9 @@ fieldset.feedsMenuForm {
   background-color: var(--color-ui-qua) !important;
 }
 
-/* .ui-button:not(.ui-spinner-button, .feedGuessButton, .feedErrorReportButton) { */
-/*   margin-right: 0.4em; */
-/* } */
+.ui-button:not(.ui-spinner-button, .feedGuessButton, .feedErrorReportButton) {
+  margin-right: 0.4em;
+}
 
 .rs-button {
   margin-right: 0;
