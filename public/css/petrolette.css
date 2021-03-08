@@ -1221,19 +1221,17 @@ li.feed div.feed-body:hover {
 }
 
 /* Works on Chrome, Edge, and Safari */
-/* *::-webkit-scrollbar { */
-/*   width: 12px; */
-/* } */
+*::-webkit-scrollbar {
+  width: 4px;
+}
 
-/* *::-webkit-scrollbar-track { */
-/*   background: var(--color-ui-qua); */
-/* } */
+*::-webkit-scrollbar-track {
+  background: var(--color-ui-qua);
+}
 
-/* *::-webkit-scrollbar-thumb { */
-/*   background-color: var(--color-ui-pri); */
-/*   border-radius: 20px; */
-/*   border: 3px solid var(--color-ui-qua); */
-/* } */
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-ui-pri);
+}
 
 .folded {
   height: 0 !important;
