@@ -41,6 +41,10 @@ var PTL = (function() {
         PTL.util.say(PTL.tr('Search prefix') + ': ' + clean, 'success', true);
       });
 
+      $('#logo-title a').click(function(){
+        $('#ui-id-1').focus().trigger('click');
+      });
+
       $('noscript').hide();
 
       $('.js-enabled-only').show();
