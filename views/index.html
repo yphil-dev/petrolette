@@ -108,37 +108,29 @@
     </div>
 
     <nav style="display:none;" id="top-menu" class="menu">
+
       <div class="topnav" id="topnav">
 
         <div id="menuButton"
              class="menuBarItem translate js-enabled-only navLeft"
-             title="Set Pétrolette preferences/options"
-             data-title="Set Pétrolette preferences/options">
-          <i class="icon-menu"></i>
-          <!-- <span class="text translate"
-               data-content="Menu">
-               Menu
-               </span> -->
+             title="Main menu"
+             data-title="Main menu">
+          <i class="icon-menu topMenuIcon"></i>
         </div>
 
         <div id="newFeedButton"
              class="menuBarItem translate new-feed-button js-enabled-only navLeft"
-             title="Add a feed"
-             data-title="Add a feed">
-          <i class="icon-plus"></i>
-          <!-- <span class="text translate"
-               data-content="Feed">
-               Feed
-               </span> -->
+             title="New feed"
+             data-title="New feed">
+          <i class="icon-plus topMenuIcon"></i>
         </div>
 
         <div id="ptlSearch" class="menuBarItem navLeft">
-          <i class="icon-search"></i>
           <input
             class="ui-widget-content ui-corner-all translate"
-            style="opacity:0"
             type="text"
-            placeholder="What are you looking for?">
+            placeholder="Search in feeds">
+          <i class="icon-reset"></i>
         </div>
 
         <div class="menuBarItem navCenter">
@@ -162,14 +154,13 @@
 
       <div id="sideMenu" class="plip">
 
-        <legend class="ui-corner-top hover">
+        <legend class="ui-corner-top hover first">
           <i class="icon-right rotate unfold"></i>
           <span class="translate"
                 data-content="Language">Language
           </span>
         </legend>
-
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+        <fieldset class="menuForm">
           <select id="language"
                   class="unique translate"
                   name="language"
@@ -198,40 +189,53 @@
         <legend class="ui-corner-top hover">
           <i class="icon-right rotate unfold"></i>
           <span class="translate"
-                data-content="Help">Help
+                data-content="Help">
+            Help
           </span>
         </legend>
-
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+        <fieldset class="menuForm">
           <div class="flex-box">
-            <a href="https://framagit.org/yphil/petrolette"
-               class="ui-button ui-widget ui-corner-all unique translate"
-               data-title="Use the force - read the Source"
-               title="Use the force - read the Source"
-               data-content="Source code">
-              Source code
-            </a>
             <button id="help"
-                    class="grow translate help-button"
+                    class="grow translate help-button left"
                     data-title="Documentation"
                     data-content="Help"
                     title="Documentation">
               Help
             </button>
-            <a href="https://liberapay.com/yPhil/donate"
-               class="ui-button ui-widget ui-corner-all translate last"
-               data-title="Send your love to Pétrolette"
-               title="Send your love to Pétrolette"
-               data-content="Donate">
-              Donate
+
+            <button
+              class="translate ui-button ui-corner-all grow"
+              data-content="Tour"
+              onclick="PTL.util.help('ui');">
+              Tour
+            </button>
+
+          </div>
+        </fieldset>
+
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Pétrolette">
+            Pétrolette
+          </span>
+        </legend>
+        <fieldset class="menuForm">
+          <div class="flex-box">
+            <a href="https://framagit.org/yphil/petrolette"
+               class="grow ui-button ui-corner-all translate left"
+               data-title="Use the force - read the Source"
+               title="Use the force - read the Source"
+               data-content="Source">
+              Source
             </a>
             <a href="/about/javascript"
                data-jslicense="1"
-               class="ui-button ui-widget ui-corner-all unique translate"
+               class="grow ui-button ui-corner-all translate"
                data-title="JavaScript license information"
                title="JavaScript license information"
-               data-content="JS Licences">
-              JS Licence info
+               data-content="Licence">
+              Licence
             </a>
           </div>
         </fieldset>
@@ -242,13 +246,13 @@
                 data-content="Feeds">Feeds
           </span>
         </legend>
-        <fieldset class="feedsMenuForm ui-widget ui-widget-content ui-corner-all">
+        <fieldset class="feedsMenuForm">
           <div class="flex-box">
             <input id="fileImport"
                    type="file"
                    style="display: none;" />
             <button id="fileImportButton"
-                    class="grow translate"
+                    class="grow translate left"
                     data-title="Open / import tabs and feeds"
                     data-content="Open">
               <i class="icon-upload"></i>
@@ -269,10 +273,11 @@
         <legend class="ui-corner-top hover">
           <i class="icon-right rotate unfold"></i>
           <span class="translate"
-                data-content="Theme">Theme
+                data-content="Theme">
+            Theme
           </span>
         </legend>
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+        <fieldset class="menuForm">
           <div id="themeBox"
                class="flex-box">
           </div>
@@ -284,7 +289,7 @@
                 data-content="Broken images">Broken images
           </span>
         </legend>
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+        <fieldset class="menuForm">
           <div id="brokenImagesBox"
                class="flex-box">
           </div>
@@ -298,7 +303,7 @@
           </span>
         </legend>
         <fieldset id="galleryBox"
-                  class="menuForm ui-widget ui-widget-content ui-corner-all">
+                  class="menuForm">
           <label class="ui-helper-hidden"
                  for="gallerySlideshowSpeedValue"></label>
           <span id="gallerySlideshowSpeedValue"
@@ -353,7 +358,7 @@
                 data-content="Search prefix">Search prefix
           </span>
         </legend>
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+        <fieldset class="menuForm">
           <div class="flex-box">
             <!-- <input type="text" id="searchPrefix" class="grow" /> -->
             <input name="searchPrefix"
@@ -364,7 +369,7 @@
                    title="Search prefix"
                    value="" />
             <button id="searchPrefixOkButton"
-                    class="translate ui-button ui-corner-all ui-widget"
+                    class="translate ui-button ui-corner-all ui-widget left"
                     data-title="OK"
                     data-content="OK"
                     title="OK"
@@ -375,7 +380,7 @@
             <button id="searchPrefixRestoreButton"
                     data-title="Restore default search prefix"
                     data-content="Restore default"
-                    class="last grow translate ui-button ui-corner-all ui-widget"
+                    class="last grow translate ui-button ui-corner-all"
                     type="button"
                     title="Restore default search prefix">
               Restore default
@@ -389,13 +394,13 @@
                 data-content="Support">Support
           </span>
         </legend>
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+        <fieldset class="menuForm ui-widget-content">
           <div class="flex-box" id="liberapay">
             <a href="https://liberapay.com/yPhil/">
-              <img width="160" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
+              <img width="158" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
             </a>
             <a href="https://liberapay.com/yPhil/">
-              <img width="85" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
+              <img width="82" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
             </a>
           </div>
         </fieldset>
@@ -406,7 +411,7 @@
                 data-content="Console">Console
           </span>
         </legend>
-        <fieldset class="menuForm ui-widget ui-widget-content ui-corner-all">
+        <fieldset class="menuForm ui-widget-content">
           <div
             class="unique"
             data-title="Click to toggle"

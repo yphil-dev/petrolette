@@ -5,13 +5,14 @@
   --color-fg4: #404552; /* Separators */
   --color-fg5: #F77F00; /* Feed controls */
   --color-fg6: #eae2b7; /* Feed title */
+  --color-fg7: #FFFF00; /* Feed title */
   --color-bg1: #29323C; /* Body / Feed border  */
   --color-bg2: #1F262E; /* Feed header */
   --color-bg3: #383C4A; /* Feed item BG */
   --color-bg4: #424657; /* Feed item BG alternate */
   --color-bg5: #1F262E; /* Feed item BG hover */
   --color-hl1: #1F262E;
-  --color-hl2: #000000;
+  --color-hl2: #000000; /* Feed controls hover */
   --color-hl3: #000000;
   --color-danger: #FF0000;
 }

@@ -142,6 +142,10 @@ PTL.i18n.translations = {
   "Restored search prefix to default value" : { fr: "Préfixe de recherche restauré à la valeur par défaut" , ja: "復元された検索プレフィックスをデフォルト値に復元しました", es: "Prefijo de búsqueda restaurado al valor predeterminado" },
 
 
+  "Search in feeds" : { fr: "Rechercher dans les flux" , ja: "フィードで検索します", es: "Búsqueda en fuentes" },
+
+
+
   "English" : { fr: "English" , ja: "English", es: "English" },
   "Français" : { fr: "Français" , ja: "Français", es: "Français" },
   "日本語" : { fr: "日本語" , ja: "日本語", es: "日本語" },
@@ -293,6 +297,7 @@ PTL.i18n.translations = {
   "Pétrolette uses a time-tested technology" : { fr: "Pétrolette fonctionne sur une technologie éprouvée" , ja: "Pétroletteは時間を守った技術を使用しています", es: "Pétrolette utiliza una tecnología probada" },
   "Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them." : { fr: "Les sites produisent un flux d'info pour faciliter l'accès à leur contenu ; Pétrolette actualise ces sources et les affiche." , ja: "ウェブサイトは、コンテンツへのアクセスを容易にするために、見出しのフィードを提供します。 Pétroletteが更新して表示する", es: "Los sitios web proporcionan información sobre sus titulares para facilitar el acceso a su contenido; Pétrolette las actualiza y las muestra." },
 
+  "Tour" : { fr: "Visite", ja: "旅行", es: "Visita" },
 
   "The website publishes a new article" : { fr: "Le site publie un nouvel article" , ja: "ウェブサイトは新しい記事を公開します", es: "El sitio web publica un nuevo artículo" },
   "Its RSS feed is updated" : { fr: "Son flux RSS est mis à jour" , ja: "そのRSSフィードが更新されます", es: "Su feed RSS está actualizado" },
@@ -406,9 +411,11 @@ PTL.i18n.translations = {
   "Error type" : { fr: "Type d'erreur", ja: "エラータイプ", es: "Tipo de error" },
 
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
+  "Error:" : { fr: "Erreur:", ja: "エラー", es: "Error:" },
+
   "error" : { fr: "erreur", ja: "エラー", es: "error" },
 
-  "Set Pétrolette preferences/options" : { fr: "Définir les préférences / options de Pétrolette", ja: "ペレットの環境設定/オプションを設定する", es: "Establecer las preferencias / opciones de Pétrolette" },
+  "Main menu" : { fr: "Menu principal", ja: "メインメニュー", es: "Menú principal" },
 
   // Dialogues
   "Flux: Kill" : { fr: "Feed: Supprimer", ja: "フィード：削除", es: "Flux: Eliminar" },

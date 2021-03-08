@@ -302,6 +302,8 @@ PTL.util = {
   },
   help:function(type) {
 
+    PTL.sideMenu('close');
+
     var dialog = introJs(),
         menu = introJs(),
         ui = introJs();

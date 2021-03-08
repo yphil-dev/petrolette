@@ -80,7 +80,6 @@ PTL.dialog = {
             .attr('href', 'javascript:void(window.open("' + window.location.href + '?add=" + window.location.href))');
 
           $('.help-tour').on('click', function() {
-            PTL.sideMenu('close');
             PTL.dialog.kill($dialog);
             $('#tabs').tabs('option', 'active', 0);
             PTL.util.help('ui');

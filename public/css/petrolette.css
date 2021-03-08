@@ -38,7 +38,7 @@
 
   /* Relative to media */
 
-  --side-menu-width-expanded: 275px;
+  --side-menu-width-expanded: 280px;
   --side-menu-width: -291px;
   --header-height: 24px;
   --controls-width: 150px;
@@ -168,35 +168,29 @@ a:active {
   order: 3;
 }
 
-.topnav > div.menuBarItem > i {
+.topnav > div.menuBarItem > i.topMenuIcon {
   display: block;
   color: var(--color-ui-sec);
   font-size: 16pt;
   margin: 8px 8px 8px 12px;
 }
 
+.topnav > div.menuBarItem > i.icon-reset {
+  margin: 13px 0 8px -28px;
+  color: #333333;
+}
+
+.topnav > div.menuBarItem > i.icon-reset:hover {
+  color: #555555;
+}
+
 .topnav > div.menuBarItem > input {
-  margin: 8px 8px 8px 12px;
+  margin: 8px;
 }
 
-.topnav > div.menuBarItem:hover {
-  background-color: var(--color-ui-qua);
-}
-
-.topnav > div.menuBarItem:hover i {
+.topnav > div.menuBarItem i.topMenuIcon:hover {
   color: var(--color-ui-pri);
 }
-
-.topnav > div.menuBarItem:hover .text {
-  /* display: none; */
-  visibility: hidden;
-}
-
-.topnav > div.menuBarItem > .text {
-  position: relative;
-  z-index: 10;
-}
-
 
 div#logo-title {
   display: flex;
@@ -204,6 +198,10 @@ div#logo-title {
 
 .icon-petrolette {
   color: var(--color-ui-sec);
+}
+
+.icon-w3c {
+  color: var(--color-ui-success);
 }
 
 .logoType i.icon-petrolette {
@@ -460,11 +458,6 @@ ul.help li {
 /*   border-top: 1px solid var(--color-ui-danger) !important; */
 /* } */
 
-li.feed-item:not(.error) a {
-  display: block;
-  width: 100%;
-}
-
 i.feed-control {
   color: var(--color-fg5);
 }
@@ -515,7 +508,7 @@ i.item-icon {
 
 .feed-header > .feed-title > a.danger:link,
 .feed-header > .feed-title > a.danger:visited {
-  color: var(--color-ui-danger);
+  color: var(--color-danger);
 }
 
 .feed-header > .feed-title > a.danger:hover,
@@ -618,19 +611,19 @@ select {
 fieldset {
   color: var(--color-ui-pri);
   background: var(--color-ui-qua) !important;
-  /* margin: 0 0 0.2em 0; */
-  /* padding-bottom: 0.4em; */
-  /* padding-left: 0.4em; */
-  /* padding-right: 0.4em; */
-  /* width: available; */
 }
 
 legend {
   color: var(--color-ui-pri);
 }
 
+legend.first {
+  margin-top: 0.6em;
+}
+
 .menu legend {
-  margin-left: 6px;
+  color: var(--color-ui-qui);
+  margin-left: 14px;
   font-size: 9pt;
 }
 
@@ -662,13 +655,12 @@ nav#sideMenu,
 }
 
 nav#sideMenu .ui-button,
-nav#sideMenu #sync-box {
+#sync-box {
   margin-bottom: 0.3em;
 }
 
 .results {
-  background: #de1919;
-  color: white;
+  outline: 1px solid var(--color-fg7) !important;
 }
 
 nav#sideMenu:hover {
@@ -677,6 +669,10 @@ nav#sideMenu:hover {
 
 nav#sideMenu.expanded {
   left: 0;
+}
+
+.left {
+  margin-right: 0.3em;
 }
 
 #progress-bar {
@@ -717,7 +713,6 @@ nav#sideMenu.expanded {
   font-family: monospace;
   overflow-wrap: break-word;
   overflow: auto;
-  padding: 0 0.2em;
   text-align: left;
 }
 
@@ -782,20 +777,18 @@ a.validateFeedButton {
   flex: 1;
 }
 
+fieldset {
+  border: 0;
+}
+
 fieldset.menuForm {
   display: flex;
-  height: 100%;
-  justify-content: space-between;
   background-color: var(--color-ui-qua);
 }
 
 fieldset.feedsMenuForm {
   background-color: var(--color-ui-qua) !important;
 }
-
-/* .ui-button:not(.ui-spinner-button, .feedGuessButton, .feedErrorReportButton) { */
-/*   margin-right: 0.4em; */
-/* } */
 
 .buttonLeft {
   margin-right: 0.4em;
@@ -1225,7 +1218,7 @@ li.feed-item:nth-child(even) {
   background-color: var(--color-bg4);
 }
 
-li.feed-item:hover {
+li.feed-item:not(.error):hover {
   background-color: var(--color-bg5);
 }
 
@@ -1237,6 +1230,11 @@ li.feed-item > div.itemDiv > a > .ptl-img {
   margin: 0 0.2rem 0.2rem 0;
   /* width: 30%; */
   /* max-width: 30%; */
+}
+
+li.feed-item:not(.error) a {
+  display: block;
+  width: 100%;
 }
 
 li.feed-item img:hover {

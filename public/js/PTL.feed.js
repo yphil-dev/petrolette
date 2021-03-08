@@ -226,16 +226,27 @@ PTL.feed = {
 
           PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
 
-          var $w3cLink = $('<a>'),
-              $validCssIcon = $('<i>');
+          var $validateLink = $('<a>'),
+              $validateLinkIcon = $('<i>'),
+              $reportLink = $('<a>'),
+              $reportLinkIcon = $('<i>');
 
-          $validCssIcon
+          $validateLinkIcon
             .attr('class', 'item-icon icon-w3c')
-            .attr('titre', PTL.tr('Validate /verify this feed file with the W3C'))
-            .appendTo($w3cLink);
+            .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
+            .appendTo($validateLink);
 
-          $w3cLink
+          $validateLink
             .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
+            .appendTo($feedBodyUl);
+
+          $reportLinkIcon
+            .attr('class', 'item-icon icon-petrolette')
+            .attr('title', PTL.tr('Report feed error'))
+            .appendTo($validateLink);
+
+          $reportLink
+            .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')
             .appendTo($feedBodyUl);
 
           $feedLink
@@ -243,18 +254,10 @@ PTL.feed = {
             .addClass('translate danger')
             .data('content', PTL.tr('Error'));
 
-          var $feedErrorReportButton = $('<a>')
-              .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')
-              .attr('class', 'translate ui-button ui-widget ui-corner-all feedErrorReportButton')
-              .attr('title', PTL.tr('Report feed error'))
-              .data('title', PTL.tr('Report feed error'))
-              .data('content', PTL.tr('Report'))
-              .text(PTL.tr('Report'));
-
           var $key = $('<strong>')
               .attr('class', 'translate key')
-              .data('content', PTL.tr('Type'))
-              .text(PTL.tr('Type'));
+              .data('content', PTL.tr('Error:'))
+              .text(PTL.tr('Error:'));
 
           var $value = $('<strong>')
               .attr('class', 'value')
@@ -267,24 +270,11 @@ PTL.feed = {
           var $errorButtonsFlexBox = $('<a>')
               .attr('class', 'translate flex-box');
 
-          var $validateFeedButton = $('<a>')
-              .attr('class', 'translate ui-button ui-widget ui-corner-all validateFeedButton')
-              .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-              .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
-              .data('title', PTL.tr('Validate /verify this feed file with the W3C'))
-              .data('content', PTL.tr('Validate'))
-              .text(PTL.tr('Validate'));
-
-          $errorButtonsFlexBox.append($validateFeedButton, $feedErrorReportButton);
-
           var $errorItem = $('<li>')
               .attr('class', 'feed-item error')
-          // .append($errorLink)
-              .append('&nbsp;')
               .append($key)
-              .append(':&nbsp;')
-              .append($value)
-              .append($errorButtonsFlexBox);
+              .append('&nbsp;')
+              .append($value);
 
           $feedBodyUl
             .append($errorItem);

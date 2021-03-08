@@ -18,6 +18,7 @@ var PTL = (function() {
           $saveButton = $('#saveTabs'),
           $langMenu = $('select#language'),
           $slider = $('div#gallerySpeedSlider'),
+          $searchField = $('#ptlSearch input').val(''),
           $searchPrefixOkButton = $('button#searchPrefixOkButton'),
           $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
           $searchPrefixInput = $('input#searchPrefixInput'),
@@ -55,22 +56,31 @@ var PTL = (function() {
 
       $('#sideMenu legend').click(function() {
         $(this).children('i').toggleClass('unfold');
-        $(this).next().toggle(50);
+        $(this).next().toggle();
       });
 
-      $('#ptlSearch').hover(function() {
-        $(this).children('input').css({'opacity': '1'});
-      }, function() {
-        $(this).children('input').css({'opacity': '0'});
+      $('#ptlSearch i').click(function() {
+        $(this).prev('input').val('');
+        $('.results').removeClass('results');
       });
 
-      $('#ptlSearch input').on('keyup', function () {
-        console.log('plop!: %s (%s)');
+      $searchField.on('keypress',function(e) {
+        if(e.which == 13) $('a.ui-tabs-anchor.results').focus().trigger('click');
+      });
+
+      $searchField.on('keyup', function () {
         var v = $(this).val();
         $('.results').removeClass('results');
         $('a.feed-link').each(function () {
           if (v != '' && $(this).text().search(new RegExp(v,'gi')) != -1) {
+            var $feed = $(this).parent().parent().parent().parent();
+            var $col = $feed.parent().parent();
+            var tabId = $col.parent().attr('aria-labelledby');
+            var $tab = $('a#' + tabId);
             $(this).addClass('results');
+            $feed.addClass('results');
+            // $col.addClass('results');
+            $tab.addClass('results');
           }
         });
       });
@@ -160,7 +170,7 @@ var PTL = (function() {
       var $themeBox = $('div#themeBox'),
           $dayLabel = $('<label>')
           .attr('for', 'day')
-          .attr('class', 'translate')
+          .attr('class', 'translate left')
           .data('content', PTL.tr('Day'))
           .text(PTL.tr('Day')),
           $dayInput = $('<input>')
@@ -196,7 +206,7 @@ var PTL = (function() {
 
       var $brokenImagesBox = $('div#brokenImagesBox'),
           $showLabel = $('<label>')
-          .attr('class', 'translate')
+          .attr('class', 'translate left')
           .attr('for', 'show')
           .data('content', PTL.tr('Show'))
           .text(PTL.tr('Show')),
