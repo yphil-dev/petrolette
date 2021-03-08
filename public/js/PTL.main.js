@@ -64,6 +64,17 @@ var PTL = (function() {
         $(this).children('input').css({'opacity': '0'});
       });
 
+      $('#ptlSearch input').on('keyup', function () {
+        console.log('plop!: %s (%s)');
+        var v = $(this).val();
+        $('.results').removeClass('results');
+        $('a.feed-link').each(function () {
+          if (v != '' && $(this).text().search(new RegExp(v,'gi')) != -1) {
+            $(this).addClass('results');
+          }
+        });
+      });
+
       PTL.sync.attachWidget();
 
       $('button').button();

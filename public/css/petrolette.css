@@ -618,11 +618,11 @@ select {
 fieldset {
   color: var(--color-ui-pri);
   background: var(--color-ui-qua) !important;
-  margin: 0 0 0.2em 0;
-  padding-bottom: 0.4em;
-  padding-left: 0.4em;
-  padding-right: 0.4em;
-  width: available;
+  /* margin: 0 0 0.2em 0; */
+  /* padding-bottom: 0.4em; */
+  /* padding-left: 0.4em; */
+  /* padding-right: 0.4em; */
+  /* width: available; */
 }
 
 legend {
@@ -630,6 +630,7 @@ legend {
 }
 
 .menu legend {
+  margin-left: 6px;
   font-size: 9pt;
 }
 
@@ -658,6 +659,16 @@ nav#sideMenu,
 .ui-dialog .ui-dialog-buttonpane {
   background: var(--color-ui-qua);
   border-color: var(--color-ui-qua);
+}
+
+nav#sideMenu .ui-button,
+nav#sideMenu #sync-box {
+  margin-bottom: 0.3em;
+}
+
+.results {
+  background: #de1919;
+  color: white;
 }
 
 nav#sideMenu:hover {
