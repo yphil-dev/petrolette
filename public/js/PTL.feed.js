@@ -243,7 +243,7 @@ PTL.feed = {
           $reportLinkIcon
             .attr('class', 'item-icon icon-petrolette')
             .attr('title', PTL.tr('Report feed error'))
-            .appendTo($validateLink);
+            .appendTo($reportLink);
 
           $reportLink
             .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')

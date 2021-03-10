@@ -7,32 +7,67 @@ PTL.dialog = {
   },
   beg:function() {
 
-    const $beggar = $('#beggar'),
-          $beggarH4 = $('#beggar > h4'),
-          $beggarClose = $('#beggar > span.beggarClose'),
-          $beggarOkButton = $('#beggar > #beggarOkButton'),
-          $beggarTourButton = $('#beggar > #beggarTourButton');
+    $('#dialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
 
-    $beggarOkButton.on('click', function() {
-      $beggar.fadeOut('fast');
-      window.open('https://liberapay.com/yPhil/donate');
+      const $dialog = $(this),
+            $beggarH4 = $dialog.find('h4'),
+            $beggarClose = $dialog.find('span.beggarClose'),
+            $beggarOkButton = $dialog.find('#beggarOkButton'),
+            $beggarTourButton = $dialog.find('#beggarTourButton');
+
+      $dialog.dialog({
+        title: PTL.tr('Pétrolette needs you'),
+        position: { my: "left top", at: "left bottom" },
+        modal: false,
+        buttons: [
+          {
+            text: PTL.tr('Donate'),
+            title: PTL.tr('Send your love to Pétrolette'),
+            class: 'translate',
+            click: function() {
+              window.open('https://liberapay.com/yPhil/donate');
+              PTL.dialog.kill($dialog);
+            }
+          },
+          {
+            text: PTL.tr('Take the tour'),
+            title: PTL.tr('Learn to use it in a few easy steps'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+              PTL.util.help('ui');            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+        }
+      });
+
+      // $beggarOkButton.on('click', function() {
+      //   $beggar.fadeOut('fast');
+      //   window.open('https://liberapay.com/yPhil/donate');
+      // });
+
+      // $beggarClose.on('click', function() {
+      //   $beggar.fadeOut('fast');
+      // });
+
+      // $beggarTourButton.on('click', function() {
+      //   $beggar.fadeOut('fast');
+
+      //   PTL.sideMenu('close');
+      //   $('#tabs').tabs('option', 'active', 0);
+      //   PTL.util.help('ui');
+
+      // });
+
+      $dialog.dialog('open');
+
     });
-
-    $beggarClose.on('click', function() {
-      $beggar.fadeOut('fast');
-    });
-
-    $beggarTourButton.on('click', function() {
-      $beggar.fadeOut('fast');
-
-      PTL.sideMenu('close');
-      $('#tabs').tabs('option', 'active', 0);
-      PTL.util.help('ui');
-
-    });
-
-    $beggar.fadeIn('fast');
-
   },
   notify:function(title, text) {
 
@@ -49,6 +84,42 @@ PTL.dialog = {
       $(this).fadeOut('fast');
     });
 
+  },
+  about:function() {
+
+    $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {
+
+      var $dialog = $(this);
+
+      $dialog.dialog({
+        title: PTL.tr('About Pétrolette'),
+        buttons: [
+          {
+            text: PTL.tr('Ok'),
+            title: PTL.tr('Ok'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+          $dialog.find('h1').text('Pétrolette');
+          $dialog.find('h2#name').text(PTL.tr('Index'));
+          $dialog.find('p#name').text('By yPhil');
+          $dialog.find('h2#number').text(PTL.tr('Number of feeds'));
+          $dialog.find('p#number').text(nbOfFeedsInCol);
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
   },
   help:function() {
 
