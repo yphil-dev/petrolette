@@ -5,6 +5,57 @@ PTL.dialog = {
     $dialog.dialog('destroy');
     $('#dialogs').empty();
   },
+  resetTabs:function($button) {
+
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+
+      console.log('plop: %s (%s)');
+
+      var $dialog = $(this),
+          $icon = $dialog.find('div.dialogImage > i');
+
+      $icon.addClass('icon-trash-empty danger');
+
+      $dialog.dialog({
+        title: PTL.tr('Hard reset'),
+        buttons: [
+          {
+            text: PTL.tr('Cancel'),
+            title: PTL.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          },
+          {
+            text: PTL.tr('Reset'),
+            title: PTL.tr('Wait! Are you sure?'),
+            class: 'dangerous translate',
+            click: function() {
+              localStorage.clear();
+              PTL.util.say(PTL.tr('All tabs and feeds restored to defaults'), 'success', true);
+              PTL.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+          $dialog.find('h1').text(PTL.tr('Reset all tabs and feeds to defaults'));
+          $dialog.find('h2#name').text(PTL.tr('Warning'));
+          $dialog.find('p#name').text(PTL.tr('This operation cannot be undone') + '.');
+
+        }
+      });
+
+      $dialog.dialog('open');
+
+    });
+
+  },
   beg:function() {
 
     $('#dialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
@@ -698,8 +749,6 @@ PTL.dialog = {
   killFeed:function($button) {
 
     $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
-
-      console.log('plop: %s (%s)');
 
       var $dialog = $(this),
           $thisFeed = $button.parent().parent().parent().parent(),

@@ -49,6 +49,7 @@ PTL.i18n.translations = {
   "Position": { fr: "Position", ja: "ポジション", es: "Posición" },
   "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
   "Sorry": { fr: "Désolé", ja: "ごめんなさい", es: "Perdón" },
+  "Warning": { fr: "Avertissement", ja: "警告", es: "Advertencia" },
 
   // Pétrolette
 
@@ -343,32 +344,22 @@ PTL.i18n.translations = {
   "and Pétrolette in general." : { fr: "et Pétrolette en général." , ja: "Pétroletteの使い方を学んでください。", es: "y Pétrolette en general." },
   "the tabs and the feeds" : { fr: "les onglets et les flux" , ja: "フォルダとフィード", es: "las carpetas y las fuentes" },
 
-
-
-  // Profile
-
-  "Are you" : { fr: "Es-tu" , ja: "あなたは", es: "¿Eres un" },
-  "a FASCIST" : { fr: "un FASCISTE" , ja: "ファシスト", es: "un FASCISTA" },
-  "a LEFTIST" : { fr: "un GAUCHISTE" , ja: "左派", es: "un IZQUIERDISTA" },
-  "ALL OF THAT" : { fr: "TOUT ÇA À LA FOIS" , ja: "すべての", es: "TODO DE ESO" },
-  "NONE OF THAT" : { fr: "RIEN DE TOUT ÇA" , ja: "そのどれも", es: "NADA DE ESO" },
-  "What? No" : { fr: "Quoi? Non" , ja: "何？ いいえ", es: "¿Qué? No" },
-  "Hell, Yeah" : { fr: "Peste, Ouais" , ja: "地獄、うん。", es: "Diablos, Sí" },
-  "Huh, Next question" : { fr: "Euh, Question suivante" , ja: "あ、次の質問", es: "Eh, Siguiente pregunta" },
-
   "Open / import tabs and feeds" : { fr: "Ouvrir / importer onglets et flux" , ja: "フォルダとフィードを開く/インポートする", es: "Abrir / importar carpetas y canales RSS" },
   "Save / export tabs and feeds" : { fr: "Enregistrer / exporter onglets et flux" , ja: "タブとフィードを保存/エクスポートする", es: "Guardar archivo de carpetas y feeds" },
 
-  "Open group on feed drop" : { fr: "Ouvrir nouveau groupe" , ja: "ドロップ時にタブを開く", es: "Abrir grupo en drop" },
+  "Reset all tabs and feeds to defaults" : { fr: "Réinitialiser tous les onglets et flux aux valeurs par défaut" , ja: "すべてのタブとフィードをデフォルトにリセットします", es: "Restablecer todas las pestañas y fuentes a los valores predeterminados" },
+
+  "Reset" : { fr: "Réinitialiser" , ja: "リセット", es: "Restablecer" },
+
+  "This operation cannot be undone" : { fr: "Cette opération ne peut pas être annulée" , ja: "この操作は元に戻せません", es: "Esta operación no se puede deshacer" },
+
+  "All tabs and feeds restored to defaults" : { fr: "Tous les onglets et flux restaurés aux valeurs par défaut" , ja: "すべてのタブとフィードがデフォルトに復元されました", es: "Todas las pestañas y fuentes restaurados a los valores predeterminados" },
 
   "If this is set, when you drag & drop one or more feed(s) in a group, said group opens" : { fr: "Ouvrir le groupe où un flux est déposée" , ja: "魔法使いのタブを開いて餌を入れる", es: "Abrir grupo en donde se pone un canal" },
 
-  // Messages d'erreurs
   "Empty feed" : { fr: "Source vide" , ja: "空のソース", es: "fuente vacía" },
 
   "View Pétrolette according to the time of day." : { fr: "Voir Pétrolette selon l'heure de la journée." , ja: "時刻に応じてPétroletteを表示する", es: "Ver Pétrolette según la hora del día." },
-
-  "Reset Pétrolette according to your political mood of the week." : { fr: "Réinitialiser Pétrolette selon votre humeur politique de la semaine." , ja: "今週のあなたの政治的な気分に合わせてPétroletteをリセットする", es: "Restablece Pétrolette según tu estado de ánimo político de la semana." },
 
   "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
   "Help Pétrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Pétrolette." , ja: "あなたの精神的な日の気分に応じてPétroletteを助けてください", es: "Ayuda a Pétrolette de acuerdo con tu estado de ánimo espiritual del día." },

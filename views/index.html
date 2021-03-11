@@ -152,17 +152,17 @@
 
     <nav style="display:none;" id="sideMenu" class="menu">
 
-      <div id="sideMenu" class="plip">
+      <div id="sideMenu">
 
-        <legend class="ui-corner-top hover first">
+        <legend class="ui-corner-top hover">
           <i class="icon-right rotate unfold"></i>
           <span class="translate"
                 data-content="Language">Language
           </span>
         </legend>
-        <fieldset class="menuForm">
+        <fieldset class="menuForm flex-box">
           <select id="language"
-                  class="unique translate"
+                  class="grow translate"
                   name="language"
                   data-title="Language"
                   title="Language">
@@ -243,7 +243,8 @@
         <legend class="ui-corner-top hover">
           <i class="icon-right rotate unfold"></i>
           <span class="translate"
-                data-content="Feeds">Feeds
+                data-content="Feeds">
+            Feeds
           </span>
         </legend>
         <fieldset class="feedsMenuForm">
@@ -252,22 +253,35 @@
                    type="file"
                    style="display: none;" />
             <button id="fileImportButton"
-                    class="grow translate left"
-                    data-title="Open / import tabs and feeds"
-                    data-content="Open">
+                    class="grow translate"
+                    data-title="Open / import tabs and feeds">
               <i class="icon-upload"></i>
-              Open
+              <span class="translate"
+                    data-content="Open">
+                Open
+              </span>
             </button>
             <button id="saveTabs"
-                    class="grow translate last"
-                    data-title="Save / export tabs and feeds"
-                    data-content="Save">
+                    class="grow translate"
+                    data-title="Save / export tabs and feeds">
               <i class="icon-download"></i>
-              Save
+              <span class="translate"
+                    data-content="Save">
+                Save
+              </span>
+            </button>
+            <button id="resetTabs"
+                    class="grow translate"
+                    data-title="Reset all tabs and feeds to defaults">
+              <i class="icon-refresh"></i>
+              <span class="translate"
+                    data-content="Reset">
+                Reset
+              </span>
             </button>
           </div>
-          <div id="sync-box"></div>
-          <div id="progress-bar"><div class="progress-label"></div></div>
+          <div id="sync-box" class="grow"></div>
+          <div id="progress-bar" class="grow"><div class="progress-label"></div></div>
         </fieldset>
 
         <legend class="ui-corner-top hover">
@@ -321,11 +335,11 @@
             </div>
             <label for="spinner" class="ui-helper-hidden">Select a value:</label>
             <input id="gallerySpeedSpinner"
+                   class="translate shrink"
                    data-title="Slideshow speed"
-                   class="translate"
                    name="value">
             <select id="gallerySlideTransition"
-                    class="unique translate"
+                    class="grow unique translate"
                     data-title="Slide transition">
               <option class="translate"
                       data-content="None"
@@ -360,16 +374,15 @@
         </legend>
         <fieldset class="menuForm">
           <div class="flex-box">
-            <!-- <input type="text" id="searchPrefix" class="grow" /> -->
             <input name="searchPrefix"
                    id="searchPrefixInput"
-                   class="unique ui-widget-content ui-corner-all translate"
+                   class="unique grow ui-widget-content ui-corner-all translate"
                    placeholder="Search prefix"
                    data-title="Search prefix"
                    title="Search prefix"
                    value="" />
             <button id="searchPrefixOkButton"
-                    class="translate ui-button ui-corner-all ui-widget left"
+                    class="shrink translate ui-button ui-corner-all ui-widget"
                     data-title="OK"
                     data-content="OK"
                     title="OK"
@@ -380,7 +393,7 @@
             <button id="searchPrefixRestoreButton"
                     data-title="Restore default search prefix"
                     data-content="Restore default"
-                    class="last grow translate ui-button ui-corner-all"
+                    class="grow translate ui-button ui-corner-all"
                     type="button"
                     title="Restore default search prefix">
               Restore default
@@ -412,11 +425,13 @@
           </span>
         </legend>
         <fieldset class="menuForm ui-widget-content">
-          <div
-            class="unique"
-            data-title="Click to toggle"
-            title="Click to toggle"
-            id="console">
+          <div class="flex-box">
+            <div
+              class="grow"
+              data-title="Click to toggle"
+              title="Click to toggle"
+              id="console">
+            </div>
           </div>
         </fieldset>
       </div>
@@ -429,7 +444,6 @@
 
         </ul>
       </div>
-
 
       <noscript>
         <div id="no-script">
@@ -491,5 +505,6 @@
     </div>
 
     <script async src="/bower/responsively-lazy/responsivelyLazy.min.js"></script>
+
   </body>
 </html>

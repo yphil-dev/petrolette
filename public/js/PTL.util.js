@@ -438,10 +438,6 @@ PTL.util = {
           intro: PTL.tr('When you click an image, you can view it in a gallery, and start a slideshow.')
         },
         {
-          element: 'button#profile',
-          intro: PTL.tr('Reset Pétrolette according to your political mood of the week.')
-        },
-        {
           element: 'button#donate',
           intro: PTL.tr('Help Pétrolette according to your spiritual mood of the day.')
         }

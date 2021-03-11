@@ -584,19 +584,6 @@ input {
   padding: 0.4em;
 }
 
-/* div#searchPrefix { */
-
-/*   display: flex; */
-
-/* } */
-
-#searchPrefixInput {
-  box-sizing: border-box;
-  width: min-content;
-  flex-shrink: 1;
-  margin: 0 0.4em 0.4em 0;
-}
-
 .dead-center {
   height: 300px;
   left: 50%;
@@ -659,10 +646,14 @@ nav#sideMenu,
   border-color: var(--color-ui-qua);
 }
 
-nav#sideMenu .ui-button,
-#sync-box {
-  margin-bottom: 0.3em;
-}
+/* nav#sideMenu .ui-button, */
+/* #sync-box { */
+/*   margin-bottom: 0.3em; */
+/* } */
+
+/* .left { */
+/*   margin-right: 0.3em; */
+/* } */
 
 .results {
   outline: 1px solid var(--color-fg7) !important;
@@ -674,10 +665,6 @@ nav#sideMenu:hover {
 
 nav#sideMenu.expanded {
   left: 0;
-}
-
-.left {
-  margin-right: 0.3em;
 }
 
 #progress-bar {
@@ -807,13 +794,9 @@ fieldset.feedsMenuForm {
   margin-right: 0;
 }
 
-.ui-button.last {
-  margin-right: 0;
-}
-
-.grow {
-  flex: 1 0 auto !important;
-}
+/* .ui-button.last { */
+/*   margin-right: 0; */
+/* } */
 
 .ui-widget-header,
 th {
@@ -935,6 +918,7 @@ ul.help li.cloud::before {
   width: -moz-available;          /* WebKit-based browsers will ignore this. */
   width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
   width: fill-available;
+  align-items: center;
 }
 
 .flex-box > label {
@@ -946,18 +930,22 @@ ul.help li.cloud::before {
   margin-top: 2px;
 }
 
+.grow {
+  margin: 0.1em;
+  flex: 1 1;
+}
+
 .shrink {
   flex: 0 1 4em !important;
 }
 
 .unique {
   flex: 1 100%;
-  margin-right: 0 !important;
 }
 
-.twin {
-  flex: 1;
-}
+/* .twin { */
+/*   flex: 1; */
+/* } */
 
 span.ui-spinner,
 .last {
@@ -1199,6 +1187,7 @@ i.feedIcon {
 
 table tr {
   padding: 0.5em;
+  text-align: left;
 }
 
 li.feed-item {

@@ -16,6 +16,7 @@ var PTL = (function() {
           $importButton = $("button#fileImportButton"),
           $fileImportInput = $("input#fileImport"),
           $saveButton = $('#saveTabs'),
+          $resetButton = $('#resetTabs'),
           $langMenu = $('select#language'),
           $slider = $('div#gallerySpeedSlider'),
           $searchField = $('#ptlSearch input').val(''),
@@ -167,10 +168,14 @@ var PTL = (function() {
         return false;
       });
 
+      $resetButton.click(function () {
+        PTL.dialog.resetTabs();
+      });
+
       var $themeBox = $('div#themeBox'),
           $dayLabel = $('<label>')
           .attr('for', 'day')
-          .attr('class', 'translate left')
+          .attr('class', 'translate grow')
           .data('content', PTL.tr('Day'))
           .text(PTL.tr('Day')),
           $dayInput = $('<input>')
@@ -181,7 +186,7 @@ var PTL = (function() {
           .attr('value', 'day'),
           $nightLabel = $('<label>')
           .attr('for', 'night')
-          .attr('class', 'translate last')
+          .attr('class', 'translate grow')
           .data('content', PTL.tr('Night'))
           .text(PTL.tr('Night')),
           $nightInput = $('<input>')
@@ -206,7 +211,7 @@ var PTL = (function() {
 
       var $brokenImagesBox = $('div#brokenImagesBox'),
           $showLabel = $('<label>')
-          .attr('class', 'translate left')
+          .attr('class', 'translate grow')
           .attr('for', 'show')
           .data('content', PTL.tr('Show'))
           .text(PTL.tr('Show')),
@@ -217,7 +222,7 @@ var PTL = (function() {
           .attr('name', 'radio-2')
           .attr('value', 'show'),
           $hideLabel = $('<label>')
-          .attr('class', 'translate last')
+          .attr('class', 'translate grow')
           .attr('for', 'hide')
           .data('content', PTL.tr('Hide'))
           .text(PTL.tr('Hide')),
@@ -294,7 +299,7 @@ var PTL = (function() {
 
       $slider.slider({
         classes: {
-          "ui-slider": "grow ui-corner-all",
+          "ui-slider": "ui-corner-all",
           "ui-slider-handle": "ui-corner-all",
           "ui-slider-range": "ui-corner-all ui-widget-header"
         },
