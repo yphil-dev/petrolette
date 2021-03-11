@@ -9,12 +9,10 @@ PTL.dialog = {
 
     $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
-      console.log('plop: %s (%s)');
-
       var $dialog = $(this),
           $icon = $dialog.find('div.dialogImage > i');
 
-      $icon.addClass('icon-trash-empty danger');
+      $icon.addClass('icon-refresh danger');
 
       $dialog.dialog({
         title: PTL.tr('Hard reset'),
@@ -119,15 +117,41 @@ PTL.dialog = {
     });
 
   },
-  about:function() {
+  about:function(versionNumber) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
-      var $dialog = $(this);
+      var $dialog = $(this),
+          $content = $dialog.find('div.dialogContent'),
+          $icon = $dialog.find('div.dialogImage > i');
+
+      $icon.addClass('icon-petrolette');
+      $content.css('flex-direction', 'column');
+      $content.find('div.dialogText').css('text-align', 'center'),
 
       $dialog.dialog({
         title: PTL.tr('About Pétrolette'),
+        width: PTL.util.isMobile() ? 'auto' : 360,
+        closeOnEscape: true,
         buttons: [
+          {
+            text: PTL.tr('Source code'),
+            title: PTL.tr('Source code'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+              window.open('https://framagit.org/yphil/petrolette');
+            }
+          },
+          {
+            text: PTL.tr('Licence'),
+            title: PTL.tr('Licence'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+              window.location.assign('/about/javascript');
+            }
+          },
           {
             text: PTL.tr('Ok'),
             title: PTL.tr('Ok'),
@@ -143,11 +167,12 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text('Pétrolette');
-          $dialog.find('h2#name').text(PTL.tr('Index'));
-          $dialog.find('p#name').text('By yPhil');
-          $dialog.find('h2#number').text(PTL.tr('Number of feeds'));
-          $dialog.find('p#number').text(nbOfFeedsInCol);
+          $dialog.find('h1').text('Pétrolette').addClass('logo-title');
+          $dialog.find('h2#name').text(versionNumber);
+          $dialog.find('p#name')
+            .append($('<a>')
+                    .attr('href', 'https://liberapay.com/yPhil/')
+                    .text('By yPhil'));
 
         }
       });
@@ -631,8 +656,6 @@ PTL.dialog = {
           h1, h2;
 
       $icon.addClass('icon-rzz');
-
-      // console.log('There is %s cols in the %s panel', nbOfColumnsInTab, $panel.attr('id'));
 
       $dialog.dialog({
         title: PTL.tr('Add feed'),

@@ -15,12 +15,13 @@ PTL.prefs = (function() {
        [
          {"url":"https://rss.art19.com/apology-line","type":"text","limit": 40,"status":"off"},
          {"url":"http://feeds.feedburner.com/sciencealert-latestnews","type":"mixed","limit": 300,"status":"on"},
-         {"url":"https://www.npr.org/rss/rss.php?id=1001","type":"mixed","limit": 400,"status":"on"}
+         {"url":"https://www.npr.org/rss/rss.php?id=1001","type":"mixed","limit": 400,"status":"off"},
+         {"url":"https://simpleflying.com/feed/","type":"mixed","limit": 400,"status":"on"}
        ],
        [
          {"url":"http://comicfeeds.chrisbenard.net/view/dilbert/default","type":"photo","limit": 200,"status":"on"},
          {"url":"http://xkcd.com/rss.xml","type":"photo","limit": 400,"status":"on"},
-         {"url":"http://explainxkcd.com/rss.xml","type":"photo","limit": 60,"status":"on"}
+         {"url":"http://explainxkcd.com/rss.xml","type":"photo","limit": 60,"status":"off"}
        ],
        [
          {"url":"http://faif.us/feeds/cast-ogg/","type":"text","limit": 250,"status":"on"},
@@ -105,6 +106,7 @@ PTL.prefs = (function() {
     'feeds': JSON.stringify(newList),
     'tabDropActivate': true,
     'brokenImages': 'hide',
+    'mediaPreload': 'none',
     'theme': 'night',
     'nextNag': 0,
     'writeTime': Date.now()

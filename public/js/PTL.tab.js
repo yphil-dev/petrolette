@@ -308,7 +308,6 @@ PTL.tab = {
 
     $newTabButton.focus(function() {
 
-      // $('#newTabButtonTooltip').tooltip().css('display', 'inline').fadeOut(2500);
       PTL.util.say(PTL.tr("Click this button to add a tab"), 'success', true, 'Astuce');
 
     });

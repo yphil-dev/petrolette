@@ -234,7 +234,7 @@ div#logo-title > div {
   flex: 1 0;
 }
 
-div#logo-title > .logo-title {
+.logo-title {
   color: var(--color-ui-pri);
   display: var(--logo-display);
   font-family: LobsterRegular, Helvetica, Arial, sans-serif;
@@ -544,10 +544,9 @@ li.feed-item.error > strong.value {
   transition: transform 0.2s linear;
 }
 
-/* .folded { */
-/*   display: inline-block; */
-/*   transform: rotate(-90deg); */
-/* } */
+.reversed {
+  transform: rotate(180deg);
+}
 
 #overlay {
   background-color: rgba(0, 0, 0, 0.2);
@@ -627,7 +626,7 @@ nav#sideMenu {
   border: none;
   height: 100%;
   left: var(--side-menu-width);
-  padding: 0;
+  padding: 0.3em 0 0 0;
   position: fixed;
   top: 0;
   transition: left 0.1s ease-out;
@@ -1029,10 +1028,9 @@ div.dialogContent {
 div.dialogContent > div.dialogImage,
 div.questionDialog > div.icon {
   text-align: center;
-  flex: 0 0 200px;
+  flex: 0 0 auto;
+  min-width: 200px;
 }
-
-/* Tab */
 
 .tab {
   border: none !important;
@@ -1051,15 +1049,6 @@ li.ui-tabs-tab {
 li.tab-name:first-child {
   border-left: 1px solid var(--color-fg4) !important;
 }
-
-/* :focus-visible */
-
-/* li.tab-name:not(.ui-tabs-active), */
-/* #new-group { */
-/*   border-top: 0 !important; */
-/* } */
-
-/* Panel */
 
 .panel {
   padding: 0.2em !important;
@@ -1236,10 +1225,19 @@ li.feed-item > div.itemDiv > a > .ptl-img.full {
   width: 100%;
 }
 
-table {
-  border-collapse: separate;
-  border-spacing: 0 1em;
-  width: 100%;
+table#jslicense-labels1 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  border: 1px solid var(--color-ui-qui);
+}
+
+table#jslicense-labels1 td {
+  padding: 0.5em;
+}
+
+table#jslicense-labels1 td a {
+  text-decoration: underline;
 }
 
 .kbShortcutCol {

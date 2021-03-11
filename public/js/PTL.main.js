@@ -24,6 +24,7 @@ var PTL = (function() {
           $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
           $searchPrefixInput = $('input#searchPrefixInput'),
           $spinner = $('#gallerySpeedSpinner'),
+          $logoType = $('.logoType'),
           $topMenu = $('nav#top-menu');
 
       $topMenu.removeAttr('style');
@@ -45,6 +46,10 @@ var PTL = (function() {
 
       $('#logo-title a').click(function(){
         $('#ui-id-1').focus().trigger('click');
+      });
+
+      $logoType.click(function(){
+        PTL.dialog.about($logoType.attr('data-version'));
       });
 
       $('noscript').hide();
@@ -198,7 +203,7 @@ var PTL = (function() {
 
       $themeBox.append($dayLabel, $dayInput, $nightLabel, $nightInput);
 
-      $sideMenu.find('.themeSwitcher').checkboxradio({icon: true});
+      $sideMenu.find('.themeSwitcher').checkboxradio();
 
       $sideMenu.find("input#" + PTL.prefs.readConfig('theme')).attr("checked", true);
 
@@ -243,6 +248,58 @@ var PTL = (function() {
 
       $('.brokenImagesSwitcher').change(function() {
         PTL.prefs.writeConfig('brokenImages', $(this).attr('value'));
+      });
+
+      var $mediaPreloadBox = $('div#mediaPreloadBox'),
+          $mediaPreloadNoneLabel = $('<label>')
+          .attr('class', 'translate grow')
+          .attr('for', 'none')
+          .data('content', PTL.tr('None'))
+          .text(PTL.tr('None')),
+          $mediaPreloadNoneInput = $('<input>')
+          .attr('id', 'none')
+          .attr('class', 'mediaPreloadSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-2')
+          .attr('value', 'none'),
+          $mediaPreloadMetaLabel = $('<label>')
+          .attr('class', 'translate grow')
+          .attr('for', 'metadata')
+          .data('content', PTL.tr('Meta'))
+          .text(PTL.tr('Meta')),
+          $mediaPreloadMetaInput = $('<input>')
+          .attr('id', 'metadata')
+          .attr('class', 'mediaPreloadSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-2')
+          .attr('value', 'metadata'),
+          $mediaPreloadAutoLabel = $('<label>')
+          .attr('class', 'translate grow')
+          .attr('for', 'auto')
+          .data('content', PTL.tr('Auto'))
+          .text(PTL.tr('Auto')),
+          $mediaPreloadAutoInput = $('<input>')
+          .attr('id', 'auto')
+          .attr('class', 'mediaPreloadSwitcher')
+          .attr('type', 'radio')
+          .attr('name', 'radio-2')
+          .attr('value', 'auto');
+
+      $mediaPreloadBox.append($mediaPreloadNoneLabel,
+                              $mediaPreloadNoneInput,
+                              $mediaPreloadMetaLabel,
+                              $mediaPreloadMetaInput,
+                              $mediaPreloadAutoLabel,
+                              $mediaPreloadAutoInput);
+
+      $sideMenu.find('.mediaPreloadSwitcher').checkboxradio();
+
+      $sideMenu.find("input#" + PTL.prefs.readConfig('mediaPreload')).attr("checked", true);
+
+      $sideMenu.find('.mediaPreloadSwitcher').checkboxradio('refresh');
+
+      $('.mediaPreloadSwitcher').change(function() {
+        PTL.prefs.writeConfig('mediaPreload', $(this).attr('value'));
       });
 
       var gallerySlideshowSpeed = PTL.prefs.readConfig('gallerySlideshowSpeed');

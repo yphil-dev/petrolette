@@ -429,7 +429,7 @@ PTL.feed = {
               audioPlayer.controls = 'controls';
               audioPlayer.src      = item.enclosures[0].url;
               audioPlayer.type     = item.enclosures[0].type;
-              audioPlayer.preload  = 'none';
+              audioPlayer.preload  = PTL.prefs.readConfig('mediaPreload');
 
               $itemDiv.append(audioPlayer);
 

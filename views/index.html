@@ -142,7 +142,8 @@
           <div class="logo-title">
             <a href="#">Pétrolette</a>
           </div>
-          <div class="logoType">
+          <div class="logoType"
+               data-version="<%= version %>">
             <i class="icon-petrolette"></i>
           </div>
         </div>
@@ -305,6 +306,18 @@
         </legend>
         <fieldset class="menuForm">
           <div id="brokenImagesBox"
+               class="flex-box">
+          </div>
+        </fieldset>
+
+        <legend class="ui-corner-top hover">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate"
+                data-content="Media preload">Media preload
+          </span>
+        </legend>
+        <fieldset class="menuForm">
+          <div id="mediaPreloadBox"
                class="flex-box">
           </div>
         </fieldset>

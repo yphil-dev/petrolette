@@ -199,18 +199,6 @@
       "css": "reset",
       "code": 63537,
       "src": "mfglabs"
-    },
-    {
-      "uid": "95fb2e5fdd1ea7e4a420b6ed330e6b08",
-      "css": "sun",
-      "code": 59442,
-      "src": "meteocons"
-    },
-    {
-      "uid": "34e68aa8fbf61f02a748043ccf448a3b",
-      "css": "moon",
-      "code": 59443,
-      "src": "meteocons"
     }
   ]
 }
