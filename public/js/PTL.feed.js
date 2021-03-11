@@ -63,8 +63,8 @@ PTL.feed = {
 
     var $prefsIcon = $('<i>')
         .attr('class', 'feed-control translate icon-cog feed-edit')
-        .data('title', PTL.tr('Modify this feed (%1) parameters', url))
-        .attr('title', PTL.tr('Modify this feed (%1) parameters', url))
+        .data('title', PTL.tr('Edit this feed (%1) parameters', url))
+        .attr('title', PTL.tr('Edit this feed (%1) parameters', url))
         .click(function() {
           PTL.dialog.feedPrefs($(this));
         });
@@ -182,7 +182,6 @@ PTL.feed = {
         feedStatus = $dataStore.data('status'),
         $feedToggle = $feed.find('.feed-toggle'),
         $feedIcon = $feed.find('.feed-toggle > i');
-
 
     var l = PTL.util.getLocation(feedUrl),
         feedProtocol = l.protocol ? l.protocol + '//' : '//',

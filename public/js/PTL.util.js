@@ -125,12 +125,14 @@ PTL.util = {
     }
 
   },
-  say:function(text, type, notify) {
+  say:function(text, type, notify, title) {
 
     const $lines = $('#console div'),
           d = new Date();
 
-    if (notify) PTL.dialog.notify(PTL.tr(type[0].toUpperCase() + type.substring(1)), PTL.tr(text));
+    const dialogTitle = title ? title : PTL.tr(type[0].toUpperCase() + type.substring(1));
+
+    if (notify) PTL.dialog.notify(dialogTitle, PTL.tr(text));
 
     var $prompt = $('<span>')
         .attr('class', 'prompt')
@@ -291,7 +293,7 @@ PTL.util = {
 
     var isMobile = false;
 
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       isMobile = true;
     } else {
       isMobile = false;

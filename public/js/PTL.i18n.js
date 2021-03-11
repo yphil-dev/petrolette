@@ -107,7 +107,7 @@ PTL.i18n.translations = {
   "a lot of work" : { fr: "beaucoup de travail" , ja: "多くの作業", es: "mucho trabajo" },
 
   "In order to keep developing Pétrolette with new features I need your help." : { fr: "Afin de continuer à développer Pétrolette avec de nouvelles fonctionnalités, j'ai besoin de votre aide." , ja: "新しい機能を備えたペトロレットを開発し続けるために、私はあなたの助けが必要です。", es: "Para seguir desarrollando Pétrolette con nuevas funciones, necesito su ayuda." },
-  "Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot." : { fr: "Pensez à soutenir le projet Pétrolette en envoyant un don. Même la plus petite quantité aidera beaucoup." , ja: "寄付を送って、ペトロレットプロジェクトを支援することを検討してください。 少量でも大いに役立ちます。", es: "Considere apoyar el proyecto Pétrolette enviando una donación. Incluso la cantidad más pequeña ayudará mucho." },
+  "Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot." : { fr: "Pensez à soutenir le projet Pétrolette en envoyant un don. Même un tout petit montant aidera beaucoup." , ja: "寄付を送って、ペトロレットプロジェクトを支援することを検討してください。 少量でも大いに役立ちます。", es: "Considere apoyar el proyecto Pétrolette enviando una donación. Incluso la cantidad más pequeña ayudará mucho." },
 
   "Pétrolette is cool" : { fr: "Pétrolette est cool" , ja: "「ペトロレット」はかっこいい", es: "Pétrolette es genial" },
   "Free as the wind" : { fr: "Libre comme l'air" , ja: "風のように自由", es: "Libre como el viento" },
@@ -290,7 +290,7 @@ PTL.i18n.translations = {
 
   "Welcome to Pétrolette" : { fr: "Bienvenue dans Pétrolette" , ja: "ペトロレットへようこそ", es: "Bienvenido a Pétrolette" },
 
-  "Learn to use it in a few easy steps" : { fr: "Apprenez à l'utiliser en quelques étapes faciles" , ja: "いくつかの簡単なステップでそれを使用することを学ぶ", es: "Aprenda a usarlo en unos sencillos pasos" },
+  "Learn to use it in a few easy steps" : { fr: "Apprenez à utiliser Pétrolette en quelques instants" , ja: "いくつかの簡単なステップでそれを使用することを学ぶ", es: "Aprenda a usarlo en unos sencillos pasos" },
 
   "How does it work?" : { fr: "Comment ça marche ?" , ja: "どのように機能するのですか？", es: "¿Como funciona?" },
   "Take the tour" : { fr: "Visite guidée" , ja: "ガイド付き訪問", es: "Visita guiada" },

@@ -17,7 +17,8 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
-        position: { my: "left top", at: "left bottom" },
+        position: { my: "left+30 bottom-30", at: "left bottom" },
+        width: PTL.util.isMobile() ? 'auto' : 360,
         modal: false,
         buttons: [
           {
@@ -46,24 +47,6 @@ PTL.dialog = {
 
         }
       });
-
-      // $beggarOkButton.on('click', function() {
-      //   $beggar.fadeOut('fast');
-      //   window.open('https://liberapay.com/yPhil/donate');
-      // });
-
-      // $beggarClose.on('click', function() {
-      //   $beggar.fadeOut('fast');
-      // });
-
-      // $beggarTourButton.on('click', function() {
-      //   $beggar.fadeOut('fast');
-
-      //   PTL.sideMenu('close');
-      //   $('#tabs').tabs('option', 'active', 0);
-      //   PTL.util.help('ui');
-
-      // });
 
       $dialog.dialog('open');
 

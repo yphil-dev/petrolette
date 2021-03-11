@@ -1324,6 +1324,10 @@ li.feed:hover div.feed-body {
   }
 }
 
+.item-icon:hover {
+  color: var(--color-ui-pri);
+}
+
 .introjs-skipbutton {
   color: var(--color-ui-pri) !important;
   font-size: 9pt;
@@ -1482,7 +1486,7 @@ a.ptlInterface:visited {
   /* height: 220px; */
   /* max-width: 100%; */
   padding: 1em;
-  position: sticky;
+  position: absolute;
   bottom: 16px;
   left: 16px;
   z-index: 30;
