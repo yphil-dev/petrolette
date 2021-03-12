@@ -356,6 +356,7 @@ PTL.dialog = {
               $guessField = $dialog.find('input#feed-guess'),
               $okButton = $dialog.find('.ui-dialog-buttonpane'),
               $killFeedFieldset = $('fieldset#kill-feed'),
+              $killFeedLegend = $('legend#kill-feed-legend'),
               $helpMiniButtonIcon,
               $helpMiniButton,
               oldUrl = $dataStore.data('url'),
@@ -375,7 +376,10 @@ PTL.dialog = {
               PTL.util.help('dialog');
             }).appendTo($dialog.parent().find('.ui-dialog-titlebar'));
 
-          if (isNewFeed) $killFeedFieldset.remove();
+          if (isNewFeed) {
+            $killFeedLegend.remove();
+            $killFeedFieldset.remove();
+          }
 
           $guessButton.click(function() {
 

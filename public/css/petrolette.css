@@ -22,6 +22,8 @@
   --color-ui-sen: #F26522;
   --color-ui-sep: #CCC;
   --color-ui-oct: #2B2B2B;
+  --color-ui-non: #007FFF;
+  --color-ui-ten: #003EFF;
   --color-ui-title-one: #FF4136;
   --color-ui-console-bg: #EEE8D5;
   --color-ui-console-fg: #002B36;
@@ -666,10 +668,6 @@ nav#sideMenu.expanded {
   left: 0;
 }
 
-#progress-bar {
-  color: var(--color-ui-sec);
-}
-
 .ui-progressbar {
   position: relative;
 }
@@ -686,8 +684,8 @@ nav#sideMenu.expanded {
 }
 
 .ui-progressbar .ui-progressbar-value {
-  background: var(--color-ui-sec);
-  border: 1px solid var(--color-ui-sec) !important;
+  background: var(--color-ui-non);
+  border: 1px solid var(--color-ui-non) !important;
   margin: 0;
 }
 

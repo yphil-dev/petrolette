@@ -276,8 +276,8 @@ var PTL = (function() {
           $mediaPreloadAutoLabel = $('<label>')
           .attr('class', 'translate grow')
           .attr('for', 'auto')
-          .data('content', PTL.tr('Auto'))
-          .text(PTL.tr('Auto')),
+          .data('content', PTL.tr('All'))
+          .text(PTL.tr('All')),
           $mediaPreloadAutoInput = $('<input>')
           .attr('id', 'auto')
           .attr('class', 'mediaPreloadSwitcher')
