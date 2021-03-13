@@ -15,4 +15,22 @@
   --color-hl2: #000000; /* Feed controls hover */
   --color-hl3: #000000;
   --color-danger: #FF0000;
+
+  --color-text: #FFFFFF; /* Normal text */
+  --color-link: #FF4136; /* Links */
+  --color-link-visited: #CCCCCC; /* Visited links */
+  --color-link-hover: #CCCCCC; /* Visited links */
+  --color-tab-border: #404552; /* Separators */
+  --color-feed-control: #F77F00; /* Feed controls */
+  --color-feed-control-hover: #F77F00; /* Feed controls */
+  --color-feed-title: #eae2b7; /* Feed title */
+  --color-feed-border: #29323C; /* Body / Feed border  */
+  --color-feed-header: #1F262E; /* Feed header */
+  --color-feed-bg: #383C4A; /* Feed item BG */
+  --color-feed-bg-alt: #424657; /* Feed item BG alternate */
+  --color-hl1: #1F262E;
+  --color-hl2: #000000; /* Feed controls hover */
+  --color-hl3: #000000;
+  --color-danger: #FF0000;
+
 }
