@@ -127,9 +127,12 @@
 
         <div id="ptlSearch" class="menuBarItem navLeft">
           <input
-            class="ui-widget-content ui-corner-all"
+            class="ui-widget-content ui-corner-all translate"
+            title="Press ENTER to go to last result"
+            data-title="Press ENTER to go to last result"
             type="text"
-            placeholder="Search in feeds">
+            placeholder="Search in feeds"
+            data-placeholder="Search in feeds">
           <i class="icon-reset"></i>
         </div>
 
@@ -346,11 +349,14 @@
                    class="translate">
               </div>
             </div>
-            <label for="spinner" class="ui-helper-hidden">Select a value:</label>
-            <input id="gallerySpeedSpinner"
-                   class="translate shrink"
-                   data-title="Slideshow speed"
-                   name="value">
+
+            <div class="shrink">
+
+              <input id="gallerySpeedSpinner"
+                     class="translate"
+                     data-title="Slideshow speed"
+                     name="value">
+            </div>
             <select id="gallerySlideTransition"
                     class="grow unique translate"
                     data-title="Slide transition">

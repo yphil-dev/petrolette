@@ -142,7 +142,10 @@ PTL.i18n.translations = {
   "Restored search prefix to default value" : { fr: "Préfixe de recherche restauré à la valeur par défaut" , ja: "復元された検索プレフィックスをデフォルト値に復元しました", es: "Prefijo de búsqueda restaurado al valor predeterminado" },
 
 
-  "Search in feeds" : { fr: "Rechercher dans les flux" , ja: "フィードで検索します", es: "Búsqueda en fuentes" },
+  "Search in feeds" : { fr: "Chercher dans les flux" , ja: "フィードで検索します", es: "Búsqueda en fuentes" },
+
+
+  "Press ENTER to go to last result" : { fr: "Appuyez sur Entrée pour aller au dernier résultat" , ja: "Enterキーを押して最後の結果に移動します", es: "Presione ENTER para ir al último resultado" },
 
 
 

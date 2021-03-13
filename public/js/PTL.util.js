@@ -481,12 +481,16 @@ PTL.util = {
 
     $('.translate').each(function() {
 
+      if ($(this).data('content')) {
+        $(this).text(PTL.tr($(this).data('content')));
+      }
+
       if ($(this).data('title')) {
         $(this).prop('title', PTL.tr($(this).data('title')));
       }
 
-      if ($(this).data('content')) {
-        $(this).text(PTL.tr($(this).data('content')));
+      if ($(this).data('placeholder')) {
+        $(this).prop('placeholder', PTL.tr($(this).data('placeholder')));
       }
 
     });

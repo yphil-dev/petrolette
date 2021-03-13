@@ -604,6 +604,16 @@ select {
 fieldset {
   color: var(--color-ui-pri);
   background: var(--color-ui-qua) !important;
+  border: 0;
+}
+
+fieldset.menuForm {
+  display: flex;
+  background-color: var(--color-ui-qua);
+}
+
+fieldset.feedsMenuForm {
+  background-color: var(--color-ui-qua) !important;
 }
 
 legend {
@@ -658,6 +668,17 @@ nav#sideMenu,
 
 .results {
   outline: 1px solid var(--color-fg7) !important;
+}
+
+li.results {
+  background-color: yellow !important;
+  color: black !important;
+  outline: 1px solid red;
+}
+
+li.results a:link,
+li.results a:visited {
+  color: black !important;
 }
 
 nav#sideMenu:hover {
@@ -731,12 +752,6 @@ nav#sideMenu.expanded {
   margin: 0;
 }
 
-/* .ui-tabs-anchor { */
-
-/*   cursor: pointer; */
-
-/* } */
-
 i.tab-icon {
   cursor: pointer;
   font-size: 0.7em;
@@ -744,14 +759,25 @@ i.tab-icon {
   right: 3px;
 }
 
-/* i.tab-edit { */
+.ui-slider-handle {
+  /* top: -.4em; */
+  height: 36px !important;
+  line-height: 38px;
+  min-width: 38px;
+  text-align: center;
+}
 
-/*   top: 20px; */
-
-/* } */
+.ui-slider {
+  height: 32px;
+}
 
 .ui-spinner {
+  height: 32px;
   margin: 0;
+}
+
+.ui-spinner input {
+  width: 32px;
 }
 
 button#feedGuessButton {
@@ -760,23 +786,7 @@ button#feedGuessButton {
 
 a.feedErrorReportButton,
 a.validateFeedButton {
-  /* box-sizing: border-box; */
-  /* width: 100%; */
-  /* padding:0; */
   flex: 1;
-}
-
-fieldset {
-  border: 0;
-}
-
-fieldset.menuForm {
-  display: flex;
-  background-color: var(--color-ui-qua);
-}
-
-fieldset.feedsMenuForm {
-  background-color: var(--color-ui-qua) !important;
 }
 
 .buttonLeft {
@@ -813,19 +823,6 @@ th {
 
 button.ui-state-success {
   background-color: var(--color-ui-success) !important;
-}
-
-.ui-slider-handle {
-  /* top: -.4em; */
-  height: 36px !important;
-  line-height: 38px;
-  min-width: 38px;
-  text-align: center;
-}
-
-.ui-slider {
-  height: 32px;
-  margin-right: 0.4em;
 }
 
 .dialog button.help-button {
@@ -928,7 +925,6 @@ ul.help li.cloud::before {
 }
 
 .grow {
-  margin: 0.1em;
   flex: 1 1;
 }
 
@@ -938,6 +934,12 @@ ul.help li.cloud::before {
 
 .unique {
   flex: 1 100%;
+}
+
+.grow,
+.shrink,
+.unique {
+  margin: 0.1em;
 }
 
 /* .twin { */
