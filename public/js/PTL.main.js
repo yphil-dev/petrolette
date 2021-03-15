@@ -244,7 +244,7 @@ var PTL = (function() {
 
       $brokenImagesBox.append($showLabel, $showInput, $hideLabel, $hideInput);
 
-      $sideMenu.find('.brokenImagesSwitcher').checkboxradio({icon: true});
+      $sideMenu.find('.brokenImagesSwitcher').checkboxradio();
 
       $sideMenu.find("input#" + PTL.prefs.readConfig('brokenImages')).attr("checked", true);
 
@@ -264,7 +264,7 @@ var PTL = (function() {
           .attr('id', 'none')
           .attr('class', 'mediaPreloadSwitcher')
           .attr('type', 'radio')
-          .attr('name', 'radio-2')
+          .attr('name', 'radio-3')
           .attr('value', 'none'),
           $mediaPreloadMetaLabel = $('<label>')
           .attr('class', 'translate grow')
@@ -275,7 +275,7 @@ var PTL = (function() {
           .attr('id', 'metadata')
           .attr('class', 'mediaPreloadSwitcher')
           .attr('type', 'radio')
-          .attr('name', 'radio-2')
+          .attr('name', 'radio-3')
           .attr('value', 'metadata'),
           $mediaPreloadAutoLabel = $('<label>')
           .attr('class', 'translate grow')
@@ -286,7 +286,7 @@ var PTL = (function() {
           .attr('id', 'auto')
           .attr('class', 'mediaPreloadSwitcher')
           .attr('type', 'radio')
-          .attr('name', 'radio-2')
+          .attr('name', 'radio-3')
           .attr('value', 'auto');
 
       $mediaPreloadBox.append($mediaPreloadNoneLabel,
