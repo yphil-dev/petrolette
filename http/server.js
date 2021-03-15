@@ -1,92 +1,22 @@
 #!/usr/bin/env node
 
 const petrolette = require('../petrolette'),
-      debug = require('debug')('petrolette:server'),
+      path = require('path'),
       http = require('http'),
-      fs = require('fs'),
-      port = normalizePort('8000');
+      https = require('https'),
+      fs = require('fs');
 
-petrolette.set('port', port);
+const httpsServer = https.createServer({
+  key: fs.readFileSync(path.join(__dirname, '../cert/privkey.pem'), 'utf8'),
+  cert: fs.readFileSync(path.join(__dirname, '../cert/cert.pem'), 'utf8'),
+}, petrolette);
 
-function isLocal() {
-  switch( window.location.protocol ) {
-  case 'file:':
-    return true;
-  default:
-    return false;
-  }
-}
+var httpServer = http.createServer(petrolette);
 
-// console.log('### ENV: ' + process.env.NODE_ENV);
-// console.log('## PORT: ' + port);
+httpServer.listen(8000, () => {
+  console.error('HTTP Server running');
+});
 
-// if (!isLocal) {
-
-//   const options = {
-//     cert: fs.readFileSync('../cert/fullchain.pem'),
-//     key: fs.readFileSync('../cert/privkey.pem')
-//   };
-
-// } else {
-//   const options
-// }
-
-// const options = isLocal() ? '' : {cert: fs.readFileSync('../cert/fullchain.pem'), key: fs.readFileSync('../cert/privkey.pem')};
-
-var server = http.createServer(petrolette);
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
-/**
- * Event listener for HTTP server "error" event.
- */
-
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-  case 'EACCES':
-    console.error('## ' + bind + ' requires elevated privileges');
-    process.exit(1);
-    break;
-  case 'EADDRINUSE':
-    console.error('## ' + bind + ' is already in use');
-    process.exit(1);
-    break;
-  default:
-    throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server "listening" event.
- */
-
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}
+httpsServer.listen(443, () => {
+  console.log('HTTPS Server running');
+});
