@@ -60,7 +60,7 @@ PTL.sync = (function() {
 
   remoteStorage.setApiKeys({
     dropbox: 'jyss37l88l4ural',
-    googledrive: '228755392285-87kkpdod9op50nmnrvnvo6eofr5d3ehl.apps.googleusercontent.com'
+    googledrive: '228755392285-dqv31f6ul5ja16va84t9iuvjtcnkvh2a.apps.googleusercontent.com'
   });
 
   remoteStorage.on('connected', function() {
