@@ -9,14 +9,15 @@ const petrolette = require('../petrolette'),
 var httpServer = http.createServer(petrolette);
 
 httpServer.listen(8000, () => {
-  console.error('HTTP Server running');
+  console.debug('HTTP Server running');
 });
 
-// const httpsServer = https.createServer({
-//   key: fs.readFileSync(path.join(__dirname, '../cert/privkey.pem'), 'utf8'),
-//   cert: fs.readFileSync(path.join(__dirname, '../cert/cert.pem'), 'utf8'),
-// }, petrolette);
+const httpsServer = https.createServer({
+  key: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/cert.pem'),
+  ca: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/chain.pem'),
+}, petrolette);
 
-// httpsServer.listen(443, () => {
-//   console.log('HTTPS Server running');
-// });
+httpsServer.listen(8001, () => {
+  console.error('HTTPS Server running?');
+});

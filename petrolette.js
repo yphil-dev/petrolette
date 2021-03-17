@@ -26,12 +26,6 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 app.use('/', router);
 
-// app.use(express.static(__dirname, { dotfiles: 'allow' } ));
-
-// app.listen(80, () => {
-//   console.log('HTTP server running on port 80');
-// });
-
 app.use(helmet.originAgentCluster());
 app.use(helmet.noSniff());
 app.use(bodyParser.json());
