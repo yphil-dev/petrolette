@@ -159,8 +159,8 @@ var PTL = (function() {
 
       $syncBox.find('p.rs-short-desc, span.rs-sub-headline')
         .addClass('translate')
-        .attr('data-content', 'To synchronize the feeds across devices')
-        .text(PTL.tr('To synchronize the feeds across devices'));
+        .attr('data-content', 'To synchronize tabs and feeds across devices')
+        .text(PTL.tr('To synchronize tabs and feeds across devices'));
 
       $syncBox.find('p.rs-short-desc').after($readMore);
 
