@@ -8,7 +8,7 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      PTL.util.say(PTL.tr('Pétrolette start'), 'success');
+      PTL.util.say(PTL.tr('Pétrolette starting up OK'), 'success');
 
       var $sideMenu = $('nav#sideMenu'),
           $overlay = $('#overlay'),
@@ -141,17 +141,9 @@ var PTL = (function() {
         }
       });
 
+      $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
+
       const $syncBox = $('#sync-box');
-
-      $syncBox.find('h1.rs-big-headline, h3.rs-small-headline')
-        .addClass('translate')
-        .attr('data-content', 'Connection to storage')
-        .text(PTL.tr('Connection to storage'));
-
-      $syncBox.find('p.rs-short-desc, span.rs-sub-headline')
-        .addClass('translate')
-        .attr('data-content', 'To synchronize tabs and feeds across devices')
-        .text(PTL.tr('To synchronize the feeds across devices'));
 
       const $readMore = $('<a>')
             .attr('class', 'translate')
@@ -160,7 +152,18 @@ var PTL = (function() {
             .attr('href', 'https://remotestorage.io/')
             .text(PTL.tr('About the remoteStorage protocol'));
 
-      $syncBox.find('p.rs-short-desc').after($readMore);
+      $syncBox.find('h1.rs-big-headline, h3.rs-small-headline')
+        .addClass('translate')
+        .attr('data-content', 'Connection to storage')
+        .text(PTL.tr('Connection to storage'));
+
+      $syncBox.find('p.rs-short-desc, span.rs-sub-headline')
+        .addClass('translate')
+        .attr('data-content', 'To synchronize the feeds across devices')
+        .text(PTL.tr('To synchronize the feeds across devices'))
+        .after($readMore);
+
+      // $syncBox.find('p.rs-short-desc').after($readMore);
 
       $langMenu.change(function() {
         var selectedLang = $(this).val();

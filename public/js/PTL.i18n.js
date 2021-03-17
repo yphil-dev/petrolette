@@ -49,6 +49,7 @@ PTL.i18n.translations = {
   "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
   "Sorry": { fr: "Désolé", ja: "ごめんなさい", es: "Perdón" },
   "Warning": { fr: "Avertissement", ja: "警告", es: "Advertencia" },
+  "All": { fr: "Tout", ja: "すべて", es: "todos" },
 
   // Pétrolette
 

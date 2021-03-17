@@ -63,7 +63,7 @@ PTL.sync = (function() {
 
   remoteStorage.on('connected', function() {
     PTL.synchronized = true;
-    PTL.util.say(PTL.tr('Connected to remote storage'), 'ok');
+    PTL.util.say(PTL.tr('Connected to remote storage'), 'success');
   });
 
   remoteStorage.on('not-connected', function() {
