@@ -381,6 +381,15 @@ h4 {
   margin-top: 0.6em;
 }
 
+h1.rs-big-headline {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-top: 0;
+}
+
 h1 {
   color: var(--color-ui-title-one);
   margin-top: 0;

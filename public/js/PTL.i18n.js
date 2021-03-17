@@ -281,10 +281,6 @@ PTL.i18n.translations = {
 
   "Fold / unfold this feed." : { fr: "Plier / déplier ce flux." , ja: "このソースを展開/折りたたむ。", es: "Expandir / contraer esta fuente." },
 
-  "Pétrolette allows you to sync data with a storage of your choice ; " : { fr: "Synchroniser Pétrolette avec le stockage de votre choix ; " , ja: "Pétroletteでは、選択したストレージにデータを同期させることができます。 ; ", es: "Pétrolette le permite sincronizar datos con un almacenamiento de su elección ; " },
-
-  "Read more." : { fr: "En savoir plus" , ja: "続きを読む。", es: "Lee mas." },
-
   "Add a new tab" : { fr: "Ajouter un nouvel onglet" , ja: "新しいタブを追加する", es: "Agregar una nueva carpeta" },
   "New tab" : { fr: "Nouvel onglet", ja: "新しいタブ", es: "Nueva carpeta" },
 
@@ -381,13 +377,13 @@ PTL.i18n.translations = {
 
   "Connection to storage" : { fr: "Connexion au stockage" , ja: "ストレージへの接続", es: "Conexión al almacenamiento" },
 
+  "Synchronize feeds with a storage of your choice" : { fr: "Synchroniser les flux avec le stockage de votre choix" , ja: "あなたの選択の記憶域でフィードを同期させる", es: "Sincronice las fuentes con un almacenamiento de su elección" },
+
+  "About the remoteStorage protocol" : { fr: "À propos du protocole remoteStorage" , ja: "RemoteStorageプロトコルについて", es: "Sobre el protocolo RemoteStorage" },
+
   "Synced just now" : { fr: "Synchronisé maintenant" , ja: "今すぐ同期しました", es: "Sincronizado ahora mismo" },
 
-  "To synchronize the feeds across devices" : { fr: "Pour synchroniser les flux sur plusieurs appareils" , ja: "デバイス間でソースを同期するには", es: "Para sincronizar las fuentes en todos los dispositivos" },
-
-
-
-
+  "To synchronize tabs and feeds across devices" : { fr: "Pour synchroniser onglets et flux entre plusieurs appareils" , ja: "デバイス間でソースを同期するには", es: "Para sincronizar las carpetas y las fuentes en todos los dispositivos" },
 
   "Remote file validation NOT OK (error [%1]) now reading from browser cache" : { fr: "Validation de fichier à distance NOT OK (erreur [%1]) lecture depuis le cache du navigateur" , ja: "リモートファイルの検証NOT OK（エラー[%1]）がブラウザのキャッシュから読み込み中です", es: "La validación remota de archivos NO está OK (error [%1]) leyendo desde el caché del navegador" },
 

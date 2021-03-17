@@ -141,25 +141,26 @@ var PTL = (function() {
         }
       });
 
-      var $widget = $('#remotestorage-widget');
+      const $syncBox = $('#sync-box');
 
-      var $readMore = $('<a>')
-          .attr('class', 'rs-help')
-          .attr('href', 'https:remotestorage.io/')
-          .text(PTL.tr('Read more.'));
+      $syncBox.find('h1.rs-big-headline, h3.rs-small-headline')
+        .addClass('translate')
+        .attr('data-content', 'Connection to storage')
+        .text(PTL.tr('Connection to storage'));
 
-      $widget.find('.rs-short-desc').text(PTL.tr('Pétrolette allows you to sync data with a storage of your choice ; '))
-        .append($readMore);
+      $syncBox.find('p.rs-short-desc, span.rs-sub-headline')
+        .addClass('translate')
+        .attr('data-content', 'To synchronize tabs and feeds across devices')
+        .text(PTL.tr('To synchronize the feeds across devices'));
 
-      var $fuckingButton =  $widget.find('.rs-choose-rs');
+      const $readMore = $('<a>')
+            .attr('class', 'translate')
+            .attr('target', '_blank')
+            .attr('data-content', 'About the remoteStorage protocol')
+            .attr('href', 'https://remotestorage.io/')
+            .text(PTL.tr('About the remoteStorage protocol'));
 
-      $fuckingButton.css('border-color', '#f00');
-
-      $fuckingButton.click(function (event) {
-        event.preventDefault();
-      });
-
-      $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
+      $syncBox.find('p.rs-short-desc').after($readMore);
 
       $langMenu.change(function() {
         var selectedLang = $(this).val();

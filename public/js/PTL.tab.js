@@ -79,13 +79,6 @@ PTL.tab = {
   },
   populate:function(feeds) {
 
-    $('h1.rs-big-headline, h3.rs-small-headline').text(PTL.tr('Connection to storage'));
-    $('div.rs-sign-in-error, span.rs-sub-headline').text(PTL.tr('To synchronize the feeds across devices'));
-    $('input.rs-connect')
-      .val(PTL.tr('Synchronize'))
-      .button();
-    $('a.rs-help').text(PTL.tr(' More info'));
-
     if (!feeds || feeds.length <= 0) {
       PTL.util.say(PTL.tr('No feeds found'), 'warning');
       feeds = ['empty'];
