@@ -101,9 +101,10 @@ var PTL = (function() {
 
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
+        // PTL.dialog.beg();
       });
 
-      $('body').on('click','.help-button', function() {
+      $('body').on('click','button#help', function() {
         PTL.dialog.help();
         // PTL.dialog.beg();
       });

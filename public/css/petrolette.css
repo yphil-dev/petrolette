@@ -40,7 +40,7 @@
 
   /* Relative to media */
 
-  --beggar-width: 360px;
+  --beggar-width: 420px;
   --side-menu-width-expanded: 280px;
   --side-menu-width: -291px;
   --header-height: 24px;
@@ -1426,6 +1426,11 @@ div#logo-title > .logo-title > a:hover {
   flex-direction: column;
 }
 
+span.image-legend {
+  font-size: 9pt;
+  margin-bottom: 0.3em;
+}
+
 #beggar > span.beggarIcon {
   font-size: 6em;
 }
@@ -1449,16 +1454,6 @@ div#logo-title > .logo-title > a:hover {
   color: var(--color-ui-pri);
   margin: 0 0 0.2em 0;
   font-size: 11pt;
-}
-
-a.ptlInterface:link,
-a.ptlInterface:visited {
-  text-decoration: underline !important;
-  color: var(--color-ui-pri);
-}
-
-#beggar a.ptlInterface:hover {
-  color: var(--color-ui-sec);
 }
 
 /* #beggar > h4 { */
