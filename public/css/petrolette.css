@@ -386,6 +386,10 @@ h1.rs-big-headline {
   margin-bottom: 0;
 }
 
+.rs-sub-headline {
+  word-break: normal !important;
+}
+
 h3 {
   margin-top: 0;
 }

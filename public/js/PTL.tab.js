@@ -133,6 +133,8 @@ PTL.tab = {
 
     $('#tabs').find('li[tabindex="0"]:first-child').focus();
 
+    PTL.util.say(PTL.tr('Pétrolette start finished'), 'success');
+
     PTL.tab.saveTabs();
 
   },

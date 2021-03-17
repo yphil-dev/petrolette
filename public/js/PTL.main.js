@@ -8,7 +8,7 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      PTL.util.say(PTL.tr('Pétrolette starting up OK'), 'success');
+      PTL.util.say(PTL.tr('Pétrolette start'), 'success');
 
       var $sideMenu = $('nav#sideMenu'),
           $overlay = $('#overlay'),
