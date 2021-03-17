@@ -59,7 +59,7 @@ PTL.sync = (function() {
   });
 
   remoteStorage.setApiKeys({
-    dropbox: 'k1fou9gcp0z28j4',
+    dropbox: 'q4kj1gzm4fjrqvp',
     googledrive: '228755392285-dqv31f6ul5ja16va84t9iuvjtcnkvh2a.apps.googleusercontent.com'
   });
 
