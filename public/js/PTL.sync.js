@@ -53,13 +53,11 @@ PTL.sync = (function() {
   };
 
   const remoteStorage = new RemoteStorage({
-    // logging: true,
-    // cordovaRedirectUri: 'http://petrolette.space',
     modules: [ Feeds ]
   });
 
   remoteStorage.setApiKeys({
-    dropbox: 'q4kj1gzm4fjrqvp',
+    dropbox: '8szbmg1lt21r5mx',
     googledrive: '780509727159-374mgusci0u7npve4c8rlviaag3egab4.apps.googleusercontent.com'
   });
 
