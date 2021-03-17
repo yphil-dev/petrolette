@@ -58,10 +58,10 @@ PTL.sync = (function() {
     modules: [ Feeds ]
   });
 
-  // remoteStorage.setApiKeys({
-  //   dropbox: 'jyss37l88l4ural',
-  //   googledrive: '228755392285-87kkpdod9op50nmnrvnvo6eofr5d3ehl.apps.googleusercontent.com'
-  // });
+  remoteStorage.setApiKeys({
+    dropbox: 'jyss37l88l4ural',
+    googledrive: '228755392285-87kkpdod9op50nmnrvnvo6eofr5d3ehl.apps.googleusercontent.com'
+  });
 
   remoteStorage.on('connected', function() {
     PTL.synchronized = true;
