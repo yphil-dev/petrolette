@@ -56,10 +56,10 @@ PTL.sync = (function() {
     modules: [ Feeds ]
   });
 
-  // remoteStorage.setApiKeys({
-  //   // dropbox: '8szbmg1lt21r5mx',
-  //   googledrive: '780509727159-374mgusci0u7npve4c8rlviaag3egab4.apps.googleusercontent.com'
-  // });
+  remoteStorage.setApiKeys({
+    // dropbox: '8szbmg1lt21r5mx',
+    googledrive: '780509727159-374mgusci0u7npve4c8rlviaag3egab4.apps.googleusercontent.com'
+  });
 
   remoteStorage.on('connected', function() {
     PTL.synchronized = true;
@@ -68,12 +68,12 @@ PTL.sync = (function() {
 
   remoteStorage.on('not-connected', function() {
     PTL.synchronized = false;
-    PTL.util.say(PTL.tr('NOT connected to remote storage'), 'warning');
+    PTL.util.say(PTL.tr('Not connected to remote storage'), 'error');
   });
 
   remoteStorage.on('disconnected', function() {
     PTL.synchronized = false;
-    PTL.util.say(PTL.tr('Disconnected from remote storage'), 'warning');
+    PTL.util.say(PTL.tr('Disconnection from remote storage'), 'warning');
 
   });
 
