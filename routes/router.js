@@ -2,16 +2,14 @@ const express = require('express'),
       router = express.Router(),
       favrat = require('favrat'),
       feeder = require('./feeder'),
-      request = require('request'),
+      fetch = require('node-fetch'),
       feedrat = require('feedrat'),
       // feedrat = require(__dirname + '/../../feedrat/'),
       fs = require('fs'),
       path = require('path'),
       crypto = require('crypto'),
       pjson = require('../package.json'),
-      Iconv = require('iconv').Iconv,
       sanitize = require('sanitize').middleware,
-      parser = require('xml2json'),
       morgan = require('morgan');
 
 require('events').EventEmitter.defaultMaxListeners = 15;
@@ -36,31 +34,19 @@ router.use(sanitize);
 
 router.get('/feed', function(req, res) {
 
-  var dnsreq = request(req.query.feedurl);
+  feeder.getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
 
-  dnsreq
-    .on('error', function(error) {
-      // The only way so far to catch a DNS error
-      console.error('Err: %s (%s)', {error:error.code}, req.query.feedurl);
-      res.send({error:error.code});
-    })
-    .on('response', function(response) {
-
-      feeder.getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
-
-        if (feedItems && !res.headersSent) {
-          res.send({
-            feedItems: feedItems,
-            feedLink: feedLink,
-            feedTitle: feedTitle
-          });
-          // return;
-
-        } else if (!res.headersSent) {
-          res.send({error:err});
-        }
+    if (feedItems && !res.headersSent) {
+      res.send({
+        feedItems: feedItems,
+        feedLink: feedLink,
+        feedTitle: feedTitle
       });
-    });
+
+    } else if (!res.headersSent) {
+      res.send({error:err});
+    }
+  });
 });
 
 router.get('/favicon', function(req, res) {
@@ -78,7 +64,7 @@ router.get('/favicon', function(req, res) {
       if (fs.existsSync(filePath)) {
         res.send('/favicons/' + fileName);
       } else {
-        var p = new Promise(resolve => request(url)
+        var p = new Promise(resolve => fetch(url)
                             .pipe(fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'}))
                             .on('finish', resolve({fileName, url})));
 

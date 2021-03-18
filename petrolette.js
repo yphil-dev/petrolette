@@ -20,15 +20,15 @@ app.set('view engine', 'html');
 app.disable('x-powered-by');
 
 app.use(compression());
+app.use(helmet.originAgentCluster());
+app.use(helmet.noSniff());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DIR)));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 app.use('/', router);
 
-app.use(helmet.originAgentCluster());
-app.use(helmet.noSniff());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 module.exports = app;

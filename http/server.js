@@ -1,12 +1,9 @@
-#!/usr/bin/env node
-
 const petrolette = require('../petrolette'),
-      path = require('path'),
       http = require('http'),
       https = require('https'),
       fs = require('fs');
 
-var httpServer = http.createServer(petrolette);
+const httpServer = http.createServer(petrolette);
 
 httpServer.listen(8000, () => {
   console.debug('HTTP Server running');
