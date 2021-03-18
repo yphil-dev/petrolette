@@ -22,6 +22,7 @@ app.disable('x-powered-by');
 app.use(compression());
 app.use(helmet.originAgentCluster());
 app.use(helmet.noSniff());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

@@ -320,7 +320,7 @@ var PTL = (function() {
       $.fancybox.defaults.buttons =  [
         'slideShow',
         'fullScreen',
-        'thumbs',
+        // 'thumbs',
         'download',
         'zoom',
         'close'
