@@ -370,7 +370,7 @@ PTL.i18n.translations = {
 
   "Not Connected to remote storage" : { fr: "Non connecté au stockage distant" , ja: "リモートストレージに接続されていない", es: "No conectado a almacenamiento remoto" },
 
-  "Disconnected from remote storage" : { fr: "Déconnecté du stockage distant" , ja: "リモートストレージから切断されました", es: "Desconectado de almacenamiento remoto" },
+  "Disconnection from remote storage" : { fr: "Déconnection du stockage distant" , ja: "リモートストレージから切断されました", es: "Desconectado de almacenamiento remoto" },
 
   "Synchronize" : { fr: "Synchroniser" , ja: "同期する", es: "Sincronizar" },
   "More info" : { fr: "Plus d'infos" , ja: "詳細情報", es: "Más info" },
