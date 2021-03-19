@@ -215,13 +215,15 @@ PTL.feed = {
         PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
       }).done(function(data) {
 
+        console.log('data: %s (%s)', JSON.stringify(data));
+
         $feedLink.text(data.feedTitle || feedUrl)
           .attr('href', data.feedLink)
           .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
 
         if (data.error || (data.feedItems && data.feedItems.length == 0)) {
 
-          var message = (data.error && data.error.code) ? data.error.code : PTL.tr('Empty feed');
+          var message = (data.error) ? data.error : PTL.tr('Empty feed');
 
           PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
 
