@@ -215,8 +215,6 @@ PTL.feed = {
         PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
       }).done(function(data) {
 
-        console.log('data: %s (%s)', JSON.stringify(data));
-
         $feedLink.text(data.feedTitle || feedUrl)
           .attr('href', data.feedLink)
           .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
