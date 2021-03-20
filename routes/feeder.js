@@ -1,6 +1,7 @@
 const fetch = require('node-fetch'),
       zlib = require('zlib'),
       iconv = require('iconv-lite'),
+      AbortController = require('node-abort-controller'),
       FeedParser = require('feedparser');
 
 exports.getFeed = getFeed;
@@ -45,20 +46,37 @@ function getParams(str) {
 }
 
 function done(err) {
+  console.error('whoa!: %s (%s)');
   if (err) {
     console.error('err: %s Stack %s', err, err.stack);
     return;
   }
 }
 
+
+const controller = new AbortController();
+const signal = controller.signal;
+setTimeout(() => {
+  controller.abort();
+}, 10000);
+
 function getFeed (feedUrl, callback) {
   // Get a response stream
-  fetch(feedUrl, { 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36', 'accept': 'text/html,application/xhtml+xml' }).then(function (res) {
+  fetch(feedUrl, {
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
+    'accept': 'text/html,application/xhtml+xml',
+    redirect: 'manual'
+  }).then(function (res) {
+
+    console.error('node-fetch status: %s', res.status);
 
     // Setup feedparser stream
     var feedparser = new FeedParser();
     var feedItems = [];
-    feedparser.on('error', done);
+    feedparser.on('error', function() {
+      console.error('## RRfeedUrl: %s (%s)', feedUrl, res.status);
+      return callback('Unknown error');
+    });
     feedparser.on('end', done);
     feedparser.on('readable', function() {
       try {
@@ -70,14 +88,10 @@ function getFeed (feedUrl, callback) {
       }
     }).on ('end', function () {
       var meta = this.meta;
-
       return callback (null, feedItems, meta.title, meta.link);
-
     });
 
     if (res.status != 200) {
-      console.error('ERR: %s (%s)', JSON.stringify(res.status));
-      // throw new Error('Bad status code');
       return callback(res.status);
     }
 
@@ -87,6 +101,7 @@ function getFeed (feedUrl, callback) {
     responseStream.pipe(feedparser);
 
   }).catch((err) => {
+    console.error('## RERR (%s)', err.message);
     return callback(err);
   });
 }
