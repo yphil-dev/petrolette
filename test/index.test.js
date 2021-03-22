@@ -34,6 +34,13 @@ describe('Pétrolette', function() {
     }).catch(done);
   });
 
+  it('Pétrolette is returning a feed', function(done) {
+    fetch('http://localhost:8000/discover/?url=http://lemonde.fr').then(function (res) {
+      body.should.eql('https://www.lemonde.fr/rss/une.xml');
+      done();
+    }).catch(done);
+  });
+
   // it('Pétrolette is returning a feed', function(done) {
   //   request('http://localhost:8000/discover/?url=http://lemonde.fr', { json: true }, (err, res, body) => {
   //     if (err) return done(err);
