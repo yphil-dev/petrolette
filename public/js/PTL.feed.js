@@ -313,22 +313,6 @@ PTL.feed = {
 
           $feedBody.css('height', feedLimit);
 
-          $.get("/favicon", {
-            url: decodeURI(feedHost),
-            dataType: "json"
-          }, function() {
-            // console.log('feedHost: %s (icon %s)', feedHost, icon);
-          }).done(function(icon) {
-
-            $feedToggle.css('background-image','url(' + icon + ')');
-            $feedIcon.removeClass('icon-rss');
-            $header.data('img', icon);
-
-          }).fail(function() {
-            $feedIcon.addClass('icon-rss');
-            $feedToggle.css('background-image', 'none');
-          });
-
         }
 
         $.each(data.feedItems, function(index, item) {
@@ -513,9 +497,8 @@ PTL.feed = {
               .attr('title', $summary.trim())
               .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
               .attr('class', 'ptl-img responsively-lazy')
+              .attr('onerror', "this.style.display='none'")
               .appendTo($imageLink);
-
-            if (PTL.prefs.readConfig('brokenImages') === 'hide') $image.attr('onerror', "this.style.display='none'");
 
           }
 
@@ -555,5 +538,23 @@ PTL.feed = {
       if (progress) progress.increment();
     }
 
-    }
+    $.get("/favicon", {
+      url: decodeURI(feedHost),
+      dataType: "json"
+    }, function() {
+      // console.log('feedHost: %s (icon %s)', feedHost, icon);
+    }).done(function(icon) {
+
+      console.log('icon: %s (%s)', icon, feedHost);
+
+      $feedToggle.css('background-image','url(' + icon + ')');
+      $feedIcon.removeClass('icon-rss');
+      $header.data('img', icon);
+
+    }).fail(function() {
+      $feedIcon.addClass('icon-rss');
+      $feedToggle.css('background-image', 'none');
+    });
+
+  }
 };

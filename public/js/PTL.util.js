@@ -202,7 +202,7 @@ PTL.util = {
     try {
       var json = JSON.parse(o);
 
-      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success');
+      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success', true);
       isJson = true;
       json.forEach(function(group) {
 

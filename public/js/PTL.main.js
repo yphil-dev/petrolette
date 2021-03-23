@@ -123,7 +123,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.feed.add($column, '', '', 'mixed', 350, 'on', true, false);
+        PTL.feed.add($column, '', '', 'mixed', 220, 'on', true, false);
       });
 
       $feedCodeButton.click(function(event) {
@@ -220,42 +220,6 @@ var PTL = (function() {
       $('.themeSwitcher').change(function() {
         $("#theme").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
         PTL.prefs.writeConfig('theme', $(this).attr('value'));
-      });
-
-      var $brokenImagesBox = $('div#brokenImagesBox'),
-          $showLabel = $('<label>')
-          .attr('class', 'translate grow')
-          .attr('for', 'show')
-          .data('content', PTL.tr('Show'))
-          .text(PTL.tr('Show')),
-          $showInput = $('<input>')
-          .attr('id', 'show')
-          .attr('class', 'brokenImagesSwitcher')
-          .attr('type', 'radio')
-          .attr('name', 'radio-2')
-          .attr('value', 'show'),
-          $hideLabel = $('<label>')
-          .attr('class', 'translate grow')
-          .attr('for', 'hide')
-          .data('content', PTL.tr('Hide'))
-          .text(PTL.tr('Hide')),
-          $hideInput = $('<input>')
-          .attr('id', 'hide')
-          .attr('class', 'brokenImagesSwitcher')
-          .attr('type', 'radio')
-          .attr('name', 'radio-2')
-          .attr('value', 'hide');
-
-      $brokenImagesBox.append($showLabel, $showInput, $hideLabel, $hideInput);
-
-      $sideMenu.find('.brokenImagesSwitcher').checkboxradio();
-
-      $sideMenu.find("input#" + PTL.prefs.readConfig('brokenImages')).attr("checked", true);
-
-      $sideMenu.find('.brokenImagesSwitcher').checkboxradio('refresh');
-
-      $('.brokenImagesSwitcher').change(function() {
-        PTL.prefs.writeConfig('brokenImages', $(this).attr('value'));
       });
 
       var $mediaPreloadBox = $('div#mediaPreloadBox'),
