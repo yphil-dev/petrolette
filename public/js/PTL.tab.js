@@ -76,6 +76,7 @@ PTL.tab = {
     var feeds = PTL.tab.list();
     PTL.prefs.writeConfig('feeds', JSON.stringify(feeds));
     PTL.sync.writeSync(JSON.stringify(feeds));
+    console.log('SAVED: %s (%s)');
   },
   populate:function(feeds) {
 
@@ -116,6 +117,7 @@ PTL.tab = {
         $.each(v, function( k, v ) {
           var thisFeed = {};
           thisFeed.url = v.url;
+          thisFeed.name = v.name;
           thisFeed.type = v.type;
           thisFeed.limit = v.limit;
           thisFeed.status = v.status;
@@ -222,15 +224,15 @@ PTL.tab = {
       $column.appendTo($tabPanel);
 
       if (PTL.queryString) {
-        PTL.feed.add($column, encodeURI(PTL.queryString), 'mixed', 8, 'on', true, true);
+        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', true, true);
         PTL.queryString = null;
       }
 
       if (!newTab) {
         feeds.forEach(function(feed) {
           var type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
-              limit = Number.isInteger(feed.limit) ? feed.limit : 8;
-          PTL.feed.add($column, feed.url, type, limit, feed.status, false, false, progress);
+              limit = Number.isInteger(feed.limit) ? feed.limit : 260;
+          PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, false, false, progress);
         });
       }
 
@@ -270,6 +272,7 @@ PTL.tab = {
 
           var $dataStore = $(this).find('.dataStore');
           feed.url = $dataStore.data('url');
+          feed.name = $dataStore.data('name');
           feed.type = $dataStore.data('type');
           feed.limit = $dataStore.data('limit');
           feed.status = $dataStore.data('status');

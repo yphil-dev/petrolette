@@ -2,13 +2,15 @@
 
 PTL.feed = {
 
-  add:function($column, url, type, limit, status, clickNew, isQueryString, progress) {
+  add:function($column, url, name, type, limit, status, clickNew, isQueryString, progress) {
+
 
     var feedIndex = $('#tabs').find('.feed').length;
 
     var $feed = $('<li>')
         .attr('class', 'feed')
         .data('url', url)
+        .data('name', name)
         .data('type', type)
         .data('limit', limit);
 
@@ -80,6 +82,7 @@ PTL.feed = {
     var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
         .data('index', feedIndex)
         .data('url', url)
+        .data('name', name)
         .data('type', type)
         .data('limit', limit)
         .data('status', status);
@@ -177,6 +180,7 @@ PTL.feed = {
         $feedBody = $dataStore.parent().next('div.feed-body'),
         $feedBodyUl = $feed.children().children('ul.feed-body'),
         feedUrl = $dataStore.data('url'),
+        feedName = $dataStore.data('name'),
         feedType = $dataStore.data('type'),
         feedLimit = newLimit || $dataStore.data('limit'),
         feedStatus = $dataStore.data('status'),
@@ -198,6 +202,21 @@ PTL.feed = {
     $feedIcon.addClass('fold');
     $button.removeClass('spin');
 
+    var feedTitle;
+
+    if (feedName) {
+      feedTitle = feedName;
+      $dataStore.data('name', feedTitle);
+    } else {
+      feedTitle = feedUrl;
+    }
+
+    $feedLink.text(feedTitle)
+      .attr('href', feedUrl)
+      .attr('title', feedTitle + ' (' + feedUrl + ')');
+
+    console.log('MYYYmyTitle: [%s] name: %s (%s)', feedTitle, feedName, feedUrl);
+
     if ($dataStore.data('status') == 'on') {
 
       $feedIcon.removeClass('fold');
@@ -215,11 +234,24 @@ PTL.feed = {
         PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
       }).done(function(data) {
 
-        $feedLink.text(data.feedTitle || feedUrl)
+
+        if (feedName) {
+          feedTitle = feedName;
+        } else if (data.feedTitle) {
+          feedTitle = data.feedTitle;
+        }
+
+        $dataStore.data('name', feedTitle);
+
+        console.log('myTitle: [%s] name: %s title: %s (%s)', feedTitle, feedName, data.feedTitle, feedUrl);
+
+        $feedLink.text(feedTitle)
           .attr('href', data.feedLink)
-          .attr('title', (data.feedTitle || PTL.tr('Untitled')) + ' (' + feedUrl + ')');
+          .attr('title', feedTitle + ' (' + feedUrl + ')');
 
         if (data.error || (data.feedItems && data.feedItems.length == 0)) {
+
+          console.log('data.error: %s (%s)', JSON.stringify(data.error));
 
           var message = (data.error) ? data.error : PTL.tr('Empty feed');
 
@@ -523,10 +555,10 @@ PTL.feed = {
         .children('div.feed-body')
         .addClass('folded');
 
-      const u = new URL(feedUrl);
+      // const u = new URL(feedUrl);
 
-      $feedLink.text(u.hostname.replace(/^www./, '') + u.pathname)
-        .attr('title', u + ' - This feed is folded');
+      // $feedLink.text(u.hostname.replace(/^www./, '') + u.pathname)
+      //   .attr('title', u + ' - This feed is folded');
 
       if (progress) progress.increment();
     }

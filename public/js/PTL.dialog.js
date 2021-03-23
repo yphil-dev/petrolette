@@ -362,6 +362,7 @@ PTL.dialog = {
               $helpMiniButtonIcon,
               $helpMiniButton,
               oldUrl = $dataStore.data('url'),
+              oldName = $dataStore.data('name'),
               oldType = $dataStore.data('type'),
               oldLimit = $dataStore.data('limit');
 
@@ -417,6 +418,7 @@ PTL.dialog = {
           });
 
           $dialog.find('input#feed-guess').val(oldUrl);
+          $dialog.find('input#feed-name').val(oldName);
 
           $('input:radio, input:checkbox').checkboxradio({
             icon: false
@@ -454,6 +456,7 @@ PTL.dialog = {
           });
 
           $dialog.on('submit', function () {
+            $dataStore.data('name', $dialog.find('input#feed-name').val());
             PTL.feed.populate($feedRefresh, $dataStore.data('limit'));
             PTL.tab.saveTabs();
             $(this).dialog('destroy');
@@ -466,6 +469,7 @@ PTL.dialog = {
       $dialog
         .data('id', $dataStore.data('id'))
         .data('url', $dataStore.data('url'))
+        .data('name', $dataStore.data('name'))
         .data('type', $dataStore.data('type'))
         .data('limit', $dataStore.data('limit'))
         .dialog('open');
@@ -679,7 +683,7 @@ PTL.dialog = {
             title: PTL.tr('Add feed'),
             class: "translate",
             click: function() {
-              PTL.feed.add($('.column').first(), feedUrl, 'mixed', 450, 'on', true, false);
+              PTL.feed.add($('.column').first(), feedUrl, '', 'mixed', 450, 'on', true, false);
               PTL.dialog.kill($dialog);
             }
           }
