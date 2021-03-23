@@ -284,23 +284,18 @@ PTL.dialog = {
                 });
               }
 
-              let clean = DOMPurify.sanitize('<%= queryString %>');
-
               var newUrl = DOMPurify.sanitize($(this).find('input#feed-guess').val()),
+                  newName = DOMPurify.sanitize($(this).find('input#feed-name').val()),
                   newType = $('#feedType :radio:checked').attr('id');
 
               $dataStore
                 .data('url', newUrl)
+                .data('name', newName)
                 .data('type', newType);
 
               if ($('input[name=kill-feed-check]:checked').val() === 'on') {
-
-                $feed.hide('fade', 1000, function() {
-                  $feed.remove();
-                });
-
+                $feed.hide('fade', 1000, function() {$feed.remove();});
               } else {
-
                 PTL.feed.populate($button);
               }
 
@@ -455,24 +450,10 @@ PTL.dialog = {
             }
           });
 
-          $dialog.on('submit', function () {
-            $dataStore.data('name', $dialog.find('input#feed-name').val());
-            PTL.feed.populate($feedRefresh, $dataStore.data('limit'));
-            PTL.tab.saveTabs();
-            $(this).dialog('destroy');
-            return false;
-          });
-
         }
       });
 
-      $dialog
-        .data('id', $dataStore.data('id'))
-        .data('url', $dataStore.data('url'))
-        .data('name', $dataStore.data('name'))
-        .data('type', $dataStore.data('type'))
-        .data('limit', $dataStore.data('limit'))
-        .dialog('open');
+      $dialog.dialog('open');
     });
 
   },

@@ -71,6 +71,8 @@ PTL.i18n.translations = {
   "Tab " : { fr: "Onglet " , ja: "フォルダ ", es: "Carpeta " },
   "Tabs" : { fr: "Onglets" , ja: "フォルダー", es: "Carpetas" },
 
+  "Tabs and feeds saved" : { fr: "Onglets et flux enregistrés" , ja: "タブとソースが保存されました", es: "Pestañas y fuentes guardadas" },
+
 
   "Theme" : { fr: "Thème" , ja: "テーマ", es: "Tema" },
   "Language" : { fr: "Langue" , ja: "言語", es: "Idioma" },

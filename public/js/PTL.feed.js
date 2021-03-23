@@ -206,7 +206,6 @@ PTL.feed = {
 
     if (feedName) {
       feedTitle = feedName;
-      $dataStore.data('name', feedTitle);
     } else {
       feedTitle = feedUrl;
     }
@@ -214,8 +213,6 @@ PTL.feed = {
     $feedLink.text(feedTitle)
       .attr('href', feedUrl)
       .attr('title', feedTitle + ' (' + feedUrl + ')');
-
-    console.log('MYYYmyTitle: [%s] name: %s (%s)', feedTitle, feedName, feedUrl);
 
     if ($dataStore.data('status') == 'on') {
 
@@ -234,16 +231,12 @@ PTL.feed = {
         PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
       }).done(function(data) {
 
-
         if (feedName) {
           feedTitle = feedName;
         } else if (data.feedTitle) {
           feedTitle = data.feedTitle;
+          $dataStore.data('name', feedTitle);
         }
-
-        $dataStore.data('name', feedTitle);
-
-        console.log('myTitle: [%s] name: %s title: %s (%s)', feedTitle, feedName, data.feedTitle, feedUrl);
 
         $feedLink.text(feedTitle)
           .attr('href', data.feedLink)
