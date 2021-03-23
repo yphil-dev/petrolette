@@ -244,9 +244,8 @@ PTL.feed = {
 
         if (data.error || (data.feedItems && data.feedItems.length == 0)) {
 
-          console.log('data.error: %s (%s)', JSON.stringify(data.error));
-
-          var message = (data.error) ? data.error : PTL.tr('Empty feed');
+          var message = (data.message) ? data.message : PTL.tr('Unknown error');
+          var errno = (data.errno) ? data.errno : '';
 
           PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
 
@@ -285,7 +284,7 @@ PTL.feed = {
 
           var $value = $('<strong>')
               .attr('class', 'value')
-              .text(message);
+              .text(message + ' (' + errno + ')');
 
           var $errorLink = $('<a>')
               .attr('href', feedUrl)

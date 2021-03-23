@@ -43,8 +43,8 @@ router.get('/feed', function(req, res) {
         feedTitle: feedTitle
       });
 
-    } else if (!res.headersSent) {
-      res.send({error:err});
+    } else if (!res.headersSent && err) {
+      res.send({error:err, errno:err.errno, message:err.message});
     }
   });
 });
