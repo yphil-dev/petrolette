@@ -75,7 +75,7 @@ router.get('/favicon', function(req, res) {
                 res.body.pipe(dest);
                 res.body.on("end", () => resolve({fileName, url}));
                 dest.on("error", () => {
-                  res.status(500).send('No icon found');
+                  res.status(500).send(false);
                   reject('No favicon found');
                 });
               })
@@ -88,7 +88,7 @@ router.get('/favicon', function(req, res) {
 
     } else {
       console.error('NO ICON: %s (%s)', req.query.url);
-      res.status(500).send('No icon found');
+      res.send(false);
     }
   });
 });

@@ -228,19 +228,26 @@ PTL.feed = {
       dataType: "json"
     }).done(function(icon) {
 
-      const $myFeedIcon = $('<img>').attr({
-        class: 'favicon',
-        width: '24px',
-        height: '24px',
-        src: icon,
-        onerror: "this.onerror=null;this.src='/static/images/rss.png';"
-      });
+      if (icon) {
 
-      $feedIcon
-        .removeClass('icon-rss icon-down')
-        .html($myFeedIcon);
+        const $myFeedIcon = $('<img>').attr({
+          class: 'favicon',
+          width: '24px',
+          height: '24px',
+          src: icon,
+          onerror: "this.onerror=null;this.src='/static/images/rss.png';"
+        });
 
-    }).fail(function() {
+        $feedIcon
+          .removeClass('icon-rss icon-down')
+          .html($myFeedIcon);
+      } else {
+        $feedIcon.addClass('icon-rss');
+        $feedToggle.css('background-image', 'none');
+      }
+
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      console.log('ERROR: %s (%s)', feedUrl, textStatus, errorThrown);
       $feedIcon.addClass('icon-rss');
       $feedToggle.css('background-image', 'none');
     });
@@ -278,7 +285,12 @@ PTL.feed = {
           console.log('data: %s (%s)', JSON.stringify(data));
 
           var message = (data.message) ? data.message : PTL.tr('Unknown error');
-          var errno = (data.errno) ? data.errno : '';
+          var errno = (data.errno) ? data.errno : '0';
+
+          if (data.feedItems && data.feedItems.length == 0) {
+            message = PTL.tr('Empty feed');
+            errno = '5xx';
+          }
 
           PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
 
@@ -335,8 +347,8 @@ PTL.feed = {
           $feedBodyUl
             .append($errorItem);
 
-          $feedIcon.addClass('icon-rss');
-          $feedToggle.css('background-image', 'none');
+          // $feedIcon.addClass('icon-rss');
+          // $feedToggle.css('background-image', 'none');
 
           $feedBody.css('height', '');
 

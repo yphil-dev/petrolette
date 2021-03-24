@@ -1177,19 +1177,19 @@ li.feed.selected {
   /* margin: 2px; */
   background-repeat: no-repeat;
   background-size: contain;
-  width: var(--controls-toggle-size) !important;
-  height: var(--controls-toggle-size) !important;
+  width: var(--controls-toggle-size);
+  height: var(--controls-toggle-size);
 }
 
 i.feedIcon {
-  transition: transform 0.2s linear !important;
+  transition: transform 0.2s linear;
   font-size: var(--controls-font-size);
   text-rendering: auto;
   /* margin-top: -2px !important; */
 }
 
 .icon-rss {
-  color: var(--color-ui-rss) !important;
+  color: var(--color-ui-rss);
 }
 
 table tr {
