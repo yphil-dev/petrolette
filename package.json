@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "News reading webapp.",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "private": true,
   "license": "GPL-3.0-only",
   "FAVICONS_CACHE_DIR": "favicons-cache",
