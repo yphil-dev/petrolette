@@ -4,6 +4,13 @@ PTL.feed = {
 
   add:function($column, url, name, type, limit, status, clickNew, isQueryString, progress) {
 
+    const $myFeedIcon = $('<img>').attr({
+      src: '/static/images/rss.png',
+      class: 'favicon',
+      width: '16px',
+      height: '16px',
+      onerror: "this.onerror=null;this.src='/static/images/rss.png';"
+    });
 
     var feedIndex = $('#tabs').find('.feed').length;
 
@@ -14,8 +21,9 @@ PTL.feed = {
         .data('type', type)
         .data('limit', limit);
 
-    var $feedIcon = $('<i>')
-        .attr('class', 'feed-control feedIcon icon-rss translate')
+    var $feedIcon = $('<div>')
+        .attr('class', 'feed-control feedIcon translate')
+        .append($myFeedIcon)
         .data('title', 'Fold / unfold this feed (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
         .click(function() {
@@ -124,11 +132,25 @@ PTL.feed = {
     );
 
     $header.hover (function() {
-      $feedToggle.find('img.favicon').hide();
-      $feedIcon.removeClass('icon-rss').addClass('icon-down');
+      var $favicon = $(this).find('img.favicon');
+      var $thisFeedIcon = $favicon.parent();
+      var feedIconSrc = $favicon.attr('src');
+
+      $thisFeedIcon
+        .addClass('rotator')
+        .find('img.favicon')
+        .attr('src', '/static/images/triangle.png')
+        .data('src', feedIconSrc);
     }, function() {
-      $feedToggle.find('img.favicon').show();
-      $feedIcon.removeClass('icon-down');
+
+      var $favicon = $(this).find('img.favicon');
+      var $thisFeedIcon = $favicon.parent();
+      var feedIconSrc = $favicon.data('src');
+
+      $thisFeedIcon
+        .removeClass('rotator')
+        .find('img.favicon')
+        .attr('src', feedIconSrc);
     });
 
     if (!PTL.util.isMobile()) {
@@ -172,7 +194,7 @@ PTL.feed = {
         feedLimit = newLimit || $dataStore.data('limit'),
         feedStatus = $dataStore.data('status'),
         $feedToggle = $feed.find('.feed-toggle'),
-        $feedIcon = $feed.find('.feed-toggle > i');
+        $feedIcon = $feed.find('.feed-toggle > div.feedIcon');
 
     var l = PTL.util.getLocation(feedUrl),
         feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -201,31 +223,20 @@ PTL.feed = {
       .attr('href', feedUrl)
       .attr('title', feedTitle + ' (' + feedUrl + ')');
 
-    const $myFeedIcon = $('<img>').attr({
-      class: 'favicon',
-      width: '16px',
-      height: '16px',
-      onerror: "this.onerror=null;this.src='/static/images/rss.png';"
-    });
-
     $.get("/favicon", {
       url: decodeURI(feedHost),
       dataType: "json"
     }).done(function(icon) {
 
       if (icon) {
-
-        $feedIcon
-          .html($myFeedIcon.attr('src', icon))
-          .removeClass('icon-rss icon-down');
-
+        $feedIcon.find('img.favicon').attr('src', icon);
       } else {
-        $feedIcon.addClass('icon-rss');
+        // $feedIcon.addClass('icon-rss');
       }
 
     }).fail(function(jqXHR, textStatus, errorThrown) {
       console.log('ERROR: %s (%s)', feedUrl, textStatus, errorThrown);
-      $feedIcon.addClass('icon-rss');
+      // $feedIcon.addClass('icon-rss');
     });
 
     if ($dataStore.data('status') == 'on') {
@@ -318,7 +329,7 @@ PTL.feed = {
               .append('&nbsp;')
               .append($value);
 
-          $feedIcon.addClass('icon-rss');
+          // $feedIcon.addClass('icon-rss');
 
           $feedBodyUl
             .append($errorItem);
