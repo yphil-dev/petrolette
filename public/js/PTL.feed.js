@@ -197,31 +197,16 @@ PTL.feed = {
       feedTitle = feedUrl;
     }
 
-    function addImageProcess(src){
-      return new Promise((resolve, reject) => {
-        let img = new Image();
-        img.onload = () => resolve(img.height);
-        img.onerror = reject;
-        img.src = src;
-      });
-    }
-
-    async function testImage(url) {
-      var tester=await new Image();
-      tester.onload=function(){
-        console.log('image loaded (%s)', url);
-        return true;
-      };
-      tester.onerror=function(){
-        console.log('image NOT loaded (%s)', url);
-        return false;
-      };
-      tester.src=url;
-    }
-
     $feedLink.text(feedTitle)
       .attr('href', feedUrl)
       .attr('title', feedTitle + ' (' + feedUrl + ')');
+
+    const $myFeedIcon = $('<img>').attr({
+      class: 'favicon',
+      width: '16px',
+      height: '16px',
+      onerror: "this.onerror=null;this.src='/static/images/rss.png';"
+    });
 
     $.get("/favicon", {
       url: decodeURI(feedHost),
@@ -230,26 +215,17 @@ PTL.feed = {
 
       if (icon) {
 
-        const $myFeedIcon = $('<img>').attr({
-          class: 'favicon',
-          width: '24px',
-          height: '24px',
-          src: icon,
-          onerror: "this.onerror=null;this.src='/static/images/rss.png';"
-        });
-
         $feedIcon
-          .removeClass('icon-rss icon-down')
-          .html($myFeedIcon);
+          .html($myFeedIcon.attr('src', icon))
+          .removeClass('icon-rss icon-down');
+
       } else {
         $feedIcon.addClass('icon-rss');
-        $feedToggle.css('background-image', 'none');
       }
 
     }).fail(function(jqXHR, textStatus, errorThrown) {
       console.log('ERROR: %s (%s)', feedUrl, textStatus, errorThrown);
       $feedIcon.addClass('icon-rss');
-      $feedToggle.css('background-image', 'none');
     });
 
     if ($dataStore.data('status') == 'on') {
@@ -281,8 +257,6 @@ PTL.feed = {
           .attr('title', feedTitle + ' (' + feedUrl + ')');
 
         if (data.error || (data.feedItems && data.feedItems.length == 0)) {
-
-          console.log('data: %s (%s)', JSON.stringify(data));
 
           var message = (data.message) ? data.message : PTL.tr('Unknown error');
           var errno = (data.errno) ? data.errno : '0';
@@ -344,11 +318,10 @@ PTL.feed = {
               .append('&nbsp;')
               .append($value);
 
+          $feedIcon.addClass('icon-rss');
+
           $feedBodyUl
             .append($errorItem);
-
-          // $feedIcon.addClass('icon-rss');
-          // $feedToggle.css('background-image', 'none');
 
           $feedBody.css('height', '');
 
@@ -363,8 +336,6 @@ PTL.feed = {
         $.each(data.feedItems, function(index, item) {
 
           if (index == 30) return false;
-
-          // console.log('i: (%s)', JSON.stringify(item));
 
           var $description = $.parseHTML(item.description),
               summary,

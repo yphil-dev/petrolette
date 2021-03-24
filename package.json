@@ -41,7 +41,6 @@
     "node-fetch": "^2.6.1",
     "npm": "^7.5.2",
     "pm2": "^4.5.4",
-    "request": "^2.88.2",
     "sanitize": "^2.1.0"
   },
   "devDependencies": {
