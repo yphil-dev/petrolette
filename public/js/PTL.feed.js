@@ -214,6 +214,24 @@ PTL.feed = {
       .attr('href', feedUrl)
       .attr('title', feedTitle + ' (' + feedUrl + ')');
 
+    $.get("/favicon", {
+      url: decodeURI(feedHost),
+      dataType: "json"
+    }, function() {
+      // console.log('feedHost: %s (icon %s)', feedHost, icon);
+    }).done(function(icon) {
+
+      console.log('icon: %s ( %s)', icon, feedHost);
+
+      $feedToggle.css('background-image','url(' + icon + ')');
+      $feedIcon.removeClass('icon-rss');
+      $header.data('img', icon);
+
+    }).fail(function() {
+      $feedIcon.addClass('icon-rss');
+      $feedToggle.css('background-image', 'none');
+    });
+
     if ($dataStore.data('status') == 'on') {
 
       $feedIcon.removeClass('fold');
@@ -537,24 +555,6 @@ PTL.feed = {
 
       if (progress) progress.increment();
     }
-
-    $.get("/favicon", {
-      url: decodeURI(feedHost),
-      dataType: "json"
-    }, function() {
-      // console.log('feedHost: %s (icon %s)', feedHost, icon);
-    }).done(function(icon) {
-
-      console.log('icon: %s (%s)', icon, feedHost);
-
-      $feedToggle.css('background-image','url(' + icon + ')');
-      $feedIcon.removeClass('icon-rss');
-      $header.data('img', icon);
-
-    }).fail(function() {
-      $feedIcon.addClass('icon-rss');
-      $feedToggle.css('background-image', 'none');
-    });
 
   }
 };

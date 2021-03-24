@@ -44,7 +44,7 @@ router.get('/feed', function(req, res) {
         feedTitle: feedTitle
       });
 
-    } else if (!res.headersSent && err) {
+    } else if (!res.headersSent) {
       res.send({error:err, errno:err.errno, message:err.message});
     }
   });
@@ -53,8 +53,6 @@ router.get('/feed', function(req, res) {
 router.get('/favicon', function(req, res) {
 
   favrat(req.query.url, function(err, url) {
-
-    console.error('url: %s (%s)', url);
 
     if (url) {
 
@@ -76,10 +74,16 @@ router.get('/favicon', function(req, res) {
                 const dest = fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'});
                 res.body.pipe(dest);
                 res.body.on("end", () => resolve({fileName, url}));
-                dest.on("error", reject('No favicon found'));
+                dest.on("error", () => {
+                  res.status(500).send('No icon found');
+                  reject('No favicon found');
+                });
               })
           )
-          .then(x => res.send('/favicons/' + x.fileName));
+          .then((x) => {
+            res.send('/favicons/' + x.fileName);
+          });
+
       }
 
     } else {
