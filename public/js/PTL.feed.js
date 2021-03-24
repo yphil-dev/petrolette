@@ -124,24 +124,11 @@ PTL.feed = {
     );
 
     $header.hover (function() {
-
-      var iconImg = $feedToggle.css('background-image');
-      $feedToggle.css('background-image', 'none');
-
+      $feedToggle.find('img.favicon').hide();
       $feedIcon.removeClass('icon-rss').addClass('icon-down');
-
-      $(this).data('img', iconImg);
-
     }, function() {
-
+      $feedToggle.find('img.favicon').show();
       $feedIcon.removeClass('icon-down');
-
-      if ($(this).data('img') !== 'none') {
-        $feedToggle.css('background-image', $(this).data('img'));
-      } else {
-        $feedIcon.addClass('icon-rss');
-      }
-
     });
 
     if (!PTL.util.isMobile()) {
@@ -241,17 +228,17 @@ PTL.feed = {
       dataType: "json"
     }).done(function(icon) {
 
-      var $myFeedIcon = $('<img>').attr({
+      const $myFeedIcon = $('<img>').attr({
+        class: 'favicon',
         width: '24px',
         height: '24px',
         src: icon,
         onerror: "this.onerror=null;this.src='/static/images/rss.png';"
       });
 
-      $feedToggle.empty().append($myFeedIcon);
-      // $feedToggle.css('background-image','url(' + icon + ')');
-      $feedIcon.removeClass('icon-rss');
-      $header.data('img', icon);
+      $feedIcon
+        .removeClass('icon-rss icon-down')
+        .html($myFeedIcon);
 
     }).fail(function() {
       $feedIcon.addClass('icon-rss');
@@ -287,6 +274,8 @@ PTL.feed = {
           .attr('title', feedTitle + ' (' + feedUrl + ')');
 
         if (data.error || (data.feedItems && data.feedItems.length == 0)) {
+
+          console.log('data: %s (%s)', JSON.stringify(data));
 
           var message = (data.message) ? data.message : PTL.tr('Unknown error');
           var errno = (data.errno) ? data.errno : '';

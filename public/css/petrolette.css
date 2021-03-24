@@ -127,7 +127,7 @@ a:active {
   font-size: 12pt;
 }
 
-.fold {
+.icon-down.fold {
   display: inline-block;
 
   /* transition: all 0.2s linear; */
@@ -1177,7 +1177,8 @@ li.feed.selected {
   /* margin: 2px; */
   background-repeat: no-repeat;
   background-size: contain;
-  min-width: var(--controls-toggle-size) !important;
+  width: var(--controls-toggle-size) !important;
+  height: var(--controls-toggle-size) !important;
 }
 
 i.feedIcon {
