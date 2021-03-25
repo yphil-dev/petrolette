@@ -403,9 +403,12 @@ PTL.i18n.translations = {
   "Error type" : { fr: "Type d'erreur", ja: "エラータイプ", es: "Tipo de error" },
 
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
-  "Error:" : { fr: "Erreur:", ja: "エラー", es: "Error:" },
 
   "error" : { fr: "erreur", ja: "エラー", es: "error" },
+
+  "Bad server response" : { fr: "Mauvaise réponse du serveur", ja: "バッドサーバーレスポンス", es: "Respuesta de servidor mala" },
+
+  "Not a feed" : { fr: "Source non valide", ja: "無効な情報源", es: "Fuente inválida" },
 
   "Main menu" : { fr: "Menu principal", ja: "メインメニュー", es: "Menú principal" },
 

@@ -329,8 +329,6 @@ PTL.feed = {
               .append('&nbsp;')
               .append($value);
 
-          // $feedIcon.addClass('icon-rss');
-
           $feedBodyUl
             .append($errorItem);
 
@@ -403,18 +401,6 @@ PTL.feed = {
 
           var $tempDom = $('<null>').append($description);
 
-          if (item['mastodon:scope']) {
-            if (item['activity:object']) {
-              var links = item['activity:object'].link;
-              for (var i = 0, len = links.length; i < len; i++) {
-                if (imgTypes.indexOf(links[i]['@'].type) > -1) {
-                  imageUrl = links[i]['@'].href;
-                  imageUrls.push(links[i]['@'].href);
-                }
-              }
-            }
-          }
-
           if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
             imageUrl = item.image.url;
           }
@@ -433,17 +419,9 @@ PTL.feed = {
             }
           }
 
-          if (item['media:group']) {
-            if (item['media:group']['media:content']) {
-              if (item['media:group']['media:content'][0]) {
-                if (item['media:group']['media:content'][0]['@']) {
-                  if (item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
-                    videoUrl = item['media:group']['media:content'][0]['@'].url;
-                    videoType = item['media:group']['media:content'][0]['@'].type;
-                  }
-                }
-              }
-            }
+          if (item['media:group'] && item['media:group']['media:content'] && item['media:group']['media:content'][0] && item['media:group']['media:content'][0]['@'] && item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
+            videoUrl = item['media:group']['media:content'][0]['@'].url;
+            videoType = item['media:group']['media:content'][0]['@'].type;
           }
 
           if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {

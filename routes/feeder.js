@@ -82,7 +82,7 @@ function getFeed (feedUrl, callback) {
 
     if (res.status != 200) {
       // console.error('## res.statusErr: %s (%s)', res.status, feedUrl);
-      return callback({error:'error', errno:res.status, message:'Something happened'});
+      return callback({error:'error', errno:res.status, message:'Bad server response'});
     }
 
     var charset = getParams(res.headers.get('content-type') || '').charset;
