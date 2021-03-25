@@ -5,11 +5,11 @@ PTL.feed = {
   add:function($column, url, name, type, limit, status, clickNew, isQueryString, progress) {
 
     const $myFeedIcon = $('<img>').attr({
-      src: '/static/images/rss.png',
-      class: 'favicon',
+      src: '/static/images/rss.gif',
+      class: 'favicon rotator',
       width: '16px',
       height: '16px',
-      onerror: "this.onerror=null;this.src='/static/images/rss.png';"
+      onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
     });
 
     var feedIndex = $('#tabs').find('.feed').length;
@@ -131,27 +131,48 @@ PTL.feed = {
       function() {$(this).find('.collapsible').hide('fade', 'fast');}
     );
 
-    $header.hover (function() {
-      var $favicon = $(this).find('img.favicon');
-      var $thisFeedIcon = $favicon.parent();
-      var feedIconSrc = $favicon.attr('src');
+    // $header.hover (function() {
+    //   var $favicon = $(this).find('img.favicon');
+    //   var $thisFeedIcon = $favicon.parent();
+    //   var feedIconSrc = $favicon.attr('src');
 
-      $thisFeedIcon
-        .addClass('rotator')
-        .find('img.favicon')
-        .attr('src', '/static/images/triangle.png')
-        .data('src', feedIconSrc);
-    }, function() {
+    //   $thisFeedIcon
+    //     .addClass('rotator')
+    //     .find('img.favicon')
+    //     .attr('src', '/static/images/triangle.png')
+    //     .data('src', feedIconSrc);
+    // }, function() {
 
-      var $favicon = $(this).find('img.favicon');
-      var $thisFeedIcon = $favicon.parent();
-      var feedIconSrc = $favicon.data('src');
+    //   var $favicon = $(this).find('img.favicon');
+    //   var $thisFeedIcon = $favicon.parent();
+    //   var feedIconSrc = $favicon.data('src');
 
-      $thisFeedIcon
-        .removeClass('rotator')
-        .find('img.favicon')
-        .attr('src', feedIconSrc);
-    });
+    //   $thisFeedIcon
+    //     .removeClass('rotator')
+    //     .find('img.favicon')
+    //     .attr('src', feedIconSrc);
+    // });
+
+    // $header.hover (function() {
+    //   $(this).data('img', $myFeedIcon.attr('src'));
+    //   $myFeedIcon.attr('src', '/static/images/triangle.png');
+    // }, function() {
+    //   if ($(this).data('img') !== 'none') {
+    //     $myFeedIcon.attr('src', $(this).data('img'));
+    //   } else {
+    //     $myFeedIcon.attr('src', '/static/images/triangle.png');
+    //   }
+    // });
+
+    $("img.favicon").hover(
+      function() {
+        $(this).attr('src', '/static/images/triangle.png');
+        // this.src = '/static/images/triangle.png';
+      },
+      function() {
+        $(this).attr('src', '/static/images/rss.gif');
+        // this.src = '/static/images/rss.gif';
+      });
 
     if (!PTL.util.isMobile()) {
       $selectDiv.addClass('collapsible');
@@ -194,7 +215,8 @@ PTL.feed = {
         feedLimit = newLimit || $dataStore.data('limit'),
         feedStatus = $dataStore.data('status'),
         $feedToggle = $feed.find('.feed-toggle'),
-        $feedIcon = $feed.find('.feed-toggle > div.feedIcon');
+        $feedIcon = $feed.find('.feed-toggle > div.feedIcon'),
+        $myFeedIcon = $feedIcon.find('.favicon');
 
     var l = PTL.util.getLocation(feedUrl),
         feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -208,7 +230,7 @@ PTL.feed = {
     //   feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
     // }
 
-    $feedIcon.addClass('fold');
+    $myFeedIcon.addClass('fold');
     $button.removeClass('spin');
 
     var feedTitle;
@@ -241,7 +263,7 @@ PTL.feed = {
 
     if ($dataStore.data('status') == 'on') {
 
-      $feedIcon.removeClass('fold');
+      $myFeedIcon.removeClass('fold');
       $refreshButton.addClass('spin');
       $feedLink.removeClass('danger');
 
