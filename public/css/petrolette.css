@@ -43,11 +43,11 @@
   --beggar-width: 420px;
   --side-menu-width-expanded: 280px;
   --side-menu-width: -291px;
-  --header-height: 24px;
+  --header-height: 22px;
   --controls-width: 150px;
-  --controls-font-size: 16pt;
-  --controls-toggle-size: 22px;
-  --feed-title-font-size: 16pt;
+  --controls-font-size: 14pt;
+  --controls-toggle-size: 24px;
+  --feed-title-font-size: 15pt;
   --panel-flex: row nowrap;
   --column-buttons-display: flex;
   --column-padding: 0 0 150px 0;
@@ -127,8 +127,8 @@ a:active {
   font-size: 12pt;
 }
 
-.rotator.fold {
-  /* display: inline-block; */
+.fold {
+  display: inline-block;
 
   /* transition: all 0.2s linear; */
   transform: rotate(-90deg);
@@ -1182,10 +1182,16 @@ li.feed.selected {
 }
 
 .feedIcon {
+  position: absolute;
+  left: 3px;
+  top: 3px;
   transition: transform 0.2s linear;
   font-size: var(--controls-font-size);
   text-rendering: auto;
-  /* margin-top: -2px !important; */
+}
+
+i.feedIcon {
+  top: 0;
 }
 
 .icon-rss {

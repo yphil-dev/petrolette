@@ -199,6 +199,18 @@
       "css": "reset",
       "code": 63537,
       "src": "mfglabs"
+    },
+    {
+      "uid": "8ax1xqcbzz1hobyd4i7f0unwib1bztip",
+      "css": "down-dir",
+      "code": 59392,
+      "src": "modernpics"
+    },
+    {
+      "uid": "da74e2a8125fdbca337031474a48215a",
+      "css": "down-circle",
+      "code": 59394,
+      "src": "elusive"
     }
   ]
 }

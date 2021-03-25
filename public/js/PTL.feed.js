@@ -4,14 +4,6 @@ PTL.feed = {
 
   add:function($column, url, name, type, limit, status, clickNew, isQueryString, progress) {
 
-    const $myFeedIcon = $('<img>').attr({
-      src: '/static/images/rss.gif',
-      class: 'favicon rotator',
-      width: '16px',
-      height: '16px',
-      onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
-    });
-
     var feedIndex = $('#tabs').find('.feed').length;
 
     var $feed = $('<li>')
@@ -21,9 +13,18 @@ PTL.feed = {
         .data('type', type)
         .data('limit', limit);
 
-    var $feedIcon = $('<div>')
+
+    const $feedImg = $('<img>')
+          .attr({
+            src: '/static/images/rss.gif',
+            class: 'favicon feedIcon',
+            width: '16px',
+            height: '16px',
+            onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
+          });
+
+    var $feedIcon = $('<i>')
         .attr('class', 'feed-control feedIcon translate')
-        .append($myFeedIcon)
         .data('title', 'Fold / unfold this feed (%1)', url)
         .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
         .click(function() {
@@ -111,7 +112,7 @@ PTL.feed = {
     var $feedBody = $('<div>').attr('class', 'feed-body').css('height', limit),
         $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
         $header = $('<div>').attr('class', 'feed-header'),
-        $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon),
+        $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon, $feedImg),
         $selectDiv = $('<div>').append($selectIcon),
         $deleteDiv = $('<div>').append($deleteIcon),
         $prefsDiv = $('<div>').append($prefsIcon),
@@ -164,15 +165,17 @@ PTL.feed = {
     //   }
     // });
 
-    $("img.favicon").hover(
-      function() {
-        $(this).attr('src', '/static/images/triangle.png');
-        // this.src = '/static/images/triangle.png';
-      },
-      function() {
-        $(this).attr('src', '/static/images/rss.gif');
-        // this.src = '/static/images/rss.gif';
-      });
+    // $("img.favicon").hover(
+    //   function() {
+    //     $(this).data('src', $(this).attr('src'));
+
+    //     $(this).attr('src', '/static/images/triangle.gif');
+    //     // this.src = '/static/images/triangle.png';
+    //   },
+    //   function() {
+    //     $(this).attr('src', $(this).data('src'));
+    //     // this.src = '/static/images/rss.gif';
+    //   });
 
     if (!PTL.util.isMobile()) {
       $selectDiv.addClass('collapsible');
@@ -182,20 +185,43 @@ PTL.feed = {
       $feedControls.append($selectDiv, $deleteDiv);
     }
 
-        $header.append($feedToggle,
-                       $feedHandle,
+
+    $header.hover (function() {
+
+      $(this).find('img.favicon').hide();
+      $feedIcon.removeClass('icon-rss').addClass('icon-down-circle');
+
+      // var iconImg = $feedToggle.css('background-image');
+      // $feedToggle.css('background-image', 'none');
+      // $(this).data('img', iconImg);
+
+    }, function() {
+
+      $(this).find('img.favicon').show();
+      $feedIcon.removeClass('icon-down-circle');
+
+      // if ($(this).data('img') !== 'none') {
+      //   $feedToggle.css('background-image', $(this).data('img'));
+      // } else {
+      //   $feedIcon.addClass('icon-rss');
+      // }
+
+    });
+
+    $header.append($feedToggle,
+                   $feedHandle,
                        $titleDiv.append($titleLink),
                        $feedControls.append($prefsDiv, $reloadDiv));
 
-        $feed.append($header, $feedBody.append($feedBodyUl));
+    $feed.append($header, $feedBody.append($feedBodyUl));
 
-        if (clickNew) {
-            $feed.prependTo($column);
-          PTL.dialog.feedPrefs($prefsIcon, true, isQueryString);
-        } else {
-            $feed.appendTo($column);
-            $reloadIcon.click();
-        }
+    if (clickNew) {
+      $feed.prependTo($column);
+      PTL.dialog.feedPrefs($prefsIcon, true, isQueryString);
+    } else {
+      $feed.appendTo($column);
+      $reloadIcon.click();
+    }
 
     },
   populate:function($button, progress, newLimit) {
@@ -215,8 +241,8 @@ PTL.feed = {
         feedLimit = newLimit || $dataStore.data('limit'),
         feedStatus = $dataStore.data('status'),
         $feedToggle = $feed.find('.feed-toggle'),
-        $feedIcon = $feed.find('.feed-toggle > div.feedIcon'),
-        $myFeedIcon = $feedIcon.find('.favicon');
+        $feedIcon = $feed.find('.feed-toggle > i.feedIcon'),
+        $myFeedIcon = $feedToggle.find('.favicon');
 
     var l = PTL.util.getLocation(feedUrl),
         feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -230,7 +256,7 @@ PTL.feed = {
     //   feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
     // }
 
-    $myFeedIcon.addClass('fold');
+    $feedIcon.addClass('fold');
     $button.removeClass('spin');
 
     var feedTitle;
@@ -251,7 +277,7 @@ PTL.feed = {
     }).done(function(icon) {
 
       if (icon) {
-        $feedIcon.find('img.favicon').attr('src', icon);
+        $myFeedIcon.attr('src', icon);
       } else {
         // $feedIcon.addClass('icon-rss');
       }
@@ -261,9 +287,25 @@ PTL.feed = {
       // $feedIcon.addClass('icon-rss');
     });
 
+    // $.get("/favicon", {
+    //   url: decodeURI(feedHost),
+    //   dataType: "json"
+    // }, function() {
+    //   // console.log('feedHost: %s (icon %s)', feedHost, icon);
+    // }).done(function(icon) {
+
+    //   $feedToggle.css('background-image','url(' + icon + ')');
+    //   $feedIcon.removeClass('icon-rss');
+    //   // $header.data('img', icon);
+
+    // }).fail(function() {
+    //   $feedIcon.addClass('icon-rss');
+    //   $feedToggle.css('background-image', 'none');
+    // });
+
     if ($dataStore.data('status') == 'on') {
 
-      $myFeedIcon.removeClass('fold');
+      $feedIcon.removeClass('fold');
       $refreshButton.addClass('spin');
       $feedLink.removeClass('danger');
 
