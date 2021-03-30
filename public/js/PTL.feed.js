@@ -283,7 +283,7 @@ PTL.feed = {
       }
 
     }).fail(function(jqXHR, textStatus, errorThrown) {
-      console.log('ERROR: %s (%s)', feedUrl, textStatus, errorThrown);
+      console.log('ERROR: %s (%s) [%s]', feedUrl, textStatus, errorThrown);
       // $feedIcon.addClass('icon-rss');
     });
 
@@ -319,6 +319,8 @@ PTL.feed = {
       }).fail(function(error) {
         PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
       }).done(function(data) {
+
+        console.log('DATA: %s (%s)', JSON.stringify(data), feedUrl);
 
         if (feedName) {
           feedTitle = feedName;

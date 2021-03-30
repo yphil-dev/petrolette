@@ -62,7 +62,6 @@ router.get('/favicon', function(req, res) {
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
       if (fs.existsSync(filePath)) {
-        console.error('FOUND ICON: %s (%s)', fileName, req.query.url);
         res.send('/favicons/' + fileName);
       } else {
 
@@ -86,7 +85,6 @@ router.get('/favicon', function(req, res) {
       }
 
     } else {
-      console.error('NO ICON: %s (%s)', req.query.url);
       res.send(false);
     }
   });

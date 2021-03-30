@@ -527,8 +527,11 @@ i.item-icon {
 }
 
 .feed-header > .feed-title > a:link,
-.feed-header > .feed-title > a:visited {
-  color: var(--color-fg6);
+.feed-header > .feed-title > a:visited,
+.feed-header > .feed-title > a:focus,
+.feed-header > .feed-title > a:focus-visible,
+.feed-header > .feed-title > a:focus-within {
+  color: var(--color-fg6) !important;
 }
 
 .feed-header > .feed-title > a.danger:link,

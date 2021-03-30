@@ -77,7 +77,7 @@ function getFeed (feedUrl, callback) {
       }
     }).on ('end', function () {
       var meta = this.meta;
-      return callback (null, feedItems, meta.title, meta.link);
+      return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl);
     });
 
     if (res.status != 200) {
