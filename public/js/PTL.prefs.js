@@ -8,68 +8,33 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
-            "url": "http://faif.us/feeds/cast-ogg/",
-            "name": "Free as in Freedom",
+            "url": "https://retropie.org.uk/feed/",
+            "name": "RetroPie",
+            "type": "mixed",
+            "limit": 220,
+            "status": "on"
+          },
+          {
+            "url": "http://feeds.feedburner.com/thechangelog",
+            "name": "Changelog",
             "type": "text",
-            "limit": 252,
-            "status": "off"
-          },
-          {
-            "url": "https://exode.me/feeds/videos.xml?videoChannelId=484",
-            "name": "yPhil Videos",
-            "type": "mixed",
-            "limit": 195,
-            "status": "on"
-          },
-          {
-            "url": "https://news.google.com/news/rss/rss",
-            "name": "Top stories - Google News",
-            "type": "mixed",
-            "limit": 279,
-            "status": "on"
-          },
-          {
-            "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCtNdVINwfYFTQEEZgMiQ8FA",
-            "name": "Bailey Sarian",
-            "type": "mixed",
-            "limit": 236,
+            "limit": 292,
             "status": "on"
           },
           {
             "url": "http://feeds.arstechnica.com/arstechnica/index",
             "name": "Ars Technica",
             "type": "text",
-            "limit": 203,
+            "limit": 333,
             "status": "on"
           }
         ],
         [
           {
-            "url": "https://retropie.org.uk/feed/",
-            "name": "RetroPie",
-            "type": "mixed",
-            "limit": 346,
-            "status": "on"
-          },
-          {
-            "url": "https://sputniknews.com/export/rss2/archive/index.xml",
-            "name": "Sputnik News - World News, Breaking News & Top Stories",
-            "type": "mixed",
-            "limit": 190,
-            "status": "on"
-          },
-          {
             "url": "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
             "name": "NASA Image of the Day",
             "type": "photo",
-            "limit": 286,
-            "status": "on"
-          },
-          {
-            "url": "http://www.thefiscaltimes.com/feeds/articles/all/rss.xml",
-            "name": "The Fiscal Times",
-            "type": "mixed",
-            "limit": 221,
+            "limit": 424,
             "status": "on"
           }
         ],
@@ -82,47 +47,54 @@ PTL.prefs = (function() {
             "status": "on"
           },
           {
-            "url": "http://www.newsbusters.org/blog/feed",
-            "name": "Newsbusters - Welcome to NewsBusters, a project of the Media Research Center (MRC), America’s leading media watchdog in documenting, exposing",
+            "url": "http://feeds.feedburner.com/hackaday/LgoM/",
+            "name": "Hackaday",
             "type": "mixed",
-            "limit": 189,
+            "limit": 374,
             "status": "on"
           },
           {
-            "url": "https://www.nationalreview.com/corner/feed/",
-            "name": "The Corner | National Review",
+            "url": "https://news.google.com/news/rss/rss",
+            "name": "Top stories - Google News",
             "type": "mixed",
-            "limit": 400,
+            "limit": 279,
             "status": "on"
           }
         ],
         [
           {
-            "url": "https://www.npr.org/rss/rss.php?id=1001",
-            "name": "News : NPR",
-            "type": "mixed",
-            "limit": 195,
-            "status": "on"
-          },
-          {
-            "url": "http://thehill.com/rss/syndicator/19109",
-            "name": "TheHill - The Hill News",
-            "type": "mixed",
-            "limit": 204,
+            "url": "http://faif.us/feeds/cast-ogg/",
+            "name": "Free as in Freedom",
+            "type": "text",
+            "limit": 252,
             "status": "off"
           },
           {
-            "url": "http://feeds.feedburner.com/thechangelog",
-            "name": "Changelog",
-            "type": "text",
-            "limit": 292,
+            "url": "https://exode.me/feeds/videos.xml?videoChannelId=484",
+            "name": "yPhil Videos",
+            "type": "mixed",
+            "limit": 203,
             "status": "on"
           },
           {
-            "url": "http://feeds.feedburner.com/hackaday/LgoM/",
-            "name": "Hackaday",
+            "url": "https://www.youtube.com/feeds/videos.xml?playlist_id=PLB4brr7vf-P6cR6GriSFvWdcIsfLlEMsW",
+            "name": "DEVIL SOLD HIS SOUL - New Album 'LOSS' - Out April 9th",
             "type": "mixed",
-            "limit": 239,
+            "limit": 220,
+            "status": "on"
+          },
+          {
+            "url": "https://www.youtube.com/feeds/videos.xml?playlist_id=PLgaTxfu341FVfUuZIobRbFB1Z_bXQC2Ju",
+            "name": "Mix music",
+            "type": "mixed",
+            "limit": 220,
+            "status": "on"
+          },
+          {
+            "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCtNdVINwfYFTQEEZgMiQ8FA",
+            "name": "Bailey Sarian",
+            "type": "mixed",
+            "limit": 236,
             "status": "on"
           }
         ]
@@ -132,6 +104,13 @@ PTL.prefs = (function() {
       "name": "news",
       "columns": [
         [
+          {
+            "url": "http://www.thefiscaltimes.com/feeds/articles/all/rss.xml",
+            "name": "The Fiscal Times",
+            "type": "mixed",
+            "limit": 221,
+            "status": "off"
+          },
           {
             "url": "http://www.mirror.co.uk/news/world-news/rss.xml",
             "name": "Mirror - World news",
@@ -194,6 +173,13 @@ PTL.prefs = (function() {
             "type": "mixed",
             "limit": 400,
             "status": "off"
+          },
+          {
+            "url": "https://www.latimes.com/world/rss2.0.xml",
+            "name": "LA. Times World & Nation",
+            "type": "mixed",
+            "limit": 350,
+            "status": "off"
           }
         ],
         [
@@ -216,7 +202,7 @@ PTL.prefs = (function() {
             "name": "BBC News - World",
             "type": "mixed",
             "limit": 231,
-            "status": "off"
+            "status": "on"
           },
           {
             "url": "http://feeds.washingtonpost.com/rss/world",
@@ -247,8 +233,29 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
+            "url": "https://www.npr.org/rss/rss.php?id=1001",
+            "name": "News : NPR",
+            "type": "mixed",
+            "limit": 195,
+            "status": "off"
+          },
+          {
             "url": "http://www.independent.co.uk/news/world/rss",
             "name": "The Independent",
+            "type": "mixed",
+            "limit": 350,
+            "status": "off"
+          },
+          {
+            "url": "https://www.theguardian.com/world/rss",
+            "name": "World news | The Guardian",
+            "type": "mixed",
+            "limit": 350,
+            "status": "off"
+          },
+          {
+            "url": "https://www.euronews.com/rss?level=theme&name=news",
+            "name": "News | Euronews RSS",
             "type": "mixed",
             "limit": 350,
             "status": "off"
@@ -284,10 +291,10 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://www.theguardian.com/world/rss",
-            "name": "World news | The Guardian",
+            "url": "http://www.newsbusters.org/blog/feed",
+            "name": "Newsbusters - Welcome to NewsBusters, a project of the Media Research Center (MRC), America’s leading media watchdog in documenting, exposing",
             "type": "mixed",
-            "limit": 350,
+            "limit": 189,
             "status": "off"
           },
           {
@@ -298,17 +305,38 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://www.latimes.com/world/rss2.0.xml",
-            "name": "LA. Times World & Nation",
+            "url": "https://www.vox.com/rss/world/index.xml",
+            "name": "Vox -  World",
             "type": "mixed",
             "limit": 350,
             "status": "off"
           },
           {
-            "url": "https://www.vox.com/rss/world/index.xml",
-            "name": "Vox -  World",
+            "url": "https://www.nationalreview.com/corner/feed/",
+            "name": "The Corner | National Review",
             "type": "mixed",
-            "limit": 350,
+            "limit": 301,
+            "status": "off"
+          },
+          {
+            "url": "http://thehill.com/rss/syndicator/19109",
+            "name": "TheHill - The Hill News",
+            "type": "mixed",
+            "limit": 204,
+            "status": "off"
+          },
+          {
+            "url": "https://sputniknews.com/export/rss2/archive/index.xml",
+            "name": "Sputnik News - World News, Breaking News & Top Stories",
+            "type": "mixed",
+            "limit": 190,
+            "status": "off"
+          },
+          {
+            "url": "https://trends.gab.com/trend-feed/rss",
+            "name": "GabTrends.com Feed",
+            "type": "mixed",
+            "limit": 220,
             "status": "off"
           }
         ]
@@ -600,13 +628,6 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://www.euronews.com/rss?level=theme&name=news",
-            "name": "News | Euronews RSS",
-            "type": "mixed",
-            "limit": 350,
-            "status": "off"
-          },
-          {
             "url": "http://www.lemonde.fr/afrique/rss_full.xml",
             "name": "Afrique : Toute l’actualité sur Le Monde.fr.",
             "type": "mixed",
@@ -662,6 +683,13 @@ PTL.prefs = (function() {
             "name": "France | The Guardian",
             "type": "mixed",
             "limit": 339,
+            "status": "off"
+          },
+          {
+            "url": "http://www.juanasensio.com/index.rss",
+            "name": "STALKER - Dissection du cadavre de la littérature",
+            "type": "mixed",
+            "limit": 220,
             "status": "off"
           }
         ],
@@ -788,13 +816,6 @@ PTL.prefs = (function() {
             "type": "mixed",
             "limit": 350,
             "status": "off"
-          },
-          {
-            "url": "https://feeds.feedburner.com/dangerousminds/dot/net",
-            "name": "Dangerous Minds",
-            "type": "mixed",
-            "limit": 315,
-            "status": "off"
           }
         ],
         [
@@ -840,6 +861,13 @@ PTL.prefs = (function() {
             "name": "KEXP",
             "type": "mixed",
             "limit": 600,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.feedburner.com/dangerousminds/dot/net",
+            "name": "Dangerous Minds",
+            "type": "mixed",
+            "limit": 315,
             "status": "off"
           }
         ]
@@ -1179,10 +1207,6 @@ PTL.prefs = (function() {
             "type": "text",
             "limit": 192,
             "status": "off"
-          },
-          {
-            "type": "mixed",
-            "limit": 260
           },
           {
             "url": "https://github.com/Chocobozzz/PeerTube/commits/develop.atom",

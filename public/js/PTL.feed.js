@@ -132,51 +132,6 @@ PTL.feed = {
       function() {$(this).find('.collapsible').hide('fade', 'fast');}
     );
 
-    // $header.hover (function() {
-    //   var $favicon = $(this).find('img.favicon');
-    //   var $thisFeedIcon = $favicon.parent();
-    //   var feedIconSrc = $favicon.attr('src');
-
-    //   $thisFeedIcon
-    //     .addClass('rotator')
-    //     .find('img.favicon')
-    //     .attr('src', '/static/images/triangle.png')
-    //     .data('src', feedIconSrc);
-    // }, function() {
-
-    //   var $favicon = $(this).find('img.favicon');
-    //   var $thisFeedIcon = $favicon.parent();
-    //   var feedIconSrc = $favicon.data('src');
-
-    //   $thisFeedIcon
-    //     .removeClass('rotator')
-    //     .find('img.favicon')
-    //     .attr('src', feedIconSrc);
-    // });
-
-    // $header.hover (function() {
-    //   $(this).data('img', $myFeedIcon.attr('src'));
-    //   $myFeedIcon.attr('src', '/static/images/triangle.png');
-    // }, function() {
-    //   if ($(this).data('img') !== 'none') {
-    //     $myFeedIcon.attr('src', $(this).data('img'));
-    //   } else {
-    //     $myFeedIcon.attr('src', '/static/images/triangle.png');
-    //   }
-    // });
-
-    // $("img.favicon").hover(
-    //   function() {
-    //     $(this).data('src', $(this).attr('src'));
-
-    //     $(this).attr('src', '/static/images/triangle.gif');
-    //     // this.src = '/static/images/triangle.png';
-    //   },
-    //   function() {
-    //     $(this).attr('src', $(this).data('src'));
-    //     // this.src = '/static/images/rss.gif';
-    //   });
-
     if (!PTL.util.isMobile()) {
       $selectDiv.addClass('collapsible');
       $deleteDiv.addClass('collapsible');
@@ -191,20 +146,10 @@ PTL.feed = {
       $(this).find('img.favicon').hide();
       $feedIcon.removeClass('icon-rss').addClass('icon-down-circle');
 
-      // var iconImg = $feedToggle.css('background-image');
-      // $feedToggle.css('background-image', 'none');
-      // $(this).data('img', iconImg);
-
     }, function() {
 
       $(this).find('img.favicon').show();
       $feedIcon.removeClass('icon-down-circle');
-
-      // if ($(this).data('img') !== 'none') {
-      //   $feedToggle.css('background-image', $(this).data('img'));
-      // } else {
-      //   $feedIcon.addClass('icon-rss');
-      // }
 
     });
 
@@ -283,25 +228,9 @@ PTL.feed = {
       }
 
     }).fail(function(jqXHR, textStatus, errorThrown) {
-      console.log('ERROR: %s (%s) [%s]', feedUrl, textStatus, errorThrown);
+      // console.log('ERROR: %s (%s) [%s]', feedUrl, textStatus, errorThrown);
       // $feedIcon.addClass('icon-rss');
     });
-
-    // $.get("/favicon", {
-    //   url: decodeURI(feedHost),
-    //   dataType: "json"
-    // }, function() {
-    //   // console.log('feedHost: %s (icon %s)', feedHost, icon);
-    // }).done(function(icon) {
-
-    //   $feedToggle.css('background-image','url(' + icon + ')');
-    //   $feedIcon.removeClass('icon-rss');
-    //   // $header.data('img', icon);
-
-    // }).fail(function() {
-    //   $feedIcon.addClass('icon-rss');
-    //   $feedToggle.css('background-image', 'none');
-    // });
 
     if ($dataStore.data('status') == 'on') {
 
@@ -319,8 +248,6 @@ PTL.feed = {
       }).fail(function(error) {
         PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
       }).done(function(data) {
-
-        console.log('DATA: %s (%s)', JSON.stringify(data), feedUrl);
 
         if (feedName) {
           feedTitle = feedName;
