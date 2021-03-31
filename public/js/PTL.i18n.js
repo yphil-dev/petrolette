@@ -58,6 +58,10 @@ PTL.i18n.translations = {
   "Group" : { fr: "Groupe", ja: "グループ", es: "Grupo" },
 
   "Find the feed for this URL, or build a new one from the search query" : { fr: "Trouver le flux du site web, ou construire un flux à partir des termes de recherche" , ja: "ウェブサイトのRSSフィードを見つける", es: "Encuentra la fuente RSS del sitio web" },
+
+  "Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title" : { fr: "Renommez le flux de ce site Web, s'il n'est pas assez informatif; Laisser vide pour obtenir le titre du flux par défaut" , ja: "それが十分に報知されていない場合、このウェブサイトのフィードに名前を付けます。 デフォルトフィードのタイトルを取得するには、空白のままにします", es: "Nombra la fuente de este sitio web, si no es lo suficientemente informativo; Deje en blanco para obtener el título de fuente predeterminado" },
+
+
   "Move this feed to another group." : { fr: "Déplacer ce flux dans un autre groupe." , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo." },
   "The type of feed: It can be all text, all image, or mixed." : { fr: "Quel type de flux ? Tout le texte, toute l'image, ou les deux.", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de flux? Todo el texto, toda la imagen o mixto." },
   "How many new items should this feed display at a time?" : { fr: "Combien de nouveaux articles dans ce flux ?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el feed a la vez?" },

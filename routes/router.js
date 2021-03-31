@@ -125,11 +125,13 @@ router.get('/', function(req, res) {
 });
 
 router.use(function(req, res) {
-  res.send('404: Page not Found', 404);
+  // res.send('404: Page not Found', 404);
+  res.status(404).send('404: Page not Found');
 });
 
 router.use(function(error, req, res, next) {
-  res.send('500: Internal Server Error', 500);
+  // res.send('500: Internal Server Error', 500);
+  res.status(500).send('500: Internal Server Error');
 });
 
 module.exports = router;

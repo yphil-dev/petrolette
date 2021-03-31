@@ -389,6 +389,12 @@ PTL.util = {
           position: 'left'
         },
         {
+          title: PTL.tr('Name the feed (optional)'),
+          element: 'input#feed-name',
+          intro: PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title'),
+          position: 'left'
+        },
+        {
           title: PTL.tr('Keep everything tidy'),
           element: 'fieldset#feedGroupFieldset',
           intro: PTL.tr('Move this feed to another group.'),
@@ -410,7 +416,7 @@ PTL.util = {
           title: PTL.tr('You are in control now'),
           element: '.button-ok',
           intro: PTL.tr('Ok'),
-          position: 'top'
+          position: 'left'
         }
       ]
     });
