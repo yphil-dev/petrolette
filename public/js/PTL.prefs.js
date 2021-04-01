@@ -2,16 +2,23 @@
 
 PTL.prefs = (function() {
 
-  var newList = [
+  var defaultFeeds = [
     {
-      "name": "demo",
+      "name": "rename me",
       "columns": [
         [
           {
-            "url": "https://retropie.org.uk/feed/",
-            "name": "RetroPie",
+            "url": "https://www.yahoo.com/news/rss",
+            "name": "Yahoo News - Latest News & Headlines",
             "type": "mixed",
             "limit": 220,
+            "status": "on"
+          },
+          {
+            "url": "https://news.google.com/news/rss/rss",
+            "name": "Top stories - Google News",
+            "type": "mixed",
+            "limit": 279,
             "status": "on"
           },
           {
@@ -36,6 +43,13 @@ PTL.prefs = (function() {
             "type": "photo",
             "limit": 424,
             "status": "on"
+          },
+          {
+            "url": "http://faif.us/feeds/cast-ogg/",
+            "name": "Free as in Freedom",
+            "type": "text",
+            "limit": 394,
+            "status": "on"
           }
         ],
         [
@@ -54,21 +68,14 @@ PTL.prefs = (function() {
             "status": "on"
           },
           {
-            "url": "https://news.google.com/news/rss/rss",
-            "name": "Top stories - Google News",
+            "url": "https://retropie.org.uk/feed/",
+            "name": "RetroPie",
             "type": "mixed",
-            "limit": 279,
+            "limit": 220,
             "status": "on"
           }
         ],
         [
-          {
-            "url": "http://faif.us/feeds/cast-ogg/",
-            "name": "Free as in Freedom",
-            "type": "text",
-            "limit": 252,
-            "status": "off"
-          },
           {
             "url": "https://exode.me/feeds/videos.xml?videoChannelId=484",
             "name": "yPhil Videos",
@@ -202,7 +209,7 @@ PTL.prefs = (function() {
             "name": "BBC News - World",
             "type": "mixed",
             "limit": 231,
-            "status": "on"
+            "status": "off"
           },
           {
             "url": "http://feeds.washingtonpost.com/rss/world",
@@ -347,8 +354,8 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
-            "url": "https://www.vox.com/rss/recode/index.xml",
-            "name": "Vox -  Recode",
+            "url": "https://nitter.fdn.fr/scala_love/rss",
+            "name": "Scala Love ❤️ / @scala_love",
             "type": "mixed",
             "limit": 220,
             "status": "off"
@@ -447,6 +454,13 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
+            "url": "https://www.vox.com/rss/recode/index.xml",
+            "name": "Vox -  Recode",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
             "url": "https://feeds.feedburner.com/LosTechies",
             "name": "Los Techies",
             "type": "mixed",
@@ -502,6 +516,13 @@ PTL.prefs = (function() {
             "name": "Journal du hacker: Derniers commentaires",
             "type": "mixed",
             "limit": 600,
+            "status": "off"
+          },
+          {
+            "url": "https://nitter.fdn.fr/mainframed767/rss",
+            "name": "Soldier of FORTRAN / @mainframed767",
+            "type": "mixed",
+            "limit": 220,
             "status": "off"
           }
         ]
@@ -790,6 +811,13 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
+            "url": "https://nitter.fdn.fr/vurnt22/rss",
+            "name": "",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
             "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCAYKj_peyESIMDp5LtHlH2A",
             "name": "unfa",
             "type": "mixed",
@@ -809,16 +837,16 @@ PTL.prefs = (function() {
             "type": "mixed",
             "limit": 350,
             "status": "off"
-          },
+          }
+        ],
+        [
           {
             "url": "https://www.youredm.com/feed/",
             "name": "Your EDM",
             "type": "mixed",
             "limit": 350,
             "status": "off"
-          }
-        ],
-        [
+          },
           {
             "url": "http://pitchfork.com/rss/news/",
             "name": "Pitchfork: News",
@@ -937,7 +965,7 @@ PTL.prefs = (function() {
           },
           {
             "url": "https://exode.me/feeds/videos.atom?accountId=808",
-            "name": "yPhil",
+            "name": "yPhil - Videos on Peertube",
             "type": "photo",
             "limit": 338,
             "status": "off"
@@ -1061,40 +1089,640 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
-            "url": "http://comicfeeds.chrisbenard.net/view/dilbert/default",
-            "name": "Dilbert Daily Strip",
+            "url": "https://www.comicsrss.com/rss/marias-day.rss",
+            "name": "Maria's Day",
             "type": "photo",
-            "limit": 382,
+            "limit": 220,
             "status": "off"
           },
           {
-            "url": "https://moonbeard.com/feed/atom/",
-            "name": "Moonbeard",
+            "url": "https://www.comicsrss.com/rss/mannequin-on-the-moon.rss",
+            "name": "Mannequin on the Moon",
             "type": "photo",
-            "limit": 600,
-            "status": "off"
-          }
-        ],
-        [
-          {
-            "url": "http://xkcd.com/rss.xml",
-            "name": "xkcd.com",
-            "type": "photo",
-            "limit": 600,
+            "limit": 220,
             "status": "off"
           },
           {
-            "url": "http://explainxkcd.com/rss.xml",
-            "name": "Explain xkcd",
+            "url": "https://www.comicsrss.com/rss/mallardfillmore.rss",
+            "name": "Mallard Fillmore",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/making-it.rss",
+            "name": "Making It",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/maintaining.rss",
+            "name": "Maintaining",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/magnificatz.rss",
+            "name": "Magnificatz",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/magicinaminute.rss",
+            "name": "Magic in a Minute",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/macanudo.rss",
+            "name": "Macanudo",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lunarbaboon.rss",
+            "name": "Lunarbaboon",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lukey-mcgarrys-tldr.rss",
+            "name": "Lukey McGarry’s TLDR",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lug-nuts.rss",
+            "name": "Lug Nuts",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/luckycow.rss",
+            "name": "Lucky Cow",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/luann.rss",
+            "name": "Luann",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lostsideofsuburbia.rss",
+            "name": "Lost Side of Suburbia",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lostsheep.rss",
+            "name": "Lost Sheep",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/looseparts.rss",
+            "name": "Loose Parts",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/looks-good-on-paper.rss",
+            "name": "Looks Good on Paper",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/long-story-short.rss",
+            "name": "Long Story Short",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lola.rss",
+            "name": "Lola",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/liz-climo-cartoons.rss",
+            "name": "Liz Climo Cartoons",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/little-nemo.rss",
+            "name": "Little Nemo",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/little-fried-chicken-and-sushi.rss",
+            "name": "Little Fried Chicken and Sushi",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lisabenson.rss",
+            "name": "Lisa Benson",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lio.rss",
+            "name": "Lio",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/life-on-earth.rss",
+            "name": "Life on Earth",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/libertymeadows.rss",
+            "name": "Liberty Meadows",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lil-abner.rss",
+            "name": "Li'l Abner",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/learn-to-speak-cat.rss",
+            "name": "Learn to Speak Cat",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lay-lines.rss",
+            "name": "Lay Lines",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/laughing-redhead-comics.rss",
+            "name": "Laughing Redhead Comics",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lastkiss.rss",
+            "name": "Last Kiss",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/lards-world-peace-tips.rss",
+            "name": "Lard&#39;s World Peace Tips",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/laloalcaraz.rss",
+            "name": "Lalo Alcaraz",
             "type": "mixed",
-            "limit": 600,
+            "limit": 220,
             "status": "off"
           },
           {
-            "url": "http://what-if.xkcd.com/feed.atom",
-            "name": "What If?",
+            "url": "https://www.comicsrss.com/rss/lacucaracha.rss",
+            "name": "La Cucaracha",
             "type": "photo",
-            "limit": 180,
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/klibans-cats.rss",
+            "name": "Kliban's Cats",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kliban.rss",
+            "name": "Kliban",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kitchen-capers.rss",
+            "name": "Kitchen Capers",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kitncarlyle.rss",
+            "name": "Kit 'N' Carlyle",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kid-shay-comics.rss",
+            "name": "Kid Shay Comics",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kid-beowulf.rss",
+            "name": "Kid Beowulf",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kevin-necessary-editorial-cartoons.rss",
+            "name": "Kevin Necessary Editorial Cartoons",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kevinkallaugher.rss",
+            "name": "Kevin Kallaugher",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kal.rss",
+            "name": "Kevin Kallaugher",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/kencatalino.rss",
+            "name": "Ken Catalino",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/junk-drawer.rss",
+            "name": "Junk Drawer",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/jumpstart.rss",
+            "name": "JumpStart",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/johndeering.rss",
+            "name": "John Deering",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/joey-alison-sayers-comics.rss",
+            "name": "Joey Alison Sayers Comics",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/joevanilla.rss",
+            "name": "Joe Vanilla",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/joe-heller.rss",
+            "name": "Joe Heller",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/jimsjournal.rss",
+            "name": "Jim&#39;s Journal",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/jimmorin.rss",
+            "name": "Jim Morin",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/jim-benton-cartoons.rss",
+            "name": "Jim Benton Cartoons",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/humorcartoon.rss",
+            "name": "Jerry King Cartoons",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/jeffdanziger.rss",
+            "name": "Jeff Danziger",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/janesworld.rss",
+            "name": "Jane's World",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/jake-likes-onions.rss",
+            "name": "Jake Likes Onions",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/itsallaboutyou.rss",
+            "name": "It's All About You",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/invisible-bread.rss",
+            "name": "Invisible Bread",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/inspector-dangers-crime-quiz.rss",
+            "name": "Inspector Danger's Crime Quiz",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/inkpen.rss",
+            "name": "Ink Pen",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/inthesticks.rss",
+            "name": "In the Sticks",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/inthebleachers.rss",
+            "name": "In the Bleachers",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/in-security.rss",
+            "name": "In Security",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/imaginethis.rss",
+            "name": "Imagine This",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/ice-cream-sandwich-comics.rss",
+            "name": "Ice Cream Sandwich Comics",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/hubris.rss",
+            "name": "HUBRIS!",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/heartofthecity.rss",
+            "name": "Heart of the City",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/harley.rss",
+            "name": "Harley",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/green-humour.rss",
+            "name": "Green Humour",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/fowl-language.rss",
+            "name": "Fowl Language",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/foolish-mortals.rss",
+            "name": "Foolish Mortals",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/compu-toon.rss",
+            "name": "Compu-toon",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/committed.rss",
+            "name": "Committed",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/crumb.rss",
+            "name": "Crumb",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/dilbert-classics.rss",
+            "name": "Dilbert Classics",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/dilbert.rss",
+            "name": "Dilbert",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/american-chop-suey.rss",
+            "name": "American Chop Suey",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/amanda-the-great.rss",
+            "name": "Amanda the Great",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/alley-oop.rss",
+            "name": "Alley Oop",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/alis-house.rss",
+            "name": "Ali&#39;s House",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/algoodwyn.rss",
+            "name": "Al Goodwyn Editorial Cartoons",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/aj-and-magnus.rss",
+            "name": "AJ and Magnus",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/agnes.rss",
+            "name": "Agnes",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/adult-children.rss",
+            "name": "Adult Children",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/adamathome.rss",
+            "name": "Adam@Home",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/tavicat.rss",
+            "name": "@Tavicat",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/9to5.rss",
+            "name": "9 to 5",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/ninechickweedlane.rss",
+            "name": "9 Chickweed Lane",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/2cowsandachicken.rss",
+            "name": "2 Cows and a Chicken",
+            "type": "photo",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.comicsrss.com/rss/1-and-done.rss",
+            "name": "1 and Done",
+            "type": "photo",
+            "limit": 220,
             "status": "off"
           }
         ],
@@ -1114,9 +1742,44 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
+            "url": "https://moonbeard.com/feed/atom/",
+            "name": "Moonbeard",
+            "type": "photo",
+            "limit": 600,
+            "status": "off"
+          },
+          {
+            "url": "http://comicfeeds.chrisbenard.net/view/dilbert/default",
+            "name": "Dilbert Daily Strip",
+            "type": "photo",
+            "limit": 382,
+            "status": "off"
+          },
+          {
+            "url": "http://xkcd.com/rss.xml",
+            "name": "xkcd.com",
+            "type": "photo",
+            "limit": 600,
+            "status": "off"
+          },
+          {
             "url": "https://blog.xkcd.com/rss",
             "name": "xkcd Blog",
             "type": "mixed",
+            "limit": 180,
+            "status": "off"
+          },
+          {
+            "url": "http://explainxkcd.com/rss.xml",
+            "name": "Explain xkcd",
+            "type": "mixed",
+            "limit": 600,
+            "status": "off"
+          },
+          {
+            "url": "http://what-if.xkcd.com/feed.atom",
+            "name": "What If?",
+            "type": "photo",
             "limit": 180,
             "status": "off"
           }
@@ -1127,6 +1790,13 @@ PTL.prefs = (function() {
       "name": "hardware",
       "columns": [
         [
+          {
+            "url": "http://www.premierguitar.com/rss/1",
+            "name": "Premier Guitar",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
           {
             "url": "http://www.dpreview.com/feeds/news.xml",
             "name": "Digital Photography Review (dpreview.com)",
@@ -1142,8 +1812,8 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://wireframe.raspberrypi.org/feed",
-            "name": "Wireframe",
+            "url": "https://www.raspberrypi.org/blog/feed",
+            "name": "Raspberry Pi Blog – Raspberry Pi",
             "type": "mixed",
             "limit": 600,
             "status": "off"
@@ -1170,9 +1840,30 @@ PTL.prefs = (function() {
             "type": "mixed",
             "limit": 191,
             "status": "off"
+          },
+          {
+            "url": "https://www.tomshardware.com/feeds/all",
+            "name": "Tom's Hardware",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
           }
         ],
         [
+          {
+            "url": "https://wireframe.raspberrypi.org/feed",
+            "name": "Wireframe",
+            "type": "mixed",
+            "limit": 600,
+            "status": "off"
+          },
+          {
+            "url": "https://www.forgottenweapons.com/rss",
+            "name": "Forgotten Weapons",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
           {
             "url": "https://hackspace.raspberrypi.org/feed",
             "name": "HackSpace magazine",
@@ -1181,10 +1872,10 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://www.raspberrypi.org/blog/feed",
-            "name": "Raspberry Pi Blog – Raspberry Pi",
+            "url": "http://www.kr-homestudio.fr/feed/",
+            "name": "KR home-studio",
             "type": "mixed",
-            "limit": 600,
+            "limit": 220,
             "status": "off"
           }
         ]
@@ -1195,17 +1886,45 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
-            "url": "https://github.com/node-fetch/node-fetch/commits/master.atom",
-            "name": "Recent Commits to node-fetch:master",
+            "url": "https://github.com/sveltejs/svelte/commits/master.atom",
+            "name": "Recent Commits to svelte:master",
             "type": "text",
-            "limit": 243,
+            "limit": 220,
             "status": "off"
           },
           {
-            "url": "https://framagit.org/yphil/petrolette/-/issues.atom?feed_token=YWcFEkVxV7CWsy9qsCUg&state=opened",
-            "name": "Pétrolette issues",
+            "url": "https://tracker.ardour.org/issues_rss.php",
+            "name": "Ardour Bug Tracker - Issues",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.rncbc.org/drupal/rss.xml",
+            "name": "rncbc.org",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://lkml.org/rss.php",
+            "name": "lkml.org",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://github.com/systemd/systemd/commits/main.atom",
+            "name": "Recent Commits to systemd:main",
             "type": "text",
-            "limit": 192,
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://lwn.net/headlines/rss",
+            "name": "LWN.net",
+            "type": "text",
+            "limit": 263,
             "status": "off"
           },
           {
@@ -1218,10 +1937,10 @@ PTL.prefs = (function() {
         ],
         [
           {
-            "url": "https://lwn.net/headlines/rss",
-            "name": "LWN.net",
+            "url": "https://framagit.org/yphil/petrolette/-/issues.atom?feed_token=YWcFEkVxV7CWsy9qsCUg&state=opened",
+            "name": "Pétrolette issues",
             "type": "text",
-            "limit": 263,
+            "limit": 192,
             "status": "off"
           },
           {
@@ -1230,98 +1949,105 @@ PTL.prefs = (function() {
             "type": "text",
             "limit": 327,
             "status": "off"
-          }
-        ]
+        },
+        {
+          "url": "https://github.com/node-fetch/node-fetch/commits/master.atom",
+          "name": "Recent Commits to node-fetch:master",
+          "type": "text",
+          "limit": 243,
+          "status": "off"
+        },
+        {
+          "url": "https://github.com/danmactough/node-feedparser/commits/master.atom",
+          "name": "Recent Commits to node-feedparser:master",
+          "type": "text",
+          "limit": 220,
+          "status": "off"
+        }
       ]
-    },
-    {
-      "name": "podcasts",
-      "columns": [
-        [
-          {
-            "url": "http://feeds.soundcloud.com/users/soundcloud:users:19672772/sounds.rss",
-            "name": "PIFFFcast - Le podcast du cinéma de genre",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "https://s3.amazonaws.com/feed.podbean.com/cestpaspourlesdoux/feed.xml",
-            "name": "C'est pas pour les doux",
-            "type": "text",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "https://lincolnproject.libsyn.com/rss",
-            "name": "The Lincoln Project",
-            "type": "text",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "https://audioboom.com/channels/4997220.rss",
-            "name": "Morbid: A True Crime Podcast",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          }
-        ],
-        [
-          {
-            "url": "https://feeds.megaphone.fm/ADL9840290619",
-            "name": "Crime Junkie",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "http://feeds.wnyc.org/experiment_podcast",
-            "name": "The Experiment",
-            "type": "text",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "http://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
-            "name": "The Broken Meeple",
-            "type": "text",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "http://rss.art19.com/the-daily",
-            "name": "NYT - The Daily",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          }
-        ],
-        [
-          {
-            "url": "https://top100podcast.libsyn.com/rss",
-            "name": "The Top 100 Games Podcast",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "https://feeds.blubrry.com/feeds/the_world_and_everything_in_it.xml",
-            "name": "The World and Everything In It",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "https://boardgamersanonymous.libsyn.com/rss",
-            "name": "Board Gamers Anonymous",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          }
-        ]
+    ]
+  },
+  {
+    "name": "podcasts",
+    "columns": [
+      [
+        {
+          "url": "http://rss.art19.com/the-daily",
+          "name": "NYT - The Daily",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "https://lincolnproject.libsyn.com/rss",
+          "name": "The Lincoln Project",
+          "type": "text",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "https://feeds.blubrry.com/feeds/the_world_and_everything_in_it.xml",
+          "name": "The World and Everything In It",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        }
+      ],
+      [
+        {
+          "url": "https://feeds.megaphone.fm/ADL9840290619",
+          "name": "Crime Junkie",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "http://feeds.wnyc.org/experiment_podcast",
+          "name": "The Experiment",
+          "type": "text",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "http://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
+          "name": "The Broken Meeple",
+          "type": "text",
+          "limit": 220,
+          "status": "off"
+        }
+      ],
+      [
+        {
+          "url": "https://top100podcast.libsyn.com/rss",
+          "name": "The Top 100 Games Podcast",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "http://feeds.soundcloud.com/users/soundcloud:users:19672772/sounds.rss",
+          "name": "PIFFFcast - Le podcast du cinéma de genre",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "https://boardgamersanonymous.libsyn.com/rss",
+          "name": "Board Gamers Anonymous",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "https://audioboom.com/channels/4997220.rss",
+          "name": "Morbid: A True Crime Podcast",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        }
       ]
-    }
+    ]
+  }
   ];
 
   var defaults = {
@@ -1330,7 +2056,7 @@ PTL.prefs = (function() {
     'lang': 'en',
     'searchPrefix': 'https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=',
     'searchPrefixDefault': 'https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=',
-    'feeds': JSON.stringify(newList),
+    'feeds': JSON.stringify(defaultFeeds),
     'tabDropActivate': true,
     'brokenImages': 'hide',
     'mediaPreload': 'none',

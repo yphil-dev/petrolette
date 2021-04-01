@@ -8,8 +8,6 @@ PTL.col = {
 
     var nbOfColumnsInTab = $panel.find('.column').length;
 
-    console.log('nbOfColumnsInTab: (%s)', nbOfColumnsInTab);
-
     $column.hide('fast', function() {
 
       if (nbOfColumnsInTab <= 2) {

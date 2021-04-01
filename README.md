@@ -26,7 +26,7 @@ News feeds are organized into tabs, which can contain an infinite number of colu
 - Direct link to the article's resources (image, video, sound) for opening in an external reader
 - Advanced image management
 - Import / Export of the feeds file
-- Online synchronization (Cloud)
+- Online synchronization (5apps, Google Drive, Dropbox)
 - Construction of web search feeds
 - Mobile / responsive interface
 - Bookmarklet for adding the feed of a site to Pétrolette on the fly
