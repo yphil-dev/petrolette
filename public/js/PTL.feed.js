@@ -337,6 +337,7 @@ PTL.feed = {
 
         $.each(data.feedItems, function(index, item) {
 
+
           if (index == 30) return false;
 
           var $description = $.parseHTML(item.description),

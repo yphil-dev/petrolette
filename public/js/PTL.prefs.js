@@ -354,6 +354,20 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
+            "url": "https://www.computerweekly.com/rss/All-Computer-Weekly-content.xml",
+            "name": "ComputerWeekly.com",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://eab.abime.net/external.php?type=rss2",
+            "name": "abime.net - news",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
             "url": "https://nitter.fdn.fr/scala_love/rss",
             "name": "Scala Love ❤️ / @scala_love",
             "type": "mixed",
@@ -375,13 +389,6 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://www.reddit.com/r/specializedtools/.rss",
-            "name": "Specialized Tools",
-            "type": "mixed",
-            "limit": 270,
-            "status": "off"
-          },
-          {
             "url": "http://feeds2.feedburner.com/webupd8",
             "name": "Web Upd8 - Ubuntu / Linux blog",
             "type": "text",
@@ -389,24 +396,24 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://linuxfr.org/news.atom",
-            "name": "LinuxFr.org : les dépêches",
-            "type": "mixed",
-            "limit": 157,
+            "url": "https://solar.lowtechmagazine.com/feeds/all.rss.xml",
+            "name": "LOW←TECH MAGAZINE",
+            "type": "text",
+            "limit": 66,
             "status": "off"
           },
           {
-            "url": "https://linuxfr.org/liens.atom",
-            "name": "LinuxFr.org : les liens",
+            "url": "https://hackernoon.com/feed",
+            "name": "Hacker Noon",
             "type": "mixed",
-            "limit": 160,
+            "limit": 600,
             "status": "off"
           },
           {
-            "url": "https://linuxfr.org/journaux.atom",
-            "name": "LinuxFr.org : les journaux",
+            "url": "https://feeds.feedburner.com/LosTechies",
+            "name": "Los Techies",
             "type": "mixed",
-            "limit": 136,
+            "limit": 600,
             "status": "off"
           }
         ],
@@ -416,13 +423,6 @@ PTL.prefs = (function() {
             "name": "SLaks.Blog",
             "type": "mixed",
             "limit": 600,
-            "status": "off"
-          },
-          {
-            "url": "https://circuits-diy.com/feed/",
-            "name": "Circuits DIY",
-            "type": "mixed",
-            "limit": 126,
             "status": "off"
           },
           {
@@ -461,10 +461,10 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://feeds.feedburner.com/LosTechies",
-            "name": "Los Techies",
+            "url": "https://www.phoronix.com/rss.php",
+            "name": "Phoronix",
             "type": "mixed",
-            "limit": 600,
+            "limit": 181,
             "status": "off"
           }
         ],
@@ -477,38 +477,24 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://simpleflying.com/feed/",
-            "name": "Simple Flying",
+            "url": "https://linuxfr.org/news.atom",
+            "name": "LinuxFr.org : les dépêches",
             "type": "mixed",
-            "limit": 237,
+            "limit": 157,
             "status": "off"
           },
           {
-            "url": "https://hushkit.net/rss",
-            "name": "Hush-Kit",
-            "type": "text",
-            "limit": 190,
-            "status": "off"
-          },
-          {
-            "url": "https://solar.lowtechmagazine.com/feeds/all.rss.xml",
-            "name": "LOW←TECH MAGAZINE",
-            "type": "text",
-            "limit": 66,
-            "status": "off"
-          },
-          {
-            "url": "https://www.phoronix.com/rss.php",
-            "name": "Phoronix",
+            "url": "https://linuxfr.org/journaux.atom",
+            "name": "LinuxFr.org : les journaux",
             "type": "mixed",
-            "limit": 181,
+            "limit": 136,
             "status": "off"
           },
           {
-            "url": "https://hackernoon.com/feed",
-            "name": "Hacker Noon",
+            "url": "https://linuxfr.org/liens.atom",
+            "name": "LinuxFr.org : les liens",
             "type": "mixed",
-            "limit": 600,
+            "limit": 160,
             "status": "off"
           },
           {
@@ -532,6 +518,13 @@ PTL.prefs = (function() {
       "name": "sec",
       "columns": [
         [
+          {
+            "url": "https://csdl-api.computer.org/api/rss/periodicals/mags/sp/rss.xml",
+            "name": "IEEE Security & Privacy",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
           {
             "url": "http://defence-blog.com/feed",
             "name": "Defence Blog",
@@ -641,6 +634,20 @@ PTL.prefs = (function() {
       "name": "fr",
       "columns": [
         [
+          {
+            "url": "https://lejournal.cnrs.fr/rss",
+            "name": "CNRS Le journal",
+            "type": "mixed",
+            "limit": 243,
+            "status": "off"
+          },
+          {
+            "url": "http://www.futura-sciences.com/rss/actualites.xml",
+            "name": "Les dernières actualités de Futura",
+            "type": "text",
+            "limit": 243,
+            "status": "off"
+          },
           {
             "url": "https://www.monde-diplomatique.fr/rss",
             "name": "Le Monde diplomatique",
@@ -810,6 +817,13 @@ PTL.prefs = (function() {
       "name": "music",
       "columns": [
         [
+          {
+            "url": "https://musewire.com/feed/",
+            "name": "MuseWire",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
           {
             "url": "https://nitter.fdn.fr/vurnt22/rss",
             "name": "",
@@ -1025,7 +1039,7 @@ PTL.prefs = (function() {
             "url": "https://www.audiotechnology.com/feed",
             "name": "AudioTechnology",
             "type": "mixed",
-            "limit": 350,
+            "limit": 125,
             "status": "off"
           }
         ]
@@ -1036,21 +1050,156 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
+            "url": "https://www.independentsciencenews.org/feed/",
+            "name": "Independent Science News | Food, Health and Agriculture Bioscience News",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.labbulletin.com/feed.rdf",
+            "name": "Laboratory News from Lab Bulletin",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.scidev.net/global/global_rss.xml",
+            "name": "SciDev - Global",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.advancedsciencenews.com/feed/",
+            "name": "Advanced Science News",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://phys.org/rss-feed",
+            "name": "Phys.org - latest science and technology news stories",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.nature.com/nature/rss/current",
+            "name": "Nature - Issue - nature.com science feeds",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
             "url": "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk",
             "name": "BBC News - Science & Environment",
             "type": "mixed",
             "limit": 221,
             "status": "off"
+          }
+        ],
+        [
+          {
+            "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+            "name": "NASA Breaking News",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
           },
           {
-            "url": "https://lejournal.cnrs.fr/rss",
-            "name": "CNRS Le journal",
+            "url": "https://eos.org/feed",
+            "name": "Eos",
             "type": "mixed",
-            "limit": 243,
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://www.astronomy.com/rss/news",
+            "name": "News",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://spaceflightnow.com/feed/",
+            "name": "Spaceflight Now",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://astronomynow.com/feed/",
+            "name": "Astronomy Now",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://spaceq.ca/feed/",
+            "name": "SpaceQ",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.universetoday.com/feed",
+            "name": "Universe Today",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://www.esa.int/rssfeed/TopNews",
+            "name": "ESA Top News",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://earthsky.org/feed",
+            "name": "EarthSky",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.nasaspaceflight.com/feed",
+            "name": "NASASpaceFlight.com",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.spaceflightinsider.com/feed/",
+            "name": "SpaceFlight Insider",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://spacenews.com/feed/",
+            "name": "SpaceNews",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.feedburner.com/spaceref/jext",
+            "name": "SpaceRef",
+            "type": "mixed",
+            "limit": 220,
             "status": "off"
           }
         ],
         [
+          {
+            "url": "http://feeds.feedburner.com/BreakingScienceNews?format=xml",
+            "name": "Breaking Science News | Sci-News.com",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
           {
             "url": "http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk",
             "name": "BBC News - Technology",
@@ -1064,21 +1213,56 @@ PTL.prefs = (function() {
             "type": "mixed",
             "limit": 378,
             "status": "off"
+          },
+          {
+            "url": "https://www.livescience.com/home/feed/site.xml",
+            "name": "Livescience.com",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.feedburner.com/scitechdaily",
+            "name": "SciTechDaily",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
           }
         ],
         [
           {
-            "url": "http://www.futura-sciences.com/rss/actualites.xml",
-            "name": "Les dernières actualités de Futura",
-            "type": "text",
-            "limit": 243,
+            "url": "https://www.eurekalert.org/rss.xml",
+            "name": "EurekAlert! - Breaking News",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://www.sciencemag.org/rss/current.xml",
+            "name": "Science current issue",
+            "type": "mixed",
+            "limit": 220,
             "status": "off"
           },
           {
             "url": "https://news.cnrs.fr/rss",
             "name": "CNRS News",
             "type": "mixed",
-            "limit": 243,
+            "limit": 183,
+            "status": "off"
+          },
+          {
+            "url": "http://rss.sciam.com/ScientificAmerican-Global",
+            "name": "Scientific American Content: Global",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://undark.org/feed/",
+            "name": "Undark Magazine",
+            "type": "mixed",
+            "limit": 220,
             "status": "off"
           }
         ]
@@ -1791,6 +1975,48 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
+            "url": "https://circuits-diy.com/feed/",
+            "name": "Circuits DIY",
+            "type": "mixed",
+            "limit": 126,
+            "status": "off"
+          },
+          {
+            "url": "https://www.ny-engineers.com/blog/rss.xml",
+            "name": "New York Engineers Blog",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.cnczone.com/forums/external.php?type=RSS2",
+            "name": "CNCzone.com- Largest Forums for CNC Professional and Hobbyist alike!",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://www.engineeringclicks.com/forum/forums/-/index.rss",
+            "name": "Mechanical Design Forum",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.mechanicalpost.site/feeds/posts/default",
+            "name": "The Mechanical Post",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.reddit.com/r/specializedtools/.rss",
+            "name": "Specialized Tools",
+            "type": "mixed",
+            "limit": 270,
+            "status": "off"
+          },
+          {
             "url": "http://www.premierguitar.com/rss/1",
             "name": "Premier Guitar",
             "type": "mixed",
@@ -1803,12 +2029,35 @@ PTL.prefs = (function() {
             "type": "mixed",
             "limit": 350,
             "status": "off"
+          }
+        ],
+        [
+          {
+            "url": "https://www.tomshardware.com/feeds/all",
+            "name": "Tom's Hardware",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
           },
           {
-            "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCD0y51PJfvkZNe3y3FR5riw",
-            "name": "Chyrosran22",
+            "url": "https://feeds.feedburner.com/intelnewsroom",
+            "name": "Intel Newsroom",
             "type": "mixed",
-            "limit": 248,
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.ibm.com/blogs/research/category/quantcomp/rss",
+            "name": "Quantum Computing – IBM Research Blog",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://newsroom.intel.com/tag/quantum-computing/rss",
+            "name": "Quantum Computing – Intel Newsroom",
+            "type": "mixed",
+            "limit": 220,
             "status": "off"
           },
           {
@@ -1817,9 +2066,7 @@ PTL.prefs = (function() {
             "type": "mixed",
             "limit": 600,
             "status": "off"
-          }
-        ],
-        [
+          },
           {
             "url": "https://custompc.raspberrypi.org/feed",
             "name": "Custom PC",
@@ -1835,15 +2082,66 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC5I2hjZYiW9gZPVkvzM8_Cw",
-            "name": "Techmoan",
+            "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCD0y51PJfvkZNe3y3FR5riw",
+            "name": "Chyrosran22",
             "type": "mixed",
-            "limit": 191,
+            "limit": 248,
+            "status": "off"
+          }
+        ],
+        [
+          {
+            "url": "http://www.bikeexif.com/feed",
+            "name": "Bike EXIF",
+            "type": "mixed",
+            "limit": 220,
             "status": "off"
           },
           {
-            "url": "https://www.tomshardware.com/feeds/all",
-            "name": "Tom's Hardware",
+            "url": "https://www.cycleworld.com/arcio/rss/",
+            "name": "Cycle World | RSS",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.motorcyclistonline.com/rss.xml?loc=footer&lnk=rss",
+            "name": "Motorcyclist | RSS",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://hushkit.net/rss",
+            "name": "Hush-Kit",
+            "type": "text",
+            "limit": 190,
+            "status": "off"
+          },
+          {
+            "url": "https://simpleflying.com/feed/",
+            "name": "Simple Flying",
+            "type": "mixed",
+            "limit": 237,
+            "status": "off"
+          },
+          {
+            "url": "http://www.autoblog.com/rss.xml",
+            "name": "Autoblog",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.feedburner.com/MotorAuthority2",
+            "name": "Motor Authority",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://blogs.nvidia.com/blog/category/auto/feed/",
+            "name": "Driving – The Official NVIDIA Blog",
             "type": "mixed",
             "limit": 220,
             "status": "off"
@@ -1851,10 +2149,10 @@ PTL.prefs = (function() {
         ],
         [
           {
-            "url": "https://wireframe.raspberrypi.org/feed",
-            "name": "Wireframe",
+            "url": "https://www.gearnews.com/zone/synth/feed/",
+            "name": "Synths – gearnews.com",
             "type": "mixed",
-            "limit": 600,
+            "limit": 220,
             "status": "off"
           },
           {
@@ -1874,6 +2172,41 @@ PTL.prefs = (function() {
           {
             "url": "http://www.kr-homestudio.fr/feed/",
             "name": "KR home-studio",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC5I2hjZYiW9gZPVkvzM8_Cw",
+            "name": "Techmoan",
+            "type": "mixed",
+            "limit": 191,
+            "status": "off"
+          },
+          {
+            "url": "http://greatsynthesizers.com/en/feed/",
+            "name": "GreatSynthesizers",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://www.matrixsynth.com/feeds/posts/default",
+            "name": "MATRIXSYNTH",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.synthanatomy.com/feed/atom",
+            "name": "SYNTH ANATOMY",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://www.pro-tools-expert.com/synth-expert/news-blog?format=RSS",
+            "name": "Synth Expert",
             "type": "mixed",
             "limit": 220,
             "status": "off"
@@ -1949,105 +2282,105 @@ PTL.prefs = (function() {
             "type": "text",
             "limit": 327,
             "status": "off"
-        },
-        {
-          "url": "https://github.com/node-fetch/node-fetch/commits/master.atom",
-          "name": "Recent Commits to node-fetch:master",
-          "type": "text",
-          "limit": 243,
-          "status": "off"
-        },
-        {
-          "url": "https://github.com/danmactough/node-feedparser/commits/master.atom",
-          "name": "Recent Commits to node-feedparser:master",
-          "type": "text",
-          "limit": 220,
-          "status": "off"
-        }
+          },
+          {
+            "url": "https://github.com/node-fetch/node-fetch/commits/master.atom",
+            "name": "Recent Commits to node-fetch:master",
+            "type": "text",
+            "limit": 243,
+            "status": "off"
+          },
+          {
+            "url": "https://github.com/danmactough/node-feedparser/commits/master.atom",
+            "name": "Recent Commits to node-feedparser:master",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          }
+        ]
       ]
-    ]
-  },
-  {
-    "name": "podcasts",
-    "columns": [
-      [
-        {
-          "url": "http://rss.art19.com/the-daily",
-          "name": "NYT - The Daily",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off"
-        },
-        {
-          "url": "https://lincolnproject.libsyn.com/rss",
-          "name": "The Lincoln Project",
-          "type": "text",
-          "limit": 220,
-          "status": "off"
-        },
-        {
-          "url": "https://feeds.blubrry.com/feeds/the_world_and_everything_in_it.xml",
-          "name": "The World and Everything In It",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off"
-        }
-      ],
-      [
-        {
-          "url": "https://feeds.megaphone.fm/ADL9840290619",
-          "name": "Crime Junkie",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off"
-        },
-        {
-          "url": "http://feeds.wnyc.org/experiment_podcast",
-          "name": "The Experiment",
-          "type": "text",
-          "limit": 220,
-          "status": "off"
-        },
-        {
-          "url": "http://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
-          "name": "The Broken Meeple",
-          "type": "text",
-          "limit": 220,
-          "status": "off"
-        }
-      ],
-      [
-        {
-          "url": "https://top100podcast.libsyn.com/rss",
-          "name": "The Top 100 Games Podcast",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off"
-        },
-        {
-          "url": "http://feeds.soundcloud.com/users/soundcloud:users:19672772/sounds.rss",
-          "name": "PIFFFcast - Le podcast du cinéma de genre",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off"
-        },
-        {
-          "url": "https://boardgamersanonymous.libsyn.com/rss",
-          "name": "Board Gamers Anonymous",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off"
-        },
-        {
-          "url": "https://audioboom.com/channels/4997220.rss",
-          "name": "Morbid: A True Crime Podcast",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off"
-        }
+    },
+    {
+      "name": "podcasts",
+      "columns": [
+        [
+          {
+            "url": "http://rss.art19.com/the-daily",
+            "name": "NYT - The Daily",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://lincolnproject.libsyn.com/rss",
+            "name": "The Lincoln Project",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.blubrry.com/feeds/the_world_and_everything_in_it.xml",
+            "name": "The World and Everything In It",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          }
+        ],
+        [
+          {
+            "url": "https://feeds.megaphone.fm/ADL9840290619",
+            "name": "Crime Junkie",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.wnyc.org/experiment_podcast",
+            "name": "The Experiment",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
+            "name": "The Broken Meeple",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          }
+        ],
+        [
+          {
+            "url": "https://top100podcast.libsyn.com/rss",
+            "name": "The Top 100 Games Podcast",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.soundcloud.com/users/soundcloud:users:19672772/sounds.rss",
+            "name": "PIFFFcast - Le podcast du cinéma de genre",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://boardgamersanonymous.libsyn.com/rss",
+            "name": "Board Gamers Anonymous",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://audioboom.com/channels/4997220.rss",
+            "name": "Morbid: A True Crime Podcast",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          }
+        ]
       ]
-    ]
-  }
+    }
   ];
 
   var defaults = {

@@ -33,6 +33,7 @@ PTL.dialog = {
               localStorage.clear();
               PTL.util.say(PTL.tr('All tabs and feeds restored to defaults'), 'success', true);
               PTL.dialog.kill($dialog);
+              window.location.reload(true);
             }
           }
         ],
