@@ -91,7 +91,7 @@ function getFeed (feedUrl, callback) {
     responseStream.pipe(feedparser);
 
   }).catch((err) => {
-    // console.error('## fetchCatchErr: %s (%s)', err.message, feedUrl);
-    return callback({error:err, errno:res.status, message:err.message});
+    var resStatus = (res) ? res.status : 0;
+    return callback({error:err, resStatus, message:err.message});
   });
 }

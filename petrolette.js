@@ -9,9 +9,24 @@ const express = require('express'),
       helmet = require("helmet"),
       compression = require('compression');
 
-if (!fs.existsSync(path.join(__dirname, pjson.FAVICONS_CACHE_DIR))){
-  fs.mkdirSync(path.join(__dirname, pjson.FAVICONS_CACHE_DIR));
-}
+// if (!fs.existsSync(path.join(__dirname, pjson.FAVICONS_CACHE_DIR))){
+//   fs.mkdirSync(path.join(__dirname, pjson.FAVICONS_CACHE_DIR));
+// }
+
+fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), (err) => {
+  if (err) {
+    return console.error(err);
+  }
+  console.log('Directory created successfully!');
+});
+
+fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR),
+         { recursive: true }, (err) => {
+           if (err) {
+             return console.error(err);
+           }
+           console.log('Directory created successfully!');
+         });
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);

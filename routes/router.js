@@ -61,28 +61,21 @@ router.get('/favicon', function(req, res) {
             fileName = hash + '.favicon',
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
-      if (fs.existsSync(filePath)) {
-        res.send('/favicons/' + fileName);
-      } else {
+      res.send('/favicons/' + fileName);
 
-        fetch(url)
-          .then(
-            res =>
-              new Promise((resolve, reject) => {
-                const dest = fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'});
-                res.body.pipe(dest);
-                res.body.on("end", () => resolve({fileName, url}));
-                dest.on("error", () => {
-                  res.status(500).send(false);
-                  reject('No favicon found');
-                });
-              })
-          )
-          .then((x) => {
-            res.send('/favicons/' + x.fileName);
-          });
-
-      }
+      fetch(url)
+        .then(
+          res =>
+            new Promise((resolve, reject) => {
+              const dest = fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'});
+              res.body.pipe(dest);
+              res.body.on("end", () => resolve({fileName, url}));
+              dest.on("error", () => {
+                res.status(500).send(false);
+                reject('No favicon found');
+              });
+            })
+        );
 
     } else {
       res.send(false);
