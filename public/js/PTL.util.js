@@ -65,6 +65,7 @@ PTL.util = {
   },
   importNV:function(xml) {
 
+
     var xml2json = new PTL.util.XMLtoJSON(),
         objson = xml2json.fromStr(xml),
         dbparsed = JSON.stringify(objson),
@@ -86,8 +87,8 @@ PTL.util = {
         for (var nbOfFeeds in feeds) {
           var thisFeed = {};
           totalNbOfFeed++;
-          thisFeed.status = "on";
-          thisFeed.limit = 6;
+          thisFeed.status = "off";
+          thisFeed.limit = 220;
           thisFeed.type = "mixed";
           thisFeed.url = DOMPurify.sanitize(feeds[nbOfFeeds]["@attributes"].xmlUrl);
           thisIndex = DOMPurify.sanitize(Number(feeds[nbOfFeeds]["@attributes"].col)) - 1;
@@ -103,7 +104,7 @@ PTL.util = {
 
     PTL.tab.empty(function() {
       PTL.tab.populate(allTabs, true);
-      PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', nbOfTabs +1, totalNbOfFeed), 'success', true);
+      PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', Number(nbOfTabs) + 1, Number(totalNbOfFeed)), 'success', true);
     });
 
   },
@@ -247,6 +248,8 @@ PTL.util = {
       // console.log('Might be XML: %s', o);
 
     }
+
+    console.log('isJson: %s (%s)', isJson);
 
     return isJson;
 
