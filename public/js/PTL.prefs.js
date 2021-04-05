@@ -2305,8 +2305,143 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
-            "url": "http://rss.art19.com/the-daily",
-            "name": "NYT - The Daily",
+            "url": "https://feeds.publicradio.org/public_feeds/marketplace-pm/rss/rss",
+            "name": "Marketplace",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.harvardbusiness.org/harvardbusiness/ideacast",
+            "name": "HBR IdeaCast",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.themoth.org/themothpodcast",
+            "name": "The Moth",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.feedburner.com/thememorypalace",
+            "name": "the memory palace",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://ww2.kqed.org/news/programs/the-leap/feed/podcast",
+            "name": "The Leap",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://podcast.outsideonline.com/OutsidePodcast",
+            "name": "Outside Podcast",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.megaphone.fm/heavyweight",
+            "name": "Heavyweight",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://philosophybites.com/rss.xml",
+            "name": "philosophy bites",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.megaphone.fm/switchedonpop",
+            "name": "Switched on Pop",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://soundopinions.org/podcast/feed",
+            "name": "Sound Opinions",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.megaphone.fm/solvable",
+            "name": "Solvable",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          }
+        ],
+        [
+          {
+            "url": "https://rss.art19.com/sean-carrolls-mindscape",
+            "name": "Sean Carroll's Mindscape: Science, Society, Philosophy, Culture, Arts, and Ideas",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://rss.art19.com/the-dollop",
+            "name": "The Dollop with Dave Anthony and Gareth Reynolds",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.megaphone.fm/ADL9840290619",
+            "name": "Crime Junkie",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
+            "name": "The Broken Meeple",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "http://feeds.thisiscriminal.com/thisislovepodcast",
+            "name": "This is Love",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.megaphone.fm/against-the-rules",
+            "name": "Against the Rules with Michael Lewis",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.megaphone.fm/slatelexiconvalley",
+            "name": "Lexicon Valley",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://rss.wbur.org/lastseen/podcast",
+            "name": "Last Seen",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off"
+          },
+          {
+            "url": "https://feeds.99percentinvisible.org/99percentinvisible",
+            "name": "99% Invisible",
             "type": "mixed",
             "limit": 220,
             "status": "off"
@@ -2314,13 +2449,6 @@ PTL.prefs = (function() {
           {
             "url": "https://unstructuredpod.com/feed/",
             "name": "Unstructured - E. Hunley",
-            "type": "text",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "https://lincolnproject.libsyn.com/rss",
-            "name": "The Lincoln Project",
             "type": "text",
             "limit": 220,
             "status": "off"
@@ -2335,36 +2463,6 @@ PTL.prefs = (function() {
         ],
         [
           {
-            "url": "https://feeds.megaphone.fm/ADL9840290619",
-            "name": "Crime Junkie",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "http://feeds.wnyc.org/experiment_podcast",
-            "name": "The Experiment",
-            "type": "text",
-            "limit": 220,
-            "status": "off"
-          },
-          {
-            "url": "http://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
-            "name": "The Broken Meeple",
-            "type": "text",
-            "limit": 220,
-            "status": "off"
-          }
-        ],
-        [
-          {
-            "url": "https://top100podcast.libsyn.com/rss",
-            "name": "The Top 100 Games Podcast",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off"
-          },
-          {
             "url": "http://feeds.soundcloud.com/users/soundcloud:users:19672772/sounds.rss",
             "name": "PIFFFcast - Le podcast du cinéma de genre",
             "type": "mixed",
@@ -2372,22 +2470,78 @@ PTL.prefs = (function() {
             "status": "off"
           },
           {
-            "url": "https://boardgamersanonymous.libsyn.com/rss",
-            "name": "Board Gamers Anonymous",
+            "url": "https://feeds.megaphone.fm/revisionisthistory",
+            "name": "Revisionist History",
             "type": "mixed",
             "limit": 220,
             "status": "off"
           },
           {
-            "url": "https://audioboom.com/channels/4997220.rss",
-            "name": "Morbid: A True Crime Podcast",
+            "url": "https://feeds.feedburner.com/wnycheresthething",
+            "name": "Here's The Thing with Alec Baldwin",
             "type": "mixed",
             "limit": 220,
             "status": "off"
-          }
-        ]
+          },
+          {
+            "url": "http://feeds.wnyc.org/radiolab",
+            "name": "Radiolab",
+            "type": "text",
+            "limit": 220,
+            "status": "off"
+        },
+        {
+          "url": "https://rss.acast.com/thehistoryofbyzantium",
+          "name": "The History of Byzantium",
+          "type": "text",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "http://prettymuchpop.com/feed/podcast/",
+          "name": "Pretty Much Pop: A Culture Podcast",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "https://feeds.podtrac.com/0HsQUhE5lGnQ",
+          "name": "HumaNature",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "https://audioboom.com/channels/4997220.rss",
+          "name": "Morbid: A True Crime Podcast",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "http://feeds.thisiscriminal.com/CriminalShow",
+          "name": "Criminal",
+          "type": "text",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "https://feeds.megaphone.fm/crimetown",
+          "name": "Crimetown",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        },
+        {
+          "url": "https://feeds.megaphone.fm/PPY8359579005",
+          "name": "Flash Forward",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off"
+        }
       ]
-    }
+    ]
+  }
   ];
 
   var defaults = {
