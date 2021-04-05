@@ -295,6 +295,8 @@ PTL.feed = {
             .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')
             .appendTo($feedBodyUl);
 
+          $feedLink.addClass('danger');
+
           var $key = $('<strong>')
               .attr('class', 'translate key')
               .data('content', PTL.tr('Error:'))

@@ -1,3 +1,6 @@
+# Fav/Website icon cache directory on the Pétrolette server
+favicons-cache
+
 # Logs
 logs
 *.log

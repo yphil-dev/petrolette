@@ -536,7 +536,7 @@ i.item-icon {
 
 .feed-header > .feed-title > a.danger:link,
 .feed-header > .feed-title > a.danger:visited {
-  color: var(--color-danger);
+  color: var(--color-danger) !important;
 }
 
 .feed-header > .feed-title > a.danger:hover,
@@ -1515,9 +1515,9 @@ video {
   height: auto !important;
 }
 
-div.itemDiv {
-  max-width: auto;
-}
+/* div.itemDiv { */
+/*   max-width: auto; */
+/* } */
 
 #ptlSearch {
   display: flex;
