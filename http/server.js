@@ -5,7 +5,10 @@ const petrolette = require('../petrolette'),
 
 const httpServer = http.createServer(petrolette);
 
-httpServer.listen(8000, () => {
+/* look for port in environment variable  */
+const port =  parseInt(process.env["PORT"]) || 8000;
+
+httpServer.listen(port, () => {
   console.debug('HTTP Server running');
 });
 

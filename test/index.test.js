@@ -3,6 +3,8 @@ const should  = require('should'),
       pjson = require('../package.json'),
       fetch = require('node-fetch');
 
+const PORT = process.env.PORT;
+
 describe('Pétrolette', function() {
 
   it('Favicon cache dir exists', function(done) {
@@ -20,7 +22,7 @@ describe('Pétrolette', function() {
   });
 
   it('Pétrolette server is running', function(done) {
-    fetch('http://localhost:8000')
+    fetch('http://localhost:'+ PORT)
       .then(function (res) {
         res.status.should.eql(200);
       done();
@@ -28,7 +30,7 @@ describe('Pétrolette', function() {
   });
 
   it('Pétrolette is returning a feed', function(done) {
-    fetch('http://localhost:8000/discover/?url=http://lemonde.fr')
+    fetch('http://localhost:'+PORT+'/discover/?url=http://lemonde.fr')
       .then(async res => {
         await res.text().should.eventually.eql('https://www.lemonde.fr/rss/une.xml');
       }).catch(done);
