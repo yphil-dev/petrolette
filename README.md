@@ -39,6 +39,8 @@ git clone https://framagit.org/yphil/petrolette
 cd petrolette
 npm install
 npm start
+# to use a custom port 
+#PORT=XXXX npm start
 xdg-open http://localhost:8000
 
 ```
