@@ -5,13 +5,7 @@
       "script"          : "./http/server.js",
       "watch"           : true,
       "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
-      "time"            : false,
-      "env" : {
-        "NODE_ENV": "dev"
-      },
-      "env_ssl" : {
-        "NODE_ENV": "ssl"
-      }
+      "time"            : false
     }
   ]
 }
