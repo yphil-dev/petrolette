@@ -6,9 +6,10 @@ const petrolette = require('../petrolette'),
 const httpServer = http.createServer(petrolette);
 
 /* look for port in environment variable  */
-const port =  parseInt(process.env["PORT"]) || 8000;
+const portHttp =  parseInt(process.env["PTL_PORT_HTTP"]) || 8000;
+const portHttps =  parseInt(process.env["PTL_PORT_HTTPS"]) || 8001;
 
-httpServer.listen(port, () => {
+httpServer.listen(portHttp, () => {
   console.debug('HTTP Server running on port %s', port);
 });
 
@@ -18,6 +19,6 @@ const httpsServer = https.createServer({
   ca: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/chain.pem'),
 }, petrolette);
 
-httpsServer.listen(8001, () => {
+httpsServer.listen(portHttps, () => {
   console.debug('HTTPS Server running');
 });
