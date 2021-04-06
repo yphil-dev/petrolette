@@ -9,7 +9,7 @@ const httpServer = http.createServer(petrolette);
 const port =  parseInt(process.env["PORT"]) || 8000;
 
 httpServer.listen(port, () => {
-  console.debug('HTTP Server running');
+  console.debug('HTTP Server running on port %s', port);
 });
 
 const httpsServer = https.createServer({
@@ -19,5 +19,5 @@ const httpsServer = https.createServer({
 }, petrolette);
 
 httpsServer.listen(8001, () => {
-  console.error('HTTPS Server running?');
+  console.debug('HTTPS Server running');
 });
