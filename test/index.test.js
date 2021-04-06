@@ -3,7 +3,7 @@ const should  = require('should'),
       pjson = require('../package.json'),
       fetch = require('node-fetch');
 
-const PORT = process.env.PORT;
+const PORT = process.env.PTL_PORT_HTTP;
 
 describe('Pétrolette', function() {
 
