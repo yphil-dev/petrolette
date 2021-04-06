@@ -7,11 +7,9 @@
       "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
       "time"            : false,
       "env" : {
-        "PORT" : 8000,
         "NODE_ENV": "dev"
       },
       "env_ssl" : {
-        "PORT" : 8080,
         "NODE_ENV": "ssl"
       }
     }
