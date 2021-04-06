@@ -38,10 +38,9 @@ News feeds are organized into tabs, which can contain an infinite number of colu
 git clone https://framagit.org/yphil/petrolette
 cd petrolette
 npm install
+PORT=8000
 npm start
-# to use a custom port 
-#PORT=XXXX npm start
-xdg-open http://localhost:8000
+xdg-open http://localhost:$PORT
 
 ```
 #### Testing
