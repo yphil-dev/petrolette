@@ -46,6 +46,7 @@
   --header-height: 22px;
   --controls-width: 150px;
   --controls-font-size: 14pt;
+  --favicon-width: 16px;
   --controls-toggle-size: 24px;
   --feed-title-font-size: 15pt;
   --panel-flex: row nowrap;
@@ -69,6 +70,7 @@
     --header-height: 2.2em;
     --controls-width: 75%;
     --controls-font-size: 22pt;
+    --favicon-width: 28px;
     --controls-toggle-size: 28pt;
     --feed-title-font-size: 22pt;
     --panel-flex: column;
@@ -1192,6 +1194,11 @@ li.feed.selected {
   transition: transform 0.2s linear;
   font-size: var(--controls-font-size);
   text-rendering: auto;
+}
+
+img.favicon {
+  width: var(--favicon-width);
+  height: var(--favicon-width);
 }
 
 i.feedIcon {
