@@ -125,7 +125,7 @@ PTL.col = {
         ui.item.siblings('.selected').removeClass('hidden');
         //unselect since the operation is complete
         $('.selected').removeClass('selected ui-state-hover');
-        $('i.feed-select').removeClass('icon-ok').addClass('icon-uncheck');
+        $('i.feed-select').removeClass('icon-checked').addClass('icon-checkbox');
 
         PTL.tab.saveTabs();
       }
