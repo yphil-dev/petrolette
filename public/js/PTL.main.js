@@ -100,8 +100,8 @@ var PTL = (function() {
       $('button').button();
 
       $('body').on('click','#menuButton', function() {
-        PTL.sideMenu('toggle');
-        // PTL.dialog.beg();
+        // PTL.sideMenu('toggle');
+        PTL.dialog.beg();
       });
 
       $('body').on('click','button#help', function() {
