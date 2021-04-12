@@ -16,6 +16,7 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Hard reset'),
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -70,6 +71,7 @@ PTL.dialog = {
         position: { my: "left+30 bottom-30", at: "left bottom" },
         width: PTL.util.isMobile() ? 'auto' : 430,
         modal: false,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Donate'),
@@ -86,7 +88,8 @@ PTL.dialog = {
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);
-              PTL.util.help('ui');            }
+              PTL.util.help('ui');
+            }
           }
         ],
         open: function () {
@@ -134,6 +137,7 @@ PTL.dialog = {
         title: PTL.tr('About Pétrolette'),
         width: PTL.util.isMobile() ? 'auto' : 360,
         closeOnEscape: true,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Source code'),
@@ -252,6 +256,8 @@ PTL.dialog = {
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         position: { my: "center", at: "center" },
         width: PTL.util.isMobile() ? 'auto' : 630,
+        closeOnEscape: true,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -476,6 +482,8 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete column'),
+        closeOnEscape: true,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -524,6 +532,8 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Keyboard shortcuts'),
+        closeOnEscape: true,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -651,6 +661,8 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Add feed'),
+        closeOnEscape: true,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -713,6 +725,8 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete tab'),
+        closeOnEscape: true,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -775,6 +789,8 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete feed'),
+        closeOnEscape: true,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -823,6 +839,8 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Tab'),
+        closeOnEscape: true,
+        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
