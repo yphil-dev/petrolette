@@ -49,6 +49,8 @@ router.get('/feed', function(req, res) {
   });
 });
 
+router.use(morgan('combined'));
+
 router.get('/favicon', function(req, res) {
 
   favrat(req.query.url, function(err, url) {
@@ -82,8 +84,6 @@ router.get('/favicon', function(req, res) {
     }
   });
 });
-
-router.use(morgan('combined'));
 
 router.get('/robots.txt', function (req, res) {
   res.type('text/plain');
