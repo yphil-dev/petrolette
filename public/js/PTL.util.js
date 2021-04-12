@@ -249,8 +249,6 @@ PTL.util = {
 
     }
 
-    console.log('isJson: %s (%s)', isJson);
-
     return isJson;
 
   },

@@ -738,7 +738,7 @@ nav#sideMenu.expanded {
   resize: vertical;
   height: 200px;
   min-height: 2.5em;
-  max-width: 250px;
+  /* max-width: 250px; */
   scrollbar-width: thin;
   border-radius: 3px;
   /* background-color: var(--color-ui-console-bg); */
@@ -1334,16 +1334,17 @@ li.feed:hover div.feed-body {
     color: var(--color-fg1) !important;
   }
 
-  li.feed-item:hover {
-    background-color: transparent !important;
-  }
+  /* li.feed-item:hover { */
+  /*   background-color: transparent !important; */
+  /* } */
 
-  li.feed a:active,
-  li.feed a:hover,
-  .feed-control:hover,
-  .item-icon:hover {
-    color: transparent !important;
-  }
+  /* li.feed a:active, */
+  /* li.feed a:hover, */
+  /* .feed-control:hover, */
+  /* .item-icon:hover { */
+  /*   color: transparent !important; */
+  /* } */
+
 }
 
 .item-icon:hover {
