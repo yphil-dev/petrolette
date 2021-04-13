@@ -68,7 +68,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
-        position: { my: "left+30 bottom-30", at: "left bottom" },
         width: PTL.util.isMobile() ? 'auto' : 430,
         modal: false,
         autoOpen: false,
@@ -254,7 +253,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
-        position: { my: "center", at: "center" },
         width: PTL.util.isMobile() ? 'auto' : 630,
         closeOnEscape: true,
         autoOpen: false,
