@@ -69,6 +69,9 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
         width: PTL.util.isMobile() ? 'auto' : 430,
+        position:{my:'right top',
+                  at:'right+10 bottom+10',
+                  of:'body'},
         modal: false,
         autoOpen: false,
         buttons: [
