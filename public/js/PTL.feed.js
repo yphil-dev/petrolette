@@ -13,7 +13,6 @@ PTL.feed = {
         .data('type', type)
         .data('limit', limit);
 
-
     const $feedImg = $('<img>')
           .attr({
             src: '/static/images/rss.gif',
@@ -481,14 +480,14 @@ PTL.feed = {
           if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
             $imageLink
-              .attr('href', imageUrl)
+              .attr('href', imageUrl.replace('http://','https://'))
               .attr('title', $summary.trim())
               .attr('data-fancybox', 'gallery')
               .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
             $image = $('<img>')
               .attr('src', '/static/images/loading.gif')
-              .attr('data-srcset', imageUrl)
+              .attr('data-srcset', imageUrl.replace('http://','https://'))
               .attr('srcset', '/static/images/loading.gif')
               .attr('title', $summary.trim())
               .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
