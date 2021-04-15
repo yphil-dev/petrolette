@@ -132,7 +132,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('About Pétrolette'),
         width: PTL.util.isMobile() ? 'auto' : 360,
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Source code'),
@@ -250,7 +249,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -450,6 +448,12 @@ PTL.dialog = {
             }
           });
 
+          $(this).on('submit', function () {
+            $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
+            PTL.tab.saveTabs();
+            PTL.dialog.kill($dialog);
+          });
+
         }
       });
 
@@ -475,7 +479,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete column'),
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -524,7 +527,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Keyboard shortcuts'),
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -652,7 +654,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Add feed'),
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -715,7 +716,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete tab'),
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -778,7 +778,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Delete feed'),
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -827,7 +826,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Tab'),
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Cancel'),
