@@ -30,7 +30,7 @@ PTL.tab = {
       // console.log('plop!: %s (%s)');
       e.preventDefault();
       if (e.which === 1) {
-        PTL.dialog.editGroup($(this));
+        PTL.dialog.editTab($(this));
       }
     });
 

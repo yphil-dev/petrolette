@@ -384,7 +384,7 @@ var PTL = (function() {
         height: 'auto',
         width: PTL.util.vWidth(),
         modal: true,
-        autoOpen: true
+        autoOpen: false
       });
 
       $.ui.dialog.prototype._init = function() {

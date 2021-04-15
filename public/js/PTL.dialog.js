@@ -16,7 +16,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Hard reset'),
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -69,7 +68,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
         width: PTL.util.isMobile() ? 'auto' : 430,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Donate'),
@@ -135,7 +133,6 @@ PTL.dialog = {
         title: PTL.tr('About Pétrolette'),
         width: PTL.util.isMobile() ? 'auto' : 360,
         closeOnEscape: true,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Source code'),
@@ -254,7 +251,6 @@ PTL.dialog = {
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
         closeOnEscape: true,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -480,7 +476,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('Delete column'),
         closeOnEscape: true,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -530,7 +525,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('Keyboard shortcuts'),
         closeOnEscape: true,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -659,7 +653,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('Add feed'),
         closeOnEscape: true,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -723,7 +716,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('Delete tab'),
         closeOnEscape: true,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -787,7 +779,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('Delete feed'),
         closeOnEscape: true,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -828,16 +819,15 @@ PTL.dialog = {
     });
 
   },
-  editGroup:function($tab) {
+  editTab:function($tab) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #editGroupDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
 
       var $dialog = $(this);
 
       $dialog.dialog({
         title: PTL.tr('Tab'),
         closeOnEscape: true,
-        autoOpen: false,
         buttons: [
           {
             text: PTL.tr('Cancel'),
