@@ -228,7 +228,7 @@ PTL.tab = {
       $column.appendTo($tabPanel);
 
       if (PTL.queryString) {
-        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', true, true);
+        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', "", true, true);
         PTL.queryString = null;
       }
 
