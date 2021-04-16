@@ -80,7 +80,7 @@ PTL.tab = {
   populate:function(feeds) {
 
     if (!feeds || feeds.length <= 0) {
-      PTL.util.say(PTL.tr('No feeds found'), 'warning');
+      PTL.util.say(PTL.tr('No feeds found'), 'error');
       feeds = ['empty'];
     }
 
