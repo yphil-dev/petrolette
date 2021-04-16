@@ -67,9 +67,7 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
-        position: { my: "left+30 bottom-30", at: "left bottom" },
         width: PTL.util.isMobile() ? 'auto' : 430,
-        modal: false,
         buttons: [
           {
             text: PTL.tr('Donate'),
@@ -86,7 +84,8 @@ PTL.dialog = {
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);
-              PTL.util.help('ui');            }
+              PTL.util.help('ui');
+            }
           }
         ],
         open: function () {
@@ -133,7 +132,6 @@ PTL.dialog = {
       $dialog.dialog({
         title: PTL.tr('About Pétrolette'),
         width: PTL.util.isMobile() ? 'auto' : 360,
-        closeOnEscape: true,
         buttons: [
           {
             text: PTL.tr('Source code'),
@@ -250,7 +248,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
-        position: { my: "center", at: "center" },
         width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
@@ -449,6 +446,12 @@ PTL.dialog = {
               $('input#feedLimit').val(ui.value);
               $dataStore.data('limit', ui.value);
             }
+          });
+
+          $(this).on('submit', function () {
+            $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
+            PTL.tab.saveTabs();
+            PTL.dialog.kill($dialog);
           });
 
         }
@@ -665,7 +668,7 @@ PTL.dialog = {
             title: PTL.tr('Add feed'),
             class: "translate",
             click: function() {
-              PTL.feed.add($('.column').first(), feedUrl, '', 'mixed', 450, 'on', true, false);
+              PTL.feed.add($('.column').first(), feedUrl, '', 'mixed', 450, 'on', "", true, false);
               PTL.dialog.kill($dialog);
             }
           }
@@ -815,9 +818,9 @@ PTL.dialog = {
     });
 
   },
-  editGroup:function($tab) {
+  editTab:function($tab) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #editGroupDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
 
       var $dialog = $(this);
 

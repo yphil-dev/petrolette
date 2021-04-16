@@ -32,23 +32,6 @@ var options = {
 
 router.use(sanitize);
 
-router.get('/feed', function(req, res) {
-
-  feeder.getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
-
-    if (feedItems && !res.headersSent) {
-      res.send({
-        feedItems: feedItems,
-        feedLink: feedLink,
-        feedTitle: feedTitle
-      });
-
-    } else if (!res.headersSent) {
-      res.send({error:err, errno:err.errno, message:err.message});
-    }
-  });
-});
-
 router.get('/favicon', function(req, res) {
 
   favrat(req.query.url, function(err, url) {
@@ -61,7 +44,7 @@ router.get('/favicon', function(req, res) {
             fileName = hash + '.favicon',
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
-      res.send('/favicons/' + fileName);
+      res.send(hash);
 
       fetch(url)
         .then(
@@ -84,6 +67,23 @@ router.get('/favicon', function(req, res) {
 });
 
 router.use(morgan('combined'));
+
+router.get('/feed', function(req, res) {
+
+  feeder.getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
+
+    if (feedItems && !res.headersSent) {
+      res.send({
+        feedItems: feedItems,
+        feedLink: feedLink,
+        feedTitle: feedTitle
+      });
+
+    } else if (!res.headersSent) {
+      res.send({error:err, errno:err.errno, message:err.message});
+    }
+  });
+});
 
 router.get('/robots.txt', function (req, res) {
   res.type('text/plain');

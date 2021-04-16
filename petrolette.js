@@ -34,7 +34,7 @@ app.set('view engine', 'html');
 
 app.disable('x-powered-by');
 
-// app.use(compression());
+app.use(compression());
 app.use(helmet.originAgentCluster());
 app.use(helmet.noSniff());
 app.use(cors());

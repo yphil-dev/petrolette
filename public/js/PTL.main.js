@@ -123,7 +123,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.feed.add($column, '', '', 'mixed', 220, 'on', true, false);
+        PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', true, false);
       });
 
       $feedCodeButton.click(function(event) {
@@ -384,7 +384,7 @@ var PTL = (function() {
         height: 'auto',
         width: PTL.util.vWidth(),
         modal: true,
-        autoOpen: true
+        autoOpen: false
       });
 
       $.ui.dialog.prototype._init = function() {

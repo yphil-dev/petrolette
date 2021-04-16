@@ -2,7 +2,7 @@
 
 PTL.feed = {
 
-  add:function($column, url, name, type, limit, status, clickNew, isQueryString, progress) {
+  add:function($column, url, name, type, limit, status, iconhash, clickNew, isQueryString, progress) {
 
     var feedIndex = $('#tabs').find('.feed').length;
 
@@ -11,8 +11,8 @@ PTL.feed = {
         .data('url', url)
         .data('name', name)
         .data('type', type)
-        .data('limit', limit);
-
+        .data('limit', limit)
+        .data('iconhash', iconhash);
 
     const $feedImg = $('<img>')
           .attr({
@@ -94,7 +94,8 @@ PTL.feed = {
         .data('name', name)
         .data('type', type)
         .data('limit', limit)
-        .data('status', status);
+        .data('status', status)
+        .data('iconhash', iconhash);
 
     if ($feedControls.data('status') == 'on') {
       $reloadIcon.removeClass('icon-pin')
@@ -185,6 +186,7 @@ PTL.feed = {
         feedType = $dataStore.data('type'),
         feedLimit = newLimit || $dataStore.data('limit'),
         feedStatus = $dataStore.data('status'),
+        feedIconHash = $dataStore.data('iconhash'),
         $feedToggle = $feed.find('.feed-toggle'),
         $feedIcon = $feed.find('.feed-toggle > i.feedIcon'),
         $myFeedIcon = $feedToggle.find('.favicon');
@@ -195,11 +197,6 @@ PTL.feed = {
         dateObj = new Date(),
         timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds(),
         subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
-
-    // if (subdomain === 'rss' || subdomain === 'feeds') {
-    //   console.log('wopop!: %s (%s)', subdomain);
-    //   feedHost = l.protocol + '//' + l.hostname.replace(subdomain + '.', '');
-    // }
 
     $feedIcon.addClass('fold');
     $button.removeClass('spin');
@@ -216,21 +213,32 @@ PTL.feed = {
       .attr('href', feedUrl)
       .attr('title', feedTitle + ' (' + feedUrl + ')');
 
-    $.get("/favicon", {
-      url: decodeURI(feedHost),
-      dataType: "json"
-    }).done(function(icon) {
+    if (feedIconHash) {
 
-      if (icon) {
-        $myFeedIcon.attr('src', icon);
-      } else {
+      $myFeedIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+
+    } else {
+
+      $.get("/favicon", {
+        url: decodeURI(feedHost),
+        dataType: "json"
+      }).done(function(hash) {
+
+        if (hash) {
+          $myFeedIcon.attr('src', '/favicons/' + hash + '.favicon');
+          $dataStore.data('iconhash', hash);
+
+          PTL.tab.saveTabs();
+
+        } else {
+            // $feedIcon.addClass('icon-rss');
+        }
+
+      }).fail(function(jqXHR, textStatus, errorThrown) {
         // $feedIcon.addClass('icon-rss');
-      }
+      });
 
-    }).fail(function(jqXHR, textStatus, errorThrown) {
-      // console.log('ERROR: %s (%s) [%s]', feedUrl, textStatus, errorThrown);
-      // $feedIcon.addClass('icon-rss');
-    });
+    }
 
     if ($dataStore.data('status') == 'on') {
 
@@ -481,14 +489,14 @@ PTL.feed = {
           if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
             $imageLink
-              .attr('href', imageUrl)
+              .attr('href', imageUrl.replace('http://','https://'))
               .attr('title', $summary.trim())
               .attr('data-fancybox', 'gallery')
               .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
             $image = $('<img>')
               .attr('src', '/static/images/loading.gif')
-              .attr('data-srcset', imageUrl)
+              .attr('data-srcset', imageUrl.replace('http://','https://'))
               .attr('srcset', '/static/images/loading.gif')
               .attr('title', $summary.trim())
               .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
