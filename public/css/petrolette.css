@@ -738,7 +738,7 @@ nav#sideMenu.expanded {
   resize: vertical;
   height: 200px;
   min-height: 2.5em;
-  /* max-width: 250px; */
+  max-width: 242px;
   scrollbar-width: thin;
   border-radius: 3px;
   /* background-color: var(--color-ui-console-bg); */
