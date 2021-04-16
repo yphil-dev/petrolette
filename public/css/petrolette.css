@@ -246,13 +246,14 @@ div#logo-title > div {
   font-size: 36pt;
 }
 
-
+.ptlInterface a,
 .introjs-tooltiptext a {
-  color: var(--color-ui-sen) !important;
+  color: var(--color-ui-sec) !important;
 }
 
+.ptlInterface a:hover,
 .introjs-tooltiptext a:hover {
-  color: var(--color-ui-sec) !important;
+  color: var(--color-ui-sen) !important;
 }
 
 .ui-tab.ui-state-active a,

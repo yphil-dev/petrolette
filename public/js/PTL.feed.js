@@ -474,13 +474,6 @@ PTL.feed = {
             }
           }
 
-          // if (item['media:group']) {
-          //   var mgmc = item['media:group']['media:content'];
-          //   for (var i = 0; i < mgmc.length; i++) {
-          //     if (mgmc[i]['@'].url) imageUrl = mgmc[i]['@'].url;
-          //   }
-          // }
-
           $itemLink
             .attr('class', 'ui-helper-clearfix feed-link')
             .attr('href', item.link || item.enclosures[0].url)
@@ -493,6 +486,10 @@ PTL.feed = {
               .attr('title', $summary.trim())
               .attr('data-fancybox', 'gallery')
               .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
+
+            if (!(imageUrl.indexOf('http://') === 0 || imageUrl.indexOf('https://') === 0)) {
+              imageUrl = feedHost + imageUrl;
+            }
 
             $image = $('<img>')
               .attr('src', '/static/images/loading.gif')
