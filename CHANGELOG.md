@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.8 (WIP)
+
+- Feed name || URL in tooltip
+- UTC Timestamps
+
+### Bugfixes
+
+- In "photo" mode, vertical images wrapped around the text, fixed.
+
 ## 1.2.7
 
 - The feed's favicon file name / path is now saved along, so as to avoid re-requesting it, then re-computing the (hash) name, then re-rend it back from the server, so everybody wins #1e5f4c20

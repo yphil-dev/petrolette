@@ -41,7 +41,7 @@ PTL.sync = (function() {
 
   remoteStorage.on('not-connected', function() {
     PTL.synchronized = false;
-    PTL.util.say(PTL.tr('Not connected to remote storage'), 'error');
+    PTL.util.say(PTL.tr('Not connected to remote storage'), 'warning');
   });
 
   remoteStorage.on('disconnected', function() {

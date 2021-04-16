@@ -195,7 +195,7 @@ PTL.feed = {
         feedProtocol = l.protocol ? l.protocol + '//' : '//',
         feedHost = feedProtocol + l.hostname,
         dateObj = new Date(),
-        timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds(),
+        timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds(),
         subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
     $feedIcon.addClass('fold');
@@ -519,7 +519,7 @@ PTL.feed = {
 
       }).always(function() {
 
-        $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp));
+        $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp));
 
         if (progress) progress.increment();
         $refreshButton.removeClass('spin');
