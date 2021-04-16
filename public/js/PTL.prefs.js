@@ -60,6 +60,14 @@ PTL.prefs = (function() {
             "iconhash": "bb1151aff493e09dab34fb9ff5286b32"
           },
           {
+            "url": "http://explainxkcd.com/rss.xml",
+            "name": "Explain xkcd",
+            "type": "mixed",
+            "limit": 161,
+            "status": "off",
+            "iconhash": "b6db26e4487295042aaf5d0dc06801d9"
+          },
+          {
             "url": "http://comicfeeds.chrisbenard.net/view/dilbert/default",
             "name": "Dilbert Daily Strip",
             "type": "photo",
@@ -1731,14 +1739,6 @@ PTL.prefs = (function() {
             "iconhash": "c681f29a0aa8c04a09c1dbc092bf7b64"
           },
           {
-            "url": "http://explainxkcd.com/rss.xml",
-            "name": "Explain xkcd",
-            "type": "mixed",
-            "limit": 161,
-            "status": "off",
-            "iconhash": "b6db26e4487295042aaf5d0dc06801d9"
-          },
-          {
             "url": "https://blog.xkcd.com/rss",
             "name": "xkcd Blog",
             "type": "mixed",
@@ -2040,14 +2040,6 @@ PTL.prefs = (function() {
             "limit": 220,
             "status": "off",
             "iconhash": "4f03e1845e3610d42d99a4fdacb227a1"
-          },
-          {
-            "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCebV4cXRdXIncnHHnGYt1Hg",
-            "name": "DynaVap",
-            "type": "mixed",
-            "limit": 220,
-            "status": "off",
-            "iconhash": "338d4b3529898bf7fe2712d19c19e81f"
           },
           {
             "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCgigsJ3nP2jRoI8Ci-N6Lmw",
@@ -2586,20 +2578,20 @@ PTL.prefs = (function() {
       "columns": [
         [
           {
+            "url": "https://www.acrimed.org/spip.php?page=backend",
+            "name": "Acrimed | Action Critique Médias",
+            "type": "mixed",
+            "limit": 220,
+            "status": "off",
+            "iconhash": "03ad8559e5ef0e58af14052bb11b6afb"
+          },
+          {
             "url": "https://lejournal.cnrs.fr/rss",
             "name": "CNRS Le journal",
             "type": "mixed",
             "limit": 243,
             "status": "off",
             "iconhash": "413e75af24ecc3f53b191bfb88e46a62"
-          },
-          {
-            "url": "http://www.futura-sciences.com/rss/actualites.xml",
-            "name": "Les dernières actualités de Futura",
-            "type": "text",
-            "limit": 243,
-            "status": "off",
-            "iconhash": "84eafb447c0a9ae3bb5085ac6697697e"
           },
           {
             "url": "https://www.monde-diplomatique.fr/rss",
@@ -2626,22 +2618,14 @@ PTL.prefs = (function() {
             "iconhash": "3be21baa6e5e8ac02f6e94ea1338ba5e"
           },
           {
-            "url": "http://www.lefigaro.fr/rss/figaro_flash-actu.xml",
-            "name": "Le Figaro - Le Flash Actu",
-            "type": "mixed",
-            "limit": 238,
-            "status": "off",
-            "iconhash": "ce9d4e9ad2f1e0fc15ba5c505cdd9092"
-          }
-        ],
-        [
-          {
             "url": "http://rss.liberation.fr/rss/latest/",
             "name": "Libération",
             "type": "mixed",
             "limit": 433,
             "status": "off"
-          },
+          }
+        ],
+        [
           {
             "url": "http://www.lemonde.fr/rss/une.xml",
             "name": "Le Monde.fr - Actualités et Infos en France et dans le monde",
@@ -2685,6 +2669,14 @@ PTL.prefs = (function() {
         ],
         [
           {
+            "url": "http://www.lefigaro.fr/rss/figaro_flash-actu.xml",
+            "name": "Le Figaro - Le Flash Actu",
+            "type": "mixed",
+            "limit": 238,
+            "status": "off",
+            "iconhash": "ce9d4e9ad2f1e0fc15ba5c505cdd9092"
+          },
+          {
             "url": "http://www.francesoir.fr/rss.xml",
             "name": "FranceSoir - Articles de la rédaction",
             "type": "mixed",
@@ -2727,6 +2719,14 @@ PTL.prefs = (function() {
         ],
         [
           {
+            "url": "https://linuxfr.org/news.atom",
+            "name": "LinuxFr.org : les dépêches",
+            "type": "mixed",
+            "limit": 157,
+            "status": "off",
+            "iconhash": "8f8fbe56d4a75ac3adf1008880745be2"
+          },
+          {
             "url": "https://linuxfr.org/journaux.atom",
             "name": "LinuxFr.org : les journaux",
             "type": "mixed",
@@ -2759,12 +2759,12 @@ PTL.prefs = (function() {
             "iconhash": "10c34346584cba5a5d7351bc5520791d"
           },
           {
-            "url": "https://linuxfr.org/news.atom",
-            "name": "LinuxFr.org : les dépêches",
-            "type": "mixed",
-            "limit": 157,
+            "url": "http://www.futura-sciences.com/rss/actualites.xml",
+            "name": "Les dernières actualités de Futura",
+            "type": "text",
+            "limit": 243,
             "status": "off",
-            "iconhash": "8f8fbe56d4a75ac3adf1008880745be2"
+            "iconhash": "84eafb447c0a9ae3bb5085ac6697697e"
           }
         ]
       ]

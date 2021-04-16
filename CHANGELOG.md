@@ -8,6 +8,7 @@
 ### Bugfixes
 
 - In "photo" mode, vertical images wrapped around the text, fixed.
+- Console size adjusted
 
 ## 1.2.7
 

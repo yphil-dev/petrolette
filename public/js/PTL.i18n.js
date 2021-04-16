@@ -11,8 +11,8 @@ PTL.i18n = {
 
 PTL.i18n.translations = {
 
-  "Pétrolette start" : { fr: "Démarrage de Pétrolette", ja: "Pétroletteが起動する", es: "Pétrolette iniciando" },
-  "Pétrolette start finished" : { fr: "Démarrage de Pétrolette terminé", ja: "ペトロレットの初期化は正常に終了しました", es: "La inicialización de Pétrolette terminó" },
+  "Pétrolette init" : { fr: "Initialisation Pétrolette", ja: "Pétroletteが起動する", es: "Pétrolette iniciando" },
+  "Pétrolette init finished" : { fr: "Initialisation Pétrolette terminée", ja: "ペトロレットの初期化は正常に終了しました", es: "La inicialización de Pétrolette terminó" },
 
   "OK": { fr: "OK", ja: "入る", es: "OK" },
   "Cancel": { fr: "Annuler", ja: "取り消す", es: "Cancelar" },
