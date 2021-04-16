@@ -215,12 +215,9 @@ PTL.feed = {
 
     if (feedIconHash) {
 
-      console.log('Found!: %s (%s)', feedIconHash, feedUrl);
       $myFeedIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
 
     } else {
-
-      console.log('unFound!: %s (%s)', feedIconHash, feedUrl);
 
       $.get("/favicon", {
         url: decodeURI(feedHost),
@@ -232,8 +229,6 @@ PTL.feed = {
           $dataStore.data('iconhash', hash);
 
           PTL.tab.saveTabs();
-
-          console.log('H: %s (%s)', $dataStore.data('iconhash'));
 
         } else {
             // $feedIcon.addClass('icon-rss');
@@ -494,14 +489,14 @@ PTL.feed = {
           if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
             $imageLink
-              .attr('href', imageUrl)
+              .attr('href', imageUrl.replace('http://','https://'))
               .attr('title', $summary.trim())
               .attr('data-fancybox', 'gallery')
               .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
             $image = $('<img>')
               .attr('src', '/static/images/loading.gif')
-              .attr('data-srcset', imageUrl)
+              .attr('data-srcset', imageUrl.replace('http://','https://'))
               .attr('srcset', '/static/images/loading.gif')
               .attr('title', $summary.trim())
               .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
