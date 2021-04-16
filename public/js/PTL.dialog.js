@@ -668,7 +668,7 @@ PTL.dialog = {
             title: PTL.tr('Add feed'),
             class: "translate",
             click: function() {
-              PTL.feed.add($('.column').first(), feedUrl, '', 'mixed', 450, 'on', true, false);
+              PTL.feed.add($('.column').first(), feedUrl, '', 'mixed', 450, 'on', "", true, false);
               PTL.dialog.kill($dialog);
             }
           }

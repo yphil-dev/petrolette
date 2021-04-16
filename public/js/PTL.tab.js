@@ -80,6 +80,8 @@ PTL.tab = {
   },
   populate:function(feeds) {
 
+    console.log('FEEDS: %s (%s)', JSON.stringify(feeds));
+
     if (!feeds || feeds.length <= 0) {
       PTL.util.say(PTL.tr('No feeds found'), 'warning');
       feeds = ['empty'];
@@ -121,12 +123,14 @@ PTL.tab = {
           thisFeed.type = v.type;
           thisFeed.limit = v.limit;
           thisFeed.status = v.status;
+          thisFeed.iconhash = v.iconhash;
 
           thisColFeeds.push(thisFeed);
           allFeeds.push(thisColFeeds);
 
         });
         thisTabCols.push(thisColFeeds);
+        // console.log('thisColFeeds: %s (%s)', JSON.stringify(thisColFeeds));
       });
       PTL.tab.add($('#tabs'), thisGroup.name, thisTabCols, progress);
     });
@@ -224,7 +228,7 @@ PTL.tab = {
       $column.appendTo($tabPanel);
 
       if (PTL.queryString) {
-        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', true, true);
+        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', "", true, true);
         PTL.queryString = null;
       }
 
@@ -232,7 +236,8 @@ PTL.tab = {
         feeds.forEach(function(feed) {
           var type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
               limit = Number.isInteger(feed.limit) ? feed.limit : 260;
-          PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, false, false, progress);
+          // console.log('feeed: %s (%s)', JSON.stringify(feed));
+          PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, false, false, progress);
         });
       }
 
@@ -276,6 +281,7 @@ PTL.tab = {
           feed.type = $dataStore.data('type');
           feed.limit = $dataStore.data('limit');
           feed.status = $dataStore.data('status');
+          feed.iconhash = $dataStore.data('iconhash');
 
           column.push(feed);
 
