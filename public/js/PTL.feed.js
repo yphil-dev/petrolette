@@ -215,12 +215,9 @@ PTL.feed = {
 
     if (feedIconHash) {
 
-      console.log('Found!: %s (%s)', feedIconHash, feedUrl);
       $myFeedIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
 
     } else {
-
-      console.log('unFound!: %s (%s)', feedIconHash, feedUrl);
 
       $.get("/favicon", {
         url: decodeURI(feedHost),
@@ -232,8 +229,6 @@ PTL.feed = {
           $dataStore.data('iconhash', hash);
 
           PTL.tab.saveTabs();
-
-          console.log('H: %s (%s)', $dataStore.data('iconhash'));
 
         } else {
             // $feedIcon.addClass('icon-rss');
