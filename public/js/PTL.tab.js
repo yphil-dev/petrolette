@@ -27,7 +27,6 @@ PTL.tab = {
     });
 
     $tabs.on('mouseup', '.ui-tabs-active a', function(e){
-      // console.log('plop!: %s (%s)');
       e.preventDefault();
       if (e.which === 1) {
         PTL.dialog.editTab($(this));
@@ -80,8 +79,6 @@ PTL.tab = {
   },
   populate:function(feeds) {
 
-    console.log('FEEDS: %s (%s)', JSON.stringify(feeds));
-
     if (!feeds || feeds.length <= 0) {
       PTL.util.say(PTL.tr('No feeds found'), 'warning');
       feeds = ['empty'];
@@ -130,7 +127,6 @@ PTL.tab = {
 
         });
         thisTabCols.push(thisColFeeds);
-        // console.log('thisColFeeds: %s (%s)', JSON.stringify(thisColFeeds));
       });
       PTL.tab.add($('#tabs'), thisGroup.name, thisTabCols, progress);
     });
@@ -236,7 +232,6 @@ PTL.tab = {
         feeds.forEach(function(feed) {
           var type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
               limit = Number.isInteger(feed.limit) ? feed.limit : 260;
-          // console.log('feeed: %s (%s)', JSON.stringify(feed));
           PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, false, false, progress);
         });
       }
