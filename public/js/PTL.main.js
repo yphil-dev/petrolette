@@ -391,6 +391,14 @@ var PTL = (function() {
         PTL.util.translate();
       };
 
+      const $debugHiddenButton = $('<span>')
+            .text('debug')
+            .click(function () {
+              PTL.dialog.beg();
+            });
+
+      // $debugHiddenButton.appendTo('body');
+
     },
     sideMenu: function(action) {
 

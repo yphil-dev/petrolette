@@ -17,10 +17,13 @@ PTL.feed = {
     const $feedImg = $('<img>')
           .attr({
             src: '/static/images/rss.gif',
-            class: 'favicon feedIcon',
+            class: 'favicon',
             width: '16px',
             height: '16px',
             onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
+          })
+          .on("error", function() {
+            $(this).attr('src', '/static/images/rss.gif');
           });
 
     var $feedIcon = $('<i>')

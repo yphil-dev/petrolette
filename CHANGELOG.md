@@ -4,11 +4,13 @@
 
 - Feed name || URL in tooltip
 - UTC Timestamps
+- Better Item layout (Media/comment icons) and wrapping
 
 ### Bugfixes
 
 - In "photo" mode, vertical images wrapped around the text, fixed.
 - Console size adjusted
+- Better "on error" favicon image handling
 
 ## 1.2.7
 

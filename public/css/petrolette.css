@@ -116,6 +116,19 @@ a:active {
   color: var(--color-fg2);
 }
 
+a.ptlInterface:link {
+  text-decoration: underline;
+}
+
+a.ptlInterface:visited {
+  color: var(--color-ui-non) !important;
+}
+/* color: var(--color-ui-non); */
+
+a.ptlInterface:hover {
+  color: var(--color-ui-sec);
+}
+
 .feed-header .feed-controls div {
   margin: 0 2px 0 0;
 }
@@ -1205,6 +1218,7 @@ li.feed.selected {
 img.favicon {
   width: var(--favicon-width);
   height: var(--favicon-width);
+  margin: 3px 0 0 0;
 }
 
 i.feedIcon {
