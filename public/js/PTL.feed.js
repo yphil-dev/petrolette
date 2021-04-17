@@ -371,31 +371,22 @@ PTL.feed = {
             }
           }
 
-          var $imageLink = $('<a>').attr('target', '_blank'),
-              $itemLink = $('<a>').attr('target', '_blank'),
-              $audioLink = $('<a>').attr('target', '_blank'),
-              $videoLink = $('<a>').attr('target', '_blank'),
-              $commentsLink = $('<a>').attr('target', '_blank'),
-              $commentsIcon = $('<i>'),
-              $audioIcon = $('<i>'),
-              $videoIcon = $('<i>'),
-              $image,
-              $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
-              $itemDiv = $('<div>').attr('class', 'itemDiv'),
-              $feedItem = $('<li>').attr('class', 'feed-item');
+          const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
+                $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
+                $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
+                $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink'),
+                $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
+                $commentsIcon = $('<i>'),
+                $audioIcon = $('<i>'),
+                $videoIcon = $('<i>'),
+                $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+                $itemDiv = $('<div>').attr('class', 'itemDiv'),
+                $feedItem = $('<li>').attr('class', 'feed-item');
+
+          var $image;
 
           if (summary && typeof summary !== 'undefined') {
             $feedItem.attr('title', $summary.trim());
-          }
-
-          if (item.comments) {
-            $commentsIcon
-              .attr('class', 'item-icon icon-comments')
-              .appendTo($commentsLink);
-
-            $commentsLink
-              .attr('href', item.comments)
-              .appendTo($itemDiv);
           }
 
           var $tempDom = $('<null>').append($description);
@@ -501,6 +492,16 @@ PTL.feed = {
               .attr('onerror', "this.style.display='none'")
               .appendTo($imageLink);
 
+          }
+
+          if (item.comments) {
+            $commentsIcon
+              .attr('class', 'item-icon icon-comments')
+              .appendTo($commentsLink);
+
+            $commentsLink
+              .attr('href', item.comments)
+              .appendTo($itemDiv);
           }
 
           if ($image && feedType == 'photo') $image.addClass('full');

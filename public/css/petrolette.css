@@ -516,6 +516,11 @@ i.item-icon {
   margin: 0.2em;
 }
 
+i.item-icon:hover {
+  float: right;
+  margin: 0.2em;
+}
+
 .ui-tab i.tab-closer {
   top: 2px;
   color: var(--color-bg1);
@@ -1334,22 +1339,6 @@ li.feed:hover div.feed-body {
   a:hover {
     color: var(--color-fg1) !important;
   }
-
-  /* li.feed-item:hover { */
-  /*   background-color: transparent !important; */
-  /* } */
-
-  /* li.feed a:active, */
-  /* li.feed a:hover, */
-  /* .feed-control:hover, */
-  /* .item-icon:hover { */
-  /*   color: transparent !important; */
-  /* } */
-
-}
-
-.item-icon:hover {
-  color: var(--color-ui-pri);
 }
 
 .introjs-skipbutton {
