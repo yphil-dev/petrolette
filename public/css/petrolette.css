@@ -501,6 +501,8 @@ ul.help li {
 
 .feed-control {
   color: var(--color-fg5);
+  cursor: pointer;
+  font-size: var(--controls-font-size);
 }
 
 .feed-control:hover {
@@ -1191,11 +1193,6 @@ li.feed.selected {
 
 .feed-header .feed-controls div.collapsible {
   display: none;
-}
-
-.feed-control {
-  cursor: pointer;
-  font-size: var(--controls-font-size);
 }
 
 .feed-header > .feed-toggle {
