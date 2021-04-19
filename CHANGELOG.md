@@ -2,6 +2,7 @@
 
 ## 1.2.8 (WIP)
 
+- New option / dialog to merge the imported / open feeds with existing ones
 - Feed name || URL in tooltip
 - UTC Timestamps
 - Better Item layout (Media/comment icons) and wrapping
@@ -11,6 +12,7 @@
 - In "photo" mode, vertical images wrapped around the text, fixed.
 - Console size adjusted
 - Better "on error" favicon image handling
+- Fixed a long, outstanding & known bug where the "new tab" button was not appended after an import, because of the weird gymnastics we have to do to make sure said button is always the last one, think about that
 
 ## 1.2.7
 

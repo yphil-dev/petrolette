@@ -62,7 +62,6 @@ PTL.tab = {
       PTL.tab.add($tabs);
     });
 
-    PTL.tab.makeNewTabButton($tabs);
 
     PTL.sync.readSync();
 
@@ -78,6 +77,10 @@ PTL.tab = {
     PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
   },
   populate:function(feeds) {
+
+    const $tabs = $('#tabs');
+
+    PTL.tab.makeNewTabButton($tabs);
 
     if (!feeds || feeds.length <= 0) {
       PTL.util.say(PTL.tr('No feeds found'), 'error');
@@ -128,12 +131,12 @@ PTL.tab = {
         });
         thisTabCols.push(thisColFeeds);
       });
-      PTL.tab.add($('#tabs'), thisGroup.name, thisTabCols, progress);
+      PTL.tab.add($tabs, thisGroup.name, thisTabCols, progress);
     });
 
     $('#new-group').removeClass('hidden');
 
-    $('#tabs').find('li[tabindex="0"]:first-child').focus();
+    $tabs.find('li[tabindex="0"]:first-child').focus();
 
     PTL.util.say(PTL.tr('Pétrolette init finished'), 'success');
 
@@ -292,34 +295,24 @@ PTL.tab = {
   },
   makeNewTabButton:function($tabs) {
 
-    var $newTabButton = $('<li>')
-        .attr('id', 'new-group')
-        .attr('class', 'translate new-group hidden')
-        .data('title', 'Add a new tab')
-        .attr('title', PTL.tr('Add a new tab'));
+    const $newTabButton = $('<li>')
+          .attr('id', 'new-group')
+          .attr('class', 'translate new-group hidden')
+          .data('title', 'Add a new tab')
+          .attr('title', PTL.tr('Add a new tab'))
+          .focus(function() {
+            PTL.util.say(PTL.tr("Click this button to add a tab"), 'success', true, 'Astuce');
+          });
 
-    var $newTabButtonLink = $('<a>')
-    // .attr('tabindex', '-1')
-        .attr('href', '#disabled');
+    const $newTabButtonLink = $('<a>')
+          .attr('href', '#disabled')
+          .bind('click', function(event) {
+            event.stopImmediatePropagation();
+            PTL.tab.add($tabs);
+            return false;
+          }).append($('<i>')
+                    .attr('class', 'icon-plus'));
 
-    var $newTabButtonIcon = $('<i>')
-        .attr('class', 'icon-plus');
-
-    $newTabButton.focus(function() {
-
-      PTL.util.say(PTL.tr("Click this button to add a tab"), 'success', true, 'Astuce');
-
-    });
-
-    $newTabButtonLink.bind('click', function(event) {
-      event.stopImmediatePropagation();
-
-      PTL.tab.add($tabs);
-
-      return false;
-    });
-
-    $newTabButtonIcon.appendTo($newTabButtonLink);
     $newTabButtonLink.appendTo($newTabButton);
     $newTabButton.appendTo($tabs.find('ul#tab-names'));
 

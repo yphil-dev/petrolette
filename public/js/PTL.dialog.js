@@ -818,6 +818,72 @@ PTL.dialog = {
     });
 
   },
+  importFeeds:function(existingFeeds, importedFeedsFile) {
+
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+
+      const $dialog = $(this),
+            $icon = $dialog.find('div.dialogImage > i');
+
+      $icon.addClass('icon-upload');
+
+      $dialog.dialog({
+        title: PTL.tr('Open / import tabs and feeds'),
+        buttons: [
+          {
+            text: PTL.tr('Replace'),
+            title: PTL.tr('Replace'),
+            class: 'translate',
+            click: function() {
+              PTL.tab.empty(function() {
+                PTL.tab.populate(JSON.parse(importedFeedsFile));
+              });
+              PTL.dialog.kill($dialog);
+            }
+          },
+          {
+            text: PTL.tr('Merge'),
+            title: PTL.tr('Merge'),
+            click: function() {
+              PTL.tab.empty(function() {
+                PTL.tab.populate(existingFeeds.concat(JSON.parse(importedFeedsFile)));
+              });
+              PTL.dialog.kill($dialog);
+            }
+          },
+          {
+            text: PTL.tr('Cancel'),
+            title: PTL.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+          $dialog.find('h1')
+            .attr('data-content', 'Open / import tabs and feeds')
+            .text(PTL.tr('Open / import tabs and feeds'));
+          $dialog.find('h2#name')
+            .attr('data-content', 'Replace or merge?')
+            .text(PTL.tr('Replace or merge?'));
+          $dialog.find('p#name')
+            .attr('data-content', 'Replace existing feeds with the new ones, or merge them together?')
+            .text(PTL.tr('Replace existing feeds with the new ones, or merge them together?'));
+
+        }
+      });
+
+      $dialog.dialog('open');
+
+    });
+
+  },
   editTab:function($tab) {
 
     $('#dialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
