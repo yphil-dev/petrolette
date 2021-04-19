@@ -171,12 +171,12 @@ PTL.util = {
     try {
       var json = JSON.parse(o);
 
-      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success', true);
+      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success');
       isJson = true;
 
     }  catch(e) {
       isJson = false;
-      PTL.util.say(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning');
+      PTL.util.say(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning', true);
     }
 
     return isJson;

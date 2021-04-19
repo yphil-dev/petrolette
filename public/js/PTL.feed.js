@@ -281,7 +281,7 @@ PTL.feed = {
             errno = '5xx';
           }
 
-          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
+          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'error');
 
           var $validateLink = $('<a>'),
               $validateLinkIcon = $('<i>'),

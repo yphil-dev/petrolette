@@ -1,18 +1,22 @@
 # Changelog
 
-## 1.2.8 (WIP)
+## 1.2.8
 
-- New option / dialog to merge the imported / open feeds with existing ones
-- Feed name || URL in tooltip
-- UTC Timestamps
-- Better Item layout (Media/comment icons) and wrapping
+- New option / dialog to merge the imported / open feeds with existing ones #e38691d5
+- Better Item layout (Media/comment icons) and wrapping #c8158af2
+- Better dialog defaults (WIP #9e3c8c2d)
+- Server ports now set [in the config file](https://framagit.org/yphil/petrolette/-/blob/master/package.json)
+- Autoselect in the text inputs
 
 ### Bugfixes
 
-- In "photo" mode, vertical images wrapped around the text, fixed.
+- In "photo" mode, vertical images wrapped around the text, fixed #2027005b
+- Feed name || URL in tooltip #b02b049c
+- UTC Timestamps #a5ccb4ae
 - Console size adjusted
 - Better "on error" favicon image handling
-- Fixed a long, outstanding & known bug where the "new tab" button was not appended after an import, because of the weird gymnastics we have to do to make sure said button is always the last one, think about that
+- Fixed a long, outstanding & known bug where the "new tab" button was not appended after an import, because of the weird gymnastics we have to do to make sure said button is always the last one, think about that when reviewing the (quite convoluted) code #b02b049c
+- Some dialogs were not fully translated #e38691d5
 
 ## 1.2.7
 

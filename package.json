@@ -1,9 +1,12 @@
 {
   "name": "petrolette",
   "description": "News reading webapp.",
-  "version": "1.2.8b",
+  "version": "1.2.8",
   "private": true,
   "license": "GPL-3.0-only",
+  "HTTP_PORT": 8000,
+  "HTTPS_PORT": 8001,
+
   "FAVICONS_CACHE_DIR": "favicons-cache",
   "engines": {
     "node": "*"

@@ -3,12 +3,13 @@
     <legend data-content="Location"
             class="ui-corner-top translate">Location</legend>
     <fieldset class="ui-widget ui-widget-content ui-corner-all">
-      <div class="flex-box">
+      <div id="feed-guess-div" class="flex-box">
         <input name="guess"
                id="feed-guess"
                placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
                data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
                value=""
+               onclick="this.select()"
                class="ui-widget-content grow ui-corner-all translate"
         />
         <button id="feedGuessButton"
@@ -29,6 +30,7 @@
                placeholder="Feed name"
                data-title="Feed name"
                value=""
+               onclick="this.select()"
                class="ui-widget-content grow ui-corner-all translate"
         />
       </div>

@@ -44,6 +44,7 @@
   --side-menu-width-expanded: 280px;
   --side-menu-width: -291px;
   --header-height: 22px;
+  --console-max-width: 242px;
   --controls-width: 150px;
   --controls-font-size: 14pt;
   --favicon-width: 16px;
@@ -68,6 +69,7 @@
     --side-menu-width-expanded: 90%;
     --side-menu-width: -999px;
     --header-height: 2.2em;
+    --console-max-width: 278px;
     --controls-width: 75%;
     --controls-font-size: 22pt;
     --favicon-width: 28px;
@@ -759,7 +761,7 @@ nav#sideMenu.expanded {
   resize: vertical;
   height: 200px;
   min-height: 2.5em;
-  max-width: 242px;
+  max-width: var(--console-max-width);
   scrollbar-width: thin;
   border-radius: 3px;
   /* background-color: var(--color-ui-console-bg); */
@@ -957,6 +959,10 @@ ul.help li.cloud::before {
   width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
   width: fill-available;
   align-items: center;
+}
+
+#feed-guess-div {
+  flex-wrap: nowrap;
 }
 
 .flex-box > label {

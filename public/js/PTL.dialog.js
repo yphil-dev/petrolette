@@ -143,12 +143,12 @@ PTL.dialog = {
             }
           },
           {
-            text: PTL.tr('Licence'),
-            title: PTL.tr('Licence'),
+            text: PTL.tr('Changelog'),
+            title: PTL.tr('Changelog'),
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);
-              window.location.assign('/about/javascript');
+              window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
             }
           },
           {
@@ -248,7 +248,6 @@ PTL.dialog = {
 
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
-        width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
             text: PTL.tr('Cancel'),

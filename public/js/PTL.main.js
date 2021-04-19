@@ -30,7 +30,9 @@ var PTL = (function() {
       $topMenu.removeAttr('style');
       $sideMenu.removeAttr('style');
 
-      $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefix'));
+      $searchPrefixInput
+        .attr('onclick', 'this.select()')
+        .val(PTL.prefs.readConfig('searchPrefix'));
 
       $searchPrefixRestoreButton.click(function(){
         console.log('val %s', $searchPrefixInput.val());
@@ -386,9 +388,13 @@ var PTL = (function() {
         closeOnEscape: true,
         resizable: true,
         height: 'auto',
-        width: PTL.util.vWidth(),
+        width: 'auto',
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        position: {
+          my: "center",
+          at: "center",
+          of: window }
       });
 
       $.ui.dialog.prototype._init = function() {
