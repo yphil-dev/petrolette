@@ -8,7 +8,7 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      PTL.util.say(PTL.tr('Pétrolette start'), 'success');
+      PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
       var $sideMenu = $('nav#sideMenu'),
           $overlay = $('#overlay'),
@@ -30,7 +30,9 @@ var PTL = (function() {
       $topMenu.removeAttr('style');
       $sideMenu.removeAttr('style');
 
-      $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefix'));
+      $searchPrefixInput
+        .attr('onclick', 'this.select()')
+        .val(PTL.prefs.readConfig('searchPrefix'));
 
       $searchPrefixRestoreButton.click(function(){
         console.log('val %s', $searchPrefixInput.val());
@@ -357,15 +359,19 @@ var PTL = (function() {
 
       $fileImportInput.change(function(evt) {
         var f = evt.target.files[0],
+            existingFeeds = JSON.parse(JSON.stringify(PTL.tab.list())),
             reader = new FileReader();
 
         reader.onload = (function() {
           return function(e) {
 
-            if (PTL.util.isPTLStruct(e.target.result)) {
-              PTL.tab.empty(function() {
-                PTL.tab.populate(JSON.parse(e.target.result), true);
-              });
+            if (PTL.util.isValidJson(e.target.result)) {
+              PTL.dialog.importFeeds(existingFeeds, e.target.result);
+              // PTL.tab.empty(function() {
+              //   PTL.tab.populate(existingFeeds.concat(JSON.parse(e.target.result)));
+              //   // PTL.tab.populate(existingFeeds.concat(e.target.result));
+              //   // var finalObj = existingFeeds.concat(e.target.result);
+              // });
             } else if (PTL.util.isNV(e.target.result)) {
               PTL.util.importNV(e.target.result);
             } else {
@@ -381,15 +387,27 @@ var PTL = (function() {
       $.extend($.ui.dialog.prototype.options, {
         closeOnEscape: true,
         resizable: true,
-        height: 'auto',
-        width: PTL.util.vWidth(),
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        height: 'auto',
+        width: 'auto',
+        position: {
+          my: "center",
+          at: "center",
+          of: window }
       });
 
       $.ui.dialog.prototype._init = function() {
         PTL.util.translate();
       };
+
+      const $debugHiddenButton = $('<span>')
+            .text('debug')
+            .click(function () {
+              PTL.dialog.beg();
+            });
+
+      // $debugHiddenButton.appendTo('body');
 
     },
     sideMenu: function(action) {

@@ -65,7 +65,6 @@ PTL.util = {
   },
   importNV:function(xml) {
 
-
     var xml2json = new PTL.util.XMLtoJSON(),
         objson = xml2json.fromStr(xml),
         dbparsed = JSON.stringify(objson),
@@ -165,94 +164,25 @@ PTL.util = {
     var doc = new DOMParser().parseFromString(i, 'text/html');
     return doc.body.textContent || "";
   },
-  isOldPTLStruct:function(o) {
-    PTL.tab.empty();
-    var groups = [],
-        nbGroups = 0,
-        nbFeeds = 0;
+  isValidJson:function(o) {
 
-    JSON.parse(o).forEach(function(g) {
-      var columns = [],
-          column = [],
-          group = {};
-
-      nbGroups++;
-      group.name = g.name;
-
-      $.each(g.feeds, function(k, v) {
-        nbFeeds++;
-        column.push(v);
-      });
-
-      columns.push(column);
-      group.columns = columns;
-      groups.push(group);
-    });
-
-    PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', nbGroups, nbFeeds), 'success');
-
-    PTL.tab.populate(groups, true);
-  },
-  isPTLStruct:function(o) {
-
-    var isJson = false,
-        isOldPTLStruct = false,
-        groups = [],
-        feeds = [];
+    var isJson = false;
 
     try {
       var json = JSON.parse(o);
 
-      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success', true);
+      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success');
       isJson = true;
-      json.forEach(function(group) {
-
-        groups.push(group);
-
-        if ('feeds' in group) {
-          isJson = false;
-          isOldPTLStruct = true;
-        } else {
-
-          $.each(group.columns, function(k, v) {
-
-            $.each(v, function() {
-              var thisFeed = {};
-              feeds.push(thisFeed);
-            });
-
-          });
-        }
-      });
 
     }  catch(e) {
       isJson = false;
-      PTL.util.say(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning');
-    }
-
-    if (isJson) {
-
-      if (groups.length < 1) {
-        // PTL.util.say(PTL.tr('Found valid json file, but no groups in it'), 'warning');
-      }
-
-      if (isJson && groups.length > 0 && feeds.length < 1) {
-        // PTL.util.say(PTL.tr('Valid json file with %1 groups in it, but you should put feeds in it', groups.length), 'warning');
-      }
-
-      if (isJson && groups.length > 0 && feeds.length > 0)  {
-        // PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', groups.length, feeds.length), 'ok');
-      }
-    } else {
-
-      // console.log('Might be XML: %s', o);
-
+      PTL.util.say(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning', true);
     }
 
     return isJson;
 
   },
-  isValidFeedsFile:function(feeds) {
+  isValidPTLFile:function(feeds) {
 
     var isValid = false;
 

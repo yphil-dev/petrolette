@@ -11,8 +11,8 @@ PTL.i18n = {
 
 PTL.i18n.translations = {
 
-  "Pétrolette start" : { fr: "Démarrage de Pétrolette", ja: "Pétroletteが起動する", es: "Pétrolette iniciando" },
-  "Pétrolette start finished" : { fr: "Démarrage de Pétrolette terminé", ja: "ペトロレットの初期化は正常に終了しました", es: "La inicialización de Pétrolette terminó" },
+  "Pétrolette init" : { fr: "Initialisation Pétrolette", ja: "Pétroletteが起動する", es: "Pétrolette iniciando" },
+  "Pétrolette init finished" : { fr: "Initialisation Pétrolette terminée", ja: "ペトロレットの初期化は正常に終了しました", es: "La inicialización de Pétrolette terminó" },
 
   "OK": { fr: "OK", ja: "入る", es: "OK" },
   "Cancel": { fr: "Annuler", ja: "取り消す", es: "Cancelar" },
@@ -23,6 +23,8 @@ PTL.i18n.translations = {
   "Sorry": { fr: "Désolé", ja: "ごめんなさい", es: "Perdón" },
   "Warning": { fr: "Avertissement", ja: "警告", es: "Advertencia" },
   "All": { fr: "Tout", ja: "すべて", es: "todos" },
+  "Replace": { fr: "Remplacer", ja: "交換", es: "Reemplazar" },
+  "Merge": { fr: "Fusionner", ja: "マージ", es: "Unir" },
 
   // Pétrolette
 
@@ -325,6 +327,10 @@ PTL.i18n.translations = {
   "Open / import tabs and feeds" : { fr: "Ouvrir / importer onglets et flux" , ja: "フォルダとフィードを開く/インポートする", es: "Abrir / importar carpetas y canales RSS" },
   "Save / export tabs and feeds" : { fr: "Enregistrer / exporter onglets et flux" , ja: "タブとフィードを保存/エクスポートする", es: "Guardar archivo de carpetas y feeds" },
 
+  "Replace existing feeds with the new ones, or merge them together?" : { fr: "Remplacer les flux existants par les nouveaux ou les fusionner ?" , ja: "既存のフィードを新しいフィードに置き換えますか、それともそれらをマージしますか？", es: "¿ Reemplazar los feeds existentes por los nuevos o fusionarlos ?" },
+
+  "Replace or merge?" : { fr: "Remplacer ou fusionner ?" , ja: "置き換えるかマージしますか？", es: "¿ Reemplazar o fusionar ?" },
+
   "Reset all tabs and feeds to defaults" : { fr: "Réinitialiser tous les onglets et flux aux valeurs par défaut" , ja: "すべてのタブとフィードをデフォルトにリセットします", es: "Restablecer todas las pestañas y fuentes a los valores predeterminados" },
 
   "Reset" : { fr: "Réinitialiser" , ja: "リセット", es: "Restablecer" },
@@ -478,6 +484,8 @@ PTL.i18n.translations = {
 
   "Delete tab" : { fr: "Supprimer onglet", ja: "フォルダを削除", es: "eliminar carpeta" },
 
+  "Delete column" : { fr: "Supprimer colonne", ja: "列を削除", es: "Eliminar columna" },
+
   "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },
 
   "%1 | Click to rename, drag to move" : { fr: "%1 | Cliquer pour renommer, glisser pour déplacer", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
@@ -488,10 +496,7 @@ PTL.i18n.translations = {
 
   "Really delete this column?" : { fr: "Vraiment supprimer cette colonne ?", ja: "本当にこの列を削除しますか？", es: "¿Realmente borras esta columna?" },
 
-
   "Really delete this tab?" : { fr: "Supprimer définitivement cet onglet ?", ja: "本当にこのフォルダを削除しますか？", es: "¿De verdad borras esta carpeta?" },
-
-
 
   "Fold / unfold this feed (%1)" : { fr: "Plier / déplier ce flux (%1)", ja: "ウーブリール - ファーマー (%1)", es: "Abrir / cerrar esta fuente (%1)" },
 

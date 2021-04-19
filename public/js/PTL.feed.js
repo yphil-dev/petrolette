@@ -17,10 +17,13 @@ PTL.feed = {
     const $feedImg = $('<img>')
           .attr({
             src: '/static/images/rss.gif',
-            class: 'favicon feedIcon',
+            class: 'favicon',
             width: '16px',
             height: '16px',
             onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
+          })
+          .on("error", function() {
+            $(this).attr('src', '/static/images/rss.gif');
           });
 
     var $feedIcon = $('<i>')
@@ -195,7 +198,7 @@ PTL.feed = {
         feedProtocol = l.protocol ? l.protocol + '//' : '//',
         feedHost = feedProtocol + l.hostname,
         dateObj = new Date(),
-        timeStamp = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds(),
+        timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds(),
         subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
 
     $feedIcon.addClass('fold');
@@ -278,7 +281,7 @@ PTL.feed = {
             errno = '5xx';
           }
 
-          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
+          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'error');
 
           var $validateLink = $('<a>'),
               $validateLinkIcon = $('<i>'),
@@ -371,31 +374,22 @@ PTL.feed = {
             }
           }
 
-          var $imageLink = $('<a>').attr('target', '_blank'),
-              $itemLink = $('<a>').attr('target', '_blank'),
-              $audioLink = $('<a>').attr('target', '_blank'),
-              $videoLink = $('<a>').attr('target', '_blank'),
-              $commentsLink = $('<a>').attr('target', '_blank'),
-              $commentsIcon = $('<i>'),
-              $audioIcon = $('<i>'),
-              $videoIcon = $('<i>'),
-              $image,
-              $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
-              $itemDiv = $('<div>').attr('class', 'itemDiv'),
-              $feedItem = $('<li>').attr('class', 'feed-item');
+          const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
+                $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
+                $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
+                $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink'),
+                $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
+                $commentsIcon = $('<i>'),
+                $audioIcon = $('<i>'),
+                $videoIcon = $('<i>'),
+                $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+                $itemDiv = $('<div>').attr('class', 'itemDiv'),
+                $feedItem = $('<li>').attr('class', 'feed-item');
+
+          var $image;
 
           if (summary && typeof summary !== 'undefined') {
             $feedItem.attr('title', $summary.trim());
-          }
-
-          if (item.comments) {
-            $commentsIcon
-              .attr('class', 'item-icon icon-comments')
-              .appendTo($commentsLink);
-
-            $commentsLink
-              .attr('href', item.comments)
-              .appendTo($itemDiv);
           }
 
           var $tempDom = $('<null>').append($description);
@@ -474,13 +468,6 @@ PTL.feed = {
             }
           }
 
-          // if (item['media:group']) {
-          //   var mgmc = item['media:group']['media:content'];
-          //   for (var i = 0; i < mgmc.length; i++) {
-          //     if (mgmc[i]['@'].url) imageUrl = mgmc[i]['@'].url;
-          //   }
-          // }
-
           $itemLink
             .attr('class', 'ui-helper-clearfix feed-link')
             .attr('href', item.link || item.enclosures[0].url)
@@ -494,6 +481,10 @@ PTL.feed = {
               .attr('data-fancybox', 'gallery')
               .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
+            if (!(imageUrl.indexOf('http://') === 0 || imageUrl.indexOf('https://') === 0)) {
+              imageUrl = feedHost + imageUrl;
+            }
+
             $image = $('<img>')
               .attr('src', '/static/images/loading.gif')
               .attr('data-srcset', imageUrl.replace('http://','https://'))
@@ -504,6 +495,16 @@ PTL.feed = {
               .attr('onerror', "this.style.display='none'")
               .appendTo($imageLink);
 
+          }
+
+          if (item.comments) {
+            $commentsIcon
+              .attr('class', 'item-icon icon-comments')
+              .appendTo($commentsLink);
+
+            $commentsLink
+              .attr('href', item.comments)
+              .appendTo($itemDiv);
           }
 
           if ($image && feedType == 'photo') $image.addClass('full');
@@ -519,7 +520,7 @@ PTL.feed = {
 
       }).always(function() {
 
-        $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedUrl, timeStamp));
+        $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp));
 
         if (progress) progress.increment();
         $refreshButton.removeClass('spin');

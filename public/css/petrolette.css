@@ -44,6 +44,7 @@
   --side-menu-width-expanded: 280px;
   --side-menu-width: -291px;
   --header-height: 22px;
+  --console-max-width: 242px;
   --controls-width: 150px;
   --controls-font-size: 14pt;
   --favicon-width: 16px;
@@ -68,6 +69,7 @@
     --side-menu-width-expanded: 90%;
     --side-menu-width: -999px;
     --header-height: 2.2em;
+    --console-max-width: 278px;
     --controls-width: 75%;
     --controls-font-size: 22pt;
     --favicon-width: 28px;
@@ -114,6 +116,19 @@ a:visited {
 a:hover,
 a:active {
   color: var(--color-fg2);
+}
+
+a.ptlInterface:link {
+  text-decoration: underline;
+}
+
+a.ptlInterface:visited {
+  color: var(--color-ui-non) !important;
+}
+/* color: var(--color-ui-non); */
+
+a.ptlInterface:hover {
+  color: var(--color-ui-sec);
 }
 
 .feed-header .feed-controls div {
@@ -246,13 +261,14 @@ div#logo-title > div {
   font-size: 36pt;
 }
 
-
+.ptlInterface a,
 .introjs-tooltiptext a {
-  color: var(--color-ui-sen) !important;
+  color: var(--color-ui-sec) !important;
 }
 
+.ptlInterface a:hover,
 .introjs-tooltiptext a:hover {
-  color: var(--color-ui-sec) !important;
+  color: var(--color-ui-sen) !important;
 }
 
 .ui-tab.ui-state-active a,
@@ -487,6 +503,8 @@ ul.help li {
 
 .feed-control {
   color: var(--color-fg5);
+  cursor: pointer;
+  font-size: var(--controls-font-size);
 }
 
 .feed-control:hover {
@@ -511,6 +529,11 @@ ul.help li {
 /* } */
 
 i.item-icon {
+  float: right;
+  margin: 0.2em;
+}
+
+i.item-icon:hover {
   float: right;
   margin: 0.2em;
 }
@@ -738,7 +761,7 @@ nav#sideMenu.expanded {
   resize: vertical;
   height: 200px;
   min-height: 2.5em;
-  max-width: 242px;
+  max-width: var(--console-max-width);
   scrollbar-width: thin;
   border-radius: 3px;
   /* background-color: var(--color-ui-console-bg); */
@@ -936,6 +959,10 @@ ul.help li.cloud::before {
   width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
   width: fill-available;
   align-items: center;
+}
+
+#feed-guess-div {
+  flex-wrap: nowrap;
 }
 
 .flex-box > label {
@@ -1174,11 +1201,6 @@ li.feed.selected {
   display: none;
 }
 
-.feed-control {
-  cursor: pointer;
-  font-size: var(--controls-font-size);
-}
-
 .feed-header > .feed-toggle {
   /* margin: 2px; */
   background-repeat: no-repeat;
@@ -1199,6 +1221,7 @@ li.feed.selected {
 img.favicon {
   width: var(--favicon-width);
   height: var(--favicon-width);
+  margin: 3px 0 0 0;
 }
 
 i.feedIcon {
@@ -1333,22 +1356,6 @@ li.feed:hover div.feed-body {
   a:hover {
     color: var(--color-fg1) !important;
   }
-
-  /* li.feed-item:hover { */
-  /*   background-color: transparent !important; */
-  /* } */
-
-  /* li.feed a:active, */
-  /* li.feed a:hover, */
-  /* .feed-control:hover, */
-  /* .item-icon:hover { */
-  /*   color: transparent !important; */
-  /* } */
-
-}
-
-.item-icon:hover {
-  color: var(--color-ui-pri);
 }
 
 .introjs-skipbutton {
