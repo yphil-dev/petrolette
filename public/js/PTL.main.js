@@ -387,10 +387,10 @@ var PTL = (function() {
       $.extend($.ui.dialog.prototype.options, {
         closeOnEscape: true,
         resizable: true,
-        height: 'auto',
-        width: 'auto',
         modal: true,
         autoOpen: false,
+        height: 'auto',
+        width: 'auto',
         position: {
           my: "center",
           at: "center",
