@@ -357,14 +357,17 @@ var PTL = (function() {
 
       $fileImportInput.change(function(evt) {
         var f = evt.target.files[0],
+            existingFeeds = PTL.tab.list(),
             reader = new FileReader();
 
         reader.onload = (function() {
           return function(e) {
 
-            if (PTL.util.isPTLStruct(e.target.result)) {
+            if (PTL.util.isValidJson(e.target.result)) {
               PTL.tab.empty(function() {
-                PTL.tab.populate(JSON.parse(e.target.result), true);
+                PTL.tab.populate(JSON.parse(e.target.result));
+                // PTL.tab.populate(JSON.parse(existingFeeds.concat(e.target.result)), true);
+                // var finalObj = existingFeeds.concat(e.target.result);
               });
             } else if (PTL.util.isNV(e.target.result)) {
               PTL.util.importNV(e.target.result);

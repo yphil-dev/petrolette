@@ -66,7 +66,7 @@ PTL.sync = (function() {
       remoteStorage.petrolette.read()
         .then((data) => {
 
-          if (PTL.util.isValidFeedsFile(JSON.parse(data))) {
+          if (PTL.util.isValidPTLFile(JSON.parse(data))) {
 
             PTL.tab.populate(JSON.parse(data));
 
