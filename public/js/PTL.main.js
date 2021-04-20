@@ -10,7 +10,7 @@ var PTL = (function() {
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
-      var $sideMenu = $('nav#sideMenu'),
+      var $sideMenu = $('nav#side-menu'),
           $overlay = $('#overlay'),
           $feedCodeButton = $('button#feedCode'),
           $importButton = $("button#fileImportButton"),
@@ -62,7 +62,7 @@ var PTL = (function() {
         event.preventDefault();
       });
 
-      $('#sideMenu legend').click(function() {
+      $('nav#side-menu .side-menu-title').click(function() {
         $(this).children('i').toggleClass('unfold');
         $(this).next().toggle();
       });
@@ -413,7 +413,7 @@ var PTL = (function() {
     sideMenu: function(action) {
 
       var $overlay = $('#overlay'),
-          $sideMenu = $('nav#sideMenu');
+          $sideMenu = $('nav#side-menu');
 
       if (action == 'open') {
         $overlay.removeClass('hidden');

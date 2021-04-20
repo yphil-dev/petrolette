@@ -662,15 +662,11 @@ fieldset.feedsMenuForm {
   background-color: var(--color-ui-qua) !important;
 }
 
-legend {
+.side-menu-title {
   color: var(--color-ui-pri);
 }
 
-legend.first {
-  margin-top: 0.6em;
-}
-
-.menu legend {
+.menu .side-menu-title {
   color: var(--color-ui-qui);
   margin-left: 14px;
   font-size: 9pt;
@@ -680,7 +676,7 @@ legend.first {
   display: none;
 }
 
-nav#sideMenu {
+nav#side-menu {
   border: none;
   height: 100%;
   left: var(--side-menu-width);
@@ -695,7 +691,7 @@ nav#sideMenu {
   scrollbar-color: var(--color-ui-oct) var(--color-ui-qua);
 }
 
-nav#sideMenu,
+nav#side-menu,
 .topnav,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane {
@@ -703,7 +699,7 @@ nav#sideMenu,
   border-color: var(--color-ui-qua);
 }
 
-/* nav#sideMenu .ui-button, */
+/* nav#side-menu .ui-button, */
 /* #sync-box { */
 /*   margin-bottom: 0.3em; */
 /* } */
@@ -727,11 +723,11 @@ li.results a:visited {
   color: black !important;
 }
 
-nav#sideMenu:hover {
+nav#side-menu:hover {
   scrollbar-color: var(--color-ui-sec) var(--color-ui-qua);
 }
 
-nav#sideMenu.expanded {
+nav#side-menu.expanded {
   left: 0;
 }
 
