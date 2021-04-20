@@ -41,9 +41,18 @@ app.set('view engine', 'html');
 app.disable('x-powered-by');
 
 app.use(compression());
-app.use(helmet.originAgentCluster());
-app.use(helmet.noSniff());
-app.use(helmet.frameguard());
+
+// app.use(helmet.originAgentCluster());
+// app.use(helmet.noSniff());
+// app.use(helmet.frameguard());
+// app.use(helmet.frameguard());
+
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
