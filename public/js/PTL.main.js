@@ -8,29 +8,31 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      PTL.util.say(PTL.tr('Pétrolette start'), 'success');
+      PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
-      var $sideMenu = $('nav#sideMenu'),
-          $overlay = $('#overlay'),
-          $feedCodeButton = $('button#feedCode'),
-          $importButton = $("button#fileImportButton"),
-          $fileImportInput = $("input#fileImport"),
-          $saveButton = $('#saveTabs'),
-          $resetButton = $('#resetTabs'),
-          $langMenu = $('select#language'),
-          $slider = $('div#gallerySpeedSlider'),
-          $searchField = $('#ptlSearch input').val(''),
-          $searchPrefixOkButton = $('button#searchPrefixOkButton'),
-          $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
-          $searchPrefixInput = $('input#searchPrefixInput'),
-          $spinner = $('#gallerySpeedSpinner'),
-          $logoType = $('.logoType'),
-          $topMenu = $('nav#top-menu');
+      const $sideMenu = $('nav#side-menu'),
+            $overlay = $('#overlay'),
+            $feedCodeButton = $('button#feedCode'),
+            $importButton = $("button#fileImportButton"),
+            $fileImportInput = $("input#fileImport"),
+            $saveButton = $('#saveTabs'),
+            $resetButton = $('#resetTabs'),
+            $langMenu = $('select#language'),
+            $slider = $('div#gallerySpeedSlider'),
+            $searchField = $('#ptlSearch input').val(''),
+            $searchPrefixOkButton = $('button#searchPrefixOkButton'),
+            $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
+            $searchPrefixInput = $('input#searchPrefixInput'),
+            $spinner = $('#gallerySpeedSpinner'),
+            $logoType = $('.logo-type'),
+            $topMenu = $('nav#top-menu');
 
       $topMenu.removeAttr('style');
       $sideMenu.removeAttr('style');
 
-      $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefix'));
+      $searchPrefixInput
+        .attr('onclick', 'this.select()')
+        .val(PTL.prefs.readConfig('searchPrefix'));
 
       $searchPrefixRestoreButton.click(function(){
         console.log('val %s', $searchPrefixInput.val());
@@ -44,7 +46,7 @@ var PTL = (function() {
         PTL.util.say(PTL.tr('Search prefix') + ': ' + clean, 'success', true);
       });
 
-      $('#logo-title a').click(function(){
+      $('#logo-title').click(function(){
         $('#ui-id-1').focus().trigger('click');
       });
 
@@ -60,7 +62,7 @@ var PTL = (function() {
         event.preventDefault();
       });
 
-      $('#sideMenu legend').click(function() {
+      $('nav#side-menu .side-menu-title').click(function() {
         $(this).children('i').toggleClass('unfold');
         $(this).next().toggle();
       });
@@ -84,10 +86,10 @@ var PTL = (function() {
         $('.results').removeClass('results');
         $('li.feed-item').each(function () {
           if (v != '' && $(this).text().search(new RegExp(v,'gi')) != -1) {
-            var $feed = $(this).parent().parent();
-            var $col = $feed.parent().parent();
-            var tabId = $col.parent().attr('aria-labelledby');
-            var $tab = $('a#' + tabId);
+            const $feed = $(this).parent().parent();
+            const $col = $feed.parent().parent();
+            const tabId = $col.parent().attr('aria-labelledby');
+            const $tab = $('a#' + tabId);
             $(this).addClass('results');
             $feed.addClass('results');
             $tab.addClass('results');
@@ -185,29 +187,29 @@ var PTL = (function() {
         PTL.dialog.resetTabs();
       });
 
-      var $themeBox = $('div#themeBox'),
-          $dayLabel = $('<label>')
-          .attr('for', 'day')
-          .attr('class', 'translate grow')
-          .data('content', PTL.tr('Day'))
-          .text(PTL.tr('Day')),
-          $dayInput = $('<input>')
-          .attr('id', 'day')
-          .attr('class', 'themeSwitcher')
-          .attr('type', 'radio')
-          .attr('name', 'radio-1')
-          .attr('value', 'day'),
-          $nightLabel = $('<label>')
-          .attr('for', 'night')
-          .attr('class', 'translate grow')
-          .data('content', PTL.tr('Night'))
-          .text(PTL.tr('Night')),
-          $nightInput = $('<input>')
-          .attr('id', 'night')
-          .attr('class', 'themeSwitcher')
-          .attr('type', 'radio')
-          .attr('name', 'radio-1')
-          .attr('value', 'night');
+      const $themeBox = $('div#themeBox'),
+            $dayLabel = $('<label>')
+            .attr('for', 'day')
+            .attr('class', 'translate grow')
+            .data('content', PTL.tr('Day'))
+            .text(PTL.tr('Day')),
+            $dayInput = $('<input>')
+            .attr('id', 'day')
+            .attr('class', 'themeSwitcher')
+            .attr('type', 'radio')
+            .attr('name', 'radio-1')
+            .attr('value', 'day'),
+            $nightLabel = $('<label>')
+            .attr('for', 'night')
+            .attr('class', 'translate grow')
+            .data('content', PTL.tr('Night'))
+            .text(PTL.tr('Night')),
+            $nightInput = $('<input>')
+            .attr('id', 'night')
+            .attr('class', 'themeSwitcher')
+            .attr('type', 'radio')
+            .attr('name', 'radio-1')
+            .attr('value', 'night');
 
       $themeBox.append($dayLabel, $dayInput, $nightLabel, $nightInput);
 
@@ -222,40 +224,40 @@ var PTL = (function() {
         PTL.prefs.writeConfig('theme', $(this).attr('value'));
       });
 
-      var $mediaPreloadBox = $('div#mediaPreloadBox'),
-          $mediaPreloadNoneLabel = $('<label>')
-          .attr('class', 'translate grow')
-          .attr('for', 'none')
-          .data('content', PTL.tr('None'))
-          .text(PTL.tr('None')),
-          $mediaPreloadNoneInput = $('<input>')
-          .attr('id', 'none')
-          .attr('class', 'mediaPreloadSwitcher')
-          .attr('type', 'radio')
-          .attr('name', 'radio-3')
-          .attr('value', 'none'),
-          $mediaPreloadMetaLabel = $('<label>')
-          .attr('class', 'translate grow')
-          .attr('for', 'metadata')
-          .data('content', PTL.tr('Meta'))
-          .text(PTL.tr('Meta')),
-          $mediaPreloadMetaInput = $('<input>')
-          .attr('id', 'metadata')
-          .attr('class', 'mediaPreloadSwitcher')
-          .attr('type', 'radio')
-          .attr('name', 'radio-3')
-          .attr('value', 'metadata'),
-          $mediaPreloadAutoLabel = $('<label>')
-          .attr('class', 'translate grow')
-          .attr('for', 'auto')
-          .data('content', PTL.tr('All'))
-          .text(PTL.tr('All')),
-          $mediaPreloadAutoInput = $('<input>')
-          .attr('id', 'auto')
-          .attr('class', 'mediaPreloadSwitcher')
-          .attr('type', 'radio')
-          .attr('name', 'radio-3')
-          .attr('value', 'auto');
+      const $mediaPreloadBox = $('div#mediaPreloadBox'),
+            $mediaPreloadNoneLabel = $('<label>')
+            .attr('class', 'translate grow')
+            .attr('for', 'none')
+            .data('content', PTL.tr('None'))
+            .text(PTL.tr('None')),
+            $mediaPreloadNoneInput = $('<input>')
+            .attr('id', 'none')
+            .attr('class', 'mediaPreloadSwitcher')
+            .attr('type', 'radio')
+            .attr('name', 'radio-3')
+            .attr('value', 'none'),
+            $mediaPreloadMetaLabel = $('<label>')
+            .attr('class', 'translate grow')
+            .attr('for', 'metadata')
+            .data('content', PTL.tr('Meta'))
+            .text(PTL.tr('Meta')),
+            $mediaPreloadMetaInput = $('<input>')
+            .attr('id', 'metadata')
+            .attr('class', 'mediaPreloadSwitcher')
+            .attr('type', 'radio')
+            .attr('name', 'radio-3')
+            .attr('value', 'metadata'),
+            $mediaPreloadAutoLabel = $('<label>')
+            .attr('class', 'translate grow')
+            .attr('for', 'auto')
+            .data('content', PTL.tr('All'))
+            .text(PTL.tr('All')),
+            $mediaPreloadAutoInput = $('<input>')
+            .attr('id', 'auto')
+            .attr('class', 'mediaPreloadSwitcher')
+            .attr('type', 'radio')
+            .attr('name', 'radio-3')
+            .attr('value', 'auto');
 
       $mediaPreloadBox.append($mediaPreloadNoneLabel,
                               $mediaPreloadNoneInput,
@@ -357,15 +359,14 @@ var PTL = (function() {
 
       $fileImportInput.change(function(evt) {
         var f = evt.target.files[0],
+            existingFeeds = JSON.parse(JSON.stringify(PTL.tab.list())),
             reader = new FileReader();
 
         reader.onload = (function() {
           return function(e) {
 
-            if (PTL.util.isPTLStruct(e.target.result)) {
-              PTL.tab.empty(function() {
-                PTL.tab.populate(JSON.parse(e.target.result), true);
-              });
+            if (PTL.util.isValidJson(e.target.result)) {
+              PTL.dialog.importFeeds(existingFeeds, e.target.result);
             } else if (PTL.util.isNV(e.target.result)) {
               PTL.util.importNV(e.target.result);
             } else {
@@ -381,21 +382,34 @@ var PTL = (function() {
       $.extend($.ui.dialog.prototype.options, {
         closeOnEscape: true,
         resizable: true,
-        height: 'auto',
-        width: PTL.util.vWidth(),
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        height: 'auto',
+        width: 'auto',
+        // width: PTL.util.vWidth(),
+        // position: {
+        //   my: "center",
+        //   at: "center",
+        //   of: window }
       });
 
       $.ui.dialog.prototype._init = function() {
         PTL.util.translate();
       };
 
+      const $debugHiddenButton = $('<span>')
+            .text('debug')
+            .click(function () {
+              PTL.dialog.beg();
+            });
+
+      // $debugHiddenButton.appendTo('body');
+
     },
     sideMenu: function(action) {
 
-      var $overlay = $('#overlay'),
-          $sideMenu = $('nav#sideMenu');
+      const $overlay = $('#overlay'),
+            $sideMenu = $('nav#side-menu');
 
       if (action == 'open') {
         $overlay.removeClass('hidden');
@@ -427,7 +441,7 @@ var PTL = (function() {
         if ( PTL.language === "en" ) {
           // Le discriminant sert à distinguer masculin/féminin ou singulier pluriel, ex <plural>Open
           // En "en" la clé sert aussi à la traduction, donc on retire simplement le discriminant
-          var discriminantRegExp = /(<.*>)(.*)/;
+          const discriminantRegExp = /(<.*>)(.*)/;
           var match = string.match( discriminantRegExp );
           var stringWithoutDiscriminant = match ? match[ 2 ] : null;
           return stringWithoutDiscriminant || string;

@@ -4,98 +4,107 @@ PTL.feed = {
 
   add:function($column, url, name, type, limit, status, iconhash, clickNew, isQueryString, progress) {
 
-    var feedIndex = $('#tabs').find('.feed').length;
+    const feedIndex = $('#tabs').find('.feed').length;
 
-    var $feed = $('<li>')
-        .attr('class', 'feed')
-        .data('url', url)
-        .data('name', name)
-        .data('type', type)
-        .data('limit', limit)
-        .data('iconhash', iconhash);
+    const $feed = $('<li>')
+          .attr('class', 'feed')
+          .data('url', url)
+          .data('name', name)
+          .data('type', type)
+          .data('limit', limit)
+          .data('iconhash', iconhash);
 
     const $feedImg = $('<img>')
           .attr({
             src: '/static/images/rss.gif',
-            class: 'favicon feedIcon',
+            class: 'favicon',
             width: '16px',
             height: '16px',
             onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
+          })
+          .on("error", function() {
+            $(this).attr('src', '/static/images/rss.gif');
           });
 
-    var $feedIcon = $('<i>')
-        .attr('class', 'feed-control feedIcon translate')
-        .data('title', 'Fold / unfold this feed (%1)', url)
-        .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
-        .click(function() {
+    const $feedIcon = $('<i>')
+          .attr('class', 'feed-control feedIcon translate')
+          .data('title', 'Fold / unfold this feed (%1)', url)
+          .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
+          .click(function() {
 
-          // Can't just use toggle because we have to pass the div to populate() in order to recreate it with the new data values, just setting data-* here doesn't work :(
+            // Can't just use toggle because we have to pass the div to populate() in order to recreate it with the new data values, just setting data-* here doesn't work :(
 
-          if ($feedControls.data('status') == 'on') {
-            $(this).removeClass('fold')
-              .parent().parent().parent()
-              .children('div.feed-body')
-              .addClass('folded');
-            $feedControls.data('status', 'off');
-            $reloadIcon.removeClass('icon-refresh')
-              .addClass('icon-pin');
-          } else {
-            $(this).addClass('fold')
-              .parent().parent().parent()
-              .children('div.feed-body')
-              .removeClass('folded');
-            $feedControls.data('status', 'on');
-            $reloadIcon.removeClass('icon-pin')
-              .addClass('icon-refresh');
-          }
+            if ($feedControls.data('status') == 'on') {
+              $(this).removeClass('fold')
+                .parent().parent().parent()
+                .children('div.feed-body')
+                .addClass('folded');
+              $feedControls.data('status', 'off');
+              $reloadIcon.removeClass('icon-refresh')
+                .addClass('icon-pin');
+            } else {
+              $(this).addClass('fold')
+                .parent().parent().parent()
+                .children('div.feed-body')
+                .removeClass('folded');
+              $feedControls.data('status', 'on');
+              $reloadIcon.removeClass('icon-pin')
+                .addClass('icon-refresh');
+            }
 
-          PTL.tab.saveTabs();
-          PTL.feed.populate($reloadIcon);
+            PTL.tab.saveTabs();
+            PTL.feed.populate($reloadIcon);
 
-        });
+          });
 
-    var $selectIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-checkbox feed-select')
-        .data('title', 'Select this feed (%1)', url)
-        .attr('title', PTL.tr('Select this feed (%1)', url))
-        .click(function() {
-          $(this).parent().parent().parent().parent()
-            .toggleClass('selected');
-          $(this).toggleClass('icon-checked icon-checkbox');
-        });
+    const $selectIcon = $('<i>')
+          .attr('class', 'feed-control translate icon-checkbox feed-select')
+          .data('title', 'Select this feed (%1)', url)
+          .attr('title', PTL.tr('Select this feed (%1)', url))
+          .click(function() {
+            $(this).parent().parent().parent().parent()
+              .toggleClass('selected');
+            $(this).toggleClass('icon-checked icon-checkbox');
+          });
 
-    var $deleteIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-cancel feed-delete')
-        .data('title', 'Delete this feed (%1)', url)
-        .attr('title', PTL.tr('Delete this feed (%1)', url))
-        .click(function() {
-          PTL.dialog.killFeed($(this));
-        });
+    const $deleteIcon = $('<i>')
+          .attr('class', 'feed-control translate icon-cancel feed-delete')
+          .data('title', 'Delete this feed (%1)', url)
+          .attr('title', PTL.tr('Delete this feed (%1)', url))
+          .click(function() {
+            $('.selected').removeClass('selected');
+            $('.icon-checked').toggleClass('icon-checked icon-checkbox');
+            PTL.dialog.killFeed($(this));
+          });
 
-    var $prefsIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-cog feed-edit')
-        .data('title', PTL.tr('Edit this feed (%1) parameters', url))
-        .attr('title', PTL.tr('Edit this feed (%1) parameters', url))
-        .click(function() {
-          PTL.dialog.feedPrefs($(this));
-        });
+    const $prefsIcon = $('<i>')
+          .attr('class', 'feed-control translate icon-cog feed-edit')
+          .data('title', 'Edit this feed (%1) parameters', url)
+          .attr('title', PTL.tr('Edit this feed (%1) parameters', url))
+          .click(function() {
+            $('.selected').removeClass('selected');
+            $('.icon-checked').toggleClass('icon-checked icon-checkbox');
+            PTL.dialog.feedPrefs($(this));
+          });
 
-    var $reloadIcon = $('<i>')
-        .attr('class', 'feed-control translate icon-refresh feed-refresh')
-        .data('title', PTL.tr('Refresh this feed (%1)', url))
-        .attr('title', PTL.tr('Refresh this feed (%1)', url))
-        .click(function() {
-          PTL.feed.populate($(this), progress);
-        });
+    const $reloadIcon = $('<i>')
+          .attr('class', 'feed-control translate icon-refresh feed-refresh')
+          .data('title', 'Refresh this feed (%1)', url)
+          .attr('title', PTL.tr('Refresh this feed (%1)', url))
+          .click(function() {
+            $('.selected').removeClass('selected');
+            $('.icon-checked').toggleClass('icon-checked icon-checkbox');
+            PTL.feed.populate($(this), progress);
+          });
 
-    var $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
-        .data('index', feedIndex)
-        .data('url', url)
-        .data('name', name)
-        .data('type', type)
-        .data('limit', limit)
-        .data('status', status)
-        .data('iconhash', iconhash);
+    const $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
+          .data('index', feedIndex)
+          .data('url', url)
+          .data('name', name)
+          .data('type', type)
+          .data('limit', limit)
+          .data('status', status)
+          .data('iconhash', iconhash);
 
     if ($feedControls.data('status') == 'on') {
       $reloadIcon.removeClass('icon-pin')
@@ -105,28 +114,32 @@ PTL.feed = {
         .addClass('icon-pin');
     }
 
-    var $feedHandle = $('<div>')
-        .data('title', PTL.tr('Move this feed (%1)', url))
-        .attr('title', PTL.tr('Move this feed (%1)', url))
-        .attr('class', 'feed-handle');
+    const $feedHandle = $('<div>')
+          .data('title', PTL.tr('Move this feed (%1)', url))
+          .attr({
+            title: PTL.tr('Move this feed (%1)', url),
+            class:'feed-handle'
+          });
 
-    var $feedBody = $('<div>').attr('class', 'feed-body').css('height', limit),
-        $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
-        $header = $('<div>').attr('class', 'feed-header'),
-        $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon, $feedImg),
-        $selectDiv = $('<div>').append($selectIcon),
-        $deleteDiv = $('<div>').append($deleteIcon),
-        $prefsDiv = $('<div>').append($prefsIcon),
-        $reloadDiv = $('<div>').append($reloadIcon);
+    const $feedBody = $('<div>').attr('class', 'feed-body').css('height', limit),
+          $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
+          $header = $('<div>').attr('class', 'feed-header'),
+          $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon, $feedImg),
+          $selectDiv = $('<div>').append($selectIcon),
+          $deleteDiv = $('<div>').append($deleteIcon),
+          $prefsDiv = $('<div>').append($prefsIcon),
+          $reloadDiv = $('<div>').append($reloadIcon);
 
-    var $titleDiv = $('<div>')
-        .attr('title', url || PTL.tr('New feed'))
-        .attr('class', 'feed-title trucate');
+    const $titleDiv = $('<div>')
+          .attr({
+            title: url || PTL.tr('New feed'),
+            class:'feed-title trucate'
+          });
 
-    var $titleLink = $('<a>')
-        .attr('href', url)
-        .attr('target', '_blank')
-        .html(url || PTL.tr('New feed'));
+    const $titleLink = $('<a>')
+          .attr('href', url)
+          .attr('target', '_blank')
+          .html(url || PTL.tr('New feed'));
 
     $feedControls.hover (
       function() {$(this).find('.collapsible').show();},
@@ -156,8 +169,8 @@ PTL.feed = {
 
     $header.append($feedToggle,
                    $feedHandle,
-                       $titleDiv.append($titleLink),
-                       $feedControls.append($prefsDiv, $reloadDiv));
+                   $titleDiv.append($titleLink),
+                   $feedControls.append($prefsDiv, $reloadDiv));
 
     $feed.append($header, $feedBody.append($feedBodyUl));
 
@@ -169,39 +182,39 @@ PTL.feed = {
       $reloadIcon.click();
     }
 
-    },
+  },
   populate:function($button, progress, newLimit) {
 
-    var $dataStore = $button.parent().parent(),
-        $refreshButton = $dataStore.find('i.feed-refresh'),
-        $header = $dataStore.parent(),
-        $panel = $dataStore.parent().parent().parent(),
-        $feed = $dataStore.parent().parent(),
-        $feedTitle = $feed.children().children('.feed-title'),
-        $feedLink = $feedTitle.children('a'),
-        $feedBody = $dataStore.parent().next('div.feed-body'),
-        $feedBodyUl = $feed.children().children('ul.feed-body'),
-        feedUrl = $dataStore.data('url'),
-        feedName = $dataStore.data('name'),
-        feedType = $dataStore.data('type'),
-        feedLimit = newLimit || $dataStore.data('limit'),
-        feedStatus = $dataStore.data('status'),
-        feedIconHash = $dataStore.data('iconhash'),
-        $feedToggle = $feed.find('.feed-toggle'),
-        $feedIcon = $feed.find('.feed-toggle > i.feedIcon'),
-        $myFeedIcon = $feedToggle.find('.favicon');
+    const $dataStore = $button.parent().parent(),
+          $refreshButton = $dataStore.find('i.feed-refresh'),
+          $header = $dataStore.parent(),
+          $panel = $dataStore.parent().parent().parent(),
+          $feed = $dataStore.parent().parent(),
+          $feedTitle = $feed.children().children('.feed-title'),
+          $feedLink = $feedTitle.children('a'),
+          $feedBody = $dataStore.parent().next('div.feed-body'),
+          $feedBodyUl = $feed.children().children('ul.feed-body'),
+          feedUrl = $dataStore.data('url'),
+          feedName = $dataStore.data('name'),
+          feedType = $dataStore.data('type'),
+          feedLimit = newLimit || $dataStore.data('limit'),
+          feedStatus = $dataStore.data('status'),
+          feedIconHash = $dataStore.data('iconhash'),
+          $feedToggle = $feed.find('.feed-toggle'),
+          $feedIcon = $feed.find('.feed-toggle > i.feedIcon'),
+          $myFeedIcon = $feedToggle.find('.favicon');
 
-    var l = PTL.util.getLocation(feedUrl),
-        feedProtocol = l.protocol ? l.protocol + '//' : '//',
-        feedHost = feedProtocol + l.hostname,
-        dateObj = new Date(),
-        timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds(),
-        subdomain = l.hostname.substr(0, l.hostname.indexOf('.'));
+    const l = PTL.util.getLocation(feedUrl),
+          feedProtocol = l.protocol ? l.protocol + '//' : '//',
+          feedHost = feedProtocol + l.hostname,
+          dateObj = new Date(),
+          timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
+
+    var feedTitle;
 
     $feedIcon.addClass('fold');
     $button.removeClass('spin');
 
-    var feedTitle;
 
     if (feedName) {
       feedTitle = feedName;
@@ -231,7 +244,7 @@ PTL.feed = {
           PTL.tab.saveTabs();
 
         } else {
-            // $feedIcon.addClass('icon-rss');
+          // $feedIcon.addClass('icon-rss');
         }
 
       }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -278,12 +291,12 @@ PTL.feed = {
             errno = '5xx';
           }
 
-          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'warning');
+          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'error');
 
-          var $validateLink = $('<a>'),
-              $validateLinkIcon = $('<i>'),
-              $reportLink = $('<a>'),
-              $reportLinkIcon = $('<i>');
+          const $validateLink = $('<a>'),
+                $validateLinkIcon = $('<i>'),
+                $reportLink = $('<a>'),
+                $reportLinkIcon = $('<i>');
 
           $validateLinkIcon
             .attr('class', 'item-icon icon-w3c')
@@ -305,27 +318,27 @@ PTL.feed = {
 
           $feedLink.addClass('danger');
 
-          var $key = $('<strong>')
-              .attr('class', 'translate key')
-              .data('content', PTL.tr('Error:'))
-              .text(PTL.tr('Error:'));
+          const $key = $('<strong>')
+                .attr('class', 'translate key')
+                .data('content', PTL.tr('Error:'))
+                .text(PTL.tr('Error:'));
 
-          var $value = $('<strong>')
-              .attr('class', 'value')
-              .text(message + ' (' + errno + ')');
+          const $value = $('<strong>')
+                .attr('class', 'value')
+                .text(message + ' (' + errno + ')');
 
-          var $errorLink = $('<a>')
-              .attr('href', feedUrl)
-              .text(feedUrl);
+          const $errorLink = $('<a>')
+                .attr('href', feedUrl)
+                .text(feedUrl);
 
-          var $errorButtonsFlexBox = $('<a>')
-              .attr('class', 'translate flex-box');
+          const $errorButtonsFlexBox = $('<a>')
+                .attr('class', 'translate flex-box');
 
-          var $errorItem = $('<li>')
-              .attr('class', 'feed-item error')
-              .append($key)
-              .append('&nbsp;')
-              .append($value);
+          const $errorItem = $('<li>')
+                .attr('class', 'feed-item error')
+                .append($key)
+                .append('&nbsp;')
+                .append($value);
 
           $feedBodyUl
             .append($errorItem);
@@ -342,20 +355,19 @@ PTL.feed = {
 
         $.each(data.feedItems, function(index, item) {
 
-
           if (index == 30) return false;
 
-          var $description = $.parseHTML(item.description),
-              summary,
+          const $description = $.parseHTML(item.description),
+                imgTypes = ['image',
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/gif',
+                            'image/png'];
+
+          var summary,
               imageUrl,
               videoUrl,
-              videoType,
-              imageUrls = [],
-              imgTypes = ['image',
-                          'image/jpg',
-                          'image/jpeg',
-                          'image/gif',
-                          'image/png'];
+              videoType;
 
           if (item.summary && typeof item.summary !== 'undefined') {
             summary = item.summary;
@@ -371,34 +383,25 @@ PTL.feed = {
             }
           }
 
-          var $imageLink = $('<a>').attr('target', '_blank'),
-              $itemLink = $('<a>').attr('target', '_blank'),
-              $audioLink = $('<a>').attr('target', '_blank'),
-              $videoLink = $('<a>').attr('target', '_blank'),
-              $commentsLink = $('<a>').attr('target', '_blank'),
-              $commentsIcon = $('<i>'),
-              $audioIcon = $('<i>'),
-              $videoIcon = $('<i>'),
-              $image,
-              $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
-              $itemDiv = $('<div>').attr('class', 'itemDiv'),
-              $feedItem = $('<li>').attr('class', 'feed-item');
+          const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
+                $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
+                $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
+                $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink'),
+                $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
+                $commentsIcon = $('<i>'),
+                $audioIcon = $('<i>'),
+                $videoIcon = $('<i>'),
+                $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+                $itemDiv = $('<div>').attr('class', 'itemDiv'),
+                $feedItem = $('<li>').attr('class', 'feed-item');
+
+          var $image;
 
           if (summary && typeof summary !== 'undefined') {
             $feedItem.attr('title', $summary.trim());
           }
 
-          if (item.comments) {
-            $commentsIcon
-              .attr('class', 'item-icon icon-comments')
-              .appendTo($commentsLink);
-
-            $commentsLink
-              .attr('href', item.comments)
-              .appendTo($itemDiv);
-          }
-
-          var $tempDom = $('<null>').append($description);
+          const $tempDom = $('<null>').append($description);
 
           if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
             imageUrl = item.image.url;
@@ -440,7 +443,7 @@ PTL.feed = {
 
             if (videoUrl && videoType) {
 
-              var videoPlayer      = document.createElement('video');
+              const videoPlayer      = document.createElement('video');
               videoPlayer.controls = 'controls';
               videoPlayer.src      = videoUrl;
               videoPlayer.type     = videoType;
@@ -457,7 +460,7 @@ PTL.feed = {
 
             if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
 
-              var audioPlayer      = document.createElement('audio');
+              const audioPlayer      = document.createElement('audio');
               audioPlayer.controls = 'controls';
               audioPlayer.src      = item.enclosures[0].url;
               audioPlayer.type     = item.enclosures[0].type;
@@ -474,13 +477,6 @@ PTL.feed = {
             }
           }
 
-          // if (item['media:group']) {
-          //   var mgmc = item['media:group']['media:content'];
-          //   for (var i = 0; i < mgmc.length; i++) {
-          //     if (mgmc[i]['@'].url) imageUrl = mgmc[i]['@'].url;
-          //   }
-          // }
-
           $itemLink
             .attr('class', 'ui-helper-clearfix feed-link')
             .attr('href', item.link || item.enclosures[0].url)
@@ -494,6 +490,10 @@ PTL.feed = {
               .attr('data-fancybox', 'gallery')
               .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
+            if (!(imageUrl.indexOf('http://') === 0 || imageUrl.indexOf('https://') === 0)) {
+              imageUrl = feedHost + imageUrl;
+            }
+
             $image = $('<img>')
               .attr('src', '/static/images/loading.gif')
               .attr('data-srcset', imageUrl.replace('http://','https://'))
@@ -504,6 +504,16 @@ PTL.feed = {
               .attr('onerror', "this.style.display='none'")
               .appendTo($imageLink);
 
+          }
+
+          if (item.comments) {
+            $commentsIcon
+              .attr('class', 'item-icon icon-comments')
+              .appendTo($commentsLink);
+
+            $commentsLink
+              .attr('href', item.comments)
+              .appendTo($itemDiv);
           }
 
           if ($image && feedType == 'photo') $image.addClass('full');

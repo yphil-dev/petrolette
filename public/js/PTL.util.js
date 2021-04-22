@@ -65,7 +65,6 @@ PTL.util = {
   },
   importNV:function(xml) {
 
-
     var xml2json = new PTL.util.XMLtoJSON(),
         objson = xml2json.fromStr(xml),
         dbparsed = JSON.stringify(objson),
@@ -104,7 +103,7 @@ PTL.util = {
 
     PTL.tab.empty(function() {
       PTL.tab.populate(allTabs, true);
-      PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', Number(nbOfTabs) + 1, Number(totalNbOfFeed)), 'success', true);
+      PTL.util.say(PTL.tr('Data structure OK: %1 tab(s) containing %2 feed(s)', Number(nbOfTabs) + 1, Number(totalNbOfFeed)), 'success', true);
     });
 
   },
@@ -135,10 +134,10 @@ PTL.util = {
 
     if (notify) PTL.dialog.notify(dialogTitle, PTL.tr(text));
 
-    var $prompt = $('<span>')
-        .attr('class', 'prompt')
-        .text('#');
-    var $line = $('<span>').text(text);
+    const $prompt = $('<span>')
+          .attr('class', 'prompt')
+          .text('#');
+    const $line = $('<span>').text(text);
 
     $('#console').append($('<div>')
                          .attr('class', type || 'normal')
@@ -165,94 +164,25 @@ PTL.util = {
     var doc = new DOMParser().parseFromString(i, 'text/html');
     return doc.body.textContent || "";
   },
-  isOldPTLStruct:function(o) {
-    PTL.tab.empty();
-    var groups = [],
-        nbGroups = 0,
-        nbFeeds = 0;
+  isValidJson:function(o) {
 
-    JSON.parse(o).forEach(function(g) {
-      var columns = [],
-          column = [],
-          group = {};
-
-      nbGroups++;
-      group.name = g.name;
-
-      $.each(g.feeds, function(k, v) {
-        nbFeeds++;
-        column.push(v);
-      });
-
-      columns.push(column);
-      group.columns = columns;
-      groups.push(group);
-    });
-
-    PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', nbGroups, nbFeeds), 'success');
-
-    PTL.tab.populate(groups, true);
-  },
-  isPTLStruct:function(o) {
-
-    var isJson = false,
-        isOldPTLStruct = false,
-        groups = [],
-        feeds = [];
+    var isJson = false;
 
     try {
       var json = JSON.parse(o);
 
-      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success', true);
+      PTL.util.say(PTL.tr('Valid Pétrolette feeds file'), 'success');
       isJson = true;
-      json.forEach(function(group) {
-
-        groups.push(group);
-
-        if ('feeds' in group) {
-          isJson = false;
-          isOldPTLStruct = true;
-        } else {
-
-          $.each(group.columns, function(k, v) {
-
-            $.each(v, function() {
-              var thisFeed = {};
-              feeds.push(thisFeed);
-            });
-
-          });
-        }
-      });
 
     }  catch(e) {
       isJson = false;
-      PTL.util.say(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning');
-    }
-
-    if (isJson) {
-
-      if (groups.length < 1) {
-        // PTL.util.say(PTL.tr('Found valid json file, but no groups in it'), 'warning');
-      }
-
-      if (isJson && groups.length > 0 && feeds.length < 1) {
-        // PTL.util.say(PTL.tr('Valid json file with %1 groups in it, but you should put feeds in it', groups.length), 'warning');
-      }
-
-      if (isJson && groups.length > 0 && feeds.length > 0)  {
-        // PTL.util.say(PTL.tr('Found %1 groups containing %2 feeds', groups.length, feeds.length), 'ok');
-      }
-    } else {
-
-      // console.log('Might be XML: %s', o);
-
+      PTL.util.say(PTL.tr('This is not a valid Pétrolette feeds file'), 'warning', true);
     }
 
     return isJson;
 
   },
-  isValidFeedsFile:function(feeds) {
+  isValidPTLFile:function(feeds) {
 
     var isValid = false;
 
@@ -268,8 +198,8 @@ PTL.util = {
   },
   vWidth:function() {
 
-    var vWidth = $(window).width(),
-        vW;
+    const vWidth = $(window).width();
+    var vW;
 
     if (PTL.util.isMobile() || vWidth < 720 ) {
       vW = vWidth - 8;
@@ -307,9 +237,9 @@ PTL.util = {
 
     PTL.sideMenu('close');
 
-    var dialog = introJs(),
-        menu = introJs(),
-        ui = introJs();
+    const dialog = introJs(),
+          menu = introJs(),
+          ui = introJs();
 
     ui.setOptions({
       steps: [
@@ -320,7 +250,7 @@ PTL.util = {
         {
           title: PTL.tr("That's what it's all about"),
           element: 'li.feed',
-          intro: PTL.tr('This is an RSS feed.') + ' <a class="helpLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-help"></i></a>'
+          intro: PTL.tr('This is an RSS feed.') + ' <a href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-help"></i></a>'
         },
         {
           title: PTL.tr('Keep everything tidy'),
@@ -328,9 +258,9 @@ PTL.util = {
           intro: PTL.tr('This is a tab. It contains feeds.')
         },
         {
-          title: PTL.tr('Well you know how a tab works') + ' 😉',
+          title: PTL.tr('Tab control'),
           element: 'li[aria-controls=tab-2]',
-          intro: PTL.tr('Click on a group tab to display it ; Click the current/selected group tab to change its name and position. Drag to sort tabs.')
+          intro: PTL.tr('Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it') + '.'
         },
         {
           title: PTL.tr('Add a new feed'),
@@ -358,7 +288,7 @@ PTL.util = {
           intro: PTL.tr('Drag here to move this feed (and all other selected feeds) within this tab, or into another.')
         },
         {
-          title: PTL.tr('Fold / unfold this feed.'),
+          title: PTL.tr('Fold / unfold this feed'),
           element: 'div.feed-toggle',
           intro: PTL.tr('Folded feeds are not loaded at startup, so as to speed things up.')
         },
@@ -380,43 +310,43 @@ PTL.util = {
         {
           title: PTL.tr('Everything starts here'),
           element: 'input#feed-guess',
-          intro: '<span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>. <span class="translate" data-content="Heck, enter anything, and Pétrolette will build a feed from your search query">' + PTL.tr('Heck, enter anything, and Pétrolette will build a feed from your search query') + '</span>',
+          intro: '<p><span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss ptl-link" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>.</p><p><span class="translate" data-content="If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words">' + PTL.tr('If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words') + '.</span><p>',
           position: 'bottom'
         },
         {
-          title: PTL.tr('Find the feed!'),
+          title: PTL.tr('Explore!'),
           element: 'button#feedGuessButton',
-          intro: PTL.tr('Find the feed of this website, or build a new one from the search terms.'),
+          intro: PTL.tr('Find / discover the feed of this website, or build a search feed from the words') + '.',
           position: 'left'
         },
         {
-          title: PTL.tr('Name the feed (optional)'),
+          title: PTL.tr('Feed name (optional)'),
           element: 'input#feed-name',
-          intro: PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title'),
+          intro: PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.'),
           position: 'left'
         },
         {
           title: PTL.tr('Keep everything tidy'),
-          element: 'fieldset#feedGroupFieldset',
-          intro: PTL.tr('Move this feed to another group.'),
+          element: 'fieldset#feed-tab-fieldset',
+          intro: PTL.tr('Move this feed to another tab.'),
           position: 'bottom'
         },
         {
           title: PTL.tr('Feed type'),
-          element: 'fieldset#feedType',
+          element: 'fieldset#feed-type-fieldset',
           intro: PTL.tr('The type of feed: It can be all text, all image, or mixed.'),
           position: 'top'
         },
         {
           title: PTL.tr('Number of items'),
-          element: 'fieldset#feedLimitFieldset',
+          element: 'fieldset#feed-limit-fieldset',
           intro: PTL.tr('How many new items should this feed display at a time?'),
           position: 'top'
         },
         {
-          title: PTL.tr('You are in control now'),
+          title: PTL.tr('Have a nice read ☕ 📰'),
           element: '.button-ok',
-          intro: PTL.tr('Ok'),
+          intro: PTL.tr('I think that\'s about it...') + ' <a href="https://framagit.org/yphil/petrolette/-/issues">' + PTL.tr('Any questions?') + '</a>',
           position: 'left'
         }
       ]
@@ -431,10 +361,6 @@ PTL.util = {
         {
           element: 'button#saveTabs',
           intro: PTL.tr('Save / Export tabs and feeds.')
-        },
-        {
-          element: 'label#dropTabLabel',
-          intro: PTL.tr('If this is set, when you drag & drop one or more feed(s) in a tab, said tab opens.')
         },
         {
           element: 'div#themeBox',
@@ -453,12 +379,12 @@ PTL.util = {
 
     ui.setOption('prevLabel', PTL.tr('Prev'));
     ui.setOption('nextLabel', PTL.tr('Next'));
-    ui.setOption('skipLabel', PTL.tr('Skip'));
+    ui.setOption('skipLabel', PTL.tr('Close'));
     ui.setOption('doneLabel', PTL.tr('Got it!'));
 
     dialog.setOption('prevLabel', PTL.tr('Prev'));
     dialog.setOption('nextLabel', PTL.tr('Next'));
-    dialog.setOption('skipLabel', PTL.tr('Skip'));
+    dialog.setOption('skipLabel', PTL.tr('Close'));
     dialog.setOption('doneLabel', PTL.tr('Got it!'));
 
     dialog.setOption('overlayOpacity', 0);
@@ -504,20 +430,20 @@ PTL.util = {
 
   },
   getLocation: function(href) {
-    var l = document.createElement("a");
+    const l = document.createElement("a");
     l.href = href;
     return l;
   },
   buildProgress : function() {
 
-    var progress = { step: 0 };
+    const progress = { step: 0 };
 
     progress.init = function( steps ) {
 
-      var $progressBar = $('#progress-bar');
+      const $progressBar = $('#progress-bar');
       this.progressBar = $progressBar;
 
-      var $progressLabel = $('.progress-label');
+      const $progressLabel = $('.progress-label');
       this.progressLabel =  $progressLabel.removeClass('on');
 
       $progressBar.progressbar({
@@ -545,8 +471,6 @@ PTL.util = {
     s = (s - ms) / 1000;
     var secs = s % 60;
     s = (s - secs) / 60;
-    // var mins = s % 60;
-    // var hrs = (s - mins) / 60;
 
     return parseFloat(secs + '.' + ms.toFixed(1));
   }

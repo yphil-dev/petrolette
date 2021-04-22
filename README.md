@@ -1,36 +1,43 @@
 # Pétrolette
 
-*RSS/Atom morning news reader ; Works at night too.*
+[![pipeline status](https://framagit.org/yphil/petrolette/badges/master/pipeline.svg)](https://framagit.org/yphil/petrolette/-/pipelines)
+[![website](https://img.shields.io/website?down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fpetrolette.space)](https://petrolette.space)
+[![Liberapay](https://img.shields.io/liberapay/receives/yPhil)](https://liberapay.com/yPhil/donate)
+[![Liberapay](https://img.shields.io/liberapay/goal/yPhil)](https://liberapay.com/yPhil/donate)
 
 ---
 
-[![pipeline status](https://framagit.org/yphil/petrolette/badges/master/pipeline.svg)](https://framagit.org/yphil/petrolette/-/pipelines)
-[![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
-[![Liberapay](https://img.shields.io/badge/donate-Liberapay-yellow.svg)](https://liberapay.com/yPhil/donate)
-[![PayPal Donate](https://img.shields.io/badge/donate-PayPal.me-ff69b4.svg)](https://www.paypal.me/yphil)
-
 <!-- [![coverage](https://framagit.org/yphil/petrolette/badges/master/coverage.svg)](https://framagit.org/yphil/petrolette/-/pipelines) -->
 
-## Welcome to the Internet
+## Good morning! ☕ 📰
 
 [Pétrolette](http://petrolette.space) is a news reading home page, [free](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). It is immediately usable **without registration** with the same URL on the desktop or a mobile device.
 
-News feeds are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser cache. To view the same feeds on your phone, either export / import the `petrolette.conf` file, or (recommended) use the user's personal cloud synchronization feature.
+Go ahead, it's yours : Create, delete, move feeds and tabs, close / quit your browser, come back tomorrow, everything is how you left it.
+
+News feeds are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal (Google Drive, Dropbox, [5apps](https://5apps.com/storage), etc.) cloud.
 
 ![Petrolette](https://framagit.org/yphil/assets/-/raw/master/img/petrolette.png)
 
 ## Features
 
-- Reads modern feeds (Atom, Media-RSS, etc.)
-- Searches for feeds in a page / website
-- Direct link to the article's resources (image, video, sound) for opening in an external reader
-- Advanced image management
-- Import / Export of the feeds file
-- Online synchronization (5apps, Google Drive, Dropbox)
-- Construction of web search feeds
-- Mobile / responsive interface
+- No ads, no trackers
+- Displays all modern feeds (Atom, Media-RSS, etc.)
+- Search within the feeds
+- Discovery of the feed in a page / website
+- Direct link to the article / item's resources (image, video, sound) for opening in an external reader
+- Advanced image management (Download, Gallery, etc.)
+- Import / Export of the feeds file (Replace / Merge)
+- Online synchronization ([5apps](https://5apps.com/storage), Google Drive, Dropbox)
+- *Search* feeds [example](https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=zombie,attack) using a configurable search engine
+- Mobile / phone / tablet / responsive interface
 - Bookmarklet for adding the feed of a site to Pétrolette on the fly
-- Compatible with FLOSS browsers (uncompressed executable files, licenses available directly and in standard format)
+- Compatible with [FLOSS browsers](https://www.gnu.org/software/librejs/) (uncompressed executable files, licenses available directly and in standard format)
+
+## What's new?
+
+Read [the changelog](https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md).
+
 
 ### Installation
 
@@ -38,9 +45,8 @@ News feeds are organized into tabs, which can contain an infinite number of colu
 git clone https://framagit.org/yphil/petrolette
 cd petrolette
 npm install
-PTL_PORT_HTTP=8080
 npm start
-xdg-open http://localhost:$PTL_PORT_HTTP
+xdg-open http://localhost:8000
 
 ```
 #### Testing

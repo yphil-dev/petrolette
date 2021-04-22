@@ -7,15 +7,16 @@ PTL.dialog = {
   },
   resetTabs:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-      var $dialog = $(this),
-          $icon = $dialog.find('div.dialogImage > i');
+      const $dialog = $(this),
+            $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-refresh danger');
 
       $dialog.dialog({
-        title: PTL.tr('Hard reset'),
+        title: PTL.tr('Reset tabs and feeds'),
+        width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -43,12 +44,15 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text(PTL.tr('Reset all tabs and feeds to defaults'));
-          $dialog.find('h2#name').text(PTL.tr('Warning'));
-          $dialog.find('p#name').text(PTL.tr('This operation cannot be undone') + '.');
+          $dialog.find('h1')
+            .text(PTL.tr('Reset all tabs and feeds to defaults?'))
+            .next('p#dialog-blurb').addClass('dangerous')
+            .text(PTL.tr('This action cannot be undone.'));
 
         }
       });
+
+      console.log('MOB: %s (%s)', PTL.util.isMobile());
 
       $dialog.dialog('open');
 
@@ -57,7 +61,7 @@ PTL.dialog = {
   },
   beg:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #beggar-dialog', function() {
 
       const $dialog = $(this),
             $beggarH4 = $dialog.find('h4'),
@@ -119,15 +123,15 @@ PTL.dialog = {
   },
   about:function(versionNumber) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-      var $dialog = $(this),
-          $content = $dialog.find('div.dialogContent'),
-          $icon = $dialog.find('div.dialogImage > i');
+      const $dialog = $(this),
+            $content = $dialog.find('div.flex-box'),
+          $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-petrolette');
       $content.css('flex-direction', 'column');
-      $content.find('div.dialogText').css('text-align', 'center'),
+      $content.find('div#dialog-text').css('text-align', 'center'),
 
       $dialog.dialog({
         title: PTL.tr('About Pétrolette'),
@@ -143,12 +147,12 @@ PTL.dialog = {
             }
           },
           {
-            text: PTL.tr('Licence'),
-            title: PTL.tr('Licence'),
+            text: PTL.tr('Changelog'),
+            title: PTL.tr('Changelog'),
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);
-              window.location.assign('/about/javascript');
+              window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
             }
           },
           {
@@ -166,12 +170,13 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text('Pétrolette').addClass('logo-title');
-          $dialog.find('h2#name').text(versionNumber);
-          $dialog.find('p#name')
+          $dialog.find('h1').text('Pétrolette').addClass('logo-title')
+            .next('p#dialog-blurb').text(PTL.tr("The news page that doesn't know you"))
+            .next('h2').text(versionNumber)
+            .next('p')
             .append($('<a>')
                     .attr('href', 'https://liberapay.com/yPhil/')
-                    .text('By yPhil'));
+                    .text(PTL.tr('By yPhil')));
 
         }
       });
@@ -181,12 +186,13 @@ PTL.dialog = {
   },
   help:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #help-dialog', function() {
 
-      var $dialog = $('#helpDialog');
+      const $dialog = $(this);
 
       $dialog.dialog({
         title: PTL.tr('Help'),
+        width: PTL.util.isMobile() ? 'auto' : 800,
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -228,21 +234,20 @@ PTL.dialog = {
   },
   feedPrefs:function($button, isNewFeed) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #feedPrefs', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #feed-prefs', function() {
 
-      var $dialog = $(this),
-          $dataStore = $button.parent().parent(),
-          $feed = $dataStore.parent().parent(),
-          $feedBody = $dataStore.parent().next('div.feed-body'),
-          allGroups = PTL.tab.list('all'),
-          $thisGroup =  $feed.parent().parent(),
-          $groupMenu = $dialog.find('select#feedGroup');
-
-      var $spinner = $dialog.find('input#feedLimitSpinner').spinner({
-        classes: {
-          "ui-spinner": "shrink ui-corner-all"
-        }
-      });
+      const $dialog = $(this),
+            $dataStore = $button.parent().parent(),
+            $feed = $dataStore.parent().parent(),
+            $feedBody = $dataStore.parent().next('div.feed-body'),
+            allGroups = PTL.tab.list('all'),
+            $thisGroup =  $feed.parent().parent(),
+            $groupMenu = $dialog.find('select#feed-tab-select'),
+            $spinner = $dialog.find('input#feedLimitSpinner').spinner({
+              classes: {
+                "ui-spinner": "shrink ui-corner-all"
+              }
+            });
 
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
@@ -272,7 +277,7 @@ PTL.dialog = {
             click: function() {
 
               if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
-                $feed.hide('slow', function() {
+                $feed.hide('fade', 1000, function() {
                   $(this).prependTo($('#' + $groupMenu
                                       .find(":selected")
                                       .val() + ' .column')
@@ -284,7 +289,7 @@ PTL.dialog = {
 
               var newUrl = DOMPurify.sanitize($(this).find('input#feed-guess').val()),
                   newName = DOMPurify.sanitize($(this).find('input#feed-name').val()),
-                  newType = $('#feedType :radio:checked').attr('id');
+                  newType = $('#feed-type-div :radio:checked').attr('id');
 
               $dataStore
                 .data('url', newUrl)
@@ -325,7 +330,7 @@ PTL.dialog = {
           });
 
           $.each(allGroups, function() {
-            var selected = (this.pane === $thisGroup.attr('id'));
+            const selected = (this.pane === $thisGroup.attr('id'));
             $groupMenu.append($('<option>', {
               value: this.pane,
               selected: selected,
@@ -344,25 +349,21 @@ PTL.dialog = {
             $okButton.addClass('ui-state-error');
           }
 
-          var $tabFeedId = $('li#' + $dataStore.data('id')),
-              $feedRefresh = $tabFeedId.find('.feedRefresh'),
-              $guessButton = $dialog.find('button#feedGuessButton').button(),
-              $guessSpinner = $dialog.find('button#feedGuessButton > i'),
-              $guessField = $dialog.find('input#feed-guess'),
-              $okButton = $dialog.find('.ui-dialog-buttonpane'),
-              $killFeedFieldset = $('fieldset#kill-feed'),
-              $killFeedLegend = $('legend#kill-feed-legend'),
-              $helpMiniButtonIcon,
-              $helpMiniButton,
-              oldUrl = $dataStore.data('url'),
-              oldName = $dataStore.data('name'),
-              oldType = $dataStore.data('type'),
-              oldLimit = $dataStore.data('limit');
+          const $tabFeedId = $('li#' + $dataStore.data('id')),
+                $feedRefresh = $tabFeedId.find('.feedRefresh'),
+                $guessButton = $dialog.find('button#feedGuessButton').button(),
+                $guessSpinner = $dialog.find('button#feedGuessButton > i'),
+                $guessField = $dialog.find('input#feed-guess'),
+                $okButton = $dialog.find('.ui-dialog-buttonpane'),
+                $killFeedFieldset = $('fieldset#kill-feed'),
+                $killFeedLegend = $('legend#kill-feed-legend'),
+                $helpMiniButton = $('<button>'),
+                oldUrl = $dataStore.data('url'),
+                oldName = $dataStore.data('name'),
+                oldType = $dataStore.data('type'),
+                oldLimit = $dataStore.data('limit');
 
-          // $helpMiniButtonIcon = $('<div>')
-          //   .attr('class', 'helpMiniButtonIcon');
-
-          $helpMiniButton = $('<button>')
+          $helpMiniButton
             .attr('class', 'ui-button ui-corner-all ui-widget')
             .attr('id', 'helpMiniButton')
             .attr('title', PTL.tr('How does it work?'))
@@ -372,7 +373,7 @@ PTL.dialog = {
               PTL.util.help('dialog');
             }).appendTo($dialog.parent().find('.ui-dialog-titlebar'));
 
-          if (isNewFeed) {
+          if (isNewFeed || !PTL.util.isMobile()) {
             $killFeedLegend.remove();
             $killFeedFieldset.remove();
           }
@@ -448,12 +449,6 @@ PTL.dialog = {
             }
           });
 
-          $(this).on('submit', function () {
-            $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
-            PTL.tab.saveTabs();
-            PTL.dialog.kill($dialog);
-          });
-
         }
       });
 
@@ -463,22 +458,23 @@ PTL.dialog = {
   },
   killColumn:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-      var $dialog = $(this),
-          $column = $button.parent().parent(),
+      const $dialog = $(this),
+            $column = $button.parent().parent(),
           $panel = $column.parent(),
           $columnsInTab = $panel.find('.column'),
-          nbOfColumnsInTab = $columnsInTab.length,
-          colIndex = $panel.find('.column').index($column),
           $feedsInCol = $column.find('.feed'),
-          nbOfFeedsInCol = $feedsInCol.length,
-          $icon = $dialog.find('div.dialogImage > i');
+          $icon = $dialog.find('div#icon > i'),
+          colIndex = $panel.find('.column').index($column),
+          nbOfColumnsInTab = $columnsInTab.length,
+          nbOfFeedsInCol = $feedsInCol.length;
 
       $icon.addClass('icon-trash-empty danger');
 
       $dialog.dialog({
         title: PTL.tr('Delete column'),
+        width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -504,29 +500,33 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text(PTL.tr('Really delete this column?'));
-          $dialog.find('h2#name').text(PTL.tr('Index'));
-          $dialog.find('p#name').text((colIndex + 1));
-          $dialog.find('h2#number').text(PTL.tr('Number of feeds'));
-          $dialog.find('p#number').text(nbOfFeedsInCol);
+          $dialog.find('h1').text(PTL.tr('Delete this column and all of its content?'))
+            .next('p#dialog-blurb')
+            .addClass('dangerous')
+            .text(PTL.tr('This action cannot be undone.'))
+            .next('h2').text(PTL.tr('Index'))
+            .next('p').text((colIndex + 1))
+            .next('h2').text(PTL.tr('Number of feeds'))
+            .next('p').text(nbOfFeedsInCol);
 
         }
-      });
+        });
 
       $dialog.dialog('open');
     });
   },
   kbShortcuts:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-      var $dialog = $(this),
-          $dialogImageDiv = $dialog.find('div.dialogImage');
+      const $dialog = $(this),
+            $iconDiv = $dialog.find('div#icon');
 
-      $dialogImageDiv.remove();
+      $iconDiv.remove();
 
       $dialog.dialog({
         title: PTL.tr('Keyboard shortcuts'),
+        width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -543,154 +543,100 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          var $kbShortCutsTab = $('<table>')
-              .attr('class', 'keyboard-shortcuts')
-              .append($('<tr>')
-                      .append($('<th>')
-                              .text('Key'))
-                      .append($('<th>')
-                              .text('Command')))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">UP</kbd>/<kbd class="key">LEFT</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the previous tab. If on first tab, moves focus to last tab. Activate focused tab after a short delay.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. Activate focused tab after a short delay.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. The focused tab must be manually activated.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">HOME</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the first tab. Activate focused tab after a short delay.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">END</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the last tab. Activate focused tab after a short delay.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">HOME</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the first tab. The focused tab must be manually activated.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">END</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the last tab. The focused tab must be manually activated.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">SPACE</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Activate panel associated with focused tab.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">ENTER</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Activate or toggle panel associated with focused tab.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
+          const $kbShortCutsTab = $('<table>')
+                .attr('class', 'keyboard-shortcuts')
+                .append($('<tr>')
+                        .append($('<th>')
+                                .text('Key'))
+                        .append($('<th>')
+                                .text('Command')))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">UP</kbd>/<kbd class="key">LEFT</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the previous tab. If on first tab, moves focus to last tab. Activate focused tab after a short delay.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. Activate focused tab after a short delay.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. The focused tab must be manually activated.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">HOME</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the first tab. Activate focused tab after a short delay.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">END</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the last tab. Activate focused tab after a short delay.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">HOME</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the first tab. The focused tab must be manually activated.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">END</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the last tab. The focused tab must be manually activated.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">SPACE</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Activate panel associated with focused tab.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">ENTER</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Activate or toggle panel associated with focused tab.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
-          var $kbShortCutsPanel = $('<table>')
-              .attr('class', 'keyboard-shortcuts')
-              .append($('<tr>')
-                      .append($('<th>')
-                              .text('Key'))
-                      .append($('<th>')
-                              .text('Command')))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">UP</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to associated tab.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
-              .append($('<tr>')
-                      .append($('<td>')
-                              .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
-                      .append($('<td>')
-                              .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
+          const $kbShortCutsPanel = $('<table>')
+                .attr('class', 'keyboard-shortcuts')
+                .append($('<tr>')
+                        .append($('<th>')
+                                .text('Key'))
+                        .append($('<th>')
+                                .text('Command')))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">UP</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to associated tab.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
+                        .append($('<td>')
+                                .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
-          $dialog.find('h1').text(PTL.tr('Keyboard shortcuts'));
-          $dialog.find('h2#name').text(PTL.tr('When focus is on a tab'));
-          $dialog.find('h2#number').text(PTL.tr('When focus is in a panel'));
-          $dialog.find('p#name').append($kbShortCutsTab);
-          $dialog.find('p#number').append($kbShortCutsPanel);
-
-        }
-      });
-
-      $dialog.dialog('open');
-    });
-  },
-  addFeed:function(feedUrl) {
-
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
-
-      var $dialog = $(this),
-          $icon = $dialog.find('div.dialogImage > i'),
-          isUrl = false,
-          h1, h2;
-
-      $icon.addClass('icon-rzz');
-
-      $dialog.dialog({
-        title: PTL.tr('Add feed'),
-        buttons: [
-          {
-            text: PTL.tr('Cancel'),
-            title: PTL.tr('Cancel'),
-            class: 'translate',
-            click: function() {
-              PTL.dialog.kill($dialog);
-            }
-          },
-          {
-            text:  PTL.tr('Add'),
-            title: PTL.tr('Add feed'),
-            class: "translate",
-            click: function() {
-              PTL.feed.add($('.column').first(), feedUrl, '', 'mixed', 450, 'on', "", true, false);
-              PTL.dialog.kill($dialog);
-            }
-          }
-        ],
-        open: function () {
-
-          if (!PTL.util.isUrl(feedUrl)) {
-            h1 = 'Whoops!';
-            h2 = PTL.tr('Unrecognized URL: %1', feedUrl);
-          } else {
-            isUrl = true;
-            h1 = PTL.tr('New feed');
-            h2 = PTL.tr('URL');
-          }
-
-          $('.ui-widget-overlay').on('click', function() {
-            PTL.dialog.kill($dialog);
-          });
-
-          $dialog.find('h1').text(h1);
-          $dialog.find('h2#name').text(h2);
-          $dialog.find('p#name').text((feedUrl));
+          $dialog.find('h1').text(PTL.tr('Keyboard shortcuts'))
+            .next('p#dialog-blurb').text(PTL.tr('A click on the Pétrolette logo puts the focus on the first tab'))
+            .next('h2').text(PTL.tr('When focus is on a tab'))
+            .next('p')
+            .append($kbShortCutsTab)
+            .next('h2').text(PTL.tr('When focus is in a panel'))
+            .next('p')
+            .append($kbShortCutsPanel);
 
         }
       });
@@ -700,22 +646,24 @@ PTL.dialog = {
   },
   killTab:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-      var $dialog = $(this),
-          $tabs = $('#tabs'),
-          $a = $button.prev('a.ui-tabs-anchor'),
-          tabId = $a.attr('href'),
-          $selectedTab = $a.parent(),
-          $selectedPanel = $tabs.find(tabId),
+      const $dialog = $(this),
+            $tabs = $('#tabs'),
+            $a = $button.prev('a.ui-tabs-anchor'),
+            $selectedTab = $a.parent(),
+            $selectedPanel = $tabs.find(tabId),
+            $icon = $dialog.find('div#icon > i');
+
+      var tabId = $a.attr('href'),
           selectedTabIndex = $tabs.tabs('option', 'active'),
-          previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1,
-          $icon = $dialog.find('div.dialogImage > i');
+          previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
 
       $icon.addClass('icon-trash-empty danger');
 
       $dialog.dialog({
         title: PTL.tr('Delete tab'),
+        width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -739,10 +687,7 @@ PTL.dialog = {
 
               if ($.parseJSON(PTL.prefs.readConfig('feeds')).length > 0) {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
-              } else {
-                PTL.util.say(PTL.tr('Zero tabs!'), 'error');
               }
-
             }
           }
         ],
@@ -752,11 +697,14 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text(PTL.tr('Really delete this tab?'));
-          $dialog.find('h2#name').text(PTL.tr('Name'));
-          $dialog.find('p#name').text($a.text());
-          $dialog.find('h2#number').text(PTL.tr('Number of feeds'));
-          $dialog.find('p#number').text($selectedPanel.find('li.feed').length);
+          $dialog.find('h1').text(PTL.tr('Delete this tab and all of its content?'))
+            .next('p#dialog-blurb')
+            .addClass('dangerous')
+            .text(PTL.tr('This action cannot be undone.'))
+            .next('h2').text(PTL.tr('Name'))
+            .next('p').text($a.text())
+            .next('h2').text(PTL.tr('Number of feeds'))
+            .next('p').text($selectedPanel.find('li.feed').length);
 
         }
       });
@@ -766,18 +714,19 @@ PTL.dialog = {
   },
   killFeed:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-      var $dialog = $(this),
-          $thisFeed = $button.parent().parent().parent().parent(),
+      const $dialog = $(this),
+            $thisFeed = $button.parent().parent().parent().parent(),
           thisFeedId = $button.parent().parent().parent().parent().attr('id'),
           thisFeedName = $button.parent().parent().parent().find('.feed-title').text(),
-          $icon = $dialog.find('div.dialogImage > i');
+          $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-trash-empty danger');
 
       $dialog.dialog({
         title: PTL.tr('Delete feed'),
+        width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -806,9 +755,12 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text(PTL.tr('Really delete this feed?'));
-          $dialog.find('h2#name').text(PTL.tr('Name'));
-          $dialog.find('p#name').text(thisFeedName);
+          $dialog.find('h1').text(PTL.tr('Delete this feed?'))
+            .next('p#dialog-blurb')
+            .addClass('dangerous')
+            .text(PTL.tr('This action cannot be undone.'))
+            .next('h2').text(PTL.tr('Name'))
+            .next('p').text(thisFeedName);
 
         }
       });
@@ -818,14 +770,79 @@ PTL.dialog = {
     });
 
   },
-  editTab:function($tab) {
+  importFeeds:function(existingFeeds, importedFeedsFile) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
-      var $dialog = $(this);
+      const $dialog = $(this),
+            $icon = $dialog.find('div#icon > i');
+
+      $icon.addClass('icon-upload');
 
       $dialog.dialog({
-        title: PTL.tr('Tab'),
+        title: PTL.tr('Open / import'),
+        width: PTL.util.isMobile() ? 'auto' : 630,
+        buttons: [
+          {
+            text: PTL.tr('Cancel'),
+            title: PTL.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          },
+          {
+            text: PTL.tr('Replace'),
+            title: PTL.tr('Replace'),
+            class: 'translate dangerous',
+            click: function() {
+              PTL.tab.empty(function() {
+                PTL.tab.populate(JSON.parse(importedFeedsFile));
+              });
+              PTL.dialog.kill($dialog);
+            }
+          },
+          {
+            text: PTL.tr('Merge'),
+            title: PTL.tr('Merge'),
+            click: function() {
+              PTL.tab.empty(function() {
+                PTL.tab.populate(existingFeeds.concat(JSON.parse(importedFeedsFile)));
+              });
+              PTL.dialog.kill($dialog);
+            }
+          }
+        ],
+        open: function () {
+
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
+
+          $dialog.find('h1').text(PTL.tr('Open / import tabs and feeds'))
+            .next('p#dialog-blurb')
+            .addClass('dangerous')
+            .text(PTL.tr('This action cannot be undone.'))
+            .next('h2').text(PTL.tr('Replace or merge?'))
+            .next('p').text(PTL.tr('Replace existing feeds with the new ones, or merge them together?'));
+
+        }
+      });
+
+      $dialog.dialog('open');
+
+    });
+
+  },
+  editTab:function($tab) {
+
+    $('#dialogs').load('/static/templates/dialogs.html #edit-tab-dialog', function() {
+
+      const $dialog = $(this);
+
+      $dialog.dialog({
+        title: PTL.tr('Edit tab'),
+        width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
             text: PTL.tr('Cancel'),
@@ -840,7 +857,7 @@ PTL.dialog = {
             title: PTL.tr('Ok'),
             class: 'translate',
             click: function() {
-              $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
+              $('#' + $(this).data('tabId')).text($dialog.find('#tab-name').val());
               PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
             }
@@ -852,13 +869,13 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          var $tabName = $dialog.find('#tabName');
-          var $tabNameLegend = $dialog.find('legend#tabNameLegend');
+          const $tabName = $dialog.find('#tab-name');
+          const $tabNameLegend = $dialog.find('legend#tabNameLegend');
 
-          var $tabLeft = $dialog.find('button#left');
-          var $tabRight = $dialog.find('button#right');
+          const $tabLeft = $dialog.find('button#left');
+          const $tabRight = $dialog.find('button#right');
 
-          var $tab = $('a#' + $(this).data('tabId')).parent('li');
+          const $tab = $('a#' + $(this).data('tabId')).parent('li');
 
           $tabLeft.button().click(function() {
             PTL.util.moveEltLeft($tab);
@@ -873,7 +890,7 @@ PTL.dialog = {
           $tabName.val($(this).data('tabName'));
 
           $(this).on('submit', function () {
-            $('#' + $(this).data('tabId')).text($dialog.find('#tabName').val());
+            $('#' + $(this).data('tabId')).text($dialog.find('#tab-name').val());
             PTL.tab.saveTabs();
             PTL.dialog.kill($dialog);
           });
