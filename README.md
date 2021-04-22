@@ -19,7 +19,7 @@ News feeds are organized into tabs, which can contain an infinite number of colu
 
 ## Escape from GAFAM central
 
-Pétrolette is fully self-contained, makes no external call whatsoever, and embarks a total of **zero tracker or "analysis" tool**. Needless to say it is also **completely ad-free**.
+Pétrolette is fully self-contained, makes **no external call** whatsoever, and embarks a total of **zero tracker or "analysis" tool**. Needless to say it is also **completely ad-free** 😎
 
 ![Petrolette](https://framagit.org/yphil/assets/-/raw/master/img/petrolette.png)
 
@@ -27,16 +27,16 @@ Pétrolette is fully self-contained, makes no external call whatsoever, and emba
 
 - No ads, no trackers, just the news
 - Displays all modern feeds (Atom, Media-RSS, etc.)
-- Mobile / phone / tablet / responsive interface
-- Search within the feeds
+- Mobile / **phone** / tablet / responsive interface
+- Search within all the feeds
 - **Discovery of the feed** in a page / website
-- Direct link to the article / item's resources (image, video, sound) for opening in an external reader
+- Direct link to all the article / item's resources (image, video, sound)
 - Advanced image management (download, gallery, slidewhow, etc.)
-- Import / export of the feeds file (replace / merge)
-- Online synchronization ([5apps](https://5apps.com/storage), [Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/)) on all your devices
-- *Search* feeds [example](https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=zombie,attack) using a configurable search engine
-- Bookmarklet for adding the feed of any website to Pétrolette on the fly
-- Compatible with [FLOSS browsers](https://www.gnu.org/software/librejs/) (uncompressed executable files, licenses available directly and in standard format)
+- Import / export of the tabs & feeds file (replace / merge)
+- Online **synchronization** ([5apps](https://5apps.com/storage), [Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/)) on all your devices
+- Building of **Search terms feeds** [example](https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=zombie,attack) using a configurable search engine
+- Bookmarklet to **add the feed of any website to Pétrolette** on the fly
+- Compatible with [FLOSS browsers](https://www.gnu.org/software/librejs/) (links to all uncompressed executable files, licenses available directly and in standard format)
 
 ## What's new?
 
