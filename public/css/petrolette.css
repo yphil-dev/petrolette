@@ -466,7 +466,7 @@ li {
 }
 
 legend,
-#dialog-text > p {
+#dialogs p {
   color: var(--color-ui-pri);
 }
 

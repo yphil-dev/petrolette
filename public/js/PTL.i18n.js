@@ -58,6 +58,11 @@ PTL.i18n.translations = {
 
   "Loading" : { fr: "Chargement", ja: "読み込み中", es: "Cargando" },
 
+  "Focus first tab" : { fr: "Focus sur le premier onglet", ja: "フォーカスファーストタブ", es: "Foco primera pestaña" },
+
+  "A click on the Pétrolette logo puts the focus on the first tab" : { fr: "Un clic sur le logo Pétrolette met le focus sur le premier onglet", ja: "Pétroletteのロゴをクリックすると、最初のタブに焦点を当てます。", es: "Un clic en el logotipo de Pétrolette pone el enfoque en la primera pestaña" },
+
+
   "Feed name (optional)" : { fr: "Nom du flux (optionnel)", ja: "フロー名（オプション）", es: "Nombre de la fuente (Opcional)" },
 
   "Number of items" : { fr: "Nombre d'éléments", ja: "アイテム数", es: "Número de items" },

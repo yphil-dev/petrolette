@@ -386,6 +386,14 @@
     "columns": [
       [
         {
+          "url": "http://planet.gnu.org/rss20.xml",
+          "name": "Planet GNU",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "e9f42b595ba8b98b1eefaef8c6b2baf0"
+        },
+        {
           "url": "https://kerneltalks.com/feed",
           "name": "Kernel Talks",
           "type": "mixed",

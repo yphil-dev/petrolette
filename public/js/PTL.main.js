@@ -46,9 +46,12 @@ var PTL = (function() {
         PTL.util.say(PTL.tr('Search prefix') + ': ' + clean, 'success', true);
       });
 
-      $('#logo-title').click(function(){
-        $('#ui-id-1').focus().trigger('click');
-      });
+      $('#logo-title > .logo-title')
+        .attr('title', PTL.tr('Focus first tab'))
+        .data('title', 'Focus first tab')
+        .click(function(){
+          $('#ui-id-1').focus().trigger('click');
+        });
 
       $logoType.click(function(){
         PTL.dialog.about($logoType.attr('data-version'));

@@ -3,15 +3,15 @@
 ## 1.2.8
 
 - New function / dialog to merge the imported / open feeds with existing ones #e38691d5
-- Server ports now set [in the config file](https://framagit.org/yphil/petrolette/-/blob/master/package.json) #c46149d8
-- Separate default feeds file
+- Server ports now set in [the config file](https://framagit.org/yphil/petrolette/-/blob/master/package.json) #c46149d8
+- Separate [default feeds file](https://framagit.org/yphil/petrolette/-/blob/master/public/js/default-feeds.json) #dae9e932
     - It's a pretty big deal : instead of being included and loaded at **each visit of the frigging page**, the ever-growing (nearly 100K as of tonight) default list of feeds is now requested on-demand via a `GET` on the server, only one unique time.
-- General UI makeover & optimization (dialogs, wording, misc options, speed)
+- General UI makeover & optimization (dialogs, wording, misc options, speed) #dae9e932
 
 ### Bugfixes
 
-- Deselected selected feeds on delete / edit / reload
-    - Before I can fin the time to code the "bulk" logic to delete / edit / reload all selected feeds in batch, we unselect on drop to ensure UX consistency
+- Deselected selected feeds on delete / edit / reload #5f3b8f1a
+    - Before I can find the time to code the "bulk" logic to delete / edit / reload all selected feeds in batch, we unselect on drop to ensure UX consistency
 - Better item layout (Media/comment icons) and wrapping #c8158af2
     - In "photo" mode, vertical images wrapped around the text, fixed #2027005b
 - BIG dialog makeover : Extended defaults, shorter templates, removed a lot of boilerplate code, etc. (WIP #9e3c8c2d)
@@ -24,18 +24,22 @@
 - Console size adjusted for mobile #c46149d8
 - Fixed a long, outstanding & known bug where the "new tab" button was not appended after an import, because of the weird gymnastics we have to do to make sure said button is always the last one, think about that when reviewing the (quite convoluted) code #b02b049c
 - Lib update: NPM 7.10.0
-- Removed CORS on the server
+- Removed CORS on the server #ba22b22e
     - I'm not sure we even need it at all to renew certificates
-- The Pétrolette logo is no longer a `a href="#"` but a plain DIV to avoid location re-write onclick (A click on it puts focus on the 1st tab, very handy when you read Pétrolette from the couch with a lousy touchpad)
-- Even **More** CSS streamlining
+- The Pétrolette logo is no longer a `a href="#"` but a plain DIV to avoid location re-write onclick (A click on it puts focus on the 1st tab, very handy when you read Pétrolette from the couch with a lousy touchpad) #5f3b8f1a
+- Refactoring #dae9e932
+    - Enforce [own coding conventions](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md) :|
+    - PTL.prefs.js is now a 1st class module
+    - s/var/const on all objects
+    - Even **More** CSS streamlining
 - Big translation review
     - Removed a lot of unused phrases in the i18 file (faster *everyday* loading time here too)
     - Changed dialog wording policy : Laconic and modular in the titles, explicit and literal in the content text
-- [Valid HTML](https://validator.w3.org/nu/?doc=https%3A%2F%2Fpetrolette.space%2F)
+- [Valid HTML](https://validator.w3.org/nu/?doc=https%3A%2F%2Fpetrolette.space%2F) #c6c5bfc2 to #140685b4
 
 ## 1.2.7
 
-- The feed's favicon file name / path is now saved along, so as to avoid re-requesting it, then re-computing the (hash) name, then re-rend it back from the server, so everybody wins #1e5f4c20
+- The feed's favicon file name / path is now saved along, so as to avoid re-requesting it, then re-computing the (hash) name, and only *then* re-rend it back from the server favicon cache, so everybody wins #1e5f4c20
 - The Logging strategy has been slightly adjusted: We now log the access to /feed and not to /favicon #1e5f4c20
 - External (ie froml the feeds) asset (typically imgs but not only) calls are now forcefully https #d4782908
 - Re-enabled server compression #941dac8a

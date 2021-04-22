@@ -15,23 +15,27 @@
 
 Go ahead, it's yours : Create, delete, move feeds and tabs, close / quit your browser, come back tomorrow, everything is how you left it.
 
-News feeds are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal (Google Drive, Dropbox, [5apps](https://5apps.com/storage), etc.) cloud.
+News feeds are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal ([Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/), [5apps](https://5apps.com/storage) (much better), etc.) cloud.
+
+## Escape from GAFAM central
+
+Pétrolette is fully self-contained, makes no external call whatsoever, and embarks a total of **zero tracker or "analysis" tool**. Needless to say it is also **completely ad-free**.
 
 ![Petrolette](https://framagit.org/yphil/assets/-/raw/master/img/petrolette.png)
 
 ## Features
 
-- No ads, no trackers
+- No ads, no trackers, just the news
 - Displays all modern feeds (Atom, Media-RSS, etc.)
-- Search within the feeds
-- Discovery of the feed in a page / website
-- Direct link to the article / item's resources (image, video, sound) for opening in an external reader
-- Advanced image management (Download, Gallery, etc.)
-- Import / Export of the feeds file (Replace / Merge)
-- Online synchronization ([5apps](https://5apps.com/storage), Google Drive, Dropbox)
-- *Search* feeds [example](https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=zombie,attack) using a configurable search engine
 - Mobile / phone / tablet / responsive interface
-- Bookmarklet for adding the feed of a site to Pétrolette on the fly
+- Search within the feeds
+- **Discovery of the feed** in a page / website
+- Direct link to the article / item's resources (image, video, sound) for opening in an external reader
+- Advanced image management (download, gallery, slidewhow, etc.)
+- Import / export of the feeds file (replace / merge)
+- Online synchronization ([5apps](https://5apps.com/storage), [Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/)) on all your devices
+- *Search* feeds [example](https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=zombie,attack) using a configurable search engine
+- Bookmarklet for adding the feed of any website to Pétrolette on the fly
 - Compatible with [FLOSS browsers](https://www.gnu.org/software/librejs/) (uncompressed executable files, licenses available directly and in standard format)
 
 ## What's new?
