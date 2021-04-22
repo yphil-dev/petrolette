@@ -25,13 +25,13 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 
 ## Features
 
-- No ads, no trackers, just the news
-- Displays all modern feeds (Atom, Media-RSS, etc.)
+- No ads, no trackers, **just the news**
+- Displays all modern feeds (Atom, RSS 1/2, **MediaRSS**, etc.)
 - **Video / Audio playing** directly in Pétrolette
 - **Discovery of the feed** in a page / website
 - Mobile / **phone** / tablet / responsive interface
-- Search within all the feeds
 - Direct link to all the article / item's resources (image, video, sound)
+- **Search** within all the feeds
 - Advanced image management (download, gallery, slidewhow, etc.)
 - Import / export of the tabs & feeds file (replace / merge)
 - Online **synchronization** ([5apps](https://5apps.com/storage), [Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/)) on all your devices
@@ -59,6 +59,11 @@ xdg-open http://localhost:8000
 ```javascript
 npm test
 ```
+
+### Contributing
+
+- Read the [development guidelines](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md)
+- Pétrolette is free software. However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://framagit.org/yphil/petrolette/-/commits/master). In order to keep developing Pétrolette with new features I need your help. Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) by sending a donation. Even the smallest amount will help a lot.
 
 ### LICENSE
 

@@ -14,7 +14,7 @@
     - Before I can find the time to code the "bulk" logic to delete / edit / reload all selected feeds in batch, we unselect on drop to ensure UX consistency
 - Better item layout (Media/comment icons) and wrapping #c8158af2
     - In "photo" mode, vertical images wrapped around the text, fixed #2027005b
-- BIG dialog makeover : Extended defaults, shorter templates, removed a lot of boilerplate code, etc. (WIP #9e3c8c2d)
+- BIG dialog makeover : Extended defaults, shorter templates, removed a lot of boilerplate code, etc. #9e3c8c2d to #e38691d5
     - Some dialogs were not fully translated #e38691d5
     - New colors
     - Feed type buttons: Removed the "grow / last" class / hack #c46149d8

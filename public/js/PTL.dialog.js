@@ -83,12 +83,11 @@ PTL.dialog = {
             }
           },
           {
-            text: PTL.tr('Take the tour'),
-            title: PTL.tr('Learn to use it in a few easy steps'),
+            text: PTL.tr('Ok'),
+            title: PTL.tr('Ok'),
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);
-              PTL.util.help('ui');
             }
           }
         ],
