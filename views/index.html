@@ -144,9 +144,9 @@
              class="navRight"
              title="Pétrolette <%= version %>">
           <div class="logo-title">
-            <a href="#">Pétrolette</a>
+            Pétrolette
           </div>
-          <div class="logoType"
+          <div class="logo-type"
                data-version="<%= version %>">
             <i class="icon-petrolette"></i>
           </div>
@@ -239,10 +239,10 @@
           <a href="/about/javascript"
              data-jslicense="1"
              class="grow ui-button ui-corner-all translate"
-             data-title="JavaScript license information"
-             title="JavaScript license information"
-             data-content="Licence">
-            Licence
+             data-title="JavaScript licencing information"
+             title="JavaScript licencing information"
+             data-content="License">
+            License
           </a>
         </div>
       </fieldset>
@@ -279,7 +279,7 @@
           </button>
           <button id="resetTabs"
                   class="grow translate"
-                  data-title="Reset all tabs and feeds to defaults">
+                  data-title="Reset tabs and feeds">
             <i class="icon-refresh"></i>
             <span class="translate"
                   data-content="Reset">
@@ -469,7 +469,9 @@
            class="dead-center hidden">
         <div>
           <i class="icon-refresh spin"></i>
-          <div>Loading feeds</div>
+          <div
+            data-content="Loading"
+            class="translate">Loading</div>
         </div>
       </div>
 

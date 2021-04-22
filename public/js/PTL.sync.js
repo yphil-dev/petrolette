@@ -4,9 +4,9 @@ PTL.sync = (function() {
 
   PTL.synchronized = false;
 
-  var syncDirectory = 'petrolette';
+  const syncDirectory = 'petrolette';
 
-  var Feeds = {
+  const Feeds = {
     name: syncDirectory, builder: function(privateClient, publicClient) {
 
       return {
@@ -80,7 +80,7 @@ PTL.sync = (function() {
         })
         .catch((err) => {
 
-          PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser cache', err), 'warning');
+          PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
 
           PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
 

@@ -1,7 +1,7 @@
 # Pétrolette
 
 [![pipeline status](https://framagit.org/yphil/petrolette/badges/master/pipeline.svg)](https://framagit.org/yphil/petrolette/-/pipelines)
-[![website](https://img.shields.io/website?down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fpetrolette.space)](http://petrolette.space)
+[![website](https://img.shields.io/website?down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fpetrolette.space)](https://petrolette.space)
 [![Liberapay](https://img.shields.io/liberapay/receives/yPhil)](https://liberapay.com/yPhil/donate)
 [![Liberapay](https://img.shields.io/liberapay/goal/yPhil)](https://liberapay.com/yPhil/donate)
 
@@ -9,7 +9,7 @@
 
 <!-- [![coverage](https://framagit.org/yphil/petrolette/badges/master/coverage.svg)](https://framagit.org/yphil/petrolette/-/pipelines) -->
 
-## Good morning ☕
+## Good morning! ☕ 📰
 
 [Pétrolette](http://petrolette.space) is a news reading home page, [free](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). It is immediately usable **without registration** with the same URL on the desktop or a mobile device.
 
@@ -21,6 +21,7 @@ News feeds are organized into tabs, which can contain an infinite number of colu
 
 ## Features
 
+- No ads, no trackers
 - Displays all modern feeds (Atom, Media-RSS, etc.)
 - Search within the feeds
 - Discovery of the feed in a page / website

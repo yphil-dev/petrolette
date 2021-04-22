@@ -38,23 +38,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-app.disable('x-powered-by');
-
 app.use(compression());
 
-// app.use(helmet.originAgentCluster());
-// app.use(helmet.noSniff());
-// app.use(helmet.frameguard());
-// app.use(helmet.frameguard());
-
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
+app.use(helmet({contentSecurityPolicy: false}));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DIR)));
 app.use('/static', express.static(path.join(__dirname, 'public')));
