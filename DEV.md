@@ -13,6 +13,10 @@
 - Single quotes in JS, double quotes in HTML ;
 - Indents: 2 *spaces*.
 
+## VC workflow
+
+All work is done on `dev` or its child branches, then merged into `server` and pushed for testing, then merged into master at each release or critical bugfix. Pull Requests on `dev`, please.
+
 ## Installation notes & caveats
 
 The two libs [Feedrat](https://framagit.org/yphil/feedrat) (to discover a RSS/Atom feed at a given URL) and [Favrat](https://framagit.org/yphil/favrat) (to discover a favicon at a given URL) are no longer hosted on npm, but installed directly from the repo ; however their dependancies have to be installed manually by running `npm install` in their respective directories.
@@ -32,13 +36,18 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
 
 At the first startup, Pétrolette generates its page using a default tabs and feeds list, then copies this structured list the the client's local storage persistent cache. The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
-Why is there a server in the first place, **why can't the client do all the RSS requests?** Because of [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), that's actually the *only* reason, if you exclude my desire to learn server-side JS :)
+## Why is there a server in the first place ?
+
+**why can't the client do all the RSS requests?** Because of [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), tjat's why and it's actually the *only* reason, if you exclude my desire to learn server-side JS :)
 
 pm2 automatically restarts both Pétrolette when its files are edited (excluding cache and module/lib directories, of course, see [pm2.config.json](pm2.config.json)) and itself if the host machine restarts.
 
 ### Server configuration
 
+The ports are set up in [the config file](./package.json). To redirect on a vanilla Linux box :
+
 `iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8000`
+`iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8001`
 
 ### Logging
 
