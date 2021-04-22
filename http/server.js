@@ -6,7 +6,6 @@ const petrolette = require('../petrolette'),
 
 const httpServer = http.createServer(petrolette);
 
-/* look for port in environment variable  */
 const portHttp =  pjson.HTTP_PORT || 8000;
 const portHttps =  pjson.HTTPS_PORT || 8001;
 

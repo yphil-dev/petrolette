@@ -3,13 +3,13 @@
 PTL.tab = {
   init:function() {
 
-    $('#load-spinner').fadeIn('fast');
-
     PTL.language = PTL.prefs.readConfig('lang');
 
     PTL.util.translate();
 
-    var $tabs = $('#tabs').tabs({
+    $('#load-spinner').fadeIn('fast');
+
+    const $tabs = $('#tabs').tabs({
       heightStyle: 'content',
       activate: function(event, ui) {
         ui.newPanel.css("display","flex");
@@ -71,7 +71,7 @@ PTL.tab = {
 
   },
   saveTabs:function() {
-    var feeds = PTL.tab.list();
+    const feeds = PTL.tab.list();
     PTL.prefs.writeConfig('feeds', JSON.stringify(feeds));
     PTL.sync.writeSync(JSON.stringify(feeds));
     PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
@@ -100,24 +100,24 @@ PTL.tab = {
       });
     });
 
-    PTL.util.say(PTL.tr('Data structure OK: %1 groups containing %2 feeds', nbOfGroups, nbOfFeeds), 'success');
+    PTL.util.say(PTL.tr('Data structure OK: %1 tab(s) containing %2 feed(s)', nbOfGroups, nbOfFeeds), 'success');
 
     progress.init(nbOfFeeds);
 
     feeds.forEach(function(group) {
 
-      var thisGroup = {},
-          allFeeds = [],
-          thisTabCols = [];
+      const thisGroup = {},
+            allFeeds = [],
+            thisTabCols = [];
 
       thisGroup.name = group.name;
 
       $.each(group.columns, function(k, v) {
 
-        var thisColFeeds = [];
+        const thisColFeeds = [];
 
         $.each(v, function( k, v ) {
-          var thisFeed = {};
+          const thisFeed = {};
           thisFeed.url = v.url;
           thisFeed.name = v.name;
           thisFeed.type = v.type;
@@ -154,37 +154,37 @@ PTL.tab = {
 
     name = name || 'Tab ' + tabIndex;
 
-    var $tabCloser = $('<i>')
-        .attr('class', 'icon-cancel tab-icon tab-closer translate')
-        .data('title', PTL.tr('Delete the [%1] tab', name))
-        .attr('title', PTL.tr('Delete the [%1] tab', name));
+    const $tabCloser = $('<i>')
+          .attr('class', 'icon-cancel tab-icon tab-closer translate')
+          .data('title', PTL.tr('Delete the [%1] tab', name))
+          .attr('title', PTL.tr('Delete the [%1] tab', name));
 
-    var $tabPanel = $('<div>')
-        .attr('id', 'tab-' + tabIndex)
-        .attr('class', 'tab panel');
+    const $tabPanel = $('<div>')
+          .attr('id', 'tab-' + tabIndex)
+          .attr('class', 'tab panel');
 
-    var $tabLink = $('<a>')
-        .attr('href', '#tab-' + tabIndex)
-        .append(name);
+    const $tabLink = $('<a>')
+          .attr('href', '#tab-' + tabIndex)
+          .append(name);
 
-    var $tab = $('<li>')
-        .attr('class', 'modal tab-name translate')
-        .data('id', 'tab-' + tabIndex++)
-        .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
-        .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
+    const $tab = $('<li>')
+          .attr('class', 'modal tab-name translate')
+          .data('id', 'tab-' + tabIndex++)
+          .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
+          .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
-    var $tabNames = $('#tabs ul#tab-names');
+    const $tabNames = $('#tabs ul#tab-names');
 
     $tab.droppable({
       tolerance: 'pointer',
       accept: 'li.feed.selected',
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
-        var $item = $(this);
-        var $index = $('li.tab-name').index(this);
-        var $elements = ui.draggable.data('items');
-        var $list = $($item.find('a').attr('href'))
-            .find('.column').first();
+        const $item = $(this);
+        const $index = $('li.tab-name').index(this);
+        const $elements = ui.draggable.data('items');
+        const $list = $($item.find('a').attr('href'))
+              .find('.column').first();
         $elements.show().hide('slow');
 
         ui.draggable.show().hide('fade', 300, function () {
@@ -222,7 +222,7 @@ PTL.tab = {
 
     columns.forEach(function(feeds) {
 
-      var $column = PTL.col.add(colIndex++);
+      const $column = PTL.col.add(colIndex++);
 
       $column.appendTo($tabPanel);
 
@@ -233,8 +233,8 @@ PTL.tab = {
 
       if (!newTab) {
         feeds.forEach(function(feed) {
-          var type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
-              limit = Number.isInteger(feed.limit) ? feed.limit : 260;
+          const type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
+                limit = Number.isInteger(feed.limit) ? feed.limit : 260;
           PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, false, false, progress);
         });
       }
@@ -250,15 +250,15 @@ PTL.tab = {
   },
   list:function(type) {
 
-    var $groupNodes = $('#tab-names > li.tab-name'),
-        groups = [];
+    const $groupNodes = $('#tab-names > li.tab-name'),
+          groups = [];
 
     $groupNodes.each(function() {
 
-      var group = {},
-          columns = [],
-          $groupNode = $(this),
-          $columnNodes = $($groupNode.children().attr('href') + ' ul.column');
+      const group = {},
+            columns = [],
+            $groupNode = $(this),
+            $columnNodes = $($groupNode.children().attr('href') + ' ul.column');
 
       group.name = $groupNode.children('a').text();
 
@@ -267,13 +267,13 @@ PTL.tab = {
 
       $columnNodes.each(function() {
 
-        var column = [],
-            $srcNodes = $(this).children('li.feed');
+        const column = [],
+              $srcNodes = $(this).children('li.feed');
 
         $srcNodes.each(function() {
-          var feed = {};
+          const feed = {};
 
-          var $dataStore = $(this).find('.dataStore');
+          const $dataStore = $(this).find('.dataStore');
           feed.url = $dataStore.data('url');
           feed.name = $dataStore.data('name');
           feed.type = $dataStore.data('type');

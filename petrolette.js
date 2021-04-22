@@ -27,17 +27,23 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR),
            console.log('Directory created successfully!');
          });
 
+// app.use(function(req, res, next) {
+//   if (req.secure) {
+//     res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains'); // 2 years
+//   }
+//   next();
+// });
+
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-app.disable('x-powered-by');
-
 app.use(compression());
-app.use(helmet.originAgentCluster());
-app.use(helmet.noSniff());
+
+app.use(helmet({contentSecurityPolicy: false}));
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DIR)));
 app.use('/static', express.static(path.join(__dirname, 'public')));

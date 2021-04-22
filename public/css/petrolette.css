@@ -21,7 +21,7 @@
   --color-ui-qui: #808080;
   --color-ui-sen: #F26522;
   --color-ui-sep: #CCC;
-  --color-ui-oct: #2B2B2B;
+  --color-ui-oct: #394655;
   --color-ui-non: #007FFF;
   --color-ui-ten: #003EFF;
   --color-ui-title-one: #FF4136;
@@ -60,6 +60,7 @@
   --title-margin-left: 0.2em;
   --columns: auto 3;
   --logo-display: inline;
+  --wrap: nowrap;
 }
 
 
@@ -84,6 +85,7 @@
     --title-margin-left: 0;
     --columns: auto;
     --logo-display: none;
+    --wrap: wrap;
   }
 }
 
@@ -118,17 +120,26 @@ a:active {
   color: var(--color-fg2);
 }
 
-a.ptlInterface:link {
+a.ptl-link:link {
   text-decoration: underline;
 }
 
-a.ptlInterface:visited {
+a.ptl-link:visited {
   color: var(--color-ui-non) !important;
 }
-/* color: var(--color-ui-non); */
 
-a.ptlInterface:hover {
-  color: var(--color-ui-sec);
+a.ptl-link:hover {
+  color: var(--color-ui-sec) !important;
+}
+
+.dangerous {
+  color: var(--color-ui-danger) !important;
+}
+
+.logo-title:hover,
+.ptl-link a:hover,
+.introjs-tooltiptext a:hover {
+  color: var(--color-ui-sec) !important;
 }
 
 .feed-header .feed-controls div {
@@ -219,19 +230,15 @@ a.ptlInterface:hover {
 
 div#logo-title {
   display: flex;
-}
-
-.icon-petrolette {
-  color: var(--color-ui-sec);
+  cursor: pointer;
 }
 
 .icon-w3c {
   color: var(--color-ui-success);
 }
 
-.logoType i.icon-petrolette {
+i.icon-petrolette {
   display: block;
-  cursor: pointer;
   font-size: 24pt;
   margin: 6px 12px 6px 6px;
   color: var(--color-ui-sec);
@@ -246,10 +253,6 @@ i.icon-petrolette::before {
   font-style: italic !important;
 }
 
-i.icon-petrolette:hover {
-  font-style: normal !important;
-}
-
 div#logo-title > div {
   flex: 1 0;
 }
@@ -261,14 +264,12 @@ div#logo-title > div {
   font-size: 36pt;
 }
 
-.ptlInterface a,
-.introjs-tooltiptext a {
-  color: var(--color-ui-sec) !important;
+i.icon-petrolette.item-icon {
+  font-size: 1em;
 }
 
-.ptlInterface a:hover,
-.introjs-tooltiptext a:hover {
-  color: var(--color-ui-sen) !important;
+.item-icon:hover {
+  color: var(--color-fg1);
 }
 
 .ui-tab.ui-state-active a,
@@ -418,7 +419,7 @@ h3 {
 }
 
 h1 {
-  color: var(--color-ui-title-one);
+  color: var(--color-ui-sec);
   margin-top: 0;
 }
 
@@ -430,7 +431,6 @@ h1 {
 
 .ui-dialog p {
   margin: 0 0 0.4em 0.4em;
-  color: var(--color-ui-pri);
 }
 
 kbd.key {
@@ -446,10 +446,6 @@ ul {
   list-style-type: none;
 }
 
-ul.dialogTextList {
-  list-style-type: lower-greek;
-}
-
 .ui-tab,
 .ui-tabs,
 ul,
@@ -457,25 +453,25 @@ li {
   padding: 0;
 }
 
-#no-script ul {
-  list-style-type: disc;
-
-  /* padding: .2em; */
+#question-dialog > .flex-box {
+  flex-wrap: var(--wrap);
 }
 
-#no-script h1 {
+#dialog-blurb {
   font-style: italic;
-  color: var(--color-ui-danger);
+}
+
+#dialog-text {
+  flex-grow: 4; /* default 0 */
+}
+
+legend,
+#dialog-text > p {
+  color: var(--color-ui-pri);
 }
 
 ul.help li {
   margin: 1em 0 0 1em;
-}
-
-#no-script ul > li {
-  margin: 0.3em 0;
-
-  /* padding: .2em; */
 }
 
 .ui-tab#new-group {
@@ -545,10 +541,6 @@ i.item-icon:hover {
 
 .ui-tab i.tab-closer:hover {
   color: var(--color-danger);
-}
-
-.dangerous:hover {
-  color: var(--color-ui-danger);
 }
 
 .feed-header > .feed-title > a:link,
@@ -662,15 +654,11 @@ fieldset.feedsMenuForm {
   background-color: var(--color-ui-qua) !important;
 }
 
-legend {
+.side-menu-title {
   color: var(--color-ui-pri);
 }
 
-legend.first {
-  margin-top: 0.6em;
-}
-
-.menu legend {
+.menu .side-menu-title {
   color: var(--color-ui-qui);
   margin-left: 14px;
   font-size: 9pt;
@@ -680,7 +668,7 @@ legend.first {
   display: none;
 }
 
-nav#sideMenu {
+nav#side-menu {
   border: none;
   height: 100%;
   left: var(--side-menu-width);
@@ -695,22 +683,13 @@ nav#sideMenu {
   scrollbar-color: var(--color-ui-oct) var(--color-ui-qua);
 }
 
-nav#sideMenu,
+nav#side-menu,
 .topnav,
 .ui-dialog,
 .ui-dialog .ui-dialog-buttonpane {
   background: var(--color-ui-qua);
   border-color: var(--color-ui-qua);
 }
-
-/* nav#sideMenu .ui-button, */
-/* #sync-box { */
-/*   margin-bottom: 0.3em; */
-/* } */
-
-/* .left { */
-/*   margin-right: 0.3em; */
-/* } */
 
 .results {
   outline: 1px solid var(--color-fg7) !important;
@@ -727,11 +706,11 @@ li.results a:visited {
   color: black !important;
 }
 
-nav#sideMenu:hover {
+nav#side-menu:hover {
   scrollbar-color: var(--color-ui-sec) var(--color-ui-qua);
 }
 
-nav#sideMenu.expanded {
+nav#side-menu.expanded {
   left: 0;
 }
 
@@ -1066,17 +1045,15 @@ img.warning {
   width: 10em;
 }
 
-.huge {
+i.huge {
   font-size: 8em;
 }
 
-div.dialogContent {
-  display: flex;
-  flex-direction: var(--dialog-flex-direction);
+i.huge:not(.icon-petrolette) {
+  color: var(--color-ui-oct);
 }
 
-div.dialogContent > div.dialogImage,
-div.questionDialog > div.icon {
+div#icon {
   text-align: center;
   flex: 0 0 auto;
   min-width: 200px;
@@ -1390,8 +1367,8 @@ div.introjs-helperLayer {
 
 /* IntroJS (help tooltips) */
 .introjs-tooltip {
-  background-color: var(--color-ui-qua) !important;
-  border: 1px solid var(--color-ui-oct);
+  background-color: var(--color-ui-oct) !important;
+  border: 1px solid var(--color-ui-qua);
   color: var(--color-ui-pri) !important;
   width: 360px !important;
   max-width: 360px !important;

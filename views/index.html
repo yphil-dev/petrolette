@@ -144,9 +144,9 @@
              class="navRight"
              title="Pétrolette <%= version %>">
           <div class="logo-title">
-            <a href="#">Pétrolette</a>
+            Pétrolette
           </div>
-          <div class="logoType"
+          <div class="logo-type"
                data-version="<%= version %>">
             <i class="icon-petrolette"></i>
           </div>
@@ -155,293 +155,290 @@
       </div>
     </nav>
 
-    <nav style="display:none;" id="sideMenu" class="menu">
+    <nav style="display:none;" id="side-menu" class="menu">
 
-      <div id="sideMenu">
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Language">Language
-          </span>
-        </legend>
-        <fieldset class="menuForm flex-box">
-          <select id="language"
-                  class="grow translate"
-                  name="language"
-                  data-title="Language"
-                  title="Language">
-            <option id="optionEnglish"
-                    class="translate"
-                    data-content="English"
-                    selected="selected"
-                    value="en"></option>
-            <option id="optionFrench"
-                    class="translate"
-                    data-content="Français"
-                    value="fr"></option>
-            <option id="optionJapanese"
-                    class="translate"
-                    data-content="日本語"
-                    value="ja"></option>
-            <option id="optionSpanish"
-                    class="translate"
-                    data-content="Español"
-                    value="es"></option>
-          </select>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Help">
-            Help
-          </span>
-        </legend>
-        <fieldset class="menuForm">
-          <div class="flex-box">
-            <button id="help"
-                    class="grow translate help-button left"
-                    data-title="Documentation"
-                    data-content="Help"
-                    title="Documentation">
-              Help
-            </button>
-
-            <button
-              class="translate ui-button ui-corner-all grow"
-              data-content="Tour"
-              onclick="PTL.util.help('ui');">
-              Tour
-            </button>
-
-          </div>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Pétrolette">
-            Pétrolette
-          </span>
-        </legend>
-        <fieldset class="menuForm">
-          <div class="flex-box">
-            <a href="https://framagit.org/yphil/petrolette"
-               class="grow ui-button ui-corner-all translate left"
-               data-title="Use the force - read the Source"
-               title="Use the force - read the Source"
-               data-content="Source">
-              Source
-            </a>
-            <a href="/about/javascript"
-               data-jslicense="1"
-               class="grow ui-button ui-corner-all translate"
-               data-title="JavaScript license information"
-               title="JavaScript license information"
-               data-content="Licence">
-              Licence
-            </a>
-          </div>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Feeds">
-            Feeds
-          </span>
-        </legend>
-        <fieldset class="feedsMenuForm">
-          <div class="flex-box">
-            <input id="fileImport"
-                   type="file"
-                   style="display: none;" />
-            <button id="fileImportButton"
-                    class="grow translate"
-                    data-title="Open / import tabs and feeds">
-              <i class="icon-upload"></i>
-              <span class="translate"
-                    data-content="Open">
-                Open
-              </span>
-            </button>
-            <button id="saveTabs"
-                    class="grow translate"
-                    data-title="Save / export tabs and feeds">
-              <i class="icon-download"></i>
-              <span class="translate"
-                    data-content="Save">
-                Save
-              </span>
-            </button>
-            <button id="resetTabs"
-                    class="grow translate"
-                    data-title="Reset all tabs and feeds to defaults">
-              <i class="icon-refresh"></i>
-              <span class="translate"
-                    data-content="Reset">
-                Reset
-              </span>
-            </button>
-          </div>
-          <div id="sync-box" class="grow"></div>
-          <div id="progress-bar" class="grow"><div class="progress-label"></div></div>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Theme">
-            Theme
-          </span>
-        </legend>
-        <fieldset class="menuForm">
-          <div id="themeBox"
-               class="flex-box">
-          </div>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Media preload">Media preload
-          </span>
-        </legend>
-        <fieldset class="menuForm">
-          <div id="mediaPreloadBox"
-               class="flex-box">
-          </div>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Image gallery">Image gallery
-          </span>
-        </legend>
-        <fieldset id="galleryBox"
-                  class="menuForm">
-          <label class="ui-helper-hidden"
-                 for="gallerySlideshowSpeedValue"></label>
-          <span id="gallerySlideshowSpeedValue"
-                class="twin"></span>
-          <div id="gallerySlideshowSpeed"></div>
-          <div class="flex-box">
-            <div class="grow">
-              <label for="gallerySpeed" class="ui-helper-hidden">
-                <input type="text" id="gallerySpeed" />
-              </label>
-              <div id="gallerySpeedSlider"
-                   data-title="Slideshow speed"
-                   class="translate">
-              </div>
-            </div>
-
-            <div class="shrink">
-
-              <input id="gallerySpeedSpinner"
-                     class="translate"
-                     data-title="Slideshow speed"
-                     name="value">
-            </div>
-            <select id="gallerySlideTransition"
-                    class="grow unique translate"
-                    data-title="Slide transition">
-              <option class="translate"
-                      data-content="None"
-                      value="false">None</option>
-              <option class="translate"
-                      data-content="Fade"
-                      value="fade">Fade</option>
-              <option class="translate"
-                      data-content="Slide"
-                      value="slide">Slide</option>
-              <option class="translate"
-                      data-content="Circular"
-                      value="circular">Circular</option>
-              <option class="translate"
-                      data-content="Tube"
-                      value="tube">Tube</option>
-              <option class="translate"
-                      data-content="Zoom"
-                      value="zoom-in-out">Zoom-in-out</option>
-              <option class="translate"
-                      data-content="Rotate"
-                      value="rotate">Rotate</option>
-            </select>
-          </div>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Search prefix">Search prefix
-          </span>
-        </legend>
-        <fieldset class="menuForm">
-          <div class="flex-box">
-            <input name="searchPrefix"
-                   id="searchPrefixInput"
-                   class="unique grow ui-widget-content ui-corner-all translate"
-                   placeholder="Search prefix"
-                   data-title="Search prefix"
-                   title="Search prefix"
-                   value="" />
-            <button id="searchPrefixOkButton"
-                    class="shrink translate ui-button ui-corner-all ui-widget"
-                    data-title="OK"
-                    data-content="OK"
-                    title="OK"
-                    type="button">
-              OK
-            </button>
-
-            <button id="searchPrefixRestoreButton"
-                    data-title="Restore default search prefix"
-                    data-content="Restore default"
-                    class="grow translate ui-button ui-corner-all"
-                    type="button"
-                    title="Restore default search prefix">
-              Restore default
-            </button>
-          </div>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Support">Support
-          </span>
-        </legend>
-        <fieldset class="menuForm ui-widget-content">
-          <div class="flex-box" id="liberapay">
-            <a href="https://liberapay.com/yPhil/">
-              <img width="156" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
-            </a>
-            <a href="https://liberapay.com/yPhil/">
-              <img width="82" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
-            </a>
-          </div>
-        </fieldset>
-
-        <legend class="ui-corner-top hover">
-          <i class="icon-right rotate unfold"></i>
-          <span class="translate"
-                data-content="Console">Console
-          </span>
-        </legend>
-        <fieldset class="menuForm ui-widget-content">
-          <div class="flex-box">
-            <div
-              class="grow"
-              data-title="Click to toggle"
-              title="Click to toggle"
-              id="console">
-            </div>
-          </div>
-        </fieldset>
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Language">Language
+        </span>
       </div>
+      <fieldset class="menuForm flex-box">
+        <select id="language"
+                class="grow translate"
+                name="language"
+                data-title="Language"
+                title="Language">
+          <option id="optionEnglish"
+                  class="translate"
+                  label="English"
+                  data-content="English"
+                  selected="selected"
+                  value="en"></option>
+          <option id="optionFrench"
+                  class="translate"
+                  label="Français"
+                  data-content="Français"
+                  value="fr"></option>
+          <option id="optionJapanese"
+                  class="translate"
+                  label="日本語"
+                  data-content="日本語"
+                  value="ja"></option>
+          <option id="optionSpanish"
+                  class="translate"
+                  label="Español"
+                  data-content="Español"
+                  value="es"></option>
+        </select>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Help">
+          Help
+        </span>
+      </div>
+      <fieldset class="menuForm">
+        <div class="flex-box">
+          <button id="help"
+                  class="grow translate help-button left"
+                  data-title="Documentation"
+                  data-content="Help"
+                  title="Documentation">
+            Help
+          </button>
+
+          <button
+            class="translate ui-button ui-corner-all grow"
+            data-content="Tour"
+            onclick="PTL.util.help('ui');">
+            Tour
+          </button>
+
+        </div>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Pétrolette">
+          Pétrolette
+        </span>
+      </div>
+      <fieldset class="menuForm">
+        <div class="flex-box">
+          <a href="https://framagit.org/yphil/petrolette"
+             class="grow ui-button ui-corner-all translate left"
+             data-title="Use the force - read the Source"
+             title="Use the force - read the Source"
+             data-content="Source">
+            Source
+          </a>
+          <a href="/about/javascript"
+             data-jslicense="1"
+             class="grow ui-button ui-corner-all translate"
+             data-title="JavaScript licencing information"
+             title="JavaScript licencing information"
+             data-content="License">
+            License
+          </a>
+        </div>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Feeds">
+          Feeds
+        </span>
+      </div>
+      <fieldset class="feedsMenuForm">
+        <div class="flex-box">
+          <input id="fileImport"
+                 type="file"
+                 style="display: none;" />
+          <button id="fileImportButton"
+                  class="grow translate"
+                  data-title="Open / import tabs and feeds">
+            <i class="icon-upload"></i>
+            <span class="translate"
+                  data-content="Open">
+              Open
+            </span>
+          </button>
+          <button id="saveTabs"
+                  class="grow translate"
+                  data-title="Save / export tabs and feeds">
+            <i class="icon-download"></i>
+            <span class="translate"
+                  data-content="Save">
+              Save
+            </span>
+          </button>
+          <button id="resetTabs"
+                  class="grow translate"
+                  data-title="Reset tabs and feeds">
+            <i class="icon-refresh"></i>
+            <span class="translate"
+                  data-content="Reset">
+              Reset
+            </span>
+          </button>
+        </div>
+        <div id="sync-box" class="grow"></div>
+        <div id="progress-bar" class="grow"><div class="progress-label"></div></div>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Theme">
+          Theme
+        </span>
+      </div>
+      <fieldset class="menuForm">
+        <div id="themeBox"
+             class="flex-box">
+        </div>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Media preload">Media preload
+        </span>
+      </div>
+      <fieldset class="menuForm">
+        <div id="mediaPreloadBox"
+             class="flex-box">
+        </div>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Image gallery">Image gallery
+        </span>
+      </div>
+      <fieldset id="galleryBox"
+                class="menuForm">
+        <div id="gallerySlideshowSpeed"></div>
+        <div class="flex-box">
+          <div class="grow">
+            <label for="gallerySpeed" class="ui-helper-hidden">
+              <input type="text" id="gallerySpeed" />
+            </label>
+            <div id="gallerySpeedSlider"
+                 data-title="Slideshow speed"
+                 class="translate">
+            </div>
+          </div>
+
+          <div class="shrink">
+
+            <input id="gallerySpeedSpinner"
+                   class="translate"
+                   data-title="Slideshow speed"
+                   name="value">
+          </div>
+          <select id="gallerySlideTransition"
+                  class="grow unique translate"
+                  data-title="Slide transition">
+            <option class="translate"
+                    data-content="None"
+                    value="false">None</option>
+            <option class="translate"
+                    data-content="Fade"
+                    value="fade">Fade</option>
+            <option class="translate"
+                    data-content="Slide"
+                    value="slide">Slide</option>
+            <option class="translate"
+                    data-content="Circular"
+                    value="circular">Circular</option>
+            <option class="translate"
+                    data-content="Tube"
+                    value="tube">Tube</option>
+            <option class="translate"
+                    data-content="Zoom"
+                    value="zoom-in-out">Zoom-in-out</option>
+            <option class="translate"
+                    data-content="Rotate"
+                    value="rotate">Rotate</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Search prefix">Search prefix
+        </span>
+      </div>
+      <fieldset class="menuForm">
+        <div class="flex-box">
+          <input name="searchPrefix"
+                 id="searchPrefixInput"
+                 class="unique grow ui-widget-content ui-corner-all translate"
+                 placeholder="Search prefix"
+                 data-title="Search prefix"
+                 title="Search prefix"
+                 value="" />
+          <button id="searchPrefixOkButton"
+                  class="shrink translate ui-button ui-corner-all ui-widget"
+                  data-title="OK"
+                  data-content="OK"
+                  title="OK"
+                  type="button">
+            OK
+          </button>
+
+          <button id="searchPrefixRestoreButton"
+                  data-title="Restore default search prefix"
+                  data-content="Restore default"
+                  class="grow translate ui-button ui-corner-all"
+                  type="button"
+                  title="Restore default search prefix">
+            Restore default
+          </button>
+        </div>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Support">Support
+        </span>
+      </div>
+      <fieldset class="menuForm ui-widget-content">
+        <div class="flex-box" id="liberapay">
+          <a href="https://liberapay.com/yPhil/">
+            <img width="156" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
+          </a>
+          <a href="https://liberapay.com/yPhil/">
+            <img width="82" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
+          </a>
+        </div>
+      </fieldset>
+
+      <div class="side-menu-title ui-corner-top hover">
+        <i class="icon-right rotate unfold"></i>
+        <span class="translate"
+              data-content="Console">Console
+        </span>
+      </div>
+      <fieldset class="menuForm ui-widget-content">
+        <div class="flex-box">
+          <div
+            class="grow"
+            data-title="Click to toggle"
+            title="Click to toggle"
+            id="console">
+          </div>
+        </div>
+      </fieldset>
     </nav>
 
     <main>
@@ -454,7 +451,7 @@
 
       <noscript>
         <div id="no-script">
-          <h1 color="blue">Pétrolette</h1>
+          <h1>Pétrolette</h1>
           <h3>...Cannot work without JavaScript and CSS.</h3>
           <p>
             NB: All JS code on Pétrolette is Free, Libre and Open-Source Software : <a href="/about/javascript" data-jslicense="1">Read JavaScript Modules license information</a>.
@@ -472,7 +469,9 @@
            class="dead-center hidden">
         <div>
           <i class="icon-refresh spin"></i>
-          <div>Loading feeds</div>
+          <div
+            data-content="Loading"
+            class="translate">Loading</div>
         </div>
       </div>
 
@@ -507,8 +506,8 @@
     </script>
 
     <div id="notify" style="display:none">
-      <h4></h4>
-      <p></p>
+      <h4>$nbsp;</h4>
+      <p>$nbsp;</p>
     </div>
 
     <script async src="/bower/responsively-lazy/responsivelyLazy.min.js"></script>

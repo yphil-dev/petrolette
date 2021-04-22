@@ -1,4 +1,4 @@
-<div id="feedPrefs">
+<div id="feed-prefs">
   <form>
     <legend data-content="Location"
             class="ui-corner-top translate">Location</legend>
@@ -10,10 +10,10 @@
                data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
                value=""
                onclick="this.select()"
-               class="ui-widget-content grow ui-corner-all translate"
+               class="grow ui-corner-all translate"
         />
         <button id="feedGuessButton"
-                data-title="Find the feed for this URL, or build a new one from the search query"
+                data-title="Find / discover the feed of this website, or build a search feed from the words"
                 class="shrink translate last"
                 type="button">
           <i class="icon-search"></i>
@@ -31,7 +31,7 @@
                data-title="Feed name"
                value=""
                onclick="this.select()"
-               class="ui-widget-content grow ui-corner-all translate"
+               class="grow ui-corner-all translate"
         />
       </div>
     </fieldset>
@@ -40,12 +40,12 @@
             class="ui-corner-top translate">
       Tab
     </legend>
-    <fieldset id="feedGroupFieldset" class="ui-widget ui-widget-content ui-corner-all">
+    <fieldset id="feed-tab-fieldset" class="ui-widget ui-widget-content ui-corner-all">
 
-      <select id="feedGroup"
+      <select id="feed-tab-select"
               class="unique translate"
               name="Group"
-              data-title="Move the current feed in this group">
+              data-title="Move the current feed to this tab">
       </select>
 
     </fieldset>
@@ -54,9 +54,9 @@
             class="ui-corner-top translate">
       Type
     </legend>
-    <fieldset id="feedType" class="ui-widget ui-widget-content ui-corner-all">
+    <fieldset id="feed-type-fieldset" class="ui-widget ui-widget-content ui-corner-all">
 
-      <div id="feedType"
+      <div id="feed-type-div"
            class="flex-box">
 
         <label data-title="Display only text"
@@ -84,7 +84,7 @@
             class="ui-corner-top translate">
       Height
     </legend>
-    <fieldset id="feedLimitFieldset" class="ui-widget ui-widget-content ui-corner-all" data-title="Woyo!">
+    <fieldset id="feed-limit-fieldset" class="ui-widget ui-widget-content ui-corner-all" data-title="Woyo!">
       <div class="flex-box translate"
            data-title="Number of items displayed in this feed">
         <div class="feedLimit grow">
@@ -124,26 +124,7 @@
   </form>
 </div>
 
-<div id="questionDialog" class="questionDialog">
-  <div class="dialogContent">
-    <div class="dialogImage">
-      <i class="huge"></i>
-    </div>
-    <div class="dialogText">
-      <h1 class="translate"></h1>
-      <h2 id="name" class="translate"></h2>
-      <p id="name" class="translate"></p>
-      <h2 id="number" class="translate"></h2>
-      <p id="number" class="translate"></p>
-    </div>
-  </div>
-</div>
-
-<div id="nagDialog"
-     class="questionDialog">
-</div>
-
-<div id="helpDialog" title="Pétrolette">
+<div id="help-dialog" title="Pétrolette">
   <h1 class="translate"
       data-title="Welcome to Pétrolette"
       data-content="Welcome to Pétrolette">Welcome to Pétrolette</h1>
@@ -172,7 +153,7 @@
       <span class="translate"
             data-content="Pétrolette uses a time-tested technology">
         Pétrolette uses a time-tested technology
-      </span>: <a class="ptlInterface" href="https://wikipedia.org/wiki/RSS">RSS</a>.
+      </span>: <a class="ptl-link" href="https://wikipedia.org/wiki/RSS">RSS</a>.
 
       <span class="translate"
             data-content="Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them.">
@@ -195,8 +176,8 @@
           At the next refresh, Pétrolette displays a new link to this article
         </li>
       </ul>
-
     </p>
+    <br>
 
     <h3 class="translate"
         data-content="Why didn't I have to register? Where are my tabs and feeds saved?">Why didn't I have to register? Where are my tabs and feeds saved?</h3>
@@ -224,6 +205,7 @@
       </ul>
     </p>
   </div>
+  <br>
 
   <h3 class="translate"
       data-title="What is a tab?"
@@ -257,14 +239,16 @@
             data-content="And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.">And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.</li>
       </ul>
     </p>
+    <br>
+
     <p>
       <span class="dialog translate"
             data-content="You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette">
         You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette</span>:
       <a href="#"
-         class="help-bookmarklet translate icon-petrolette ui-button ui-corner-all"
-         data-title="Drag to the bookmark bar"
-         title="Drag to the bookmark bar"
+         class="help-bookmarklet translate ui-button ui-corner-all"
+         data-title='Drag me to the bookmark bar, or right click "Bookmark this link"'
+         title='Drag me to the bookmark bar, or right click "Bookmark this link"'
          data-content="Add to Pétrolette">
         Add to Pétrolette
       </a>
@@ -286,70 +270,74 @@
         the tabs and the feeds
       </button>
       <span class="dialog translate"
-            data-content="and Pétrolette in general.">and Pétrolette in general.</span>
+            data-content="and Pétrolette in general.">
+        and Pétrolette in general.</span>
     </p>
   </div>
 </div>
 
-<div id="editTabDialog">
+<div id="edit-tab-dialog">
   <form>
     <fieldset class="ui-widget ui-widget-content ui-corner-all">
-      <legend id="tabNameLegend"
-              class="ui-corner-top translate"
-              data-content="Name">Name</legend>
+      <legend class="translate" data-content="Name">Name</legend>
       <div class="flex-box">
-
-        <label for="tabName"
-               class="ui-helper-hidden">Name</label>
         <input
           name="name"
-          id="tabName"
+          id="tab-name"
           value=""
-          class="ui-widget-content grow ui-corner-all" />
+          onclick="this.select()"
+          class="grow ui-corner-all" />
       </div>
     </fieldset>
 
     <fieldset class="ui-widget ui-widget-content ui-corner-all">
-      <legend id="tabMoveLegend"
-              class="ui-corner-top translate"
-              data-content="Position">Position</legend>
+      <legend class="translate" data-content="Position">Position</legend>
       <div class="flex-box">
-
         <button type="button"
                 id="left"
+                data-title="Left"
                 class="ui-button grow"
                 autofocus>
-          <i class="icon-left-open"></i>
-          <span data-content="Left"
-                class="translate">
-            Left
-          </span>
+          <i class="icon-left"></i>
         </button>
         <button type="button"
                 id="right"
+                data-title="Right"
                 class="ui-button grow last">
-          <span data-content="Right"
-                class="translate">
-            Right
-          </span>
-          <i class="icon-right-open"></i>
+          <i class="icon-right"></i>
         </button>
-
       </div>
     </fieldset>
+
   </form>
 </div>
 
-<div id="beggarDialog" class="flex-box">
+<div id="beggar-dialog" class="flex-box">
   <img id="beggar-img" src="https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/Rally-1933.jpg" alt="A woman rider in the Six Days Motorcycle Trial, Germany 1933" />
   <span class="image-legend">A woman rider in the Six Days Motorcycle Trial, Germany 1933</span>
   <!-- <span class="huge">🍏</span> -->
   <p>
     <span class="translate"
           data-content="Pétrolette is free software. However the development requires">
-      Pétrolette is free software. However the development requires</span> <span><a class="translate ptlInterface" data-content="a lot of time" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">a lot of time</a></span> <span class="translate" data-content="and">and</span> <a class="translate ptlInterface" data-content="a lot of work" href="https://framagit.org/yphil/petrolette/-/commits/master">a lot of work</a>. <span data-content="In order to keep developing Pétrolette with new features I need your help." class="translate">In order to keep developing Pétrolette with new features I need your help.</span>
+      Pétrolette is free software. However the development requires</span> <span><a class="translate ptl-link" data-content="a lot of time" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">a lot of time</a></span> <span class="translate" data-content="and">and</span> <a class="translate ptl-link" data-content="a lot of work" href="https://framagit.org/yphil/petrolette/-/commits/master">a lot of work</a>. <span data-content="In order to keep developing Pétrolette with new features I need your help." class="translate">In order to keep developing Pétrolette with new features I need your help.</span>
   </p>
   <p class="translate" data-content="Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.">
     Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.
   </p>
+</div>
+
+<div id="question-dialog">
+  <div class="flex-box">
+    <div id="icon">
+      <i class="huge"></i>
+    </div>
+    <div id="dialog-text">
+      <h1 class="translate"></h1>
+      <p id="dialog-blurb" class="translate"></p>
+      <h2 class="translate"></h2>
+      <p></p>
+      <h2 class="translate"></h2>
+      <p></p>
+    </div>
+  </div>
 </div>
