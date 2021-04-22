@@ -11,7 +11,7 @@
 
 ## Good morning! ☕ 📰
 
-[Pétrolette](http://petrolette.space) is a news reading home page, [free](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). It is immediately usable **without registration** with the same URL on the desktop or a mobile device.
+[Pétrolette](http://petrolette.space) is a news reading home page, [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). It is immediately usable **without registration** with the **same URL** on the desktop or a mobile device.
 
 Go ahead, it's yours : Create, delete, move feeds and tabs, close / quit your browser, come back tomorrow, everything is how you left it.
 
@@ -27,9 +27,10 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 
 - No ads, no trackers, just the news
 - Displays all modern feeds (Atom, Media-RSS, etc.)
+- **Video / Audio playing** directly in Pétrolette
+- **Discovery of the feed** in a page / website
 - Mobile / **phone** / tablet / responsive interface
 - Search within all the feeds
-- **Discovery of the feed** in a page / website
 - Direct link to all the article / item's resources (image, video, sound)
 - Advanced image management (download, gallery, slidewhow, etc.)
 - Import / export of the tabs & feeds file (replace / merge)
