@@ -12,18 +12,18 @@ var PTL = (function() {
 
       const $sideMenu = $('nav#side-menu'),
             $overlay = $('#overlay'),
-            $feedCodeButton = $('button#feedCode'),
-            $importButton = $("button#fileImportButton"),
-            $fileImportInput = $("input#fileImport"),
-            $saveButton = $('#saveTabs'),
+            $importButton = $("button#file-import-button"),
+            $fileImportInput = $("input#file-import-input"),
+            $saveButton = $('button#save-tabs-button'),
             $resetButton = $('#resetTabs'),
             $langMenu = $('select#language'),
-            $slider = $('div#gallerySpeedSlider'),
+            $slider = $('div#gallery-speed-slider'),
             $searchField = $('#ptlSearch input').val(''),
+            $gallerySlideTransitionMenu = $sideMenu.find('select#gallery-slide-transition-menu'),
             $searchPrefixOkButton = $('button#searchPrefixOkButton'),
             $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
-            $searchPrefixInput = $('input#searchPrefixInput'),
-            $spinner = $('#gallerySpeedSpinner'),
+            $searchPrefixInput = $('input#search-prefix-input'),
+            $spinner = $('input#gallery-speed-spinner-input'),
             $logoType = $('.logo-type'),
             $topMenu = $('nav#top-menu');
 
@@ -35,7 +35,6 @@ var PTL = (function() {
         .val(PTL.prefs.readConfig('searchPrefix'));
 
       $searchPrefixRestoreButton.click(function(){
-        console.log('val %s', $searchPrefixInput.val());
         $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefixDefault'));
         PTL.util.say(PTL.tr('Restored search prefix to default value'), 'success', true);
       });
@@ -131,11 +130,6 @@ var PTL = (function() {
         PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', true, false);
       });
 
-      $feedCodeButton.click(function(event) {
-        event.preventDefault();
-        window.open('https://framagit.org/yphil/petrolette');
-      });
-
       $overlay.click(function() {
         PTL.sideMenu('close');
       });
@@ -177,7 +171,7 @@ var PTL = (function() {
       });
 
       $importButton.click(function () {
-        $("input#fileImport").click();
+        $("input#file-import-input").click();
         return false;
       });
 
@@ -227,7 +221,7 @@ var PTL = (function() {
         PTL.prefs.writeConfig('theme', $(this).attr('value'));
       });
 
-      const $mediaPreloadBox = $('div#mediaPreloadBox'),
+      const $mediaPreloadFieldset = $('div#media-preload-fieldset'),
             $mediaPreloadNoneLabel = $('<label>')
             .attr('class', 'translate grow')
             .attr('for', 'none')
@@ -262,12 +256,12 @@ var PTL = (function() {
             .attr('name', 'radio-3')
             .attr('value', 'auto');
 
-      $mediaPreloadBox.append($mediaPreloadNoneLabel,
-                              $mediaPreloadNoneInput,
-                              $mediaPreloadMetaLabel,
-                              $mediaPreloadMetaInput,
-                              $mediaPreloadAutoLabel,
-                              $mediaPreloadAutoInput);
+      $mediaPreloadFieldset.append($mediaPreloadNoneLabel,
+                                   $mediaPreloadNoneInput,
+                                   $mediaPreloadMetaLabel,
+                                   $mediaPreloadMetaInput,
+                                   $mediaPreloadAutoLabel,
+                                   $mediaPreloadAutoInput);
 
       $sideMenu.find('.mediaPreloadSwitcher').checkboxradio();
 
@@ -297,12 +291,12 @@ var PTL = (function() {
 
       $.fancybox.defaults.wheel = 'auto';
 
-      $sideMenu.find('select#gallerySlideTransition').change(function() {
-        $.fancybox.defaults.transitionEffect = $(this).val();
+      $gallerySlideTransitionMenu
+        .val(gallerySlideTransition)
+        .change(function() {
+          $.fancybox.defaults.transitionEffect = $(this).val();
         PTL.prefs.writeConfig('gallerySlideTransition', $(this).val());
       });
-
-      $sideMenu.find('select#gallerySlideTransition').val(gallerySlideTransition);
 
       if (PTL.prefs.readConfig('tabDropActivate') === 'true')
         $('input#tabDropActivate').prop('checked', true).checkboxradio('refresh');
@@ -345,7 +339,6 @@ var PTL = (function() {
           $(this).find('.ui-slider-handle').text(PTL.util.milliToSecs(gallerySlideshowSpeed) + 's');
         },
         slide: function(event, ui) {
-          // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
           $spinner.val(PTL.util.milliToSecs(ui.value));
           $(this).find('.ui-slider-handle').text(PTL.util.milliToSecs(ui.value) + 's');
 
@@ -400,7 +393,7 @@ var PTL = (function() {
         PTL.util.translate();
       };
 
-      const $debugHiddenButton = $('<span>')
+      const $debugHiddenButton = $('<button>')
             .text('debug')
             .click(function () {
               PTL.dialog.beg();

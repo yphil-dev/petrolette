@@ -256,10 +256,10 @@
       </div>
       <fieldset class="feedsMenuForm">
         <div class="flex-box">
-          <input id="fileImport"
+          <input id="file-import-input"
                  type="file"
                  style="display: none;" />
-          <button id="fileImportButton"
+          <button id="file-import-button"
                   class="grow translate"
                   data-title="Open / import tabs and feeds">
             <i class="icon-upload"></i>
@@ -268,7 +268,7 @@
               Open
             </span>
           </button>
-          <button id="saveTabs"
+          <button id="save-tabs-button"
                   class="grow translate"
                   data-title="Save / export tabs and feeds">
             <i class="icon-download"></i>
@@ -311,7 +311,7 @@
         </span>
       </div>
       <fieldset class="menuForm">
-        <div id="mediaPreloadBox"
+        <div id="media-preload-fieldset"
              class="flex-box">
         </div>
       </fieldset>
@@ -322,15 +322,14 @@
               data-content="Image gallery">Image gallery
         </span>
       </div>
-      <fieldset id="galleryBox"
+      <fieldset id="gallery-box"
                 class="menuForm">
-        <div id="gallerySlideshowSpeed"></div>
         <div class="flex-box">
           <div class="grow">
-            <label for="gallerySpeed" class="ui-helper-hidden">
-              <input type="text" id="gallerySpeed" />
+            <label for="gallery-speed-input" class="ui-helper-hidden">
+              <input type="text" id="gallery-speed-input" />
             </label>
-            <div id="gallerySpeedSlider"
+            <div id="gallery-speed-slider"
                  data-title="Slideshow speed"
                  class="translate">
             </div>
@@ -338,12 +337,12 @@
 
           <div class="shrink">
 
-            <input id="gallerySpeedSpinner"
+            <input id="gallery-speed-spinner-input"
                    class="translate"
                    data-title="Slideshow speed"
                    name="value">
           </div>
-          <select id="gallerySlideTransition"
+          <select id="gallery-slide-transition-menu"
                   class="grow unique translate"
                   data-title="Slide transition">
             <option class="translate"
@@ -380,7 +379,7 @@
       <fieldset class="menuForm">
         <div class="flex-box">
           <input name="searchPrefix"
-                 id="searchPrefixInput"
+                 id="search-prefix-input"
                  class="unique grow ui-widget-content ui-corner-all translate"
                  placeholder="Search prefix"
                  data-title="Search prefix"

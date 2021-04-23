@@ -196,6 +196,8 @@ PTL.i18n.translations = {
 
   "Everything starts here" : { fr: "Tout commence ici" , ja: "すべてがここから始まります", es: "Todo comienza aquí" },
 
+  "This is an RSS feed" : { fr: "Ceci est un flux RSS" , ja: "これはソースです 詳細情報", es: "Esta es una fuente." },
+
   "Keep everything tidy" : { fr: "Tout est bien rangé" , ja: "すべてを整頓してください", es: "Mantenga todo ordenado" },
 
   "Tab control" : { fr: "Contrôle de l'onglet" , ja: "タブコントロール", es: "Control de pestañas" },
@@ -206,6 +208,8 @@ PTL.i18n.translations = {
   "B-bye" : { fr: "Au revoir" , ja: "さようなら", es: "Adios" },
   "Grip handle" : { fr: "Poignée" , ja: "グリップハンドル", es: "Mango" },
 
+  "Total control" : { fr: "Contrôle total" , ja: "総コントロール", es: "Control total" },
+
   "Folded feeds are not loaded at startup, so as to speed things up." : { fr: "Les flux pliés ne sont pas chargés au démarrage, afin d'accélérer les choses." , ja: "折りたたまれたフィードは、処理を高速化するために、起動時に読み込まれません。", es: "Los feeds doblados no se cargan al inicio, para acelerar las cosas." },
 
   "You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette" : { fr: "Vous pouvez également faire glisser ce bouton dans la barre d'outils de votre navigateur et cliquer dessus lorsque vous souhaitez ajouter un site Web à Pétrolette" , ja: "このボタンをブックマークツールバーにドラッグして、Pétroletteにウェブサイトを追加するときにクリックすることもできます", es: "También puede arrastrar este botón a la barra de herramientas de su marcador y hacer clic en él cuando desee agregar un sitio web a Pétrolette." },
@@ -214,8 +218,6 @@ PTL.i18n.translations = {
   'Drag me to the bookmark bar, or right click "Bookmark this link"' : { fr: 'Glissez-moi dans la barre de favoris, ou clic droit "Marque-page sur ce lien"' , ja: 'ブックマークバーに私をドラッグするか、右クリック"Bookmarkこのリンク"', es: 'Arrastre a la barra de marcadores, o haga clic derecho en "Bookmark este enlace"' },
 
   "This is a feed. More info: %1" : { fr: "Ceci est un flux. Plus d'infos: %1" , ja: "これはソースです 詳細情報：%1", es: "Esta es una fuente. Más info: %1" },
-
-  "This is an RSS feed" : { fr: "Ceci est un flux RSS" , ja: "これはソースです 詳細情報", es: "Esta es una fuente." },
 
   "Click this button to add a tab" : { fr: "Cliquez sur ce bouton pour ajouter un onglet" , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo" },
 
@@ -318,14 +320,6 @@ PTL.i18n.translations = {
   "All tabs and feeds restored to defaults" : { fr: "Tous les onglets et flux restaurés aux valeurs par défaut" , ja: "すべてのタブとフィードがデフォルトに復元されました", es: "Todas las pestañas y fuentes restaurados a los valores predeterminados" },
 
   "Empty feed" : { fr: "Source vide" , ja: "空のソース", es: "fuente vacía" },
-
-  "View Pétrolette according to the time of day." : { fr: "Voir Pétrolette selon l'heure de la journée." , ja: "時刻に応じてPétroletteを表示する", es: "Ver Pétrolette según la hora del día." },
-
-  "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
-  "Help Pétrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Pétrolette." , ja: "あなたの精神的な日の気分に応じてPétroletteを助けてください", es: "Ayuda a Pétrolette de acuerdo con tu estado de ánimo espiritual del día." },
-  "This file is bad [%1]" : { fr: "Ce fichier est chelou [%1]" , ja: "[%1]このファイルは悪いです", es: "Este archivo es malo [%1]" },
-  "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
-  "Erase all" : { fr: "Tout effacer" , ja: "すべてを消去する", es: "Borrar todo" },
 
   "Connected to remote storage" : { fr: "Connecté au stockage distant" , ja: "リモートストレージに接続", es: "Conectado al almacenamiento remoto" },
 
@@ -432,8 +426,10 @@ PTL.i18n.translations = {
   "Configure this feed" : { fr: "Configurer ce flux" , ja: "このソースを設定します", es: "Configura esta fuente" },
   "Configure this feed." : { fr: "Configurer ce flux." , ja: "このソースを設定します。", es: "Configura esta fuente." },
 
-  "Delete this feed?" : { fr: "Supprimer ce flux ?", ja: "本当にこのフィードを削除しますか？", es: "¿Borraste esta feed?" },
   "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar fuente" },
+  "Delete this feed?" : { fr: "Supprimer ce flux ?", ja: "本当にこのフィードを削除しますか？", es: "¿Borraste esta feed?" },
+  "Delete this feed." : { fr: "Supprimer ce flux.", ja: "本当にこのフィードを削除しますか。", es: "Borraste esta feed." },
+
 
   "Delete tab" : { fr: "Supprimer onglet", ja: "フォルダを削除", es: "Eliminar carpeta" },
   "Delete the [%1] tab" : { fr: "Supprimer l'onglet [%1]" , ja: "本当にこのフォルダを削除しますか？", es: "Eliminar el carpeta [%1]" },

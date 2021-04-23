@@ -10,7 +10,7 @@ PTL.dialog = {
     $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
       const $dialog = $(this),
-            $icon = $dialog.find('div#icon > i');
+            $icon = $dialog.find('div#dialog-image > i');
 
       $icon.addClass('icon-refresh danger');
 
@@ -61,13 +61,9 @@ PTL.dialog = {
   },
   beg:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #beggar-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #beg-dialog', function() {
 
-      const $dialog = $(this),
-            $beggarH4 = $dialog.find('h4'),
-            $beggarClose = $dialog.find('span.beggarClose'),
-            $beggarOkButton = $dialog.find('#beggarOkButton'),
-            $beggarTourButton = $dialog.find('#beggarTourButton');
+      const $dialog = $(this);
 
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
@@ -126,7 +122,7 @@ PTL.dialog = {
 
       const $dialog = $(this),
             $content = $dialog.find('div.flex-box'),
-          $icon = $dialog.find('div#icon > i');
+            $icon = $dialog.find('div#dialog-image > i');
 
       $icon.addClass('icon-petrolette');
       $content.css('flex-direction', 'column');
@@ -464,7 +460,7 @@ PTL.dialog = {
           $panel = $column.parent(),
           $columnsInTab = $panel.find('.column'),
           $feedsInCol = $column.find('.feed'),
-          $icon = $dialog.find('div#icon > i'),
+          $icon = $dialog.find('div#dialog-image > i'),
           colIndex = $panel.find('.column').index($column),
           nbOfColumnsInTab = $columnsInTab.length,
           nbOfFeedsInCol = $feedsInCol.length;
@@ -519,7 +515,7 @@ PTL.dialog = {
     $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
       const $dialog = $(this),
-            $iconDiv = $dialog.find('div#icon');
+            $iconDiv = $dialog.find('div#dialog-image');
 
       $iconDiv.remove();
 
@@ -652,7 +648,7 @@ PTL.dialog = {
             $a = $button.prev('a.ui-tabs-anchor'),
             $selectedTab = $a.parent(),
             $selectedPanel = $tabs.find(tabId),
-            $icon = $dialog.find('div#icon > i');
+            $icon = $dialog.find('div#dialog-image > i');
 
       var tabId = $a.attr('href'),
           selectedTabIndex = $tabs.tabs('option', 'active'),
@@ -717,9 +713,9 @@ PTL.dialog = {
 
       const $dialog = $(this),
             $thisFeed = $button.parent().parent().parent().parent(),
-          thisFeedId = $button.parent().parent().parent().parent().attr('id'),
-          thisFeedName = $button.parent().parent().parent().find('.feed-title').text(),
-          $icon = $dialog.find('div#icon > i');
+            thisFeedId = $button.parent().parent().parent().parent().attr('id'),
+            thisFeedName = $button.parent().parent().parent().find('.feed-title').text(),
+            $icon = $dialog.find('div#dialog-image > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -774,7 +770,7 @@ PTL.dialog = {
     $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
 
       const $dialog = $(this),
-            $icon = $dialog.find('div#icon > i');
+            $icon = $dialog.find('div#dialog-image > i');
 
       $icon.addClass('icon-upload');
 

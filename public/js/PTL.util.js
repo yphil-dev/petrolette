@@ -250,7 +250,7 @@ PTL.util = {
         {
           title: PTL.tr("That's what it's all about"),
           element: 'li.feed',
-          intro: PTL.tr('This is an RSS feed.') + ' <a href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-help"></i></a>'
+          intro: PTL.tr('This is an RSS feed') + ' <a href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-help"></i></a>'
         },
         {
           title: PTL.tr('Keep everything tidy'),
@@ -283,7 +283,7 @@ PTL.util = {
           intro: PTL.tr('Select this feed (for drag & drop).')
         },
         {
-          title: 'Grip handle',
+          title: PTL.tr('Grip handle'),
           element: '.feed-handle',
           intro: PTL.tr('Drag here to move this feed (and all other selected feeds) within this tab, or into another.')
         },
@@ -298,9 +298,9 @@ PTL.util = {
           intro: PTL.tr('Delete this feed.')
         },
         {
-          title: PTL.tr('You are in control now'),
+          title: PTL.tr('Total control'),
           element: 'div#menuButton',
-          intro: PTL.tr('Use the menu to configure Pétrolette')
+          intro: PTL.tr('Use the menu to configure Pétrolette.')
         }
       ]
     });
@@ -352,31 +352,6 @@ PTL.util = {
       ]
     });
 
-    menu.setOptions({
-      steps: [
-        {
-          element: 'button#fileImport',
-          intro: PTL.tr('Open / import tabs and feeds.')
-        },
-        {
-          element: 'button#saveTabs',
-          intro: PTL.tr('Save / Export tabs and feeds.')
-        },
-        {
-          element: 'div#themeBox',
-          intro: PTL.tr('View Pétrolette according to the time of day.')
-        },
-        {
-          element: 'fieldset#galleryBox',
-          intro: PTL.tr('When you click an image, you can view it in a gallery, and start a slideshow.')
-        },
-        {
-          element: 'button#donate',
-          intro: PTL.tr('Help Pétrolette according to your spiritual mood of the day.')
-        }
-      ]
-    });
-
     ui.setOption('prevLabel', PTL.tr('Prev'));
     ui.setOption('nextLabel', PTL.tr('Next'));
     ui.setOption('skipLabel', PTL.tr('Close'));
@@ -387,18 +362,7 @@ PTL.util = {
     dialog.setOption('skipLabel', PTL.tr('Close'));
     dialog.setOption('doneLabel', PTL.tr('Got it!'));
 
-    dialog.setOption('overlayOpacity', 0);
-    ui.setOption('overlayOpacity', 0.2);
-
-    dialog.setOption('hideNext', true);
-    dialog.setOption('hidePrev', true);
-
-    if (type === 'menu') {
-      dialog.exit();
-      menu.start();
-      $('.introjs-fixParent').css('position', 'absolute');
-    } else if (type === 'dialog') {
-      menu.exit();
+    if (type === 'dialog') {
       dialog.start();
     } else {
       dialog.exit();
@@ -406,8 +370,6 @@ PTL.util = {
       $('.feed').first().find('.collapsible').show('fade', 'fast');
       ui.start();
     }
-
-    // $('.introjs-button').button();
 
   },
   translate:function() {
