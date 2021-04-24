@@ -332,7 +332,7 @@ PTL.feed = {
                 .text(feedUrl);
 
           const $errorButtonsFlexBox = $('<a>')
-                .attr('class', 'translate flex-box');
+                .attr('class', 'translate flexBox');
 
           const $errorItem = $('<li>')
                 .attr('class', 'feed-item error')

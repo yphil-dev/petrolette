@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "The news reader that doesn't know you",
-  "version": "1.2.8",
+  "version": "1.2.9A",
   "private": true,
   "license": "GPL-3.0-only",
   "HTTP_PORT": 8000,

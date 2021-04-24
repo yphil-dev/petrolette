@@ -61,7 +61,7 @@ var PTL = (function() {
 
       $('.js-enabled-only').show();
 
-      $('body').on('click','.help-bookmarklet', function(event) {
+      $('body').on('click','.helpBookmarklet', function(event) {
         event.preventDefault();
       });
 

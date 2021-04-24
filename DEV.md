@@ -7,8 +7,7 @@
 
 ## Conventions & style guide
 
-- Pétrolette functions / methods, JQuery objects / vars are in `camelCase` ;
-- HTML / CSS elements names are in `kebab-case` ;
+- Pétrolette JS objects (funtions, var, ect.) and HTML / CSS elements names are in `camelCase` ;
 - JQuery is aliased to `$`, and *all* JQuery vars & constants are sigil-prefixed with `$` ;
 - Single quotes in JS, double quotes in HTML ;
 - Indents: 2 *spaces*.

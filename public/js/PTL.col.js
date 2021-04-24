@@ -23,7 +23,7 @@ PTL.col = {
   add: function(colIndex, newCol) {
 
     const $colButtons = $('<div>')
-        .attr('class', 'buttons flex-box');
+        .attr('class', 'buttons flexBox');
 
     const $colLegend = $('<legend>')
         .attr('class', 'legend legend-col unique translate')

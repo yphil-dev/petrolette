@@ -309,7 +309,7 @@ PTL.util = {
       steps: [
         {
           title: PTL.tr('Everything starts here'),
-          element: 'input#feed-guess',
+          element: 'input#feedGuessInput',
           intro: '<p><span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss ptl-link" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>.</p><p><span class="translate" data-content="If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words">' + PTL.tr('If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words') + '.</span><p>',
           position: 'bottom'
         },
@@ -321,25 +321,25 @@ PTL.util = {
         },
         {
           title: PTL.tr('Feed name (optional)'),
-          element: 'input#feed-name',
+          element: 'input#feedNameInput',
           intro: PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.'),
           position: 'left'
         },
         {
           title: PTL.tr('Keep everything tidy'),
-          element: 'fieldset#feed-tab-fieldset',
+          element: 'fieldset#feedTabFieldset',
           intro: PTL.tr('Move this feed to another tab.'),
           position: 'bottom'
         },
         {
           title: PTL.tr('Feed type'),
-          element: 'fieldset#feed-type-fieldset',
+          element: 'fieldset#feedTypeFieldset',
           intro: PTL.tr('The type of feed: It can be all text, all image, or mixed.'),
           position: 'top'
         },
         {
           title: PTL.tr('Number of items'),
-          element: 'fieldset#feed-limit-fieldset',
+          element: 'fieldset#feedLimitFieldset',
           intro: PTL.tr('How many new items should this feed display at a time?'),
           position: 'top'
         },
