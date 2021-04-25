@@ -4,7 +4,7 @@
   --color-fg3: #CCCCCC; /* Visited links */
   --color-fg4: #404552; /* Separators */
   --color-fg5: #F77F00; /* Feed controls */
-  --color-fg6: #eae2b7; /* Feed title */
+  --color-fg6: #EAE2B7; /* Feed title */
   --color-fg7: #FFFF00; /* Feed title */
   --color-bg1: #29323C; /* Body / Feed border  */
   --color-bg2: #1F262E; /* Feed header */
@@ -16,20 +16,26 @@
   --color-hl3: #000000;
   --color-danger: #FF0000;
 
-  --color-text: #FFFFFF; /* Normal text */
-  --color-link: #FF4136; /* Links */
-  --color-link-visited: #CCCCCC; /* Visited links */
-  --color-link-hover: #CCCCCC; /* Visited links */
-  --color-tab-border: #404552; /* Separators */
-  --color-feed-control: #F77F00; /* Feed controls */
-  --color-feed-control-hover: #F77F00; /* Feed controls */
-  --color-feed-title: #eae2b7; /* Feed title */
-  --color-feed-border: #29323C; /* Body / Feed border  */
-  --color-feed-header: #1F262E; /* Feed header */
-  --color-feed-bg: #383C4A; /* Feed item BG */
-  --color-feed-bg-alt: #424657; /* Feed item BG alternate */
-  --color-hl1: #1F262E;
-  --color-hl2: #000000; /* Feed controls hover */
+  --color-text: #FFFFFF;
+  --color-background: #29323C;
+  --color-scrollbar: #FF4136;
+  --color-border: #29323C;
+  --color-link: #FF4136;
+  --color-link-visited: #CCCCCC;
+  --color-link-hover: #19B5FE;
+  --color-tab-border: #404552;
+  --color-feed-control: #F77F00;
+  --color-feed-control-hover: #19B5FE;
+  --color-feed-title: #BC6FF1;
+  --color-feed-border: #1F262E;
+  --color-feed-header-bg: #1F262E;
+  --color-feed-bg: #383C4A;
+  --color-feed-bg-alt: #424657;
+  --color-tab-active-fg: #1F262E;
+  --color-tab-active-bg: #1F262E;
+  --color-tab-inactive-fg: #1F262E;
+  --color-tab-inactive-bg: #29323C;
+  --color-hl2: #000000;
   --color-hl3: #000000;
   --color-danger: #FF0000;
 }

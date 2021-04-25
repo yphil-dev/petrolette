@@ -462,13 +462,10 @@ PTL.dialog = {
 
       const $dialog = $(this),
             $column = $button.parent().parent(),
-          $panel = $column.parent(),
-          $columnsInTab = $panel.find('.column'),
-          $feedsInCol = $column.find('.feed'),
-          $icon = $dialog.find('div#icon > i'),
-          colIndex = $panel.find('.column').index($column),
-          nbOfColumnsInTab = $columnsInTab.length,
-          nbOfFeedsInCol = $feedsInCol.length;
+            $panel = $column.parent(),
+            $icon = $dialog.find('div#icon > i'),
+            colIndex = $panel.find('.column').index($column),
+            nbOfFeedsInCol = $column.find('.feed').length;
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -651,13 +648,12 @@ PTL.dialog = {
       const $dialog = $(this),
             $tabs = $('#tabs'),
             $a = $button.prev('a.ui-tabs-anchor'),
+            tabId = $a.attr('href'),
             $selectedTab = $a.parent(),
             $selectedPanel = $tabs.find(tabId),
-            $icon = $dialog.find('div#icon > i');
-
-      var tabId = $a.attr('href'),
-          selectedTabIndex = $tabs.tabs('option', 'active'),
-          previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
+            $icon = $dialog.find('div#icon > i'),
+            selectedTabIndex = $tabs.tabs('option', 'active'),
+            previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
 
       $icon.addClass('icon-trash-empty danger');
 

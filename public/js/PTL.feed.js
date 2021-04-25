@@ -297,7 +297,7 @@ PTL.feed = {
                 $reportLinkIcon = $('<i>');
 
           $validateLinkIcon
-            .attr('class', 'item-icon icon-w3c')
+            .attr('class', 'itemIcon icon-w3c')
             .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
             .appendTo($validateLink);
 
@@ -306,7 +306,7 @@ PTL.feed = {
             .appendTo($feedBodyUl);
 
           $reportLinkIcon
-            .attr('class', 'item-icon icon-petrolette')
+            .attr('class', 'itemIcon icon-petrolette')
             .attr('title', PTL.tr('Report feed error'))
             .appendTo($reportLink);
 
@@ -343,7 +343,7 @@ PTL.feed = {
 
           $feedBody.css('height', '');
 
-          // return;
+          return;
 
         } else {
 
@@ -452,7 +452,7 @@ PTL.feed = {
                 .attr('href', item.enclosures[0].url)
                 .appendTo($itemDiv);
               $videoIcon
-                .attr('class', 'item-icon icon-video')
+                .attr('class', 'itemIcon icon-video')
                 .appendTo($videoLink);
             }
 
@@ -470,7 +470,7 @@ PTL.feed = {
                 .attr('href', item.enclosures[0].url)
                 .appendTo($itemDiv);
               $audioIcon
-                .attr('class', 'item-icon icon-audio')
+                .attr('class', 'itemIcon icon-audio')
                 .appendTo($audioLink);
             }
           }
@@ -506,7 +506,7 @@ PTL.feed = {
 
           if (item.comments) {
             $commentsIcon
-              .attr('class', 'item-icon icon-comments')
+              .attr('class', 'itemIcon icon-comments')
               .appendTo($commentsLink);
 
             $commentsLink

@@ -26,7 +26,7 @@ PTL.col = {
           .attr('class', 'buttons flexBox');
 
     const $colLegend = $('<legend>')
-        .attr('class', 'legend legend-col unique translate')
+        .attr('class', 'colLegend legend-col unique translate')
         .data('title', 'Column')
         .data('content', 'Column')
         .text(PTL.tr('Column'));
@@ -34,7 +34,7 @@ PTL.col = {
     const $srcLegend = $('<legend>')
           .data('title', 'Feed')
           .data('content', 'Feed')
-          .attr('class', 'legend unique translate')
+          .attr('class', 'colLegend unique translate')
           .text(PTL.tr('Feed'));
 
     const $column = $('<ul>')

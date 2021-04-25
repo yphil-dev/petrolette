@@ -99,9 +99,9 @@
 }
 
 body {
-  color: var(--color-fg1);
-  background-color: var(--color-bg1);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  /* font-family: Arial, Helvetica, sans-serif; */
   margin: 0;
 }
 
@@ -152,10 +152,6 @@ li.results a:visited {
   color: var(--color-fg1);
 }
 
-/* .ui-tab.ui-state-hover a { */
-/*   color: var(--color-hl1); */
-/* } */
-
 .ui-tab.ui-state-default a:hover {
   cursor: pointer !important;
   color: var(--color-fg2) !important;
@@ -166,7 +162,7 @@ li.results a:visited {
 .feedHeader > .feedTitle > a:focus,
 .feedHeader > .feedTitle > a:focus-visible,
 .feedHeader > .feedTitle > a:focus-within {
-  color: var(--color-fg6) !important;
+  color: var(--color-feed-title) !important;
 }
 
 .feedHeader > .feedTitle > a.danger:hover,
@@ -322,18 +318,6 @@ i.icon-petrolette.writing {
   color: var(--color-ui-pri);
 }
 
-i.icon-petrolette::before {
-  font-style: italic !important;
-}
-
-i.icon-petrolette.item-icon {
-  font-size: 1em;
-}
-
-.item-icon:hover {
-  color: var(--color-fg1);
-}
-
 .ui-tab.ui-state-active i {
   color: var(--color-fg1);
 }
@@ -432,6 +416,8 @@ i.icon-petrolette.item-icon {
   white-space: nowrap;
 }
 
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+
 #preload > .feedTitle {
   font-family: BebasNeueRegular, Helvetica, sans-serif;
 }
@@ -505,8 +491,8 @@ li {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: -moz-available;          /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: -moz-available;
+  width: -webkit-fill-available;
   width: fill-available;
   align-items: center;
 }
@@ -534,49 +520,56 @@ ul.help li {
 
 .ui-tab#new-group {
   width: 40px;
-  background-color: var(--color-bg1);
-}
-
-.ui-tab.ui-state-default {
-  color: var(--color-fg1);
-  background: var(--color-bg1);
 }
 
 .ui-tab#new-group:hover,
 .ui-tab.ui-state-hover {
-  filter: brightness(0.9);
+  filter: brightness(1.2);
 }
 
 .feed-control {
-  color: var(--color-fg5);
+  color: var(--color-feed-control);
   cursor: pointer;
   font-size: var(--controls-font-size);
 }
 
 .feed-control:hover {
-  color: var(--color-fg6);
+  color: var(--color-feed-control-hover);
 }
 
-.ui-tab.ui-state-active,
 #tabNamesUl,
 #tabs {
-  background: var(--color-bg3);
+  background: var(--color-tab-inactive-bg);
 }
 
-/* button.ui-state-focus { */
+.ui-tab.ui-state-default {
+  color: var(--color-fg1);
+  background: var(--color-tab-inactive-bg);
+}
 
-/*   border: 3px solid var(--color-ui-sec) !important; */
+.ui-tab:not(.ui-state-active) {
+  background: var(--color-tab-active-bg);
+}
 
-/* } */
+legend.colLegend {
+  color: var(--color-fg1);
+}
 
-i.item-icon {
+i.itemIcon {
   float: right;
   margin: 0.2em;
 }
 
-i.item-icon:hover {
-  float: right;
-  margin: 0.2em;
+i.icon-petrolette::before {
+  font-style: italic !important;
+}
+
+i.icon-petrolette.itemIcon {
+  font-size: 1em;
+}
+
+.itemIcon:hover {
+  color: var(--color-fg2);
 }
 
 .ui-tab i.tab-closer {
@@ -761,7 +754,7 @@ nav#sideMenu.expanded {
   scrollbar-width: thin;
   border-radius: 3px;
   color: var(--color-ui-console-fg);
-  font-family: monospace;
+  font-family: monospace !important;
   overflow-wrap: break-word;
   overflow: auto;
   text-align: left;
@@ -843,11 +836,6 @@ th {
   background: none;
   color: var(--color-ui-sec);
   font-weight: bold;
-}
-
-.ui-widget-content,
-.ui-widget-header {
-  border: none !important;
 }
 
 button.ui-state-success {
@@ -1056,7 +1044,7 @@ li.ui-tabs-tab {
   outline-width: 0 !important;
 }
 
-li.tab-name:first-child {
+li.tabName:first-child {
   border-left: 1px solid var(--color-fg4) !important;
 }
 
@@ -1111,6 +1099,36 @@ li.feed {
   width: 100%;
 }
 
+.introjs-tooltipReferenceLayer *,
+.introjs-button,
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button,
+.ui-widget-content,
+.ui-widget-header {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+}
+
+.ui-widget-content {
+  color: var(--color-ui-qua);
+}
+
+.introjs-button {
+  border: unset;
+  text-shadow: unset;
+  font-size: unset;
+}
+
+.ui-widget input,
+.ui-widget textarea,
+.ui-widget button,
+.ui-widget-content,
+.ui-widget-header {
+  border: none !important;
+}
+
 li.feed.selected {
   background: none !important;
   opacity: 0.6;
@@ -1119,7 +1137,7 @@ li.feed.selected {
 .feedHeader {
   display: flex;
   flex-direction: row;
-  background-color: var(--color-bg2);
+  background-color: var(--color-feed-header-bg);
   transition: all 0.3s linear;
   height: var(--header-height);
   max-height: var(--header-height);
@@ -1244,16 +1262,15 @@ table#jslicense-labels1 td {
 
 li.feed div.feedBody {
   will-change: contents;
-  border-bottom: 1px solid var(--color-bg2);
-  border-left: 1px solid var(--color-bg1);
-  border-right: 1px solid var(--color-bg1);
+  border-bottom: 1px solid var(--color-feed-header-bg);
+  border-left: 1px solid var(--color-feed-border);
+  border-right: 1px solid var(--color-feed-border);
   margin: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-fg4) var(--color-bg1);
+  scrollbar-color: var(--color-feed-control) var(--color-background);
 }
 
-/* Works on Chrome, Edge, and Safari */
 li.feed div.feedBody::-webkit-scrollbar {
   width: 4px;
 }
@@ -1268,7 +1285,7 @@ li.feed div.feedBody::-webkit-scrollbar-thumb {
 }
 
 li.feed div.feedBody:hover {
-  scrollbar-color: var(--color-fg6) var(--color-bg1);
+  scrollbar-color: var(--color-feed-control-hover) var(--color-background);
 }
 
 .folded {
@@ -1283,12 +1300,7 @@ li.feed:hover div.feedBody {
   border-color: var(--color-bg5);
 }
 
-.feedHeader > .feed-handle:hover {
-  border-color: var(--color-hl1);
-}
-
 /* Responsive */
-
 @media (hover: none) {
   a:active,
   a:hover {
@@ -1443,6 +1455,7 @@ video {
 }
 
 #ptlSearch input {
+  font-size: 1em;
   transition: opacity 0.2s linear;
   flex: 2;
 }

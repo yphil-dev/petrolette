@@ -1,16 +1,16 @@
 :root {
   --color-fg1: #111133; /* Normal text */
-  --color-fg2: #E76F51; /* Links */
+  --color-fg2: #19B5FE; /* Links */
   --color-fg3: #404552; /* Visited links */
-  --color-fg4: #264653; /* Separators */
+  --color-fg4: #CCCCCC; /* Separators */
   --color-fg5: #F4D35E; /* Feed controls */
   --color-fg6: #EE964B; /* Feed title */
   --color-fg7: #FFFF00; /* Feed title */
-  --color-bg1: #EEEEFF; /* Body / Feed border  */
-  --color-bg2: #086375; /* Feed header */
+  --color-bg1: #FFFFFF; /* Body / Feed border  */
+  --color-bg2: #FFFFFF; /* Feed header */
   --color-bg3: #D7DAE5; /* Feed item BG */
   --color-bg4: #EEEEEE; /* Feed item BG alternate */
-  --color-bg5: #1F262E; /* Feed item BG hover */
+  --color-bg5: #D7DAE5; /* Feed item BG hover */
   --color-hl1: #1C0B19;
   --color-hl2: #FF0000; /* Feed controls hover */
   --color-hl3: #000000;
