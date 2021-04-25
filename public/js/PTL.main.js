@@ -10,7 +10,7 @@ var PTL = (function() {
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
-      const $sideMenu = $('nav#side-menu'),
+      const $sideMenu = $('nav#sideMenu'),
             $overlay = $('#overlay'),
             $feedCodeButton = $('button#feedCode'),
             $importButton = $("button#fileImportButton"),
@@ -24,7 +24,7 @@ var PTL = (function() {
             $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
             $searchPrefixInput = $('input#searchPrefixInput'),
             $spinner = $('#gallerySpeedSpinner'),
-            $logoType = $('.logo-type'),
+            $logoType = $('.logoType'),
             $topMenu = $('nav#top-menu');
 
       $topMenu.removeAttr('style');
@@ -46,7 +46,7 @@ var PTL = (function() {
         PTL.util.say(PTL.tr('Search prefix') + ': ' + clean, 'success', true);
       });
 
-      $('#logo-title > .logo-title')
+      $('#logoTitle > .logoTitle')
         .attr('title', PTL.tr('Focus first tab'))
         .data('title', 'Focus first tab')
         .click(function(){
@@ -59,13 +59,13 @@ var PTL = (function() {
 
       $('noscript').hide();
 
-      $('.js-enabled-only').show();
+      $('.jsEnabledOnly').show();
 
-      $('body').on('click','.help-bookmarklet', function(event) {
+      $('body').on('click','.helpBookmarklet', function(event) {
         event.preventDefault();
       });
 
-      $('nav#side-menu .side-menu-title').click(function() {
+      $('nav#sideMenu .sideMenuTitleToggleDiv').click(function() {
         $(this).children('i').toggleClass('unfold');
         $(this).next().toggle();
       });
@@ -114,7 +114,7 @@ var PTL = (function() {
         // PTL.dialog.beg();
       });
 
-      $('body').on('click','.new-feed-button', function() {
+      $('body').on('click','.newFeedButton', function() {
 
         var $column;
 
@@ -148,7 +148,7 @@ var PTL = (function() {
 
       $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
 
-      const $syncBox = $('#sync-box');
+      const $syncBox = $('#syncBox');
 
       const $readMore = $('<a>')
             .attr('class', 'translate')
@@ -412,7 +412,7 @@ var PTL = (function() {
     sideMenu: function(action) {
 
       const $overlay = $('#overlay'),
-            $sideMenu = $('nav#side-menu');
+            $sideMenu = $('nav#sideMenu');
 
       if (action == 'open') {
         $overlay.removeClass('hidden');
