@@ -37,7 +37,7 @@ PTL.feed = {
             if ($feedControls.data('status') == 'on') {
               $(this).removeClass('fold')
                 .parent().parent().parent()
-                .children('div.feed-body')
+                .children('div.feedBody')
                 .addClass('folded');
               $feedControls.data('status', 'off');
               $reloadIcon.removeClass('icon-refresh')
@@ -45,7 +45,7 @@ PTL.feed = {
             } else {
               $(this).addClass('fold')
                 .parent().parent().parent()
-                .children('div.feed-body')
+                .children('div.feedBody')
                 .removeClass('folded');
               $feedControls.data('status', 'on');
               $reloadIcon.removeClass('icon-pin')
@@ -121,9 +121,9 @@ PTL.feed = {
             class:'feed-handle'
           });
 
-    const $feedBody = $('<div>').attr('class', 'feed-body').css('height', limit),
-          $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
-          $header = $('<div>').attr('class', 'feed-header'),
+    const $feedBody = $('<div>').attr('class', 'feedBody').css('height', limit),
+          $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
+          $feedHeader = $('<div>').attr('class', 'feedHeader'),
           $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon, $feedImg),
           $selectDiv = $('<div>').append($selectIcon),
           $deleteDiv = $('<div>').append($deleteIcon),
@@ -133,7 +133,7 @@ PTL.feed = {
     const $titleDiv = $('<div>')
           .attr({
             title: url || PTL.tr('New feed'),
-            class:'feed-title trucate'
+            class:'feedTitle trucate'
           });
 
     const $titleLink = $('<a>')
@@ -155,7 +155,7 @@ PTL.feed = {
     }
 
 
-    $header.hover (function() {
+    $feedHeader.hover (function() {
 
       $(this).find('img.favicon').hide();
       $feedIcon.removeClass('icon-rss').addClass('icon-down-circle');
@@ -167,12 +167,12 @@ PTL.feed = {
 
     });
 
-    $header.append($feedToggle,
-                   $feedHandle,
+    $feedHeader.append($feedToggle,
+                       $feedHandle,
                    $titleDiv.append($titleLink),
                    $feedControls.append($prefsDiv, $reloadDiv));
 
-    $feed.append($header, $feedBody.append($feedBodyUl));
+    $feed.append($feedHeader, $feedBody.append($feedBodyUl));
 
     if (clickNew) {
       $feed.prependTo($column);
@@ -187,13 +187,13 @@ PTL.feed = {
 
     const $dataStore = $button.parent().parent(),
           $refreshButton = $dataStore.find('i.feed-refresh'),
-          $header = $dataStore.parent(),
+          $feedHeader = $dataStore.parent(),
           $panel = $dataStore.parent().parent().parent(),
           $feed = $dataStore.parent().parent(),
-          $feedTitle = $feed.children().children('.feed-title'),
+          $feedTitle = $feed.children().children('.feedTitle'),
           $feedLink = $feedTitle.children('a'),
-          $feedBody = $dataStore.parent().next('div.feed-body'),
-          $feedBodyUl = $feed.children().children('ul.feed-body'),
+          $feedBody = $dataStore.parent().next('div.feedBody'),
+          $feedBodyUl = $feed.children().children('ul.feedBody'),
           feedUrl = $dataStore.data('url'),
           feedName = $dataStore.data('name'),
           feedType = $dataStore.data('type'),
@@ -240,11 +240,7 @@ PTL.feed = {
         if (hash) {
           $myFeedIcon.attr('src', '/favicons/' + hash + '.favicon');
           $dataStore.data('iconhash', hash);
-
           PTL.tab.saveTabs();
-
-        } else {
-          // $feedIcon.addClass('icon-rss');
         }
 
       }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -269,6 +265,8 @@ PTL.feed = {
       }).fail(function(error) {
         PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
       }).done(function(data) {
+
+        // console.log('data: %s (%s)', JSON.stringify(data));
 
         if (feedName) {
           feedTitle = feedName;
@@ -345,7 +343,7 @@ PTL.feed = {
 
           $feedBody.css('height', '');
 
-          return;
+          // return;
 
         } else {
 
@@ -541,7 +539,7 @@ PTL.feed = {
       $dataStore
         .parent()
         .parent()
-        .children('div.feed-body')
+        .children('div.feedBody')
         .addClass('folded');
 
       // const u = new URL(feedUrl);

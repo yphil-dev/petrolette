@@ -440,7 +440,7 @@ PTL.util = {
 
     progress.init = function( steps ) {
 
-      const $progressBar = $('#progress-bar');
+      const $progressBar = $('#progressBar');
       this.progressBar = $progressBar;
 
       const $progressLabel = $('.progress-label');
