@@ -43,7 +43,7 @@
   --beggar-width: 420px;
   --side-menu-width-expanded: 280px;
   --side-menu-width: -291px;
-  --header-height: 22px;
+  --header-height: 24px;
   --console-max-width: 242px;
   --controls-width: 150px;
   --controls-font-size: 14pt;
@@ -99,7 +99,7 @@
 }
 
 body {
-  color: var(--color-text);
+  /* color: var(--color-text); */
   background-color: var(--color-background);
   /* font-family: Arial, Helvetica, sans-serif; */
   margin: 0;
@@ -401,22 +401,25 @@ i.icon-petrolette.writing {
   flex-basis: auto;
   flex-grow: 4;
   flex-shrink: 1;
-  font-family: BebasNeueRegular, Verdana, sans-serif !important;
+  font-family: var(--font-feed-title) !important;
+  letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
   font-size: var(--feed-title-font-size);
   font-style: oblique;
+  text-transform: capitalize;
+  font-variant: small-caps;
   margin-left: var(--title-margin-left);
   text-overflow: ellipsis;
   color: var(--color-fg6);
   overflow: hidden;
-  display: block;
+  /* display: inline; */
   width: 100px;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+/* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif; */
 
 #preload > .feedTitle {
   font-family: BebasNeueRegular, Helvetica, sans-serif;
@@ -539,16 +542,16 @@ ul.help li {
 
 #tabNamesUl,
 #tabs {
-  background: var(--color-tab-inactive-bg);
+  background: var(--color-background);
 }
 
 .ui-tab.ui-state-default {
   color: var(--color-fg1);
-  background: var(--color-tab-inactive-bg);
+  background: var(--color-background);
 }
 
 .ui-tab:not(.ui-state-active) {
-  background: var(--color-tab-active-bg);
+  background: var(--color-tab-inactive-bg);
 }
 
 legend.colLegend {
@@ -955,30 +958,6 @@ label:last-child {
   margin-bottom: 0 !important;
 }
 
-/* .bottom { */
-
-/*   margin-bottom: 0; */
-
-/* } */
-
-/* div.testFlex { */
-
-/*   display: flex; */
-
-/* } */
-
-/* #spinner { */
-
-/*   width: 2rem; */
-
-/* } */
-
-/* .noBottom { */
-
-/*   margin-bottom: 0; */
-
-/* } */
-
 #tabs {
   overflow: hidden;
   white-space: nowrap;
@@ -1061,13 +1040,8 @@ li.tabName:first-child {
 /* Column */
 
 ul.column {
-  /* min-height: 120px; */
   margin: 0.2em;
   flex: 1 1 0;
-
-  /* flex: 1 0 auto; */
-
-  /* flex: var(--column-flex); */
   align-content: center;
   position: relative;
   padding: var(--column-padding);
@@ -1090,7 +1064,6 @@ ul.column div.buttons {
   z-index: 1 !important;
 }
 
-/* Feed */
 li.feed {
   position: relative;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -1138,7 +1111,7 @@ li.feed.selected {
   display: flex;
   flex-direction: row;
   background-color: var(--color-feed-header-bg);
-  transition: all 0.3s linear;
+  /* transition: all 0.3s linear; */
   height: var(--header-height);
   max-height: var(--header-height);
   padding: 0;
@@ -1171,9 +1144,6 @@ li.feed.selected {
 }
 
 .feedHeader > .feed-toggle {
-  /* margin: 2px; */
-  background-repeat: no-repeat;
-  background-size: contain;
   width: var(--controls-toggle-size);
   height: var(--controls-toggle-size);
 }
@@ -1182,7 +1152,7 @@ li.feed.selected {
   position: absolute;
   left: 3px;
   top: 3px;
-  transition: transform 0.2s linear;
+  /* transition: transform 0.2s linear; */
   font-size: var(--controls-font-size);
   text-rendering: auto;
 }
@@ -1290,6 +1260,7 @@ li.feed div.feedBody:hover {
 
 .folded {
   height: 0 !important;
+  border-bottom: var(--color-background) !important;
 }
 
 .folded-error {
