@@ -150,7 +150,7 @@ PTL.tab = {
   },
   add:function($tabs, name, columns, progress) {
 
-    var tabIndex = $('ul#tabNamesUl li.tab-name').length + 1;
+    var tabIndex = $('ul#tabNamesUl li.tabName').length + 1;
 
     name = name || 'Tab ' + tabIndex;
 
@@ -168,7 +168,7 @@ PTL.tab = {
           .append(name);
 
     const $tab = $('<li>')
-          .attr('class', 'modal tab-name translate')
+          .attr('class', 'modal tabName translate')
           .data('id', 'tab-' + tabIndex++)
           .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
           .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
@@ -181,7 +181,7 @@ PTL.tab = {
       hoverClass: 'ui-state-hover',
       drop: function (event, ui) {
         const $item = $(this);
-        const $index = $('li.tab-name').index(this);
+        const $index = $('li.tabName').index(this);
         const $elements = ui.draggable.data('items');
         const $list = $($item.find('a').attr('href'))
               .find('.column').first();
@@ -250,7 +250,7 @@ PTL.tab = {
   },
   list:function(type) {
 
-    const $groupNodes = $('#tabNamesUl > li.tab-name'),
+    const $groupNodes = $('#tabNamesUl > li.tabName'),
           groups = [];
 
     $groupNodes.each(function() {
