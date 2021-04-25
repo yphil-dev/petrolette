@@ -170,7 +170,7 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text('Pétrolette').addClass('logo-title')
+          $dialog.find('h1').text('Pétrolette').addClass('logoTitle')
             .next('p#dialogBlurb').text(PTL.tr("The news page that doesn't know you"))
             .next('h2').text(versionNumber)
             .next('p')
@@ -239,7 +239,7 @@ PTL.dialog = {
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),
-            $feedBody = $dataStore.parent().next('div.feed-body'),
+            $feedBody = $dataStore.parent().next('div.feedBody'),
             allGroups = PTL.tab.list('all'),
             $thisGroup =  $feed.parent().parent(),
             $groupMenu = $dialog.find('select#feedTabSelect'),

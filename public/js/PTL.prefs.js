@@ -48,7 +48,7 @@ PTL.prefs = {
   },
   writeConfig:function(key, val) {
 
-    $('div#logo-title i').addClass('writing');
+    $('div#logoTitle i').addClass('writing');
 
     if (key === 'feeds') {
       localStorage.setItem('writeTime', Date.now());
@@ -57,7 +57,7 @@ PTL.prefs = {
     localStorage.setItem(key, val);
 
     setTimeout(function () {
-      $('div#logo-title i').delay('slow').removeClass('writing');
+      $('div#logoTitle i').delay('slow').removeClass('writing');
     }, 300);
 
   },

@@ -7,7 +7,7 @@ PTL.tab = {
 
     PTL.util.translate();
 
-    $('#load-spinner').fadeIn('fast');
+    $('#loadSpinner').fadeIn('fast');
 
     const $tabs = $('#tabs').tabs({
       heightStyle: 'content',
@@ -67,7 +67,7 @@ PTL.tab = {
 
     $("#theme").attr({href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css'});
 
-    $('#load-spinner').fadeOut(999);
+    $('#loadSpinner').fadeOut(999);
 
   },
   saveTabs:function() {
@@ -150,7 +150,7 @@ PTL.tab = {
   },
   add:function($tabs, name, columns, progress) {
 
-    var tabIndex = $('ul#tab-names li.tab-name').length + 1;
+    var tabIndex = $('ul#tabNamesUl li.tab-name').length + 1;
 
     name = name || 'Tab ' + tabIndex;
 
@@ -173,7 +173,7 @@ PTL.tab = {
           .data('title', PTL.tr('%1 | Click to rename, drag to move', name))
           .attr('title', PTL.tr('%1 | Click to rename, drag to move', name));
 
-    const $tabNames = $('#tabs ul#tab-names');
+    const $tabNames = $('#tabs ul#tabNamesUl');
 
     $tab.droppable({
       tolerance: 'pointer',
@@ -250,7 +250,7 @@ PTL.tab = {
   },
   list:function(type) {
 
-    const $groupNodes = $('#tab-names > li.tab-name'),
+    const $groupNodes = $('#tabNamesUl > li.tab-name'),
           groups = [];
 
     $groupNodes.each(function() {
@@ -314,7 +314,7 @@ PTL.tab = {
                     .attr('class', 'icon-plus'));
 
     $newTabButtonLink.appendTo($newTabButton);
-    $newTabButton.appendTo($tabs.find('ul#tab-names'));
+    $newTabButton.appendTo($tabs.find('ul#tabNamesUl'));
 
   }
 };
