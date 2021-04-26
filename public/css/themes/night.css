@@ -2,7 +2,7 @@
   --color-text: #FFFFFF;
   --color-background: #202b38;
   --color-scrollbar: #555;
-  --color-border: #29323C;
+  --color-border: #303b48;
   --color-link: #C6DAF1;
   --color-link-visited: #CCCCCC;
   --color-link-hover: #19B5FE;
@@ -12,7 +12,7 @@
   --color-feed-title: #C6DAF1;
   --font-feed-title: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
   --color-feed-border: #1F262E;
-  --color-feed-header-bg: #1F262E;
+  --color-feed-header-bg: #303b48;
   --color-feed-bg: #383C4A;
   --color-feed-bg-alt: #424657;
   --color-feed-bg-hover: #1F262E;
