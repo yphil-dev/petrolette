@@ -37,7 +37,7 @@ PTL.feed = {
             if ($feedControls.data('status') == 'on') {
               $(this).removeClass('fold')
                 .parent().parent().parent()
-                .children('div.feed-body')
+                .children('div.feedBody')
                 .addClass('folded');
               $feedControls.data('status', 'off');
               $reloadIcon.removeClass('icon-refresh')
@@ -45,7 +45,7 @@ PTL.feed = {
             } else {
               $(this).addClass('fold')
                 .parent().parent().parent()
-                .children('div.feed-body')
+                .children('div.feedBody')
                 .removeClass('folded');
               $feedControls.data('status', 'on');
               $reloadIcon.removeClass('icon-pin')
@@ -121,9 +121,9 @@ PTL.feed = {
             class:'feed-handle'
           });
 
-    const $feedBody = $('<div>').attr('class', 'feed-body').css('height', limit),
-          $feedBodyUl = $('<ul>').attr('class', 'feed-body'),
-          $header = $('<div>').attr('class', 'feed-header'),
+    const $feedBody = $('<div>').attr('class', 'feedBody').css('height', limit),
+          $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
+          $feedHeader = $('<div>').attr('class', 'feedHeader'),
           $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon, $feedImg),
           $selectDiv = $('<div>').append($selectIcon),
           $deleteDiv = $('<div>').append($deleteIcon),
@@ -133,7 +133,7 @@ PTL.feed = {
     const $titleDiv = $('<div>')
           .attr({
             title: url || PTL.tr('New feed'),
-            class:'feed-title trucate'
+            class:'feedTitle trucate'
           });
 
     const $titleLink = $('<a>')
@@ -155,7 +155,7 @@ PTL.feed = {
     }
 
 
-    $header.hover (function() {
+    $feedHeader.hover (function() {
 
       $(this).find('img.favicon').hide();
       $feedIcon.removeClass('icon-rss').addClass('icon-down-circle');
@@ -167,12 +167,12 @@ PTL.feed = {
 
     });
 
-    $header.append($feedToggle,
-                   $feedHandle,
+    $feedHeader.append($feedToggle,
+                       $feedHandle,
                    $titleDiv.append($titleLink),
                    $feedControls.append($prefsDiv, $reloadDiv));
 
-    $feed.append($header, $feedBody.append($feedBodyUl));
+    $feed.append($feedHeader, $feedBody.append($feedBodyUl));
 
     if (clickNew) {
       $feed.prependTo($column);
@@ -187,13 +187,13 @@ PTL.feed = {
 
     const $dataStore = $button.parent().parent(),
           $refreshButton = $dataStore.find('i.feed-refresh'),
-          $header = $dataStore.parent(),
+          $feedHeader = $dataStore.parent(),
           $panel = $dataStore.parent().parent().parent(),
           $feed = $dataStore.parent().parent(),
-          $feedTitle = $feed.children().children('.feed-title'),
+          $feedTitle = $feed.children().children('.feedTitle'),
           $feedLink = $feedTitle.children('a'),
-          $feedBody = $dataStore.parent().next('div.feed-body'),
-          $feedBodyUl = $feed.children().children('ul.feed-body'),
+          $feedBody = $dataStore.parent().next('div.feedBody'),
+          $feedBodyUl = $feed.children().children('ul.feedBody'),
           feedUrl = $dataStore.data('url'),
           feedName = $dataStore.data('name'),
           feedType = $dataStore.data('type'),
@@ -240,11 +240,7 @@ PTL.feed = {
         if (hash) {
           $myFeedIcon.attr('src', '/favicons/' + hash + '.favicon');
           $dataStore.data('iconhash', hash);
-
           PTL.tab.saveTabs();
-
-        } else {
-          // $feedIcon.addClass('icon-rss');
         }
 
       }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -269,6 +265,8 @@ PTL.feed = {
       }).fail(function(error) {
         PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
       }).done(function(data) {
+
+        // console.log('data: %s (%s)', JSON.stringify(data));
 
         if (feedName) {
           feedTitle = feedName;
@@ -299,7 +297,7 @@ PTL.feed = {
                 $reportLinkIcon = $('<i>');
 
           $validateLinkIcon
-            .attr('class', 'item-icon icon-w3c')
+            .attr('class', 'itemIcon icon-w3c')
             .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
             .appendTo($validateLink);
 
@@ -308,7 +306,7 @@ PTL.feed = {
             .appendTo($feedBodyUl);
 
           $reportLinkIcon
-            .attr('class', 'item-icon icon-petrolette')
+            .attr('class', 'itemIcon icon-petrolette')
             .attr('title', PTL.tr('Report feed error'))
             .appendTo($reportLink);
 
@@ -332,7 +330,7 @@ PTL.feed = {
                 .text(feedUrl);
 
           const $errorButtonsFlexBox = $('<a>')
-                .attr('class', 'translate flex-box');
+                .attr('class', 'translate flexBox');
 
           const $errorItem = $('<li>')
                 .attr('class', 'feed-item error')
@@ -454,7 +452,7 @@ PTL.feed = {
                 .attr('href', item.enclosures[0].url)
                 .appendTo($itemDiv);
               $videoIcon
-                .attr('class', 'item-icon icon-video')
+                .attr('class', 'itemIcon icon-video')
                 .appendTo($videoLink);
             }
 
@@ -472,7 +470,7 @@ PTL.feed = {
                 .attr('href', item.enclosures[0].url)
                 .appendTo($itemDiv);
               $audioIcon
-                .attr('class', 'item-icon icon-audio')
+                .attr('class', 'itemIcon icon-audio')
                 .appendTo($audioLink);
             }
           }
@@ -508,7 +506,7 @@ PTL.feed = {
 
           if (item.comments) {
             $commentsIcon
-              .attr('class', 'item-icon icon-comments')
+              .attr('class', 'itemIcon icon-comments')
               .appendTo($commentsLink);
 
             $commentsLink
@@ -541,7 +539,7 @@ PTL.feed = {
       $dataStore
         .parent()
         .parent()
-        .children('div.feed-body')
+        .children('div.feedBody')
         .addClass('folded');
 
       // const u = new URL(feedUrl);

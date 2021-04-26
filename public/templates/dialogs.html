@@ -3,9 +3,9 @@
     <legend data-content="Location"
             class="ui-corner-top translate">Location</legend>
     <fieldset class="ui-widget ui-widget-content ui-corner-all">
-      <div id="feed-guess-div" class="flex-box">
+      <div id="feedGuessDiv" class="flexBox">
         <input name="guess"
-               id="feed-guess"
+               id="feedGuessInput"
                placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
                data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
                value=""
@@ -24,9 +24,9 @@
     <legend data-content="Name"
             class="ui-corner-top translate">Name</legend>
     <fieldset class="ui-widget ui-widget-content ui-corner-all">
-      <div class="flex-box">
+      <div class="flexBox">
         <input name="name"
-               id="feed-name"
+               id="feedNameInput"
                placeholder="Feed name"
                data-title="Feed name"
                value=""
@@ -40,9 +40,9 @@
             class="ui-corner-top translate">
       Tab
     </legend>
-    <fieldset id="feed-tab-fieldset" class="ui-widget ui-widget-content ui-corner-all">
+    <fieldset id="feedTabFieldset" class="ui-widget ui-widget-content ui-corner-all">
 
-      <select id="feed-tab-select"
+      <select id="feedTabSelect"
               class="unique translate"
               name="Group"
               data-title="Move the current feed to this tab">
@@ -54,10 +54,10 @@
             class="ui-corner-top translate">
       Type
     </legend>
-    <fieldset id="feed-type-fieldset" class="ui-widget ui-widget-content ui-corner-all">
+    <fieldset id="feedTypeFieldset" class="ui-widget ui-widget-content ui-corner-all">
 
-      <div id="feed-type-div"
-           class="flex-box">
+      <div id="feedTypeDiv"
+           class="flexBox">
 
         <label data-title="Display only text"
                data-content="Text"
@@ -84,8 +84,8 @@
             class="ui-corner-top translate">
       Height
     </legend>
-    <fieldset id="feed-limit-fieldset" class="ui-widget ui-widget-content ui-corner-all" data-title="Woyo!">
-      <div class="flex-box translate"
+    <fieldset id="feedLimitFieldset" class="ui-widget ui-widget-content ui-corner-all">
+      <div class="flexBox translate"
            data-title="Number of items displayed in this feed">
         <div class="feedLimit grow">
           <label for="feedLimit" class="ui-helper-hidden">
@@ -102,17 +102,17 @@
     </fieldset>
 
     <legend data-content="Delete"
-            id="kill-feed-legend"
+            id="killFeedLegend"
             class="ui-corner-top translate">Delete
     </legend>
-    <fieldset id="kill-feed" class="ui-widget ui-widget-content ui-corner-all">
+    <fieldset id="killFeedFieldset" class="ui-widget ui-widget-content ui-corner-all">
 
       <div id="feedDel"
-           class="flex-box">
-        <input type="checkbox" name="kill-feed-check" id="kill-feed-check">
-        <label id="kill-feed"
+           class="flexBox">
+        <input type="checkbox" name="killFeedCheckbox" id="killFeedCheckbox">
+        <label id="killFeedLabel"
                class="dangerous translate last"
-               for="kill-feed-check"
+               for="killFeedCheckbox"
                data-title="Delete this feed"
                data-content="Delete">
           Delete this feed
@@ -124,7 +124,7 @@
   </form>
 </div>
 
-<div id="help-dialog" title="Pétrolette">
+<div id="helpDialog" title="Pétrolette">
   <h1 class="translate"
       data-title="Welcome to Pétrolette"
       data-content="Welcome to Pétrolette">Welcome to Pétrolette</h1>
@@ -134,12 +134,12 @@
             data-content="Pétrolette is a news reader focused on preventing anyone to know what you are reading.">
         Pétrolette is a news reader focused on preventing anyone to know what you are reading.
       </span>
-      <button class="help-tour translate ui-button ui-corner-all"
+      <button class="helpTour translate ui-button ui-corner-all"
               data-content="Take the tour">
         Take the tour
       </button>
 
-      <button class="help-kb-shortcuts translate ui-button ui-corner-all"
+      <button class="helpKbShortcuts translate ui-button ui-corner-all"
               data-content="Keyboard shortcuts">
         Keyboard shortcuts
       </button>
@@ -246,7 +246,7 @@
             data-content="You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette">
         You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette</span>:
       <a href="#"
-         class="help-bookmarklet translate ui-button ui-corner-all"
+         class="helpBookmarklet translate ui-button ui-corner-all"
          data-title='Drag me to the bookmark bar, or right click "Bookmark this link"'
          title='Drag me to the bookmark bar, or right click "Bookmark this link"'
          data-content="Add to Pétrolette">
@@ -265,7 +265,7 @@
             data-content="Learn how to use">
         Learn how to use
       </span>
-      <button class="help-tour ui-button ui-corner-all translate"
+      <button class="helpTour ui-button ui-corner-all translate"
               data-content="the tabs and the feeds">
         the tabs and the feeds
       </button>
@@ -276,14 +276,14 @@
   </div>
 </div>
 
-<div id="edit-tab-dialog">
+<div id="editTabDialog">
   <form>
     <fieldset class="ui-widget ui-widget-content ui-corner-all">
       <legend class="translate" data-content="Name">Name</legend>
-      <div class="flex-box">
+      <div class="flexBox">
         <input
           name="name"
-          id="tab-name"
+          id="tabNameInput"
           value=""
           onclick="this.select()"
           class="grow ui-corner-all" />
@@ -292,7 +292,7 @@
 
     <fieldset class="ui-widget ui-widget-content ui-corner-all">
       <legend class="translate" data-content="Position">Position</legend>
-      <div class="flex-box">
+      <div class="flexBox">
         <button type="button"
                 id="left"
                 data-title="Left"
@@ -312,9 +312,9 @@
   </form>
 </div>
 
-<div id="beggar-dialog" class="flex-box">
-  <img id="beggar-img" src="https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/Rally-1933.jpg" alt="A woman rider in the Six Days Motorcycle Trial, Germany 1933" />
-  <span class="image-legend">A woman rider in the Six Days Motorcycle Trial, Germany 1933</span>
+<div id="beggarDialog" class="flexBox">
+  <img id="beggarImg" src="https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/Rally-1933.jpg" alt="A woman rider in the Six Days Motorcycle Trial, Germany 1933" />
+  <span class="imageLegend">A woman rider in the Six Days Motorcycle Trial, Germany 1933</span>
   <!-- <span class="huge">🍏</span> -->
   <p>
     <span class="translate"
@@ -326,14 +326,14 @@
   </p>
 </div>
 
-<div id="question-dialog">
-  <div class="flex-box">
+<div id="questionDialog">
+  <div class="flexBox">
     <div id="icon">
       <i class="huge"></i>
     </div>
-    <div id="dialog-text">
+    <div id="dialogText">
       <h1 class="translate"></h1>
-      <p id="dialog-blurb" class="translate"></p>
+      <p id="dialogBlurb" class="translate"></p>
       <h2 class="translate"></h2>
       <p></p>
       <h2 class="translate"></h2>

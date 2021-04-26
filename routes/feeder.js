@@ -63,7 +63,7 @@ function getFeed (feedUrl, callback) {
     var feedparser = new FeedParser();
     var feedItems = [];
     feedparser.on('error', function(error) {
-      // console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
+      console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
       return callback({error:error, errno:res.status, message:error.message});
     });
     feedparser.on('end', done);
@@ -73,7 +73,7 @@ function getFeed (feedUrl, callback) {
         if (item !== null) feedItems.push (item);
       }
       catch (err) {
-        // console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
+        console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
       }
     }).on ('end', function () {
       var meta = this.meta;
@@ -81,7 +81,6 @@ function getFeed (feedUrl, callback) {
     });
 
     if (res.status != 200) {
-      // console.error('## res.statusErr: %s (%s)', res.status, feedUrl);
       return callback({error:'error', errno:res.status, message:'Bad server response'});
     }
 
@@ -91,7 +90,6 @@ function getFeed (feedUrl, callback) {
     responseStream.pipe(feedparser);
 
   }).catch((err) => {
-    var resStatus = (res) ? res.status : 0;
-    return callback({error:err, resStatus, message:err.message});
+    return callback({error:err, resStatus:0, message:err.message});
   });
 }

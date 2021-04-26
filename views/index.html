@@ -103,24 +103,24 @@
 
     <div id="preload">
       <i class="fontello"></i>
-      <i class="logo-title">.</i>
-      <i class="feed-title">.</i>
+      <i class="logoTitle">.</i>
+      <i class="feedTitle">.</i>
       <i class="ui-icon"></i>
     </div>
 
     <nav style="display:none;" id="top-menu" class="menu">
 
-      <div class="topnav" id="topnav">
+      <div class="topNav" id="topNav">
 
         <div id="menuButton"
-             class="menuBarItem menuBarButton translate js-enabled-only navLeft"
+             class="menuBarItem menuBarButton translate jsEnabledOnly navLeft"
              title="Main menu"
              data-title="Main menu">
           <i class="icon-menu topMenuIcon"></i>
         </div>
 
         <div id="newFeedButton"
-             class="menuBarItem menuBarButton translate new-feed-button js-enabled-only navLeft"
+             class="menuBarItem menuBarButton translate newFeedButton jsEnabledOnly navLeft"
              title="New feed"
              data-title="New feed">
           <i class="icon-plus topMenuIcon"></i>
@@ -140,13 +140,13 @@
         <div class="menuBarItem navCenter">
         </div>
 
-        <div id="logo-title"
+        <div id="logoTitle"
              class="navRight"
              title="Pétrolette <%= version %>">
-          <div class="logo-title">
+          <div class="logoTitle">
             Pétrolette
           </div>
-          <div class="logo-type"
+          <div class="logoType"
                data-version="<%= version %>">
             <i class="icon-petrolette"></i>
           </div>
@@ -155,15 +155,15 @@
       </div>
     </nav>
 
-    <nav style="display:none;" id="side-menu" class="menu">
+    <nav style="display:none;" id="sideMenu" class="menu">
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Language">Language
         </span>
       </div>
-      <fieldset class="menuForm flex-box">
+      <fieldset class="menuForm flexBox">
         <select id="language"
                 class="grow translate"
                 name="language"
@@ -193,7 +193,7 @@
         </select>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Help">
@@ -201,7 +201,7 @@
         </span>
       </div>
       <fieldset class="menuForm">
-        <div class="flex-box">
+        <div class="flexBox">
           <button id="help"
                   class="grow translate help-button left"
                   data-title="Documentation"
@@ -220,7 +220,7 @@
         </div>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Pétrolette">
@@ -228,7 +228,7 @@
         </span>
       </div>
       <fieldset class="menuForm">
-        <div class="flex-box">
+        <div class="flexBox">
           <a href="https://framagit.org/yphil/petrolette"
              class="grow ui-button ui-corner-all translate left"
              data-title="Use the force - read the Source"
@@ -247,7 +247,7 @@
         </div>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Feeds">
@@ -255,7 +255,7 @@
         </span>
       </div>
       <fieldset class="feedsMenuForm">
-        <div class="flex-box">
+        <div class="flexBox">
           <input id="fileImport"
                  type="file"
                  style="display: none;" />
@@ -287,11 +287,11 @@
             </span>
           </button>
         </div>
-        <div id="sync-box" class="grow"></div>
-        <div id="progress-bar" class="grow"><div class="progress-label"></div></div>
+        <div id="syncBox" class="grow"></div>
+        <div id="progressBar" class="grow"><div class="progress-label"></div></div>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Theme">
@@ -300,11 +300,11 @@
       </div>
       <fieldset class="menuForm">
         <div id="themeBox"
-             class="flex-box">
+             class="flexBox">
         </div>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Media preload">Media preload
@@ -312,11 +312,11 @@
       </div>
       <fieldset class="menuForm">
         <div id="mediaPreloadBox"
-             class="flex-box">
+             class="flexBox">
         </div>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Image gallery">Image gallery
@@ -325,7 +325,7 @@
       <fieldset id="galleryBox"
                 class="menuForm">
         <div id="gallerySlideshowSpeed"></div>
-        <div class="flex-box">
+        <div class="flexBox">
           <div class="grow">
             <label for="gallerySpeed" class="ui-helper-hidden">
               <input type="text" id="gallerySpeed" />
@@ -371,14 +371,14 @@
         </div>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Search prefix">Search prefix
         </span>
       </div>
       <fieldset class="menuForm">
-        <div class="flex-box">
+        <div class="flexBox">
           <input name="searchPrefix"
                  id="searchPrefixInput"
                  class="unique grow ui-widget-content ui-corner-all translate"
@@ -406,14 +406,14 @@
         </div>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Support">Support
         </span>
       </div>
       <fieldset class="menuForm ui-widget-content">
-        <div class="flex-box" id="liberapay">
+        <div class="flexBox" id="liberapay">
           <a href="https://liberapay.com/yPhil/">
             <img width="156" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
           </a>
@@ -423,14 +423,14 @@
         </div>
       </fieldset>
 
-      <div class="side-menu-title ui-corner-top hover">
+      <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
               data-content="Console">Console
         </span>
       </div>
       <fieldset class="menuForm ui-widget-content">
-        <div class="flex-box">
+        <div class="flexBox">
           <div
             class="grow"
             data-title="Click to toggle"
@@ -444,13 +444,13 @@
     <main>
 
       <div id="tabs">
-        <ul id="tab-names">
+        <ul id="tabNamesUl">
 
         </ul>
       </div>
 
       <noscript>
-        <div id="no-script">
+        <div id="noScript">
           <h1>Pétrolette</h1>
           <h3>...Cannot work without JavaScript and CSS.</h3>
           <p>
@@ -465,7 +465,7 @@
         <i class="icon-up"></i>
       </span>
 
-      <div style="display:none;" id="load-spinner"
+      <div style="display:none;" id="loadSpinner"
            class="dead-center hidden">
         <div>
           <i class="icon-refresh spin"></i>

@@ -23,10 +23,10 @@ PTL.col = {
   add: function(colIndex, newCol) {
 
     const $colButtons = $('<div>')
-        .attr('class', 'buttons flex-box');
+          .attr('class', 'buttons flexBox');
 
     const $colLegend = $('<legend>')
-        .attr('class', 'legend legend-col unique translate')
+        .attr('class', 'colLegend legend-col unique translate')
         .data('title', 'Column')
         .data('content', 'Column')
         .text(PTL.tr('Column'));
@@ -34,7 +34,7 @@ PTL.col = {
     const $srcLegend = $('<legend>')
           .data('title', 'Feed')
           .data('content', 'Feed')
-          .attr('class', 'legend unique translate')
+          .attr('class', 'colLegend unique translate')
           .text(PTL.tr('Feed'));
 
     const $column = $('<ul>')
@@ -44,7 +44,7 @@ PTL.col = {
     const $srcNewButton = $('<button>')
           .attr('title', PTL.tr('Add a feed to this column'))
           .data('title', 'Add a feed to this column')
-          .attr('class', 'icon-plus unique translate new-feed-button button-column last')
+          .attr('class', 'icon-plus unique translate newFeedButton button-column last')
           .button()
           .data('colIndex', colIndex);
 

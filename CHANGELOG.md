@@ -1,5 +1,17 @@
 # Changelog
 
+
+## 1.3.0
+
+- New theming engine / logic
+- Rendering (CSS, transitions, JQ, etc.) optimizations
+
+### Bugfixes
+
+- Better (faster) server (fetch) error handling
+- Finalized name refactoring
+- Explicit CSS vars names
+
 ## 1.2.8
 
 - New function / dialog to merge the imported / open feeds with existing ones #e38691d5

@@ -7,7 +7,7 @@ PTL.dialog = {
   },
   resetTabs:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $icon = $dialog.find('div#icon > i');
@@ -46,7 +46,7 @@ PTL.dialog = {
 
           $dialog.find('h1')
             .text(PTL.tr('Reset all tabs and feeds to defaults?'))
-            .next('p#dialog-blurb').addClass('dangerous')
+            .next('p#dialogBlurb').addClass('dangerous')
             .text(PTL.tr('This action cannot be undone.'));
 
         }
@@ -61,7 +61,7 @@ PTL.dialog = {
   },
   beg:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #beggar-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
 
       const $dialog = $(this),
             $beggarH4 = $dialog.find('h4'),
@@ -122,15 +122,15 @@ PTL.dialog = {
   },
   about:function(versionNumber) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
-            $content = $dialog.find('div.flex-box'),
-          $icon = $dialog.find('div#icon > i');
+            $content = $dialog.find('div.flexBox'),
+            $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-petrolette');
       $content.css('flex-direction', 'column');
-      $content.find('div#dialog-text').css('text-align', 'center'),
+      $content.find('div#dialogText').css('text-align', 'center'),
 
       $dialog.dialog({
         title: PTL.tr('About Pétrolette'),
@@ -169,8 +169,8 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $dialog.find('h1').text('Pétrolette').addClass('logo-title')
-            .next('p#dialog-blurb').text(PTL.tr("The news page that doesn't know you"))
+          $dialog.find('h1').text('Pétrolette').addClass('logoTitle')
+            .next('p#dialogBlurb').text(PTL.tr("The news page that doesn't know you"))
             .next('h2').text(versionNumber)
             .next('p')
             .append($('<a>')
@@ -185,7 +185,7 @@ PTL.dialog = {
   },
   help:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #help-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {
 
       const $dialog = $(this);
 
@@ -210,16 +210,16 @@ PTL.dialog = {
 
           $(this).find('.help-button').button();
 
-          $(this).find('.help-bookmarklet')
+          $(this).find('.helpBookmarklet')
             .attr('href', 'javascript:void(window.open("' + window.location.href + '?add=" + window.location.href))');
 
-          $('.help-tour').on('click', function() {
+          $('.helpTour').on('click', function() {
             PTL.dialog.kill($dialog);
             $('#tabs').tabs('option', 'active', 0);
             PTL.util.help('ui');
           });
 
-          $('.help-kb-shortcuts').on('click', function() {
+          $('.helpKbShortcuts').on('click', function() {
             PTL.sideMenu('close');
             PTL.dialog.kill($dialog);
             PTL.dialog.kbShortcuts();
@@ -238,10 +238,10 @@ PTL.dialog = {
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),
-            $feedBody = $dataStore.parent().next('div.feed-body'),
+            $feedBody = $dataStore.parent().next('div.feedBody'),
             allGroups = PTL.tab.list('all'),
             $thisGroup =  $feed.parent().parent(),
-            $groupMenu = $dialog.find('select#feed-tab-select'),
+            $groupMenu = $dialog.find('select#feedTabSelect'),
             $spinner = $dialog.find('input#feedLimitSpinner').spinner({
               classes: {
                 "ui-spinner": "shrink ui-corner-all"
@@ -286,16 +286,16 @@ PTL.dialog = {
                 });
               }
 
-              var newUrl = DOMPurify.sanitize($(this).find('input#feed-guess').val()),
-                  newName = DOMPurify.sanitize($(this).find('input#feed-name').val()),
-                  newType = $('#feed-type-div :radio:checked').attr('id');
+              var newUrl = DOMPurify.sanitize($(this).find('input#feedGuessInput').val()),
+                  newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
+                  newType = $('#feedTypeDiv :radio:checked').attr('id');
 
               $dataStore
                 .data('url', newUrl)
                 .data('name', newName)
                 .data('type', newType);
 
-              if ($('input[name=kill-feed-check]:checked').val() === 'on') {
+              if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
                 $feed.hide('fade', 1000, function() {$feed.remove();});
               } else {
                 PTL.feed.populate($button);
@@ -352,10 +352,10 @@ PTL.dialog = {
                 $feedRefresh = $tabFeedId.find('.feedRefresh'),
                 $guessButton = $dialog.find('button#feedGuessButton').button(),
                 $guessSpinner = $dialog.find('button#feedGuessButton > i'),
-                $guessField = $dialog.find('input#feed-guess'),
+                $feedGuessInput = $dialog.find('input#feedGuessInput'),
                 $okButton = $dialog.find('.ui-dialog-buttonpane'),
-                $killFeedFieldset = $('fieldset#kill-feed'),
-                $killFeedLegend = $('legend#kill-feed-legend'),
+                $killFeedFieldset = $('fieldset#killFeedFieldset'),
+                $killFeedLegend = $('legend#killFeedLegend'),
                 $helpMiniButton = $('<button>'),
                 oldUrl = $dataStore.data('url'),
                 oldName = $dataStore.data('name'),
@@ -386,7 +386,7 @@ PTL.dialog = {
 
             $.get('/discover', {
               dataType: 'json',
-              url: $guessField.val(),
+              url: $feedGuessInput.val(),
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
             }).fail(function(req, status, xhr) {
@@ -394,7 +394,7 @@ PTL.dialog = {
             }).done(function(feed) {
               $guessSpinner.removeClass('spin icon-cog');
 
-              $guessField.val(feed);
+              $feedGuessInput.val(feed);
 
               $guessSpinner
                 .removeClass('ui-state-error')
@@ -410,8 +410,8 @@ PTL.dialog = {
 
           });
 
-          $dialog.find('input#feed-guess').val(oldUrl);
-          $dialog.find('input#feed-name').val(oldName);
+          $feedGuessInput.val(oldUrl);
+          $dialog.find('input#feedNameInput').val(oldName);
 
           $('input:radio, input:checkbox').checkboxradio({
             icon: false
@@ -457,17 +457,14 @@ PTL.dialog = {
   },
   killColumn:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $column = $button.parent().parent(),
-          $panel = $column.parent(),
-          $columnsInTab = $panel.find('.column'),
-          $feedsInCol = $column.find('.feed'),
-          $icon = $dialog.find('div#icon > i'),
-          colIndex = $panel.find('.column').index($column),
-          nbOfColumnsInTab = $columnsInTab.length,
-          nbOfFeedsInCol = $feedsInCol.length;
+            $panel = $column.parent(),
+            $icon = $dialog.find('div#icon > i'),
+            colIndex = $panel.find('.column').index($column),
+            nbOfFeedsInCol = $column.find('.feed').length;
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -500,7 +497,7 @@ PTL.dialog = {
           });
 
           $dialog.find('h1').text(PTL.tr('Delete this column and all of its content?'))
-            .next('p#dialog-blurb')
+            .next('p#dialogBlurb')
             .addClass('dangerous')
             .text(PTL.tr('This action cannot be undone.'))
             .next('h2').text(PTL.tr('Index'))
@@ -516,7 +513,7 @@ PTL.dialog = {
   },
   kbShortcuts:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $iconDiv = $dialog.find('div#icon');
@@ -629,7 +626,7 @@ PTL.dialog = {
                                 .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
           $dialog.find('h1').text(PTL.tr('Keyboard shortcuts'))
-            .next('p#dialog-blurb').text(PTL.tr('A click on the Pétrolette logo puts the focus on the first tab'))
+            .next('p#dialogBlurb').text(PTL.tr('A click on the Pétrolette logo puts the focus on the first tab'))
             .next('h2').text(PTL.tr('When focus is on a tab'))
             .next('p')
             .append($kbShortCutsTab)
@@ -645,18 +642,17 @@ PTL.dialog = {
   },
   killTab:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $tabs = $('#tabs'),
             $a = $button.prev('a.ui-tabs-anchor'),
+            tabId = $a.attr('href'),
             $selectedTab = $a.parent(),
             $selectedPanel = $tabs.find(tabId),
-            $icon = $dialog.find('div#icon > i');
-
-      var tabId = $a.attr('href'),
-          selectedTabIndex = $tabs.tabs('option', 'active'),
-          previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
+            $icon = $dialog.find('div#icon > i'),
+            selectedTabIndex = $tabs.tabs('option', 'active'),
+            previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -697,7 +693,7 @@ PTL.dialog = {
           });
 
           $dialog.find('h1').text(PTL.tr('Delete this tab and all of its content?'))
-            .next('p#dialog-blurb')
+            .next('p#dialogBlurb')
             .addClass('dangerous')
             .text(PTL.tr('This action cannot be undone.'))
             .next('h2').text(PTL.tr('Name'))
@@ -713,13 +709,13 @@ PTL.dialog = {
   },
   killFeed:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $thisFeed = $button.parent().parent().parent().parent(),
-          thisFeedId = $button.parent().parent().parent().parent().attr('id'),
-          thisFeedName = $button.parent().parent().parent().find('.feed-title').text(),
-          $icon = $dialog.find('div#icon > i');
+            thisFeedId = $button.parent().parent().parent().parent().attr('id'),
+            thisFeedName = $button.parent().parent().parent().find('.feedTitle').text(),
+            $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -755,7 +751,7 @@ PTL.dialog = {
           });
 
           $dialog.find('h1').text(PTL.tr('Delete this feed?'))
-            .next('p#dialog-blurb')
+            .next('p#dialogBlurb')
             .addClass('dangerous')
             .text(PTL.tr('This action cannot be undone.'))
             .next('h2').text(PTL.tr('Name'))
@@ -771,7 +767,7 @@ PTL.dialog = {
   },
   importFeeds:function(existingFeeds, importedFeedsFile) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #question-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $icon = $dialog.find('div#icon > i');
@@ -819,7 +815,7 @@ PTL.dialog = {
           });
 
           $dialog.find('h1').text(PTL.tr('Open / import tabs and feeds'))
-            .next('p#dialog-blurb')
+            .next('p#dialogBlurb')
             .addClass('dangerous')
             .text(PTL.tr('This action cannot be undone.'))
             .next('h2').text(PTL.tr('Replace or merge?'))
@@ -835,7 +831,7 @@ PTL.dialog = {
   },
   editTab:function($tab) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #edit-tab-dialog', function() {
+    $('#dialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
 
       const $dialog = $(this);
 
@@ -856,7 +852,7 @@ PTL.dialog = {
             title: PTL.tr('Ok'),
             class: 'translate',
             click: function() {
-              $('#' + $(this).data('tabId')).text($dialog.find('#tab-name').val());
+              $('#' + $(this).data('tabId')).text($dialog.find('#tabNameInput').val());
               PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
             }
@@ -868,7 +864,7 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          const $tabName = $dialog.find('#tab-name');
+          const $tabNameInput = $dialog.find('input#tabNameInput');
           const $tabNameLegend = $dialog.find('legend#tabNameLegend');
 
           const $tabLeft = $dialog.find('button#left');
@@ -886,10 +882,10 @@ PTL.dialog = {
 
           $tabNameLegend.text(PTL.tr('Name'));
 
-          $tabName.val($(this).data('tabName'));
+          $tabNameInput.val($(this).data('tabName'));
 
           $(this).on('submit', function () {
-            $('#' + $(this).data('tabId')).text($dialog.find('#tab-name').val());
+            $('#' + $(this).data('tabId')).text($tabNameInput.val());
             PTL.tab.saveTabs();
             PTL.dialog.kill($dialog);
           });

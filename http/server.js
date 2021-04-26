@@ -10,7 +10,7 @@ const portHttp =  pjson.HTTP_PORT || 8000;
 const portHttps =  pjson.HTTPS_PORT || 8001;
 
 httpServer.listen(portHttp, () => {
-  console.debug('HTTP Server running on port %s', port);
+  console.debug('HTTP Server running on port %s', portHttp);
 });
 
 const httpsServer = https.createServer({
