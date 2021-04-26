@@ -113,10 +113,11 @@ a:visited {
 
 a.ui-tabs-anchor:link,
 a.ui-tabs-anchor:visited {
-  color: var(--color-link);
+  color: var(--color-link) !important;
 }
 
-li.ui-tabs-active > a:link {
+li.ui-tabs-active > a:link,
+li.ui-tabs-active > a:visited {
   color: var(--color-link-hover) !important;
 }
 
