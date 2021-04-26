@@ -620,7 +620,7 @@ li.feed-item.error > strong.value {
   right: 2em;
   z-index: 25;
   padding: 0.4em;
-  color: var(--color-ui-pri);
+  color: var(--color-text);
   background-color: var(--color-ui-qua);
   border: 3px solid var(--color-ui-sec);
   border-radius: 3px;
@@ -1076,8 +1076,7 @@ li.feed.selected {
 .feedHeader {
   display: flex;
   flex-direction: row;
-  background-color: var(--color-feed-header-bg);
-  /* transition: all 0.3s linear; */
+  background-color: var(--color-feed-header-bg) !important;
   height: var(--header-height);
   max-height: var(--header-height);
   padding: 0;
@@ -1199,8 +1198,8 @@ table#jslicense-labels1 td {
 li.feed div.feedBody {
   will-change: contents;
   border-bottom: 1px solid var(--color-feed-header-bg);
-  border-left: 1px solid var(--color-feed-border);
-  border-right: 1px solid var(--color-feed-border);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
   margin: 0;
   overflow-y: auto;
   scrollbar-width: thin;
