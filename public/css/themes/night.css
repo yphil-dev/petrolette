@@ -1,26 +1,9 @@
 :root {
-  --color-fg1: #FFFFFF; /* Normal text */
-  --color-fg2: #19B5FE; /* Links */
-  --color-fg3: #CCCCCC; /* Visited links */
-  --color-fg4: #404552; /* Separators */
-  --color-fg5: #F77F00; /* Feed controls */
-  --color-fg6: #EAE2B7; /* Feed title */
-  --color-fg7: #FFFF00; /* Feed title */
-  --color-bg1: #29323C; /* Body / Feed border  */
-  --color-bg2: #1F262E; /* Feed header */
-  --color-bg3: #383C4A; /* Feed item BG */
-  --color-bg4: #424657; /* Feed item BG alternate */
-  --color-bg5: #1F262E; /* Feed item BG hover */
-  --color-hl1: #1F262E;
-  --color-hl2: #000000; /* Feed controls hover */
-  --color-hl3: #000000;
-  --color-danger: #FF0000;
-
   --color-text: #FFFFFF;
   --color-background: #202b38;
-  --color-scrollbar: #FF4136;
+  --color-scrollbar: #555;
   --color-border: #29323C;
-  --color-link: #FF4136;
+  --color-link: #C6DAF1;
   --color-link-visited: #CCCCCC;
   --color-link-hover: #19B5FE;
   --color-tab-border: #404552;
@@ -32,11 +15,11 @@
   --color-feed-header-bg: #1F262E;
   --color-feed-bg: #383C4A;
   --color-feed-bg-alt: #424657;
+  --color-feed-bg-hover: #1F262E;
   --color-tab-active-fg: #1F262E;
   --color-tab-active-bg: #1F262E;
   --color-tab-inactive-fg: #1F262E;
   --color-tab-inactive-bg: #29323C;
-  --color-hl2: #000000;
-  --color-hl3: #000000;
   --color-danger: #FF0000;
+  --color-search-result-hilight: #FF0;
 }

@@ -714,9 +714,9 @@ PTL.dialog = {
 
       const $dialog = $(this),
             $thisFeed = $button.parent().parent().parent().parent(),
-          thisFeedId = $button.parent().parent().parent().parent().attr('id'),
-          thisFeedName = $button.parent().parent().parent().find('.feed-title').text(),
-          $icon = $dialog.find('div#icon > i');
+            thisFeedId = $button.parent().parent().parent().parent().attr('id'),
+            thisFeedName = $button.parent().parent().parent().find('.feedTitle').text(),
+            $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-trash-empty danger');
 

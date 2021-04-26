@@ -1,18 +1,26 @@
 :root {
-  --color-fg1: #111133; /* Normal text */
-  --color-fg2: #19B5FE; /* Links */
-  --color-fg3: #404552; /* Visited links */
-  --color-fg4: #CCCCCC; /* Separators */
-  --color-fg5: #F4D35E; /* Feed controls */
-  --color-fg6: #EE964B; /* Feed title */
-  --color-fg7: #FFFF00; /* Feed title */
-  --color-bg1: #FFFFFF; /* Body / Feed border  */
-  --color-bg2: #FFFFFF; /* Feed header */
-  --color-bg3: #D7DAE5; /* Feed item BG */
-  --color-bg4: #EEEEEE; /* Feed item BG alternate */
-  --color-bg5: #D7DAE5; /* Feed item BG hover */
-  --color-hl1: #1C0B19;
-  --color-hl2: #FF0000; /* Feed controls hover */
+  --color-text: #1B426F;
+  --color-background: #F7F8FC;
+  --color-scrollbar: #1B426F;
+  --color-border: #CCCCCC;
+  --color-link: #1B426F;
+  --color-link-visited: #CCCCCC;
+  --color-link-hover: #19B5FE;
+  --color-tab-border: #404552;
+  --color-feed-control: #F77F00;
+  --color-feed-control-hover: #19B5FE;
+  --color-feed-title: #1B426F;
+  --font-feed-title: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+  --color-feed-border: #ADB9E1;
+  --color-feed-header-bg: #ADB9E1;
+  --color-feed-bg: ##e9ebef;
+  --color-feed-bg-alt: #d4d6de;
+  --color-tab-active-fg: #1F262E;
+  --color-tab-active-bg: #1F262E;
+  --color-tab-inactive-fg: #1F262E;
+  --color-tab-inactive-bg: #E2E6F4;
+  --color-hl2: #000000;
   --color-hl3: #000000;
-  --color-danger: #BB0000;
+  --color-danger: #FF0000;
+  --color-search-result-hilight: #FF0;
 }
