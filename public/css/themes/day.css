@@ -15,12 +15,11 @@
   --color-feed-header-bg: #ADB9E1;
   --color-feed-bg: #E9EBEF;
   --color-feed-bg-alt: #D4D6DE;
+  --color-feed-bg-hover: #1F262E;
   --color-tab-active-fg: #1F262E;
   --color-tab-active-bg: #1F262E;
   --color-tab-inactive-fg: #1F262E;
   --color-tab-inactive-bg: #E2E6F4;
-  --color-hl2: #000000;
-  --color-hl3: #000000;
   --color-danger: #FF0000;
   --color-search-result-hilight: #FF0;
 }
