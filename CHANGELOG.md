@@ -4,7 +4,9 @@
 ## 1.3.0
 
 - New theming engine / logic
+    - Full "Light / Dark" UI
 - Rendering (CSS, transitions, JQ, etc.) optimizations
+- Dialog KB control
 
 ### Bugfixes
 

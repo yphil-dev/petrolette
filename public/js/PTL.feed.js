@@ -40,7 +40,7 @@ PTL.feed = {
                 .children('div.feedBody')
                 .addClass('folded');
               $feedControls.data('status', 'off');
-              $reloadIcon.removeClass('icon-refresh')
+              $refreshIcon.removeClass('icon-refresh')
                 .addClass('icon-pin');
             } else {
               $(this).addClass('fold')
@@ -48,17 +48,17 @@ PTL.feed = {
                 .children('div.feedBody')
                 .removeClass('folded');
               $feedControls.data('status', 'on');
-              $reloadIcon.removeClass('icon-pin')
+              $refreshIcon.removeClass('icon-pin')
                 .addClass('icon-refresh');
             }
 
             PTL.tab.saveTabs();
-            PTL.feed.populate($reloadIcon);
+            PTL.feed.populate($refreshIcon);
 
           });
 
     const $selectIcon = $('<i>')
-          .attr('class', 'feed-control translate icon-checkbox feed-select')
+          .attr('class', 'feed-control translate icon-checkbox feedSelect')
           .data('title', 'Select this feed (%1)', url)
           .attr('title', PTL.tr('Select this feed (%1)', url))
           .click(function() {
@@ -78,7 +78,7 @@ PTL.feed = {
           });
 
     const $prefsIcon = $('<i>')
-          .attr('class', 'feed-control translate icon-cog feed-edit')
+          .attr('class', 'feed-control translate icon-cog feedPrefs')
           .data('title', 'Edit this feed (%1) parameters', url)
           .attr('title', PTL.tr('Edit this feed (%1) parameters', url))
           .click(function() {
@@ -87,8 +87,8 @@ PTL.feed = {
             PTL.dialog.feedPrefs($(this));
           });
 
-    const $reloadIcon = $('<i>')
-          .attr('class', 'feed-control translate icon-refresh feed-refresh')
+    const $refreshIcon = $('<i>')
+          .attr('class', 'feed-control translate icon-refresh feedRefresh')
           .data('title', 'Refresh this feed (%1)', url)
           .attr('title', PTL.tr('Refresh this feed (%1)', url))
           .click(function() {
@@ -97,7 +97,7 @@ PTL.feed = {
             PTL.feed.populate($(this), progress);
           });
 
-    const $feedControls = $('<div>').attr('class', 'feed-controls dataStore')
+    const $feedControls = $('<div>').attr('class', 'feedControls dataStore')
           .data('index', feedIndex)
           .data('url', url)
           .data('name', name)
@@ -107,10 +107,10 @@ PTL.feed = {
           .data('iconhash', iconhash);
 
     if ($feedControls.data('status') == 'on') {
-      $reloadIcon.removeClass('icon-pin')
+      $refreshIcon.removeClass('icon-pin')
         .addClass('icon-refresh');
     } else {
-      $reloadIcon.removeClass('icon-refresh')
+      $refreshIcon.removeClass('icon-refresh')
         .addClass('icon-pin');
     }
 
@@ -118,17 +118,17 @@ PTL.feed = {
           .data('title', PTL.tr('Move this feed (%1)', url))
           .attr({
             title: PTL.tr('Move this feed (%1)', url),
-            class:'feed-handle'
+            class:'feedHandle'
           });
 
     const $feedBody = $('<div>').attr('class', 'feedBody').css('height', limit),
           $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
           $feedHeader = $('<div>').attr('class', 'feedHeader'),
-          $feedToggle = $('<div>').attr('class', 'feed-toggle').append($feedIcon, $feedImg),
+          $feedToggle = $('<div>').attr('class', 'feedToggle').append($feedIcon, $feedImg),
           $selectDiv = $('<div>').append($selectIcon),
           $deleteDiv = $('<div>').append($deleteIcon),
           $prefsDiv = $('<div>').append($prefsIcon),
-          $reloadDiv = $('<div>').append($reloadIcon);
+          $reloadDiv = $('<div>').append($refreshIcon);
 
     const $titleDiv = $('<div>')
           .attr({
@@ -179,14 +179,14 @@ PTL.feed = {
       PTL.dialog.feedPrefs($prefsIcon, true, isQueryString);
     } else {
       $feed.appendTo($column);
-      $reloadIcon.click();
+      $refreshIcon.click();
     }
 
   },
   populate:function($button, progress, newLimit) {
 
     const $dataStore = $button.parent().parent(),
-          $refreshButton = $dataStore.find('i.feed-refresh'),
+          $refreshButton = $dataStore.find('i.feedRefresh'),
           $feedHeader = $dataStore.parent(),
           $panel = $dataStore.parent().parent().parent(),
           $feed = $dataStore.parent().parent(),
@@ -200,8 +200,8 @@ PTL.feed = {
           feedLimit = newLimit || $dataStore.data('limit'),
           feedStatus = $dataStore.data('status'),
           feedIconHash = $dataStore.data('iconhash'),
-          $feedToggle = $feed.find('.feed-toggle'),
-          $feedIcon = $feed.find('.feed-toggle > i.feedIcon'),
+          $feedToggle = $feed.find('.feedToggle'),
+          $feedIcon = $feed.find('.feedToggle > i.feedIcon'),
           $myFeedIcon = $feedToggle.find('.favicon');
 
     const l = PTL.util.getLocation(feedUrl),
@@ -333,7 +333,7 @@ PTL.feed = {
                 .attr('class', 'translate flexBox');
 
           const $errorItem = $('<li>')
-                .attr('class', 'feed-item error')
+                .attr('class', 'feedItem error')
                 .append($key)
                 .append('&nbsp;')
                 .append($value);
@@ -391,7 +391,7 @@ PTL.feed = {
                 $videoIcon = $('<i>'),
                 $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
                 $itemDiv = $('<div>').attr('class', 'itemDiv'),
-                $feedItem = $('<li>').attr('class', 'feed-item');
+                $feedItem = $('<li>').attr('class', 'feedItem');
 
           var $image;
 
