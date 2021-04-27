@@ -893,6 +893,7 @@ li.feed.selected {
 }
 
 .feedHeader > .feedHandle {
+  cursor: grab;
   background-color: transparent;
   border-left: 3px dotted var(--color-scrollbar);
   border-right: 3px dotted var(--color-scrollbar);
