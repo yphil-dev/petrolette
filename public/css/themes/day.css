@@ -1,8 +1,8 @@
 :root {
   --color-text: #1B426F;
   --color-dim: #CCC;
-  --color-background: #F7F8FC;
-  --color-dialog-bg: #F7F8FC;
+  --color-background: #f0f2f9;
+  --color-dialog-bg: #e5e8f5;
   --color-dialog-border: #D4D6DE;
   --color-scrollbar: #ADB9E1;
   --color-border: #CCCCCC;
@@ -30,6 +30,7 @@
   --color-tab-active-bg: #1F262E;
   --color-tab-inactive-fg: #1F262E;
   --color-tab-inactive-bg: #E2E6F4;
+  --color-tab-hover: #F0F;
   --color-danger: #FF0000;
   --color-search-result-hilight: #FF0;
 }
