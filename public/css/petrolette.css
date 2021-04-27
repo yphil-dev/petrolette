@@ -100,6 +100,12 @@ a:link {
   text-decoration: none;
 }
 
+.fancybox-caption a, .fancybox-caption a:link, .fancybox-caption a:visited {
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  text-decoration: none;
+}
+
 a:visited {
   color: var(--color-link-visited);
 }
@@ -306,7 +312,8 @@ div#logoTitle > .logoTitle:hover,
 i.icon-petrolette:hover,
 i.icon-petrolette.writing {
   /* color: var(--color-ui-pri); */
-  opacity:0.5;
+  /* opacity:0.5; */
+  filter: brightness(110%);
 }
 
 div#logoTitle > div {
@@ -693,18 +700,21 @@ div#topNav {
 .ui-slider,
 .ui-slider-handle,
 .ui-spinner {
-  color: var(--color-button-text) !important;
+  color: var(--color-button-text);
   border: 1px solid var(--color-border) !important;
-  background-color: var(--color-button-bg) !important;
+  background-color: var(--color-button-bg);
 }
 
 .ui-slider-handle {
-  border-color: var(--color-button-border) !important;
+  border-color: var(--color-button-bg-active) !important;
+  background-color: var(--color-button-bg-active) !important;
+  color: var(--color-button-text) !important;
   cursor: col-resize !important;
   height: 36px !important;
   line-height: 38px;
   min-width: 38px;
   text-align: center;
+  top: -.2em !important;
 }
 
 .imageLegend {
@@ -734,6 +744,11 @@ nav#sideMenu.expanded {
   border: unset !important;
 }
 
+a:visited.ui-button {
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+}
+
 .ui-checkboxradio-checked
 .ui-button:active {
   background-color: var(--color-button-bg-active) !important;
@@ -742,6 +757,10 @@ nav#sideMenu.expanded {
 .ui-button.ui-state-active {
   background-color: var(--color-button-bg-active) !important;
 }
+
+/* .ui-button:hover { */
+/*   background-color: var(--color-button-hover); */
+/* } */
 
 .progress-label {
   position: absolute;
@@ -1297,10 +1316,6 @@ div.introjs-helperLayer {
 
 /* Gallery */
 
-div.fancybox-caption a.ui-button.ui-corner-all {
-  color: var(--color-ui-qua);
-}
-
 div.fancybox-caption a.ui-button.ui-corner-all:hover {
   text-decoration: none;
 }
@@ -1309,7 +1324,8 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
   margin: 0 0 0.4em 0;
   padding-left: 0;
   border-radius: 3px;
-  background-color: #EDEDED;
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
 }
 
 #liberapay {

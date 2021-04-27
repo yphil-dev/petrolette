@@ -10,7 +10,7 @@
   --color-button-bg-active: #007FFF;
   --color-button-border: #FEDBD0;
   --color-button-text: #F7F8FC;
-  --color-button-hover: #CCC;
+  --color-button-hover: #007FFF;
   --color-link: #1B426F;
   --color-link-visited: #888;
   --color-link-hover: #19B5FE;
@@ -25,7 +25,7 @@
   --color-feed-header-bg3: #EFF1F9;
   --color-feed-bg: #E9EBEF;
   --color-feed-bg-alt: #D4D6DE;
-  --color-feed-bg-hover: #ADB9E1;
+  --color-feed-bg-hover: #566ec1;
   --color-tab-active-fg: #1F262E;
   --color-tab-active-bg: #1F262E;
   --color-tab-inactive-fg: #1F262E;
