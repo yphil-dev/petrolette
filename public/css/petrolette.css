@@ -746,10 +746,6 @@ a:visited.ui-button {
   background-color: var(--color-button-bg-active) !important;
 }
 
-.ui-tab.ui-state-default a:link {
-  color: var(--color-link);
-}
-
 .ui-tab.ui-state-active a:link,
 .ui-tab.ui-state-active i {
   color: var(--color-link-hover);
@@ -761,6 +757,11 @@ a:visited.ui-button {
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
   background-color: var(--color-background);
+}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited,
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  color: var(--color-link);
 }
 
 .progress-label {
