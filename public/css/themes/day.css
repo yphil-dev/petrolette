@@ -1,14 +1,15 @@
 :root {
   --color-text: #1B426F;
+  --color-dim: #CCC;
   --color-background: #F7F8FC;
   --color-dialog-bg: #F7F8FC;
   --color-dialog-border: #D4D6DE;
   --color-scrollbar: #ADB9E1;
   --color-border: #CCCCCC;
-  --color-button-bg: #F6F6F6;
+  --color-button-bg: #1B426F;
   --color-button-bg-active: #007FFF;
   --color-button-border: #FEDBD0;
-  --color-button-text: #202b38;
+  --color-button-text: #F7F8FC;
   --color-button-hover: #CCC;
   --color-link: #1B426F;
   --color-link-visited: #888;
