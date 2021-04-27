@@ -110,17 +110,17 @@ a:visited {
   color: var(--color-link-visited);
 }
 
-a.ui-tabs-anchor:link,
-a.ui-tabs-anchor:visited {
-  color: var(--color-link) !important;
-}
+/* a.ui-tabs-anchor:link, */
+/* a.ui-tabs-anchor:visited { */
+/*   color: var(--color-link); */
+/* } */
 
-li.ui-tabs-active > a:link,
 li.ui-tabs-active > a:visited {
-  color: var(--color-link-hover) !important;
+  color: var(--color-link-hover);
 }
 
 a:hover,
+/* .ui-tab.ui-state-active a:link, .ui-tab.ui-state-active i, .ui-tab.ui-state-default a:link, */
 a:active {
   color: var(--color-link-hover);
 }
@@ -150,17 +150,6 @@ li.feedItem:not(.error) a {
 li.results a:link,
 li.results a:visited {
   color: black !important;
-}
-
-.ui-tab.ui-state-active a:link,
-.ui-tab.ui-state-active i,
-.ui-tab.ui-state-default a:link {
-  color: var(--color-link);
-}
-
-.ui-tab.ui-state-default a:hover {
-  cursor: pointer !important;
-  color: var(--color-link-hover) !important;
 }
 
 .feedHeader > .feedTitle > a:link,
@@ -745,7 +734,6 @@ nav#sideMenu.expanded {
 }
 
 a:visited.ui-button {
-  background: var(--color-button-bg);
   color: var(--color-button-text);
 }
 
@@ -758,9 +746,22 @@ a:visited.ui-button {
   background-color: var(--color-button-bg-active) !important;
 }
 
-/* .ui-button:hover { */
-/*   background-color: var(--color-button-hover); */
-/* } */
+.ui-tab.ui-state-default a:link {
+  color: var(--color-link);
+}
+
+.ui-tab.ui-state-active a:link,
+.ui-tab.ui-state-active i {
+  color: var(--color-link-hover);
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover {
+  background-color: var(--color-tab-hover);
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  background-color: var(--color-background);
+}
 
 .progress-label {
   position: absolute;
@@ -985,6 +986,13 @@ label:last-child {
 #tabs {
   overflow: hidden;
   white-space: nowrap;
+}
+
+#tabs > ul {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-fg4) var(--color-bg1);
 }
 
 #tabs > ul > li {
