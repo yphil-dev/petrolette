@@ -13,13 +13,13 @@ PTL.tab = {
       heightStyle: 'content',
       activate: function(event, ui) {
         ui.newPanel.css("display","flex");
-        $('.tab-icon').show();
+        $('.tabIcon').show();
       }
     });
 
     $tabs.find('.ui-tabs-nav').sortable({
       axis: 'x',
-      items: '> li:not(#new-group)',
+      items: '> li:not(#newTabTab)',
       stop: function() {
         $tabs.tabs('refresh');
         PTL.tab.saveTabs();
@@ -33,12 +33,12 @@ PTL.tab = {
       }
     });
 
-    $tabs.on("click", "i.tab-closer", function() {
+    $tabs.on("click", "i.tabCloser", function() {
       PTL.dialog.killTab($(this));
     });
 
     if (PTL.util.isMobile()) {
-      $tabs.find('.feed-controls > div').removeClass('collapsible');
+      $tabs.find('.feedControls > div').removeClass('collapsible');
     }
 
     $tabs.find('.collapsible').show('fast');
@@ -57,7 +57,7 @@ PTL.tab = {
       }, 500);
     });
 
-    $('#new-group').bind('click', function(event) {
+    $('#newTabTab').bind('click', function(event) {
       event.stopImmediatePropagation();
       PTL.tab.add($tabs);
     });
@@ -134,7 +134,7 @@ PTL.tab = {
       PTL.tab.add($tabs, thisGroup.name, thisTabCols, progress);
     });
 
-    $('#new-group').removeClass('hidden');
+    $('#newTabTab').removeClass('hidden');
 
     $tabs.find('li[tabindex="0"]:first-child').focus();
 
@@ -155,7 +155,7 @@ PTL.tab = {
     name = name || 'Tab ' + tabIndex;
 
     const $tabCloser = $('<i>')
-          .attr('class', 'icon-cancel tab-icon tab-closer translate')
+          .attr('class', 'icon-cancel tabIcon tabCloser translate')
           .data('title', PTL.tr('Delete the [%1] tab', name))
           .attr('title', PTL.tr('Delete the [%1] tab', name));
 
@@ -208,7 +208,7 @@ PTL.tab = {
                 $tabCloser);
 
     $tab.appendTo($tabNames);
-    $tabNames.find('#new-group').appendTo($tabNames);
+    $tabNames.find('#newTabTab').appendTo($tabNames);
 
     var newTab = false;
 
@@ -296,12 +296,12 @@ PTL.tab = {
   makeNewTabButton:function($tabs) {
 
     const $newTabButton = $('<li>')
-          .attr('id', 'new-group')
-          .attr('class', 'translate new-group hidden')
+          .attr('id', 'newTabTab')
+          .attr('class', 'translate hidden')
           .data('title', 'Add a new tab')
           .attr('title', PTL.tr('Add a new tab'))
           .focus(function() {
-            PTL.util.say(PTL.tr("Click this button to add a tab"), 'success', true, 'Astuce');
+            PTL.util.say(PTL.tr("Click this button to add a tab"), 'success', true, 'Tip');
           });
 
     const $newTabButtonLink = $('<a>')

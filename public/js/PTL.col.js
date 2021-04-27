@@ -92,7 +92,7 @@ PTL.col = {
 
     $column.sortable({
       cursor: 'move',
-      handle: ".feed-handle",
+      handle: ".feedHandle",
       connectWith: ".column",
       cursorAt: {top: 10, left: 32},
       receive: function(e, ui) {
@@ -125,7 +125,7 @@ PTL.col = {
         ui.item.siblings('.selected').removeClass('hidden');
         //unselect since the operation is complete
         $('.selected').removeClass('selected ui-state-hover');
-        $('i.feed-select').removeClass('icon-checked').addClass('icon-checkbox');
+        $('i.feedSelect').removeClass('icon-checked').addClass('icon-checkbox');
 
         PTL.tab.saveTabs();
       }

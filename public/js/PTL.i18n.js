@@ -58,6 +58,9 @@ PTL.i18n.translations = {
 
   "Loading" : { fr: "Chargement", ja: "読み込み中", es: "Cargando" },
 
+  "Media preloading" : { fr: "Pré-chargement des médias", ja: "メディアのプリロード", es: "Precarga de medios" },
+
+
   "Focus first tab" : { fr: "Focus sur le premier onglet", ja: "フォーカスファーストタブ", es: "Foco primera pestaña" },
 
   "A click on the Pétrolette logo puts the focus on the first tab" : { fr: "Un clic sur le logo Pétrolette met le focus sur le premier onglet", ja: "Pétroletteのロゴをクリックすると、最初のタブに焦点を当てます。", es: "Un clic en el logotipo de Pétrolette pone el enfoque en la primera pestaña" },
@@ -213,8 +216,6 @@ PTL.i18n.translations = {
 
   'Drag me to the bookmark bar, or right click "Bookmark this link"' : { fr: 'Glissez-moi dans la barre de favoris, ou clic droit "Marque-page sur ce lien"' , ja: 'ブックマークバーに私をドラッグするか、右クリック"Bookmarkこのリンク"', es: 'Arrastre a la barra de marcadores, o haga clic derecho en "Bookmark este enlace"' },
 
-  "This is a feed. More info: %1" : { fr: "Ceci est un flux. Plus d'infos: %1" , ja: "これはソースです 詳細情報：%1", es: "Esta es una fuente. Más info: %1" },
-
   "This is an RSS feed" : { fr: "Ceci est un flux RSS" , ja: "これはソースです 詳細情報", es: "Esta es una fuente." },
 
   "Click this button to add a tab" : { fr: "Cliquez sur ce bouton pour ajouter un onglet" , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo" },
@@ -323,9 +324,7 @@ PTL.i18n.translations = {
 
   "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
   "Help Pétrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Pétrolette." , ja: "あなたの精神的な日の気分に応じてPétroletteを助けてください", es: "Ayuda a Pétrolette de acuerdo con tu estado de ánimo espiritual del día." },
-  "This file is bad [%1]" : { fr: "Ce fichier est chelou [%1]" , ja: "[%1]このファイルは悪いです", es: "Este archivo es malo [%1]" },
   "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
-  "Erase all" : { fr: "Tout effacer" , ja: "すべてを消去する", es: "Borrar todo" },
 
   "Connected to remote storage" : { fr: "Connecté au stockage distant" , ja: "リモートストレージに接続", es: "Conectado al almacenamiento remoto" },
 

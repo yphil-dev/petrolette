@@ -46,11 +46,8 @@ var PTL = (function() {
         PTL.util.say(PTL.tr('Search prefix') + ': ' + clean, 'success', true);
       });
 
-      $('#logoTitle > .logoTitle')
-        .attr('title', PTL.tr('Focus first tab'))
-        .data('title', 'Focus first tab')
-        .click(function(){
-          $('#ui-id-1').focus().trigger('click');
+      $('#logoTitle > .logoTitle').click(function(){
+        $('#ui-id-1').focus().trigger('click');
         });
 
       $logoType.click(function(){
@@ -78,7 +75,7 @@ var PTL = (function() {
       $searchField.on('keypress',function(e) {
         if (e.which == 13) {
           $('a.ui-tabs-anchor.results').focus().trigger('click');
-          const item = document.querySelector('li.feed-item.results');
+          const item = document.querySelector('li.feedItem.results');
           item.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         }
       });
@@ -87,7 +84,7 @@ var PTL = (function() {
         if (e.which == 27) $(this).val('');
         var v = $(this).val();
         $('.results').removeClass('results');
-        $('li.feed-item').each(function () {
+        $('li.feedItem').each(function () {
           if (v != '' && $(this).text().search(new RegExp(v,'gi')) != -1) {
             const $feed = $(this).parent().parent();
             const $col = $feed.parent().parent();

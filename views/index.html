@@ -104,7 +104,6 @@
     <div id="preload">
       <i class="fontello"></i>
       <i class="logoTitle">.</i>
-      <i class="feedTitle">.</i>
       <i class="ui-icon"></i>
     </div>
 
@@ -128,7 +127,7 @@
 
         <div id="ptlSearch" class="menuBarItem navLeft">
           <input
-            class="ui-widget-content ui-corner-all translate"
+            class="translate"
             title="Press ENTER to go to last result"
             data-title="Press ENTER to go to last result"
             type="text"
@@ -141,12 +140,14 @@
         </div>
 
         <div id="logoTitle"
-             class="navRight"
-             title="Pétrolette <%= version %>">
-          <div class="logoTitle">
+             class="navRight">
+          <div class="logoTitle translate"
+               data-title="Focus first tab"
+               title="Focus first tab">
             Pétrolette
           </div>
           <div class="logoType"
+               title="Pétrolette <%= version %>"
                data-version="<%= version %>">
             <i class="icon-petrolette"></i>
           </div>
@@ -307,7 +308,7 @@
       <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <i class="icon-right rotate unfold"></i>
         <span class="translate"
-              data-content="Media preload">Media preload
+              data-content="Media preloading">Media preloading
         </span>
       </div>
       <fieldset class="menuForm">
@@ -381,7 +382,7 @@
         <div class="flexBox">
           <input name="searchPrefix"
                  id="searchPrefixInput"
-                 class="unique grow ui-widget-content ui-corner-all translate"
+                 class="unique grow translate"
                  placeholder="Search prefix"
                  data-title="Search prefix"
                  title="Search prefix"
@@ -412,7 +413,7 @@
               data-content="Support">Support
         </span>
       </div>
-      <fieldset class="menuForm ui-widget-content">
+      <fieldset>
         <div class="flexBox" id="liberapay">
           <a href="https://liberapay.com/yPhil/">
             <img width="156" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
@@ -429,7 +430,7 @@
               data-content="Console">Console
         </span>
       </div>
-      <fieldset class="menuForm ui-widget-content">
+      <fieldset>
         <div class="flexBox">
           <div
             class="grow"
@@ -459,7 +460,7 @@
         </div>
       </noscript>
 
-      <div id="dialogs"></div>
+      <div id="ptlDialogs"></div>
 
       <span id="backToTop">
         <i class="icon-up"></i>

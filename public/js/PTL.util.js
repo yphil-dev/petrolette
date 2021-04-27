@@ -269,22 +269,22 @@ PTL.util = {
         },
         {
           title: PTL.tr('Refresh / reload this feed'),
-          element: '.feed-refresh',
+          element: '.feedRefresh',
           intro: PTL.tr('Get the latest articles.')
         },
         {
           title: PTL.tr('Configure this feed'),
-          element: '.feed-edit',
+          element: '.feedPrefs',
           intro: PTL.tr('Configure this feed.')
         },
         {
           title: PTL.tr('Keep everything tidy'),
-          element: '.feed-select',
+          element: '.feedSelect',
           intro: PTL.tr('Select this feed (for drag & drop).')
         },
         {
           title: 'Grip handle',
-          element: '.feed-handle',
+          element: '.feedHandle',
           intro: PTL.tr('Drag here to move this feed (and all other selected feeds) within this tab, or into another.')
         },
         {

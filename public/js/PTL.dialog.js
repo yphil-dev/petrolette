@@ -3,11 +3,11 @@
 PTL.dialog = {
   kill:function($dialog) {
     $dialog.dialog('destroy');
-    $('#dialogs').empty();
+    $('#ptlDialogs').empty();
   },
   resetTabs:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $icon = $dialog.find('div#icon > i');
@@ -61,13 +61,9 @@ PTL.dialog = {
   },
   beg:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
 
-      const $dialog = $(this),
-            $beggarH4 = $dialog.find('h4'),
-            $beggarClose = $dialog.find('span.beggarClose'),
-            $beggarOkButton = $dialog.find('#beggarOkButton'),
-            $beggarTourButton = $dialog.find('#beggarTourButton');
+      const $dialog = $(this);
 
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
@@ -83,12 +79,11 @@ PTL.dialog = {
             }
           },
           {
-            text: PTL.tr('Take the tour'),
-            title: PTL.tr('Learn to use it in a few easy steps'),
+            text: PTL.tr('Ok'),
+            title: PTL.tr('Ok'),
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);
-              PTL.util.help('ui');
             }
           }
         ],
@@ -123,7 +118,7 @@ PTL.dialog = {
   },
   about:function(versionNumber) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $content = $dialog.find('div.flexBox'),
@@ -186,7 +181,7 @@ PTL.dialog = {
   },
   help:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #helpDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
 
       const $dialog = $(this);
 
@@ -234,7 +229,7 @@ PTL.dialog = {
   },
   feedPrefs:function($button, isNewFeed) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #feed-prefs', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #feed-prefs', function() {
 
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
@@ -345,8 +340,6 @@ PTL.dialog = {
             $guessButton
               .addClass('ui-state-error')
               .attr('title', PTL.tr('No valid feed found at this address')) ;
-
-            $okButton.addClass('ui-state-error');
           }
 
           const $tabFeedId = $('li#' + $dataStore.data('id')),
@@ -354,7 +347,8 @@ PTL.dialog = {
                 $guessButton = $dialog.find('button#feedGuessButton').button(),
                 $guessSpinner = $dialog.find('button#feedGuessButton > i'),
                 $feedGuessInput = $dialog.find('input#feedGuessInput'),
-                $okButton = $dialog.find('.ui-dialog-buttonpane'),
+                $feedNameInput = $dialog.find('input#feedNameInput'),
+                $okButton = $('.ui-dialog-buttonpane').find('.button-ok'),
                 $killFeedFieldset = $('fieldset#killFeedFieldset'),
                 $killFeedLegend = $('legend#killFeedLegend'),
                 $helpMiniButton = $('<button>'),
@@ -362,6 +356,20 @@ PTL.dialog = {
                 oldName = $dataStore.data('name'),
                 oldType = $dataStore.data('type'),
                 oldLimit = $dataStore.data('limit');
+
+          $feedGuessInput.on('keypress',function(e) {
+            if (e.which == 13) {
+              $okButton.click();
+              console.log('ENTER!: %s (%s)');
+            }
+          });
+
+          $feedNameInput.on('keypress',function(e) {
+            if (e.which == 13) {
+              $okButton.click();
+              console.log('ENTER!: %s (%s)');
+            }
+          });
 
           $helpMiniButton
             .attr('class', 'ui-button ui-corner-all ui-widget')
@@ -458,7 +466,7 @@ PTL.dialog = {
   },
   killColumn:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $column = $button.parent().parent(),
@@ -514,7 +522,7 @@ PTL.dialog = {
   },
   kbShortcuts:function() {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $iconDiv = $dialog.find('div#icon');
@@ -643,7 +651,7 @@ PTL.dialog = {
   },
   killTab:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $tabs = $('#tabs'),
@@ -710,7 +718,7 @@ PTL.dialog = {
   },
   killFeed:function($button) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $thisFeed = $button.parent().parent().parent().parent(),
@@ -768,7 +776,7 @@ PTL.dialog = {
   },
   importFeeds:function(existingFeeds, importedFeedsFile) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $icon = $dialog.find('div#icon > i');
@@ -832,7 +840,7 @@ PTL.dialog = {
   },
   editTab:function($tab) {
 
-    $('#dialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
 
       const $dialog = $(this);
 
