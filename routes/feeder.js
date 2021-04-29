@@ -43,7 +43,8 @@ function getFeed (feedUrl, callback) {
   }).then(function (res) {
 
     if (res.status != 200) {
-      return callback({error:'error', errno:res.status, message:'Bad server response'});
+      callback({error:'error', errno:res.status, message:'Bad server response'});
+      return reject();
     }
 
     var feedparser = new FeedParser();
@@ -75,6 +76,6 @@ function getFeed (feedUrl, callback) {
     });
 
   }).catch((err) => {
-    return callback({error:err, resStatus:0, message:err.message});
+    callback({error:err, resStatus:0, message:err.message});
   });
 }
