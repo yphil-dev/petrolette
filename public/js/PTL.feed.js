@@ -256,7 +256,7 @@ PTL.feed = {
       $feedLink.removeClass('danger');
 
       $.get("/feed", {
-        feedurl: feedUrl,
+        url: feedUrl,
         dataType: 'json'
       }, function() {
 

@@ -47,8 +47,8 @@ var PTL = (function() {
       });
 
       $('#logoTitle > .logoTitle').click(function(){
-        $('#ui-id-1').focus().trigger('click');
-        });
+        $('.ui-state-active a').focus();
+      });
 
       $logoType.click(function(){
         PTL.dialog.about($logoType.attr('data-version'));

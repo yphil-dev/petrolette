@@ -637,7 +637,7 @@ PTL.dialog = {
                                 .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
           $dialog.find('h1').text(PTL.tr('Keyboard shortcuts'))
-            .next('p#dialogBlurb').text(PTL.tr('A click on the Pétrolette logo puts the focus on the first tab'))
+            .next('p#dialogBlurb').text(PTL.tr('A click on the Pétrolette logo puts the focus on the current tab'))
             .next('h2').text(PTL.tr('When focus is on a tab'))
             .next('p')
             .append($kbShortCutsTab)

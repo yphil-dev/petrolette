@@ -5,16 +5,6 @@ const fetch = require('node-fetch'),
 
 exports.getFeed = getFeed;
 
-function maybeDecompress (res, encoding) {
-  var decompress;
-  if (encoding.match(/\bdeflate\b/)) {
-    decompress = zlib.createInflate();
-  } else if (encoding.match(/\bgzip\b/)) {
-    decompress = zlib.createGunzip();
-  }
-  return decompress ? res.pipe(decompress) : res;
-}
-
 function maybeTranslate (res, charset) {
   var iconvStream;
   // Decode using iconv-lite if its not utf8 already.
@@ -44,13 +34,6 @@ function getParams(str) {
   return params;
 }
 
-function done(err) {
-  if (err) {
-    // console.error('err: %s Stack %s', err, err.stack);
-    return;
-  }
-}
-
 function getFeed (feedUrl, callback) {
   // Get a response stream
   fetch(feedUrl, {
@@ -59,37 +42,40 @@ function getFeed (feedUrl, callback) {
     redirect: 'follow'
   }).then(function (res) {
 
-    // Setup feedparser stream
-    var feedparser = new FeedParser();
-    var feedItems = [];
-    feedparser.on('error', function(error) {
-      console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
-      return callback({error:error, errno:res.status, message:error.message});
-    });
-    feedparser.on('end', done);
-    feedparser.on('readable', function() {
-      try {
-        var item = this.read();
-        if (item !== null) feedItems.push (item);
-      }
-      catch (err) {
-        console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
-      }
-    }).on ('end', function () {
-      var meta = this.meta;
-      return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl);
-    });
-
     if (res.status != 200) {
-      return callback({error:'error', errno:res.status, message:'Bad server response'});
+      callback({error:'error', errno:res.status, message:'Bad server response'});
+      return reject();
     }
 
+    var feedparser = new FeedParser();
+    var feedItems = [];
     var charset = getParams(res.headers.get('content-type') || '').charset;
     var responseStream = res.body;
     responseStream = maybeTranslate(responseStream, charset);
     responseStream.pipe(feedparser);
 
+    return new Promise((resolve, reject) => {
+      feedparser.on('error', function(error) {
+        console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
+        reject();
+        return callback({error:error, errno:res.status, message:error.message});
+      }).on('readable', function() {
+        try {
+          var item = this.read();
+          if (item !== null) feedItems.push (item);
+        }
+        catch (err) {
+          console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
+        }
+      }).on ('end', function () {
+        var meta = this.meta;
+        resolve();
+        return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl);
+      });
+
+    });
+
   }).catch((err) => {
-    return callback({error:err, resStatus:0, message:err.message});
+    callback({error:err, resStatus:0, message:err.message});
   });
 }

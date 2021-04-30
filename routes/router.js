@@ -70,7 +70,7 @@ router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
 
-  feeder.getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
+  feeder.getFeed(req.query.url, function (err, feedItems, feedTitle, feedLink) {
 
     if (feedItems && !res.headersSent) {
       res.send({
