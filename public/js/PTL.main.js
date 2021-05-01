@@ -23,7 +23,7 @@ var PTL = (function() {
             $searchPrefixOkButton = $('button#searchPrefixOkButton'),
             $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
             $searchPrefixInput = $('input#searchPrefixInput'),
-            $spinner = $('#gallerySpeedSpinner'),
+            $gallerySpeedSpinner = $('#gallerySpeedSpinner'),
             $logoType = $('.logoType'),
             $topMenu = $('nav#top-menu');
 
@@ -310,7 +310,7 @@ var PTL = (function() {
         PTL.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
       });
 
-      $spinner.spinner({
+      $gallerySpeedSpinner.spinner({
         min: 0.5,
         max: 10000,
         step: 0.5,
@@ -321,9 +321,9 @@ var PTL = (function() {
         }
       });
 
-      $spinner.spinner('value', PTL.util.milliToSecs(gallerySlideshowSpeed));
+      $gallerySpeedSpinner.spinner('value', PTL.util.milliToSecs(gallerySlideshowSpeed));
 
-      $spinner.on( 'spinstop', function() {
+      $gallerySpeedSpinner.on( 'spinstop', function() {
         $slider.slider( 'option', 'value', $(this).val() * 1000);
         $('.ui-slider-handle').text(PTL.util.milliToSecs($(this).val() * 1000) + 's');
       });
@@ -334,7 +334,7 @@ var PTL = (function() {
           "ui-slider-handle": "ui-corner-all",
           "ui-slider-range": "ui-corner-all ui-widget-header"
         },
-        value: gallerySlideshowSpeed,
+        value: parseInt(gallerySlideshowSpeed),
         min: 500,
         max: 10000,
         step: 500,
@@ -343,9 +343,8 @@ var PTL = (function() {
         },
         slide: function(event, ui) {
           // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-          $spinner.val(PTL.util.milliToSecs(ui.value));
-          $(this).find('.ui-slider-handle').text(PTL.util.milliToSecs(ui.value) + 's');
-
+          $gallerySpeedSpinner.val(PTL.util.milliToSecs(parseInt(ui.value)));
+          $(this).find('.ui-slider-handle').text(PTL.util.milliToSecs(parseInt(ui.value)) + 's');
         },
         change: function(event, ui) {
           PTL.prefs.writeConfig('gallerySlideshowSpeed', ui.value);

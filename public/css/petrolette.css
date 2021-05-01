@@ -230,17 +230,16 @@ button.dangerous:hover {
 
 .topNav {
   z-index: 20;
-  background-color: var(--color-ui-qua);
   display: flex;
   flex-direction: row;
   overflow: hidden;
   height: 45px;
 }
 
-.topNav > div.menuBarItem {
-  color: var(--color-ui-pri);
-  text-align: center;
-}
+/* .topNav > div.menuBarItem { */
+/*   color: var(--color-ui-pri); */
+/*   text-align: center; */
+/* } */
 
 .topNav .navLeft {
   order: 1;
@@ -257,9 +256,13 @@ button.dangerous:hover {
 
 .topNav > div.menuBarItem > i.topMenuIcon {
   display: block;
-  color: var(--color-ui-sec);
+  color: var(--color-text);
   font-size: 16pt;
   margin: 8px 8px 8px 12px;
+}
+
+.topNav > div.menuBarItem > i.topMenuIcon:hover {
+  color: var(--color-link-hover);
 }
 
 .topNav > div.menuBarItem > i.icon-reset {
@@ -275,10 +278,6 @@ button.dangerous:hover {
   margin: 4px 0 8px;
 }
 
-.topNav > div.menuBarItem i.topMenuIcon:hover {
-  color: var(--color-text);
-}
-
 .icon-w3c {
   color: var(--color-ui-success);
 }
@@ -291,7 +290,7 @@ i.icon-petrolette {
 }
 
 .logoTitle {
-  color: var(--color-link-hover);
+  color: var(--color-ui-sec);
   display: var(--logo-display);
   font-family: LobsterRegular, Helvetica, Arial, sans-serif;
   font-size: 36pt;
@@ -313,8 +312,17 @@ div#logoTitle > div {
   flex: 1 0;
 }
 
+.ui-tab i.tabCloser {
+  top: 2px;
+  color: var(--color-tab-inactive-bg);
+}
+
+.ui-state-active i.tabCloser {
+  color: var(--color-text);
+}
+
 i.tabCloser:hover {
-  color: var(--color-link-hover);
+  color: var(--color-danger);
 }
 
 [class ^= "icon-"]::before,
@@ -456,7 +464,7 @@ ul {
   width: -moz-available;
   width: -webkit-fill-available;
   width: fill-available;
-  align-items: center;
+  /* align-items: center; */
 }
 
 #questionDialog > .flexBox {
@@ -470,11 +478,6 @@ ul {
 #dialogText {
   flex-grow: 4;
 }
-
-/* legend, */
-/* #dialogs p { */
-/*   color: var(--color-ui-pri); */
-/* } */
 
 ul.help li {
   margin: 1em 0 0 1em;
@@ -578,10 +581,7 @@ select {
 
 fieldset {
   border: 0;
-}
-
-fieldset.menuForm {
-  display: flex;
+  padding-top: 0.1em;
 }
 
 .sideMenuTitleToggleDiv {
@@ -605,7 +605,7 @@ nav#sideMenu {
   padding: 0.3em 0 0 0;
   position: fixed;
   top: 0;
-  transition: left 0.1s ease-out;
+  transition: background-color 0.2s, left 0.1s ease-out;
   width: var(--side-menu-width-expanded);
   z-index: 11;
   overflow: auto;
@@ -788,7 +788,7 @@ ul.help li.cloud::before {
 .grow,
 .shrink,
 .unique {
-  margin: 0.1em;
+  margin: 0.2em;
 }
 
 .column {
@@ -1088,7 +1088,7 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
 }
 
 #remotestorage-widget > .rs-widget {
-  margin: 0 0 0.4em 0;
+  margin: 0.2em 0 0.4em;
   padding-left: 0;
   border-radius: 3px;
   background-color: var(--color-button-bg);
@@ -1206,12 +1206,6 @@ video {
 
 .ui-spinner {
   height: 32px;
-  margin: 0;
-}
-
-.ui-tab i.tabCloser {
-  top: 2px;
-  color: var(--color-tab-inactive-bg);
 }
 
 .ui-tab#newTabTab {
@@ -1320,6 +1314,14 @@ a.ui-button:active,
 .ui-widget-content .ui-state-hover,
 .ui-widget-header .ui-state-hover {
   background-color: var(--color-tab-hover);
+}
+
+select#gallerySlideTransition {
+  margin-top: 0.3em;
+}
+
+#tabNameInput {
+  padding: 0.3em;
 }
 
 #feedLimit,
