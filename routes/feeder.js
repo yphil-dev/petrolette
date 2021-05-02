@@ -11,8 +11,8 @@ function maybeTranslate (res, charset) {
   if (!iconvStream && charset && !/utf-*8/i.test(charset)) {
     try {
       iconvStream = iconv.decodeStream(charset);
-      console.log('Converting from charset %s to utf-8', charset);
-      iconvStream.on('error', done);
+      console.error('ICONV: Converting from charset %s to utf-8', charset);
+      iconvStream.on('error', () => {return;});
       // If we're using iconvStream, stream will be the output of iconvStream
       // otherwise it will remain the output of request
       res = res.pipe(iconvStream);
@@ -34,7 +34,7 @@ function getParams(str) {
   return params;
 }
 
-function getFeed (feedUrl, callback) {
+function getFeed (feedUrl, count, callback) {
   // Get a response stream
   fetch(feedUrl, {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
@@ -53,6 +53,9 @@ function getFeed (feedUrl, callback) {
     var responseStream = res.body;
     responseStream = maybeTranslate(responseStream, charset);
     responseStream.pipe(feedparser);
+    var lastGuid;
+
+    var i = 0;
 
     return new Promise((resolve, reject) => {
       feedparser.on('error', function(error) {
@@ -62,7 +65,31 @@ function getFeed (feedUrl, callback) {
       }).on('readable', function() {
         try {
           var item = this.read();
-          if (item !== null) feedItems.push (item);
+
+          if (item !== null && item.guid) {
+            console.error('### ITEM: %s (%s)', item.guid || 'NOTHING', feedUrl);
+          } else {
+            console.error('### NOPE: (%s)', feedUrl);
+          }
+
+          if (item !== null){
+            i++;
+
+            if (typeof lastGuid === 'undefined') {
+              lastGuid = item.guid;
+            }
+
+            if (i < count) {
+              console.error('### PUSHING: #%s GUID: %s (count is %s)', i, item.guid || 'No guid', count);
+              feedItems.push(item);
+            } else {
+              console.error('### Count reached i:%s, count:%s, LAST: [%s]', i, count, lastGuid);
+              this.resume();
+            }
+
+          } else {
+            console.error('### NULL: (%s)', feedUrl);
+          }
         }
         catch (err) {
           console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
@@ -70,9 +97,8 @@ function getFeed (feedUrl, callback) {
       }).on ('end', function () {
         var meta = this.meta;
         resolve();
-        return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl);
+        return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, lastGuid);
       });
-
     });
 
   }).catch((err) => {

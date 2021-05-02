@@ -124,6 +124,7 @@ PTL.tab = {
           thisFeed.limit = v.limit;
           thisFeed.status = v.status;
           thisFeed.iconhash = v.iconhash;
+          thisFeed.nbitems = v.nbitems;
 
           thisColFeeds.push(thisFeed);
           allFeeds.push(thisColFeeds);
@@ -227,15 +228,16 @@ PTL.tab = {
       $column.appendTo($tabPanel);
 
       if (PTL.queryString) {
-        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', "", true, true);
+        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', '', '', 30, true, true);
         PTL.queryString = null;
       }
 
       if (!newTab) {
         feeds.forEach(function(feed) {
           const type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
+                nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 30,
                 limit = Number.isInteger(feed.limit) ? feed.limit : 260;
-          PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, false, false, progress);
+          PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, feed.nbitems, feed.lastitem, false, false, progress);
         });
       }
 
@@ -280,6 +282,9 @@ PTL.tab = {
           feed.limit = $dataStore.data('limit');
           feed.status = $dataStore.data('status');
           feed.iconhash = $dataStore.data('iconhash');
+          feed.feedhash = $dataStore.data('feedhash');
+          feed.nbitems = $dataStore.data('nbitems');
+          feed.lastitem = $dataStore.data('lastitem');
 
           column.push(feed);
 

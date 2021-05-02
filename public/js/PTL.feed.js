@@ -2,7 +2,7 @@
 
 PTL.feed = {
 
-  add:function($column, url, name, type, limit, status, iconhash, clickNew, isQueryString, progress) {
+  add:function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, clickNew, isQueryString, progress) {
 
     const feedIndex = $('#tabs').find('.feed').length;
 
@@ -12,7 +12,9 @@ PTL.feed = {
           .data('name', name)
           .data('type', type)
           .data('limit', limit)
-          .data('iconhash', iconhash);
+          .data('iconhash', iconhash)
+          .data('nbitems', nbitems)
+          .data('lastitem', lastitem);
 
     const $feedImg = $('<img>')
           .attr({
@@ -104,7 +106,9 @@ PTL.feed = {
           .data('type', type)
           .data('limit', limit)
           .data('status', status)
-          .data('iconhash', iconhash);
+          .data('iconhash', iconhash)
+          .data('nbitems', nbitems)
+          .data('lastitem', lastitem);
 
     if ($feedControls.data('status') == 'on') {
       $refreshIcon.removeClass('icon-pin')
@@ -122,7 +126,6 @@ PTL.feed = {
           });
 
     const $feedBody = $('<div>').attr('class', 'feedBody').css('height', limit),
-          $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
           $feedHeader = $('<div>').attr('class', 'feedHeader'),
           $feedToggle = $('<div>').attr('class', 'feedToggle').append($feedIcon, $feedImg),
           $selectDiv = $('<div>').append($selectIcon),
@@ -172,7 +175,7 @@ PTL.feed = {
                    $titleDiv.append($titleLink),
                    $feedControls.append($prefsDiv, $reloadDiv));
 
-    $feed.append($feedHeader, $feedBody.append($feedBodyUl));
+    $feed.append($feedHeader, $feedBody);
 
     if (clickNew) {
       $feed.prependTo($column);
@@ -181,6 +184,189 @@ PTL.feed = {
       $feed.appendTo($column);
       $refreshIcon.click();
     }
+
+  },
+  build:function(data) {
+
+    $.each(data.feedItems, function(index, item) {
+
+      // console.log('GUID: %s (%s)', item.guid, feedUrl);
+
+      // if (index == 30) return false;
+
+      const $description = $.parseHTML(item.description),
+            imgTypes = ['image',
+                        'image/jpg',
+                        'image/jpeg',
+                        'image/gif',
+                        'image/png'];
+
+      var summary,
+          imageUrl,
+          videoUrl,
+          videoType;
+
+      if (item.summary && typeof item.summary !== 'undefined') {
+        summary = item.summary;
+      }
+
+      if (item.description && typeof item.description !== 'undefined'){
+        summary = item.description;
+      }
+
+      if (item['media:group']) {
+        if (item['media:group']['media:description']) {
+          summary = item['media:group']['media:description']["#"];
+        }
+      }
+
+      const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
+            $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
+            $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
+            $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink'),
+            $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
+            $commentsIcon = $('<i>'),
+            $audioIcon = $('<i>'),
+            $videoIcon = $('<i>'),
+            $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+            $itemDiv = $('<div>').attr('class', 'itemDiv'),
+            $feedItem = $('<li>').attr('class', 'feedItem');
+
+      var $image;
+
+      if (summary && typeof summary !== 'undefined') {
+        $feedItem.attr('title', $summary.trim());
+      }
+
+      const $tempDom = $('<null>').append($description);
+
+      if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
+        imageUrl = item.image.url;
+      }
+
+      if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
+        if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
+          imageUrl = $tempDom.find('span a').attr('href');
+        }
+      }
+
+      if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
+        imageUrl = $tempDom.find('img').attr('src');
+        if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
+          // XKCD summary in the title of the description XML tag
+          $feedItem.attr('title', $tempDom.find('img').attr('title'));
+        }
+      }
+
+      if (item['media:group'] && item['media:group']['media:content'] && item['media:group']['media:content'][0] && item['media:group']['media:content'][0]['@'] && item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
+        videoUrl = item['media:group']['media:content'][0]['@'].url;
+        videoType = item['media:group']['media:content'][0]['@'].type;
+      }
+
+      if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
+
+        if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
+          imageUrl = item.enclosures[0].url;
+        }
+
+        if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
+          imageUrl = item.enclosures[0].url;
+        }
+
+        if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/\.(mp4|webm)$/)) {
+          videoUrl = item.enclosures[0].url;
+          videoType = item.enclosures[0].type;
+        }
+
+        if (videoUrl && videoType) {
+
+          const videoPlayer      = document.createElement('video');
+          videoPlayer.controls = 'controls';
+          videoPlayer.src      = videoUrl;
+          videoPlayer.type     = videoType;
+
+          $itemDiv.append(videoPlayer);
+
+          $videoLink
+            .attr('href', item.enclosures[0].url)
+            .appendTo($itemDiv);
+          $videoIcon
+            .attr('class', 'itemIcon icon-video')
+            .appendTo($videoLink);
+        }
+
+        if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
+
+          const audioPlayer      = document.createElement('audio');
+          audioPlayer.controls = 'controls';
+          audioPlayer.src      = item.enclosures[0].url;
+          audioPlayer.type     = item.enclosures[0].type;
+          audioPlayer.preload  = PTL.prefs.readConfig('mediaPreload');
+
+          $itemDiv.append(audioPlayer);
+
+          $audioLink
+            .attr('href', item.enclosures[0].url)
+            .appendTo($itemDiv);
+          $audioIcon
+            .attr('class', 'itemIcon icon-audio')
+            .appendTo($audioLink);
+        }
+      }
+
+      $itemLink
+        .attr('class', 'ui-helper-clearfix feed-link')
+        .attr('href', item.link || item.enclosures[0].url)
+        .append(item['mastodon:scope'] ? $summary.trim() : item.title);
+
+      if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
+
+        $imageLink
+          .attr('href', imageUrl.replace('http://','https://'))
+          .attr('title', $summary.trim())
+          .attr('data-fancybox', 'gallery')
+          .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
+
+        if (!(imageUrl.indexOf('http://') === 0 || imageUrl.indexOf('https://') === 0)) {
+          imageUrl = feedHost + imageUrl;
+        }
+
+        $image = $('<img>')
+          .attr('src', '/static/images/loading.gif')
+          .attr('data-srcset', imageUrl.replace('http://','https://'))
+          .attr('srcset', '/static/images/loading.gif')
+          .attr('title', $summary.trim())
+          .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
+          .attr('class', 'ptl-img responsively-lazy')
+          .attr('onerror', "this.style.display='none'")
+          .appendTo($imageLink);
+
+      }
+
+      if (item.comments) {
+        $commentsIcon
+          .attr('class', 'itemIcon icon-comments')
+          .appendTo($commentsLink);
+
+        $commentsLink
+          .attr('href', item.comments)
+          .appendTo($itemDiv);
+      }
+
+      if ($image && feedType == 'photo') $image.addClass('full');
+      if (feedType !== 'text') $imageLink.appendTo($itemDiv);
+
+      $itemLink.appendTo($itemDiv);
+      $itemDiv.appendTo($feedItem);
+      $feedItem.appendTo($feedBodyUl);
+
+      $tempDom.empty();
+
+      localStorage.setItem(feedUrl, $feedBodyUl);
+
+      return true;
+
+    });
 
   },
   populate:function($button, progress, newLimit) {
@@ -193,13 +379,16 @@ PTL.feed = {
           $feedTitle = $feed.children().children('.feedTitle'),
           $feedLink = $feedTitle.children('a'),
           $feedBody = $dataStore.parent().next('div.feedBody'),
-          $feedBodyUl = $feed.children().children('ul.feedBody'),
+          // $feedBodyUl = $feed.children().children('ul.feedBody'),
+          $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
           feedUrl = $dataStore.data('url'),
           feedName = $dataStore.data('name'),
           feedType = $dataStore.data('type'),
           feedLimit = newLimit || $dataStore.data('limit'),
           feedStatus = $dataStore.data('status'),
           feedIconHash = $dataStore.data('iconhash'),
+          feedNbItems = $dataStore.data('nbitems'),
+          feedLastItem = $dataStore.data('lastitem'),
           $feedToggle = $feed.find('.feedToggle'),
           $feedIcon = $feed.find('.feedToggle > i.feedIcon'),
           $myFeedIcon = $feedToggle.find('.favicon');
@@ -214,7 +403,6 @@ PTL.feed = {
 
     $feedIcon.addClass('fold');
     $button.removeClass('spin');
-
 
     if (feedName) {
       feedTitle = feedName;
@@ -255,300 +443,137 @@ PTL.feed = {
       $refreshButton.addClass('spin');
       $feedLink.removeClass('danger');
 
-      $.get("/feed", {
-        url: feedUrl,
-        dataType: 'json'
-      }, function() {
+      if (typeof localStorage.getItem(feedUrl) === 'undefined') {
+        $feedBody.append(localStorage.getItem(feedUrl));
+      } else {
 
-        $feedBodyUl.empty();
+        $.get("/feed", {
+          url: feedUrl,
+          count: 3,
+          dataType: 'json'
+        }, function() {
 
-      }).fail(function(error) {
-        PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
-      }).done(function(data) {
+          $feedBodyUl.empty();
 
-        // console.log('data: %s (%s)', JSON.stringify(data));
+        }).fail(function(error) {
+          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
+        }).done(function(data) {
 
-        if (feedName) {
-          feedTitle = feedName;
-        } else if (data.feedTitle) {
-          feedTitle = data.feedTitle;
-          $dataStore.data('name', feedTitle);
-        }
+          console.log('data: %s (%s)', JSON.stringify(data));
 
-        $feedLink.text(feedTitle)
-          .attr('href', data.feedLink)
-          .attr('title', feedTitle + ' (' + feedUrl + ')');
-
-        if (data.error || (data.feedItems && data.feedItems.length == 0)) {
-
-          var message = (data.message) ? data.message : PTL.tr('Unknown error');
-          var errno = (data.errno) ? data.errno : '0';
-
-          if (data.feedItems && data.feedItems.length == 0) {
-            message = PTL.tr('Empty feed');
-            errno = '5xx';
+          if (feedName) {
+            feedTitle = feedName;
+          } else if (data.feedTitle) {
+            feedTitle = data.feedTitle;
+            $dataStore.data('name', feedTitle);
           }
 
-          PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'error');
+          // if (data.lastGuid) {
+          //   $dataStore.data('lastitem', data.lastGuid);
+          // }
 
-          const $validateLink = $('<a>'),
-                $validateLinkIcon = $('<i>'),
-                $reportLink = $('<a>'),
-                $reportLinkIcon = $('<i>');
+          $feedLink.text(feedTitle)
+            .attr('href', data.feedLink)
+            .attr('title', feedTitle + ' (' + feedUrl + ')');
 
-          $validateLinkIcon
-            .attr('class', 'itemIcon icon-w3c')
-            .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
-            .appendTo($validateLink);
+          if (data.error || (data.feedItems && data.feedItems.length == 0)) {
 
-          $validateLink
-            .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-            .appendTo($feedBodyUl);
+            var message = (data.message) ? data.message : PTL.tr('Unknown error');
+            var errno = (data.errno) ? data.errno : '0';
 
-          $reportLinkIcon
-            .attr('class', 'itemIcon icon-petrolette')
-            .attr('title', PTL.tr('Report feed error'))
-            .appendTo($reportLink);
+            if (data.feedItems && data.feedItems.length == 0) {
+              message = PTL.tr('Empty feed');
+              errno = '5xx';
+            }
 
-          $reportLink
-            .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')
-            .appendTo($feedBodyUl);
+            PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'error');
 
-          $feedLink.addClass('danger');
+            const $validateLink = $('<a>'),
+                  $validateLinkIcon = $('<i>'),
+                  $reportLink = $('<a>'),
+                  $reportLinkIcon = $('<i>');
 
-          const $key = $('<strong>')
-                .attr('class', 'translate key')
-                .data('content', PTL.tr('Error:'))
-                .text(PTL.tr('Error:'));
+            $validateLinkIcon
+              .attr('class', 'itemIcon icon-w3c')
+              .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
+              .appendTo($validateLink);
 
-          const $value = $('<strong>')
-                .attr('class', 'value')
-                .text(message + ' (' + errno + ')');
+            $validateLink
+              .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
+              .appendTo($feedBodyUl);
 
-          const $errorLink = $('<a>')
-                .attr('href', feedUrl)
-                .text(feedUrl);
+            $reportLinkIcon
+              .attr('class', 'itemIcon icon-petrolette')
+              .attr('title', PTL.tr('Report feed error'))
+              .appendTo($reportLink);
 
-          const $errorButtonsFlexBox = $('<a>')
-                .attr('class', 'translate flexBox');
+            $reportLink
+              .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')
+              .appendTo($feedBodyUl);
 
-          const $errorItem = $('<li>')
-                .attr('class', 'feedItem error')
-                .append($key)
-                .append('&nbsp;')
-                .append($value);
+            $feedLink.addClass('danger');
 
-          $feedBodyUl
-            .append($errorItem);
+            const $key = $('<strong>')
+                  .attr('class', 'translate key')
+                  .data('content', PTL.tr('Error:'))
+                  .text(PTL.tr('Error:'));
 
-          $feedBody.css('height', '');
+            const $value = $('<strong>')
+                  .attr('class', 'value')
+                  .text(message + ' (' + errno + ')');
 
-          return;
+            const $errorLink = $('<a>')
+                  .attr('href', feedUrl)
+                  .text(feedUrl);
+
+            const $errorButtonsFlexBox = $('<a>')
+                  .attr('class', 'translate flexBox');
+
+            const $errorItem = $('<li>')
+                  .attr('class', 'feedItem error')
+                  .append($key)
+                  .append('&nbsp;')
+                  .append($value);
+
+            $feedBodyUl
+              .append($errorItem);
+
+            $feedBody.css('height', '');
+
+            return;
+
+          } else {
+
+            $feedBody.css('height', feedLimit);
+
+          }
+
+        }).always(function() {
+
+              $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp));
+
+              if (progress) progress.increment();
+              $refreshButton.removeClass('spin');
+
+            });
+
+          }
 
         } else {
 
-          $feedBody.css('height', feedLimit);
+          $dataStore
+            .parent()
+            .parent()
+            .children('div.feedBody')
+            .addClass('folded');
 
+          // const u = new URL(feedUrl);
+
+          // $feedLink.text(u.hostname.replace(/^www./, '') + u.pathname)
+          //   .attr('title', u + ' - This feed is folded');
+
+          if (progress) progress.increment();
         }
 
-        $.each(data.feedItems, function(index, item) {
-
-          if (index == 30) return false;
-
-          const $description = $.parseHTML(item.description),
-                imgTypes = ['image',
-                            'image/jpg',
-                            'image/jpeg',
-                            'image/gif',
-                            'image/png'];
-
-          var summary,
-              imageUrl,
-              videoUrl,
-              videoType;
-
-          if (item.summary && typeof item.summary !== 'undefined') {
-            summary = item.summary;
-          }
-
-          if (item.description && typeof item.description !== 'undefined'){
-            summary = item.description;
-          }
-
-          if (item['media:group']) {
-            if (item['media:group']['media:description']) {
-              summary = item['media:group']['media:description']["#"];
-            }
-          }
-
-          const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
-                $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
-                $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
-                $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink'),
-                $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
-                $commentsIcon = $('<i>'),
-                $audioIcon = $('<i>'),
-                $videoIcon = $('<i>'),
-                $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
-                $itemDiv = $('<div>').attr('class', 'itemDiv'),
-                $feedItem = $('<li>').attr('class', 'feedItem');
-
-          var $image;
-
-          if (summary && typeof summary !== 'undefined') {
-            $feedItem.attr('title', $summary.trim());
-          }
-
-          const $tempDom = $('<null>').append($description);
-
-          if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
-            imageUrl = item.image.url;
-          }
-
-          if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
-            if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
-              imageUrl = $tempDom.find('span a').attr('href');
-            }
-          }
-
-          if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
-            imageUrl = $tempDom.find('img').attr('src');
-            if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
-              // XKCD summary in the title of the description XML tag
-              $feedItem.attr('title', $tempDom.find('img').attr('title'));
-            }
-          }
-
-          if (item['media:group'] && item['media:group']['media:content'] && item['media:group']['media:content'][0] && item['media:group']['media:content'][0]['@'] && item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
-            videoUrl = item['media:group']['media:content'][0]['@'].url;
-            videoType = item['media:group']['media:content'][0]['@'].type;
-          }
-
-          if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
-
-            if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
-              imageUrl = item.enclosures[0].url;
-            }
-
-            if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
-              imageUrl = item.enclosures[0].url;
-            }
-
-            if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/\.(mp4|webm)$/)) {
-              videoUrl = item.enclosures[0].url;
-              videoType = item.enclosures[0].type;
-            }
-
-            if (videoUrl && videoType) {
-
-              const videoPlayer      = document.createElement('video');
-              videoPlayer.controls = 'controls';
-              videoPlayer.src      = videoUrl;
-              videoPlayer.type     = videoType;
-
-              $itemDiv.append(videoPlayer);
-
-              $videoLink
-                .attr('href', item.enclosures[0].url)
-                .appendTo($itemDiv);
-              $videoIcon
-                .attr('class', 'itemIcon icon-video')
-                .appendTo($videoLink);
-            }
-
-            if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
-
-              const audioPlayer      = document.createElement('audio');
-              audioPlayer.controls = 'controls';
-              audioPlayer.src      = item.enclosures[0].url;
-              audioPlayer.type     = item.enclosures[0].type;
-              audioPlayer.preload  = PTL.prefs.readConfig('mediaPreload');
-
-              $itemDiv.append(audioPlayer);
-
-              $audioLink
-                .attr('href', item.enclosures[0].url)
-                .appendTo($itemDiv);
-              $audioIcon
-                .attr('class', 'itemIcon icon-audio')
-                .appendTo($audioLink);
-            }
-          }
-
-          $itemLink
-            .attr('class', 'ui-helper-clearfix feed-link')
-            .attr('href', item.link || item.enclosures[0].url)
-            .append(item['mastodon:scope'] ? $summary.trim() : item.title);
-
-          if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
-
-            $imageLink
-              .attr('href', imageUrl.replace('http://','https://'))
-              .attr('title', $summary.trim())
-              .attr('data-fancybox', 'gallery')
-              .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
-
-            if (!(imageUrl.indexOf('http://') === 0 || imageUrl.indexOf('https://') === 0)) {
-              imageUrl = feedHost + imageUrl;
-            }
-
-            $image = $('<img>')
-              .attr('src', '/static/images/loading.gif')
-              .attr('data-srcset', imageUrl.replace('http://','https://'))
-              .attr('srcset', '/static/images/loading.gif')
-              .attr('title', $summary.trim())
-              .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
-              .attr('class', 'ptl-img responsively-lazy')
-              .attr('onerror', "this.style.display='none'")
-              .appendTo($imageLink);
-
-          }
-
-          if (item.comments) {
-            $commentsIcon
-              .attr('class', 'itemIcon icon-comments')
-              .appendTo($commentsLink);
-
-            $commentsLink
-              .attr('href', item.comments)
-              .appendTo($itemDiv);
-          }
-
-          if ($image && feedType == 'photo') $image.addClass('full');
-          if (feedType !== 'text') $imageLink.appendTo($itemDiv);
-
-          $itemLink.appendTo($itemDiv);
-          $itemDiv.appendTo($feedItem);
-          $feedItem.appendTo($feedBodyUl);
-
-          $tempDom.empty();
-
-        });
-
-      }).always(function() {
-
-        $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp));
-
-        if (progress) progress.increment();
-        $refreshButton.removeClass('spin');
-
-      });
-
-    } else {
-
-      $dataStore
-        .parent()
-        .parent()
-        .children('div.feedBody')
-        .addClass('folded');
-
-      // const u = new URL(feedUrl);
-
-      // $feedLink.text(u.hostname.replace(/^www./, '') + u.pathname)
-      //   .attr('title', u + ' - This feed is folded');
-
-      if (progress) progress.increment();
-    }
-
-  }
+      }
 };
