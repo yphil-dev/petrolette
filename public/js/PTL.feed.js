@@ -473,6 +473,42 @@ PTL.feed = {
     return $feedBodyUl;
 
   },
+  get:function(feedUrl, lastItem) {
+
+    // return new Promise((resolve, reject) => {
+    //   $.get("/feed", {
+    //     async: true,
+    //     url: feedUrl,
+    //     dataType: 'json',
+    //     lastItem: lastItem
+    //   }, function() {
+    //   }).fail(function(error) {
+    //     reject(error);
+    //   }).done(function(data) {
+    //     resolve(data);
+    //   }).always(function() {
+    //   });
+    // });
+
+
+    $.get("/feed", {
+      url: feedUrl,
+      dataType: 'json',
+      lastItem: lastItem
+    }, function() {
+    }).fail(function(error) {
+      // reject(error);
+      // return error;
+    }).done(function(data) {
+      // resolve(data);
+      console.log('DATA: %s (%s)', JSON.stringify(data));
+      // return data;
+    }).always(function() {
+    });
+
+
+
+  },
   populate:function($button, progress, newLimit) {
 
     const $dataStore = $button.parent().parent(),
@@ -605,6 +641,8 @@ PTL.feed = {
             $feedBody.append($feedBodyUl);
 
             localStorage.setItem(feedUrl, $feedBodyUl.prop('outerHTML'));
+
+            // var plop = PTL.feed.get(feedUrl, lastItem);
 
           }).always(function() {
 
