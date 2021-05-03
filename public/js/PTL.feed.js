@@ -99,16 +99,28 @@ PTL.feed = {
             PTL.feed.populate($(this), progress);
           });
 
-    const $feedControls = $('<div>').attr('class', 'feedControls dataStore')
-          .data('index', feedIndex)
-          .data('url', url)
-          .data('name', name)
-          .data('type', type)
-          .data('limit', limit)
-          .data('status', status)
-          .data('iconhash', iconhash)
-          .data('nbitems', nbitems)
-          .data('lastitem', lastitem);
+    // const $feedControls = $('<div>').attr('class', 'feedControls dataStore')
+    //       .data('index', feedIndex)
+    //       .data('url', url)
+    //       .data('name', name)
+    //       .data('type', type)
+    //       .data('limit', limit)
+    //       .data('status', status)
+    //       .data('iconhash', iconhash)
+    //       .data('nbitems', nbitems)
+    //       .data('lastitem', lastitem);
+
+    const $feedControls = $('<div>')
+          .attr('class', 'feedControls dataStore')
+          .attr('data-index', feedIndex)
+          .attr('data-url', url)
+          .attr('data-name', name)
+          .attr('data-type', type)
+          .attr('data-limit', limit)
+          .attr('data-status', status)
+          .attr('data-iconhash', iconhash)
+          .attr('data-nbitems', nbitems)
+          .attr('data-lastitem', lastitem);
 
     if ($feedControls.data('status') == 'on') {
       $refreshIcon.removeClass('icon-pin')
@@ -187,8 +199,6 @@ PTL.feed = {
 
   },
   build:function(data, $dataStore) {
-
-    console.log('YOLOOO: %s (%s)');
 
     const $refreshButton = $dataStore.find('i.feedRefresh'),
           $feedHeader = $dataStore.parent(),
@@ -537,14 +547,24 @@ PTL.feed = {
         $refreshButton.addClass('spin');
         $feedLink.removeClass('danger');
 
-        if (typeof localStorage.getItem(feedUrl) === 'undefined') {
-          $feedBody.append(localStorage.getItem(feedUrl));
+        var saved = localStorage.getItem(feedUrl);
+
+        if (saved) {
+          console.log('YOZ: %s (%s)');
+          $feedBody.append(saved);
+
+          $refreshButton
+            .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+            .removeClass('spin');
+
         } else {
+
+          var lastItem = $dataStore.data('lastitem');
 
           $.get("/feed", {
             url: feedUrl,
-            count: 3,
-            dataType: 'json'
+            dataType: 'json',
+            lastItem: lastItem
           }, function() {
 
             // $feedBodyUl.empty();
@@ -553,8 +573,6 @@ PTL.feed = {
             PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
           }).done(function(data) {
 
-            // console.log('data: %s (%s)', JSON.stringify(data));
-
             if (feedName) {
               feedTitle = feedName;
             } else if (data.feedTitle) {
@@ -562,9 +580,9 @@ PTL.feed = {
               $dataStore.data('name', feedTitle);
             }
 
-            // if (data.lastGuid) {
-            //   $dataStore.data('lastitem', data.lastGuid);
-            // }
+            if (data.lastItem) {
+              $dataStore.data('lastitem', data.lastItem);
+            }
 
             $feedLink.text(feedTitle)
               .attr('href', data.feedLink)
@@ -582,14 +600,19 @@ PTL.feed = {
 
             }
 
-            $feedBody.append(PTL.feed.build(data, $dataStore));
+            var $feedBodyUl = PTL.feed.build(data, $dataStore);
+
+            $feedBody.append($feedBodyUl);
+
+            localStorage.setItem(feedUrl, $feedBodyUl.prop('outerHTML'));
 
           }).always(function() {
 
-            $refreshButton.prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp));
+            $refreshButton
+              .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+              .removeClass('spin');
 
             if (progress) progress.increment();
-            $refreshButton.removeClass('spin');
 
           });
 

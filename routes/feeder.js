@@ -34,7 +34,7 @@ function getParams(str) {
   return params;
 }
 
-function getFeed (feedUrl, count, callback) {
+function getFeed (feedUrl, lastItem, callback) {
   // Get a response stream
   fetch(feedUrl, {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
@@ -53,7 +53,7 @@ function getFeed (feedUrl, count, callback) {
     var responseStream = res.body;
     responseStream = maybeTranslate(responseStream, charset);
     responseStream.pipe(feedparser);
-    var lastGuid;
+    var newLastItem;
 
     var i = 0;
 
@@ -66,24 +66,20 @@ function getFeed (feedUrl, count, callback) {
         try {
           var item = this.read();
 
-          if (item !== null && item.guid) {
-            console.error('### ITEM: %s (%s)', item.guid || 'NOTHING', feedUrl);
-          } else {
-            console.error('### NOPE: (%s)', feedUrl);
-          }
+          // console.error('ITEM: %s (%s)', JSON.stringify(item));
 
           if (item !== null){
             i++;
 
-            if (typeof lastGuid === 'undefined') {
-              lastGuid = item.guid;
+            if (typeof newLastItem === 'undefined') {
+              newLastItem = item.link;
             }
 
-            if (i < count) {
-              console.error('### PUSHING: #%s GUID: %s (count is %s)', i, item.guid || 'No guid', count);
+            if (item.link !== lastItem) {
+              console.error('### PUSHING: #%s GUID: %s', i, lastItem);
               feedItems.push(item);
             } else {
-              console.error('### Count reached i:%s, count:%s, LAST: [%s]', i, count, lastGuid);
+              console.error('### Count reached i:%s, lastItem: [%s]', i, lastItem);
               this.resume();
             }
 
@@ -97,7 +93,7 @@ function getFeed (feedUrl, count, callback) {
       }).on ('end', function () {
         var meta = this.meta;
         resolve();
-        return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, lastGuid);
+        return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, lastItem);
       });
     });
 
