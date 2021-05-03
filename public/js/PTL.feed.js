@@ -473,6 +473,41 @@ PTL.feed = {
     return $feedBodyUl;
 
   },
+  get:function(feedUrl, lastItem) {
+
+    return new Promise((resolve, reject) => {
+
+      $.get("/feed", {
+        async: true,
+        url: feedUrl,
+        dataType: 'json',
+        lastItem: lastItem
+      }, function() {
+      }).fail(function(error) {
+        reject(error);
+      }).done(function(data) {
+        resolve(data);
+      }).always(function() {
+      });
+    });
+
+
+    // $.get("/feed", {
+    //   url: feedUrl,
+    //   dataType: 'json',
+    //   lastItem: lastItem
+    // }, function() {
+    // }).fail(function(error) {
+    //   // reject(error);
+    //   return error;
+    // }).done(function(data) {
+    //   // resolve(data);
+    //   return data;
+    // }).always(function() {
+    // });
+
+
+  },
   populate:function($button, progress, newLimit) {
 
     const $dataStore = $button.parent().parent(),
@@ -515,62 +550,60 @@ PTL.feed = {
     }
 
     $feedLink.text(feedTitle)
-        .attr('href', feedUrl)
-        .attr('title', feedTitle + ' (' + feedUrl + ')');
+      .attr('href', feedUrl)
+      .attr('title', feedTitle + ' (' + feedUrl + ')');
 
-      if (feedIconHash) {
+    if (feedIconHash) {
 
-        $myFeedIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+      $myFeedIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+
+    } else {
+
+      // $.get("/favicon", {
+      //   url: decodeURI(feedHost),
+      //   dataType: "json"
+      // }).done(function(hash) {
+
+      //   if (hash) {
+      //     $myFeedIcon.attr('src', '/favicons/' + hash + '.favicon');
+      //     $dataStore.data('iconhash', hash);
+      //     PTL.tab.saveTabs();
+      //   }
+
+      // }).fail(function(jqXHR, textStatus, errorThrown) {
+      //   // $feedIcon.addClass('icon-rss');
+      // });
+
+    }
+
+    if ($dataStore.data('status') == 'on') {
+
+      var lastItem = $dataStore.data('lastitem');
+
+
+      $feedIcon.removeClass('fold');
+      $refreshButton.addClass('spin');
+      $feedLink.removeClass('danger');
+
+      var saved = localStorage.getItem(feedUrl);
+
+      if (saved) {
+
+        console.log('L: %s (%s)', $feedBody.length);
+
+        if ($feedBody.length === 0) {
+          $feedBody.append(saved);
+        }
+
+        $refreshButton
+          .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+          .removeClass('spin');
 
       } else {
 
-        // $.get("/favicon", {
-        //   url: decodeURI(feedHost),
-        //   dataType: "json"
-        // }).done(function(hash) {
-
-        //   if (hash) {
-        //     $myFeedIcon.attr('src', '/favicons/' + hash + '.favicon');
-        //     $dataStore.data('iconhash', hash);
-        //     PTL.tab.saveTabs();
-        //   }
-
-        // }).fail(function(jqXHR, textStatus, errorThrown) {
-        //   // $feedIcon.addClass('icon-rss');
-        // });
-
-      }
-
-      if ($dataStore.data('status') == 'on') {
-
-        $feedIcon.removeClass('fold');
-        $refreshButton.addClass('spin');
-        $feedLink.removeClass('danger');
-
-        var saved = localStorage.getItem(feedUrl);
-
-        if (saved) {
-          $feedBody.append(saved);
-
-          $refreshButton
-            .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
-            .removeClass('spin');
-
-        } else {
-
-          var lastItem = $dataStore.data('lastitem');
-
-          $.get("/feed", {
-            url: feedUrl,
-            dataType: 'json',
-            lastItem: lastItem
-          }, function() {
-
-            // $feedBodyUl.empty();
-
-          }).fail(function(error) {
-            PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
-          }).done(function(data) {
+        PTL.feed.get(feedUrl, lastItem)
+          .then(function(data) {
+            // console.log('YAAA: %s (%s)', JSON.stringify(data));
 
             if (feedName) {
               feedTitle = feedName;
@@ -579,14 +612,14 @@ PTL.feed = {
               $dataStore.data('name', feedTitle);
             }
 
-            if (data.lastItem) {
-              console.log('YEP: %s (%s)', data.lastItem);
-              $dataStore.attr('data-lastitem', data.lastItem);
-            }
-
             $feedLink.text(feedTitle)
               .attr('href', data.feedLink)
               .attr('title', feedTitle + ' (' + feedUrl + ')');
+
+            if (data.lastItem) {
+              // console.log('YEP: %s (%s)', data.lastItem);
+              $dataStore.attr('data-lastitem', data.lastItem);
+            }
 
             if (data.error || (data.feedItems && data.feedItems.length == 0)) {
 
@@ -606,17 +639,75 @@ PTL.feed = {
 
             localStorage.setItem(feedUrl, $feedBodyUl.prop('outerHTML'));
 
-          }).always(function() {
-
             $refreshButton
               .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
               .removeClass('spin');
 
             if (progress) progress.increment();
 
+          })
+          .catch(function(error) {
+            console.log('whoops: %s (%s)');
           });
 
-        }
+
+        // $.get("/feed", {
+        //   url: feedUrl,
+        //   dataType: 'json',
+        //   lastItem: 'plop'
+        // }, function() {
+
+        //   $feedBodyUl.empty();
+
+        // }).fail(function(error) {
+        //     PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
+        //   }).done(function(data) {
+
+        //     if (feedName) {
+        //       feedTitle = feedName;
+        //     } else if (data.feedTitle) {
+        //       feedTitle = data.feedTitle;
+        //       $dataStore.data('name', feedTitle);
+        //     }
+
+        //     $feedLink.text(feedTitle)
+        //       .attr('href', data.feedLink)
+        //       .attr('title', feedTitle + ' (' + feedUrl + ')');
+
+        //     if (data.lastItem) {
+        //       // console.log('YEP: %s (%s)', data.lastItem);
+        //       $dataStore.attr('data-lastitem', data.lastItem);
+        //     }
+
+        //     if (data.error || (data.feedItems && data.feedItems.length == 0)) {
+
+        //       // PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'error');
+        //       $feedBody.append(PTL.feed.errorFeed(data, feedUrl));
+        //       $feedBody.css('height', '');
+
+        //     } else {
+
+        //       $feedBody.css('height', feedLimit);
+
+        //     }
+
+        //     var $feedBodyUl = PTL.feed.build(data, $dataStore);
+
+        //     $feedBody.append($feedBodyUl);
+
+        //     localStorage.setItem(feedUrl, $feedBodyUl.prop('outerHTML'));
+
+        //   }).always(function() {
+
+        //     $refreshButton
+        //       .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+        //       .removeClass('spin');
+
+        //     if (progress) progress.increment();
+
+        //   });
+
+      }
 
       } else {
 
