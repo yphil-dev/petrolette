@@ -550,7 +550,6 @@ PTL.feed = {
         var saved = localStorage.getItem(feedUrl);
 
         if (saved) {
-          console.log('YOZ: %s (%s)');
           $feedBody.append(saved);
 
           $refreshButton
@@ -581,7 +580,8 @@ PTL.feed = {
             }
 
             if (data.lastItem) {
-              $dataStore.data('lastitem', data.lastItem);
+              console.log('YEP: %s (%s)', data.lastItem);
+              $dataStore.attr('data-lastitem', data.lastItem);
             }
 
             $feedLink.text(feedTitle)

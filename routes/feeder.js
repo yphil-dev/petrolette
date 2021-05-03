@@ -76,10 +76,10 @@ function getFeed (feedUrl, lastItem, callback) {
             }
 
             if (item.link !== lastItem) {
-              console.error('### PUSHING: #%s GUID: %s', i, lastItem);
+              console.error('### PUSHING: #%s GUID: %s', i, newLastItem);
               feedItems.push(item);
             } else {
-              console.error('### Count reached i:%s, lastItem: [%s]', i, lastItem);
+              console.error('### Count reached i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
               this.resume();
             }
 
@@ -93,7 +93,7 @@ function getFeed (feedUrl, lastItem, callback) {
       }).on ('end', function () {
         var meta = this.meta;
         resolve();
-        return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, lastItem);
+        return callback (null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem);
       });
     });
 
