@@ -567,7 +567,7 @@ PTL.feed = {
             localStorage.setItem(feedUrl, $html);
 
             $refreshButton
-              .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+              .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $feedBodyUl[1] + ' new items)' )
               .removeClass('spin');
 
             if (progress) progress.increment();
@@ -580,10 +580,6 @@ PTL.feed = {
 
             $refreshButton.removeClass('spin');
           });
-
-        // $refreshButton
-        //   .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $feedBodyUl[1] + ' new items)' )
-        //   .removeClass('spin');
 
       } else {
 
