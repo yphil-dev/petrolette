@@ -292,7 +292,7 @@ PTL.dialog = {
                 PTL.feed.populate($button);
               }
 
-              PTL.tab.saveTabs();
+              // PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
 
             }
@@ -769,6 +769,7 @@ PTL.dialog = {
             $thisFeed = $button.parent().parent().parent().parent(),
             thisFeedId = $button.parent().parent().parent().parent().attr('id'),
             thisFeedName = $button.parent().parent().parent().find('.feedTitle').text(),
+            thisFeedUrl = $button.parent().parent().parent().find('.dataStore').data('url'),
             $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-trash-empty danger');
@@ -792,6 +793,7 @@ PTL.dialog = {
             click: function() {
               $thisFeed.hide('fade', 1000, function() {
                 $(this).remove();
+                localStorage.setItem(thisFeedUrl, '');
                 PTL.tab.saveTabs();
               });
               PTL.dialog.kill($dialog);

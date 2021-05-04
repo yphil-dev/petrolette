@@ -76,7 +76,7 @@ function getFeed (feedUrl, lastItem, callback) {
             }
 
             if (item.link !== lastItem) {
-              console.error('### PUSHING: #%s GUID: %s', i, newLastItem);
+              console.error('### PUSHING [%s] lastItem:[%s]', item.link, newLastItem);
               feedItems.push(item);
             } else {
               console.error('### Count reached i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
@@ -84,7 +84,7 @@ function getFeed (feedUrl, lastItem, callback) {
             }
 
           } else {
-            console.error('### NULL: (%s)', feedUrl);
+            // console.error('### NULL: (%s)', feedUrl);
           }
         }
         catch (err) {

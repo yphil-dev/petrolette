@@ -241,7 +241,7 @@ PTL.tab = {
           const type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
                 nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 30,
                 limit = Number.isInteger(feed.limit) ? feed.limit : 260;
-          PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, feed.nbitems, feed.lastitem, false, false, progress);
+          PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, nbitems, feed.lastitem, false, false, progress);
         });
       }
 

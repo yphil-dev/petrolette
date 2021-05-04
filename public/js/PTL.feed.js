@@ -4,6 +4,8 @@ PTL.feed = {
 
   add:function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, clickNew, isQueryString, progress) {
 
+    // console.log('ADD: url:[%s], name:[%s], type:[%s], limit:[%s], status:[%s], iconhash:[%s], nbitems:[%s], lastitem:[%s], clickNew:[%s], isQueryString:[%s], progress:[%s]', url, name, type, limit, status, iconhash, nbitems, lastitem, clickNew, isQueryString, progress);
+
     const feedIndex = $('#tabs').find('.feed').length;
 
     const $feed = $('<li>')
@@ -191,40 +193,24 @@ PTL.feed = {
     }
 
   },
-  build:function(data, $dataStore) {
+  lastItems:function(data, $dataStore) {
 
-    const $refreshButton = $dataStore.find('i.feedRefresh'),
-          $feedHeader = $dataStore.parent(),
-          $panel = $dataStore.parent().parent().parent(),
-          $feed = $dataStore.parent().parent(),
-          $feedTitle = $feed.children().children('.feedTitle'),
-          $feedLink = $feedTitle.children('a'),
-          $feedBody = $dataStore.parent().next('div.feedBody'),
-          // $feedBodyUl = $feed.children().children('ul.feedBody'),
+    const $feedBody = $dataStore.parent().next('div.feedBody'),
           $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
           feedUrl = $dataStore.data('url'),
-          feedName = $dataStore.data('name'),
-          feedType = $dataStore.data('type'),
-          feedLimit = $dataStore.data('limit'),
-          feedStatus = $dataStore.data('status'),
-          feedIconHash = $dataStore.data('iconhash'),
-          feedNbItems = $dataStore.data('nbitems'),
-          feedLastItem = $dataStore.data('lastitem'),
-          $feedToggle = $feed.find('.feedToggle'),
-          $feedIcon = $feed.find('.feedToggle > i.feedIcon'),
-          $myFeedIcon = $feedToggle.find('.favicon');
+          feedType = $dataStore.data('type');
 
     const l = PTL.util.getLocation(feedUrl),
-          feedProtocol = l.protocol ? l.protocol + '//' : '//',
-          feedHost = feedProtocol + l.hostname,
-          dateObj = new Date(),
-          timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
+          p = l.protocol ? l.protocol + '//' : '//',
+          feedHost = p + l.hostname;
+
+    var newItems = 0;
 
     $.each(data.feedItems, function(index, item) {
 
-      // console.log('GUID: %s (%s)', item.guid, feedUrl);
+      newItems = index;
 
-      // if (index == 30) return false;
+      if (index == 30) return false;
 
       const $description = $.parseHTML(item.description),
             imgTypes = ['image',
@@ -394,7 +380,11 @@ PTL.feed = {
 
       $tempDom.empty();
 
+      return true;
+
     });
+
+    // console.log('newItems: %s (%s)', newItems, feedUrl);
 
     return $feedBodyUl;
 
@@ -498,7 +488,7 @@ PTL.feed = {
           feedStatus = $dataStore.data('status'),
           feedIconHash = $dataStore.data('iconhash'),
           feedNbItems = $dataStore.data('nbitems'),
-          feedLastItem = $dataStore.data('lastitem'),
+          feedLastItem = $dataStore.attr('data-lastitem'),
           $feedToggle = $feed.find('.feedToggle'),
           $feedIcon = $feed.find('.feedToggle > i.feedIcon'),
           $myFeedIcon = $feedToggle.find('.favicon');
@@ -549,8 +539,6 @@ PTL.feed = {
 
     if ($dataStore.data('status') == 'on') {
 
-      console.log('lastItem: %s (%s)', feedLastItem);
-
       $feedIcon.removeClass('fold');
       $refreshButton.addClass('spin');
       $feedLink.removeClass('danger');
@@ -558,8 +546,6 @@ PTL.feed = {
       var saved = localStorage.getItem(feedUrl);
 
       if (saved) {
-
-        console.log('yep!: %s (%s)');
 
         if ($feedBody.is(':empty')) {
           $feedBody.append(saved);
@@ -569,14 +555,16 @@ PTL.feed = {
           .then(function(data) {
 
             if (data.lastItem) {
-              $dataStore.attr('data-lastitem', data.lastItem);
+              $dataStore.data('lastitem', data.lastItem);
+              PTL.tab.saveTabs();
             }
 
-            var $feedBodyUl = PTL.feed.build(data, $dataStore);
+            var $feedBodyUl = PTL.feed.lastItems(data, $dataStore);
 
             $feedBody.prepend($feedBodyUl);
 
-            localStorage.setItem(feedUrl, $feedBodyUl.prop('outerHTML'));
+            const $html = $feedBody.html();
+            localStorage.setItem(feedUrl, $html);
 
             $refreshButton
               .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
@@ -601,7 +589,7 @@ PTL.feed = {
 
       } else {
 
-        PTL.feed.get(feedUrl, '')
+        PTL.feed.get(feedUrl, feedLastItem)
           .then(function(data) {
             // console.log('YAAA: %s (%s)', JSON.stringify(data));
 
@@ -621,11 +609,17 @@ PTL.feed = {
               $dataStore.attr('data-lastitem', data.lastItem);
             }
 
-            var $feedBodyUl = PTL.feed.build(data, $dataStore);
+            var $feedBodyUl = PTL.feed.lastItems(data, $dataStore);
 
             $feedBody.append($feedBodyUl);
 
-            localStorage.setItem(feedUrl, $feedBodyUl.prop('outerHTML'));
+            if (!$feedBody.is(':empty')) {
+
+              const $html = $feedBody.html();
+              console.log('Saving this: %s (%s)', $html, feedUrl);
+              localStorage.setItem(feedUrl, $html);
+
+            }
 
             $refreshButton
               .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
