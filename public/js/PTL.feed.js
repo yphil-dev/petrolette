@@ -559,6 +559,8 @@ PTL.feed = {
 
       if (saved) {
 
+        console.log('yep!: %s (%s)');
+
         if ($feedBody.is(':empty')) {
           $feedBody.append(saved);
         }

@@ -237,12 +237,7 @@ PTL.dialog = {
             $feedBody = $dataStore.parent().next('div.feedBody'),
             allGroups = PTL.tab.list('all'),
             $thisGroup =  $feed.parent().parent(),
-            $groupMenu = $dialog.find('select#feedTabSelect'),
-            $spinner = $dialog.find('input#feedLimitSpinner').spinner({
-              classes: {
-                "ui-spinner": "shrink ui-corner-all"
-              }
-            });
+            $groupMenu = $dialog.find('select#feedTabSelect');
 
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
@@ -355,7 +350,22 @@ PTL.dialog = {
                 oldUrl = $dataStore.data('url'),
                 oldName = $dataStore.data('name'),
                 oldType = $dataStore.data('type'),
-                oldLimit = $dataStore.data('limit');
+                oldLimit = $dataStore.data('limit'),
+                nbItems = $dataStore.data('nbitems'),
+                $feedLimitInput = $('input#feedLimit'),
+                $feedLimitSlider = $('div#feedLimitSlider'),
+                $feedLimitSpinner = $dialog.find('input#feedLimitSpinner').spinner({
+                  classes: {
+                    "ui-spinner": "shrink ui-corner-all"
+                  }
+                }),
+                $feedNbItemsInput = $('input#feedNbItems'),
+                $feedNbItemsSlider = $('div#feedNbItemsSlider'),
+                $feedNbItemsSpinner = $dialog.find('input#feedNbItemsSpinner').spinner({
+                  classes: {
+                    "ui-spinner": "shrink ui-corner-all"
+                  }
+                });
 
           $feedGuessInput.on('keypress',function(e) {
             if (e.which == 13) {
@@ -429,20 +439,20 @@ PTL.dialog = {
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
             .checkboxradio('refresh');
 
-          $spinner
+          $feedLimitSpinner
             .spinner( 'value', oldLimit)
             .on( 'spinstop', function() {
-              $dialog.find('div#feedLimit').slider( 'option', 'value', $(this).val());
+              $feedLimitSlider.slider( 'option', 'value', $(this).val());
               $dialog.find('.ui-slider-handle').text($(this).val());
             });
 
-          $dialog.find('div#feedLimit').slider({
+          $feedLimitSlider.slider({
             value: oldLimit,
             min: 1,
             max: 600,
             step: 1,
             create: function() {
-              $('input#feedLimit').val(oldLimit);
+              $feedLimitInput.val(oldLimit);
               $(this).find('.ui-slider-handle').text(oldLimit);
             },
             slide: function( event, ui ) {
@@ -452,8 +462,36 @@ PTL.dialog = {
               $('input#feedLimitSpinner').val(ui.value);
             },
             change: function( event, ui ) {
-              $('input#feedLimit').val(ui.value);
+              $feedLimitInput.val(ui.value);
               $dataStore.data('limit', ui.value);
+            }
+          });
+
+          $feedNbItemsSpinner
+            .spinner( 'value', nbItems)
+            .on( 'spinstop', function() {
+              $feedNbItemsSlider.slider( 'option', 'value', $(this).val());
+              $dialog.find('.ui-slider-handle').text($(this).val());
+            });
+
+          $feedNbItemsSlider.slider({
+            value: nbItems,
+            min: 1,
+            max: 600,
+            step: 1,
+            create: function() {
+              $feedNbItemsInput.val(nbItems);
+              $(this).find('.ui-slider-handle').text(nbItems);
+            },
+            slide: function( event, ui ) {
+              $(this).val(ui.value);
+              $(this).find('.ui-slider-handle').text(ui.value);
+              // $feedBody.css('height', ui.value + 'px');
+              $('input#feedNbItemsSpinner').val(ui.value);
+            },
+            change: function( event, ui ) {
+              $feedNbItemsInput.val(ui.value);
+              // $dataStore.data('limit', ui.value);
             }
           });
 

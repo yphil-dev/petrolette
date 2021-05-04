@@ -407,10 +407,19 @@ var PTL = (function() {
     },
     sideMenu: function(action) {
 
-      const $overlay = $('#overlay'),
+      const $overlay = $('div#overlay'),
             $sideMenu = $('nav#sideMenu');
 
+      const $lPayAmount = $('a#lPayAmount'),
+            $lPayAmountImg = $('a#lPayAmountImg img'),
+            $lPayPatrons = $('a#lPayPatrons'),
+            $lPayPatronsImg = $('a#lPayPatrons img');
+
+      $lPayAmountImg.attr('src', 'https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay');
+      $lPayPatronsImg.attr('src', 'https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay');
+
       if (action == 'open') {
+
         $overlay.removeClass('hidden');
         $sideMenu.addClass('expanded');
       } else if (action == 'close') {
