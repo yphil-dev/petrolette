@@ -386,7 +386,7 @@ PTL.feed = {
 
     // console.log('newItems: %s (%s)', newItems, feedUrl);
 
-    return $feedBodyUl;
+    return [$feedBodyUl, newItems];
 
   },
   errorFeed:function(error, feedUrl) {
@@ -454,7 +454,7 @@ PTL.feed = {
     return $feedBodyUl;
 
   },
-  get:function(feedUrl, lastItem) {
+  getit:function(feedUrl, lastItem) {
 
     return new Promise((resolve, reject) => {
       $.get("/feed", {
@@ -502,7 +502,7 @@ PTL.feed = {
     var feedTitle;
 
     $feedIcon.addClass('fold');
-    $button.removeClass('spin');
+    // $button.removeClass('spin');
 
     if (feedName) {
       feedTitle = feedName;
@@ -551,7 +551,7 @@ PTL.feed = {
           $feedBody.append(saved);
         }
 
-        PTL.feed.get(feedUrl, feedLastItem)
+        PTL.feed.getit(feedUrl, feedLastItem)
           .then(function(data) {
 
             if (data.lastItem) {
@@ -561,7 +561,7 @@ PTL.feed = {
 
             var $feedBodyUl = PTL.feed.lastItems(data, $dataStore);
 
-            $feedBody.prepend($feedBodyUl);
+            $feedBody.prepend($feedBodyUl[0]);
 
             const $html = $feedBody.html();
             localStorage.setItem(feedUrl, $html);
@@ -578,18 +578,16 @@ PTL.feed = {
             $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
             $feedBody.css('height', '');
 
-            $refreshButton
-              .removeClass('spin');
+            $refreshButton.removeClass('spin');
           });
 
-
-        $refreshButton
-          .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
-          .removeClass('spin');
+        // $refreshButton
+        //   .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $feedBodyUl[1] + ' new items)' )
+        //   .removeClass('spin');
 
       } else {
 
-        PTL.feed.get(feedUrl, feedLastItem)
+        PTL.feed.getit(feedUrl, feedLastItem)
           .then(function(data) {
             // console.log('YAAA: %s (%s)', JSON.stringify(data));
 
@@ -611,7 +609,7 @@ PTL.feed = {
 
             var $feedBodyUl = PTL.feed.lastItems(data, $dataStore);
 
-            $feedBody.append($feedBodyUl);
+            $feedBody.append($feedBodyUl[0]);
 
             if (!$feedBody.is(':empty')) {
 
@@ -622,7 +620,7 @@ PTL.feed = {
             }
 
             $refreshButton
-              .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+              .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $feedBodyUl[1] + ' new items)' )
               .removeClass('spin');
 
             if (progress) progress.increment();
@@ -633,8 +631,7 @@ PTL.feed = {
             $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
             $feedBody.css('height', '');
 
-            $refreshButton
-              .removeClass('spin');
+            $refreshButton.removeClass('spin');
           });
 
       }
