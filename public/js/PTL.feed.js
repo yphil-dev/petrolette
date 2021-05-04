@@ -7,14 +7,7 @@ PTL.feed = {
     const feedIndex = $('#tabs').find('.feed').length;
 
     const $feed = $('<li>')
-          .attr('class', 'feed')
-          .data('url', url)
-          .data('name', name)
-          .data('type', type)
-          .data('limit', limit)
-          .data('iconhash', iconhash)
-          .data('nbitems', nbitems)
-          .data('lastitem', lastitem);
+          .attr('class', 'feed');
 
     const $feedImg = $('<img>')
           .attr({
@@ -556,9 +549,7 @@ PTL.feed = {
 
     if ($dataStore.data('status') == 'on') {
 
-      var lastItem = $dataStore.data('lastitem');
-
-      console.log('lastItem: %s (%s)', lastItem);
+      console.log('lastItem: %s (%s)', feedLastItem);
 
       $feedIcon.removeClass('fold');
       $refreshButton.addClass('spin');
@@ -572,7 +563,7 @@ PTL.feed = {
           $feedBody.append(saved);
         }
 
-        PTL.feed.get(feedUrl, lastItem)
+        PTL.feed.get(feedUrl, feedLastItem)
           .then(function(data) {
 
             if (data.lastItem) {
@@ -594,7 +585,7 @@ PTL.feed = {
           })
           .catch(function(error) {
             console.log('whoops: %s (%s)', error);
-            $feedBody.append(PTL.feed.errorFeed(error, feedUrl));
+            $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
             $feedBody.css('height', '');
 
             $refreshButton
@@ -608,7 +599,7 @@ PTL.feed = {
 
       } else {
 
-        PTL.feed.get(feedUrl, lastItem)
+        PTL.feed.get(feedUrl, '')
           .then(function(data) {
             // console.log('YAAA: %s (%s)', JSON.stringify(data));
 
@@ -643,7 +634,7 @@ PTL.feed = {
           })
           .catch(function(error) {
             console.log('whoops: %s (%s)', error);
-            $feedBody.append(PTL.feed.errorFeed(error, feedUrl));
+            $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
             $feedBody.css('height', '');
 
             $refreshButton

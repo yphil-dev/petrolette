@@ -471,11 +471,10 @@ PTL.dialog = {
       const $dialog = $(this),
             $column = $button.parent().parent(),
             $panel = $column.parent(),
-            $columnsInTab = $panel.find('.column'),
-            nbOfColumnsInTab = $columnsInTab.length,
             $icon = $dialog.find('div#icon > i'),
             colIndex = $panel.find('.column').index($column),
-            nbOfFeedsInCol = $column.find('.feed').length;
+            $feedsInCol = $column.find('.feed'),
+            nbOfFeedsInCol = $feedsInCol.length;
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -496,8 +495,14 @@ PTL.dialog = {
             title: PTL.tr('Wait! Are you sure?'),
             class: "dangerous translate",
             click: function() {
+
+              $feedsInCol.each(function(){
+                localStorage.setItem($(this).find('div.dataStore').attr('data-url'), '');
+                console.log('deleting (%s) from cache', $(this).find('div.dataStore').attr('data-url'));
+              });
+
               PTL.dialog.kill($dialog);
-              PTL.col.del($column, nbOfColumnsInTab);
+              PTL.col.del($column);
             }
           }
         ],

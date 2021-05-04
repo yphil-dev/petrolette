@@ -125,6 +125,9 @@ PTL.tab = {
           thisFeed.status = v.status;
           thisFeed.iconhash = v.iconhash;
           thisFeed.nbitems = v.nbitems;
+          thisFeed.lastitem = v.lastitem;
+
+          // console.log('v.lastitem: %s (%s)', v.lastitem);
 
           thisColFeeds.push(thisFeed);
           allFeeds.push(thisColFeeds);
@@ -234,6 +237,7 @@ PTL.tab = {
 
       if (!newTab) {
         feeds.forEach(function(feed) {
+          // console.log('feed.lastitem: %s (%s)', feed.lastitem, feed.url);
           const type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
                 nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 30,
                 limit = Number.isInteger(feed.limit) ? feed.limit : 260;
@@ -285,6 +289,8 @@ PTL.tab = {
           feed.feedhash = $dataStore.data('feedhash');
           feed.nbitems = $dataStore.data('nbitems');
           feed.lastitem = $dataStore.data('lastitem');
+
+          // console.log('feed.lastitem: %s (%s)', feed.lastitem, feed.url);
 
           column.push(feed);
 
