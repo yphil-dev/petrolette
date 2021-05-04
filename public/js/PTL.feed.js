@@ -184,8 +184,8 @@ PTL.feed = {
 
     $feedHeader.append($feedToggle,
                        $feedHandle,
-                   $titleDiv.append($titleLink),
-                   $feedControls.append($prefsDiv, $reloadDiv));
+                       $titleDiv.append($titleLink),
+                       $feedControls.append($prefsDiv, $reloadDiv));
 
     $feed.append($feedHeader, $feedBody);
 
@@ -406,51 +406,46 @@ PTL.feed = {
     return $feedBodyUl;
 
   },
-  errorFeed:function(data, feedUrl) {
+  errorFeed:function(error, feedUrl) {
 
-    const $feedBodyUl = $('<ul>').attr('class', 'feedBody');
+    const type = (error.statusText) ? error.statusText : PTL.tr('Unknown error');
+    const status = (error.status) ? error.status : '0';
+    const errno = (error.errno) ? error.errno : '0';
+    const message = (error.responseJSON.error.message) ? error.responseJSON.error.message : '';
 
-    var message = (data.message) ? data.message : PTL.tr('Unknown error');
-    var errno = (data.errno) ? data.errno : '0';
+    const $validateLink = $('<a>')
+          .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
 
-    if (data.feedItems && data.feedItems.length == 0) {
-      message = PTL.tr('Empty feed');
-      errno = '5xx';
-    }
+    const $validateLinkIcon = $('<i>')
+          .attr('class', 'itemIcon icon-w3c')
+          .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
+          .appendTo($validateLink);
 
-    const $validateLink = $('<a>'),
-          $validateLinkIcon = $('<i>'),
-          $reportLink = $('<a>'),
-          $reportLinkIcon = $('<i>');
+    const $reportLink = $('<a>')
+          .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + type + ')');
 
-    $validateLinkIcon
-      .attr('class', 'itemIcon icon-w3c')
-      .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
-      .appendTo($validateLink);
+    const $reportLinkIcon = $('<i>')
+          .attr('class', 'itemIcon icon-petrolette')
+          .attr('title', PTL.tr('Report feed error'))
+          .appendTo($reportLink);
 
-    // $validateLink
-    //   .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl)
-    //   .appendTo($feedBodyUl);
-
-    // $reportLinkIcon
-    //   .attr('class', 'itemIcon icon-petrolette')
-    //   .attr('title', PTL.tr('Report feed error'))
-    //   .appendTo($reportLink);
-
-    // $reportLink
-    //   .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + message + ')')
-    //   .appendTo($feedBodyUl);
-
-    // $feedLink.addClass('danger');
-
-    const $key = $('<strong>')
+    const $errKey = $('<strong>')
           .attr('class', 'translate key')
           .data('content', PTL.tr('Error:'))
           .text(PTL.tr('Error:'));
 
-    const $value = $('<strong>')
+    const $msgKey = $('<strong>')
+          .attr('class', 'translate key')
+          .data('content', PTL.tr('Message:'))
+          .text(PTL.tr('Message:'));
+
+    const $errValue = $('<strong>')
           .attr('class', 'value')
-          .text(message + ' (' + errno + ')');
+          .text(type + ' (' + status + ')');
+
+    const $msgValue = $('<strong>')
+          .attr('class', 'value')
+          .text(message);
 
     const $errorLink = $('<a>')
           .attr('href', feedUrl)
@@ -461,14 +456,17 @@ PTL.feed = {
 
     const $errorItem = $('<li>')
           .attr('class', 'feedItem error')
-          .append($key)
+          .append($validateLink, $reportLink)
+          .append($errKey)
           .append('&nbsp;')
-          .append($value);
+          .append($errValue)
+          .append('<br>')
+          .append($msgKey)
+          .append('&nbsp;')
+          .append($msgValue);
 
-    $feedBodyUl
-      .append($errorItem);
-
-    // $feedBody.css('height', '');
+    const $feedBodyUl = $('<ul>').attr('class', 'feedBody')
+          .append($errorItem);
 
     return $feedBodyUl;
 
@@ -476,36 +474,16 @@ PTL.feed = {
   get:function(feedUrl, lastItem) {
 
     return new Promise((resolve, reject) => {
-
       $.get("/feed", {
-        async: true,
         url: feedUrl,
         dataType: 'json',
         lastItem: lastItem
-      }, function() {
-      }).fail(function(error) {
-        reject(error);
-      }).done(function(data) {
+      }).done(function(data, textStatus, jqXHR) {
         resolve(data);
-      }).always(function() {
+      }).fail(function(jqXHR, textStatus, errorThrown) {
+        reject(jqXHR);
       });
     });
-
-
-    // $.get("/feed", {
-    //   url: feedUrl,
-    //   dataType: 'json',
-    //   lastItem: lastItem
-    // }, function() {
-    // }).fail(function(error) {
-    //   // reject(error);
-    //   return error;
-    // }).done(function(data) {
-    //   // resolve(data);
-    //   return data;
-    // }).always(function() {
-    // });
-
 
   },
   populate:function($button, progress, newLimit) {
@@ -580,6 +558,7 @@ PTL.feed = {
 
       var lastItem = $dataStore.data('lastitem');
 
+      console.log('lastItem: %s (%s)', lastItem);
 
       $feedIcon.removeClass('fold');
       $refreshButton.addClass('spin');
@@ -589,11 +568,39 @@ PTL.feed = {
 
       if (saved) {
 
-        console.log('L: %s (%s)', $feedBody.length);
-
-        if ($feedBody.length === 0) {
+        if ($feedBody.is(':empty')) {
           $feedBody.append(saved);
         }
+
+        PTL.feed.get(feedUrl, lastItem)
+          .then(function(data) {
+
+            if (data.lastItem) {
+              $dataStore.attr('data-lastitem', data.lastItem);
+            }
+
+            var $feedBodyUl = PTL.feed.build(data, $dataStore);
+
+            $feedBody.prepend($feedBodyUl);
+
+            localStorage.setItem(feedUrl, $feedBodyUl.prop('outerHTML'));
+
+            $refreshButton
+              .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+              .removeClass('spin');
+
+            if (progress) progress.increment();
+
+          })
+          .catch(function(error) {
+            console.log('whoops: %s (%s)', error);
+            $feedBody.append(PTL.feed.errorFeed(error, feedUrl));
+            $feedBody.css('height', '');
+
+            $refreshButton
+              .removeClass('spin');
+          });
+
 
         $refreshButton
           .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
@@ -621,18 +628,6 @@ PTL.feed = {
               $dataStore.attr('data-lastitem', data.lastItem);
             }
 
-            if (data.error || (data.feedItems && data.feedItems.length == 0)) {
-
-              // PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'error');
-              $feedBody.append(PTL.feed.errorFeed(data, feedUrl));
-              $feedBody.css('height', '');
-
-            } else {
-
-              $feedBody.css('height', feedLimit);
-
-            }
-
             var $feedBodyUl = PTL.feed.build(data, $dataStore);
 
             $feedBody.append($feedBodyUl);
@@ -647,83 +642,26 @@ PTL.feed = {
 
           })
           .catch(function(error) {
-            console.log('whoops: %s (%s)');
+            console.log('whoops: %s (%s)', error);
+            $feedBody.append(PTL.feed.errorFeed(error, feedUrl));
+            $feedBody.css('height', '');
+
+            $refreshButton
+              .removeClass('spin');
           });
 
-
-        // $.get("/feed", {
-        //   url: feedUrl,
-        //   dataType: 'json',
-        //   lastItem: 'plop'
-        // }, function() {
-
-        //   $feedBodyUl.empty();
-
-        // }).fail(function(error) {
-        //     PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, error), 'error');
-        //   }).done(function(data) {
-
-        //     if (feedName) {
-        //       feedTitle = feedName;
-        //     } else if (data.feedTitle) {
-        //       feedTitle = data.feedTitle;
-        //       $dataStore.data('name', feedTitle);
-        //     }
-
-        //     $feedLink.text(feedTitle)
-        //       .attr('href', data.feedLink)
-        //       .attr('title', feedTitle + ' (' + feedUrl + ')');
-
-        //     if (data.lastItem) {
-        //       // console.log('YEP: %s (%s)', data.lastItem);
-        //       $dataStore.attr('data-lastitem', data.lastItem);
-        //     }
-
-        //     if (data.error || (data.feedItems && data.feedItems.length == 0)) {
-
-        //       // PTL.util.say(PTL.tr('Problem reading feed [%1] Error type [%2]', feedUrl, message), 'error');
-        //       $feedBody.append(PTL.feed.errorFeed(data, feedUrl));
-        //       $feedBody.css('height', '');
-
-        //     } else {
-
-        //       $feedBody.css('height', feedLimit);
-
-        //     }
-
-        //     var $feedBodyUl = PTL.feed.build(data, $dataStore);
-
-        //     $feedBody.append($feedBodyUl);
-
-        //     localStorage.setItem(feedUrl, $feedBodyUl.prop('outerHTML'));
-
-        //   }).always(function() {
-
-        //     $refreshButton
-        //       .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
-        //       .removeClass('spin');
-
-        //     if (progress) progress.increment();
-
-        //   });
-
       }
 
-      } else {
+    } else {
 
-        $dataStore
-          .parent()
-          .parent()
-          .children('div.feedBody')
-          .addClass('folded');
+      $dataStore
+        .parent()
+        .parent()
+        .children('div.feedBody')
+        .addClass('folded');
 
-        // const u = new URL(feedUrl);
-
-        // $feedLink.text(u.hostname.replace(/^www./, '') + u.pathname)
-        //   .attr('title', u + ' - This feed is folded');
-
-        if (progress) progress.increment();
-      }
-
+      if (progress) progress.increment();
     }
+
+  }
 };

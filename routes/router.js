@@ -70,7 +70,7 @@ router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
 
-  feeder.getFeed(req.query.url, req.query.lastItem, function (err, feedItems, feedTitle, feedLink, lastItem) {
+  feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem) {
 
     if (feedItems && !res.headersSent) {
       res.send({
@@ -80,8 +80,8 @@ router.get('/feed', function(req, res) {
         lastItem: lastItem
       });
 
-    } else if (!res.headersSent) {
-      res.send({error:err, errno:err.errno, message:err.message});
+    } else if (error && !res.headersSent) {
+      res.status(500).send({error:error});
     }
   });
 });
