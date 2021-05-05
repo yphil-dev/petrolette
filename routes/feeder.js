@@ -34,7 +34,7 @@ function getParams(str) {
   return params;
 }
 
-function getFeed (feedUrl, lastItem, callback) {
+function getFeed (feedUrl, lastItem, nbItems, callback) {
   // Get a response stream
   fetch(feedUrl, {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
@@ -66,8 +66,6 @@ function getFeed (feedUrl, lastItem, callback) {
         try {
           var item = this.read();
 
-          // console.error('ITEM: %s (%s)', JSON.stringify(item));
-
           if (item !== null){
             i++;
 
@@ -75,7 +73,7 @@ function getFeed (feedUrl, lastItem, callback) {
               newLastItem = item.link;
             }
 
-            if (item.link !== lastItem) {
+            if (item.link !== lastItem && i < nbItems) {
               console.error('### PUSHING [%s] lastItem:[%s]', item.link, newLastItem);
               feedItems.push(item);
             } else {
