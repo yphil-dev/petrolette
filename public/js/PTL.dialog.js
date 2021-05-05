@@ -731,6 +731,11 @@ PTL.dialog = {
             class: "dangerous translate",
             click: function() {
 
+              $selectedPanel.find('li.feed').each(function(){
+                localStorage.setItem($(this).find('div.dataStore').attr('data-url'), '');
+                console.log('deleting (%s) from cache', $(this).find('div.dataStore').attr('data-url'));
+              });
+
               $selectedTab.remove();
               $selectedPanel.remove();
 

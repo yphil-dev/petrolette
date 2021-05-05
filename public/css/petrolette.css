@@ -554,10 +554,6 @@ li.feedItem.error > strong.value {
   z-index: 10;
 }
 
-.hidden {
-  display: none;
-}
-
 #newTabTab.hidden {
   display: none;
 }
@@ -1392,4 +1388,8 @@ button.ui-state-success {
   /* line-height: 18px; */
   border-radius: 3px;
   /* box-shadow: 0 0 1px #333; */
+}
+
+.hidden {
+  display: none;
 }

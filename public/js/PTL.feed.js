@@ -22,7 +22,7 @@ PTL.feed = {
           });
 
     const $newItemsBadge = $('<div>')
-          .attr('class', 'newItemsBadge');
+          .attr('class', 'newItemsBadge hidden');
 
     const $feedIcon = $('<i>')
           .attr('class', 'feed-control feedIcon translate')
@@ -397,7 +397,8 @@ PTL.feed = {
     const type = (error.statusText) ? error.statusText : PTL.tr('Unknown error');
     const status = (error.status) ? error.status : '0';
     const errno = (error.errno) ? error.errno : '0';
-    const message = (error.responseJSON.error.message) ? error.responseJSON.error.message : '';
+    // const message = (error.responseJSON.error.message) ? error.responseJSON.error.message : '';
+    const message = 'plop';
 
     const $validateLink = $('<a>')
           .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
@@ -525,120 +526,29 @@ PTL.feed = {
 
     } else {
 
-      // $.get("/favicon", {
-      //   url: decodeURI(feedHost),
-      //   dataType: "json"
-      // }).done(function(hash) {
+      $.get("/favicon", {
+        url: decodeURI(feedHost),
+        dataType: "json"
+      }).done(function(hash) {
 
-      //   if (hash) {
-      //     $myFeedIcon.attr('src', '/favicons/' + hash + '.favicon');
-      //     $dataStore.data('iconhash', hash);
-      //     PTL.tab.saveTabs();
-      //   }
+        if (hash) {
+          $myFeedIcon.attr('src', '/favicons/' + hash + '.favicon');
+          $dataStore.data('iconhash', hash);
+          PTL.tab.saveTabs();
+        }
 
-      // }).fail(function(jqXHR, textStatus, errorThrown) {
-      //   // $feedIcon.addClass('icon-rss');
-      // });
+      }).fail(function(jqXHR, textStatus, errorThrown) {
+        // $feedIcon.addClass('icon-rss');
+      });
 
     }
+
+    $feedLink.removeClass('danger');
 
     if ($dataStore.data('status') == 'on') {
 
       $feedIcon.removeClass('fold');
       $refreshButton.addClass('spin');
-      $feedLink.removeClass('danger');
-
-      var saved = localStorage.getItem(feedUrl);
-
-      if (saved) {
-
-        if ($feedBody.is(':empty')) {
-          $feedBody.append(saved);
-        }
-
-        PTL.feed.getit(feedUrl, feedLastItem, feedNbItems)
-          .then(function(data) {
-
-            if (data.lastItem) {
-              $dataStore.data('lastitem', data.lastItem);
-              PTL.tab.saveTabs();
-            }
-
-            var $feedBodyUl = PTL.feed.lastItems(data, $dataStore);
-
-            $feedBody.prepend($feedBodyUl[0]);
-
-            const $html = $feedBody.html();
-            localStorage.setItem(feedUrl, $html);
-
-            $badge.text($feedBodyUl[1]);
-
-            $refreshButton
-              .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $feedBodyUl[1] + ' new items)' )
-              .removeClass('spin');
-
-            if (progress) progress.increment();
-
-          })
-          .catch(function(error) {
-            console.log('whoops: %s (%s)', error);
-            $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
-            $feedBody.css('height', '');
-
-            $refreshButton.removeClass('spin');
-          });
-
-      } else {
-
-        PTL.feed.getit(feedUrl, feedLastItem, feedNbItems)
-          .then(function(data) {
-            // console.log('YAAA: %s (%s)', JSON.stringify(data));
-
-            if (feedName) {
-              feedTitle = feedName;
-            } else if (data.feedTitle) {
-              feedTitle = data.feedTitle;
-              $dataStore.data('name', feedTitle);
-            }
-
-            $feedLink.text(feedTitle)
-              .attr('href', data.feedLink)
-              .attr('title', feedTitle + ' (' + feedUrl + ')');
-
-            if (data.lastItem) {
-              // console.log('YEP: %s (%s)', data.lastItem);
-              $dataStore.attr('data-lastitem', data.lastItem);
-            }
-
-            var $feedBodyUl = PTL.feed.lastItems(data, $dataStore);
-
-            $feedBody.append($feedBodyUl[0]);
-
-            if (!$feedBody.is(':empty')) {
-
-              const $html = $feedBody.html();
-              localStorage.setItem(feedUrl, $html);
-
-            }
-
-            $badge.text($feedBodyUl[1]);
-
-            $refreshButton
-              .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $feedBodyUl[1] + ' new items)' )
-              .removeClass('spin');
-
-            if (progress) progress.increment();
-
-          })
-          .catch(function(error) {
-            console.log('whoops: %s (%s)', error);
-            $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
-            $feedBody.css('height', '');
-
-            $refreshButton.removeClass('spin');
-          });
-
-      }
 
     } else {
 
@@ -648,8 +558,109 @@ PTL.feed = {
         .children('div.feedBody')
         .addClass('folded');
 
-      if (progress) progress.increment();
     }
+
+    var saved = localStorage.getItem(feedUrl);
+
+    if (saved) {
+
+      if ($feedBody.is(':empty')) {
+        $feedBody.append(saved);
+      }
+
+      PTL.feed.getit(feedUrl, feedLastItem, feedNbItems)
+        .then(function(data) {
+
+          if (data.lastItem) {
+            $dataStore.data('lastitem', data.lastItem);
+            PTL.tab.saveTabs();
+          }
+
+          var $feedBodyUl = PTL.feed.lastItems(data, $dataStore);
+
+          $feedBody.prepend($feedBodyUl[0]);
+
+          const $html = $feedBody.html();
+          localStorage.setItem(feedUrl, $html);
+
+          $badge.text($feedBodyUl[1]);
+
+          if ($feedBodyUl[1] > 0) {
+            $badge.fadeIn('slow');
+          } else {
+            $badge.fadeOut('slow');
+          }
+
+          $refreshButton
+            .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $feedBodyUl[1] + ' new items)' )
+            .removeClass('spin');
+
+        })
+        .catch(function(error) {
+          console.log('whoops: %s (%s)', error, feedUrl);
+          $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
+          $feedBody.css('height', '');
+
+          $refreshButton.removeClass('spin');
+        });
+
+    } else {
+
+      PTL.feed.getit(feedUrl, feedLastItem, feedNbItems)
+        .then(function(data) {
+          // console.log('YAAA: %s (%s)', JSON.stringify(data));
+
+          if (feedName) {
+            feedTitle = feedName;
+          } else if (data.feedTitle) {
+            feedTitle = data.feedTitle;
+            $dataStore.data('name', feedTitle);
+          }
+
+          $feedLink.text(feedTitle)
+            .attr('href', data.feedLink)
+            .attr('title', feedTitle + ' (' + feedUrl + ')');
+
+          if (data.lastItem) {
+            // console.log('YEP: %s (%s)', data.lastItem);
+            $dataStore.attr('data-lastitem', data.lastItem);
+          }
+
+          var $feedBodyUl = PTL.feed.lastItems(data, $dataStore);
+
+          $feedBody.append($feedBodyUl[0]);
+
+          if (!$feedBody.is(':empty')) {
+            const $html = $feedBody.html();
+            localStorage.setItem(feedUrl, $html);
+          }
+
+          $badge.text($feedBodyUl[1]);
+
+          if ($feedBodyUl[1] > 0) {
+            $badge.fadeIn('slow');
+          } else {
+            $badge.fadeOut('slow');
+          }
+
+          $refreshButton
+            .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $feedBodyUl[1] + ' new items)' )
+            .removeClass('spin');
+
+        })
+        .catch(function(error) {
+          console.log('whoops: %s (%s)', error);
+          $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
+          $feedBody.css('height', '');
+
+          $badge.fadeOut('fast');
+
+          $refreshButton.removeClass('spin');
+        });
+
+    }
+
+    if (progress) progress.increment();
 
   }
 };
