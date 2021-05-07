@@ -299,8 +299,16 @@ PTL.feed = {
 
         const $tempDom = $('<null>').append($description);
 
-        if (item.content[':encoded']) {
-          imageUrl = getImageUrl(item.content[':encoded']);
+
+
+        if (item['content:encoded']) {
+          const $tempItem = $('<null>').append(item['content:encoded']);
+          console.log('yep!: %s (%s)', $tempItem.find('img').attr('src'));
+
+          if ($tempItem.find('img').attr('src')) {
+            imageUrl = $tempItem.find('img').attr('src');
+          }
+            // imageUrl = getImageUrl(item.content[':encoded']);
         }
 
 
@@ -582,7 +590,8 @@ PTL.feed = {
           feedNbItems = $dataStore.data('nbitems'),
           feedLastItem = $dataStore.attr('data-lastitem'),
           $feedToggle = $feedHeader.children('.feedToggle'),
-          $feedIcon = $feedToggle.children('.favicon').addClass('fold');
+          $feedIcon = $feedToggle.children('.feedIcon').addClass('fold'),
+          $favIcon = $feedToggle.children('.favicon');
 
     const l = PTL.util.getLocation(feedUrl),
           feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -605,17 +614,17 @@ PTL.feed = {
     }
 
     if (feedIconHash) {
-      $feedIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
     } else {
       PTL.feed.getIcon(feedHost).then((iconhash) => {
         if (iconhash) {
-          $feedIcon.attr('src', '/favicons/' + iconhash + '.favicon');
+          $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
           $dataStore.data('iconhash', iconhash);
           PTL.tab.saveTabs();
         }
       }).catch((error) => {
         console.log('error: %s (%s)',error);
-        $feedIcon.addClass('icon-rss');
+        $favIcon.addClass('icon-rss');
       });
     }
 
