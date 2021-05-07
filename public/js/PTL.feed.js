@@ -198,6 +198,32 @@ PTL.feed = {
   },
   lastItems:function(data, $dataStore) {
 
+    function getImageUrl(description){
+      let cleanUrl = "";
+      if(description.indexOf(".png")>0)
+        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".png")+ 4);
+      else if(description.indexOf(".jpg")>0)
+      {
+        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".jpg")+ 4);
+      }
+      else if(description.indexOf(".jpeg")>0)
+      {
+        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".jpeg")+ 5);
+      }
+      else if(description.indexOf(".gif")>0)
+      {
+        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".gif")+ 4);
+      }
+      else if(description.indexOf(".bmp")>0)
+      {
+        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".bmp")+ 4);
+      }
+      else{
+        cleanUrl = "custom-image-url";
+      }
+      return cleanUrl;
+    }
+
     return new Promise((resolve, reject) => {
 
       const $feedBody = $dataStore.parent().next('div.feedBody'),
@@ -217,7 +243,7 @@ PTL.feed = {
         // console.log('YAAZ item:[%s], data[item]:[%s]', key, JSON.stringify(data.feedItems[key]));
         var item = data.feedItems[key];
 
-        // console.log('newItems: %s (%s)', newItems, JSON.stringify(item.enclosure));
+        console.log('newItems: %s (%s)', newItems, JSON.stringify(item));
 
         if (item.enclosure && item.enclosure.url) {
           console.log('item.enclosure.url: %s (%s)', item.enclosure.url);
@@ -272,6 +298,11 @@ PTL.feed = {
         }
 
         const $tempDom = $('<null>').append($description);
+
+        if (item.content[':encoded']) {
+          imageUrl = getImageUrl(item.content[':encoded']);
+        }
+
 
         if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
           imageUrl = item.image.url;
@@ -620,6 +651,8 @@ PTL.feed = {
           var oldLength = $feedBody.find('li').length;
 
           PTL.feed.getFeed(feedUrl, feedLastItem, feedNbItems).then((data) => {
+
+            // console.log('Kayn: %s (%s)', JSON.stringify(data));
 
             PTL.feed.lastItems(data, $dataStore).then((itemList) => {
 

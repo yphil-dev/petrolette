@@ -14,13 +14,18 @@ function getFeed (feedUrl, lastItem, maxItems, callback) {
 
     console.log(feed.title);
 
-    feed.items.forEach(item => {
+    feed.items.every(function(item, index) {
       console.log(item.title);
+
       feedItems.push(item);
 
       if (typeof newLastItem === 'undefined') {
         newLastItem = item.link;
       }
+
+      if (item.link === lastItem) return false;
+      else return true;
+
     });
 
     callback (null, feedItems, feed.title || 'Untitled', feed.link || feedUrl, newLastItem);
