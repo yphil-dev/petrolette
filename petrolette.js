@@ -25,14 +25,8 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR),
              return console.error(err);
            }
            console.log('Directory created successfully!');
+           return true;
          });
-
-// app.use(function(req, res, next) {
-//   if (req.secure) {
-//     res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains'); // 2 years
-//   }
-//   next();
-// });
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -49,6 +43,5 @@ app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DI
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 app.use('/', router);
-
 
 module.exports = app;

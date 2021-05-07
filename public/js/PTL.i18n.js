@@ -184,6 +184,8 @@ PTL.i18n.translations = {
 
   "Invalid file" : { fr: "Fichier non valide" , ja: "無効なファイル", es: "Archivo inválido" },
 
+  "DataBase error: %1" : { fr: "Erreur de la Base de Données: %1" , ja: "データベースエラー %1", es: "Error de la base de datos: %1" },
+
   "This is not a valid Pétrolette feeds file" : { fr: "Ceci n'est pas un fichier de flux Pétrolette valide" , ja: "これは有効なPétroletteフィードファイルではありません", es: "Este no es un archivo de feeds de Pétrolette válido" },
 
   "Valid Pétrolette feeds file" : { fr: "Fichier de flux Pétrolette valide" , ja: "これは有効なPétroletteフィードファイルです", es: "Archivo de feeds de Pétrolette válido" },

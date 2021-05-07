@@ -36,7 +36,11 @@ router.get('/favicon', function(req, res) {
 
   favrat(req.query.url, function(err, url) {
 
+    if (err) console.error('######### err: %s (%s)', err);
+
     if (url) {
+
+      console.error('######### url: %s (%s)',url);
 
       if (!url.startsWith('http')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 
