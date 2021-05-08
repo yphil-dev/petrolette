@@ -66,16 +66,15 @@ function getFeed (feedUrl, lastItem, callback) {
         try {
           var item = this.read();
 
-          // console.error('ITEM: %s (%s)', JSON.stringify(item));
-
           if (item !== null){
+            console.error('ITEM: %s (%s)', item.link);
             i++;
 
             if (typeof newLastItem === 'undefined') {
               newLastItem = item.link;
             }
 
-            if (item.link !== lastItem) {
+            if (true) {
               console.error('### PUSHING [%s] lastItem:[%s]', item.link, newLastItem);
               feedItems.push(item);
             } else {

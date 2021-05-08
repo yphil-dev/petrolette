@@ -70,14 +70,22 @@ router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
 
-  feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem) {
+  var lastItem = req.query.lastItem;
+
+  feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, newLastItem) {
+
+    if (newLastItem == lastItem) {
+      console.error('### same: new [%s] last (%s)', newLastItem, lastItem);
+    } else {
+      console.error('### newLastItem: new [%s] last (%s)', newLastItem, lastItem);
+    }
 
     if (feedItems && !res.headersSent) {
       res.send({
         feedItems: feedItems,
         feedLink: feedLink,
         feedTitle: feedTitle,
-        lastItem: lastItem
+        lastItem: newLastItem
       });
 
     } else if (error && !res.headersSent) {
