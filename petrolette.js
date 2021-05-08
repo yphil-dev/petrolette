@@ -17,6 +17,7 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), (err) => {
     return console.error(err);
   }
   console.log('Directory created successfully!');
+  return true;
 });
 
 fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR),

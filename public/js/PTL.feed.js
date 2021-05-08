@@ -243,15 +243,15 @@ PTL.feed = {
         // console.log('YAAZ item:[%s], data[item]:[%s]', key, JSON.stringify(data.feedItems[key]));
         var item = data.feedItems[key];
 
-        console.log('newItems: %s (%s)', newItems, JSON.stringify(item));
+        // console.log('newItems: %s (%s)', newItems, JSON.stringify(item));
 
-        if (item.enclosure && item.enclosure.url) {
-          console.log('item.enclosure.url: %s (%s)', item.enclosure.url);
-        }
+        // if (item.enclosure && item.enclosure.url) {
+        //   console.log('item.enclosure.url: %s (%s)', item.enclosure.url);
+        // }
 
-        if (item.enclosure && item.enclosure.type) {
-          console.log('item.enclosure.type: %s (%s)', item.enclosure.type);
-        }
+        // if (item.enclosure && item.enclosure.type) {
+        //   console.log('item.enclosure.type: %s (%s)', item.enclosure.type);
+        // }
 
         const $description = $.parseHTML(item.description),
               imgTypes = ['image',
@@ -303,7 +303,7 @@ PTL.feed = {
 
         if (item['content:encoded']) {
           const $tempItem = $('<null>').append(item['content:encoded']);
-          console.log('yep!: %s (%s)', $tempItem.find('img').attr('src'));
+          // console.log('yep!: %s (%s)', $tempItem.find('img').attr('src'));
 
           if ($tempItem.find('img').attr('src')) {
             imageUrl = $tempItem.find('img').attr('src');
@@ -336,14 +336,14 @@ PTL.feed = {
         }
 
         if (item.enclosure && item.enclosure.type && item.enclosure.url) {
-          console.log('item.enclosure.type: %s (%s)', item.enclosure.type);
+          // console.log('item.enclosure.type: %s (%s)', item.enclosure.type);
 
           if (videoTypes.indexOf(item.enclosure.type) > -1) {
             PTL.feed.appendVideoPlayer($itemDiv, item.enclosure.url, item.enclosure.type);
           }
 
           if (audioTypes.indexOf(item.enclosure.type) > -1) {
-            console.log('yoooo: %s (%s)');
+            // console.log('yoooo: %s (%s)');
             PTL.feed.appendAudioPlayer($itemDiv, item.enclosure.url, item.enclosure.type);
           }
 
@@ -588,7 +588,7 @@ PTL.feed = {
           feedStatus = $dataStore.data('status'),
           feedIconHash = $dataStore.data('iconhash'),
           feedNbItems = $dataStore.data('nbitems'),
-          feedLastItem = $dataStore.attr('data-lastitem'),
+          feedLastItem = $dataStore.attr('data-lastitem') || '',
           $feedToggle = $feedHeader.children('.feedToggle'),
           $feedIcon = $feedToggle.children('.feedIcon').addClass('fold'),
           $favIcon = $feedToggle.children('.favicon');

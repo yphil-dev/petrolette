@@ -12,23 +12,21 @@ const express = require('express'),
       sanitize = require('sanitize').middleware,
       morgan = require('morgan');
 
-require('events').EventEmitter.defaultMaxListeners = 15;
-
 console.error('####### Pétrolette (re)START ## Version (%s)', pjson.version);
 
 process.on('uncaughtException', function(err) {
   console.error('### Pétrolette uncaughtException: %s', err);
 });
 
-var options = {
-  object: false,
-  reversible: false,
-  coerce: true,
-  sanitize: false,
-  trim: false,
-  arrayNotation: false,
-  alternateTextNode: false
-};
+// var options = {
+//   object: false,
+//   reversible: false,
+//   coerce: true,
+//   sanitize: false,
+//   trim: false,
+//   arrayNotation: false,
+//   alternateTextNode: false
+// };
 
 router.use(sanitize);
 
@@ -75,6 +73,8 @@ router.use(morgan('combined'));
 router.get('/feed', function(req, res) {
 
   feeder.getFeed(req.query.url, req.query.lastItem, req.query.nbItems, function (error, feedItems, feedTitle, feedLink, lastItem) {
+
+    console.error('### ROUTER: lastItem [%s]', lastItem);
 
     if (feedItems && !res.headersSent) {
       res.send({
