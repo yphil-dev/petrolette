@@ -12,7 +12,7 @@ PTL.db = {
       query.onsuccess = (event) => {
         if (!event.target.result) {
           console.log(`Feed ${url} not found`);
-          reject('No such feed');
+          resolve(null);
         } else {
           // console.table(event.target.result);
           resolve(event.target.result);
@@ -20,7 +20,8 @@ PTL.db = {
       };
 
       query.onerror = (event) => {
-        console.log(event.target.errorCode);
+        console.log('Catched in db.read: [%s]', event.target.errorCode);
+        reject(event.target.errorCode);
       };
 
       txn.oncomplete = function () {
