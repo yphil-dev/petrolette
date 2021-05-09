@@ -198,36 +198,12 @@ PTL.feed = {
   },
   lastItems:function(data, $dataStore) {
 
-    function getImageUrl(description){
-      let cleanUrl = "";
-      if(description.indexOf(".png")>0)
-        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".png")+ 4);
-      else if(description.indexOf(".jpg")>0)
-      {
-        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".jpg")+ 4);
-      }
-      else if(description.indexOf(".jpeg")>0)
-      {
-        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".jpeg")+ 5);
-      }
-      else if(description.indexOf(".gif")>0)
-      {
-        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".gif")+ 4);
-      }
-      else if(description.indexOf(".bmp")>0)
-      {
-        cleanUrl = description.substring(description.indexOf("src=") + 5, description.indexOf(".bmp")+ 4);
-      }
-      else{
-        cleanUrl = "custom-image-url";
-      }
-      return cleanUrl;
-    }
+    // console.log('lastItems: %s (%s)');
 
     return new Promise((resolve, reject) => {
 
       const $feedBody = $dataStore.parent().next('div.feedBody'),
-            $feedBodyUl = $('<ul>').attr({'class': 'feedBody'}),
+            $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
             feedUrl = $dataStore.data('url'),
             nbItems = $dataStore.data('nbitems'),
             feedType = $dataStore.data('type');
@@ -237,35 +213,26 @@ PTL.feed = {
             feedHost = p + l.hostname;
 
       var newItems = 0;
+      var finalList;
 
       for (var key in data.feedItems) {
         newItems++;
         // console.log('YAAZ item:[%s], data[item]:[%s]', key, JSON.stringify(data.feedItems[key]));
         var item = data.feedItems[key];
 
-        // console.log('newItems: %s (%s)', newItems, JSON.stringify(item));
-
-        // if (item.enclosure && item.enclosure.url) {
-        //   console.log('item.enclosure.url: %s (%s)', item.enclosure.url);
-        // }
-
-        // if (item.enclosure && item.enclosure.type) {
-        //   console.log('item.enclosure.type: %s (%s)', item.enclosure.type);
-        // }
+        // if (newItems == nbItems) return false;
 
         const $description = $.parseHTML(item.description),
               imgTypes = ['image',
                           'image/jpg',
                           'image/jpeg',
                           'image/gif',
-                          'image/png'],
-              audioTypes = ['audio/mp3',
-                            'audio/ogg'],
-              videoTypes = ['video/mp4',
-                            'video/webm'];
+                          'image/png'];
 
         var summary,
             imageUrl,
+            audioUrl,
+            audioType,
             videoUrl,
             videoType;
 
@@ -285,8 +252,12 @@ PTL.feed = {
 
         const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
               $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
+              $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
+              $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink'),
               $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
               $commentsIcon = $('<i>'),
+              $audioIcon = $('<i>'),
+              $videoIcon = $('<i>'),
               $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
               $feedItem = $('<li>').attr('class', 'feedItem');
@@ -298,19 +269,6 @@ PTL.feed = {
         }
 
         const $tempDom = $('<null>').append($description);
-
-
-
-        if (item['content:encoded']) {
-          const $tempItem = $('<null>').append(item['content:encoded']);
-          // console.log('yep!: %s (%s)', $tempItem.find('img').attr('src'));
-
-          if ($tempItem.find('img').attr('src')) {
-            imageUrl = $tempItem.find('img').attr('src');
-          }
-            // imageUrl = getImageUrl(item.content[':encoded']);
-        }
-
 
         if (!imageUrl && item.image && typeof item.image.url !== 'undefined') {
           imageUrl = item.image.url;
@@ -335,40 +293,56 @@ PTL.feed = {
           videoType = item['media:group']['media:content'][0]['@'].type;
         }
 
-        if (item.enclosure && item.enclosure.type && item.enclosure.url) {
-          // console.log('item.enclosure.type: %s (%s)', item.enclosure.type);
+        if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
 
-          if (videoTypes.indexOf(item.enclosure.type) > -1) {
-            PTL.feed.appendVideoPlayer($itemDiv, item.enclosure.url, item.enclosure.type);
+          if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
+            imageUrl = item.enclosures[0].url;
           }
 
-          if (audioTypes.indexOf(item.enclosure.type) > -1) {
-            // console.log('yoooo: %s (%s)');
-            PTL.feed.appendAudioPlayer($itemDiv, item.enclosure.url, item.enclosure.type);
+          if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
+            imageUrl = item.enclosures[0].url;
           }
 
-        }
-
-        if (item.enclosure && typeof item.enclosure[0] !== 'undefined' && item.enclosure[0].url) {
-
-          if (item.enclosure[0].url && item.enclosure[0].url.endsWith(".jpg")) {
-            imageUrl = item.enclosure[0].url;
+          if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/\.(mp4|webm)$/)) {
+            videoUrl = item.enclosures[0].url;
+            videoType = item.enclosures[0].type;
           }
 
-          if (imgTypes.indexOf(item.enclosure[0].type) > -1) {
-            imageUrl = item.enclosure[0].url;
+          if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
+            audioUrl = item.enclosures[0].url;
+            audioType = item.enclosures[0].type;
           }
 
-          if (!videoUrl && item.enclosure[0].url && item.enclosure[0].url.match(/\.(mp4|webm)$/)) {
-            videoUrl = item.enclosure[0].url;
-            videoType = item.enclosure[0].type;
+          if (videoUrl && videoType) {
+            PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType);
           }
 
+          if (audioUrl && audioType) {
+            PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType);
+          }
+
+          if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
+
+            const audioPlayer      = document.createElement('audio');
+            audioPlayer.controls = 'controls';
+            audioPlayer.src      = item.enclosures[0].url;
+            audioPlayer.type     = item.enclosures[0].type;
+            audioPlayer.preload  = PTL.prefs.readConfig('mediaPreload');
+
+            $itemDiv.append(audioPlayer);
+
+            $audioLink
+              .attr('href', item.enclosures[0].url)
+              .appendTo($itemDiv);
+            $audioIcon
+              .attr('class', 'itemIcon icon-audio')
+              .appendTo($audioLink);
+          }
         }
 
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
-          .attr('href', item.link || item.enclosure[0].url)
+          .attr('href', item.link || item.enclosures[0].url)
           .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
         if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
@@ -412,15 +386,11 @@ PTL.feed = {
         $itemDiv.appendTo($feedItem);
         $feedItem.appendTo($feedBodyUl);
 
-        var $dumbDiv = $('<div>').append($feedBodyUl);
-
         $tempDom.empty();
 
       }
 
-      // console.log('LENG: %s (%s)', $dumbDiv.children().length);
-
-      resolve([$dumbDiv.html(), newItems]);
+      return resolve([$feedBodyUl.html(), newItems]);
 
     });
 
@@ -554,6 +524,9 @@ PTL.feed = {
     });
 
   },
+  writeToDb:function(url, content) {
+
+  },
   getFeed:function(feedUrl, lastItem, nbItems) {
 
     return new Promise((resolve, reject) => {
@@ -570,240 +543,238 @@ PTL.feed = {
     });
 
   },
-  populate:function($button, progress, newLimit) {
+      populate:function($button, progress, newLimit) {
 
-    const $dataStore = $button.parent().parent(),
-          $refreshButton = $dataStore.find('i.feedRefresh').addClass('spin'),
-          $feedHeader = $dataStore.parent(),
-          $badge = $feedHeader.children('.newItemsBadge'),
-          $feed = $dataStore.parent().parent(),
-          $feedTitle = $feedHeader.children('.feedTitle'),
-          $feedLink = $feedTitle.children('a'),
-          $feedBody = $dataStore.parent().next('div.feedBody'),
-          $feedBodyUl = $feedBody.find('ul.feedBody'),
-          feedUrl = $dataStore.data('url'),
-          feedName = $dataStore.data('name'),
-          feedType = $dataStore.data('type'),
-          feedLimit = newLimit || $dataStore.data('limit'),
-          feedStatus = $dataStore.data('status'),
-          feedIconHash = $dataStore.data('iconhash'),
-          feedNbItems = $dataStore.data('nbitems'),
-          feedLastItem = $dataStore.attr('data-lastitem') || '',
-          $feedToggle = $feedHeader.children('.feedToggle'),
-          $feedIcon = $feedToggle.children('.feedIcon').addClass('fold'),
-          $favIcon = $feedToggle.children('.favicon');
+        const $dataStore = $button.parent().parent(),
+              $refreshButton = $dataStore.find('i.feedRefresh').addClass('spin'),
+              $feedHeader = $dataStore.parent(),
+              $badge = $feedHeader.children('.newItemsBadge'),
+              $feed = $dataStore.parent().parent(),
+              $feedTitle = $feedHeader.children('.feedTitle'),
+              $feedLink = $feedTitle.children('a'),
+              $feedBody = $dataStore.parent().next('div.feedBody'),
+              $feedBodyUl = $feedBody.find('ul.feedBody'),
+              feedUrl = $dataStore.data('url'),
+              feedName = $dataStore.data('name'),
+              feedType = $dataStore.data('type'),
+              feedLimit = newLimit || $dataStore.data('limit'),
+              feedStatus = $dataStore.data('status'),
+              feedIconHash = $dataStore.data('iconhash'),
+              feedNbItems = $dataStore.data('nbitems'),
+              feedLastItem = $dataStore.attr('data-lastitem') || '',
+              $feedToggle = $feedHeader.children('.feedToggle'),
+              $feedIcon = $feedToggle.children('.feedIcon').addClass('fold'),
+              $favIcon = $feedToggle.children('.favicon');
 
-    const l = PTL.util.getLocation(feedUrl),
-          feedProtocol = l.protocol ? l.protocol + '//' : '//',
-          feedHost = feedProtocol + l.hostname,
-          dateObj = new Date(),
-          timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
+        const l = PTL.util.getLocation(feedUrl),
+              feedProtocol = l.protocol ? l.protocol + '//' : '//',
+              feedHost = feedProtocol + l.hostname,
+              dateObj = new Date(),
+              timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
 
-    var feedTitle;
+        var feedTitle;
 
-    $feedBodyUl.css('border', '1px solid red');
+        $feedBodyUl.css('border', '1px solid red');
 
-    if ($dataStore.data('status') == 'on') {
-      $feedIcon.removeClass('fold');
-    } else {
-      $dataStore
-        .parent()
-        .parent()
-        .children('div.feedBody')
-        .addClass('folded');
-    }
-
-    if (feedIconHash) {
-      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-    } else {
-      PTL.feed.getIcon(feedHost).then((iconhash) => {
-        if (iconhash) {
-          $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-          $dataStore.data('iconhash', iconhash);
-          PTL.tab.saveTabs();
-        }
-      }).catch((error) => {
-        console.log('error: %s (%s)',error);
-        $favIcon.addClass('icon-rss');
-      });
-    }
-
-    feedTitle = (feedName) ? feedName : feedUrl;
-    $feedLink.text(feedTitle)
-      .attr('href', feedUrl)
-      .attr('title', feedTitle + ' (' + feedUrl + ')')
-      .removeClass('danger');
-
-    let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
-
-    request.onerror = function(event) {
-      PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
-    };
-
-    request.onsuccess = function(event) {
-      var db = event.target.result;
-      let ReadTransaction = db.transaction(PTL.DbStore, "readonly");
-      let objectStore = ReadTransaction.objectStore(PTL.DbStore);
-      let ReadRequest = objectStore.get(feedUrl);
-      ReadRequest.onerror = function(event) {
-        PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
-      };
-
-      ReadRequest.onsuccess = function(event) {
-
-        if (event.target.result) {
-
-          if ($feedBody.is(':empty')) {
-            $feedBody.append(event.target.result.content);
-          }
-
-          var oldLength = $feedBody.find('li').length;
-
-          PTL.feed.getFeed(feedUrl, feedLastItem, feedNbItems).then((data) => {
-
-            // console.log('Kayn: %s (%s)', JSON.stringify(data));
-
-            PTL.feed.lastItems(data, $dataStore).then((itemList) => {
-
-
-              // console.log('Kayn: %s (%s)', JSON.stringify(itemList));
-
-              var $newFeedBodyUl = $(itemList[0]);
-              const newLength = $newFeedBodyUl.children('li').length;
-
-              if (data.lastItem) {
-                try {
-                  $dataStore.data('lastitem', data.lastItem);
-                } catch(error) {
-                  console.log('lastItems error: %s (%s)', error);
-                }
-              }
-
-              $badge.text(itemList[1]);
-
-              if (itemList[1] > 0) {
-                $feedBody.html($newFeedBodyUl);
-                // console.log('H: %s (%s)', $feedBody.find('li').length);
-                $badge.fadeIn('slow').text(itemList[1]);
-
-                let ReadTransaction = db.transaction(PTL.DbStore, "readwrite"),
-                    feeds = ReadTransaction.objectStore(PTL.DbStore),
-                    feed = {url: feedUrl, content: $feedBody.html()},
-                    WriteRequest = feeds.put(feed);
-
-                WriteRequest.onsuccess = function() {
-                  console.log("Feed added to the store: (%s) (%s)", feedUrl, request.result);
-                  PTL.tab.saveTabs();
-                };
-
-                WriteRequest.onerror = function(event) {
-                  PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
-                };
-
-              } else {
-                $badge.fadeOut('slow');
-              }
-
-              $refreshButton
-                .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $newFeedBodyUl[1] + ' new items)' )
-                .removeClass('spin');
-
-            }).catch();
-
-          }).catch(function(error) {
-            console.log('whoops: %s (%s)', JSON.stringify(error), feedUrl);
-            $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
-            $feedBody.css('height', '');
-
-            $refreshButton.removeClass('spin');
-          });
-
+        if ($dataStore.data('status') == 'on') {
+          $feedIcon.removeClass('fold');
         } else {
+          $dataStore
+            .parent()
+            .parent()
+            .children('div.feedBody')
+            .addClass('folded');
+        }
 
-          // console.log('Makayn\'sh: [%s] (%s)', feedLastItem, feedUrl);
+        if (feedIconHash) {
+          $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+        } else {
+          PTL.feed.getIcon(feedHost).then((iconhash) => {
+            if (iconhash) {
+              $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
+              $dataStore.data('iconhash', iconhash);
+              PTL.tab.saveTabs();
+            }
+          }).catch((error) => {
+            console.log('error: %s (%s)',error);
+            $favIcon.addClass('icon-rss');
+          });
+        }
 
-          PTL.feed.getFeed(feedUrl, 'feedLastItem', feedNbItems)
-            .then(function(data) {
+        feedTitle = (feedName) ? feedName : feedUrl;
+        $feedLink.text(feedTitle)
+          .attr('href', feedUrl)
+          .attr('title', feedTitle + ' (' + feedUrl + ')')
+          .removeClass('danger');
 
-              // console.log('Makayn: %s (%s)', JSON.stringify(data));
+        let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
 
-              if (feedName) {
-                feedTitle = feedName;
-              } else if (data.feedTitle) {
-                feedTitle = data.feedTitle;
-                $dataStore.data('name', feedTitle);
-              }
+        request.onerror = function(event) {
+          PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
+        };
 
-              $feedLink.text(feedTitle)
-                .attr('href', data.feedLink)
-                .attr('title', feedTitle + ' (' + feedUrl + ')');
+        request.onsuccess = function(event) {
+          var db = event.target.result;
+          let ReadTransaction = db.transaction(PTL.DbStore, "readonly");
+          let objectStore = ReadTransaction.objectStore(PTL.DbStore);
+          let ReadRequest = objectStore.get(feedUrl);
+          ReadRequest.onerror = function(event) {
+            PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
+          };
 
-              if (data.lastItem) {
-                // console.log('YEP: %s (%s)', data.lastItem);
-                $dataStore.attr('data-lastitem', data.lastItem);
-              }
+          ReadRequest.onsuccess = function(event) {
 
-              PTL.feed.lastItems(data, $dataStore).then((itemList) => {
+            if (event.target.result) {
 
-                $feedBody.html(itemList[0]);
+              $feedBody.html(event.target.result.content);
 
-                let openRequest = indexedDB.open(PTL.DbName, PTL.DbVersion);
+              PTL.feed.getFeed(feedUrl, feedLastItem, feedNbItems).then((data) => {
 
-                $badge.text(itemList[1]);
+                // console.log('Kayn: %s (%s)', JSON.stringify(data.thereArenewItems));
 
-                if (itemList[1] > 0) {
-                  $badge.fadeIn('slow');
-                } else {
-                  $badge.fadeOut('slow');
+                if (data.lastItem) {
+                  console.log('YEP: %s (%s)', data.lastItem);
+                  $dataStore.attr('data-lastitem', data.lastItem);
                 }
 
-                $refreshButton
-                  .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + itemList[1] + ' new items)' )
-                  .removeClass('spin');
+                PTL.feed.lastItems(data, $dataStore).then((itemList) => {
 
-                openRequest.onsuccess = function() {
+                  console.log('itemList: %s (%s)', JSON.stringify(itemList));
 
-                  let db = openRequest.result;
+                  var $newFeedBodyUl = $(itemList[0]);
 
-                  if (!db.objectStoreNames.contains(PTL.DbStore)) {
-                    db.createObjectStore(PTL.DbStore, {keyPath: PTL.DbKey});
+                  if (data.lastItem) {
+                    try {
+                      $dataStore.data('lastitem', data.lastItem);
+                    } catch(error) {
+                      console.log('lastItems error: %s (%s)', error);
+                    }
                   }
 
-                  let transaction = db.transaction(PTL.DbStore, "readwrite"),
-                      feeds = transaction.objectStore(PTL.DbStore),
-                      feed = {url: feedUrl, content: itemList[0]},
-                      request = feeds.put(feed);
+                  console.log('Kayn, but thereArenewItems: (%s)', JSON.stringify(data.thereArenewItems));
 
-                  request.onsuccess = function() {
-                    console.log("Feed added to the store: ", request.result);
-                  };
+                  if (data.thereArenewItems) {
 
-                  request.onerror = function(event) {
-                    PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
-                  };
+                    $feedBody.html($newFeedBodyUl);
+                    $badge.fadeIn('slow').text(itemList[1]);
 
-                };
+                    let ReadTransaction = db.transaction(PTL.DbStore, "readwrite"),
+                        feeds = ReadTransaction.objectStore(PTL.DbStore),
+                        feed = {url: feedUrl, content: $feedBody.html()},
+                        WriteRequest = feeds.put(feed);
 
+                    WriteRequest.onsuccess = function() {
+                      console.log("Feed added to the store: (%s) (%s)", feedUrl, request.result);
+                      PTL.tab.saveTabs();
+                    };
+
+                    WriteRequest.onerror = function(event) {
+                      PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
+                    };
+
+                  } else {
+                    $badge.fadeOut('slow');
+                  }
+
+                  $refreshButton
+                    .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + $newFeedBodyUl[1] + ' new items)' )
+                    .removeClass('spin');
+
+                }).catch();
+
+              }).catch(function(error) {
+                console.log('whoops: %s (%s)', JSON.stringify(error), feedUrl);
+                $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
+                $feedBody.css('height', '');
+
+                $refreshButton.removeClass('spin');
               });
 
-            })
-            .catch(function(error) {
-              console.log('whoops: %s (%s)', JSON.stringify(error));
-              $feedBody
-                .empty()
-                .append(PTL.feed.errorFeed(error, feedUrl))
-                .css('height', '');
-              $badge.fadeOut('fast');
-              $refreshButton.removeClass('spin');
-            });
+            } else {
 
-        }
-      };
+              // console.log('Makayn\'sh: [%s] (%s)', feedLastItem, feedUrl);
 
-    };
+              PTL.feed.getFeed(feedUrl, 'noLastItem', feedNbItems).then(function(data) {
 
-    if (progress) progress.increment();
+                console.log('MaKaynash, but thereArenewItems: (%s)', JSON.stringify(data.thereArenewItems));
 
-  }
+                if (feedName) {
+                  feedTitle = feedName;
+                } else if (data.feedTitle) {
+                  feedTitle = data.feedTitle;
+                  $dataStore.data('name', feedTitle);
+                }
+
+                $feedLink.text(feedTitle)
+                  .attr('href', data.feedLink)
+                  .attr('title', feedTitle + ' (' + feedUrl + ')');
+
+                if (data.lastItem) {
+                  console.log('YEP: %s (%s)', data.lastItem);
+                  $dataStore.attr('data-lastitem', data.lastItem);
+                }
+
+                PTL.feed.lastItems(data, $dataStore).then((itemList) => {
+
+                  $feedBody.html(itemList[0]);
+
+                  $badge.text(itemList[1]);
+
+                  if (itemList[1] > 0) {
+                    $badge.fadeIn('slow');
+                  } else {
+                    $badge.fadeOut('slow');
+                  }
+
+                  $refreshButton
+                    .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + itemList[1] + ' new items)' )
+                    .removeClass('spin');
+
+                  let openRequest = indexedDB.open(PTL.DbName, PTL.DbVersion);
+
+                  openRequest.onsuccess = function() {
+
+                    let db = openRequest.result;
+
+                    if (!db.objectStoreNames.contains(PTL.DbStore)) {
+                      db.createObjectStore(PTL.DbStore, {keyPath: PTL.DbKey});
+                    }
+
+                    let transaction = db.transaction(PTL.DbStore, "readwrite"),
+                        feeds = transaction.objectStore(PTL.DbStore),
+                        feed = {url: feedUrl, content: itemList[0]},
+                        request = feeds.put(feed);
+
+                    request.onsuccess = function() {
+                      console.log("Feed added to the store: ", request.result);
+                    };
+
+                    request.onerror = function(event) {
+                      PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
+                    };
+
+                  };
+
+                });
+
+              })
+                .catch(function(error) {
+                  console.log('whoops: %s (%s)', JSON.stringify(error));
+                  $feedBody
+                    .empty()
+                    .append(PTL.feed.errorFeed(error, feedUrl))
+                    .css('height', '');
+                  $badge.fadeOut('fast');
+                  $refreshButton.removeClass('spin');
+                });
+
+            }
+          };
+
+        };
+
+        if (progress) progress.increment();
+
+      }
 
 };

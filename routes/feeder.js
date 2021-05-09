@@ -1,72 +1,102 @@
-let Parser = require('rss-parser');
-
-let parser = new Parser({
-  // timeout: 5000,
-  headers: {
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
-    'accept': 'text/html,application/xhtml+xml'
-  },
-  maxRedirects: 100,
-  requestOptions: {
-    rejectUnauthorized: false
-  },
-  defaultRSS: 2.0,
-  xml2js: {
-    emptyTag: 'media:community',
-  },
-  customFields: {
-    item: [
-      ['media:community', 'media:content', {keepArray: true}],
-    ]
-  }
-});
+const fetch = require('node-fetch'),
+      zlib = require('zlib'),
+      iconv = require('iconv-lite'),
+      FeedParser = require('feedparser');
 
 exports.getFeed = getFeed;
 
-function getFeed (feedUrl, lastItem, maxItems, callback) {
+function maybeTranslate (res, charset) {
+  var iconvStream;
+  // Decode using iconv-lite if its not utf8 already.
+  if (!iconvStream && charset && !/utf-*8/i.test(charset)) {
+    try {
+      iconvStream = iconv.decodeStream(charset);
+      console.error('ICONV: Converting from charset %s to utf-8', charset);
+      iconvStream.on('error', () => {return;});
+      // If we're using iconvStream, stream will be the output of iconvStream
+      // otherwise it will remain the output of request
+      res = res.pipe(iconvStream);
+    } catch(err) {
+      res.emit('error', err);
+    }
+  }
+  return res;
+}
 
-  const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+function getParams(str) {
+  var params = str.split(';').reduce(function (params, param) {
+    var parts = param.split('=').map(function (part) { return part.trim(); });
+    if (parts.length === 2) {
+      params[parts[0]] = parts[1];
+    }
+    return params;
+  }, {});
+  return params;
+}
 
-  (async () => {
+function getFeed (feedUrl, lastItem, nbItems, callback) {
+  // Get a response stream
+  fetch(feedUrl, {
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
+    'accept': 'text/html,application/xhtml+xml',
+    redirect: 'follow'
+  }).then(function (res) {
 
+    if (res.status != 200) {
+      callback({error:'error', errno:res.status, message:'Bad server response'});
+      return reject();
+    }
+
+    var feedparser = new FeedParser();
     var feedItems = [];
-    var reached = false;
-    var newItems = 0;
+    var charset = getParams(res.headers.get('content-type') || '').charset;
+    var responseStream = res.body;
+    responseStream = maybeTranslate(responseStream, charset);
+    responseStream.pipe(feedparser);
+    var newLastItem;
+    var thereArenewItems = false;
+    var i = 0;
 
-    parser.parseURL(feedUrl).then((feed) => {
-      var newLastItem;
+    return new Promise((resolve, reject) => {
+      feedparser.on('error', function(error) {
+        console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
+        reject();
+        return callback({error:error, errno:res.status, message:error.message});
+      }).on('readable', function() {
+        try {
+          var item = this.read();
 
-      console.log(feed.title);
+          if (item !== null){
+            i++;
 
-      feed.items.every(function(item, index) {
-        console.log(item.title);
+            console.error('item.link: %s (%s)', item.link);
 
-        feedItems.push(item);
+            if (typeof newLastItem == 'undefined') {
+              newLastItem = item.link;
+            }
 
-        newLastItem = item.link;
+            if (newLastItem == lastItem) {
+              console.error('### Count reached i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
+              this.resume();
+              } else {
+                feedItems.push(item);
+              }
 
-        console.error('item.link: %s (%s)',item.link);
-
-        newItems = index;
-
-        if (item.link === lastItem) {
-          reached = true;
-          return false;
+          }
         }
-
-        return true;
-
+        catch (err) {
+          console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
+        }
+      }).on ('end', function () {
+        var meta = this.meta;
+        resolve();
+        if (i > 1) thereArenewItems = true;
+        console.error('### Return i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
+        return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, thereArenewItems);
       });
-
-      console.error('### FEEDER: lastItem [%s] newLastItem [%s] newItems [%s] reached: [%s]', lastItem, newLastItem, newItems, reached);
-
-      callback (null, feedItems, feed.title || 'Untitled', feed.link || feedUrl, newLastItem);
-
-    }).catch((e) => {
-      console.error('Catched Error: %s (%s)', e);
-      callback (e);
     });
 
-  })();
-
+  }).catch((err) => {
+    callback({error:err, resStatus:0, message:err.message});
+  });
 }
