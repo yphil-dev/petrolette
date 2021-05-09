@@ -605,45 +605,43 @@ PTL.feed = {
 
         try {
 
-            let getFeed = await PTL.db.getFeed(feedUrl);
+            let feed = await PTL.db.getFeed(feedUrl);
 
-            if (getFeed) {
+            if (feed) {
 
-                if (getFeed.target.result) {
+                console.log('feed: %s (%s)', JSON.stringify(feed));
 
-                    $feedBody.html(getFeed.target.result);
+                $feedBody.html(feed.content);
 
-                    try {
-                        let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
+                try {
+                    let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
-                        if (fetchFeed.lastItem) {
-                            $dataStore.attr('data-lastitem', fetchFeed.lastItem);
-                        }
-
-                        if (fetchFeed.thereAreNewItems) {
-
-                            let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-
-                            $feedBody.prepend(lastItems[0]);
-                            PTL.db.putFeed(feedUrl, $feedBody.html());
-
-                            $badge.fadeIn('slow').text(lastItems[1]);
-
-                        } else {
-                            $badge.fadeOut('slow');
-                        }
-
-                        $refreshButton
-                            .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
-                            .removeClass('spin');
-
-                    } catch (error) {
-
-                        $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
-                        $feedBody.css('height', '');
-                        $refreshButton.removeClass('spin');
-
+                    if (fetchFeed.lastItem) {
+                        $dataStore.attr('data-lastitem', fetchFeed.lastItem);
                     }
+
+                    if (fetchFeed.thereAreNewItems) {
+
+                        let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
+
+                        $feedBody.prepend(lastItems[0]);
+                        PTL.db.putFeed(feedUrl, $feedBody.html());
+
+                        $badge.fadeIn('slow').text(lastItems[1]);
+
+                    } else {
+                        $badge.fadeOut('slow');
+                    }
+
+                    $refreshButton
+                        .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+                        .removeClass('spin');
+
+                } catch (error) {
+
+                    $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
+                    $feedBody.css('height', '');
+                    $refreshButton.removeClass('spin');
 
                 }
 
@@ -685,8 +683,8 @@ PTL.feed = {
                 }
 
             }
-        } catch (err) {
-
+        } catch (error) {
+            console.log('getFeed caught: %s (%s)', error);
         }
 
 
