@@ -655,7 +655,7 @@ PTL.feed = {
 
                   if (data.thereArenewItems) {
 
-                    $feedBody.html($newFeedBodyUl);
+                    $feedBody.prepend($newFeedBodyUl);
                     $badge.fadeIn('slow').text(itemList[1]);
 
                     let ReadTransaction = db.transaction(PTL.DbStore, "readwrite"),

@@ -64,25 +64,46 @@ function getFeed (feedUrl, lastItem, nbItems, callback) {
         return callback({error:error, errno:res.status, message:error.message});
       }).on('readable', function() {
         try {
-          var item = this.read();
+          var item;
 
-          if (item !== null){
-            i++;
+          while ((item = this.read())) {
 
-            console.error('item.link: %s (%s)', item.link);
+            if (item !== null) {
+              i++;
 
-            if (typeof newLastItem == 'undefined') {
-              newLastItem = item.link;
-            }
-
-            if (newLastItem == lastItem) {
-              console.error('### Count reached i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
-              this.resume();
-              } else {
-                feedItems.push(item);
+              if (typeof newLastItem === 'undefined') {
+                newLastItem = item.link;
               }
 
+              if (item.link !== lastItem) {
+                console.error('item.link: %s (%s)', item.link);
+                // console.error('### PUSHING [%s] lastItem:[%s]', item.link, newLastItem);
+                feedItems.push(item);
+              } else {
+                console.error('### i:[%s], This item:[%s], lastItem:[%s], newLastItem:[%s]', i, item.link, lastItem, newLastItem);
+                this.resume();
+              }
+            }
           }
+
+          // if (item !== null){
+          //   i++;
+
+          //   console.error('item.link: %s (%s)', item.link);
+
+          //   if (typeof newLastItem == 'undefined') {
+          //     newLastItem = item.link;
+          //   }
+
+          //   if (newLastItem == lastItem) {
+          //     console.error('### Count reached i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
+          //     feedparser.destroy();
+          //     // return false;
+          //   } else {
+          //       feedItems.push(item);
+          //     }
+
+          // }
         }
         catch (err) {
           console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
