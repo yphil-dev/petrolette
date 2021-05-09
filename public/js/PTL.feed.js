@@ -614,21 +614,42 @@ PTL.feed = {
         };
 
         request.onsuccess = function(event) {
+
+          const getFeed = PTL.db.getFeed(event.target.result, feedUrl)
+                .then((res) => {
+
+                  if (res) {
+                    console.log('YAH!: %s (%s)', JSON.stringify(res));
+                  }
+
+                }).then((res) => {
+
+                  if (res) {
+                    console.log('YAH!: %s (%s)', JSON.stringify(res));
+                  }
+
+                }).catch((error) => {
+                  console.log('SHIT!: %s (%s)', JSON.stringify(error));
+                });
+
           var db = event.target.result;
           let ReadTransaction = db.transaction(PTL.DbStore, "readonly");
           let objectStore = ReadTransaction.objectStore(PTL.DbStore);
-          let ReadRequest = objectStore.get(feedUrl);
-          ReadRequest.onerror = function(event) {
+          let request = objectStore.get(feedUrl);
+
+          request.onerror = function(event) {
             PTL.util.say(PTL.tr('DataBase error: %1', event.target.error), 'error');
           };
 
-          ReadRequest.onsuccess = function(event) {
+          request.onsuccess = function(event) {
 
             if (event.target.result) {
 
+              console.log('yeah!: %s (%s)');
+
               $feedBody.html(event.target.result.content);
 
-              PTL.feed.getFeed(feedUrl, feedLastItem, feedNbItems).then((data) => {
+              PTL.feed.getFeed(feedUrl, feedLastItem).then((data) => {
 
                 // console.log('Kayn: %s (%s)', JSON.stringify(data.thereArenewItems));
 
@@ -694,7 +715,7 @@ PTL.feed = {
 
               // console.log('Makayn\'sh: [%s] (%s)', feedLastItem, feedUrl);
 
-              PTL.feed.getFeed(feedUrl, 'noLastItem', feedNbItems).then(function(data) {
+              PTL.feed.getFeed(feedUrl, 'noLastItem').then(function(data) {
 
                 console.log('MaKaynash, but thereArenewItems: (%s)', JSON.stringify(data.thereArenewItems));
 
@@ -730,11 +751,11 @@ PTL.feed = {
                     .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp) + ' (' + itemList[1] + ' new items)' )
                     .removeClass('spin');
 
-                  let openRequest = indexedDB.open(PTL.DbName, PTL.DbVersion);
+                  let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
 
-                  openRequest.onsuccess = function() {
+                  request.onsuccess = (event) => {
 
-                    let db = openRequest.result;
+                    let db = event.target.result;
 
                     if (!db.objectStoreNames.contains(PTL.DbStore)) {
                       db.createObjectStore(PTL.DbStore, {keyPath: PTL.DbKey});

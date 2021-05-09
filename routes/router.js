@@ -72,7 +72,7 @@ router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
 
-  feeder.getFeed(req.query.url, req.query.lastItem, req.query.nbItems, function (error, feedItems, feedTitle, feedLink, lastItem, thereArenewItems) {
+  feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, thereArenewItems) {
 
     console.error('### thereArenewItems: [%s]', thereArenewItems);
 

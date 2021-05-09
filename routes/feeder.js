@@ -34,7 +34,7 @@ function getParams(str) {
   return params;
 }
 
-function getFeed (feedUrl, lastItem, nbItems, callback) {
+function getFeed (feedUrl, lastItem, callback) {
   // Get a response stream
   fetch(feedUrl, {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
@@ -71,39 +71,17 @@ function getFeed (feedUrl, lastItem, nbItems, callback) {
             if (item !== null) {
               i++;
 
-              if (typeof newLastItem === 'undefined') {
-                newLastItem = item.link;
-              }
+              if (typeof newLastItem === 'undefined') newLastItem = item.link;
 
               if (item.link !== lastItem) {
                 console.error('item.link: %s (%s)', item.link);
-                // console.error('### PUSHING [%s] lastItem:[%s]', item.link, newLastItem);
                 feedItems.push(item);
               } else {
-                console.error('### i:[%s], This item:[%s], lastItem:[%s], newLastItem:[%s]', i, item.link, lastItem, newLastItem);
+                console.error('### i:[%s], item:[%s], last:[%s], new:[%s]', i, item.link, lastItem, newLastItem);
                 this.resume();
               }
             }
           }
-
-          // if (item !== null){
-          //   i++;
-
-          //   console.error('item.link: %s (%s)', item.link);
-
-          //   if (typeof newLastItem == 'undefined') {
-          //     newLastItem = item.link;
-          //   }
-
-          //   if (newLastItem == lastItem) {
-          //     console.error('### Count reached i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
-          //     feedparser.destroy();
-          //     // return false;
-          //   } else {
-          //       feedItems.push(item);
-          //     }
-
-          // }
         }
         catch (err) {
           console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
