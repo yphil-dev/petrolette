@@ -609,7 +609,7 @@ PTL.feed = {
 
             if (feed) {
 
-                console.log('feed: %s (%s)', JSON.stringify(feed));
+                console.log('Feed is in the DB, feedLastItem: %s (%s)', feedLastItem);
 
                 $feedBody.html(feed.content);
 
@@ -617,12 +617,15 @@ PTL.feed = {
                     let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
                     if (fetchFeed.lastItem) {
+                        console.log('yes, fetchFeed.lastItem: %s (feedLastItem %s)', fetchFeed.lastItem, feedLastItem);
                         $dataStore.attr('data-lastitem', fetchFeed.lastItem);
                     }
 
                     if (fetchFeed.thereAreNewItems) {
 
                         let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
+
+                        console.log('feedLastItem [%s] lastItems: (%s)', feedLastItem, JSON.stringify(lastItems[0]));
 
                         $feedBody.prepend(lastItems[0]);
                         PTL.db.putFeed(feedUrl, $feedBody.html());

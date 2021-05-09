@@ -1,22 +1,33 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.db = {
-    delete: function(db, url) {
-        const txn = db.transaction(PTL.DbStore, 'readwrite');
-        const store = txn.objectStore(PTL.DbStore);
-        let query = store.delete(url);
+    delete: function(url) {
+        return new Promise((resolve, reject) => {
 
-        query.onsuccess = function (event) {
-            console.log(event);
-        };
+            let dbOpen = indexedDB.open(PTL.DbName, PTL.DbVersion);
 
-        query.onerror = function (event) {
-            console.log(event.target.errorCode);
-        };
+            dbOpen.onsuccess = event => {
 
-        txn.oncomplete = function () {
-            db.close();
-        };
+                var db = event.target.result;
+
+                const txn = db.transaction(PTL.DbStore, 'readwrite');
+                const store = txn.objectStore(PTL.DbStore);
+                let query = store.delete(url);
+
+                query.onsuccess = function (event) {
+                    console.log(event);
+                    console.log('DEL OK: %s (%s)', event);
+                };
+
+                query.onerror = function (event) {
+                    console.log('DEL NOK: %s (%s)', event.target.errorCode);
+                };
+
+                txn.oncomplete = function () {
+                    db.close();
+                };
+            };
+        });
     },
     getFeed: function(url) {
 
@@ -54,35 +65,35 @@ PTL.db = {
             };
 
         });
-    },
-    putFeed: function(url, content) {
+        },
+        putFeed: function(url, content) {
 
-        return new Promise((resolve, reject) => {
+            return new Promise((resolve, reject) => {
 
-            let dbOpen = indexedDB.open(PTL.DbName, PTL.DbVersion);
-            dbOpen.onsuccess = event => {
+                let dbOpen = indexedDB.open(PTL.DbName, PTL.DbVersion);
+                dbOpen.onsuccess = event => {
 
-                var db = event.target.result;
+                    var db = event.target.result;
 
-                const txn = db.transaction(PTL.DbStore, 'readwrite');
-                const store = txn.objectStore(PTL.DbStore);
-                const feed = {url: url, content: content};
-                let query = store.put(feed);
+                    const txn = db.transaction(PTL.DbStore, 'readwrite');
+                    const store = txn.objectStore(PTL.DbStore);
+                    const feed = {url: url, content: content};
+                    let query = store.put(feed);
 
-                query.onsuccess = event => {
-                    resolve();
-                    // console.log(event);
+                    query.onsuccess = event => {
+                        resolve();
+                        // console.log(event);
+                    };
+
+                    query.onerror = event => {
+                        reject();
+                        // console.log(event.target.errorCode);
+                    };
+
+                    txn.oncomplete = () => {
+                        db.close();
+                    };
                 };
-
-                query.onerror = event => {
-                    reject();
-                    // console.log(event.target.errorCode);
-                };
-
-                txn.oncomplete = () => {
-                    db.close();
-                };
-            };
-        });
-    }
+            });
+        }
 };
