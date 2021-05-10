@@ -4,19 +4,18 @@ PTL.feed = {
 
     add:function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, clickNew, isQueryString, progress) {
 
-        const feedIndex = $('#tabs').find('.feed').length;
-
         const $feed = $('<li>')
               .attr('class', 'feed');
 
         const $feedImg = $('<img>')
               .attr({
-                  src: '/static/images/rss.gif',
+                  src: '/favicons/' + iconhash + '.favicon',
                   class: 'favicon',
                   width: '16px',
                   height: '16px'
               })
               .on("error", function() {
+                  console.log('IMG Error: %s (%s)');
                   $(this).attr('src', '/static/images/rss.gif');
               });
 
@@ -97,7 +96,6 @@ PTL.feed = {
 
         const $feedControls = $('<div>')
               .attr('class', 'feedControls dataStore')
-              .data('index', feedIndex)
               .data('url', url)
               .data('name', name)
               .data('type', type)
@@ -107,17 +105,15 @@ PTL.feed = {
               .data('nbitems', nbitems)
               .data('lastitem', lastitem);
 
-        // const $feedControls = $('<div>')
-        //       .attr('class', 'feedControls dataStore')
-        //       .attr('data-index', feedIndex)
-        //       .attr('data-url', url)
-        //       .attr('data-name', name)
-        //       .attr('data-type', type)
-        //       .attr('data-limit', limit)
-        //       .attr('data-status', status)
-        //       .attr('data-iconhash', iconhash)
-        //       .attr('data-nbitems', nbitems)
-        //       .attr('data-lastitem', lastitem);
+        $refreshIcon
+            .attr('data-url', url)
+            .attr('data-name', name)
+            .attr('data-type', type)
+            .attr('data-limit', limit)
+            .attr('data-status', status)
+            .attr('data-iconhash', iconhash)
+            .attr('data-nbitems', nbitems)
+            .attr('data-lastitem', lastitem);
 
         if ($feedControls.data('status') == 'on') {
             $refreshIcon.removeClass('icon-pin')
@@ -524,7 +520,7 @@ PTL.feed = {
     populate:async function($button, progress, newLimit) {
 
         const $dataStore = $button.parent().parent(),
-              $refreshButton = $dataStore.find('i.feedRefresh').addClass('spin'),
+              $refreshButton = $dataStore.find('i.feedRefresh.icon-refresh').addClass('spin'),
               $feedHeader = $dataStore.parent(),
               $badge = $feedHeader.children('.newItemsBadge'),
               $feed = $dataStore.parent().parent(),
@@ -550,8 +546,6 @@ PTL.feed = {
               dateObj = new Date(),
               timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
 
-        let feedTitle;
-
         $feedBodyUl.css('border', '1px solid red');
 
         if ($dataStore.data('status') == 'on') {
@@ -564,30 +558,20 @@ PTL.feed = {
                 .addClass('folded');
         }
 
-        try {
-
-            if (feedIconHash) {
-                $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-            } else {
-
-                await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
-                    if (iconhash) {
-                        $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-                        $dataStore.data('iconhash', iconhash);
-                        PTL.tab.saveTabs();
-                    }
-                }).catch((error) => {
-                    console.log('error: %s (%s)',error);
-                    $favIcon.addClass('icon-rss');
-
-                });
-            }
-
-        } catch (error) {
-            console.log('Catched favicon error: %s (%s)', error);
+        if (feedIconHash) {
+            $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+        } else {
+            await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
+                if (iconhash) {
+                    $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
+                    $dataStore.data('iconhash', iconhash);
+                    PTL.tab.saveTabs();
+                }
+            }).catch((error) => {
+                console.log('error: %s (%s)',error);
+                $favIcon.addClass('icon-rss');
+            });
         }
-
-        console.log('feedLastItem: [%s] (%s)', feedLastItem, feedUrl);
 
         $feedLink
             .attr('href', feedUrl)
@@ -618,7 +602,7 @@ PTL.feed = {
                 }
 
                 $refreshButton
-                    .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+                    .prop('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle, timeStamp))
                     .removeClass('spin');
 
             } catch (error) {
