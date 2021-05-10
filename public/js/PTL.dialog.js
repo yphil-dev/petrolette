@@ -281,10 +281,8 @@ PTL.dialog = {
                                 newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
                                 newType = $('#feedTypeDiv :radio:checked').attr('id');
 
-
                             $dataStore
                                 .data('url', newUrl)
-                                .attr('data-dummyurl', newUrl)
                                 .data('name', newName)
                                 .data('type', newType);
 

@@ -95,28 +95,29 @@ PTL.feed = {
                   await PTL.feed.populate($(this), progress);
               });
 
-        // const $feedControls = $('<div>').attr('class', 'feedControls dataStore')
-        //       .data('index', feedIndex)
-        //       .data('url', url)
-        //       .data('name', name)
-        //       .data('type', type)
-        //       .data('limit', limit)
-        //       .data('status', status)
-        //       .data('iconhash', iconhash)
-        //       .data('nbitems', nbitems)
-        //       .data('lastitem', lastitem);
-
         const $feedControls = $('<div>')
               .attr('class', 'feedControls dataStore')
-              .attr('data-index', feedIndex)
-              .attr('data-url', url)
-              .attr('data-name', name)
-              .attr('data-type', type)
-              .attr('data-limit', limit)
-              .attr('data-status', status)
-              .attr('data-iconhash', iconhash)
-              .attr('data-nbitems', nbitems)
-              .attr('data-lastitem', lastitem);
+              .data('index', feedIndex)
+              .data('url', url)
+              .data('name', name)
+              .data('type', type)
+              .data('limit', limit)
+              .data('status', status)
+              .data('iconhash', iconhash)
+              .data('nbitems', nbitems)
+              .data('lastitem', lastitem);
+
+        // const $feedControls = $('<div>')
+        //       .attr('class', 'feedControls dataStore')
+        //       .attr('data-index', feedIndex)
+        //       .attr('data-url', url)
+        //       .attr('data-name', name)
+        //       .attr('data-type', type)
+        //       .attr('data-limit', limit)
+        //       .attr('data-status', status)
+        //       .attr('data-iconhash', iconhash)
+        //       .attr('data-nbitems', nbitems)
+        //       .attr('data-lastitem', lastitem);
 
         if ($feedControls.data('status') == 'on') {
             $refreshIcon.removeClass('icon-pin')
@@ -572,7 +573,7 @@ PTL.feed = {
                 await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
                     if (iconhash) {
                         $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-                        $dataStore.attr('data-iconhash', iconhash);
+                        $dataStore.data('iconhash', iconhash);
                         PTL.tab.saveTabs();
                     }
                 }).catch((error) => {
@@ -586,123 +587,51 @@ PTL.feed = {
             console.log('Catched favicon error: %s (%s)', error);
         }
 
-        feedTitle = (feedName) ? feedName : feedUrl;
-        $feedLink.text(feedTitle)
-            .attr('href', feedUrl)
-            .attr('title', feedTitle + ' (' + feedUrl + ')')
-            .removeClass('danger');
-
         console.log('feedLastItem: [%s] (%s)', feedLastItem, feedUrl);
+
+        $feedLink
+            .attr('href', feedUrl)
+            .removeClass('danger');
 
         try {
 
-            let feed = await PTL.db.get(feedUrl);
+            let feedInDb = await PTL.db.get(feedUrl);
 
-            if (feed) {
+            if (feedInDb) $feedBody.html(feedInDb.content);
 
-                // console.log('Feed is in the DB, feedLastItem: %s (%s)', feedLastItem);
+            try {
 
-                $feedBody.html(feed.content);
+                let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
+                $feedLink
+                    .text(fetchFeed.feedTitle)
+                    .attr('title', fetchFeed.feedTitle + ' (' + feedUrl + ')');
 
-                try {
-                    let currentLastItem = $dataStore.attr('data-lastitem');
-
-                    console.log('currentLastItem: [%s] feedLastItem: [%s] (%s)', currentLastItem, feedLastItem, feedUrl);
-
-                    let fetchFeed = await PTL.feed.fetchFeed(feedUrl, currentLastItem);
-
-                    if (fetchFeed.lastItem) {
-                        // console.log('yes, fetchFeed.lastItem: %s (feedLastItem %s)', fetchFeed.lastItem, feedLastItem);
-                    }
-
-                    $dataStore.attr('data-lastitem', fetchFeed.lastItem);
-
-                    if (fetchFeed.thereAreNewItems) {
-
-                        let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-
-                        console.log('thereAreNewItems: %s (%s)', fetchFeed.thereAreNewItems, feedUrl);
-
-                        // console.log('feedLastItem [%s] lastItems: (%s)', feedLastItem, JSON.stringify(lastItems[0]));
-
-                        $feedBody.prepend(lastItems[0]);
-                        PTL.db.put(feedUrl, $feedBody.html());
-
-                        $badge.fadeIn('slow').text(lastItems[1]);
-
-                    } else {
-                        $badge.fadeOut('slow');
-                    }
-
-                    $refreshButton
-                        .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
-                        .removeClass('spin');
-
-                } catch (error) {
-
-                    $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
-                    $feedBody.css('height', '');
-                    $refreshButton.removeClass('spin');
-
+                if (fetchFeed.thereAreNewItems) {
+                    $dataStore.data('lastitem', fetchFeed.lastItem);
+                    let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
+                    $feedBody.prepend(lastItems[0]);
+                    PTL.db.put(feedUrl, $feedBody.html());
+                    $badge.text(lastItems[1]).fadeIn('slow');
+                } else {
+                    $badge.fadeOut('slow');
                 }
 
-            } else {
+                $refreshButton
+                    .prop('title', PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
+                    .removeClass('spin');
 
-                try {
+            } catch (error) {
 
-                    let fetchFeed = await PTL.feed.fetchFeed(feedUrl, 'feedLastItem');
-
-                    if (feedName) {
-                        feedTitle = feedName;
-                    } else if (fetchFeed.feedTitle) {
-                        feedTitle = fetchFeed.feedTitle;
-                        $dataStore.attr('data-name', feedTitle);
-                    }
-
-                    $feedLink.text(feedTitle)
-                        .attr('href', feedUrl)
-                        .attr('title', feedTitle + ' (' + feedUrl + ')');
-
-                    try {
-                        let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-
-                        // console.log('trying lastiItems: %s (%s)', JSON.stringify(lastItems[0]));
-
-                        if (lastItems) {
-                            $feedBody.html(lastItems[0]);
-
-                            let feedBody = $($feedBody);
-
-
-                            PTL.db.put(feedUrl, feedBody.html());
-                            $dataStore.attr('data-lastitem', fetchFeed.lastItem);
-
-                            $refreshButton
-                                .prop('title',
-                                      PTL.tr('Refresh this feed (%1 - %2)', feedName || feedUrl, timeStamp))
-                                .removeClass('spin');
-                        }
-                    } catch (error) {
-                        console.log('lastItems caught: %s (%s)', JSON.stringify(error), feedUrl);
-                    }
-
-                } catch (error) {
-
-                    console.log('fetchFeed caught: %s (%s)', error);
-
-                    $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
-                    $feedBody.css('height', '');
-                    $refreshButton.removeClass('spin');
-
-                }
+                $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
+                $feedBody.css('height', '');
+                $refreshButton.removeClass('spin');
 
             }
+
         } catch (error) {
             console.log('getFeed caught: %s (%s)', error);
         }
-
-
 
         if (progress) progress.increment();
 
