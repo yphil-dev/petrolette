@@ -281,10 +281,14 @@ PTL.dialog = {
                                 newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
                                 newType = $('#feedTypeDiv :radio:checked').attr('id');
 
+
                             $dataStore
                                 .data('url', newUrl)
+                                .attr('data-dummyurl', newUrl)
                                 .data('name', newName)
                                 .data('type', newType);
+
+                            console.log('newUrl: %s (%s)', newUrl, $dataStore.data('url'));
 
                             if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
                                 $feed.hide('fade', 1000, function() {$feed.remove();});
@@ -467,7 +471,7 @@ PTL.dialog = {
                         },
                         change: function( event, ui ) {
                             $feedLimitInput.val(ui.value);
-                            $dataStore.data('limit', ui.value);
+                            $dataStore.attr('data-limit', ui.value);
                         }
                     });
 
@@ -494,7 +498,7 @@ PTL.dialog = {
                         },
                         change: function( event, ui ) {
                             $feedNbItemsInput.val(ui.value);
-                            $dataStore.data('nbitems', ui.value);
+                            $dataStore.attr('data-nbitems', ui.value);
                         }
                     });
 

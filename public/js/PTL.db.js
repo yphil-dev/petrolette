@@ -19,7 +19,7 @@ PTL.db = {
 
                 query.onsuccess = (event) => {
                     if (!event.target.result) {
-                        console.log(`Feed ${url} not found`);
+                        console.log('Feed: [%s] not in db (%s)', url, PTL.DbName);
                         resolve(null);
                     } else {
                         // console.table(event.target.result);
@@ -55,7 +55,7 @@ PTL.db = {
 
                 query.onsuccess = event => {
                     resolve();
-                    // console.log(event);
+                    console.log('Feed: [%s] has been saved to db (%s)', url, PTL.DbName);
                 };
 
                 query.onerror = event => {
@@ -83,12 +83,11 @@ PTL.db = {
                 let query = store.delete(url);
 
                 query.onsuccess = function (event) {
-                    console.log(event);
-                    console.log('DEL OK: %s (%s)', event);
+                    console.log('Feed: [%s] has been saved to db (%s)', url, PTL.DbName);
                 };
 
                 query.onerror = function (event) {
-                    console.log('DEL NOK: %s (%s)', event.target.errorCode);
+                    console.log('DEL NOK: [%s] (%s)', event.target.errorCode);
                 };
 
                 txn.oncomplete = function () {
