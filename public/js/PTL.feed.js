@@ -569,7 +569,6 @@ PTL.feed = {
                 $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
             } else {
 
-
                 await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
                     if (iconhash) {
                         $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
