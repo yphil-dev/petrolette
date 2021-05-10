@@ -805,7 +805,7 @@ PTL.dialog = {
                                 // localStorage.setItem(thisFeedUrl, '');
 
                                 try {
-                                    PTL.db.delete(thisFeedUrl);
+                                    PTL.db.del(thisFeedUrl);
                                 } catch (error) {
                                     console.log('DB Error:: %s (%s)', error);
                                 }
