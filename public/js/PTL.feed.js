@@ -28,8 +28,6 @@ PTL.feed = {
               .attr('title', PTL.tr('Fold / unfold this feed (%1)', url))
               .click(function() {
 
-                  // Can't just use toggle because we have to pass the div to populate() in order to recreate it with the new data values, just setting data-* here doesn't work :(
-
                   if ($feedControls.data('status') == 'on') {
                       $(this).removeClass('fold')
                           .parent().parent().parent()
@@ -49,7 +47,6 @@ PTL.feed = {
                   }
 
                   PTL.tab.saveTabs();
-                  PTL.feed.populate($refreshIcon);
 
               });
 
@@ -140,14 +137,14 @@ PTL.feed = {
 
         const $titleDiv = $('<div>')
               .attr({
-                  title: url || PTL.tr('New feed'),
+                  title: name || PTL.tr('New feed'),
                   class:'feedTitle trucate'
               });
 
         const $titleLink = $('<a>')
               .attr('href', url)
               .attr('target', '_blank')
-              .html(url || PTL.tr('New feed'));
+              .html(name || PTL.tr('New feed'));
 
         $feedControls.hover (
             function() {$(this).find('.collapsible').show();},
@@ -198,8 +195,7 @@ PTL.feed = {
 
             // console.log('feedItems: %s (%s)', JSON.stringify(feedItems));
 
-            const $feedBody = $dataStore.parent().next('div.feedBody'),
-                  $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
+            const $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
                   feedUrl = $dataStore.data('url'),
                   nbItems = $dataStore.data('nbitems'),
                   feedType = $dataStore.data('type');
@@ -238,12 +234,8 @@ PTL.feed = {
 
                 const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
                       $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
-                      $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
-                      $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink'),
                       $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
                       $commentsIcon = $('<i>'),
-                      $audioIcon = $('<i>'),
-                      $videoIcon = $('<i>'),
                       $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
                       $itemDiv = $('<div>').attr('class', 'itemDiv'),
                       $feedItem = $('<li>').attr('class', 'feedItem');
@@ -361,8 +353,6 @@ PTL.feed = {
 
             }
 
-            // console.log('$feedBodyUl.html(): %s (%s)', $feedBodyUl.html());
-
             if (true) {
                 resolve([$feedBodyUl.html(), newItems]);
             } else {
@@ -419,26 +409,14 @@ PTL.feed = {
     errorFeed:function(error, feedUrl) {
 
         const type = (error.statusText) ? error.statusText : PTL.tr('Unknown error');
-        const status = (error.status) ? error.status : '0';
-        const errno = (error.errno) ? error.errno : '0';
-        // const message = (error.responseJSON.error.message) ? error.responseJSON.error.message : '';
-        const message = 'plop';
+        const errno = (error.responseJSON.errno) ? error.responseJSON.errno : '0';
+        const message = error.responseJSON.message;
 
         const $validateLink = $('<a>')
               .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
 
-        const $validateLinkIcon = $('<i>')
-              .attr('class', 'itemIcon icon-w3c')
-              .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
-              .appendTo($validateLink);
-
         const $reportLink = $('<a>')
               .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + type + ')');
-
-        const $reportLinkIcon = $('<i>')
-              .attr('class', 'itemIcon icon-petrolette')
-              .attr('title', PTL.tr('Report feed error'))
-              .appendTo($reportLink);
 
         const $errKey = $('<strong>')
               .attr('class', 'translate key')
@@ -452,18 +430,11 @@ PTL.feed = {
 
         const $errValue = $('<strong>')
               .attr('class', 'value')
-              .text(type + ' (' + status + ')');
+              .text(type + ' (' + errno + ')');
 
         const $msgValue = $('<strong>')
               .attr('class', 'value')
               .text(message);
-
-        const $errorLink = $('<a>')
-              .attr('href', feedUrl)
-              .text(feedUrl);
-
-        const $errorButtonsFlexBox = $('<a>')
-              .attr('class', 'translate flexBox');
 
         const $errorItem = $('<li>')
               .attr('class', 'feedItem error')
@@ -523,19 +494,10 @@ PTL.feed = {
               $refreshButton = $dataStore.find('i.feedRefresh.icon-refresh').addClass('spin'),
               $feedHeader = $dataStore.parent(),
               $badge = $feedHeader.children('.newItemsBadge'),
-              $feed = $dataStore.parent().parent(),
-              $feedTitle = $feedHeader.children('.feedTitle'),
-              $feedLink = $feedTitle.children('a'),
               $feedBody = $dataStore.parent().next('div.feedBody'),
               $feedBodyUl = $feedBody.find('ul.feedBody'),
               feedUrl = $dataStore.data('url'),
-              feedName = $dataStore.data('name'),
-              feedType = $dataStore.data('type'),
-              feedLimit = newLimit || $dataStore.data('limit'),
-              feedStatus = $dataStore.data('status'),
               feedIconHash = $dataStore.data('iconhash'),
-              feedNbItems = $dataStore.data('nbitems'),
-              feedLastItem = $dataStore.data('lastitem'),
               $feedToggle = $feedHeader.children('.feedToggle'),
               $feedIcon = $feedToggle.children('.feedIcon').addClass('fold'),
               $favIcon = $feedToggle.children('.favicon');
@@ -545,6 +507,8 @@ PTL.feed = {
               feedHost = feedProtocol + l.hostname,
               dateObj = new Date(),
               timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
+
+        var feedLastItem = $dataStore.data('lastitem');
 
         $feedBodyUl.css('border', '1px solid red');
 
@@ -573,23 +537,27 @@ PTL.feed = {
             });
         }
 
-        $feedLink
-            .attr('href', feedUrl)
-            .removeClass('danger');
-
         try {
 
             let feedInDb = await PTL.db.get(feedUrl);
 
-            if (feedInDb) $feedBody.html(feedInDb.content);
+            if (feedInDb) {
+                $feedBody.html(feedInDb.content);
+            } else {
+                feedLastItem = 'none';
+            }
 
             try {
 
+                console.log('feedLastItem: %s (%s)', feedLastItem);
+
                 let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
-                $feedLink
-                    .text(fetchFeed.feedTitle)
-                    .attr('title', fetchFeed.feedTitle + ' (' + feedUrl + ')');
+                console.log('fetchFeed: %s (%s)', JSON.stringify(fetchFeed));
+
+                // $feedLink
+                //     .text(fetchFeed.feedTitle)
+                //     .attr('title', fetchFeed.feedTitle + ' (' + feedUrl + ')');
 
                 if (fetchFeed.thereAreNewItems) {
                     $dataStore.data('lastitem', fetchFeed.lastItem);
@@ -606,6 +574,9 @@ PTL.feed = {
                     .removeClass('spin');
 
             } catch (error) {
+
+
+                console.log('Catched error: %s (%s)', JSON.stringify(error));
 
                 $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
                 $feedBody.css('height', '');

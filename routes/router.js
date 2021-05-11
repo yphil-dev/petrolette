@@ -86,7 +86,7 @@ router.get('/feed', function(req, res) {
       });
 
     } else if (error && !res.headersSent) {
-      res.status(500).send({error:error});
+        res.status(500).send(error);
     }
   });
 });

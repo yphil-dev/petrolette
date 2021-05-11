@@ -36,66 +36,78 @@ function getParams(str) {
 
 function getFeed (feedUrl, lastItem, callback) {
     // Get a response stream
-    fetch(feedUrl, {
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
-        'accept': 'text/html,application/xhtml+xml',
-        redirect: 'follow'
-    }).then(function (res) {
 
-        if (res.status != 200) {
-            callback({error:'error', errno:res.status, message:'Bad server response'});
-            return reject();
-        }
+    console.error('feedUrl: %s (%s)', feedUrl);
 
-        var feedparser = new FeedParser();
-        var feedItems = [];
-        var charset = getParams(res.headers.get('content-type') || '').charset;
-        var responseStream = res.body;
-        responseStream = maybeTranslate(responseStream, charset);
-        responseStream.pipe(feedparser);
-        var newLastItem;
-        var thereArenewItems = false;
-        var i = 0;
+    try {
 
-        return new Promise((resolve, reject) => {
-            feedparser.on('error', function(error) {
-                console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
-                reject();
-                return callback({error:error, errno:res.status, message:error.message});
-            }).on('readable', function() {
-                try {
-                    var item;
+        fetch(feedUrl, {
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
+            'accept': 'text/html,application/xhtml+xml',
+            redirect: 'follow'
+        }).then(function (res) {
 
-                    while ((item = this.read())) {
+            console.error('res: %s (%s)', res);
 
-                        if (item !== null) {
-                            i++;
+            // if (res.status != 200) {
+            //     return callback({errno:res.status, message:'Bad server response'});
+            // }
 
-                            if (typeof newLastItem === 'undefined') newLastItem = item.link;
+            var feedparser = new FeedParser();
+            var feedItems = [];
+            var charset = getParams(res.headers.get('content-type') || '').charset;
+            var responseStream = res.body;
+            responseStream = maybeTranslate(responseStream, charset);
+            responseStream.pipe(feedparser);
+            var newLastItem;
+            var thereArenewItems = false;
+            var i = 0;
 
-                            if (item.link !== lastItem) {
-                                console.error('item.link: %s (lastItem %s)', item.link, lastItem);
-                                feedItems.push(item);
-                            } else {
-                                console.error('### i:[%s], item:[%s], last:[%s], new:[%s]', i, item.link, lastItem, newLastItem);
-                                this.resume();
+            return new Promise((resolve, reject) => {
+                feedparser.on('error', function(error) {
+                    console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
+                    reject('woopsie');
+                    return callback({error:error, errno:res.status, message:error.message});
+                }).on('readable', function() {
+                    try {
+                        var item;
+
+                        while ((item = this.read())) {
+
+                            if (item !== null) {
+                                i++;
+
+                                if (typeof newLastItem === 'undefined') newLastItem = item.link;
+
+                                if (item.link !== lastItem) {
+                                    console.error('item.link: %s (lastItem %s)', item.link, lastItem);
+                                    feedItems.push(item);
+                                } else {
+                                    console.error('### i:[%s], item:[%s], last:[%s], new:[%s]', i, item.link, lastItem, newLastItem);
+                                    this.resume();
+                                }
                             }
                         }
                     }
-                }
-                catch (err) {
-                    console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
-                }
-            }).on ('end', function () {
-                var meta = this.meta;
-                resolve();
-                if (i > 1) thereArenewItems = true;
-                console.error('### Return i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
-                return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, thereArenewItems);
+                    catch (err) {
+                        console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
+                    }
+                }).on ('end', function () {
+                    var meta = this.meta;
+                    resolve();
+                    if (i > 1) thereArenewItems = true;
+                    console.error('### Return i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
+                    return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, thereArenewItems);
+                });
             });
+
+        }).catch((error) => {
+            console.error('Whooaps: %s (%s)', error.message, error.errno);
+            callback(error);
         });
 
-    }).catch((err) => {
-        callback({error:err, resStatus:0, message:err.message});
-    });
+    } catch (err) {
+        console.error('Whoops: %s (%s)');
+    }
+
 }
