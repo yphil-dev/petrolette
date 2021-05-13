@@ -6,108 +6,117 @@ const fetch = require('node-fetch'),
 exports.getFeed = getFeed;
 
 function maybeTranslate (res, charset) {
-    var iconvStream;
-    // Decode using iconv-lite if its not utf8 already.
-    if (!iconvStream && charset && !/utf-*8/i.test(charset)) {
-        try {
-            iconvStream = iconv.decodeStream(charset);
-            console.error('ICONV: Converting from charset %s to utf-8', charset);
-            iconvStream.on('error', () => {return;});
-            // If we're using iconvStream, stream will be the output of iconvStream
-            // otherwise it will remain the output of request
-            res = res.pipe(iconvStream);
-        } catch(err) {
-            res.emit('error', err);
-        }
+  var iconvStream;
+  // Decode using iconv-lite if its not utf8 already.
+  if (!iconvStream && charset && !/utf-*8/i.test(charset)) {
+    try {
+      iconvStream = iconv.decodeStream(charset);
+      console.error('ICONV: Converting from charset %s to utf-8', charset);
+      iconvStream.on('error', () => {return;});
+      // If we're using iconvStream, stream will be the output of iconvStream
+      // otherwise it will remain the output of request
+      res = res.pipe(iconvStream);
+    } catch(err) {
+      res.emit('error', err);
     }
-    return res;
+  }
+  return res;
 }
 
 function getParams(str) {
-    var params = str.split(';').reduce(function (params, param) {
-        var parts = param.split('=').map(function (part) { return part.trim(); });
-        if (parts.length === 2) {
-            params[parts[0]] = parts[1];
-        }
-        return params;
-    }, {});
+  var params = str.split(';').reduce(function (params, param) {
+    var parts = param.split('=').map(function (part) { return part.trim(); });
+    if (parts.length === 2) {
+      params[parts[0]] = parts[1];
+    }
     return params;
+  }, {});
+  return params;
 }
 
 function getFeed (feedUrl, lastItem, callback) {
-    // Get a response stream
+  // Get a response stream
 
-    console.error('feedUrl: %s (%s)', feedUrl);
+  console.error('feedUrl: %s (%s)', feedUrl);
 
-    try {
+  try {
 
-        fetch(feedUrl, {
-            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
-            'accept': 'text/html,application/xhtml+xml',
-            redirect: 'follow'
-        }).then(function (res) {
+    fetch(feedUrl, {
+      'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
+      'accept': 'text/html,application/xhtml+xml',
+      redirect: 'follow'
+    }).then(function (res) {
 
-            console.error('res: %s (%s)', res);
+      console.error('res: %s (%s)', res);
 
-            // if (res.status != 200) {
-            //     return callback({errno:res.status, message:'Bad server response'});
-            // }
+      // if (res.status != 200) {
+      //     return callback({errno:res.status, message:'Bad server response'});
+      // }
 
-            var feedparser = new FeedParser();
-            var feedItems = [];
-            var charset = getParams(res.headers.get('content-type') || '').charset;
-            var responseStream = res.body;
-            responseStream = maybeTranslate(responseStream, charset);
-            responseStream.pipe(feedparser);
-            var newLastItem;
-            var thereArenewItems = false;
-            var i = 0;
+      var feedparser = new FeedParser();
+      var feedItems = [];
+      var charset = getParams(res.headers.get('content-type') || '').charset;
+      var responseStream = res.body;
+      responseStream = maybeTranslate(responseStream, charset);
+      responseStream.pipe(feedparser);
+      var newLastItem;
+      var thereArenewItems = false;
+      var i = 0;
 
-            return new Promise((resolve, reject) => {
-                feedparser.on('error', function(error) {
-                    console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
-                    reject('woopsie');
-                    return callback({error:error, errno:res.status, message:error.message});
-                }).on('readable', function() {
-                    try {
-                        var item;
+      return new Promise((resolve, reject) => {
+        feedparser.on('error', function(error) {
+          console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
+          reject('woopsie');
+          return callback({error:error, errno:res.status, message:error.message});
+        }).on('readable', function() {
+          try {
+            var item;
 
-                        while ((item = this.read())) {
+            while ((item = this.read())) {
 
-                            if (item !== null) {
-                                i++;
+              if (item !== null) {
 
-                                if (typeof newLastItem === 'undefined') newLastItem = item.link;
+                // console.error('item.link: %s (lastItem %s) item:[%s]', item.link, lastItem, JSON.stringify(item));
+		console.error('Seeing item.link: %s (lastItem %s) item:[%s]', item.link, lastItem);
+		feedItems.push(item);
 
-                                if (item.link !== lastItem) {
-                                    console.error('item.link: %s (lastItem %s)', item.link, lastItem);
-                                    feedItems.push(item);
-                                } else {
-                                    console.error('### i:[%s], item:[%s], last:[%s], new:[%s]', i, item.link, lastItem, newLastItem);
-                                    this.resume();
-                                }
-                            }
-                        }
-                    }
-                    catch (err) {
-                        console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
-                    }
-                }).on ('end', function () {
-                    var meta = this.meta;
-                    resolve();
-                    if (i > 1) thereArenewItems = true;
-                    console.error('### Return i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
-                    return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, thereArenewItems);
-                });
-            });
-
-        }).catch((error) => {
-            console.error('Whooaps: %s (%s)', error.message, error.errno);
-            callback(error);
+		// if (lastItem == 'none') {
+                //   if (typeof newLastItem === 'undefined') newLastItem = item.link;
+		//   console.error('Pushing item.link: %s (lastItem %s) item:[%s]', item.link, lastItem);
+                //   i++;
+		//   feedItems.push(item);
+		// } else if (item.link !== lastItem && item.link !== newLastItem) {
+                //   i++;
+                //   if (typeof newLastItem === 'undefined') newLastItem = item.link;
+		//   console.error('Pushing item.link: %s (lastItem %s)', item.link, lastItem);
+                //   feedItems.push(item);
+                // } else {
+                //   console.error('###Else  i:[%s], item:[%s], last:[%s], new:[%s]', i, item.link, lastItem, newLastItem);
+                //   // this.resume();
+                // }
+		
+              }
+            }
+          }
+          catch (err) {
+            console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
+          }
+        }).on ('end', function () {
+          var meta = this.meta;
+          resolve();
+          if (i > 1) thereArenewItems = true;
+          console.error('### Return i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
+          return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, thereArenewItems);
         });
+      });
 
-    } catch (err) {
-        console.error('Whoops: %s (%s)');
-    }
+    }).catch((error) => {
+      console.error('Whooaps: %s (%s)', error.message, error.errno);
+      callback(error);
+    });
+
+  } catch (err) {
+    console.error('Whoops: %s (%s)');
+  }
 
 }

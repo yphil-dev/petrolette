@@ -49,5 +49,51 @@
     "nyc": "^15.1.0",
     "rollup": "^2.47.0",
     "should": "^13.2.3"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "globals": {
+      "PTL": "readonly"
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "semi-style": ["error", "last"],
+      "quotes": [
+        "error",
+        "double",
+        {
+          "avoidEscape": true
+        }
+      ],
+      "comma-dangle": [
+        "error",
+        {
+          "arrays": "ignore",
+          "objects": "always-multiline",
+          "imports": "never",
+          "exports": "never",
+          "functions": "ignore"
+        }
+      ],
+      "arrow-parens": 0,
+      "no-tabs": 0,
+      "indent": [
+        "error",
+        "tab",
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "no-console": 1,
+      "generator-star-spacing": 0
+    }
   }
 }

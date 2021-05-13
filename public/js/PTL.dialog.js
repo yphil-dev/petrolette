@@ -469,7 +469,7 @@ PTL.dialog = {
                         },
                         change: function( event, ui ) {
                             $feedLimitInput.val(ui.value);
-                            $dataStore.attr('data-limit', ui.value);
+                            $dataStore.data('limit', ui.value);
                         }
                     });
 
@@ -496,7 +496,7 @@ PTL.dialog = {
                         },
                         change: function( event, ui ) {
                             $feedNbItemsInput.val(ui.value);
-                            $dataStore.attr('data-nbitems', ui.value);
+                            $dataStore.data('nbitems', ui.value);
                         }
                     });
 
