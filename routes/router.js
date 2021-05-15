@@ -72,9 +72,9 @@ router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
 
-  feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, thereAreNewItems) {
+  feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
 
-    console.error('### thereAreNewItems: [%s]', thereAreNewItems);
+    console.error('### totalNewItems: [%s]', totalNewItems);
 
     if (feedItems && !res.headersSent) {
       res.send({
@@ -82,7 +82,7 @@ router.get('/feed', function(req, res) {
         feedLink: feedLink,
         feedTitle: feedTitle,
         lastItem: lastItem,
-        thereAreNewItems: thereAreNewItems
+        totalNewItems: totalNewItems
       });
 
     } else if (error && !res.headersSent) {

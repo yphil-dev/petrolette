@@ -13,8 +13,6 @@ function maybeTranslate (res, charset) {
       iconvStream = iconv.decodeStream(charset);
       console.error('ICONV: Converting from charset %s to utf-8', charset);
       iconvStream.on('error', () => {return;});
-      // If we're using iconvStream, stream will be the output of iconvStream
-      // otherwise it will remain the output of request
       res = res.pipe(iconvStream);
     } catch(err) {
       res.emit('error', err);
@@ -35,9 +33,6 @@ function getParams(str) {
 }
 
 function getFeed (feedUrl, lastItem, callback) {
-  // Get a response stream
-
-  console.error('feedUrl: %s (%s)', feedUrl);
 
   try {
 
@@ -47,22 +42,13 @@ function getFeed (feedUrl, lastItem, callback) {
       redirect: 'follow'
     }).then(function (res) {
 
-      console.error('res: %s (%s)', res);
-
-      // if (res.status != 200) {
-      //     return callback({errno:res.status, message:'Bad server response'});
-      // }
-
       var feedparser = new FeedParser();
       var feedItems = [];
       var charset = getParams(res.headers.get('content-type') || '').charset;
       var responseStream = res.body;
       responseStream = maybeTranslate(responseStream, charset);
       responseStream.pipe(feedparser);
-      var newLastItem;
-      var thereArenewItems = false;
-      var i = 0;
-
+      
       return new Promise((resolve, reject) => {
         feedparser.on('error', function(error) {
           console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
@@ -70,31 +56,10 @@ function getFeed (feedUrl, lastItem, callback) {
           return callback({error:error, errno:res.status, message:error.message});
         }).on('readable', function() {
           try {
-            var item;
-
+            let item;
             while ((item = this.read())) {
-
               if (item !== null) {
-
-                // console.error('item.link: %s (lastItem %s) item:[%s]', item.link, lastItem, JSON.stringify(item));
-		console.error('Seeing item.link: %s (lastItem %s) item:[%s]', item.link, lastItem);
-		feedItems.push(item);
-
-		// if (lastItem == 'none') {
-                //   if (typeof newLastItem === 'undefined') newLastItem = item.link;
-		//   console.error('Pushing item.link: %s (lastItem %s) item:[%s]', item.link, lastItem);
-                //   i++;
-		//   feedItems.push(item);
-		// } else if (item.link !== lastItem && item.link !== newLastItem) {
-                //   i++;
-                //   if (typeof newLastItem === 'undefined') newLastItem = item.link;
-		//   console.error('Pushing item.link: %s (lastItem %s)', item.link, lastItem);
-                //   feedItems.push(item);
-                // } else {
-                //   console.error('###Else  i:[%s], item:[%s], last:[%s], new:[%s]', i, item.link, lastItem, newLastItem);
-                //   // this.resume();
-                // }
-		
+		feedItems.push(item);	
               }
             }
           }
@@ -102,11 +67,26 @@ function getFeed (feedUrl, lastItem, callback) {
             console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
           }
         }).on ('end', function () {
-          var meta = this.meta;
+
+	  var newLastItem;
+	  var totalNewItems;
+	  var i = 0;
+
+	  feedItems.forEach(countItems);
+
+	  function countItems(item) {
+	    i++;
+	    if (newLastItem == undefined) newLastItem = item.link;
+	    if (item.link == lastItem) {
+	      totalNewItems = Number(i - 1);
+	    }
+	  }
+
+	  var meta = this.meta;
+	  var thereArenewItems = false;
           resolve();
-          if (i > 1) thereArenewItems = true;
-          console.error('### Return i:%s, lastItem: [%s], newLastItem: %s', i, lastItem, newLastItem);
-          return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, thereArenewItems);
+          console.error('### Return i:%s, lastItem: [%s], totalNewItems: %d thereArenewItems: [%s]', i, lastItem, totalNewItems, thereArenewItems);
+          return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, totalNewItems);
         });
       });
 

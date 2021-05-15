@@ -19,7 +19,6 @@ PTL.feed = {
             height: '16px'
           })
           .on("error", function() {
-            console.log('IMG Error: %s (%s)');
             $(this).attr('src', '/static/images/rss.gif');
           });
     
@@ -551,11 +550,23 @@ PTL.feed = {
       
       let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
-      console.log('fetchFeed: %s (%s)', JSON.stringify(fetchFeed));
+      console.log('lastItem: %s (%s)', JSON.stringify(fetchFeed.lastItem), fetchFeed.totalNewItems);
 
       let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
       $feedBody.html(lastItems[0]);
       $refreshButton.removeClass('spin');
+
+      $dataStore.data('lastitem', fetchFeed.lastItem);
+
+      if (fetchFeed.totalNewItems > 0) {
+        // let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
+        // $feedBody.prepend(lastItems[0]);
+        // PTL.db.put(feedUrl, $feedBody.html());
+        $badge.text(fetchFeed.totalNewItems).fadeIn('slow');
+      } else {
+        // $dataStore.data('lastitem', 'none');
+        $badge.fadeOut('slow');
+      }
       
     } else {
 
