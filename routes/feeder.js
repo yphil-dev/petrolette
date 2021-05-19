@@ -33,76 +33,67 @@ function getParams(str) {
 }
 
 function getFeed(feedUrl, lastItem, callback) {
-
-  const options = {
+  // Get a response stream
+  fetch(feedUrl, {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
     'accept': 'text/html,application/xhtml+xml',
-    'redirect': 'follow'
-  };
+    redirect: 'follow'
+  }).then(function(res) {
 
-  var req = fetch(feedUrl);
-  var feedparser = new FeedParser(options);
-  var feedItems = [];
-  
-  req.then(function(res) {
-    
+    if (res.status != 200) {
+      callback({ error: 'error', errno: res.status, message: 'Bad server response' });
+      return reject();
+    }
+
+    var feedparser = new FeedParser();
+    var feedItems = [];
     var charset = getParams(res.headers.get('content-type') || '').charset;
     var responseStream = res.body;
     responseStream = maybeTranslate(responseStream, charset);
-    // And boom goes the dynamite
     responseStream.pipe(feedparser);
 
-    if (res.status !== 200) {
-      console.error('## fetchErr: %s (%s)', feedUrl);
-      callback(res.status);
-      throw new Error('Bad status code (%s)', res.status);
-    }
-    else {
-      res.body.pipe(feedparser);
-    }
-  }, function(error) {
-    console.error('## fetchErrOtherErr: %s (%s)', error, feedUrl);
-    callback(error);
-  }).catch(e => { return false; });
-
-  feedparser.on('error', function(error) {
-    // console.error('## XfeedparserErr: %s (%s)', error, feedUrl);
-    callback(error);
-    // return false;
-  }).on('readable', function() {
-    try {
-      let item;
-      while ((item = this.read())) {
-        if (item !== null) {
-          feedItems.push(item);
+    return new Promise((resolve, reject) => {
+      feedparser.on('error', function(error) {
+        console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
+        reject();
+        return callback({ error: error, errno: res.status, message: error.message });
+      }).on('readable', function() {
+        try {
+          var item = this.read();
+          if (item !== null) feedItems.push(item);
         }
-      }
-    }
-    catch (err) {
-      console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
-    }
-  }).on('end', function() {
+        catch (err) {
+          console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
+        }
+      }).on('end', function() {
+        resolve();
 
-    var newLastItem;
-    var totalNewItems;
-    var i = 0;
+        var newLastItem;
+        var totalNewItems;
+        var i = 0;
 
-    feedItems.forEach(countItems);
+        feedItems.forEach(countItems);
 
-    function countItems(item) {
-      i++;
-      // console.error('item: %s', item.link);
-      if (newLastItem == undefined) newLastItem = item.link;
-      if (item.link == lastItem) {
-        totalNewItems = i - 1;
-        console.error('Wopop: %s [%s] (%s)', item.link, totalNewItems, i);
-      }
-    }
+        function countItems(item) {
+          i++;
+          // console.error('item: %s', item.link);
+          if (newLastItem == undefined) newLastItem = item.link;
+          if (item.link == lastItem) {
+            totalNewItems = i - 1;
+            console.error('Wopop: %s [%s] (%s)', item.link, totalNewItems, i);
+          }
+        }
 
-    if (totalNewItems == undefined) totalNewItems = i;
+        if (totalNewItems == undefined) totalNewItems = i;
 
-    var meta = this.meta;
-    return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, totalNewItems);
+        var meta = this.meta;
+        return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, totalNewItems);
+
+      });
+
+    });
+
+  }).catch((err) => {
+    callback({ error: err, resStatus: 0, message: err.message });
   });
-
 }
