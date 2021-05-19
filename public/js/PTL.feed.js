@@ -530,21 +530,6 @@ PTL.feed = {
     }
 
     // console.log('lastItem: %s', feedLastItem, feedUrl);
-    
-    if (feedIconHash) {
-      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-    } else {
-      await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
-        if (iconhash) {
-          $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-          $dataStore.data('iconhash', iconhash);
-          PTL.tab.saveTabs();
-        }
-      }).catch((_error) => {
-        console.log('Fav error: %s (%s)', feedIconHash, feedUrl);
-        $favIcon.addClass('icon-rss');
-      });
-    }
 
     if ($dataStore.data('status') == 'on') {
 
@@ -568,6 +553,23 @@ PTL.feed = {
           $badge.fadeOut('slow');
 	}
 
+    
+    if (feedIconHash) {
+      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+    } else {
+      await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
+        if (iconhash) {
+          $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
+          $dataStore.data('iconhash', iconhash);
+          PTL.tab.saveTabs();
+        }
+      }).catch((_error) => {
+        console.log('Fav error: %s (%s)', feedIconHash, feedUrl);
+        $favIcon.addClass('icon-rss');
+      });
+    }
+
+	
       } catch (error) {
 
         console.log('Catched error: %s (%s)', JSON.stringify(error));
