@@ -65,7 +65,10 @@
       "eslint:recommended"
     ],
     "rules": {
-      "semi-style": ["error", "last"],
+      "semi-style": [
+        "error",
+        "last"
+      ],
       "quotes": [
         "error",
         "double",

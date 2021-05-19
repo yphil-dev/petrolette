@@ -32,6 +32,12 @@ function getParams(str) {
   return params;
 }
 
+function handleErrors(response) {
+  console.error('## FetchErr: %s (%s)');
+    if (!response.ok) throw new Error(response.status);
+    return response;
+}
+
 function getFeed (feedUrl, lastItem, callback) {
 
   try {
@@ -42,6 +48,11 @@ function getFeed (feedUrl, lastItem, callback) {
       redirect: 'follow'
     }).then(function (res) {
 
+	if (res.status !== 200) {
+	  new Error('Bad status code');
+          callback({error:'error', errno:res.status, message:'error.message'});
+	}
+	
       var feedparser = new FeedParser();
       var feedItems = [];
       var charset = getParams(res.headers.get('content-type') || '').charset;
@@ -76,23 +87,26 @@ function getFeed (feedUrl, lastItem, callback) {
 
 	  function countItems(item) {
 	    i++;
+	    // console.error('item: %s', item.link);
 	    if (newLastItem == undefined) newLastItem = item.link;
 	    if (item.link == lastItem) {
-	      totalNewItems = Number(i - 1);
+	      totalNewItems = i - 1;
+	      console.error('Wopop: %s [%s] (%s)', item.link, totalNewItems, i);
 	    }
 	  }
 
+	  if (totalNewItems == undefined) totalNewItems = i;
+	  
 	  var meta = this.meta;
-	  var thereArenewItems = false;
           resolve();
-          console.error('### Return i:%s, lastItem: [%s], totalNewItems: %d thereArenewItems: [%s]', i, lastItem, totalNewItems, thereArenewItems);
+          // console.error('### Return i:%s, lastItem: [%s], totalNewItems: %d thereArenewItems: [%s]', i, lastItem, totalNewItems);
           return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, totalNewItems);
         });
       });
 
     }).catch((error) => {
       console.error('Whooaps: %s (%s)', error.message, error.errno);
-      callback(error);
+      return callback(error);
     });
 
   } catch (err) {

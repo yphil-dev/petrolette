@@ -13,7 +13,7 @@ PTL.feed = {
     
     const $feedImg = $('<img>')
           .attr({
-            src: '/favicons/' + iconhash + '.favicon',
+            src: '/static/images/rss.gif',
             class: 'favicon',
             width: '16px',
             height: '16px'
@@ -412,9 +412,11 @@ PTL.feed = {
   },
   errorFeed:function(error, feedUrl) {
 
+    console.log('pow: %s', feedUrl);
+    
     const type = (error.statusText) ? error.statusText : PTL.tr('Unknown error');
-    const errno = (error.responseJSON.errno) ? error.responseJSON.errno : '0';
-    const message = error.responseJSON.message;
+    const errno = (error.responseJSON) ? error.responseJSON.errno : '0';
+    const message = (error.responseJSON) ? error.responseJSON.message : 'Empty';
 
     const $validateLink = $('<a>')
           .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
@@ -527,6 +529,8 @@ PTL.feed = {
         .addClass('folded');
     }
 
+    // console.log('lastItem: %s', feedLastItem, feedUrl);
+    
     if (feedIconHash) {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
     } else {
@@ -536,38 +540,44 @@ PTL.feed = {
           $dataStore.data('iconhash', iconhash);
           PTL.tab.saveTabs();
         }
-      }).catch((error) => {
-        console.log('error: %s (%s)',error);
+      }).catch((_error) => {
+        console.log('Fav error: %s (%s)', feedIconHash, feedUrl);
         $favIcon.addClass('icon-rss');
       });
     }
 
     if ($dataStore.data('status') == 'on') {
 
-      $feedIcon.removeClass('fold');
-      $refreshButton.addClass('spin');
-      // $feedLink.removeClass('danger');
+      try {
       
-      let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
+	$feedIcon.removeClass('fold');
+	$refreshButton.addClass('spin');
+      
+	let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
-      console.log('lastItem: %s (%s)', JSON.stringify(fetchFeed.lastItem), fetchFeed.totalNewItems);
+	let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
+	$feedBody.html(lastItems[0]);
 
-      let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-      $feedBody.html(lastItems[0]);
-      $refreshButton.removeClass('spin');
+	$refreshButton.removeClass('spin');
 
-      $dataStore.data('lastitem', fetchFeed.lastItem);
+	if (fetchFeed.totalNewItems > 0) {
+	  $dataStore.data('lastitem', fetchFeed.lastItem);
+	  PTL.tab.saveTabs();
+          $badge.text(fetchFeed.totalNewItems).fadeIn('slow');
+	} else {
+          $badge.fadeOut('slow');
+	}
 
-      if (fetchFeed.totalNewItems > 0) {
-        // let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-        // $feedBody.prepend(lastItems[0]);
-        // PTL.db.put(feedUrl, $feedBody.html());
-        $badge.text(fetchFeed.totalNewItems).fadeIn('slow');
-      } else {
-        // $dataStore.data('lastitem', 'none');
-        $badge.fadeOut('slow');
+      } catch (error) {
+
+        console.log('Catched error: %s (%s)', JSON.stringify(error));
+
+        $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
+        $feedBody.css('height', '');
+        $refreshButton.removeClass('spin');
+
       }
-      
+	
     } else {
 
       $dataStore

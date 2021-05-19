@@ -36,11 +36,13 @@ router.get('/favicon', function(req, res) {
 
     if (err) console.error('######### err: %s (%s)', err);
 
+    // console.error('######### favicon: %s (%s)', url);
+    
     if (url) {
 
-      console.error('######### url: %s (%s)',url);
+      // console.error('######### url: %s (%s)',url);
 
-      if (!url.startsWith('http')) url = 'http://' + url.substring(url.indexOf("/") + 1);
+      if (!url.startsWith('http') || !url.startsWith('//')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 
       const hash = crypto.createHash('md5').update(url).digest('hex'),
             fileName = hash + '.favicon',
@@ -74,7 +76,7 @@ router.get('/feed', function(req, res) {
 
   feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
 
-    console.error('### totalNewItems: [%s]', totalNewItems);
+    // console.error('### totalNewItems: [%s] oL:%s, nL:%s', totalNewItems, req.query.lastItem, lastItem);
 
     if (feedItems && !res.headersSent) {
       res.send({
