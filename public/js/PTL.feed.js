@@ -489,7 +489,7 @@ PTL.feed = {
       }).done(function(data, textStatus, jqXHR) {
         resolve(data);
       }).fail(function(jqXHR, textStatus, errorThrown) {
-        reject(jqXHR);
+        reject(jqXHR, textStatus, errorThrown);
       });
     });
 

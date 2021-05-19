@@ -76,6 +76,8 @@ router.get('/feed', function(req, res) {
 
   feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
 
+    if (error) console.error('##Yep: ', error);
+    
     // console.error('### totalNewItems: [%s] oL:%s, nL:%s', totalNewItems, req.query.lastItem, lastItem);
 
     if (feedItems && !res.headersSent) {
