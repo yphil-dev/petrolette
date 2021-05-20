@@ -522,7 +522,11 @@ i.icon-petrolette.itemIcon {
 }
 
 li.feedItem.error > strong.value {
-  color: var(--color-danger);
+  color: var(--color-ui-pri);
+}
+
+li.feedItem.error > strong.key {
+  color: var(--color-ui-sec);
 }
 
 .spin {

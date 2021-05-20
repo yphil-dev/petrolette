@@ -41,6 +41,7 @@ function getFeed(feedUrl, lastItem, callback) {
   }).then(function(res) {
 
     if (res.status != 200) {
+      console.error('## statusErr: %s (%s)', res.status, feedUrl);
       callback({ error: 'error', errno: res.status, message: 'Bad server response' });
       return reject();
     }
@@ -56,7 +57,8 @@ function getFeed(feedUrl, lastItem, callback) {
       feedparser.on('error', function(error) {
         console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
         reject();
-        return callback({ error: error, errno: res.status, message: error.message });
+        // return callback({ error: error, errno: res.status, message: error.message });
+        throw new Error(error);
       }).on('readable', function() {
         try {
           var item = this.read();
@@ -93,7 +95,19 @@ function getFeed(feedUrl, lastItem, callback) {
 
     });
 
-  }).catch((err) => {
-    callback({ error: err, resStatus: 0, message: err.message });
+  }).catch((error) => {
+
+    var message;
+
+    if (error) {
+      message = error.message;
+      console.error('Yep, error: %s [%s] (%s)', error);
+    } else {
+      message = 'Unknown error';
+      error = 'Unknown error';
+      console.error('No error: %s [%s] (%s)');
+    }
+    
+    callback({ error: error, resStatus: 400, message: error.message });
   });
 }

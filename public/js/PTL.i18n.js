@@ -192,6 +192,8 @@ PTL.i18n.translations = {
 
   "Pétrolette can't read this file" : { fr: "Pétrolette ne pavient pas à lire ce fichier", ja: "Pétroletteはこのファイルを読み取ることができません", es: "Pétrolette no puede leer este archivo" },
 
+  "Feed parsing" : { fr: "Lecture du flux", ja: "ソース解析", es: "Lectura de la fuente" },
+
   "This is a tab. It contains feeds." : { fr: "Ceci est un onglet, qui contient des flux." , ja: "これはタブです。 それはソースを含んでいます。", es: "Esta es una grupo. Contiene fuentes." },
 
   "Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it" : { fr: "Cliquer sur un onglet pour l'afficher ; cliquer sur l'onglet courant pour changer son nom et sa position, glisser / déposer pour le déplacer" , ja: "表示するタブをクリックしてください。 現在/選択されたタブをクリックしてその名前と位置を変更し、ドラッグして移動する", es: "Haga clic en una pestaña para mostrarlo; Haga clic en la pestaña actual / seleccionada para cambiar su nombre y posición, arrastre para moverlo" },
@@ -373,6 +375,8 @@ PTL.i18n.translations = {
   "Feed type" : { fr: "Type de flux", ja: "フィードの種類", es: "Tipo de flux" },
 
   "Type" : { fr: "Type", ja: "タイプ", es: "Tipo" },
+
+  "Message" : { fr: "Message", ja: "メッセージ", es: "Mensaje" },
 
   "Error" : { fr: "Erreur", ja: "エラー", es: "Error" },
 

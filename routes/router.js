@@ -1,8 +1,9 @@
 const express = require('express'),
       router = express.Router(),
-      favrat = require('favrat'),
       feeder = require('./feeder'),
       fetch = require('node-fetch'),
+      // favrat = require('favrat'),
+      favrat = require(__dirname + '/../../favrat/'),
       feedrat = require('feedrat'),
       // feedrat = require(__dirname + '/../../feedrat/'),
       fs = require('fs'),
@@ -42,7 +43,7 @@ router.get('/favicon', function(req, res) {
 
       // console.error('######### url: %s (%s)',url);
 
-      if (!url.startsWith('http') || !url.startsWith('//')) url = 'http://' + url.substring(url.indexOf("/") + 1);
+      if (!url.startsWith('http')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 
       const hash = crypto.createHash('md5').update(url).digest('hex'),
             fileName = hash + '.favicon',
@@ -76,7 +77,7 @@ router.get('/feed', function(req, res) {
 
   feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
 
-    if (error) console.error('##Yep: ', error);
+    // if (error) console.error('##Yep: ', error);
     
     // console.error('### totalNewItems: [%s] oL:%s, nL:%s', totalNewItems, req.query.lastItem, lastItem);
 
@@ -90,7 +91,7 @@ router.get('/feed', function(req, res) {
       });
 
     } else if (error && !res.headersSent) {
-        res.status(500).send(error);
+      res.send({error: error});
     }
   });
 });

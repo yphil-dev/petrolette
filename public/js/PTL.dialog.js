@@ -286,8 +286,6 @@ PTL.dialog = {
                                 .data('name', newName)
                                 .data('type', newType);
 
-                            console.log('newUrl: %s (%s)', newUrl, $dataStore.data('url'));
-
                             if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
                                 $feed.hide('fade', 1000, function() {$feed.remove();});
                             } else {
