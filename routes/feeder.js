@@ -42,8 +42,9 @@ function getFeed(feedUrl, lastItem, callback) {
 
     if (res.status != 200) {
       console.error('## statusErr: %s (%s)', res.status, feedUrl);
-      callback({ error: 'error', errno: res.status, message: 'Bad server response' });
-      return reject();
+      // callback({ error: 'error', errno: res.status, message: 'Bad server response' });
+      reject();
+      throw new Error({ error: 'error', errno: res.status, message: 'Bad server response' });
     }
 
     var feedparser = new FeedParser();
@@ -58,14 +59,15 @@ function getFeed(feedUrl, lastItem, callback) {
         console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
         reject();
         // return callback({ error: error, errno: res.status, message: error.message });
-        throw new Error(error);
+        callback({ error: error, resStatus: 400, message: error.message });
       }).on('readable', function() {
         try {
           var item = this.read();
           if (item !== null) feedItems.push(item);
         }
-        catch (err) {
-          console.error('## feedParserCatchErr: %s (%s)', err, feedUrl);
+        catch (error) {
+          console.error('## feedParserCatchErr: %s (%s)', error, feedUrl);
+          callback({ error: error, resStatus: 400, message: error.message });
         }
       }).on('end', function() {
         resolve();
@@ -82,7 +84,7 @@ function getFeed(feedUrl, lastItem, callback) {
           if (newLastItem == undefined) newLastItem = item.link;
           if (item.link == lastItem) {
             totalNewItems = i - 1;
-            console.error('Wopop: %s [%s] (%s)', item.link, totalNewItems, i);
+            // console.error('Wopop: %s [%s] (%s)', item.link, totalNewItems, i);
           }
         }
 
@@ -104,7 +106,7 @@ function getFeed(feedUrl, lastItem, callback) {
       console.error('Yep, error: %s [%s] (%s)', error);
     } else {
       message = 'Unknown error';
-      error = 'Unknown error';
+      var error = 'Unknown error';
       console.error('No error: %s [%s] (%s)');
     }
     
