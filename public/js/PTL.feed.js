@@ -410,11 +410,9 @@ PTL.feed = {
   },
   errorFeed: function(error, feedUrl) {
 
-    let type = (error.statusText) ? error.statusText : PTL.tr('Unknown error');
-    const errno = (error.responseJSON) ? error.responseJSON.errno : '0';
-    const message = (error.responseJSON) ? error.responseJSON.message : 'Empty';
-
-    if (errno < 300) type = PTL.tr('Feed parsing');
+    const status = error.status;
+    const message = error.message;
+    const type = error.type;
 
     const $validateLink = $('<a>')
       .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
@@ -444,7 +442,7 @@ PTL.feed = {
 
     const $errValue = $('<strong>')
       .attr('class', 'value')
-      .text(type + ' (' + errno + ')');
+      .text(type + ' (' + status + ')');
 
     const $msgValue = $('<strong>')
       .attr('class', 'value')

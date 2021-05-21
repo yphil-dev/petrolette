@@ -42,9 +42,8 @@ function getFeed(feedUrl, lastItem, callback) {
 
     if (res.status != 200) {
       console.error('## statusErr: %s (%s)', res.status, feedUrl);
-      // callback({ error: 'error', errno: res.status, message: 'Bad server response' });
       reject();
-      throw new Error({ error: 'error', errno: res.status, message: 'Bad server response' });
+      // callback({ error: 'error', errno: res.status, message: 'Bad server response' });
     }
 
     var feedparser = new FeedParser();
@@ -56,18 +55,30 @@ function getFeed(feedUrl, lastItem, callback) {
 
     return new Promise((resolve, reject) => {
       feedparser.on('error', function(error) {
-        console.error('## feedParserErr: %s (%s)', error.message, feedUrl);
+
+        let message = (error.message) ? error.message : 'Can\'t read this feed';
+        let type = (error.type) ? error.type : 'Feed parsing';
+        let status = (error.status) ? error.status : 400;
+        
+        console.error('## feedParserOnErr: %s (%s)', error, feedUrl);
         reject();
-        // return callback({ error: error, errno: res.status, message: error.message });
-        callback({ error: error, resStatus: 400, message: error.message });
+        callback({ type: type, status: status, message: message+'onErr' });
+
       }).on('readable', function() {
         try {
           var item = this.read();
           if (item !== null) feedItems.push(item);
         }
         catch (error) {
-          console.error('## feedParserCatchErr: %s (%s)', error, feedUrl);
-          callback({ error: error, resStatus: 400, message: error.message });
+
+          let message = (error.message) ? error.message : 'Can\'t read this feed';
+          let type = (error.type) ? error.type : 'Feed parsing';
+          let status = (error.status) ? error.status : 400;
+
+          console.error('## feedParserOnErr: %s (%s)', error, feedUrl);
+          reject();
+          callback({ type: type, status: status, message: message });
+
         }
       }).on('end', function() {
         resolve();
@@ -99,17 +110,21 @@ function getFeed(feedUrl, lastItem, callback) {
 
   }).catch((error) => {
 
-    var message;
+    var message = 'Unknown error';
+    var type = 'Unknown type';
+    var status = 400;
 
     if (error) {
+      
       message = error.message;
-      console.error('Yep, error: %s [%s] (%s)', error);
-    } else {
-      message = 'Unknown error';
-      var error = 'Unknown error';
-      console.error('No error: %s [%s] (%s)');
+      type = error.type;
+      status = Number.isInteger(error.status) ? error.status : 400;
+      
     }
-    
-    callback({ error: error, resStatus: 400, message: error.message });
+
+    console.error('Error OK, status: %s', Number(status));
+
+    callback({ type: type, status: status, message: message });
+
   });
 }
