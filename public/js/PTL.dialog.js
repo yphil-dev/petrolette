@@ -52,8 +52,6 @@ PTL.dialog = {
                 }
             });
 
-            console.log('MOB: %s (%s)', PTL.util.isMobile());
-
             $dialog.dialog('open');
 
         });
@@ -369,19 +367,15 @@ PTL.dialog = {
                               }
                           });
 
-                    console.log('oldNbItems: %s (%s)', oldNbItems);
-
                     $feedGuessInput.on('keypress',function(e) {
                         if (e.which == 13) {
                             $okButton.click();
-                            console.log('ENTER!: %s (%s)');
                         }
                     });
 
                     $feedNameInput.on('keypress',function(e) {
                         if (e.which == 13) {
                             $okButton.click();
-                            console.log('ENTER!: %s (%s)');
                         }
                     });
 
@@ -536,11 +530,6 @@ PTL.dialog = {
                         title: PTL.tr('Wait! Are you sure?'),
                         class: "dangerous translate",
                         click: function() {
-
-                            $feedsInCol.each(function(){
-                                localStorage.setItem($(this).find('div.dataStore').attr('data-url'), '');
-                                console.log('deleting (%s) from cache', $(this).find('div.dataStore').attr('data-url'));
-                            });
 
                             PTL.dialog.kill($dialog);
                             PTL.col.del($column);
@@ -731,11 +720,6 @@ PTL.dialog = {
                         class: "dangerous translate",
                         click: function() {
 
-                            $selectedPanel.find('li.feed').each(function(){
-                                localStorage.setItem($(this).find('div.dataStore').attr('data-url'), '');
-                                console.log('deleting (%s) from cache', $(this).find('div.dataStore').attr('data-url'));
-                            });
-
                             $selectedTab.remove();
                             $selectedPanel.remove();
 
@@ -801,15 +785,6 @@ PTL.dialog = {
                         click: function() {
                             $thisFeed.hide('fade', 1000, function() {
                                 $(this).remove();
-
-                                // localStorage.setItem(thisFeedUrl, '');
-
-                                try {
-                                    PTL.db.del(thisFeedUrl);
-                                } catch (error) {
-                                    console.log('DB Error:: %s (%s)', error);
-                                }
-
                                 PTL.tab.saveTabs();
                             });
                             PTL.dialog.kill($dialog);

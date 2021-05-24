@@ -21,8 +21,6 @@ var PTL = (function() {
 
         var objectStore = db.createObjectStore(PTL.DbStore, { keyPath: PTL.DbKey });
 
-        console.log('DB OK: %s (%s)', PTL.DbName, PTL.DbStore);
-
       };
 
 
@@ -53,7 +51,6 @@ var PTL = (function() {
         .val(PTL.prefs.readConfig('searchPrefix'));
 
       $searchPrefixRestoreButton.click(function(){
-        console.log('val %s', $searchPrefixInput.val());
         $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefixDefault'));
         PTL.util.say(PTL.tr('Restored search prefix to default value'), 'success', true);
       });

@@ -108,7 +108,6 @@ router.get('/discover', function(req, res) {
     if (feed) {
       res.send(feed);
     } else if (err) {
-      console.log('err: %s', err);
       res.status(500).send(err.code);
     } else {
       res.status(500).send('No feed found');

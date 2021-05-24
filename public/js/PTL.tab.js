@@ -127,8 +127,6 @@ PTL.tab = {
                     thisFeed.nbitems = v.nbitems;
                     thisFeed.lastitem = v.lastitem;
 
-                    // console.log('v.lastitem: %s (%s)', v.lastitem);
-
                     thisColFeeds.push(thisFeed);
                     allFeeds.push(thisColFeeds);
 
@@ -237,7 +235,6 @@ PTL.tab = {
 
             if (!newTab) {
                 feeds.forEach(function(feed) {
-                    // console.log('feed.lastitem: %s (%s)', feed.lastitem, feed.url);
                     const type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
                           nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 5,
                           limit = Number.isInteger(feed.limit) ? feed.limit : 260,
