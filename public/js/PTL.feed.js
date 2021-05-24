@@ -21,7 +21,7 @@ PTL.feed = {
       });
 
     const $newItemsBadge = $('<div>')
-      .attr('class', 'newItemsBadge hidden');
+          .attr({class: 'newItemsBadge hidden', title:PTL.tr('New items')});
 
     const $feedIcon = $('<i>')
       .attr({
@@ -262,7 +262,6 @@ PTL.feed = {
         if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
           imageUrl = $tempDom.find('img').attr('src');
           if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
-            // XKCD summary in the title of the description XML tag
             $feedItem.attr('title', $tempDom.find('img').attr('title'));
 
           }
@@ -541,7 +540,6 @@ PTL.feed = {
 
       let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
       let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-
 
       if (fetchFeed.error) {
 

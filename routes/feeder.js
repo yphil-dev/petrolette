@@ -7,7 +7,6 @@ exports.getFeed = getFeed;
 
 function maybeTranslate(res, charset) {
   var iconvStream;
-  // Decode using iconv-lite if its not utf8 already.
   if (!iconvStream && charset && !/utf-*8/i.test(charset)) {
     try {
       iconvStream = iconv.decodeStream(charset);
@@ -33,7 +32,7 @@ function getParams(str) {
 }
 
 function getFeed(feedUrl, lastItem, callback) {
-  // Get a response stream
+
   fetch(feedUrl, {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
     'accept': 'text/html,application/xhtml+xml',
@@ -43,7 +42,6 @@ function getFeed(feedUrl, lastItem, callback) {
     if (res.status != 200) {
       console.error('## statusErr: %s (%s)', res.status, feedUrl);
       reject();
-      // callback({ error: 'error', errno: res.status, message: 'Bad server response' });
     }
 
     var feedparser = new FeedParser();
@@ -91,12 +89,8 @@ function getFeed(feedUrl, lastItem, callback) {
 
         function countItems(item) {
           i++;
-          // console.error('item: %s', item.link);
           if (newLastItem == undefined) newLastItem = item.link;
-          if (item.link == lastItem) {
-            totalNewItems = i - 1;
-            // console.error('Wopop: %s [%s] (%s)', item.link, totalNewItems, i);
-          }
+          if (item.link == lastItem) totalNewItems = i - 1;
         }
 
         if (totalNewItems == undefined) totalNewItems = i;
@@ -115,11 +109,9 @@ function getFeed(feedUrl, lastItem, callback) {
     var status = 400;
 
     if (error) {
-      
       message = error.message;
       type = error.type;
       status = Number.isInteger(error.status) ? error.status : 400;
-      
     }
 
     console.error('Error OK, status: %s', Number(status));

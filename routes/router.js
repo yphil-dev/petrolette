@@ -19,16 +19,6 @@ process.on('uncaughtException', function(err) {
   console.error('### Pétrolette uncaughtException: %s', err);
 });
 
-// var options = {
-//   object: false,
-//   reversible: false,
-//   coerce: true,
-//   sanitize: false,
-//   trim: false,
-//   arrayNotation: false,
-//   alternateTextNode: false
-// };
-
 router.use(sanitize);
 
 router.get('/favicon', function(req, res) {
@@ -36,12 +26,8 @@ router.get('/favicon', function(req, res) {
   favrat(req.query.url, function(err, url) {
 
     if (err) console.error('######### err: %s (%s)', err);
-
-    // console.error('######### favicon: %s (%s)', url);
     
     if (url) {
-
-      // console.error('######### url: %s (%s)',url);
 
       if (!url.startsWith('http')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 

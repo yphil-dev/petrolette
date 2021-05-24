@@ -155,6 +155,7 @@ PTL.i18n.translations = {
 
   "Add a column" : { fr: "Ajouter une colonne" , ja: "列を追加する", es: "Agrega una columna" },
 
+  "New items" : { fr: "Nouveaux articles" , ja: "新しいアイテム", es: "Nuevos objetos" },
 
   "Add a feed to this column" : { fr: "Ajouter un flux à cette colonne" , ja: "この列にソースを追加する", es: "Agregar una fuente a esta columna" },
   "Keyboard shortcuts" : { fr: "Raccourcis clavier" , ja: "キーボードショートカット", es: "Atajos de teclado" },
