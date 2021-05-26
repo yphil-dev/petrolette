@@ -1,7 +1,6 @@
 image: node:14.15.3
 stages:
   - build
-  - test
 
 job1:
   stage: build
@@ -11,5 +10,4 @@ job1:
     - npm config set registry http://registry.npmjs.org/
     - npm install
     - npm start
-  stage: test
     - npm run coverage
