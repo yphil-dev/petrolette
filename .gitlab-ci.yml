@@ -1,4 +1,4 @@
-image: node:stable
+image: node:14.15.3
 stages:
   - build
 
