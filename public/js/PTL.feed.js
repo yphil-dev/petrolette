@@ -581,22 +581,22 @@ PTL.feed = {
 
     }
 
-    if (feedIconHash) {
-      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-    } else {
-      await PTL.feed.fetchIcon(feedHost)
-        .then((iconhash) => {
-          if (iconhash) {
-            $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-            $dataStore.data('iconhash', iconhash);
-            PTL.tab.saveTabs();
-          }
-        }).catch((_error) => {
-          $favIcon.addClass('icon-rss');
-          $dataStore.data('iconhash', '');
-          PTL.tab.saveTabs();
-        });
-    }
+    // if (feedIconHash) {
+    //   $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+    // } else {
+    //   await PTL.feed.fetchIcon(feedHost)
+    //     .then((iconhash) => {
+    //       if (iconhash) {
+    //         $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
+    //         $dataStore.data('iconhash', iconhash);
+    //         PTL.tab.saveTabs();
+    //       }
+    //     }).catch((_error) => {
+    //       $favIcon.addClass('icon-rss');
+    //       $dataStore.data('iconhash', '');
+    //       PTL.tab.saveTabs();
+    //     });
+    // }
 
     if (progress) progress.increment();
 
