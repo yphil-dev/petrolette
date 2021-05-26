@@ -11,19 +11,6 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
-      let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
-
-      request.onerror = function(event) {
-        // Handle errors.
-      };
-      request.onupgradeneeded = function(event) {
-        var db = event.target.result;
-
-        var objectStore = db.createObjectStore(PTL.DbStore, { keyPath: PTL.DbKey });
-
-      };
-
-
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
       const $sideMenu = $('nav#sideMenu'),

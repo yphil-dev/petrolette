@@ -22,7 +22,7 @@ describe('Pétrolette', function() {
   });
 
   it('Pétrolette server is running', function(done) {
-    fetch('http://localhost:' + PORT)
+    fetch('http://127.0.0.1:' + PORT)
       .then(function (res) {
         res.status.should.eql(200);
       done();
@@ -30,7 +30,7 @@ describe('Pétrolette', function() {
   });
 
   it('Pétrolette is returning a feed', function(done) {
-    fetch('http://localhost:' + PORT + '/discover/?url=http://lemonde.fr')
+    fetch('http://127.0.0.1:' + PORT + '/discover/?url=http://lemonde.fr')
       .then(async res => {
         await res.text().should.eventually.eql('https://www.lemonde.fr/rss/une.xml');
       }).catch(done);
