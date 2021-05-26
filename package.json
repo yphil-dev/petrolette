@@ -24,7 +24,7 @@
     "errors": "pm2 logs --err --format",
     "test": "mocha --timeout 30s",
     "coverage": "nyc npm test",
-    "preinstall": "mkdir -v $npm_package_config_FAVICONS_CACHE_DIR",
+    "preinstall": "mkdir -v favicons-cache",
     "postinstall": "bower install --allow-root && cd ./node_modules/favrat ; npm i && cd ../feedrat ; npm i"
   },
   "dependencies": {
