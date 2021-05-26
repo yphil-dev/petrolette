@@ -5,6 +5,7 @@
   "private": true,
   "license": "GPL-3.0-only",
   "config": {
+    "unsafe-perm":true,
     "HTTP_PORT": 8000,
     "HTTPS_PORT": 8001,
     "FAVICONS_CACHE_DIR": "favicons-cache"
