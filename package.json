@@ -10,7 +10,7 @@
     "FAVICONS_CACHE_DIR": "favicons-cache"
   },
   "engines": {
-    "node": "*"
+    "node": "14.15.3"
   },
   "repository": {
     "type": "git",
