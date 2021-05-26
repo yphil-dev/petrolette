@@ -7,6 +7,14 @@ const PORT = pjson.config.HTTP_PORT;
 
 describe('Pétrolette', function() {
 
+  it('Pétrolette server is running', function(done) {
+    fetch('http://127.0.0.1:' + PORT)
+      .then(function (res) {
+        res.status.should.eql(200);
+      done();
+    }).catch(done);
+  });
+
   it('Favicon cache dir exists', function(done) {
     fs.access(pjson.config.FAVICONS_CACHE_DIR, function(err) {
       if (err) return done(err);
@@ -19,14 +27,6 @@ describe('Pétrolette', function() {
       if (err) return done(err);
       done();
     });
-  });
-
-  it('Pétrolette server is running', function(done) {
-    fetch('http://127.0.0.1:' + PORT)
-      .then(function (res) {
-        res.status.should.eql(200);
-      done();
-    }).catch(done);
   });
 
   it('Pétrolette is returning a feed', function(done) {
