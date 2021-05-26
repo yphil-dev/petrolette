@@ -13,7 +13,7 @@ const express = require('express'),
       sanitize = require('sanitize').middleware,
       morgan = require('morgan');
 
-console.error('####### Pétrolette (re)START ## Version (%s)', pjson.version);
+console.log('####### Pétrolette (re)START ## Version (%s)', pjson.version);
 
 process.on('uncaughtException', function(err) {
   console.error('### Pétrolette uncaughtException: %s', err);
