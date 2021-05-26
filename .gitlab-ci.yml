@@ -8,6 +8,6 @@ job1:
     - npm config set proxy null
     - npm config set https-proxy null
     - npm config set registry http://registry.npmjs.org/
-    - npm install --unsafe-perm
+    - npm install 
     - npm start
     - npm run coverage

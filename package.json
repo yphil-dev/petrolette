@@ -26,7 +26,7 @@
     "test": "mocha --timeout 30s",
     "coverage": "nyc npm test",
     "preinstall": "mkdir -v favicons-cache",
-    "postinstall": "bower install --allow-root && cd ./node_modules/favrat ; npm i && cd ../feedrat ; npm i"
+    "postinstall": "bower install --allow-root && cd ./node_modules/favrat ; npm i --unsafe-perm && cd ../feedrat ; npm i --unsafe-perm"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
