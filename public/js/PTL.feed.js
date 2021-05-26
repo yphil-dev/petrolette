@@ -7,21 +7,19 @@ PTL.feed = {
     const $feed = $('<li>')
           .attr('class', 'feed');
 
-    // const errVar = true;
-
-    // errVar = 'plop';
-    
     const $feedImg = $('<img>')
-          .attr({
-            src: '/static/images/rss.gif',
-            class: 'favicon',
-            width: '16px',
-            height: '16px'
-          })
-          .on("error", function() {
-            $(this).attr('src', '/static/images/rss.gif');
-          });
-    
+      .attr({
+        src: '/static/images/rss.gif',
+        class: 'favicon',
+        width: '16px',
+        height: '16px'
+      })
+      .on("error", function() {
+        $(this).attr('src', '/static/images/rss.gif');
+        $(this).parent().parent().children('div.dataStore').data('iconhash', '');
+        PTL.tab.saveTabs();
+      });
+
     const $newItemsBadge = $('<div>')
           .attr('class', 'newItemsBadge hidden');
 
@@ -412,8 +410,6 @@ PTL.feed = {
   },
   errorFeed:function(error, feedUrl) {
 
-    console.log('pow: %s', feedUrl);
-    
     const type = (error.statusText) ? error.statusText : PTL.tr('Unknown error');
     const errno = (error.responseJSON) ? error.responseJSON.errno : '0';
     const message = (error.responseJSON) ? error.responseJSON.message : 'Empty';
@@ -553,26 +549,8 @@ PTL.feed = {
           $badge.fadeOut('slow');
 	}
 
-    
-    if (feedIconHash) {
-      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-    } else {
-      await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
-        if (iconhash) {
-          $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-          $dataStore.data('iconhash', iconhash);
-          PTL.tab.saveTabs();
-        }
-      }).catch((_error) => {
-        console.log('Fav error: %s (%s)', feedIconHash, feedUrl);
-        $favIcon.addClass('icon-rss');
-      });
-    }
-
 	
       } catch (error) {
-
-        console.log('Catched error: %s (%s)', JSON.stringify(error));
 
         $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
         $feedBody.css('height', '');
@@ -590,59 +568,21 @@ PTL.feed = {
 
     }		 
 
-    if (progress) progress.increment();
-    
-    // try {
 
-    //   let feedInDb = await PTL.db.get(feedUrl);
-
-    //   if (feedInDb) {
-    //     $feedBody.html(feedInDb.content);
-    //   } else {
-    //     feedLastItem = 'none';
-    //   }
-
-    //   try {
-
-    //     console.log('feedLastItem: %s (%s)', feedLastItem);
-
-    //     let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
-
-    //     console.log('fetchFeed: %s (%s)', JSON.stringify(fetchFeed));
-
-    //     // $feedLink
-    //     //     .text(fetchFeed.feedTitle)
-    //     //     .attr('title', fetchFeed.feedTitle + ' (' + feedUrl + ')');
-
-    //     if (fetchFeed.thereAreNewItems) {
-    //       $dataStore.data('lastitem', fetchFeed.lastItem);
-    //       let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-    //       $feedBody.prepend(lastItems[0]);
-    //       PTL.db.put(feedUrl, $feedBody.html());
-    //       $badge.text(lastItems[1]).fadeIn('slow');
-    //     } else {
-    //       // $dataStore.data('lastitem', 'none');
-    //       $badge.fadeOut('slow');
-    //     }
-
-    //     $refreshButton
-    //       .prop('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle, timeStamp))
-    //       .removeClass('spin');
-
-    //   } catch (error) {
-
-
-    //     console.log('Catched error: %s (%s)', JSON.stringify(error));
-
-    //     $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
-    //     $feedBody.css('height', '');
-    //     $refreshButton.removeClass('spin');
-
-    //   }
-
-    // } catch (error) {
-    //   console.log('getFeed caught: %s (%s)', error);
-    // }
+    if (feedIconHash) {
+      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+    } else {
+      await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
+        if (iconhash) {
+          $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
+          $dataStore.data('iconhash', iconhash);
+          PTL.tab.saveTabs();
+        }
+      }).catch((_error) => {
+        console.log('Fav error: %s (%s)', feedIconHash, feedUrl);
+        $favIcon.addClass('icon-rss');
+      });
+    }
 
     if (progress) progress.increment();
 
