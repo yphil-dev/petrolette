@@ -4,7 +4,7 @@ stages:
 
 job1:
   stage: build
-  runner: local
+  runner: 'local'
   script:
     - npm config set proxy null
     - npm config set https-proxy null
