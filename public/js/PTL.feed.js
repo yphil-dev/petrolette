@@ -409,51 +409,62 @@ PTL.feed = {
 
   },
   errorFeed:function(error, feedUrl) {
-
-    const type = (error.statusText) ? error.statusText : PTL.tr('Unknown error');
-    const errno = (error.responseJSON) ? error.responseJSON.errno : '0';
-    const message = (error.responseJSON) ? error.responseJSON.message : 'Empty';
+    
+    const status = error.status;
+    const message = error.message;
+    const type = error.type;
 
     const $validateLink = $('<a>')
-          .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
+      .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
+
+    const $validateLinkIcon = $('<i>')
+      .attr('class', 'itemIcon icon-w3c')
+      .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
+      .appendTo($validateLink);
 
     const $reportLink = $('<a>')
-          .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + type + ')');
+      .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + type + ')');
+
+    const $reportLinkIcon = $('<i>')
+      .attr('class', 'itemIcon icon-petrolette')
+      .attr('title', PTL.tr('Report feed error'))
+      .appendTo($reportLink);
 
     const $errKey = $('<strong>')
-          .attr('class', 'translate key')
-          .data('content', PTL.tr('Error:'))
-          .text(PTL.tr('Error:'));
+      .attr('class', 'translate key')
+      .data('content', PTL.tr('Type'))
+      .text(PTL.tr('Type'));
 
     const $msgKey = $('<strong>')
-          .attr('class', 'translate key')
-          .data('content', PTL.tr('Message:'))
-          .text(PTL.tr('Message:'));
+      .attr('class', 'translate key')
+      .data('content', PTL.tr('Message'))
+      .text(PTL.tr('Message'));
 
     const $errValue = $('<strong>')
-          .attr('class', 'value')
-          .text(type + ' (' + errno + ')');
+      .attr('class', 'value')
+      .text(type + ' (' + status + ')');
 
     const $msgValue = $('<strong>')
-          .attr('class', 'value')
-          .text(message);
+      .attr('class', 'value')
+      .text(message);
 
     const $errorItem = $('<li>')
-          .attr('class', 'feedItem error')
-          .append($validateLink, $reportLink)
-          .append($errKey)
-          .append('&nbsp;')
-          .append($errValue)
-          .append('<br>')
-          .append($msgKey)
-          .append('&nbsp;')
-          .append($msgValue);
+      .attr('class', 'feedItem error')
+      .append($validateLink)
+      .append($reportLink)
+      .append($errKey)
+      .append('&nbsp;:&nbsp;')
+      .append($errValue)
+      .append('<br>')
+      .append($msgKey)
+      .append('&nbsp;:&nbsp;')
+      .append($msgValue);
 
     const $feedBodyUl = $('<ul>').attr('class', 'feedBody')
-          .append($errorItem);
+      .append($errorItem);
 
     return $feedBodyUl;
-
+    
   },
   fetchIcon:function(feedHost) {
 
@@ -482,13 +493,13 @@ PTL.feed = {
         dataType: 'json',
         lastItem: lastItem,
         nbItems: nbItems
-      }).done(function(data, textStatus, jqXHR) {
+      }).done(function(data, _textStatus, jqXHR) {
         resolve(data);
       }).fail(function(jqXHR, textStatus, errorThrown) {
-        reject(jqXHR);
+        reject(jqXHR, textStatus, errorThrown);
       });
     });
-
+    
   },
   populate:async function($button, progress, newLimit) {
 
@@ -529,32 +540,39 @@ PTL.feed = {
 
     if ($dataStore.data('status') == 'on') {
 
-      try {
-      
-	$feedIcon.removeClass('fold');
-	$refreshButton.addClass('spin');
-      
-	let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
+      $feedIcon.removeClass('fold');
+      $refreshButton.addClass('spin');
 
-	let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-	$feedBody.html(lastItems[0]);
+      let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
+      let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
 
-	$refreshButton.removeClass('spin');
+      if (fetchFeed.error) {
 
-	if (fetchFeed.totalNewItems > 0) {
-	  $dataStore.data('lastitem', fetchFeed.lastItem);
-	  PTL.tab.saveTabs();
-          $badge.text(fetchFeed.totalNewItems).fadeIn('slow');
-	} else {
-          $badge.fadeOut('slow');
-	}
-
-	
-      } catch (error) {
-
-        $feedBody.empty().append(PTL.feed.errorFeed(error, feedUrl));
-        $feedBody.css('height', '');
+        $feedBody
+          .empty()
+          .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
+          .css('height', '');
+        $feedLink.addClass('danger');
         $refreshButton.removeClass('spin');
+
+      } else {
+
+        $feedBody.html(lastItems[0]);
+
+        $refreshButton.removeClass('spin');
+
+        $feedLink
+          .text(fetchFeed.feedTitle)
+          .attr('href', fetchFeed.feedLink);
+        $dataStore.data('name', fetchFeed.feedTitle);
+
+        if (fetchFeed.totalNewItems > 0) {
+          $dataStore.data('lastitem', fetchFeed.lastItem);
+          PTL.tab.saveTabs();
+          $badge.text(fetchFeed.totalNewItems).fadeIn('slow');
+        } else {
+          $badge.fadeOut('slow');
+        }
 
       }
 	
@@ -579,7 +597,6 @@ PTL.feed = {
           PTL.tab.saveTabs();
         }
       }).catch((_error) => {
-        console.log('Fav error: %s (%s)', feedIconHash, feedUrl);
         $favIcon.addClass('icon-rss');
       });
     }

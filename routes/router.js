@@ -58,13 +58,14 @@ router.get('/favicon', function(req, res) {
               res.body.pipe(dest);
               res.body.on("end", () => resolve({fileName, url}));
               dest.on("error", () => {
-                res.status(500).send(false);
+                res.send(false);
                 reject('No favicon found');
               });
             })
         );
 
     } else {
+      reject('Not a valid URL');
       res.send(false);
     }
   });
@@ -76,8 +77,6 @@ router.get('/feed', function(req, res) {
 
   feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
 
-    // console.error('### totalNewItems: [%s] oL:%s, nL:%s', totalNewItems, req.query.lastItem, lastItem);
-
     if (feedItems && !res.headersSent) {
       res.send({
         feedItems: feedItems,
@@ -88,8 +87,9 @@ router.get('/feed', function(req, res) {
       });
 
     } else if (error && !res.headersSent) {
-        res.status(500).send(error);
+      res.send({ error: error });
     }
+    
   });
 });
 
@@ -126,11 +126,14 @@ router.get('/', function(req, res) {
 });
 
 router.use(function(req, res) {
-  // res.send('404: Page not Found', 404);
+
+  console.error('404 req: %s (%s)', req.url);
+
   res.status(404).send('404: Page not Found');
 });
 
 router.use(function(error, req, res, next) {
+  console.error('500 req: %s (%s)', req.url);
   // res.send('500: Internal Server Error', 500);
   res.status(500).send('500: Internal Server Error');
 });

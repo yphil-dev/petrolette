@@ -9,7 +9,6 @@ function maybeTranslate(res, charset) {
   if (!iconvStream && charset && !/utf-*8/i.test(charset)) {
     try {
       iconvStream = iconv.decodeStream(charset);
-      console.error('ICONV: Converting from charset %s to utf-8', charset);
       iconvStream.on('error', () => { return; });
       res = res.pipe(iconvStream);
     } catch (err) {
@@ -47,11 +46,8 @@ function getFeed(feedUrl, lastItem, callback) {
     'accept': 'text/html,application/xhtml+xml',
     redirect: 'follow'
   }).then(function(res) {
-
-    console.error('res.status: %s (%s)', res.status);
     
     if (res.status != 200) {
-      console.error('## statusErr: %s (%s)', res.status, feedUrl);
       reject();
     }
 
@@ -98,7 +94,6 @@ function getFeed(feedUrl, lastItem, callback) {
 
         function countItems(item) {
           i++;
-          console.error('item: %s (%s)', item.link);
           if (newLastItem == undefined) newLastItem = item.link;
           if (item.link == lastItem) totalNewItems = i - 1;
         }

@@ -371,8 +371,6 @@ PTL.dialog = {
                               }
                           });
 
-                    console.log('oldNbItems: %s (%s)', oldNbItems);
-
                     $feedGuessInput.on('keypress',function(e) {
                         if (e.which == 13) {
                             $okButton.click();
