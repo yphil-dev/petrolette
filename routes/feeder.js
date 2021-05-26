@@ -1,7 +1,6 @@
-const fetch = require('node-fetch'),
-  zlib = require('zlib'),
-  iconv = require('iconv-lite'),
-  FeedParser = require('feedparser');
+const fetch      = require('node-fetch'),
+      iconv      = require('iconv-lite'),
+      FeedParser = require('feedparser');
 
 exports.getFeed = getFeed;
 
@@ -31,6 +30,16 @@ function getParams(str) {
   return params;
 }
 
+function formatError (error) {
+
+  let message = (error.message) ? error.message : 'Can\'t read this feed';
+  let type = (error.type) ? error.type : 'Unknown type';
+  let status = (error.status && Number.isInteger(error.status)) ? error.status : 400;
+  
+  return { type: type, status: status, message: message };  
+  
+}
+
 function getFeed(feedUrl, lastItem, callback) {
 
   fetch(feedUrl, {
@@ -39,6 +48,8 @@ function getFeed(feedUrl, lastItem, callback) {
     redirect: 'follow'
   }).then(function(res) {
 
+    console.error('res.status: %s (%s)', res.status);
+    
     if (res.status != 200) {
       console.error('## statusErr: %s (%s)', res.status, feedUrl);
       reject();
@@ -54,31 +65,29 @@ function getFeed(feedUrl, lastItem, callback) {
     return new Promise((resolve, reject) => {
       feedparser.on('error', function(error) {
 
-        let message = (error.message) ? error.message : 'Can\'t read this feed';
-        let type = (error.type) ? error.type : 'Feed parsing';
-        let status = (error.status) ? error.status : 400;
-        
-        console.error('## feedParserOnErr: %s (%s)', error, feedUrl);
         reject();
-        callback({ type: type, status: status, message: message+'onErr' });
-
+        callback(formatError(error));
+        
       }).on('readable', function() {
+
         try {
           var item = this.read();
-          if (item !== null) feedItems.push(item);
+          if (item !== null) {
+            feedItems.push(item);
+          }
         }
         catch (error) {
-
-          let message = (error.message) ? error.message : 'Can\'t read this feed';
-          let type = (error.type) ? error.type : 'Feed parsing';
-          let status = (error.status) ? error.status : 400;
-
-          console.error('## feedParserOnErr: %s (%s)', error, feedUrl);
           reject();
-          callback({ type: type, status: status, message: message });
-
+          callback(formatError(error));
         }
+        
       }).on('end', function() {
+
+        if (feedItems.length === 0) {
+          reject();
+          callback(formatError({type:'Empty feed', status:300, message:'Feed OK, but empty'}));
+        }
+        
         resolve();
 
         var newLastItem;
@@ -89,14 +98,15 @@ function getFeed(feedUrl, lastItem, callback) {
 
         function countItems(item) {
           i++;
+          console.error('item: %s (%s)', item.link);
           if (newLastItem == undefined) newLastItem = item.link;
           if (item.link == lastItem) totalNewItems = i - 1;
         }
 
         if (totalNewItems == undefined) totalNewItems = i;
 
-        var meta = this.meta;
-        return callback(null, feedItems, meta.title || 'Untitled', meta.link || feedUrl, newLastItem, totalNewItems);
+        const meta = this.meta;
+        return callback(null, feedItems, meta.title || feedUrl, meta.link || feedUrl, newLastItem, totalNewItems);
 
       });
 
@@ -104,19 +114,7 @@ function getFeed(feedUrl, lastItem, callback) {
 
   }).catch((error) => {
 
-    var message = 'Unknown error';
-    var type = 'Unknown type';
-    var status = 400;
-
-    if (error) {
-      message = error.message;
-      type = error.type;
-      status = Number.isInteger(error.status) ? error.status : 400;
-    }
-
-    console.error('Error OK, status: %s', Number(status));
-
-    callback({ type: type, status: status, message: message });
+    callback(formatError(error));
 
   });
 }

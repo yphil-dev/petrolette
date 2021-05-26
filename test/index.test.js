@@ -3,19 +3,19 @@ const should  = require('should'),
       pjson = require('../package.json'),
       fetch = require('node-fetch');
 
-const PORT = pjson.HTTP_PORT;
+const PORT = pjson.config.HTTP_PORT;
 
 describe('Pétrolette', function() {
 
   it('Favicon cache dir exists', function(done) {
-    fs.access(pjson.FAVICONS_CACHE_DIR, function(err) {
+    fs.access(pjson.config.FAVICONS_CACHE_DIR, function(err) {
       if (err) return done(err);
       done();
     });
   });
 
   it('Favicon cache dir is writeable', function(done) {
-    fs.access(pjson.FAVICONS_CACHE_DIR, fs.constants.W_OK, function(err) {
+    fs.access(pjson.config.FAVICONS_CACHE_DIR, fs.constants.W_OK, function(err) {
       if (err) return done(err);
       done();
     });
