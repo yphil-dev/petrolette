@@ -1,10 +1,9 @@
-image: node:latest
+image: node:stable
 stages:
   - build
 
 job1:
   stage: build
-  runner: 'local'
   script:
     - npm config set proxy null
     - npm config set https-proxy null
