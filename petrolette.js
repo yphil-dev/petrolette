@@ -8,6 +8,28 @@ const express = require('express'),
       helmet = require("helmet"),
       compression = require('compression');
 
+function ensureExists(path, mask, cb) {
+    if (typeof mask == 'function') { // Allow the `mask` parameter to be optional
+        cb = mask;
+        mask = 0777;
+    }
+    fs.mkdir(path, mask, function(err) {
+        if (err) {
+            if (err.code == 'EEXIST') cb(null); // Ignore the error if the folder already exists
+            else cb(err); // Something else went wrong
+        } else cb(null); // Successfully created folder
+    });
+}
+
+ensureExists(path.join(__dirname, pjson.config.FAVICONS_CACHE_DIR), 0744, function(err) {
+
+  if (err)
+    console.error('Whoa: %s (%s)');
+  else
+    console.error('We good: %s (%s)');
+
+});
+
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
