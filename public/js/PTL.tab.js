@@ -239,7 +239,7 @@ PTL.tab = {
                 feeds.forEach(function(feed) {
                     // console.log('feed.lastitem: %s (%s)', feed.lastitem, feed.url);
                     const type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
-                          nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 5,
+                          nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 10,
                           limit = Number.isInteger(feed.limit) ? feed.limit : 260,
                           lastItem = feed.lastitem;
                     PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, nbitems, lastItem, false, false, progress);

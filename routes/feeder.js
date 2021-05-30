@@ -109,7 +109,9 @@ function getFeed(feedUrl, lastItem, callback) {
 
   }).catch((error) => {
 
-    callback(formatError(error));
+    // callback(formatError(error));
+    callback(formatError({type:'Network problem', status:300, message: error.message || 'Network problem'}));
+
 
   });
 }

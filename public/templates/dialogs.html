@@ -1,360 +1,369 @@
 <div id="feed-prefs">
-    <form>
-        <legend data-content="Location"
-                class="ui-corner-top translate">Location</legend>
-        <fieldset>
-            <div id="feedGuessDiv" class="flexBox">
-                <input name="guess"
-                       id="feedGuessInput"
-                       placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
-                       data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
-                       value=""
-                       onclick="this.select()"
-                       class="grow translate"
-                />
-                <button id="feedGuessButton"
-                        data-title="Find / discover the feed of this website, or build a search feed from the words"
-                        class="shrink translate last"
-                        type="button">
-                    <i class="icon-search"></i>
-                </button>
-            </div>
-        </fieldset>
+  <form>
+    <legend data-content="Location"
+            class="ui-corner-top translate">Location</legend>
+    <fieldset id="locationFieldset">
+      <div id="feedGuessDiv"
+           class="flexBox helpTourDialogItem"
+           data-step="1">
+        <input name="guess"
+               id="feedGuessInput"
+               placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
+               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
+               value=""
+               onclick="this.select()"
+               class="grow translate"
+               />
+        <button id="feedGuessButton"
+                data-title="Find / discover the feed of this website, or build a search feed from the words"
+                class="shrink translate last"
+                type="button">
+          <i class="icon-search"></i>
+        </button>
+      </div>
+    </fieldset>
 
-        <legend data-content="Name"
-                class="ui-corner-top translate">Name</legend>
-        <fieldset>
-            <div class="flexBox">
-                <input name="name"
-                       id="feedNameInput"
-                       placeholder="Feed name"
-                       data-title="Feed name"
-                       value=""
-                       onclick="this.select()"
-                       class="grow translate"
-                />
-            </div>
-        </fieldset>
+    <legend data-content="Name"
+            class="ui-corner-top translate">Name</legend>
+    <fieldset id="nameFieldset">
+      <div class="flexBox helpTourDialogItem"
+           data-step="2">
+        <input name="name"
+               id="feedNameInput"
+               placeholder="Feed name"
+               data-title="Feed name"
+               value=""
+               onclick="this.select()"
+               class="grow translate"
+               />
+      </div>
+    </fieldset>
 
-        <legend data-content="Tab"
-                class="ui-corner-top translate">
-            Tab
-        </legend>
-        <fieldset id="feedTabFieldset">
+    <legend data-content="Tab"
+            class="ui-corner-top translate">
+      Tab
+    </legend>
+    <fieldset id="tabFieldset">
 
-            <select id="feedTabSelect"
-                    class="unique translate"
-                    name="Group"
-                    data-title="Move the current feed to this tab">
-            </select>
+      <select id="feedTabSelect"
+              data-step="3"
+              class="unique translate helpTourDialogItem"
+              name="Group"
+              data-title="Move the current feed to this tab">
+      </select>
 
-        </fieldset>
+    </fieldset>
 
-        <legend data-content="Type"
-                class="ui-corner-top translate">
-            Type
-        </legend>
-        <fieldset id="feedTypeFieldset">
+    <legend data-content="Type"
+            class="ui-corner-top translate">
+      Type
+    </legend>
+    <fieldset id="feedTypeFieldset">
 
-            <div id="feedTypeDiv"
-                 class="flexBox">
+      <div id="feedTypeDiv"
+           data-step="4"
+           class="flexBox helpTourDialogItem">
 
-                <label data-title="Display only text"
-                       data-content="Text"
-                       class="translate"
-                       for="text" >Text</label>
-                <input type="radio" name="radio-1" id="text">
+        <label data-title="Display only text"
+               data-content="Text"
+               class="translate"
+               for="text" >Text</label>
+        <input type="radio" name="radio-1" id="text">
 
-                <label data-title="Display text and image"
-                       data-content="Mixed"
-                       for="mixed"
-                       class="translate">Mixed</label>
-                <input type="radio" name="radio-1" id="mixed">
+        <label data-title="Display text and image"
+               data-content="Mixed"
+               for="mixed"
+               class="translate middleButton">Mixed</label>
+        <input type="radio" name="radio-1" id="mixed">
 
-                <label data-title="Display only image"
-                       data-content="Image"
-                       class="translate"
-                       for="photo">Image</label>
-                <input type="radio" name="radio-1" id="photo">
+        <label data-title="Display only image"
+               data-content="Image"
+               class="translate"
+               for="photo">Image</label>
+        <input type="radio" name="radio-1" id="photo">
 
-            </div>
-        </fieldset>
+      </div>
+    </fieldset>
 
-        <legend data-content="Height"
-                class="ui-corner-top translate">
-            Height
-        </legend>
-        <fieldset id="feedLimitFieldset">
-            <div class="flexBox translate"
-                 data-title="Number of items displayed in this feed">
-                <div class="grow">
-                    <label for="feedLimitInput" class="ui-helper-hidden">
-                        <input type="text" id="feedLimitInput" />
-                    </label>
-                    <div id="feedLimitSlider"></div>
-                </div>
-                <input readonly
-                       id="feedLimitSpinner"
-                       name="value">
-            </div>
-        </fieldset>
+    <legend data-content="Height"
+            class="ui-corner-top translate">
+      Height
+    </legend>
+    <fieldset id="feedLimitFieldset">
+      <div id="feedHeightDiv"
+           class="flexBox translate helpTourDialogItem"
+           data-step="5"
+           data-title="Number of items displayed in this feed">
+        <div class="grow">
+          <label for="feedLimitInput" class="ui-helper-hidden">
+            <input type="text" id="feedLimitInput" />
+          </label>
+          <div id="feedLimitSlider"></div>
+        </div>
+        <input readonly
+               id="feedLimitSpinner"
+               name="value">
+      </div>
+    </fieldset>
 
-        <legend data-content="Number of items"
-                class="ui-corner-top translate">
-            Number of items
-        </legend>
-        <fieldset id="feedNbItemsFieldset">
-            <div class="flexBox translate"
-                 data-title="Number of items displayed in this feed">
-                <div class="grow">
-                    <label for="feedNbItemsInput" class="ui-helper-hidden">
-                        <input type="text" id="feedNbItemsInput" />
-                    </label>
-                    <div id="feedNbItemsSlider"></div>
-                </div>
-                <input readonly
-                       id="feedNbItemsSpinner"
-                       name="value">
-            </div>
-        </fieldset>
+    <legend data-content="Number of items"
+            class="ui-corner-top translate">
+      Number of items
+    </legend>
+    <fieldset id="feedNbItemsFieldset">
+      <div class="flexBox translate helpTourDialogItem"
+           id="feedMaxItemsDiv"
+           data-step="6"
+           data-title="Number of items displayed in this feed">
+        <div class="grow">
+          <label for="feedNbItemsInput" class="ui-helper-hidden">
+            <input type="text" id="feedNbItemsInput" />
+          </label>
+          <div id="feedNbItemsSlider"></div>
+        </div>
+        <input readonly
+               id="feedNbItemsSpinner"
+               name="value">
+      </div>
+    </fieldset>
 
-        <legend data-content="Delete"
-                id="killFeedLegend"
-                class="ui-corner-top translate">Delete
-        </legend>
-        <fieldset id="killFeedFieldset">
+    <legend data-content="Delete"
+            id="killFeedLegend"
+            class="ui-corner-top translate">Delete
+    </legend>
+    <fieldset id="killFeedFieldset">
 
-            <div id="feedDel"
-                 class="flexBox">
-                <input type="checkbox" name="killFeedCheckbox" id="killFeedCheckbox">
-                <label id="killFeedLabel"
-                       class="dangerous translate last"
-                       for="killFeedCheckbox"
-                       data-title="Delete this feed"
-                       data-content="Delete">
-                    Delete this feed
-                </label>
+      <div id="feedDel"
+           class="flexBox">
+        <input type="checkbox" name="killFeedCheckbox" id="killFeedCheckbox">
+        <label id="killFeedLabel"
+               class="dangerous translate last"
+               for="killFeedCheckbox"
+               data-title="Delete this feed"
+               data-content="Delete">
+          Delete this feed
+        </label>
 
-            </div>
-        </fieldset>
+      </div>
+    </fieldset>
 
-    </form>
+  </form>
 </div>
 
 <div id="helpDialog" title="Pétrolette">
-    <h1 class="translate"
-        data-title="Welcome to Pétrolette"
-        data-content="Welcome to Pétrolette">Welcome to Pétrolette</h1>
-    <div class="dialog">
-        <p>
-            <span class="translate ui"
-                  data-content="Pétrolette is a news reader focused on preventing anyone to know what you are reading.">
-                Pétrolette is a news reader focused on preventing anyone to know what you are reading.
-            </span>
-            <button class="helpTour translate ui-button ui-corner-all"
-                    data-content="Take the tour">
-                Take the tour
-            </button>
+  <h1 class="translate"
+      data-title="Welcome to Pétrolette"
+      data-content="Welcome to Pétrolette">Welcome to Pétrolette</h1>
+  <div class="dialog">
+    <p>
+      <span class="translate ui"
+            data-content="Pétrolette is a news reader focused on preventing anyone to know what you are reading.">
+        Pétrolette is a news reader focused on preventing anyone to know what you are reading.
+      </span>
+      <button class="helpTour translate ui-button ui-corner-all"
+              data-content="Take the tour">
+        Take the tour
+      </button>
 
-            <button class="helpKbShortcuts translate ui-button ui-corner-all"
-                    data-content="Keyboard shortcuts">
-                Keyboard shortcuts
-            </button>
-        </p>
-    </div>
-    <h2 class="translate"
-        data-title="How does it work?"
-        data-content="How does it work?">How does it work?</h2>
-    <div class="dialog">
-        <p>
-            <span class="translate"
-                  data-content="Pétrolette uses a time-tested technology">
-                Pétrolette uses a time-tested technology
-            </span>: <a class="ptl-link" href="https://wikipedia.org/wiki/RSS">RSS</a>.
+      <button class="helpKbShortcuts translate ui-button ui-corner-all"
+              data-content="Keyboard shortcuts">
+        Keyboard shortcuts
+      </button>
+    </p>
+  </div>
+  <h2 class="translate"
+      data-title="How does it work?"
+      data-content="How does it work?">How does it work?</h2>
+  <div class="dialog">
+    <p>
+      <span class="translate"
+            data-content="Pétrolette uses a time-tested technology">
+        Pétrolette uses a time-tested technology
+      </span>: <a class="ptl-link" href="https://wikipedia.org/wiki/RSS">RSS</a>.
 
-            <span class="translate"
-                  data-content="Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them.">
-                Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them.
-            </span>
-        </p>
-        <p>
+      <span class="translate"
+            data-content="Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them.">
+        Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them.
+      </span>
+    </p>
+    <p>
 
-            <ul class="help">
-                <li class="publish translate"
-                    data-content="The website publishes a new article">
-                    The website publishes a new article
-                </li>
-                <li class="rss translate"
-                    data-content="Its RSS feed is updated">
-                    Its RSS feed is updated
-                </li>
-                <li class="refresh translate"
-                    data-content="At the next refresh, Pétrolette displays a new link to this article">
-                    At the next refresh, Pétrolette displays a new link to this article
-                </li>
-            </ul>
-        </p>
-        <br>
-
-        <h3 class="translate"
-            data-content="Why didn't I have to register? Where are my tabs and feeds saved?">Why didn't I have to register? Where are my tabs and feeds saved?</h3>
-        <p>
-            <span class="translate"
-                  data-content="Your feeds are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other feeds.">
-                Your feeds are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other feeds.
-            </span>
-        </p>
-        <h4 class="translate"
-            data-content="How can I view the same feeds on all my devices (like my phone)?">How can I view the same feeds on all my devices (like my phone)?</h4>
-        <p>
-            <span class="translate"
-                  data-content="Two ways:">
-                Two ways:
-            </span>
-
-            <ul class="help">
-                <li class="export translate"
-                    data-content="Use the «Export» button in the menu to save your feeds file, then on the other device, use the «Import» button to load this file.">Use the «Export» button in the menu to save your feeds file, then on the other device, use the «Import» button to load this file.</li>
-
-                <li class="cloud translate"
-                    data-content="Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.">Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.</li>
-
-            </ul>
-        </p>
-    </div>
+      <ul class="help">
+        <li class="publish translate"
+            data-content="The website publishes a new article">
+          The website publishes a new article
+        </li>
+        <li class="rss translate"
+            data-content="Its RSS feed is updated">
+          Its RSS feed is updated
+        </li>
+        <li class="refresh translate"
+            data-content="At the next refresh, Pétrolette displays a new link to this article">
+          At the next refresh, Pétrolette displays a new link to this article
+        </li>
+      </ul>
+    </p>
     <br>
 
     <h3 class="translate"
-        data-title="What is a tab?"
-        data-content="What is a tab?">What is a tab?</h3>
-    <div class="dialog">
-        <p>
-            <span class="translate"
-                  data-content="Just a container for your feeds. Specifically, a tab that you can create, (re)name, move, and delete just like usual.">
-                Just a container for your feeds. Specifically, a tab that you can create, (re)name, move, and delete just like usual.
-            </span>
-        </p>
-    </div>
-    <h3 class="translate"
-        data-title="What is a feed?"
-        data-content="What is a feed? How do I create one?">What is a feed? How do I create one?</h3>
+        data-content="Why didn't I have to register? Where are my tabs and feeds saved?">Why didn't I have to register? Where are my tabs and feeds saved?</h3>
+    <p>
+      <span class="translate"
+            data-content="Your feeds are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other feeds.">
+        Your feeds are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other feeds.
+      </span>
+    </p>
+    <h4 class="translate"
+        data-content="How can I view the same feeds on all my devices (like my phone)?">How can I view the same feeds on all my devices (like my phone)?</h4>
+    <p>
+      <span class="translate"
+            data-content="Two ways:">
+        Two ways:
+      </span>
 
-    <div class="dialog">
-        <p>
-            <span class="translate"
-                  data-content="Click the «New feed» button.">
-                Click the «New feed» button.
-            </span>
-            <ul class="help">
-                <li class="rss translate"
-                    data-content="If you enter the URL of a valid feed (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.">If you enter the URL of a valid feed (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.</li>
+      <ul class="help">
+        <li class="export translate"
+            data-content="Use the «Export» button in the menu to save your feeds file, then on the other device, use the «Import» button to load this file.">Use the «Export» button in the menu to save your feeds file, then on the other device, use the «Import» button to load this file.</li>
 
-                <li class="www translate"
-                    data-content="Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the feed of this website and display it.">Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the feed of this website and display it.</li>
+        <li class="cloud translate"
+            data-content="Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.">Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.</li>
 
-                <li class="search translate"
-                    data-content="And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.">And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.</li>
-            </ul>
-        </p>
-        <br>
+      </ul>
+    </p>
+  </div>
+  <br>
 
-        <p>
-            <span class="dialog translate"
-                  data-content="You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette">
-                You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette</span>:
-            <a href="#"
-               class="helpBookmarklet translate ui-button ui-corner-all"
-               data-title='Drag me to the bookmark bar, or right click "Bookmark this link"'
-               title='Drag me to the bookmark bar, or right click "Bookmark this link"'
-               data-content="Add to Pétrolette">
-                Add to Pétrolette
-            </a>
-        </p>
-    </div>
+  <h3 class="translate"
+      data-title="What is a tab?"
+      data-content="What is a tab?">What is a tab?</h3>
+  <div class="dialog">
+    <p>
+      <span class="translate"
+            data-content="Just a container for your feeds. Specifically, a tab that you can create, (re)name, move, and delete just like usual.">
+        Just a container for your feeds. Specifically, a tab that you can create, (re)name, move, and delete just like usual.
+      </span>
+    </p>
+  </div>
+  <h3 class="translate"
+      data-title="What is a feed?"
+      data-content="What is a feed? How do I create one?">What is a feed? How do I create one?</h3>
 
-    <h2 class="translate"
-        data-content="Ok, where do I start?">
-        Ok, where do I start?
-    </h2>
-    <div class="dialog">
-        <p>
-            <span class="dialog translate"
-                  data-content="Learn how to use">
-                Learn how to use
-            </span>
-            <button class="helpTour ui-button ui-corner-all translate"
-                    data-content="the tabs and the feeds">
-                the tabs and the feeds
-            </button>
-            <span class="dialog translate"
-                  data-content="and Pétrolette in general.">
-                and Pétrolette in general.</span>
-        </p>
-    </div>
+  <div class="dialog">
+    <p>
+      <span class="translate"
+            data-content="Click the «New feed» button.">
+        Click the «New feed» button.
+      </span>
+      <ul class="help">
+        <li class="rss translate"
+            data-content="If you enter the URL of a valid feed (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.">If you enter the URL of a valid feed (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.</li>
+
+        <li class="www translate"
+            data-content="Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the feed of this website and display it.">Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the feed of this website and display it.</li>
+
+        <li class="search translate"
+            data-content="And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.">And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.</li>
+      </ul>
+    </p>
+    <br>
+
+    <p>
+      <span class="dialog translate"
+            data-content="You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette">
+        You can also drag this button to your bookmark toolbar, and click it when you want to add a website to Pétrolette</span>:
+      <a href="#"
+         class="helpBookmarklet translate ui-button ui-corner-all"
+         data-title='Drag me to the bookmark bar, or right click "Bookmark this link"'
+         title='Drag me to the bookmark bar, or right click "Bookmark this link"'
+         data-content="Add to Pétrolette">
+        Add to Pétrolette
+      </a>
+    </p>
+  </div>
+
+  <h2 class="translate"
+      data-content="Ok, where do I start?">
+    Ok, where do I start?
+  </h2>
+  <div class="dialog">
+    <p>
+      <span class="dialog translate"
+            data-content="Learn how to use">
+        Learn how to use
+      </span>
+      <button class="helpTour ui-button ui-corner-all translate"
+              data-content="the tabs and the feeds">
+        the tabs and the feeds
+      </button>
+      <span class="dialog translate"
+            data-content="and Pétrolette in general.">
+        and Pétrolette in general.</span>
+    </p>
+  </div>
 </div>
 
 <div id="editTabDialog">
-    <form>
-        <fieldset>
-            <legend class="translate" data-content="Name">Name</legend>
-            <div class="flexBox">
-                <input
-                    name="name"
-                    id="tabNameInput"
-                    value=""
-                    onclick="this.select()"
-                    class="grow ui-corner-all" />
-            </div>
-        </fieldset>
+  <form>
+    <fieldset>
+      <legend class="translate" data-content="Name">Name</legend>
+      <div class="flexBox">
+        <input
+          name="name"
+          id="tabNameInput"
+          value=""
+          onclick="this.select()"
+          class="grow ui-corner-all" />
+      </div>
+    </fieldset>
 
-        <fieldset>
-            <legend class="translate" data-content="Position">Position</legend>
-            <div class="flexBox">
-                <button type="button"
-                        id="left"
-                        data-title="Left"
-                        class="ui-button grow"
-                        autofocus>
-                    <i class="icon-left"></i>
-                </button>
-                <button type="button"
-                        id="right"
-                        data-title="Right"
-                        class="ui-button grow last">
-                    <i class="icon-right"></i>
-                </button>
-            </div>
-        </fieldset>
+    <fieldset>
+      <legend class="translate" data-content="Position">Position</legend>
+      <div class="flexBox">
+        <button type="button"
+                id="left"
+                data-title="Left"
+                class="ui-button grow"
+                autofocus>
+          <i class="icon-left"></i>
+        </button>
+        <button type="button"
+                id="right"
+                data-title="Right"
+                class="ui-button grow last">
+          <i class="icon-right"></i>
+        </button>
+      </div>
+    </fieldset>
 
-    </form>
+  </form>
 </div>
 
 <div id="beggarDialog" class="flexBox">
-    <img id="beggarImg" src="https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/Rally-1933.jpg" alt="A woman rider in the Six Days Motorcycle Trial, Germany 1933" />
-    <span class="imageLegend">A woman rider in the Six Days Motorcycle Trial, Germany 1933</span>
-    <!-- <span class="huge">🍏</span> -->
-    <p>
-        <span class="translate"
-              data-content="Pétrolette is free software. However the development requires">
-            Pétrolette is free software. However the development requires</span> <span><a class="translate ptl-link" data-content="a lot of time" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">a lot of time</a></span> <span class="translate" data-content="and">and</span> <a class="translate ptl-link" data-content="a lot of work" href="https://framagit.org/yphil/petrolette/-/commits/master">a lot of work</a>. <span data-content="In order to keep developing Pétrolette with new features I need your help." class="translate">In order to keep developing Pétrolette with new features I need your help.</span>
-    </p>
-    <p class="translate" data-content="Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.">
-        Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.
-    </p>
+  <img id="beggarImg" src="https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/Rally-1933.jpg" alt="A woman rider in the Six Days Motorcycle Trial, Germany 1933" />
+  <span class="imageLegend">A woman rider in the Six Days Motorcycle Trial, Germany 1933</span>
+  <!-- <span class="huge">🍏</span> -->
+  <p>
+    <span class="translate"
+          data-content="Pétrolette is free software. However the development requires">
+      Pétrolette is free software. However the development requires</span> <span><a class="translate ptl-link" data-content="a lot of time" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">a lot of time</a></span> <span class="translate" data-content="and">and</span> <a class="translate ptl-link" data-content="a lot of work" href="https://framagit.org/yphil/petrolette/-/commits/master">a lot of work</a>. <span data-content="In order to keep developing Pétrolette with new features I need your help." class="translate">In order to keep developing Pétrolette with new features I need your help.</span>
+  </p>
+  <p class="translate" data-content="Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.">
+    Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.
+  </p>
 </div>
 
 <div id="questionDialog">
-    <div class="flexBox">
-        <div id="icon">
-            <i class="huge"></i>
-        </div>
-        <div id="dialogText">
-            <h1 class="translate"></h1>
-            <p id="dialogBlurb" class="translate"></p>
-            <h2 class="translate"></h2>
-            <p></p>
-            <h2 class="translate"></h2>
-            <p></p>
-        </div>
+  <div class="flexBox">
+    <div id="icon">
+      <i class="huge"></i>
     </div>
+    <div id="dialogText">
+      <h1 class="translate"></h1>
+      <p id="dialogBlurb" class="translate"></p>
+      <h2 class="translate"></h2>
+      <p></p>
+      <h2 class="translate"></h2>
+      <p></p>
+    </div>
+  </div>
 </div>

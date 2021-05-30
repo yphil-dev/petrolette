@@ -29,6 +29,8 @@ app.use(helmet({contentSecurityPolicy: false}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+// app.use(express.static(__dirname + '/renewal', { dotfiles: 'allow' }));
+
 app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DIR)));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));

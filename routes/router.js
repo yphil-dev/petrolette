@@ -12,11 +12,7 @@ const express = require('express'),
       sanitize = require('sanitize').middleware,
       morgan = require('morgan');
 
-console.error('####### Pétrolette (re)START ## Version (%s)', pjson.version);
-
-process.on('uncaughtException', function(err) {
-  console.error('### Pétrolette uncaughtException: %s', err);
-});
+console.error('### (re)START ## Version (%s)', pjson.version);
 
 // var options = {
 //   object: false,
@@ -48,7 +44,7 @@ router.get('/favicon', function(req, res) {
             fileName = hash + '.favicon',
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
-      res.send(hash);
+      // res.send(hash);
 
       fetch(url)
         .then(
@@ -56,9 +52,11 @@ router.get('/favicon', function(req, res) {
             new Promise((resolve, reject) => {
               const dest = fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'});
               res.body.pipe(dest);
-              res.body.on("end", () => resolve({fileName, url}));
+              res.body.on("end", () => {
+                resolve({fileName, url});
+              });
               dest.on("error", () => {
-                res.send(false);
+                res.status(500).send(false);
                 reject('No favicon found');
               });
             })

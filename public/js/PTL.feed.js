@@ -14,7 +14,8 @@ PTL.feed = {
         width: '16px',
         height: '16px'
       })
-      .on("error", function() {
+      .on("error", function(error) {
+        console.error('Fav1: %s (%s)', error, url);
         $(this).attr('src', '/static/images/rss.gif');
         $(this).parent().parent().children('div.dataStore').data('iconhash', '');
         PTL.tab.saveTabs();
@@ -54,8 +55,8 @@ PTL.feed = {
 
     const $selectIcon = $('<i>')
           .attr('class', 'feed-control translate icon-checkbox feedSelect')
-          .data('title', 'Select this feed (%1)', url)
-          .attr('title', PTL.tr('Select this feed (%1)', url))
+          .data('title', 'Select this feed', url)
+          .attr('title', PTL.tr('Select this feed', url))
           .click(function() {
             $(this).parent().parent().parent().parent()
               .toggleClass('selected');
@@ -63,9 +64,9 @@ PTL.feed = {
           });
 
     const $deleteIcon = $('<i>')
-          .attr('class', 'feed-control translate icon-cancel feed-delete')
-          .data('title', 'Delete this feed (%1)', url)
-          .attr('title', PTL.tr('Delete this feed (%1)', url))
+          .attr('class', 'feed-control translate icon-trash-empty feed-delete')
+          .data('title', 'Delete this feed', url)
+          .attr('title', PTL.tr('Delete this feed', url))
           .click(function() {
             $('.selected').removeClass('selected');
             $('.icon-checked').toggleClass('icon-checked icon-checkbox');
@@ -74,8 +75,8 @@ PTL.feed = {
 
     const $prefsIcon = $('<i>')
           .attr('class', 'feed-control translate icon-cog feedPrefs')
-          .data('title', 'Edit this feed (%1) parameters', url)
-          .attr('title', PTL.tr('Edit this feed (%1) parameters', url))
+          .data('title', 'Edit this feed parameters', url)
+          .attr('title', PTL.tr('Edit this feed parameters', url))
           .click(function() {
             $('.selected').removeClass('selected');
             $('.icon-checked').toggleClass('icon-checked icon-checkbox');
@@ -84,8 +85,8 @@ PTL.feed = {
 
     const $refreshIcon = $('<i>')
           .attr('class', 'feed-control translate icon-refresh feedRefresh')
-          .data('title', 'Refresh this feed (%1)', url)
-          .attr('title', PTL.tr('Refresh this feed (%1)', url))
+          .data('title', 'Refresh this feed', url)
+          .attr('title', PTL.tr('Refresh this feed', url))
           .click(async function() {
             // var plop = $(this).parent().parent().parent().next('div.feedBody').find('li').lengh;
             $('.selected').removeClass('selected');
@@ -165,12 +166,12 @@ PTL.feed = {
     $feedHeader.hover (function() {
 
       $(this).find('img.favicon').hide();
-      $feedIcon.removeClass('icon-rss').addClass('icon-down-circle');
+      $feedIcon.removeClass('icon-rss').addClass('icon-down');
 
     }, function() {
 
       $(this).find('img.favicon').show();
-      $feedIcon.removeClass('icon-down-circle');
+      $feedIcon.removeClass('icon-down');
 
     });
 
@@ -211,9 +212,9 @@ PTL.feed = {
       for (const key in feedItems) {
         newItems++;
 
-        var item = feedItems[key];
+        const item = feedItems[key];
 
-        if (newItems == nbItems) break;
+        if (nbItems > 0 && newItems == nbItems) break;
 
         const $description = $.parseHTML(item.description),
               imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
@@ -559,7 +560,10 @@ PTL.feed = {
 
         $feedBody.html(lastItems[0]);
 
-        $refreshButton.removeClass('spin');
+        $refreshButton
+          .data('title', 'Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStamp)
+          .attr('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStamp))
+          .removeClass('spin');
 
         $feedLink
           .text(fetchFeed.feedTitle)
@@ -586,7 +590,6 @@ PTL.feed = {
 
     }		 
 
-
     if (feedIconHash) {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
     } else {
@@ -596,7 +599,8 @@ PTL.feed = {
           $dataStore.data('iconhash', iconhash);
           PTL.tab.saveTabs();
         }
-      }).catch((_error) => {
+      }).catch((error) => {
+        console.error('Fav: %s (%s)', error, feedUrl);
         $favIcon.addClass('icon-rss');
       });
     }
