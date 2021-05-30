@@ -8,13 +8,9 @@
 
     <link rel="preload" as="script" href="/bower/jquery/dist/jquery.min.js">
     <link rel="preload" as="script" href="/bower/jquery-ui/jquery-ui.min.js">
-
-    <link rel="preload" as="font" crossorigin href="/static/font/BebasNeue.otf">
-    <link rel="preload" as="font" crossorigin href="/static/font/Lobster_1.3.otf">
-
+    <!-- <link rel="preload" as="font" href="/static/font/Lobster_1.3.otf"> -->
     <link rel="preload" as="style" href="/static/css/fontello.css" />
     <link rel="preload" as="style" href="/static/css/petrolette.css" />
-
     <link rel="preload" as="image" href="/static/images/loading.gif">
 
     <script>
@@ -92,6 +88,7 @@
     <script src="/bower/DOMPurify/dist/purify.min.js"></script>
 
     <script src="/static/js/PTL.main.js"></script>
+    <script src="/static/js/PTL.db.js"></script>
     <script src="/static/js/PTL.prefs.js"></script>
     <script src="/static/js/PTL.i18n.js"></script>
 
@@ -415,10 +412,10 @@
       </div>
       <fieldset>
         <div class="flexBox" id="liberapay">
-          <a href="https://liberapay.com/yPhil/">
+          <a id="lPayAmount" href="https://liberapay.com/yPhil/">
             <img width="156" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
           </a>
-          <a href="https://liberapay.com/yPhil/">
+          <a id="lPayPatrons" href="https://liberapay.com/yPhil/">
             <img width="82" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
           </a>
         </div>

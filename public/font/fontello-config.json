@@ -45,12 +45,6 @@
       "src": "elusive"
     },
     {
-      "uid": "616b755d0f4c7d2dc7a1dcc2e5427039",
-      "css": "down",
-      "code": 59397,
-      "src": "elusive"
-    },
-    {
       "uid": "dc4a03854ef986d64565143bea4241aa",
       "css": "right",
       "code": 59398,
@@ -60,18 +54,6 @@
       "uid": "de5f0a564ccf8816325330e292e11533",
       "css": "rss",
       "code": 59399,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "b90d80c250a9bbdd6cd3fe00e6351710",
-      "css": "checked",
-      "code": 59400,
-      "src": "iconic"
-    },
-    {
-      "uid": "4b900d04e8ab8c82f080c1cfbac5772c",
-      "css": "checkbox",
-      "code": 59401,
       "src": "fontawesome"
     },
     {
@@ -127,12 +109,6 @@
       "css": "pencil",
       "code": 59416,
       "src": "entypo"
-    },
-    {
-      "uid": "6083c8aa5e3345476a24a28ac1afaa61",
-      "css": "cog",
-      "code": 59417,
-      "src": "elusive"
     },
     {
       "uid": "c91522256a4c3972e9a2765b995b7252",
@@ -202,8 +178,26 @@
     },
     {
       "uid": "da74e2a8125fdbca337031474a48215a",
-      "css": "down-circle",
+      "css": "down",
       "code": 59394,
+      "src": "elusive"
+    },
+    {
+      "uid": "67a9d2e5512b8aa812eff7da6d36bffc",
+      "css": "checked",
+      "code": 59407,
+      "src": "elusive"
+    },
+    {
+      "uid": "56b0141d7bbb0717fc6246ea145bc0bd",
+      "css": "checkbox",
+      "code": 59418,
+      "src": "elusive"
+    },
+    {
+      "uid": "7560ca08e3d83e43c58fcbf8f16d8f03",
+      "css": "cog",
+      "code": 59419,
       "src": "elusive"
     }
   ]

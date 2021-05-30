@@ -2,8 +2,10 @@
   <form>
     <legend data-content="Location"
             class="ui-corner-top translate">Location</legend>
-    <fieldset>
-      <div id="feedGuessDiv" class="flexBox">
+    <fieldset id="locationFieldset">
+      <div id="feedGuessDiv"
+           class="flexBox helpTourDialogItem"
+           data-step="1">
         <input name="guess"
                id="feedGuessInput"
                placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
@@ -11,7 +13,7 @@
                value=""
                onclick="this.select()"
                class="grow translate"
-        />
+               />
         <button id="feedGuessButton"
                 data-title="Find / discover the feed of this website, or build a search feed from the words"
                 class="shrink translate last"
@@ -23,8 +25,9 @@
 
     <legend data-content="Name"
             class="ui-corner-top translate">Name</legend>
-    <fieldset>
-      <div class="flexBox">
+    <fieldset id="nameFieldset">
+      <div class="flexBox helpTourDialogItem"
+           data-step="2">
         <input name="name"
                id="feedNameInput"
                placeholder="Feed name"
@@ -32,7 +35,7 @@
                value=""
                onclick="this.select()"
                class="grow translate"
-        />
+               />
       </div>
     </fieldset>
 
@@ -40,10 +43,11 @@
             class="ui-corner-top translate">
       Tab
     </legend>
-    <fieldset id="feedTabFieldset">
+    <fieldset id="tabFieldset">
 
       <select id="feedTabSelect"
-              class="unique translate"
+              data-step="3"
+              class="unique translate helpTourDialogItem"
               name="Group"
               data-title="Move the current feed to this tab">
       </select>
@@ -57,7 +61,8 @@
     <fieldset id="feedTypeFieldset">
 
       <div id="feedTypeDiv"
-           class="flexBox">
+           data-step="4"
+           class="flexBox helpTourDialogItem">
 
         <label data-title="Display only text"
                data-content="Text"
@@ -68,7 +73,7 @@
         <label data-title="Display text and image"
                data-content="Mixed"
                for="mixed"
-               class="translate">Mixed</label>
+               class="translate middleButton">Mixed</label>
         <input type="radio" name="radio-1" id="mixed">
 
         <label data-title="Display only image"
@@ -85,20 +90,41 @@
       Height
     </legend>
     <fieldset id="feedLimitFieldset">
-      <div class="flexBox translate"
+      <div id="feedHeightDiv"
+           class="flexBox translate helpTourDialogItem"
+           data-step="5"
            data-title="Number of items displayed in this feed">
-        <div class="feedLimit grow">
-          <label for="feedLimit" class="ui-helper-hidden">
-            <input type="text" id="feedLimit" />
+        <div class="grow">
+          <label for="feedLimitInput" class="ui-helper-hidden">
+            <input type="text" id="feedLimitInput" />
           </label>
-          <div id="feedLimit"></div>
+          <div id="feedLimitSlider"></div>
         </div>
-        <label for="spinner" class="ui-helper-hidden">Select a value:</label>
         <input readonly
                id="feedLimitSpinner"
                name="value">
       </div>
+    </fieldset>
 
+    <legend data-content="Number of items"
+            class="ui-corner-top translate">
+      Number of items
+    </legend>
+    <fieldset id="feedNbItemsFieldset">
+      <div class="flexBox translate helpTourDialogItem"
+           id="feedMaxItemsDiv"
+           data-step="6"
+           data-title="Number of items displayed in this feed">
+        <div class="grow">
+          <label for="feedNbItemsInput" class="ui-helper-hidden">
+            <input type="text" id="feedNbItemsInput" />
+          </label>
+          <div id="feedNbItemsSlider"></div>
+        </div>
+        <input readonly
+               id="feedNbItemsSpinner"
+               name="value">
+      </div>
     </fieldset>
 
     <legend data-content="Delete"

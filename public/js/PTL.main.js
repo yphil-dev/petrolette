@@ -3,10 +3,28 @@
 var PTL = (function() {
 
   return {
-    // language: Prefs.readConfig('lang'),
+    DbName: 'petrolette',
+    DbVersion: 1,
+    DbStore: 'feeds',
+    DbKey: 'url',
     feedTypes: ['text', 'mixed', 'photo'],
     language: 'en',
     start : function() {
+
+      let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
+
+      request.onerror = function(event) {
+        // Handle errors.
+      };
+      request.onupgradeneeded = function(event) {
+        var db = event.target.result;
+
+        var objectStore = db.createObjectStore(PTL.DbStore, { keyPath: PTL.DbKey });
+
+        console.log('DB OK: %s (%s)', PTL.DbName, PTL.DbStore);
+
+      };
+
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
@@ -23,7 +41,7 @@ var PTL = (function() {
             $searchPrefixOkButton = $('button#searchPrefixOkButton'),
             $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
             $searchPrefixInput = $('input#searchPrefixInput'),
-            $spinner = $('#gallerySpeedSpinner'),
+            $gallerySpeedSpinner = $('#gallerySpeedSpinner'),
             $logoType = $('.logoType'),
             $topMenu = $('nav#top-menu');
 
@@ -47,8 +65,8 @@ var PTL = (function() {
       });
 
       $('#logoTitle > .logoTitle').click(function(){
-        $('#ui-id-1').focus().trigger('click');
-        });
+        $('.ui-state-active a').focus();
+      });
 
       $logoType.click(function(){
         PTL.dialog.about($logoType.attr('data-version'));
@@ -125,7 +143,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', true, false);
+          PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', 30, true, false);
       });
 
       $feedCodeButton.click(function(event) {
@@ -310,7 +328,7 @@ var PTL = (function() {
         PTL.prefs.writeConfig('tabDropActivate', $(this).prop('checked'));
       });
 
-      $spinner.spinner({
+      $gallerySpeedSpinner.spinner({
         min: 0.5,
         max: 10000,
         step: 0.5,
@@ -321,9 +339,9 @@ var PTL = (function() {
         }
       });
 
-      $spinner.spinner('value', PTL.util.milliToSecs(gallerySlideshowSpeed));
+      $gallerySpeedSpinner.spinner('value', PTL.util.milliToSecs(gallerySlideshowSpeed));
 
-      $spinner.on( 'spinstop', function() {
+      $gallerySpeedSpinner.on( 'spinstop', function() {
         $slider.slider( 'option', 'value', $(this).val() * 1000);
         $('.ui-slider-handle').text(PTL.util.milliToSecs($(this).val() * 1000) + 's');
       });
@@ -334,7 +352,7 @@ var PTL = (function() {
           "ui-slider-handle": "ui-corner-all",
           "ui-slider-range": "ui-corner-all ui-widget-header"
         },
-        value: gallerySlideshowSpeed,
+        value: parseInt(gallerySlideshowSpeed),
         min: 500,
         max: 10000,
         step: 500,
@@ -343,9 +361,8 @@ var PTL = (function() {
         },
         slide: function(event, ui) {
           // $('#gallerySlideshowSpeedValue').text(ui.value + 'ms');
-          $spinner.val(PTL.util.milliToSecs(ui.value));
-          $(this).find('.ui-slider-handle').text(PTL.util.milliToSecs(ui.value) + 's');
-
+          $gallerySpeedSpinner.val(PTL.util.milliToSecs(parseInt(ui.value)));
+          $(this).find('.ui-slider-handle').text(PTL.util.milliToSecs(parseInt(ui.value)) + 's');
         },
         change: function(event, ui) {
           PTL.prefs.writeConfig('gallerySlideshowSpeed', ui.value);
@@ -408,10 +425,19 @@ var PTL = (function() {
     },
     sideMenu: function(action) {
 
-      const $overlay = $('#overlay'),
+      const $overlay = $('div#overlay'),
             $sideMenu = $('nav#sideMenu');
 
+      const $lPayAmount = $('a#lPayAmount'),
+            $lPayAmountImg = $('a#lPayAmountImg img'),
+            $lPayPatrons = $('a#lPayPatrons'),
+            $lPayPatronsImg = $('a#lPayPatrons img');
+
+      $lPayAmountImg.attr('src', 'https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay');
+      $lPayPatronsImg.attr('src', 'https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay');
+
       if (action == 'open') {
+
         $overlay.removeClass('hidden');
         $sideMenu.addClass('expanded');
       } else if (action == 'close') {

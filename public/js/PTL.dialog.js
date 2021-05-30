@@ -1,16 +1,16 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.dialog = {
-  kill:function($dialog) {
+  kill: function($dialog) {
     $dialog.dialog('destroy');
     $('#ptlDialogs').empty();
   },
-  resetTabs:function($button) {
+  resetTabs: function($button) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
-            $icon = $dialog.find('div#icon > i');
+        $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-refresh danger');
 
@@ -38,7 +38,7 @@ PTL.dialog = {
             }
           }
         ],
-        open: function () {
+        open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -59,7 +59,7 @@ PTL.dialog = {
     });
 
   },
-  beg:function() {
+  beg: function() {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
 
@@ -87,7 +87,7 @@ PTL.dialog = {
             }
           }
         ],
-        open: function () {
+        open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -100,86 +100,87 @@ PTL.dialog = {
 
     });
   },
-  notify:function(title, text) {
+  notify: function(title, text) {
 
     const $notify = $('#notify'),
-          $h4 = $('#notify > h4').text(title),
-          $text = $('#notify > p').text(text);
+      $h4 = $('#notify > h4').text(title),
+      $text = $('#notify > p').text(text);
 
     $notify.fadeIn('fast', 'linear', function() {
       setTimeout(function() {
-        $notify.fadeOut('slow');}, 5000);
+        $notify.fadeOut('slow');
+      }, 5000);
     });
 
-    $notify.click(function () {
+    $notify.click(function() {
       $(this).fadeOut('fast');
     });
 
   },
-  about:function(versionNumber) {
+  about: function(versionNumber) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
-            $content = $dialog.find('div.flexBox'),
-            $icon = $dialog.find('div#icon > i');
+        $content = $dialog.find('div.flexBox'),
+        $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-petrolette');
       $content.css('flex-direction', 'column');
       $content.find('div#dialogText').css('text-align', 'center'),
 
-      $dialog.dialog({
-        title: PTL.tr('About Pétrolette'),
-        width: PTL.util.isMobile() ? 'auto' : 360,
-        buttons: [
-          {
-            text: PTL.tr('Source code'),
-            title: PTL.tr('Source code'),
-            class: 'translate',
-            click: function() {
-              PTL.dialog.kill($dialog);
-              window.open('https://framagit.org/yphil/petrolette');
+        $dialog.dialog({
+          title: PTL.tr('About Pétrolette'),
+          width: PTL.util.isMobile() ? 'auto' : 360,
+          buttons: [
+            {
+              text: PTL.tr('Source code'),
+              title: PTL.tr('Source code'),
+              class: 'translate',
+              click: function() {
+                PTL.dialog.kill($dialog);
+                window.open('https://framagit.org/yphil/petrolette');
+              }
+            },
+            {
+              text: PTL.tr('Changelog'),
+              title: PTL.tr('Changelog'),
+              class: 'translate',
+              click: function() {
+                PTL.dialog.kill($dialog);
+                window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
+              }
+            },
+            {
+              text: PTL.tr('Ok'),
+              title: PTL.tr('Ok'),
+              class: 'translate',
+              click: function() {
+                PTL.dialog.kill($dialog);
+              }
             }
-          },
-          {
-            text: PTL.tr('Changelog'),
-            title: PTL.tr('Changelog'),
-            class: 'translate',
-            click: function() {
+          ],
+          open: function() {
+
+            $('.ui-widget-overlay').on('click', function() {
               PTL.dialog.kill($dialog);
-              window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
-            }
-          },
-          {
-            text: PTL.tr('Ok'),
-            title: PTL.tr('Ok'),
-            class: 'translate',
-            click: function() {
-              PTL.dialog.kill($dialog);
-            }
+            });
+
+            $dialog.find('h1').text('Pétrolette').addClass('logoTitle')
+              .next('p#dialogBlurb').text(PTL.tr("The news page that doesn't know you"))
+              .next('h2').text(versionNumber)
+              .next('p')
+              .append($('<a>')
+                .attr('href', 'https://liberapay.com/yPhil/')
+                .text(PTL.tr('By yPhil')));
+
           }
-        ],
-        open: function () {
-
-          $('.ui-widget-overlay').on('click', function() {
-            PTL.dialog.kill($dialog);
-          });
-
-          $dialog.find('h1').text('Pétrolette').addClass('logoTitle')
-            .next('p#dialogBlurb').text(PTL.tr("The news page that doesn't know you"))
-            .next('h2').text(versionNumber)
-            .next('p')
-            .append($('<a>')
-                    .attr('href', 'https://liberapay.com/yPhil/')
-                    .text(PTL.tr('By yPhil')));
-
-        }
-      });
+        });
 
       $dialog.dialog('open');
     });
   },
-  help:function() {
+  help: function() {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
 
@@ -198,7 +199,7 @@ PTL.dialog = {
             }
           }
         ],
-        open: function () {
+        open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -227,22 +228,17 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  feedPrefs:function($button, isNewFeed) {
+  feedPrefs: function($button, isNewFeed) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #feed-prefs', function() {
 
       const $dialog = $(this),
-            $dataStore = $button.parent().parent(),
-            $feed = $dataStore.parent().parent(),
-            $feedBody = $dataStore.parent().next('div.feedBody'),
-            allGroups = PTL.tab.list('all'),
-            $thisGroup =  $feed.parent().parent(),
-            $groupMenu = $dialog.find('select#feedTabSelect'),
-            $spinner = $dialog.find('input#feedLimitSpinner').spinner({
-              classes: {
-                "ui-spinner": "shrink ui-corner-all"
-              }
-            });
+        $dataStore = $button.parent().parent(),
+        $feed = $dataStore.parent().parent(),
+        $feedBody = $dataStore.parent().next('div.feedBody'),
+        allGroups = PTL.tab.list('all'),
+        $thisGroup = $feed.parent().parent(),
+        $groupMenu = $dialog.find('select#feedTabSelect');
 
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
@@ -274,30 +270,32 @@ PTL.dialog = {
               if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
                 $feed.hide('fade', 1000, function() {
                   $(this).prependTo($('#' + $groupMenu
-                                      .find(":selected")
-                                      .val() + ' .column')
-                                    .first())
+                    .find(":selected")
+                    .val() + ' .column')
+                    .first())
                     .show('slow');
                   PTL.tab.saveTabs();
                 });
               }
 
               var newUrl = DOMPurify.sanitize($(this).find('input#feedGuessInput').val()),
-                  newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
-                  newType = $('#feedTypeDiv :radio:checked').attr('id');
+                newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
+                newType = $('#feedTypeDiv :radio:checked').attr('id');
 
               $dataStore
                 .data('url', newUrl)
                 .data('name', newName)
                 .data('type', newType);
 
+              console.log('newUrl: %s (%s)', newUrl, $dataStore.data('url'));
+
               if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
-                $feed.hide('fade', 1000, function() {$feed.remove();});
+                $feed.hide('fade', 1000, function() { $feed.remove(); });
               } else {
                 PTL.feed.populate($button);
               }
 
-              PTL.tab.saveTabs();
+              // PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
 
             }
@@ -329,58 +327,79 @@ PTL.dialog = {
             $groupMenu.append($('<option>', {
               value: this.pane,
               selected: selected,
-              text : this.name
+              text: this.name
             }));
           });
 
-          function guessError () {
+          function guessError() {
             $guessSpinner.removeClass('icon-cog spin ui-state-success')
               .addClass('icon-error');
 
             $guessButton
               .addClass('ui-state-error')
-              .attr('title', PTL.tr('No valid feed found at this address')) ;
+              .attr('title', PTL.tr('No valid feed found at this address'));
           }
 
           const $tabFeedId = $('li#' + $dataStore.data('id')),
-                $feedRefresh = $tabFeedId.find('.feedRefresh'),
-                $guessButton = $dialog.find('button#feedGuessButton').button(),
-                $guessSpinner = $dialog.find('button#feedGuessButton > i'),
-                $feedGuessInput = $dialog.find('input#feedGuessInput'),
-                $feedNameInput = $dialog.find('input#feedNameInput'),
-                $okButton = $('.ui-dialog-buttonpane').find('.button-ok'),
-                $killFeedFieldset = $('fieldset#killFeedFieldset'),
-                $killFeedLegend = $('legend#killFeedLegend'),
-                $helpMiniButton = $('<button>'),
-                oldUrl = $dataStore.data('url'),
-                oldName = $dataStore.data('name'),
-                oldType = $dataStore.data('type'),
-                oldLimit = $dataStore.data('limit');
+            $feedRefresh = $tabFeedId.find('.feedRefresh'),
+            $guessButton = $dialog.find('button#feedGuessButton').button(),
+            $guessSpinner = $dialog.find('button#feedGuessButton > i'),
+            $feedGuessInput = $dialog.find('input#feedGuessInput'),
+            $feedNameInput = $dialog.find('input#feedNameInput'),
+            $okButton = $('.ui-dialog-buttonpane').find('.button-ok'),
+            $killFeedFieldset = $('fieldset#killFeedFieldset'),
+            $killFeedLegend = $('legend#killFeedLegend'),
+            $helpMiniButton = $('<button>'),
+            oldUrl = $dataStore.data('url'),
+            oldName = $dataStore.data('name'),
+            oldType = $dataStore.data('type'),
+            oldLimit = $dataStore.data('limit'),
+            oldNbItems = $dataStore.data('nbitems'),
+            $feedLimitInput = $('input#feedLimit'),
+            $feedLimitSlider = $('div#feedLimitSlider'),
+            $feedLimitSpinner = $dialog.find('input#feedLimitSpinner').spinner({
+              classes: {
+                "ui-spinner": "shrink ui-corner-all"
+              }
+            }),
+            $feedNbItemsInput = $('input#feedNbItems'),
+            $feedNbItemsSlider = $('div#feedNbItemsSlider'),
+            $feedLimitSliderHandle = $dialog.find('div#feedLimitSlider > .ui-slider-handle'),
+            $feedNbItemsSliderHandle = $dialog.find('div#feedNbItemsSlider > .ui-slider-handle'),
+            $feedNbItemsSpinner = $dialog.find('input#feedNbItemsSpinner').spinner({
+              classes: {
+                "ui-spinner": "shrink ui-corner-all"
+              }
+            });
 
-          $feedGuessInput.on('keypress',function(e) {
+          $feedGuessInput.on('keypress', function(e) {
             if (e.which == 13) {
               $okButton.click();
               console.log('ENTER!: %s (%s)');
             }
           });
 
-          $feedNameInput.on('keypress',function(e) {
+          $feedNameInput.on('keypress', function(e) {
             if (e.which == 13) {
               $okButton.click();
               console.log('ENTER!: %s (%s)');
             }
           });
 
-          $helpMiniButton
-            .attr('class', 'ui-button ui-corner-all ui-widget')
-            .attr('id', 'helpMiniButton')
-            .attr('title', PTL.tr('How does it work?'))
-            .attr('type', 'button')
-            .text(PTL.tr('Help'))
-            .on('click', function() {
-              PTL.util.help('dialog');
-            }).appendTo($dialog.parent().find('.ui-dialog-titlebar'));
-
+          $('.helpTourDialogItem').each(function() {
+            const step = $(this).data('step');
+            console.error('step: %s (%s)', step);
+            $(this)
+              .parent()
+              .prev()
+              .append($('<i>')
+                      .attr('class', 'icon-help helpIcon')
+                      .attr('title', step)
+                      .on('click', function() {
+                        PTL.util.help('dialog', step);
+                      }));
+          });
+          
           if (isNewFeed || !PTL.util.isMobile()) {
             $killFeedLegend.remove();
             $killFeedFieldset.remove();
@@ -411,7 +430,7 @@ PTL.dialog = {
 
               $guessButton
                 .addClass('ui-state-success')
-                .attr('title', PTL.tr('Valid feed found! Now just press OK')) ;
+                .attr('title', PTL.tr('Valid feed found! Now just press OK'));
 
             }).always(function(req, status, xhr) {
               if (status === 'error') guessError();
@@ -429,31 +448,58 @@ PTL.dialog = {
           $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
             .checkboxradio('refresh');
 
-          $spinner
-            .spinner( 'value', oldLimit)
-            .on( 'spinstop', function() {
-              $dialog.find('div#feedLimit').slider( 'option', 'value', $(this).val());
-              $dialog.find('.ui-slider-handle').text($(this).val());
+          $feedLimitSpinner
+            .spinner('value', oldLimit)
+            .on('spinstop', function() {
+              $feedLimitSlider.slider('option', 'value', $(this).val());
+              $dialog.find('div#feedNbItemsSpinner > .ui-slider-handle').text($(this).val());
             });
 
-          $dialog.find('div#feedLimit').slider({
+          $feedLimitSlider.slider({
             value: oldLimit,
             min: 1,
             max: 600,
             step: 1,
             create: function() {
-              $('input#feedLimit').val(oldLimit);
+              $feedLimitInput.val(oldLimit);
               $(this).find('.ui-slider-handle').text(oldLimit);
             },
-            slide: function( event, ui ) {
+            slide: function(event, ui) {
               $(this).val(ui.value);
               $(this).find('.ui-slider-handle').text(ui.value);
               $feedBody.css('height', ui.value + 'px');
-              $('input#feedLimitSpinner').val(ui.value);
+              $feedLimitSpinner.val(ui.value);
             },
-            change: function( event, ui ) {
-              $('input#feedLimit').val(ui.value);
+            change: function(event, ui) {
+              $feedLimitInput.val(ui.value);
               $dataStore.data('limit', ui.value);
+            }
+          });
+
+          $feedNbItemsSpinner
+            .spinner('value', oldNbItems)
+            .on('spinstop', function() {
+              $feedNbItemsSlider.slider('option', 'value', $(this).val());
+              $feedNbItemsSliderHandle.text($(this).val());
+            });
+
+          $feedNbItemsSlider.slider({
+            value: oldNbItems,
+            min: 0,
+            max: 100,
+            step: 1,
+            create: function() {
+              $feedNbItemsInput.val(oldNbItems);
+              $(this).find('.ui-slider-handle').text(oldNbItems);
+            },
+            slide: function(event, ui) {
+              $(this).val(ui.value);
+              $(this).find('.ui-slider-handle').text(ui.value);
+              $feedNbItemsSpinner.val(ui.value);
+            },
+            change: function(event, ui) {
+              $feedNbItemsInput.val(ui.value);
+              $dataStore.data('nbitems', ui.value);
             }
           });
 
@@ -464,18 +510,17 @@ PTL.dialog = {
     });
 
   },
-  killColumn:function($button) {
+  killColumn: function($button) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
-            $column = $button.parent().parent(),
-            $panel = $column.parent(),
-            $columnsInTab = $panel.find('.column'),
-            nbOfColumnsInTab = $columnsInTab.length,
-            $icon = $dialog.find('div#icon > i'),
-            colIndex = $panel.find('.column').index($column),
-            nbOfFeedsInCol = $column.find('.feed').length;
+        $column = $button.parent().parent(),
+        $panel = $column.parent(),
+        $icon = $dialog.find('div#icon > i'),
+        colIndex = $panel.find('.column').index($column),
+        $feedsInCol = $column.find('.feed'),
+        nbOfFeedsInCol = $feedsInCol.length;
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -497,11 +542,11 @@ PTL.dialog = {
             class: "dangerous translate",
             click: function() {
               PTL.dialog.kill($dialog);
-              PTL.col.del($column, nbOfColumnsInTab);
+              PTL.col.del($column);
             }
           }
         ],
-        open: function () {
+        open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -517,17 +562,17 @@ PTL.dialog = {
             .next('p').text(nbOfFeedsInCol);
 
         }
-        });
+      });
 
       $dialog.dialog('open');
     });
   },
-  kbShortcuts:function() {
+  kbShortcuts: function() {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
-            $iconDiv = $dialog.find('div#icon');
+        $iconDiv = $dialog.find('div#icon');
 
       $iconDiv.remove();
 
@@ -544,100 +589,100 @@ PTL.dialog = {
             }
           }
         ],
-        open: function () {
+        open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
           });
 
           const $kbShortCutsTab = $('<table>')
-                .attr('class', 'keyboard-shortcuts')
-                .append($('<tr>')
-                        .append($('<th>')
-                                .text('Key'))
-                        .append($('<th>')
-                                .text('Command')))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">UP</kbd>/<kbd class="key">LEFT</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the previous tab. If on first tab, moves focus to last tab. Activate focused tab after a short delay.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. Activate focused tab after a short delay.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. The focused tab must be manually activated.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">HOME</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the first tab. Activate focused tab after a short delay.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">END</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the last tab. Activate focused tab after a short delay.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">HOME</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the first tab. The focused tab must be manually activated.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">END</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the last tab. The focused tab must be manually activated.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">SPACE</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Activate panel associated with focused tab.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">ENTER</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Activate or toggle panel associated with focused tab.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
+            .attr('class', 'keyboard-shortcuts')
+            .append($('<tr>')
+              .append($('<th>')
+                .text('Key'))
+              .append($('<th>')
+                .text('Command')))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">UP</kbd>/<kbd class="key">LEFT</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the previous tab. If on first tab, moves focus to last tab. Activate focused tab after a short delay.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. Activate focused tab after a short delay.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. The focused tab must be manually activated.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">HOME</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the first tab. Activate focused tab after a short delay.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">END</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the last tab. Activate focused tab after a short delay.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">HOME</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the first tab. The focused tab must be manually activated.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">END</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the last tab. The focused tab must be manually activated.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">SPACE</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Activate panel associated with focused tab.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">ENTER</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Activate or toggle panel associated with focused tab.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
           const $kbShortCutsPanel = $('<table>')
-                .attr('class', 'keyboard-shortcuts')
-                .append($('<tr>')
-                        .append($('<th>')
-                                .text('Key'))
-                        .append($('<th>')
-                                .text('Command')))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">UP</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to associated tab.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
-                .append($('<tr>')
-                        .append($('<td>')
-                                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
-                        .append($('<td>')
-                                .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
+            .attr('class', 'keyboard-shortcuts')
+            .append($('<tr>')
+              .append($('<th>')
+                .text('Key'))
+              .append($('<th>')
+                .text('Command')))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">UP</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to associated tab.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
+            .append($('<tr>')
+              .append($('<td>')
+                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
+              .append($('<td>')
+                .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
 
           $dialog.find('h1').text(PTL.tr('Keyboard shortcuts'))
-            .next('p#dialogBlurb').text(PTL.tr('A click on the Pétrolette logo puts the focus on the first tab'))
+            .next('p#dialogBlurb').text(PTL.tr('A click on the Pétrolette logo puts the focus on the current tab'))
             .next('h2').text(PTL.tr('When focus is on a tab'))
             .next('p')
             .append($kbShortCutsTab)
@@ -651,19 +696,19 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  killTab:function($button) {
+  killTab: function($button) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
-            $tabs = $('#tabs'),
-            $a = $button.prev('a.ui-tabs-anchor'),
-            tabId = $a.attr('href'),
-            $selectedTab = $a.parent(),
-            $selectedPanel = $tabs.find(tabId),
-            $icon = $dialog.find('div#icon > i'),
-            selectedTabIndex = $tabs.tabs('option', 'active'),
-            previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex -1;
+        $tabs = $('#tabs'),
+        $a = $button.prev('a.ui-tabs-anchor'),
+        tabId = $a.attr('href'),
+        $selectedTab = $a.parent(),
+        $selectedPanel = $tabs.find(tabId),
+        $icon = $dialog.find('div#icon > i'),
+        selectedTabIndex = $tabs.tabs('option', 'active'),
+        previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex - 1;
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -685,6 +730,11 @@ PTL.dialog = {
             class: "dangerous translate",
             click: function() {
 
+              $selectedPanel.find('li.feed').each(function() {
+                localStorage.setItem($(this).find('div.dataStore').attr('data-url'), '');
+                console.log('deleting (%s) from cache', $(this).find('div.dataStore').attr('data-url'));
+              });
+
               $selectedTab.remove();
               $selectedPanel.remove();
 
@@ -697,7 +747,7 @@ PTL.dialog = {
             }
           }
         ],
-        open: function () {
+        open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -718,15 +768,16 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  killFeed:function($button) {
+  killFeed: function($button) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
-            $thisFeed = $button.parent().parent().parent().parent(),
-            thisFeedId = $button.parent().parent().parent().parent().attr('id'),
-            thisFeedName = $button.parent().parent().parent().find('.feedTitle').text(),
-            $icon = $dialog.find('div#icon > i');
+        $thisFeed = $button.parent().parent().parent().parent(),
+        thisFeedId = $button.parent().parent().parent().parent().attr('id'),
+        thisFeedName = $button.parent().parent().parent().find('.feedTitle').text(),
+        thisFeedUrl = $button.parent().parent().parent().find('.dataStore').data('url'),
+        $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-trash-empty danger');
 
@@ -749,13 +800,22 @@ PTL.dialog = {
             click: function() {
               $thisFeed.hide('fade', 1000, function() {
                 $(this).remove();
+
+                // localStorage.setItem(thisFeedUrl, '');
+
+                try {
+                  PTL.db.del(thisFeedUrl);
+                } catch (error) {
+                  console.log('DB Error:: %s (%s)', error);
+                }
+
                 PTL.tab.saveTabs();
               });
               PTL.dialog.kill($dialog);
             }
           }
         ],
-        open: function () {
+        open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -776,12 +836,12 @@ PTL.dialog = {
     });
 
   },
-  importFeeds:function(existingFeeds, importedFeedsFile) {
+  importFeeds: function(existingFeeds, importedFeedsFile) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
-            $icon = $dialog.find('div#icon > i');
+        $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-upload');
 
@@ -819,7 +879,7 @@ PTL.dialog = {
             }
           }
         ],
-        open: function () {
+        open: function() {
 
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
@@ -840,7 +900,7 @@ PTL.dialog = {
     });
 
   },
-  editTab:function($tab) {
+  editTab: function($tab) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
 
@@ -895,7 +955,7 @@ PTL.dialog = {
 
           $tabNameInput.val($(this).data('tabName'));
 
-          $(this).on('submit', function () {
+          $(this).on('submit', function() {
             $('#' + $(this).data('tabId')).text($tabNameInput.val());
             PTL.tab.saveTabs();
             PTL.dialog.kill($dialog);

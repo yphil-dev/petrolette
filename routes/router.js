@@ -12,23 +12,17 @@ const express = require('express'),
       sanitize = require('sanitize').middleware,
       morgan = require('morgan');
 
-require('events').EventEmitter.defaultMaxListeners = 15;
+console.error('### (re)START ## Version (%s)', pjson.version);
 
-console.error('####### Pétrolette (re)START ## Version (%s)', pjson.version);
-
-process.on('uncaughtException', function(err) {
-  console.error('### Pétrolette uncaughtException: %s', err);
-});
-
-var options = {
-  object: false,
-  reversible: false,
-  coerce: true,
-  sanitize: false,
-  trim: false,
-  arrayNotation: false,
-  alternateTextNode: false
-};
+// var options = {
+//   object: false,
+//   reversible: false,
+//   coerce: true,
+//   sanitize: false,
+//   trim: false,
+//   arrayNotation: false,
+//   alternateTextNode: false
+// };
 
 router.use(sanitize);
 
@@ -36,15 +30,21 @@ router.get('/favicon', function(req, res) {
 
   favrat(req.query.url, function(err, url) {
 
+    if (err) console.error('######### err: %s (%s)', err);
+
+    // console.error('######### favicon: %s (%s)', url);
+    
     if (url) {
 
-      if (!url.startsWith('http')) url = 'http://' + url.substring(url.indexOf("/") + 1);
+      // console.error('######### url: %s (%s)',url);
+
+      if (!url.startsWith('http') || !url.startsWith('//')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 
       const hash = crypto.createHash('md5').update(url).digest('hex'),
             fileName = hash + '.favicon',
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
-      res.send(hash);
+      // res.send(hash);
 
       fetch(url)
         .then(
@@ -52,7 +52,9 @@ router.get('/favicon', function(req, res) {
             new Promise((resolve, reject) => {
               const dest = fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'});
               res.body.pipe(dest);
-              res.body.on("end", () => resolve({fileName, url}));
+              res.body.on("end", () => {
+                resolve({fileName, url});
+              });
               dest.on("error", () => {
                 res.status(500).send(false);
                 reject('No favicon found');
@@ -61,6 +63,7 @@ router.get('/favicon', function(req, res) {
         );
 
     } else {
+      reject('Not a valid URL');
       res.send(false);
     }
   });
@@ -70,18 +73,21 @@ router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
 
-  feeder.getFeed(req.query.feedurl, function (err, feedItems, feedTitle, feedLink) {
+  feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
 
     if (feedItems && !res.headersSent) {
       res.send({
         feedItems: feedItems,
         feedLink: feedLink,
-        feedTitle: feedTitle
+        feedTitle: feedTitle,
+        lastItem: lastItem,
+        totalNewItems: totalNewItems
       });
 
-    } else if (!res.headersSent) {
-      res.send({error:err, errno:err.errno, message:err.message});
+    } else if (error && !res.headersSent) {
+      res.send({ error: error });
     }
+    
   });
 });
 
@@ -118,11 +124,14 @@ router.get('/', function(req, res) {
 });
 
 router.use(function(req, res) {
-  // res.send('404: Page not Found', 404);
+
+  console.error('404 req: %s (%s)', req.url);
+
   res.status(404).send('404: Page not Found');
 });
 
 router.use(function(error, req, res, next) {
+  console.error('500 req: %s (%s)', req.url);
   // res.send('500: Internal Server Error', 500);
   res.status(500).send('500: Internal Server Error');
 });

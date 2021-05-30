@@ -63,8 +63,7 @@ PTL.i18n.translations = {
 
   "Focus first tab" : { fr: "Focus sur le premier onglet", ja: "フォーカスファーストタブ", es: "Foco primera pestaña" },
 
-  "A click on the Pétrolette logo puts the focus on the first tab" : { fr: "Un clic sur le logo Pétrolette met le focus sur le premier onglet", ja: "Pétroletteのロゴをクリックすると、最初のタブに焦点を当てます。", es: "Un clic en el logotipo de Pétrolette pone el enfoque en la primera pestaña" },
-
+  "A click on the Pétrolette logo puts the focus on the current tab" : { fr: "Un clic sur le logo Pétrolette met l'accent sur l'onglet en cours", ja: "Pétroletteのロゴをクリックすると、現在のタブに焦点が合わせる", es: "Un clic en el logotipo de Pétrolette pone el enfoque en la pestaña actual" },
 
   "Feed name (optional)" : { fr: "Nom du flux (optionnel)", ja: "フロー名（オプション）", es: "Nombre de la fuente (Opcional)" },
 
@@ -76,7 +75,7 @@ PTL.i18n.translations = {
 
   "By yPhil" : { fr: "yPhil", ja: "yPhil著", es: "Por yPhil" },
 
-  "The news page that doesn't know you" : { fr: "La page d'actus qui ne sait rien de toi", ja: "あなたを知らないニュースページ", es: "La página de noticias que no te conoce" },
+  "The news page that doesn't know you" : { fr: "La page d'actu qui ne sait rien de toi", ja: "あなたを知らないニュースページ", es: "La página de noticias que no te conoce" },
 
 
   "Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title." : { fr: "Renommez le flux de ce site Web, s'il n'est pas assez informatif ; laisser vide pour obtenir le titre du flux par défaut." , ja: "それが十分に報知されていない場合、このウェブサイトのフィードに名前を付けます。 デフォルトフィードのタイトルを取得するには、空白のままにします", es: "Nombra la fuente de este sitio web, si no es lo suficientemente informativo; Deje en blanco para obtener el título de fuente predeterminado." },
@@ -185,6 +184,8 @@ PTL.i18n.translations = {
 
   "Invalid file" : { fr: "Fichier non valide" , ja: "無効なファイル", es: "Archivo inválido" },
 
+  "DataBase error: %1" : { fr: "Erreur de la Base de Données: %1" , ja: "データベースエラー %1", es: "Error de la base de datos: %1" },
+
   "This is not a valid Pétrolette feeds file" : { fr: "Ceci n'est pas un fichier de flux Pétrolette valide" , ja: "これは有効なPétroletteフィードファイルではありません", es: "Este no es un archivo de feeds de Pétrolette válido" },
 
   "Valid Pétrolette feeds file" : { fr: "Fichier de flux Pétrolette valide" , ja: "これは有効なPétroletteフィードファイルです", es: "Archivo de feeds de Pétrolette válido" },
@@ -197,7 +198,7 @@ PTL.i18n.translations = {
 
   "That's what it's all about" : { fr: "C'est de ça qu'il s'agit" , ja: "それがすべてです", es: "Eso es lo que se trata" },
 
-  "Everything starts here" : { fr: "Tout commence ici" , ja: "すべてがここから始まります", es: "Todo comienza aquí" },
+  "Location of the feed" : { fr: "Adresse du flux" , ja: "源泉の場所", es: "Ubicación de la fuente" },
 
   "Keep everything tidy" : { fr: "Tout est bien rangé" , ja: "すべてを整頓してください", es: "Mantenga todo ordenado" },
 
@@ -427,13 +428,6 @@ PTL.i18n.translations = {
   "No valid feed found at this address" : { fr: "Aucun flux valide découverte à cette adresse", ja: "このアドレスに有効なソースが見つかりません", es: "No se encontró una fuente válida en esta dirección" },
   "Valid feed found! Now just press OK" : { fr: "Flux valide trouvée ! Maintenant, appuyez simplement sur OK", ja: "有効なソースが見つかりました！ OKを押すだけです", es: "¡Se ha encontrado una fuente válida! Ahora solo presione OK" },
 
-  "Select this feed (%1)" : { fr: "Sélectionner ce flux (%1)", ja: "RSS(%1)フィードを選択", es: "Selecciona este feed (%1)" },
-  "Configure this feed" : { fr: "Configurer ce flux" , ja: "このソースを設定します", es: "Configura esta fuente" },
-  "Configure this feed." : { fr: "Configurer ce flux." , ja: "このソースを設定します。", es: "Configura esta fuente." },
-
-  "Delete this feed?" : { fr: "Supprimer ce flux ?", ja: "本当にこのフィードを削除しますか？", es: "¿Borraste esta feed?" },
-  "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar fuente" },
-
   "Delete tab" : { fr: "Supprimer onglet", ja: "フォルダを削除", es: "Eliminar carpeta" },
   "Delete the [%1] tab" : { fr: "Supprimer l'onglet [%1]" , ja: "本当にこのフォルダを削除しますか？", es: "Eliminar el carpeta [%1]" },
   "Delete this tab and all of its content?" : { fr: "Supprimer cet onglet et tout son contenu ?", ja: "フォルダを削除", es: "¿Eliminar esta pestaña y todo su contenido?" },
@@ -452,10 +446,17 @@ PTL.i18n.translations = {
 
   "This action cannot be undone." : { fr: "Cette action ne peut pas être annulée.", ja: "このアクションは元に戻せません。", es: "Esta acción no se puede deshacer." },
 
-  "Move this feed (%1)" : { fr: "Déplacer ce flux (%1)", ja: "このソースを移動する (%1)", es: "Mueva esta fuente (%)" },
-  "Edit this feed (%1) parameters" : { fr: "Modifier les paramètres de ce flux (%1)", ja: "このソース（%1）パラメータを変更する", es: "Establezca estos parámetros fuente %1" },
-  "Delete this feed (%1)" : { fr: "Supprimer ce flux (%1)", ja: "本当にこのフィードを削除しますか (%1)", es: "Borraste esta feed (%1)" },
+  "Move this feed" : { fr: "Déplacer ce flux", ja: "このソースを移動する", es: "Mueva esta fuente (%)" },
+  "Edit this feed parameters" : { fr: "Modifier les paramètres de ce flux", ja: "このソースパラメータを変更する", es: "Establezca estos parámetros fuente" },
+  "Delete this feed" : { fr: "Supprimer ce flux", ja: "本当にこのフィードを削除しますか", es: "Borraste esta feed" },
+  "Refresh this feed" : { fr: "Actualiser ce flux", ja: "このソースをリフレッシュしてください", es: "Actualiza esta fuente" },
   "Refresh this feed (%1 - %2)" : { fr: "Actualiser ce flux (%1 - %2)", ja: "このソースをリフレッシュしてください (%1 - %2)", es: "Actualiza esta fuente (%1 - %2)" },
+  
+  "Select this feed" : { fr: "Sélectionner ce flux", ja: "RSS(%1)フィードを選択", es: "Selecciona este feed" },
+  "Configure this feed" : { fr: "Configurer ce flux" , ja: "このソースを設定します", es: "Configura esta fuente" },
+  
+  "Delete this feed?" : { fr: "Supprimer ce flux ?", ja: "本当にこのフィードを削除しますか？", es: "¿Borraste esta feed?" },
+  "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar fuente" },
 
 
   "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },

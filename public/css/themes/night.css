@@ -5,7 +5,7 @@
   --color-dialog-bg: #1F262E;
   --color-dialog-border: #1F262E;
   --color-scrollbar: #555;
-  --color-border: #303b48;
+  --color-border: #1F262E;
   --color-button-bg: #F6F6F6;
   --color-button-bg-active: #007FFF;
   --color-button-border: #CCCCCC;
@@ -26,7 +26,7 @@
   --color-feed-bg: #383C4A;
   --color-feed-bg-alt: #424657;
   --color-feed-bg-hover: #1F262E;
-  --color-tab-active-fg: #1F262E;
+  --color-tab-active-fg: #19B5FE;
   --color-tab-active-bg: #1F262E;
   --color-tab-inactive-fg: #1F262E;
   --color-tab-inactive-bg: #29323C;
