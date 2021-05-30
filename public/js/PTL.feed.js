@@ -540,21 +540,25 @@ PTL.feed = {
         .addClass('folded');
     }
     
+    // if (feedIconHash) {
+    //   $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+    // } else {
+    //   await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
+    //     if (iconhash) {
+    //       $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
+    //       $dataStore.data('iconhash', iconhash);
+    //       PTL.tab.saveTabs();
+    //     }
+    //   }).catch((error) => {
+    //     console.log('Fav: %s (%s)', JSON.stringify(error), feedUrl);
+    //     $favIcon.addClass('icon-rss');
+    //   });
+    // }
+
     if (feedIconHash) {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-    } else {
-      await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
-        if (iconhash) {
-          $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-          $dataStore.data('iconhash', iconhash);
-          PTL.tab.saveTabs();
-        }
-      }).catch((error) => {
-        console.log('Fav: %s (%s)', JSON.stringify(error), feedUrl);
-        $favIcon.addClass('icon-rss');
-      });
     }
-
+    
     if ($dataStore.data('status') == 'on') {
 
       $feedIcon.removeClass('fold');
