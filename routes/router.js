@@ -1,8 +1,9 @@
 const express = require('express'),
       router = express.Router(),
-      favrat = require('favrat'),
       feeder = require('./feeder'),
       fetch = require('node-fetch'),
+      // favrat = require('favrat'),
+      favrat = require(__dirname + '/../../favrat/'),
       feedrat = require('feedrat'),
       // feedrat = require(__dirname + '/../../feedrat/'),
       fs = require('fs'),
@@ -24,29 +25,36 @@ router.get('/favicon', function(req, res) {
     
     if (url) {
 
+      console.error('######### url: %s (%s)',url);
+
       if (!url.startsWith('http') || !url.startsWith('//')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 
       const hash = crypto.createHash('md5').update(url).digest('hex'),
             fileName = hash + '.favicon',
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
+      // res.send(hash);
+
       fetch(url)
-        .then(res => {
-          const dest = fs.createWriteStream(filePath, { 'Content-Type': 'image/x-icon' });
-          res.body.pipe(dest);
-          res.body.on("end", () => {
-            resolve();
-            res.send(hash);
-          });
-          dest.on("error", () => {
-            res.status(500).send(false);
-            reject('No favicon found');
-          });
+        .then(
+          res =>
+            new Promise((resolve, reject) => {
+              const dest = fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'});
+              res.body.pipe(dest);
+              res.body.on("end", () => {
+                resolve({fileName, url});
+              });
+              dest.on("error", () => {
+                reject('No favicon found');
+                res.status(500).send(false);
+              });
+            })
+        ).catch(error => {
+          res.status(500).send(error);
         });
 
     } else {
-      reject('Not a valid URL');
-      res.send(false);
+      res.status(500).send(false);
     }
   });
 });
