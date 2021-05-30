@@ -16,8 +16,8 @@ PTL.feed = {
         onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
       })
       .on("error", function(error) {
-        console.error('Fav1: %s (%s)', error, url);
-        $(this).attr('src', '/static/images/rss.gif');
+        // console.error('Fav1: %s (%s)', error, url);
+        // $(this).attr('src', '/static/images/rss.gif');
         $(this).parent().parent().children('div.dataStore').data('iconhash', '');
         PTL.tab.saveTabs();
       });
