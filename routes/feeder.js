@@ -49,6 +49,7 @@ function getFeed(feedUrl, lastItem, callback) {
     
     if (res.status != 200) {
       reject();
+      callback(formatError({type:'Network error', status:res.status, message:'Bad server response'}));
     }
 
     var feedparser = new FeedParser();
