@@ -526,6 +526,8 @@ PTL.feed = {
       dateObj = new Date(),
       timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
 
+    const timeStampAlt = dateObj.toTimeString().substr(0,8);
+    
     var feedLastItem = $dataStore.data('lastitem');
 
     $feedBodyUl.css('border', '1px solid red');
@@ -581,8 +583,8 @@ PTL.feed = {
         $feedBody.html(lastItems[0]);
 
         $refreshButton
-          .data('title', 'Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStamp)
-          .attr('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStamp))
+          .data('title', 'Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStampAlt)
+          .attr('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStampAlt))
           .removeClass('spin');
 
         $feedLink
