@@ -31,20 +31,18 @@ router.get('/favicon', function(req, res) {
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
       fetch(url)
-        .then(
-          res =>
-            new Promise((resolve, reject) => {
-              const dest = fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'});
-              res.body.pipe(dest);
-              res.body.on("end", () => {
-                resolve({fileName, url});
-              });
-              dest.on("error", () => {
-                res.status(500).send(false);
-                reject('No favicon found');
-              });
-            })
-        );
+        .then(res => {
+          const dest = fs.createWriteStream(filePath, { 'Content-Type': 'image/x-icon' });
+          res.body.pipe(dest);
+          res.body.on("end", () => {
+            resolve();
+            res.send(hash);
+          });
+          dest.on("error", () => {
+            res.status(500).send(false);
+            reject('No favicon found');
+          });
+        });
 
     } else {
       reject('Not a valid URL');

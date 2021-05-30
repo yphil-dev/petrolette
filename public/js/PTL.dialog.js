@@ -388,7 +388,6 @@ PTL.dialog = {
 
           $('.helpTourDialogItem').each(function() {
             const step = $(this).data('step');
-            console.error('step: %s (%s)', step);
             $(this)
               .parent()
               .prev()
