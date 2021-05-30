@@ -12,7 +12,8 @@ PTL.feed = {
         src: '/static/images/rss.gif',
         class: 'favicon',
         width: '16px',
-        height: '16px'
+        height: '16px',
+        onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
       })
       .on("error", function(error) {
         console.error('Fav1: %s (%s)', error, url);
