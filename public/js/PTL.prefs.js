@@ -2,7 +2,7 @@
 
 PTL.prefs = {
 
-  getDefaultFeeds:function() {
+  getDefaultFeeds: function() {
 
     var result = null;
     $.ajax({
@@ -17,7 +17,7 @@ PTL.prefs = {
     return result;
 
   },
-  readConfig:function(key) {
+  readConfig: function(key) {
 
     const defaults = {
       'gallerySlideTransition': 'fade',
@@ -46,7 +46,7 @@ PTL.prefs = {
     }
 
   },
-  writeConfig:function(key, val) {
+  writeConfig: function(key, val) {
 
     $('div#logoTitle i').addClass('writing');
 
@@ -56,19 +56,19 @@ PTL.prefs = {
 
     localStorage.setItem(key, val);
 
-    setTimeout(function () {
+    setTimeout(function() {
       $('div#logoTitle i').delay('slow').removeClass('writing');
     }, 300);
 
   },
-  exportConfig:function(data, fileName) {
+  exportConfig: function(data, fileName) {
 
     const a = document.createElement("a");
     document.body.appendChild(a);
     a.style = "display: none";
     const json = JSON.stringify(data, null, 2),
-          blob = new Blob([json], {type: "application/json"}),
-          url = window.URL.createObjectURL(blob);
+      blob = new Blob([json], { type: "application/json" }),
+      url = window.URL.createObjectURL(blob);
     a.href = url;
     a.download = fileName;
     a.click();

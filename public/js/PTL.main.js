@@ -3,10 +3,28 @@
 var PTL = (function() {
 
   return {
-    // language: Prefs.readConfig('lang'),
+    DbName: 'petrolette',
+    DbVersion: 1,
+    DbStore: 'feeds',
+    DbKey: 'url',
     feedTypes: ['text', 'mixed', 'photo'],
     language: 'en',
     start : function() {
+
+      let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
+
+      request.onerror = function(event) {
+        // Handle errors.
+      };
+      request.onupgradeneeded = function(event) {
+        var db = event.target.result;
+
+        var objectStore = db.createObjectStore(PTL.DbStore, { keyPath: PTL.DbKey });
+
+        console.log('DB OK: %s (%s)', PTL.DbName, PTL.DbStore);
+
+      };
+
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
@@ -125,7 +143,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-        PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', '', '', 30, true, false);
+          PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', 30, true, false);
       });
 
       $feedCodeButton.click(function(event) {

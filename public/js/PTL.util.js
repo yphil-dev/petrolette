@@ -233,13 +233,13 @@ PTL.util = {
     return isMobile;
 
   },
-  help:function(type) {
+  help:function(type, step) {
 
     PTL.sideMenu('close');
 
-    const dialog = introJs(),
+    const dialog = introJs(step),
           menu = introJs(),
-          ui = introJs();
+          ui = introJs(step);
 
     ui.setOptions({
       steps: [
@@ -308,16 +308,10 @@ PTL.util = {
     dialog.setOptions({
       steps: [
         {
-          title: PTL.tr('Everything starts here'),
-          element: 'input#feedGuessInput',
+          title: PTL.tr('Location of the feed'),
+          element: '#feedGuessDiv',
           intro: '<p><span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss ptl-link" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>.</p><p><span class="translate" data-content="If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words">' + PTL.tr('If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words') + '.</span><p>',
           position: 'bottom'
-        },
-        {
-          title: PTL.tr('Explore!'),
-          element: 'button#feedGuessButton',
-          intro: PTL.tr('Find / discover the feed of this website, or build a search feed from the words') + '.',
-          position: 'left'
         },
         {
           title: PTL.tr('Feed name (optional)'),
@@ -327,19 +321,25 @@ PTL.util = {
         },
         {
           title: PTL.tr('Keep everything tidy'),
-          element: 'fieldset#feedTabFieldset',
+          element: '#feedTabSelect',
           intro: PTL.tr('Move this feed to another tab.'),
           position: 'bottom'
         },
         {
           title: PTL.tr('Feed type'),
-          element: 'fieldset#feedTypeFieldset',
+          element: '#feedTypeDiv',
           intro: PTL.tr('The type of feed: It can be all text, all image, or mixed.'),
           position: 'top'
         },
         {
+          title: PTL.tr('Height of the feed'),
+          element: '#feedHeightDiv',
+          intro: PTL.tr('How many new items should this feed display at a time?'),
+          position: 'top'
+        },
+        {
           title: PTL.tr('Number of items'),
-          element: 'fieldset#feedLimitFieldset',
+          element: '#feedMaxItemsDiv',
           intro: PTL.tr('How many new items should this feed display at a time?'),
           position: 'top'
         },
@@ -393,7 +393,10 @@ PTL.util = {
     dialog.setOption('hideNext', true);
     dialog.setOption('hidePrev', true);
 
-    if (type === 'menu') {
+
+    if (step) {
+      dialog.goToStepNumber(step).start();
+    } else if (type === 'menu') {
       dialog.exit();
       menu.start();
       $('.introjs-fixParent').css('position', 'absolute');

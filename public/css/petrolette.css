@@ -204,6 +204,10 @@ i.tabIcon,
   cursor: pointer;
 }
 
+.middleButton {
+  margin: 0 5px;
+}
+
 p.dangerous {
   color: var(--color-ui-danger);
 }
@@ -554,10 +558,6 @@ li.feedItem.error > strong.value {
   z-index: 10;
 }
 
-.hidden {
-  display: none;
-}
-
 #newTabTab.hidden {
   display: none;
 }
@@ -692,10 +692,6 @@ i.tabIcon {
   right: 3px;
 }
 
-button#feedGuessButton {
-  margin-left: 0.4em;
-}
-
 a.feedErrorReportButton,
 a.validateFeedButton {
   flex: 1;
@@ -787,7 +783,7 @@ ul.help li.cloud::before {
 
 .grow,
 .shrink,
-.unique {
+.unique:not(#feedTabSelect) {
   margin: 0.2em;
 }
 
@@ -1075,7 +1071,7 @@ div.introjs-helperLayer {
 /* IntroJS (help tooltips) */
 .introjs-tooltip {
   background-color: var(--color-background) !important;
-  border: 1px solid var(--color-ui-qua);
+  border: 1px solid var(--color-text);
   color: var(--color-text) !important;
   width: 360px !important;
   max-width: 360px !important;
@@ -1281,11 +1277,6 @@ li.ui-tabs-tab {
   border: 1px solid var(--color-dialog-border);
 }
 
-/* .ui-tab.ui-state-active a:link, */
-/* .ui-tab.ui-state-active i { */
-/*   color: var(--color-link-hover); */
-/* } */
-
 .introjs-button,
 .introjs-button:focus,
 .ui-button {
@@ -1300,14 +1291,19 @@ li.ui-tabs-tab {
   color: var(--color-button-text);
 }
 
-/* .ui-state-active, */
-/* .ui-widget-content .ui-state-active, */
-/* .ui-widget-header .ui-state-active, */
 .introjs-button:active,
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
   background: var(--color-button-bg-active);
+}
+
+.introjs-arrow.top {
+  border-bottom-color: var(--color-text) !important;
+}
+
+.introjs-arrow.bottom {
+  border-top-color: var(--color-text) !important;
 }
 
 .ui-state-hover,
@@ -1373,4 +1369,35 @@ a:visited.ui-button {
 
 button.ui-state-success {
   background: var(--color-ui-success) !important;
+}
+
+.newItemsBadge {
+  flex-basis: content;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 0.7em;
+  background: var(--color-ui-success);
+  color: var(--color-ui-qua);
+  width: 17px;
+  max-width: 17px;
+  min-width: 17px;
+  height: 17px;
+  line-height: 17px;
+  margin: 3px 3px 0 0;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.hidden {
+  display: none;
+}
+
+.helpIcon {
+  margin: 0 0 0 0.3em;
+  cursor: pointer;
+  color: var(--color-ui-sec);
+}
+
+.helpIcon:hover {
+  color: var(--color-ui-success);
 }

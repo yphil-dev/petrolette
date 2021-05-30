@@ -7,5 +7,5 @@ job1:
   stage: build
   script:
     - npm install
-    - PTL_PORT_HTTP=8000 npm start
-    - PTL_PORT_HTTP=8000 npm run coverage
+    - npm start
+    - npm run coverage
