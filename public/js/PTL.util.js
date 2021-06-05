@@ -453,8 +453,6 @@ PTL.util = {
         value: 1,
         complete: function() {
           $progressLabel.addClass('on');
-          PTL.tab.saveTabs();
-          console.log('SAVED: %s (%s)');
         }
       });
 
