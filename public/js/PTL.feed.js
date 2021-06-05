@@ -16,8 +16,6 @@ PTL.feed = {
         onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
       })
       .on("error", function(error) {
-        // console.error('Fav1: %s (%s)', error, url);
-        // $(this).attr('src', '/static/images/rss.gif');
         $(this).parent().parent().children('div.dataStore').data('iconhash', '');
         PTL.tab.saveTabs();
       });
@@ -90,11 +88,11 @@ PTL.feed = {
       .attr('class', 'feed-control translate icon-refresh feedRefresh')
       .data('title', 'Refresh this feed', url)
       .attr('title', PTL.tr('Refresh this feed', url))
-      .click(async function() {
+      .click(function() {
         // var plop = $(this).parent().parent().parent().next('div.feedBody').find('li').lengh;
         $('.selected').removeClass('selected');
         $('.icon-checked').toggleClass('icon-checked icon-checkbox');
-        await PTL.feed.populate($(this), progress);
+        PTL.feed.populate($(this), progress).then().catch(e => {console.log('whoap: %s (%s)', e);});
       });
 
     const $feedControls = $('<div>')
@@ -473,7 +471,6 @@ PTL.feed = {
   fetchIcon: function(feedHost) {
 
     return new Promise((resolve, reject) => {
-
       $.get("/favicon", {
         url: decodeURI(feedHost),
         dataType: "json"
@@ -505,7 +502,7 @@ PTL.feed = {
     });
 
   },
-  populate: async function($button, progress, newLimit) {
+  populate: async function($button, progress) {
 
     const $dataStore = $button.parent().parent(),
       $refreshButton = $dataStore.find('i.feedRefresh.icon-refresh').addClass('spin'),
@@ -542,23 +539,21 @@ PTL.feed = {
         .addClass('folded');
     }
     
-    // if (feedIconHash) {
-    //   $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-    // } else {
-    //   await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
-    //     if (iconhash) {
-    //       $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-    //       $dataStore.data('iconhash', iconhash);
-    //       PTL.tab.saveTabs();
-    //     }
-    //   }).catch((error) => {
-    //     console.log('Fav: %s (%s)', JSON.stringify(error), feedUrl);
-    //     $favIcon.addClass('icon-rss');
-    //   });
-    // }
-
     if (feedIconHash) {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+    } else {
+      PTL.feed.fetchIcon(feedHost)
+        .then(hash => {
+
+          // PTL.util.say(PTL.tr('New icon in cache') + ' (' + hash + '.favicon / ' + feedHost + ')', 'success');
+          
+          $favIcon.attr('src', '/favicons/' + hash + '.favicon');
+          $dataStore.data('iconhash', hash);
+          PTL.tab.saveTabs();
+        })
+        .catch(e => {
+          PTL.util.say(PTL.tr('Error fetching icon') + ' (' + feedHost + ')' , 'warning');
+        });
     }
     
     if ($dataStore.data('status') == 'on') {
@@ -613,6 +608,8 @@ PTL.feed = {
     }
 
     if (progress) progress.increment();
+
+    return true;
     
   }
 

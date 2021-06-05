@@ -17,45 +17,41 @@ console.error('### (re)START ## Version (%s)', pjson.version);
 
 router.use(sanitize);
 
+const downloadFile = (async (url, path) => {
+  const res = await fetch(url);
+  const fileStream = fs.createWriteStream(path);
+  await new Promise((resolve, reject) => {
+      res.body.pipe(fileStream);
+      res.body.on("error", reject);
+      fileStream.on("finish", resolve);
+    });
+});
+
 router.get('/favicon', function(req, res) {
 
-  favrat(req.query.url, function(err, url) {
+  favrat(req.query.url, function(error, url) {
 
-    if (err) console.error('######### err: %s (%s)', err);
-    
-    if (url) {
+    if (error) {
+      console.erroror('######### error: %s (%s)', error);
+      res.status(500).send(error);
+    } else if (url) {
 
       console.error('######### url: %s (%s)',url);
 
-      if (!url.startsWith('http') || !url.startsWith('//')) url = 'http://' + url.substring(url.indexOf("/") + 1);
+    //   if (!url.startsWith('http') || !url.startsWith('//')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 
       const hash = crypto.createHash('md5').update(url).digest('hex'),
             fileName = hash + '.favicon',
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
-      // res.send(hash);
+      downloadFile(url, filePath);
 
-      fetch(url)
-        .then(
-          res =>
-            new Promise((resolve, reject) => {
-              const dest = fs.createWriteStream(filePath, {'Content-Type': 'image/x-icon'});
-              res.body.pipe(dest);
-              res.body.on("end", () => {
-                resolve({fileName, url});
-              });
-              dest.on("error", () => {
-                reject('No favicon found');
-                res.status(500).send(false);
-              });
-            })
-        ).catch(error => {
-          res.status(500).send(error);
-        });
-
-    } else {
-      res.status(500).send(false);
+      res.send(hash);
+      
+    // } else {
+    //   res.status(500).send(false);
     }
+    
   });
 });
 

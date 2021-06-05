@@ -1,6 +1,6 @@
-const fetch      = require('node-fetch'),
-      iconv      = require('iconv-lite'),
-      FeedParser = require('feedparser');
+const fetch = require('node-fetch'),
+  iconv = require('iconv-lite'),
+  FeedParser = require('feedparser');
 
 exports.getFeed = getFeed;
 
@@ -29,14 +29,14 @@ function getParams(str) {
   return params;
 }
 
-function formatError (error) {
+function formatError(error) {
 
   let message = (error.message) ? error.message : 'Can\'t read this feed';
   let type = (error.type) ? error.type : 'Unknown type';
   let status = (error.status && Number.isInteger(error.status)) ? error.status : 400;
-  
-  return { type: type, status: status, message: message };  
-  
+
+  return { type: type, status: status, message: message };
+
 }
 
 function getFeed(feedUrl, lastItem, callback) {
@@ -46,10 +46,9 @@ function getFeed(feedUrl, lastItem, callback) {
     'accept': 'text/html,application/xhtml+xml',
     redirect: 'follow'
   }).then(function(res) {
-    
+
     if (res.status != 200) {
-      reject();
-      callback(formatError({type:'Network error', status:res.status, message:'Bad server response'}));
+      callback(formatError({ type: 'Network error', status: res.status, message: 'Bad server response' }));
     }
 
     var feedparser = new FeedParser();
@@ -59,59 +58,51 @@ function getFeed(feedUrl, lastItem, callback) {
     responseStream = maybeTranslate(responseStream, charset);
     responseStream.pipe(feedparser);
 
-    return new Promise((resolve, reject) => {
-      feedparser.on('error', function(error) {
+    feedparser.on('error', function(error) {
 
-        reject();
+      callback(formatError(error));
+
+    }).on('readable', function() {
+
+      try {
+        var item = this.read();
+        if (item !== null) {
+          feedItems.push(item);
+        }
+      }
+      catch (error) {
         callback(formatError(error));
-        
-      }).on('readable', function() {
+      }
 
-        try {
-          var item = this.read();
-          if (item !== null) {
-            feedItems.push(item);
-          }
-        }
-        catch (error) {
-          reject();
-          callback(formatError(error));
-        }
-        
-      }).on('end', function() {
+    }).on('end', function() {
 
-        if (feedItems.length === 0) {
-          reject();
-          callback(formatError({type:'Empty feed', status:300, message:'Feed OK, but empty'}));
-        }
-        
-        resolve();
+      if (feedItems.length === 0) {
+        callback(formatError({ type: 'Empty feed', status: 300, message: 'Feed OK, but empty' }));
+      }
 
-        var newLastItem;
-        var totalNewItems;
-        var i = 0;
+      var newLastItem;
+      var totalNewItems;
+      var i = 0;
 
-        feedItems.forEach(countItems);
+      feedItems.forEach(countItems);
 
-        function countItems(item) {
-          i++;
-          if (newLastItem == undefined) newLastItem = item.link;
-          if (item.link == lastItem) totalNewItems = i - 1;
-        }
+      function countItems(item) {
+        i++;
+        if (newLastItem == undefined) newLastItem = item.link;
+        if (item.link == lastItem) totalNewItems = i - 1;
+      }
 
-        if (totalNewItems == undefined) totalNewItems = i;
+      if (totalNewItems == undefined) totalNewItems = i;
 
-        const meta = this.meta;
-        return callback(null, feedItems, meta.title || feedUrl, meta.link || feedUrl, newLastItem, totalNewItems);
-
-      });
+      const meta = this.meta;
+      return callback(null, feedItems, meta.title || feedUrl, meta.link || feedUrl, newLastItem, totalNewItems);
 
     });
 
   }).catch((error) => {
 
     // callback(formatError(error));
-    callback(formatError({type:'Network problem', status:300, message: error.message || 'Network problem'}));
+    callback(formatError({ type: 'Network problem', status: 300, message: error.message || 'Network problem' }));
 
 
   });
