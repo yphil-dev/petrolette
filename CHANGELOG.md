@@ -3,14 +3,19 @@
 
 ## 1.3.0
 
-- New theming engine / logic
-    - Full "Light / Dark" UI
+- New feed items indicator / badge #96
+- New help system #104
+- Number of items hard limit #81
+- New theming engine / logic #75
+    - Full "Light / Dark" UI 
+    - New icon set
 - Rendering (CSS, transitions, JQ, etc.) optimizations
 - Dialog KB control
 
 ### Bugfixes
 
 - Better (faster) server (fetch) error handling
+- Sister libs Licence change
 - Finalized name refactoring
 - Explicit CSS vars names
 

@@ -86,9 +86,11 @@ PTL.i18n.translations = {
 
   "How many new items should this feed display at a time?" : { fr: "Combien de nouveaux articles dans ce flux ?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el feed a la vez?" },
 
-
-
   "Tabs and feeds saved" : { fr: "Onglets et flux enregistrés" , ja: "タブとソースが保存されました", es: "Pestañas y fuentes guardadas" },
+
+  "New icon in cache" : { fr: "Nouvelle icône dans le cache" , ja: "キャッシュの新しいアイコン", es: "Nuevo icono en caché" },
+
+  "Error fetching icon" : { fr: "Erreur au téléchargement de l'icône" , ja: "アイコンのフェッチエラー", es: "Error al buscar icono" },
 
   "Theme" : { fr: "Thème" , ja: "テーマ", es: "Tema" },
   "Language" : { fr: "Langue" , ja: "言語", es: "Idioma" },

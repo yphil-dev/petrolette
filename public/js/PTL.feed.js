@@ -2,108 +2,108 @@
 
 PTL.feed = {
 
-  add:function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, clickNew, isQueryString, progress) {
+  add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, clickNew, isQueryString, progress) {
 
     const $feed = $('<li>')
-          .attr('class', 'feed');
+      .attr('class', 'feed');
 
     const $feedImg = $('<img>')
       .attr({
         src: '/static/images/rss.gif',
         class: 'favicon',
         width: '16px',
-        height: '16px'
+        height: '16px',
+        onerror: "this.src='/static/images/rss.gif';"
       })
       .on("error", function(error) {
-        console.error('Fav1: %s (%s)', error, url);
-        $(this).attr('src', '/static/images/rss.gif');
         $(this).parent().parent().children('div.dataStore').data('iconhash', '');
         PTL.tab.saveTabs();
       });
 
     const $newItemsBadge = $('<div>')
-          .attr('class', 'newItemsBadge hidden');
+      .attr('class', 'newItemsBadge hidden');
 
     const $feedIcon = $('<i>')
-          .attr({'class': 'feed-control feedIcon translate',
-		 'title': PTL.tr('Fold / unfold this feed (%1)', url)})
-          .data('title', 'Fold / unfold this feed (%1)', url)
-          .click(function() {
+      .attr({
+        'class': 'feed-control feedIcon translate',
+        'title': PTL.tr('Fold / unfold this feed (%1)', url)
+      })
+      .data('title', 'Fold / unfold this feed (%1)', url)
+      .click(function() {
 
-            if ($feedControls.data('status') == 'on') {
-              $(this).removeClass('fold')
-                .parent().parent().parent()
-                .children('div.feedBody')
-                .addClass('folded');
-              $feedControls.data('status', 'off');
-              $refreshIcon.removeClass('icon-refresh')
-                .addClass('icon-pin');
-            } else {
-              $(this).addClass('fold')
-                .parent().parent().parent()
-                .children('div.feedBody')
-                .removeClass('folded');
-              $feedControls.data('status', 'on');
-              $refreshIcon.removeClass('icon-pin')
-                .addClass('icon-refresh');
-            }
+        if ($feedControls.data('status') == 'on') {
+          $(this).removeClass('fold')
+            .parent().parent().parent()
+            .children('div.feedBody')
+            .addClass('folded');
+          $feedControls.data('status', 'off');
+          $refreshIcon.removeClass('icon-refresh')
+            .addClass('icon-pin');
+        } else {
+          $(this).addClass('fold')
+            .parent().parent().parent()
+            .children('div.feedBody')
+            .removeClass('folded');
+          $feedControls.data('status', 'on');
+          $refreshIcon.removeClass('icon-pin')
+            .addClass('icon-refresh');
+        }
 
-            PTL.tab.saveTabs();
-            PTL.feed.populate($refreshIcon);
-	    
-          });
+        PTL.tab.saveTabs();
+        PTL.feed.populate($refreshIcon);
+
+      });
 
     const $selectIcon = $('<i>')
-          .attr('class', 'feed-control translate icon-checkbox feedSelect')
-          .data('title', 'Select this feed', url)
-          .attr('title', PTL.tr('Select this feed', url))
-          .click(function() {
-            $(this).parent().parent().parent().parent()
-              .toggleClass('selected');
-            $(this).toggleClass('icon-checked icon-checkbox');
-          });
+      .attr('class', 'feed-control translate icon-checkbox feedSelect')
+      .data('title', 'Select this feed', url)
+      .attr('title', PTL.tr('Select this feed', url))
+      .click(function() {
+        $(this).parent().parent().parent().parent()
+          .toggleClass('selected');
+        $(this).toggleClass('icon-checked icon-checkbox');
+      });
 
     const $deleteIcon = $('<i>')
-          .attr('class', 'feed-control translate icon-trash-empty feed-delete')
-          .data('title', 'Delete this feed', url)
-          .attr('title', PTL.tr('Delete this feed', url))
-          .click(function() {
-            $('.selected').removeClass('selected');
-            $('.icon-checked').toggleClass('icon-checked icon-checkbox');
-            PTL.dialog.killFeed($(this));
-          });
+      .attr('class', 'feed-control translate icon-trash-empty feed-delete')
+      .data('title', 'Delete this feed', url)
+      .attr('title', PTL.tr('Delete this feed', url))
+      .click(function() {
+        $('.selected').removeClass('selected');
+        $('.icon-checked').toggleClass('icon-checked icon-checkbox');
+        PTL.dialog.killFeed($(this));
+      });
 
     const $prefsIcon = $('<i>')
-          .attr('class', 'feed-control translate icon-cog feedPrefs')
-          .data('title', 'Edit this feed parameters', url)
-          .attr('title', PTL.tr('Edit this feed parameters', url))
-          .click(function() {
-            $('.selected').removeClass('selected');
-            $('.icon-checked').toggleClass('icon-checked icon-checkbox');
-            PTL.dialog.feedPrefs($(this));
-          });
+      .attr('class', 'feed-control translate icon-cog feedPrefs')
+      .data('title', 'Edit this feed parameters', url)
+      .attr('title', PTL.tr('Edit this feed parameters', url))
+      .click(function() {
+        $('.selected').removeClass('selected');
+        $('.icon-checked').toggleClass('icon-checked icon-checkbox');
+        PTL.dialog.feedPrefs($(this));
+      });
 
     const $refreshIcon = $('<i>')
-          .attr('class', 'feed-control translate icon-refresh feedRefresh')
-          .data('title', 'Refresh this feed', url)
-          .attr('title', PTL.tr('Refresh this feed', url))
-          .click(async function() {
-            // var plop = $(this).parent().parent().parent().next('div.feedBody').find('li').lengh;
-            $('.selected').removeClass('selected');
-            $('.icon-checked').toggleClass('icon-checked icon-checkbox');
-            await PTL.feed.populate($(this), progress);
-          });
+      .attr('class', 'feed-control translate icon-refresh feedRefresh')
+      .data('title', 'Refresh this feed', url)
+      .attr('title', PTL.tr('Refresh this feed', url))
+      .click(function() {
+        $('.selected').removeClass('selected');
+        $('.icon-checked').toggleClass('icon-checked icon-checkbox');
+        PTL.feed.populate($(this), progress).then().catch(e => {console.log('whoap: %s (%s)', e);});
+      });
 
     const $feedControls = $('<div>')
-          .attr('class', 'feedControls dataStore')
-          .data('url', url)
-          .data('name', name)
-          .data('type', type)
-          .data('limit', limit)
-          .data('status', status)
-          .data('iconhash', iconhash)
-          .data('nbitems', nbitems)
-          .data('lastitem', lastitem);
+      .attr('class', 'feedControls dataStore')
+      .data('url', url)
+      .data('name', name)
+      .data('type', type)
+      .data('limit', limit)
+      .data('status', status)
+      .data('iconhash', iconhash)
+      .data('nbitems', nbitems)
+      .data('lastitem', lastitem);
 
     $refreshIcon
       .attr('data-url', url)
@@ -124,34 +124,34 @@ PTL.feed = {
     }
 
     const $feedHandle = $('<div>')
-          .data('title', PTL.tr('Move this feed (%1)', url))
-          .attr({
-            title: PTL.tr('Move this feed (%1)', url),
-            class:'feedHandle'
-          });
+      .data('title', PTL.tr('Move this feed (%1)', url))
+      .attr({
+        title: PTL.tr('Move this feed (%1)', url),
+        class: 'feedHandle'
+      });
 
     const $feedBody = $('<div>').attr('class', 'feedBody').css('height', limit),
-          $feedHeader = $('<div>').attr('class', 'feedHeader'),
-          $feedToggle = $('<div>').attr('class', 'feedToggle').append($feedIcon, $feedImg),
-          $selectDiv = $('<div>').append($selectIcon),
-          $deleteDiv = $('<div>').append($deleteIcon),
-          $prefsDiv = $('<div>').append($prefsIcon),
-          $reloadDiv = $('<div>').append($refreshIcon);
+      $feedHeader = $('<div>').attr('class', 'feedHeader'),
+      $feedToggle = $('<div>').attr('class', 'feedToggle').append($feedIcon, $feedImg),
+      $selectDiv = $('<div>').append($selectIcon),
+      $deleteDiv = $('<div>').append($deleteIcon),
+      $prefsDiv = $('<div>').append($prefsIcon),
+      $reloadDiv = $('<div>').append($refreshIcon);
 
     const $titleDiv = $('<div>')
-          .attr({
-            title: name || PTL.tr('New feed'),
-            class:'feedTitle trucate'
-          });
+      .attr({
+        title: name || PTL.tr('New feed'),
+        class: 'feedTitle trucate'
+      });
 
     const $titleLink = $('<a>')
-          .attr('href', url)
-          .attr('target', '_blank')
-          .html(name || PTL.tr('New feed'));
+      .attr('href', url)
+      .attr('target', '_blank')
+      .html(name || PTL.tr('New feed'));
 
-    $feedControls.hover (
-      function() {$(this).find('.collapsible').show();},
-      function() {$(this).find('.collapsible').hide('fade', 'fast');}
+    $feedControls.hover(
+      function() { $(this).find('.collapsible').show(); },
+      function() { $(this).find('.collapsible').hide('fade', 'fast'); }
     );
 
     if (!PTL.util.isMobile()) {
@@ -163,7 +163,7 @@ PTL.feed = {
     }
 
 
-    $feedHeader.hover (function() {
+    $feedHeader.hover(function() {
 
       $(this).find('img.favicon').hide();
       $feedIcon.removeClass('icon-rss').addClass('icon-down');
@@ -176,10 +176,10 @@ PTL.feed = {
     });
 
     $feedHeader.append($feedToggle,
-                       $feedHandle,
-                       $titleDiv.append($titleLink),
-                       $newItemsBadge,
-                       $feedControls.append($prefsDiv, $reloadDiv));
+      $feedHandle,
+      $titleDiv.append($titleLink),
+      $newItemsBadge,
+      $feedControls.append($prefsDiv, $reloadDiv));
 
     $feed.append($feedHeader, $feedBody);
 
@@ -192,20 +192,18 @@ PTL.feed = {
     }
 
   },
-  lastItems:function(feedItems, $dataStore) {
+  lastItems: function(feedItems, $dataStore) {
 
     return new Promise((resolve, reject) => {
 
-      // console.log('feedItems: %s (%s)', JSON.stringify(feedItems));
-
       const $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
-            feedUrl = $dataStore.data('url'),
-            nbItems = $dataStore.data('nbitems'),
-            feedType = $dataStore.data('type');
+        feedUrl = $dataStore.data('url'),
+        nbItems = $dataStore.data('nbitems'),
+        feedType = $dataStore.data('type');
 
       const l = PTL.util.getLocation(feedUrl),
-            p = l.protocol ? l.protocol + '//' : '//',
-            feedHost = p + l.hostname;
+        p = l.protocol ? l.protocol + '//' : '//',
+        feedHost = p + l.hostname;
 
       var newItems = 0;
 
@@ -217,7 +215,7 @@ PTL.feed = {
         if (nbItems > 0 && newItems == nbItems) break;
 
         const $description = $.parseHTML(item.description),
-              imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+          imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
         let summary, imageUrl, audioUrl, audioType, videoUrl, videoType;
 
@@ -236,12 +234,12 @@ PTL.feed = {
         }
 
         const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
-              $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
-              $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
-              $commentsIcon = $('<i>'),
-              $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
-              $itemDiv = $('<div>').attr('class', 'itemDiv'),
-              $feedItem = $('<li>').attr('class', 'feedItem');
+          $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
+          $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
+          $commentsIcon = $('<i>'),
+          $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+          $itemDiv = $('<div>').attr('class', 'itemDiv'),
+          $feedItem = $('<li>').attr('class', 'feedItem');
 
         let $image;
 
@@ -264,9 +262,7 @@ PTL.feed = {
         if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
           imageUrl = $tempDom.find('img').attr('src');
           if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
-            // XKCD summary in the title of the description XML tag
             $feedItem.attr('title', $tempDom.find('img').attr('title'));
-
           }
         }
 
@@ -315,7 +311,7 @@ PTL.feed = {
         if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
           $imageLink
-            .attr('href', imageUrl.replace('http://','https://'))
+            .attr('href', imageUrl.replace('http://', 'https://'))
             .attr('title', $summary.trim())
             .attr('data-fancybox', 'gallery')
             .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
@@ -326,7 +322,7 @@ PTL.feed = {
 
           $image = $('<img>')
             .attr('src', '/static/images/loading.gif')
-            .attr('data-srcset', imageUrl.replace('http://','https://'))
+            .attr('data-srcset', imageUrl.replace('http://', 'https://'))
             .attr('srcset', '/static/images/loading.gif')
             .attr('title', $summary.trim())
             .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
@@ -356,25 +352,21 @@ PTL.feed = {
 
       }
 
-      if (true) {
-        resolve([$feedBodyUl.html(), newItems]);
-      } else {
-        reject('no real reason');
-      }
-
+      resolve([$feedBodyUl.html(), newItems]);
+      
     });
 
   },
-  appendAudioPlayer:function($itemDiv, audioUrl, audioType) {
+  appendAudioPlayer: function($itemDiv, audioUrl, audioType) {
 
     const $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
-          $audioIcon = $('<i>'),
-          audioPlayer      = document.createElement('audio');
+      $audioIcon = $('<i>'),
+      audioPlayer = document.createElement('audio');
 
     audioPlayer.controls = 'controls';
-    audioPlayer.src      = audioUrl;
-    audioPlayer.type     = audioType;
-    audioPlayer.preload  = PTL.prefs.readConfig('mediaPreload');
+    audioPlayer.src = audioUrl;
+    audioPlayer.type = audioType;
+    audioPlayer.preload = PTL.prefs.readConfig('mediaPreload');
 
     $itemDiv.append(audioPlayer);
 
@@ -386,16 +378,16 @@ PTL.feed = {
       .appendTo($audioLink);
 
   },
-  appendVideoPlayer:function($itemDiv, videoUrl, videoType) {
+  appendVideoPlayer: function($itemDiv, videoUrl, videoType) {
 
-    const videoPlayer    = document.createElement('video'),
-          $videoIcon = $('<i>'),
-          $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink');
+    const videoPlayer = document.createElement('video'),
+      $videoIcon = $('<i>'),
+      $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink');
 
     videoPlayer.controls = 'controls';
-    videoPlayer.src      = videoUrl;
-    videoPlayer.type     = videoType;
-    videoPlayer.preload  = PTL.prefs.readConfig('mediaPreload');
+    videoPlayer.src = videoUrl;
+    videoPlayer.type = videoType;
+    videoPlayer.preload = PTL.prefs.readConfig('mediaPreload');
 
     $itemDiv.append(videoPlayer);
 
@@ -409,8 +401,8 @@ PTL.feed = {
     return $itemDiv;
 
   },
-  errorFeed:function(error, feedUrl) {
-    
+  errorFeed: function(error, feedUrl) {
+
     const status = error.status;
     const message = error.message;
     const type = error.type;
@@ -465,12 +457,11 @@ PTL.feed = {
       .append($errorItem);
 
     return $feedBodyUl;
-    
+
   },
-  fetchIcon:function(feedHost) {
+  fetchIcon: function(feedHost) {
 
     return new Promise((resolve, reject) => {
-
       $.get("/favicon", {
         url: decodeURI(feedHost),
         dataType: "json"
@@ -486,7 +477,7 @@ PTL.feed = {
     });
 
   },
-  fetchFeed:function(feedUrl, lastItem, nbItems) {
+  fetchFeed: function(feedUrl, lastItem, nbItems) {
 
     return new Promise((resolve, reject) => {
       $.get("/feed", {
@@ -500,29 +491,31 @@ PTL.feed = {
         reject(jqXHR, textStatus, errorThrown);
       });
     });
-    
+
   },
-  populate:async function($button, progress, newLimit) {
+  populate: async function($button, progress) {
 
     const $dataStore = $button.parent().parent(),
-          $refreshButton = $dataStore.find('i.feedRefresh.icon-refresh').addClass('spin'),
-          $feedHeader = $dataStore.parent(),
-          $feedLink = $feedHeader.children('div.feedTitle').children('a'),
-          $badge = $feedHeader.children('.newItemsBadge'),
-          $feedBody = $dataStore.parent().next('div.feedBody'),
-          $feedBodyUl = $feedBody.find('ul.feedBody'),
-          feedUrl = $dataStore.data('url'),
-          feedIconHash = $dataStore.data('iconhash'),
-          $feedToggle = $feedHeader.children('.feedToggle'),
-          $feedIcon = $feedToggle.children('.feedIcon').addClass('fold'),
-          $favIcon = $feedToggle.children('.favicon');
+      $refreshButton = $dataStore.find('i.feedRefresh.icon-refresh').addClass('spin'),
+      $feedHeader = $dataStore.parent(),
+      $feedLink = $feedHeader.children('div.feedTitle').children('a'),
+      $badge = $feedHeader.children('.newItemsBadge'),
+      $feedBody = $dataStore.parent().next('div.feedBody'),
+      $feedBodyUl = $feedBody.find('ul.feedBody'),
+      feedUrl = $dataStore.data('url'),
+      feedIconHash = $dataStore.data('iconhash'),
+      $feedToggle = $feedHeader.children('.feedToggle'),
+      $feedIcon = $feedToggle.children('.feedIcon').addClass('fold'),
+      $favIcon = $feedToggle.children('.favicon');
 
     const l = PTL.util.getLocation(feedUrl),
-          feedProtocol = l.protocol ? l.protocol + '//' : '//',
-          feedHost = feedProtocol + l.hostname,
-          dateObj = new Date(),
-          timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
+      feedProtocol = l.protocol ? l.protocol + '//' : '//',
+      feedHost = feedProtocol + l.hostname,
+      dateObj = new Date(),
+      timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
 
+    const timeStampAlt = dateObj.toTimeString().substr(0,8);
+    
     var feedLastItem = $dataStore.data('lastitem');
 
     $feedBodyUl.css('border', '1px solid red');
@@ -536,12 +529,27 @@ PTL.feed = {
         .children('div.feedBody')
         .addClass('folded');
     }
+    
+    if (feedIconHash) {
+      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+    } else {
+      PTL.feed.fetchIcon(feedHost)
+        .then(hash => {
 
-    // console.log('lastItem: %s', feedLastItem, feedUrl);
-
+          // PTL.util.say(PTL.tr('New icon in cache') + ' (' + hash + '.favicon / ' + feedHost + ')', 'success');
+          
+          // $favIcon.attr('src', '/favicons/' + hash + '.favicon');
+          $dataStore.data('iconhash', hash);
+          PTL.tab.saveTabs();
+        })
+        .catch(e => {
+          $favIcon.attr('src', '/static/images/rss.gif');
+          PTL.util.say(PTL.tr('Error fetching icon') + ' (' + feedHost + ')' , 'warning');
+        });
+    }
+    
     if ($dataStore.data('status') == 'on') {
 
-      $feedIcon.removeClass('fold');
       $refreshButton.addClass('spin');
 
       let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
@@ -561,8 +569,8 @@ PTL.feed = {
         $feedBody.html(lastItems[0]);
 
         $refreshButton
-          .data('title', 'Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStamp)
-          .attr('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStamp))
+          .data('title', 'Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStampAlt)
+          .attr('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStampAlt))
           .removeClass('spin');
 
         $feedLink
@@ -579,7 +587,7 @@ PTL.feed = {
         }
 
       }
-	
+
     } else {
 
       $dataStore
@@ -588,25 +596,10 @@ PTL.feed = {
         .children('div.feedBody')
         .addClass('folded');
 
-    }		 
-
-    if (feedIconHash) {
-      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-    } else {
-      await PTL.feed.fetchIcon(feedHost).then((iconhash) => {
-        if (iconhash) {
-          $favIcon.attr('src', '/favicons/' + iconhash + '.favicon');
-          $dataStore.data('iconhash', iconhash);
-          PTL.tab.saveTabs();
-        }
-      }).catch((error) => {
-        console.error('Fav: %s (%s)', error, feedUrl);
-        $favIcon.addClass('icon-rss');
-      });
     }
 
     if (progress) progress.increment();
-
+    
   }
 
 };
