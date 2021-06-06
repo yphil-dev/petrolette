@@ -32,11 +32,8 @@ router.get('/favicon', function(req, res) {
   favrat(req.query.url, function(error, url) {
 
     if (error) {
-      console.erroror('######### error: %s (%s)', error);
       res.status(500).send(error);
     } else if (url) {
-
-      console.error('######### url: %s (%s)',url);
 
     //   if (!url.startsWith('http') || !url.startsWith('//')) url = 'http://' + url.substring(url.indexOf("/") + 1);
 
@@ -48,8 +45,6 @@ router.get('/favicon', function(req, res) {
 
       res.send(hash);
       
-    // } else {
-    //   res.status(500).send(false);
     }
     
   });

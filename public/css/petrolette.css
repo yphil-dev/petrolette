@@ -1174,6 +1174,7 @@ video {
 #ptlSearch {
   display: flex;
   flex-direction: row;
+  padding-left: 12px;
 }
 
 #ptlSearch .ptlSearchButton {

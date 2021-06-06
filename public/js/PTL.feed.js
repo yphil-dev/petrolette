@@ -13,7 +13,7 @@ PTL.feed = {
         class: 'favicon',
         width: '16px',
         height: '16px',
-        onerror: "this.onerror=null;this.src='/static/images/rss.gif';"
+        onerror: "this.src='/static/images/rss.gif';"
       })
       .on("error", function(error) {
         $(this).parent().parent().children('div.dataStore').data('iconhash', '');
@@ -89,7 +89,6 @@ PTL.feed = {
       .data('title', 'Refresh this feed', url)
       .attr('title', PTL.tr('Refresh this feed', url))
       .click(function() {
-        // var plop = $(this).parent().parent().parent().next('div.feedBody').find('li').lengh;
         $('.selected').removeClass('selected');
         $('.icon-checked').toggleClass('icon-checked icon-checkbox');
         PTL.feed.populate($(this), progress).then().catch(e => {console.log('whoap: %s (%s)', e);});
@@ -197,8 +196,6 @@ PTL.feed = {
 
     return new Promise((resolve, reject) => {
 
-      // console.log('feedItems: %s (%s)', JSON.stringify(feedItems));
-
       const $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
         feedUrl = $dataStore.data('url'),
         nbItems = $dataStore.data('nbitems'),
@@ -265,9 +262,7 @@ PTL.feed = {
         if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
           imageUrl = $tempDom.find('img').attr('src');
           if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
-            // XKCD summary in the title of the description XML tag
             $feedItem.attr('title', $tempDom.find('img').attr('title'));
-
           }
         }
 
@@ -357,12 +352,8 @@ PTL.feed = {
 
       }
 
-      if (true) {
-        resolve([$feedBodyUl.html(), newItems]);
-      } else {
-        reject('no real reason');
-      }
-
+      resolve([$feedBodyUl.html(), newItems]);
+      
     });
 
   },
@@ -545,9 +536,9 @@ PTL.feed = {
       PTL.feed.fetchIcon(feedHost)
         .then(hash => {
 
-          PTL.util.say(PTL.tr('New icon in cache') + ' (' + hash + '.favicon / ' + feedHost + ')', 'success');
+          // PTL.util.say(PTL.tr('New icon in cache') + ' (' + hash + '.favicon / ' + feedHost + ')', 'success');
           
-          $favIcon.attr('src', '/favicons/' + hash + '.favicon');
+          // $favIcon.attr('src', '/favicons/' + hash + '.favicon');
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs();
         })
@@ -559,7 +550,6 @@ PTL.feed = {
     
     if ($dataStore.data('status') == 'on') {
 
-      $feedIcon.removeClass('fold');
       $refreshButton.addClass('spin');
 
       let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
@@ -609,8 +599,6 @@ PTL.feed = {
     }
 
     if (progress) progress.increment();
-
-    return true;
     
   }
 
