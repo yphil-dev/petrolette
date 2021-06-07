@@ -1,6 +1,5 @@
 # Changelog
 
-
 ## 1.3.0
 
 - New feed items indicator / badge #96
