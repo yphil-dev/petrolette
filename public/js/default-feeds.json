@@ -2946,14 +2946,6 @@
           "status": "off",
           "iconhash": "3be21baa6e5e8ac02f6e94ea1338ba5e",
           "nbitems": 10
-        },
-        {
-          "url": "http://rss.liberation.fr/rss/latest/",
-          "name": "Libération",
-          "type": "mixed",
-          "limit": 433,
-          "status": "off",
-          "nbitems": 10
         }
       ],
       [

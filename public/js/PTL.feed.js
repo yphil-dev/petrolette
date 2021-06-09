@@ -90,7 +90,9 @@ PTL.feed = {
       .click(function() {
         $('.selected').removeClass('selected');
         $('.icon-checked').toggleClass('icon-checked icon-checkbox');
-        PTL.feed.populate($(this), progress).then().catch(e => {console.log('whoap: %s (%s)', e);});
+        PTL.feed.populate($(this), progress)
+          .then(() => {return true;})
+          .catch(error => {console.log('whoap: %s (%s)', JSON.stringify(error));});
       });
 
     const $feedControls = $('<div>')
