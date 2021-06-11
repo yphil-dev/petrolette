@@ -36,7 +36,7 @@ PTL.feed = {
             .children('div.feedBody')
             .addClass('folded');
           $feedControls.data('status', 'off');
-          $refreshIcon.removeClass('icon-refresh')
+          $refreshIcon.removeClass('icon-refresh spin')
             .addClass('icon-pin');
         } else {
           $(this).addClass('fold')
