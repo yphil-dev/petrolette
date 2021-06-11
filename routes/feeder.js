@@ -1,6 +1,6 @@
 const fetch = require('node-fetch'),
-  iconv = require('iconv-lite'),
-  FeedParser = require('feedparser');
+      iconv = require('iconv-lite'),
+      FeedParser = require('feedparser');
 
 exports.getFeed = getFeed;
 
@@ -40,7 +40,7 @@ function formatError(error) {
 }
 
 function getFeed(feedUrl, lastItem, callback) {
-
+  
   fetch(feedUrl, {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
     'accept': 'text/html,application/xhtml+xml',

@@ -287,15 +287,13 @@ PTL.dialog = {
                 .data('name', newName)
                 .data('type', newType);
 
-              console.log('newUrl: %s (%s)', newUrl, $dataStore.data('url'));
-
               if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
                 $feed.hide('fade', 1000, function() { $feed.remove(); });
               } else {
                 PTL.feed.populate($button);
               }
 
-              // PTL.tab.saveTabs();
+              PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
 
             }
@@ -332,7 +330,7 @@ PTL.dialog = {
           });
 
           function guessError() {
-            $guessSpinner.removeClass('icon-cog spin ui-state-success')
+            $guessSpinner.removeClass('icon-refresh spin ui-state-success')
               .addClass('icon-error');
 
             $guessButton
@@ -408,7 +406,7 @@ PTL.dialog = {
 
             $guessSpinner
               .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
-              .addClass('spin icon-cog');
+              .addClass('spin icon-refresh');
             $guessButton.removeClass('icon-checked ui-state-success ui-state-error');
 
             $.get('/discover', {
@@ -419,7 +417,7 @@ PTL.dialog = {
             }).fail(function(req, status, xhr) {
               guessError();
             }).done(function(feed) {
-              $guessSpinner.removeClass('spin icon-cog');
+              $guessSpinner.removeClass('spin icon-refresh');
 
               $feedGuessInput.val(feed);
 

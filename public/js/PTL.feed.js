@@ -58,9 +58,9 @@ PTL.feed = {
       .data('title', 'Select this feed', url)
       .attr('title', PTL.tr('Select this feed', url))
       .click(function() {
-        $(this).parent().parent().parent().parent()
+        $(this).toggleClass('icon-checked icon-checkbox')
+          .parent().parent().parent().parent()
           .toggleClass('selected');
-        $(this).toggleClass('icon-checked icon-checkbox');
       });
 
     const $deleteIcon = $('<i>')
@@ -90,9 +90,7 @@ PTL.feed = {
       .click(function() {
         $('.selected').removeClass('selected');
         $('.icon-checked').toggleClass('icon-checked icon-checkbox');
-        PTL.feed.populate($(this), progress)
-          .then(() => {return true;})
-          .catch(error => {console.log('whoap: %s (%s)', JSON.stringify(error));});
+        PTL.feed.populate($(this), progress);
       });
 
     const $feedControls = $('<div>')
@@ -312,15 +310,16 @@ PTL.feed = {
         if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
           $imageLink
-            .attr('href', imageUrl.replace('http://', 'https://'))
+            .attr('href', imageUrl)
             .attr('title', $summary.trim())
             .attr('data-fancybox', 'gallery')
             .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
-          if (!(imageUrl.indexOf('http://') === 0 || imageUrl.indexOf('https://') === 0)) {
-            imageUrl = feedHost + imageUrl;
-          }
+          const protocols = ['http://', 'http://', '//'];
+          
+          if (protocols.indexOf(imageUrl) !== -1) imageUrl = feedHost + imageUrl;
 
+          
           $image = $('<img>')
             .attr('src', '/static/images/loading.gif')
             .attr('data-srcset', imageUrl.replace('http://', 'https://'))
