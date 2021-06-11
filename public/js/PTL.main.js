@@ -105,9 +105,12 @@ var PTL = (function() {
         $('li.feedItem').each(function () {
           if (v != '' && $(this).text().search(new RegExp(v,'gi')) != -1) {
             const $feed = $(this).parent().parent();
-            const $col = $feed.parent().parent();
+            const $col = $feed.parent();
             const tabId = $col.parent().attr('aria-labelledby');
             const $tab = $('a#' + tabId);
+
+            console.log('tabId: %s (%s)', tabId);            
+            
             $(this).addClass('results');
             $feed.addClass('results');
             $tab.addClass('results');

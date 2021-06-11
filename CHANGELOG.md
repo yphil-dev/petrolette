@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.2
+
+- New favicon error handling #b92f6cb6
+- New favicon saving routine
+- Support for protocol-relative urls in images
+- New feeds saved back
+- Libs version update
+- Default feeds update
+
 ## 1.3.0
 
 - New feed items indicator / badge #96
