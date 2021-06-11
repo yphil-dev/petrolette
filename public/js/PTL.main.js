@@ -108,9 +108,6 @@ var PTL = (function() {
             const $col = $feed.parent();
             const tabId = $col.parent().attr('aria-labelledby');
             const $tab = $('a#' + tabId);
-
-            console.log('tabId: %s (%s)', tabId);            
-            
             $(this).addClass('results');
             $feed.addClass('results');
             $tab.addClass('results');
