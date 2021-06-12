@@ -840,7 +840,7 @@ ul.column div.buttons {
   position: absolute;
   right: 0;
   text-align: center;
-  bottom: 15px;
+  bottom: 1px;
   width: 150px;
   z-index: 1 !important;
 }
@@ -864,6 +864,12 @@ li.feed {
   border: unset;
   text-shadow: unset;
   font-size: unset;
+}
+
+.introjs-skipbutton {
+  font-size: 12pt !important;
+  padding: 0;
+  margin-right: -7px;
 }
 
 li.feed.selected {

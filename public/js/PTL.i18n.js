@@ -80,12 +80,14 @@ PTL.i18n.translations = {
 
   "Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title." : { fr: "Renommez le flux de ce site Web, s'il n'est pas assez informatif ; laisser vide pour obtenir le titre du flux par défaut." , ja: "それが十分に報知されていない場合、このウェブサイトのフィードに名前を付けます。 デフォルトフィードのタイトルを取得するには、空白のままにします", es: "Nombra la fuente de este sitio web, si no es lo suficientemente informativo; Deje en blanco para obtener el título de fuente predeterminado." },
 
-  "Move this feed to another tab." : { fr: "Déplacer ce flux dans un autre onglet." , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo." },
+  "Move this feed to another tab ; Use this menu when drag & drop is not available, like on a phone or a TV." : { fr: "Déplacer ce flux dans un autre onglet ; ce menu est pratique lorsque le glisser-déposer n'est pas disponible, comme sur un téléphone ou un téléviseur." , ja: "このソースを別のグループに移動する", es: "Mueva esta fuente a otro grupo ; Use este menú cuando Drag & Drop no está disponible, como en un teléfono o un televisor." },
 
   "The type of feed: It can be all text, all image, or mixed." : { fr: "Quel type de flux ? Tout le texte, toute l'image, ou les deux.", ja: "どんな種類の飼料ですか？ すべてのテキスト、すべてのイメージ、または混合。", es: "¿Qué tipo de flux? Todo el texto, toda la imagen o mixto." },
 
-  "How many new items should this feed display at a time?" : { fr: "Combien de nouveaux articles dans ce flux ?", ja: "フィードは一度にいくつ表示する必要がありますか？", es: "¿Cuántos elementos nuevos debería mostrar el feed a la vez?" },
+  "Height of the feed\'s viewport." : { fr: "Hauteur de la fenêtre du flux", ja: "ソースのビューポートの高さ", es: "Altura de la ventana de la fuente." },
 
+  "Number of items to load ; 0 loads all items." : { fr: "Nombre d'articles à charger; 0 charge tous les articles.", ja: "ロードする項目数。 0すべてのアイテムをロードします。", es: "Número de artículos para cargar; 0 carga todos los artículos." },
+  
   "Tabs and feeds saved" : { fr: "Onglets et flux enregistrés" , ja: "タブとソースが保存されました", es: "Pestañas y fuentes guardadas" },
 
   "New icon in cache" : { fr: "Nouvelle icône dans le cache" , ja: "キャッシュの新しいアイコン", es: "Nuevo icono en caché" },
@@ -206,7 +208,15 @@ PTL.i18n.translations = {
 
   "Tab control" : { fr: "Contrôle de l'onglet" , ja: "タブコントロール", es: "Control de pestañas" },
 
+  "Columns" : { fr: "Colonnes" , ja: "列", es: "Columnas" },
+
+  "Click <strong>+</strong> to add a column, and <strong>-</strong> to delete it." : { fr: "Cliquez sur </strong>+</strong> pour ajouter une colonne et </strong>-</strong> pour la supprimer." , ja: "「+」をクリックして列を追加し、「-」を削除します。", es: "Haga clic en </strong>+</strong> para agregar una columna, y </strong>-</strong> para eliminarlo." },
+
   "Add a new feed" : { fr: "Ajouter un nouveau flux" , ja: "新しいフィードを追加する", es: "Agregar un nuevo fuente" },
+
+  "You are home" : { fr: "Vous êtes chez vous" , ja: "あなたは在宅です", es: "Estás en casa" },
+
+  "Use the menu to configure your Pétrolette." : { fr: "Utilisez le menu pour configurer votre Pétrolette." , ja: "メニューを使用してPétroletteを設定します。", es: "Utilice el menú para configurar su Pétrolette." },
 
   "Get the latest articles." : { fr: "Voir les derniers articles." , ja: "最新の記事を入手する。", es: "Obtenga los últimos artículos." },
   "B-bye" : { fr: "Au revoir" , ja: "さようなら", es: "Adios" },
@@ -219,7 +229,7 @@ PTL.i18n.translations = {
 
   'Drag me to the bookmark bar, or right click "Bookmark this link"' : { fr: 'Glissez-moi dans la barre de favoris, ou clic droit "Marque-page sur ce lien"' , ja: 'ブックマークバーに私をドラッグするか、右クリック"Bookmarkこのリンク"', es: 'Arrastre a la barra de marcadores, o haga clic derecho en "Bookmark este enlace"' },
 
-  "This is an RSS feed" : { fr: "Ceci est un flux RSS" , ja: "これはソースです 詳細情報", es: "Esta es una fuente." },
+  "This is an RSS feed." : { fr: "Ceci est un flux RSS." , ja: "これはソースです 詳細情報", es: "Esta es una fuente." },
 
   "Click this button to add a tab" : { fr: "Cliquez sur ce bouton pour ajouter un onglet" , ja: "グループを追加するには、このボタンをクリックします。", es: "Haga clic en este botón para agregar un grupo" },
 

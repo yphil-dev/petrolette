@@ -27,6 +27,7 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 
 - No ads, no trackers, **just the news**
 - Displays all modern feeds (Atom, RSS 1/2, **MediaRSS**, etc.)
+- New items indicator / badge
 - **Video / Audio playing** directly in Pétrolette
 - **Discovery of the feed** in a page / website
 - Mobile / **phone** / tablet / responsive interface

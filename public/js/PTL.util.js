@@ -250,7 +250,7 @@ PTL.util = {
         {
           title: PTL.tr("That's what it's all about"),
           element: 'li.feed',
-          intro: PTL.tr('This is an RSS feed.') + ' <a href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-help"></i></a>'
+          intro: PTL.tr('This is an RSS feed.') + ' <a href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-globe"></i></a>'
         },
         {
           title: PTL.tr('Keep everything tidy'),
@@ -289,7 +289,7 @@ PTL.util = {
         },
         {
           title: PTL.tr('Fold / unfold this feed'),
-          element: 'div.feed-toggle',
+          element: 'div.feedToggle',
           intro: PTL.tr('Folded feeds are not loaded at startup, so as to speed things up.')
         },
         {
@@ -298,9 +298,14 @@ PTL.util = {
           intro: PTL.tr('Delete this feed.')
         },
         {
-          title: PTL.tr('You are in control now'),
+          title: PTL.tr('Columns'),
+          element: 'div.buttons',
+          intro: PTL.tr('Click <strong>+</strong> to add a column, and <strong>-</strong> to delete it.')
+        },
+        {
+          title: PTL.tr('You are home') + ' 🏠',
           element: 'div#menuButton',
-          intro: PTL.tr('Use the menu to configure Pétrolette')
+          intro: PTL.tr('Use the menu to configure your Pétrolette.')
         }
       ]
     });
@@ -322,7 +327,7 @@ PTL.util = {
         {
           title: PTL.tr('Keep everything tidy'),
           element: '#feedTabSelect',
-          intro: PTL.tr('Move this feed to another tab.'),
+          intro: PTL.tr('Move this feed to another tab ; Use this menu when drag & drop is not available, like on a phone or a TV.'),
           position: 'bottom'
         },
         {
@@ -334,13 +339,13 @@ PTL.util = {
         {
           title: PTL.tr('Height of the feed'),
           element: '#feedHeightDiv',
-          intro: PTL.tr('How many new items should this feed display at a time?'),
+          intro: PTL.tr('Height of the feed\'s viewport.'),
           position: 'top'
         },
         {
           title: PTL.tr('Number of items'),
           element: '#feedMaxItemsDiv',
-          intro: PTL.tr('How many new items should this feed display at a time?'),
+          intro: PTL.tr('Number of items to load ; 0 loads all items.'),
           position: 'top'
         },
         {
@@ -379,12 +384,12 @@ PTL.util = {
 
     ui.setOption('prevLabel', PTL.tr('Prev'));
     ui.setOption('nextLabel', PTL.tr('Next'));
-    ui.setOption('skipLabel', PTL.tr('Close'));
+    ui.setOption('skipLabel', 'x');
     ui.setOption('doneLabel', PTL.tr('Got it!'));
 
     dialog.setOption('prevLabel', PTL.tr('Prev'));
     dialog.setOption('nextLabel', PTL.tr('Next'));
-    dialog.setOption('skipLabel', PTL.tr('Close'));
+    dialog.setOption('skipLabel', 'x');
     dialog.setOption('doneLabel', PTL.tr('Got it!'));
 
     dialog.setOption('overlayOpacity', 0);
@@ -406,6 +411,7 @@ PTL.util = {
     } else {
       dialog.exit();
       $('#menu > .handle').click();
+      $('#tabs').tabs('option', 'active', 0);
       $('.feed').first().find('.collapsible').show('fade', 'fast');
       ui.start();
     }

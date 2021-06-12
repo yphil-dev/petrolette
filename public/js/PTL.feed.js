@@ -196,15 +196,15 @@ PTL.feed = {
     return new Promise((resolve, reject) => {
 
       const $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
-        feedUrl = $dataStore.data('url'),
-        nbItems = $dataStore.data('nbitems'),
-        feedType = $dataStore.data('type');
+            feedUrl = $dataStore.data('url'),
+            nbItems = $dataStore.data('nbitems'),
+            feedType = $dataStore.data('type');
 
       const l = PTL.util.getLocation(feedUrl),
-        p = l.protocol ? l.protocol + '//' : '//',
-        feedHost = p + l.hostname;
+            p = l.protocol ? l.protocol + '//' : '//',
+            feedHost = p + l.hostname;
 
-      var newItems = 0;
+      let newItems = 0;
 
       for (const key in feedItems) {
         newItems++;
@@ -214,7 +214,7 @@ PTL.feed = {
         if (nbItems > 0 && newItems == nbItems) break;
 
         const $description = $.parseHTML(item.description),
-          imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+              imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
         let summary, imageUrl, audioUrl, audioType, videoUrl, videoType;
 
@@ -316,10 +316,10 @@ PTL.feed = {
             .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
           const protocols = ['http://', 'http://', '//'];
-          
+
           if (protocols.indexOf(imageUrl) !== -1) imageUrl = feedHost + imageUrl;
 
-          
+
           $image = $('<img>')
             .attr('src', '/static/images/loading.gif')
             .attr('data-srcset', imageUrl.replace('http://', 'https://'))
@@ -353,7 +353,7 @@ PTL.feed = {
       }
 
       resolve([$feedBodyUl.html(), newItems]);
-      
+
     });
 
   },
@@ -514,8 +514,8 @@ PTL.feed = {
       dateObj = new Date(),
       timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
 
-    const timeStampAlt = dateObj.toTimeString().substr(0,8);
-    
+    const timeStampAlt = dateObj.toTimeString().substr(0, 8);
+
     var feedLastItem = $dataStore.data('lastitem');
 
     $feedBodyUl.css('border', '1px solid red');
@@ -529,7 +529,7 @@ PTL.feed = {
         .children('div.feedBody')
         .addClass('folded');
     }
-    
+
     if (feedIconHash) {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
     } else {
@@ -537,17 +537,17 @@ PTL.feed = {
         .then(hash => {
 
           // PTL.util.say(PTL.tr('New icon in cache') + ' (' + hash + '.favicon / ' + feedHost + ')', 'success');
-          
+
           // $favIcon.attr('src', '/favicons/' + hash + '.favicon');
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs();
         })
         .catch(e => {
           $favIcon.attr('src', '/static/images/rss.gif');
-          PTL.util.say(PTL.tr('Error fetching icon') + ' (' + feedHost + ')' , 'warning');
+          PTL.util.say(PTL.tr('Error fetching icon') + ' (' + feedHost + ')', 'warning');
         });
     }
-    
+
     if ($dataStore.data('status') == 'on') {
 
       $refreshButton.addClass('spin');
@@ -599,7 +599,7 @@ PTL.feed = {
     }
 
     if (progress) progress.increment();
-    
+
   }
 
 };

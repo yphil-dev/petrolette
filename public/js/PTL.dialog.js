@@ -212,7 +212,6 @@ PTL.dialog = {
 
           $('.helpTour').on('click', function() {
             PTL.dialog.kill($dialog);
-            $('#tabs').tabs('option', 'active', 0);
             PTL.util.help('ui');
           });
 
