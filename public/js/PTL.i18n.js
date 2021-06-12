@@ -210,7 +210,7 @@ PTL.i18n.translations = {
 
   "Columns" : { fr: "Colonnes" , ja: "列", es: "Columnas" },
 
-  "Click <strong>+</strong> to add a column, and <strong>-</strong> to delete it." : { fr: "Cliquez sur </strong>+</strong> pour ajouter une colonne et </strong>-</strong> pour la supprimer." , ja: "「+」をクリックして列を追加し、「-」を削除します。", es: "Haga clic en </strong>+</strong> para agregar una columna, y </strong>-</strong> para eliminarlo." },
+  "Click + to add a column, and - to delete it." : { fr: "Cliquez sur + pour ajouter une colonne et - pour la supprimer." , ja: "「+」をクリックして列を追加し、「-」を削除します。", es: "Haga clic en + para agregar una columna, y - para eliminarlo." },
 
   "Add a new feed" : { fr: "Ajouter un nouveau flux" , ja: "新しいフィードを追加する", es: "Agregar un nuevo fuente" },
 

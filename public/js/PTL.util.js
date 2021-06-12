@@ -300,7 +300,7 @@ PTL.util = {
         {
           title: PTL.tr('Columns'),
           element: 'div.buttons',
-          intro: PTL.tr('Click <strong>+</strong> to add a column, and <strong>-</strong> to delete it.')
+          intro: PTL.tr('Click + to add a column, and - to delete it.')
         },
         {
           title: PTL.tr('You are home') + ' 🏠',

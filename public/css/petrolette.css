@@ -1286,7 +1286,7 @@ li.ui-tabs-tab {
 .introjs-button:focus,
 .ui-button {
   background: var(--color-button-bg);
-  color: var(--color-button-text);
+  color: var(--color-button-text) !important;
   border: unset !important;
 }
 
