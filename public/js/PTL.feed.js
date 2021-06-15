@@ -535,16 +535,11 @@ PTL.feed = {
     } else {
       PTL.feed.fetchIcon(feedHost)
         .then(hash => {
-
-          // PTL.util.say(PTL.tr('New icon in cache') + ' (' + hash + '.favicon / ' + feedHost + ')', 'success');
-
-          // $favIcon.attr('src', '/favicons/' + hash + '.favicon');
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs();
         })
         .catch(e => {
           $favIcon.attr('src', '/static/images/rss.gif');
-          PTL.util.say(PTL.tr('Error fetching icon') + ' (' + feedHost + ')', 'warning');
         });
     }
 
