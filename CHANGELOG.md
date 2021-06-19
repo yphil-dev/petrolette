@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.3
+
+- Default search engine update (because of various instances searx RSS restrictions)
+
+### Bugfixes
+
+- A legacy db call was left in dialog's killFeed
+- Removed lingering (sync) debug symbols
+
 ## 1.3.2
 
 - New favicon error handling #b92f6cb6

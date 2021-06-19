@@ -121,7 +121,8 @@ PTL.i18n.translations = {
   "and" : { fr: "et" , ja: "そして", es: "y" },
   "a lot of work" : { fr: "beaucoup de travail" , ja: "多くの作業", es: "mucho trabajo" },
 
-  "In order to keep developing Pétrolette with new features I need your help." : { fr: "Afin de continuer à développer Pétrolette avec de nouvelles fonctionnalités, j'ai besoin de votre aide." , ja: "新しい機能を備えたペトロレットを開発し続けるために、私はあなたの助けが必要です。", es: "Para seguir desarrollando Pétrolette con nuevas funciones, necesito su ayuda." },
+  "In order to keep maintaining Pétrolette and developing her with new features I need your help." : { fr: "Afin de continuer à maintenir la Pétrolette et de la développer avec de nouvelles fonctionnalités, j'ai besoin de votre aide." , ja: "Pétroletteを維持し、新しい機能を維持し続けるために、私はあなたの助けが必要です。", es: "Para mantener el mantenimiento de la Pétrolette y desarrollarla con nuevas características, necesito su ayuda." },
+  
   "Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot." : { fr: "Pensez à soutenir le projet Pétrolette en envoyant un don. Même un tout petit montant aidera beaucoup." , ja: "寄付を送って、ペトロレットプロジェクトを支援することを検討してください。 少量でも大いに役立ちます。", es: "Considere apoyar el proyecto Pétrolette enviando una donación. Incluso la cantidad más pequeña ayudará mucho." },
 
   "Search prefix" : { fr: "Préfixe de recherche" , ja: "検索プレフィックス", es: "Prefijo de búsqueda" },

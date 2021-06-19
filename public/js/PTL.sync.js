@@ -68,8 +68,6 @@ PTL.sync = (function() {
 
           if (PTL.util.isValidPTLFile(JSON.parse(data))) {
 
-            console.log('DATA: %s (%s)', JSON.stringify(data));
-
             PTL.tab.populate(JSON.parse(data));
 
           } else {

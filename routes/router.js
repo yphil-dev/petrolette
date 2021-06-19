@@ -112,7 +112,7 @@ router.use(function(req, res) {
 
 router.use(function(error, req, res, next) {
   console.error('500 req: %s (%s)', req.url);
-  res.status(500).send('500: Internal Server Error');
+  res.status(500).send('500: whoa! Internal Server Error');
 });
 
 module.exports = router;

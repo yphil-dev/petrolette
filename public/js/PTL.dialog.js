@@ -726,11 +726,6 @@ PTL.dialog = {
             class: "dangerous translate",
             click: function() {
 
-              $selectedPanel.find('li.feed').each(function() {
-                localStorage.setItem($(this).find('div.dataStore').attr('data-url'), '');
-                console.log('deleting (%s) from cache', $(this).find('div.dataStore').attr('data-url'));
-              });
-
               $selectedTab.remove();
               $selectedPanel.remove();
 
@@ -796,15 +791,6 @@ PTL.dialog = {
             click: function() {
               $thisFeed.hide('fade', 1000, function() {
                 $(this).remove();
-
-                // localStorage.setItem(thisFeedUrl, '');
-
-                try {
-                  PTL.db.del(thisFeedUrl);
-                } catch (error) {
-                  console.log('DB Error:: %s (%s)', error);
-                }
-
                 PTL.tab.saveTabs();
               });
               PTL.dialog.kill($dialog);
