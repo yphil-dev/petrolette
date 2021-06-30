@@ -61,7 +61,7 @@ PTL.i18n.translations = {
   "Media preloading" : { fr: "Pré-chargement des médias", ja: "メディアのプリロード", es: "Precarga de medios" },
 
 
-  "Focus first tab" : { fr: "Focus sur le premier onglet", ja: "フォーカスファーストタブ", es: "Foco primera pestaña" },
+  "Click to focus current tab" : { fr: "Cliquer pour sélectionner l'onglet courant", ja: "カレントタブを焦点を合わせるにはクリックしてください", es: "Haga clic para enfocar la pestaña actual" },
 
   "A click on the Pétrolette logo puts the focus on the current tab" : { fr: "Un clic sur le logo Pétrolette met l'accent sur l'onglet en cours", ja: "Pétroletteのロゴをクリックすると、現在のタブに焦点が合わせる", es: "Un clic en el logotipo de Pétrolette pone el enfoque en la pestaña actual" },
 
