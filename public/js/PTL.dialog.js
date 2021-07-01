@@ -205,8 +205,6 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $(this).find('.help-button').button();
-
           $(this).find('.helpBookmarklet')
             .attr('href', 'javascript:void(window.open("' + window.location.href + '?add=" + window.location.href))');
 
@@ -346,7 +344,6 @@ PTL.dialog = {
             $okButton = $('.ui-dialog-buttonpane').find('.button-ok'),
             $killFeedFieldset = $('fieldset#killFeedFieldset'),
             $killFeedLegend = $('legend#killFeedLegend'),
-            $helpMiniButton = $('<button>'),
             oldUrl = $dataStore.data('url'),
             oldName = $dataStore.data('name'),
             oldType = $dataStore.data('type'),

@@ -334,10 +334,18 @@ PTL.i18n.translations = {
 
   "Empty feed" : { fr: "Source vide" , ja: "空のソース", es: "fuente vacía" },
 
-  "View Pétrolette according to the time of day." : { fr: "Voir Pétrolette selon l'heure de la journée." , ja: "時刻に応じてPétroletteを表示する", es: "Ver Pétrolette según la hora del día." },
+  "Load / import a feeds file" : { fr: "Charger / importer un fichier de flux" , ja: "ソースファイルをロード/インポートします", es: "Cargar / Importar un archivo de fuentes" },
 
+  "Save / export a feeds file" : { fr: "Sauver / exporter un fichier de flux" , ja: "ソースファイルを保存/エクスポートします", es: "Guardar / exportar un archivo de fuentes" },
+
+  "Reset Pétrolette with the default feeds" : { fr: "Réinitialiser Pétrolette avec les flux par défaut" , ja: "デフォルトフィードでPétroletteをリセットします", es: "Restablecer Pétrolette con las fuentes predeterminadas" },
+
+  "Connection to the cloud to synchronize tabs and feeds on all your devices" : { fr: "Connexion au cloud pour synchroniser onglets et flux sur plusieurs appareils" , ja: "すべてのデバイスでタブとソースを同期させるためのクラウドへの接続", es: "Conexión a la nube para sincronizar las pestañas y las fuentes en todos sus dispositivos" },
+
+  "Preferred Search engine for building search feeds" : { fr: "Moteur de recherche préféré pour la construction de sources de recherche" , ja: "検索ソースを構築するための好ましい検索エンジン", es: "Motor de búsqueda preferido para la construcción de fuentes de búsqueda" },
+  
   "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
-  "Help Pétrolette according to your spiritual mood of the day." : { fr: "Aider (en vrai) Pétrolette." , ja: "あなたの精神的な日の気分に応じてPétroletteを助けてください", es: "Ayuda a Pétrolette de acuerdo con tu estado de ánimo espiritual del día." },
+  
   "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
 
   "Connected to remote storage" : { fr: "Connecté au stockage distant" , ja: "リモートストレージに接続", es: "Conectado al almacenamiento remoto" },

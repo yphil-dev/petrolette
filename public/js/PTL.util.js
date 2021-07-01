@@ -235,11 +235,9 @@ PTL.util = {
   },
   help:function(type, step) {
 
-    PTL.sideMenu('close');
-
-    const dialog = introJs(step),
+    const dialog = introJs(),
           menu = introJs(),
-          ui = introJs(step);
+          ui = introJs();
 
     ui.setOptions({
       steps: [
@@ -360,24 +358,14 @@ PTL.util = {
     menu.setOptions({
       steps: [
         {
-          element: 'button#fileImport',
-          intro: PTL.tr('Open / import tabs and feeds.')
+          title: PTL.tr('Feeds'),
+          element: 'fieldset.feedsMenuForm',
+          intro: '<h4>' + PTL.tr('Open') + '</h4>' + PTL.tr('Load / import a feeds file') + '<h4>' + PTL.tr('Save') + '</h4>' + PTL.tr('Save / export a feeds file') + '<h4>' + PTL.tr('Reset') + '</h4>' + PTL.tr('Reset Pétrolette with the default feeds') + '<h4>' + PTL.tr('Connection to storage') + '</h4>' + PTL.tr('Connection to the cloud to synchronize tabs and feeds on all your devices')
         },
         {
-          element: 'button#saveTabs',
-          intro: PTL.tr('Save / Export tabs and feeds.')
-        },
-        {
-          element: 'div#themeBox',
-          intro: PTL.tr('View Pétrolette according to the time of day.')
-        },
-        {
-          element: 'fieldset#galleryBox',
-          intro: PTL.tr('When you click an image, you can view it in a gallery, and start a slideshow.')
-        },
-        {
-          element: 'button#donate',
-          intro: PTL.tr('Help Pétrolette according to your spiritual mood of the day.')
+          title: PTL.tr('Search prefix'),
+          element: 'fieldset.searchPrefixFieldset',
+          intro: '<h4>' + PTL.tr('Search prefix') + '</h4>' + PTL.tr('Preferred Search engine for building search feeds') + '<h4>' + PTL.tr('Restore default') + '</h4>' + PTL.tr('Restore default search prefix') + ', currently <code>' + PTL.prefs.readConfig('searchPrefixDefault') + '</code>'
         }
       ]
     });
@@ -392,24 +380,36 @@ PTL.util = {
     dialog.setOption('skipLabel', 'x');
     dialog.setOption('doneLabel', PTL.tr('Got it!'));
 
+    menu.setOption('prevLabel', PTL.tr('Prev'));
+    menu.setOption('nextLabel', PTL.tr('Next'));
+    menu.setOption('skipLabel', 'x');
+    menu.setOption('doneLabel', PTL.tr('Got it!'));
+
     dialog.setOption('overlayOpacity', 0);
     ui.setOption('overlayOpacity', 0.2);
 
     dialog.setOption('hideNext', true);
     dialog.setOption('hidePrev', true);
 
-
     if (step) {
-      dialog.goToStepNumber(step).start();
-    } else if (type === 'menu') {
-      dialog.exit();
-      menu.start();
-      $('.introjs-fixParent').css('position', 'absolute');
-    } else if (type === 'dialog') {
-      menu.exit();
-      dialog.start();
+
+      if (type === 'dialog') {
+        PTL.sideMenu('close');
+        ui.exit();
+        menu.exit();
+        dialog.goToStepNumber(step).start();
+      }
+      
+      if (type === 'menu') {
+        ui.exit();
+        dialog.exit();
+        menu.goToStepNumber(step).start();
+      }
+      
     } else {
+      PTL.sideMenu('close');
       dialog.exit();
+      menu.exit();
       $('#menu > .handle').click();
       $('#tabs').tabs('option', 'active', 0);
       $('.feed').first().find('.collapsible').show('fade', 'fast');

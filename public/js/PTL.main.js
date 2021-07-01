@@ -80,10 +80,28 @@ var PTL = (function() {
         event.preventDefault();
       });
 
-      $('nav#sideMenu .sideMenuTitleToggleDiv').click(function() {
-        $(this).children('i').toggleClass('unfold');
-        $(this).next().toggle();
+      $('nav#sideMenu .menuTourItem').each(function() {
+        const step = $(this).data('step');
+        $(this)
+          .parent()
+          .parent()
+          .append($('<i>')
+            .attr('class', 'icon-help helpIcon')
+            .attr('title', step)
+            .on('click', function() {
+              PTL.util.help('menu', step);
+            }));
       });
+
+      $('nav#sideMenu .sideMenuSectionToggle').click(function() {
+        $(this).children('i').toggleClass('unfold');
+        $(this).parent().next().toggle();
+      });
+
+      // $('nav#sideMenu .sideMenuTitleToggleDiv').click(function() {
+      //   $(this).children('i').toggleClass('unfold');
+      //   $(this).next().toggle();
+      // });
 
       $('#ptlSearch i').click(function() {
         $(this).prev('input').val('');
@@ -121,12 +139,10 @@ var PTL = (function() {
 
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
-        // PTL.dialog.beg();
       });
 
-      $('body').on('click','button#help', function() {
+      $('body').on('click','.helpLink', function() {
         PTL.dialog.help();
-        // PTL.dialog.beg();
       });
 
       $('body').on('click','.newFeedButton', function() {

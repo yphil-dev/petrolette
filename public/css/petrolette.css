@@ -437,10 +437,6 @@ h1.rs-big-headline {
   word-break: normal !important;
 }
 
-h3 {
-  margin-top: 0;
-}
-
 h1 {
   color: var(--color-ui-sec);
   margin-top: 0;
@@ -853,11 +849,14 @@ li.feed {
   width: 100%;
 }
 
-.introjs-tooltipReferenceLayer *,
-.introjs-button,
 .rs-widget,
 .ui-widget {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+}
+
+.introjs-tooltipReferenceLayer *,
+.introjs-button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 .introjs-button {
@@ -1252,23 +1251,6 @@ th {
   font-weight: bold;
 }
 
-.dialog button.help-button {
-  background-color: var(--color-ui-success);
-  color: var(--color-ui-pri);
-  padding: 0.4em;
-}
-
-#helpMiniButton {
-  font-size: 9pt;
-  font-weight: bold;
-  height: 20px;
-  padding: 1px;
-  position: absolute;
-  right: 2.8em;
-  top: 8px;
-  width: 120px;
-}
-
 li.ui-tabs-tab {
   margin: 0 0 0 0 !important;
   border-radius: 0 !important;
@@ -1405,4 +1387,9 @@ button.ui-state-success {
 
 .helpIcon:hover {
   color: var(--color-ui-success);
+}
+
+code {
+  font-family: monospace !important;
+  color: var(--color-ui-sep);
 }
