@@ -14,8 +14,11 @@ PTL.feed = {
         width: '16px',
         height: '16px',
         onerror: "this.src='/static/images/rss.gif';"
-      }).on("error", async function() {
-        await $(this).parent().parent().children('div.dataStore').data('iconhash', '');
+      }).on("error", function() {
+
+        console.log('this.src: %s (%s)', $(this).parent().parent().children('div.dataStore').data('iconhash'), $(this).parent().parent().children('div.dataStore').data('url'));
+        
+        $(this).parent().parent().children('div.dataStore').data('iconhash', 'noicon');
         PTL.tab.saveTabs();
       });
 
@@ -529,16 +532,19 @@ PTL.feed = {
         .children('div.feedBody')
         .addClass('folded');
     }
-
-    if (feedIconHash) {
+   
+    if (feedIconHash && feedIconHash !== 'noicon') {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-    } else {
+    } else if (!feedIconHash) {
       PTL.feed.fetchIcon(feedHost)
         .then(hash => {
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs();
         })
         .catch(e => {
+          console.log('e: %s (%s)', e);
+          $dataStore.data('iconhash', 'noicon');
+          PTL.tab.saveTabs();
           $favIcon.attr('src', '/static/images/rss.gif');
         });
     }

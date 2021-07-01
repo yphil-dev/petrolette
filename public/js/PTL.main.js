@@ -48,6 +48,10 @@ var PTL = (function() {
       $topMenu.removeAttr('style');
       $sideMenu.removeAttr('style');
 
+      $('noscript').hide();
+
+      $('.jsEnabledOnly').show();
+
       $searchPrefixInput
         .attr('onclick', 'this.select()')
         .val(PTL.prefs.readConfig('searchPrefix'));
@@ -72,10 +76,6 @@ var PTL = (function() {
         PTL.dialog.about($logoType.attr('data-version'));
       });
 
-      $('noscript').hide();
-
-      $('.jsEnabledOnly').show();
-
       $('body').on('click','.helpBookmarklet', function(event) {
         event.preventDefault();
       });
@@ -87,7 +87,6 @@ var PTL = (function() {
           .parent()
           .append($('<i>')
             .attr('class', 'icon-help helpIcon')
-            .attr('title', step)
             .on('click', function() {
               PTL.util.help('menu', step);
             }));
@@ -97,11 +96,6 @@ var PTL = (function() {
         $(this).children('i').toggleClass('unfold');
         $(this).parent().next().toggle();
       });
-
-      // $('nav#sideMenu .sideMenuTitleToggleDiv').click(function() {
-      //   $(this).children('i').toggleClass('unfold');
-      //   $(this).next().toggle();
-      // });
 
       $('#ptlSearch i').click(function() {
         $(this).prev('input').val('');
