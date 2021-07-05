@@ -23,7 +23,7 @@ PTL.col = {
   add: function(colIndex, newCol) {
 
     const $colButtons = $('<div>')
-          .attr('class', 'buttons flexBox');
+          .attr('class', 'colButtons flexBox');
 
     const $colLegend = $('<legend>')
         .attr('class', 'colLegend legend-col unique translate')
@@ -67,7 +67,7 @@ PTL.col = {
       const $column = $(this).parent().parent(),
             $feedsInCol = $column.find('.feed'),
             nbOfFeedsInCol = $feedsInCol.length;
-
+      
       if (nbOfFeedsInCol < 1) {
         PTL.col.del($column);
       } else {
@@ -131,11 +131,13 @@ PTL.col = {
       }
       }).disableSelection();
 
-    $colButtons.append($colLegend,
-                       $colDelButton,
-                       $colNewButton,
-                       $srcLegend,
-                       $srcNewButton);
+    $colButtons
+      .append($colLegend,
+        $colDelButton,
+        $colNewButton,
+        $srcLegend,
+        $srcNewButton)
+      .hide();
 
     return $column;
   }

@@ -342,7 +342,7 @@ PTL.i18n.translations = {
 
   "Reset Pétrolette with the default feeds." : { fr: "Réinitialiser Pétrolette avec les flux par défaut." , ja: "デフォルトフィードでPétroletteをリセットします。", es: "Restablecer Pétrolette con las fuentes predeterminadas." },
 
-  "Connection to the cloud to synchronize tabs and feeds on all devices." : { fr: "Connexion au cloud pour synchroniser onglets et flux sur plusieurs appareils." , ja: "すべてのデバイスでタブとソースを同期させるためのクラウドへの接続。", es: "Conexión a la nube para sincronizar las pestañas y las fuentes en todos sus dispositivos。" },
+  "Connection to the cloud to synchronize tabs and feeds on all devices." : { fr: "Connexion au nuage pour synchroniser onglets et flux sur plusieurs appareils." , ja: "すべてのデバイスでタブとソースを同期させるためのクラウドへの接続。", es: "Conexión a la nube para sincronizar las pestañas y las fuentes en todos sus dispositivos。" },
 
   "Preferred Search engine for building search feeds." : { fr: "Moteur de recherche préféré pour la construction de sources de recherche." , ja: "検索ソースを構築するための好ましい検索エンジン。", es: "Motor de búsqueda preferido para la construcción de fuentes de búsqueda." },
   

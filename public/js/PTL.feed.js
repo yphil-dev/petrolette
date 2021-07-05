@@ -14,10 +14,7 @@ PTL.feed = {
         width: '16px',
         height: '16px',
         onerror: "this.src='/static/images/rss.gif';"
-      }).on("error", function() {
-
-        console.log('this.src: %s (%s)', $(this).parent().parent().children('div.dataStore').data('iconhash'), $(this).parent().parent().children('div.dataStore').data('url'));
-        
+      }).on("error", function() {       
         $(this).parent().parent().children('div.dataStore').data('iconhash', 'noicon');
         PTL.tab.saveTabs();
       });

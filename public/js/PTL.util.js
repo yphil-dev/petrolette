@@ -360,12 +360,14 @@ PTL.util = {
         {
           title: PTL.tr('Feeds'),
           element: 'fieldset.feedsMenuForm',
-          intro: '<h4>' + PTL.tr('Open') + '</h4>' + PTL.tr('Load / import a feeds file') + ' ; ' + PTL.tr('to append to or replace the existing feeds.') + '<h4>' + PTL.tr('Save') + '</h4>' + PTL.tr('Save / export a feeds file.') + '<h4>' + PTL.tr('Reset') + '</h4>' + PTL.tr('Reset Pétrolette with the default feeds.') + '<h4>' + PTL.tr('Connection to storage') + '</h4>' + PTL.tr('Connection to the cloud to synchronize tabs and feeds on all devices.')
+          intro: '<h4>' + PTL.tr('Open') + '</h4>' + PTL.tr('Load / import a feeds file') + ' ; ' + PTL.tr('to append to or replace the existing feeds.') + '<h4>' + PTL.tr('Save') + '</h4>' + PTL.tr('Save / export a feeds file.') + '<h4>' + PTL.tr('Reset') + '</h4>' + PTL.tr('Reset Pétrolette with the default feeds.') + '<h4>' + PTL.tr('Connection to storage') + '</h4>' + PTL.tr('Connection to the cloud to synchronize tabs and feeds on all devices.'),
+          position: 'right'
         },
         {
           title: PTL.tr('Search prefix'),
           element: 'fieldset.searchPrefixFieldset',
-          intro: '<h4>' + PTL.tr('Search prefix') + '</h4>' + PTL.tr('Preferred Search engine for building search feeds.') + '<h4>' + PTL.tr('Restore default') + '</h4>' + PTL.tr('Restore default search prefix') + '.'
+          intro: '<h4>' + PTL.tr('Search prefix') + '</h4>' + PTL.tr('Preferred Search engine for building search feeds.') + '<h4>' + PTL.tr('Restore default') + '</h4>' + PTL.tr('Restore default search prefix') + '.',
+          position: 'right'
         }
       ]
     });

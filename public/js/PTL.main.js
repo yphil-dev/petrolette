@@ -92,6 +92,15 @@ var PTL = (function() {
             }));
       });
 
+      $(document).on({
+        mouseenter: function() {
+          $(this).find('.colButtons').show();
+        },
+        mouseleave: function() {
+          $(this).find('.colButtons').hide();
+        }
+      }, "ul.column");
+
       $('nav#sideMenu .sideMenuSectionToggle').click(function() {
         $(this).children('i').toggleClass('unfold');
         $(this).parent().next().toggle();
