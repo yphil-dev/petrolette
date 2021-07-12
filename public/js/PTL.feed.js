@@ -25,9 +25,9 @@ PTL.feed = {
     const $feedIcon = $('<i>')
       .attr({
         'class': 'feed-control feedIcon translate',
-        'title': PTL.tr('Fold / unfold this feed (%1)', url)
+        'title': PTL.tr('Fold / unfold this feed')
       })
-      .data('title', 'Fold / unfold this feed (%1)', url)
+      .data('title', 'Fold / unfold this feed')
       .click(function() {
 
         if ($feedControls.data('status') == 'on') {
@@ -135,7 +135,7 @@ PTL.feed = {
       $selectDiv = $('<div>').append($selectIcon),
       $deleteDiv = $('<div>').append($deleteIcon),
       $prefsDiv = $('<div>').append($prefsIcon),
-      $reloadDiv = $('<div>').append($refreshIcon);
+      $refreshDiv = $('<div>').append($refreshIcon);
 
     const $titleDiv = $('<div>')
       .attr({
@@ -178,7 +178,7 @@ PTL.feed = {
       $feedHandle,
       $titleDiv.append($titleLink),
       $newItemsBadge,
-      $feedControls.append($prefsDiv, $reloadDiv));
+      $feedControls.append($prefsDiv, $refreshDiv));
 
     $feed.append($feedHeader, $feedBody);
 
@@ -292,12 +292,17 @@ PTL.feed = {
             audioType = item.enclosures[0].type;
           }
 
-          if (videoUrl && videoType) {
-            PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType);
-          }
 
-          if (audioUrl && audioType) {
-            PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType);
+          if (feedType !== 'text') {
+
+            if (videoUrl && videoType) {
+              PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType);
+            }
+
+            if (audioUrl && audioType) {
+              PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType);
+            }
+
           }
 
         }

@@ -14,11 +14,11 @@
 
 ## VC workflow
 
-All work is done on `dev` or its child branches, then merged into `server` and pushed for testing, then merged into master at each release or critical bugfix. Pull Requests on `dev`, please.
+All work is done on `dev` or its child branches, then merged into `server` and pushed for testing, then merged into `master` at each release or critical bugfix. Pull Requests on `dev`, please.
 
 ## Installation notes & caveats
 
-The two libs [Feedrat](https://framagit.org/yphil/feedrat) (to discover a RSS/Atom feed at a given URL) and [Favrat](https://framagit.org/yphil/favrat) (to discover a favicon at a given URL) are no longer hosted on npm, but installed directly from the repo ; however their dependancies have to be installed manually by running `npm install` in their respective directories.
+The two libs [Feedrat](https://framagit.org/yphil/feedrat) (to discover a RSS/Atom feed at a given URL) and [Favrat](https://framagit.org/yphil/favrat) (to discover a favicon at a given URL) are no longer hosted on npm, but installed directly from the repo ; their dependancies are installed and updated using a `postinstall` command.
 
 ## Under the hood
 
@@ -29,11 +29,11 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
 - `npm start` launches `pm2` as per [package.json](package.json)
 - `pm2` launches [http/server.js](http/server.js) as per [pm2.config.json](pm2.config.json)
 - [http/server.js](http/server.js) launches [petrolette.js](petrolette.js)
-- [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 4 routes: `/` for the actual Pétrolette page, `/discover` for the RSS searching (see Feedrat), `/favicon` for the site icon searching (see Favrat) and `static` for serving the static (CSS, icons, fonts, etc.) files.
+- [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 4 routes: `/` for the actual Pétrolette page, `/discover` for the RSS searching (see [Feedrat](https://framagit.org/yphil/feedrat)), `/favicon` for the site icon searching (see [Favrat](https://framagit.org/yphil/favrat)) and `static` for serving the static (CSS, icons, fonts, etc.) files.
 - The client send the (RSS / favicon / discover / static) request to the server
-- The server returns the content to the client
+- The server returns the formatted feed to the client
 
-At the first startup, Pétrolette generates its page using a default tabs and feeds list, then copies this structured list the the client's local storage persistent cache. The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
+At the first startup, Pétrolette generates its page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
 ## Why is there a server in the first place ?
 
@@ -60,10 +60,14 @@ Those logs are also rotated by pm2, using the [pm2-logrotate](https://github.com
 
 ### Fonts
 
-The [glyph font](public/font/fontello) is a custom one, containing only the dozen of glyphs used throughout the app, made with [Fontello](https://fontello.com/). To edit this font, juste load (or just D&Drop) [fontello-config.json](public/font/fontello-config.json) into [Fontello](https://fontello.com/), make the changes, then DLoad the archive into petrolette/tmp/fontello.zip, then
+The [glyph font](public/font/fontello) is a custom one, containing only the dozen of glyphs used throughout the app, made with [Fontello](https://fontello.com/) and Pétrolette's own logo / glyph. To edit this font, juste load (or just D&Drop) [fontello-config.json](public/font/fontello-config.json) into [Fontello](https://fontello.com/), make the changes, then DLoad the archive into petrolette/tmp/fontello.zip, then
 
 `cd petrolette/tmp`
 
 Extract and copy the relevant files:
 
 `rm -rfv fontello-* ; unzip fontello.zip && cp -fv fontello-*/config.json ../public/font/fontello-config.json && cp -fv fontello-*/css/fontello.css ../public/css/ && cp -fv fontello-*/font/* ../public/font/ && cp -fv fontello-*/font/fontello.ttf ~/.fonts/ && fc-cache -f -v`
+
+For any question, please [use the repo](https://framagit.org/yphil/petrolette/-/issues/new?issue%5Bmilestone_id%5D=) itself.
+
+Thank you **very much** for any love you give to this project.

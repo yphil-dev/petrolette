@@ -1,17 +1,28 @@
 # Changelog
 
+## 1.4.0
+
+- New "media" paradigm in the feed preferences #HEAD
+    - Text only mode don't show anything but text
+- New help tour : Menu entries #5884a8b
+- Column buttons now appear on hover #cf906bb
+
+### Bugfixes
+
+- Refresh icon tooltip text (both feed URL / name and timeStamp) were `undefined` after a (long) while #HEAD
+
 ## 1.3.3
 
-- Default search engine update (because of various instances searx RSS restrictions)
+- Default search engine update (because of various instances searx RSS restrictions) #857142d1
 
 ### Bugfixes
 
 - A legacy db call was left in dialog's killFeed
 - Removed lingering (sync) debug symbols
 
-## 1.3.2
+## 1.3.2 #b92f6cb6
 
-- New favicon error handling #b92f6cb6
+- New favicon error handling
 - New favicon saving routine
 - Support for protocol-relative urls in images
 - New feeds saved back

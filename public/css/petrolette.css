@@ -827,7 +827,7 @@ ul.column {
 ul.column div.colButtons {
   display: var(--column-buttons-display);
   border-radius: 3px;
-  border: 3px dashed var(--color-ui-sep);
+  border: 3px dashed var(--color-feed-bg);
   color: var(--color-ui-sep);
   left: 0;
   margin-left: auto;

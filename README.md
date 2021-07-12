@@ -11,7 +11,7 @@
 
 ## Good morning! ☕ 📰
 
-[Pétrolette](http://petrolette.space) is a news reading home page, [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). It is immediately usable **without registration** with the **same URL** on the desktop or a mobile device.
+[Pétrolette](https://petrolette.space) is a news home page, [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). She is immediately usable **without registration** with the **same URL** on the desktop or a mobile device.
 
 Go ahead, it's yours : Create, delete, move feeds and tabs, close / quit your browser, come back tomorrow, everything is how you left it.
 

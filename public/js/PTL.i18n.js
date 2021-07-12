@@ -58,6 +58,8 @@ PTL.i18n.translations = {
 
   "Loading" : { fr: "Chargement", ja: "読み込み中", es: "Cargando" },
 
+  "Media" : { fr: "Média", ja: "メディア", es: "Medios" },
+  
   "Media preloading" : { fr: "Pré-chargement des médias", ja: "メディアのプリロード", es: "Precarga de medios" },
 
 
@@ -436,9 +438,9 @@ PTL.i18n.translations = {
 
   "Move the current feed to this tab" : { fr: "Déplacer le flux courant dans cet onglet", ja: "このグループの現在のフィードを移動する", es: "Mueve el fuente actual en este grupo" },
 
-  "Display only text" : { fr: "Affichage du texte seul", ja: "テキストのみ", es: "visualización del solo texto" },
-  "Display text and image" : { fr: "Affichage du texte et de l'image", ja: "テキストとイメージ", es: "visualización del texto e imagen" },
-  "Display only image" : { fr: "Affichage de l'image seule", ja: "画像のみ", es: "visualización del solo imagen" },
+  "Only display text" : { fr: "Affichage du texte seul", ja: "テキストのみを表示する", es: "Mostrar solo texto" },
+  "Display text and media (image, audio, video)" : { fr: "Affichage du texte et du média (image, audio, video)", ja: "テキストとメディア（画像、音声、ビデオ）を表示する", es: "Mostrar texto y medios (imagen, audio, video)" },
+  "Only display media (image, audio, video)" : { fr: "Affichage du média seul (image, audio, video)", ja: "表示メディア（画像、音声、ビデオ）のみ", es: "Mostrar solo medios (imagen, audio, video)" },
 
   "Validate /verify this feed file with the W3C" : { fr: "Valider / vérifier ce fichier flux avec le W3C", ja: "このソースファイルをW3Cで検証/検証する", es: "Validar / verificar este archivo fuente con el W3C" },
 
