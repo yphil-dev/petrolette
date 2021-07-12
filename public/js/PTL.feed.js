@@ -549,6 +549,9 @@ PTL.feed = {
           PTL.tab.saveTabs();
           $favIcon.attr('src', '/static/images/rss.gif');
         });
+    } else {
+      $dataStore.data('iconhash', '');
+      PTL.tab.saveTabs();
     }
 
     if ($dataStore.data('status') == 'on') {
