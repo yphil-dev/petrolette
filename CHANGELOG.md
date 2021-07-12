@@ -2,32 +2,33 @@
 
 ## 1.4.0
 
-- New "media" paradigm in the feed preferences #HEAD
+- New "media" paradigm in the feed preferences #a633d06d
     - Text only mode don't show anything but text
 - New help tour : Menu entries #5884a8b
 - Column buttons now appear on hover #cf906bb
 
 ### Bugfixes
 
-- Refresh icon tooltip text (both feed URL / name and timeStamp) were `undefined` after a (long) while #HEAD
+- Refresh icon tooltip text (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
 
 ## 1.3.3
 
-- Default search engine update (because of various instances searx RSS restrictions) #857142d1
+- Default search engine update (because of various instances searx RSS restrictions) #8870f07e
 
 ### Bugfixes
 
 - A legacy db call was left in dialog's killFeed
 - Removed lingering (sync) debug symbols
 
-## 1.3.2 #b92f6cb6
+## 1.3.2
 
-- New favicon error handling
-- New favicon saving routine
-- Support for protocol-relative urls in images
-- New feeds saved back
-- Libs version update
-- Default feeds update
+- One big squashed commit #b92f6cb6
+    - New favicon error handling
+    - New favicon saving routine
+    - Support for protocol-relative urls in (Atom feeds) images
+    - New feeds saved on first submit
+    - Libs version update
+    - Default feeds update
 
 ## 1.3.0
 

@@ -368,6 +368,12 @@ PTL.util = {
           element: 'fieldset.searchPrefixFieldset',
           intro: '<h4>' + PTL.tr('Search prefix') + '</h4>' + PTL.tr('Preferred Search engine for building search feeds.') + '<h4>' + PTL.tr('Restore default') + '</h4>' + PTL.tr('Restore default search prefix') + '.',
           position: 'right'
+        },
+        {
+          title: 'Pétrolette',
+          element: 'fieldset.ptlFieldset',
+          intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
+          position: 'right'
         }
       ]
     });

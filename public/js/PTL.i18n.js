@@ -59,9 +59,12 @@ PTL.i18n.translations = {
   "Loading" : { fr: "Chargement", ja: "読み込み中", es: "Cargando" },
 
   "Media" : { fr: "Média", ja: "メディア", es: "Medios" },
+
+  "Bookmarklet" : { fr: "Média", ja: "メディア", es: "Medios" },
   
   "Media preloading" : { fr: "Pré-chargement des médias", ja: "メディアのプリロード", es: "Precarga de medios" },
 
+  "Bookmark to quickly add a website\'s feed to Pétrolette" : { fr: "Marque-page pour ajouter le flux d'un site dans Pétrolette", ja: "ブックマークして、PétroletteにWebサイトのフィードを追加します", es: "Marcador para agregar el feed de un sitio web en Pétrolette" },
 
   "Click to focus current tab" : { fr: "Cliquer pour sélectionner l'onglet courant", ja: "カレントタブを焦点を合わせるにはクリックしてください", es: "Haga clic para enfocar la pestaña actual" },
 
@@ -112,7 +115,7 @@ PTL.i18n.translations = {
 
   "Console" : { fr: "Console" , ja: "コンソール", es: "Consola" },
 
-  "JavaScript licencing information" : { fr: "Informations de licence JavaScript" , ja: "JavaScriptのライセンス情報", es: "Información de licencia de JavaScript" },
+  "JavaScript licensing information" : { fr: "Informations de licence JavaScript" , ja: "JavaScriptのライセンス情報", es: "Información de licencia de JavaScript" },
 
   "Send your love to Pétrolette" : { fr: "Aider Pétrolette" , ja: "Pétroletteにあなたの愛を送る", es: "Envíale tu amor a Pétrolette" },
 

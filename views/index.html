@@ -396,14 +396,26 @@
       </fieldset>
 
       <div class="sideMenuTitleToggleDiv ui-corner-top hover">
-        <i class="icon-right rotate unfold"></i>
-        <span class="translate"
-              data-content="Pétrolette">
-          Pétrolette
+        <span class="sideMenuSectionToggle">
+          <i class="icon-right rotate unfold"></i>
+          <span class="translate menuTourItem"
+                data-step="3"
+                data-content="Pétrolette">
+            Pétrolette
+          </span>
         </span>
-      </div>
-      <fieldset class="menuForm">
+      </div>     
+      <fieldset class="menuForm ptlFieldset">
         <div class="flexBox">
+
+          <a href="#"
+             class="helpBookmarklet grow ui-button ui-corner-all translate unique"
+             data-title='Drag me to the bookmark bar, or right click "Bookmark this link"'
+             title='Drag me to the bookmark bar, or right click "Bookmark this link"'
+             data-content="Add to Pétrolette">
+            Add to Pétrolette
+          </a>
+
           <a href="https://framagit.org/yphil/petrolette"
              class="grow ui-button ui-corner-all translate left"
              data-title="Use the force - read the Source"
@@ -414,8 +426,8 @@
           <a href="/about/javascript"
              data-jslicense="1"
              class="grow ui-button ui-corner-all translate"
-             data-title="JavaScript licencing information"
-             title="JavaScript licencing information"
+             data-title="JavaScript licensing information"
+             title="JavaScript licensing information"
              data-content="License">
             License
           </a>
