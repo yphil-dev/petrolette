@@ -205,8 +205,11 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $(this).find('.helpBookmarklet')
-            .attr('href', 'javascript:void(window.open("' + window.location.href + '?add=" + window.location.href))');
+
+          const ptlUrl = [location.protocol, '//', location.host, location.pathname].join('');
+      
+          $('.helpBookmarklet')
+            .attr('href', 'javascript:void(window.open("' + ptlUrl + '?add="+encodeURIComponent(location.href)))');
 
           $('.helpTour').on('click', function() {
             PTL.dialog.kill($dialog);

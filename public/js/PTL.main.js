@@ -139,8 +139,10 @@ var PTL = (function() {
 
       $('button').button();
 
+      const ptlUrl = [location.protocol, '//', location.host, location.pathname].join('');
+      
       $('.helpBookmarklet')
-        .attr('href', 'javascript:void(window.open("' + window.location.href + '?add="+encodeURIComponent(location.href)))');
+        .attr('href', 'javascript:void(window.open("' + ptlUrl + '?add="+encodeURIComponent(location.href)))');
       
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
