@@ -543,8 +543,7 @@ PTL.feed = {
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs();
         })
-        .catch(e => {
-          console.log('e: %s (%s)', e);
+        .catch(_e => {
           $dataStore.data('iconhash', 'noicon');
           PTL.tab.saveTabs();
           $favIcon.attr('src', '/static/images/rss.gif');

@@ -140,7 +140,7 @@ var PTL = (function() {
       $('button').button();
 
       $('.helpBookmarklet')
-        .attr('href', 'javascript:void(window.open("' + window.location.href + '?add=" + window.location.href))');
+        .attr('href', 'javascript:void(window.open("' + window.location.href + '?add="+encodeURIComponent(location.href)))');
       
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
