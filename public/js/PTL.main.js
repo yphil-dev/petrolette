@@ -25,7 +25,6 @@ var PTL = (function() {
 
       };
 
-
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
       const $sideMenu = $('nav#sideMenu'),
@@ -140,6 +139,9 @@ var PTL = (function() {
 
       $('button').button();
 
+      $('.helpBookmarklet')
+        .attr('href', 'javascript:void(window.open("' + window.location.href + '?add=" + window.location.href))');
+      
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
       });
