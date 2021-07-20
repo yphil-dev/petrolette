@@ -893,6 +893,10 @@ li.feed.selected {
   outline: 3px dashed var(--color-link-hover);
 }
 
+.helpBookmarklet {
+  cursor: grab;
+}
+
 .feedHeader > .feedHandle {
   cursor: grab;
   background-color: transparent;
@@ -1303,8 +1307,11 @@ select#gallerySlideTransition {
   margin-top: 0.3em;
 }
 
-#tabNameInput {
+#tabNameInput,
+#searchPrefixInput,
+#feedNameInput {
   padding: 0.3em;
+  border-radius: 3px;
 }
 
 #feedLimit,

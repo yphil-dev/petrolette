@@ -338,9 +338,7 @@ PTL.dialog = {
               .attr('title', PTL.tr('No valid feed found at this address'));
           }
 
-          const $tabFeedId = $('li#' + $dataStore.data('id')),
-            $feedRefresh = $tabFeedId.find('.feedRefresh'),
-            $guessButton = $dialog.find('button#feedGuessButton').button(),
+          const $guessButton = $dialog.find('button#feedGuessButton').button(),
             $guessSpinner = $dialog.find('button#feedGuessButton > i'),
             $feedGuessInput = $dialog.find('input#feedGuessInput'),
             $feedNameInput = $dialog.find('input#feedNameInput'),
@@ -361,7 +359,6 @@ PTL.dialog = {
             }),
             $feedNbItemsInput = $('input#feedNbItems'),
             $feedNbItemsSlider = $('div#feedNbItemsSlider'),
-            $feedLimitSliderHandle = $dialog.find('div#feedLimitSlider > .ui-slider-handle'),
             $feedNbItemsSliderHandle = $dialog.find('div#feedNbItemsSlider > .ui-slider-handle'),
             $feedNbItemsSpinner = $dialog.find('input#feedNbItemsSpinner').spinner({
               classes: {
