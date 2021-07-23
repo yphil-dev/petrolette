@@ -484,15 +484,23 @@
       </div>
 
       <noscript>
-        <div id="noScript">
+        <div class="disabledFeature">
           <h1>Pétrolette</h1>
-          <h3>...Cannot work without JavaScript and CSS.</h3>
+          <h3>...Needs JavaScript to work.</h3>
           <p>
-            NB: All JS code on Pétrolette is Free, Libre and Open-Source Software : <a href="/about/javascript" data-jslicense="1">Read JavaScript Modules license information</a>.
+            NB: All JS code on Pétrolette is Free, Libre and Open-Source Software : <a class="docLink" href="/about/javascript" data-jslicense="1">Read JavaScript Modules license information</a>.
           </p>
         </div>
       </noscript>
 
+      <div id="noDomStorage" class="disabledFeature">
+        <h1>Pétrolette</h1>
+        <h3>...Needs DOM Local Storage to work.</h3>
+        <p>
+          Please enable it in your browser : <a class="docLink" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">read about local storage on MDN</a>.
+        </p>
+      </div>
+      
       <div id="ptlDialogs"></div>
 
       <span id="backToTop">

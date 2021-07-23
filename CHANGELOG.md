@@ -6,9 +6,12 @@
     - Text only mode don't show anything but text
 - New help tour : Menu entries #5884a8b
 - Column buttons now appear on hover #cf906bb
+- Video embeds in help tour popups
 
 ### Bugfixes
 
+- Proper URL construction when building the bookmarklet to avoid catching anything but protocol + domain
+- Removed isQueryString bool, added isNewFeed bool
 - Refresh icon tooltip text (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
 
 ## 1.3.3

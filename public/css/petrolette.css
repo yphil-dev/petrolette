@@ -106,6 +106,19 @@ a:link {
   text-decoration: none;
 }
 
+a.docLink:link {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+a.docLink:hover {
+  color: var(--color-link-hover);
+}
+
+a.docLink.icon:link {
+  text-decoration: none !important;
+}
+
 a:visited {
   color: var(--color-link-visited);
 }
@@ -380,10 +393,18 @@ i.tabCloser:hover {
   font-size: 12pt;
 }
 
-#noScript {
+.disabledFeature {
   padding: 1em;
   margin: 3vh auto;
   background: var(--color-ui-qua);
+}
+
+.disabledFeature p {
+  color: var(--color-text);
+}
+
+#noDomStorage {
+  display:none;
 }
 
 #preload {

@@ -160,6 +160,16 @@ PTL.util = {
     }
 
   },
+  isDomStorageEnabled:function () {
+    const test = 'test';
+    try {
+      localStorage.setItem(test, test);
+      localStorage.removeItem(test);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
   sanitizeInput:function(i) {
     var doc = new DOMParser().parseFromString(i, 'text/html');
     return doc.body.textContent || "";
@@ -248,7 +258,7 @@ PTL.util = {
         {
           title: PTL.tr("That's what it's all about"),
           element: 'li.feed',
-          intro: PTL.tr('This is an RSS feed.') + ' <a href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-globe"></i></a>'
+          intro: PTL.tr('This is an RSS feed.') + ' <a class="docLink icon" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-globe"></i></a>'
         },
         {
           title: PTL.tr('Keep everything tidy'),
@@ -313,7 +323,7 @@ PTL.util = {
         {
           title: PTL.tr('Location of the feed'),
           element: '#feedGuessDiv',
-          intro: '<p><span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss ptl-link" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>.</p><p><span class="translate" data-content="If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words">' + PTL.tr('If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words') + '.</span><p>',
+          intro: '<p><span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss docLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>.</p><p><span class="translate" data-content="If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words">' + PTL.tr('If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words') + '.</span><p>',
           position: 'bottom'
         },
         {

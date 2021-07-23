@@ -51,6 +51,10 @@ var PTL = (function() {
 
       $('.jsEnabledOnly').show();
 
+      if (!PTL.util.isDomStorageEnabled()) {
+        $('#noDomStorage').show();
+      }
+      
       $searchPrefixInput
         .attr('onclick', 'this.select()')
         .val(PTL.prefs.readConfig('searchPrefix'));
