@@ -279,8 +279,8 @@ PTL.dialog = {
               }
 
               var newUrl = DOMPurify.sanitize($(this).find('input#feedGuessInput').val()),
-                newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
-                newType = $('#feedTypeDiv :radio:checked').attr('id');
+                  newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
+                  newType = $('#feedTypeDiv :radio:checked').attr('id');
 
               $dataStore
                 .data('url', newUrl)

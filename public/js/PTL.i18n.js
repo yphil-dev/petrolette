@@ -66,6 +66,8 @@ PTL.i18n.translations = {
 
   "Bookmark to quickly add a website\'s feed to Pétrolette" : { fr: "Marque-page pour ajouter le flux d'un site dans Pétrolette", ja: "ブックマークして、PétroletteにWebサイトのフィードを追加します", es: "Marcador para agregar el feed de un sitio web en Pétrolette" },
 
+  "e9156a58-a059-430d-ad36-4b14ab3b00bf" : { fr: "521311c2-ad41-4d7a-b4f0-71a27b1a9edd", ja: "e9156a58-a059-430d-ad36-4b14ab3b00bf", es: "e9156a58-a059-430d-ad36-4b14ab3b00bf" },
+  
   "Click to focus current tab" : { fr: "Cliquer pour sélectionner l'onglet courant", ja: "カレントタブを焦点を合わせるにはクリックしてください", es: "Haga clic para enfocar la pestaña actual" },
 
   "A click on the Pétrolette logo puts the focus on the current tab" : { fr: "Un clic sur le logo Pétrolette met l'accent sur l'onglet en cours", ja: "Pétroletteのロゴをクリックすると、現在のタブに焦点が合わせる", es: "Un clic en el logotipo de Pétrolette pone el enfoque en la pestaña actual" },

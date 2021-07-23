@@ -2,7 +2,7 @@
 
 PTL.feed = {
 
-  add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, clickNew, isQueryString, progress) {
+  add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
 
     const $feed = $('<li>')
       .attr('class', 'feed');
@@ -182,9 +182,9 @@ PTL.feed = {
 
     $feed.append($feedHeader, $feedBody);
 
-    if (clickNew) {
+    if (isNewFeed) {
       $feed.prependTo($column);
-      PTL.dialog.feedPrefs($prefsIcon, true, isQueryString);
+      PTL.dialog.feedPrefs($prefsIcon, true);
     } else {
       $feed.appendTo($column);
       $refreshIcon.click();

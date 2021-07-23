@@ -231,7 +231,7 @@ PTL.tab = {
             $column.appendTo($tabPanel);
 
             if (PTL.queryString) {
-              PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', '', 17, '', 30, true, true);
+              PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', '', 17, '', true);
                 PTL.queryString = null;
             }
 
@@ -242,7 +242,7 @@ PTL.tab = {
                           nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 10,
                           limit = Number.isInteger(feed.limit) ? feed.limit : 260,
                           lastItem = feed.lastitem;
-                    PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, nbitems, lastItem, false, false, progress);
+                    PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, nbitems, lastItem, false, progress);
                 });
             }
 

@@ -166,7 +166,7 @@ var PTL = (function() {
         }
 
         PTL.sideMenu('close');
-          PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', 30, true, false);
+          PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', true);
       });
 
       $feedCodeButton.click(function(event) {

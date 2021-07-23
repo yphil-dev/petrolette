@@ -372,7 +372,7 @@ PTL.util = {
         {
           title: 'Pétrolette',
           element: 'fieldset.ptlFieldset',
-          intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
+          intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<iframe width="320" sandbox="allow-same-origin allow-scripts allow-popups" src="https://exode.me/videos/embed/'+ PTL.tr('e9156a58-a059-430d-ad36-4b14ab3b00bf') + '" frameborder="0" allowfullscreen style="margin-top:0.3em;"></iframe>' + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
           position: 'right'
         }
       ]
