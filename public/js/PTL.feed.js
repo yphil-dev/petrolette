@@ -211,7 +211,7 @@ PTL.feed = {
 
         const item = feedItems[key];
 
-        if (nbItems > 0 && newItems == nbItems) break;
+        if (nbItems > 0 && newItems -1 == nbItems) break;
 
         const $description = $.parseHTML(item.description),
               imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];

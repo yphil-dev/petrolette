@@ -1,7 +1,6 @@
 # Changelog
 
-## 1.4.2
-
+## 1.4.0
 
 - New "media" paradigm in the feed preferences #a633d06d
     - Text only mode now really shows only text
@@ -14,6 +13,7 @@
 
 ### Bugfixes
 
+- Feed nBofItems was off - 1
 - In the feedPrefs dialog both hight & nBItems slider handle texts were not refreshed when their value was changed using the spinner buttons
 - Proper URL construction when building the bookmarklet to avoid catching anything but protocol + domain
 - Removed isQueryString bool, added isNewFeed bool
