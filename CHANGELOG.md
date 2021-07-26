@@ -2,12 +2,15 @@
 
 ## 1.4.2
 
+
 - New "media" paradigm in the feed preferences #a633d06d
     - Text only mode now really shows only text
 - New help tour : Menu entries #5884a8b
 - Column buttons now appear on hover #cf906bb
 - Video embeds (locale'd, well at least En & Fr) in help tour popups
 - Graceful handling (on-screen text) of various disabled features : JS, DOM storage
+- Faster animations (feed show & hide)
+- New feeds now appear only *after* creation, not before as some sort of empty shell
 
 ### Bugfixes
 

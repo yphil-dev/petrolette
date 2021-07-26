@@ -254,7 +254,7 @@ PTL.dialog = {
               PTL.dialog.kill($dialog);
 
               if (isNewFeed) {
-                $feed.hide('fade', 1000, function() {
+                $feed.hide('fade', 250, function() {
                   $feed.remove();
                 });
               }
@@ -268,7 +268,7 @@ PTL.dialog = {
             click: function() {
 
               if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
-                $feed.hide('fade', 1000, function() {
+                $feed.hide('fade', 250, function() {
                   $(this).prependTo($('#' + $groupMenu
                     .find(":selected")
                     .val() + ' .column')
@@ -288,9 +288,15 @@ PTL.dialog = {
                 .data('type', newType);
 
               if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
-                $feed.hide('fade', 1000, function() { $feed.remove(); });
+                $feed.hide('fade', 250, function() { $feed.remove(); });
               } else {
-                PTL.feed.populate($button);
+
+                if (isNewFeed) {
+                  $feed.show('fade', 250, function() {
+                    PTL.feed.populate($button);
+                  });
+                }
+
               }
 
               PTL.tab.saveTabs();
@@ -304,7 +310,7 @@ PTL.dialog = {
           $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
             PTL.dialog.kill($dialog);
             if (isNewFeed) {
-              $feed.hide('fade', 1000, function() {
+              $feed.hide('fade', 250, function() {
                 $feed.remove();
               });
             }
@@ -313,7 +319,7 @@ PTL.dialog = {
           $(document).keyup(function(event) {
             if (event.keyCode === 27) {
               if (isNewFeed) {
-                $feed.hide('fade', 1000, function() {
+                $feed.hide('fade', 250, function() {
                   $feed.remove();
                 });
               }
@@ -786,7 +792,7 @@ PTL.dialog = {
             title: PTL.tr('Wait! Are you sure?'),
             class: 'dangerous translate',
             click: function() {
-              $thisFeed.hide('fade', 1000, function() {
+              $thisFeed.hide('fade', 250, function() {
                 $(this).remove();
                 PTL.tab.saveTabs();
               });
