@@ -1,18 +1,20 @@
 # Changelog
 
-## 1.4.0
+## 1.4.2
 
 - New "media" paradigm in the feed preferences #a633d06d
-    - Text only mode don't show anything but text
+    - Text only mode now really shows only text
 - New help tour : Menu entries #5884a8b
 - Column buttons now appear on hover #cf906bb
-- Video embeds in help tour popups
+- Video embeds (locale'd, well at least En & Fr) in help tour popups
+- Graceful handling (on-screen text) of various disabled features : JS, DOM storage
 
 ### Bugfixes
 
+- In the feedPrefs dialog both hight & nBItems slider handle texts were not refreshed when their value was changed using the spinner buttons
 - Proper URL construction when building the bookmarklet to avoid catching anything but protocol + domain
 - Removed isQueryString bool, added isNewFeed bool
-- Refresh icon tooltip text (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
+- Refresh icon tooltip text items (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
 
 ## 1.3.3
 

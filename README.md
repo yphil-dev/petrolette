@@ -45,7 +45,7 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 Read [the changelog](https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md).
 
 
-### Installation
+### Install
 
 ```sh
 git clone https://framagit.org/yphil/petrolette
@@ -53,9 +53,15 @@ cd petrolette
 npm install
 npm start
 xdg-open http://localhost:8000
-
 ```
-#### Testing
+#### Test
+
+```sh
+cd petrolette
+git pull
+npm update
+```
+#### Test
 
 ```javascript
 npm test

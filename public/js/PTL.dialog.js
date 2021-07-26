@@ -445,7 +445,7 @@ PTL.dialog = {
             .spinner('value', oldLimit)
             .on('spinstop', function() {
               $feedLimitSlider.slider('option', 'value', $(this).val());
-              $dialog.find('div#feedNbItemsSpinner > .ui-slider-handle').text($(this).val());
+              $dialog.find('div#feedLimitSlider > .ui-slider-handle').text($(this).val());
             });
 
           $feedLimitSlider.slider({
@@ -473,7 +473,7 @@ PTL.dialog = {
             .spinner('value', oldNbItems)
             .on('spinstop', function() {
               $feedNbItemsSlider.slider('option', 'value', $(this).val());
-              $feedNbItemsSliderHandle.text($(this).val());
+              $dialog.find('div#feedNbItemsSlider > .ui-slider-handle').text($(this).val());
             });
 
           $feedNbItemsSlider.slider({
