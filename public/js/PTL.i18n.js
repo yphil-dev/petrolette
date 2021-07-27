@@ -284,8 +284,9 @@ PTL.i18n.translations = {
 
   "Wait! Are you sure?" : { fr: "Stop ! Sur ?" , ja: "待つ！ 本気ですか？", es: "¡Espere! ¿Estás seguro?" },
 
-  "Select this feed (for drag & drop)." : { fr: "Sélectionner ce flux (pour le glisser-déposer)." , ja: "このソースを選択します（ドラッグ＆ドロップ用）。", es: "Seleccione esta fuente (para arrastrar y soltar)." },
-  "Drag here to move this feed (and all other selected feeds) within this tab, or into another." : { fr: "Attraper ici pour déplacer ce flux (et toutes les autres flux sélectionnées) dans cet onglet ou dans un autre." , ja: "ここでドラッグすると、このグループ内のこのソース（および他のすべての選択されたソース）を別のグループに移動できます。", es: "Arrastre aquí para mover esta fuente (y todas las demás fuentes seleccionadas) dentro de este grupo o dentro de otra." },
+  "Select this feed (for moving and deletion)." : { fr: "Sélectionnez ce flux (pour le déplacement et la suppression)." , ja: "このソース(移動と削除のために)を選択します。", es: "Seleccione esta fuente (para mover y eliminar)." },
+  
+  "Grab this handle to move this feed (and all other selected feeds) within this tab, or into another." : { fr: "Attraper cette poignée pour déplacer ce flux (et toutes les autres flux sélectionnés) dans cet onglet ou dans un autre." , ja: "ここでドラッグすると、このグループ内のこのソース（および他のすべての選択されたソース）を別のグループに移動できます。", es: "Arrastre aquí para mover esta fuente (y todas las demás fuentes seleccionadas) dentro de este grupo o dentro de otra." },
 
   "Fold / unfold this feed" : { fr: "Plier / déplier ce flux" , ja: "このソースを展開/折りたたむ", es: "Expandir / contraer esta fuente" },
 
@@ -509,6 +510,8 @@ PTL.i18n.translations = {
 
   "Delete feeds" : { fr: "Supprimer flux" , ja: "ソースの削除", es: "Suprímase las fuentes" },
 
+  "If other feeds are selected, they will be deleted too." : { fr: "Si d'autres flux sont sélectionnés, ils seront supprimés aussi." , ja: "他のソースを選択した場合は、削除されます。", es: "Si se seleccionan otras fuentes, también se eliminarán." },
+  
   "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },
 
   "%1 | Click to rename, drag to move" : { fr: "%1 | Cliquer pour renommer, glisser pour déplacer", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },

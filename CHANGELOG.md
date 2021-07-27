@@ -5,6 +5,7 @@
 - New "New feed" dialog, streamlined w/ only the feed URL
     - Auto / transparent search / build / add of the feed at the URL
     - Override function to force-add errored feed anyway
+- Feed bulk delete: All selected feeds are now deleted
 - New "media" paradigm in the feed preferences #a633d06d
     - Text only mode now really shows only text
 - New help tour : Menu entries #5884a8b
@@ -13,14 +14,14 @@
 - Graceful handling (on-screen text) of various disabled features : JS, DOM storage
 - Faster animations (feed show & hide)
 - New feeds now appear only *after* creation, not before as a placeholder
-- Few messages in the console (`shutUp` bool param added to PTL.tab.saveTabs())
+- Few messages in the console (`isSilent` bool param added to PTL.tab.saveTabs())
 
 ### Bugfixes
 
-- Feed nBofItems was off - 1
-- In the feedPrefs dialog both hight & nBItems slider handle texts were not refreshed when their value was changed using the spinner buttons
+- Feed number of items was off - 1
+- In the feedPrefs dialog both height & nBItems slider handle texts were not refreshed when their value was changed using the spinner buttons
 - Proper URL construction when building the bookmarklet to avoid catching anything but protocol + domain
-- Removed isQueryString bool, added isNewFeed bool
+- Removed `isQueryString` bool, added `isNewFeed` bool
 - Refresh icon tooltip text items (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
 - The help tour functions are now in PTL.dialog
 

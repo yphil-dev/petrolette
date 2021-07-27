@@ -275,12 +275,12 @@ PTL.dialog = {
         {
           title: PTL.tr('Keep everything tidy'),
           element: '.feedSelect',
-          intro: PTL.tr('Select this feed (for drag & drop).')
+          intro: PTL.tr('Select this feed (for moving and deletion).')
         },
         {
           title: 'Grip handle',
           element: '.feedHandle',
-          intro: PTL.tr('Drag here to move this feed (and all other selected feeds) within this tab, or into another.')
+          intro: PTL.tr('Grab this handle to move this feed (and all other selected feeds) within this tab, or into another.')
         },
         {
           title: PTL.tr('Fold / unfold this feed'),
@@ -290,11 +290,11 @@ PTL.dialog = {
         {
           title: PTL.tr('B-bye!'),
           element: '.feed-delete',
-          intro: PTL.tr('Delete this feed.')
+          intro: PTL.tr('Delete this feed.') + ' ' + PTL.tr('If other feeds are selected, they will be deleted too.')
         },
         {
           title: PTL.tr('Columns'),
-          element: 'div.buttons',
+          element: 'div.colButtons',
           intro: PTL.tr('Click + to add a column, and - to delete it.')
         },
         {

@@ -70,11 +70,11 @@ PTL.tab = {
         $('#loadSpinner').fadeOut(999);
 
     },
-    saveTabs:function(shutUp) {
+    saveTabs:function(isSilent) {
       const feeds = PTL.tab.list();
       PTL.prefs.writeConfig('feeds', JSON.stringify(feeds));
       PTL.sync.writeSync(JSON.stringify(feeds));
-      if (shutUp) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
+      if (isSilent) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
     },
     populate:function(feeds) {
 
