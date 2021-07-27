@@ -1,20 +1,20 @@
 <div id="feedNewDialog">
   <form>
-    <legend data-content="Location"
-            class="ui-corner-top translate">Location</legend>
+    <legend data-content="Location / URL / Keywords"
+            class="ui-corner-top helpTourDialogItem translate">Location / URL / Keywords</legend>
     <fieldset id="locationFieldset">
-      <div id="feedGuessDiv"
-           class="flexBox helpTourDialogItem"
+      <div id="feedAddDiv"
+           class="flexBox"
            data-step="1">
-        <input name="guess"
-               id="feedGuessInput"
+        <input name="add"
+               id="feedAddInput"
                placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
                data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
                value=""
                onclick="this.select()"
                class="grow translate"
                />
-        <button id="feedGuessButton"
+        <button id="feedAddButton"
                 data-title="Find / discover the feed of this website, or build a search feed from the words"
                 class="shrink translate last"
                 type="button">
@@ -23,6 +23,7 @@
       </div>
     </fieldset>
   </form>
+  <div id="messageZone"></div>
 </div>
 
 <div id="feedPrefsDialog">

@@ -56,6 +56,8 @@ PTL.i18n.translations = {
   "Group" : { fr: "Groupe", ja: "グループ", es: "Grupo" },
   "Feed name" : { fr: "Nom du flux", ja: "ソースの名前", es: "Nombre de la fuente" },
 
+  "Location" : { fr: "Adresse", ja: "ロケーション", es: "Ubicación" },
+
   "Loading" : { fr: "Chargement", ja: "読み込み中", es: "Cargando" },
 
   "Media" : { fr: "Média", ja: "メディア", es: "Medios" },
@@ -63,6 +65,22 @@ PTL.i18n.translations = {
   "Bookmarklet" : { fr: "Média", ja: "メディア", es: "Medios" },
   
   "Media preloading" : { fr: "Pré-chargement des médias", ja: "メディアのプリロード", es: "Precarga de medios" },
+
+  "Location / URL / Keywords" : { fr: "Adresse / URL / Mots-clés", ja: "所在地 / URL / キーワード", es: "Ubicación / URL / Palabras clave" },
+
+  "Anything works" : { fr: "Tout fonctionne", ja: "どんな作品でも", es: "Cualquier cosa funciona" },
+
+  "The valid URL of a feed" : { fr: "L'URL valide d'un flux", ja: "ソースの有効なURL", es: "La URL válida de una fuente" },
+
+  "The feed will be added to the current tab." : { fr: "Le flux sera ajouté à l'onglet actuel.", ja: "ソースは現在のタブに追加されます。", es: "La fuente se añadirá a la pestaña actual." },
+
+  "The valid URL of a website" : { fr: "L'URL valide d'un site Web", ja: "ウェブサイトの有効なURL", es: "La URL válida de un sitio web" },
+
+  "Pétrolette will search for a feed at this URL, then add it to the current tab." : { fr: "Pétrolette cherchera une source à cette URL, puis l'ajoutera à l'onglet actuel.", ja: "Pétrolette はこの URL でソースを検索し、現在のタブに追加します。", es: "Pétrolette buscará una fuente en esta URL, y luego la añadirá a la pestaña actual." },
+
+  "A list of words" : { fr: "Une liste de mots", ja: "単語のリスト", es: "Una lista de palabras" },
+
+  "Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words" : { fr: "Pétrolette construira un flux de recherche (en utilisant le moteur de recherche configuré) qui affichera les dernières nouvelles à propos de ces mots", ja: "Pétrolette は検索フィード (設定された検索エンジンを使用して) をビルドします。これらの単語に関する最後のニュースが表示されます。", es: "Pétrolette construirá una fuente de búsqueda (utilizando el motor de búsqueda configurado) que mostrará las últimas noticias sobre esas palabras" },
 
   "Bookmark to quickly add a website\'s feed to Pétrolette" : { fr: "Marque-page pour ajouter le flux d'un site dans Pétrolette", ja: "ブックマークして、PétroletteにWebサイトのフィードを追加します", es: "Marcador para agregar el feed de un sitio web en Pétrolette" },
 
@@ -427,8 +445,6 @@ PTL.i18n.translations = {
   "Unrecognized URL: %1" : { fr: "URL non reconnue: %1", ja: "認識できないURL: %1", es: "URL no reconocida: %1" },
 
   "No feeds found" : { fr: "Aucun flux trouvée", ja: "ソースが見つかりません", es: "No se encontraron fuentes" },
-
-  "Location" : { fr: "Adresse", ja: "ロケーション", es: "Ubicación" },
 
   "Explore!" : { fr: "Exploration !", ja: "探査！", es: "¡Exploración!" },
 

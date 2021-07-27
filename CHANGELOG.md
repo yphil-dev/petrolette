@@ -20,7 +20,6 @@
 - Refresh icon tooltip text items (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
 - The help tour functions are now in PTL.dialog
 
-
 ## 1.3.3
 
 - Default search engine update (because of various instances searx RSS restrictions) #8870f07e

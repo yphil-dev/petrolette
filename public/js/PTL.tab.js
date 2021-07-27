@@ -242,7 +242,11 @@ PTL.tab = {
                           nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 10,
                           limit = Number.isInteger(feed.limit) ? feed.limit : 260,
                           lastItem = feed.lastitem;
+
+                  if (!feed.url == "") {
                     PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, nbitems, lastItem, false, progress);
+                  }
+                  
                 });
             }
 

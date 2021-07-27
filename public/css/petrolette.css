@@ -1328,6 +1328,8 @@ select#gallerySlideTransition {
   margin-top: 0.3em;
 }
 
+#feedAddInput,
+#feedGuessInput,
 #tabNameInput,
 #searchPrefixInput,
 #feedNameInput {

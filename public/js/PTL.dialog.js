@@ -228,9 +228,10 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  tour:function(type, step) {
+  tour: function(type, step) {
 
-    const dialog = introJs(),
+    const feedPrefs = introJs(),
+          feedNew = introJs(),
           menu = introJs(),
           ui = introJs();
 
@@ -303,7 +304,7 @@ PTL.dialog = {
       ]
     });
 
-    dialog.setOptions({
+    feedPrefs.setOptions({
       steps: [
         {
           title: PTL.tr('Location of the feed'),
@@ -367,7 +368,18 @@ PTL.dialog = {
         {
           title: 'Pétrolette',
           element: 'fieldset.ptlFieldset',
-          intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<iframe width="320" sandbox="allow-same-origin allow-scripts allow-popups" src="https://exode.me/videos/embed/'+ PTL.tr('e9156a58-a059-430d-ad36-4b14ab3b00bf') + '" frameborder="0" allowfullscreen style="margin-top:0.3em;"></iframe>' + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
+          intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<iframe width="320" sandbox="allow-same-origin allow-scripts allow-popups" src="https://exode.me/videos/embed/' + PTL.tr('e9156a58-a059-430d-ad36-4b14ab3b00bf') + '" frameborder="0" allowfullscreen style="margin-top:0.3em;"></iframe>' + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
+          position: 'right'
+        }
+      ]
+    });
+
+    feedNew.setOptions({
+      steps: [
+        {
+          title: PTL.tr('Anything works'),
+          element: 'input#feedGuessInput',
+          intro: '<h4>' + PTL.tr('The valid URL of a feed') + '</h4>' + PTL.tr('The feed will be added to the current tab.') + '<h4>' + PTL.tr('The valid URL of a website') + '</h4>' + PTL.tr('Pétrolette will search for a feed at this URL, then add it to the current tab.') + '<h4>' + PTL.tr('A list of words') + '</h4>' + PTL.tr('Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words'),
           position: 'right'
         }
       ]
@@ -378,45 +390,53 @@ PTL.dialog = {
     ui.setOption('skipLabel', 'x');
     ui.setOption('doneLabel', PTL.tr('Got it!'));
 
-    dialog.setOption('prevLabel', PTL.tr('Prev'));
-    dialog.setOption('nextLabel', PTL.tr('Next'));
-    dialog.setOption('skipLabel', 'x');
-    dialog.setOption('doneLabel', PTL.tr('Got it!'));
+    feedPrefs.setOption('prevLabel', PTL.tr('Prev'));
+    feedPrefs.setOption('nextLabel', PTL.tr('Next'));
+    feedPrefs.setOption('skipLabel', 'x');
+    feedPrefs.setOption('doneLabel', PTL.tr('Got it!'));
 
     menu.setOption('prevLabel', PTL.tr('Prev'));
     menu.setOption('nextLabel', PTL.tr('Next'));
     menu.setOption('skipLabel', 'x');
     menu.setOption('doneLabel', PTL.tr('Got it!'));
 
-    dialog.setOption('overlayOpacity', 0);
+    feedPrefs.setOption('overlayOpacity', 0);
     ui.setOption('overlayOpacity', 0.2);
 
-    dialog.setOption('hideNext', true);
-    dialog.setOption('hidePrev', true);
+    feedPrefs.setOption('hideNext', true);
+    feedPrefs.setOption('hidePrev', true);
+
+    feedNew.setOption('hideNext', true);
+    feedNew.setOption('hidePrev', true);
+    feedNew.setOption('showBullets', false);
 
     if (step) {
 
-      if (type === 'dialog') {
+      if (type === 'feedPrefs') {
         PTL.sideMenu('close');
         ui.exit();
         menu.exit();
-        dialog.goToStepNumber(step).start();
+        feedPrefs.goToStepNumber(step).start();
       }
-      
+
       if (type === 'menu') {
         ui.exit();
-        dialog.exit();
+        feedPrefs.exit();
         menu.goToStepNumber(step).start();
       }
-      
-    } else {
+
+    } else if (type == 'ui') {
       PTL.sideMenu('close');
-      dialog.exit();
+      feedPrefs.exit();
       menu.exit();
       $('#menu > .handle').click();
       $('#tabs').tabs('option', 'active', 0);
       $('.feed').first().find('.collapsible').show('fade', 'fast');
       ui.start();
+    } else {
+      // feedNew.start();
+      feedNew.goToStepNumber(1).start();
+
     }
 
     // $('.introjs-button').button();
@@ -431,122 +451,99 @@ PTL.dialog = {
             $feed = $dataStore.parent().parent();
 
       $dialog.dialog({
-        title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
+        title: PTL.tr('New feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
-        buttons: [
-          {
-            text: PTL.tr('Cancel'),
-            title: PTL.tr('Cancel'),
-            class: 'translate',
-            click: function() {
-              PTL.dialog.kill($dialog);
-
-              if (isNewFeed) {
-                $feed.hide('fade', 250, function() {
-                  $feed.remove();
-                });
-              }
-
-            }
-          },
-          {
-            text: PTL.tr('Add'),
-            title: PTL.tr('Add'),
-            class: 'translate button-ok',
-            click: function() {
-
-              console.log('plop: %s (%s)', $(this).attr('title'));
-              
-              // function guessError() {
-              //   $guessSpinner.removeClass('icon-refresh spin ui-state-success')
-              //     .addClass('icon-error');
-
-              //   $guessButton
-              //     .addClass('ui-state-error')
-              //     .attr('title', PTL.tr('No valid feed found at this address'));
-              // }
-
-              // const $guessButton = $dialog.find('button#feedGuessButton').button(),
-              //   $guessSpinner = $dialog.find('button#feedGuessButton > i'),
-              //   $feedGuessInput = $dialog.find('input#feedGuessInput'),
-              //   $okButton = $('.ui-dialog-buttonpane').find('.button-ok');
-
-              // $feedGuessInput.on('keypress', function(e) {
-              //   if (e.which == 13) {
-              //     $okButton.click();
-              //     console.log('ENTER!: %s (%s)');
-              //   }
-              // });
-
-              // $guessButton.click(function() {
-
-              //   $guessSpinner
-              //     .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
-              //     .addClass('spin icon-refresh');
-              //   $guessButton.removeClass('icon-checked ui-state-success ui-state-error');
-
-              //   $.get('/discover', {
-              //     dataType: 'json',
-              //     url: $feedGuessInput.val(),
-              //     searchPrefix: PTL.prefs.readConfig('searchPrefix'),
-              //     timeout: 2000
-              //   }).fail(function(req, status, xhr) {
-              //     guessError();
-              //   }).done(function(feed) {
-              //     $guessSpinner.removeClass('spin icon-refresh');
-
-              //     $feedGuessInput.val(feed);
-
-              //     $guessSpinner
-              //       .removeClass('ui-state-error')
-              //       .addClass('icon-checked ui-state-success');
-
-              //     $guessButton
-              //       .addClass('ui-state-success')
-              //       .attr('title', PTL.tr('Valid feed found! Now just press OK'));
-
-              //   }).always(function(req, status, xhr) {
-              //     if (status === 'error') guessError();
-              //   });
-
-              // });
-
-              var newUrl = DOMPurify.sanitize($(this).find('input#feedGuessInput').val());
-
-              $dataStore
-                .data('url', newUrl);
-
-              if (isNewFeed) {
-                $feed.show('fade', 250, function() {
-                  PTL.feed.populate($button);
-                });
-              }
-
-              PTL.tab.saveTabs();
-              PTL.dialog.kill($dialog);
-
-            }
-          }
-        ],
+        modal: true,
         open: function() {
 
+          const $addButton = $dialog.find('button#feedAddButton').button().text(PTL.tr('Add')),
+                $addSpinner = $dialog.find('button#feedAddButton > i'),
+                $feedAddInput = $dialog.find('input#feedAddInput'),
+                $messageZone = $dialog.find('div#messageZone'),
+                $okButton = $('.ui-dialog-buttonpane').find('.button-ok');
+
+          $dialog.find("form").on("submit", function(event) {
+            event.preventDefault();
+            $addButton.click();
+          });
+
+          $('.helpTourDialogItem')
+            .append($('<i>')
+              .attr('class', 'icon-help helpIcon')
+              .attr('title', 'Yeah')
+              .on('click', function() {
+                PTL.dialog.tour('feedNew');
+              }));
+          
           $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
             PTL.dialog.kill($dialog);
-            if (isNewFeed) {
-              $feed.hide('fade', 250, function() {
-                $feed.remove();
-              });
-            }
+            $feed.remove();
           });
 
           $(document).keyup(function(event) {
             if (event.keyCode === 27) {
-              if (isNewFeed) {
-                $feed.hide('fade', 250, function() {
-                  $feed.remove();
-                });
-              }
+              $feed.remove();
             }
+          });
+
+          function addError() {
+            $addSpinner.removeClass('icon-refresh spin ui-state-success')
+              .addClass('icon-error');
+
+            $addButton
+              .addClass('ui-state-error')
+              .attr('title', PTL.tr('No valid feed found at this address'));
+
+            $messageZone.text('No feed at this URL')
+          }
+          
+          // $feedAddInput.on('keypress', function(e) {
+          //   if (e.which == 13) {
+          //     $addButton.click();
+          //   }
+          // });
+
+          $addButton.click(function() {
+
+            $addSpinner
+              .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
+              .addClass('spin icon-refresh');
+            $addButton.removeClass('icon-checked ui-state-success ui-state-error');
+            
+            $.get('/discover', {
+              dataType: 'json',
+              url: DOMPurify.sanitize($feedAddInput.val()),
+              searchPrefix: PTL.prefs.readConfig('searchPrefix'),
+              timeout: 2000
+            }).fail(function(req, status, xhr) {
+              addError();
+            }).done(function(feed) {
+              
+              $addSpinner.removeClass('spin icon-refresh');
+
+              $feedAddInput.val(feed);
+
+              $addSpinner
+                .removeClass('ui-state-error')
+                .addClass('icon-checked ui-state-success');
+
+              $addButton
+                .addClass('ui-state-success')
+                .attr('title', PTL.tr('Valid feed found! Now just press OK'));
+
+              $dataStore
+                .data('url', feed);
+
+              $feed.show('fade', 250, function() {
+                PTL.feed.populate($button);
+                PTL.tab.saveTabs();
+                PTL.dialog.kill($dialog);
+              });
+              
+            }).always(function(req, status, xhr) {
+              if (status === 'error') addError();
+            });
+
           });
 
         }
@@ -723,7 +720,7 @@ PTL.dialog = {
                       .attr('class', 'icon-help helpIcon')
                       .attr('title', step)
                       .on('click', function() {
-                        PTL.dialog.tour('dialog', step);
+                        PTL.dialog.tour('feedPrefs', step);
                       }));
           });
           
