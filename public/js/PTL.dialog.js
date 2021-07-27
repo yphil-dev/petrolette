@@ -379,7 +379,7 @@ PTL.dialog = {
       steps: [
         {
           title: PTL.tr('Three options'),
-          element: 'input#feedGuessInput',
+          element: 'input#feedAddInput',
           intro: '<h4>' + PTL.tr('The valid URL of a feed') + '</h4>' + PTL.tr('The feed will be added to the current tab.') + '<h4>' + PTL.tr('The valid URL of a website') + '</h4>' + PTL.tr('Pétrolette will search for a feed at this URL, then add it to the current tab.') + '<h4>' + PTL.tr('A list of words') + '</h4>' + PTL.tr('Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words'),
           position: 'right'
         }
@@ -449,8 +449,9 @@ PTL.dialog = {
 
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
+            oldUrl = $dataStore.data('url'),
             $feed = $dataStore.parent().parent();
-
+      
       $dialog.dialog({
         title: PTL.tr('New feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
@@ -459,7 +460,7 @@ PTL.dialog = {
 
           const $addButton = $dialog.find('button#feedAddButton').button().text(PTL.tr('Add')),
                 $addSpinner = $dialog.find('button#feedAddButton > i'),
-                $feedAddInput = $dialog.find('input#feedAddInput'),
+                $feedAddInput = $dialog.find('input#feedAddInput').val(oldUrl),
                 $messageZone = $dialog.find('div#messageZone');
 
           $dialog.find("form").on("submit", function(e) {
@@ -630,11 +631,9 @@ PTL.dialog = {
                 $feed.hide('fade', 250, function() { $feed.remove(); });
               } else {
 
-                if (isNewFeed) {
-                  $feed.show('fade', 250, function() {
-                    PTL.feed.populate($button);
-                  });
-                }
+                $feed.show('fade', 250, function() {
+                  PTL.feed.populate($button);
+                });
 
               }
 

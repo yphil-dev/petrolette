@@ -2,28 +2,28 @@
 
 ## 1.4.0
 
-- New "New feed" dialog, streamlined w/ only the feed URL
+- New "New feed" dialog, streamlined w/ only the feed URL #b57887be
     - Auto / transparent search / build / add of the feed at the URL
     - Override function to force-add errored feed anyway
-- Feed bulk delete: All selected feeds are now deleted
+- Feed bulk delete: All selected feeds are now deleted #6a47cde0
 - New "media" paradigm in the feed preferences #a633d06d
     - Text only mode now really shows only text
 - New help tour : Menu entries #5884a8b
-- Column buttons now appear on hover #cf906bb
-- Video embeds (locale'd, well at least En & Fr) in help tour popups
-- Graceful handling (on-screen text) of various disabled features : JS, DOM storage
-- Faster animations (feed show & hide)
-- New feeds now appear only *after* creation, not before as a placeholder
-- Few messages in the console (`isSilent` bool param added to PTL.tab.saveTabs())
+- Column buttons now appear on hover #cf906bb / #c1308ed4
+- Video embeds (locale'd, well at least En & Fr) in help tour popups #7f39f938
+- Graceful handling (on-screen text) of various disabled features : JS, DOM storage #f856ba9e
+- Faster animations (feed show & hide) #82c5c2d2
+- New feeds now appear only *after* creation, not before as a placeholder #82c5c2d2
+- Few messages in the console (`isSilent` bool param added to PTL.tab.saveTabs()) #c1308ed4
 
 ### Bugfixes
 
-- Feed number of items was off - 1
-- In the feedPrefs dialog both height & nBItems slider handle texts were not refreshed when their value was changed using the spinner buttons
-- Proper URL construction when building the bookmarklet to avoid catching anything but protocol + domain
-- Removed `isQueryString` bool, added `isNewFeed` bool
+- Feed number of items was off - 1 #7f7366c6
+- In the feedPrefs dialog both height & nBItems slider handle texts were not refreshed when their value was changed using the spinner buttons #4ee945db
+- Proper URL construction when building the bookmarklet to avoid catching anything but protocol + domain #8f3a0e69
+- Removed `isQueryString` bool, added `isNewFeed` bool #4a6d6ec8
 - Refresh icon tooltip text items (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
-- The help tour functions are now in PTL.dialog
+- The help tour functions are now in PTL.dialog #dd1df3bb
 
 ## 1.3.3
 
