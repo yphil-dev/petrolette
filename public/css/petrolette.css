@@ -21,15 +21,15 @@
   --color-ui-console-bg: #EEE8D5;
   --color-ui-console-fg: #002B36;
   --color-ui-console-normal: #268BD2;
-  --color-ui-console-error: #DC322F;
-  --color-ui-console-success: #859900;
-  --color-ui-console-warning: #B58900;
+  --color-ui-console-error: #DC3545;
+  --color-ui-console-success: #28A745;
+  --color-ui-console-warning: #FFC107;
   --color-ui-rss: #F26522;
   --controls-toggle-margin: 0 0 0 -2px;
   --controls-toggled-margin: -2px -2px 0 0;
-  --color-ui-danger: #C63D0F;
-  --color-ui-success: #4DB53C;
-  --color-ui-warning: #FF8700;
+  --color-ui-danger: #DC3545;
+  --color-ui-success: #28A745;
+  --color-ui-warning: #FFC107;
 
   /* Relative to media */
   --beggar-width: 420px;
@@ -1431,4 +1431,16 @@ button.ui-state-success {
 code {
   font-family: monospace !important;
   color: var(--color-ui-sep);
+}
+
+.textAndIcon {
+  display: flex;
+}
+
+.textAndIcon > * {
+  flex: 1;
+}
+
+.textAndIcon > span {
+  margin-right:0.3em;
 }

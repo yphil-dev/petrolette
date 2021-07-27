@@ -458,8 +458,9 @@ PTL.dialog = {
         modal: true,
         open: function() {
 
-          const $addButton = $dialog.find('button#feedAddButton').button().text(PTL.tr('Add')),
-                $addSpinner = $dialog.find('button#feedAddButton > i'),
+          const $addButton = $dialog.find('button#feedAddButton').button(),
+                $addButtonText = $addButton.find('.buttonText').text(PTL.tr('Add')),
+                $addButtonIcon = $addButton.find('i'),
                 $feedAddInput = $dialog.find('input#feedAddInput').val(oldUrl),
                 $messageZone = $dialog.find('div#messageZone');
 
@@ -491,15 +492,15 @@ PTL.dialog = {
 
             const $errorMessage = PTL.tr('No feed found at this URL');
             
-            $addSpinner.removeClass('icon-refresh spin ui-state-success')
+            $addButtonIcon
+              .removeClass('icon-refresh icon-checked spin')
               .addClass('icon-error');
 
             $addButton
               .addClass('ui-state-error')
-              .attr('title', $errorMessage)
-              .text(PTL.tr('Add'))
+              .attr('title', PTL.tr('Add anyway'))
               .off("click").click(function() {
-                
+              
                 $dataStore
                   .data('url', feedUrl);
 
@@ -510,6 +511,8 @@ PTL.dialog = {
                 });
                 
               });
+
+            $addButtonText.text(PTL.tr('Add'));
             
             $messageZone.text($errorMessage);
           }
@@ -518,12 +521,14 @@ PTL.dialog = {
 
             const feedUrl = DOMPurify.sanitize($feedAddInput.val());
             
-            $addSpinner
+            $addButtonIcon
               .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
               .addClass('spin icon-refresh');
             $addButton
-            .text(PTL.tr('Searching'))
-              .removeClass('icon-checked ui-state-success ui-state-error');
+              .removeClass('ui-state-success ui-state-error');
+
+            $addButtonText.text(PTL.tr('Searching'));
+
             
             $.get('/discover', {
               dataType: 'json',
@@ -534,15 +539,16 @@ PTL.dialog = {
               addError(feedUrl);
             }).done(function(feed) {
               
-              $addSpinner.removeClass('spin icon-refresh');
+              $addButtonIcon.removeClass('spin icon-refresh');
 
               $feedAddInput.val(feed);
 
-              $addSpinner
-                .removeClass('ui-state-error')
-                .addClass('icon-checked ui-state-success');
+              $addButtonIcon
+                .removeClass('icon-error')
+                .addClass('icon-checked');
 
               $addButton
+                .removeClass('ui-state-error')
                 .addClass('ui-state-success')
                 .attr('title', PTL.tr('Valid feed found! Now just press OK'));
 

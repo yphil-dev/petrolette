@@ -311,7 +311,7 @@ PTL.feed = {
           .attr('href', item.link || item.enclosures[0].url)
           .append(item['mastodon:scope'] ? $summary.trim() : item.title);
 
-        if (!videoUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
+        if (!videoUrl && !audioUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
           $imageLink
             .attr('href', imageUrl)

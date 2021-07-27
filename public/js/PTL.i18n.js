@@ -184,6 +184,8 @@ PTL.i18n.translations = {
   "Add" : { fr: "Ajouter" , ja: "追加", es: "Añadir" },
   "Add feed" : { fr: "Ajouter flux" , ja: "ソースを追加", es: "Agregue fuente" },
 
+  "Add anyway" : { fr: "Ajouter quand même" , ja: "とにかく追加", es: "Agregar de todos modos" },
+  
   "Add a column" : { fr: "Ajouter une colonne" , ja: "列を追加する", es: "Agrega una columna" },
 
 
