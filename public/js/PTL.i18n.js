@@ -23,6 +23,7 @@ PTL.i18n.translations = {
   "Reset": { fr: "Réinitialiser", ja: "リセット", es: "Reiniciar" },
 
   "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
+  "Names": { fr: "Noms", ja: "お名前 (必須)", es: "Nombres" },
   "Position": { fr: "Position", ja: "ポジション", es: "Posición" },
   "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
   "Sorry": { fr: "Désolé", ja: "ごめんなさい", es: "Perdón" },
@@ -503,8 +504,10 @@ PTL.i18n.translations = {
   "Configure this feed" : { fr: "Configurer ce flux" , ja: "このソースを設定します", es: "Configura esta fuente" },
   
   "Delete this feed?" : { fr: "Supprimer ce flux ?", ja: "本当にこのフィードを削除しますか？", es: "¿Borraste esta feed?" },
-  "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Eliminar fuente" },
+  
+  "Delete feed" : { fr: "Supprimer flux" , ja: "このソースを削除してください", es: "Suprímase fuente" },
 
+  "Delete feeds" : { fr: "Supprimer flux" , ja: "ソースの削除", es: "Suprímase las fuentes" },
 
   "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },
 

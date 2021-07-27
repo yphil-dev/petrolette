@@ -1100,7 +1100,7 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  killFeed: function($button) {
+  killFeed: function($button, $selectedFeeds) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
@@ -1113,7 +1113,7 @@ PTL.dialog = {
       $icon.addClass('icon-trash-empty danger');
 
       $dialog.dialog({
-        title: PTL.tr('Delete feed'),
+        title: ($selectedFeeds.length > 1) ? PTL.tr('Delete feeds') : PTL.tr('Delete feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
         buttons: [
           {
@@ -1129,7 +1129,7 @@ PTL.dialog = {
             title: PTL.tr('Wait! Are you sure?'),
             class: 'dangerous translate',
             click: function() {
-              $thisFeed.hide('fade', 250, function() {
+              $selectedFeeds.hide('fade', 250, function() {
                 $(this).remove();
                 PTL.tab.saveTabs();
               });
@@ -1139,16 +1139,28 @@ PTL.dialog = {
         ],
         open: function() {
 
+          let $names = $('<ul>').addClass('feedNames');
+
+          $selectedFeeds.each(function() {
+
+            $names.append($('<li>')
+              .text($(this)
+                .children()
+                .children('.feedTitle')
+                .attr('title')));
+
+          });
+
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
           });
-
-          $dialog.find('h1').text(PTL.tr('Delete this feed?'))
+         
+          $dialog.find('h1').text(($selectedFeeds.length > 1) ? PTL.tr('Delete those feeds?') : PTL.tr('Delete this feed?'))
             .next('p#dialogBlurb')
             .addClass('dangerous')
             .text(PTL.tr('This action cannot be undone.'))
-            .next('h2').text(PTL.tr('Name'))
-            .next('p').text(thisFeedName);
+            .next('h2').text(($selectedFeeds.length > 1) ? PTL.tr('Names') : PTL.tr('Name'))
+            .next('p').html($names);
 
         }
       });

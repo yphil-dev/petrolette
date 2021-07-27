@@ -3,7 +3,6 @@
 PTL.col = {
   del: function($column) {
 
-
     const $panel = $column.parent();
 
     const nbOfColumnsInTab = $panel.find('.column').length;

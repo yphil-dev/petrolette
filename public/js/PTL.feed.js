@@ -68,9 +68,8 @@ PTL.feed = {
       .data('title', 'Delete this feed', url)
       .attr('title', PTL.tr('Delete this feed', url))
       .click(function() {
-        $('.selected').removeClass('selected');
-        $('.icon-checked').toggleClass('icon-checked icon-checkbox');
-        PTL.dialog.killFeed($(this));
+        PTL.dialog
+          .killFeed($(this).parent().parent().parent().parent().addClass('selected'), $('.selected'));
       });
 
     const $prefsIcon = $('<i>')
