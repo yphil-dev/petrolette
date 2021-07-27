@@ -18,6 +18,8 @@
 - Proper URL construction when building the bookmarklet to avoid catching anything but protocol + domain
 - Removed isQueryString bool, added isNewFeed bool
 - Refresh icon tooltip text items (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
+- The help tour functions are now in PTL.dialog
+
 
 ## 1.3.3
 

@@ -1,20 +1,31 @@
-<div id="newFeedDialog">
+<div id="feedNewDialog">
   <form>
-    <fieldset>
-      <legend class="translate" data-content="Name">URL</legend>
-      <div class="flexBox">
-        <input
-          name="name"
-          id="tabNameInput"
-          value=""
-          onclick="this.select()"
-          class="grow ui-corner-all" />
+    <legend data-content="Location"
+            class="ui-corner-top translate">Location</legend>
+    <fieldset id="locationFieldset">
+      <div id="feedGuessDiv"
+           class="flexBox helpTourDialogItem"
+           data-step="1">
+        <input name="guess"
+               id="feedGuessInput"
+               placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
+               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
+               value=""
+               onclick="this.select()"
+               class="grow translate"
+               />
+        <button id="feedGuessButton"
+                data-title="Find / discover the feed of this website, or build a search feed from the words"
+                class="shrink translate last"
+                type="button">
+          <i class="icon-search"></i>
+        </button>
       </div>
     </fieldset>
   </form>
 </div>
 
-<div id="feed-prefs">
+<div id="feedPrefsDialog">
     <legend data-content="Location"
             class="ui-corner-top translate">Location</legend>
     <fieldset id="locationFieldset">

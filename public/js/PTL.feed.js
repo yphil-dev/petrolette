@@ -184,7 +184,7 @@ PTL.feed = {
 
     if (isNewFeed) {
       $feed.prependTo($column).hide();
-      PTL.dialog.feedPrefs($prefsIcon, true);
+      PTL.dialog.feedNew($prefsIcon, true);
     } else {
       $feed.appendTo($column);
       $refreshIcon.click();

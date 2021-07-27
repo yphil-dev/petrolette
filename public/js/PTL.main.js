@@ -91,7 +91,7 @@ var PTL = (function() {
           .append($('<i>')
             .attr('class', 'icon-help helpIcon')
             .on('click', function() {
-              PTL.util.help('menu', step);
+              PTL.dialog.tour('menu', step);
             }));
       });
 

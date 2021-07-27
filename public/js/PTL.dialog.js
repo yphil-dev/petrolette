@@ -213,7 +213,7 @@ PTL.dialog = {
 
           $('.helpTour').on('click', function() {
             PTL.dialog.kill($dialog);
-            PTL.util.help('ui');
+            PTL.dialog.tour('ui');
           });
 
           $('.helpKbShortcuts').on('click', function() {
@@ -228,17 +228,345 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  feedPrefs: function($button, isNewFeed) {
+  tour:function(type, step) {
 
-    $('#ptlDialogs').load('/static/templates/dialogs.html #feed-prefs', function() {
+    const dialog = introJs(),
+          menu = introJs(),
+          ui = introJs();
+
+    ui.setOptions({
+      steps: [
+        {
+          title: PTL.tr('Welcome to Pétrolette'),
+          intro: PTL.tr('Learn to use it in a few easy steps') + ' 👋'
+        },
+        {
+          title: PTL.tr("That's what it's all about"),
+          element: 'li.feed',
+          intro: PTL.tr('This is an RSS feed.') + ' <a class="docLink icon" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-globe"></i></a>'
+        },
+        {
+          title: PTL.tr('Keep everything tidy'),
+          element: 'li[aria-controls=tab-1]',
+          intro: PTL.tr('This is a tab. It contains feeds.')
+        },
+        {
+          title: PTL.tr('Tab control'),
+          element: 'li[aria-controls=tab-2]',
+          intro: PTL.tr('Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it') + '.'
+        },
+        {
+          title: PTL.tr('Add a new feed'),
+          element: 'div#newFeedButton',
+          intro: PTL.tr('Click to add a feed.')
+        },
+        {
+          title: PTL.tr('Refresh / reload this feed'),
+          element: '.feedRefresh',
+          intro: PTL.tr('Get the latest articles.')
+        },
+        {
+          title: PTL.tr('Configure this feed'),
+          element: '.feedPrefs',
+          intro: PTL.tr('Configure this feed.')
+        },
+        {
+          title: PTL.tr('Keep everything tidy'),
+          element: '.feedSelect',
+          intro: PTL.tr('Select this feed (for drag & drop).')
+        },
+        {
+          title: 'Grip handle',
+          element: '.feedHandle',
+          intro: PTL.tr('Drag here to move this feed (and all other selected feeds) within this tab, or into another.')
+        },
+        {
+          title: PTL.tr('Fold / unfold this feed'),
+          element: 'div.feedToggle',
+          intro: PTL.tr('Folded feeds are not loaded at startup, so as to speed things up.')
+        },
+        {
+          title: PTL.tr('B-bye!'),
+          element: '.feed-delete',
+          intro: PTL.tr('Delete this feed.')
+        },
+        {
+          title: PTL.tr('Columns'),
+          element: 'div.buttons',
+          intro: PTL.tr('Click + to add a column, and - to delete it.')
+        },
+        {
+          title: PTL.tr('You are home') + ' 🏠',
+          element: 'div#menuButton',
+          intro: PTL.tr('Use the menu to configure your Pétrolette.')
+        }
+      ]
+    });
+
+    dialog.setOptions({
+      steps: [
+        {
+          title: PTL.tr('Location of the feed'),
+          element: '#feedGuessDiv',
+          intro: '<p><span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss docLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>.</p><p><span class="translate" data-content="If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words">' + PTL.tr('If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words') + '.</span><p>',
+          position: 'bottom'
+        },
+        {
+          title: PTL.tr('Feed name (optional)'),
+          element: 'input#feedNameInput',
+          intro: PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.'),
+          position: 'left'
+        },
+        {
+          title: PTL.tr('Keep everything tidy'),
+          element: '#feedTabSelect',
+          intro: PTL.tr('Move this feed to another tab ; Use this menu when drag & drop is not available, like on a phone or a TV.'),
+          position: 'bottom'
+        },
+        {
+          title: PTL.tr('Feed type'),
+          element: '#feedTypeDiv',
+          intro: PTL.tr('The type of feed: It can be all text, all image, or mixed.'),
+          position: 'top'
+        },
+        {
+          title: PTL.tr('Height of the feed'),
+          element: '#feedHeightDiv',
+          intro: PTL.tr('Height of the feed\'s viewport.'),
+          position: 'top'
+        },
+        {
+          title: PTL.tr('Number of items'),
+          element: '#feedMaxItemsDiv',
+          intro: PTL.tr('Number of items to load ; 0 loads all items.'),
+          position: 'top'
+        },
+        {
+          title: PTL.tr('Have a nice read ☕ 📰'),
+          element: '.button-ok',
+          intro: PTL.tr('I think that\'s about it...') + ' <a href="https://framagit.org/yphil/petrolette/-/issues">' + PTL.tr('Any questions?') + '</a>',
+          position: 'left'
+        }
+      ]
+    });
+
+    menu.setOptions({
+      steps: [
+        {
+          title: PTL.tr('Feeds'),
+          element: 'fieldset.feedsMenuForm',
+          intro: '<h4>' + PTL.tr('Open') + '</h4>' + PTL.tr('Load / import a feeds file') + ' ; ' + PTL.tr('to append to or replace the existing feeds.') + '<h4>' + PTL.tr('Save') + '</h4>' + PTL.tr('Save / export a feeds file.') + '<h4>' + PTL.tr('Reset') + '</h4>' + PTL.tr('Reset Pétrolette with the default feeds.') + '<h4>' + PTL.tr('Connection to storage') + '</h4>' + PTL.tr('Connection to the cloud to synchronize tabs and feeds on all devices.'),
+          position: 'right'
+        },
+        {
+          title: PTL.tr('Search prefix'),
+          element: 'fieldset.searchPrefixFieldset',
+          intro: '<h4>' + PTL.tr('Search prefix') + '</h4>' + PTL.tr('Preferred Search engine for building search feeds.') + '<h4>' + PTL.tr('Restore default') + '</h4>' + PTL.tr('Restore default search prefix') + '.',
+          position: 'right'
+        },
+        {
+          title: 'Pétrolette',
+          element: 'fieldset.ptlFieldset',
+          intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<iframe width="320" sandbox="allow-same-origin allow-scripts allow-popups" src="https://exode.me/videos/embed/'+ PTL.tr('e9156a58-a059-430d-ad36-4b14ab3b00bf') + '" frameborder="0" allowfullscreen style="margin-top:0.3em;"></iframe>' + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
+          position: 'right'
+        }
+      ]
+    });
+
+    ui.setOption('prevLabel', PTL.tr('Prev'));
+    ui.setOption('nextLabel', PTL.tr('Next'));
+    ui.setOption('skipLabel', 'x');
+    ui.setOption('doneLabel', PTL.tr('Got it!'));
+
+    dialog.setOption('prevLabel', PTL.tr('Prev'));
+    dialog.setOption('nextLabel', PTL.tr('Next'));
+    dialog.setOption('skipLabel', 'x');
+    dialog.setOption('doneLabel', PTL.tr('Got it!'));
+
+    menu.setOption('prevLabel', PTL.tr('Prev'));
+    menu.setOption('nextLabel', PTL.tr('Next'));
+    menu.setOption('skipLabel', 'x');
+    menu.setOption('doneLabel', PTL.tr('Got it!'));
+
+    dialog.setOption('overlayOpacity', 0);
+    ui.setOption('overlayOpacity', 0.2);
+
+    dialog.setOption('hideNext', true);
+    dialog.setOption('hidePrev', true);
+
+    if (step) {
+
+      if (type === 'dialog') {
+        PTL.sideMenu('close');
+        ui.exit();
+        menu.exit();
+        dialog.goToStepNumber(step).start();
+      }
+      
+      if (type === 'menu') {
+        ui.exit();
+        dialog.exit();
+        menu.goToStepNumber(step).start();
+      }
+      
+    } else {
+      PTL.sideMenu('close');
+      dialog.exit();
+      menu.exit();
+      $('#menu > .handle').click();
+      $('#tabs').tabs('option', 'active', 0);
+      $('.feed').first().find('.collapsible').show('fade', 'fast');
+      ui.start();
+    }
+
+    // $('.introjs-button').button();
+
+  },
+  feedNew: function($button, isNewFeed) {
+
+    $('#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
 
       const $dialog = $(this),
-        $dataStore = $button.parent().parent(),
-        $feed = $dataStore.parent().parent(),
-        $feedBody = $dataStore.parent().next('div.feedBody'),
-        allGroups = PTL.tab.list('all'),
-        $thisGroup = $feed.parent().parent(),
-        $groupMenu = $dialog.find('select#feedTabSelect');
+            $dataStore = $button.parent().parent(),
+            $feed = $dataStore.parent().parent();
+
+      $dialog.dialog({
+        title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
+        width: PTL.util.isMobile() ? 'auto' : 630,
+        buttons: [
+          {
+            text: PTL.tr('Cancel'),
+            title: PTL.tr('Cancel'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+
+              if (isNewFeed) {
+                $feed.hide('fade', 250, function() {
+                  $feed.remove();
+                });
+              }
+
+            }
+          },
+          {
+            text: PTL.tr('Add'),
+            title: PTL.tr('Add'),
+            class: 'translate button-ok',
+            click: function() {
+
+              console.log('plop: %s (%s)', $(this).attr('title'));
+              
+              // function guessError() {
+              //   $guessSpinner.removeClass('icon-refresh spin ui-state-success')
+              //     .addClass('icon-error');
+
+              //   $guessButton
+              //     .addClass('ui-state-error')
+              //     .attr('title', PTL.tr('No valid feed found at this address'));
+              // }
+
+              // const $guessButton = $dialog.find('button#feedGuessButton').button(),
+              //   $guessSpinner = $dialog.find('button#feedGuessButton > i'),
+              //   $feedGuessInput = $dialog.find('input#feedGuessInput'),
+              //   $okButton = $('.ui-dialog-buttonpane').find('.button-ok');
+
+              // $feedGuessInput.on('keypress', function(e) {
+              //   if (e.which == 13) {
+              //     $okButton.click();
+              //     console.log('ENTER!: %s (%s)');
+              //   }
+              // });
+
+              // $guessButton.click(function() {
+
+              //   $guessSpinner
+              //     .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
+              //     .addClass('spin icon-refresh');
+              //   $guessButton.removeClass('icon-checked ui-state-success ui-state-error');
+
+              //   $.get('/discover', {
+              //     dataType: 'json',
+              //     url: $feedGuessInput.val(),
+              //     searchPrefix: PTL.prefs.readConfig('searchPrefix'),
+              //     timeout: 2000
+              //   }).fail(function(req, status, xhr) {
+              //     guessError();
+              //   }).done(function(feed) {
+              //     $guessSpinner.removeClass('spin icon-refresh');
+
+              //     $feedGuessInput.val(feed);
+
+              //     $guessSpinner
+              //       .removeClass('ui-state-error')
+              //       .addClass('icon-checked ui-state-success');
+
+              //     $guessButton
+              //       .addClass('ui-state-success')
+              //       .attr('title', PTL.tr('Valid feed found! Now just press OK'));
+
+              //   }).always(function(req, status, xhr) {
+              //     if (status === 'error') guessError();
+              //   });
+
+              // });
+
+              var newUrl = DOMPurify.sanitize($(this).find('input#feedGuessInput').val());
+
+              $dataStore
+                .data('url', newUrl);
+
+              if (isNewFeed) {
+                $feed.show('fade', 250, function() {
+                  PTL.feed.populate($button);
+                });
+              }
+
+              PTL.tab.saveTabs();
+              PTL.dialog.kill($dialog);
+
+            }
+          }
+        ],
+        open: function() {
+
+          $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
+            PTL.dialog.kill($dialog);
+            if (isNewFeed) {
+              $feed.hide('fade', 250, function() {
+                $feed.remove();
+              });
+            }
+          });
+
+          $(document).keyup(function(event) {
+            if (event.keyCode === 27) {
+              if (isNewFeed) {
+                $feed.hide('fade', 250, function() {
+                  $feed.remove();
+                });
+              }
+            }
+          });
+
+        }
+      });
+
+      $dialog.dialog('open');
+    });
+
+  },
+  feedPrefs: function($button, isNewFeed) {
+
+    $('#ptlDialogs').load('/static/templates/dialogs.html #feedPrefsDialog', function() {
+
+      const $dialog = $(this),
+            $dataStore = $button.parent().parent(),
+            $feed = $dataStore.parent().parent(),
+            $feedBody = $dataStore.parent().next('div.feedBody'),
+            allGroups = PTL.tab.list('all'),
+            $thisGroup = $feed.parent().parent(),
+            $groupMenu = $dialog.find('select#feedTabSelect');
 
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
@@ -395,7 +723,7 @@ PTL.dialog = {
                       .attr('class', 'icon-help helpIcon')
                       .attr('title', step)
                       .on('click', function() {
-                        PTL.util.help('dialog', step);
+                        PTL.dialog.tour('dialog', step);
                       }));
           });
           
