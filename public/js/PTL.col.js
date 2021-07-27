@@ -137,7 +137,7 @@ PTL.col = {
         $colNewButton,
         $srcLegend,
         $srcNewButton)
-      .hide();
+      .addClass('ui-state-disabled');
 
     return $column;
   }

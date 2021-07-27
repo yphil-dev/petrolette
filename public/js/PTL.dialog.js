@@ -5,7 +5,7 @@ PTL.dialog = {
     $dialog.dialog('destroy');
     $('#ptlDialogs').empty();
   },
-  resetTabs: function($button) {
+  resetTabs: function() {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
@@ -34,7 +34,7 @@ PTL.dialog = {
               localStorage.clear();
               PTL.util.say(PTL.tr('All tabs and feeds restored to defaults'), 'success', true);
               PTL.dialog.kill($dialog);
-              window.location.reload(true);
+              window.location.reload();
             }
           }
         ],
@@ -102,9 +102,10 @@ PTL.dialog = {
   },
   notify: function(title, text) {
 
-    const $notify = $('#notify'),
-      $h4 = $('#notify > h4').text(title),
-      $text = $('#notify > p').text(text);
+    const $notify = $('#notify');
+    
+    $('#notify > h4').text(title),
+    $('#notify > p').text(text);
 
     $notify.fadeIn('fast', 'linear', function() {
       setTimeout(function() {
@@ -377,7 +378,7 @@ PTL.dialog = {
     feedNew.setOptions({
       steps: [
         {
-          title: PTL.tr('Anything works'),
+          title: PTL.tr('Three options'),
           element: 'input#feedGuessInput',
           intro: '<h4>' + PTL.tr('The valid URL of a feed') + '</h4>' + PTL.tr('The feed will be added to the current tab.') + '<h4>' + PTL.tr('The valid URL of a website') + '</h4>' + PTL.tr('Pétrolette will search for a feed at this URL, then add it to the current tab.') + '<h4>' + PTL.tr('A list of words') + '</h4>' + PTL.tr('Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words'),
           position: 'right'
@@ -442,7 +443,7 @@ PTL.dialog = {
     // $('.introjs-button').button();
 
   },
-  feedNew: function($button, isNewFeed) {
+  feedNew: function($button) {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
 
@@ -459,18 +460,17 @@ PTL.dialog = {
           const $addButton = $dialog.find('button#feedAddButton').button().text(PTL.tr('Add')),
                 $addSpinner = $dialog.find('button#feedAddButton > i'),
                 $feedAddInput = $dialog.find('input#feedAddInput'),
-                $messageZone = $dialog.find('div#messageZone'),
-                $okButton = $('.ui-dialog-buttonpane').find('.button-ok');
+                $messageZone = $dialog.find('div#messageZone');
 
-          $dialog.find("form").on("submit", function(event) {
-            event.preventDefault();
+          $dialog.find("form").on("submit", function(e) {
+            e.preventDefault();
             $addButton.click();
           });
 
           $('.helpTourDialogItem')
             .append($('<i>')
               .attr('class', 'icon-help helpIcon')
-              .attr('title', 'Yeah')
+              .attr('title', PTL.tr('Help') + ' - ' + PTL.tr('Three options'))
               .on('click', function() {
                 PTL.dialog.tour('feedNew');
               }));
@@ -486,37 +486,51 @@ PTL.dialog = {
             }
           });
 
-          function addError() {
+          function addError(feedUrl) {
+
+            const $errorMessage = PTL.tr('No feed found at this URL');
+            
             $addSpinner.removeClass('icon-refresh spin ui-state-success')
               .addClass('icon-error');
 
             $addButton
               .addClass('ui-state-error')
-              .attr('title', PTL.tr('No valid feed found at this address'));
+              .attr('title', $errorMessage)
+              .text(PTL.tr('Add'))
+              .off("click").click(function() {
+                
+                $dataStore
+                  .data('url', feedUrl);
 
-            $messageZone.text('No feed at this URL')
+                $feed.show('fade', 250, function() {
+                  PTL.feed.populate($button);
+                  PTL.tab.saveTabs();
+                  PTL.dialog.kill($dialog);
+                });
+                
+              });
+            
+            $messageZone.text($errorMessage);
           }
-          
-          // $feedAddInput.on('keypress', function(e) {
-          //   if (e.which == 13) {
-          //     $addButton.click();
-          //   }
-          // });
 
           $addButton.click(function() {
 
+            const feedUrl = DOMPurify.sanitize($feedAddInput.val());
+            
             $addSpinner
               .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
               .addClass('spin icon-refresh');
-            $addButton.removeClass('icon-checked ui-state-success ui-state-error');
+            $addButton
+            .text(PTL.tr('Searching'))
+              .removeClass('icon-checked ui-state-success ui-state-error');
             
             $.get('/discover', {
               dataType: 'json',
-              url: DOMPurify.sanitize($feedAddInput.val()),
+              url: feedUrl,
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
-            }).fail(function(req, status, xhr) {
-              addError();
+            }).fail(function(_req, _status, _xhr) {
+              addError(feedUrl);
             }).done(function(feed) {
               
               $addSpinner.removeClass('spin icon-refresh');
@@ -540,8 +554,8 @@ PTL.dialog = {
                 PTL.dialog.kill($dialog);
               });
               
-            }).always(function(req, status, xhr) {
-              if (status === 'error') addError();
+            }).always(function(_req, status, _xhr) {
+              if (status === 'error') addError(feedUrl);
             });
 
           });
@@ -666,7 +680,7 @@ PTL.dialog = {
 
             $guessButton
               .addClass('ui-state-error')
-              .attr('title', PTL.tr('No valid feed found at this address'));
+              .attr('title', PTL.tr('No feed found at this URL'));
           }
 
           const $guessButton = $dialog.find('button#feedGuessButton').button(),
@@ -690,7 +704,6 @@ PTL.dialog = {
             }),
             $feedNbItemsInput = $('input#feedNbItems'),
             $feedNbItemsSlider = $('div#feedNbItemsSlider'),
-            $feedNbItemsSliderHandle = $dialog.find('div#feedNbItemsSlider > .ui-slider-handle'),
             $feedNbItemsSpinner = $dialog.find('input#feedNbItemsSpinner').spinner({
               classes: {
                 "ui-spinner": "shrink ui-corner-all"
@@ -741,7 +754,7 @@ PTL.dialog = {
               url: $feedGuessInput.val(),
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
-            }).fail(function(req, status, xhr) {
+            }).fail(function(_req, _status, _xhr) {
               guessError();
             }).done(function(feed) {
               $guessSpinner.removeClass('spin icon-refresh');
@@ -756,7 +769,7 @@ PTL.dialog = {
                 .addClass('ui-state-success')
                 .attr('title', PTL.tr('Valid feed found! Now just press OK'));
 
-            }).always(function(req, status, xhr) {
+            }).always(function(_req, status, _xhr) {
               if (status === 'error') guessError();
             });
 
@@ -788,13 +801,13 @@ PTL.dialog = {
               $feedLimitInput.val(oldLimit);
               $(this).find('.ui-slider-handle').text(oldLimit);
             },
-            slide: function(event, ui) {
+            slide: function(_event, ui) {
               $(this).val(ui.value);
               $(this).find('.ui-slider-handle').text(ui.value);
               $feedBody.css('height', ui.value + 'px');
               $feedLimitSpinner.val(ui.value);
             },
-            change: function(event, ui) {
+            change: function(_event, ui) {
               $feedLimitInput.val(ui.value);
               $dataStore.data('limit', ui.value);
             }
@@ -816,12 +829,12 @@ PTL.dialog = {
               $feedNbItemsInput.val(oldNbItems);
               $(this).find('.ui-slider-handle').text(oldNbItems);
             },
-            slide: function(event, ui) {
+            slide: function(_event, ui) {
               $(this).val(ui.value);
               $(this).find('.ui-slider-handle').text(ui.value);
               $feedNbItemsSpinner.val(ui.value);
             },
-            change: function(event, ui) {
+            change: function(_event, ui) {
               $feedNbItemsInput.val(ui.value);
               $dataStore.data('nbitems', ui.value);
             }
@@ -1095,7 +1108,6 @@ PTL.dialog = {
         $thisFeed = $button.parent().parent().parent().parent(),
         thisFeedId = $button.parent().parent().parent().parent().attr('id'),
         thisFeedName = $button.parent().parent().parent().find('.feedTitle').text(),
-        thisFeedUrl = $button.parent().parent().parent().find('.dataStore').data('url'),
         $icon = $dialog.find('div#icon > i');
 
       $icon.addClass('icon-trash-empty danger');

@@ -2,6 +2,9 @@
 
 ## 1.4.0
 
+- New "New feed" dialog, streamlined w/ only the feed URL
+    - Auto / transparent search / build / add of the feed at the URL
+    - Override function to force-add errored feed anyway
 - New "media" paradigm in the feed preferences #a633d06d
     - Text only mode now really shows only text
 - New help tour : Menu entries #5884a8b
@@ -9,7 +12,8 @@
 - Video embeds (locale'd, well at least En & Fr) in help tour popups
 - Graceful handling (on-screen text) of various disabled features : JS, DOM storage
 - Faster animations (feed show & hide)
-- New feeds now appear only *after* creation, not before as some sort of empty shell
+- New feeds now appear only *after* creation, not before as a placeholder
+- Few messages in the console (`shutUp` bool param added to PTL.tab.saveTabs())
 
 ### Bugfixes
 

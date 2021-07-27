@@ -97,10 +97,10 @@ var PTL = (function() {
 
       $(document).on({
         mouseenter: function() {
-          $(this).find('.colButtons').show();
+          $(this).find('.colButtons').removeClass('ui-state-disabled');
         },
         mouseleave: function() {
-          $(this).find('.colButtons').hide();
+          $(this).find('.colButtons').addClass('ui-state-disabled');
         }
       }, "ul.column");
 

@@ -68,7 +68,7 @@ PTL.i18n.translations = {
 
   "Location / URL / Keywords" : { fr: "Adresse / URL / Mots-clés", ja: "所在地 / URL / キーワード", es: "Ubicación / URL / Palabras clave" },
 
-  "Anything works" : { fr: "Tout fonctionne", ja: "どんな作品でも", es: "Cualquier cosa funciona" },
+  "Three options" : { fr: "Trois options", ja: "三种选择", es: "Tres opciones" },
 
   "The valid URL of a feed" : { fr: "L'URL valide d'un flux", ja: "ソースの有効なURL", es: "La URL válida de una fuente" },
 
@@ -413,6 +413,8 @@ PTL.i18n.translations = {
 
   "Not a feed" : { fr: "Source non valide", ja: "無効な情報源", es: "Fuente inválida" },
 
+  "No feed found at this URL" : { fr: "Aucun flux trouvé à cette URL", ja: "このアドレスで見つかったソースなし", es: "No hay fuente encontrada en esta URL" },
+
   "Main menu" : { fr: "Menu principal", ja: "メインメニュー", es: "Menú principal" },
 
   // Dialogues
@@ -444,7 +446,7 @@ PTL.i18n.translations = {
 
   "Unrecognized URL: %1" : { fr: "URL non reconnue: %1", ja: "認識できないURL: %1", es: "URL no reconocida: %1" },
 
-  "No feeds found" : { fr: "Aucun flux trouvée", ja: "ソースが見つかりません", es: "No se encontraron fuentes" },
+  "No feeds found" : { fr: "Aucun flux trouvés", ja: "ソースが見つかりません", es: "No se encontraron fuentes" },
 
   "Explore!" : { fr: "Exploration !", ja: "探査！", es: "¡Exploración!" },
 
@@ -471,7 +473,6 @@ PTL.i18n.translations = {
 
   "Report feed error" : { fr: "Signaler un flux en erreur" , ja: "レポートソースエラー", es: "Informe de error de la fuente" },
 
-  "No valid feed found at this address" : { fr: "Aucun flux valide découverte à cette adresse", ja: "このアドレスに有効なソースが見つかりません", es: "No se encontró una fuente válida en esta dirección" },
   "Valid feed found! Now just press OK" : { fr: "Flux valide trouvée ! Maintenant, appuyez simplement sur OK", ja: "有効なソースが見つかりました！ OKを押すだけです", es: "¡Se ha encontrado una fuente válida! Ahora solo presione OK" },
 
   "Delete tab" : { fr: "Supprimer onglet", ja: "フォルダを削除", es: "Eliminar carpeta" },

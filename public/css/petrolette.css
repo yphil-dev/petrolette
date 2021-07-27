@@ -1131,6 +1131,15 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
   margin: 0.3em 0 0 0;
 }
 
+.ui-dialog #messageZone {
+  font-size: 75%;
+  color: var(--color-danger);
+}
+
+.ui-state-error {
+  background-color: var(--color-danger) !important;
+}
+
 #js {
   background-color: var(--color-ui-qua);
 }
