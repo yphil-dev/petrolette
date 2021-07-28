@@ -52,8 +52,6 @@ PTL.dialog = {
         }
       });
 
-      console.log('MOB: %s (%s)', PTL.util.isMobile());
-
       $dialog.dialog('open');
 
     });
@@ -519,6 +517,11 @@ PTL.dialog = {
           $addButton.click(function() {
 
             const feedUrl = DOMPurify.sanitize($feedAddInput.val());
+
+            if (feedUrl == "") {
+              $messageZone.text(PTL.tr('This field cannot be empty'));
+              return;
+            }
             
             $addButtonIcon
               .removeClass('icon-checked icon-error ui-state-success ui-state-error')
@@ -527,7 +530,6 @@ PTL.dialog = {
               .removeClass('ui-state-success ui-state-error');
 
             $addButtonText.text(PTL.tr('Searching'));
-
             
             $.get('/discover', {
               dataType: 'json',
@@ -638,11 +640,11 @@ PTL.dialog = {
 
                 $feed.show('fade', 250, function() {
                   PTL.feed.populate($button);
+                  PTL.tab.saveTabs();
                 });
 
               }
 
-              PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
 
             }
@@ -717,14 +719,12 @@ PTL.dialog = {
           $feedGuessInput.on('keypress', function(e) {
             if (e.which == 13) {
               $okButton.click();
-              console.log('ENTER!: %s (%s)');
             }
           });
 
           $feedNameInput.on('keypress', function(e) {
             if (e.which == 13) {
               $okButton.click();
-              console.log('ENTER!: %s (%s)');
             }
           });
 

@@ -1,6 +1,11 @@
 # Changelog
 
-## 1.4.0
+## v1.5.0
+
+### Bugfixes
+- The custom name of the feed was overriden with the default one
+
+## v1.4.0
 
 - New "New feed" dialog, streamlined w/ only the feed URL #b57887be
     - Auto / transparent search / build / add of the feed at the URL
@@ -25,7 +30,7 @@
 - Refresh icon tooltip text items (both feed URL / name and timeStamp) were `undefined` after a (long) while #a633d06d
 - The help tour functions are now in PTL.dialog #dd1df3bb
 
-## 1.3.3
+## v1.3.3
 
 - Default search engine update (because of various instances searx RSS restrictions) #8870f07e
 
@@ -34,7 +39,7 @@
 - A legacy db call was left in dialog's killFeed
 - Removed lingering (sync) debug symbols
 
-## 1.3.2
+## v1.3.2
 
 - One big squashed commit #b92f6cb6
     - New favicon error handling
@@ -44,7 +49,7 @@
     - Libs version update
     - Default feeds update
 
-## 1.3.0
+## v1.3.0
 
 - New feed items indicator / badge #96
 - New help system #104
@@ -62,7 +67,7 @@
 - Finalized name refactoring
 - Explicit CSS vars names
 
-## 1.2.8
+## v1.2.8
 
 - New function / dialog to merge the imported / open feeds with existing ones #e38691d5
 - Server ports now set in [the config file](https://framagit.org/yphil/petrolette/-/blob/master/package.json) #c46149d8
@@ -99,7 +104,7 @@
     - Changed dialog wording policy : Laconic and modular in the titles, explicit and literal in the content text
 - [Valid HTML](https://validator.w3.org/nu/?doc=https%3A%2F%2Fpetrolette.space%2F) #c6c5bfc2 to #140685b4
 
-## 1.2.7
+## v1.2.7
 
 - The feed's favicon file name / path is now saved along, so as to avoid re-requesting it, then re-computing the (hash) name, and only *then* re-rend it back from the server favicon cache, so everybody wins #1e5f4c20
 - The Logging strategy has been slightly adjusted: We now log the access to /feed and not to /favicon #1e5f4c20
@@ -112,7 +117,7 @@
 - Mobile: Removed transparency on hover #98d979c7
 - New dialog options #7895970c
 
-## 1.2.6
+## v1.2.6
 
 - Removed all sync calls on the server #71e24de1
 - Error feeds keep their title #4e00f880
@@ -123,7 +128,7 @@
 - CSS rules update / cleanup #4412c6b9
 - XML is not an object when nbGroups / nbFeeds < 2 (#93)
 
-## 1.2.5
+## v1.2.5
 
 - Feed name is now saved along #037426a8
 - Completely revamped the favicon (client) display system from a bg-img to a plain img with a fallback #47923bfb to #13f63af5
@@ -134,7 +139,7 @@
 - MediaRSS metadata preloading new preference option #50ef2ebb
 - Site (fav)icon in "folded" feeds #bbc6ab5e
 
-## 1.2.1
+## v1.2.1
 
 - MediaRSS audio & video (plain HTML5) player #3800c2a0 to #ffcfcfb6
 - Infinite scrolling within the feeds #0f760e9b to #b2cf0f86
@@ -146,6 +151,6 @@
 - Relative imageUrl #8a63acaf
 - Global sanitization of new inputs #a0cc0013
 
-## 1.2.0
+## v1.2.0
 
 - Complete revamp of the image loading strategy #5bdd9341
