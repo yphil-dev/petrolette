@@ -182,6 +182,9 @@ PTL.i18n.translations = {
   "Save" : { fr: "Sauver" , ja: "セーブ", es: "Salvar" },
 
   "Add" : { fr: "Ajouter" , ja: "追加", es: "Añadir" },
+
+  "Searching" : { fr: "Recherche" , ja: "検索中", es: "Búsqueda" },
+  
   "Add feed" : { fr: "Ajouter flux" , ja: "ソースを追加", es: "Agregue fuente" },
 
   "Add anyway" : { fr: "Ajouter quand même" , ja: "とにかく追加", es: "Agregar de todos modos" },

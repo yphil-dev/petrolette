@@ -493,8 +493,7 @@ PTL.dialog = {
             const $errorMessage = PTL.tr('No feed found at this URL');
             
             $addButtonIcon
-              .removeClass('icon-refresh icon-checked spin')
-              .addClass('icon-error');
+              .removeClass('icon-refresh icon-checked spin');
 
             $addButton
               .addClass('ui-state-error')
@@ -522,7 +521,7 @@ PTL.dialog = {
             const feedUrl = DOMPurify.sanitize($feedAddInput.val());
             
             $addButtonIcon
-              .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
+              .removeClass('icon-checked icon-error ui-state-success ui-state-error')
               .addClass('spin icon-refresh');
             $addButton
               .removeClass('ui-state-success ui-state-error');

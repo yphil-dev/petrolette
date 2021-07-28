@@ -54,7 +54,7 @@ npm install
 npm start
 xdg-open http://localhost:8000
 ```
-#### Test
+#### Update
 
 ```sh
 cd petrolette
