@@ -191,6 +191,7 @@ PTL.i18n.translations = {
   
   "Add a column" : { fr: "Ajouter une colonne" , ja: "列を追加する", es: "Agrega una columna" },
 
+  "This field cannot be empty" : { fr: "Ce champ ne peut pas être vide" , ja: "このフィールドを空にすることはできません", es: "Esta entrada de texto no puede estar vacía" },
 
   "Add a feed to this column" : { fr: "Ajouter un flux à cette colonne" , ja: "この列にソースを追加する", es: "Agregar una fuente a esta columna" },
   "Keyboard shortcuts" : { fr: "Raccourcis clavier" , ja: "キーボードショートカット", es: "Atajos de teclado" },

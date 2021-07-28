@@ -577,11 +577,13 @@ PTL.feed = {
           .attr('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStampAlt))
           .removeClass('spin');
 
-        $feedLink
-          .text(fetchFeed.feedTitle)
-          .attr('href', fetchFeed.feedLink);
-        $dataStore.data('name', fetchFeed.feedTitle);
+        $feedLink.attr('href', fetchFeed.feedLink);
 
+        if ($dataStore.data('name') == '') {
+          $feedLink.text(fetchFeed.feedTitle);
+          $dataStore.data('name', fetchFeed.feedTitle);          
+        }
+        
         if (fetchFeed.totalNewItems > 0) {
           $dataStore.data('lastitem', fetchFeed.lastItem);
           PTL.tab.saveTabs();
