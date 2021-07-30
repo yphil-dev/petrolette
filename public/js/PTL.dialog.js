@@ -369,6 +369,12 @@ PTL.dialog = {
           element: 'fieldset.ptlFieldset',
           intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<iframe width="320" sandbox="allow-same-origin allow-scripts allow-popups" src="https://exode.me/videos/embed/' + PTL.tr('e9156a58-a059-430d-ad36-4b14ab3b00bf') + '" frameborder="0" allowfullscreen style="margin-top:0.3em;"></iframe>' + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
           position: 'right'
+        },
+        {
+          title: PTL.tr('Pétrolette needs you'),
+          element: 'fieldset#support',
+          intro: '<p>' + PTL.tr('Pétrolette is free software. However the development requires')+ ' <a class="docLink" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">' + PTL.tr('a lot of time') + '</a> ' + PTL.tr('and') + ' <a class="translate docLink" data-content="a lot of work." href="https://framagit.org/yphil/petrolette/-/commits/master">' + PTL.tr('a lot of work.') + '</a> ' + PTL.tr('In order to keep maintaining Pétrolette and developing her with new features I need your help.') + '</p>'+ '<p>' + PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.') + '</p>',
+          position: 'right'
         }
       ]
     });
@@ -480,12 +486,6 @@ PTL.dialog = {
             $feed.remove();
           });
 
-          $(document).keyup(function(event) {
-            if (event.keyCode === 27) {
-              $feed.remove();
-            }
-          });
-
           function addError(feedUrl) {
 
             const $errorMessage = PTL.tr('No feed found at this URL');
@@ -524,10 +524,10 @@ PTL.dialog = {
             }
             
             $addButtonIcon
-              .removeClass('icon-checked icon-error ui-state-success ui-state-error')
+              .removeClass('icon-checked icon-error ui-state-error')
               .addClass('spin icon-refresh');
             $addButton
-              .removeClass('ui-state-success ui-state-error');
+              .removeClass('ui-state-error');
 
             $addButtonText.text(PTL.tr('Searching'));
             
@@ -545,12 +545,10 @@ PTL.dialog = {
               $feedAddInput.val(feed);
 
               $addButtonIcon
-                .removeClass('icon-error')
-                .addClass('icon-checked');
+                .removeClass('icon-error');
 
               $addButton
                 .removeClass('ui-state-error')
-                .addClass('ui-state-success')
                 .attr('title', PTL.tr('Valid feed found! Now just press OK'));
 
               $dataStore
@@ -598,6 +596,7 @@ PTL.dialog = {
             title: PTL.tr('Cancel'),
             class: 'translate',
             click: function() {
+              
               PTL.dialog.kill($dialog);
 
               if (isNewFeed) {
@@ -635,13 +634,16 @@ PTL.dialog = {
                 .data('type', newType);
 
               if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
-                $feed.hide('fade', 250, function() { $feed.remove(); });
+                $feed.hide('fade', 250, function() {
+                  $feed.remove();
+                });
               } else {
 
                 $feed.show('fade', 250, function() {
                   PTL.feed.populate($button);
-                  PTL.tab.saveTabs();
                 });
+
+                PTL.tab.saveTabs();
 
               }
 
@@ -651,25 +653,6 @@ PTL.dialog = {
           }
         ],
         open: function() {
-
-          $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
-            PTL.dialog.kill($dialog);
-            if (isNewFeed) {
-              $feed.hide('fade', 250, function() {
-                $feed.remove();
-              });
-            }
-          });
-
-          $(document).keyup(function(event) {
-            if (event.keyCode === 27) {
-              if (isNewFeed) {
-                $feed.hide('fade', 250, function() {
-                  $feed.remove();
-                });
-              }
-            }
-          });
 
           $.each(allGroups, function() {
             const selected = (this.pane === $thisGroup.attr('id'));
@@ -786,7 +769,8 @@ PTL.dialog = {
             icon: false
           });
 
-          $dialog.find('input#' + oldType || 'mixed').prop('checked', true)
+          $dialog.find('input#' + oldType || 'mixed')
+            .prop('checked', true)
             .checkboxradio('refresh');
 
           $feedLimitSpinner
@@ -844,10 +828,27 @@ PTL.dialog = {
             }
           });
 
+        },
+        close: function( _event, _ui ) {
+          
+          if (isNewFeed) {
+            
+            $feed.hide('fade', 250, function() {
+              $feed.remove();
+            });
+          } else {
+            $feed.show();
+          }
+
+          PTL.dialog.kill($dialog);
+
         }
       });
 
       $dialog.dialog('open');
+      
+      console.log('wow: %s (%s)', isNewFeed);
+
     });
 
   },

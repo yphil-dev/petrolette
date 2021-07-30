@@ -79,7 +79,7 @@ PTL.feed = {
       .click(function() {
         $('.selected').removeClass('selected');
         $('.icon-checked').toggleClass('icon-checked icon-checkbox');
-        PTL.dialog.feedPrefs($(this));
+        PTL.dialog.feedPrefs($(this), false);
       });
 
     const $refreshIcon = $('<i>')
@@ -385,11 +385,11 @@ PTL.feed = {
   appendVideoPlayer: function($itemDiv, videoUrl, videoType) {
 
     const videoPlayer = document.createElement('video'),
-      $videoIcon = $('<i>'),
-      $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink');
+          $videoIcon = $('<i>'),
+          $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink');
 
     videoPlayer.controls = 'controls';
-    videoPlayer.src = videoUrl;
+    videoPlayer.src = videoUrl + '#t=0.5';
     videoPlayer.type = videoType;
     videoPlayer.preload = PTL.prefs.readConfig('mediaPreload');
 
@@ -540,16 +540,16 @@ PTL.feed = {
       PTL.feed.fetchIcon(feedHost)
         .then(hash => {
           $dataStore.data('iconhash', hash);
-          PTL.tab.saveTabs();
+          PTL.tab.saveTabs(true);
         })
         .catch(_e => {
           $dataStore.data('iconhash', 'noicon');
-          PTL.tab.saveTabs();
+          PTL.tab.saveTabs(true);
           $favIcon.attr('src', '/static/images/rss.gif');
         });
     } else {
       $dataStore.data('iconhash', '');
-      PTL.tab.saveTabs();
+      PTL.tab.saveTabs(true);
     }
 
     if ($dataStore.data('status') == 'on') {

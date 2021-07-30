@@ -11,6 +11,8 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
+      Mousetrap.bind('n', newFeed);
+      
       let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
 
       request.onerror = function(event) {
@@ -156,22 +158,41 @@ var PTL = (function() {
         PTL.dialog.help();
       });
 
-      $('body').on('click','.newFeedButton', function() {
+      function newFeed() {
 
-        var $column;
+        let $column;
 
         if ($(this).hasClass('button-column')) {
           $column = $(this).parent().parent();
         } else {
           $column = $($('.ui-tabs-active')
-                      .find('a')
-                      .attr('href'))
+            .find('a')
+            .attr('href'))
             .find('.column').first();
         }
 
         PTL.sideMenu('close');
-          PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', true);
-      });
+        PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', true);
+      }
+      
+      $('body').on('click','.newFeedButton', newFeed);
+      
+      // $('body').on('click','.newFeedButton', function() {
+
+      //   let $column;
+
+      //   if ($(this).hasClass('button-column')) {
+      //     $column = $(this).parent().parent();
+      //   } else {
+      //     $column = $($('.ui-tabs-active')
+      //                 .find('a')
+      //                 .attr('href'))
+      //       .find('.column').first();
+      //   }
+
+      //   PTL.sideMenu('close');
+      //     PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', true);
+      // });
 
       $feedCodeButton.click(function(event) {
         event.preventDefault();
@@ -441,12 +462,14 @@ var PTL = (function() {
         PTL.util.translate();
       };
 
-      const $debugHiddenButton = $('<span>')
-            .text('debug')
-            .click(function () {
-              PTL.dialog.beg();
-            });
-
+      // const $debugHiddenButton = $('<span>')
+      //       .attr('title', '>debug')
+      //       .addClass('debug')
+      //       .text('>debug')
+      //       .click(function () {
+      //         PTL.dialog.beg();
+      //       });
+      
       // $debugHiddenButton.appendTo('body');
 
     },

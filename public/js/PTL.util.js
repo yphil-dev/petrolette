@@ -144,7 +144,7 @@ PTL.util = {
                          .attr('title', d.toLocaleString())
                          .append($prompt, $line));
 
-    $('#console').animate({scrollTop: $('#console').prop("scrollHeight")}, 500);
+    $('#console').animate({scrollTop: $('#console').prop("scrollHeight")}, 1);
 
     if ($lines.length > 50) $lines.last().remove();
 

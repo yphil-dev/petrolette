@@ -86,7 +86,8 @@
     <script src="/bower/remotestorage/release/remotestorage.js"></script>
     <script src="/bower/rs-widget/build/widget.js"></script>
     <script src="/bower/DOMPurify/dist/purify.min.js"></script>
-
+    <script src="/bower/mousetrap/mousetrap.min.js"></script>
+    
     <script src="/static/js/PTL.main.js"></script>
     <script src="/static/js/PTL.prefs.js"></script>
     <script src="/static/js/PTL.i18n.js"></script>
@@ -436,13 +437,14 @@
       <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <span class="sideMenuSectionToggle">
           <i class="icon-right rotate unfold"></i>
-          <span class="translate"
+          <span class="translate menuTourItem"
+                data-step="4"
                 data-content="Support">
             Support
           </span>
         </span>
       </div>
-      <fieldset>
+      <fieldset id="support">
         <div class="flexBox" id="liberapay">
           <a id="lPayAmount" href="https://liberapay.com/yPhil/">
             <img width="156" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/receives/yPhil.svg?logo=liberapay" />
@@ -451,6 +453,13 @@
             <img width="82" height="20" alt="Support Pétrolette" class="b-lazy" src="https://img.shields.io/liberapay/patrons/yPhil.svg?logo=liberapay">
           </a>
         </div>
+
+        <ul id="kofi" class="fundingLinks">
+          <li>
+            Buy me a coffe on <a class="plop" href="https://ko-fi.com/yphil">☕ Ko-fi</a> 💚
+          </li>
+        </ul>
+        
       </fieldset>
 
 

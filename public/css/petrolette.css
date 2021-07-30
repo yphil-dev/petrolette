@@ -472,8 +472,12 @@ kbd.key {
   border: 1px solid var(--color-ui-qua);
 }
 
-ul:not(.feedNames) {
+ul:not(.feedNames, .fundingLinks) {
   list-style-type: none;
+}
+
+ul.fundingLinks {
+  margin: 0.3em 0 0 14px;
 }
 
 .flexBox {
@@ -1121,6 +1125,7 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
 
 #liberapay {
   flex-wrap: nowrap;
+  margin-top: 4px;
 }
 
 .hover:hover {
@@ -1443,4 +1448,9 @@ code {
 
 .textAndIcon > i {
   margin-left: 0.3em;
+}
+
+.debug {
+  color: var(--color-background);
+  cursor: crosshair;
 }

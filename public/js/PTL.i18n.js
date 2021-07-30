@@ -145,7 +145,7 @@ PTL.i18n.translations = {
   "Pétrolette is free software. However the development requires" : { fr: "Pétrolette est un logiciel libre. Cependant, le développement demande" , ja: "Pétroletteはフリーソフトウェアです。 ただし、開発には多くの時間と作業が必要です。", es: "Pétrolette es un software gratuito. Sin embargo, el desarrollo requiere" },
   "a lot of time" : { fr: "beaucoup de temps" , ja: "多くの時間", es: "mucho tiempo" },
   "and" : { fr: "et" , ja: "そして", es: "y" },
-  "a lot of work" : { fr: "beaucoup de travail" , ja: "多くの作業", es: "mucho trabajo" },
+  "a lot of work." : { fr: "beaucoup de travail." , ja: "多くの作業。", es: "un montón de trabajo." },
 
   "In order to keep maintaining Pétrolette and developing her with new features I need your help." : { fr: "Afin de continuer à maintenir la Pétrolette et de la développer avec de nouvelles fonctionnalités, j'ai besoin de votre aide." , ja: "Pétroletteを維持し、新しい機能を維持し続けるために、私はあなたの助けが必要です。", es: "Para mantener el mantenimiento de la Pétrolette y desarrollarla con nuevas características, necesito su ayuda." },
   
