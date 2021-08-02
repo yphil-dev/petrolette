@@ -11,9 +11,12 @@ var PTL = (function() {
     language: 'en',
     start : function() {
 
+      Mousetrap.bind('?', PTL.dialog.kbShortcuts);
       Mousetrap.bind('n', newFeed);
-      Mousetrap.bind('f', $('.ui-state-active a').focus());
-      
+      Mousetrap.bind('t', () => {
+        $('.ui-state-active a').focus()
+      });
+
       let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
 
       request.onerror = function(event) {
@@ -209,7 +212,7 @@ var PTL = (function() {
           $('.column' ).sortable('cancel');
         }
       });
-
+      
       $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
 
       const $syncBox = $('#syncBox');

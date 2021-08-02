@@ -27,7 +27,7 @@ PTL.i18n.translations = {
   "Position": { fr: "Position", ja: "ポジション", es: "Posición" },
   "Menu": { fr: "Menu", ja: "メニュー", es: "Menú" },
   "Sorry": { fr: "Désolé", ja: "ごめんなさい", es: "Perdón" },
-  "Warning": { fr: "Avertissement", ja: "警告", es: "Advertencia" },
+  "Warning": { fr: "Attention", ja: "警告", es: "Advertencia" },
   "All": { fr: "Tout", ja: "すべて", es: "todos" },
   "Replace": { fr: "Remplacer", ja: "交換", es: "Reemplazar" },
   "Merge": { fr: "Fusionner", ja: "マージ", es: "Unir" },
@@ -42,6 +42,9 @@ PTL.i18n.translations = {
 
   "Column" : { fr: "Colonne" , ja: "カラム", es: "Columna" },
   "column" : { fr: "colonne" , ja: "カラム", es: "columna" },
+
+  "Keyboard shortcut" : { fr: "Raccourci clavier" , ja: "キーを押す", es: "columna" },
+  "Command" : { fr: "Commande" , ja: "指示", es: "Mando" },
 
   "Prev" : { fr: "Précédent" , ja: "前", es: "Anterior" },
   "Next" : { fr: "Suivant" , ja: "次", es: "Siguiente" },
@@ -197,6 +200,11 @@ PTL.i18n.translations = {
 
   "Add a feed to this column" : { fr: "Ajouter un flux à cette colonne" , ja: "この列にソースを追加する", es: "Agregar una fuente a esta columna" },
   "Keyboard shortcuts" : { fr: "Raccourcis clavier" , ja: "キーボードショートカット", es: "Atajos de teclado" },
+
+  "Display this window." : { fr: "Affiche cette fenêtre." , ja: "このウィンドウを表示します。", es: "Muestre esta ventana." },
+
+  "Focus the current tab." : { fr: "Focus sur l'onglet courant." , ja: "現在のタブにフォーカスします。", es: "Enfoca la pestaña actual." },
+  
   "When focus is on a tab" : { fr: "Lorsque le focus est sur un onglet" , ja: "フォーカスがタブにあるとき", es: "Cuando el foco está en una pestaña" },
   "When focus is in a panel" : { fr: "Lorsque le focus est dans un panel" , ja: "フォーカスがパネルにあるとき", es: "Cuando el foco está en un panel" },
 
@@ -247,7 +255,7 @@ PTL.i18n.translations = {
 
   "Click + to add a column, and - to delete it." : { fr: "Cliquez sur + pour ajouter une colonne et - pour la supprimer." , ja: "「+」をクリックして列を追加し、「-」を削除します。", es: "Haga clic en + para agregar una columna, y - para eliminarlo." },
 
-  "Add a new feed" : { fr: "Ajouter un nouveau flux" , ja: "新しいフィードを追加する", es: "Agregar un nuevo fuente" },
+  "Add a new feed." : { fr: "Ajouter un nouveau flux." , ja: "新しいフィードを追加する。", es: "Agregar un nuevo fuente." },
 
   "You are home" : { fr: "Vous êtes chez vous" , ja: "あなたは在宅です", es: "Estás en casa" },
 

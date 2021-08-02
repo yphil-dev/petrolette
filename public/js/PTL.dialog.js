@@ -256,7 +256,7 @@ PTL.dialog = {
           intro: PTL.tr('Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it') + '.'
         },
         {
-          title: PTL.tr('Add a new feed'),
+          title: PTL.tr('New feed'),
           element: 'div#newFeedButton',
           intro: PTL.tr('Click to add a feed.')
         },
@@ -971,12 +971,9 @@ PTL.dialog = {
   },
   kbShortcuts: function() {
 
-    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #kbShortcuts', function() {
 
-      const $dialog = $(this),
-        $iconDiv = $dialog.find('div#icon');
-
-      $iconDiv.remove();
+      const $dialog = $(this);
 
       $dialog.dialog({
         title: PTL.tr('Keyboard shortcuts'),
@@ -996,101 +993,6 @@ PTL.dialog = {
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
           });
-
-          const $kbShortCutsTab = $('<table>')
-            .attr('class', 'keyboard-shortcuts')
-            .append($('<tr>')
-              .append($('<th>')
-                .text('Key'))
-              .append($('<th>')
-                .text('Command')))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">UP</kbd>/<kbd class="key">LEFT</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the previous tab. If on first tab, moves focus to last tab. Activate focused tab after a short delay.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. Activate focused tab after a short delay.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">DOWN</kbd>/<kbd class="key">RIGHT</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the next tab. If on last tab, moves focus to first tab. The focused tab must be manually activated.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">HOME</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the first tab. Activate focused tab after a short delay.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">END</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the last tab. Activate focused tab after a short delay.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">HOME</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the first tab. The focused tab must be manually activated.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">END</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the last tab. The focused tab must be manually activated.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">SPACE</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Activate panel associated with focused tab.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">ENTER</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Activate or toggle panel associated with focused tab.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
-
-          const $kbShortCutsPanel = $('<table>')
-            .attr('class', 'keyboard-shortcuts')
-            .append($('<tr>')
-              .append($('<th>')
-                .text('Key'))
-              .append($('<th>')
-                .text('Command')))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">CTRL</kbd>+<kbd class="key">UP</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to associated tab.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE UP</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the previous tab and immediately activate.'))))
-            .append($('<tr>')
-              .append($('<td>')
-                .html('<kbd><kbd class="key">ALT</kbd>/<kbd class="key">OPTION</kbd>+<kbd class="key">PAGE&nbsp;DOWN</kbd></kbd>'))
-              .append($('<td>')
-                .text(PTL.tr('Move focus to the next tab and immediately activate.'))));
-
-          $dialog.find('h1').text(PTL.tr('Keyboard shortcuts'))
-            .next('p#dialogBlurb').text(PTL.tr('A click on the Pétrolette logo puts the focus on the current tab'))
-            .next('h2').text(PTL.tr('When focus is on a tab'))
-            .next('p')
-            .append($kbShortCutsTab)
-            .next('h2').text(PTL.tr('When focus is in a panel'))
-            .next('p')
-            .append($kbShortCutsPanel);
 
         }
       });

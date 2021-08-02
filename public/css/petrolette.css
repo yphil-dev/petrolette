@@ -1037,6 +1037,10 @@ table#jsLicenseTable td {
   padding: 0.5em;
 }
 
+.kBShortcutsTable {
+  width: 95%;
+}
+
 .kbShortcutCol {
   white-space: nowrap;
 }
