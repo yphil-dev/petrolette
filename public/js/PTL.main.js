@@ -12,6 +12,7 @@ var PTL = (function() {
     start : function() {
 
       Mousetrap.bind('n', newFeed);
+      Mousetrap.bind('f', $('.ui-state-active a').focus());
       
       let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
 

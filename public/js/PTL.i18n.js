@@ -151,6 +151,8 @@ PTL.i18n.translations = {
   
   "Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot." : { fr: "Pensez à soutenir le projet Pétrolette en envoyant un don. Même un tout petit montant aidera beaucoup." , ja: "寄付を送って、ペトロレットプロジェクトを支援することを検討してください。 少量でも大いに役立ちます。", es: "Considere apoyar el proyecto Pétrolette enviando una donación. Incluso la cantidad más pequeña ayudará mucho." },
 
+  "You can also use" : { fr: "Il y a également" , ja: "も使用できます", es: "También puedes usar" },
+  
   "Search prefix" : { fr: "Préfixe de recherche" , ja: "検索プレフィックス", es: "Prefijo de búsqueda" },
 
   "Restore default" : { fr: "Rétablir défaut" , ja: "デフォルトを復元", es: "Restaurar predet." },

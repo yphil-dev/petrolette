@@ -463,10 +463,11 @@ PTL.dialog = {
         open: function() {
 
           const $addButton = $dialog.find('button#feedAddButton').button(),
-                $addButtonText = $addButton.find('.buttonText').text(PTL.tr('Add')),
+                $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
                 $addButtonIcon = $addButton.find('i'),
                 $feedAddInput = $dialog.find('input#feedAddInput').val(oldUrl),
-                $messageZone = $dialog.find('div#messageZone');
+                $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+                $messageText = $dialog.find('div#messageZone > .messageText');
 
           $dialog.find("form").on("submit", function(e) {
             e.preventDefault();
@@ -486,10 +487,8 @@ PTL.dialog = {
             $feed.remove();
           });
 
-          function addError(feedUrl) {
+          function feedAddError(feedUrl, errorMessage) {
 
-            const $errorMessage = PTL.tr('No feed found at this URL');
-            
             $addButtonIcon
               .removeClass('icon-refresh icon-checked spin');
 
@@ -497,7 +496,14 @@ PTL.dialog = {
               .addClass('ui-state-error')
               .attr('title', PTL.tr('Add anyway'))
               .off("click").click(function() {
-              
+
+                const feedUrl = DOMPurify.sanitize($feedAddInput.val());
+
+                if (feedUrl == '') {
+                  emptyWarning();
+                  return;
+                }
+                
                 $dataStore
                   .data('url', feedUrl);
 
@@ -511,15 +517,29 @@ PTL.dialog = {
 
             $addButtonText.text(PTL.tr('Add'));
             
-            $messageZone.text($errorMessage);
+            $messageTitle
+              .removeClass('warning')
+              .addClass('error')
+              .text(PTL.tr('Error'));
+            $messageText.text(errorMessage || PTL.tr('No feed found at this URL'));
+          }
+
+          function emptyWarning() {
+
+            $messageTitle
+              .addClass('warning')
+              .text(PTL.tr('Warning'));
+            $messageText
+              .text(PTL.tr('This field cannot be empty'));
+
           }
 
           $addButton.click(function() {
 
             const feedUrl = DOMPurify.sanitize($feedAddInput.val());
 
-            if (feedUrl == "") {
-              $messageZone.text(PTL.tr('This field cannot be empty'));
+            if (feedUrl == '') {
+              emptyWarning();
               return;
             }
             
@@ -529,15 +549,15 @@ PTL.dialog = {
             $addButton
               .removeClass('ui-state-error');
 
-            $addButtonText.text(PTL.tr('Searching'));
+            $addButtonText.text('');
             
             $.get('/discover', {
               dataType: 'json',
               url: feedUrl,
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
-            }).fail(function(_req, _status, _xhr) {
-              addError(feedUrl);
+            }).fail(function(req, _status, _xhr) {
+              feedAddError(feedUrl, req.responseText);
             }).done(function(feed) {
               
               $addButtonIcon.removeClass('spin icon-refresh');
@@ -560,8 +580,8 @@ PTL.dialog = {
                 PTL.dialog.kill($dialog);
               });
               
-            }).always(function(_req, status, _xhr) {
-              if (status === 'error') addError(feedUrl);
+            }).always(function(req, status, _xhr) {
+              if (status === 'error') feedAddError(feedUrl, req.responseText);
             });
 
           });
@@ -613,6 +633,21 @@ PTL.dialog = {
             class: 'translate button-ok',
             click: function() {
 
+              const feedUrl = DOMPurify.sanitize($dialog.find('input#feedGuessInput').val()),
+                    $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+                    $messageText = $dialog.find('div#messageZone > .messageText');
+
+              if (feedUrl == '') {
+
+                $messageTitle
+                  .addClass('warning')
+                  .text(PTL.tr('Warning'));
+                $messageText
+                  .text(PTL.tr('This field cannot be empty'));
+
+                return;
+              }
+              
               if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
                 $feed.hide('fade', 250, function() {
                   $(this).prependTo($('#' + $groupMenu
@@ -663,13 +698,24 @@ PTL.dialog = {
             }));
           });
 
-          function guessError() {
+          function guessError(errorMessage) {
+
+            const thisMesg = errorMessage || PTL.tr('No feed found at this URL');
+            
             $guessSpinner.removeClass('icon-refresh spin ui-state-success')
               .addClass('icon-error');
 
             $guessButton
               .addClass('ui-state-error')
-              .attr('title', PTL.tr('No feed found at this URL'));
+              .attr('title', thisMesg);
+
+
+            $messageTitle
+              .removeClass('warning')
+              .addClass('error')
+              .text(PTL.tr('Error'));
+            $messageText.text(errorMessage || thisMesg);
+            
           }
 
           const $guessButton = $dialog.find('button#feedGuessButton').button(),
@@ -684,6 +730,8 @@ PTL.dialog = {
             oldType = $dataStore.data('type'),
             oldLimit = $dataStore.data('limit'),
             oldNbItems = $dataStore.data('nbitems'),
+            $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+            $messageText = $dialog.find('div#messageZone > .messageText'),
             $feedLimitInput = $('input#feedLimit'),
             $feedLimitSlider = $('div#feedLimitSlider'),
             $feedLimitSpinner = $dialog.find('input#feedLimitSpinner').spinner({
@@ -731,6 +779,19 @@ PTL.dialog = {
 
           $guessButton.click(function() {
 
+            const feedUrl = DOMPurify.sanitize($feedGuessInput.val());
+
+            if (feedUrl == '') {
+
+              $messageTitle
+                .addClass('warning')
+                .text(PTL.tr('Warning'));
+              $messageText
+                .text(PTL.tr('This field cannot be empty'));
+
+              return;
+            }
+            
             $guessSpinner
               .removeClass('icon-checked icon-error icon-search ui-state-success ui-state-error')
               .addClass('spin icon-refresh');
@@ -738,7 +799,7 @@ PTL.dialog = {
 
             $.get('/discover', {
               dataType: 'json',
-              url: $feedGuessInput.val(),
+              url: feedUrl,
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
             }).fail(function(_req, _status, _xhr) {
@@ -757,6 +818,7 @@ PTL.dialog = {
                 .attr('title', PTL.tr('Valid feed found! Now just press OK'));
 
             }).always(function(_req, status, _xhr) {
+              // feedAddError(feedUrl, req.responseText);
               if (status === 'error') guessError();
             });
 
@@ -847,8 +909,6 @@ PTL.dialog = {
 
       $dialog.dialog('open');
       
-      console.log('wow: %s (%s)', isNewFeed);
-
     });
 
   },

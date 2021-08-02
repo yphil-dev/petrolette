@@ -129,6 +129,14 @@ a:active {
   color: var(--color-link-hover);
 }
 
+.error {
+    color: var(--color-ui-danger);
+}
+
+.warning {
+    color: var(--color-ui-warning);
+}
+
 /* .fancybox-caption a, */
 /* .fancybox-caption a:link, */
 /* .fancybox-caption a:visited { */
@@ -1136,9 +1144,9 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
   margin: 0.3em 0 0 0;
 }
 
-.ui-dialog #messageZone {
+.ui-dialog div#messageZone {
   font-size: 75%;
-  color: var(--color-danger);
+  margin: -8px 0 3px;
 }
 
 .ui-state-error {
