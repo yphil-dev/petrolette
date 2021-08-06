@@ -161,6 +161,21 @@ PTL.dialog = {
           ],
           open: function() {
 
+            const $fundingButtons = $('<div>')
+                  .attr({class: 'buttons flexBox'})
+                  .append($('<a>')
+                          .attr({class: 'ui-button ui-corner-all ui-widget',
+                                 href: 'https://liberapay.com/yPhil'})
+                          .append($('<i>')
+                                  .attr({class: 'icon-heartbeat'}))
+                          .text('Liberapay'))
+                  .append($('<a>')
+                          .attr({class: 'ui-button ui-corner-all ui-widget',
+                                 href: 'https://ko-fi.com/yphil/tiers'})
+                          .append($('<i>')
+                                  .attr({class: 'icon-heartbeat'}))
+                          .text('Ko-fi'));
+            
             $('.ui-widget-overlay').on('click', function() {
               PTL.dialog.kill($dialog);
             });
@@ -170,8 +185,31 @@ PTL.dialog = {
               .next('h2').text(versionNumber)
               .next('p')
               .append($('<a>')
-                .attr('href', 'https://liberapay.com/yPhil/')
-                .text(PTL.tr('By yPhil')));
+                .attr('href', 'https://yphil.bitbucket.io/')
+                      .text(PTL.tr('By yPhil')))
+              .next('h2').text('')
+              .next('p')
+              .append($('<i>')
+                      .attr({class: 'icon-heartbeat'}),
+                      $('<span>').text(' '),
+                      $('<a>')
+                      .attr('href', 'https://liberapay.com/yPhil/')
+                      .text(PTL.tr('Liberapay'), $('<i>')
+                                  .attr({class: 'icon-heartbeat'})),
+                      $('<span>').text(' '),
+                      $('<i>')
+                      .attr({class: 'icon-coffee'}),
+                      $('<span>').text(' '),
+                      $('<a>')
+                      .attr('href', 'https://ko-fi.com/yphil/tiers')
+                      .text(PTL.tr('Ko-fi')),
+                      $('<span>').text(' '),
+                      $('<i>')
+                      .attr({class: 'icon-paypal'}),
+                      $('<span>').text(' '),
+                      $('<a>')
+                      .attr('href', 'https://paypal.me/yphil')
+                      .text(PTL.tr('Paypal')));
 
           }
         });
