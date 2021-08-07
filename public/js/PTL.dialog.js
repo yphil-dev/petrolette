@@ -528,6 +528,7 @@ PTL.dialog = {
           function feedAddError(feedUrl, errorMessage) {
 
             $addButtonIcon
+              .hide()
               .removeClass('icon-refresh icon-checked spin');
 
             $addButton

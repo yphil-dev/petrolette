@@ -1450,17 +1450,17 @@ code {
   color: var(--color-ui-sep);
 }
 
-.textAndIcon {
-  display: flex;
-}
+/* .textAndIcon { */
+/*   display: flex; */
+/* } */
 
-.textAndIcon > * {
-  flex: 1;
-}
+/* .textAndIcon > * { */
+/*   flex: 1; */
+/* } */
 
-.textAndIcon > i {
-  margin-left: 0.3em;
-}
+/* .textAndIcon > i { */
+/*   margin-left: 0.3em; */
+/* } */
 
 .debug {
   color: var(--color-background);
