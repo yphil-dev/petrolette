@@ -15,6 +15,8 @@ const express = require('express'),
 
 console.error('### (re)START ## Version (%s)', pjson.version);
 
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+
 router.use(sanitize);
 
 router.get('/favicon', function(req, res) {

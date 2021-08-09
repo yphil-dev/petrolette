@@ -181,11 +181,16 @@ PTL.dialog = {
             });
 
             $dialog.find('h1').text('Pétrolette').addClass('logoTitle')
-              .next('p#dialogBlurb').text(PTL.tr("The news page that doesn't know you"))
+              .next('p#dialogBlurb')
+              .append($('<a>')
+                      .attr({href: 'https://mastodon.social/@petrolette',
+                             rel: 'me'})
+                      .text(PTL.tr("The news page that doesn't know you")))
               .next('h2').text(versionNumber)
               .next('p')
               .append($('<a>')
-                .attr('href', 'https://yphil.bitbucket.io/')
+                      .attr({href: 'https://mamot.fr/@yphil',
+                             rel: 'me'})
                       .text(PTL.tr('By yPhil')))
               .next('h2').text('')
               .next('p')

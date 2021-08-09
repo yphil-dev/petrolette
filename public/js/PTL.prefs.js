@@ -27,7 +27,7 @@ PTL.prefs = {
       'searchPrefixDefault': 'https://searx.prvcy.eu/search?categories=general&time_range=week&language=en&format=rss&q=',
       'tabDropActivate': true,
       'brokenImages': 'hide',
-      'mediaPreload': 'none',
+      'mediaPreload': 'metadata',
       'theme': 'night',
       'nextNag': 0,
       'writeTime': Date.now()
