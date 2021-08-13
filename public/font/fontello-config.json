@@ -217,6 +217,12 @@
       "css": "paypal",
       "code": 62274,
       "src": "entypo"
+    },
+    {
+      "uid": "81385e5f1fe091f3d9a20d215d444622",
+      "css": "search-circled",
+      "code": 59394,
+      "src": "elusive"
     }
   ]
 }

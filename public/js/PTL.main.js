@@ -43,6 +43,7 @@ var PTL = (function() {
             $langMenu = $('select#language'),
             $slider = $('div#gallerySpeedSlider'),
             $searchField = $('#ptlSearch input').val(''),
+            $searchIcon = $('#ptlSearch > i').addClass('icon-search-circled'),
             $searchPrefixOkButton = $('button#searchPrefixOkButton'),
             $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
             $searchPrefixInput = $('input#searchPrefixInput'),
@@ -115,34 +116,53 @@ var PTL = (function() {
         $(this).parent().next().toggle();
       });
 
+      function searchReturn() {
+          $('a.ui-tabs-anchor.results').focus().trigger('click');
+          const item = document.querySelector('li.feedItem.results');
+          item.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+      }
+      
       $('#ptlSearch i').click(function() {
+
+        if ($(this).attr('class') == 'icon-reset') {
         $(this).prev('input').val('');
         $('.results').removeClass('results');
+        $(this).removeClass('icon-reset')
+            .addClass('icon-search-circled');          
+        } else {
+          searchReturn();
+        }
+        
       });
 
       $searchField.on('keypress',function(e) {
         if (e.which == 13) {
-          $('a.ui-tabs-anchor.results').focus().trigger('click');
-          const item = document.querySelector('li.feedItem.results');
-          item.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+          searchReturn();
         }
       });
 
       $searchField.on('keyup', function (e) {
-        if (e.which == 27) $(this).val('');
-        var v = $(this).val();
-        $('.results').removeClass('results');
-        $('li.feedItem').each(function () {
-          if (v != '' && $(this).text().search(new RegExp(v,'gi')) != -1) {
-            const $feed = $(this).parent().parent();
-            const $col = $feed.parent();
-            const tabId = $col.parent().attr('aria-labelledby');
-            const $tab = $('a#' + tabId);
-            $(this).addClass('results');
-            $feed.addClass('results');
-            $tab.addClass('results');
-          }
-        });
+        if (e.keyCode === 27) {
+          $searchIcon.attr('class', 'icon-search-circled');
+          $(this).val('');
+          $('.results').removeClass('results');
+        } else {
+
+          var v = $(this).val();
+          $('.results').removeClass('results');
+          $searchIcon.removeClass('icon-search-circled').addClass('icon-reset'),
+            $('li.feedItem').each(function() {
+              if (v != '' && $(this).text().search(new RegExp(v, 'gi')) != -1) {
+                const $feed = $(this).parent().parent();
+                const $col = $feed.parent();
+                const tabId = $col.parent().attr('aria-labelledby');
+                const $tab = $('a#' + tabId);
+                $(this).addClass('results');
+                $feed.addClass('results');
+                $tab.addClass('results');
+              }
+            });
+        }
       });
 
       PTL.sync.attachWidget();

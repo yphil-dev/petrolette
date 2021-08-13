@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "The news reader that doesn't know you",
-  "version": "v1.4.3",
+  "version": "v1.4.5",
   "private": true,
   "license": "GPL-3.0-only",
   "HTTP_PORT": 8000,
@@ -16,7 +16,6 @@
   },
   "scripts": {
     "start": "pm2 start pm2.config.json ; pm2 update",
-    "start-ssl": "pm2 start pm2.config.json --env ssl",
     "restart": "pm2 restart pm2.config.json",
     "stop": "pm2 stop petrolette",
     "show": "pm2 show petrolette",

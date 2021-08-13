@@ -290,12 +290,12 @@ button.dangerous:hover {
   color: var(--color-link-hover);
 }
 
-.topNav > div.menuBarItem > i.icon-reset {
+.topNav > div.menuBarItem > i {
   margin: 11px 0 8px -28px;
   color: #333;
 }
 
-.topNav > div.menuBarItem > i.icon-reset:hover {
+.topNav > div.menuBarItem > i:hover {
   color: #555;
 }
 
