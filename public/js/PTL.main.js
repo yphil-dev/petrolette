@@ -50,7 +50,7 @@ var PTL = (function() {
             $gallerySpeedSpinner = $('#gallerySpeedSpinner'),
             $logoType = $('.logoType'),
             $topMenu = $('nav#top-menu');
-
+      
       $topMenu.removeAttr('style');
       $sideMenu.removeAttr('style');
 

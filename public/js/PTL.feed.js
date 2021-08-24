@@ -84,8 +84,8 @@ PTL.feed = {
 
     const $refreshIcon = $('<i>')
       .attr('class', 'feed-control translate icon-refresh feedRefresh')
-      .data('title', 'Refresh this feed', url)
-      .attr('title', PTL.tr('Refresh this feed', url))
+      .data('title', 'Refresh this feed')
+      .attr('title', PTL.tr('Refresh this feed'))
       .click(function() {
         $('.selected').removeClass('selected');
         $('.icon-checked').toggleClass('icon-checked icon-checkbox');
@@ -573,8 +573,7 @@ PTL.feed = {
         $feedBody.html(lastItems[0]);
 
         $refreshButton
-          .data('title', 'Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStampAlt)
-          .attr('title', PTL.tr('Refresh this feed (%1 - %2)', fetchFeed.feedTitle || fetchFeed.feedLink, timeStampAlt))
+          .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStampAlt + ')')
           .removeClass('spin');
 
         $feedLink.attr('href', fetchFeed.feedLink);
@@ -604,6 +603,11 @@ PTL.feed = {
 
     }
 
+    $refreshButton.bind('DOMSubtreeModified', function(e) {
+      console.log('EVENT: %s (%s)', e.target.innerHTML.length);
+    });
+
+    
     if (progress) progress.increment();
 
   }
