@@ -45,6 +45,7 @@ PTL.feed = {
             .removeClass('folded');
           $feedControls.data('status', 'on');
           $refreshIcon.removeClass('icon-pin')
+            .attr('title', PTL.tr('This feed is folded in'))
             .addClass('icon-refresh');
         }
 
@@ -84,8 +85,8 @@ PTL.feed = {
 
     const $refreshIcon = $('<i>')
       .attr('class', 'feed-control translate icon-refresh feedRefresh')
-      .data('title', 'Refresh this feed')
-      .attr('title', PTL.tr('Refresh this feed'))
+      // .data('title', 'Refresh this feed')
+      // .attr('title', PTL.tr('Refresh this feed'))
       .click(function() {
         $('.selected').removeClass('selected');
         $('.icon-checked').toggleClass('icon-checked icon-checkbox');
@@ -516,23 +517,21 @@ PTL.feed = {
       feedProtocol = l.protocol ? l.protocol + '//' : '//',
       feedHost = feedProtocol + l.hostname,
       dateObj = new Date(),
-      timeStamp = dateObj.getUTCHours() + ":" + dateObj.getUTCMinutes() + ":" + dateObj.getUTCSeconds();
-
-    const timeStampAlt = dateObj.toTimeString().substr(0, 8);
+      timeStamp = dateObj.toTimeString().substr(0, 8);
 
     var feedLastItem = $dataStore.data('lastitem');
 
     $feedBodyUl.css('border', '1px solid red');
 
-    if ($dataStore.data('status') == 'on') {
-      $feedIcon.removeClass('fold');
-    } else {
-      $dataStore
-        .parent()
-        .parent()
-        .children('div.feedBody')
-        .addClass('folded');
-    }
+    // if ($dataStore.data('status') == 'on') {
+    //   $feedIcon.removeClass('fold');
+    // } else {
+    //   $dataStore
+    //     .parent()
+    //     .parent()
+    //     .children('div.feedBody')
+    //     .addClass('folded');
+    // }
    
     if (feedIconHash && feedIconHash !== 'noicon') {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
@@ -573,7 +572,7 @@ PTL.feed = {
         $feedBody.html(lastItems[0]);
 
         $refreshButton
-          .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStampAlt + ')')
+          .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStamp + ')')
           .removeClass('spin');
 
         $feedLink.attr('href', fetchFeed.feedLink);
@@ -601,12 +600,10 @@ PTL.feed = {
         .children('div.feedBody')
         .addClass('folded');
 
+      $refreshButton.attr('title', PTL.tr('This feed is folded in'))
+
+      
     }
-
-    $refreshButton.bind('DOMSubtreeModified', function(e) {
-      console.log('EVENT: %s (%s)', e.target.innerHTML.length);
-    });
-
     
     if (progress) progress.increment();
 

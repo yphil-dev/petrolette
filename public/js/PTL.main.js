@@ -3,54 +3,43 @@
 var PTL = (function() {
 
   return {
-    DbName: 'petrolette',
-    DbVersion: 1,
-    DbStore: 'feeds',
-    DbKey: 'url',
     feedTypes: ['text', 'mixed', 'photo'],
+    kbShortcutNewFeed: 'n',
+    kbShortcutFocusTab: 't',
+    kbShortcutFocusSearch: 'f',
     language: 'en',
     start : function() {
 
       Mousetrap.bind('?', PTL.dialog.kbShortcuts);
-      Mousetrap.bind('n', newFeed);
-      Mousetrap.bind('t', () => {
+      Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
+      Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
         $('.ui-state-active a').focus()
       });
-
-      let request = indexedDB.open(PTL.DbName, PTL.DbVersion);
-
-      request.onerror = function(event) {
-        // Handle errors.
-      };
-      request.onupgradeneeded = function(event) {
-        var db = event.target.result;
-
-        var objectStore = db.createObjectStore(PTL.DbStore, { keyPath: PTL.DbKey });
-
-        console.log('DB OK: %s (%s)', PTL.DbName, PTL.DbStore);
-
-      };
+      Mousetrap.bind(PTL.kbShortcutFocusSearch, () => {
+        $('div#ptlSearch > input').focus()
+      });
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
       const $sideMenu = $('nav#sideMenu'),
-            $overlay = $('#overlay'),
-            $feedCodeButton = $('button#feedCode'),
-            $importButton = $("button#fileImportButton"),
-            $fileImportInput = $("input#fileImport"),
-            $saveButton = $('#saveTabs'),
-            $resetButton = $('#resetTabs'),
-            $langMenu = $('select#language'),
-            $slider = $('div#gallerySpeedSlider'),
-            $searchField = $('#ptlSearch input').val(''),
-            $searchIcon = $('#ptlSearch > i').addClass('icon-search-circled'),
-            $searchPrefixOkButton = $('button#searchPrefixOkButton'),
-            $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
-            $searchPrefixInput = $('input#searchPrefixInput'),
-            $gallerySpeedSpinner = $('#gallerySpeedSpinner'),
-            $logoType = $('.logoType'),
-            $topMenu = $('nav#top-menu');
-      
+        $overlay = $('#overlay'),
+        $feedCodeButton = $('button#feedCode'),
+        $importButton = $("button#fileImportButton"),
+        $fileImportInput = $("input#fileImport"),
+        $saveButton = $('#saveTabs'),
+        $resetButton = $('#resetTabs'),
+        $langMenu = $('select#language'),
+        $slider = $('div#gallerySpeedSlider'),
+        $searchField = $('#ptlSearch input').val(''),
+        $searchIcon = $('#ptlSearch > i')
+            .addClass('icon-search-circled'),
+        $searchPrefixOkButton = $('button#searchPrefixOkButton'),
+        $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
+        $searchPrefixInput = $('input#searchPrefixInput'),
+        $gallerySpeedSpinner = $('#gallerySpeedSpinner'),
+        $logoType = $('.logoType'),
+        $topMenu = $('nav#top-menu');
+
       $topMenu.removeAttr('style');
       $sideMenu.removeAttr('style');
 
@@ -198,25 +187,10 @@ var PTL = (function() {
         PTL.sideMenu('close');
         PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', true);
       }
+
+      // $('div#newFeedButton').attr('title', PTL.tr('New feed') + PTL.kbShortcutNewFeed);
       
-      $('body').on('click','.newFeedButton', newFeed);
-      
-      // $('body').on('click','.newFeedButton', function() {
-
-      //   let $column;
-
-      //   if ($(this).hasClass('button-column')) {
-      //     $column = $(this).parent().parent();
-      //   } else {
-      //     $column = $($('.ui-tabs-active')
-      //                 .find('a')
-      //                 .attr('href'))
-      //       .find('.column').first();
-      //   }
-
-      //   PTL.sideMenu('close');
-      //     PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', true);
-      // });
+      $('body').on('click','div#newFeedButton', newFeed);
 
       $feedCodeButton.click(function(event) {
         event.preventDefault();

@@ -289,19 +289,19 @@ PTL.dialog = {
           intro: PTL.tr('This is an RSS feed.') + ' <a class="docLink icon" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-globe"></i></a>'
         },
         {
-          title: PTL.tr('Keep everything tidy'),
-          element: 'li[aria-controls=tab-1]',
-          intro: PTL.tr('This is a tab. It contains feeds.')
-        },
-        {
-          title: PTL.tr('Tab control'),
-          element: 'li[aria-controls=tab-2]',
-          intro: PTL.tr('Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it') + '.'
-        },
-        {
-          title: PTL.tr('New feed'),
+          title: PTL.tr('New feed') + ' (<kbd class="key">' + PTL.kbShortcutNewFeed + '</kbd>)',
           element: 'div#newFeedButton',
           intro: PTL.tr('Click to add a feed.')
+        },
+        {
+          title: PTL.tr('Feeds in tabs'),
+          element: 'li[aria-controls=tab-1]',
+          intro: PTL.tr('This is a tab. Tabs contain columns, that contain feeds.') + '<p>' + PTL.tr('Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it.') + '</p>'
+        },
+        {
+          title: PTL.tr('Columns'),
+          element: 'div.colButtons',
+          intro: PTL.tr('Click + to add a column, and - to delete it.')
         },
         {
           title: PTL.tr('Refresh / reload this feed'),
@@ -312,6 +312,11 @@ PTL.dialog = {
           title: PTL.tr('Configure this feed'),
           element: '.feedPrefs',
           intro: PTL.tr('Configure this feed.')
+        },
+        {
+          title: PTL.tr('Delete feed'),
+          element: '.feed-delete',
+          intro: PTL.tr('Delete this feed.') + ' ' + PTL.tr('If other feeds are selected, they will be deleted too.')
         },
         {
           title: PTL.tr('Keep everything tidy'),
@@ -329,14 +334,15 @@ PTL.dialog = {
           intro: PTL.tr('Folded feeds are not loaded at startup, so as to speed things up.')
         },
         {
-          title: PTL.tr('B-bye!'),
-          element: '.feed-delete',
-          intro: PTL.tr('Delete this feed.') + ' ' + PTL.tr('If other feeds are selected, they will be deleted too.')
+          title: PTL.tr('Search in feeds') + ' (<kbd class="key">' + PTL.kbShortcutFocusSearch + '</kbd>)',
+          element: 'div#ptlSearch > i',
+          intro: PTL.tr('Press ENTER to go to last result, ESCAPE to cancel.')
         },
         {
-          title: PTL.tr('Columns'),
-          element: 'div.colButtons',
-          intro: PTL.tr('Click + to add a column, and - to delete it.')
+          title: PTL.tr('Tab control') + ' (<kbd class="key">' + PTL.kbShortcutFocusTab + '</kbd>)',
+          element: 'div#logoTitle > div.logoTitle',
+          intro: PTL.tr('Focus the current tab.') + '<p>' + PTL.tr('Very useful to browse tabs using the arrow keys.'),
+          position: 'left'
         },
         {
           title: PTL.tr('You are home') + ' 🏠',
@@ -733,6 +739,11 @@ PTL.dialog = {
         ],
         open: function() {
 
+          $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
+            PTL.dialog.kill($dialog);
+            $feed.remove();
+          });
+          
           $.each(allGroups, function() {
             const selected = (this.pane === $thisGroup.attr('id'));
             $groupMenu.append($('<option>', {
@@ -1038,6 +1049,8 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
+          $('kbd#kbShortcutNewFeed').text(PTL.kbShortcutNewFeed);
+          $('kbd#kbShortcutFocusTab').text(PTL.kbShortcutFocusTab);
         }
       });
 

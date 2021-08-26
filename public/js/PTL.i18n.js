@@ -166,7 +166,7 @@ PTL.i18n.translations = {
 
   "Search in feeds" : { fr: "Chercher dans les flux" , ja: "フィードで検索します", es: "Búsqueda en fuentes" },
 
-  "Press ENTER to go to last result" : { fr: "Appuyez sur Entrée pour aller au dernier résultat" , ja: "Enterキーを押して最後の結果に移動します", es: "Presione ENTER para ir al último resultado" },
+  "Press ENTER to go to last result, ESCAPE to cancel." : { fr: "ENTER pour aller au dernier résultat, ESCAPE pour annuler." , ja: "ENTERを押して最後の結果に移動し、ESCAPEを押してキャンセルします。", es: "Presione ENTER para ir al último resultado, ESCAPE para cancelar." },
 
 
   "English" : { fr: "English" , ja: "English", es: "English" },
@@ -204,6 +204,8 @@ PTL.i18n.translations = {
   "Display this window." : { fr: "Affiche cette fenêtre." , ja: "このウィンドウを表示します。", es: "Muestre esta ventana." },
 
   "Focus the current tab." : { fr: "Focus sur l'onglet courant." , ja: "現在のタブにフォーカスします。", es: "Enfoca la pestaña actual." },
+
+  "Very useful to browse tabs using the arrow keys." : { fr: "Très utile pour parcourir les onglets à l'aide des touches fléchées.'onglet courant." , ja: "矢印キーを使用してタブを参照するのに非常に便利です。", es: "Muy útil para navegar por las pestañas usando las teclas de flecha." },
   
   "When focus is on a tab" : { fr: "Lorsque le focus est sur un onglet" , ja: "フォーカスがタブにあるとき", es: "Cuando el foco está en una pestaña" },
   "When focus is in a panel" : { fr: "Lorsque le focus est dans un panel" , ja: "フォーカスがパネルにあるとき", es: "Cuando el foco está en un panel" },
@@ -228,10 +230,8 @@ PTL.i18n.translations = {
   "Example feeds" : { fr: "Exemples de flux" , ja: "情報源の例", es: "Ejemplos de fuentes" },
 
   "Data structure OK: %1 tab(s) containing %2 feed(s)" : { fr: "Structure de données OK: %1 onglet(s) contenant %2 flux" , ja: "データ構造OK：%2のソースを含むグループ%1", es: "Estructura de datos OK: %1 grupos que contienen %2 fuentes" },
-
+  
   "Invalid file" : { fr: "Fichier non valide" , ja: "無効なファイル", es: "Archivo inválido" },
-
-  "DataBase error: %1" : { fr: "Erreur de la Base de Données: %1" , ja: "データベースエラー %1", es: "Error de la base de datos: %1" },
 
   "This is not a valid Pétrolette feeds file" : { fr: "Ceci n'est pas un fichier de flux Pétrolette valide" , ja: "これは有効なPétroletteフィードファイルではありません", es: "Este no es un archivo de feeds de Pétrolette válido" },
 
@@ -239,15 +239,17 @@ PTL.i18n.translations = {
 
   "Pétrolette can't read this file" : { fr: "Pétrolette ne pavient pas à lire ce fichier", ja: "Pétroletteはこのファイルを読み取ることができません", es: "Pétrolette no puede leer este archivo" },
 
-  "This is a tab. It contains feeds." : { fr: "Ceci est un onglet, qui contient des flux." , ja: "これはタブです。 それはソースを含んでいます。", es: "Esta es una grupo. Contiene fuentes." },
+  "This is a tab. Tabs contain columns, that contain feeds." : { fr: "Ceci est un onglet. Les onglets contiennent des colonnes, qui contiennent des flux." , ja: "これはタブです。 タブには、フィードを含む列が含まれています。", es: "Esta es una pestaña. Las pestañas contienen columnas que contienen feeds." },
 
-  "Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it" : { fr: "Cliquer sur un onglet pour l'afficher ; cliquer sur l'onglet courant pour changer son nom et sa position, glisser / déposer pour le déplacer" , ja: "表示するタブをクリックしてください。 現在/選択されたタブをクリックしてその名前と位置を変更し、ドラッグして移動する", es: "Haga clic en una pestaña para mostrarlo; Haga clic en la pestaña actual / seleccionada para cambiar su nombre y posición, arrastre para moverlo" },
+  "Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it." : { fr: "Cliquer sur un onglet pour l'afficher ; cliquer sur l'onglet courant pour changer son nom et sa position, glisser / déposer pour le déplacer." , ja: "表示するタブをクリックしてください。 現在/選択されたタブをクリックしてその名前と位置を変更し、ドラッグして移動する。", es: "Haga clic en una pestaña para mostrarlo; Haga clic en la pestaña actual / seleccionada para cambiar su nombre y posición, arrastre para moverlo." },
 
   "That's what it's all about" : { fr: "C'est de ça qu'il s'agit" , ja: "それがすべてです", es: "Eso es lo que se trata" },
 
   "Location of the feed" : { fr: "Adresse du flux" , ja: "源泉の場所", es: "Ubicación de la fuente" },
 
   "Keep everything tidy" : { fr: "Tout est bien rangé" , ja: "すべてを整頓してください", es: "Mantenga todo ordenado" },
+
+  "Feeds in tabs" : { fr: "Des flux dans des onglets" , ja: "タブのフィード", es: "Fuentes en pestañas" },
 
   "Tab control" : { fr: "Contrôle de l'onglet" , ja: "タブコントロール", es: "Control de pestañas" },
 
@@ -262,7 +264,7 @@ PTL.i18n.translations = {
   "Use the menu to configure your Pétrolette." : { fr: "Utilisez le menu pour configurer votre Pétrolette." , ja: "メニューを使用してPétroletteを設定します。", es: "Utilice el menú para configurar su Pétrolette." },
 
   "Get the latest articles." : { fr: "Voir les derniers articles." , ja: "最新の記事を入手する。", es: "Obtenga los últimos artículos." },
-  "B-bye" : { fr: "Au revoir" , ja: "さようなら", es: "Adios" },
+
   "Grip handle" : { fr: "Poignée" , ja: "グリップハンドル", es: "Mango" },
 
   "Folded feeds are not loaded at startup, so as to speed things up." : { fr: "Les flux pliés ne sont pas chargés au démarrage, afin d'accélérer les choses." , ja: "折りたたまれたフィードは、処理を高速化するために、起動時に読み込まれません。", es: "Los feeds doblados no se cargan al inicio, para acelerar las cosas." },
@@ -310,7 +312,10 @@ PTL.i18n.translations = {
   "New tab" : { fr: "Nouvel onglet", ja: "新しいタブ", es: "Nueva carpeta" },
 
   "Add a feed" : { fr: "Ajouter un flux" , ja: "ソースを追加します", es: "Agrega una fuente" },
+  
   "New feed" : { fr: "Nouveau flux", ja: "新しい情報源", es: "Nueva fuente" },
+
+  "New feed (%1)" : { fr: "Nouveau flux (%1)", ja: "新しい情報源 (%1)", es: "Nueva fuente (%1)" },
 
   "Welcome to Pétrolette" : { fr: "Bienvenue dans Pétrolette" , ja: "ペトロレットへようこそ", es: "Bienvenido a Pétrolette" },
 
@@ -515,6 +520,8 @@ PTL.i18n.translations = {
   "Edit this feed parameters" : { fr: "Modifier les paramètres de ce flux", ja: "このソースパラメータを変更する", es: "Establezca estos parámetros fuente" },
   "Delete this feed" : { fr: "Supprimer ce flux", ja: "本当にこのフィードを削除しますか", es: "Borraste esta feed" },
   "Refresh this feed" : { fr: "Actualiser ce flux", ja: "このソースをリフレッシュしてください", es: "Actualiza esta fuente" },
+
+  "This feed is folded in" : { fr: "Ce flux est replié", ja: "このソースは折りたたまれています", es: "Esta fuente está plegada" },
   
   "Select this feed" : { fr: "Sélectionner ce flux", ja: "RSS(%1)フィードを選択", es: "Selecciona este feed" },
   "Configure this feed" : { fr: "Configurer ce flux" , ja: "このソースを設定します", es: "Configura esta fuente" },

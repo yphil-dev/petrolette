@@ -9,10 +9,10 @@
       <td><kbd class="key">?</kbd></td> <td class="translate" data-content="Display this window.">Display this window.</td>
     </tr>
     <tr>
-      <td><kbd class="key">n</kbd></td> <td class="translate" data-content="Add a new feed.">Add a new feed.</td>
+      <td><kbd class="key" id="kbShortcutNewFeed"></kbd></td> <td class="translate" data-content="Add a new feed.">Add a new feed.</td>
     </tr>
     <tr>
-      <td><kbd class="key">t</kbd></td> <td class="translate" data-content="Focus the current tab.">Focus the current tab.</td>
+      <td><kbd class="key" id="kbShortcutFocusTab"></kbd></td> <td class="translate" data-content="Focus the current tab.">Focus the current tab.</td>
     </tr>
   </table>
   
@@ -134,6 +134,7 @@
            class="flexBox helpTourDialogItem"
            data-step="1">
         <input name="guess"
+               type="text"
                id="feedGuessInput"
                placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
                data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
@@ -161,6 +162,7 @@
       <div class="flexBox helpTourDialogItem"
            data-step="2">
         <input name="name"
+               type="text"
                id="feedNameInput"
                placeholder="Feed name"
                data-title="Feed name"
@@ -221,12 +223,12 @@
             class="ui-corner-top translate">
       Height
     </legend>
-    <fieldset id="feedLimitFieldset">
+    <fieldset id="feedLimitFieldset" class="dialog">
       <div id="feedHeightDiv"
            class="flexBox translate helpTourDialogItem"
            data-step="5"
            data-title="Number of items displayed in this feed">
-        <div class="grow">
+        <div class="grow dialog">
           <label for="feedLimitInput" class="ui-helper-hidden">
             <input type="text" id="feedLimitInput" />
           </label>
@@ -242,12 +244,12 @@
             class="ui-corner-top translate">
       Number of items
     </legend>
-    <fieldset id="feedNbItemsFieldset">
+    <fieldset id="feedNbItemsFieldset" class="dialog">
       <div class="flexBox translate helpTourDialogItem"
            id="feedMaxItemsDiv"
            data-step="6"
            data-title="Number of items displayed in this feed">
-        <div class="grow">
+        <div class="grow dialog">
           <label for="feedNbItemsInput" class="ui-helper-hidden">
             <input type="text" id="feedNbItemsInput" />
           </label>

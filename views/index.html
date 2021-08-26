@@ -116,17 +116,13 @@
         </div>
 
         <div id="newFeedButton"
-             class="menuBarItem menuBarButton translate newFeedButton jsEnabledOnly navLeft"
-             title="New feed"
-             data-title="New feed">
+             class="menuBarItem menuBarButton newFeedButton jsEnabledOnly navLeft">
           <i class="icon-plus topMenuIcon"></i>
         </div>
 
         <div id="ptlSearch" class="menuBarItem navLeft">
           <input
             class="translate"
-            title="Press ENTER to go to last result"
-            data-title="Press ENTER to go to last result"
             type="text"
             placeholder="Search in feeds"
             data-placeholder="Search in feeds">
@@ -138,9 +134,7 @@
 
         <div id="logoTitle"
              class="navRight">
-          <div class="logoTitle translate"
-               data-title="Click to focus current tab"
-               title="Click to focus current tab">
+          <div class="logoTitle">
             Pétrolette
           </div>
           <div class="logoType"
@@ -206,8 +200,8 @@
       <fieldset class="menuForm">
         <div class="flexBox">
           <button class="grow translate left helpLink"
-                  data-title="Documentation"
                   data-content="Help"
+                  data-title="Documentation"
                   title="Documentation">
             Help
           </button>
@@ -215,6 +209,8 @@
           <button
             class="translate ui-button ui-corner-all grow"
             data-content="Tour"
+            data-title="Learn to use it in a few easy steps"
+            title="Learn to use it in a few easy steps"
             onclick="PTL.dialog.tour('ui');">
             Tour
           </button>
@@ -370,6 +366,7 @@
       <fieldset class="menuForm searchPrefixFieldset">
         <div class="flexBox">
           <input name="searchPrefix"
+                 type="text"
                  id="searchPrefixInput"
                  class="unique grow translate"
                  placeholder="Search prefix"
