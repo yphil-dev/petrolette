@@ -166,7 +166,7 @@ PTL.i18n.translations = {
 
   "Search in feeds" : { fr: "Chercher dans les flux" , ja: "フィードで検索します", es: "Búsqueda en fuentes" },
 
-  "Press ENTER to go to last result, ESCAPE to cancel." : { fr: "ENTER pour aller au dernier résultat, ESCAPE pour annuler." , ja: "ENTERを押して最後の結果に移動し、ESCAPEを押してキャンセルします。", es: "Presione ENTER para ir al último resultado, ESCAPE para cancelar." },
+  "Press ENTER to go to last result, ESCAPE to cancel." : { fr: "ENTRÉE pour aller au dernier résultat, ÉCHAP. pour annuler." , ja: "ENTERを押して最後の結果に移動し、ESCAPEを押してキャンセルします。", es: "Presione ENTER para ir al último resultado, ESCAPE para cancelar." },
 
 
   "English" : { fr: "English" , ja: "English", es: "English" },
@@ -205,7 +205,7 @@ PTL.i18n.translations = {
 
   "Focus the current tab." : { fr: "Focus sur l'onglet courant." , ja: "現在のタブにフォーカスします。", es: "Enfoca la pestaña actual." },
 
-  "Very useful to browse tabs using the arrow keys." : { fr: "Très utile pour parcourir les onglets à l'aide des touches fléchées.'onglet courant." , ja: "矢印キーを使用してタブを参照するのに非常に便利です。", es: "Muy útil para navegar por las pestañas usando las teclas de flecha." },
+  "Very useful to browse tabs using the arrow keys." : { fr: "Très utile pour parcourir les onglets à l'aide des touches fléchées." , ja: "矢印キーを使用してタブを参照するのに非常に便利です。", es: "Muy útil para navegar por las pestañas usando las teclas de flecha." },
   
   "When focus is on a tab" : { fr: "Lorsque le focus est sur un onglet" , ja: "フォーカスがタブにあるとき", es: "Cuando el foco está en una pestaña" },
   "When focus is in a panel" : { fr: "Lorsque le focus est dans un panel" , ja: "フォーカスがパネルにあるとき", es: "Cuando el foco está en un panel" },
@@ -302,7 +302,7 @@ PTL.i18n.translations = {
 
   "Wait! Are you sure?" : { fr: "Stop ! Sur ?" , ja: "待つ！ 本気ですか？", es: "¡Espere! ¿Estás seguro?" },
 
-  "Select this feed (for moving and deletion)." : { fr: "Sélectionnez ce flux (pour le déplacement et la suppression)." , ja: "このソース(移動と削除のために)を選択します。", es: "Seleccione esta fuente (para mover y eliminar)." },
+  "Select this feed (for moving and deletion)." : { fr: "Sélectionner ce flux (pour le déplacement et la suppression)." , ja: "このソース(移動と削除のために)を選択します。", es: "Seleccione esta fuente (para mover y eliminar)." },
   
   "Grab this handle to move this feed (and all other selected feeds) within this tab, or into another." : { fr: "Attraper cette poignée pour déplacer ce flux (et toutes les autres flux sélectionnés) dans cet onglet ou dans un autre." , ja: "ここでドラッグすると、このグループ内のこのソース（および他のすべての選択されたソース）を別のグループに移動できます。", es: "Arrastre aquí para mover esta fuente (y todas las demás fuentes seleccionadas) dentro de este grupo o dentro de otra." },
 
@@ -518,13 +518,17 @@ PTL.i18n.translations = {
 
   "Move this feed" : { fr: "Déplacer ce flux", ja: "このソースを移動する", es: "Mueva esta fuente (%)" },
   "Edit this feed parameters" : { fr: "Modifier les paramètres de ce flux", ja: "このソースパラメータを変更する", es: "Establezca estos parámetros fuente" },
+
   "Delete this feed" : { fr: "Supprimer ce flux", ja: "本当にこのフィードを削除しますか", es: "Borraste esta feed" },
+
   "Refresh this feed" : { fr: "Actualiser ce flux", ja: "このソースをリフレッシュしてください", es: "Actualiza esta fuente" },
 
   "This feed is folded in" : { fr: "Ce flux est replié", ja: "このソースは折りたたまれています", es: "Esta fuente está plegada" },
   
   "Select this feed" : { fr: "Sélectionner ce flux", ja: "RSS(%1)フィードを選択", es: "Selecciona este feed" },
   "Configure this feed" : { fr: "Configurer ce flux" , ja: "このソースを設定します", es: "Configura esta fuente" },
+
+  "Configure this feed: URL, Name, Type (text, media, or both) and height / Nb of items." : { fr: "Configurer ce flux : URL, Nom, Type (texte, média ou les deux) et Hauteur/Nb d'éléments." , ja: "このフィードを構成します：URL、名前、タイプ（テキスト、メディア、またはその両方）、高さ/アイテム数。", es: "Configure este feed: URL, nombre, tipo (texto, medios o ambos) y altura / número de elementos." },
   
   "Delete this feed?" : { fr: "Supprimer ce flux ?", ja: "本当にこのフィードを削除しますか？", es: "¿Borraste esta feed?" },
   
@@ -532,7 +536,7 @@ PTL.i18n.translations = {
 
   "Delete feeds" : { fr: "Supprimer flux" , ja: "ソースの削除", es: "Suprímase las fuentes" },
 
-  "If other feeds are selected, they will be deleted too." : { fr: "Si d'autres flux sont sélectionnés, ils seront supprimés aussi." , ja: "他のソースを選択した場合は、削除されます。", es: "Si se seleccionan otras fuentes, también se eliminarán." },
+  "Delete all the selected feeds." : { fr: "Supprimer tous les flux sélectionnés." , ja: "選択したすべてのフィードを削除します。", es: "Elimina todos los feeds seleccionados." },
   
   "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },
 

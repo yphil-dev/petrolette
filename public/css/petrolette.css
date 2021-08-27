@@ -467,13 +467,36 @@ h1 {
   margin-top: 0;
 }
 
-kbd.key {
-  background-color: var(--color-ui-pri);
-  color: var(--color-ui-qua);
+kbd {
+  font-family: Consolas, "Lucida Console", monospace;
+  display: inline-block;
   border-radius: 3px;
-  padding: 2px;
-  margin: 0 2px;
-  border: 1px solid var(--color-ui-qua);
+  padding: 0px 4px;
+  box-shadow: 1px 1px 1px #777;
+  margin: 2px;
+  font-size: small;
+  vertical-align: text-bottom;
+  background: #eee;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  font-variant: small-caps;
+  font-weight: 600;
+
+  line-height: initial;
+  
+  /* This two work */
+  /* letter-spacing: 0.5px; */
+  letter-spacing: 1px;
+
+
+  /* Prevent selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 ul:not(.feedNames, .fundingLinks) {

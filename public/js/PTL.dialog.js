@@ -311,15 +311,15 @@ PTL.dialog = {
         {
           title: PTL.tr('Configure this feed'),
           element: '.feedPrefs',
-          intro: PTL.tr('Configure this feed.')
+          intro: PTL.tr('Configure this feed: URL, Name, Type (text, media, or both) and height / Nb of items.')
         },
         {
           title: PTL.tr('Delete feed'),
           element: '.feed-delete',
-          intro: PTL.tr('Delete this feed.') + ' ' + PTL.tr('If other feeds are selected, they will be deleted too.')
+          intro: PTL.tr('Delete all the selected feeds.')
         },
         {
-          title: PTL.tr('Keep everything tidy'),
+          title: PTL.tr('Select this feed'),
           element: '.feedSelect',
           intro: PTL.tr('Select this feed (for moving and deletion).')
         },
