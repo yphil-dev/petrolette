@@ -23,7 +23,7 @@
     "errors": "pm2 logs --err --format",
     "test": "mocha --timeout 30s",
     "coverage": "nyc npm test",
-    "postinstall": "bower install --allow-root && cd ./node_modules/favrat ; npm i && cd ../feedrat ; npm i"
+    "postinstall": "bower install --allow-root"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -31,9 +31,9 @@
     "compression": "^1.7.4",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "favrat": "git+https://framagit.org/yphil/favrat.git",
+    "favrat": "latest",
+    "feedrat": "latest",
     "feedparser": "^2.2.10",
-    "feedrat": "git+https://framagit.org/yphil/feedrat.git",
     "helmet": "^4.4.1",
     "iconv-lite": "^0.6.2",
     "idb": "^6.0.0",

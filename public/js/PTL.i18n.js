@@ -199,11 +199,14 @@ PTL.i18n.translations = {
   "This field cannot be empty" : { fr: "Ce champ ne peut pas être vide" , ja: "このフィールドを空にすることはできません", es: "Esta entrada de texto no puede estar vacía" },
 
   "Add a feed to this column" : { fr: "Ajouter un flux à cette colonne" , ja: "この列にソースを追加する", es: "Agregar una fuente a esta columna" },
+  
   "Keyboard shortcuts" : { fr: "Raccourcis clavier" , ja: "キーボードショートカット", es: "Atajos de teclado" },
 
-  "Display this window." : { fr: "Affiche cette fenêtre." , ja: "このウィンドウを表示します。", es: "Muestre esta ventana." },
+  "Display this window." : { fr: "Afficher cette fenêtre." , ja: "このウィンドウを表示します。", es: "Muestre esta ventana." },
 
   "Focus the current tab." : { fr: "Focus sur l'onglet courant." , ja: "現在のタブにフォーカスします。", es: "Enfoca la pestaña actual." },
+
+  "Focus the search input field." : { fr: "Mettre le curseur dans le champ de recherche." , ja: "検索入力フィールドにフォーカスします。", es: "Enfoque el campo de entrada de búsqueda." },
 
   "Very useful to browse tabs using the arrow keys." : { fr: "Très utile pour parcourir les onglets à l'aide des touches fléchées." , ja: "矢印キーを使用してタブを参照するのに非常に便利です。", es: "Muy útil para navegar por las pestañas usando las teclas de flecha." },
   

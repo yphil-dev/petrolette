@@ -467,7 +467,7 @@ h1 {
   margin-top: 0;
 }
 
-kbd {
+kbd:not(.keyGroup) {
   font-family: Consolas, "Lucida Console", monospace;
   display: inline-block;
   border-radius: 3px;
@@ -497,6 +497,16 @@ kbd {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+kbd:hover, kbd:hover * {
+  color: black;
+  /* box-shadow: 1px 1px 1px #333; */
+}
+
+kbd:active, kbd:active * {
+  color: black;
+  box-shadow: 1px 1px 0px #ddd inset;
 }
 
 ul:not(.feedNames, .fundingLinks) {

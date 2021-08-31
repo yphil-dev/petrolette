@@ -1051,6 +1051,7 @@ PTL.dialog = {
 
           $('kbd#kbShortcutNewFeed').text(PTL.kbShortcutNewFeed);
           $('kbd#kbShortcutFocusTab').text(PTL.kbShortcutFocusTab);
+          $('kbd#kbShortcutFocusSearch').text(PTL.kbShortcutFocusSearch);
         }
       });
 
