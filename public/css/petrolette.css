@@ -637,7 +637,7 @@ select {
 
 fieldset {
   border: 0;
-  padding-top: 0.1em;
+  /* padding-top: 0.1em; */
 }
 
 .sideMenuTitleToggleDiv {
@@ -1182,8 +1182,14 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
 }
 
 .ui-dialog div#messageZone {
+  text-align: right;
   font-size: 75%;
-  margin: -8px 0 3px;
+  /* margin: -8px 0 3px; */
+  padding: 0.3em;
+}
+
+.ui-dialog span.messageTitle {
+    color: var(--color-danger);
 }
 
 .ui-state-error {

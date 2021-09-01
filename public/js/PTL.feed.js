@@ -577,9 +577,12 @@ PTL.feed = {
 
         $feedLink.attr('href', fetchFeed.feedLink);
 
+        const feedName = fetchFeed.feedTitle;
+        
         if ($dataStore.data('name') == '') {
-          $feedLink.text(fetchFeed.feedTitle);
-          $dataStore.data('name', fetchFeed.feedTitle);          
+          $feedLink.attr('title', feedName)
+            .text(feedName);
+          $dataStore.data('name', feedName);          
         }
         
         if (fetchFeed.totalNewItems > 0) {

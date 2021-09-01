@@ -1172,6 +1172,7 @@ PTL.dialog = {
               .text($(this)
                 .children()
                 .children('.feedTitle')
+                .children('a')
                 .attr('title')));
 
           });
