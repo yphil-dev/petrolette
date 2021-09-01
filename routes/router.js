@@ -10,6 +10,8 @@ const express = require('express'),
       path = require('path'),
       crypto = require('crypto'),
       pjson = require('../package.json'),
+      favratpjson = require('../node_modules/favrat/package.json'),
+      feedratpjson = require('../node_modules/feedrat/package.json'),
       sanitize = require('sanitize').middleware,
       morgan = require('morgan');
 
@@ -102,7 +104,9 @@ router.get('/about/javascript', function(req, res) {
 router.get('/', function(req, res) {
   res.render('index', {
     queryString: req.query.add,
-    version: pjson.version
+    version: pjson.version,
+    favratversion: favratpjson.version,
+    feedratversion: feedratpjson.version
   });
 });
 

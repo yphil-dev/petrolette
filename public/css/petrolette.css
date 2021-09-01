@@ -312,9 +312,27 @@ i.icon-petrolette {
 
 .logoTitle {
   color: var(--color-ui-sec);
-  display: var(--logo-display);
   font-family: LobsterRegular, Helvetica, Arial, sans-serif;
+}
+
+#sisterLibs {
+  justify-content: center;
+}
+
+#sisterLibs div {
+  margin: 0.3em 0.3em;
+}
+
+#topNav .logoTitle {
+  display: var(--logo-display);
+}
+
+.logoTitle {
   font-size: 36pt;
+}
+
+#aboutDialog .logoTitle {
+  margin-bottom: 0.1em;
 }
 
 #preload > .logoTitle {

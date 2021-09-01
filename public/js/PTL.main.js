@@ -72,7 +72,7 @@ var PTL = (function() {
       });
 
       $logoType.click(function(){
-        PTL.dialog.about($logoType.attr('data-version'));
+        PTL.dialog.about($logoType.attr('data-version'), $logoType.attr('data-favratversion'), $logoType.attr('data-feedratversion'));
       });
 
       $('body').on('click','.helpBookmarklet', function(event) {

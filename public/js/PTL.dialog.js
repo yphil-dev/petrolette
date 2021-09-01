@@ -116,108 +116,51 @@ PTL.dialog = {
     });
 
   },
-  about: function(versionNumber) {
+  about: function(petroletteVersion, favratVersion, feedratVersion) {
 
-    $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('#ptlDialogs').load('/static/templates/dialogs.html #aboutDialog', function() {
 
-      const $dialog = $(this),
-        $content = $dialog.find('div.flexBox'),
-        $icon = $dialog.find('div#icon > i');
-
-      $icon.addClass('icon-petrolette');
-      $content.css('flex-direction', 'column');
-      $content.find('div#dialogText').css('text-align', 'center'),
-
-        $dialog.dialog({
-          title: PTL.tr('About Pétrolette'),
-          width: PTL.util.isMobile() ? 'auto' : 360,
-          buttons: [
-            {
-              text: PTL.tr('Source code'),
-              title: PTL.tr('Source code'),
-              class: 'translate',
-              click: function() {
-                PTL.dialog.kill($dialog);
-                window.open('https://framagit.org/yphil/petrolette');
-              }
-            },
-            {
-              text: PTL.tr('Changelog'),
-              title: PTL.tr('Changelog'),
-              class: 'translate',
-              click: function() {
-                PTL.dialog.kill($dialog);
-                window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
-              }
-            },
-            {
-              text: PTL.tr('Ok'),
-              title: PTL.tr('Ok'),
-              class: 'translate',
-              click: function() {
-                PTL.dialog.kill($dialog);
-              }
-            }
-          ],
-          open: function() {
-
-            const $fundingButtons = $('<div>')
-                  .attr({class: 'buttons flexBox'})
-                  .append($('<a>')
-                          .attr({class: 'ui-button ui-corner-all ui-widget',
-                                 href: 'https://liberapay.com/yPhil'})
-                          .append($('<i>')
-                                  .attr({class: 'icon-heartbeat'}))
-                          .text('Liberapay'))
-                  .append($('<a>')
-                          .attr({class: 'ui-button ui-corner-all ui-widget',
-                                 href: 'https://ko-fi.com/yphil/tiers'})
-                          .append($('<i>')
-                                  .attr({class: 'icon-heartbeat'}))
-                          .text('Ko-fi'));
-            
-            $('.ui-widget-overlay').on('click', function() {
+      const $dialog = $(this);
+      
+      $dialog.dialog({
+        title: PTL.tr('About Pétrolette'),
+        width: PTL.util.isMobile() ? 'auto' : 360,
+        buttons: [
+          {
+            text: PTL.tr('Source code'),
+            title: PTL.tr('Source code'),
+            class: 'translate',
+            click: function() {
               PTL.dialog.kill($dialog);
-            });
-
-            $dialog.find('h1').text('Pétrolette').addClass('logoTitle')
-              .next('p#dialogBlurb')
-              .append($('<a>')
-                      .attr({href: 'https://mastodon.social/@petrolette',
-                             rel: 'me'})
-                      .text(PTL.tr("The news page that doesn't know you")))
-              .next('h2').text(versionNumber)
-              .next('p')
-              .append($('<a>')
-                      .attr({href: 'https://mamot.fr/@yphil',
-                             rel: 'me'})
-                      .text(PTL.tr('By yPhil')))
-              .next('h2').text('')
-              .next('p')
-              .append($('<i>')
-                      .attr({class: 'icon-heartbeat'}),
-                      $('<span>').text(' '),
-                      $('<a>')
-                      .attr('href', 'https://liberapay.com/yPhil/')
-                      .text(PTL.tr('Liberapay'), $('<i>')
-                                  .attr({class: 'icon-heartbeat'})),
-                      $('<span>').text(' '),
-                      $('<i>')
-                      .attr({class: 'icon-coffee'}),
-                      $('<span>').text(' '),
-                      $('<a>')
-                      .attr('href', 'https://ko-fi.com/yphil/tiers')
-                      .text(PTL.tr('Ko-fi')),
-                      $('<span>').text(' '),
-                      $('<i>')
-                      .attr({class: 'icon-paypal'}),
-                      $('<span>').text(' '),
-                      $('<a>')
-                      .attr('href', 'https://paypal.me/yphil')
-                      .text(PTL.tr('Paypal')));
-
+              window.open('https://framagit.org/yphil/petrolette');
+            }
+          },
+          {
+            text: PTL.tr('Changelog'),
+            title: PTL.tr('Changelog'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+              window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
+            }
+          },
+          {
+            text: PTL.tr('Ok'),
+            title: PTL.tr('Ok'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
           }
-        });
+        ],
+        open: function() {
+
+          $dialog.find('#petroletteVersion').text(petroletteVersion);
+          $dialog.find('#feedratVersion').text(feedratVersion);
+          $dialog.find('#favratVersion').text(favratVersion);
+
+        }
+      });
 
       $dialog.dialog('open');
     });
