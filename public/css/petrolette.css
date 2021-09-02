@@ -557,10 +557,6 @@ ul.fundingLinks {
   flex-grow: 4;
 }
 
-ul.help li {
-  margin: 1em 0 0 1em;
-}
-
 .feed-control {
   color: var(--color-feed-control);
   cursor: pointer;
@@ -787,6 +783,10 @@ ul.help {
   list-style-type: none;
   list-style-position: outside;
   margin: 0 0 0 1em;
+}
+
+ul.help li {
+  margin: 0.3em 0 0 1em;
 }
 
 ul.help li::before {
@@ -1519,4 +1519,41 @@ input[type="text"] {
 
 fieldset {
   margin: 0;
+}
+
+div#nagBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #CE3B2C;
+  min-height: 32px;
+}
+
+div#nagBar > * {
+  flex-basis: content;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+div#nagBar > div#nagOne {
+  padding: 0.3em;
+  color: #FFFFFF;
+}
+
+div#nagBar > div#nagTwo {
+  text-align: right;
+}
+
+div#nagBar > div#nagTwo > button {
+	padding: .4em 1em;
+	display: inline-block;
+	position: relative;
+	line-height: normal;
+	margin-right: .1em;
+	cursor: pointer;
+	vertical-align: middle;
+	text-align: center;
+	user-select: none;
+	overflow: visible;
 }

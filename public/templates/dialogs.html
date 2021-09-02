@@ -6,13 +6,19 @@
     <div id="dialogText">
       <h1 class="logoTitle">Pétrolette <span id="petroletteVersion"></span></h1>
       <p id="dialogBlurb" class="translate">
-        <a href="https://mastodon.social/@petrolette" rel="me">The news page that doesn't know you</a>
+        <a href="https://mastodon.social/@petrolette"
+           rel="me"
+           title="https://mastodon.social/@petrolette"
+           data-content="The news page that doesn't know you"
+           class="translate">The news page that doesn't know you</a>
       </p>
       <div id="sisterLibs" class="flexBox">
         <div><a class="docLink" href="https://framagit.org/yphil/feedrat">Feedrat <span id="feedratVersion"></span></a></div>
         <div><a class="docLink" href="https://framagit.org/yphil/favrat">Favrat <span id="favratVersion"></span></a></div>
       </div>
-      <p><a href="https://mamot.fr/@yphil" rel="me">By yPhil</a></p>
+      <p><a href="https://mamot.fr/@yphil" rel="me"
+            data-content="By yPhil"
+            class="translate">By yPhil</a></p>
       <p>
         <i class="icon-heartbeat"></i> <a href="https://liberapay.com/yPhil/">Liberapay</a> <i class="icon-coffee"></i> <a href="https://ko-fi.com/yphil/tiers">Ko-fi</a> <i class="icon-paypal"></i> <a href="https://paypal.me/yphil">Paypal</a>
       </p>
@@ -21,6 +27,8 @@
 </div>
 
 <div id="kbShortcuts">
+
+  <h1 class="translate" data-content="Keyboard shortcuts">Keyboard shortcuts</h1>
 
   <table class="kBShortcutsTable">
     <tr>
@@ -310,24 +318,40 @@
 </div>
 
 <div id="helpDialog" title="Pétrolette">
-  <h1 class="translate"
-      data-title="Welcome to Pétrolette"
-      data-content="Welcome to Pétrolette">Welcome to Pétrolette</h1>
+  <h1 class="translate" data-content="Help">Help</h1>
   <div class="dialog">
     <p>
       <span class="translate ui"
             data-content="Pétrolette is a news reader focused on preventing anyone to know what you are reading.">
         Pétrolette is a news reader focused on preventing anyone to know what you are reading.
       </span>
+          </p>
+    <p>
+
       <button class="helpTour translate ui-button ui-corner-all"
+              title="Learn to use it in a few easy steps"
+              data-title="Learn to use it in a few easy steps"
               data-content="Take the tour">
         Take the tour
       </button>
 
       <button class="helpKbShortcuts translate ui-button ui-corner-all"
+              title="Keyboard shortcuts"
+              data-title="Keyboard shortcuts"
               data-content="Keyboard shortcuts">
         Keyboard shortcuts
       </button>
+
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+         class="ui-button ui-corner-all"
+         title="🌐 Local Storage"
+         id="helpLocalStorage">🌐 Local Storage</a>
+
+      <a href="https://wikipedia.org/wiki/RSS"
+         class="ui-button ui-corner-all"
+         title="🌐 RSS"
+         id="helpLocalStorage">🌐 RSS</a>
+
     </p>
   </div>
   <h2 class="translate"
@@ -345,36 +369,37 @@
         Websites provide a feed of their headlines to facilitate access to their content ; Pétrolette updates and displays them.
       </span>
     </p>
-    <p>
 
-      <ul class="help">
-        <li class="publish translate"
-            data-content="The website publishes a new article">
-          The website publishes a new article
-        </li>
-        <li class="rss translate"
-            data-content="Its RSS feed is updated">
-          Its RSS feed is updated
-        </li>
-        <li class="refresh translate"
-            data-content="At the next refresh, Pétrolette displays a new link to this article">
-          At the next refresh, Pétrolette displays a new link to this article
-        </li>
-      </ul>
-    </p>
-    <br>
+    <ul class="help">
+      <li class="publish translate"
+          data-content="The website publishes a new article">
+        The website publishes a new article
+      </li>
+      <li class="rss translate"
+          data-content="Its RSS feed is updated">
+        Its RSS feed is updated
+      </li>
+      <li class="refresh translate"
+          data-content="At the next refresh, Pétrolette displays a new link to this article">
+        At the next refresh, Pétrolette displays a new link to this article
+      </li>
+    </ul>
 
     <h3 class="translate"
-        data-content="Why didn't I have to register? Where are my tabs and feeds saved?">Why didn't I have to register? Where are my tabs and feeds saved?</h3>
+        data-content="Why didn't I have to register?">Why didn't I have to register?</h3>
     <p>
       <span class="translate"
-            data-content="Your feeds are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other feeds.">
-        Your feeds are saved in your browser. Go ahead, try to visit http://petrolette.space with another web browser, and you'll see other feeds.
+            data-content="Because your feeds and tabs are saved in your browser. Go ahead, try to visit">
+        Because your feeds and tabs are saved in your browser. Go ahead, try to visit
+      </span>
+      <a class="instanceUrl docLink"></a>
+      <span class="translate"
+            data-content="with another web browser, and you'll see other feeds.">
+        with another web browser, and you'll see other feeds.
       </span>
     </p>
     <h4 class="translate"
         data-content="How can I view the same feeds on all my devices (like my phone)?">How can I view the same feeds on all my devices (like my phone)?</h4>
-    <p>
       <span class="translate"
             data-content="Two ways:">
         Two ways:
@@ -388,9 +413,7 @@
             data-content="Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.">Or (recommended, much easier) use the synchronize button in the main menu to connect to the cloud - 5Apps, DropBox and Google Drive, only 5Apps is enabled on this instance for now, but you should use it anyway as it is FLOSS software - each change you make will then be reflected on all devices.</li>
 
       </ul>
-    </p>
   </div>
-  <br>
 
   <h3 class="translate"
       data-title="What is a tab?"
@@ -408,23 +431,20 @@
       data-content="What is a feed? How do I create one?">What is a feed? How do I create one?</h3>
 
   <div class="dialog">
-    <p>
-      <span class="translate"
-            data-content="Click the «New feed» button.">
-        Click the «New feed» button.
-      </span>
-      <ul class="help">
-        <li class="rss translate"
-            data-content="If you enter the URL of a valid feed (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.">If you enter the URL of a valid feed (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.</li>
+    <span class="translate"
+          data-content="Click the «New feed» button.">
+      Click the «New feed» button.
+    </span>
+    <ul class="help">
+      <li class="rss translate"
+          data-content="If you enter the URL of a valid feed (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.">If you enter the URL of a valid feed (see «RSS feed» above), such as «https://news.google.com/news/rss/rss» Pétrolette will display it.</li>
 
-        <li class="www translate"
-            data-content="Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the feed of this website and display it.">Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the feed of this website and display it.</li>
+      <li class="www translate"
+          data-content="Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the feed of this website and display it.">Now, if you simply enter the URL of a website, like «https://www.rt.com», Pétrolette will try to find the feed of this website and display it.</li>
 
-        <li class="search translate"
-            data-content="And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.">And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.</li>
+      <li class="search translate"
+          data-content="And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.">And finally, if you enter anything other than a URL, like the expression «bitcoin crash» or «zombie attack», Pétrolette will build a feed using a free and open feed proxy search engine, which will display the latest news on fluctuations in digital currency (or incidents involving undead) every time you update it.</li>
       </ul>
-    </p>
-    <br>
 
     <p>
       <span class="dialog translate"
@@ -437,26 +457,6 @@
          data-content="Add to Pétrolette">
         Add to Pétrolette
       </a>
-    </p>
-  </div>
-
-  <h2 class="translate"
-      data-content="Ok, where do I start?">
-    Ok, where do I start?
-  </h2>
-  <div class="dialog">
-    <p>
-      <span class="dialog translate"
-            data-content="Learn how to use">
-        Learn how to use
-      </span>
-      <button class="helpTour ui-button ui-corner-all translate"
-              data-content="the tabs and the feeds">
-        the tabs and the feeds
-      </button>
-      <span class="dialog translate"
-            data-content="and Pétrolette in general.">
-        and Pétrolette in general.</span>
     </p>
   </div>
 </div>

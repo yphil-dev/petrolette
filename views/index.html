@@ -61,7 +61,9 @@
     <meta name="google-site-verification" content="gZjIQjkGXwYltleCVHxODL0EDW5TfKg9H5s1HE0q0aQ" />
 
     <link rel="stylesheet" href="/static/css/themes/base/jquery-ui.min.css">
+
     <link id="theme" rel="stylesheet" href="/static/css/themes/night.css">
+    
     <link rel="stylesheet" href="/static/css/fontello.css">
     <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="/bower/intro.js/dist/minified/introjs.min.css" />
@@ -104,6 +106,28 @@
       <i class="ui-icon"></i>
     </div>
 
+    <div id="nagBar" style="display:none">
+
+      <div id="nagOne">
+        
+        <span id="nagTex" class="translate" data-content="🔒 This is your private Pétrolette ; Everything is already saved in this browser 🙂">
+          🔒 This is your private Pétrolette ; Everything is already saved in this browser 🙂
+        </span>
+      </div>
+
+      <div id="nagTwo">
+
+        <button id="nagOk" class="translate htmlButtonOnly"
+                data-content="OK"
+                data-title="OK"
+                title="OK">
+          OK
+        </button>
+        
+      </div>
+      
+    </div>
+    
     <nav style="display:none;" id="top-menu" class="menu">
 
       <div class="topNav" id="topNav">
@@ -201,7 +225,7 @@
       </div>
       <fieldset class="menuForm">
         <div class="flexBox">
-          <button class="grow translate left helpLink"
+          <button class="grow translate left helpButton"
                   data-content="Help"
                   data-title="Documentation"
                   title="Documentation">
@@ -209,11 +233,10 @@
           </button>
 
           <button
-            class="translate ui-button ui-corner-all grow"
+            class="tourButton translate ui-button ui-corner-all grow"
             data-content="Tour"
             data-title="Learn to use it in a few easy steps"
-            title="Learn to use it in a few easy steps"
-            onclick="PTL.dialog.tour('ui');">
+            title="Learn to use it in a few easy steps">
             Tour
           </button>
 
@@ -537,6 +560,7 @@
     <script>
 
      $(document).ready(function() {
+
        PTL.start();
 
        let clean = DOMPurify.sanitize('<%= queryString %>');

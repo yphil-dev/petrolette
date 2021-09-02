@@ -172,8 +172,8 @@ PTL.dialog = {
       const $dialog = $(this);
 
       $dialog.dialog({
-        title: PTL.tr('Help'),
-        width: PTL.util.isMobile() ? 'auto' : 800,
+        title: PTL.tr('Documentation'),
+        width: PTL.util.isMobile() ? 'auto' : '90%',
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -191,17 +191,20 @@ PTL.dialog = {
           });
 
 
+          $('a.instanceUrl')
+            .attr('href', window.location.href)
+            .text(window.location.href);
+
           const ptlUrl = [location.protocol, '//', location.host, location.pathname].join('');
       
           $('.helpBookmarklet')
             .attr('href', 'javascript:void(window.open("' + ptlUrl + '?add="+encodeURIComponent(location.href)))');
-
-          $('.helpTour').on('click', function() {
+          $('button.helpTour').on('click', function() {
             PTL.dialog.kill($dialog);
             PTL.dialog.tour('ui');
           });
 
-          $('.helpKbShortcuts').on('click', function() {
+          $('button.helpKbShortcuts').on('click', function() {
             PTL.sideMenu('close');
             PTL.dialog.kill($dialog);
             PTL.dialog.kbShortcuts();
@@ -267,14 +270,14 @@ PTL.dialog = {
           intro: PTL.tr('Select this feed (for moving and deletion).')
         },
         {
-          title: 'Grip handle',
+          title: PTL.tr('Grip handle'),
           element: '.feedHandle',
           intro: PTL.tr('Grab this handle to move this feed (and all other selected feeds) within this tab, or into another.')
         },
         {
-          title: PTL.tr('Fold / unfold this feed'),
+          title: PTL.tr('Open / close this feed'),
           element: 'div.feedToggle',
-          intro: PTL.tr('Folded feeds are not loaded at startup, so as to speed things up.')
+          intro: PTL.tr('Closed feeds are not loaded at startup, so as to speed things up.')
         },
         {
           title: PTL.tr('Search in feeds') + ' (<kbd class="key">' + PTL.kbShortcutFocusSearch + '</kbd>)',
@@ -974,8 +977,8 @@ PTL.dialog = {
       const $dialog = $(this);
 
       $dialog.dialog({
-        title: PTL.tr('Keyboard shortcuts'),
-        width: PTL.util.isMobile() ? 'auto' : 630,
+        title: PTL.tr('Documentation'),
+        width: PTL.util.isMobile() ? 'auto' : '90%',
         buttons: [
           {
             text: PTL.tr('Ok'),
@@ -1088,6 +1091,7 @@ PTL.dialog = {
       $dialog.dialog({
         title: ($selectedFeeds.length > 1) ? PTL.tr('Delete feeds') : PTL.tr('Delete feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
+        close: cancelDialog,
         buttons: [
           {
             text: PTL.tr('Cancel'),

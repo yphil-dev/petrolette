@@ -299,13 +299,31 @@ PTL.util = {
 
     return progress;
   },
-  milliToSecs : function(s) {
+  milliToSecs: function(s) {
     var ms = s % 1000;
     s = (s - ms) / 1000;
     var secs = s % 60;
     s = (s - secs) / 60;
 
     return parseFloat(secs + '.' + ms.toFixed(1));
+  },
+  detectColorScheme: function() {
+
+    const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const userPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    if (userPrefersDark) {
+      return 'night';
+    } else {
+      return 'day';
+    }
+
+  },
+  getPreferredLang: function() {
+    if (navigator.languages != undefined)
+      return navigator.languages[0];
+    return navigator.language;
   }
 };
 

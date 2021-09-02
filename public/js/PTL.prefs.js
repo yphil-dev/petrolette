@@ -23,6 +23,8 @@ PTL.prefs = {
       'gallerySlideTransition': 'fade',
       'gallerySlideshowSpeed': 3000,
       'lang': 'en',
+      'userSetLang': false,
+      'nagBarOk': false,
       'searchPrefix': 'https://searx.prvcy.eu/search?categories=general&time_range=week&language=en&format=rss&q=',
       'searchPrefixDefault': 'https://searx.prvcy.eu/search?categories=general&time_range=week&language=en&format=rss&q=',
       'tabDropActivate': true,

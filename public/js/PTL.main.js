@@ -7,7 +7,8 @@ var PTL = (function() {
     kbShortcutNewFeed: 'n',
     kbShortcutFocusTab: 't',
     kbShortcutFocusSearch: 'f',
-    language: 'en',
+    language: '',
+    languages: ['en', 'fr', 'ja', 'es'],
     start : function() {
 
       Mousetrap.bind('?', PTL.dialog.kbShortcuts);
@@ -21,6 +22,23 @@ var PTL = (function() {
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
+      if (!PTL.prefs.readConfig('nagBarOk')) $('div#nagBar').show(0);
+      
+      if (!PTL.prefs.readConfig('userSetLang')) {
+
+        const preferredLang = PTL.util.getPreferredLang();
+
+        for (const l of PTL.languages) if (preferredLang == l) PTL.language = preferredLang;
+
+      } else {
+        
+        PTL.language = PTL.prefs.readConfig('lang');
+
+      }
+      
+      PTL.util.translate();
+
+      
       const $sideMenu = $('nav#sideMenu'),
         $overlay = $('#overlay'),
         $feedCodeButton = $('button#feedCode'),
@@ -67,10 +85,23 @@ var PTL = (function() {
         PTL.util.say(PTL.tr('Search prefix') + ': ' + clean, 'success', true);
       });
 
+      $('button#nagOk').click(function(){
+        $('div#nagBar').hide('fade', 150);
+        PTL.prefs.writeConfig('nagBarOk', true);
+      });
+
       $('#logoTitle > .logoTitle').click(function(){
         $('.ui-state-active a').focus();
       });
 
+      $('button.tourButton').click(function(){
+        PTL.dialog.tour('ui');
+      });
+
+      $('button.helpButton').click(function(){
+        PTL.dialog.help();
+      });
+      
       $logoType.click(function(){
         PTL.dialog.about($logoType.attr('data-version'), $logoType.attr('data-favratversion'), $logoType.attr('data-feedratversion'));
       });
@@ -156,7 +187,7 @@ var PTL = (function() {
 
       PTL.sync.attachWidget();
 
-      $('button').button();
+      $('button').not('.htmlButtonOnly').button();
 
       const ptlUrl = [location.protocol, '//', location.host, location.pathname].join('');
       
@@ -165,10 +196,6 @@ var PTL = (function() {
       
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
-      });
-
-      $('body').on('click','.helpLink', function() {
-        PTL.dialog.help();
       });
 
       function newFeed() {
@@ -207,7 +234,7 @@ var PTL = (function() {
         }
       });
       
-      $langMenu.val(PTL.prefs.readConfig('lang')).prop('selected', true);
+      $langMenu.val(PTL.language).prop('selected', true);
 
       const $syncBox = $('#syncBox');
 
@@ -234,6 +261,7 @@ var PTL = (function() {
         var selectedLang = $(this).val();
         PTL.language = selectedLang;
         PTL.prefs.writeConfig('lang', selectedLang);
+        PTL.prefs.writeConfig('userSetLang', true);
         PTL.util.translate();
       });
 
@@ -277,14 +305,18 @@ var PTL = (function() {
 
       $themeBox.append($dayLabel, $dayInput, $nightLabel, $nightInput);
 
-      $sideMenu.find('.themeSwitcher').checkboxradio();
+      $sideMenu.find('.themeSwitcher').checkboxradio({icon: false});
 
       $sideMenu.find("input#" + PTL.prefs.readConfig('theme')).attr("checked", true);
 
       $sideMenu.find('.themeSwitcher').checkboxradio('refresh');
 
       $('.themeSwitcher').change(function() {
-        $("#theme").attr({href : '/static/css/themes/' + $(this).attr('value') + '.css'});
+
+        $("link#theme").attr('href', '/static/css/themes/' + $(this).attr('value') + '.css');
+
+        PTL.prefs.writeConfig('userSetTheme', true);
+
         PTL.prefs.writeConfig('theme', $(this).attr('value'));
       });
 
@@ -330,7 +362,7 @@ var PTL = (function() {
                               $mediaPreloadAutoLabel,
                               $mediaPreloadAutoInput);
 
-      $sideMenu.find('.mediaPreloadSwitcher').checkboxradio();
+      $sideMenu.find('.mediaPreloadSwitcher').checkboxradio({icon: false});
 
       $sideMenu.find("input#" + PTL.prefs.readConfig('mediaPreload')).attr("checked", true);
 
