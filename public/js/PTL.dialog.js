@@ -1080,6 +1080,11 @@ PTL.dialog = {
 
       $icon.addClass('icon-trash-empty danger');
 
+      function cancelDialog() {
+        PTL.dialog.kill($dialog);
+        $selectedFeeds.removeClass('selected');
+      }
+      
       $dialog.dialog({
         title: ($selectedFeeds.length > 1) ? PTL.tr('Delete feeds') : PTL.tr('Delete feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
@@ -1088,9 +1093,7 @@ PTL.dialog = {
             text: PTL.tr('Cancel'),
             title: PTL.tr('Cancel'),
             class: 'translate',
-            click: function() {
-              PTL.dialog.kill($dialog);
-            }
+            click: cancelDialog
           },
           {
             text: PTL.tr('Delete'),
@@ -1120,9 +1123,7 @@ PTL.dialog = {
 
           });
 
-          $('.ui-widget-overlay').on('click', function() {
-            PTL.dialog.kill($dialog);
-          });
+          $('.ui-widget-overlay').on('click', cancelDialog);
          
           $dialog.find('h1').text(($selectedFeeds.length > 1) ? PTL.tr('Delete those feeds?') : PTL.tr('Delete this feed?'))
             .next('p#dialogBlurb')

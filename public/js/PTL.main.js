@@ -460,15 +460,15 @@ var PTL = (function() {
         PTL.util.translate();
       };
 
-      // const $debugHiddenButton = $('<span>')
-      //       .attr('title', '>debug')
-      //       .addClass('debug')
-      //       .text('>debug')
-      //       .click(function () {
-      //         PTL.dialog.beg();
-      //       });
+      const $debugHiddenButton = $('<span>')
+            .attr('title', '>debug')
+            .addClass('debug')
+            .text('>debug')
+            .click(function () {
+              PTL.dialog.beg();
+            });
       
-      // $debugHiddenButton.appendTo('body');
+      $debugHiddenButton.appendTo('body');
 
     },
     sideMenu: function(action) {

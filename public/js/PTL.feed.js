@@ -31,22 +31,13 @@ PTL.feed = {
       .click(function() {
 
         if ($feedControls.data('status') == 'on') {
-          $(this).removeClass('fold')
-            .parent().parent().parent()
-            .children('div.feedBody')
-            .addClass('folded');
+
           $feedControls.data('status', 'off');
-          $refreshIcon.removeClass('icon-refresh spin')
-            .addClass('icon-pin');
+
         } else {
-          $(this).addClass('fold')
-            .parent().parent().parent()
-            .children('div.feedBody')
-            .removeClass('folded');
+
           $feedControls.data('status', 'on');
-          $refreshIcon.removeClass('icon-pin')
-            .attr('title', PTL.tr('This feed is folded in'))
-            .addClass('icon-refresh');
+
         }
 
         PTL.tab.saveTabs();
@@ -69,8 +60,7 @@ PTL.feed = {
       .data('title', 'Delete this feed', url)
       .attr('title', PTL.tr('Delete this feed', url))
       .click(function() {
-        PTL.dialog
-          .killFeed($(this).parent().parent().parent().parent().addClass('selected'), $('.selected'));
+        PTL.dialog.killFeed($(this).parent().parent().parent().parent().addClass('selected'), $('.selected'));
       });
 
     const $prefsIcon = $('<i>')
@@ -144,14 +134,67 @@ PTL.feed = {
       });
 
     const $titleLink = $('<a>')
-      .attr('href', url)
-      .attr('target', '_blank')
+      .attr({
+        href: url,
+        target: '_blank',
+        title: name || PTL.tr('New feed')
+      })
       .html(name || PTL.tr('New feed'));
+    
+    // $feedControls.hover(
+    //   function() { $(this).find('.collapsible').show(); },
+    //   function() { $(this).find('.collapsible').hide('fade', 'fast'); }
+    // );
 
-    $feedControls.hover(
-      function() { $(this).find('.collapsible').show(); },
-      function() { $(this).find('.collapsible').hide('fade', 'fast'); }
-    );
+    // if (!PTL.util.isMobile()) {
+    //   $selectDiv.addClass('collapsible');
+    //   $deleteDiv.addClass('collapsible');
+    //   $prefsDiv.addClass('collapsible');
+
+    //   $feedControls.append($selectDiv, $deleteDiv);
+    // }
+
+    // $feedHeader.hover(function() {
+
+    //   $(this).find('img.favicon').hide();
+    //   $feedIcon.removeClass('icon-rss').addClass('icon-down');
+
+    // }, function() {
+
+    //   $(this).find('img.favicon').show();
+    //   $feedIcon.removeClass('icon-down');
+
+    // });
+
+    // New
+    
+    $feedHeader.hover(function() {
+
+      $(this).find('img.favicon').hide();
+      $feedIcon.removeClass('icon-rss').addClass('icon-down');
+      $(this).find('.collapsible').show(0);
+
+    }, function() {
+
+      $(this).find('img.favicon').show();
+      $feedIcon.removeClass('icon-down');
+      $(this).find('.collapsible').hide('fade', 150);
+
+    });
+
+    $feedHeader.hover(function() {
+
+      $(this).find('img.favicon').hide();
+      $feedIcon.removeClass('icon-rss').addClass('icon-down');
+      $(this).find('.collapsible').show(0);
+
+    }, function() {
+
+      $(this).find('img.favicon').show();
+      $feedIcon.removeClass('icon-down');
+      $(this).find('.collapsible').hide('fade', 150);
+
+    });
 
     if (!PTL.util.isMobile()) {
       $selectDiv.addClass('collapsible');
@@ -160,19 +203,6 @@ PTL.feed = {
 
       $feedControls.append($selectDiv, $deleteDiv);
     }
-
-
-    $feedHeader.hover(function() {
-
-      $(this).find('img.favicon').hide();
-      $feedIcon.removeClass('icon-rss').addClass('icon-down');
-
-    }, function() {
-
-      $(this).find('img.favicon').show();
-      $feedIcon.removeClass('icon-down');
-
-    });
 
     $feedHeader.append($feedToggle,
       $feedHandle,
@@ -501,16 +531,16 @@ PTL.feed = {
   populate: async function($button, progress) {
 
     const $dataStore = $button.parent().parent(),
-      $refreshButton = $dataStore.find('i.feedRefresh.icon-refresh').addClass('spin'),
+      $refreshButton = $dataStore.find('i.feedRefresh').removeClass('icon-pin').addClass('icon-refresh spin'),
       $feedHeader = $dataStore.parent(),
       $feedLink = $feedHeader.children('div.feedTitle').children('a'),
       $badge = $feedHeader.children('.newItemsBadge'),
-      $feedBody = $dataStore.parent().next('div.feedBody'),
+      $feedBody = $dataStore.parent().next('div.feedBody').removeClass('folded'),
       $feedBodyUl = $feedBody.find('ul.feedBody'),
       feedUrl = $dataStore.data('url'),
       feedIconHash = $dataStore.data('iconhash'),
       $feedToggle = $feedHeader.children('.feedToggle'),
-      $feedIcon = $feedToggle.children('.feedIcon').addClass('fold'),
+      $feedIcon = $feedToggle.children('.feedIcon').removeClass('fold'),
       $favIcon = $feedToggle.children('.favicon');
 
     const l = PTL.util.getLocation(feedUrl),
@@ -522,16 +552,6 @@ PTL.feed = {
     var feedLastItem = $dataStore.data('lastitem');
 
     $feedBodyUl.css('border', '1px solid red');
-
-    // if ($dataStore.data('status') == 'on') {
-    //   $feedIcon.removeClass('fold');
-    // } else {
-    //   $dataStore
-    //     .parent()
-    //     .parent()
-    //     .children('div.feedBody')
-    //     .addClass('folded');
-    // }
    
     if (feedIconHash && feedIconHash !== 'noicon') {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
@@ -597,14 +617,14 @@ PTL.feed = {
 
     } else {
 
-      $dataStore
-        .parent()
-        .parent()
-        .children('div.feedBody')
-        .addClass('folded');
+      $feedBody.addClass('folded');
 
-      $refreshButton.attr('title', PTL.tr('This feed is folded in'))
-
+      $feedIcon.addClass('fold');
+      
+      $refreshButton
+        .addClass('icon-pin')
+        .removeClass('icon-refresh spin')
+        .attr('title', PTL.tr('This feed is folded in'));
       
     }
     
