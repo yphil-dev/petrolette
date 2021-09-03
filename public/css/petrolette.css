@@ -605,6 +605,10 @@ li.feedItem.error > strong.value {
   color: var(--color-ui-sec);
 }
 
+button#feedAddButton i.icon-refresh {
+  color: var(--color-ui-sec);
+}
+
 #waitScreen > .spin {
   font-size: 400%;
 }

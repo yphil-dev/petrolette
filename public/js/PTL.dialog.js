@@ -556,19 +556,13 @@ PTL.dialog = {
               feedAddError(feedUrl, req.responseText);
             }).done(function(feed) {
               
-              $addButtonIcon.removeClass('spin icon-refresh');
-
               $feedAddInput.val(feed);
 
-              $addButtonIcon
-                .removeClass('icon-error');
+              $addButtonIcon.removeClass('spin icon-error');
 
-              $addButton
-                .removeClass('ui-state-error')
-                .attr('title', PTL.tr('Valid feed found! Now just press OK'));
+              $addButton.removeClass('ui-state-error');
 
-              $dataStore
-                .data('url', feed);
+              $dataStore.data('url', feed);
 
               $feed.show('fade', 250, function() {
                 PTL.feed.populate($button);

@@ -10,17 +10,17 @@
 
 ## Good morning! ☕ 📰
 
-[Pétrolette](https://petrolette.space) is a news home page, [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). She is immediately usable **without registration** with the **same URL** on the desktop or a mobile device.
+[Pétrolette](https://petrolette.space) is a news home page, immediately usable **without registration** with the **same URL** on the desktop or a mobile device.
 
 Go ahead, it's yours : Create, delete, move feeds and tabs, close / quit your browser, come back tomorrow, everything is how you left it.
 
-News feeds are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal ([Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/), [5apps](https://5apps.com/storage) (much better) etc.) cloud.
+Feeds - there's feeds for everything: Video channels, news sites, blogs, social media feeds, issue trackers, etc. - are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal ([Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/), [5apps](https://5apps.com/storage) (much better) etc.) cloud.
 
 ## Escape from GAFAM central
 
 Pétrolette is fully self-contained, makes **no external call** whatsoever, and embarks a total of **zero tracker or "analysis" tool**. Needless to say she is also **completely ad-free** 😎
 
-![Petrolette](https://framagit.org/yphil/assets/-/raw/master/img/petrolette.png)
+![Petrolette](https://yphil.bitbucket.io/images/petrolette.png)
 
 ## Features
 
@@ -69,7 +69,7 @@ npm test
 ### Contributing
 
 - Read the [development guidelines](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md)
-- Pétrolette is free software. However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://framagit.org/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) by sending a donation. Even the smallest amount will help a lot.
+- Pétrolette is [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://framagit.org/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) by sending a donation. Even the smallest amount will help a lot.
 
 *Icon by yPhil*
 

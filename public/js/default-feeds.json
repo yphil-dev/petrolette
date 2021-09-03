@@ -11,17 +11,17 @@
           "status": "on",
           "iconhash": "805bf265497f35a7c4881223239f190b",
           "nbitems": 10,
-          "lastitem": "https://news.yahoo.com/tiananmen-hong-kong-vigil-organiser-023310321.html"
+          "lastitem": "https://news.yahoo.com/al-capones-former-south-florida-151407915.html"
         },
         {
           "url": "https://news.google.com/news/rss/rss",
           "name": "Top stories - Google News",
           "type": "mixed",
           "limit": 279,
-          "status": "off",
+          "status": "on",
           "iconhash": "8bc287c07a81c603df02cdb780d46681",
           "nbitems": 10,
-          "lastitem": "https://news.google.com/__i/rss/rd/articles/CBMiVGh0dHBzOi8vd3d3Lndhc2hpbmd0b25wb3N0LmNvbS9wb2xpdGljcy8yMDIxLzA2LzA1L3RydW1wLWVuZG9yc2VzLWJ1ZGQtbGFyYS1zYXlzLW5vL9IBAA?oc=5"
+          "lastitem": "https://news.google.com/__i/rss/rd/articles/CBMiT2h0dHBzOi8vd3d3Lm5wci5vcmcvMjAyMS8wOS8wMy8xMDMzOTgwNDA0L3RleGFzLWFib3J0aW9uLWJhbi1idW1ibGUtbWF0Y2gtZnVuZHPSAQA?oc=5"
         },
         {
           "url": "http://feeds.feedburner.com/thechangelog",
@@ -31,7 +31,7 @@
           "status": "on",
           "iconhash": "f6c0c5d40146d55235ed068672e6cbe1",
           "nbitems": 10,
-          "lastitem": "http://feedproxy.google.com/~r/thechangelog/~3/-SYuHXARmfg/178"
+          "lastitem": "http://feedproxy.google.com/~r/thechangelog/~3/wiwyscPDs8Y/191"
         }
       ],
       [
@@ -43,7 +43,7 @@
           "status": "on",
           "iconhash": "dbd80c59a81513959e4872fc84e0cd95",
           "nbitems": 10,
-          "lastitem": "http://www.nasa.gov/image-feature/detecting-x-rays-from-uranus"
+          "lastitem": "http://www.nasa.gov/image-feature/mars-perseverance-rover-gathers-rock-sample"
         },
         {
           "url": "http://feeds.arstechnica.com/arstechnica/index",
@@ -53,7 +53,7 @@
           "status": "on",
           "iconhash": "909ebf2b292548840863bf882fe33f5b",
           "nbitems": 10,
-          "lastitem": "https://arstechnica.com/?p=1770220"
+          "lastitem": "https://arstechnica.com/?p=1791903"
         }
       ],
       [
@@ -65,7 +65,7 @@
           "status": "on",
           "iconhash": "bb1151aff493e09dab34fb9ff5286b32",
           "nbitems": 10,
-          "lastitem": "https://xkcd.com/2472/"
+          "lastitem": "https://xkcd.com/2510/"
         },
         {
           "url": "http://explainxkcd.com/rss.xml",
@@ -82,9 +82,9 @@
           "type": "photo",
           "limit": 107,
           "status": "on",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10,
-          "lastitem": "https://dilbert.com/strip/2021-06-07"
+          "lastitem": "https://dilbert.com/strip/2021-09-03"
         },
         {
           "url": "http://feeds.feedburner.com/hackaday/LgoM/",
@@ -94,7 +94,7 @@
           "status": "on",
           "iconhash": "f6c0c5d40146d55235ed068672e6cbe1",
           "nbitems": 10,
-          "lastitem": "http://feedproxy.google.com/~r/hackaday/LgoM/~3/XJUFZH3zi8c/"
+          "lastitem": "http://feedproxy.google.com/~r/hackaday/LgoM/~3/egvvEMn3ZPw/"
         }
       ],
       [
@@ -106,7 +106,7 @@
           "status": "on",
           "iconhash": "338d4b3529898bf7fe2712d19c19e81f",
           "nbitems": 10,
-          "lastitem": "https://www.youtube.com/watch?v=eMBVhA2JiHw"
+          "lastitem": "https://www.youtube.com/watch?v=GDQnA1LVCWA"
         },
         {
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCdI8MAC5HoPJSJ4zrgDDI-Q",
@@ -116,7 +116,7 @@
           "status": "on",
           "iconhash": "338d4b3529898bf7fe2712d19c19e81f",
           "nbitems": 10,
-          "lastitem": "https://www.youtube.com/watch?v=xWO32XH_TdM"
+          "lastitem": "https://www.youtube.com/watch?v=o2XMTRAbFeI"
         },
         {
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCtNdVINwfYFTQEEZgMiQ8FA",
@@ -126,7 +126,7 @@
           "status": "on",
           "iconhash": "338d4b3529898bf7fe2712d19c19e81f",
           "nbitems": 10,
-          "lastitem": "https://www.youtube.com/watch?v=QjEYyLFtJcc"
+          "lastitem": "https://www.youtube.com/watch?v=fQs4Bse_y30"
         }
       ]
     ]
@@ -186,7 +186,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -213,7 +213,7 @@
           "type": "mixed",
           "limit": 352,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -222,7 +222,7 @@
           "type": "mixed",
           "limit": 400,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "d8e16228c3d26cdfd402442479bd020f",
           "nbitems": 10
         },
         {
@@ -260,7 +260,7 @@
           "type": "mixed",
           "limit": 231,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -269,6 +269,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -369,6 +370,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -474,7 +476,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "cc9b0a267ec8d9b5d02c302ceb9c5b70",
           "nbitems": 10
         },
         {
@@ -483,7 +485,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "d8070b203ec7b1c3ca4e52d57caf1c34",
           "nbitems": 10
         },
         {
@@ -501,7 +503,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -710,7 +712,7 @@
           "type": "photo",
           "limit": 455,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "6b2d98a1c04afdba90994d9a736278c1",
           "nbitems": 10
         },
         {
@@ -796,15 +798,6 @@
     "name": "snd",
     "columns": [
       [
-        {
-          "url": "https://exode.me/feeds/videos.xml?videoChannelId=484",
-          "name": "yPhil Videos",
-          "type": "mixed",
-          "limit": 203,
-          "status": "off",
-          "iconhash": "15937407a41d9336563ed66c6cf8b5e8",
-          "nbitems": 10
-        },
         {
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC3I2GFN_F8WudD_2jUZbojA",
           "name": "KEXP",
@@ -906,6 +899,26 @@
         }
       ],
       [
+        {
+          "url": "https://exode.me/feeds/videos.xml?videoChannelId=14808",
+          "name": "yPhil Music",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "15937407a41d9336563ed66c6cf8b5e8",
+          "nbitems": 16,
+          "lastitem": "https://exode.me/w/6e3b6426-f2da-498b-afa3-47bf4e562dde"
+        },
+        {
+          "url": "https://exode.me/feeds/videos.xml?videoChannelId=14809",
+          "name": "Why, Phil? FLOSS Studio tips & tricks",
+          "type": "mixed",
+          "limit": 401,
+          "status": "off",
+          "iconhash": "15937407a41d9336563ed66c6cf8b5e8",
+          "nbitems": 4,
+          "lastitem": "https://exode.me/w/fa59038f-b884-4331-af9d-7a330759b78a"
+        },
         {
           "url": "http://createdigitalmusic.com/feed/",
           "name": "CDM Create Digital Music",
@@ -1013,7 +1026,7 @@
           "type": "text",
           "limit": 316,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -1022,7 +1035,7 @@
           "type": "mixed",
           "limit": 267,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -1031,7 +1044,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "e747cc8d50802e44144ba4204c9b4006",
           "nbitems": 10
         },
         {
@@ -1065,7 +1078,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "05ccf53f9251313e74ec54b7314832eb",
           "nbitems": 10
         },
         {
@@ -1083,7 +1096,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "7a30439e4cfe73d602544e76c0f5ee61",
           "nbitems": 10
         },
         {
@@ -1128,6 +1141,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -1136,7 +1150,7 @@
           "type": "mixed",
           "limit": 221,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         }
       ],
@@ -1174,7 +1188,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -1183,7 +1197,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -1302,6 +1316,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -1310,7 +1325,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "8c1132745e4bd009fc825dbe594b7318",
           "nbitems": 10
         },
         {
@@ -1346,7 +1361,7 @@
           "type": "mixed",
           "limit": 241,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         }
       ]
@@ -1960,7 +1975,7 @@
           "type": "photo",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "c681f29a0aa8c04a09c1dbc092bf7b64",
           "nbitems": 10
         },
         {
@@ -2448,7 +2463,7 @@
           "type": "mixed",
           "limit": 237,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "ebea9c323127f7cf8f19b37b703b3590",
           "nbitems": 10
         },
         {
@@ -2567,7 +2582,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -2621,7 +2636,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "ee0efcde1c060ca91ff32a191c9e84e2",
           "nbitems": 10
         },
         {
@@ -2655,6 +2670,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -2701,7 +2717,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "0695180e5b686b33ae314ca173944a08",
           "nbitems": 10
         },
         {
@@ -2831,15 +2847,6 @@
           "nbitems": 10
         },
         {
-          "url": "https://github.com/systemd/systemd/commits/main.atom",
-          "name": "Recent Commits to systemd:main",
-          "type": "text",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "9f5ae8cb5ff501f564e4927884aa83ff",
-          "nbitems": 10
-        },
-        {
           "url": "https://lwn.net/headlines/rss",
           "name": "LWN.net",
           "type": "text",
@@ -2847,18 +2854,19 @@
           "status": "off",
           "iconhash": "9f3d98b47272a52c4c45e65b69bdadf0",
           "nbitems": 10
-        },
-        {
-          "url": "https://github.com/Chocobozzz/PeerTube/commits/develop.atom",
-          "name": "Recent Commits to PeerTube:develop",
-          "type": "text",
-          "limit": 308,
-          "status": "off",
-          "iconhash": "9f5ae8cb5ff501f564e4927884aa83ff",
-          "nbitems": 10
         }
       ],
       [
+        {
+          "url": "https://github.com/systemd/systemd/commits/main.atom",
+          "name": "Recent Commits to systemd:main",
+          "type": "text",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "9f5ae8cb5ff501f564e4927884aa83ff",
+          "nbitems": 10,
+          "lastitem": "https://github.com/systemd/systemd/commit/2c1591b91e71a1c984d6d43f0a50d4bc857bbd68"
+        },
         {
           "url": "https://framagit.org/yphil/petrolette/-/issues.atom?feed_token=YWcFEkVxV7CWsy9qsCUg&state=opened",
           "name": "Pétrolette issues",
@@ -2867,6 +2875,16 @@
           "status": "off",
           "iconhash": "8bfcbfd18cc6cbed4d0ae4569e36e490",
           "nbitems": 10
+        },
+        {
+          "url": "https://exode.me/feeds/videos.xml?videoChannelId=14810",
+          "name": "Pétrolette videos",
+          "type": "mixed",
+          "limit": 429,
+          "status": "off",
+          "iconhash": "15937407a41d9336563ed66c6cf8b5e8",
+          "nbitems": 4,
+          "lastitem": "https://exode.me/w/cb2edfd6-23d7-402c-85ec-062b7c4e8dcd"
         },
         {
           "url": "https://framagit.org/yphil.atom?rss_token=YWcFEkVxV7CWsy9qsCUg",
@@ -2878,19 +2896,10 @@
           "nbitems": 10
         },
         {
-          "url": "https://github.com/node-fetch/node-fetch/commits/master.atom",
-          "name": "Recent Commits to node-fetch:master",
+          "url": "https://github.com/Chocobozzz/PeerTube/commits/develop.atom",
+          "name": "Recent Commits to PeerTube:develop",
           "type": "text",
-          "limit": 243,
-          "status": "off",
-          "iconhash": "9f5ae8cb5ff501f564e4927884aa83ff",
-          "nbitems": 10
-        },
-        {
-          "url": "https://github.com/danmactough/node-feedparser/commits/master.atom",
-          "name": "Recent Commits to node-feedparser:master",
-          "type": "text",
-          "limit": 220,
+          "limit": 308,
           "status": "off",
           "iconhash": "9f5ae8cb5ff501f564e4927884aa83ff",
           "nbitems": 10
@@ -2903,30 +2912,12 @@
     "columns": [
       [
         {
-          "url": "https://www.acrimed.org/spip.php?page=backend",
-          "name": "Acrimed | Action Critique Médias",
+          "url": "http://www.lemonde.fr/rss/une.xml",
+          "name": "Le Monde.fr - Actualités et Infos en France et dans le monde",
           "type": "mixed",
-          "limit": 220,
+          "limit": 274,
           "status": "off",
-          "iconhash": "03ad8559e5ef0e58af14052bb11b6afb",
-          "nbitems": 10
-        },
-        {
-          "url": "https://lejournal.cnrs.fr/rss",
-          "name": "CNRS Le journal",
-          "type": "mixed",
-          "limit": 243,
-          "status": "off",
-          "iconhash": "413e75af24ecc3f53b191bfb88e46a62",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.monde-diplomatique.fr/rss",
-          "name": "Le Monde diplomatique",
-          "type": "mixed",
-          "limit": 225,
-          "status": "off",
-          "iconhash": "ec823f74fa651ab254b97fa5a4587fef",
+          "iconhash": "29044b33046a1da99618f127b5e3fd27",
           "nbitems": 10
         },
         {
@@ -2946,16 +2937,45 @@
           "status": "off",
           "iconhash": "3be21baa6e5e8ac02f6e94ea1338ba5e",
           "nbitems": 10
+        },
+        {
+          "url": "https://video.lemediatv.fr/feeds/videos.xml",
+          "name": "Le Média",
+          "type": "mixed",
+          "limit": 314,
+          "status": "off",
+          "iconhash": "ce299a85d43bfee82232dd1b63d5479e",
+          "nbitems": 4,
+          "lastitem": "https://video.lemediatv.fr/videos/watch/255137f7-bdb2-4d8c-856f-ce400e83b8eb"
+        },
+        {
+          "url": "https://video.blast-info.fr/feeds/videos.xml",
+          "name": "Blast le souffle de l'info",
+          "type": "mixed",
+          "limit": 322,
+          "status": "off",
+          "iconhash": "271aac552e800f7117c0ea008d999472",
+          "nbitems": 6,
+          "lastitem": "https://video.blast-info.fr/videos/watch/580f5c00-dbcc-45cf-ba40-8be42f2cade8"
+        },
+        {
+          "url": "https://www.monde-diplomatique.fr/rss",
+          "name": "Le Monde diplomatique",
+          "type": "mixed",
+          "limit": 225,
+          "status": "off",
+          "iconhash": "ec823f74fa651ab254b97fa5a4587fef",
+          "nbitems": 10
         }
       ],
       [
         {
-          "url": "http://www.lemonde.fr/rss/une.xml",
-          "name": "Le Monde.fr - Actualités et Infos en France et dans le monde",
+          "url": "https://www.acrimed.org/spip.php?page=backend",
+          "name": "Acrimed | Action Critique Médias",
           "type": "mixed",
-          "limit": 274,
+          "limit": 220,
           "status": "off",
-          "iconhash": "29044b33046a1da99618f127b5e3fd27",
+          "iconhash": "03ad8559e5ef0e58af14052bb11b6afb",
           "nbitems": 10
         },
         {
@@ -2993,9 +3013,28 @@
           "status": "off",
           "iconhash": "eeb3618898dd7c7a68d954fabb76ba81",
           "nbitems": 10
+        },
+        {
+          "url": "https://lejournal.cnrs.fr/rss",
+          "name": "CNRS Le journal",
+          "type": "mixed",
+          "limit": 243,
+          "status": "off",
+          "iconhash": "413e75af24ecc3f53b191bfb88e46a62",
+          "nbitems": 10
         }
       ],
       [
+        {
+          "url": "https://api.arretsurimages.net/api/public/rss/all-content",
+          "name": "Arrêt sur Images - Le flux RSS",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "6adefc48c822134d8cde7641c81a2ecf",
+          "nbitems": 16,
+          "lastitem": "https://www.arretsurimages.net/emissions/arret-sur-images/bruno-dumont-france-represente-la-bourgeoisie-journalistique"
+        },
         {
           "url": "http://www.lefigaro.fr/rss/figaro_flash-actu.xml",
           "name": "Le Figaro - Le Flash Actu",
@@ -3047,7 +3086,7 @@
           "type": "mixed",
           "limit": 334,
           "status": "off",
-          "iconhash": "210d47cef55dcf87567d4553095a0b0b",
+          "iconhash": "7bb3ed5900c4b71459fe848fa67d7971",
           "nbitems": 10
         }
       ],
@@ -3085,7 +3124,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3105,6 +3144,16 @@
           "status": "off",
           "iconhash": "84eafb447c0a9ae3bb5085ac6697697e",
           "nbitems": 10
+        },
+        {
+          "url": "https://nitter.net/RAP_Asso/rss",
+          "name": "Résistance à l'Agression Publicitaire / @RAP_Asso",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "bb4eab87e3959b3e7932e045da36f459",
+          "nbitems": 16,
+          "lastitem": "https://nitter.net/RAP_Asso/status/1270349847216914434#m"
         }
       ]
     ]
@@ -3128,7 +3177,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "c74ad1327f66b24b0406d1f86ef1c15a",
           "nbitems": 10
         },
         {
@@ -3137,6 +3186,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3145,6 +3195,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3171,6 +3222,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3188,7 +3240,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3253,6 +3305,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3261,6 +3314,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3305,7 +3359,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "fdb1be0af62ea29272eb4acf7dd6bcac",
           "nbitems": 10
         },
         {
@@ -3325,6 +3379,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3351,6 +3406,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
@@ -3395,6 +3451,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
+          "iconhash": "noicon",
           "nbitems": 10
         },
         {
