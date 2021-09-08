@@ -1,51 +1,52 @@
 {
-  "name": "petrolette",
-  "description": "The news reader that doesn't know you",
-  "version": "v1.4.8",
-  "private": true,
-  "license": "GPL-3.0-only",
-  "HTTP_PORT": 8000,
-  "HTTPS_PORT": 8001,
-  "FAVICONS_CACHE_DIR": "favicons-cache",
-  "engines": {
-    "node": "*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://framagit.org/yphil/petrolette"
-  },
-  "scripts": {
-    "start": "pm2 start pm2.config.json ; pm2 update",
-    "restart": "pm2 restart pm2.config.json",
-    "stop": "pm2 stop petrolette",
-    "show": "pm2 show petrolette",
-    "logs": "pm2 logs petrolette",
-    "errors": "pm2 logs --err --format",
-    "test": "mocha --timeout 30s",
-    "coverage": "nyc npm test",
-    "postinstall": "bower install --allow-root"
-  },
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "bower": "^1.8.12",
-    "compression": "^1.7.4",
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "favrat": "latest",
-    "feedrat": "latest",
-    "feedparser": "^2.2.10",
-    "helmet": "^4.4.1",
-    "iconv-lite": "^0.6.2",
-    "idb": "^6.0.0",
-    "morgan": "^1.10.0",
-    "node-fetch": "^2.6.1",
-    "npm": "^7.20.1",
-    "pm2": "^5.1.0",
-    "sanitize": "^2.1.0"
-  },
-  "devDependencies": {
-    "mocha": "^9.0.3",
-    "nyc": "^15.1.0",
-    "should": "^13.2.3"
-  }
+    "name": "petrolette",
+    "description": "The news page that doesn't know you",
+    "version": "v1.4.9",
+    "private": true,
+    "license": "GPL-3.0-only",
+    "HTTP_PORT": 8000,
+    "HTTPS_PORT": 8001,
+    "FAVICONS_CACHE_DIR": "favicons-cache",
+    "engines": {
+        "node": "*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://framagit.org/yphil/petrolette"
+    },
+    "scripts": {
+        "prestart": "pm2 update",
+        "start": "pm2 start pm2.config.json",
+        "restart": "pm2 restart pm2.config.json",
+        "stop": "pm2 stop petrolette",
+        "show": "pm2 show petrolette",
+        "logs": "pm2 logs petrolette --timestamp=HH:mm:ss",
+        "errors": "pm2 logs petrolette --err --timestamp=HH:mm:ss",
+        "test": "mocha --timeout 30s",
+        "coverage": "nyc npm test",
+        "postinstall": "bower install --allow-root"
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "bower": "^1.8.12",
+        "compression": "^1.7.4",
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "favrat": "latest",
+        "feedrat": "latest",
+        "feedparser": "^2.2.10",
+        "helmet": "^4.4.1",
+        "iconv-lite": "^0.6.2",
+        "idb": "^6.0.0",
+        "morgan": "^1.10.0",
+        "node-fetch": "^2.6.1",
+        "npm": "^7.20.1",
+        "pm2": "^5.1.0",
+        "sanitize": "^2.1.0"
+    },
+    "devDependencies": {
+        "mocha": "^9.0.3",
+        "nyc": "^15.1.0",
+        "should": "^13.2.3"
+    }
 }
