@@ -44,7 +44,7 @@ PTL.feed = {
 
                   PTL.tab.saveTabs();
                   PTL.feed.populate($refreshIcon);
-
+                  
               });
 
         const $selectIcon = $('<i>')

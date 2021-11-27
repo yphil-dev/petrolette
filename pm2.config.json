@@ -1,13 +1,11 @@
 {
-    "apps" : [
-        {
-            "name"            : "petrolette",
-            "script"          : "./http/server.js",
-            "watch"           : true,
-            "ignore_watch"    : ["favicons-cache", ".git", "node_modules"],
-            "time"            : false,
-            "instances":"1",
-            "exec_mode" : "fork_mode"
-        }
-    ]
+  "apps" : [
+    {
+      "name"            : "petrolette",
+      "script"          : "./http/server.js",
+      "watch"           : true,
+      "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
+      "time"            : false
+    }
+  ]
 }
