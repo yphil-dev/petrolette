@@ -5,6 +5,10 @@
 > - The Pétrolette development team have *no* Code Of Conduct, just act responsibly, as in every aspect of life.
 > - If you use Pétrolette, both on your own server or on the test instance, please consider [a donation](https://liberapay.com/yPhil/) for its development.
 
+## SSL Cert Renewal
+
+Uncomment line 33 in petrolette.js for the cert check, then comment it back out.
+
 ## Conventions & style guide
 
 - Pétrolette JS objects (funtions, var, ect.) and HTML / CSS elements names are in `camelCase` ;
@@ -37,9 +41,9 @@ At the first startup, Pétrolette generates its page using a default tabs and fe
 
 ## Why is there a server in the first place ?
 
-**why can't the client do all the RSS requests?** Because of [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), tjat's why and it's actually the *only* reason, if you exclude my desire to learn server-side JS :)
+**why can't the client do all the RSS requests?** Because of [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), that's why and it's actually the *only* reason, if you exclude my desire to learn server-side JS :)
 
-pm2 automatically restarts both Pétrolette when its files are edited (excluding cache and module/lib directories, of course, see [pm2.config.json](pm2.config.json)) and itself if the host machine restarts.
+Pm2 automatically restarts both Pétrolette when its files are edited (excluding cache and module/lib directories, of course, see [pm2.config.json](pm2.config.json)) and itself if the host machine restarts.
 
 ### Server configuration
 
