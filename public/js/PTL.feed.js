@@ -587,7 +587,6 @@ PTL.feed = {
             $refreshButton.addClass('spin');
 
             let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
-            let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
 
             if (fetchFeed.error) {
 
@@ -599,6 +598,8 @@ PTL.feed = {
                 $refreshButton.removeClass('spin');
 
             } else {
+
+                let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
 
                 $feedBody.html(lastItems[0]);
 
