@@ -315,7 +315,7 @@ PTL.feed = {
 
                 if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
 
-                    if (item.enclosures[0].url && item.enclosures[0].url.endsWith(".jpg")) {
+                    if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.jpg|\.png|\.gif|\.jpeg)/)) {
                         imageUrl = item.enclosures[0].url;
                     }
 
@@ -323,16 +323,15 @@ PTL.feed = {
                         imageUrl = item.enclosures[0].url;
                     }
 
-                    if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/\.(mp4|webm)$/)) {
+                    if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/(\.mp4|\.webm)/)) {
                         videoUrl = item.enclosures[0].url;
                         videoType = item.enclosures[0].type;
                     }
 
-                    if (item.enclosures[0].url && item.enclosures[0].url.match(/\.(ogg|mp3)$/)) {
+                    if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3)/)) {
                         audioUrl = item.enclosures[0].url;
                         audioType = item.enclosures[0].type;
                     }
-
 
                     if (feedType !== 'text') {
 

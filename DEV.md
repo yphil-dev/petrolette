@@ -52,6 +52,13 @@ The ports are set up in [the config file](./package.json). To redirect on a vani
 `iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8000`
 `iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8001`
 
+### SSL certificate renewal
+
+- Un-comment line 33 in petrolette.js
+- `certbot certonly --manual` (as root)
+- The auth file lives in `./public/.well-known/acme-challenge/`
+- Comment out line 33 in petrolette.js
+
 ### Logging
 
 Pétrolette outputs a standard [Apache CLF](http://httpd.apache.org/docs/2.4/logs.html) formated log to `~/.pm2/logs/petrolette-out.log` and `~/.pm2/logs/petrolette-error.log`.
