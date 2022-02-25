@@ -4,16 +4,6 @@
     "columns": [
       [
         {
-          "url": "https://www.yahoo.com/news/rss",
-          "name": "Yahoo News - Latest News & Headlines",
-          "type": "mixed",
-          "limit": 220,
-          "status": "on",
-          "iconhash": "805bf265497f35a7c4881223239f190b",
-          "nbitems": 10,
-          "lastitem": "https://news.yahoo.com/al-capones-former-south-florida-151407915.html"
-        },
-        {
           "url": "https://news.google.com/news/rss/rss",
           "name": "Top stories - Google News",
           "type": "mixed",
@@ -21,7 +11,17 @@
           "status": "on",
           "iconhash": "8bc287c07a81c603df02cdb780d46681",
           "nbitems": 10,
-          "lastitem": "https://news.google.com/__i/rss/rd/articles/CBMiT2h0dHBzOi8vd3d3Lm5wci5vcmcvMjAyMS8wOS8wMy8xMDMzOTgwNDA0L3RleGFzLWFib3J0aW9uLWJhbi1idW1ibGUtbWF0Y2gtZnVuZHPSAQA?oc=5"
+          "lastitem": "https://news.google.com/__i/rss/rd/articles/CBMicGh0dHBzOi8vYXBuZXdzLmNvbS9hcnRpY2xlL3J1c3NpYS11a3JhaW5lLWJ1c2luZXNzLWV1cm9wZS1ydXNzaWEtdmxhZGltaXItcHV0aW4tNDZjZWY2NDg4MDdkMGUzYzJiYWM5NzkzYWQ5MDIyYTbSAQA?oc=5"
+        },
+        {
+          "url": "https://www.yahoo.com/news/rss",
+          "name": "Yahoo News - Latest News & Headlines",
+          "type": "mixed",
+          "limit": 220,
+          "status": "on",
+          "iconhash": "805bf265497f35a7c4881223239f190b",
+          "nbitems": 10,
+          "lastitem": "https://news.yahoo.com/us-house-candidate-apologizes-girls-180249458.html"
         },
         {
           "url": "http://feeds.feedburner.com/thechangelog",
@@ -31,7 +31,7 @@
           "status": "on",
           "iconhash": "f6c0c5d40146d55235ed068672e6cbe1",
           "nbitems": 10,
-          "lastitem": "http://feedproxy.google.com/~r/thechangelog/~3/wiwyscPDs8Y/191"
+          "lastitem": "https://kaizoku.dev/htb-devoops"
         }
       ],
       [
@@ -43,7 +43,7 @@
           "status": "on",
           "iconhash": "dbd80c59a81513959e4872fc84e0cd95",
           "nbitems": 10,
-          "lastitem": "http://www.nasa.gov/image-feature/mars-perseverance-rover-gathers-rock-sample"
+          "lastitem": "http://www.nasa.gov/image-feature/melba-roy-mouton-mathematician"
         },
         {
           "url": "http://feeds.arstechnica.com/arstechnica/index",
@@ -53,7 +53,7 @@
           "status": "on",
           "iconhash": "909ebf2b292548840863bf882fe33f5b",
           "nbitems": 10,
-          "lastitem": "https://arstechnica.com/?p=1791903"
+          "lastitem": "https://arstechnica.com/?p=1835877"
         }
       ],
       [
@@ -65,7 +65,7 @@
           "status": "on",
           "iconhash": "bb1151aff493e09dab34fb9ff5286b32",
           "nbitems": 10,
-          "lastitem": "https://xkcd.com/2510/"
+          "lastitem": "https://xkcd.com/2584/"
         },
         {
           "url": "http://explainxkcd.com/rss.xml",
@@ -82,9 +82,9 @@
           "type": "photo",
           "limit": 107,
           "status": "on",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
-          "lastitem": "https://dilbert.com/strip/2021-09-03"
+          "lastitem": "https://dilbert.com/strip/2022-02-22"
         },
         {
           "url": "http://feeds.feedburner.com/hackaday/LgoM/",
@@ -94,10 +94,20 @@
           "status": "on",
           "iconhash": "f6c0c5d40146d55235ed068672e6cbe1",
           "nbitems": 10,
-          "lastitem": "http://feedproxy.google.com/~r/hackaday/LgoM/~3/egvvEMn3ZPw/"
+          "lastitem": "https://hackaday.com/2022/02/21/i2c-breathes-new-life-into-casio-pocket-calculator/"
         }
       ],
       [
+        {
+          "url": "http://feeds.almanac.com/almanac-moon",
+          "name": "Current Moon Phase (from The Old Farmer's Almanac)",
+          "type": "mixed",
+          "limit": 83,
+          "status": "on",
+          "iconhash": "",
+          "nbitems": 1,
+          "lastitem": "http://www.almanac.com/moon/calendar"
+        },
         {
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCE7gceSq79z8uW7cTe86UaA",
           "name": "Future House Radio",
@@ -112,11 +122,11 @@
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCdI8MAC5HoPJSJ4zrgDDI-Q",
           "name": "Tame Impala",
           "type": "mixed",
-          "limit": 390,
+          "limit": 243,
           "status": "on",
           "iconhash": "338d4b3529898bf7fe2712d19c19e81f",
           "nbitems": 10,
-          "lastitem": "https://www.youtube.com/watch?v=o2XMTRAbFeI"
+          "lastitem": "https://www.youtube.com/watch?v=j706aSetFbI"
         },
         {
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCtNdVINwfYFTQEEZgMiQ8FA",
@@ -126,7 +136,7 @@
           "status": "on",
           "iconhash": "338d4b3529898bf7fe2712d19c19e81f",
           "nbitems": 10,
-          "lastitem": "https://www.youtube.com/watch?v=fQs4Bse_y30"
+          "lastitem": "https://www.youtube.com/watch?v=QiNh1nb25Tc"
         }
       ]
     ]
@@ -186,7 +196,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -213,7 +223,7 @@
           "type": "mixed",
           "limit": 352,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -236,6 +246,16 @@
         }
       ],
       [
+        {
+          "url": "http://feeds.feedburner.com/AfricaIntelligence-fr",
+          "name": "Africa Intelligence",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "f6c0c5d40146d55235ed068672e6cbe1",
+          "nbitems": 16,
+          "lastitem": "https://www.africaintelligence.fr/afrique-ouest-et-centrale_politique/2022/02/22/entre-anciens-rebelles-et-moussa-faki-les-negociations-secretes-de-mahamat-deby,109735301-eve"
+        },
         {
           "url": "https://www.buzzfeed.com/world.xml",
           "name": "BuzzFeed News",
@@ -260,7 +280,7 @@
           "type": "mixed",
           "limit": 231,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -269,7 +289,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -370,7 +390,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -476,7 +496,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "cc9b0a267ec8d9b5d02c302ceb9c5b70",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -485,7 +505,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "d8070b203ec7b1c3ca4e52d57caf1c34",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -503,7 +523,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -631,7 +651,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "05742e67028f39b919d36dafec737781",
+          "iconhash": "",
           "nbitems": 10
         }
       ],
@@ -712,7 +732,7 @@
           "type": "photo",
           "limit": 455,
           "status": "off",
-          "iconhash": "6b2d98a1c04afdba90994d9a736278c1",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1026,7 +1046,7 @@
           "type": "text",
           "limit": 316,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1035,7 +1055,7 @@
           "type": "mixed",
           "limit": 267,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1044,7 +1064,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "e747cc8d50802e44144ba4204c9b4006",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1078,7 +1098,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "05ccf53f9251313e74ec54b7314832eb",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1141,7 +1161,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1150,7 +1170,7 @@
           "type": "mixed",
           "limit": 221,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         }
       ],
@@ -1188,7 +1208,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1197,7 +1217,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1316,7 +1336,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1325,7 +1345,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "8c1132745e4bd009fc825dbe594b7318",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1361,7 +1381,7 @@
           "type": "mixed",
           "limit": 241,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         }
       ]
@@ -1975,7 +1995,7 @@
           "type": "photo",
           "limit": 220,
           "status": "off",
-          "iconhash": "c681f29a0aa8c04a09c1dbc092bf7b64",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2344,7 +2364,9 @@
           "status": "off",
           "iconhash": "338d4b3529898bf7fe2712d19c19e81f",
           "nbitems": 10
-        },
+        }
+      ],
+      [
         {
           "url": "https://hackspace.raspberrypi.org/feed",
           "name": "HackSpace magazine",
@@ -2353,9 +2375,7 @@
           "status": "off",
           "iconhash": "2b348dfb87e71bf655ba667856a121dd",
           "nbitems": 10
-        }
-      ],
-      [
+        },
         {
           "url": "https://www.tomshardware.com/feeds/all",
           "name": "Tom's Hardware",
@@ -2463,7 +2483,7 @@
           "type": "mixed",
           "limit": 237,
           "status": "off",
-          "iconhash": "ebea9c323127f7cf8f19b37b703b3590",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2548,15 +2568,6 @@
           "nbitems": 10
         },
         {
-          "url": "http://feeds.feedburner.com/MotorAuthority2",
-          "name": "Motor Authority",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "f6c0c5d40146d55235ed068672e6cbe1",
-          "nbitems": 10
-        },
-        {
           "url": "https://blogs.nvidia.com/blog/category/auto/feed/",
           "name": "Driving – The Official NVIDIA Blog",
           "type": "mixed",
@@ -2582,7 +2593,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2636,7 +2647,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "ee0efcde1c060ca91ff32a191c9e84e2",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2656,6 +2667,15 @@
           "status": "off",
           "iconhash": "338d4b3529898bf7fe2712d19c19e81f",
           "nbitems": 10
+        },
+        {
+          "url": "http://feeds.feedburner.com/MotorAuthority2",
+          "name": "Motor Authority",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "f6c0c5d40146d55235ed068672e6cbe1",
+          "nbitems": 10
         }
       ]
     ]
@@ -2670,7 +2690,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2912,6 +2932,16 @@
     "columns": [
       [
         {
+          "url": "http://feeds.feedburner.com/LaLettreA",
+          "name": "La Lettre A : La lettre de tous les pouvoirs",
+          "type": "text",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "f6c0c5d40146d55235ed068672e6cbe1",
+          "nbitems": 16,
+          "lastitem": "https://www.lalettrea.fr/action-publique_collectivites-et-territoires/2022/02/22/quand-pierre-bedier-finance-la-sci-de-son-beau-frere,109735770-eve"
+        },
+        {
           "url": "http://www.lemonde.fr/rss/une.xml",
           "name": "Le Monde.fr - Actualités et Infos en France et dans le monde",
           "type": "mixed",
@@ -3124,7 +3154,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3177,7 +3207,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "c74ad1327f66b24b0406d1f86ef1c15a",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3186,7 +3216,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3195,7 +3225,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3222,7 +3252,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3240,7 +3270,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3305,7 +3335,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3314,7 +3344,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3359,7 +3389,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "fdb1be0af62ea29272eb4acf7dd6bcac",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3379,7 +3409,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3406,7 +3436,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3451,7 +3481,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
