@@ -609,12 +609,6 @@ PTL.dialog = {
 
                             PTL.dialog.kill($dialog);
 
-                            if (isNewFeed) {
-                                $feed.hide('fade', 250, function() {
-                                    $feed.remove();
-                                });
-                            }
-
                         }
                     },
                     {
