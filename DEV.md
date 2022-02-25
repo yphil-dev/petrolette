@@ -5,9 +5,12 @@
 > - The Pétrolette development team have *no* Code Of Conduct, just act responsibly, as in every aspect of life.
 > - If you use Pétrolette, both on your own server or on the test instance, please consider [a donation](https://liberapay.com/yPhil/) for its development.
 
-## SSL Cert Renewal
+## Log
 
-Uncomment line 33 in petrolette.js for the cert check, then comment it back out.
+### Library / dependancies upgrade conlicts - read before editing package.json
+
+- The `node-fetch` 3.n branch requires that the whole Pétrolette project be ported to ESM ; help needed
+- The `helmet` 5.n branch apparently breaks CORS for images, investigating.
 
 ## Conventions & style guide
 
