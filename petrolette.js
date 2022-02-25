@@ -24,7 +24,7 @@ app.set('view engine', 'html');
 
 app.use(compression());
 
-app.use(helmet({contentSecurityPolicy: false}));
+app.use(helmet({contentSecurityPolicy: false, crossOriginOpenerPolicy: false}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
