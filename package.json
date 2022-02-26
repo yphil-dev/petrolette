@@ -1,7 +1,7 @@
 {
     "name": "petrolette",
     "description": "The news page that doesn't know you",
-    "version": "v1.5.2b",
+    "version": "v1.5.2",
     "private": true,
     "license": "GPL-3.0-only",
     "HTTP_PORT": 8000,
@@ -36,6 +36,7 @@
         "feedrat": "latest",
         "helmet": "5.0.2",
         "iconv-lite": "^0.6.2",
+        "intro.js": "5.0.0",
         "morgan": "^1.10.0",
         "node-fetch": "^2.6.1",
         "npm": "^7.0.0",
