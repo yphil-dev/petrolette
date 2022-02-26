@@ -24,7 +24,7 @@ app.set('view engine', 'html');
 
 app.use(compression());
 
-app.use(helmet({contentSecurityPolicy: false, crossOriginOpenerPolicy: false}));
+app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DIR)));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
+app.use('/introjs', express.static(path.join(__dirname, 'node_modules', 'intro.js', 'minified')));
 app.use('/', router);
 
 module.exports = app;

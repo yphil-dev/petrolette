@@ -9,6 +9,7 @@
 
 ### Library / dependancies upgrade conlicts - read before editing package.json
 
+- Intro.js is now installed with NPM and linked directly, since the Bower archive is missing files ; Considering doing this for all (client-side) Bower deps.
 - The `node-fetch` 3.n branch requires that the whole Pétrolette project be ported to ESM ; help needed
 - The `helmet` 5.n branch apparently breaks CORS for images, investigating.
 

@@ -1,9 +1,13 @@
 # Changelog
 
 ## v1.5.0
+- More data (img, video & audio) types managed #1325ab5
+- Intro.js is now installed with NPM and linked directly, since the Bower archive is missing files ; Considering doing this for all client-side (normally managed by Bower, w/ their own dir / route) deps.
 
 ### Bugfixes
-- The custom name of the feed was overriden with the default one
+- Complex URLs containing query strings were mistakingly ignored #1325ab5
+- The custom name of the feed was sometimes overriden with the default one
+- The feed was deleted when closing the feedPrefs dialog by clicking on the overlay #38f9938/#ee1fe05
 
 ## v1.4.0
 

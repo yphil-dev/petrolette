@@ -675,7 +675,6 @@ PTL.dialog = {
 
                     $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
                         PTL.dialog.kill($dialog);
-                        $feed.remove();
                     });
 
                     $.each(allGroups, function() {
@@ -697,7 +696,6 @@ PTL.dialog = {
                         $guessButton
                             .addClass('ui-state-error')
                             .attr('title', thisMesg);
-
 
                         $messageTitle
                             .removeClass('warning')
