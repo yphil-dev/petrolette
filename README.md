@@ -8,17 +8,18 @@
 
 ---
 
-## Good morning! ☕ 📰
+## Good morning, what's up? ☕ 📰
 
-[Pétrolette](https://petrolette.space) is a news home page, immediately usable **without registration** with the **same URL** on the desktop or a mobile device.
+[Pétrolette](https://petrolette.space) is a news home page, immediately usable **without registration** with the **same URL** on any computer, TV or mobile device.
 
-Go ahead, it's yours : Create, delete, move feeds and tabs, close / quit your browser, come back tomorrow, everything is how you left it.
+Add, delete, move feeds and tabs, close your browser, come back tomorrow, everything is how you left it.
 
-Feeds - there's feeds for everything: Video channels, news sites, blogs, social media feeds, issue trackers, etc. - are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal ([Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/), [5apps](https://5apps.com/storage) (much better) etc.) cloud.
+Feeds - there's feeds for everything: News sites, but also podcasts, video channels, blogs, social media, weather, phases of the moon, issue trackers, etc. - are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal ([Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/), [5apps](https://5apps.com/storage) (much better) etc.) cloud.
+You don't have to know the specifics of a given feed ; Just enter a website's URL / Adress (or [use the bookmark](https://exode.me/w/tafJ9bmAYDFRV7aBLRjvot)) and Pétrolette will find it.
 
 ## Escape from GAFAM central
 
-Pétrolette is fully self-contained, makes **no external call** whatsoever, and embarks a total of **zero tracker or "analysis" tool**. Needless to say she is also **completely ad-free** 😎
+Pétrolette is fully self-contained, makes **no external call** whatsoever, and embarks a total of **zero tracker or "analysis" tool**. Needless to say she is also **completely ad-free**.
 
 ![Petrolette](https://yphil.bitbucket.io/images/petrolette.png)
 
@@ -51,8 +52,11 @@ git clone https://framagit.org/yphil/petrolette
 cd petrolette
 npm install
 npm start
-xdg-open http://localhost:8000
 ```
+
+`xdg-open http://localhost:8000` or `xdg-open https://localhost:8001`
+
+
 #### Update
 
 ```sh
