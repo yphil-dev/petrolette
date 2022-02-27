@@ -2,12 +2,12 @@
 
 ## v1.5.0
 - More data (img, video & audio) types managed #1325ab5
-- Intro.js is now installed with NPM and linked directly, since the Bower archive is missing files ; Considering doing this for all client-side (normally managed by Bower, w/ their own dir / route) deps
-- The search input text field is now un-focused on pressing escape 
+- Intro.js is now installed with NPM and linked directly, since the Bower archive is missing files ; Considering doing this for all client-side (normally managed by Bower, w/ their own dir / route) deps #04033dca
+- The search input text field is now un-focused on pressing escape #e36feb4c
 
 ### Bugfixes
 - Complex URLs containing query strings were mistakingly ignored #1325ab5
-- The custom name of the feed was sometimes overriden with the default one
+- The custom name of the feed was sometimes overriden with the default one #38f99386
 - The feed was deleted when closing the feedPrefs dialog by clicking on the overlay #38f9938/#ee1fe05
 
 ## v1.4.0
