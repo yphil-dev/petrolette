@@ -165,6 +165,7 @@ var PTL = (function() {
                     $searchIcon.attr('class', 'icon-search-circled');
                     $(this).val('');
                     $('.results').removeClass('results');
+                    $('.ui-state-active a').focus();
                 } else {
 
                     var v = $(this).val();
@@ -213,8 +214,6 @@ var PTL = (function() {
                 PTL.sideMenu('close');
                 PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', true);
             }
-
-            // $('div#newFeedButton').attr('title', PTL.tr('New feed') + PTL.kbShortcutNewFeed);
             
             $('body').on('click','div#newFeedButton', newFeed);
 
