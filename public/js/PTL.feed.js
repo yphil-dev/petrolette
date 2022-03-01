@@ -247,6 +247,8 @@ PTL.feed = {
 
             let newItems = 0;
 
+            var isInsecureLinks = false;
+            
             for (const key in feedItems) {
                 newItems++;
 
@@ -329,7 +331,7 @@ PTL.feed = {
                     }
 
                     if (item.enclosures[0].url && !item.enclosures[0].url.startsWith('https')) {
-                        console.error('Nop: %s (%s)', item.enclosures[0].url);
+                        isInsecureLinks = true;
                     }
                     
                     if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3)/) && item.enclosures[0].url.startsWith('https')) {
@@ -401,7 +403,7 @@ PTL.feed = {
 
             }
 
-            resolve([$feedBodyUl.html(), newItems]);
+            resolve([$feedBodyUl.html(), newItems, isInsecureLinks]);
 
         });
 
@@ -547,7 +549,8 @@ PTL.feed = {
         const $dataStore = $button.parent().parent(),
               $refreshButton = $dataStore.find('i.feedRefresh').removeClass('icon-pin').addClass('icon-refresh spin'),
               $feedHeader = $dataStore.parent(),
-              $feedLink = $feedHeader.children('div.feedTitle').children('a'),
+              $feedLinkDiv = $feedHeader.children('div.feedTitle'),
+              $feedLink = $feedLinkDiv.children('a'),
               $badge = $feedHeader.children('.newItemsBadge'),
               $feedBody = $dataStore.parent().next('div.feedBody').removeClass('folded'),
               $feedBodyUl = $feedBody.find('ul.feedBody'),
@@ -602,19 +605,28 @@ PTL.feed = {
 
                 let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
 
+                let isInsecureLinks = lastItems[2];
+
+                const feedName = fetchFeed.feedTitle;
+
+                let $insecureIcon = $('<i>')
+                    .attr('class', 'icon-lock warning')
+                    .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
+                
+                if (isInsecureLinks) $insecureIcon.prependTo($feedLinkDiv);
+                
                 $feedBody.html(lastItems[0]);
 
                 $refreshButton
                     .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStamp + ')')
                     .removeClass('spin');
 
-                $feedLink.attr('href', fetchFeed.feedLink);
-
-                const feedName = fetchFeed.feedTitle;
+                $feedLink
+                    .attr('href', fetchFeed.feedLink)
+                    .attr('title', feedName)
+                    .text(feedName);
                 
                 if ($dataStore.data('name') == '') {
-                    $feedLink.attr('title', feedName)
-                        .text(feedName);
                     $dataStore.data('name', feedName);          
                 }
                 

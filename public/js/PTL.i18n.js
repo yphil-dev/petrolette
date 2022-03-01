@@ -198,6 +198,8 @@ PTL.i18n.translations = {
 
   "This field cannot be empty" : { fr: "Ce champ ne peut pas être vide" , ja: "このフィールドを空にすることはできません", es: "Esta entrada de texto no puede estar vacía" },
 
+  "Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely" : { fr: "Certains éléments liés (image, audio ou vidéo) dans les articles de ce flux n'ont pas pu être chargés, car ils sont diffusés de manière non sécurisée" , ja: "このフィードのアイテム内の一部のリンクされた要素（画像、音声、または動画）は、安全に提供されなかったため、読み込むことができませんでした", es: "Algunos elementos vinculados (imagen, audio o video) dentro de los elementos de este feed no se pudieron cargar porque se publicaron de manera insegura." },
+    
   "Add a feed to this column" : { fr: "Ajouter un flux à cette colonne" , ja: "この列にソースを追加する", es: "Agregar una feed a esta columna" },
   
   "Keyboard shortcuts" : { fr: "Raccourcis clavier" , ja: "キーボードショートカット", es: "Atajos de teclado" },

@@ -223,6 +223,12 @@
       "css": "search-circled",
       "code": 59394,
       "src": "elusive"
+    },
+    {
+      "uid": "95c84da411a955a12baff8b0859c9276",
+      "css": "lock",
+      "code": 59397,
+      "src": "websymbols"
     }
   ]
 }
