@@ -48,7 +48,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DIR)));
 app.use('/static', express.static(path.join(__dirname, 'public')));
-app.use('/introjs', express.static(path.join(__dirname, 'node_modules', 'intro.js')));
+app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
+app.use('/introjs', express.static(path.join(__dirname, 'node_modules', 'intro.js', 'minified')));
 app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 app.use('/jquery-ui', express.static(path.join(__dirname, 'node_modules', 'jquery-ui-dist')));
 
@@ -60,7 +61,7 @@ app.use('/rs', express.static(path.join(__dirname, 'node_modules', 'remotestorag
 app.use('/rs-widget', express.static(path.join(__dirname, 'node_modules', 'remotestorage-widget', 'build')));
 
 app.use('/dompurify', express.static(path.join(__dirname, 'node_modules', 'dompurify', 'dist')));
-app.use('/mousetrap', express.static(path.join(__dirname, 'node_modules', 'mousetrap')));
+app.use('/mousetrap', express.static(path.join(__dirname, 'node_modules', 'mousetrap', 'dist')));
 
 
 app.use('/', router);
