@@ -54,6 +54,7 @@ app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery',
 app.use('/jquery-ui', express.static(path.join(__dirname, 'node_modules', 'jquery-ui-dist')));
 
 app.use('/fancybox', express.static(path.join(__dirname, 'node_modules', '@fancyapps', 'fancybox', 'dist')));
+app.use('/responsively-lazy', express.static(path.join(__dirname, 'node_modules', 'responsively-lazy')));
 
 app.use('/', router);
 
