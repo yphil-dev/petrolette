@@ -22,7 +22,8 @@
         "logs": "pm2 logs petrolette --timestamp=HH:mm:ss",
         "errors": "pm2 logs petrolette --err --timestamp=HH:mm:ss",
         "test": "mocha --timeout 30s",
-        "coverage": "nyc npm test"
+        "coverage": "nyc npm test",
+        "postinstall": "pm2 install pm2-logrotate"
     },
     "dependencies": {
         "body-parser": "^1.19.0",
