@@ -740,12 +740,6 @@ PTL.dialog = {
                             }
                         });
 
-                    $feedNameInput.on('keypress', function(e) {
-                        if (e.which == 13) {
-                            $okButton.click();
-                        }
-                    });
-
                     $('.helpTourDialogItem').each(function() {
                         const step = $(this).data('step');
                         $(this)
@@ -877,6 +871,18 @@ PTL.dialog = {
                         }
                     });
 
+                    $feedNameInput.on('keypress', function(e) {
+                        if (e.which == 13) {
+                            $okButton.click();
+                        }
+                    });
+
+                    $feedGuessInput.on('keypress', function(e) {
+                        if (e.which == 13) {
+                            $okButton.click();
+                        }
+                    });
+                    
                 },
                 close: function(_event, _ui) {
 

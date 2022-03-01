@@ -24,7 +24,21 @@ app.set('view engine', 'html');
 
 app.use(compression());
 
-app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
+// app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
+
+// app.use(helmet({crossOriginEmbedderPolicy: false}));
+
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+            imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+            scriptSrcAttr: null,
+        },
+    })
+);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -36,6 +50,9 @@ app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DI
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 app.use('/introjs', express.static(path.join(__dirname, 'node_modules', 'intro.js', 'minified')));
+app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
+app.use('/jquery-ui', express.static(path.join(__dirname, 'node_modules', 'jquery-ui-dist')));
+
 app.use('/', router);
 
 module.exports = app;

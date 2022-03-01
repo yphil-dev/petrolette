@@ -571,16 +571,14 @@ PTL.feed = {
                     $dataStore.data('iconhash', hash);
                     PTL.tab.saveTabs(true);
                 })
-                .catch(_e => {
+                .catch(e => {
                     $dataStore.data('iconhash', 'noicon');
                     PTL.tab.saveTabs(true);
                     $favIcon.attr('src', '/static/images/rss.gif');
+                    console.error('Yo: %s (%s)', feedHost, e);
                 });
-        } else {
-            $dataStore.data('iconhash', '');
-            PTL.tab.saveTabs(true);
         }
-
+        
         if ($dataStore.data('status') == 'on') {
 
             $refreshButton.addClass('spin');
