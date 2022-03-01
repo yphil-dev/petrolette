@@ -582,7 +582,6 @@ PTL.feed = {
                     $dataStore.data('iconhash', 'noicon');
                     PTL.tab.saveTabs(true);
                     $favIcon.attr('src', '/static/images/rss.gif');
-                    console.error('Yo: %s (%s)', feedHost, e);
                 });
         }
         
