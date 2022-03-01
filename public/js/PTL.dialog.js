@@ -575,6 +575,12 @@ PTL.dialog = {
                         });
 
                     });
+                    
+                    $feedAddInput.on('keypress', function(e) {
+                        if (e.which == 13) {
+                            $addButton.click();
+                        }
+                    });
 
                 }
             });
@@ -733,12 +739,6 @@ PTL.dialog = {
                                 "ui-spinner": "shrink ui-corner-all"
                             }
                         });
-
-                    $feedGuessInput.on('keypress', function(e) {
-                        if (e.which == 13) {
-                            $okButton.click();
-                        }
-                    });
 
                     $feedNameInput.on('keypress', function(e) {
                         if (e.which == 13) {
