@@ -53,6 +53,8 @@ app.use('/introjs', express.static(path.join(__dirname, 'node_modules', 'intro.j
 app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 app.use('/jquery-ui', express.static(path.join(__dirname, 'node_modules', 'jquery-ui-dist')));
 
+app.use('/fancybox', express.static(path.join(__dirname, 'node_modules', '@fancyapps', 'fancybox', 'dist')));
+
 app.use('/', router);
 
 module.exports = app;
