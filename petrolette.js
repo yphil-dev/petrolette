@@ -24,21 +24,21 @@ app.set('view engine', 'html');
 
 app.use(compression());
 
-// app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
+app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
 
 // app.use(helmet({crossOriginEmbedderPolicy: false}));
 
-app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: ["'self'", "https:"],
-            imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
-            styleSrc: ["'self'", "'unsafe-inline'"],
-            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-            scriptSrcAttr: null,
-        },
-    })
-);
+// app.use(
+//     helmet.contentSecurityPolicy({
+//         directives: {
+//             defaultSrc: ["'self'", "https:"],
+//             imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
+//             styleSrc: ["'self'", "'unsafe-inline'"],
+//             scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+//             scriptSrcAttr: null,
+//         },
+//     })
+// );
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
