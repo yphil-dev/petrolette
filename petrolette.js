@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DIR)));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
-app.use('/introjs', express.static(path.join(__dirname, 'node_modules', 'intro.js', 'minified')));
+app.use('/introjs', express.static(path.join(__dirname, 'node_modules', 'intro.js')));
 app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 app.use('/jquery-ui', express.static(path.join(__dirname, 'node_modules', 'jquery-ui-dist')));
 
