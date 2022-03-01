@@ -56,6 +56,11 @@ app.use('/jquery-ui', express.static(path.join(__dirname, 'node_modules', 'jquer
 app.use('/fancybox', express.static(path.join(__dirname, 'node_modules', '@fancyapps', 'fancybox', 'dist')));
 app.use('/responsively-lazy', express.static(path.join(__dirname, 'node_modules', 'responsively-lazy')));
 
+
+app.use('/rs', express.static(path.join(__dirname, 'node_modules', 'remotestoragejs', 'release')));
+app.use('/rs-widget', express.static(path.join(__dirname, 'node_modules', 'remotestorage-widget', 'build')));
+
+
 app.use('/', router);
 
 module.exports = app;

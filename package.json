@@ -43,6 +43,8 @@
         "node-fetch": "^2.6.1",
         "npm": "^7.0.0",
         "pm2": "^5.1.0",
+        "remotestorage-widget": "1.5.4",
+        "remotestoragejs": "2.0.0-beta.3",
         "responsively-lazy": "2.0.2",
         "sanitize": "^2.1.0"
     },
