@@ -60,6 +60,8 @@ app.use('/responsively-lazy', express.static(path.join(__dirname, 'node_modules'
 app.use('/rs', express.static(path.join(__dirname, 'node_modules', 'remotestoragejs', 'release')));
 app.use('/rs-widget', express.static(path.join(__dirname, 'node_modules', 'remotestorage-widget', 'build')));
 
+app.use('/dompurify', express.static(path.join(__dirname, 'node_modules', 'dompurify', 'dist')));
+
 
 app.use('/', router);
 
