@@ -323,12 +323,16 @@ PTL.feed = {
                         imageUrl = item.enclosures[0].url;
                     }
 
-                    if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/(\.mp4|\.webm)/)) {
+                    if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/(\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
                         videoUrl = item.enclosures[0].url;
                         videoType = item.enclosures[0].type;
                     }
 
-                    if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3)/)) {
+                    if (item.enclosures[0].url && !item.enclosures[0].url.startsWith('https')) {
+                        console.error('Nop: %s (%s)', item.enclosures[0].url);
+                    }
+                    
+                    if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3)/) && item.enclosures[0].url.startsWith('https')) {
                         audioUrl = item.enclosures[0].url;
                         audioType = item.enclosures[0].type;
                     }
@@ -557,7 +561,7 @@ PTL.feed = {
               feedProtocol = l.protocol ? l.protocol + '//' : '//',
               feedHost = feedProtocol + l.hostname,
               dateObj = new Date(),
-              timeStamp = dateObj.toTimeString().substr(0, 8);
+              timeStamp = dateObj.toTimeString();
 
         var feedLastItem = $dataStore.data('lastitem');
 

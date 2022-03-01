@@ -24,7 +24,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.feedburner.com/thechangelog",
+                    "url": "https://feeds.feedburner.com/thechangelog",
                     "name": "Changelog",
                     "type": "text",
                     "limit": 292,
@@ -36,7 +36,7 @@
             ],
             [
                 {
-                    "url": "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
+                    "url": "https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
                     "name": "NASA Image of the Day",
                     "type": "photo",
                     "limit": 424,
@@ -46,7 +46,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.arstechnica.com/arstechnica/index",
+                    "url": "https://feeds.arstechnica.com/arstechnica/index",
                     "name": "Ars Technica",
                     "type": "text",
                     "limit": 452,
@@ -58,7 +58,7 @@
             ],
             [
                 {
-                    "url": "http://xkcd.com/rss.xml",
+                    "url": "https://xkcd.com/rss.xml",
                     "name": "xkcd.com",
                     "type": "photo",
                     "limit": 377,
@@ -68,7 +68,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://explainxkcd.com/rss.xml",
+                    "url": "https://explainxkcd.com/rss.xml",
                     "name": "Explain xkcd",
                     "type": "mixed",
                     "limit": 161,
@@ -77,7 +77,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://comicfeeds.chrisbenard.net/view/dilbert/default",
+                    "url": "https://comicfeeds.chrisbenard.net/view/dilbert/default",
                     "name": "Dilbert Daily Strip",
                     "type": "photo",
                     "limit": 107,
@@ -87,7 +87,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.feedburner.com/hackaday/LgoM/",
+                    "url": "https://feeds.feedburner.com/hackaday/LgoM/",
                     "name": "Hackaday",
                     "type": "mixed",
                     "limit": 286,
@@ -99,7 +99,7 @@
             ],
             [
                 {
-                    "url": "http://feeds.almanac.com/almanac-moon",
+                    "url": "https://feeds.almanac.com/almanac-moon",
                     "name": "Current Moon Phase (from The Old Farmer's Almanac)",
                     "type": "mixed",
                     "limit": 83,
@@ -156,7 +156,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://www.thefiscaltimes.com/feeds/articles/all/rss.xml",
+                    "url": "https://www.thefiscaltimes.com/feeds/articles/all/rss.xml",
                     "name": "The Fiscal Times",
                     "type": "mixed",
                     "limit": 221,
@@ -165,7 +165,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.mirror.co.uk/news/world-news/rss.xml",
+                    "url": "https://www.mirror.co.uk/news/world-news/rss.xml",
                     "name": "Mirror - World news",
                     "type": "mixed",
                     "limit": 350,
@@ -192,7 +192,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://yahoo.com/news/rss/world",
+                    "url": "https://yahoo.com/news/rss/world",
                     "name": "Yahoo News - Latest News & Headlines",
                     "type": "mixed",
                     "limit": 350,
@@ -201,7 +201,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.aljazeera.com/xml/rss/all.xml",
+                    "url": "https://www.aljazeera.com/xml/rss/all.xml",
                     "name": "Al Jazeera – Breaking News, World News and Video from Al Jazeera",
                     "type": "mixed",
                     "limit": 350,
@@ -210,7 +210,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.bbci.co.uk/news/rss.xml",
+                    "url": "https://feeds.bbci.co.uk/news/rss.xml",
                     "name": "BBC News - Home",
                     "type": "mixed",
                     "limit": 352,
@@ -219,7 +219,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.washingtonpost.com/rss/world",
+                    "url": "https://feeds.washingtonpost.com/rss/world",
                     "name": "WaPo - World",
                     "type": "mixed",
                     "limit": 350,
@@ -228,7 +228,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+                    "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
                     "name": "NYT > World News",
                     "type": "mixed",
                     "limit": 400,
@@ -246,7 +246,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://rss.cnn.com/rss/edition_world.rss",
+                    "url": "https://rss.cnn.com/rss/edition_world.rss",
                     "name": "CNN.com - RSS Channel - World",
                     "type": "mixed",
                     "limit": 350,
@@ -257,7 +257,7 @@
             ],
             [
                 {
-                    "url": "http://feeds.feedburner.com/AfricaIntelligence-fr",
+                    "url": "https://feeds.feedburner.com/AfricaIntelligence-fr",
                     "name": "Africa Intelligence",
                     "type": "mixed",
                     "limit": 220,
@@ -285,7 +285,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.bbci.co.uk/news/world/rss.xml",
+                    "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
                     "name": "BBC News - World",
                     "type": "mixed",
                     "limit": 231,
@@ -294,7 +294,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://abcnews.go.com/abcnews/internationalheadlines",
+                    "url": "https://abcnews.go.com/abcnews/internationalheadlines",
                     "name": "ABC News: International",
                     "type": "mixed",
                     "limit": 350,
@@ -330,7 +330,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.independent.co.uk/news/world/rss",
+                    "url": "https://www.independent.co.uk/news/world/rss",
                     "name": "The Independent",
                     "type": "mixed",
                     "limit": 350,
@@ -359,7 +359,7 @@
             ],
             [
                 {
-                    "url": "http://feeds.feedburner.com/ndtvnews-world-news",
+                    "url": "https://feeds.feedburner.com/ndtvnews-world-news",
                     "name": "NDTV News - World-news",
                     "type": "mixed",
                     "limit": 350,
@@ -368,7 +368,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.feedburner.com/time/world",
+                    "url": "https://feeds.feedburner.com/time/world",
                     "name": "World – TIME",
                     "type": "mixed",
                     "limit": 350,
@@ -377,7 +377,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://hotair.com/feed",
+                    "url": "https://hotair.com/feed",
                     "name": "Hotair",
                     "type": "mixed",
                     "limit": 400,
@@ -386,7 +386,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.newsbusters.org/blog/feed",
+                    "url": "https://www.newsbusters.org/blog/feed",
                     "name": "Newsbusters - Welcome to NewsBusters, a project of the Media Research Center (MRC), America’s leading media watchdog in documenting, exposing",
                     "type": "mixed",
                     "limit": 189,
@@ -395,7 +395,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.cbc.ca/cmlink/rss-world",
+                    "url": "https://www.cbc.ca/cmlink/rss-world",
                     "name": "CBC | World News",
                     "type": "mixed",
                     "limit": 350,
@@ -449,7 +449,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://thehill.com/rss/syndicator/19109",
+                    "url": "https://thehill.com/rss/syndicator/19109",
                     "name": "TheHill - The Hill News",
                     "type": "mixed",
                     "limit": 204,
@@ -474,7 +474,7 @@
         "columns": [
             [
                 {
-                    "url": "http://planet.gnu.org/rss20.xml",
+                    "url": "https://planet.gnu.org/rss20.xml",
                     "name": "Planet GNU",
                     "type": "mixed",
                     "limit": 220,
@@ -528,7 +528,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://rss.slashdot.org/Slashdot/slashdotLinux",
+                    "url": "https://rss.slashdot.org/Slashdot/slashdotLinux",
                     "name": "Slashdot: Linux",
                     "type": "mixed",
                     "limit": 220,
@@ -555,7 +555,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds2.feedburner.com/webupd8",
+                    "url": "https://feeds2.feedburner.com/webupd8",
                     "name": "Web Upd8 - Ubuntu / Linux blog",
                     "type": "text",
                     "limit": 400,
@@ -602,7 +602,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.theverge.com/rss/index.xml",
+                    "url": "https://www.theverge.com/rss/index.xml",
                     "name": "The Verge -  All Posts",
                     "type": "mixed",
                     "limit": 304,
@@ -629,7 +629,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://eab.abime.net/external.php?type=rss2",
+                    "url": "https://eab.abime.net/external.php?type=rss2",
                     "name": "abime.net - news",
                     "type": "mixed",
                     "limit": 220,
@@ -658,7 +658,7 @@
             ],
             [
                 {
-                    "url": "http://feeds.feedburner.com/venturebeat/SZYF",
+                    "url": "https://feeds.feedburner.com/venturebeat/SZYF",
                     "name": "VentureBeat",
                     "type": "mixed",
                     "limit": 220,
@@ -667,7 +667,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://techrights.org/feed/",
+                    "url": "https://techrights.org/feed/",
                     "name": "Techrights",
                     "type": "text",
                     "limit": 220,
@@ -729,7 +729,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://astrobin.com/iotd/rss/iotd",
+                    "url": "https://astrobin.com/iotd/rss/iotd",
                     "name": "AstroBin's Image of the Day feed",
                     "type": "photo",
                     "limit": 600,
@@ -776,7 +776,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.nanpa.org/feed/",
+                    "url": "https://www.nanpa.org/feed/",
                     "name": "NANPA®",
                     "type": "photo",
                     "limit": 220,
@@ -796,7 +796,7 @@
             ],
             [
                 {
-                    "url": "http://cabinporn.com/rss/",
+                    "url": "https://cabinporn.com/rss/",
                     "name": "Cabin Porn",
                     "type": "photo",
                     "limit": 220,
@@ -805,7 +805,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.blendernation.com/feed/",
+                    "url": "https://www.blendernation.com/feed/",
                     "name": "BlenderNation",
                     "type": "photo",
                     "limit": 536,
@@ -848,7 +848,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.feedburner.com/metalinjection",
+                    "url": "https://feeds.feedburner.com/metalinjection",
                     "name": "Metal Injection",
                     "type": "mixed",
                     "limit": 350,
@@ -893,7 +893,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://pitchfork.com/rss/news/",
+                    "url": "https://pitchfork.com/rss/news/",
                     "name": "Pitchfork: News",
                     "type": "mixed",
                     "limit": 350,
@@ -960,7 +960,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://createdigitalmusic.com/feed/",
+                    "url": "https://createdigitalmusic.com/feed/",
                     "name": "CDM Create Digital Music",
                     "type": "mixed",
                     "limit": 220,
@@ -969,7 +969,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://planet.linuxaudio.org/rss20.xml",
+                    "url": "https://planet.linuxaudio.org/rss20.xml",
                     "name": "planet.linuxaudio.org",
                     "type": "mixed",
                     "limit": 216,
@@ -1070,7 +1070,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.kr-homestudio.fr/feed/",
+                    "url": "https://www.kr-homestudio.fr/feed/",
                     "name": "KR home-studio",
                     "type": "mixed",
                     "limit": 267,
@@ -1079,7 +1079,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.avidblogs.com/feed/",
+                    "url": "https://www.avidblogs.com/feed/",
                     "name": "Avid Blogs",
                     "type": "mixed",
                     "limit": 350,
@@ -1176,7 +1176,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.nature.com/nature/rss/current",
+                    "url": "https://feeds.nature.com/nature/rss/current",
                     "name": "Nature - Issue - nature.com science feeds",
                     "type": "mixed",
                     "limit": 220,
@@ -1185,7 +1185,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk",
+                    "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk",
                     "name": "BBC News - Science & Environment",
                     "type": "mixed",
                     "limit": 221,
@@ -1214,7 +1214,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.astronomy.com/rss/news",
+                    "url": "https://www.astronomy.com/rss/news",
                     "name": "Astro News",
                     "type": "mixed",
                     "limit": 220,
@@ -1241,7 +1241,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://spaceq.ca/feed/",
+                    "url": "https://spaceq.ca/feed/",
                     "name": "SpaceQ",
                     "type": "mixed",
                     "limit": 220,
@@ -1259,7 +1259,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.esa.int/rssfeed/TopNews",
+                    "url": "https://www.esa.int/rssfeed/TopNews",
                     "name": "ESA Top News",
                     "type": "mixed",
                     "limit": 220,
@@ -1268,7 +1268,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://earthsky.org/feed",
+                    "url": "https://earthsky.org/feed",
                     "name": "EarthSky",
                     "type": "mixed",
                     "limit": 220,
@@ -1304,7 +1304,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.feedburner.com/spaceref/jext",
+                    "url": "https://feeds.feedburner.com/spaceref/jext",
                     "name": "SpaceRef",
                     "type": "mixed",
                     "limit": 220,
@@ -1315,7 +1315,7 @@
             ],
             [
                 {
-                    "url": "http://feeds.feedburner.com/BreakingScienceNews?format=xml",
+                    "url": "https://feeds.feedburner.com/BreakingScienceNews?format=xml",
                     "name": "Breaking Science News | Sci-News.com",
                     "type": "mixed",
                     "limit": 220,
@@ -1333,7 +1333,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.sciencemag.org/rss/current.xml",
+                    "url": "https://www.sciencemag.org/rss/current.xml",
                     "name": "Science current issue",
                     "type": "mixed",
                     "limit": 220,
@@ -1351,7 +1351,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://rss.sciam.com/ScientificAmerican-Global",
+                    "url": "https://rss.sciam.com/ScientificAmerican-Global",
                     "name": "Scientific American Content: Global",
                     "type": "mixed",
                     "limit": 220,
@@ -1369,7 +1369,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.feedburner.com/scitechdaily",
+                    "url": "https://feeds.feedburner.com/scitechdaily",
                     "name": "SciTechDaily",
                     "type": "mixed",
                     "limit": 220,
@@ -1396,7 +1396,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk",
+                    "url": "https://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk",
                     "name": "BBC News - Technology",
                     "type": "mixed",
                     "limit": 241,
@@ -1992,7 +1992,7 @@
             ],
             [
                 {
-                    "url": "http://webcomicname.com/rss",
+                    "url": "https://webcomicname.com/rss",
                     "name": "webcomic name",
                     "type": "photo",
                     "limit": 400,
@@ -2001,7 +2001,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://thisisindexed.com/feed",
+                    "url": "https://thisisindexed.com/feed",
                     "name": "Indexed",
                     "type": "photo",
                     "limit": 180,
@@ -2028,7 +2028,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://what-if.xkcd.com/feed.atom",
+                    "url": "https://what-if.xkcd.com/feed.atom",
                     "name": "What If?",
                     "type": "photo",
                     "limit": 79,
@@ -2332,7 +2332,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.dpreview.com/feeds/news.xml",
+                    "url": "https://www.dpreview.com/feeds/news.xml",
                     "name": "DP Review",
                     "type": "mixed",
                     "limit": 350,
@@ -2341,7 +2341,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.divephotoguide.com/rss/news",
+                    "url": "https://www.divephotoguide.com/rss/news",
                     "name": "Dive photo guide",
                     "type": "mixed",
                     "limit": 350,
@@ -2544,7 +2544,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.feedburner.com/cyclingtipsblog/TJog?x=1",
+                    "url": "https://feeds.feedburner.com/cyclingtipsblog/TJog?x=1",
                     "name": "CyclingTips",
                     "type": "mixed",
                     "limit": 220,
@@ -2553,7 +2553,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.bikeexif.com/feed",
+                    "url": "https://www.bikeexif.com/feed",
                     "name": "Bike EXIF",
                     "type": "mixed",
                     "limit": 220,
@@ -2580,7 +2580,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.feedburner.com/MotorAuthority2",
+                    "url": "https://feeds.feedburner.com/MotorAuthority2",
                     "name": "Motor Authority",
                     "type": "mixed",
                     "limit": 220,
@@ -2590,7 +2590,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://www.autoblog.com/rss.xml",
+                    "url": "https://www.autoblog.com/rss.xml",
                     "name": "Autoblog",
                     "type": "mixed",
                     "limit": 220,
@@ -2610,7 +2610,7 @@
             ],
             [
                 {
-                    "url": "http://www.premierguitar.com/rss/1",
+                    "url": "https://www.premierguitar.com/rss/1",
                     "name": "Premier Guitar",
                     "type": "mixed",
                     "limit": 268,
@@ -2619,7 +2619,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.kr-homestudio.fr/feed/",
+                    "url": "https://www.kr-homestudio.fr/feed/",
                     "name": "KR home-studio",
                     "type": "mixed",
                     "limit": 220,
@@ -2637,7 +2637,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://greatsynthesizers.com/en/feed/",
+                    "url": "https://greatsynthesizers.com/en/feed/",
                     "name": "GreatSynthesizers",
                     "type": "mixed",
                     "limit": 220,
@@ -2646,7 +2646,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.matrixsynth.com/feeds/posts/default",
+                    "url": "https://www.matrixsynth.com/feeds/posts/default",
                     "name": "MATRIXSYNTH",
                     "type": "mixed",
                     "limit": 220,
@@ -2716,7 +2716,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://defence-blog.com/feed",
+                    "url": "https://defence-blog.com/feed",
                     "name": "Defence Blog",
                     "type": "mixed",
                     "limit": 350,
@@ -2734,7 +2734,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.feedburner.com/TheHackersNews?format=xml",
+                    "url": "https://feeds.feedburner.com/TheHackersNews?format=xml",
                     "name": "The Hacker News",
                     "type": "mixed",
                     "limit": 350,
@@ -2743,7 +2743,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.darkreading.com/rss/all.xml",
+                    "url": "https://www.darkreading.com/rss/all.xml",
                     "name": "Dark Reading:",
                     "type": "mixed",
                     "limit": 350,
@@ -2781,7 +2781,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.techrepublic.com/rssfeeds/topic/security/?feedType=rssfeeds",
+                    "url": "https://www.techrepublic.com/rssfeeds/topic/security/?feedType=rssfeeds",
                     "name": "Security on TechRepublic",
                     "type": "mixed",
                     "limit": 181,
@@ -2801,7 +2801,7 @@
             ],
             [
                 {
-                    "url": "http://feeds.feedburner.com/eset/blog",
+                    "url": "https://feeds.feedburner.com/eset/blog",
                     "name": "WeLiveSecurity",
                     "type": "mixed",
                     "limit": 350,
@@ -2810,7 +2810,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://nakedsecurity.sophos.com/feed/",
+                    "url": "https://nakedsecurity.sophos.com/feed/",
                     "name": "Naked Security",
                     "type": "mixed",
                     "limit": 350,
@@ -2819,7 +2819,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.feedburner.com/GoogleOnlineSecurityBlog",
+                    "url": "https://feeds.feedburner.com/GoogleOnlineSecurityBlog",
                     "name": "Google Online Security Blog",
                     "type": "mixed",
                     "limit": 350,
@@ -2954,7 +2954,7 @@
         "columns": [
             [
                 {
-                    "url": "http://feeds.feedburner.com/LaLettreA",
+                    "url": "https://feeds.feedburner.com/LaLettreA",
                     "name": "La Lettre A : La lettre de tous les pouvoirs",
                     "type": "text",
                     "limit": 220,
@@ -2964,7 +2964,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://www.lemonde.fr/rss/une.xml",
+                    "url": "https://www.lemonde.fr/rss/une.xml",
                     "name": "Le Monde.fr - Actualités et Infos en France et dans le monde",
                     "type": "mixed",
                     "limit": 274,
@@ -2973,7 +2973,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.lemonde.fr/afrique/rss_full.xml",
+                    "url": "https://www.lemonde.fr/afrique/rss_full.xml",
                     "name": "Afrique : Toute l’actualité sur Le Monde.fr.",
                     "type": "mixed",
                     "limit": 350,
@@ -3059,7 +3059,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.juanasensio.com/index.rss",
+                    "url": "https://www.juanasensio.com/index.rss",
                     "name": "STALKER - Dissection du cadavre de la littérature",
                     "type": "mixed",
                     "limit": 220,
@@ -3109,7 +3109,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://www.lefigaro.fr/rss/figaro_flash-actu.xml",
+                    "url": "https://www.lefigaro.fr/rss/figaro_flash-actu.xml",
                     "name": "Le Figaro - Le Flash Actu",
                     "type": "mixed",
                     "limit": 238,
@@ -3118,7 +3118,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.francesoir.fr/rss.xml",
+                    "url": "https://www.francesoir.fr/rss.xml",
                     "name": "FranceSoir - Articles de la rédaction",
                     "type": "mixed",
                     "limit": 200,
@@ -3192,7 +3192,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://journalduhacker.net/rss",
+                    "url": "https://journalduhacker.net/rss",
                     "name": "Journal du hacker",
                     "type": "mixed",
                     "limit": 220,
@@ -3201,7 +3201,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.pcinpact.com/rss/news.xml",
+                    "url": "https://www.pcinpact.com/rss/news.xml",
                     "name": "Next INpact",
                     "type": "text",
                     "limit": 185,
@@ -3210,7 +3210,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://www.futura-sciences.com/rss/actualites.xml",
+                    "url": "https://www.futura-sciences.com/rss/actualites.xml",
                     "name": "Les dernières actualités de Futura",
                     "type": "text",
                     "limit": 243,
@@ -3246,7 +3246,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.harvardbusiness.org/harvardbusiness/ideacast",
+                    "url": "https://feeds.harvardbusiness.org/harvardbusiness/ideacast",
                     "name": "HBR IdeaCast",
                     "type": "mixed",
                     "limit": 220,
@@ -3256,7 +3256,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.themoth.org/themothpodcast",
+                    "url": "https://feeds.themoth.org/themothpodcast",
                     "name": "The Moth",
                     "type": "mixed",
                     "limit": 220,
@@ -3266,7 +3266,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.feedburner.com/thememorypalace",
+                    "url": "https://feeds.feedburner.com/thememorypalace",
                     "name": "the memory palace",
                     "type": "mixed",
                     "limit": 220,
@@ -3286,7 +3286,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://podcast.outsideonline.com/OutsidePodcast",
+                    "url": "https://podcast.outsideonline.com/OutsidePodcast",
                     "name": "Outside Podcast",
                     "type": "mixed",
                     "limit": 220,
@@ -3377,7 +3377,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
+                    "url": "https://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
                     "name": "The Broken Meeple",
                     "type": "mixed",
                     "limit": 220,
@@ -3387,7 +3387,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.thisiscriminal.com/thisislovepodcast",
+                    "url": "https://feeds.thisiscriminal.com/thisislovepodcast",
                     "name": "This is Love",
                     "type": "mixed",
                     "limit": 220,
@@ -3459,7 +3459,7 @@
             ],
             [
                 {
-                    "url": "http://feeds.soundcloud.com/users/soundcloud:users:19672772/sounds.rss",
+                    "url": "https://feeds.soundcloud.com/users/soundcloud:users:19672772/sounds.rss",
                     "name": "PIFFFcast - Le podcast du cinéma de genre",
                     "type": "mixed",
                     "limit": 220,
@@ -3489,7 +3489,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://feeds.wnyc.org/radiolab",
+                    "url": "https://feeds.wnyc.org/radiolab",
                     "name": "Radiolab",
                     "type": "mixed",
                     "limit": 220,
@@ -3509,7 +3509,7 @@
                     "lastitem": ""
                 },
                 {
-                    "url": "http://prettymuchpop.com/feed/podcast/",
+                    "url": "https://prettymuchpop.com/feed/podcast/",
                     "name": "Pretty Much Pop: A Culture Podcast",
                     "type": "mixed",
                     "limit": 220,
@@ -3537,7 +3537,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://feeds.thisiscriminal.com/CriminalShow",
+                    "url": "https://feeds.thisiscriminal.com/CriminalShow",
                     "name": "Criminal",
                     "type": "mixed",
                     "limit": 220,
@@ -3564,7 +3564,7 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "http://faif.us/feeds/cast-ogg/",
+                    "url": "https://faif.us/feeds/cast-ogg/",
                     "name": "Free as in Freedom",
                     "type": "mixed",
                     "limit": 394,
