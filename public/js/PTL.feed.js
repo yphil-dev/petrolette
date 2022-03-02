@@ -317,8 +317,10 @@ PTL.feed = {
 
                 if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
 
+
                     if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.jpg|\.png|\.gif|\.jpeg)/)) {
                         imageUrl = item.enclosures[0].url;
+
                     }
 
                     if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
@@ -326,6 +328,7 @@ PTL.feed = {
                     }
 
                     if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/(\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
+
                         videoUrl = item.enclosures[0].url;
                         videoType = item.enclosures[0].type;
                     }
@@ -338,14 +341,16 @@ PTL.feed = {
                         audioUrl = item.enclosures[0].url;
                         audioType = item.enclosures[0].type;
                     }
-
+                    
                     if (feedType !== 'text') {
 
                         if (videoUrl && videoType) {
+
                             PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType);
                         }
 
                         if (audioUrl && audioType) {
+                            
                             PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType);
                         }
 
@@ -454,22 +459,21 @@ PTL.feed = {
     },
     errorFeed: function(error, feedUrl) {
 
-        const status = error.status;
-        const message = error.message;
-        const type = error.type;
-
         const $validateLink = $('<a>')
               .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
 
-        const $validateLinkIcon = $('<i>')
+        $('<i>')
               .attr('class', 'itemIcon icon-w3c')
               .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
               .appendTo($validateLink);
 
         const $reportLink = $('<a>')
-              .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + type + ')');
+              .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + error.type + ')');
 
-        const $reportLinkIcon = $('<i>')
+        const $statusCodeLink = $('<a>')
+              .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + feedUrl + ' (' + error.type + ')');
+
+        $('<i>')
               .attr('class', 'itemIcon icon-petrolette')
               .attr('title', PTL.tr('Report feed error'))
               .appendTo($reportLink);
@@ -486,11 +490,11 @@ PTL.feed = {
 
         const $errValue = $('<strong>')
               .attr('class', 'value')
-              .text(type + ' (' + status + ')');
+              .text(error.type + ' (' + error.status + ')');
 
         const $msgValue = $('<strong>')
               .attr('class', 'value')
-              .text(message);
+              .text(error.message);
 
         const $errorItem = $('<li>')
               .attr('class', 'feedItem error')
