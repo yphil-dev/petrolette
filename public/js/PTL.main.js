@@ -24,15 +24,17 @@ var PTL = (function() {
 
             if (!PTL.prefs.readConfig('nagBarOk')) $('div#nagBar').show(0);
             
-            if (!PTL.prefs.readConfig('userSetLang')) {
+            if (PTL.prefs.readConfig('userSetLang') !== 'true') {
 
                 const preferredLang = PTL.util.getPreferredLang();
+
+                console.error('preferredLang: %s (%s)', preferredLang);
 
                 for (const l of PTL.languages) if (preferredLang == l) PTL.language = preferredLang;
 
             } else {
                 
-                PTL.language = 'fr';
+                PTL.language = PTL.prefs.readConfig('lang');
 
             }
             
