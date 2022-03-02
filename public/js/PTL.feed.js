@@ -366,11 +366,12 @@ PTL.feed = {
                         .attr('data-fancybox', 'gallery')
                         .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
-                    const protocols = ['http://', 'http://', '//'];
+                    const protocols = ['https://', 'http://', '//'];
 
-                    if (protocols.indexOf(imageUrl) !== -1) imageUrl = feedHost + imageUrl;
-
-
+                    let isAbsolute = protocols.some(p => imageUrl.startsWith(p));                   
+                    
+                    if (!isAbsolute) imageUrl = feedHost + '/' + imageUrl;
+                    
                     $image = $('<img>')
                         .attr('src', '/static/images/loading.gif')
                         .attr('data-srcset', imageUrl.replace('http://', 'https://'))
@@ -380,7 +381,6 @@ PTL.feed = {
                         .attr('class', 'ptl-img responsively-lazy')
                         .attr('onerror', "this.style.display='none'")
                         .appendTo($imageLink);
-
                 }
 
                 if (item.comments) {
