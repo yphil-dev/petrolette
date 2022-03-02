@@ -612,7 +612,7 @@ PTL.feed = {
                     .attr('class', 'icon-lock warning')
                     .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
                 
-                if (isInsecureLinks) $insecureIcon.prependTo($feedLinkDiv);
+                // if (isInsecureLinks) $insecureIcon.prependTo($feedLinkDiv);
                 
                 $feedBody.html(lastItems[0]);
 
