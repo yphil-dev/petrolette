@@ -458,7 +458,7 @@ PTL.feed = {
 
   },
   errorFeed: function(error, feedUrl) {
-
+    
     const $validateLink = $('<a>')
           .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
 
@@ -469,9 +469,6 @@ PTL.feed = {
 
     const $reportLink = $('<a>')
           .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + error.type + ')');
-
-    const $statusCodeLink = $('<a>')
-          .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + error.status);
 
     $('<i>')
       .attr('class', 'itemIcon icon-petrolette')
@@ -490,8 +487,17 @@ PTL.feed = {
 
     const $errValue = $('<strong>')
           .attr('class', 'value')
-          .text(error.type + ' (' + error.status + ')');
+          .text(error.type);
 
+      const $errStatus = $('<span>')
+            .append('&nbsp;(')
+            .append($('<a>')
+                    .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + error.status)
+                    .text(error.status))
+            .append(')');
+
+    if (error.status != 0) $errValue.append($errStatus)
+        
     const $msgValue = $('<strong>')
           .attr('class', 'value')
           .text(error.message);

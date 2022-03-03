@@ -32,8 +32,8 @@ function getParams(str) {
 function formatError(error) {
 
   let message = (error.message) ? error.message : 'Can\'t read this feed';
-  let type = (error.type) ? error.type : 'Unknown type';
-  let status = (error.status && Number.isInteger(error.status)) ? error.status : 400;
+  let type = (error.type) ? error.type : 'Network';
+  let status = (error.status && Number.isInteger(error.status)) ? error.status : 0;
 
   return { type: type, status: status, message: message };
 
@@ -48,10 +48,8 @@ function getFeed(feedUrl, lastItem, callback) {
   }).then(function(res) {
 
     if (res.status != 200) {
-      callback(formatError({ type: 'Network error', status: res.status, message: 'Bad server response' }));
+      callback(formatError({type: res.type, status: res.status, message: res.message}));
     }
-
-      
       
     var feedparser = new FeedParser();
     var feedItems = [];
@@ -79,7 +77,7 @@ function getFeed(feedUrl, lastItem, callback) {
     }).on('end', function() {
 
       if (feedItems.length === 0) {
-        callback(formatError({ type: 'Empty feed', status: 300, message: 'Feed OK, but empty' }));
+        callback(formatError({ type: 'Empty feed', status: null, message: 'Feed OK, but empty' }));
       }
 
       var newLastItem;
@@ -102,10 +100,8 @@ function getFeed(feedUrl, lastItem, callback) {
     });
 
   }).catch((error) => {
-
-    // callback(formatError(error));
-    callback(formatError({ type: 'Network problem', status: 300, message: error.message || 'Network problem' }));
-
+    
+    callback(formatError({type: error.type, status: error.status, message: error.message}));
 
   });
 }
