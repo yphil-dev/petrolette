@@ -138,11 +138,15 @@ PTL.feed = {
           $prefsDiv = $('<div>').append($prefsIcon),
           $refreshDiv = $('<div>').append($refreshIcon);
 
+    const $warningIconSpan = $('<span>')
+          .attr('class', 'warningIconSpan');
+    
     const $titleDiv = $('<div>')
           .attr({
             title: name || PTL.tr('New feed'),
-            class: 'feedTitle trucate'
-          });
+            class: 'feedTitle'
+          })
+          .prepend($warningIconSpan);
 
     const $titleLink = $('<a>')
           .attr({
@@ -559,8 +563,9 @@ PTL.feed = {
     const $dataStore = $button.parent().parent(),
           $refreshButton = $dataStore.find('i.feedRefresh').removeClass('icon-pin').addClass('icon-refresh spin'),
           $feedHeader = $dataStore.parent(),
-          $feedLinkDiv = $feedHeader.children('div.feedTitle'),
-          $feedLink = $feedLinkDiv.children('a'),
+          $feedTitle = $feedHeader.children('div.feedTitle'),
+          $warningIconSpan = $feedTitle.children('span.warningIconSpan'),
+          $feedLink = $feedTitle.children('a'),
           $badge = $feedHeader.children('.newItemsBadge'),
           $feedBody = $dataStore.parent().next('div.feedBody').removeClass('folded'),
           $feedBodyUl = $feedBody.find('ul.feedBody'),
@@ -576,7 +581,7 @@ PTL.feed = {
           dateObj = new Date(),
           timeStamp = dateObj.toTimeString();
 
-    var feedLastItem = $dataStore.data('lastitem');
+    let feedLastItem = $dataStore.data('lastitem');
 
     $feedBodyUl.css('border', '1px solid red');
     
@@ -622,22 +627,20 @@ PTL.feed = {
             .attr('class', 'icon-lock warning')
             .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
         
-        // if (isInsecureLinks) $insecureIcon.prependTo($feedLinkDiv);
+        if (isInsecureLinks) $warningIconSpan.html($insecureIcon);
         
         $feedBody.html(lastItems[0]);
 
         $refreshButton
           .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStamp + ')')
           .removeClass('spin');
-
+        
         $feedLink
           .attr('href', fetchFeed.feedLink)
           .attr('title', feedName)
           .text(feedName);
         
-        if ($dataStore.data('name') == '') {
-          $dataStore.data('name', feedName);          
-        }
+        if ($dataStore.data('name') == '') $dataStore.data('name', feedName);          
         
         if (fetchFeed.totalNewItems > 0) {
           $dataStore.data('lastitem', fetchFeed.lastItem);
