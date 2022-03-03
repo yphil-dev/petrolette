@@ -25,15 +25,15 @@
         "coverage": "nyc npm test"
     },
     "dependencies": {
+        "@fancyapps/fancybox": "3.5.7",
         "body-parser": "^1.19.0",
         "compression": "^1.7.4",
         "dompurify": "2.3.6",
         "ejs": "^3.1.5",
         "express": "^4.17.1",
-        "@fancyapps/fancybox": "3.5.7",
         "favrat": "latest",
         "feedparser": "^2.2.10",
-        "feedrat": "latest",
+        "feedrat": "0.4.10",
         "helmet": "5.0.2",
         "iconv-lite": "^0.6.2",
         "intro.js": "5.0.0",

@@ -51,6 +51,8 @@ function getFeed(feedUrl, lastItem, callback) {
       callback(formatError({ type: 'Network error', status: res.status, message: 'Bad server response' }));
     }
 
+      
+      
     var feedparser = new FeedParser();
     var feedItems = [];
     var charset = getParams(res.headers.get('content-type') || '').charset;

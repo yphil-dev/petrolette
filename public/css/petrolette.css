@@ -185,6 +185,10 @@ li.ui-tabs-active > a:visited {
   flex: 0 0 0;
 }
 
+body#js {
+  color: #FFFFFF;
+}
+
 table#jsLicenseTable td a:link {
   text-decoration: underline;
 }
