@@ -493,15 +493,15 @@ PTL.feed = {
           .attr('class', 'value')
           .text(error.type);
 
-      const $errStatus = $('<span>')
-            .append('&nbsp;(')
-            .append($('<a>')
-                    .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + error.status)
-                    .text(error.status))
-            .append(')');
+    const $errStatus = $('<span>')
+          .append('&nbsp;(')
+          .append($('<a>')
+                  .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + error.status)
+                  .text(error.status))
+          .append(')');
 
     if (error.status != 0) $errValue.append($errStatus)
-        
+    
     const $msgValue = $('<strong>')
           .attr('class', 'value')
           .text(error.message);
