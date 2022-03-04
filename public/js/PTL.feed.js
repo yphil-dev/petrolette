@@ -156,33 +156,6 @@ PTL.feed = {
           })
           .html(name || PTL.tr('New feed'));
     
-    // $feedControls.hover(
-    //   function() { $(this).find('.collapsible').show(); },
-    //   function() { $(this).find('.collapsible').hide('fade', 'fast'); }
-    // );
-
-    // if (!PTL.util.isMobile()) {
-    //   $selectDiv.addClass('collapsible');
-    //   $deleteDiv.addClass('collapsible');
-    //   $prefsDiv.addClass('collapsible');
-
-    //   $feedControls.append($selectDiv, $deleteDiv);
-    // }
-
-    // $feedHeader.hover(function() {
-
-    //   $(this).find('img.favicon').hide();
-    //   $feedIcon.removeClass('icon-rss').addClass('icon-down');
-
-    // }, function() {
-
-    //   $(this).find('img.favicon').show();
-    //   $feedIcon.removeClass('icon-down');
-
-    // });
-
-    // New
-    
     $feedHeader.hover(function() {
 
       $(this).find('img.favicon').hide();
