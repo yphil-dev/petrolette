@@ -201,7 +201,7 @@ PTL.feed = {
     $feed.append($feedHeader, $feedBody);
 
     if (isNewFeed) {
-      $feed.prependTo($column).hide();
+      // $feed.prependTo($column).hide();
       PTL.dialog.feedNew($prefsIcon);
     } else {
       $feed.appendTo($column);

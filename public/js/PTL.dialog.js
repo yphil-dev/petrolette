@@ -563,17 +563,17 @@ PTL.dialog = {
 
               $addButton.removeClass('ui-state-error');
 
+              let $column = $($('.ui-tabs-active')
+                              .find('a')
+                              .attr('href'))
+                  .find('.column').first();
+
               if (feeds.length > 1) {
 	              console.error('More!: %s (%s)', feeds.length);
 
                 $multipleFeedsSelection.find('span#numberOfFeeds').text(feeds.length);
 
                 var $feedsAddDivUl = $('ul#feedsAddDivUl');
-
-                let $column = $($('.ui-tabs-active')
-                                .find('a')
-                                .attr('href'))
-                    .find('.column').first();
                 
                 feeds.forEach(function(value) {
                   
@@ -604,12 +604,18 @@ PTL.dialog = {
               } else {
                 
                 $dataStore.data('url', feeds[0]);
+                
+                PTL.feed.add($column, feeds[0], '', 'mixed', 220, 'on', '', 16, '', false);
 
-                $feed.show('fade', 250, function() {
-                  PTL.feed.populate($button);
-                  PTL.tab.saveTabs();
-                  PTL.dialog.kill($dialog);
-                });
+                PTL.tab.saveTabs();
+                PTL.dialog.kill($dialog);
+                
+                // $feed.show('fade', 250, function() {
+                //   PTL.feed.populate($button);
+                //   PTL.tab.saveTabs();
+                //   PTL.dialog.kill($dialog);
+                // });
+                
               }
               
             }).always(function(req, status, _xhr) {
