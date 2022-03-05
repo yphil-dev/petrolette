@@ -201,12 +201,12 @@ PTL.feed = {
     $feed.append($feedHeader, $feedBody);
 
     if (isNewFeed) {
-      // $feed.prependTo($column).hide();
-      PTL.dialog.feedNew($prefsIcon);
+      $feed.prependTo($column);
     } else {
       $feed.appendTo($column);
-      $refreshIcon.click();
     }
+
+    $refreshIcon.click();
 
   },
   lastItems: function(feedItems, $dataStore) {

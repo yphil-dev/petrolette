@@ -657,11 +657,6 @@ select {
   font-size: 1em;
 }
 
-fieldset {
-  border: 0;
-  /* padding-top: 0.1em; */
-}
-
 .sideMenuTitleToggleDiv {
   color: var(--color-ui-pri);
 }
@@ -1527,6 +1522,12 @@ input[type="text"] {
 
 fieldset {
   margin: 0;
+  border: 0;
+}
+
+fieldset {
+  margin: 0;
+  border: 0;
 }
 
 div#nagBar {

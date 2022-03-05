@@ -238,9 +238,7 @@ var PTL = (function() {
 
         PTL.sideMenu('close');
 
-        // PTL.dialog.feedNew($prefsIcon);
-
-        PTL.feed.add($column, '', '', 'mixed', 220, 'on', '', 16, '', true);
+        PTL.dialog.feedNew();
       }
       
       $('body').on('click','div#newFeedButton', newFeed);

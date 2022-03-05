@@ -442,14 +442,11 @@ PTL.dialog = {
     // $('.introjs-button').button();
 
   },
-  feedNew: function($button) {
+  feedNew: function() {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
 
-      const $dialog = $(this),
-            $dataStore = $button.parent().parent(),
-            oldUrl = $dataStore.data('url'),
-            $feed = $dataStore.parent().parent();
+      const $dialog = $(this);
 
       $dialog.dialog({
         title: PTL.tr('New feed'),
@@ -460,7 +457,7 @@ PTL.dialog = {
           const $addButton = $dialog.find('button#feedAddButton').button(),
                 $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
                 $addButtonIcon = $addButton.find('i'),
-                $feedAddInput = $dialog.find('input#feedAddInput').val(oldUrl),
+                $feedAddInput = $dialog.find('input#feedAddInput'),
                 $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
                 $messageText = $dialog.find('div#messageZone > .messageText');
 
@@ -479,7 +476,6 @@ PTL.dialog = {
 
           $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
             PTL.dialog.kill($dialog);
-            $feed.remove();
           });
 
           function feedAddError(feedUrl, errorMessage) {
@@ -493,21 +489,12 @@ PTL.dialog = {
               .attr('title', PTL.tr('Add anyway'))
               .on("click").click(function() {
 
-                const feedUrl = DOMPurify.sanitize($feedAddInput.val());
+                feedUrl = DOMPurify.sanitize($feedAddInput.val());
 
                 if (feedUrl == '') {
                   emptyWarning();
                   return;
                 }
-
-                $dataStore
-                  .data('url', feedUrl);
-
-                $feed.show('fade', 250, function() {
-                  PTL.feed.populate($button);
-                  PTL.tab.saveTabs();
-                  PTL.dialog.kill($dialog);
-                });
 
               });
 
@@ -569,10 +556,12 @@ PTL.dialog = {
                   .find('.column').first();
 
               if (feeds.length > 1) {
-	              console.error('More!: %s (%s)', feeds.length);
 
-                $multipleFeedsSelection.find('span#numberOfFeeds').text(feeds.length);
+                // $multipleFeedsSelection.find('span#numberOfFeeds').text(feeds.length);
 
+
+                $('div#feedsAddDiv').show('slow');
+                
                 var $feedsAddDivUl = $('ul#feedsAddDivUl');
                 
                 feeds.forEach(function(value) {
@@ -585,14 +574,15 @@ PTL.dialog = {
                       .append($('<a>')
                               .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
                               .attr('href', '#')
-                              .click(function(e){
-                                PTL.feed.add($column, value, '', 'mixed', 220, 'on', '', 16, '', false);
-                                
+                              .click(function() {
+                                PTL.feed.add($column, value, '', 'mixed', 220, 'on', '', 16, '', true);
                               })
                               .text(PTL.tr('Add')));
                   
                   $feedsAddDivUl.append($feedRow)
 
+                  $('p#foundMultipleFeeds').text('Pétrolette found %1 feeds');
+                  
                 });
 
                 $multipleFeedsSelection.show();
@@ -602,20 +592,12 @@ PTL.dialog = {
                 $addButtonText.text(PTL.tr('Add'))
                 
               } else {
-                
-                $dataStore.data('url', feeds[0]);
-                
-                PTL.feed.add($column, feeds[0], '', 'mixed', 220, 'on', '', 16, '', false);
+                                
+                PTL.feed.add($column, feeds[0], '', 'mixed', 220, 'on', '', 16, '', true);
 
                 PTL.tab.saveTabs();
                 PTL.dialog.kill($dialog);
-                
-                // $feed.show('fade', 250, function() {
-                //   PTL.feed.populate($button);
-                //   PTL.tab.saveTabs();
-                //   PTL.dialog.kill($dialog);
-                // });
-                
+                                
               }
               
             }).always(function(req, status, _xhr) {

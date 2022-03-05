@@ -1,8 +1,8 @@
 <div id="feedNewDialog">
   <form>
     <fieldset id="locationFieldset">
-    <legend data-content="Location / URL / Keywords"
-            class="ui-corner-top helpTourDialogItem translate">Location / URL / Keywords</legend>
+      <legend data-content="Location / URL / Keywords"
+              class="ui-corner-top helpTourDialogItem translate">Location / URL / Keywords</legend>
       <div id="feedAddDiv"
            class="flexBox"
            data-step="1">
@@ -22,19 +22,17 @@
           <i></i>
         </button>
       </div>
+      
       <div id="messageZone">
         <span class="messageTitle"></span>
         <span class="messageText"></span>
       </div>
 
-    </fieldset>
-
-    <fieldset id="feedsFieldSet">
-    <legend data-content="Multiple feeds found"
-            class="ui-corner-top helpTourDialogItem translate">Multiple feeds found</legend>
       <div id="feedsAddDiv"
-           class="flexBox"
+           class="flexBox hidden"
            data-step="2">
+        <p data-content="Pétrolette found more than one feed at this URL"
+           class="helpTourDialogItem translate">Pétrolette found more than one feed at this URL</p>        
         <ul id="feedsAddDivUl" class="flexBox"></ul>
       </div>
 
