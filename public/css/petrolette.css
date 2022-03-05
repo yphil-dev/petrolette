@@ -683,11 +683,6 @@ nav#sideMenu {
   z-index: 11;
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-scrollbar) var(--color-dialog-border);
-}
-
-nav#sideMenu:hover {
-  scrollbar-color: var(--color-link-hover) var(--color-dialog-border);
 }
 
 div#topNav {
@@ -1107,7 +1102,6 @@ li.feed div.feedBody {
   margin: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-scrollbar) var(--color-dialog-border);
 }
 
 li.feed div.feedBody::-webkit-scrollbar {
@@ -1121,10 +1115,6 @@ li.feed div.feedBody::-webkit-scrollbar-track {
 
 li.feed div.feedBody::-webkit-scrollbar-thumb {
   background-color: var(--color-fg4);
-}
-
-li.feed div.feedBody:hover {
-  scrollbar-color: var(--color-link-hover) var(--color-dialog-border);
 }
 
 .folded {
@@ -1297,6 +1287,15 @@ video {
 
 /* UI SHIT */
 
+.feedsListIcon {
+  margin: 0 .2em 0 0;
+  font-size: 1.2em;
+}
+
+.feedsListDiv {
+    align-items: center;
+}
+
 #tabs {
   overflow: hidden;
   white-space: nowrap;
@@ -1306,7 +1305,6 @@ video {
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-fg4) var(--color-bg1);
 }
 
 #tabs > ul > li {
@@ -1445,10 +1443,14 @@ select#gallerySlideTransition {
   background-color: var(--color-button-bg-active);
 }
 
+/* .ui-widget-content, */
 .ui-widget textarea,
-.ui-widget-content,
 .ui-widget-header {
   border: none !important;
+}
+
+.ui-widget-content {
+	border: 1px solid #0b4f6f;
 }
 
 .ui-progressbar .ui-progressbar-value {

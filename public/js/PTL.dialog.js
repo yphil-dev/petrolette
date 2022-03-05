@@ -2,7 +2,7 @@
 
 PTL.dialog = {
   kill: function($dialog) {
-    $dialog.dialog('destroy');
+    $dialog.dialog('close');
     $('#ptlDialogs').empty();
   },
   resetTabs: function() {
@@ -452,6 +452,16 @@ PTL.dialog = {
         title: PTL.tr('New feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
         modal: true,
+        buttons: [
+          {
+            text: PTL.tr('Close'),
+            title: PTL.tr('Close'),
+            class: 'translate',
+            click: function() {
+              PTL.dialog.kill($dialog);
+            }
+          }
+        ],
         open: function() {
 
           const $addButton = $dialog.find('button#feedAddButton').button(),
@@ -560,17 +570,16 @@ PTL.dialog = {
                 // $multipleFeedsSelection.find('span#numberOfFeeds').text(feeds.length);
 
 
-                $('div#feedsAddDiv').show('slow');
-                
-                var $feedsAddDivUl = $('ul#feedsAddDivUl');
-                
+                $('div#feedsAddDiv').show();
+               
                 feeds.forEach(function(value) {
                   
                   let $feedRow = $('<div>')
-                      .attr('class', 'flexBox')
+                      .attr('class', 'flexBox feedsListDiv')
                       .append($('<div>')
                               .attr('class', 'feedsAddDivName grow')
-                              .text(value))
+                              .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
+                              .append($('<a>').attr('href', value).text(value)))
                       .append($('<a>')
                               .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
                               .attr('href', '#')
@@ -579,7 +588,7 @@ PTL.dialog = {
                               })
                               .text(PTL.tr('Add')));
                   
-                  $feedsAddDivUl.append($feedRow)
+                  $('#feedsAddDivList').append($feedRow)
 
                   $('p#foundMultipleFeeds').text('Pétrolette found %1 feeds');
                   

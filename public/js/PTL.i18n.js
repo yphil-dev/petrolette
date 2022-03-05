@@ -486,10 +486,7 @@ PTL.i18n.translations = {
 
   "Explore!" : { fr: "Exploration !", ja: "探査！", es: "¡Exploración!" },
 
-  "Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK" : { fr: "Entrer l'adresse / URL d'un site Web, puis cliquer sur Rechercher et valider, ou directement l'adresse d'un flux et valider", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del feed" },
-
-
-  "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez une adresse / URL de site Web et cliquez sur Rechercher, puis sur OK, ou entrez simplement l'URL du", ja: "ウェブサイトのアドレス/ URLを入力して[検索]、[OK]の順にクリックするか、単にURLを入力します", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego OK, o simplemente ingrese la URL del" },
+  "URL or search terms" : { fr: "URL ou termes de recherche", ja: "URLまたは検索用語", es: "URL o términos de búsqueda" },
 
   "If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words" : { fr: "Si ce que vous entrez n'est pas une URL (une adresse Internet commençant par \"http ...\"), Pétrolette construira un flux de recherche en utilisant les mots", ja: "入力したものが通常のURLではない場合（ \"HTTP ...\"の形のインターネットの場所）Pétroletteは単語を使って検索フィードを作成します", es: "Si lo que ingresa no es una URL regular (una ubicación en Internet en forma de \"http ...\"), Pétrolette construirá un feed de búsqueda con las palabras" },
 

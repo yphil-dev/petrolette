@@ -8,8 +8,8 @@
            data-step="1">
         <input name="add"
                id="feedAddInput"
-               placeholder="https://xkcd.com/rss.xml or https://xkcd.com + SEARCH"
-               data-title="Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK"
+               placeholder="URL or search terms"
+               data-title="URL or search terms"
                value=""
                onclick="this.select()"
                class="grow translate"
@@ -29,11 +29,10 @@
       </div>
 
       <div id="feedsAddDiv"
-           class="flexBox hidden"
-           data-step="2">
+           class="flexBox hidden">
         <p data-content="Pétrolette found more than one feed at this URL"
-           class="helpTourDialogItem translate">Pétrolette found more than one feed at this URL</p>        
-        <ul id="feedsAddDivUl" class="flexBox"></ul>
+           class="translate">Pétrolette found more than one feed at this URL</p>        
+        <ul id="feedsAddDivList" class="flexBox"></ul>
       </div>
 
     </fieldset>
