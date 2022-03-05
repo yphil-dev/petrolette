@@ -532,7 +532,8 @@ PTL.dialog = {
 
           $addButton.click(function() {
 
-            const feedUrl = DOMPurify.sanitize($feedAddInput.val());
+            const feedUrl = DOMPurify.sanitize($feedAddInput.val()),
+                  $multipleFeedsSelection = $('#multipleFeedsSelection');
 
             if (feedUrl == '') {
               emptyWarning();
@@ -554,34 +555,69 @@ PTL.dialog = {
               timeout: 2000
             }).fail(function(req, _status, _xhr) {
               feedAddError(feedUrl, req.responseText);
-            }).done(function(feed) {
+            }).done(function(feeds) {
 
-              $feedAddInput.val(feed);
+              $feedAddInput.val(feeds[0]);
 
               $addButtonIcon.removeClass('spin icon-error');
 
               $addButton.removeClass('ui-state-error');
 
-              $dataStore.data('url', feed);
+              if (feeds.length > 1) {
+	              console.error('More!: %s (%s)', feeds.length);
 
-              $feed.show('fade', 250, function() {
-                PTL.feed.populate($button);
-                PTL.tab.saveTabs();
-                PTL.dialog.kill($dialog);
-              });
+                $multipleFeedsSelection.find('span#numberOfFeeds').text(feeds.length);
 
+                var $feedsAddDivUl = $('ul#feedsAddDivUl');
+
+                let $column = $($('.ui-tabs-active')
+                                .find('a')
+                                .attr('href'))
+                    .find('.column').first();
+                
+                feeds.forEach(function(value) {
+                  
+                  let $feedRow = $('<div>')
+                      .attr('class', 'flexBox')
+                      .append($('<div>')
+                              .attr('class', 'feedsAddDivName grow')
+                              .text(value))
+                      .append($('<a>')
+                              .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
+                              .attr('href', '#')
+                              .click(function(e){
+                                PTL.feed.add($column, value, '', 'mixed', 220, 'on', '', 16, '', false);
+                                
+                              })
+                              .text(PTL.tr('Add')));
+                  
+                  $feedsAddDivUl.append($feedRow)
+
+                });
+
+                $multipleFeedsSelection.show();
+
+                $addButtonIcon.removeClass('spin icon-refresh');
+
+                $addButtonText.text(PTL.tr('Add'))
+                
+              } else {
+                
+                $dataStore.data('url', feeds[0]);
+
+                $feed.show('fade', 250, function() {
+                  PTL.feed.populate($button);
+                  PTL.tab.saveTabs();
+                  PTL.dialog.kill($dialog);
+                });
+              }
+              
             }).always(function(req, status, _xhr) {
               if (status === 'error') feedAddError(feedUrl, req.responseText);
             });
 
           });
           
-          $feedAddInput.on('keypress', function(e) {
-            if (e.which == 13) {
-              $addButton.click();
-            }
-          });
-
         }
       });
 
@@ -785,10 +821,10 @@ PTL.dialog = {
               timeout: 2000
             }).fail(function(_req, _status, _xhr) {
               guessError();
-            }).done(function(feed) {
+            }).done(function(feeds) {
               $guessSpinner.removeClass('spin icon-refresh');
 
-              $feedGuessInput.val(feed);
+              $feedGuessInput.val(feeds[0]);
 
               $guessSpinner
                 .removeClass('ui-state-error')
@@ -799,7 +835,6 @@ PTL.dialog = {
                 .attr('title', PTL.tr('Valid feed found! Now just press OK'));
 
             }).always(function(_req, status, _xhr) {
-              // feedAddError(feedUrl, req.responseText);
               if (status === 'error') guessError();
             });
 
