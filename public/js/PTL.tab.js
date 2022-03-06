@@ -230,10 +230,10 @@ PTL.tab = {
 
       $column.appendTo($tabPanel);
 
-      if (PTL.queryString) {
-        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', '', 17, '', true);
-        PTL.queryString = null;
-      }
+        if (PTL.queryString) {
+            PTL.dialog.feedNew(encodeURI(PTL.queryString));
+            PTL.queryString = null;
+        }
 
       if (!newTab) {
         feeds.forEach(function(feed) {
