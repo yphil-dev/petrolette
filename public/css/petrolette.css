@@ -229,7 +229,7 @@ i.tabIcon,
   margin: 0 5px;
 }
 
-p.dangerous {
+.dangerous {
   color: var(--color-ui-danger);
 }
 
@@ -1206,7 +1206,11 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
 }
 
 .ui-dialog span.messageTitle {
-    color: var(--color-danger);
+  color: var(--color-link-hover);
+}
+
+.ui-dialog span.messageTitleErrorCode {
+  color: var(--color-link-hover);
 }
 
 .ui-state-error {

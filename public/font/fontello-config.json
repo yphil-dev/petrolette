@@ -229,6 +229,12 @@
       "css": "lock",
       "code": 59397,
       "src": "websymbols"
+    },
+    {
+      "uid": "97ac1a82370ae58f02e4ff1bdc58ee86",
+      "css": "warning",
+      "code": 59400,
+      "src": "websymbols"
     }
   ]
 }

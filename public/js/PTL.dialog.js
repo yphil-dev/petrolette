@@ -441,7 +441,9 @@ PTL.dialog = {
     // $('.introjs-button').button();
 
   },
-  feedAddError: function($dialog, errType, feedUrl, errorMessage) {
+  feedAddError: function($dialog, feedUrl, xhr) {
+
+    console.error('xhr: %s (%s)', xhr.responseText + '/' + xhr.statusText + '/' + xhr.status + '/' + xhr.readyState, feedUrl);
 
     const $addButton = $dialog.find('button#feedAddButton').button(),
       $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
@@ -450,20 +452,29 @@ PTL.dialog = {
       $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
       $messageText = $dialog.find('div#messageZone > .messageText');
 
-    if (errType == 'empty') {
-  
-      $messageTitle
-        .addClass('warning')
-        .text(PTL.tr('Warning'));
+    $messageTitle.empty();
+    $messageText.empty();
+    // $('div#feedsAddDiv').empty();
+
+    $messageTitle.append($('<i>').attr('class', 'icon-warning dangerous'))
+
+    if (xhr == 'empty') {
+      $messageText.text(PTL.tr('This field cannot be empty'));
+    } else {
+
       $messageText
-        .text(PTL.tr('This field cannot be emptyy'));
+        .append($('<span>')
+                .attr('class', 'messageTitleErrorCode')
+                .text(xhr.statusText + ' ('))
+        .append($('<a>')
+          .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status)
+                .text(xhr.status))
+        .append($('<span>').text(') ' + xhr.responseText));
 
-      return;
+      $addButtonIcon
+        .hide()
+                .removeClass('icon-refresh icon-checked spin');
     }
-
-    $addButtonIcon
-      .hide()
-      .removeClass('icon-refresh icon-checked spin');
 
     $addButton
       .addClass('ui-state-error')
@@ -473,7 +484,7 @@ PTL.dialog = {
         feedUrl = DOMPurify.sanitize($feedAddInput.val());
 
         if (feedUrl == '') {
-          PTL.dialog.feedAddError($dialog, 'empty', feedUrl, req.responseText);
+          PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
         } else {
           PTL.feed.add(PTL.util.firstColumn(), feedUrl, '', 'mixed', 220, 'on', '', 16, '', true);
         }
@@ -514,7 +525,6 @@ PTL.dialog = {
 
           $dialog.find("form").on("submit", function(e) {
             e.preventDefault();
-            $addButton.click();
           });
 
           $('.helpTourDialogItem')
@@ -529,23 +539,13 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          function emptyWarning() {
-
-            $messageTitle
-              .addClass('warning')
-              .text(PTL.tr('Warning'));
-            $messageText
-              .text(PTL.tr('This field cannot be empty'));
-
-          }
-
-          $addButton.click(function() {
+          $('form#feedNewDialogForm').submit(function() {
 
             const feedUrl = DOMPurify.sanitize($feedAddInput.val()),
                   $multipleFeedsSelection = $('#multipleFeedsSelection');
 
             if (feedUrl == '') {
-              PTL.dialog.feedAddError($dialog, 'empty', feedUrl, null);
+              PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
               return;
             }
 
@@ -562,9 +562,13 @@ PTL.dialog = {
               url: feedUrl,
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
-            }).fail(function(req, _status, _xhr) {
-              PTL.dialog.feedAddError($dialog, 'network', feedUrl, req.responseText);
+            }).fail(function(xhr) {
+              PTL.dialog.feedAddError($dialog, feedUrl, xhr);
+              // PTL.dialog.feedAddError($dialog, 'network', feedUrl, req.responseText);
             }).done(function(feeds) {
+
+              $messageTitle.empty();
+              $messageText.empty();
 
               $feedAddInput.val(feeds[0]);
 
@@ -573,9 +577,6 @@ PTL.dialog = {
               $addButton.removeClass('ui-state-error');
 
               if (feeds.length > 1) {
-
-                // $multipleFeedsSelection.find('span#numberOfFeeds').text(feeds.length);
-
 
                 $('div#feedsAddDiv').show();
                
@@ -616,9 +617,9 @@ PTL.dialog = {
                                 
               }
               
-            }).always(function(req, status, _xhr) {
-              if (status === 'error') PTL.dialog.feedAddError($dialog, 'network', feedUrl, req.responseText);
-              ;
+            }).always(function(xhr) {
+              console.error('MSG: %s (%s)', xhr.responseText);
+              // if (status === 'error') PTL.dialog.feedAddError($dialog, feedUrl, xhr);
             });
 
           });
