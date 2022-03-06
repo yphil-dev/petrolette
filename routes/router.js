@@ -84,9 +84,11 @@ router.get('/robots.txt', function(req, res) {
 router.get('/discover', function(req, res) {
 
   try {
-    var p = new URL(req.query.url);
+    new URL(req.query.url);
   } catch (error) {
-    return res.send(new String(req.query.searchPrefix + req.query.url.split(' ')));
+    let feeds = [];
+    feeds.push(req.query.searchPrefix + req.query.url.split(' '));
+    return res.send(feeds);
   }
 
   feedrat(req.query.url, function(err, url) {

@@ -379,7 +379,7 @@ PTL.dialog = {
           title: PTL.tr('Three options'),
           element: 'input#feedAddInput',
           intro: '<h4>' + PTL.tr('The valid URL of a feed') + '</h4>' + PTL.tr('The feed will be added to the current tab.') + '<h4>' + PTL.tr('The valid URL of a website') + '</h4>' + PTL.tr('Pétrolette will search for a feed at this URL, then add it to the current tab.') + '<h4>' + PTL.tr('A list of words') + '</h4>' + PTL.tr('Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words'),
-          position: 'right'
+          position: 'top'
         }
       ]
     });
@@ -512,7 +512,11 @@ PTL.dialog = {
                 $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
                 $messageText = $dialog.find('div#messageZone > .messageText');
 
-          $('.ui-dialog-buttonpane').hide();
+          $feedAddInput.focus(function() {
+            $addButton.removeClass('ui-state-error');
+          });
+
+          $dialog.find('.ui-dialog-buttonpane').hide();
 
           $dialog.find("form").on("submit", function(e) {
             e.preventDefault();
@@ -554,8 +558,11 @@ PTL.dialog = {
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
             }).fail(function(xhr) {
+              console.error('zlop: %s (%s)');
               PTL.dialog.feedAddError($dialog, feedUrl, xhr);
             }).done(function(feeds) {
+
+              console.error('plop: %s (%s)', feeds[0]);
 
               $messageTitle.empty();
               $messageText.empty();
@@ -602,8 +609,7 @@ PTL.dialog = {
               } else {
                                 
                 PTL.feed.add(PTL.util.firstColumn(), feeds[0], '', 'mixed', 220, 'on', '', 16, '', true);
-
-                PTL.tab.saveTabs();
+                // PTL.tab.saveTabs();
                 PTL.dialog.kill($dialog);
                                 
               }
