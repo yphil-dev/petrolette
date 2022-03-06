@@ -451,10 +451,16 @@ i.tabCloser:hover {
   text-transform: capitalize;
   font-variant: small-caps;
   margin-left: var(--title-margin-left);
+  overflow: hidden;
   text-overflow: ellipsis;
   color: var(--color-feed-title);
-  overflow: hidden;
   width: 100px;
+  white-space: nowrap;
+}
+
+.feedsAddDivName {
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 

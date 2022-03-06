@@ -48,7 +48,6 @@ PTL.dialog = {
                  .text(PTL.tr('Reset all tabs and feeds to defaults?'))
                  .next('p#dialogBlurb').addClass('dangerous')
                  .text(PTL.tr('This action cannot be undone.'));
-
         }
       });
 
@@ -442,6 +441,48 @@ PTL.dialog = {
     // $('.introjs-button').button();
 
   },
+  feedAddError: function($dialog, errType, feedUrl, errorMessage) {
+
+    const $addButton = $dialog.find('button#feedAddButton').button(),
+      $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
+      $addButtonIcon = $addButton.find('i'),
+      $feedAddInput = $dialog.find('input#feedAddInput'),
+      $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+      $messageText = $dialog.find('div#messageZone > .messageText');
+
+    if (errType == 'empty') {
+  
+      $messageTitle
+        .addClass('warning')
+        .text(PTL.tr('Warning'));
+      $messageText
+        .text(PTL.tr('This field cannot be emptyy'));
+
+      return;
+    }
+
+    $addButtonIcon
+      .hide()
+      .removeClass('icon-refresh icon-checked spin');
+
+    $addButton
+      .addClass('ui-state-error')
+      .attr('title', PTL.tr('Add anyway'))
+      .on("click").click(function() {
+
+        feedUrl = DOMPurify.sanitize($feedAddInput.val());
+
+        if (feedUrl == '') {
+          PTL.dialog.feedAddError($dialog, 'empty', feedUrl, req.responseText);
+        } else {
+          PTL.feed.add(PTL.util.firstColumn(), feedUrl, '', 'mixed', 220, 'on', '', 16, '', true);
+        }
+
+      });
+
+    $addButtonText.text(PTL.tr('Add'));
+
+  },
   feedNew: function() {
 
     $('#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
@@ -488,35 +529,6 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          function feedAddError(feedUrl, errorMessage) {
-
-            $addButtonIcon
-              .hide()
-              .removeClass('icon-refresh icon-checked spin');
-
-            $addButton
-              .addClass('ui-state-error')
-              .attr('title', PTL.tr('Add anyway'))
-              .on("click").click(function() {
-
-                feedUrl = DOMPurify.sanitize($feedAddInput.val());
-
-                if (feedUrl == '') {
-                  emptyWarning();
-                  return;
-                }
-
-              });
-
-            $addButtonText.text(PTL.tr('Add'));
-
-            $messageTitle
-              .removeClass('warning')
-              .addClass('error')
-              .text(PTL.tr('Error'));
-            $messageText.text(errorMessage || PTL.tr('No feed found at this URL'));
-          }
-
           function emptyWarning() {
 
             $messageTitle
@@ -533,7 +545,7 @@ PTL.dialog = {
                   $multipleFeedsSelection = $('#multipleFeedsSelection');
 
             if (feedUrl == '') {
-              emptyWarning();
+              PTL.dialog.feedAddError($dialog, 'empty', feedUrl, null);
               return;
             }
 
@@ -551,7 +563,7 @@ PTL.dialog = {
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
             }).fail(function(req, _status, _xhr) {
-              feedAddError(feedUrl, req.responseText);
+              PTL.dialog.feedAddError($dialog, 'network', feedUrl, req.responseText);
             }).done(function(feeds) {
 
               $feedAddInput.val(feeds[0]);
@@ -559,11 +571,6 @@ PTL.dialog = {
               $addButtonIcon.removeClass('spin icon-error');
 
               $addButton.removeClass('ui-state-error');
-
-              let $column = $($('.ui-tabs-active')
-                              .find('a')
-                              .attr('href'))
-                  .find('.column').first();
 
               if (feeds.length > 1) {
 
@@ -577,14 +584,14 @@ PTL.dialog = {
                   let $feedRow = $('<div>')
                       .attr('class', 'flexBox feedsListDiv')
                       .append($('<div>')
-                              .attr('class', 'feedsAddDivName grow')
+                              .attr({class: 'feedsAddDivName grow', title: value})
                               .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
                               .append($('<a>').attr('href', value).text(value)))
                       .append($('<button>')
                               .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
                               .data('content', 'Add')
                               .click(function() {
-                                PTL.feed.add($column, value, '', 'mixed', 220, 'on', '', 16, '', true);
+                                PTL.feed.add(PTL.util.firstColumn(), value, '', 'mixed', 220, 'on', '', 16, '', true);
                               })
                               .text(PTL.tr('Add')));
                   
@@ -602,7 +609,7 @@ PTL.dialog = {
                 
               } else {
                                 
-                PTL.feed.add($column, feeds[0], '', 'mixed', 220, 'on', '', 16, '', true);
+                PTL.feed.add(PTL.util.firstColumn(), feeds[0], '', 'mixed', 220, 'on', '', 16, '', true);
 
                 PTL.tab.saveTabs();
                 PTL.dialog.kill($dialog);
@@ -610,7 +617,8 @@ PTL.dialog = {
               }
               
             }).always(function(req, status, _xhr) {
-              if (status === 'error') feedAddError(feedUrl, req.responseText);
+              if (status === 'error') PTL.dialog.feedAddError($dialog, 'network', feedUrl, req.responseText);
+              ;
             });
 
           });

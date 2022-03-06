@@ -28,8 +28,6 @@ var PTL = (function() {
 
         const preferredLang = PTL.util.getPreferredLang();
 
-        console.error('preferredLang: %s (%s)', preferredLang);
-
         for (const l of PTL.languages) if (preferredLang == l) PTL.language = preferredLang;
 
       } else {
