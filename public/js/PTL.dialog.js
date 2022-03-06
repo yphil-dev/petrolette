@@ -473,23 +473,12 @@ PTL.dialog = {
 
       $addButtonIcon
         .hide()
-                .removeClass('icon-refresh icon-checked spin');
+        .removeClass('icon-refresh icon-checked spin');
     }
 
     $addButton
       .addClass('ui-state-error')
-      .attr('title', PTL.tr('Add anyway'))
-      .on("click").click(function() {
-
-        feedUrl = DOMPurify.sanitize($feedAddInput.val());
-
-        if (feedUrl == '') {
-          PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
-        } else {
-          PTL.feed.add(PTL.util.firstColumn(), feedUrl, '', 'mixed', 220, 'on', '', 16, '', true);
-        }
-
-      });
+      .attr('title', PTL.tr('Add anyway'));
 
     $addButtonText.text(PTL.tr('Add'));
 
@@ -522,6 +511,8 @@ PTL.dialog = {
                 $feedAddInput = $dialog.find('input#feedAddInput'),
                 $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
                 $messageText = $dialog.find('div#messageZone > .messageText');
+
+          $('.ui-dialog-buttonpane').hide();
 
           $dialog.find("form").on("submit", function(e) {
             e.preventDefault();
@@ -564,7 +555,6 @@ PTL.dialog = {
               timeout: 2000
             }).fail(function(xhr) {
               PTL.dialog.feedAddError($dialog, feedUrl, xhr);
-              // PTL.dialog.feedAddError($dialog, 'network', feedUrl, req.responseText);
             }).done(function(feeds) {
 
               $messageTitle.empty();
@@ -578,8 +568,9 @@ PTL.dialog = {
 
               if (feeds.length > 1) {
 
-                $('div#feedsAddDiv').show();
-               
+                $('div#feedsAddDiv').show(); 
+                $('.ui-dialog-buttonpane').show();
+              
                 feeds.forEach(function(value) {
                   
                   let $feedRow = $('<div>')
@@ -617,9 +608,6 @@ PTL.dialog = {
                                 
               }
               
-            }).always(function(xhr) {
-              console.error('MSG: %s (%s)', xhr.responseText);
-              // if (status === 'error') PTL.dialog.feedAddError($dialog, feedUrl, xhr);
             });
 
           });
