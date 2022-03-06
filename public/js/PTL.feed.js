@@ -572,6 +572,8 @@ PTL.feed = {
            $favIcon.attr('src', '/static/images/rss.gif');
          });
     }
+
+    console.error('feedIconHash: %s (%s)',feedIconHash, feedUrl);
     
     if ($dataStore.data('status') == 'on') {
 

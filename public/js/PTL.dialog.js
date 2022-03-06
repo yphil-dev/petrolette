@@ -580,9 +580,9 @@ PTL.dialog = {
                               .attr('class', 'feedsAddDivName grow')
                               .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
                               .append($('<a>').attr('href', value).text(value)))
-                      .append($('<a>')
+                      .append($('<button>')
                               .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
-                              .attr('href', '#')
+                              .data('content', 'Add')
                               .click(function() {
                                 PTL.feed.add($column, value, '', 'mixed', 220, 'on', '', 16, '', true);
                               })
