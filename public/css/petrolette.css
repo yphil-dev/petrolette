@@ -1294,6 +1294,7 @@ video {
 .feedsListIcon {
   margin: 0 .2em 0 0;
   font-size: 1.2em;
+  flex: 0 1;
 }
 
 .feedsListDiv {
