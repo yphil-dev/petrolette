@@ -324,7 +324,6 @@ PTL.dialog = {
 
         const $addButton = $dialog.find('button#feedAddButton').button(),
             $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
-            $feedAddInput = $dialog.find('input#feedAddInput'),
             $addButtonIcon = $addButton.find('i'),
             $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
             $messageText = $dialog.find('div#messageZone > .messageText');
@@ -337,9 +336,6 @@ PTL.dialog = {
 
         if (xhr == 'empty') {
             $messageText.text(PTL.tr('This field cannot be empty'));
-
-            $addButton.attr('title', PTL.tr('This field cannot be empty'));
-
         } else {
 
             $messageText
@@ -354,24 +350,11 @@ PTL.dialog = {
             $addButtonIcon
                 .hide()
                 .removeClass('icon-refresh icon-checked spin');
-
-            $addButton.attr('title', PTL.tr('Add anyway'))
-                .on("click").click(function() {
-
-                    const feedUrl = DOMPurify.sanitize($feedAddInput.val());
-
-                    if (feedUrl == '') {
-                        PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
-                    }
-
-                    PTL.feed.add(PTL.util.firstColumn(), feedUrl, '', 'mixed', 220, 'on', '', 16, '', true);
-                    PTL.dialog.kill($dialog);
-
-                });
-
         }
 
-        $addButton.addClass('ui-state-error');
+        $addButton
+            .addClass('ui-state-error')
+            .attr('title', PTL.tr('Add anyway'));
 
         $addButtonText.text(PTL.tr('Add'));
 
@@ -428,7 +411,7 @@ PTL.dialog = {
                     });
 
                     $('form#feedNewDialogForm').submit(function() {
-                        
+
                         let feedUrl;
 
                         if (url) {
@@ -443,13 +426,13 @@ PTL.dialog = {
                             return;
                         }
 
-                        // $addButtonIcon
-                        //     .removeClass('icon-checked icon-error ui-state-error')
-                        //     .addClass('spin icon-refresh');
-                        // $addButton
-                        //     .removeClass('ui-state-error');
+                        $addButtonIcon
+                            .removeClass('icon-checked icon-error ui-state-error')
+                            .addClass('spin icon-refresh');
+                        $addButton
+                            .removeClass('ui-state-error');
 
-                        // $addButtonText.text('');
+                        $addButtonText.text('');
 
                         $.get('/discover', {
                             dataType: 'json',
