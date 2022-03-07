@@ -3,627 +3,11 @@
 PTL.dialog = {
     kill: function($dialog) {
         $dialog.dialog('close');
-        $('#ptlDialogs').empty();
-    },
-    resetTabs: function() {
-
-        $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
-
-            const $dialog = $(this),
-                $icon = $dialog.find('div#icon > i');
-
-            $icon.addClass('icon-refresh danger');
-
-            $dialog.dialog({
-                title: PTL.tr('Reset tabs and feeds'),
-                width: PTL.util.isMobile() ? 'auto' : 630,
-                buttons: [
-                    {
-                        text: PTL.tr('Cancel'),
-                        title: PTL.tr('Cancel'),
-                        class: 'translate',
-                        click: function() {
-                            PTL.dialog.kill($dialog);
-                        }
-                    },
-                    {
-                        text: PTL.tr('Reset'),
-                        title: PTL.tr('Wait! Are you sure?'),
-                        class: 'dangerous translate',
-                        click: function() {
-                            localStorage.clear();
-                            PTL.util.say(PTL.tr('All tabs and feeds restored to defaults'), 'success', true);
-                            PTL.dialog.kill($dialog);
-                            window.location.reload();
-                        }
-                    }
-                ],
-                open: function() {
-
-                    $('.ui-widget-overlay').on('click', function() {
-                        PTL.dialog.kill($dialog);
-                    });
-
-                    $dialog.find('h1')
-                        .text(PTL.tr('Reset all tabs and feeds to defaults?'))
-                        .next('p#dialogBlurb').addClass('dangerous')
-                        .text(PTL.tr('This action cannot be undone.'));
-                }
-            });
-
-            $dialog.dialog('open');
-
-        });
-
-    },
-    beg: function() {
-
-        $('#ptlDialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
-
-            const $dialog = $(this);
-
-            $dialog.dialog({
-                title: PTL.tr('Pétrolette needs you'),
-                width: PTL.util.isMobile() ? 'auto' : 430,
-                buttons: [
-                    {
-                        text: PTL.tr('Donate'),
-                        title: PTL.tr('Send your love to Pétrolette'),
-                        class: 'translate',
-                        click: function() {
-                            window.open('https://liberapay.com/yPhil/donate');
-                            PTL.dialog.kill($dialog);
-                        }
-                    },
-                    {
-                        text: PTL.tr('Ok'),
-                        title: PTL.tr('Ok'),
-                        class: 'translate',
-                        click: function() {
-                            PTL.dialog.kill($dialog);
-                        }
-                    }
-                ],
-                open: function() {
-
-                    $('.ui-widget-overlay').on('click', function() {
-                        PTL.dialog.kill($dialog);
-                    });
-
-                }
-            });
-
-            $dialog.dialog('open');
-
-        });
-    },
-    notify: function(title, text) {
-
-        const $notify = $('#notify');
-
-        $('#notify > h4').text(title),
-            $('#notify > p').text(text);
-
-        $notify.fadeIn('fast', 'linear', function() {
-            setTimeout(function() {
-                $notify.fadeOut('slow');
-            }, 5000);
-        });
-
-        $notify.click(function() {
-            $(this).fadeOut('fast');
-        });
-
-    },
-    about: function(petroletteVersion, favratVersion, feedratVersion) {
-
-        $('#ptlDialogs').load('/static/templates/dialogs.html #aboutDialog', function() {
-
-            const $dialog = $(this);
-
-            $dialog.dialog({
-                title: PTL.tr('About Pétrolette'),
-                width: PTL.util.isMobile() ? 'auto' : 360,
-                buttons: [
-                    {
-                        text: PTL.tr('Source code'),
-                        title: PTL.tr('Source code'),
-                        class: 'translate',
-                        click: function() {
-                            PTL.dialog.kill($dialog);
-                            window.open('https://framagit.org/yphil/petrolette');
-                        }
-                    },
-                    {
-                        text: PTL.tr('Changelog'),
-                        title: PTL.tr('Changelog'),
-                        class: 'translate',
-                        click: function() {
-                            PTL.dialog.kill($dialog);
-                            window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
-                        }
-                    },
-                    {
-                        text: PTL.tr('Ok'),
-                        title: PTL.tr('Ok'),
-                        class: 'translate',
-                        click: function() {
-                            PTL.dialog.kill($dialog);
-                        }
-                    }
-                ],
-                open: function() {
-
-                    $dialog.find('#petroletteVersion').text(petroletteVersion);
-                    $dialog.find('#feedratVersion').text(feedratVersion);
-                    $dialog.find('#favratVersion').text(favratVersion);
-
-                }
-            });
-
-            $dialog.dialog('open');
-        });
-    },
-    help: function() {
-
-        $('#ptlDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
-
-            const $dialog = $(this);
-
-            $dialog.dialog({
-                title: PTL.tr('Documentation'),
-                width: PTL.util.isMobile() ? 'auto' : '90%',
-                buttons: [
-                    {
-                        text: PTL.tr('Ok'),
-                        title: PTL.tr('Ok'),
-                        class: 'translate',
-                        click: function() {
-                            PTL.dialog.kill($dialog);
-                        }
-                    }
-                ],
-                open: function() {
-
-                    $('.ui-widget-overlay').on('click', function() {
-                        PTL.dialog.kill($dialog);
-                    });
-
-
-                    $('a.instanceUrl')
-                        .attr('href', window.location.href)
-                        .text(window.location.href);
-
-                    const ptlUrl = [location.protocol, '//', location.host, location.pathname].join('');
-
-                    $('.helpBookmarklet')
-                        .attr('href', 'javascript:void(window.open("' + ptlUrl + '?add="+encodeURIComponent(location.href)))');
-                    $('button.helpTour').on('click', function() {
-                        PTL.dialog.kill($dialog);
-                        PTL.dialog.tour('ui');
-                    });
-
-                    $('button.helpKbShortcuts').on('click', function() {
-                        PTL.sideMenu('close');
-                        PTL.dialog.kill($dialog);
-                        PTL.dialog.kbShortcuts();
-                    });
-
-                }
-            });
-
-            $dialog.dialog('open');
-        });
-    },
-    tour: function(type, step) {
-
-        const feedPrefs = introJs(),
-            feedNew = introJs(),
-            menu = introJs(),
-            ui = introJs();
-
-        ui.setOptions({
-            steps: [
-                {
-                    title: PTL.tr('Welcome to Pétrolette'),
-                    intro: PTL.tr('Learn to use it in a few easy steps') + ' 👋'
-                },
-                {
-                    title: PTL.tr("That's what it's all about"),
-                    element: 'li.feed',
-                    intro: PTL.tr('This is an RSS feed.') + ' <a class="docLink icon" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-globe"></i></a>'
-                },
-                {
-                    title: PTL.tr('New feed') + ' (<kbd class="key">' + PTL.kbShortcutNewFeed + '</kbd>)',
-                    element: 'div#newFeedButton',
-                    intro: PTL.tr('Click to add a feed.')
-                },
-                {
-                    title: PTL.tr('Feeds in tabs'),
-                    element: 'li[aria-controls=tab-1]',
-                    intro: PTL.tr('This is a tab. Tabs contain columns, that contain feeds.') + '<p>' + PTL.tr('Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it.') + '</p>'
-                },
-                {
-                    title: PTL.tr('Columns'),
-                    element: 'div.colButtons',
-                    intro: PTL.tr('Click + to add a column, and - to delete it.')
-                },
-                {
-                    title: PTL.tr('Refresh / reload this feed'),
-                    element: '.feedRefresh',
-                    intro: PTL.tr('Get the latest articles.')
-                },
-                {
-                    title: PTL.tr('Configure this feed'),
-                    element: '.feedPrefs',
-                    intro: PTL.tr('Configure this feed: URL, Name, Type (text, media, or both) and height / Nb of items.')
-                },
-                {
-                    title: PTL.tr('Delete feed'),
-                    element: '.feed-delete',
-                    intro: PTL.tr('Delete all the selected feeds.')
-                },
-                {
-                    title: PTL.tr('Select this feed'),
-                    element: '.feedSelect',
-                    intro: PTL.tr('Select this feed (for moving and deletion).')
-                },
-                {
-                    title: PTL.tr('Grip handle'),
-                    element: '.feedHandle',
-                    intro: PTL.tr('Grab this handle to move this feed (and all other selected feeds) within this tab, or into another.')
-                },
-                {
-                    title: PTL.tr('Open / close this feed'),
-                    element: 'div.feedToggle',
-                    intro: PTL.tr('Closed feeds are not loaded at startup, so as to speed things up.')
-                },
-                {
-                    title: PTL.tr('Search in feeds') + ' (<kbd class="key">' + PTL.kbShortcutFocusSearch + '</kbd>)',
-                    element: 'div#ptlSearch > i',
-                    intro: PTL.tr('Press ENTER to go to last result, ESCAPE to cancel.')
-                },
-                {
-                    title: PTL.tr('Tab control') + ' (<kbd class="key">' + PTL.kbShortcutFocusTab + '</kbd>)',
-                    element: 'div#logoTitle > div.logoTitle',
-                    intro: PTL.tr('Focus the current tab.') + '<p>' + PTL.tr('Very useful to browse tabs using the arrow keys.'),
-                    position: 'left'
-                },
-                {
-                    title: PTL.tr('You are home') + ' 🏠',
-                    element: 'div#menuButton',
-                    intro: PTL.tr('Use the menu to configure your Pétrolette.')
-                }
-            ]
-        });
-
-        feedPrefs.setOptions({
-            steps: [
-                {
-                    title: PTL.tr('Location of the feed'),
-                    element: '#feedGuessDiv',
-                    intro: '<p><span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss docLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>.</p><p><span class="translate" data-content="If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words">' + PTL.tr('If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words') + '.</span><p>',
-                    position: 'bottom'
-                },
-                {
-                    title: PTL.tr('Feed name (optional)'),
-                    element: 'input#feedNameInput',
-                    intro: PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.'),
-                    position: 'left'
-                },
-                {
-                    title: PTL.tr('Keep everything tidy'),
-                    element: '#feedTabSelect',
-                    intro: PTL.tr('Move this feed to another tab ; Use this menu when drag & drop is not available, like on a phone or a TV.'),
-                    position: 'bottom'
-                },
-                {
-                    title: PTL.tr('Feed type'),
-                    element: '#feedTypeDiv',
-                    intro: PTL.tr('The type of feed: It can be all text, all image, or mixed.'),
-                    position: 'top'
-                },
-                {
-                    title: PTL.tr('Height of the feed'),
-                    element: '#feedHeightDiv',
-                    intro: PTL.tr('Height of the feed\'s viewport.'),
-                    position: 'top'
-                },
-                {
-                    title: PTL.tr('Number of items'),
-                    element: '#feedMaxItemsDiv',
-                    intro: PTL.tr('Number of items to load ; 0 loads all items.'),
-                    position: 'top'
-                },
-                {
-                    title: PTL.tr('Have a nice read ☕ 📰'),
-                    element: '.button-ok',
-                    intro: PTL.tr('I think that\'s about it...') + ' <a href="https://framagit.org/yphil/petrolette/-/issues">' + PTL.tr('Any questions?') + '</a>',
-                    position: 'left'
-                }
-            ]
-        });
-
-        menu.setOptions({
-            steps: [
-                {
-                    title: PTL.tr('Feeds'),
-                    element: 'fieldset.feedsMenuForm',
-                    intro: '<h4>' + PTL.tr('Open') + '</h4>' + PTL.tr('Load / import a feeds file') + ' ; ' + PTL.tr('to append to or replace the existing feeds.') + '<h4>' + PTL.tr('Save') + '</h4>' + PTL.tr('Save / export a feeds file.') + '<h4>' + PTL.tr('Reset') + '</h4>' + PTL.tr('Reset Pétrolette with the default feeds.') + '<h4>' + PTL.tr('Connection to storage') + '</h4>' + PTL.tr('Connection to the cloud to synchronize tabs and feeds on all devices.'),
-                    position: 'right'
-                },
-                {
-                    title: PTL.tr('Search prefix'),
-                    element: 'fieldset.searchPrefixFieldset',
-                    intro: '<h4>' + PTL.tr('Search prefix') + '</h4>' + PTL.tr('Preferred Search engine for building search feeds.') + '<h4>' + PTL.tr('Restore default') + '</h4>' + PTL.tr('Restore default search prefix') + '.',
-                    position: 'right'
-                },
-                {
-                    title: 'Pétrolette',
-                    element: 'fieldset.ptlFieldset',
-                    intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<iframe width="320" sandbox="allow-same-origin allow-scripts allow-popups" src="https://exode.me/videos/embed/' + PTL.tr('e9156a58-a059-430d-ad36-4b14ab3b00bf') + '" frameborder="0" allowfullscreen style="margin-top:0.3em;"></iframe>' + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
-                    position: 'right'
-                },
-                {
-                    title: PTL.tr('Pétrolette needs you'),
-                    element: 'fieldset#support',
-                    intro: '<p>' + PTL.tr('Pétrolette is free software. However the development requires') + ' <a class="docLink" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">' + PTL.tr('a lot of time') + '</a> ' + PTL.tr('and') + ' <a class="translate docLink" data-content="a lot of work." href="https://framagit.org/yphil/petrolette/-/commits/master">' + PTL.tr('a lot of work.') + '</a> ' + PTL.tr('In order to keep maintaining Pétrolette and developing her with new features I need your help.') + '</p>' + '<p>' + PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.') + '</p>',
-                    position: 'right'
-                }
-            ]
-        });
-
-        feedNew.setOptions({
-            steps: [
-                {
-                    title: PTL.tr('Three options'),
-                    element: 'input#feedAddInput',
-                    intro: '<h4>' + PTL.tr('The valid URL of a feed') + '</h4>' + PTL.tr('The feed will be added to the current tab.') + '<h4>' + PTL.tr('The valid URL of a website') + '</h4>' + PTL.tr('Pétrolette will search for a feed at this URL, then add it to the current tab.') + '<h4>' + PTL.tr('A list of words') + '</h4>' + PTL.tr('Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words'),
-                    position: 'top'
-                }
-            ]
-        });
-
-        ui.setOption('prevLabel', PTL.tr('Prev'));
-        ui.setOption('nextLabel', PTL.tr('Next'));
-        ui.setOption('skipLabel', 'x');
-        ui.setOption('doneLabel', PTL.tr('Got it!'));
-
-        feedPrefs.setOption('prevLabel', PTL.tr('Prev'));
-        feedPrefs.setOption('nextLabel', PTL.tr('Next'));
-        feedPrefs.setOption('skipLabel', 'x');
-        feedPrefs.setOption('doneLabel', PTL.tr('Got it!'));
-
-        menu.setOption('prevLabel', PTL.tr('Prev'));
-        menu.setOption('nextLabel', PTL.tr('Next'));
-        menu.setOption('skipLabel', 'x');
-        menu.setOption('doneLabel', PTL.tr('Got it!'));
-
-        feedPrefs.setOption('overlayOpacity', 0);
-        ui.setOption('overlayOpacity', 0.2);
-
-        feedPrefs.setOption('hideNext', true);
-        feedPrefs.setOption('hidePrev', true);
-
-        feedNew.setOption('hideNext', true);
-        feedNew.setOption('hidePrev', true);
-        feedNew.setOption('showBullets', false);
-
-        if (step) {
-
-            if (type === 'feedPrefs') {
-                PTL.sideMenu('close');
-                ui.exit();
-                menu.exit();
-                feedPrefs.goToStepNumber(step).start();
-            }
-
-            if (type === 'menu') {
-                ui.exit();
-                feedPrefs.exit();
-                menu.goToStepNumber(step).start();
-            }
-
-        } else if (type == 'ui') {
-            PTL.sideMenu('close');
-            feedPrefs.exit();
-            menu.exit();
-            $('#menu > .handle').click();
-            $('#tabs').tabs('option', 'active', 0);
-            $('.feed').first().find('.collapsible').show('fade', 'fast');
-            ui.start();
-        } else {
-            // feedNew.start();
-            feedNew.goToStepNumber(1).start();
-
-        }
-
-        // $('.introjs-button').button();
-
-    },
-    feedAddError: function($dialog, feedUrl, xhr) {
-
-        const $addButton = $dialog.find('button#feedAddButton').button(),
-            $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
-            $addButtonIcon = $addButton.find('i'),
-            $feedAddInput = $dialog.find('input#feedAddInput'),
-            $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
-            $messageText = $dialog.find('div#messageZone > .messageText');
-
-        $messageTitle.empty();
-        $messageText.empty();
-        // $('div#feedsAddDiv').empty();
-
-        $messageTitle.append($('<i>').attr('class', 'icon-warning dangerous'))
-
-        if (xhr == 'empty') {
-            $messageText.text(PTL.tr('This field cannot be empty'));
-        } else {
-
-            $messageText
-                .append($('<span>')
-                    .attr('class', 'messageTitleErrorCode')
-                    .text(xhr.statusText + ' ('))
-                .append($('<a>')
-                    .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status)
-                    .text(xhr.status))
-                .append($('<span>').text(') ' + xhr.responseText));
-
-            $addButtonIcon
-                .hide()
-                .removeClass('icon-refresh icon-checked spin');
-        }
-
-        $addButton
-            .addClass('ui-state-error')
-            .attr('title', PTL.tr('Add anyway'));
-
-        $addButtonText.text(PTL.tr('Add'));
-
-    },
-    feedNew: function(url) {
-
-        $('#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
-
-            const $dialog = $(this);
-
-            $dialog.dialog({
-                title: PTL.tr('New feed'),
-                width: PTL.util.isMobile() ? 'auto' : 630,
-                modal: true,
-                buttons: [
-                    {
-                        text: PTL.tr('Close'),
-                        title: PTL.tr('Close'),
-                        class: 'translate',
-                        click: function() {
-                            PTL.dialog.kill($dialog);
-                        }
-                    }
-                ],
-                open: function() {
-
-                    const $addButton = $dialog.find('button#feedAddButton').button(),
-                        $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
-                        $addButtonIcon = $addButton.find('i'),
-                        $feedAddInput = $dialog.find('input#feedAddInput'),
-                        $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
-                        $messageText = $dialog.find('div#messageZone > .messageText');
-
-                    $feedAddInput.focus(function() {
-                        $addButton.removeClass('ui-state-error');
-                        $messageTitle.empty();
-                        $messageText.empty();
-                    });
-
-                    $dialog.find("form").on("submit", function(e) {
-                        e.preventDefault();
-                    });
-
-                    $('.helpTourDialogItem')
-                        .append($('<i>')
-                            .attr('class', 'icon-help helpIcon')
-                            .attr('title', PTL.tr('Help') + ' - ' + PTL.tr('Three options'))
-                            .on('click', function() {
-                                PTL.dialog.tour('feedNew');
-                            }));
-
-                    $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
-                        PTL.dialog.kill($dialog);
-                    });
-
-                    $('form#feedNewDialogForm').submit(function() {
-
-                        let feedUrl;
-
-                        if (url) {
-                            feedUrl = DOMPurify.sanitize(url);
-                            $feedAddInput.val(feedUrl);
-                        } else {
-                            feedUrl = DOMPurify.sanitize($feedAddInput.val());
-                        }
-                        
-                        if (feedUrl == '') {
-                            PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
-                            return;
-                        }
-
-                        $addButtonIcon
-                            .removeClass('icon-checked icon-error ui-state-error')
-                            .addClass('spin icon-refresh');
-                        $addButton
-                            .removeClass('ui-state-error');
-
-                        $addButtonText.text('');
-
-                        $.get('/discover', {
-                            dataType: 'json',
-                            url: feedUrl,
-                            searchPrefix: PTL.prefs.readConfig('searchPrefix'),
-                            timeout: 2000
-                        }).fail(function(xhr) {
-                            PTL.dialog.feedAddError($dialog, feedUrl, xhr);
-                        }).done(function(feeds) {
-
-                            $messageTitle.empty();
-                            $messageText.empty();
-
-                            $feedAddInput.val(feeds[0]);
-
-                            $addButtonIcon.removeClass('spin icon-error');
-
-                            $addButton.removeClass('ui-state-error');
-
-                            if (feeds.length > 1) {
-
-                                $('div#feedsAddDiv').show();
-
-                                feeds.forEach(function(value) {
-
-                                    let $feedRow = $('<div>')
-                                        .attr('class', 'flexBox feedsListDiv')
-                                        .append($('<div>')
-                                            .attr({ class: 'feedsAddDivName grow', title: value })
-                                            .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
-                                            .append($('<a>').attr('href', value).text(value)))
-                                        .append($('<button>')
-                                            .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
-                                            .data('content', 'Add')
-                                            .click(function() {
-                                                PTL.feed.add(PTL.util.firstColumn(), value, '', 'mixed', 220, 'on', '', 16, '', true);
-                                            })
-                                            .text(PTL.tr('Add')));
-
-                                    $('#feedsAddDivList').append($feedRow)
-
-                                });
-
-                                $addButtonIcon.removeClass('spin icon-refresh');
-
-                                $addButtonText.text(PTL.tr('Add'))
-
-                            } else {
-
-                                PTL.feed.add(PTL.util.firstColumn(), feeds[0], '', 'mixed', 220, 'on', '', 16, '', true);
-                                // PTL.tab.saveTabs();
-                                PTL.dialog.kill($dialog);
-
-                            }
-
-                        });
-
-                    });
-
-                }
-            });
-
-            $dialog.dialog('open');
-        });
-
+        $('div#ptlDialogs').empty();
     },
     feedPrefs: function($button, isNewFeed) {
 
-        $('#ptlDialogs').load('/static/templates/dialogs.html #feedPrefsDialog', function() {
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #feedPrefsDialog', function() {
 
             const $dialog = $(this),
                 $dataStore = $button.parent().parent(),
@@ -936,9 +320,186 @@ PTL.dialog = {
         });
 
     },
+    feedAddError: function($dialog, feedUrl, xhr) {
+
+        const $addButton = $dialog.find('button#feedAddButton').button(),
+            $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
+            $addButtonIcon = $addButton.find('i'),
+            $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+            $messageText = $dialog.find('div#messageZone > .messageText');
+
+        $messageTitle.empty();
+        $messageText.empty();
+        // $('div#feedsAddDiv').empty();
+
+        $messageTitle.append($('<i>').attr('class', 'icon-warning dangerous'))
+
+        if (xhr == 'empty') {
+            $messageText.text(PTL.tr('This field cannot be empty'));
+        } else {
+
+            $messageText
+                .append($('<span>')
+                    .attr('class', 'messageTitleErrorCode')
+                    .text(xhr.statusText + ' ('))
+                .append($('<a>')
+                    .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status)
+                    .text(xhr.status))
+                .append($('<span>').text(') ' + xhr.responseText));
+
+            $addButtonIcon
+                .hide()
+                .removeClass('icon-refresh icon-checked spin');
+        }
+
+        $addButton
+            .addClass('ui-state-error')
+            .attr('title', PTL.tr('Add anyway'));
+
+        $addButtonText.text(PTL.tr('Add'));
+
+    },
+    feedNew: function(url) {
+
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
+
+            const $dialog = $(this);
+
+            $dialog.dialog({
+                title: PTL.tr('New feed'),
+                width: PTL.util.isMobile() ? 'auto' : 630,
+                modal: true,
+                buttons: [
+                    {
+                        text: PTL.tr('Close'),
+                        title: PTL.tr('Close'),
+                        class: 'translate',
+                        click: function() {
+                            PTL.dialog.kill($dialog);
+                        }
+                    }
+                ],
+                open: function() {
+
+                    const $addButton = $dialog.find('button#feedAddButton').button(),
+                        $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
+                        $addButtonIcon = $addButton.find('i'),
+                        $feedAddInput = $dialog.find('input#feedAddInput'),
+                        $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+                        $messageText = $dialog.find('div#messageZone > .messageText');
+
+                    $feedAddInput.focus(function() {
+                        $addButton.removeClass('ui-state-error');
+                        $messageTitle.empty();
+                        $messageText.empty();
+                    });
+
+                    $dialog.find("form").on("submit", function(e) {
+                        e.preventDefault();
+                    });
+
+                    $('.helpTourDialogItem')
+                        .append($('<i>')
+                            .attr('class', 'icon-help helpIcon')
+                            .attr('title', PTL.tr('Help') + ' - ' + PTL.tr('Three options'))
+                            .on('click', function() {
+                                PTL.dialog.tour('feedNew');
+                            }));
+
+                    $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
+                        PTL.dialog.kill($dialog);
+                    });
+
+                    $('form#feedNewDialogForm').submit(function() {
+
+                        let feedUrl;
+
+                        if (url) {
+                            feedUrl = DOMPurify.sanitize(url);
+                            $feedAddInput.val(feedUrl);
+                        } else {
+                            feedUrl = DOMPurify.sanitize($feedAddInput.val());
+                        }
+                        
+                        if (feedUrl == '') {
+                            PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
+                            return;
+                        }
+
+                        $addButtonIcon
+                            .removeClass('icon-checked icon-error ui-state-error')
+                            .addClass('spin icon-refresh');
+                        $addButton
+                            .removeClass('ui-state-error');
+
+                        $addButtonText.text('');
+
+                        $.get('/discover', {
+                            dataType: 'json',
+                            url: feedUrl,
+                            searchPrefix: PTL.prefs.readConfig('searchPrefix'),
+                            timeout: 2000
+                        }).fail(function(xhr) {
+                            PTL.dialog.feedAddError($dialog, feedUrl, xhr);
+                        }).done(function(feeds) {
+
+                            $messageTitle.empty();
+                            $messageText.empty();
+
+                            $feedAddInput.val(feeds[0]);
+
+                            $addButtonIcon.removeClass('spin icon-error');
+
+                            $addButton.removeClass('ui-state-error');
+
+                            if (feeds.length > 1) {
+
+                                $('div#feedsAddDiv').show();
+
+                                feeds.forEach(function(value) {
+
+                                    let $feedRow = $('<div>')
+                                        .attr('class', 'flexBox feedsListDiv')
+                                        .append($('<div>')
+                                            .attr({ class: 'feedsAddDivName grow', title: value })
+                                            .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
+                                            .append($('<a>').attr('href', value).text(value)))
+                                        .append($('<button>')
+                                            .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
+                                            .data('content', 'Add')
+                                                .click(function(e) {
+                                                    e.preventDefault();
+
+                                                PTL.feed.add(PTL.util.firstColumn(), value, '', 'mixed', 220, 'on', '', 16, '', true);
+                                            })
+                                            .text(PTL.tr('Add')));
+
+                                    $('#feedsAddDivList').append($feedRow)
+
+                                });
+
+                                $addButtonIcon.removeClass('spin icon-refresh');
+
+                                $addButtonText.text(PTL.tr('Add'))
+
+                            } else {
+
+                                PTL.feed.add(PTL.util.firstColumn(), feeds[0], '', 'mixed', 220, 'on', '', 16, '', true);
+                                // PTL.tab.saveTabs();
+                                PTL.dialog.kill($dialog);
+
+                            }
+                        });
+                    });
+                }
+            });
+            $dialog.dialog('open');
+        });
+
+    },
     killColumn: function($button) {
 
-        $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
                 $column = $button.parent().parent(),
@@ -995,7 +556,7 @@ PTL.dialog = {
     },
     kbShortcuts: function() {
 
-        $('#ptlDialogs').load('/static/templates/dialogs.html #kbShortcuts', function() {
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #kbShortcuts', function() {
 
             const $dialog = $(this);
 
@@ -1029,7 +590,7 @@ PTL.dialog = {
     },
     killTab: function($button) {
 
-        $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
                 $tabs = $('#tabs'),
@@ -1096,7 +657,7 @@ PTL.dialog = {
     },
     killFeed: function($button, $selectedFeeds) {
 
-        $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
                 thisFeedId = $button.parent().parent().parent().parent().attr('id'),
@@ -1167,7 +728,7 @@ PTL.dialog = {
     },
     importFeeds: function(existingFeeds, importedFeedsFile) {
 
-        $('#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
                 $icon = $dialog.find('div#icon > i');
@@ -1231,7 +792,7 @@ PTL.dialog = {
     },
     editTab: function($tab) {
 
-        $('#ptlDialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
 
             const $dialog = $(this);
 
@@ -1299,5 +860,440 @@ PTL.dialog = {
                 .dialog('open');
             return;
         });
+    },
+        help: function() {
+
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
+
+            const $dialog = $(this);
+
+            $dialog.dialog({
+                title: PTL.tr('Documentation'),
+                width: PTL.util.isMobile() ? 'auto' : '90%',
+                buttons: [
+                    {
+                        text: PTL.tr('Ok'),
+                        title: PTL.tr('Ok'),
+                        class: 'translate',
+                        click: function() {
+                            PTL.dialog.kill($dialog);
+                        }
+                    }
+                ],
+                open: function() {
+
+                    $('.ui-widget-overlay').on('click', function() {
+                        PTL.dialog.kill($dialog);
+                    });
+
+
+                    $('a.instanceUrl')
+                        .attr('href', window.location.href)
+                        .text(window.location.href);
+
+                    const ptlUrl = [location.protocol, '//', location.host, location.pathname].join('');
+
+                    $('.helpBookmarklet')
+                        .attr('href', 'javascript:void(window.open("' + ptlUrl + '?add="+encodeURIComponent(location.href)))');
+                    $('button.helpTour').on('click', function() {
+                        PTL.dialog.kill($dialog);
+                        PTL.dialog.tour('ui');
+                    });
+
+                    $('button.helpKbShortcuts').on('click', function() {
+                        PTL.sideMenu('close');
+                        PTL.dialog.kill($dialog);
+                        PTL.dialog.kbShortcuts();
+                    });
+
+                }
+            });
+
+            $dialog.dialog('open');
+        });
+        },    resetTabs: function() {
+
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+
+            const $dialog = $(this),
+                $icon = $dialog.find('div#icon > i');
+
+            $icon.addClass('icon-refresh danger');
+
+            $dialog.dialog({
+                title: PTL.tr('Reset tabs and feeds'),
+                width: PTL.util.isMobile() ? 'auto' : 630,
+                buttons: [
+                    {
+                        text: PTL.tr('Cancel'),
+                        title: PTL.tr('Cancel'),
+                        class: 'translate',
+                        click: function() {
+                            PTL.dialog.kill($dialog);
+                        }
+                    },
+                    {
+                        text: PTL.tr('Reset'),
+                        title: PTL.tr('Wait! Are you sure?'),
+                        class: 'dangerous translate',
+                        click: function() {
+                            localStorage.clear();
+                            PTL.util.say(PTL.tr('All tabs and feeds restored to defaults'), 'success', true);
+                            PTL.dialog.kill($dialog);
+                            window.location.reload();
+                        }
+                    }
+                ],
+                open: function() {
+
+                    $('.ui-widget-overlay').on('click', function() {
+                        PTL.dialog.kill($dialog);
+                    });
+
+                    $dialog.find('h1')
+                        .text(PTL.tr('Reset all tabs and feeds to defaults?'))
+                        .next('p#dialogBlurb').addClass('dangerous')
+                        .text(PTL.tr('This action cannot be undone.'));
+                }
+            });
+
+            $dialog.dialog('open');
+
+        });
+
+    },
+    beg: function() {
+
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
+
+            const $dialog = $(this);
+
+            $dialog.dialog({
+                title: PTL.tr('Pétrolette needs you'),
+                width: PTL.util.isMobile() ? 'auto' : 430,
+                buttons: [
+                    {
+                        text: PTL.tr('Donate'),
+                        title: PTL.tr('Send your love to Pétrolette'),
+                        class: 'translate',
+                        click: function() {
+                            window.open('https://liberapay.com/yPhil/donate');
+                            PTL.dialog.kill($dialog);
+                        }
+                    },
+                    {
+                        text: PTL.tr('Ok'),
+                        title: PTL.tr('Ok'),
+                        class: 'translate',
+                        click: function() {
+                            PTL.dialog.kill($dialog);
+                        }
+                    }
+                ],
+                open: function() {
+
+                    $('.ui-widget-overlay').on('click', function() {
+                        PTL.dialog.kill($dialog);
+                    });
+
+                }
+            });
+
+            $dialog.dialog('open');
+
+        });
+    },
+    notify: function(title, text) {
+
+        const $notify = $('#notify');
+
+        $('#notify > h4').text(title),
+            $('#notify > p').text(text);
+
+        $notify.fadeIn('fast', 'linear', function() {
+            setTimeout(function() {
+                $notify.fadeOut('slow');
+            }, 5000);
+        });
+
+        $notify.click(function() {
+            $(this).fadeOut('fast');
+        });
+
+    },
+    about: function(petroletteVersion, favratVersion, feedratVersion) {
+
+        $('div#ptlDialogs').load('/static/templates/dialogs.html #aboutDialog', function() {
+
+            const $dialog = $(this);
+
+            $dialog.dialog({
+                title: PTL.tr('About Pétrolette'),
+                width: PTL.util.isMobile() ? 'auto' : 360,
+                buttons: [
+                    {
+                        text: PTL.tr('Source code'),
+                        title: PTL.tr('Source code'),
+                        class: 'translate',
+                        click: function() {
+                            PTL.dialog.kill($dialog);
+                            window.open('https://framagit.org/yphil/petrolette');
+                        }
+                    },
+                    {
+                        text: PTL.tr('Changelog'),
+                        title: PTL.tr('Changelog'),
+                        class: 'translate',
+                        click: function() {
+                            PTL.dialog.kill($dialog);
+                            window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
+                        }
+                    },
+                    {
+                        text: PTL.tr('Ok'),
+                        title: PTL.tr('Ok'),
+                        class: 'translate',
+                        click: function() {
+                            PTL.dialog.kill($dialog);
+                        }
+                    }
+                ],
+                open: function() {
+
+                    $dialog.find('#petroletteVersion').text(petroletteVersion);
+                    $dialog.find('#feedratVersion').text(feedratVersion);
+                    $dialog.find('#favratVersion').text(favratVersion);
+
+                }
+            });
+
+            $dialog.dialog('open');
+        });
+    },
+    tour: function(type, step) {
+
+        const feedPrefs = introJs(),
+            feedNew = introJs(),
+            menu = introJs(),
+            ui = introJs();
+
+        ui.setOptions({
+            steps: [
+                {
+                    title: PTL.tr('Welcome to Pétrolette'),
+                    intro: PTL.tr('Learn to use it in a few easy steps') + ' 👋'
+                },
+                {
+                    title: PTL.tr("That's what it's all about"),
+                    element: 'li.feed',
+                    intro: PTL.tr('This is an RSS feed.') + ' <a class="docLink icon" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS"><i class="icon-globe"></i></a>'
+                },
+                {
+                    title: PTL.tr('New feed') + ' (<kbd class="key">' + PTL.kbShortcutNewFeed + '</kbd>)',
+                    element: 'div#newFeedButton',
+                    intro: PTL.tr('Click to add a feed.')
+                },
+                {
+                    title: PTL.tr('Feeds in tabs'),
+                    element: 'li[aria-controls=tab-1]',
+                    intro: PTL.tr('This is a tab. Tabs contain columns, that contain feeds.') + '<p>' + PTL.tr('Click on a tab to display it ; Click the current/selected tab to change its name and position, drag to move it.') + '</p>'
+                },
+                {
+                    title: PTL.tr('Columns'),
+                    element: 'div.colButtons',
+                    intro: PTL.tr('Click + to add a column, and - to delete it.')
+                },
+                {
+                    title: PTL.tr('Refresh / reload this feed'),
+                    element: '.feedRefresh',
+                    intro: PTL.tr('Get the latest articles.')
+                },
+                {
+                    title: PTL.tr('Configure this feed'),
+                    element: '.feedPrefs',
+                    intro: PTL.tr('Configure this feed: URL, Name, Type (text, media, or both) and height / Nb of items.')
+                },
+                {
+                    title: PTL.tr('Delete feed'),
+                    element: '.feed-delete',
+                    intro: PTL.tr('Delete all the selected feeds.')
+                },
+                {
+                    title: PTL.tr('Select this feed'),
+                    element: '.feedSelect',
+                    intro: PTL.tr('Select this feed (for moving and deletion).')
+                },
+                {
+                    title: PTL.tr('Grip handle'),
+                    element: '.feedHandle',
+                    intro: PTL.tr('Grab this handle to move this feed (and all other selected feeds) within this tab, or into another.')
+                },
+                {
+                    title: PTL.tr('Open / close this feed'),
+                    element: 'div.feedToggle',
+                    intro: PTL.tr('Closed feeds are not loaded at startup, so as to speed things up.')
+                },
+                {
+                    title: PTL.tr('Search in feeds') + ' (<kbd class="key">' + PTL.kbShortcutFocusSearch + '</kbd>)',
+                    element: 'div#ptlSearch > i',
+                    intro: PTL.tr('Press ENTER to go to last result, ESCAPE to cancel.')
+                },
+                {
+                    title: PTL.tr('Tab control') + ' (<kbd class="key">' + PTL.kbShortcutFocusTab + '</kbd>)',
+                    element: 'div#logoTitle > div.logoTitle',
+                    intro: PTL.tr('Focus the current tab.') + '<p>' + PTL.tr('Very useful to browse tabs using the arrow keys.'),
+                    position: 'left'
+                },
+                {
+                    title: PTL.tr('You are home') + ' 🏠',
+                    element: 'div#menuButton',
+                    intro: PTL.tr('Use the menu to configure your Pétrolette.')
+                }
+            ]
+        });
+
+        feedPrefs.setOptions({
+            steps: [
+                {
+                    title: PTL.tr('Location of the feed'),
+                    element: '#feedGuessDiv',
+                    intro: '<p><span class="translate" data-content="Enter a website address URL and click search, then OK, or simply enter the URL of the">' + PTL.tr('Enter a website address/URL and click search, then OK, or simply enter the URL of the') + '</span> <a class="help-rss docLink" href="https://' + PTL.language + '.wikipedia.org/wiki/RSS">' + PTL.tr('feed') + '</a>.</p><p><span class="translate" data-content="If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words">' + PTL.tr('If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words') + '.</span><p>',
+                    position: 'bottom'
+                },
+                {
+                    title: PTL.tr('Feed name (optional)'),
+                    element: 'input#feedNameInput',
+                    intro: PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.'),
+                    position: 'left'
+                },
+                {
+                    title: PTL.tr('Keep everything tidy'),
+                    element: '#feedTabSelect',
+                    intro: PTL.tr('Move this feed to another tab ; Use this menu when drag & drop is not available, like on a phone or a TV.'),
+                    position: 'bottom'
+                },
+                {
+                    title: PTL.tr('Feed type'),
+                    element: '#feedTypeDiv',
+                    intro: PTL.tr('The type of feed: It can be all text, all image, or mixed.'),
+                    position: 'top'
+                },
+                {
+                    title: PTL.tr('Height of the feed'),
+                    element: '#feedHeightDiv',
+                    intro: PTL.tr('Height of the feed\'s viewport.'),
+                    position: 'top'
+                },
+                {
+                    title: PTL.tr('Number of items'),
+                    element: '#feedMaxItemsDiv',
+                    intro: PTL.tr('Number of items to load ; 0 loads all items.'),
+                    position: 'top'
+                },
+                {
+                    title: PTL.tr('Have a nice read ☕ 📰'),
+                    element: '.button-ok',
+                    intro: PTL.tr('I think that\'s about it...') + ' <a href="https://framagit.org/yphil/petrolette/-/issues">' + PTL.tr('Any questions?') + '</a>',
+                    position: 'left'
+                }
+            ]
+        });
+
+        menu.setOptions({
+            steps: [
+                {
+                    title: PTL.tr('Feeds'),
+                    element: 'fieldset.feedsMenuForm',
+                    intro: '<h4>' + PTL.tr('Open') + '</h4>' + PTL.tr('Load / import a feeds file') + ' ; ' + PTL.tr('to append to or replace the existing feeds.') + '<h4>' + PTL.tr('Save') + '</h4>' + PTL.tr('Save / export a feeds file.') + '<h4>' + PTL.tr('Reset') + '</h4>' + PTL.tr('Reset Pétrolette with the default feeds.') + '<h4>' + PTL.tr('Connection to storage') + '</h4>' + PTL.tr('Connection to the cloud to synchronize tabs and feeds on all devices.'),
+                    position: 'right'
+                },
+                {
+                    title: PTL.tr('Search prefix'),
+                    element: 'fieldset.searchPrefixFieldset',
+                    intro: '<h4>' + PTL.tr('Search prefix') + '</h4>' + PTL.tr('Preferred Search engine for building search feeds.') + '<h4>' + PTL.tr('Restore default') + '</h4>' + PTL.tr('Restore default search prefix') + '.',
+                    position: 'right'
+                },
+                {
+                    title: 'Pétrolette',
+                    element: 'fieldset.ptlFieldset',
+                    intro: '<h4>' + PTL.tr('Bookmark to quickly add a website\'s feed to Pétrolette') + '</h4>' + PTL.tr('Bookmark this link, and use it to add a website\'s feed to Pétrolette.') + '<iframe width="320" sandbox="allow-same-origin allow-scripts allow-popups" src="https://exode.me/videos/embed/' + PTL.tr('e9156a58-a059-430d-ad36-4b14ab3b00bf') + '" frameborder="0" allowfullscreen style="margin-top:0.3em;"></iframe>' + '<h4>' + PTL.tr('Source') + '</h4>' + PTL.tr('Use the force, read the source') + '.' + '<h4>' + PTL.tr('License') + '</h4>' + PTL.tr('JavaScript licensing information') + '.',
+                    position: 'right'
+                },
+                {
+                    title: PTL.tr('Pétrolette needs you'),
+                    element: 'fieldset#support',
+                    intro: '<p>' + PTL.tr('Pétrolette is free software. However the development requires') + ' <a class="docLink" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">' + PTL.tr('a lot of time') + '</a> ' + PTL.tr('and') + ' <a class="translate docLink" data-content="a lot of work." href="https://framagit.org/yphil/petrolette/-/commits/master">' + PTL.tr('a lot of work.') + '</a> ' + PTL.tr('In order to keep maintaining Pétrolette and developing her with new features I need your help.') + '</p>' + '<p>' + PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.') + '</p>',
+                    position: 'right'
+                }
+            ]
+        });
+
+        feedNew.setOptions({
+            steps: [
+                {
+                    title: PTL.tr('Three options'),
+                    element: 'input#feedAddInput',
+                    intro: '<h4>' + PTL.tr('The valid URL of a feed') + '</h4>' + PTL.tr('The feed will be added to the current tab.') + '<h4>' + PTL.tr('The valid URL of a website') + '</h4>' + PTL.tr('Pétrolette will search for a feed at this URL, then add it to the current tab.') + '<h4>' + PTL.tr('A list of words') + '</h4>' + PTL.tr('Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words'),
+                    position: 'top'
+                }
+            ]
+        });
+
+        ui.setOption('prevLabel', PTL.tr('Prev'));
+        ui.setOption('nextLabel', PTL.tr('Next'));
+        ui.setOption('skipLabel', 'x');
+        ui.setOption('doneLabel', PTL.tr('Got it!'));
+
+        feedPrefs.setOption('prevLabel', PTL.tr('Prev'));
+        feedPrefs.setOption('nextLabel', PTL.tr('Next'));
+        feedPrefs.setOption('skipLabel', 'x');
+        feedPrefs.setOption('doneLabel', PTL.tr('Got it!'));
+
+        menu.setOption('prevLabel', PTL.tr('Prev'));
+        menu.setOption('nextLabel', PTL.tr('Next'));
+        menu.setOption('skipLabel', 'x');
+        menu.setOption('doneLabel', PTL.tr('Got it!'));
+
+        feedPrefs.setOption('overlayOpacity', 0);
+        ui.setOption('overlayOpacity', 0.2);
+
+        feedPrefs.setOption('hideNext', true);
+        feedPrefs.setOption('hidePrev', true);
+
+        feedNew.setOption('hideNext', true);
+        feedNew.setOption('hidePrev', true);
+        feedNew.setOption('showBullets', false);
+
+        if (step) {
+
+            if (type === 'feedPrefs') {
+                PTL.sideMenu('close');
+                ui.exit();
+                menu.exit();
+                feedPrefs.goToStepNumber(step).start();
+            }
+
+            if (type === 'menu') {
+                ui.exit();
+                feedPrefs.exit();
+                menu.goToStepNumber(step).start();
+            }
+
+        } else if (type == 'ui') {
+            PTL.sideMenu('close');
+            feedPrefs.exit();
+            menu.exit();
+            $('#menu > .handle').click();
+            $('#tabs').tabs('option', 'active', 0);
+            $('.feed').first().find('.collapsible').show('fade', 'fast');
+            ui.start();
+        } else {
+            // feedNew.start();
+            feedNew.goToStepNumber(1).start();
+
+        }
+
+        // $('.introjs-button').button();
+
     }
 };

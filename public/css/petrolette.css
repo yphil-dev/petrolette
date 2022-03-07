@@ -130,7 +130,7 @@ a:active {
 }
 
 .warning {
-    color: var(--color-ui-warning);
+  color: var(--color-ui-warning);
 }
 
 /* .fancybox-caption a, */
@@ -146,13 +146,13 @@ a:active {
 /*   color: var(--color-link); */
 /* } */
 
-.ui-state-default a,
-.ui-state-default a:link,
-.ui-state-default a:visited,
-.ui-state-default:not(.ui-slider-handle),
-.ui-widget-content .ui-state-default:not(.ui-slider-handle) {
-  color: var(--color-link);
-}
+/* .ui-state-default a, */
+/* .ui-state-default a:link, */
+/* .ui-state-default a:visited, */
+/* .ui-state-default:not(.ui-slider-handle), */
+/* .ui-widget-content .ui-state-default:not(.ui-slider-handle) { */
+/*   color: var(--color-link); */
+/* } */
 
 li.feedItem:not(.error) a {
   display: block;
@@ -1303,7 +1303,7 @@ video {
 }
 
 .feedsListDiv {
-    align-items: center;
+  align-items: center;
 }
 
 #tabs {
@@ -1383,9 +1383,16 @@ li.ui-tabs-tab {
   border: 1px solid var(--color-dialog-border);
 }
 
+/* button:focus {      */
+/*     background-color: red !important;   */
+/* } */
+
 .introjs-button,
 .introjs-button:focus,
-.ui-button {
+.ui-button-icon-only,
+.ui-button-icon-only:focus,
+.ui-button,
+.ui-button:focus {
   background: var(--color-button-bg);
   color: var(--color-button-text) !important;
   border: unset !important;
