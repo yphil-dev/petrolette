@@ -481,6 +481,34 @@ PTL.dialog = {
         $addButtonText.text(PTL.tr('Add'));
 
     },
+    feedsList: function(feeds) {
+
+        let $feedsAddDivList = $('<ul>').attr('class', 'feedsAddDivList');
+        
+        feeds.forEach(function(value) {
+
+            let $feedRow = $('<div>')
+                .attr('class', 'flexBox feedsListDiv')
+                .append($('<div>')
+                    .attr({ class: 'feedsAddDivName grow', title: value })
+                    .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
+                    .append($('<a>').attr('href', value).text(value)))
+                .append($('<button>')
+                    .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
+                    .data('content', 'Add')
+                    .click(function(e) {
+                        e.preventDefault();
+                        PTL.feed.add(PTL.util.firstColumn(), value, '', 'mixed', 220, 'on', '', 16, '', true);
+                    })
+                    .text(PTL.tr('Add')));
+
+            $feedsAddDivList.append($feedRow)
+
+        });
+
+        return $feedsAddDivList;
+        
+    },
     feedNew: function(url) {
 
         $('#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
@@ -516,10 +544,6 @@ PTL.dialog = {
                         $messageText.empty();
                     });
 
-                    $dialog.find("form").on("submit", function(e) {
-                        e.preventDefault();
-                    });
-
                     $('.helpTourDialogItem')
                         .append($('<i>')
                             .attr('class', 'icon-help helpIcon')
@@ -532,7 +556,9 @@ PTL.dialog = {
                         PTL.dialog.kill($dialog);
                     });
 
-                    $('form#feedNewDialogForm').submit(function() {
+                    $('form#feedNewDialogForm').submit(function(e) {
+
+                        e.preventDefault();
 
                         let feedUrl;
 
@@ -542,7 +568,7 @@ PTL.dialog = {
                         } else {
                             feedUrl = DOMPurify.sanitize($feedAddInput.val());
                         }
-                        
+
                         if (feedUrl == '') {
                             PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
                             return;
@@ -576,27 +602,29 @@ PTL.dialog = {
 
                             if (feeds.length > 1) {
 
-                                $('div#feedsAddDiv').show();
+                                $('div#feedsAddDiv')
+                                    .append(PTL.dialog.feedsList(feeds))
+                                    .show();
+                                
+                                // feeds.forEach(function(value) {
 
-                                feeds.forEach(function(value) {
+                                //     let $feedRow = $('<div>')
+                                //         .attr('class', 'flexBox feedsListDiv')
+                                //         .append($('<div>')
+                                //             .attr({ class: 'feedsAddDivName grow', title: value })
+                                //             .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
+                                //             .append($('<a>').attr('href', value).text(value)))
+                                //         .append($('<button>')
+                                //             .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
+                                //             .data('content', 'Add')
+                                //             .click(function() {
+                                //                 PTL.feed.add(PTL.util.firstColumn(), value, '', 'mixed', 220, 'on', '', 16, '', true);
+                                //             })
+                                //             .text(PTL.tr('Add')));
 
-                                    let $feedRow = $('<div>')
-                                        .attr('class', 'flexBox feedsListDiv')
-                                        .append($('<div>')
-                                            .attr({ class: 'feedsAddDivName grow', title: value })
-                                            .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
-                                            .append($('<a>').attr('href', value).text(value)))
-                                        .append($('<button>')
-                                            .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
-                                            .data('content', 'Add')
-                                            .click(function() {
-                                                PTL.feed.add(PTL.util.firstColumn(), value, '', 'mixed', 220, 'on', '', 16, '', true);
-                                            })
-                                            .text(PTL.tr('Add')));
+                                //     $('#feedsAddDivList').append($feedRow)
 
-                                    $('#feedsAddDivList').append($feedRow)
-
-                                });
+                                // });
 
                                 $addButtonIcon.removeClass('spin icon-refresh');
 
