@@ -441,8 +441,6 @@ PTL.i18n.translations = {
 
   "There was a problem writing to remote storage: [%1]" : { fr: "Un problème est survenu lors de l'écriture sur le stockage distant: [%1]" , ja: "リモートストレージへの書き込みに問題がありました：[%1]", es: "Hubo un problema al escribir en el almacenamiento remoto: [%1]" },
 
-  "Problem reading feed [%1] Error type [%2]" : { fr: "Problème lecture flux [%1] Type d'erreur [%2]", ja: "問題の読書の問題[%1]エラータイプ[%2]", es: "Problema al leer la feed [%1] Tipo de error [%2]" },
-
   "Error type" : { fr: "Type d'erreur", ja: "エラータイプ", es: "Tipo de error" },
 
   "Bad server response" : { fr: "Mauvaise réponse du serveur", ja: "バッドサーバーレスポンス", es: "Respuesta de servidor mala" },
@@ -450,6 +448,8 @@ PTL.i18n.translations = {
   "Not a feed" : { fr: "Source non valide", ja: "無効な情報源", es: "Feed inválida" },
 
   "No feed found at this URL" : { fr: "Aucun flux trouvé à cette URL", ja: "このアドレスで見つかったソースなし", es: "No hay feed encontrada en esta URL" },
+
+  "Pétrolette found %1 feeds at this URL" : { fr: "Pétrolette a trouvé %1 flux à cette URL", ja: "PétroletteはこのURLで%1つのフィードを見つけました", es: "Pétrolette encontró %1 feeds en esta URL" },
 
   "Main menu" : { fr: "Menu principal", ja: "メインメニュー", es: "Menú principal" },
 

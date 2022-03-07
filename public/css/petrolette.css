@@ -1387,6 +1387,15 @@ li.ui-tabs-tab {
 /*     background-color: red !important;   */
 /* } */
 
+.feedsAddDivName {
+  white-space: nowrap;
+  overflow: hidden;
+  /* "overflow" value must be different from "visible" */
+  text-overflow: ellipsis;
+  direction: rtl;
+  text-align: left;
+}
+
 .introjs-button,
 .introjs-button:focus,
 .ui-button-icon-only,
