@@ -458,12 +458,6 @@ i.tabCloser:hover {
   white-space: nowrap;
 }
 
-.feedsAddDivName {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 #preload > .fontello {
   font-family: fontello, Impact, fantasy;
 }
@@ -1387,14 +1381,20 @@ li.ui-tabs-tab {
 /*     background-color: red !important;   */
 /* } */
 
-.feedsAddDivName {
-  white-space: nowrap;
-  overflow: hidden;
-  /* "overflow" value must be different from "visible" */
-  text-overflow: ellipsis;
-  direction: rtl;
-  text-align: left;
-}
+/* .feedsAddDivName { */
+/*   white-space: nowrap; */
+/*   overflow: hidden; */
+/*   /\* "overflow" value must be different from "visible" *\/ */
+/*   text-overflow: ellipsis; */
+/*   direction: rtl; */
+/*   text-align: left; */
+/* } */
+
+/* .feedsAddDivName { */
+/*   overflow: hidden; */
+/*   text-overflow: ellipsis; */
+/*   white-space: nowrap; */
+/* } */
 
 .introjs-button,
 .introjs-button:focus,
