@@ -21,16 +21,16 @@ describe('Pétrolette', function() {
     //     });
     // });
 
-    it('Pétrolette server is running', function(done) {
-        fetch('http://localhost:' + PORT)
-            .then(function(res) {
-                res.status.should.eql(200);
-                done();
-            }).catch(done);
-    });
+    // it('Pétrolette server is running', function(done) {
+    //     fetch('http://localhost:' + PORT)
+    //         .then(function(res) {
+    //             res.status.should.eql(200);
+    //             done();
+    //         }).catch(done);
+    // });
 
-    it('test', function(done) {
-        fetch('http://localhost:' + PORT)
+    it('Docker test', function(done) {
+        fetch('http://docker:' + PORT)
             .then(res => {
                 res.status.should.eql(200);
             }).catch(done);
