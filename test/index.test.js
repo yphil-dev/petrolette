@@ -30,7 +30,7 @@ describe('Pétrolette', function() {
     // });
 
     it('Docker test', function(done) {
-        fetch('http://docker:' + PORT)
+        fetch('http://localhost:' + PORT)
             .then(res => {
                 res.status.should.eql(200);
             }).catch(done);
