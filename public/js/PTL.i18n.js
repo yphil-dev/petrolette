@@ -84,7 +84,7 @@ PTL.i18n.translations = {
 
   "A list of words" : { fr: "Une liste de mots", ja: "単語のリスト", es: "Una lista de palabras" },
 
-  "Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words" : { fr: "Pétrolette construira un flux de recherche (en utilisant le moteur de recherche configuré) qui affichera les dernières nouvelles à propos de ces mots", ja: "Pétrolette は検索フィード (設定された検索エンジンを使用して) をビルドします。これらの単語に関する最後のニュースが表示されます。", es: "Pétrolette construirá una feed de búsqueda (utilizando el motor de búsqueda configurado) que mostrará las últimas noticias sobre esas palabras" },
+  "Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words." : { fr: "Pétrolette construira un flux de recherche (en utilisant le moteur de recherche configuré) qui affichera les dernières nouvelles à propos de ces mots.", ja: "Pétrolette は検索フィード (設定された検索エンジンを使用して) をビルドします。これらの単語に関する最後のニュースが表示されます。", es: "Pétrolette construirá una feed de búsqueda (utilizando el motor de búsqueda configurado) que mostrará las últimas noticias sobre esas palabras." },
 
   "Bookmark to quickly add a website\'s feed to Pétrolette" : { fr: "Marque-page pour ajouter le flux d'un site dans Pétrolette", ja: "ブックマークして、PétroletteにWebサイトのフィードを追加します", es: "Marcador para agregar el feed de un sitio web en Pétrolette" },
 

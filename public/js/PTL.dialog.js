@@ -1265,7 +1265,7 @@ PTL.dialog = {
                 {
                     title: PTL.tr('Three options'),
                     element: 'input#feedAddInput',
-                    intro: '<h4>' + PTL.tr('The valid URL of a feed') + '</h4>' + PTL.tr('The feed will be added to the current tab.') + '<h4>' + PTL.tr('The valid URL of a website') + '</h4>' + PTL.tr('Pétrolette will search for a feed at this URL, then add it to the current tab.') + '<h4>' + PTL.tr('A list of words') + '</h4>' + PTL.tr('Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words'),
+                    intro: '<h4>' + PTL.tr('The valid URL of a feed') + '</h4>' + PTL.tr('The feed will be added to the current tab.') + '<h4>' + PTL.tr('The valid URL of a website') + '</h4>' + PTL.tr('Pétrolette will search for a feed at this URL, then add it to the current tab.') + '<h4>' + PTL.tr('A list of words') + '</h4>' + PTL.tr('Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words.'),
                     position: 'top'
                 }
             ]
