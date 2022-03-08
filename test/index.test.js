@@ -22,11 +22,19 @@ describe('Pétrolette', function() {
     // });
 
     it('Pétrolette server is running', function(done) {
-        fetch('https://framagit.org/')
+        fetch('http://localhost:' + PORT)
             .then(function(res) {
                 res.status.should.eql(200);
                 done();
             }).catch(done);
+    });
+
+    it('test', function(done) {
+        fetch('http://localhost:' + PORT)
+            .then(res => {
+                res.status.should.eql(200);
+            }).catch(done);
+        done();
     });
 
     // it('Pétrolette is returning a feed', function(done) {
