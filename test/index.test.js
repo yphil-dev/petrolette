@@ -22,7 +22,7 @@ describe('Pétrolette', function() {
     // });
 
     it('Pétrolette server is running', function(done) {
-        fetch('http://localhost:' + PORT)
+        fetch('https://framagit.org/')
             .then(function(res) {
                 res.status.should.eql(200);
                 done();
