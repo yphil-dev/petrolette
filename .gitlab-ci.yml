@@ -13,4 +13,4 @@ job1:
 job2:
   stage: test
   script:
-    - npm run coverage
+    - npm test
