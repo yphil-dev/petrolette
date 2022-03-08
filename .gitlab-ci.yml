@@ -5,6 +5,7 @@ stages:
 
 job1:
   stage: build
+  runner: 'local'
   script:
     - npm install
     - npm start
