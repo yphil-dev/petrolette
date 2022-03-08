@@ -146,13 +146,13 @@ a:active {
 /*   color: var(--color-link); */
 /* } */
 
-/* .ui-state-default a, */
-/* .ui-state-default a:link, */
-/* .ui-state-default a:visited, */
-/* .ui-state-default:not(.ui-slider-handle), */
-/* .ui-widget-content .ui-state-default:not(.ui-slider-handle) { */
-/*   color: var(--color-link); */
-/* } */
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited,
+.ui-state-default:not(.ui-slider-handle),
+.ui-widget-content .ui-state-default:not(.ui-slider-handle) {
+  color: var(--color-link);
+}
 
 li.feedItem:not(.error) a {
   display: block;
