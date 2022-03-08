@@ -3,7 +3,7 @@ const should = require('should'),
     pjson = require('../package.json'),
     fetch = require('node-fetch');
 
-const PORT = pjson.HTTP_PORT;
+const PORT = pjson.HTTPS_PORT;
 
 describe('Pétrolette', function() {
 
@@ -22,7 +22,7 @@ describe('Pétrolette', function() {
     // });
 
     it('Pétrolette server is running', function(done) {
-        fetch('http://localhost:' + PORT)
+        fetch('https://localhost:' + PORT)
             .then(function(res) {
                 res.status.should.eql(200);
                 done();
@@ -30,7 +30,7 @@ describe('Pétrolette', function() {
     });
 
     it('test', function(done) {
-        fetch('http://localhost:' + PORT)
+        fetch('https://localhost:' + PORT)
             .then(res => {
                 res.status.should.eql(200);
             }).catch(done);
