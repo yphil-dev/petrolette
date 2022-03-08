@@ -1,11 +1,13 @@
 image: node:latest
 
 stages:
-  - build
+- build
 
 job1:
   stage: build
   script:
     - npm install
     - npm start
+  stage: test
+  script:
     - npm run coverage
