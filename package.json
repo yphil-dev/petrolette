@@ -33,7 +33,7 @@
         "express": "^4.17.1",
         "favrat": "0.4.3",
         "feedparser": "^2.2.10",
-        "feedrat": "0.4.10",
+        "feedrat": "0.4.11",
         "helmet": "5.0.2",
         "iconv-lite": "^0.6.2",
         "intro.js": "5.0.0",

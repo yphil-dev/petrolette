@@ -37,14 +37,13 @@ describe('Pétrolette', function() {
         done();
     });
 
-    // it('Pétrolette is returning a feed', function(done) {
-    //     fetch('http://localhost:' + PORT + '/discover/?url=https://yphil.bitbucket.io/')
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             res[0].should.eql('https://yphil.bitbucket.io/rss/feedone.xml');
-    //         }).catch(done);
-    //     done();
-    // });
+    it('Pétrolette is returning a feed', function(done) {
+        fetch('http://localhost:' + PORT + '/discover/?url=https://yphil.bitbucket.io/')
+            .then(res => {
+                console.error('res[0]: %s (%s)',res[0]);
+                res[0].should.be.eql('https://yphil.bitbucket.io/rss/feedone.xml');
+            }).catch(done);
+    });
 
     // it('Pétrolette is returning several feeds', function(done) {
     //     fetch('http://localhost:' + PORT + '/discover/?url=https://yphil.bitbucket.io/')
