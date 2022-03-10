@@ -1199,13 +1199,13 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
   padding: 0.3em;
 }
 
-.ui-dialog span.messageTitle {
-  color: var(--color-link-hover);
-}
+/* .ui-dialog span.messageTitle { */
+/*   color: var(--color-link-hover); */
+/* } */
 
-.ui-dialog span.messageTitleErrorCode {
-  color: var(--color-link-hover);
-}
+/* .ui-dialog span.messageTitleErrorCode { */
+/*   color: var(--color-link-hover); */
+/* } */
 
 .ui-state-error {
   background-color: var(--color-danger) !important;

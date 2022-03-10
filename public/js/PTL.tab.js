@@ -74,7 +74,7 @@ PTL.tab = {
     const feeds = PTL.tab.list();
     PTL.prefs.writeConfig('feeds', JSON.stringify(feeds));
     PTL.sync.writeSync(JSON.stringify(feeds));
-    if (isSilent) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
+    if (!isSilent) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
   },
   populate: function(feeds) {
 

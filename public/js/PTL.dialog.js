@@ -344,7 +344,8 @@ PTL.dialog = {
                     .attr('class', 'messageTitleErrorCode')
                     .text(xhr.statusText + ' ('))
                 .append($('<a>')
-                    .attr('href', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status)
+                        .attr({'href': 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status,
+                               'class': 'docLink'})
                     .text(xhr.status))
                 .append($('<span>').text(') ' + xhr.responseText));
 

@@ -94,8 +94,7 @@ router.get('/discover', function(req, res) {
     feedrat(req.query.url, function(err, url) {
 
         if (err) {
-            console.error('err.message: %s (%s)', err.message);
-            res.status(500).send(err.code);
+            res.status(500).send(err);
         } else if (url) {
             res.send(url);
         } else {
