@@ -6,36 +6,36 @@
 
     <meta charset="UTF-8">
 
-    <link rel="preload" as="script" href="/bower/jquery/dist/jquery.min.js">
-    <link rel="preload" as="script" href="/bower/jquery-ui/jquery-ui.min.js">
+    <link rel="preload" as="script" href="/jquery/jquery.min.js">
+    <link rel="preload" as="script" href="/jquery-ui/jquery-ui.min.js">
     <!-- <link rel="preload" as="font" href="/static/font/Lobster_1.3.otf"> -->
     <link rel="preload" as="style" href="/static/css/fontello.css" />
     <link rel="preload" as="style" href="/static/css/petrolette.css" />
-    <link rel="preload" as="image" href="/static/images/loading.gif">
+    <!-- <link rel="preload" as="image" href="/static/images/loading.gif"> -->
 
     <script>
-     /*
-        @licstart  The following is the entire license notice for the
-        JavaScript code in this page.
+      /*
+       @licstart  The following is the entire license notice for the
+       JavaScript code in this page.
 
-        Copyright (C) 2018  Philippe Y Coatmeur
+       Copyright (C) 2013 yPhil
 
-        The JavaScript code in this page is free software: you can
-        redistribute it and/or modify it under the terms of the GNU
-        General Public License (GNU GPL) as published by the Free Software
-        Foundation, either version 3 of the License, or (at your option)
-        any later version.  The code is distributed WITHOUT ANY WARRANTY;
-        without even the implied warranty of MERCHANTABILITY or FITNESS
-        FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+       The JavaScript code in this page is free software: you can
+       redistribute it and/or modify it under the terms of the GNU
+       General Public License (GNU GPL) as published by the Free Software
+       Foundation, either version 3 of the License, or (at your option)
+       any later version.  The code is distributed WITHOUT ANY WARRANTY;
+       without even the implied warranty of MERCHANTABILITY or FITNESS
+       FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-        As additional permission under GNU GPL version 3 section 7, you
-        may distribute non-source (e.g., minimized or compacted) forms of
-        that code without the copy of the GNU GPL normally required by
-        section 4, provided you include this license notice and a URL
-        through which recipients can access the Corresponding Source.
+       As additional permission under GNU GPL version 3 section 7, you
+       may distribute non-source (e.g., minimized or compacted) forms of
+       that code without the copy of the GNU GPL normally required by
+       section 4, provided you include this license notice and a URL
+       through which recipients can access the Corresponding Source.
 
-        @licend  The above is the entire license notice
-        for the JavaScript code in this page.
+       @licend  The above is the entire license notice
+       for the JavaScript code in this page.
       */
     </script>
 
@@ -60,14 +60,14 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="google-site-verification" content="gZjIQjkGXwYltleCVHxODL0EDW5TfKg9H5s1HE0q0aQ" />
 
-    <link rel="stylesheet" href="/static/css/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" href="/jquery-ui/jquery-ui.min.css">
 
     <link id="theme" rel="stylesheet" href="/static/css/themes/night.css">
     
     <link rel="stylesheet" href="/static/css/fontello.css">
-    <link rel="stylesheet" href="/bower/fancybox/dist/jquery.fancybox.min.css" />
-    <link rel="stylesheet" href="/introjs/introjs.min.css" />
-    <link rel="stylesheet" href="/bower/responsively-lazy/responsivelyLazy.min.css" />
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/introjs/minified/introjs.min.css" />
+    <link rel="stylesheet" href="/responsively-lazy/responsivelyLazy.min.css" />
 
     <link rel="stylesheet"
           href="/static/css/petrolette.css"
@@ -78,17 +78,16 @@
             href="/static/css/petrolette.css" />
     </noscript>
 
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
 
-    <link rel="preload" href="/bower/jquery-ui/jquery-ui.min.js" as="script">
-    <script src="/bower/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/jquery-ui/jquery-ui.min.js"></script>
 
-    <script src="/introjs/intro.min.js"></script>
-    <script src="/bower/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="/bower/remotestorage/release/remotestorage.js"></script>
-    <script src="/bower/rs-widget/build/widget.js"></script>
-    <script src="/bower/DOMPurify/dist/purify.min.js"></script>
-    <script src="/bower/mousetrap/mousetrap.min.js"></script>
+    <script src="/introjs/minified/intro.min.js"></script>
+    <script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script src="/rs/remotestorage.js"></script>
+    <script src="/rs-widget/widget.js"></script>
+    <script src="/dompurify/purify.min.js"></script>
+    <script src="/mousetrap/mousetrap.min.js"></script>
     
     <script src="/static/js/PTL.main.js"></script>
     <script src="/static/js/PTL.prefs.js"></script>
@@ -559,32 +558,32 @@
 
     <script>
 
-     $(document).ready(function() {
+      $(document).ready(function() {
 
-       PTL.start();
+          PTL.start();
 
-       let clean = DOMPurify.sanitize('<%= queryString %>');
+          let clean = DOMPurify.sanitize('<%= queryString %>');
 
-       PTL.queryString = clean;
+          PTL.queryString = clean;
 
-       PTL.tab.init();
+          PTL.tab.init();
 
-       (function(){
-         setTimeout(function(){
-           PTL.util.beg();
-         }, 900000); // 15 minutes
-       })();
+          (function(){
+              setTimeout(function(){
+                  PTL.util.beg();
+              }, 900000); // 15 minutes
+          })();
 
-     });
+      });
 
-    </script>
+      </script>
 
     <div id="notify" style="display:none">
       <h4>$nbsp;</h4>
       <p>$nbsp;</p>
     </div>
 
-    <script async src="/bower/responsively-lazy/responsivelyLazy.min.js"></script>
+    <script async src="/responsively-lazy/responsivelyLazy.min.js"></script>
 
   </body>
 </html>

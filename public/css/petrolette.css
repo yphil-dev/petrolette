@@ -130,7 +130,7 @@ a:active {
 }
 
 .warning {
-    color: var(--color-ui-warning);
+  color: var(--color-ui-warning);
 }
 
 /* .fancybox-caption a, */
@@ -185,6 +185,10 @@ li.ui-tabs-active > a:visited {
   flex: 0 0 0;
 }
 
+body#js {
+  color: #FFFFFF;
+}
+
 table#jsLicenseTable td a:link {
   text-decoration: underline;
 }
@@ -225,7 +229,7 @@ i.tabIcon,
   margin: 0 5px;
 }
 
-p.dangerous {
+.dangerous {
   color: var(--color-ui-danger);
 }
 
@@ -447,9 +451,9 @@ i.tabCloser:hover {
   text-transform: capitalize;
   font-variant: small-caps;
   margin-left: var(--title-margin-left);
+  overflow: hidden;
   text-overflow: ellipsis;
   color: var(--color-feed-title);
-  overflow: hidden;
   width: 100px;
   white-space: nowrap;
 }
@@ -653,11 +657,6 @@ select {
   font-size: 1em;
 }
 
-fieldset {
-  border: 0;
-  /* padding-top: 0.1em; */
-}
-
 .sideMenuTitleToggleDiv {
   color: var(--color-ui-pri);
 }
@@ -684,11 +683,6 @@ nav#sideMenu {
   z-index: 11;
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-scrollbar) var(--color-dialog-border);
-}
-
-nav#sideMenu:hover {
-  scrollbar-color: var(--color-link-hover) var(--color-dialog-border);
 }
 
 div#topNav {
@@ -1108,7 +1102,6 @@ li.feed div.feedBody {
   margin: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-scrollbar) var(--color-dialog-border);
 }
 
 li.feed div.feedBody::-webkit-scrollbar {
@@ -1122,10 +1115,6 @@ li.feed div.feedBody::-webkit-scrollbar-track {
 
 li.feed div.feedBody::-webkit-scrollbar-thumb {
   background-color: var(--color-fg4);
-}
-
-li.feed div.feedBody:hover {
-  scrollbar-color: var(--color-link-hover) var(--color-dialog-border);
 }
 
 .folded {
@@ -1210,9 +1199,13 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
   padding: 0.3em;
 }
 
-.ui-dialog span.messageTitle {
-    color: var(--color-danger);
-}
+/* .ui-dialog span.messageTitle { */
+/*   color: var(--color-link-hover); */
+/* } */
+
+/* .ui-dialog span.messageTitleErrorCode { */
+/*   color: var(--color-link-hover); */
+/* } */
 
 .ui-state-error {
   background-color: var(--color-danger) !important;
@@ -1298,6 +1291,16 @@ video {
 
 /* UI SHIT */
 
+.feedsListIcon {
+  margin: 0 .2em 0 0;
+  font-size: 1.2em;
+  flex: 0 1;
+}
+
+.feedsListDiv {
+  align-items: center;
+}
+
 #tabs {
   overflow: hidden;
   white-space: nowrap;
@@ -1307,7 +1310,6 @@ video {
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-fg4) var(--color-bg1);
 }
 
 #tabs > ul > li {
@@ -1376,9 +1378,31 @@ li.ui-tabs-tab {
   border: 1px solid var(--color-dialog-border);
 }
 
+/* button:focus {      */
+/*     background-color: red !important;   */
+/* } */
+
+/* .feedsAddDivName { */
+/*   white-space: nowrap; */
+/*   overflow: hidden; */
+/*   /\* "overflow" value must be different from "visible" *\/ */
+/*   text-overflow: ellipsis; */
+/*   direction: rtl; */
+/*   text-align: left; */
+/* } */
+
+/* .feedsAddDivName { */
+/*   overflow: hidden; */
+/*   text-overflow: ellipsis; */
+/*   white-space: nowrap; */
+/* } */
+
 .introjs-button,
 .introjs-button:focus,
-.ui-button {
+.ui-button-icon-only,
+.ui-button-icon-only:focus,
+.ui-button,
+.ui-button:focus {
   background: var(--color-button-bg);
   color: var(--color-button-text) !important;
   border: unset !important;
@@ -1446,10 +1470,14 @@ select#gallerySlideTransition {
   background-color: var(--color-button-bg-active);
 }
 
+/* .ui-widget-content, */
 .ui-widget textarea,
-.ui-widget-content,
 .ui-widget-header {
   border: none !important;
+}
+
+.ui-widget-content {
+	border: 1px solid #0b4f6f;
 }
 
 .ui-progressbar .ui-progressbar-value {
@@ -1523,6 +1551,12 @@ input[type="text"] {
 
 fieldset {
   margin: 0;
+  border: 0;
+}
+
+fieldset {
+  margin: 0;
+  border: 0;
 }
 
 div#nagBar {

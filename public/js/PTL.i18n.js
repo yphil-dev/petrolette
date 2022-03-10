@@ -84,7 +84,7 @@ PTL.i18n.translations = {
 
   "A list of words" : { fr: "Une liste de mots", ja: "単語のリスト", es: "Una lista de palabras" },
 
-  "Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words" : { fr: "Pétrolette construira un flux de recherche (en utilisant le moteur de recherche configuré) qui affichera les dernières nouvelles à propos de ces mots", ja: "Pétrolette は検索フィード (設定された検索エンジンを使用して) をビルドします。これらの単語に関する最後のニュースが表示されます。", es: "Pétrolette construirá una feed de búsqueda (utilizando el motor de búsqueda configurado) que mostrará las últimas noticias sobre esas palabras" },
+  "Pétrolette will build a search feed (using the configured search engine) that will display the last news about those words." : { fr: "Pétrolette construira un flux de recherche (en utilisant le moteur de recherche configuré) qui affichera les dernières nouvelles à propos de ces mots.", ja: "Pétrolette は検索フィード (設定された検索エンジンを使用して) をビルドします。これらの単語に関する最後のニュースが表示されます。", es: "Pétrolette construirá una feed de búsqueda (utilizando el motor de búsqueda configurado) que mostrará las últimas noticias sobre esas palabras." },
 
   "Bookmark to quickly add a website\'s feed to Pétrolette" : { fr: "Marque-page pour ajouter le flux d'un site dans Pétrolette", ja: "ブックマークして、PétroletteにWebサイトのフィードを追加します", es: "Marcador para agregar el feed de un sitio web en Pétrolette" },
 
@@ -198,6 +198,8 @@ PTL.i18n.translations = {
 
   "This field cannot be empty" : { fr: "Ce champ ne peut pas être vide" , ja: "このフィールドを空にすることはできません", es: "Esta entrada de texto no puede estar vacía" },
 
+  "Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely" : { fr: "Certains éléments liés (image, audio ou vidéo) dans les articles de ce flux n'ont pas pu être chargés, car ils sont diffusés de manière non sécurisée" , ja: "このフィードのアイテム内の一部のリンクされた要素（画像、音声、または動画）は、安全に提供されなかったため、読み込むことができませんでした", es: "Algunos elementos vinculados (imagen, audio o video) dentro de los elementos de este feed no se pudieron cargar porque se publicaron de manera insegura." },
+    
   "Add a feed to this column" : { fr: "Ajouter un flux à cette colonne" , ja: "この列にソースを追加する", es: "Agregar una feed a esta columna" },
   
   "Keyboard shortcuts" : { fr: "Raccourcis clavier" , ja: "キーボードショートカット", es: "Atajos de teclado" },
@@ -439,8 +441,6 @@ PTL.i18n.translations = {
 
   "There was a problem writing to remote storage: [%1]" : { fr: "Un problème est survenu lors de l'écriture sur le stockage distant: [%1]" , ja: "リモートストレージへの書き込みに問題がありました：[%1]", es: "Hubo un problema al escribir en el almacenamiento remoto: [%1]" },
 
-  "Problem reading feed [%1] Error type [%2]" : { fr: "Problème lecture flux [%1] Type d'erreur [%2]", ja: "問題の読書の問題[%1]エラータイプ[%2]", es: "Problema al leer la feed [%1] Tipo de error [%2]" },
-
   "Error type" : { fr: "Type d'erreur", ja: "エラータイプ", es: "Tipo de error" },
 
   "Bad server response" : { fr: "Mauvaise réponse du serveur", ja: "バッドサーバーレスポンス", es: "Respuesta de servidor mala" },
@@ -448,6 +448,8 @@ PTL.i18n.translations = {
   "Not a feed" : { fr: "Source non valide", ja: "無効な情報源", es: "Feed inválida" },
 
   "No feed found at this URL" : { fr: "Aucun flux trouvé à cette URL", ja: "このアドレスで見つかったソースなし", es: "No hay feed encontrada en esta URL" },
+
+  "Pétrolette found %1 feeds at this URL" : { fr: "Pétrolette a trouvé %1 flux à cette URL", ja: "PétroletteはこのURLで%1つのフィードを見つけました", es: "Pétrolette encontró %1 feeds en esta URL" },
 
   "Main menu" : { fr: "Menu principal", ja: "メインメニュー", es: "Menú principal" },
 
@@ -484,10 +486,7 @@ PTL.i18n.translations = {
 
   "Explore!" : { fr: "Exploration !", ja: "探査！", es: "¡Exploración!" },
 
-  "Enter a website address/URL and click search, then OK, or simply enter the URL of the feed and click OK" : { fr: "Entrer l'adresse / URL d'un site Web, puis cliquer sur Rechercher et valider, ou directement l'adresse d'un flux et valider", ja: "ウェブサイトのアドレス/ URLを入力して[検索]をクリックし、次に[OK]をクリックするか、フィードの場所", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego en Aceptar o ingrese directamente la ubicación del feed" },
-
-
-  "Enter a website address/URL and click search, then OK, or simply enter the URL of the" : { fr: "Entrez une adresse / URL de site Web et cliquez sur Rechercher, puis sur OK, ou entrez simplement l'URL du", ja: "ウェブサイトのアドレス/ URLを入力して[検索]、[OK]の順にクリックするか、単にURLを入力します", es: "Ingrese la dirección / URL de un sitio web y haga clic en buscar, luego OK, o simplemente ingrese la URL del" },
+  "URL or search terms" : { fr: "URL ou termes de recherche", ja: "URLまたは検索用語", es: "URL o términos de búsqueda" },
 
   "If what you enter is not a regular URL (an internet location in the form of \"http...\") Pétrolette will build a search feed using the words" : { fr: "Si ce que vous entrez n'est pas une URL (une adresse Internet commençant par \"http ...\"), Pétrolette construira un flux de recherche en utilisant les mots", ja: "入力したものが通常のURLではない場合（ \"HTTP ...\"の形のインターネットの場所）Pétroletteは単語を使って検索フィードを作成します", es: "Si lo que ingresa no es una URL regular (una ubicación en Internet en forma de \"http ...\"), Pétrolette construirá un feed de búsqueda con las palabras" },
 

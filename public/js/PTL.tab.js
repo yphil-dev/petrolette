@@ -74,7 +74,7 @@ PTL.tab = {
     const feeds = PTL.tab.list();
     PTL.prefs.writeConfig('feeds', JSON.stringify(feeds));
     PTL.sync.writeSync(JSON.stringify(feeds));
-    if (isSilent) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
+    if (!isSilent) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
   },
   populate: function(feeds) {
 
@@ -230,10 +230,10 @@ PTL.tab = {
 
       $column.appendTo($tabPanel);
 
-      if (PTL.queryString) {
-        PTL.feed.add($column, encodeURI(PTL.queryString), '', 'mixed', 260, 'on', '', 17, '', true);
-        PTL.queryString = null;
-      }
+        if (PTL.queryString) {
+            PTL.dialog.feedNew(encodeURI(PTL.queryString));
+            PTL.queryString = null;
+        }
 
       if (!newTab) {
         feeds.forEach(function(feed) {
