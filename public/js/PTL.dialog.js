@@ -505,7 +505,7 @@ PTL.dialog = {
           const $addButton = $dialog.find('button#feedAddButton').button(),
                 $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
                 $addButtonIcon = $addButton.find('i'),
-                $feedAddInput = $dialog.find('input#feedAddInput'),
+                $feedAddInput = $dialog.find('input#feedAddInput').val(url),
                 $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
                 $messageText = $dialog.find('div#messageZone > .messageText');
 
@@ -518,7 +518,7 @@ PTL.dialog = {
           $dialog.find("form").on("submit", function(e) {
             e.preventDefault();
           });
-
+          
           $('.helpTourDialogItem')
             .append($('<i>')
                     .attr('class', 'icon-help helpIcon')
@@ -531,7 +531,9 @@ PTL.dialog = {
             PTL.dialog.kill($dialog);
           });
 
-          $('form#feedNewDialogForm').submit(function() {
+          $addButton.click(function(e) {
+            
+            e.preventDefault();
 
             let feedUrl;
 
@@ -607,6 +609,9 @@ PTL.dialog = {
               }
             });
           });
+          
+          if (url) $addButton.click();
+
         }
       });
       $dialog.dialog('open');
