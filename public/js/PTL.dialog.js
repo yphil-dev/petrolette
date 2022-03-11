@@ -472,6 +472,18 @@ PTL.dialog = {
 
       const $dialog = $(this);
 
+      function clearWindow (callback) {
+        $('div#feedNewListDiv')
+          .empty()
+          .append($('<p>')
+                  .attr('class', 'feedsAddDivListP translate')
+                  .text(PTL.tr('Feed categories') + ' ')
+                  .data('content', 'Feed categories')
+                  .append($('<i>').attr('class', 'icon-refresh spin clearWindowSpinner')))
+          .append(PTL.dialog.suggestionList(PTL.prefs.getDefaultFeeds(), $dialog));
+        callback();
+      }
+      
       $dialog.dialog({
         title: PTL.tr('New feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
@@ -482,13 +494,9 @@ PTL.dialog = {
             title: PTL.tr('Suggestions'),
             class: 'translate',
             click: function() {
-              $('div#feedNewListDiv')
-                .empty()
-                .append($('<p>')
-                        .attr('class', 'feedsAddDivListP translate')
-                        .text(PTL.tr('Feed categories'))
-                        .data('content', 'Feed categories')
-                        .append(PTL.dialog.suggestionList(PTL.prefs.getDefaultFeeds(), $dialog)));
+              clearWindow(function() {
+                $('i.clearWindowSpinner').remove();
+              });
             }
           },
           {
@@ -496,6 +504,7 @@ PTL.dialog = {
             title: PTL.tr('Close'),
             class: 'translate',
             click: function() {
+              $('div#feedNewListDiv').empty();
               PTL.dialog.kill($dialog);
             }
           }
