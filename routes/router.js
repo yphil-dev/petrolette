@@ -1,19 +1,18 @@
 const express = require('express'),
-      router = express.Router(),
-      feeder = require('./feeder'),
-      fetch = require('node-fetch'),
-      favrat = require('favrat'),
-      // favrat = require('/home/px/src/favrat/'),
-      feedrat = require('feedrat'),
-      // feedrat = require('/home/px/src/feedrat/'),
-      fs = require('fs'),
-      path = require('path'),
-      crypto = require('crypto'),
-      pjson = require('../package.json'),
-      favratpjson = require('../node_modules/favrat/package.json'),
-      feedratpjson = require('../node_modules/feedrat/package.json'),
-      sanitize = require('sanitize').middleware,
-      morgan = require('morgan');
+    router = express.Router(),
+    feeder = require('./feeder'),
+    fetch = require('node-fetch'),
+    favrat = require('favrat'),
+    feedrat = require('feedrat'),
+    // feedrat = require('/home/px/src/feedrat/'),
+    fs = require('fs'),
+    path = require('path'),
+    crypto = require('crypto'),
+    pjson = require('../package.json'),
+    favratpjson = require('../node_modules/favrat/package.json'),
+    feedratpjson = require('../node_modules/feedrat/package.json'),
+    sanitize = require('sanitize').middleware,
+    morgan = require('morgan');
 
 console.error('### (re)START ## Version (%s)', pjson.version);
 
@@ -30,8 +29,8 @@ router.get('/favicon', function(req, res) {
         } else if (url) {
 
             const hash = crypto.createHash('md5').update(url).digest('hex'),
-                  fileName = hash + '.favicon',
-                  filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
+                fileName = hash + '.favicon',
+                filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
             try {
 
@@ -49,9 +48,9 @@ router.get('/favicon', function(req, res) {
             } catch (err) {
                 res.status(500).send(error);
             }
-            
+
         }
-        
+
     });
 });
 
@@ -59,7 +58,7 @@ router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
 
-    feeder.getFeed(req.query.url, req.query.lastItem, function (error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
+    feeder.getFeed(req.query.url, req.query.lastItem, function(error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
 
         if (feedItems && !res.headersSent) {
             res.send({
@@ -73,11 +72,11 @@ router.get('/feed', function(req, res) {
         } else if (error && !res.headersSent) {
             res.send({ error: error });
         }
-        
+
     });
 });
 
-router.get('/robots.txt', function (req, res) {
+router.get('/robots.txt', function(req, res) {
     res.type('text/plain');
     res.send("User-agent: *\nDisallow: /feed\nDisallow: /discover\nDisallow: /favicon");
 });
@@ -85,19 +84,21 @@ router.get('/robots.txt', function (req, res) {
 router.get('/discover', function(req, res) {
 
     try {
-        var p = new URL(req.query.url);
+        new URL(req.query.url);
     } catch (error) {
-        return res.send(new String(req.query.searchPrefix + req.query.url.split(' ')));
+        let feeds = [];
+        feeds.push(req.query.searchPrefix + req.query.url.split(' '));
+        return res.send(feeds);
     }
 
     feedrat(req.query.url, function(err, url) {
-        
+
         if (err) {
-            res.status(500).send(err.code);
+            res.status(500).send(err);
         } else if (url) {
             res.send(url);
         } else {
-            res.status(500).send('No feed found');
+            res.send({ error: error });
         }
 
     });

@@ -242,7 +242,7 @@
                     "type": "mixed",
                     "limit": 350,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -724,7 +724,7 @@
                     "type": "photo",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 16,
                     "lastitem": ""
                 },
@@ -801,7 +801,7 @@
                     "type": "photo",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -1039,7 +1039,7 @@
                     "type": "mixed",
                     "limit": 350,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -1338,7 +1338,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -1997,7 +1997,7 @@
                     "type": "photo",
                     "limit": 400,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -2513,7 +2513,7 @@
                     "type": "mixed",
                     "limit": 237,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -2721,7 +2721,7 @@
                     "type": "mixed",
                     "limit": 350,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -2730,7 +2730,7 @@
                     "type": "mixed",
                     "limit": 350,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -2786,7 +2786,7 @@
                     "type": "mixed",
                     "limit": 181,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -3037,7 +3037,7 @@
                     "type": "mixed",
                     "limit": 242,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -3141,7 +3141,7 @@
                     "type": "mixed",
                     "limit": 118,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10
                 },
                 {
@@ -3251,7 +3251,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10,
                     "lastitem": ""
                 },
@@ -3261,7 +3261,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10,
                     "lastitem": ""
                 },
@@ -3291,7 +3291,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10,
                     "lastitem": ""
                 },
@@ -3310,7 +3310,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10,
                     "lastitem": ""
                 },
@@ -3382,7 +3382,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10,
                     "lastitem": ""
                 },
@@ -3392,7 +3392,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10,
                     "lastitem": ""
                 },
@@ -3432,7 +3432,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10,
                     "lastitem": ""
                 },
@@ -3494,7 +3494,7 @@
                     "type": "mixed",
                     "limit": 220,
                     "status": "off",
-                    "iconhash": "noicon",
+                    "iconhash": "",
                     "nbitems": 10,
                     "lastitem": ""
                 },

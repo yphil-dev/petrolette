@@ -1,7 +1,7 @@
 {
     "name": "petrolette",
     "description": "The news page that doesn't know you",
-    "version": "v1.5.3",
+    "version": "v1.5.5",
     "private": true,
     "license": "GPL-3.0-only",
     "HTTP_PORT": 8000,
@@ -26,15 +26,15 @@
         "postinstall": "pm2 install pm2-logrotate"
     },
     "dependencies": {
+        "@fancyapps/fancybox": "3.5.7",
         "body-parser": "^1.19.0",
         "compression": "^1.7.4",
         "dompurify": "2.3.6",
         "ejs": "^3.1.5",
         "express": "^4.17.1",
-        "@fancyapps/fancybox": "3.5.7",
-        "favrat": "latest",
+        "favrat": "0.4.3",
         "feedparser": "^2.2.10",
-        "feedrat": "latest",
+        "feedrat": "0.4.11",
         "helmet": "5.0.2",
         "iconv-lite": "^0.6.2",
         "intro.js": "5.0.0",

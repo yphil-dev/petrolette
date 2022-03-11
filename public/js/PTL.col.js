@@ -19,7 +19,7 @@ PTL.col = {
 
     });
   },
-  add: function(colIndex, newCol) {
+  add: function(colIndex) {
 
     const $colButtons = $('<div>')
           .attr('class', 'colButtons flexBox');
@@ -30,29 +30,16 @@ PTL.col = {
         .data('content', 'Column')
         .text(PTL.tr('Column'));
 
-    const $srcLegend = $('<legend>')
-          .data('title', 'Feed')
-          .data('content', 'Feed')
-          .attr('class', 'colLegend unique translate')
-          .text(PTL.tr('Feed'));
-
     const $column = $('<ul>')
           .attr('class', 'column')
           .append($colButtons);
-
-    const $srcNewButton = $('<button>')
-          .attr('title', PTL.tr('Add a feed to this column'))
-          .data('title', 'Add a feed to this column')
-          .attr('class', 'icon-plus unique translate newFeedButton button-column last')
-          .button()
-          .data('colIndex', colIndex);
 
     const $colNewButton = $('<button>')
           .attr('title', PTL.tr('Add a column'))
           .data('title', 'Add a column')
           .attr('class', 'icon-plus twin translate last')
-          .button()
-          .data('colIndex', colIndex);
+          .data('colIndex', colIndex)
+          .button();
 
     const $colDelButton = $('<button>')
           .attr('title', PTL.tr('Remove this column'))
@@ -133,9 +120,7 @@ PTL.col = {
     $colButtons
       .append($colLegend,
         $colDelButton,
-        $colNewButton,
-        $srcLegend,
-        $srcNewButton)
+        $colNewButton)
       .addClass('ui-state-disabled');
 
     return $column;
