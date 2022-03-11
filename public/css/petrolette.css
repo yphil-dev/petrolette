@@ -199,7 +199,6 @@ table#jsLicenseTable td a:link {
 
 div#logoTitle {
   display: flex;
-  /* cursor: pointer; */
 }
 
 .feedHeader > .feedToggle,
@@ -1192,6 +1191,21 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
   margin: 0.3em 0 0 0;
 }
 
+
+li.tabTitle,
+.suggestionListButton button {
+  text-transform:capitalize;
+  cursor: pointer;
+  padding-bottom: 0.2em;
+}
+
+li.tabLi {
+  border-radius: 3px;
+  padding: 0.2em;
+  margin: 0 0 0.2em 0;
+  background: #32303e;
+}
+
 .ui-dialog div#messageZone {
   text-align: right;
   font-size: 75%;
@@ -1294,6 +1308,11 @@ video {
 .feedsListIcon {
   margin: 0 .2em 0 0;
   font-size: 1.2em;
+}
+
+.suggestionListButton,
+.suggestionListFavicon,
+.feedsListIcon {
   flex: 0 1;
 }
 

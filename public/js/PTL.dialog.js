@@ -372,46 +372,74 @@ PTL.dialog = {
         $addButtonText.text(PTL.tr('Add'));
 
     },
-    suggestionList: function(tabs) {
+    suggestionList: function(tabs, $dialog) {
 
         const $masterList = $('<ul>');
         
         tabs.forEach(function(tab) {
-            console.error('tab.name: %s (%s)', tab.name);
+
+            if (tab.name == 'rename me') tab.name = 'General';
 
             const $tabLi = $('<li>')
                   .attr('class', 'tabLi')
-                  .appendTo($masterList)
-                  .on('click', function() {
-
-                      $(this).children('ul').children('li.feedLi').show('slow');
-                      
-                  });
+                  .appendTo($masterList) ;
 
             const $feedUl = $('<ul>')
                   .attr('class', 'tabUl')
                   .appendTo($tabLi);
 
-            const $feedLi = $('<li>')
-                          .attr('class', 'feedLi hidden')
-                          .appendTo($feedUl);
+            $feedUl
+                .append($('<li>')
+                        .attr('class', 'tabTitle closed hover')
+                        .append($('<strong>')
+                                .attr('class', 'tabLi')
+                                .text(tab.name)
+                               )
+                        .on('click', function() {
 
-            $feedUl.append($('<li>')
-                           .attr('class', 'tabTitle')
-                           .text(tab.name));
+                            if ($(this).hasClass('open')) {
+                                $('li.feedLi').hide('fast');
+                                $(this).addClass('closed')
+                                    .removeClass('open');
+                            } else {
+                                $('li.feedLi').hide('fast');
+                                $(this).addClass('open')
+                                    .removeClass('closed')
+                                    .siblings('li.feedLi')
+                                    .show('fast');
+                            }
+
+                        }));                
             
             $.each(tab.columns, function(i, col) {
 
                 $.each(col, function(i, feed) {
 
                     $feedUl.append($('<li>')
-                                   .attr('class', 'feedLi hidden')
-                                   .text(feed.name)
-                                   .on('click', function() {
-                                       PTL.dialog.tour('feedNew');
-                                   }));                       
+                                   .attr('class', 'flexBox feedLi')
+                                   .append($('<div>')
+                                           .attr('class', 'suggestionListFavicon shrink')
+                                           .append($('<img>')
+                                                   .attr({'src': '/favicons/' + feed.iconhash + '.favicon',
+                                                          onerror: "this.src='/static/images/rss.gif';",
+                                                          'class': 'favicon'})))
+                                   .append($('<div>')
+                                           .attr('class', 'suggestionListLink grow')
+                                           .append($('<a>')
+                                                   .attr({'class': 'docLink', 'href': feed.url})
+                                                   .text(feed.name)))
+                                   .append($('<div>')
+                                           .attr({'class': 'suggestionListButton grow', 'title': 'Add this feed'})
+                                           .data('title', 'Add this feed')
+                                           .append($('<button>')
+                                                   .on('click', function() {
+                                                       PTL.feed.add(PTL.util.firstColumn(), feed.url, '', 'mixed', 220, 'on', '', 16, '', true);
+                                                       PTL.dialog.kill($dialog);
 
-                    console.error('feed: %s (%s)', feed.name, i);
+                                                   })
+                                                   .append($('<i>')
+                                                           .attr('class', 'icon-plus'))))
+                                   .hide());
                 });
                 
             });
@@ -437,7 +465,13 @@ PTL.dialog = {
                         title: PTL.tr('Suggestions'),
                         class: 'translate',
                         click: function() {
-                            $('div#feedNewListDiv').html(PTL.dialog.suggestionList(PTL.prefs.getDefaultFeeds()));
+                            $('div#feedNewListDiv')
+                                .empty()
+                                .append($('<p>')
+                                        .attr('class', 'feedsAddDivListP translate')
+                                        .text(PTL.tr('Feed categories'))
+                                        .data('content', 'Feed categories')
+                                        .append(PTL.dialog.suggestionList(PTL.prefs.getDefaultFeeds(), $dialog)));
                         }
                     },
                     {
