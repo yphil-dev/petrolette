@@ -473,7 +473,7 @@ PTL.feed = {
                   .text(error.status))
           .append(')');
 
-    if (error.status != 0) $errValue.append($errStatus)
+    if (error.status != 0) $errValue.append($errStatus);
     
     const $msgValue = $('<strong>')
           .attr('class', 'value')

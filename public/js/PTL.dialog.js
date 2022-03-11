@@ -10,12 +10,12 @@ PTL.dialog = {
         $('div#ptlDialogs').load('/static/templates/dialogs.html #feedPrefsDialog', function() {
 
             const $dialog = $(this),
-                $dataStore = $button.parent().parent(),
-                $feed = $dataStore.parent().parent(),
-                $feedBody = $dataStore.parent().next('div.feedBody'),
-                allGroups = PTL.tab.list('all'),
-                $thisGroup = $feed.parent().parent(),
-                $groupMenu = $dialog.find('select#feedTabSelect');
+                  $dataStore = $button.parent().parent(),
+                  $feed = $dataStore.parent().parent(),
+                  $feedBody = $dataStore.parent().next('div.feedBody'),
+                  allGroups = PTL.tab.list('all'),
+                  $thisGroup = $feed.parent().parent(),
+                  $groupMenu = $dialog.find('select#feedTabSelect');
 
             $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 
@@ -38,8 +38,8 @@ PTL.dialog = {
                         click: function() {
 
                             const feedUrl = DOMPurify.sanitize($dialog.find('input#feedGuessInput').val()),
-                                $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
-                                $messageText = $dialog.find('div#messageZone > .messageText');
+                                  $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+                                  $messageText = $dialog.find('div#messageZone > .messageText');
 
                             if (feedUrl == '') {
 
@@ -55,9 +55,9 @@ PTL.dialog = {
                             if ($groupMenu.find(":selected").val() !== $thisGroup.attr('id')) {
                                 $feed.hide('fade', 250, function() {
                                     $(this).prependTo($('#' + $groupMenu
-                                        .find(":selected")
-                                        .val() + ' .column')
-                                        .first())
+                                                        .find(":selected")
+                                                        .val() + ' .column')
+                                                      .first())
                                         .show('slow');
                                     PTL.tab.saveTabs();
                                 });
@@ -126,33 +126,33 @@ PTL.dialog = {
                     }
 
                     const $guessButton = $dialog.find('button#feedGuessButton').button(),
-                        $guessSpinner = $dialog.find('button#feedGuessButton > i'),
-                        $feedGuessInput = $dialog.find('input#feedGuessInput'),
-                        $feedNameInput = $dialog.find('input#feedNameInput'),
-                        $okButton = $('.ui-dialog-buttonpane').find('.button-ok'),
-                        $killFeedFieldset = $('fieldset#killFeedFieldset'),
-                        $killFeedLegend = $('legend#killFeedLegend'),
-                        oldUrl = $dataStore.data('url'),
-                        oldName = $dataStore.data('name'),
-                        oldType = $dataStore.data('type'),
-                        oldLimit = $dataStore.data('limit'),
-                        oldNbItems = $dataStore.data('nbitems'),
-                        $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
-                        $messageText = $dialog.find('div#messageZone > .messageText'),
-                        $feedLimitInput = $('input#feedLimit'),
-                        $feedLimitSlider = $('div#feedLimitSlider'),
-                        $feedLimitSpinner = $dialog.find('input#feedLimitSpinner').spinner({
-                            classes: {
-                                "ui-spinner": "shrink ui-corner-all"
-                            }
-                        }),
-                        $feedNbItemsInput = $('input#feedNbItems'),
-                        $feedNbItemsSlider = $('div#feedNbItemsSlider'),
-                        $feedNbItemsSpinner = $dialog.find('input#feedNbItemsSpinner').spinner({
-                            classes: {
-                                "ui-spinner": "shrink ui-corner-all"
-                            }
-                        });
+                          $guessSpinner = $dialog.find('button#feedGuessButton > i'),
+                          $feedGuessInput = $dialog.find('input#feedGuessInput'),
+                          $feedNameInput = $dialog.find('input#feedNameInput'),
+                          $okButton = $('.ui-dialog-buttonpane').find('.button-ok'),
+                          $killFeedFieldset = $('fieldset#killFeedFieldset'),
+                          $killFeedLegend = $('legend#killFeedLegend'),
+                          oldUrl = $dataStore.data('url'),
+                          oldName = $dataStore.data('name'),
+                          oldType = $dataStore.data('type'),
+                          oldLimit = $dataStore.data('limit'),
+                          oldNbItems = $dataStore.data('nbitems'),
+                          $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+                          $messageText = $dialog.find('div#messageZone > .messageText'),
+                          $feedLimitInput = $('input#feedLimit'),
+                          $feedLimitSlider = $('div#feedLimitSlider'),
+                          $feedLimitSpinner = $dialog.find('input#feedLimitSpinner').spinner({
+                              classes: {
+                                  "ui-spinner": "shrink ui-corner-all"
+                              }
+                          }),
+                          $feedNbItemsInput = $('input#feedNbItems'),
+                          $feedNbItemsSlider = $('div#feedNbItemsSlider'),
+                          $feedNbItemsSpinner = $dialog.find('input#feedNbItemsSpinner').spinner({
+                              classes: {
+                                  "ui-spinner": "shrink ui-corner-all"
+                              }
+                          });
 
                     $('.helpTourDialogItem').each(function() {
                         const step = $(this).data('step');
@@ -160,11 +160,11 @@ PTL.dialog = {
                             .parent()
                             .prev()
                             .append($('<i>')
-                                .attr('class', 'icon-help helpIcon')
-                                .attr('title', step)
-                                .on('click', function() {
-                                    PTL.dialog.tour('feedPrefs', step);
-                                }));
+                                    .attr('class', 'icon-help helpIcon')
+                                    .attr('title', step)
+                                    .on('click', function() {
+                                        PTL.dialog.tour('feedPrefs', step);
+                                    }));
                     });
 
                     if (isNewFeed || !PTL.util.isMobile()) {
@@ -321,16 +321,16 @@ PTL.dialog = {
     feedAddError: function($dialog, xhr) {
 
         const $addButton = $dialog.find('button#feedAddButton').button(),
-            $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
-            $feedAddInput = $dialog.find('input#feedAddInput'),
-            $addButtonIcon = $addButton.find('i'),
-            $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
-            $messageText = $dialog.find('div#messageZone > .messageText');
+              $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
+              $feedAddInput = $dialog.find('input#feedAddInput'),
+              $addButtonIcon = $addButton.find('i'),
+              $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+              $messageText = $dialog.find('div#messageZone > .messageText');
 
         $messageTitle.empty();
         $messageText.empty();
 
-        $messageTitle.append($('<i>').attr('class', 'icon-warning dangerous'))
+        $messageTitle.append($('<i>').attr('class', 'icon-warning dangerous'));
 
         if (xhr == 'empty') {
             $messageText.text(PTL.tr('This field cannot be empty'));
@@ -341,21 +341,21 @@ PTL.dialog = {
 
             $messageText
                 .append($('<span>')
-                    .attr('class', 'messageTitleErrorCode')
-                    .text(xhr.statusText + ' ('))
+                        .attr('class', 'messageTitleErrorCode')
+                        .text(xhr.statusText + ' ('))
                 .append($('<a>')
-                    .attr({
-                        'href': 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status,
-                        'class': 'docLink'
-                    })
-                    .text(xhr.status))
+                        .attr({
+                            'href': 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status,
+                            'class': 'docLink'
+                        })
+                        .text(xhr.status))
                 .append($('<span>').text(') ' + xhr.responseText));
 
             $addButtonIcon
                 .hide()
                 .removeClass('icon-refresh icon-checked spin');
 
-            $addButton.attr('title', PTL.tr('Add anyway'))
+            $addButton.attr('title', PTL.tr('Add anyway'));
 
             $('form#feedNewDialogForm').submit(function() {
 
@@ -372,21 +372,53 @@ PTL.dialog = {
         $addButtonText.text(PTL.tr('Add'));
 
     },
-    suggestionList: function(feeds) {
+    suggestionList: function(tabs) {
 
-        const $feedList = $('<ul>');
+        const $masterList = $('<ul>');
         
-        feeds.forEach(function(tab) {
+        tabs.forEach(function(tab) {
             console.error('tab.name: %s (%s)', tab.name);
 
+            const $tabLi = $('<li>')
+                  .attr('class', 'tabLi')
+                  .appendTo($masterList)
+                  .on('click', function() {
+
+                      $(this).children('ul').children('li.feedLi').show('slow');
+                      
+                  });
+
+            const $feedUl = $('<ul>')
+                  .attr('class', 'tabUl')
+                  .appendTo($tabLi);
+
+            const $feedLi = $('<li>')
+                          .attr('class', 'feedLi hidden')
+                          .appendTo($feedUl);
+
+            $feedUl.append($('<li>')
+                           .attr('class', 'tabTitle')
+                           .text(tab.name));
+            
             $.each(tab.columns, function(i, col) {
 
                 $.each(col, function(i, feed) {
+
+                    $feedUl.append($('<li>')
+                                   .attr('class', 'feedLi hidden')
+                                   .text(feed.name)
+                                   .on('click', function() {
+                                       PTL.dialog.tour('feedNew');
+                                   }));                       
+
                     console.error('feed: %s (%s)', feed.name, i);
                 });
                 
             });
+            $feedUl.appendTo($tabLi);
         });
+
+        return $masterList;
 
     },
     feedNew: function(url) {
@@ -420,11 +452,11 @@ PTL.dialog = {
                 open: function() {
 
                     const $addButton = $dialog.find('button#feedAddButton').button(),
-                        $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
-                        $addButtonIcon = $addButton.find('i'),
-                        $feedAddInput = $dialog.find('input#feedAddInput'),
-                        $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
-                        $messageText = $dialog.find('div#messageZone > .messageText');
+                          $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
+                          $addButtonIcon = $addButton.find('i'),
+                          $feedAddInput = $dialog.find('input#feedAddInput'),
+                          $messageTitle = $dialog.find('div#messageZone > .messageTitle'),
+                          $messageText = $dialog.find('div#messageZone > .messageText');
 
                     $feedAddInput.focus(function() {
                         $addButton.removeClass('ui-state-error');
@@ -438,11 +470,11 @@ PTL.dialog = {
 
                     $('.helpTourDialogItem')
                         .append($('<i>')
-                            .attr('class', 'icon-help helpIcon')
-                            .attr('title', PTL.tr('Help') + ' - ' + PTL.tr('Three options'))
-                            .on('click', function() {
-                                PTL.dialog.tour('feedNew');
-                            }));
+                                .attr('class', 'icon-help helpIcon')
+                                .attr('title', PTL.tr('Help') + ' - ' + PTL.tr('Three options'))
+                                .on('click', function() {
+                                    PTL.dialog.tour('feedNew');
+                                }));
 
                     $('.ui-widget-overlay, .ui-dialog-titlebar-close').on('click', function() {
                         PTL.dialog.kill($dialog);
@@ -503,32 +535,32 @@ PTL.dialog = {
                                 $('div#feedNewListDiv')
                                     .show()
                                     .append($('<p>')
-                                        .attr('class', 'feedsAddDivListP translate')
-                                        .text(PTL.tr('Pétrolette found %1 feeds at this URL', feeds.length))
-                                        .data('content', 'Pétrolette found %1 feeds at this URL'));
+                                            .attr('class', 'feedsAddDivListP translate')
+                                            .text(PTL.tr('Pétrolette found %1 feeds at this URL', feeds.length))
+                                            .data('content', 'Pétrolette found %1 feeds at this URL'));
 
                                 feeds.forEach(function(feed) {
 
                                     let $feedRow = $('<div>')
                                         .attr('class', 'flexBox feedsListDiv')
                                         .append($('<div>')
-                                            .attr({ 'class': 'feedsAddDivName grow', 'title': feed })
-                                            .append($('<div>')
-                                                .attr('class', 'flexBox')
+                                                .attr({ 'class': 'feedsAddDivName grow', 'title': feed })
                                                 .append($('<div>')
-                                                    .attr('class', 'shrink feedsListIcon flexBox')
-                                                    .append($('<i>').attr('class', 'icon-rss')))
-                                                .append($('<div>')
-                                                    .attr('class', 'grow feedsListLink flexBox')
-                                                    .append($('<a>').attr('href', feed).text(feed)))))
+                                                        .attr('class', 'flexBox')
+                                                        .append($('<div>')
+                                                                .attr('class', 'shrink feedsListIcon flexBox')
+                                                                .append($('<i>').attr('class', 'icon-rss')))
+                                                        .append($('<div>')
+                                                                .attr('class', 'grow feedsListLink flexBox')
+                                                                .append($('<a>').attr('href', feed).text(feed)))))
                                         .append($('<button>')
-                                            .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
-                                            .data('content', 'Add')
-                                            .click(function(e) {
-                                                e.preventDefault();
-                                                PTL.feed.add(PTL.util.firstColumn(), feed, '', 'mixed', 220, 'on', '', 16, '', true);
-                                            })
-                                            .text(PTL.tr('Add')))
+                                                .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
+                                                .data('content', 'Add')
+                                                .click(function(e) {
+                                                    e.preventDefault();
+                                                    PTL.feed.add(PTL.util.firstColumn(), feed, '', 'mixed', 220, 'on', '', 16, '', true);
+                                                })
+                                                .text(PTL.tr('Add')));
 
                                     // .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
                                     // .append($('<a>').attr('href', feed).text(feed));
@@ -541,7 +573,7 @@ PTL.dialog = {
 
                                 $addButtonIcon.removeClass('spin icon-refresh');
 
-                                $addButtonText.text(PTL.tr('Add'))
+                                $addButtonText.text(PTL.tr('Add'));
 
                             } else {
 
@@ -562,12 +594,12 @@ PTL.dialog = {
         $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
-                $column = $button.parent().parent(),
-                $panel = $column.parent(),
-                $icon = $dialog.find('div#icon > i'),
-                colIndex = $panel.find('.column').index($column),
-                $feedsInCol = $column.find('.feed'),
-                nbOfFeedsInCol = $feedsInCol.length;
+                  $column = $button.parent().parent(),
+                  $panel = $column.parent(),
+                  $icon = $dialog.find('div#icon > i'),
+                  colIndex = $panel.find('.column').index($column),
+                  $feedsInCol = $column.find('.feed'),
+                  nbOfFeedsInCol = $feedsInCol.length;
 
             $icon.addClass('icon-trash-empty danger');
 
@@ -653,14 +685,14 @@ PTL.dialog = {
         $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
-                $tabs = $('#tabs'),
-                $a = $button.prev('a.ui-tabs-anchor'),
-                tabId = $a.attr('href'),
-                $selectedTab = $a.parent(),
-                $selectedPanel = $tabs.find(tabId),
-                $icon = $dialog.find('div#icon > i'),
-                selectedTabIndex = $tabs.tabs('option', 'active'),
-                previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex - 1;
+                  $tabs = $('#tabs'),
+                  $a = $button.prev('a.ui-tabs-anchor'),
+                  tabId = $a.attr('href'),
+                  $selectedTab = $a.parent(),
+                  $selectedPanel = $tabs.find(tabId),
+                  $icon = $dialog.find('div#icon > i'),
+                  selectedTabIndex = $tabs.tabs('option', 'active'),
+                  previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex - 1;
 
             $icon.addClass('icon-trash-empty danger');
 
@@ -720,8 +752,8 @@ PTL.dialog = {
         $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
-                thisFeedId = $button.parent().parent().parent().parent().attr('id'),
-                $icon = $dialog.find('div#icon > i');
+                  thisFeedId = $button.parent().parent().parent().parent().attr('id'),
+                  $icon = $dialog.find('div#icon > i');
 
             $icon.addClass('icon-trash-empty danger');
 
@@ -761,11 +793,11 @@ PTL.dialog = {
                     $selectedFeeds.each(function() {
 
                         $names.append($('<li>')
-                            .text($(this)
-                                .children()
-                                .children('.feedTitle')
-                                .children('a')
-                                .attr('title')));
+                                      .text($(this)
+                                            .children()
+                                            .children('.feedTitle')
+                                            .children('a')
+                                            .attr('title')));
 
                     });
 
@@ -791,7 +823,7 @@ PTL.dialog = {
         $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
-                $icon = $dialog.find('div#icon > i');
+                  $icon = $dialog.find('div#icon > i');
 
             $icon.addClass('icon-upload');
 
@@ -976,7 +1008,7 @@ PTL.dialog = {
         $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
             const $dialog = $(this),
-                $icon = $dialog.find('div#icon > i');
+                  $icon = $dialog.find('div#icon > i');
 
             $icon.addClass('icon-refresh danger');
 
@@ -1068,7 +1100,7 @@ PTL.dialog = {
         const $notify = $('#notify');
 
         $('#notify > h4').text(title),
-            $('#notify > p').text(text);
+        $('#notify > p').text(text);
 
         $notify.fadeIn('fast', 'linear', function() {
             setTimeout(function() {
@@ -1133,9 +1165,9 @@ PTL.dialog = {
     tour: function(type, step) {
 
         const feedPrefs = introJs(),
-            feedNew = introJs(),
-            menu = introJs(),
-            ui = introJs();
+              feedNew = introJs(),
+              menu = introJs(),
+              ui = introJs();
 
         ui.setOptions({
             steps: [
