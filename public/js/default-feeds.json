@@ -413,15 +413,6 @@
                     "nbitems": 10
                 },
                 {
-                    "url": "https://sputniknews.com/export/rss2/world/index.xml",
-                    "name": "Sputnik News - World News, Breaking News & Top Stories",
-                    "type": "mixed",
-                    "limit": 350,
-                    "status": "off",
-                    "iconhash": "4eb6767d410d4a9e5c74b32e887d2be3",
-                    "nbitems": 10
-                },
-                {
                     "url": "https://www.vox.com/rss/world/index.xml",
                     "name": "Vox -  World",
                     "type": "mixed",

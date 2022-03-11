@@ -318,7 +318,7 @@ PTL.dialog = {
     });
 
   },
-  feedAddError: function($dialog, xhr) {
+  feedAddError: function($dialog, feedUrl, xhr) {
 
     const $addButton = $dialog.find('button#feedAddButton').button(),
           $addButtonText = $addButton.find('span.buttonText').text(PTL.tr('Add')),
@@ -372,9 +372,44 @@ PTL.dialog = {
     $addButtonText.text(PTL.tr('Add'));
 
   },
+  feedsListItem: function(feed) {
+
+    let feedName = (feed.name == 'none') ? feed.url : feed.name;
+    
+    let $feedLi = $('<li>')
+        .attr('class', 'flexBox feedLi');
+    
+    let $imageDiv = $('<div>')
+        .attr('class', 'suggestionListFavicon shrink')
+        .append($('<img>')
+                .attr({'src': '/favicons/' + feed.iconhash + '.favicon',
+                       onerror: "this.src='/static/images/rss.gif';",
+                       'class': 'favicon'}))
+        .appendTo($feedLi);  
+
+    let $linkDiv = $('<div>')
+        .attr('class', 'suggestionListLink grow')
+        .append($('<a>')
+                .attr({'class': 'docLink', 'href': feed.url})
+                .text(feedName))
+        .appendTo($feedLi);  
+
+    let $button = $('<button>')
+        .attr('class', 'suggestionListButton')
+        .on('click', function(e) {
+          e.preventDefault();
+          PTL.feed.add(PTL.util.firstColumn(), feed.url, '', 'mixed', 220, 'on', '', 16, '', true);
+        })
+        .append($('<i>')
+                .attr({'class': 'icon-plus', 'title': 'Add ' + feedName}))
+        .appendTo($feedLi);  
+
+    return $feedLi;
+    
+  },
   suggestionList: function(tabs, $dialog) {
 
-    const $masterList = $('<ul>');
+    const $masterList = $('<ul>').attr('class', 'suggestionListFavicon');
     
     tabs.forEach(function(tab) {
 
@@ -384,11 +419,15 @@ PTL.dialog = {
             .attr('class', 'tabLi')
             .appendTo($masterList) ;
 
-      const $feedUl = $('<ul>')
+      const $tabUl = $('<ul>')
             .attr('class', 'tabUl')
             .appendTo($tabLi);
 
-      $feedUl
+      const $feedsGroupLi = $('<li>')
+            .attr('class', 'feedsGroupLi')
+            .appendTo($tabUl).hide();
+
+      $tabUl
         .append($('<li>')
                 .attr('class', 'tabTitle closed hover')
                 .append($('<strong>')
@@ -398,15 +437,15 @@ PTL.dialog = {
                 .on('click', function() {
 
                   if ($(this).hasClass('open')) {
-                    $('li.feedLi').hide('fast');
+                    $('li.feedsGroupLi').hide();
                     $(this).addClass('closed')
                       .removeClass('open');
                   } else {
-                    $('li.feedLi').hide('fast');
+                    $('li.feedsGroupLi').hide();
                     $(this).addClass('open')
                       .removeClass('closed')
-                      .siblings('li.feedLi')
-                      .show('fast');
+                      .siblings('li.feedsGroupLi')
+                      .slideDown('fast');
                   }
 
                 }));                
@@ -414,35 +453,14 @@ PTL.dialog = {
       $.each(tab.columns, function(i, col) {
 
         $.each(col, function(i, feed) {
-
-          $feedUl.append($('<li>')
-                         .attr('class', 'flexBox feedLi')
-                         .append($('<div>')
-                                 .attr('class', 'suggestionListFavicon shrink')
-                                 .append($('<img>')
-                                         .attr({'src': '/favicons/' + feed.iconhash + '.favicon',
-                                                onerror: "this.src='/static/images/rss.gif';",
-                                                'class': 'favicon'})))
-                         .append($('<div>')
-                                 .attr('class', 'suggestionListLink grow')
-                                 .append($('<a>')
-                                         .attr({'class': 'docLink', 'href': feed.url})
-                                         .text(feed.name)))
-                         .append($('<div>')
-                                 .attr({'class': 'suggestionListButton grow', 'title': 'Add this feed'})
-                                 .data('title', 'Add this feed')
-                                 .append($('<button>')
-                                         .on('click', function(e) {
-                                           e.preventDefault();
-                                           PTL.feed.add(PTL.util.firstColumn(), feed.url, '', 'mixed', 220, 'on', '', 16, '', true);
-                                         })
-                                         .append($('<i>')
-                                                 .attr('class', 'icon-plus'))))
-                         .hide());
+          $feedsGroupLi.append(PTL.dialog.feedsListItem(feed));
         });
-        
+
       });
-      $feedUl.appendTo($tabLi);
+
+      $feedsGroupLi.appendTo($tabUl);
+      // $feedsMasterUl.append($feedsGroupLi);
+      
     });
 
     return $masterList;
@@ -545,6 +563,7 @@ PTL.dialog = {
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
               timeout: 2000
             }).fail(function(xhr) {
+              console.error('whoa!: %o (%s)', xhr);
               PTL.dialog.feedAddError($dialog, feedUrl, xhr);
             }).done(function(feeds) {
 
@@ -561,7 +580,7 @@ PTL.dialog = {
 
                 var $feedsAddDivList = $('<ul>')
                     .attr({
-                      'class': ' flexBox',
+                      'class': 'flexBox',
                       'id': 'feedsAddDivList'
                     });
 
@@ -573,38 +592,11 @@ PTL.dialog = {
                           .data('content', 'Pétrolette found %1 feeds at this URL'));
 
                 feeds.forEach(function(feed) {
-
-                  let $feedRow = $('<div>')
-                      .attr('class', 'flexBox feedsListDiv')
-                      .append($('<div>')
-                              .attr({ 'class': 'feedsAddDivName grow', 'title': feed })
-                              .append($('<div>')
-                                      .attr('class', 'flexBox')
-                                      .append($('<div>')
-                                              .attr('class', 'shrink feedsListIcon flexBox')
-                                              .append($('<i>').attr('class', 'icon-rss')))
-                                      .append($('<div>')
-                                              .attr('class', 'grow feedsListLink flexBox')
-                                              .append($('<a>').attr('href', feed).text(feed)))))
-                      .append($('<button>')
-                              .click(function(e) {
-                                e.preventDefault();
-                                PTL.feed.add(PTL.util.firstColumn(), feed, '', 'mixed', 220, 'on', '', 16, '', true);
-                              })
-                              .append($('<i>')
-                                      .attr('class', 'icon-plus')));
-
-                  // .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
-                  // .append($('<a>').attr('href', feed).text(feed));
-
-                  $feedsAddDivList.append($feedRow);
-
+                  $feedsAddDivList.append(PTL.dialog.feedsListItem({iconhash: 'node', url: feed, name: 'none'}));
                 });
 
                 $('div#feedNewListDiv').append($feedsAddDivList);
-
                 $addButtonIcon.removeClass('spin icon-refresh');
-
                 $addButtonText.text(PTL.tr('Add'));
 
               } else {
