@@ -48,7 +48,8 @@ function getFeed(feedUrl, lastItem, callback) {
   }).then(function(res) {
 
     if (res.status != 200) {
-      callback(formatError({type: res.type, status: res.status, message: res.message}));
+      console.error('whoaaaa: %o (%s)', res.statusText, feedUrl);
+      callback(formatError({type: res.type, status: res.status, message: res.statusText}));
     }
       
     var feedparser = new FeedParser();
@@ -77,7 +78,7 @@ function getFeed(feedUrl, lastItem, callback) {
     }).on('end', function() {
 
       if (feedItems.length === 0) {
-        callback(formatError({ type: 'Empty feed', status: null, message: 'Feed OK, but empty' }));
+        callback(formatError({ type: 'Syntax', status: res.status, message: 'Feed OK, but empty' }));
       }
 
       var newLastItem;
@@ -101,6 +102,7 @@ function getFeed(feedUrl, lastItem, callback) {
 
   }).catch((error) => {
     
+    console.error('whopop: %s (%s)', error, feedUrl);
     callback(formatError({type: error.type, status: error.status, message: error.message}));
 
   });

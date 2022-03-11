@@ -535,16 +535,9 @@ PTL.dialog = {
             
             e.preventDefault();
 
-            let feedUrl;
+            let feedUrl = DOMPurify.sanitize($feedAddInput.val());;
 
             $('div#feedNewListDiv').empty();
-
-            if (url) {
-              feedUrl = DOMPurify.sanitize(url);
-              $feedAddInput.val(feedUrl);
-            } else {
-              feedUrl = DOMPurify.sanitize($feedAddInput.val());
-            }
 
             if (feedUrl == '') {
               PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
