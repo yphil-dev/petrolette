@@ -344,8 +344,10 @@ PTL.dialog = {
                     .attr('class', 'messageTitleErrorCode')
                     .text(xhr.statusText + ' ('))
                 .append($('<a>')
-                        .attr({'href': 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status,
-                               'class': 'docLink'})
+                    .attr({
+                        'href': 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/' + xhr.status,
+                        'class': 'docLink'
+                    })
                     .text(xhr.status))
                 .append($('<span>').text(') ' + xhr.responseText));
 
@@ -370,6 +372,23 @@ PTL.dialog = {
         $addButtonText.text(PTL.tr('Add'));
 
     },
+    suggestionList: function(feeds) {
+
+        const $feedList = $('<ul>');
+        
+        feeds.forEach(function(tab) {
+            console.error('tab.name: %s (%s)', tab.name);
+
+            $.each(tab.columns, function(i, col) {
+
+                $.each(col, function(i, feed) {
+                    console.error('feed: %s (%s)', feed.name, i);
+                });
+                
+            });
+        });
+
+    },
     feedNew: function(url) {
 
         $('div#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
@@ -381,6 +400,14 @@ PTL.dialog = {
                 width: PTL.util.isMobile() ? 'auto' : 630,
                 modal: true,
                 buttons: [
+                    {
+                        text: PTL.tr('Suggestions'),
+                        title: PTL.tr('Suggestions'),
+                        class: 'translate',
+                        click: function() {
+                            $('div#feedNewListDiv').html(PTL.dialog.suggestionList(PTL.prefs.getDefaultFeeds()));
+                        }
+                    },
                     {
                         text: PTL.tr('Close'),
                         title: PTL.tr('Close'),
@@ -425,7 +452,7 @@ PTL.dialog = {
 
                         let feedUrl;
 
-                        $('div#feedsAddDiv').empty();
+                        $('div#feedNewListDiv').empty();
 
                         if (url) {
                             feedUrl = DOMPurify.sanitize(url);
@@ -473,7 +500,7 @@ PTL.dialog = {
                                         'id': 'feedsAddDivList'
                                     });
 
-                                $('div#feedsAddDiv')
+                                $('div#feedNewListDiv')
                                     .show()
                                     .append($('<p>')
                                         .attr('class', 'feedsAddDivListP translate')
@@ -490,10 +517,10 @@ PTL.dialog = {
                                                 .attr('class', 'flexBox')
                                                 .append($('<div>')
                                                     .attr('class', 'shrink feedsListIcon flexBox')
-                                                        .append($('<i>').attr('class', 'icon-rss')))
-                                                    .append($('<div>')
-                                                            .attr('class', 'grow feedsListLink flexBox')
-                                                            .append($('<a>').attr('href', feed).text(feed)))))
+                                                    .append($('<i>').attr('class', 'icon-rss')))
+                                                .append($('<div>')
+                                                    .attr('class', 'grow feedsListLink flexBox')
+                                                    .append($('<a>').attr('href', feed).text(feed)))))
                                         .append($('<button>')
                                             .attr('class', 'ui-button ui-corner-all buttonText translate feedsAddDivName shrink')
                                             .data('content', 'Add')
@@ -503,14 +530,14 @@ PTL.dialog = {
                                             })
                                             .text(PTL.tr('Add')))
 
-                                        // .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
-                                        // .append($('<a>').attr('href', feed).text(feed));
+                                    // .append($('<i>').attr('class', 'icon-rss feedsListIcon'))
+                                    // .append($('<a>').attr('href', feed).text(feed));
 
                                     $feedsAddDivList.append($feedRow);
 
                                 });
 
-                                $('div#feedsAddDiv').append($feedsAddDivList);
+                                $('div#feedNewListDiv').append($feedsAddDivList);
 
                                 $addButtonIcon.removeClass('spin icon-refresh');
 
