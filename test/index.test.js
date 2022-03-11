@@ -73,4 +73,13 @@ describe('Pétrolette', function() {
         done();
     });
 
+    it('Pétrolette is serving pseudo-static files', function(done) {
+        fetch('http://localhost:' + PORT + '/robots.txt')
+            .then(res => res.text())
+            .then(text => {
+                text.substring(0, 10).should.eql('User-agent');
+            }).catch(done);
+        done();
+    });
+
 });

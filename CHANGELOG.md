@@ -1,6 +1,7 @@
 # Changelog
 
 ## v1.5.0
+- Pétrolette can now find/discover all the feeds in the URI
 - Hardened security #1e3a51a
 - More data (img, video & audio) types managed #1325ab5
 - The search input text field is now un-focused on pressing escape #e36feb4c
