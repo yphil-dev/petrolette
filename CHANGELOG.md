@@ -9,7 +9,7 @@
 - All dependancies are now installed & managed with NPM #90af60e
 - New "Insecure items in this feed were not loaded" notification #1e3a51a
 - Default feeds update #4da8bdf
-- New tests (static files, error codes)
+- New tests (static files, error codes) #e32f2d07
 
 ### Bugfixes
 - Complex URLs containing query strings are now properly handled #1325ab5
