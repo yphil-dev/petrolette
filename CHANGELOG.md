@@ -4,16 +4,17 @@
 - New feature:  Find/discover all the feeds in the URI #3ba52686
 - New feature:  Feeds suggestions #86213901
 - Hardened security #1e3a51a
+- Errors (in both the feeds and the discovery) are now much better handled, with a direct link to the error type docs #a4e7d83c
 - More data (img, video & audio) types managed #1325ab5
 - The search input text field is now un-focused on pressing escape #e36feb4c
-- All dependancies are now installed & managed with NPM #90af60e
+- All dependancies are now installed & managed with NPM #efdebe2e => #e22524d2
 - New "Insecure items in this feed were not loaded" notification #1e3a51a
 - Default feeds update #4da8bdf
-- New tests (static files, error codes) #e32f2d07
+- New tests (static files, error codes, etc.) #e32f2d07
 
 ### Bugfixes
-- Complex URLs containing query strings are now properly handled #1325ab5
-- The custom name of the feed is no longer overriden with the default one #38f99386
+- Complex URLs containing query strings were not properly handled #1325ab5
+- The custom name of the feed was sometimes overriden with the default one #38f99386
 - The feed was sometimes deleted when closing the feedPrefs dialog by clicking on the overlay #38f9938/#ee1fe05
 - The return key misbehaved in the feedPrefs dialog #f6e7f06
 - Feed timestamp: `substr()` is now deprecated (?) so heck, full timestamp for now #83a22f6
