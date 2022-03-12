@@ -34,8 +34,8 @@ app.use(
             imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
             styleSrc: ["'self'", "'unsafe-inline'"],
             scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-            scriptSrcAttr: null,
-        },
+            scriptSrcAttr: null
+        }
     })
 );
 
