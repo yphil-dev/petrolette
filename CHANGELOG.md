@@ -1,13 +1,15 @@
 # Changelog
 
 ## v1.5.0
-- Pétrolette can now find/discover all the feeds in the URI
+- New feature:  Find/discover all the feeds in the URI #3ba52686
+- New feature:  Feeds suggestions #86213901
 - Hardened security #1e3a51a
 - More data (img, video & audio) types managed #1325ab5
 - The search input text field is now un-focused on pressing escape #e36feb4c
 - All dependancies are now installed & managed with NPM #90af60e
 - New "Insecure items in this feed were not loaded" notification #1e3a51a
 - Default feeds update #4da8bdf
+- New tests (static files, error codes)
 
 ### Bugfixes
 - Complex URLs containing query strings are now properly handled #1325ab5

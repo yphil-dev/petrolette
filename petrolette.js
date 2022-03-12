@@ -1,20 +1,20 @@
 const express = require('express'),
-    path = require('path'),
-    router = require('./routes/router'),
-    fs = require('fs'),
-    pjson = require('./package.json'),
-    bodyParser = require('body-parser'),
-    app = express(),
-    helmet = require("helmet"),
-    compression = require('compression');
+      path = require('path'),
+      router = require('./routes/router'),
+      fs = require('fs'),
+      pjson = require('./package.json'),
+      bodyParser = require('body-parser'),
+      app = express(),
+      helmet = require("helmet"),
+      compression = require('compression');
 
 fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
-    recursive: true
+  recursive: true
 }, (err) => {
-    if (err) {
-        return console.error(err);
-    }
-    return true;
+  if (err) {
+    return console.error(err);
+  }
+  return true;
 });
 
 app.set('views', path.join(__dirname, 'views'));
@@ -28,15 +28,15 @@ app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false})
 // app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
 
 app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: ["'self'", "https://www.googleapis.com", "https://api.dropboxapi.com", "https://content.dropboxapi.com", "https:"],
-            imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
-            styleSrc: ["'self'", "'unsafe-inline'"],
-            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-            scriptSrcAttr: null
-        }
-    })
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", "https://www.googleapis.com", "https://api.dropboxapi.com", "https://content.dropboxapi.com", "https:"],
+      imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrcAttr: null
+    }
+  })
 );
 
 app.use(bodyParser.json());

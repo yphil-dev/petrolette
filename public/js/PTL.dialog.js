@@ -427,31 +427,29 @@ PTL.dialog = {
             .attr('class', 'feedsGroupLi')
             .appendTo($tabUl).hide();
 
-      $tabUl
-        .append($('<li>')
-                .attr('class', 'tabTitle closed hover')
-                .append($('<strong>')
-                        .attr('class', 'tabLi')
-                        .text(tab.name)
-                       )
-                .on('click', function() {
+      $tabUl.append($('<li>')
+                    .attr('class', 'tabTitle closed hover')
+                    .append($('<strong>')
+                            .attr('class', 'tabLi')
+                            .text(tab.name))
+                    .on('click', function() {
 
-                  if ($(this).hasClass('open')) {
-                    $('li.feedsGroupLi').hide();
-                    $(this).addClass('closed')
-                      .removeClass('open');
-                  } else {
-                    $('li.feedsGroupLi').hide();
-                    $(this).addClass('open')
-                      .removeClass('closed')
-                      .siblings('li.feedsGroupLi')
-                      .slideDown('fast');
-                  }
+                      if ($(this).hasClass('open')) {
+                        $('li.feedsGroupLi').slideUp('fast');
+                        $(this).addClass('closed')
+                          .removeClass('open');
+                      } else {
+                        $('li.feedsGroupLi').hide();
+                        $(this).addClass('open')
+                          .removeClass('closed')
+                          .siblings('li.feedsGroupLi')
+                          .slideDown('fast');
+                      }
 
-                }));                
-      
+                      
+                    }));                
       $.each(tab.columns, function(i, col) {
-
+        
         $.each(col, function(i, feed) {
           $feedsGroupLi.append(PTL.dialog.feedsListItem(feed));
         });
@@ -459,7 +457,6 @@ PTL.dialog = {
       });
 
       $feedsGroupLi.appendTo($tabUl);
-      // $feedsMasterUl.append($feedsGroupLi);
       
     });
 
