@@ -85,4 +85,4 @@ Extract and copy the relevant files:
 
 For any question, please [use the repo](https://framagit.org/yphil/petrolette/-/issues/new?issue%5Bmilestone_id%5D=) itself.
 
-Thank you **very much** for any love you give to this project.
+Thank you **very much** for [any love you give](https://liberapay.com/yPhil/) to this project.

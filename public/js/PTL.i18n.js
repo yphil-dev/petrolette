@@ -106,6 +106,8 @@ PTL.i18n.translations = {
 
     "The news page that doesn't know you" : { fr: "La page d'actu qui ne sait rien de toi", ja: "あなたを知らないニュースページ", es: "La página de noticias que no te conoce" },
 
+  "There are %1 new items in this feed" : { fr: "Il y a %1 nouveaux articles dans ce flux", ja: "このフィードには%1つの新しいアイテムがあります", es: "Hay %1 artículos nuevos en este feed." },
+
 
     "Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title." : { fr: "Renommez le flux de ce site Web, s'il n'est pas assez informatif ; laisser vide pour obtenir le titre du flux par défaut." , ja: "それが十分に報知されていない場合、このウェブサイトのフィードに名前を付けます。 デフォルトフィードのタイトルを取得するには、空白のままにします", es: "Nombra la feed de este sitio web, si no es lo suficientemente informativo; Deje en blanco para obtener el título de feed predeterminado." },
 

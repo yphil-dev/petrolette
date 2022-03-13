@@ -40,10 +40,13 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 - Bookmarklet to **add the feed of any website to Pétrolette** on the fly
 - Compatible with [FLOSS browsers](https://www.gnu.org/software/librejs/) (links to all uncompressed executable files, licenses available directly and in standard format)
 
-## What's new?
+### What's new?
 
 Read [the changelog](https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md).
 
+## Usage
+
+Pétrolette can be use both locally on an http, or a https server.
 
 ### Install
 
@@ -57,20 +60,20 @@ npm start
 `xdg-open http://localhost:8000` or `xdg-open https://localhost:8001`
 
 
-#### Update
+### Update
 
 ```sh
 cd petrolette
 git pull
 npm update
 ```
-#### Test
+### Test
 
 ```javascript
 npm test
 ```
 
-### Contributing
+## Contributing
 
 - Read the [development guidelines](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md)
 - Pétrolette is [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://framagit.org/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) by sending a donation. Even the smallest amount will help a lot.
