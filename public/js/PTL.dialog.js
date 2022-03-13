@@ -708,16 +708,12 @@ PTL.dialog = {
       $dialog.dialog('open');
     });
   },
-  killTab: function($button) {
+  killTab: function($button, tabName, $selectedTab, $selectedPanel, numberOfFeeds) {
 
     $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $tabs = $('#tabs'),
-            $a = $button.prev('a.ui-tabs-anchor'),
-            tabId = $a.attr('href'),
-            $selectedTab = $a.parent(),
-            $selectedPanel = $tabs.find(tabId),
             $icon = $dialog.find('div#icon > i'),
             selectedTabIndex = $tabs.tabs('option', 'active'),
             previousTabIndex = selectedTabIndex === 0 ? 0 : selectedTabIndex - 1;
@@ -765,10 +761,9 @@ PTL.dialog = {
             .addClass('dangerous')
             .text(PTL.tr('This action cannot be undone.'))
             .next('h2').text(PTL.tr('Name'))
-            .next('p').text($a.text())
+            .next('p').text(tabName)
             .next('h2').text(PTL.tr('Number of feeds'))
-            .next('p').text($selectedPanel.find('li.feed').length);
-
+            .next('p').text(numberOfFeeds);
         }
       });
 

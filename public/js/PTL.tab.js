@@ -34,7 +34,23 @@ PTL.tab = {
     });
 
     $tabs.on("click", "i.tabCloser", function() {
-      PTL.dialog.killTab($(this));
+
+      const $tabs = $('#tabs'),
+            $a = $(this).prev('a.ui-tabs-anchor'),
+            tabName = $a.text(),
+            tabId = $a.attr('href'),
+            $selectedTab = $a.parent(),
+            $selectedPanel = $tabs.find(tabId),
+            numberOfFeeds = $selectedPanel.find('li.feed').length;
+
+      if (numberOfFeeds) {
+        PTL.dialog.killTab($(this), $a.text(), $selectedTab, $selectedPanel, numberOfFeeds);
+      } else {
+        $selectedTab.remove();
+        $selectedPanel.remove();
+        PTL.tab.saveTabs();
+      }
+      
     });
 
     if (PTL.util.isMobile()) {
