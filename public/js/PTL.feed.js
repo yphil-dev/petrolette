@@ -53,8 +53,8 @@ PTL.feed = {
           .attr('title', PTL.tr('Select this feed for moving and deletion'))
           .click(function() {
             $(this).toggleClass('icon-checked icon-checkbox')
-                   .parent().parent().parent().parent()
-                   .toggleClass('selected');
+              .parent().parent().parent().parent()
+              .toggleClass('selected');
           });
 
     const $deleteIcon = $('<i>')
@@ -111,7 +111,7 @@ PTL.feed = {
         .attr('title', PTL.tr('Close this feed'));
 
       $refreshIcon.removeClass('icon-pin')
-                  .addClass('icon-refresh');
+        .addClass('icon-refresh');
       
     } else {
 
@@ -120,7 +120,7 @@ PTL.feed = {
         .attr('title', PTL.tr('Open this feed'));
 
       $refreshIcon.removeClass('icon-refresh')
-                  .addClass('icon-pin');
+        .addClass('icon-pin');
     }
 
     const $feedHandle = $('<div>')
@@ -473,7 +473,7 @@ PTL.feed = {
                   .text(error.status))
           .append(')');
 
-    if (error.status != 0) $errValue.append($errStatus)
+    if (error.status != 0) $errValue.append($errStatus);
     
     const $msgValue = $('<strong>')
           .attr('class', 'value')
@@ -492,7 +492,7 @@ PTL.feed = {
           .append($msgValue);
 
     const $feedBodyUl = $('<ul>').attr('class', 'feedBody')
-                                 .append($errorItem);
+          .append($errorItem);
 
     return $feedBodyUl;
 
@@ -562,170 +562,77 @@ PTL.feed = {
       $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
     } else if (!feedIconHash) {
       PTL.feed.fetchIcon(feedHost)
-         .then(hash => {
-           $dataStore.data('iconhash', hash);
-           PTL.tab.saveTabs(true);
-         })
-         .catch(e => {
-           $dataStore.data('iconhash', 'noicon');
-           PTL.tab.saveTabs(true);
-           $favIcon.attr('src', '/static/images/rss.gif');
-         });
+        .then(hash => {
+          $dataStore.data('iconhash', hash);
+          PTL.tab.saveTabs(true);
+        })
+        .catch(e => {
+          $dataStore.data('iconhash', 'noicon');
+          PTL.tab.saveTabs(true);
+          $favIcon.attr('src', '/static/images/rss.gif');
+        });
     }
     
     if ($dataStore.data('status') == 'on') {
 
       $refreshButton.addClass('spin');
 
-<<<<<<< HEAD
-        $videoLink
-            .attr('href', videoUrl)
-            .appendTo($itemDiv);
-        $videoIcon
-            .attr('class', 'itemIcon icon-video')
-            .appendTo($videoLink);
 
-        return $itemDiv;
+      try {
+        let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
-    },
-    errorFeed: function(error, feedUrl) {
+        if (fetchFeed.error) {
 
-        const status = error.status;
-        const message = error.message;
-        const type = error.type;
+          $feedBody
+            .empty()
+            .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
+            .css('height', '');
+          $feedLink.addClass('danger');
+          $refreshButton.removeClass('spin');
 
-        const $validateLink = $('<a>')
-              .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
+        } else {
 
-        const $validateLinkIcon = $('<i>')
-              .attr('class', 'itemIcon icon-w3c')
-              .attr('title', PTL.tr('Validate /verify this feed file with the W3C'))
-              .appendTo($validateLink);
+          let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
 
-        const $reportLink = $('<a>')
-              .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + type + ')');
+          let isInsecureLinks = lastItems[2];
 
-        const $reportLinkIcon = $('<i>')
-              .attr('class', 'itemIcon icon-petrolette')
-              .attr('title', PTL.tr('Report feed error'))
-              .appendTo($reportLink);
+          const feedName = fetchFeed.feedTitle;
 
-        const $errKey = $('<strong>')
-              .attr('class', 'translate key')
-              .data('content', PTL.tr('Type'))
-              .text(PTL.tr('Type'));
+          let $insecureIcon = $('<i>')
+              .attr('class', 'icon-lock-open insecureIcon warning')
+              .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
+          
+          if (isInsecureLinks) $warningIconSpan.html($insecureIcon);
+          
+          $feedBody.html(lastItems[0]);
 
-        const $msgKey = $('<strong>')
-              .attr('class', 'translate key')
-              .data('content', PTL.tr('Message'))
-              .text(PTL.tr('Message'));
+          $refreshButton
+            .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStamp + ')')
+            .removeClass('spin');
+          
+          $feedLink
+            .attr('href', fetchFeed.feedLink)
+            .attr('title', feedName)
+            .text(feedName);
+          
+          if ($dataStore.data('name') == '') $dataStore.data('name', feedName);          
+          
+          if (fetchFeed.totalNewItems > 0) {
+            $dataStore.data('lastitem', fetchFeed.lastItem);
+            PTL.tab.saveTabs();
+            $badge
+              .text(fetchFeed.totalNewItems)
+              .attr('title', PTL.tr('There are %1 new items in this feed', fetchFeed.totalNewItems))
+              .fadeIn('slow');
+          } else {
+            $badge.fadeOut('slow');
+          }
 
-        const $errValue = $('<strong>')
-              .attr('class', 'value')
-              .text(type + ' (' + status + ')');
-
-        const $msgValue = $('<strong>')
-              .attr('class', 'value')
-              .text(message);
-
-        const $errorItem = $('<li>')
-              .attr('class', 'feedItem error')
-              .append($validateLink)
-              .append($reportLink)
-              .append($errKey)
-              .append('&nbsp;:&nbsp;')
-              .append($errValue)
-              .append('<br>')
-              .append($msgKey)
-              .append('&nbsp;:&nbsp;')
-              .append($msgValue);
-
-        const $feedBodyUl = $('<ul>').attr('class', 'feedBody')
-              .append($errorItem);
-
-        return $feedBodyUl;
-
-    },
-    fetchIcon: function(feedHost) {
-
-        return new Promise((resolve, reject) => {
-            $.get("/favicon", {
-                url: decodeURI(feedHost),
-                dataType: "json"
-            }).done(function(hash) {
-                if (hash)
-                    resolve(hash);
-                else
-                    reject();
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-                reject(jqXHR);
-            });
-
-        });
-
-    },
-    fetchFeed: function(feedUrl, lastItem, nbItems) {
-
-        return new Promise((resolve, reject) => {
-            $.get("/feed", {
-                url: feedUrl,
-                dataType: 'json',
-                lastItem: lastItem,
-                nbItems: nbItems
-            }).done(function(data, _textStatus, jqXHR) {
-                resolve(data);
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-                reject(jqXHR, textStatus, errorThrown);
-            });
-        });
-
-    },
-    populate: async function($button, progress) {
-
-        const $dataStore = $button.parent().parent(),
-              $refreshButton = $dataStore.find('i.feedRefresh').removeClass('icon-pin').addClass('icon-refresh spin'),
-              $feedHeader = $dataStore.parent(),
-              $feedLinkDiv = $feedHeader.children('div.feedTitle'),
-              $feedLink = $feedLinkDiv.children('a'),
-              $badge = $feedHeader.children('.newItemsBadge'),
-              $feedBody = $dataStore.parent().next('div.feedBody').removeClass('folded'),
-              $feedBodyUl = $feedBody.find('ul.feedBody'),
-              feedUrl = $dataStore.data('url'),
-              feedIconHash = $dataStore.data('iconhash'),
-              $feedToggle = $feedHeader.children('.feedToggle'),
-              $feedIcon = $feedToggle.children('.feedIcon').removeClass('fold'),
-              $favIcon = $feedToggle.children('.favicon');
-
-        const l = PTL.util.getLocation(feedUrl),
-              feedProtocol = l.protocol ? l.protocol + '//' : '//',
-              feedHost = feedProtocol + l.hostname,
-              dateObj = new Date(),
-              timeStamp = dateObj.toTimeString();
-
-        var feedLastItem = $dataStore.data('lastitem');
-
-        $feedBodyUl.css('border', '1px solid red');
-        
-        if (feedIconHash && feedIconHash !== 'noicon') {
-            $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
-        } else if (!feedIconHash) {
-            PTL.feed.fetchIcon(feedHost)
-                .then(hash => {
-                    $dataStore.data('iconhash', hash);
-                    PTL.tab.saveTabs(true);
-                })
-                .catch(e => {
-                    $dataStore.data('iconhash', 'noicon');
-                    PTL.tab.saveTabs(true);
-                    $favIcon.attr('src', '/static/images/rss.gif');
-                });
         }
+      } catch (error) {
+
+        console.error('WOA: %s (%s)', error);
         
-        if ($dataStore.data('status') == 'on') {
-      let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
-
-      if (fetchFeed.error) {
-
         $feedBody
           .empty()
           .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
@@ -733,43 +640,8 @@ PTL.feed = {
         $feedLink.addClass('danger');
         $refreshButton.removeClass('spin');
 
-      } else {
-
-        let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-
-        let isInsecureLinks = lastItems[2];
-
-        const feedName = fetchFeed.feedTitle;
-
-        let $insecureIcon = $('<i>')
-            .attr('class', 'icon-lock warning')
-            .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
-        
-        if (isInsecureLinks) $warningIconSpan.html($insecureIcon);
-        
-        $feedBody.html(lastItems[0]);
-
-        $refreshButton
-          .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStamp + ')')
-          .removeClass('spin');
-        
-        $feedLink
-          .attr('href', fetchFeed.feedLink)
-          .attr('title', feedName)
-          .text(feedName);
-        
-        if ($dataStore.data('name') == '') $dataStore.data('name', feedName);          
-        
-        if (fetchFeed.totalNewItems > 0) {
-          $dataStore.data('lastitem', fetchFeed.lastItem);
-          PTL.tab.saveTabs();
-          $badge.text(fetchFeed.totalNewItems).fadeIn('slow');
-        } else {
-          $badge.fadeOut('slow');
-        }
-
       }
-
+      
     } else {
 
       $feedBody.addClass('folded');

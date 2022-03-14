@@ -105,12 +105,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "c77fd2fd065b5fe16d6f2b41e190b266",
-      "css": "pencil",
-      "code": 59416,
-      "src": "entypo"
-    },
-    {
       "uid": "c91522256a4c3972e9a2765b995b7252",
       "css": "pin",
       "code": 59424,
@@ -225,16 +219,16 @@
       "src": "elusive"
     },
     {
-      "uid": "95c84da411a955a12baff8b0859c9276",
-      "css": "lock",
-      "code": 59397,
-      "src": "websymbols"
-    },
-    {
       "uid": "97ac1a82370ae58f02e4ff1bdc58ee86",
       "css": "warning",
       "code": 59400,
       "src": "websymbols"
+    },
+    {
+      "uid": "05376be04a27d5a46e855a233d6e8508",
+      "css": "lock-open",
+      "code": 61758,
+      "src": "fontawesome"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
     "name": "petrolette",
     "description": "The news page that doesn't know you",
-    "version": "v1.5.5",
+    "version": "1.5.6",
     "private": true,
     "license": "GPL-3.0-only",
     "HTTP_PORT": 8000,
@@ -50,6 +50,7 @@
         "sanitize": "^2.1.0"
     },
     "devDependencies": {
+        "connect": "3.7.0",
         "mocha": "^9.0.3",
         "nyc": "^15.1.0",
         "should": "^13.2.3"
