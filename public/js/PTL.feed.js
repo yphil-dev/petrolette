@@ -577,10 +577,62 @@ PTL.feed = {
 
       $refreshButton.addClass('spin');
 
-      let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
-      if (fetchFeed.error) {
+      try {
+        let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
+        if (fetchFeed.error) {
+
+          $feedBody
+            .empty()
+            .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
+            .css('height', '');
+          $feedLink.addClass('danger');
+          $refreshButton.removeClass('spin');
+
+        } else {
+
+          let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
+
+          let isInsecureLinks = lastItems[2];
+
+          const feedName = fetchFeed.feedTitle;
+
+          let $insecureIcon = $('<i>')
+              .attr('class', 'icon-lock-open insecureIcon warning')
+              .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
+          
+          if (isInsecureLinks) $warningIconSpan.html($insecureIcon);
+          
+          $feedBody.html(lastItems[0]);
+
+          $refreshButton
+            .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStamp + ')')
+            .removeClass('spin');
+          
+          $feedLink
+            .attr('href', fetchFeed.feedLink)
+            .attr('title', feedName)
+            .text(feedName);
+          
+          if ($dataStore.data('name') == '') $dataStore.data('name', feedName);          
+          
+          if (fetchFeed.totalNewItems > 0) {
+            $dataStore.data('lastitem', fetchFeed.lastItem);
+            PTL.tab.saveTabs();
+            $badge
+              .text(fetchFeed.totalNewItems)
+              .attr('title', PTL.tr('There are %1 new items in this feed', fetchFeed.totalNewItems))
+              .fadeIn('slow');
+          } else {
+            $badge.fadeOut('slow');
+          }
+
+        }
+      } catch (error) {
+
+        console.error('WOA: %s (%s)', error);
+        
         $feedBody
           .empty()
           .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
@@ -588,46 +640,8 @@ PTL.feed = {
         $feedLink.addClass('danger');
         $refreshButton.removeClass('spin');
 
-      } else {
-
-        let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
-
-        let isInsecureLinks = lastItems[2];
-
-        const feedName = fetchFeed.feedTitle;
-
-        let $insecureIcon = $('<i>')
-            .attr('class', 'icon-lock warning')
-            .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
-        
-        if (isInsecureLinks) $warningIconSpan.html($insecureIcon);
-        
-        $feedBody.html(lastItems[0]);
-
-        $refreshButton
-          .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStamp + ')')
-          .removeClass('spin');
-        
-        $feedLink
-          .attr('href', fetchFeed.feedLink)
-          .attr('title', feedName)
-          .text(feedName);
-        
-        if ($dataStore.data('name') == '') $dataStore.data('name', feedName);          
-        
-        if (fetchFeed.totalNewItems > 0) {
-          $dataStore.data('lastitem', fetchFeed.lastItem);
-          PTL.tab.saveTabs();
-          $badge
-            .text(fetchFeed.totalNewItems)
-            .attr('title', PTL.tr('There are %1 new items in this feed', fetchFeed.totalNewItems))
-            .fadeIn('slow');
-        } else {
-          $badge.fadeOut('slow');
-        }
-
       }
-
+      
     } else {
 
       $feedBody.addClass('folded');

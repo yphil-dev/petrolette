@@ -31,7 +31,7 @@ app.use(
       defaultSrc: ["'self'", "https://www.googleapis.com", "https://api.dropboxapi.com", "https://content.dropboxapi.com", "https:"],
       imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
       styleSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
       scriptSrcAttr: null
     }
   })
@@ -44,21 +44,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(express.static(__dirname + '/public', { dotfiles: 'allow' }));
 
 app.use('/favicons', express.static(path.join(__dirname, pjson.FAVICONS_CACHE_DIR)));
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'public'), { dotfiles: 'allow' }));
+
 app.use('/introjs', express.static(path.join(__dirname, 'node_modules', 'intro.js')));
 app.use('/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 app.use('/jquery-ui', express.static(path.join(__dirname, 'node_modules', 'jquery-ui-dist')));
-
 app.use('/fancybox', express.static(path.join(__dirname, 'node_modules', '@fancyapps', 'fancybox', 'dist')));
 app.use('/responsively-lazy', express.static(path.join(__dirname, 'node_modules', 'responsively-lazy')));
-
-
 app.use('/rs', express.static(path.join(__dirname, 'node_modules', 'remotestoragejs', 'release')));
 app.use('/rs-widget', express.static(path.join(__dirname, 'node_modules', 'remotestorage-widget', 'build')));
-
 app.use('/dompurify', express.static(path.join(__dirname, 'node_modules', 'dompurify', 'dist')));
 app.use('/mousetrap', express.static(path.join(__dirname, 'node_modules', 'mousetrap')));
-
 
 app.use('/', router);
 

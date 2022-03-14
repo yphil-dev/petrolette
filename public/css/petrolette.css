@@ -1632,3 +1632,8 @@ div#nagBar > div#nagTwo > button {
 	user-select: none;
 	overflow: visible;
 }
+
+.insecureIcon {
+  margin: 0 0.2em 0 0;
+  font-size: 1em;
+}
