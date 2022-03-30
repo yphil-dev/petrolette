@@ -6,6 +6,13 @@
 
     <meta charset="UTF-8">
 
+    <link rel="preload" as="script" href="/jquery/jquery.min.js">
+    <link rel="preload" as="script" href="/jquery-ui/jquery-ui.min.js">
+    <!-- <link rel="preload" as="font" href="/static/font/Lobster_1.3.otf"> -->
+    <link rel="preload" as="style" href="/static/css/fontello.css" />
+    <link rel="preload" as="style" href="/static/css/petrolette.css" />
+    <!-- <link rel="preload" as="image" href="/static/images/loading.gif"> -->
+
     <script>
       /*
        @licstart  The following is the entire license notice for the
@@ -93,7 +100,7 @@
     <div id="overlay" class="hidden"></div>
 
     <div id="nagBar" style="display:none">
-
+      
       <div id="nagOne">
         
         <span id="nagTex" class="translate" data-content="🔒 This is your private Pétrolette ; Everything is already saved in this browser 🙂">
@@ -114,7 +121,7 @@
       
     </div>
     
-    <nav style="display:none;" id="top-menu" class="menu">
+    <nav id="top-menu" class="menu hidden">
 
       <div class="topNav" id="topNav">
 
@@ -159,7 +166,7 @@
       </div>
     </nav>
 
-    <nav style="display:none;" id="sideMenu" class="menu">
+    <nav id="sideMenu" class="menu hidden">
 
       <div class="sideMenuTitleToggleDiv ui-corner-top hover">
         <span class="sideMenuSectionToggle">
@@ -242,8 +249,7 @@
       <fieldset class="feedsMenuForm">
         <div class="flexBox">
           <input id="fileImport"
-                 type="file"
-                 style="display: none;" />
+                 type="file" />
           <button id="fileImportButton"
                   class="grow translate"
                   data-title="Open / import tabs and feeds">
@@ -526,7 +532,7 @@
         <i class="icon-up"></i>
       </span>
 
-      <div style="display:none;" id="loadSpinner"
+      <div id="loadSpinner"
            class="dead-center hidden">
         <div>
           <i class="icon-refresh spin"></i>

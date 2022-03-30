@@ -5,6 +5,7 @@ var PTL = (function() {
   return {
     feedTypes: ['text', 'mixed', 'photo'],
     kbShortcutNewFeed: 'n',
+    kbShortcutMenuToggle: 'm',
     kbShortcutFocusTab: 't',
     kbShortcutFocusSearch: 'f',
     language: 'en',
@@ -14,10 +15,13 @@ var PTL = (function() {
       Mousetrap.bind('?', PTL.dialog.kbShortcuts);
       Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
       Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
-        $('.ui-state-active a').focus()
+        $('.ui-state-active a').focus();
       });
       Mousetrap.bind(PTL.kbShortcutFocusSearch, () => {
-        $('div#ptlSearch > input').focus()
+        $('div#ptlSearch > input').focus();
+      });
+      Mousetrap.bind(PTL.kbShortcutMenuToggle, () => {
+        PTL.sideMenu('toggle');
       });
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
@@ -57,8 +61,8 @@ var PTL = (function() {
             $logoType = $('.logoType'),
             $topMenu = $('nav#top-menu');
 
-      $topMenu.removeAttr('style');
-      $sideMenu.removeAttr('style');
+      $topMenu.removeClass('hidden');
+      $sideMenu.removeClass('hidden');
 
       $('noscript').hide();
 
