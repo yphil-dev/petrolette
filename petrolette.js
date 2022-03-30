@@ -6,6 +6,7 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       app = express(),
       helmet = require("helmet"),
+      crypto = require("crypto"),
       compression = require('compression');
 
 fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
@@ -25,14 +26,43 @@ app.use(compression());
 
 // app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
 
+// app.use((req, res, next) => {
+//   res.locals.cspNonce = crypto.randomBytes(16).toString("hex");
+//   next();
+// });
+
+// app.use(
+//   helmet({
+//     frameguard: false,
+//   })
+// );
+
 app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'", "https://www.googleapis.com", "https://api.dropboxapi.com", "https://content.dropboxapi.com", "https:"],
-      imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      scriptSrcAttr: null
+  helmet({
+    crossOriginEmbedderPolicy: false,
+    // crossOriginResourcePolicy: false,
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        defaultSrc: [
+          "'self'",
+          "https:",
+          "'unsafe-inline'",
+          "https://www.googleapis.com",
+          "https://api.dropboxapi.com",
+          "https://content.dropboxapi.com"
+        ],
+        scriptSrc: null,
+        imgSrc: [
+          "'self'",
+          "https:",
+          "'unsafe-inline'",
+          "data:"
+        ],
+        styleSrc: null,
+        scriptSrcAttr: null
+      },
+      reportOnly: false,
     }
   })
 );
@@ -56,6 +86,15 @@ app.use('/rs-widget', express.static(path.join(__dirname, 'node_modules', 'remot
 app.use('/dompurify', express.static(path.join(__dirname, 'node_modules', 'dompurify', 'dist')));
 app.use('/mousetrap', express.static(path.join(__dirname, 'node_modules', 'mousetrap')));
 
-app.use('/', router);
+// app.use('/', router);
+
+app.use('/', function (req, res, next) {
+    req.animal_config = {
+        name: 'Cat',
+        says: 'meow'
+    };
+    next();        
+}, router);
+
 
 module.exports = app;

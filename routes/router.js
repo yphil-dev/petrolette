@@ -109,12 +109,13 @@ router.get('/about/javascript', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    res.render('index', {
-        queryString: req.query.add,
-        version: pjson.version,
-        favratversion: favratpjson.version,
-        feedratversion: feedratpjson.version
-    });
+  res.render('index', {
+    queryString: req.query.add,
+    version: pjson.version,
+    favratversion: favratpjson.version,
+    feedratversion: feedratpjson.version,
+    nonce: res.locals.cspNonce
+  });
 });
 
 router.use(function(req, res) {

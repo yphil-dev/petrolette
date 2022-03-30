@@ -6,13 +6,6 @@
 
     <meta charset="UTF-8">
 
-    <link rel="preload" as="script" href="/jquery/jquery.min.js">
-    <link rel="preload" as="script" href="/jquery-ui/jquery-ui.min.js">
-    <!-- <link rel="preload" as="font" href="/static/font/Lobster_1.3.otf"> -->
-    <link rel="preload" as="style" href="/static/css/fontello.css" />
-    <link rel="preload" as="style" href="/static/css/petrolette.css" />
-    <!-- <link rel="preload" as="image" href="/static/images/loading.gif"> -->
-
     <script>
       /*
        @licstart  The following is the entire license notice for the
@@ -78,7 +71,7 @@
             href="/static/css/petrolette.css" />
     </noscript>
 
-    <script src="/jquery/jquery.min.js"></script>
+    <script src="/jquery/jquery.js"></script>
 
     <script src="/jquery-ui/jquery-ui.min.js"></script>
 
@@ -98,12 +91,6 @@
   <body>
 
     <div id="overlay" class="hidden"></div>
-
-    <div id="preload">
-      <i class="fontello"></i>
-      <i class="logoTitle">.</i>
-      <i class="ui-icon"></i>
-    </div>
 
     <div id="nagBar" style="display:none">
 
@@ -533,7 +520,9 @@
       
       <div id="ptlDialogs"></div>
 
-      <span id="backToTop">
+      <span style="display:none;"
+            id="backToTop"
+            class="jsEnabledOnly">
         <i class="icon-up"></i>
       </span>
 
