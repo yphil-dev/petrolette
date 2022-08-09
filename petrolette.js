@@ -27,46 +27,34 @@ app.use(compression());
 // app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
 
 // app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       defaultSrc: ["'self'", "https://www.googleapis.com", "https://api.dropboxapi.com", "https://content.dropboxapi.com", "https:"],
-//       imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
-//       styleSrc: ["'self'", "'unsafe-inline'"],
-//       scriptSrc: ["'self'", "'unsafe-inline'"],
-//       scriptSrcAttr: null
+//   helmet({
+//     crossOriginEmbedderPolicy: false,
+//     // crossOriginResourcePolicy: false,
+//     contentSecurityPolicy: {
+//       useDefaults: true,
+//       directives: {
+//         defaultSrc: [
+//           "'self'",
+//           "https:",
+//           "'unsafe-inline'",
+//           "https://www.googleapis.com",
+//           "https://api.dropboxapi.com",
+//           "https://content.dropboxapi.com"
+//         ],
+//         scriptSrc: null,
+//         imgSrc: [
+//           "'self'",
+//           "https:",
+//           "'unsafe-inline'",
+//           "data:"
+//         ],
+//         styleSrc: null,
+//         scriptSrcAttr: null
+//       },
+//       reportOnly: false,
 //     }
 //   })
 // );
-
-app.use(
-  helmet({
-    crossOriginEmbedderPolicy: false,
-    // crossOriginResourcePolicy: false,
-    contentSecurityPolicy: {
-      useDefaults: true,
-      directives: {
-        defaultSrc: [
-          "'self'",
-          "https:",
-          "'unsafe-inline'",
-          "https://www.googleapis.com",
-          "https://api.dropboxapi.com",
-          "https://content.dropboxapi.com"
-        ],
-        scriptSrc: null,
-        imgSrc: [
-          "'self'",
-          "https:",
-          "'unsafe-inline'",
-          "data:"
-        ],
-        styleSrc: null,
-        scriptSrcAttr: null
-      },
-      reportOnly: false,
-    }
-  })
-);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
