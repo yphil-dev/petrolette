@@ -13,6 +13,10 @@ process.on('uncaughtException', function(err) {
   console.error('### Pétrolette uncaughtException: %s', err.code);
 });
 
+// httpServer.get('*', function(req, res) {  
+//     res.redirect('https://' + req.headers.host + req.url);
+// });
+
 httpServer.listen(portHttp, () => {
   console.debug('HTTP Server running on port %s', portHttp);
 });
