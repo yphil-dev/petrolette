@@ -26,18 +26,6 @@ app.use(compression());
 
 // app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
 
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'", "https://www.googleapis.com", "https://api.dropboxapi.com", "https://content.dropboxapi.com", "https:"],
-      imgSrc: ["'self'", "'unsafe-inline'", "https:", "data:"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrcAttr: null
-    }
-  })
-);
-
 // app.use(
 //   helmet({
 //     crossOriginEmbedderPolicy: false,

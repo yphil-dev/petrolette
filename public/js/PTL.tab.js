@@ -30,7 +30,17 @@ PTL.tab = {
       e.preventDefault();
       if (e.which === 1) {
         PTL.dialog.editTab($(this));
+        alert('wopip!');
+      } else {
+        alert('wopop!');
       }
+    });
+
+    $tabs.on('mouseup', '.ui-tabs-tab', function(e) {
+      // e.preventDefault();
+      // alert('wopop! Elt:' + $(this).prop('nodeName') + ' class:' + $(this).prop('class'));
+      $(this).focus();
+     
     });
 
     $tabs.on("click", "i.tabCloser", function() {
@@ -143,8 +153,6 @@ PTL.tab = {
           thisFeed.nbitems = v.nbitems;
           thisFeed.lastitem = v.lastitem;
 
-          // console.log('v.lastitem: %s (%s)', v.lastitem);
-
           thisColFeeds.push(thisFeed);
           allFeeds.push(thisColFeeds);
 
@@ -253,7 +261,6 @@ PTL.tab = {
 
       if (!newTab) {
         feeds.forEach(function(feed) {
-          // console.log('feed.lastitem: %s (%s)', feed.lastitem, feed.url);
           const type = PTL.feedTypes.includes(feed.type) ? feed.type : 'mixed',
             nbitems = Number.isInteger(feed.nbitems) ? feed.nbitems : 10,
             limit = Number.isInteger(feed.limit) ? feed.limit : 260,
