@@ -15,7 +15,7 @@ var PTL = (function() {
       Mousetrap.bind('?', PTL.dialog.kbShortcuts);
       Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
       Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
-        $('.ui-state-active a').focus();
+        $('.ui-state-active').focus();
       });
       Mousetrap.bind(PTL.kbShortcutFocusSearch, () => {
         $('div#ptlSearch > input').focus();
@@ -94,7 +94,7 @@ var PTL = (function() {
       });
 
       $('#logoTitle > .logoTitle').click(function(){
-        $('.ui-state-active a').focus();
+        $('.ui-state-active').focus();
       });
 
       $('button.tourButton').click(function(){

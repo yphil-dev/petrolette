@@ -96,6 +96,21 @@ body {
   margin: 0;
 }
 
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited,
+a.ui-button:hover,
+a.ui-button:focus {
+        color: #f00;
+        text-decoration: none;
+}
+
+
 ul,
 li {
   padding: 0;
@@ -162,6 +177,17 @@ li.feedItem:not(.error) a {
 li.ui-state-active a:link,
 li.ui-tabs-active > a:visited {
   color: var(--color-link-hover);
+}
+
+/* :focus { */
+/*   outline: none; */
+/* } */
+
+.ui-state-active:focus,
+.ui-state-default:focus,
+.ui-state-default:focus-visible {
+  outline: none;
+  box-shadow: 0 2px 0 var(--color-link-hover) inset;
 }
 
 .feedHeader > .feedTitle > a:link,
@@ -1637,3 +1663,16 @@ div#nagBar > div#nagTwo > button {
   margin: 0 0.2em 0 0;
   font-size: 1em;
 }
+
+/* :focus { */
+/*   outline: none; */
+/* } */
+
+/* a:focus, */
+/* a:focus-visible, */
+/* a:focus-within { */
+/*   /\* outline: none; *\/ */
+/*   outline: 1px solid green !important; */
+/* } */
+
+/* html body main div#tabs.ui-tabs.ui-corner-all.ui-widget.ui-widget-content ul#tabNamesUl.ui-tabs-nav.ui-corner-all.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-sortable li.modal.tabName.translate.ui-droppable.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active a#ui-id-1.ui-tabs-anchor */
