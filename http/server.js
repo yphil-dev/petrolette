@@ -4,7 +4,7 @@ const petrolette = require('../petrolette'),
       https = require('https'),
       fs = require('fs');
 
-const httpServer = http.createServer(petrolette);
+// const httpServer = http.createServer(petrolette);
 
 const portHttp =  pjson.HTTP_PORT || 8000;
 const portHttps =  pjson.HTTPS_PORT || 8001;
@@ -14,12 +14,12 @@ process.on('uncaughtException', function(err) {
 });
 
 // httpServer.get('*', function(req, res) {  
-//     res.redirect('https://' + req.headers.host + req.url);
+//    res.redirect('https://' + req.headers.host + req.url);
 // });
 
-httpServer.listen(portHttp, () => {
-  console.debug('HTTP Server running on port %s', portHttp);
-});
+// httpServer.listen(portHttp, () => {
+//  console.debug('HTTP Server running on port %s', portHttp);
+// });
 
 try {
   const httpsServer = https.createServer({
@@ -35,3 +35,8 @@ try {
 } catch (error) {
   console.error('error: no HTTPS here');
 }
+
+http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+}).listen(portHttp);
