@@ -30,7 +30,17 @@ PTL.tab = {
       e.preventDefault();
       if (e.which === 1) {
         PTL.dialog.editTab($(this));
+        alert('wopip!');
+      } else {
+        alert('wopop!');
       }
+    });
+
+    $tabs.on('mouseup', '.ui-tabs-tab', function(e) {
+      // e.preventDefault();
+      // alert('wopop! Elt:' + $(this).prop('nodeName') + ' class:' + $(this).prop('class'));
+      $(this).focus();
+     
     });
 
     $tabs.on("click", "i.tabCloser", function() {

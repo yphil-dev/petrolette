@@ -93,6 +93,11 @@ var PTL = (function() {
         PTL.prefs.writeConfig('nagBarOk', true);
       });
 
+      $('li.ui-tab').click(function(){
+        alert('plop');
+        $(this).focus();
+      });
+
       $('#logoTitle > .logoTitle').click(function(){
         $('.ui-state-active').focus();
       });
