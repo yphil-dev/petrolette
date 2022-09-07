@@ -12,17 +12,17 @@ var PTL = (function() {
     languages: ['en', 'fr', 'ja', 'es'],
     start : function() {
 
-      Mousetrap.bind('?', PTL.dialog.kbShortcuts);
-      Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
-      Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
-        $('.ui-state-active').focus();
-      });
-      Mousetrap.bind(PTL.kbShortcutFocusSearch, () => {
-        $('div#ptlSearch > input').focus();
-      });
-      Mousetrap.bind(PTL.kbShortcutMenuToggle, () => {
-        PTL.sideMenu('toggle');
-      });
+      // Mousetrap.bind('?', PTL.dialog.kbShortcuts);
+      // Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
+      // Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
+      //   $('.ui-state-active').focus();
+      // });
+      // Mousetrap.bind(PTL.kbShortcutFocusSearch, () => {
+      //   $('div#ptlSearch > input').focus();
+      // });
+      // Mousetrap.bind(PTL.kbShortcutMenuToggle, () => {
+      //   PTL.sideMenu('toggle');
+      // });
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
