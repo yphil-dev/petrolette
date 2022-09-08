@@ -22,7 +22,7 @@
         "stop": "pm2 stop all",
         "show": "pm2 show petrolette",
         "logs": "pm2 logs petrolette --timestamp=HH:mm:ss",
-        "errors": "pm2 logs petrolette --err --format --timestamp=HH:mm:ss --lines=45",
+        "errors": "pm2 logs all --err --format --timestamp=HH:mm:ss --lines=45",
         "test": "mocha --timeout 30s",
         "coverage": "nyc npm test",
         "postinstall": "pm2 install pm2-logrotate"
