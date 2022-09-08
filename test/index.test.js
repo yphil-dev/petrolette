@@ -29,14 +29,14 @@ describe('Pétrolette', function() {
     done();
   });
 
-  it('Pétrolette is returning a favicon URL hash', function(done) {
-    fetch('http://localhost:' + PORT + '/favicon/?url=https://yphil.bitbucket.io/feed.xml')
-      .then(res => res.text())
-      .then(text => {
-        text.should.eql('a210177714b9fd9e35bfd7241eb32214');
-      }).catch(done);
-    done();
-  });
+  // it('Pétrolette is returning a favicon URL hash', function(done) {
+  //   fetch('http://localhost:' + PORT + '/favicon/?url=https://yphil.bitbucket.io/feed.xml')
+  //     .then(res => res.text())
+  //     .then(text => {
+  //       text.should.eql('a210177714b9fd9e35bfd7241eb32214');
+  //     }).catch(done);
+  //   done();
+  // });
 
   it('Pétrolette is returning a feed URL', function(done) {
     fetch('http://localhost:' + PORT + '/discover/?url=https://yphil.bitbucket.io/')
