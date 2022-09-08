@@ -4,8 +4,6 @@ const petrolette = require('../petrolette'),
       https = require('https'),
       fs = require('fs');
 
-const httpServer = http.createServer(petrolette);
-
 const myArgs = process.argv.slice(2);
 console.error('myArgs: ', myArgs[0]);
 
@@ -28,25 +26,11 @@ try {
   });
 
 } catch (error) {
-  console.error('error: no HTTPS here');
+  console.error('HTTPS error: %s', error);
 }
 
-httpServer.listen(portHttp, (req, res) => {
-  console.debug('HTTP Server running on port %s, redirecting to port %s', portHttp, portHttps);
+http.createServer(function (req, res) {
+  console.error('HTTP server running on %s and redirecting to %s', portHttp, portHttps);
   res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-});
-
-
-// http.createServer(function (req, res) {
-
-//   console.error('yoo:' + myArgs[0]);
-
-//   console.error('Running HTTPserver on ' + portHttp);
-  
-//   if (myArgs[0] != 'dev') {
-//     console.error('Redirecting to ' + portHttps);
-//     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-//   }
-  
-//   res.end();
-// }).listen(portHttp);
+  res.end();
+}).listen(portHttp);
