@@ -30,9 +30,10 @@ describe('Pétrolette', function() {
   });
 
   it('Pétrolette is returning a favicon URL hash', function(done) {
-    fetch('http://localhost:' + PORT + '/favicon/?url=https://yphil.bitbucket.io/feed.xml')
-      .then(res => {
-        res.status.should.eql(200);
+    fetch('http://127.0.0.1:' + PORT + '/favicon/?url=https://yphil.bitbucket.io/feed.xml')
+      .then(res => res.text())
+      .then(text => {
+        text.should.eql('a210177714b9fd9e35bfd7241eb32214');
       }).catch(done);
     done();
   });
