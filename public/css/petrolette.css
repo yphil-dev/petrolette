@@ -1664,15 +1664,6 @@ div#nagBar > div#nagTwo > button {
   font-size: 1em;
 }
 
-/* :focus { */
-/*   outline: none; */
-/* } */
-
-/* a:focus, */
-/* a:focus-visible, */
-/* a:focus-within { */
-/*   /\* outline: none; *\/ */
-/*   outline: 1px solid green !important; */
-/* } */
-
-/* html body main div#tabs.ui-tabs.ui-corner-all.ui-widget.ui-widget-content ul#tabNamesUl.ui-tabs-nav.ui-corner-all.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-sortable li.modal.tabName.translate.ui-droppable.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active a#ui-id-1.ui-tabs-anchor */
+input#fileImport {
+  display: none;
+}
