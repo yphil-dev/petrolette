@@ -39,7 +39,7 @@
         "feedrat": "^0.4.12",
         "helmet": "^6.0.0",
         "iconv-lite": "^0.6.2",
-        "intro.js": "^6.0.0",
+        "intro.js": "^5.0.0",
         "jquery-ui-dist": "^1.13.2",
         "morgan": "^1.10.0",
         "mousetrap": "1.6.5",
