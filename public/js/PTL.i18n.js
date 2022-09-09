@@ -412,7 +412,9 @@ PTL.i18n.translations = {
 
     "Preferred Search engine for building search feeds." : { fr: "Moteur de recherche préféré pour la construction de sources de recherche." , ja: "検索ソースを構築するための好ましい検索エンジン。", es: "Motor de búsqueda preferido para la construcción de feeds de búsqueda." },
     
-    "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },
+    "Transition between images" : { fr: "Transition entre les images" , ja: "画像間の遷移", es: "Transición entre imágenes" },
+
+  "Speed (seconds) of the slideshow" : { fr: "Vitesse (secondes) du diaporama" , ja: "スライドショーの速度(秒)", es: "Velocidad (segundos) de la presentación de diapositivas" },
     
     "Loading of [%1] OK" : { fr: "Lecture de [%1] OK" , ja: "[%1]をロードしました。OK", es: "Cargado [%1] bien" },
 

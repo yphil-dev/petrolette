@@ -1324,8 +1324,8 @@ PTL.dialog = {
         },
         {
           title: PTL.tr('Image gallery'),
-          element: 'fieldset.searchPrefixFieldset',
-          intro: '<h4>' + PTL.tr('Search prefix') + '</h4>' + PTL.tr('Preferred Search engine for building search feeds.') + '<h4>' + PTL.tr('Restore default') + '</h4>' + PTL.tr('Restore default search prefix') + '.',
+          element: 'fieldset.galleryFieldset',
+          intro: '<h4>' + PTL.tr('Slideshow speed') + '</h4>' + PTL.tr('Speed (seconds) of the slideshow') + '<h4>' + PTL.tr('Slide transition') + '</h4>' + PTL.tr('Transition between images') + '.',
           position: 'right'
         },
         {
