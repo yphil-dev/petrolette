@@ -236,12 +236,19 @@ PTL.feed = {
         const $description = $.parseHTML(item.description),
               imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
-        let summary, imageUrl, audioUrl, audioType, videoUrl, videoType;
+        let summary, imageUrl, audioUrl, audioType, videoUrl, videoType, pubDate;
+
+        if (item.pubDate && typeof item.pubDate !== 'undefined') {
+          pubDate = PTL.util.dateFormat(item.pubDate);
+          console.error('pubDate: %s (%s)', PTL.util.dateFormat(item.pubDate), item.title);
+        } else {
+          pubDate = '';
+        }
 
         if (item.summary && typeof item.summary !== 'undefined') {
           summary = item.summary;
         }
-
+        
         if (item.description && typeof item.description !== 'undefined') {
           summary = item.description;
         }
@@ -252,19 +259,21 @@ PTL.feed = {
           }
         }
 
+        if (!summary || typeof summary == 'undefined') {
+          summary = '';
+        }
+
         const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
               $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
               $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
               $commentsIcon = $('<i>'),
-              $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+              $summary = $('<null>').append(PTL.util.sanitizeInput(pubDate + '\n' + summary.replace(/^\s*$(?:\r\n?|\n)/gm, ''))).text(),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
-              $feedItem = $('<li>').attr('class', 'feedItem');
+              $feedItem = $('<li>')
+              .attr('class', 'feedItem')
+              .attr('title', $summary.trim());
 
         let $image;
-
-        if (summary && typeof summary !== 'undefined') {
-          $feedItem.attr('title', $summary.trim());
-        }
 
         const $tempDom = $('<null>').append($description);
 

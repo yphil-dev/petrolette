@@ -314,6 +314,13 @@ PTL.util = {
 
     return parseFloat(secs + '.' + ms.toFixed(1));
   },
+  dateFormat: function(d) {
+    let date = new Date(d);
+
+    let months = Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+    return date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+
+  },
   detectColorScheme: function() {
 
     const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
