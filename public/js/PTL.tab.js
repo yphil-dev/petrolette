@@ -30,9 +30,6 @@ PTL.tab = {
       e.preventDefault();
       if (e.which === 1) {
         PTL.dialog.editTab($(this));
-        alert('wopip!');
-      } else {
-        alert('wopop!');
       }
     });
 
@@ -87,7 +84,6 @@ PTL.tab = {
       event.stopImmediatePropagation();
       PTL.tab.add($tabs);
     });
-
 
     PTL.sync.readSync();
 

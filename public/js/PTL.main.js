@@ -109,29 +109,6 @@ var PTL = (function() {
       $('button.helpButton').click(function(){
         PTL.dialog.help();
       });
-
-      // $('body').on('click','.feedsAddDivName', function(event) {
-      //   event.preventDefault();
-
-      //   let $column = $($('.ui-tabs-active')
-      //                 .find('a')
-      //                 .attr('href'))
-      //       .find('.column').first();
-        
-      //   PTL.feed.add($column, $(this).data('url'), '', 'mixed', 220, 'on', '', 16, '', false);
-        
-      // });
-
-      // $('a.feedsAddDivName').click(function(event){
-      //   event.preventDefault();
-
-      //   let $column = $($('.ui-tabs-active')
-      //                 .find('a')
-      //                 .attr('href'))
-      //       .find('.column').first();
-        
-      //   PTL.feed.add($column, $(this).data('url'), '', 'mixed', 220, 'on', '', 16, '', false);
-      // });
       
       $logoType.click(function(){
         PTL.dialog.about($logoType.attr('data-version'), $logoType.attr('data-favratversion'), $logoType.attr('data-feedratversion'));
@@ -511,12 +488,7 @@ var PTL = (function() {
         modal: true,
         autoOpen: false,
         height: 'auto',
-        width: 'auto',
-        // width: PTL.util.vWidth(),
-        // position: {
-        //   my: "center",
-        //   at: "center",
-        //   of: window }
+        width: 'auto'
       });
 
       $.ui.dialog.prototype._init = function() {
