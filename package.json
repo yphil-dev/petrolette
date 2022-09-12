@@ -15,8 +15,8 @@
         "url": "https://framagit.org/yphil/petrolette"
     },
     "scripts": {
-        "start": "pm2 start pm2.config.json petrolette",
-        "local": "pm2 start http/local.js --name petrolette-dev --watch=true",
+        "start": "pm2 start pm2.prod.config.json",
+        "local": "pm2 start pm2.dev.config.json",
         "unmanaged": "node ./http/server.js",
         "restart": "pm2 restart all",
         "stop": "pm2 stop all",

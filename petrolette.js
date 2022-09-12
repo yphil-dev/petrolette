@@ -18,6 +18,13 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
   return true;
 });
 
+fs.open('petrolette.config', 'r', function (err, fd) {
+  if (err) {
+    return console.error(err);
+  }
+  return true;
+});
+
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');

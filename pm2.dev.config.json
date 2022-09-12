@@ -1,0 +1,11 @@
+{
+  "apps" : [
+    {
+      "name"            : "petrolette-dev",
+      "script"          : "./http/local.js",
+      "watch"           : true,
+      "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
+      "time"            : false
+    }
+  ]
+}

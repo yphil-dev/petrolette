@@ -6,13 +6,6 @@
       "watch"           : true,
       "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
       "time"            : false
-    },
-    {
-      "name"            : "petrolette-dev",
-      "script"          : "./http/local.js plop",
-      "watch"           : true,
-      "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
-      "time"            : false
     }
   ]
 }
