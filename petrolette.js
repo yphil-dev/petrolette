@@ -18,6 +18,7 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
   return true;
 });
 
+
 fs.open('petrolette.config', 'r', function (err, fd) {
   if (err) {
     return console.error(err);
