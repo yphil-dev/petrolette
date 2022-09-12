@@ -503,7 +503,7 @@ var PTL = (function() {
               PTL.dialog.beg();
             });
       
-      // $debugHiddenButton.appendTo('body');
+      $debugHiddenButton.appendTo('body');
 
     },
     sideMenu: function(action) {
