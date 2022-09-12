@@ -15,14 +15,14 @@
         "url": "https://framagit.org/yphil/petrolette"
     },
     "scripts": {
-        "start": "pm2 start pm2.prod.config.json",
-        "local": "pm2 start pm2.dev.config.json",
+        "start": "pm2 start pm2.prod.config.json --watch",
+        "local": "pm2 start pm2.dev.config.json --watch",
         "unmanaged": "node ./http/server.js",
         "restart": "pm2 restart all",
         "stop": "pm2 stop all",
         "show": "pm2 show petrolette",
-        "logs": "pm2 logs petrolette --timestamp=HH:mm:ss",
-        "errors": "pm2 logs all --err --format --timestamp HH:mm:ss --lines 45",
+        "logs": "pm2 logs all",
+        "errors": "pm2 logs all --err",
         "test": "mocha --timeout 30s",
         "coverage": "nyc npm test",
         "postinstall": "pm2 install pm2-logrotate"

@@ -8,8 +8,6 @@ const httpServer = http.createServer(petrolette);
 const portHttp =  pjson.HTTP_PORT || 8000;
 const portHttps =  pjson.HTTPS_PORT || 8001;
 
-console.error('HTTP!');
-
 process.on('uncaughtException', function(err) {
   console.error('### Pétrolette uncaughtException: %s', err.code);
 });

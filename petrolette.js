@@ -18,12 +18,15 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
   return true;
 });
 
+const filePath = path.resolve(__dirname, 'petrolette.config.json');
 
-fs.open('petrolette.config', 'r', function (err, fd) {
-  if (err) {
-    return console.error(err);
+fs.readFile(filePath, (err, data) => {
+  if(err){
+    console.log('Something went wrong');
+  } else {
+    const obj = JSON.parse(data);
+    console.log(obj);
   }
-  return true;
 });
 
 app.set('views', path.join(__dirname, 'views'));
@@ -88,12 +91,12 @@ app.use('/mousetrap', express.static(path.join(__dirname, 'node_modules', 'mouse
 // app.use('/', router);
 
 app.use('/', function (req, res, next) {
-    req.animal_config = {
-        name: 'Cat',
-        says: 'meow'
-    };
-    next();        
+  req.ptlOptions = {
+    type: 'Cat',
+    name: 'Cat',
+    says: 'meow'
+  };
+  next();        
 }, router);
-
 
 module.exports = app;
