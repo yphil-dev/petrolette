@@ -113,9 +113,10 @@ router.get('/about/javascript', function(req, res) {
 
 router.get('/', function(req, res) {
 
-  console.error('req.ptlOptions: %s (%s)', req.ptlOptions);
+  console.error('req.ptlOptions: %s (%s)', req.ptlOptions.instanceType);
 
   res.render('index', {
+    instanceType: req.ptlOptions.instanceType,
     queryString: req.query.add,
     version: pjson.version,
     favratversion: favratpjson.version,

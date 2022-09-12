@@ -11,7 +11,7 @@ var PTL = (function() {
     language: 'en',
     languages: ['en', 'fr', 'ja', 'es'],
     start : function() {
-
+      
       Mousetrap.bind('?', PTL.dialog.kbShortcuts);
       Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
       Mousetrap.bind(PTL.kbShortcutFocusTab, () => {

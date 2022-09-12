@@ -97,7 +97,7 @@
   </head>
 
   <body>
-
+    
     <div id="overlay" class="hidden"></div>
 
     <div id="nagBar" style="display:none">
@@ -558,19 +558,20 @@
 
       $(document).ready(function() {
 
-          PTL.start();
+        let instanceType = '<%= instanceType %>';
 
-          let clean = DOMPurify.sanitize('<%= queryString %>');
+        PTL.start();
 
-          PTL.queryString = clean;
+        PTL.queryString = DOMPurify.sanitize('<%= queryString %>');
+        PTL.instanceType = '<%= instanceType %>';
 
-          PTL.tab.init();
+        PTL.tab.init();
 
-          (function(){
-              setTimeout(function(){
-                  PTL.util.beg();
-              }, 900000); // 15 minutes
-          })();
+        (function(){
+          setTimeout(function(){
+            PTL.util.beg();
+          }, 900000); // 15 minutes
+        })();
 
       });
 
