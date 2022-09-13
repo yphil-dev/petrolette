@@ -4,13 +4,6 @@ const petrolette = require('../petrolette'),
       https = require('https'),
       fs = require('fs');
 
-const myArgs = process.argv.slice(2);
-console.error('myArgs: ', myArgs[0]);
-
-
-
-console.error('process.env: %s (%s)', process.env);
-
 const portHttp =  pjson.HTTP_PORT || 8000;
 const portHttps =  pjson.HTTPS_PORT || 8001;
 
@@ -18,23 +11,39 @@ process.on('uncaughtException', function(err) {
   console.error('### Pétrolette uncaughtException: %s', err.code);
 });
 
-try {
-  const httpsServer = https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/cert.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/chain.pem'),
-  }, petrolette);
+console.error('process.env: %s (%s)', process.env.NODE_ENV);
 
-  httpsServer.listen(portHttps, () => {
-    console.debug('HTTPS Server running');
+process.on('uncaughtException', function(err) {
+  console.error('### Pétrolette uncaughtException: %s', err.code);
+});
+
+if (process.env.NODE_ENV == 'development') {
+  const httpServer = http.createServer(petrolette);
+  httpServer.listen(portHttp, () => {
+    console.debug('HTTP Server running on port %s', portHttp);
   });
+	
+} else {
 
-} catch (error) {
-  console.error('HTTPS error: %s', error);
+  try {
+    const httpsServer = https.createServer({
+      key: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/privkey.pem'),
+      cert: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/cert.pem'),
+      ca: fs.readFileSync('/etc/letsencrypt/live/petrolette.space/chain.pem'),
+    }, petrolette);
+
+    httpsServer.listen(portHttps, () => {
+      console.debug('HTTPS Server running');
+    });
+
+  } catch (error) {
+    console.error('HTTPS error: %s', error);
+  }
+
+  http.createServer(function (req, res) {
+    console.error('HTTP server running on %s and redirecting to %s', portHttp, portHttps);
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+  }).listen(portHttp);
+
 }
-
-http.createServer(function (req, res) {
-  console.error('HTTP server running on %s and redirecting to %s', portHttp, portHttps);
-  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-  res.end();
-}).listen(portHttp);

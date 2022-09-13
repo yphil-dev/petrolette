@@ -13,13 +13,6 @@
       env_production: {
         "NODE_ENV": "production",
       }
-    },
-    {
-      "name"            : "petrolette-dev",
-      "script"          : "./http/local.js plop",
-      "watch"           : true,
-      "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules"],
-      "time"            : false
     }
   ]
 }

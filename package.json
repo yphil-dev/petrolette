@@ -1,60 +1,60 @@
 {
-    "name": "petrolette",
-    "description": "The news page that doesn't know you",
-    "version": "1.5.7",
-    "private": true,
-    "license": "GPL-3.0-only",
-    "HTTP_PORT": 8000,
-    "HTTPS_PORT": 8001,
-    "FAVICONS_CACHE_DIR": "favicons-cache",
-    "engines": {
-        "node": "*"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://framagit.org/yphil/petrolette"
-    },
-    "scripts": {
-        "start": "pm2 start pm2.config.json petrolette",
-        "local": "pm2 start http/local.js --name petrolette-dev",
-        "unmanaged": "node ./http/server.js",
-        "restart": "pm2 restart all",
-        "stop": "pm2 stop all",
-        "show": "pm2 show petrolette",
-        "logs": "pm2 logs petrolette --timestamp=HH:mm:ss",
-        "errors": "pm2 logs all --err",
-        "test": "mocha --timeout 30s",
-        "coverage": "nyc npm test",
-        "postinstall": "pm2 install pm2-logrotate"
-    },
-    "dependencies": {
-        "@fancyapps/fancybox": "3.5.7",
-        "body-parser": "^1.19.0",
-        "compression": "^1.7.4",
-        "dompurify": "^2.4.0",
-        "ejs": "^3.1.5",
-        "express": "^4.17.1",
-        "favrat": "^0.4.4",
-        "feedparser": "^2.2.10",
-        "feedrat": "^0.4.12",
-        "helmet": "^6.0.0",
-        "iconv-lite": "^0.6.2",
-        "intro.js": "^6.0.0",
-        "jquery-ui-dist": "^1.13.2",
-        "morgan": "^1.10.0",
-        "mousetrap": "1.6.5",
-        "node-fetch": "^2.6.7",
-        "npm": "^8.19.1",
-        "pm2": "^5.1.0",
-        "remotestorage-widget": "1.5.4",
-        "remotestoragejs": "2.0.0-beta.3",
-        "responsively-lazy": "2.0.2",
-        "sanitize": "^2.1.0"
-    },
-    "devDependencies": {
-        "connect": "3.7.0",
-        "mocha": "^9.2.2",
-        "nyc": "^15.1.0",
-        "should": "^13.2.3"
-    }
+  "name": "petrolette",
+  "description": "The news page that doesn't know you",
+  "version": "1.5.7",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "HTTP_PORT": 8000,
+  "HTTPS_PORT": 8001,
+  "FAVICONS_CACHE_DIR": "favicons-cache",
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://framagit.org/yphil/petrolette"
+  },
+  "scripts": {
+    "start": "pm2 start pm2.config.json --env production",
+    "dev": "pm2 start pm2.config.json --env development",
+    "unmanaged": "node ./http/server.js",
+    "restart": "pm2 restart all",
+    "stop": "pm2 stop all",
+    "show": "pm2 show petrolette",
+    "logs": "pm2 logs petrolette --timestamp=HH:mm:ss",
+    "errors": "pm2 logs all --err",
+    "test": "mocha --timeout 30s",
+    "coverage": "nyc npm test",
+    "postinstall": "pm2 install pm2-logrotate"
+  },
+  "dependencies": {
+    "@fancyapps/fancybox": "3.5.7",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "dompurify": "^2.4.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "favrat": "^0.4.4",
+    "feedparser": "^2.2.10",
+    "feedrat": "^0.4.12",
+    "helmet": "^6.0.0",
+    "iconv-lite": "^0.6.2",
+    "intro.js": "^6.0.0",
+    "jquery-ui-dist": "^1.13.2",
+    "morgan": "^1.10.0",
+    "mousetrap": "1.6.5",
+    "node-fetch": "^2.6.7",
+    "npm": "^8.19.1",
+    "pm2": "^5.1.0",
+    "remotestorage-widget": "1.5.4",
+    "remotestoragejs": "2.0.0-beta.3",
+    "responsively-lazy": "2.0.2",
+    "sanitize": "^2.1.0"
+  },
+  "devDependencies": {
+    "connect": "3.7.0",
+    "mocha": "^9.2.2",
+    "nyc": "^15.1.0",
+    "should": "^13.2.3"
+  }
 }

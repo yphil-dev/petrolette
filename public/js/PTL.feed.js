@@ -635,7 +635,7 @@ PTL.feed = {
         
         $feedBody
           .empty()
-          .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
+          // .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
           .css('height', '');
         $feedLink.addClass('danger');
         $refreshButton.removeClass('spin');
