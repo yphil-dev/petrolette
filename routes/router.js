@@ -17,11 +17,11 @@ const express = require('express'),
 
 console.error('### (re)START ## Version (%s)', pjson.version);
 
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 router.use(sanitize);
 
-router.get('/favicon', function(req, res) {
+router.use('/favicon', function(req, res) {
 
   favrat(req.query.url, async function(error, url) {
 
@@ -57,7 +57,7 @@ router.get('/favicon', function(req, res) {
 
 router.use(morgan('combined'));
 
-router.get('/feed', function(req, res) {
+router.use('/feed', function(req, res) {
 
   feeder.getFeed(req.query.url, req.query.lastItem, function(error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
 
@@ -77,12 +77,12 @@ router.get('/feed', function(req, res) {
   });
 });
 
-router.get('/robots.txt', function(req, res) {
+router.use('/robots.txt', function(req, res) {
   res.type('text/plain');
   res.send("User-agent: *\nDisallow: /feed\nDisallow: /discover\nDisallow: /favicon");
 });
 
-router.get('/discover', function(req, res) {
+router.use('/discover', function(req, res) {
 
   try {
     new URL(req.query.url);
@@ -107,11 +107,42 @@ router.get('/discover', function(req, res) {
   });
 });
 
-router.get('/about/javascript', function(req, res) {
+router.use('/about/javascript', function(req, res) {
   res.render('javascript');
 });
 
-router.get('/', function(req, res) {
+router.route('/localfeeds')
+  .all(function (req, res, next) {
+    // runs for all HTTP verbs first
+    // think of it as route specific middleware!
+    next();
+  })
+  .get(function (req, res, next) {
+    // res.json({});
+    console.error('Trying to r (%s)', req.query.plop);        
+
+    next();
+  })
+  .post(function (req, res, next) {
+
+    console.error('Trying to w (%s)', req.body.feeds.substring(1, 18));        
+    
+    const localFeeds = path.resolve(__dirname, 'petrolette.feeds');
+
+    fs.writeFile(localFeeds, req.body.feeds, (err, data) => {
+      if (err) {
+        console.error('Cannot write feeds file, dang (%s)', err);        
+      }
+
+      console.error('Successfully Written to File: %s', data);
+      // if (data) {
+      //   // res.status(200).send('200: yeah!');
+      // }
+    });
+
+  });
+
+router.use('/', function(req, res) {
 
   console.error('req.ptlOptions: %s (%s)', req.ptlOptions.instanceType);
 
@@ -125,14 +156,14 @@ router.get('/', function(req, res) {
   });
 });
 
-router.use(function(req, res) {
-  console.error('404 req: %s (%s)', req.url);
-  res.status(404).send('404: Page not Found');
-});
+// router.use(function(error, req, res, next) {
+//   console.error('500 req: %s (%s)', req.url);
+//   res.status(500).send('500: whoa! Internal Server Error');
+// });
 
-router.use(function(error, req, res, next) {
-  console.error('500 req: %s (%s)', req.url);
-  res.status(500).send('500: whoa! Internal Server Error');
-});
+// router.use(function(req, res) {
+//   console.error('404 req: %s (%s)', req.url);
+//   res.status(404).send('404: Page not Found');
+// });
 
 module.exports = router;

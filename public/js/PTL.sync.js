@@ -63,6 +63,22 @@ PTL.sync = (function() {
     },
     readSync:function() {
 
+      // if (PTL.instanceType == 'monoUser') {
+
+      //   console.error('Sync: %s (%s)', PTL.instanceType);
+
+      //   $.get('/localfeeds', {
+      //     dataType: 'json',
+      //     timeout: 2000
+      //   }).fail(function(_req, _status, _xhr) {
+      //     console.error('Ah, shoot: %s (%s)');
+      //   }).done(function(feeds) {
+      //     // PTL.tab.populate(feeds);
+      //     console.error('Ah, yes: %s (%s)', feeds);
+      //   });
+ 
+      // }
+      
       remoteStorage.petrolette.read()
         .then((data) => {
 
@@ -88,6 +104,19 @@ PTL.sync = (function() {
 
     },
     writeSync:function(feeds) {
+
+      console.error('Trying to SEnd (%s)', feeds.substring(1, 20));        
+      
+      $.post('/localfeeds', {
+        feeds: feeds,
+        plop: 'plop',
+        timeout: 2000
+      }).fail(function(_req, _status, _xhr) {
+        console.error('Ah, shoot (w): %s (%s)');
+      }).done(function() {
+        // PTL.tab.populate(feeds);
+        console.error('feeds written, apparently');
+      });
 
       remoteStorage.petrolette.write(feeds)
         .catch((err) => {
