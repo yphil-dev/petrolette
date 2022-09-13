@@ -3,7 +3,7 @@
 PTL.tab = {
   init: function() {
 
-    console.error('inst: %s (%s)', PTL.instanceType);
+    // console.error('inst: %s (%s)', PTL.instanceType);
     
     $('div#newFeedButton').attr('title', PTL.tr('New feed') + ' (' + PTL.kbShortcutNewFeed + ')');
     $('div#logoTitle > div.logoTitle').attr('title', PTL.tr('Click to focus current tab') + ' (' + PTL.kbShortcutFocusTab + ')');

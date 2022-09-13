@@ -579,7 +579,7 @@ PTL.feed = {
 
 
       try {
-        let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
+        const fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
         if (fetchFeed.error) {
 
@@ -631,11 +631,11 @@ PTL.feed = {
         }
       } catch (error) {
 
-        console.error('WOA: %s (%s)', error);
+        console.error('WOA: %s (%s)', error.message, feedUrl);
         
         $feedBody
           .empty()
-          .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
+          .append(PTL.feed.errorFeed('error', feedUrl))
           .css('height', '');
         $feedLink.addClass('danger');
         $refreshButton.removeClass('spin');

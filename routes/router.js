@@ -16,6 +16,7 @@ const express = require('express'),
       morgan = require('morgan');
 
 const localFeeds = path.resolve(__dirname, '../petrolette.feeds');
+const defaultFeeds = path.resolve(__dirname, '../public/js/default-feeds.json');
 
 console.error('### (re)START ## Version (%s)', pjson.version);
 
@@ -117,13 +118,30 @@ router.route('/localfeeds')
   .all(function (req, res, next) {
     // runs for all HTTP verbs first
     // think of it as route specific middleware!
+    console.error('ALL: %s (%s)');
     next();
   })
   .get(function (req, res, next) {
-    // res.json({});
-    console.error('Trying to r (%s)', req.query.feeds);        
 
-    next();
+    // console.error('Trying to r (%s)', localFeeds);        
+
+    fs.readFile(localFeeds, 'utf-8', (err, data) => {
+
+      // console.error('DATA: %s (%s)', data, defaultFeeds);
+
+      if (err && !res.headersSent) {
+	      // console.error('ERR: %s (%s)', err, JSON.parse(defaultFeeds));
+        // res.send(JSON.parse(defaultFeeds));
+        res.status(500).send();
+      }
+      
+      if (data && !res.headersSent) {
+        res.send(data);
+      }
+
+    });
+    
+    // next();
   })
   .post(function (req, res, next) {
 
