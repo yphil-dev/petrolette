@@ -577,7 +577,6 @@ PTL.feed = {
 
       $refreshButton.addClass('spin');
 
-
       try {
         const fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
@@ -631,7 +630,7 @@ PTL.feed = {
         }
       } catch (error) {
 
-        console.error('WOA: %s (%s)', error.message, feedUrl);
+        console.error('WOA: %s (%s)', JSON.stringify(error), feedUrl);
         
         $feedBody
           .empty()

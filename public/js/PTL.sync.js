@@ -116,9 +116,9 @@ PTL.sync = (function() {
         timeout: 2000
       }).fail(function(_req, _status, _xhr) {
         console.error('Ah, shoot (w): %s (%s)');
-      }).done(function() {
+      }).done(function(jqXHR, textStatus, errorThrown) {
         // PTL.tab.populate(feeds);
-        console.log('feeds written, apparently');
+        console.log('feeds written, apparently %s', textStatus);
       });
 
       remoteStorage.petrolette.write(feeds)

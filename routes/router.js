@@ -116,22 +116,13 @@ router.use('/about/javascript', function(req, res) {
 
 router.route('/localfeeds')
   .all(function (req, res, next) {
-    // runs for all HTTP verbs first
-    // think of it as route specific middleware!
-    console.error('ALL: %s (%s)');
     next();
   })
   .get(function (req, res, next) {
 
-    // console.error('Trying to r (%s)', localFeeds);        
-
     fs.readFile(localFeeds, 'utf-8', (err, data) => {
 
-      // console.error('DATA: %s (%s)', data, defaultFeeds);
-
       if (err && !res.headersSent) {
-	      // console.error('ERR: %s (%s)', err, JSON.parse(defaultFeeds));
-        // res.send(JSON.parse(defaultFeeds));
         res.status(500).send();
       }
       
@@ -141,23 +132,17 @@ router.route('/localfeeds')
 
     });
     
-    // next();
   })
   .post(function (req, res, next) {
-
-    console.error('Trying to w (%s)', req.body.feeds.substring(1, 18));        
     
     fs.writeFile(localFeeds, req.body.feeds, (err) => {
-      if (err) {
-        console.error('Cannot write feeds file, dang (%s)', err);        
-      }
 
+      if (err) console.error('Cannot write feeds file, dang (%s)', err);        
       res.status(200).send();
       console.error('Successfully Written to %s', localFeeds);
-      // if (data) {
-      // }
-    });
 
+    });
+    next();
   });
 
 router.use('/', function(req, res) {
@@ -176,7 +161,7 @@ router.use('/', function(req, res) {
 
 router.use(function(error, req, res, next) {
   console.error('500 req: %s (%s)', req.url);
-  res.status(500).send('500: whoa! Internal Server Error');
+  res.status(500).send('500: Internal Server Error');
 });
 
 router.use(function(req, res) {
