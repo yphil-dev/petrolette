@@ -15,6 +15,8 @@ const express = require('express'),
       URL = require('url').URL,
       morgan = require('morgan');
 
+const localFeeds = path.resolve(__dirname, '../petrolette.feeds');
+
 console.error('### (re)START ## Version (%s)', pjson.version);
 
 // process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
@@ -119,7 +121,7 @@ router.route('/localfeeds')
   })
   .get(function (req, res, next) {
     // res.json({});
-    console.error('Trying to r (%s)', req.query.plop);        
+    console.error('Trying to r (%s)', req.query.feeds);        
 
     next();
   })
@@ -127,16 +129,14 @@ router.route('/localfeeds')
 
     console.error('Trying to w (%s)', req.body.feeds.substring(1, 18));        
     
-    const localFeeds = path.resolve(__dirname, 'petrolette.feeds');
-
-    fs.writeFile(localFeeds, req.body.feeds, (err, data) => {
+    fs.writeFile(localFeeds, req.body.feeds, (err) => {
       if (err) {
         console.error('Cannot write feeds file, dang (%s)', err);        
       }
 
-      console.error('Successfully Written to File: %s', data);
+      res.status(200).send();
+      console.error('Successfully Written to %s', localFeeds);
       // if (data) {
-      //   // res.status(200).send('200: yeah!');
       // }
     });
 
@@ -156,14 +156,14 @@ router.use('/', function(req, res) {
   });
 });
 
-// router.use(function(error, req, res, next) {
-//   console.error('500 req: %s (%s)', req.url);
-//   res.status(500).send('500: whoa! Internal Server Error');
-// });
+router.use(function(error, req, res, next) {
+  console.error('500 req: %s (%s)', req.url);
+  res.status(500).send('500: whoa! Internal Server Error');
+});
 
-// router.use(function(req, res) {
-//   console.error('404 req: %s (%s)', req.url);
-//   res.status(404).send('404: Page not Found');
-// });
+router.use(function(req, res) {
+  console.error('404 req: %s (%s)', req.url);
+  res.status(404).send('404: Page not Found');
+});
 
 module.exports = router;

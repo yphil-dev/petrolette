@@ -63,45 +63,48 @@ PTL.sync = (function() {
     },
     readSync:function() {
 
-      // if (PTL.instanceType == 'monoUser') {
+      if (PTL.instanceType == 'monoUser') {
 
-      //   console.error('Sync: %s (%s)', PTL.instanceType);
+        console.error('Sync: %s (%s)', PTL.instanceType);
 
-      //   $.get('/localfeeds', {
-      //     dataType: 'json',
-      //     timeout: 2000
-      //   }).fail(function(_req, _status, _xhr) {
-      //     console.error('Ah, shoot: %s (%s)');
-      //   }).done(function(feeds) {
-      //     // PTL.tab.populate(feeds);
-      //     console.error('Ah, yes: %s (%s)', feeds);
-      //   });
+        $.get('/localfeeds', {
+          dataType: 'json',
+          timeout: 2000
+        }).fail(function(_req, _status, _xhr) {
+          console.error('Ah, shoot: %s (%s)');
+          PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));          
+        }).done(function(feeds) {
+          PTL.tab.populate(JSON.parse(feeds));
+          console.error('Ah, yes: %s (%s)', feeds);
+        });
  
-      // }
-      
-      remoteStorage.petrolette.read()
-        .then((data) => {
+      } else {
 
-          if (PTL.util.isValidPTLFile(JSON.parse(data))) {
+        remoteStorage.petrolette.read()
+          .then((data) => {
 
-            PTL.tab.populate(JSON.parse(data));
+            if (PTL.util.isValidPTLFile(JSON.parse(data))) {
 
-          } else {
+              PTL.tab.populate(JSON.parse(data));
 
-            console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults', data));
+            } else {
+
+              console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults', data));
+              PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
+
+            }
+
+          })
+          .catch((err) => {
+
+            PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
+
             PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
 
-          }
+          });
 
-        })
-        .catch((err) => {
-
-          PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
-
-          PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-
-        });
-
+      }
+      
     },
     writeSync:function(feeds) {
 
@@ -109,7 +112,6 @@ PTL.sync = (function() {
       
       $.post('/localfeeds', {
         feeds: feeds,
-        plop: 'plop',
         timeout: 2000
       }).fail(function(_req, _status, _xhr) {
         console.error('Ah, shoot (w): %s (%s)');
