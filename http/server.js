@@ -7,6 +7,10 @@ const petrolette = require('../petrolette'),
 const myArgs = process.argv.slice(2);
 console.error('myArgs: ', myArgs[0]);
 
+
+
+console.error('process.env: %s (%s)', process.env);
+
 const portHttp =  pjson.HTTP_PORT || 8000;
 const portHttps =  pjson.HTTPS_PORT || 8001;
 
