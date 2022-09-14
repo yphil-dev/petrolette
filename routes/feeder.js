@@ -48,7 +48,7 @@ function getFeed(feedUrl, lastItem, callback) {
   }).then(function(res) {
 
     if (res.status != 200) {
-      console.error('whoaaaa: %o (%s)', res.statusText, feedUrl);
+      // console.error('whoaaaa: %o (%s)', res.statusText, feedUrl);
       callback(formatError({type: res.type, status: res.status, message: res.statusText}));
     }
       

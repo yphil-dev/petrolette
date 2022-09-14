@@ -9,6 +9,11 @@ const express = require('express'),
       crypto = require("crypto"),
       compression = require('compression');
 
+const configFilePath = path.resolve(__dirname, 'petrolette.config.json');
+
+var ptlOptions = '';
+var instanceType = 'multiUser';
+
 fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
   recursive: true
 }, (err) => {
@@ -16,6 +21,28 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
     return console.error(err);
   }
   return true;
+});
+
+fs.readFile(configFilePath, (err, data) => {
+
+  if (err){
+    console.error('No (%s) Pétrolette config file', configFilePath);
+  }
+
+  if (data) {
+
+    try {
+      ptlOptions = JSON.parse(data);
+      instanceType = ptlOptions.instanceType || instanceType;
+      
+    } catch (err) {
+      console.error('Not a valid config file');
+    }
+    
+    console.error('instanceType (%s)', instanceType);
+  }
+
+  
 });
 
 app.set('views', path.join(__dirname, 'views'));
@@ -77,15 +104,9 @@ app.use('/rs-widget', express.static(path.join(__dirname, 'node_modules', 'remot
 app.use('/dompurify', express.static(path.join(__dirname, 'node_modules', 'dompurify', 'dist')));
 app.use('/mousetrap', express.static(path.join(__dirname, 'node_modules', 'mousetrap')));
 
-// app.use('/', router);
-
 app.use('/', function (req, res, next) {
-    req.animal_config = {
-        name: 'Cat',
-        says: 'meow'
-    };
-    next();        
+  req.instanceType = instanceType;
+  next();        
 }, router);
-
 
 module.exports = app;

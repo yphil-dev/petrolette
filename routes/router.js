@@ -113,6 +113,7 @@ router.get('/about/javascript', function(req, res) {
 
 router.get('/', function(req, res) {
   res.render('index', {
+    instanceType: req.instanceType,
     queryString: req.query.add,
     version: pjson.version,
     favratversion: favratpjson.version,

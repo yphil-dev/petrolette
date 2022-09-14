@@ -21,7 +21,7 @@
     "restart": "pm2 restart all",
     "stop": "pm2 stop all",
     "show": "pm2 show petrolette",
-    "logs": "pm2 logs petrolette --timestamp=HH:mm:ss",
+    "logs": "pm2 logs petrolette",
     "errors": "pm2 logs all --err",
     "test": "mocha --timeout 30s",
     "coverage": "nyc npm test",

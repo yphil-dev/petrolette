@@ -588,7 +588,7 @@ PTL.feed = {
 
         if (fetchFeed.error) {
 
-          console.error('WOPOP: %s (%s)', fetchFeed.error.message, feedUrl);
+          // console.error('fetchFeed error: %s (%s)', fetchFeed.error.message, feedUrl);
           
           $feedBody
             .empty()

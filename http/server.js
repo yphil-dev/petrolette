@@ -8,7 +8,7 @@ const portHttp =  pjson.HTTP_PORT || 8000;
 const portHttps =  pjson.HTTPS_PORT || 8001;
 
 process.on('uncaughtException', function(err) {
-  console.error('### Pétrolette uncaughtException: %s', err.code);
+  console.error('### Pétrolette uncaughtException: %s', JSON.stringify(err));
 });
 
 console.error('process.env: %s (%s)', process.env.NODE_ENV);
