@@ -502,6 +502,7 @@ PTL.feed = {
     return new Promise((resolve, reject) => {
       $.get("/favicon", {
         url: decodeURI(feedHost),
+        async: false,
         dataType: "json"
       }).done(function(hash) {
         if (hash)
@@ -520,12 +521,16 @@ PTL.feed = {
     return new Promise((resolve, reject) => {
       $.get("/feed", {
         url: feedUrl,
+        async: false,
         dataType: 'json',
         lastItem: lastItem,
         nbItems: nbItems
       }).done(function(data, _textStatus, jqXHR) {
+        // console.error('data, _textStatus, jqXHR: %s %s (%s)', JSON.stringify(data), _textStatus, jqXHR);
         resolve(data);
       }).fail(function(jqXHR, textStatus, errorThrown) {
+
+        // console.error('jqXHR, textStatus, errorThrown: %s %s (%s)', JSON.stringify(jqXHR), textStatus, errorThrown);
         reject(jqXHR, textStatus, errorThrown);
       });
     });
@@ -583,6 +588,8 @@ PTL.feed = {
 
         if (fetchFeed.error) {
 
+          console.error('WOPOP: %s (%s)', fetchFeed.error.message, feedUrl);
+          
           $feedBody
             .empty()
             .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
@@ -631,7 +638,7 @@ PTL.feed = {
         }
       } catch (error) {
 
-        console.error('WOA: %s (%s)', error);
+        console.error('WOA: %s (%s)', JSON.stringify(error), feedUrl);
         
         $feedBody
           .empty()
