@@ -89,6 +89,16 @@ PTL.sync = (function() {
     },
     writeSync:function(feeds) {
 
+      $.post('/localfeeds', {
+        feeds: JSON.stringify(feeds),
+        timeout: 2000
+      }).fail(function(req, status, xhr) {
+        console.error('Ah, shoot (req, status, xhr): %s (%s) (%s)', JSON.stringify(req), JSON.stringify(status), JSON.stringify(xhr));
+      }).done(function(jqXHR, textStatus, errorThrown) {
+        // PTL.tab.populate(feeds);
+        console.log('feeds written, apparently %s', textStatus);
+      });
+
       remoteStorage.petrolette.write(feeds)
         .catch((err) => {
           PTL.util.say(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');

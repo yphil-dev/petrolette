@@ -16,6 +16,7 @@ const express = require('express'),
       morgan = require('morgan');
 
 console.error('### (re)START ## Version (%s)', pjson.version);
+const localFeeds = path.resolve(__dirname, '../petrolette.feeds');
 
 // process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
@@ -122,14 +123,21 @@ router.get('/', function(req, res) {
   });
 });
 
+router.use('/localfeeds', (req, res) => {
+  // console.error('localfeeds: req, res: (%s) (%s)', JSON.stringify(req), JSON.stringify(res));
+  return res.status(200).send('OK');
+  // next();
+});
+
 router.use(function(req, res) {
   console.error('404 req: %s (%s)', req.url);
   res.status(404).send('404: Page not Found');
 });
 
-router.use(function(error, req, res, next) {
-  console.error('500 req: %s (%s)', req.url);
-  res.status(500).send('500: whoa! Internal Server Error');
-});
+// router.use(function(error, req, res, next) {
+//   console.error('500 req: %s (%s)', req.url);
+//   res.status(500).send('500: whoa! Internal Server Error');
+//   next();
+// });
 
 module.exports = router;
