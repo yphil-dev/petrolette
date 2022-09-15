@@ -59,24 +59,22 @@ router.get('/favicon', function(req, res) {
 router.post('/localfeeds', function(req, res) {
   
   // res.status(200).send('OK');
-  console.error('feeds: %s (%s)', req.query.data);
+  console.error('feeeds: %s (%s)', req.body);
 
   try {
 
     // fs.writeFileSync('index.txt', 'Some content');
     // console.log('file created');
     
-    fs.writeFile(localFeeds, 'req.data.feeds', function (err, data) {
+    fs.writeFile(localFeeds, JSON.stringify(req.body), function (err) {
       if (err) {
-        console.error('localfeeds: req, res: (%s) (%s)');
-        
-      } else {
-        res.status(200).send('OK');
-      }
+        console.error('localfeedsErr: req, res: (%s) (%s)');
+        res.status(500).send(err);
+      } 
     });
     
   } catch (err) {
-    console.error('err: %s (%s)',err);
+    console.error('eerr: %s (%s)',err);
     res.status(500).send(err);
   }
 

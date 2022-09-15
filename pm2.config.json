@@ -5,7 +5,7 @@
       "script"          : "./http/server.js",
       "watch"           : true,
       "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules", "../petrolette.feeds"],
-      "time"            : true,
+      "time"            : false,
       env: {
         "NODE_ENV": "development"
       },

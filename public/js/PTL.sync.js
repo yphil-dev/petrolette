@@ -111,18 +111,17 @@ PTL.sync = (function() {
     },
     writeLocal:function(feeds) {
 
-      console.error('feeds: %s (%s)', feeds);
+      console.error('feedsSync: %s (%s)', feeds);
       
-      $.ajax({
-        method: 'POST',
+      $.post({
         url: 'localfeeds',
-        data: feeds,
+        data: JSON.stringify(feeds),
         // dataType: 'json',
         success: function(data){
           console.log('feeds written, apparently %s', data);
         },
-        error: function(err) {
-          console.log('feeds NOT written, apparently (%s)', err.responseText);
+        error: function(xhr, desc, err) {
+          console.log('feeds NOT written, apparently (%s)', JSON.stringify(err));
         }
       });
       
