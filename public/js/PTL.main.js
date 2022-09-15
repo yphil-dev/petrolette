@@ -49,6 +49,7 @@ var PTL = (function() {
             $fileImportInput = $("input#fileImport"),
             $saveButton = $('#saveTabs'),
             $syncBox = $('div#syncBox'),
+            $feedsMenuForm = $('fieldset.feedsMenuForm div.flexBox'),
             $resetButton = $('#resetTabs'),
             $langMenu = $('select#language'),
             $slider = $('div#gallerySpeedSlider'),
@@ -77,7 +78,6 @@ var PTL = (function() {
         .val(PTL.prefs.readConfig('searchPrefix'));
 
       $searchPrefixRestoreButton.click(function(){
-        console.log('val %s', $searchPrefixInput.val());
         $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefixDefault'));
         PTL.util.say(PTL.tr('Restored search prefix to default value'), 'success', true);
       });
@@ -222,7 +222,7 @@ var PTL = (function() {
       if (PTL.instanceType == 'multiUser') {
         PTL.sync.attachWidget();
       } else {
-        $syncBox.append($('<div><i>plop</i></div>'))
+        $feedsMenuForm.append(PTL.sync.attachMonoUserButton());
       }
 
       $('button').not('.htmlButtonOnly').button();

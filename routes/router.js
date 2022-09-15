@@ -59,10 +59,11 @@ router.get('/favicon', function(req, res) {
 router.post('/localfeeds', function(req, res) {
   
   // res.status(200).send('OK');
+  console.error('feeds: %s (%s)', req.query.data);
 
   try {
     
-    fs.writeFile(localFeeds, 'Helloo World!', function (err, data) {
+    fs.writeFile(localFeeds, 'req.data.feeds', function (err, data) {
       if (err) {
         console.error('localfeeds: req, res: (%s) (%s)');
         
@@ -149,10 +150,10 @@ router.use(function(req, res) {
   res.status(404).send('404: Page not Found');
 });
 
-// router.use(function(error, req, res, next) {
-//   console.error('500 req: %s (%s)', req.url);
-//   res.status(500).send('500: whoa! Internal Server Error');
-//   next();
-// });
+router.use(function(error, req, res, next) {
+  console.error('500 req: %s (%s)', JSON.stringify(res));
+  res.status(500).send('500: whoa! Internal Server Error');
+  next();
+});
 
 module.exports = router;

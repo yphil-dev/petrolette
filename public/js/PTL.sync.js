@@ -95,30 +95,46 @@ PTL.sync = (function() {
         });
       
     },
+    attachMonoUserButton:function() {
+
+      const $monoUserButton = $('<button>')
+            .attr({'id': 'monoUserButton',
+                   'class': 'grow ui-button ui-corner-all translate unique',
+                   'data-content' : 'Save feeds'})
+            .text('Save feeds')
+            .click(function(){
+              PTL.sync.writeLocal(PTL.tab.list());
+              PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success', true);
+            });
+
+      return $monoUserButton;
+    },
     writeLocal:function(feeds) {
 
-      // $.ajax({
-      //   method: 'POST',
-      //   url: 'localfeeds',
-      //   data: 'feeds',
-      //   dataType: 'text',
-      //   success: function(){
-      //     console.log('feeds written, apparently %s');
-      //   },
-      //   error: function(err) {
-      //     console.log('feeds NOT written, apparently (%s)', err.responseText);
-      //   }
-      // });
+      console.error('feeds: %s (%s)', feeds);
       
-      $.post('/localfeeds', {
-        body: 'JSON.stringify(feeds)',
-        timeout: 80
-      }).fail(function(req, status, xhr) {
-        console.error('Ah, shoot (req, status, xhr): %s (%s) (%s)', JSON.stringify(req), JSON.stringify(status), JSON.stringify(xhr));
-      }).done(function(jqXHR, textStatus, errorThrown) {
-        // PTL.tab.populate(feeds);
-        console.log('feeds written, apparently %s', textStatus);
+      $.ajax({
+        method: 'POST',
+        url: 'localfeeds',
+        data: feeds,
+        // dataType: 'json',
+        success: function(data){
+          console.log('feeds written, apparently %s', data);
+        },
+        error: function(err) {
+          console.log('feeds NOT written, apparently (%s)', err.responseText);
+        }
       });
+      
+      // $.post('/localfeeds', {
+      //   body: 'feeds',
+      //   timeout: 80
+      // }).fail(function(req, status, xhr) {
+      //   console.error('Ah, shoot (req, status, xhr): %s (%s) (%s)', JSON.stringify(req), JSON.stringify(status), JSON.stringify(xhr));
+      // }).done(function(jqXHR, textStatus, errorThrown) {
+      //   // PTL.tab.populate(feeds);
+      //   console.log('feeds written, apparently %s', textStatus);
+      // });
       
     }
   };

@@ -395,6 +395,8 @@ PTL.i18n.translations = {
 
     "Save / export tabs and feeds" : { fr: "Enregistrer / exporter onglets et flux" , ja: "タブとフィードを保存/エクスポートする", es: "Guardar archivo de carpetas y feeds" },
 
+  "Save feeds" : { fr: "Enregistrer les flux" , ja: "フィードを保存", es: "Guardar fuentes" },
+
     "All tabs and feeds restored to defaults" : { fr: "Tous les onglets et flux restaurés aux valeurs par défaut" , ja: "すべてのタブとフィードがデフォルトに復元されました", es: "Todas las pestañas y feeds restaurados a los valores predeterminados" },
 
     "Empty feed" : { fr: "Source vide" , ja: "空のソース", es: "feed vacía" },
