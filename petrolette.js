@@ -32,44 +32,14 @@ if (theFile) {
     ptlOptions = JSON.parse(theFile);
 
     if (ptlOptions.hasOwnProperty('instanceType')) {
-      console.error('Yea, ptlOptions.instanceType: ', ptlOptions.instanceType);
       instanceType = ptlOptions.instanceType;
     }
-
-    console.error('instanceType: ', instanceType);
     
   } catch (err) {
     console.error('Not a valid config file');
   }
   
 }
-
-// fs.readFileSync(configFilePath, (err, data) => {
-
-  
-//   if (err){
-//     console.error('No (%s) Pétrolette config file', configFilePath);
-//   }
-
-//   if (data) {
-
-//     try {
-//       ptlOptions = JSON.parse(data);
-
-//       if (ptlOptions.hasOwnProperty('instanceType')) {
-//         console.error('Yea, ptlOptions.instanceType: ', ptlOptions.instanceType);
-//         instanceType = ptlOptions.instanceType;
-//       }
-
-//       console.error('instanceType: ', instanceType);
-      
-//     } catch (err) {
-//       console.error('Not a valid config file');
-//     }
-    
-//   }
-  
-// });
 
 
 app.set('views', path.join(__dirname, 'views'));
