@@ -16,13 +16,13 @@ var PTL = (function() {
       Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
       Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
         $('.ui-state-active').focus();
-       });
+      });
       Mousetrap.bind(PTL.kbShortcutFocusSearch, () => {
         $('div#ptlSearch > input').focus();
-       });
+      });
       Mousetrap.bind(PTL.kbShortcutMenuToggle, () => {
         PTL.sideMenu('toggle');
-       });
+      });
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
@@ -48,12 +48,12 @@ var PTL = (function() {
             $importButton = $("button#fileImportButton"),
             $fileImportInput = $("input#fileImport"),
             $saveButton = $('#saveTabs'),
+            $syncBox = $('div#syncBox'),
             $resetButton = $('#resetTabs'),
             $langMenu = $('select#language'),
             $slider = $('div#gallerySpeedSlider'),
             $searchField = $('#ptlSearch input').val(''),
-            $searchIcon = $('#ptlSearch > i')
-            .addClass('icon-search-circled'),
+            $searchIcon = $('#ptlSearch > i').addClass('icon-search-circled'),
             $searchPrefixOkButton = $('button#searchPrefixOkButton'),
             $searchPrefixRestoreButton = $('button#searchPrefixRestoreButton'),
             $searchPrefixInput = $('input#searchPrefixInput'),
@@ -117,9 +117,9 @@ var PTL = (function() {
       //                 .find('a')
       //                 .attr('href'))
       //       .find('.column').first();
-        
+      
       //   PTL.feed.add($column, $(this).data('url'), '', 'mixed', 220, 'on', '', 16, '', false);
-        
+      
       // });
 
       // $('a.feedsAddDivName').click(function(event){
@@ -129,7 +129,7 @@ var PTL = (function() {
       //                 .find('a')
       //                 .attr('href'))
       //       .find('.column').first();
-        
+      
       //   PTL.feed.add($column, $(this).data('url'), '', 'mixed', 220, 'on', '', 16, '', false);
       // });
       
@@ -179,7 +179,7 @@ var PTL = (function() {
           $(this).prev('input').val('');
           $('.results').removeClass('results');
           $(this).removeClass('icon-reset')
-                 .addClass('icon-search-circled');          
+            .addClass('icon-search-circled');          
         } else {
           searchReturn();
         }
@@ -217,7 +217,13 @@ var PTL = (function() {
         }
       });
 
-      PTL.sync.attachWidget();
+      console.log('PTL.instanceType: ', PTL.instanceType);
+      
+      if (PTL.instanceType == 'multiUser') {
+        PTL.sync.attachWidget();
+      } else {
+        $syncBox.append($('<div><i>plop</i></div>'))
+      }
 
       $('button').not('.htmlButtonOnly').button();
 
@@ -267,8 +273,6 @@ var PTL = (function() {
       
       $langMenu.val(PTL.language).prop('selected', true);
 
-      const $syncBox = $('#syncBox');
-
       const $readMore = $('<a>')
             .attr('class', 'translate')
             .attr('target', '_blank')
@@ -277,14 +281,14 @@ var PTL = (function() {
             .text(PTL.tr('About the remoteStorage protocol'));
 
       $syncBox.find('h1.rs-big-headline, h3.rs-small-headline')
-              .addClass('translate')
-              .attr('data-content', 'Connection to storage')
-              .text(PTL.tr('Connection to storage'));
+        .addClass('translate')
+        .attr('data-content', 'Connection to storage')
+        .text(PTL.tr('Connection to storage'));
 
       $syncBox.find('p.rs-short-desc, span.rs-sub-headline')
-              .addClass('translate')
-              .attr('data-content', 'To synchronize tabs and feeds across devices')
-              .text(PTL.tr('To synchronize tabs and feeds across devices'));
+        .addClass('translate')
+        .attr('data-content', 'To synchronize tabs and feeds across devices')
+        .text(PTL.tr('To synchronize tabs and feeds across devices'));
 
       $syncBox.find('p.rs-short-desc').after($readMore);
 

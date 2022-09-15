@@ -556,11 +556,11 @@
 
       $(document).ready(function() {
 
-        PTL.start();
 
         PTL.queryString = DOMPurify.sanitize('<%= queryString %>');;
         PTL.instanceType = '<%= instanceType %>';
         
+        PTL.start();
         PTL.tab.init();
 
         (function(){
