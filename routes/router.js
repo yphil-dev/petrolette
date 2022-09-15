@@ -62,6 +62,9 @@ router.post('/localfeeds', function(req, res) {
   console.error('feeds: %s (%s)', req.query.data);
 
   try {
+
+    // fs.writeFileSync('index.txt', 'Some content');
+    // console.log('file created');
     
     fs.writeFile(localFeeds, 'req.data.feeds', function (err, data) {
       if (err) {
@@ -73,6 +76,7 @@ router.post('/localfeeds', function(req, res) {
     });
     
   } catch (err) {
+    console.error('err: %s (%s)',err);
     res.status(500).send(err);
   }
 
