@@ -89,9 +89,22 @@ PTL.sync = (function() {
     },
     writeSync:function(feeds) {
 
+      // $.ajax({
+      //   method: 'POST',
+      //   url: 'localfeeds',
+      //   data: 'feeds',
+      //   dataType: 'text',
+      //   success: function(){
+      //     console.log('feeds written, apparently %s');
+      //   },
+      //   error: function(err) {
+      //     console.log('feeds NOT written, apparently (%s)', err.responseText);
+      //   }
+      // });
+      
       $.post('/localfeeds', {
-        feeds: JSON.stringify(feeds),
-        timeout: 2000
+        body: JSON.stringify(feeds),
+        timeout: 80
       }).fail(function(req, status, xhr) {
         console.error('Ah, shoot (req, status, xhr): %s (%s) (%s)', JSON.stringify(req), JSON.stringify(status), JSON.stringify(xhr));
       }).done(function(jqXHR, textStatus, errorThrown) {

@@ -56,6 +56,28 @@ router.get('/favicon', function(req, res) {
   });
 });
 
+router.post('/localfeeds', function(req, res) {
+  
+  // res.status(200).send('OK');
+
+  try {
+    
+    fs.writeFile(localFeeds, 'Hello World!', function (err, data) {
+      if (err) {
+        console.error('localfeeds: req, res: (%s) (%s)');
+        
+      } else {
+        res.status(200).send('OK');
+      }
+    });
+    
+  } catch (err) {
+    res.status(500).send(err);
+  }
+
+  // next();
+});
+
 router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
@@ -121,12 +143,6 @@ router.get('/', function(req, res) {
     feedratversion: feedratpjson.version,
     nonce: res.locals.cspNonce
   });
-});
-
-router.use('/localfeeds', (req, res) => {
-  // console.error('localfeeds: req, res: (%s) (%s)', JSON.stringify(req), JSON.stringify(res));
-  return res.status(200).send('OK');
-  // next();
 });
 
 router.use(function(req, res) {

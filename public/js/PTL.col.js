@@ -114,6 +114,7 @@ PTL.col = {
         $('i.feedSelect').removeClass('icon-checked').addClass('icon-checkbox');
 
         PTL.tab.saveTabs();
+        // console.error('BOOM: %s (%s)');
       }
       }).disableSelection();
 
