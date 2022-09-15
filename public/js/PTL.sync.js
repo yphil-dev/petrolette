@@ -89,6 +89,14 @@ PTL.sync = (function() {
     },
     writeSync:function(feeds) {
 
+      remoteStorage.petrolette.write(feeds)
+        .catch((err) => {
+          PTL.util.say(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
+        });
+      
+    },
+    writeLocal:function(feeds) {
+
       // $.ajax({
       //   method: 'POST',
       //   url: 'localfeeds',
@@ -103,7 +111,7 @@ PTL.sync = (function() {
       // });
       
       $.post('/localfeeds', {
-        body: JSON.stringify(feeds),
+        body: 'JSON.stringify(feeds)',
         timeout: 80
       }).fail(function(req, status, xhr) {
         console.error('Ah, shoot (req, status, xhr): %s (%s) (%s)', JSON.stringify(req), JSON.stringify(status), JSON.stringify(xhr));
@@ -111,12 +119,7 @@ PTL.sync = (function() {
         // PTL.tab.populate(feeds);
         console.log('feeds written, apparently %s', textStatus);
       });
-
-      remoteStorage.petrolette.write(feeds)
-        .catch((err) => {
-          PTL.util.say(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
-        });
-
+      
     }
   };
 }());

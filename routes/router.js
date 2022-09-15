@@ -62,7 +62,7 @@ router.post('/localfeeds', function(req, res) {
 
   try {
     
-    fs.writeFile(localFeeds, 'Hello World!', function (err, data) {
+    fs.writeFile(localFeeds, 'Helloo World!', function (err, data) {
       if (err) {
         console.error('localfeeds: req, res: (%s) (%s)');
         
@@ -75,7 +75,6 @@ router.post('/localfeeds', function(req, res) {
     res.status(500).send(err);
   }
 
-  // next();
 });
 
 router.use(morgan('combined'));
