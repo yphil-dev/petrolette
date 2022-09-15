@@ -23,25 +23,54 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
   return true;
 });
 
-fs.readFile(configFilePath, (err, data) => {
 
-  if (err){
-    console.error('No (%s) Pétrolette config file', configFilePath);
-  }
+var theFile = fs.readFileSync(configFilePath);
 
-  if (data) {
+if (theFile) {
 
-    try {
-      ptlOptions = JSON.parse(data);
-      instanceType = ptlOptions.instanceType || instanceType;
-      
-    } catch (err) {
-      console.error('Not a valid config file');
+  try {
+    ptlOptions = JSON.parse(theFile);
+
+    if (ptlOptions.hasOwnProperty('instanceType')) {
+      console.error('Yea, ptlOptions.instanceType: ', ptlOptions.instanceType);
+      instanceType = ptlOptions.instanceType;
     }
+
+    console.error('instanceType: ', instanceType);
     
+  } catch (err) {
+    console.error('Not a valid config file');
   }
   
-});
+}
+
+// fs.readFileSync(configFilePath, (err, data) => {
+
+  
+//   if (err){
+//     console.error('No (%s) Pétrolette config file', configFilePath);
+//   }
+
+//   if (data) {
+
+//     try {
+//       ptlOptions = JSON.parse(data);
+
+//       if (ptlOptions.hasOwnProperty('instanceType')) {
+//         console.error('Yea, ptlOptions.instanceType: ', ptlOptions.instanceType);
+//         instanceType = ptlOptions.instanceType;
+//       }
+
+//       console.error('instanceType: ', instanceType);
+      
+//     } catch (err) {
+//       console.error('Not a valid config file');
+//     }
+    
+//   }
+  
+// });
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -71,6 +100,8 @@ app.use('/rs', express.static(path.join(__dirname, 'node_modules', 'remotestorag
 app.use('/rs-widget', express.static(path.join(__dirname, 'node_modules', 'remotestorage-widget', 'build')));
 app.use('/dompurify', express.static(path.join(__dirname, 'node_modules', 'dompurify', 'dist')));
 app.use('/mousetrap', express.static(path.join(__dirname, 'node_modules', 'mousetrap')));
+
+console.error('instanceType now: ', instanceType);
 
 app.use('/', function (req, res, next) {
   req.instanceType = instanceType;
