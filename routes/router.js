@@ -79,7 +79,9 @@ router.post('/localfeeds', function(req, res) {
 
   try {
 
-    fs.writeFile(localFeedsFilePath, JSON.stringify(req.body), 'utf8', function (err) {
+    // var existingFeeds = JSON.parse(req.body);
+    
+    fs.writeFile(localFeedsFilePath, JSON.stringify(existingFeeds, null, 2), 'utf8', function (err) {
       if (err && !res.headersSent) {
         console.error('localfeedsErr: req, res: (%s) (%s)');
         res.status(500).send(err);

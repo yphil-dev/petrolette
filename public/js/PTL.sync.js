@@ -69,17 +69,14 @@ PTL.sync = (function() {
         $.get('localfeeds', 'text')
           .then(function(data, err) {
 
-
-            // for (const key in data) {
-            //   console.log(`${key}: ${data[key]}`);
-            // }
-
             try {
 
-              console.error('err, data: %s %s, (%s)', err, typeof JSON.parse(data));
+
+              data = data.replace(/\\"/g, '"');
+              console.error('err, data: %s %s, (%s)', err, typeof data);
               
               PTL.tab.populate(JSON.parse(data));
-
+              
               // JSON.parse(data).forEach(function(element) {
               //   if (element.columns) console.log('YUP: ');
               // });
@@ -235,6 +232,9 @@ PTL.sync = (function() {
             .text('Save feeds')
             .click(function(){
               PTL.sync.writeLocal(PTL.tab.list());
+
+              JSON.parse(JSON.stringify(PTL.tab.list()));
+              
               // PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success', true);
             });
 
