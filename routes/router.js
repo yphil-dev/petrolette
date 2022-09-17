@@ -77,15 +77,14 @@ router.post('/localfeeds', function(req, res) {
   // res.status(200).send('OK');
   // console.error('feeeds: %s (%s)', JSON.parse(JSON.stringify(req.body, null, 4)));
 
+  console.error('req.body: (%s)', JSON.stringify(req.body));
+  
   try {
-
-    // var existingFeeds = JSON.parse(req.body);
     
-    fs.writeFile(localFeedsFilePath, JSON.stringify(existingFeeds, null, 2), 'utf8', function (err) {
+    fs.writeFile(localFeedsFilePath, JSON.stringify(req.body), function (err) {
       if (err && !res.headersSent) {
-        console.error('localfeedsErr: req, res: (%s) (%s)');
         res.status(500).send(err);
-      } else if (err && !res.headersSent) {
+      } else if (!res.headersSent) {
         res.status(200).send('OK');
       }
     });
