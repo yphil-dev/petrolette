@@ -200,11 +200,11 @@ PTL.util = {
 
   },
   isValidPTLFile: function(feeds) {
-
-    console.log('YAA: ', feeds);
     
     var isValid = false;
 
+    // console.error('feeds: %s', feeds);
+    
     try {
       
       feeds.forEach(function(element) {

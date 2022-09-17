@@ -58,12 +58,16 @@ router.get('/favicon', function(req, res) {
 
 router.get('/localfeeds', function(req, res) {
   
-  fs.readFile(localFeedsFilePath, (err, data) => {
-    if (err) {
+  fs.readFile(localFeedsFilePath, 'utf8', (err, data) => {
+    if (err && !res.headersSent) {
       res.status(404).send(err);
-    } else {
-      res.status(200).send(JSON.parse(data));
+    } else if (data && !res.headersSent) {
+
+      console.error('data: ', data);
+      
+      res.status(200).send(data);
     }
+    
   });
 
 });
@@ -71,25 +75,24 @@ router.get('/localfeeds', function(req, res) {
 router.post('/localfeeds', function(req, res) {
   
   // res.status(200).send('OK');
-  // console.error('feeeds: %s (%s)', JSON.stringify(req.body));
+  // console.error('feeeds: %s (%s)', JSON.parse(JSON.stringify(req.body, null, 4)));
 
   try {
 
-    // fs.writeFileSync('index.txt', 'Some content');
-    // console.log('file created');
-
-    fs.writeFile(localFeedsFilePath, JSON.stringify(req.body), 'utf-8', function (err) {
-      if (err) {
+    fs.writeFile(localFeedsFilePath, JSON.stringify(req.body), 'utf8', function (err) {
+      if (err && !res.headersSent) {
         console.error('localfeedsErr: req, res: (%s) (%s)');
         res.status(500).send(err);
-      } else {
+      } else if (err && !res.headersSent) {
         res.status(200).send('OK');
       }
     });
     
   } catch (err) {
     console.error('eerr: %s (%s)',err);
-    res.status(500).send(err);
+    if (!res.headersSent) {
+      res.status(500).send(err);
+    }
   }
 
 });
@@ -166,10 +169,10 @@ router.use(function(req, res) {
   res.status(404).send('404: Page not Found');
 });
 
-router.use(function(error, req, res, next) {
-  console.error('500 req: %s (%s)', JSON.stringify(res));
-  res.status(500).send('500: whoa! Internal Server Error');
-  next();
-});
+// router.use(function(error, req, res, next) {
+//   // console.error('500 req: %s (%s)', JSON.stringify(res));
+//   res.status(500).send('500: whoa! Internal Server Error');
+//   next();
+// });
 
 module.exports = router;
