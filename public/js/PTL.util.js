@@ -201,12 +201,20 @@ PTL.util = {
   },
   isValidPTLFile: function(feeds) {
 
+    console.log('YAA: ', feeds);
+    
     var isValid = false;
 
-    feeds.forEach(function(element) {
-      if (element.columns) isValid = true;
-    });
-
+    try {
+      
+      feeds.forEach(function(element) {
+        if (element.columns) isValid = true;
+      });
+      
+    } catch (err) {
+      isValid = false;
+    }
+    
     return isValid;
 
   },

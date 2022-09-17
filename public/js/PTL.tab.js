@@ -85,7 +85,6 @@ PTL.tab = {
       PTL.tab.add($tabs);
     });
 
-
     PTL.sync.readSync();
 
     $("#theme").attr({ href: '/static/css/themes/' + PTL.prefs.readConfig('theme') + '.css' });

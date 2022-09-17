@@ -63,28 +63,83 @@ PTL.sync = (function() {
     },
     readSync:function() {
 
-      remoteStorage.petrolette.read()
-        .then((data) => {
+      if (PTL.instanceType == 'monoUser') {
+	      console.error('Local!');
 
-          if (PTL.util.isValidPTLFile(JSON.parse(data))) {
+        $.get({
+          url: 'localfeeds',
+          dataType: 'text',
+          success: function(data){
 
-            PTL.tab.populate(JSON.parse(data));
+            console.log('just data: ', data);
+            
+            console.log('JSON.parse(data): ', JSON.parse(data));
 
-          } else {
+            if (PTL.util.isValidPTLFile(JSON.parse(data))) {
 
-            console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults', data));
+              console.log('JSON.parse(data): ', JSON.parse(data));
+              
+              PTL.tab.populate(JSON.parse(data));
+
+            } else {
+
+              console.warn('Pétrolette | ' + PTL.tr('Local file validation NOT OK (error [%1]) now reading defaults'));
+              PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
+
+            }
+          },
+          error: function(xhr, desc, err) {
+            console.log('feeds NOT read, using defs (%s)', JSON.stringify(err));
+            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
+          }
+        });
+
+        
+        // $.get('localfeeds', function(data, status){
+
+        //   console.error('JSON.parse(data.feeds): (%s)', JSON.stringify(data));
+          
+        //   if (PTL.util.isValidPTLFile(JSON.parse(data))) {
+
+        //     PTL.tab.populate(JSON.parse(data));
+
+        //   } else {
+
+        //     console.warn('Pétrolette | ' + PTL.tr('Local file validation NOT OK (error [%1]) now reading defaults'));
+        //     PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
+
+        //   }
+
+        // });
+        
+      } else {
+        
+        remoteStorage.petrolette.read()
+          .then((data) => {
+
+            if (PTL.util.isValidPTLFile(JSON.parse(data))) {
+
+              console.error('YO, synced: (%s)');
+              
+              PTL.tab.populate(JSON.parse(data));
+
+            } else {
+
+              console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults'));
+              PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
+
+            }
+
+          })
+          .catch((err) => {
+
+            PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
+
             PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
 
-          }
-
-        })
-        .catch((err) => {
-
-          PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
-
-          PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-
-        });
+          });
+        
+      }
 
     },
     writeSync:function(feeds) {
@@ -104,36 +159,37 @@ PTL.sync = (function() {
             .text('Save feeds')
             .click(function(){
               PTL.sync.writeLocal(PTL.tab.list());
-              PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success', true);
+              // PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success', true);
             });
 
       return $monoUserButton;
     },
     writeLocal:function(feeds) {
 
-      console.error('feedsSync: %s (%s)', feeds);
+      // console.error('in Local: %s (%s)', JSON.stringify(feeds));
       
-      $.post({
-        url: 'localfeeds',
-        data: JSON.stringify(feeds),
-        // dataType: 'json',
-        success: function(data){
-          console.log('feeds written, apparently %s', data);
-        },
-        error: function(xhr, desc, err) {
-          console.log('feeds NOT written, apparently (%s)', JSON.stringify(err));
-        }
-      });
-      
-      // $.post('/localfeeds', {
-      //   body: 'feeds',
-      //   timeout: 80
-      // }).fail(function(req, status, xhr) {
-      //   console.error('Ah, shoot (req, status, xhr): %s (%s) (%s)', JSON.stringify(req), JSON.stringify(status), JSON.stringify(xhr));
-      // }).done(function(jqXHR, textStatus, errorThrown) {
-      //   // PTL.tab.populate(feeds);
-      //   console.log('feeds written, apparently %s', textStatus);
+      // $.post({
+      //   url: 'localfeeds',
+      //   dataType: 'text',
+      //   data: JSON.stringify(feeds),
+      //   success: function(data){
+      //     console.log('feeds written, apparently %s', data);
+      //   },
+      //   error: function(xhr, desc, err) {
+      //     console.log('feeds NOT written, apparently (%s)', JSON.stringify(err));
+      //   }
       // });
+
+      $.post('localfeeds', feeds)
+        .then(function(err) {
+          console.log('then: ', err);
+        })
+        .fail(function(err) {
+          console.log('err: ', err);
+        })
+        .done(function() {
+          console.log( "second success");
+        });
       
     }
   };

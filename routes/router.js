@@ -16,7 +16,7 @@ const express = require('express'),
       morgan = require('morgan');
 
 console.error('### (re)START ## Version (%s)', pjson.version);
-const localFeeds = path.resolve(__dirname, '../petrolette.feeds');
+const localFeedsFilePath = path.resolve(__dirname, '../petrolette.feeds');
 
 // process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
@@ -56,21 +56,35 @@ router.get('/favicon', function(req, res) {
   });
 });
 
+router.get('/localfeeds', function(req, res) {
+  
+  fs.readFile(localFeedsFilePath, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.status(200).send(JSON.parse(data));
+    }
+  });
+
+});
+
 router.post('/localfeeds', function(req, res) {
   
   // res.status(200).send('OK');
-  console.error('feeeds: %s (%s)', req.body);
+  // console.error('feeeds: %s (%s)', JSON.stringify(req.body));
 
   try {
 
     // fs.writeFileSync('index.txt', 'Some content');
     // console.log('file created');
-    
-    fs.writeFile(localFeeds, JSON.stringify(req.body), function (err) {
+
+    fs.writeFile(localFeedsFilePath, JSON.stringify(req.body), 'utf-8', function (err) {
       if (err) {
         console.error('localfeedsErr: req, res: (%s) (%s)');
         res.status(500).send(err);
-      } 
+      } else {
+        res.status(200).send('OK');
+      }
     });
     
   } catch (err) {

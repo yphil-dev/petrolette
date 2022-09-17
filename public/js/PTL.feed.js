@@ -16,7 +16,7 @@ PTL.feed = {
             onerror: "this.src='/static/images/rss.gif';"
           }).on("error", function() {       
             $(this).parent().parent().children('div.dataStore').data('iconhash', '');
-            // PTL.tab.saveTabs(true);
+            PTL.tab.saveTabs(true);
           });
 
     const $newItemsBadge = $('<div>')

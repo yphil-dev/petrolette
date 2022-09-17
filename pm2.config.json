@@ -4,8 +4,9 @@
       "name"            : "petrolette",
       "script"          : "./http/server.js",
       "watch"           : true,
-      "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules", "../petrolette.feeds"],
-      "time"            : false,
+      "log_date_format" : "HH:mm:ss",
+      "ignore_watch"    : ["#*", "favicons-cache", ".git", "node_modules", "petrolette.feeds"],
+      "time"            : true,
       env: {
         "NODE_ENV": "development"
       },
