@@ -139,6 +139,7 @@ var PTL = (function() {
 
       $('body').on('click','.helpBookmarklet', function(event) {
         event.preventDefault();
+
       });
 
       $('nav#sideMenu .menuTourItem').each(function() {
@@ -216,8 +217,6 @@ var PTL = (function() {
           });
         }
       });
-
-      console.log('PTL.instanceType: ', PTL.instanceType);
       
       if (PTL.instanceType == 'multiUser') {
         PTL.sync.attachWidget();

@@ -9,6 +9,7 @@ PTL.util = {
   },
   XMLtoJSON: function() {
 
+    
     this.fromStr = function(xml, rstr) {
       var xmlDoc;
       if (window.DOMParser) {
@@ -157,11 +158,14 @@ PTL.util = {
 
     switch (type) {
     case 'warning':
-      console.log("%cPétrolette: %c" + text, "color: aqua", "color: yellow");
+      console.log("%cPétrolette: %c" + text, "color: aqua", "color: orange");
+      break;
     case 'error':
       console.log("%cPétrolette: %c" + text, "color: aqua", "color: red");
+      break;
     case 'success':
       console.log("%cPétrolette: %c" + text, "color: aqua", "color: green");
+      break;
     }
     
   },

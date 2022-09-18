@@ -80,9 +80,6 @@ PTL.sync = (function() {
           .fail(function(jqXHR, textStatus, errorThrown) {
             console.log('feeds NOT read, using defs (%s)', JSON.stringify(jqXHR), JSON.stringify(textStatus), JSON.stringify(errorThrown));
             PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-          })
-          .done(function() {
-            console.log( "second success");
           });
         
       } else {
