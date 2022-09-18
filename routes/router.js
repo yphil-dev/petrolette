@@ -83,6 +83,7 @@ router.post('/localfeeds', function(req, res) {
     
     fs.writeFile(localFeedsFilePath, JSON.stringify(req.body), function (err) {
       if (err && !res.headersSent) {
+        console.error('ERR: (%s)', err);
         res.status(500).send(err);
       } else if (!res.headersSent) {
         res.status(200).send('OK');
@@ -90,7 +91,7 @@ router.post('/localfeeds', function(req, res) {
     });
     
   } catch (err) {
-    console.error('eerr: %s (%s)',err);
+    console.error('EERR: %s (%s)',err);
     if (!res.headersSent) {
       res.status(500).send(err);
     }

@@ -71,11 +71,9 @@ PTL.sync = (function() {
 
             try {
 
-
-              data = data.replace(/\\"/g, '"');
-              console.error('err, data: %s %s, (%s)', err, typeof data);
+              console.error('err type: %s %s, (%s)', err, typeof data);
               
-              // PTL.tab.populate(JSON.parse(data));
+              PTL.tab.populate(JSON.parse(data));
               
             } catch (err) {
               console.error('err: (%s)', err);
@@ -211,30 +209,31 @@ PTL.sync = (function() {
     writeLocal:function(feeds) {
 
       console.error('in Local: %s (%s)', JSON.stringify(feeds));
-      
-      // $.post({
-      //   url: 'localfeeds',
-      //   dataType: 'text',
-      //   data: JSON.stringify(feeds),
-      //   success: function(data){
-      //     console.log('feeds written, apparently %s', data);
-      //   },
-      //   error: function(xhr, desc, err) {
-      //     console.log('feeds NOT written, apparently (%s)', JSON.stringify(err));
-      //   }
-      // });
 
       $.post({
-        url : "localfeeds",
-        data: JSON.stringify(feeds),
-        contentType: "application/json; charset=utf-8",
-        dataType   : "json",
-        success    : function(){
-          console.log("Pure jQuery Pure JS object");
+        url        : 'localfeeds',
+        data       : JSON.stringify(feeds),
+        contentType: 'application/json; charset=utf-8',
+        dataType   : 'json',
+        success    : function(res) {
+          if(res.status === "success") {
+            // do something with response.message or whatever other data on success
+            console.log('Pure jQuery Pure JS object');
+          } else if(res.status === "error") {
+            // do something with response.message or whatever other data on error
+            console.error('jqXHR, textStatus, errorThrown: (%s)');
+          }
         }
       });
+
+      // const options = {
+      //   url : "localfeeds",
+      //   data: JSON.stringify(feeds),
+      //   contentType: "application/json; charset=utf-8",
+      //   dataType   : "json"
+      // };
       
-      // $.post('localfeeds', JSON.stringify(feeds), 'application/json; charset=utf-8')
+      // $.post(options)
       //   .then(function(err) {
       //     console.log('then: ', err);
       //   })
