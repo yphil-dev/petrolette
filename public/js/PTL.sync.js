@@ -64,92 +64,26 @@ PTL.sync = (function() {
     readSync:function() {
 
       if (PTL.instanceType == 'monoUser') {
-	      console.error('Local!');
+        
+        PTL.util.say(PTL.tr('This instance is single user'), 'success', false, 'plop');
         
         $.get('localfeeds', 'text')
           .then(function(data, err) {
 
             try {
-
-              console.error('err type: %s %s, (%s)', err, typeof data);
-              
               PTL.tab.populate(JSON.parse(data));
-              
             } catch (err) {
               console.error('err: (%s)', err);
-            } finally {
-              
-            }
-
+            } 
             
           })
           .fail(function(jqXHR, textStatus, errorThrown) {
             console.log('feeds NOT read, using defs (%s)', JSON.stringify(jqXHR), JSON.stringify(textStatus), JSON.stringify(errorThrown));
             PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-
-            // console.error('err: %s %s %s', JSON.stringify(jqXHR), textStatus, errorThrown);
           })
           .done(function() {
             console.log( "second success");
           });
-
-        // $.get({
-        //   url: 'localfeeds',
-        //   dataType: 'json',
-        //   success: function(data){
-
-        //     console.log('just data: ', data);
-            
-        //     // console.log('JSON.parse(data): ', JSON.parse(data));
-
-
-        //     try {
-              
-        //       JSON.parse(JSON.stringify(data)).forEach(function(element) {
-        //         if (element.columns) console.log('YUP: ');
-        //       });
-              
-        //     } catch (err) {
-        //       console.log('err: ', err);
-        //     }
-            
-            
-        //     if (PTL.util.isValidPTLFile(data)) {
-
-        //       console.log('yep: ');
-              
-        //       PTL.tab.populate(data);
-
-        //     } else {
-
-        //       console.warn('Pétrolette | ' + PTL.tr('Local file validation NOT OK (error [%1]) now reading defaults'));
-        //       PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-
-        //     }
-        //   },
-        //   error: function(xhr, desc, err) {
-        //     console.log('feeds NOT read, using defs (%s)', JSON.stringify(err));
-        //     PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-        //   }
-        // });
-
-        
-        // $.get('localfeeds', function(data, status){
-
-        //   console.error('JSON.parse(data.feeds): (%s)', JSON.stringify(data));
-          
-        //   if (PTL.util.isValidPTLFile(JSON.parse(data))) {
-
-        //     PTL.tab.populate(JSON.parse(data));
-
-        //   } else {
-
-        //     console.warn('Pétrolette | ' + PTL.tr('Local file validation NOT OK (error [%1]) now reading defaults'));
-        //     PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-
-        //   }
-
-        // });
         
       } else {
         
@@ -157,8 +91,6 @@ PTL.sync = (function() {
           .then((data) => {
 
             if (PTL.util.isValidPTLFile(JSON.parse(data))) {
-
-              console.error('YO, synced: (%s)');
               
               PTL.tab.populate(JSON.parse(data));
 
@@ -173,21 +105,21 @@ PTL.sync = (function() {
           .catch((err) => {
 
             PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
-
             PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
 
           });
-        
       }
-
     },
     writeSync:function(feeds) {
 
-      remoteStorage.petrolette.write(feeds)
-        .catch((err) => {
-          PTL.util.say(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
-        });
-      
+      if (PTL.instanceType == 'monoUser') {
+        PTL.sync.writeLocal(PTL.tab.list());        
+      } else {
+        remoteStorage.petrolette.write(feeds)
+          .catch((err) => {
+            PTL.util.say(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
+          });
+      }
     },
     attachMonoUserButton:function() {
 
@@ -197,18 +129,12 @@ PTL.sync = (function() {
                    'data-content' : 'Save feeds'})
             .text('Save feeds')
             .click(function(){
-              
               PTL.sync.writeLocal(PTL.tab.list());
-            
-              
-              // PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success', true);
             });
 
       return $monoUserButton;
     },
     writeLocal:function(feeds) {
-
-      console.error('in Local: %s (%s)', JSON.stringify(feeds));
 
       $.post({
         url        : 'localfeeds',
@@ -217,33 +143,12 @@ PTL.sync = (function() {
         dataType   : 'json',
         success    : function(res) {
           if(res.status === "success") {
-            // do something with response.message or whatever other data on success
             console.log('Pure jQuery Pure JS object');
           } else if(res.status === "error") {
-            // do something with response.message or whatever other data on error
             console.error('jqXHR, textStatus, errorThrown: (%s)');
           }
         }
       });
-
-      // const options = {
-      //   url : "localfeeds",
-      //   data: JSON.stringify(feeds),
-      //   contentType: "application/json; charset=utf-8",
-      //   dataType   : "json"
-      // };
-      
-      // $.post(options)
-      //   .then(function(err) {
-      //     console.log('then: ', err);
-      //   })
-      //   .fail(function(jqXHR, textStatus, errorThrown) {
-      //     console.log('err: %s %s %s', JSON.stringify(jqXHR), textStatus, errorThrown);
-      //   })
-      //   .done(function() {
-      //     console.log( "second success");
-      //   });
-      
     }
   };
 }());

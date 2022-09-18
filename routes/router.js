@@ -74,9 +74,6 @@ router.get('/localfeeds', function(req, res) {
 
 router.post('/localfeeds', function(req, res) {
   
-  // res.status(200).send('OK');
-  // console.error('feeeds: %s (%s)', JSON.parse(JSON.stringify(req.body, null, 4)));
-
   console.error('req.body: (%s)', JSON.stringify(req.body));
   
   try {

@@ -411,6 +411,8 @@ PTL.i18n.translations = {
 
     "Connection to the cloud to synchronize tabs and feeds on all devices." : { fr: "Connexion au nuage pour synchroniser onglets et flux sur plusieurs appareils." , ja: "すべてのデバイスでタブとソースを同期させるためのクラウドへの接続。", es: "Conexión a la nube para sincronizar las pestañas y las feeds en todos sus dispositivos。" },
 
+    "This instance is single user" : { fr: "Cette instance est mono-utilisateur" , ja: "このインスタンスはシングル ユーザーです", es: "Esta instancia es de un solo usuario" },
+
     "Preferred Search engine for building search feeds." : { fr: "Moteur de recherche préféré pour la construction de sources de recherche." , ja: "検索ソースを構築するための好ましい検索エンジン。", es: "Motor de búsqueda preferido para la construcción de feeds de búsqueda." },
     
     "When you click an image, you can view it in a gallery, and start a slideshow." : { fr: "Un clic sur une image l'affiche dans une galerie." , ja: "イメージをクリックすると、ギャラリーでそのイメージを表示し、スライドショーを開始できます", es: "Cuando hace clic en una imagen, puede verla en una galería." },

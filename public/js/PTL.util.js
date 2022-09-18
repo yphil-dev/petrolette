@@ -155,6 +155,15 @@ PTL.util = {
 
     if ($lines.length > 50) $lines.last().remove();
 
+    switch (type) {
+    case 'warning':
+      console.log("%cPétrolette: %c" + text, "color: aqua", "color: yellow");
+    case 'error':
+      console.log("%cPétrolette: %c" + text, "color: aqua", "color: red");
+    case 'success':
+      console.log("%cPétrolette: %c" + text, "color: aqua", "color: green");
+    }
+    
   },
   isUrl: function(u) {
     // return new RegExp('^(?:[a-z]+:)?//', 'i').test(u);
