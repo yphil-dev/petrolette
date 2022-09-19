@@ -26,6 +26,14 @@ var PTL = (function() {
 
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
+      let nagBarText;
+      
+      if (PTL.instanceType == 'monoUser') {
+        nagBarText = '';
+      } else {
+        nagBarText = '🔒 This Pétrolette instance is multi-user ; Your feeds are saved in this browser 🙂';
+      }
+      
       if (!PTL.prefs.readConfig('nagBarOk')) $('div#nagBar').show(0);
       
       if (PTL.prefs.readConfig('userSetLang') !== 'true') {
