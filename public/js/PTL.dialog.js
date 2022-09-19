@@ -1122,8 +1122,12 @@ PTL.dialog = {
 
     const $notify = $('#notify');
 
-    $('#notify > h4').text(title),
-    $('#notify > p').text(text);
+    $('#notify > h4')
+      .attr('data-content', title)
+      .text(title),
+    $('#notify > p')
+      .attr('data-content', text)
+      .text(text);
 
     $notify.fadeIn('fast', 'linear', function() {
       setTimeout(function() {

@@ -357,7 +357,11 @@ PTL.i18n.translations = {
 
     "Click the «New feed» button." : { fr: "Cliquez sur le bouton «nouveau flux»." , ja: "«新しいソース»ボタンをクリックします。", es: "¿Qué es una feed?" },
 
-    "🔒 This is your private Pétrolette ; Everything is already saved in this browser 🙂" : { fr: "🔒 Ceci est votre Pétrolette privée ; tout est déjà enregistré dans ce navigateur 🙂" , ja: "🔒 これはあなたのプライベートペトロレットです。 すべてがこのブラウザにすでに保存されています 🙂", es: "🔒 Esta es su Pétrolette privada; Todo ya está guardado en su navegador 🙂" },
+    "🔒 This Pétrolette instance is multi-user ; Your feeds are saved in this browser 🙂" : { fr: "🔒 Cette instance Petrolette est multi-utilisateurs ; Vos flux sont enregistrés dans ce navigateur 🙂" , ja: "🔒 この Petrolette インスタンスはマルチユーザーです。 あなたのフィードはこのブラウザに保存されます 🙂", es: "🔒 Esta instancia de Pétrolette es multiusuario; Tus feeds se guardan en este navegador 🙂" },
+  
+    "This Pétrolette instance is multi-user ; Your feeds are saved in this browser" : { fr: "Cette instance Petrolette est multi-utilisateurs ; Vos flux sont enregistrés dans ce navigateur" , ja: "この Petrolette インスタンスはマルチユーザーです。 あなたのフィードはこのブラウザに保存されます", es: "Esta instancia de Pétrolette es multiusuario; Tus feeds se guardan en este navegador" },
+
+    "This Pétrolette instance is single user ; Your feeds are saved on the server" : { fr: "Cette instance Petrolette est mono utilisateur ; vos flux sont enregistrés sur le serveur" , ja: "この Petrolette インスタンスは単一ユーザーです。 フィードはサーバーに保存されます", es: "Esta instancia de Pétrolette es monousuario; sus feeds se guardan en el servidor" },
 
     "How is it possible?" : { fr: "Comment est-ce possible?" , ja: "どうしてそれは可能ですか？", es: "¿Como es posible?" },
 
@@ -410,8 +414,6 @@ PTL.i18n.translations = {
     "Reset Pétrolette with the default feeds." : { fr: "Réinitialiser Pétrolette avec les flux par défaut." , ja: "デフォルトフィードでPétroletteをリセットします。", es: "Restablecer Pétrolette con las feeds predeterminadas." },
 
     "Connection to the cloud to synchronize tabs and feeds on all devices." : { fr: "Connexion au nuage pour synchroniser onglets et flux sur plusieurs appareils." , ja: "すべてのデバイスでタブとソースを同期させるためのクラウドへの接続。", es: "Conexión a la nube para sincronizar las pestañas y las feeds en todos sus dispositivos。" },
-
-    "This instance is single user" : { fr: "Cette instance est mono-utilisateur" , ja: "このインスタンスはシングル ユーザーです", es: "Esta instancia es de un solo usuario" },
 
     "Preferred Search engine for building search feeds." : { fr: "Moteur de recherche préféré pour la construction de sources de recherche." , ja: "検索ソースを構築するための好ましい検索エンジン。", es: "Motor de búsqueda preferido para la construcción de feeds de búsqueda." },
     

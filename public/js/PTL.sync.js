@@ -65,8 +65,6 @@ PTL.sync = (function() {
 
       if (PTL.instanceType == 'monoUser') {
         
-        PTL.util.say(PTL.tr('This instance is single user'), 'success', false, 'plop');
-        
         $.get('localfeeds', 'text')
           .then(function(data, err) {
 

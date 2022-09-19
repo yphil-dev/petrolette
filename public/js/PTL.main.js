@@ -11,7 +11,7 @@ var PTL = (function() {
     language: 'en',
     languages: ['en', 'fr', 'ja', 'es'],
     start : function() {
-
+      
       Mousetrap.bind('?', PTL.dialog.kbShortcuts);
       Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
       Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
@@ -24,30 +24,35 @@ var PTL = (function() {
         PTL.sideMenu('toggle');
       });
 
+      if (PTL.prefs.readConfig('userSetLang') !== 'true') {
+        const preferredLang = PTL.util.getPreferredLang();
+        for (const l of PTL.languages) if (preferredLang == l) PTL.language = preferredLang;
+      } else {
+        PTL.language = PTL.prefs.readConfig('lang');
+      }
+
       PTL.util.say(PTL.tr('Pétrolette init'), 'success');
 
-      let nagBarText;
+      let instanceTypeText;
       
       if (PTL.instanceType == 'monoUser') {
-        nagBarText = '';
+        instanceTypeText = 'This Pétrolette instance is single user ; Your feeds are saved on the server';
       } else {
-        nagBarText = '🔒 This Pétrolette instance is multi-user ; Your feeds are saved in this browser 🙂';
-      }
-      
-      if (!PTL.prefs.readConfig('nagBarOk')) $('div#nagBar').show(0);
-      
-      if (PTL.prefs.readConfig('userSetLang') !== 'true') {
-
-        const preferredLang = PTL.util.getPreferredLang();
-
-        for (const l of PTL.languages) if (preferredLang == l) PTL.language = preferredLang;
-
-      } else {
+        instanceTypeText = 'This Pétrolette instance is multi-user ; Your feeds are saved in this browser';
         
-        PTL.language = PTL.prefs.readConfig('lang');
+      }
 
+      if (!PTL.prefs.readConfig('nagBarOk')) {
+        $('span#nagText')
+          .attr('data-content', instanceTypeText)
+          .text('🔒 ' + instanceTypeText + ' 🙂');
+        PTL.util.say(PTL.tr(instanceTypeText), 'info', true, PTL.tr('Warning'));
+        $('div#nagBar').show(0);
+      } else {
+        PTL.util.say(PTL.tr(instanceTypeText), 'info');
       }
       
+
       PTL.util.translate();
       
       const $sideMenu = $('nav#sideMenu'),

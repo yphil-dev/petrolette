@@ -20,7 +20,7 @@
   --color-ui-title-one: #FF4136;
   --color-ui-console-bg: #EEE8D5;
   --color-ui-console-fg: #002B36;
-  --color-ui-console-normal: #268BD2;
+  --color-ui-console-info: #00BFFF;
   --color-ui-console-error: #DC3545;
   --color-ui-console-success: #28A745;
   --color-ui-console-warning: #FFC107;
@@ -763,8 +763,8 @@ nav#sideMenu.expanded {
   color: var(--color-text);
 }
 
-#console div.normal {
-  color: var(--color-ui-console-normal);
+#console div.info {
+  color: var(--color-ui-console-info);
 }
 
 #console div.error {

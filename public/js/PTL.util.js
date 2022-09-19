@@ -157,6 +157,9 @@ PTL.util = {
     if ($lines.length > 50) $lines.last().remove();
 
     switch (type) {
+    case 'info':
+      console.info("%cPétrolette: %c" + text, "color: aqua", "color: DeepSkyBlue");
+      break;
     case 'warning':
       console.log("%cPétrolette: %c" + text, "color: aqua", "color: orange");
       break;
