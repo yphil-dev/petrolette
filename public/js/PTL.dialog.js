@@ -7,7 +7,7 @@ PTL.dialog = {
   },
   feedPrefs: function($button, isNewFeed) {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #feedPrefsDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {
 
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
@@ -192,7 +192,7 @@ PTL.dialog = {
               .addClass('spin icon-refresh');
             $guessButton.removeClass('icon-checked ui-state-success ui-state-error');
 
-            $.get('/discover', {
+            $.get('discover', {
               dataType: 'json',
               url: feedUrl,
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
@@ -382,8 +382,8 @@ PTL.dialog = {
     let $imageDiv = $('<div>')
         .attr('class', 'suggestionListFavicon shrink')
         .append($('<img>')
-                .attr({'src': '/favicons/' + feed.iconhash + '.favicon',
-                       onerror: "this.src='/static/images/rss.gif';",
+                .attr({'src': 'favicons/' + feed.iconhash + '.favicon',
+                       onerror: "this.src='static/images/rss.gif';",
                        'class': 'favicon'}))
         .appendTo($feedLi);  
 
@@ -465,7 +465,7 @@ PTL.dialog = {
   },
   feedNew: function(url) {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #feedNewDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #feedNewDialog', function() {
 
       const $dialog = $(this);
 
@@ -558,7 +558,7 @@ PTL.dialog = {
 
             $addButtonText.text('');
 
-            $.get('/discover', {
+            $.get('discover', {
               dataType: 'json',
               url: feedUrl,
               searchPrefix: PTL.prefs.readConfig('searchPrefix'),
@@ -619,7 +619,7 @@ PTL.dialog = {
   },
   killColumn: function($button) {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $column = $button.parent().parent(),
@@ -676,7 +676,7 @@ PTL.dialog = {
   },
   kbShortcuts: function() {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #kbShortcuts', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #kbShortcuts', function() {
 
       const $dialog = $(this);
 
@@ -710,7 +710,7 @@ PTL.dialog = {
   },
   killTab: function($button, tabName, $selectedTab, $selectedPanel, numberOfFeeds) {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $tabs = $('#tabs'),
@@ -772,7 +772,7 @@ PTL.dialog = {
   },
   killFeed: function($button, $selectedFeeds) {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             thisFeedId = $button.parent().parent().parent().parent().attr('id'),
@@ -843,7 +843,7 @@ PTL.dialog = {
   },
   importFeeds: function(existingFeeds, importedFeedsFile) {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $icon = $dialog.find('div#icon > i');
@@ -907,7 +907,7 @@ PTL.dialog = {
   },
   editTab: function($tab) {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #editTabDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #editTabDialog', function() {
 
       const $dialog = $(this);
 
@@ -978,7 +978,7 @@ PTL.dialog = {
   },
   help: function() {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #helpDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #helpDialog', function() {
 
       const $dialog = $(this);
 
@@ -1028,7 +1028,7 @@ PTL.dialog = {
     });
   }, resetTabs: function() {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #questionDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #questionDialog', function() {
 
       const $dialog = $(this),
             $icon = $dialog.find('div#icon > i');
@@ -1079,7 +1079,7 @@ PTL.dialog = {
   },
   beg: function() {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #beggarDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #beggarDialog', function() {
 
       const $dialog = $(this);
 
@@ -1142,7 +1142,7 @@ PTL.dialog = {
   },
   about: function(petroletteVersion, favratVersion, feedratVersion) {
 
-    $('div#ptlDialogs').load('/static/templates/dialogs.html #aboutDialog', function() {
+    $('div#ptlDialogs').load('static/templates/dialogs.html #aboutDialog', function() {
 
       const $dialog = $(this);
 

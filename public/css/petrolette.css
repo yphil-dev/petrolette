@@ -2,7 +2,7 @@
   font-family: LobsterRegular;
   font-style: normal;
   font-weight: normal;
-  src: url("/static/font/Lobster_1.3.otf") format("opentype");
+  src: url("../font/Lobster_1.3.otf") format("opentype");
 }
 
 :root {

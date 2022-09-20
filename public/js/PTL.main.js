@@ -45,7 +45,7 @@ var PTL = (function() {
       if (!PTL.prefs.readConfig('nagBarOk')) {
         $('span#nagText')
           .attr('data-content', instanceTypeText)
-          .text('🔒 ' + instanceTypeText + ' 🙂');
+          .text(instanceTypeText);
         PTL.util.say(PTL.tr(instanceTypeText), 'info', true, PTL.tr('Warning'));
         $('div#nagBar').show(0);
       } else {
@@ -360,7 +360,7 @@ var PTL = (function() {
 
       $('.themeSwitcher').change(function() {
 
-        $("link#theme").attr('href', '/static/css/themes/' + $(this).attr('value') + '.css');
+        $("link#theme").attr('href', 'static/css/themes/' + $(this).attr('value') + '.css');
 
         PTL.prefs.writeConfig('userSetTheme', true);
 

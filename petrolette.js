@@ -37,12 +37,12 @@ try {
       }
       
     } catch (err) {
-      console.error('Not a valid config file');
+      console.error('## Pétrolette: Not a valid config file');
     }
     
   }
 } catch {
-  console.error('## No config file found');
+  console.error('## Pétrolette: No config file found');
 }
 
 app.set('views', path.join(__dirname, 'views'));

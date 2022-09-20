@@ -9,11 +9,11 @@ PTL.feed = {
 
     const $feedImg = $('<img>')
           .attr({
-            src: '/static/images/rss.gif',
+            src: 'static/images/rss.gif',
             class: 'favicon',
             width: '16px',
             height: '16px',
-            onerror: "this.src='/static/images/rss.gif';"
+            onerror: "this.src='static/images/rss.gif';"
           }).on("error", function() {       
             $(this).parent().parent().children('div.dataStore').data('iconhash', '');
             PTL.tab.saveTabs(true);
@@ -362,9 +362,9 @@ PTL.feed = {
           if (!isAbsolute) imageUrl = feedHost + '/' + imageUrl;
           
           $image = $('<img>')
-            .attr('src', '/static/images/loading.gif')
+            .attr('src', 'static/images/loading.gif')
             .attr('data-srcset', imageUrl.replace('http://', 'https://'))
-            .attr('srcset', '/static/images/loading.gif')
+            .attr('srcset', 'static/images/loading.gif')
             .attr('title', $imageSummary ? $imageSummary.trim() : $summary.trim())
             .attr('alt', $imageSummary ? $imageSummary.trim() : $summary.trim())
             .attr('class', 'ptl-img responsively-lazy')
@@ -572,7 +572,7 @@ PTL.feed = {
     $feedBodyUl.css('border', '1px solid red');
     
     if (feedIconHash && feedIconHash !== 'noicon') {
-      $favIcon.attr('src', '/favicons/' + feedIconHash + '.favicon');
+      $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
     } else if (!feedIconHash) {
       PTL.feed.fetchIcon(feedHost)
         .then(hash => {
@@ -582,7 +582,7 @@ PTL.feed = {
         .catch(e => {
           $dataStore.data('iconhash', 'noicon');
           PTL.tab.saveTabs(true);
-          $favIcon.attr('src', '/static/images/rss.gif');
+          $favIcon.attr('src', 'static/images/rss.gif');
         });
     }
     
