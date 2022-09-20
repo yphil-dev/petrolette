@@ -350,7 +350,7 @@ PTL.util = {
     let date = new Date(d);
 
     let months = Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-    return date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + ", " + padding(date.getHours()) + ":" + padding(date.getMinutes()) + ":" + padding(date.getSeconds());
+    return date.getDate() + " " + PTL.tr(months[date.getMonth()]) + " " + date.getFullYear() + ", " + padding(date.getHours()) + ":" + padding(date.getMinutes()) + ":" + padding(date.getSeconds());
 
     // return date.toLocaleFormat('%d-%b-%Y');
     

@@ -565,6 +565,18 @@ PTL.i18n.translations = {
     
     "Untitled" : { fr: "Sans titre", ja: "無題", es: "Intitulado" },
 
-    "%1 | Click to rename, drag to move" : { fr: "%1 | Cliquer pour renommer, glisser pour déplacer", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" }
-    
+  "%1 | Click to rename, drag to move" : { fr: "%1 | Cliquer pour renommer, glisser pour déplacer", ja: "%1 | クリックして名前を変更し、ドラッグして再注文します", es: "%1 | Haga clic para cambiar el nombre, arrastre para volver a ordenar" },
+    "Juanary" : { fr: "janvier", ja: "1月", es: "juanario" },
+    "February" : { fr: "février", ja: "2月", es: "febrero" },
+    "March" : { fr: "mars", ja: "3月", es: "marzo" },
+    "April" : { fr: "avril", ja: "4月", es: "abril" },
+    "May" : { fr: "mai", ja: "5月", es: "mayo" },
+    "June" : { fr: "juin", ja: "6月", es: "junio" },
+    "July" : { fr: "juillet", ja: "7月", es: "julio" },
+    "August" : { fr: "aout", ja: "8月", es: "agosto" },
+    "September" : { fr: "septembre", ja: "9月", es: "Septiembre" },
+    "October" : { fr: "octobre", ja: "10月", es: "octubre" },
+    "November" : { fr: "novembre", ja: "11月", es: "noviembre" },
+    "December" : { fr: "décembre", ja: "12月", es: "Diciembre" },
+  
 };
