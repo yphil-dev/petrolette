@@ -338,6 +338,23 @@ PTL.util = {
 
     return parseFloat(secs + '.' + ms.toFixed(1));
   },
+  dateFormat: function(d) {
+
+    function padding(n) {
+      if (n <= 9) {
+        return "0" + n;
+      }
+      return n;
+    }
+
+    let date = new Date(d);
+
+    let months = Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+    return date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + ", " + padding(date.getHours()) + ":" + padding(date.getMinutes()) + ":" + padding(date.getSeconds());
+
+    // return date.toLocaleFormat('%d-%b-%Y');
+    
+  },
   detectColorScheme: function() {
 
     const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;

@@ -236,7 +236,13 @@ PTL.feed = {
         const $description = $.parseHTML(item.description),
               imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
-        let summary, imageUrl, audioUrl, audioType, videoUrl, videoType;
+        let summary, imageUrl, audioUrl, audioType, videoUrl, videoType, pubDate;
+
+        if (item.pubDate && typeof item.pubDate !== 'undefined') {
+          pubDate = PTL.util.dateFormat(item.pubDate);
+        } else {
+          pubDate = '';
+        }
 
         if (item.summary && typeof item.summary !== 'undefined') {
           summary = item.summary;
@@ -256,11 +262,12 @@ PTL.feed = {
               $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
               $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
               $commentsIcon = $('<i>'),
-              $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text(),
+              $summary = $('<null>').append(PTL.util.sanitizeInput(pubDate + '\n' + summary.replace(/^\s*$(?:\r\n?|\n)/gm, ''))).text(),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
               $feedItem = $('<li>').attr('class', 'feedItem');
 
-        let $image;
+        let $image,
+            $imageSummary = '';
 
         if (summary && typeof summary !== 'undefined') {
           $feedItem.attr('title', $summary.trim());
@@ -281,7 +288,7 @@ PTL.feed = {
         if (!imageUrl && typeof $tempDom.find('img').attr('src') !== 'undefined') {
           imageUrl = $tempDom.find('img').attr('src');
           if (typeof $tempDom.find('img').attr('title') !== 'undefined') {
-            $feedItem.attr('title', $tempDom.find('img').attr('title'));
+            $imageSummary = $tempDom.find('img').attr('title');
           }
         }
 
@@ -306,6 +313,7 @@ PTL.feed = {
 
           if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/(\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
 
+            
             videoUrl = item.enclosures[0].url;
             videoType = item.enclosures[0].type;
           }
@@ -338,13 +346,12 @@ PTL.feed = {
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', item.link || item.enclosures[0].url)
-          .append(item['mastodon:scope'] ? $summary.trim() : item.title);
+          .append(item.title);
 
         if (!videoUrl && !audioUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
           $imageLink
             .attr('href', imageUrl)
-            .attr('title', $summary.trim())
             .attr('data-fancybox', 'gallery')
             .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
 
@@ -358,11 +365,12 @@ PTL.feed = {
             .attr('src', '/static/images/loading.gif')
             .attr('data-srcset', imageUrl.replace('http://', 'https://'))
             .attr('srcset', '/static/images/loading.gif')
-            .attr('title', $summary.trim())
-            .attr('alt', item['mastodon:scope'] ? $summary.trim() : item.title)
+            .attr('title', $imageSummary ? $imageSummary.trim() : $summary.trim())
+            .attr('alt', $imageSummary ? $imageSummary.trim() : $summary.trim())
             .attr('class', 'ptl-img responsively-lazy')
             .attr('onerror', "this.style.display='none'")
             .appendTo($imageLink);
+
         }
 
         if (item.comments) {
@@ -637,8 +645,6 @@ PTL.feed = {
 
         }
       } catch (err) {
-
-        console.error('WOA: %s (%s)', JSON.stringify(err), feedUrl);
         
         $feedBody
           .empty()

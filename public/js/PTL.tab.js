@@ -333,7 +333,7 @@ PTL.tab = {
       .data('title', 'Add a new tab')
       .attr('title', PTL.tr('Add a new tab'))
       .focus(function() {
-        PTL.util.say(PTL.tr("Click this button to add a tab"), 'success', true, 'Tip');
+        PTL.util.say(PTL.tr("Click this button to add a tab"), 'info', true, 'Tip');
       });
 
     const $newTabButtonLink = $('<a>')

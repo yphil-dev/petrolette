@@ -538,7 +538,7 @@ var PTL = (function() {
       $.ui.dialog.prototype._init = function() {
         PTL.util.translate();
       };
-
+      
       const $debugHiddenButton = $('<span>')
             .attr('title', '>debug')
             .addClass('debug')
