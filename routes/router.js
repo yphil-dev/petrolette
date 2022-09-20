@@ -15,7 +15,8 @@ const express = require('express'),
       URL = require('url').URL,
       morgan = require('morgan');
 
-console.error('### (re)START ## Version (%s)', pjson.version);
+console.error('### Pétrolette (re)START ## Version (%s)', pjson.version);
+
 const localFeedsFilePath = path.resolve(__dirname, '../petrolette.feeds');
 
 // process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;

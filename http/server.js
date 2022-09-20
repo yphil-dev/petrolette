@@ -8,19 +8,19 @@ const portHttp =  pjson.HTTP_PORT || 8000;
 const portHttps =  pjson.HTTPS_PORT || 8001;
 
 process.on('uncaughtException', function(err) {
-  console.error('### Pétrolette uncaughtException: %s', JSON.stringify(err));
+  console.error('## Pétrolette uncaughtException: %s', JSON.stringify(err));
 });
 
-console.error('process.env: %s (%s)', process.env.NODE_ENV);
+console.error('## Pétrolette environment: %s', process.env.NODE_ENV);
 
 process.on('uncaughtException', function(err) {
-  console.error('### Pétrolette uncaughtException: %s', err.code);
+  console.error('## Pétrolette uncaughtException: %s', err.code);
 });
 
 if (process.env.NODE_ENV == 'development') {
   const httpServer = http.createServer(petrolette);
   httpServer.listen(portHttp, () => {
-    console.debug('HTTP Server running on port %s', portHttp);
+    console.error('## Pétrolette HTTP Server running on port %s', portHttp);
   });
 	
 } else {
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV == 'development') {
     }, petrolette);
 
     httpsServer.listen(portHttps, () => {
-      console.debug('HTTPS Server running');
+      console.error('## Pétrolette HTTPS Server running on port %s', portHttps);
     });
 
   } catch (error) {
@@ -41,7 +41,7 @@ if (process.env.NODE_ENV == 'development') {
   }
 
   http.createServer(function (req, res) {
-    console.error('HTTP server running on %s and redirecting to %s', portHttp, portHttps);
+    console.error('## Pétrolette HTTP server running on %s and redirecting to %s', portHttp, portHttps);
     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();
   }).listen(portHttp);

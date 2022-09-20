@@ -23,24 +23,27 @@ fs.mkdir(path.join(__dirname, pjson.FAVICONS_CACHE_DIR), {
   return true;
 });
 
+try {
 
-var theFile = fs.readFileSync(configFilePath);
+  var theFile = fs.readFileSync(configFilePath);
 
-if (theFile) {
+  if (theFile) {
 
-  try {
-    ptlOptions = JSON.parse(theFile);
+    try {
+      ptlOptions = JSON.parse(theFile);
 
-    if (ptlOptions.hasOwnProperty('instanceType')) {
-      instanceType = ptlOptions.instanceType;
+      if (ptlOptions.hasOwnProperty('instanceType')) {
+        instanceType = ptlOptions.instanceType;
+      }
+      
+    } catch (err) {
+      console.error('Not a valid config file');
     }
     
-  } catch (err) {
-    console.error('Not a valid config file');
   }
-  
+} catch {
+  console.error('## No config file found');
 }
-
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -71,7 +74,7 @@ app.use('/rs-widget', express.static(path.join(__dirname, 'node_modules', 'remot
 app.use('/dompurify', express.static(path.join(__dirname, 'node_modules', 'dompurify', 'dist')));
 app.use('/mousetrap', express.static(path.join(__dirname, 'node_modules', 'mousetrap')));
 
-console.error('instanceType now: ', instanceType);
+console.error('## Pétrolette instance type: ', instanceType);
 
 app.use('/', function (req, res, next) {
   req.instanceType = instanceType;
