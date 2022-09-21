@@ -45,7 +45,7 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
 
 At the first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
-If `instanceType` is `monoUser` as per the config file (see [README.md](./README.md)) then the feeds are saved in a single `petrolette.feeds` file in the root dir.
+If `instanceType` is `monoUser` as per the config file (see [README.md "Install"](./README.md#install)) then the feeds are saved in a single `petrolette.feeds` file in the root dir.
 
 ## Why is there a server in the first place ?
 
