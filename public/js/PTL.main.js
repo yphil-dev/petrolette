@@ -31,7 +31,7 @@ var PTL = (function() {
         PTL.language = PTL.prefs.readConfig('lang');
       }
 
-      PTL.util.say(PTL.tr('Pétrolette init'), 'success');
+      PTL.util.say(PTL.tr('Pétrolette init'), 'info');
 
       let instanceTypeText;
       
