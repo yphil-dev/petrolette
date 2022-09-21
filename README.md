@@ -45,12 +45,14 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 
 Read [the changelog](https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md).
 
-## Configuration
+## Usage
 
-### Server type ("dev" mode)
+### Configuration
+
+#### Server type ("dev" mode)
 Pétrolette can be use both locally on an http, or a https server. To spawn the HTTP server and avoid SSL errors, start Pétrolette using `npm run dev`.
 
-### Instance type
+#### Instance type
 Pétrolette can be started in mono-user mode, where a single feeds file is read & written directly on the server. To do this place a file named `petrolette.config.json` in the root dir, containing exactly this :
 
 ``` javascript
@@ -84,7 +86,7 @@ npm update
 npm test
 ```
 
-## Contributing
+## Contribute / HELP!
 
 - Read the [development guidelines](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md)
 - Pétrolette is [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://framagit.org/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) by sending a donation. Even the smallest amount will help a lot.
