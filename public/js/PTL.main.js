@@ -234,7 +234,12 @@ var PTL = (function() {
       if (PTL.instanceType == 'multiUser') {
         PTL.sync.attachWidget();
       } else {
-        $feedsMenuForm.append(PTL.sync.attachMonoUserButton());
+        const $monoUserInfoDiv = $('<div>')
+              .attr({'id': 'monoUserInfoDiv',
+                     'class': 'grow ui-corner-all translate unique',
+                     'data-content' : 'This Pétrolette instance is single user ; Your feeds are saved on the server'})
+              .text(PTL.tr('This Pétrolette instance is single user ; Your feeds are saved on the server'))
+              .appendTo($feedsMenuForm);
       }
 
       $('button').not('.htmlButtonOnly').button();

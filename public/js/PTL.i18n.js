@@ -359,8 +359,6 @@ PTL.i18n.translations = {
   "What is a feed? How do I create one?" : { fr: "Qu'est-ce qu'un flux ? Comment en créer un ?" , ja: "情報源とは何ですか？ どのように作成するのですか？", es: "¿Qué es una feed? ¿Cómo creo uno?" },
 
   "Click the «New feed» button." : { fr: "Cliquez sur le bouton «nouveau flux»." , ja: "«新しいソース»ボタンをクリックします。", es: "¿Qué es una feed?" },
-
-  "🔒 This Pétrolette instance is multi-user ; Your feeds are saved in this browser 🙂" : { fr: "🔒 Cette instance Petrolette est multi-utilisateurs ; Vos flux sont enregistrés dans ce navigateur 🙂" , ja: "🔒 この Petrolette インスタンスはマルチユーザーです。 あなたのフィードはこのブラウザに保存されます 🙂", es: "🔒 Esta instancia de Pétrolette es multiusuario; Tus feeds se guardan en este navegador 🙂" },
   
   "This Pétrolette instance is multi-user ; Your feeds are saved in this browser" : { fr: "Cette instance Petrolette est multi-utilisateurs ; Vos flux sont enregistrés dans ce navigateur" , ja: "この Petrolette インスタンスはマルチユーザーです。 あなたのフィードはこのブラウザに保存されます", es: "Esta instancia de Pétrolette es multiusuario; Tus feeds se guardan en este navegador" },
 

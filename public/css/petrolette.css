@@ -1668,6 +1668,11 @@ input#fileImport {
   display: none;
 }
 
+#monoUserInfoDiv {
+  padding: 0.2em;
+  border: 1px solid var(--color-ui-pri);
+}
+
 /* :focus { */
 /*   outline: none; */
 /* } */
