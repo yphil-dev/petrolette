@@ -1,15 +1,15 @@
 # Changelog
 
 ## v1.6.0
-- New `NODE_ENV` launch argument defining two environemnts: `production` and `development`
-- Pétrolette is now installable in "mono-user" mode, where feeds are saved in one unique file on the server (#122)
-- New config system (BREAKING: See README.md) un-versioned, so as to ease updates
-- HTTP server now (in `production` mode) redirects to HTTPS (#132)
-- All paths relative, Pétrolette is now installable in a sub-dir (#50)
-- New (mouse / Kb) focus management system
-- Publication date (if applicable) in item's tooltip (#135)
-- Translation improvement (in dates, notably)
-- Console messages unified, both on server and client
+- New `NODE_ENV` launch argument defining two environemnts: `production` and `development` #71d4a9e
+- Pétrolette is now installable in "mono-user" mode, where feeds are saved in one unique file on the server #546af06 (#122)
+- New config system (BREAKING: See README.md) un-versioned, so as to ease updates #546af06
+- HTTP server now (in `production` mode) redirects to HTTPS #0844b6b (#132)
+- All paths relative, Pétrolette is now installable in a sub-dir #7afad58 (#50)
+- New (mouse / Kb) focus management system #ee66308
+- Publication date (if applicable) in item's tooltip #2720e25 (#135)
+- Translation improvement (in dates, notably) #3271ad6
+- Console messages unified, both on server and client #f9aee65
 
 ### Bugfixes
 - Image captions (if applicable) are now managed separately from item's description

@@ -1097,8 +1097,8 @@ PTL.dialog = {
             }
           },
           {
-            text: PTL.tr('Ok'),
-            title: PTL.tr('Ok'),
+            text: PTL.tr('Later'),
+            title: PTL.tr('Later'),
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);

@@ -40,6 +40,7 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 - Building of **Search terms feeds** [example](https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=zombie,attack) using a configurable search engine
 - Bookmarklet to **add the feed of any website to Pétrolette** on the fly
 - Compatible with [FLOSS browsers](https://www.gnu.org/software/librejs/) (links to all uncompressed executable files, licenses available directly and in standard format)
+- Installable in mono-user, fully contained mode
 
 ### What's new?
 
@@ -78,7 +79,7 @@ npm start
 ```sh
 cd petrolette
 git pull
-npm update
+npm i
 ```
 ### Test
 
