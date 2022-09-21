@@ -45,9 +45,10 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 
 Read [the changelog](https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md).
 
-## Usage
+## Configuration
 
-Pétrolette can be use both locally on an http, or a https server.
+Pétrolette can be use both locally on an http, or a https server. To spawn the HTTP server, start Pétrolette using `npm run dev`.
+Pétrolette can be started in mono-user mode, where a single feeds file is read & written directly on the server.
 
 ### Install
 

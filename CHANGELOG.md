@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.6.0
+- New `NODE_ENV` launch argument defining two environemnts: `production` and `development`
+- Pétrolette is now installable in "mono-user" mode, where feeds are saved in a unique file on the server
+- New config system (BREAKING: See README.md) un-versioned, so as to ease updates
+- HTTP server now (in `production` mode) redirects to HTTPS 
+- All paths relative, Pétrolette is now installable in a sub-dir
+- New (mouse / Kb) focus management system
+- Publication date (if applicable) in item's tooltip
+- Translation improvement (in dates, notably)
+- Console messages unified, both on server and client
+
+### Bugfixes
+- Image captions (if applicable) are now managed separately from item's description
+
 ## v1.5.0
 - New feature:  Find/discover all the feeds in the URI #3ba52686
 - New feature:  Feeds suggestions #86213901

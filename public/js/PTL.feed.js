@@ -236,7 +236,8 @@ PTL.feed = {
         const $description = $.parseHTML(item.description),
               imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
-        let summary, imageUrl, audioUrl, audioType, videoUrl, videoType, pubDate;
+        let summary = '',
+            imageUrl, audioUrl, audioType, videoUrl, videoType, pubDate;
 
         if (item.pubDate && typeof item.pubDate !== 'undefined') {
           pubDate = PTL.util.dateFormat(item.pubDate);
@@ -262,11 +263,11 @@ PTL.feed = {
               $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
               $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
               $commentsIcon = $('<i>'),
-              $summary = $('<null>').append(PTL.util.sanitizeInput(pubDate + '\n' + summary.replace(/^\s*$(?:\r\n?|\n)/gm, ''))).text(),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
               $feedItem = $('<li>').attr('class', 'feedItem');
 
         let $image,
+            $summary = $('<null>').append(PTL.util.sanitizeInput(pubDate + '\n' + summary.replace(/^\s*$(?:\r\n?|\n)/gm, ''))).text(),              
             $imageSummary = '';
 
         if (summary && typeof summary !== 'undefined') {
@@ -645,6 +646,8 @@ PTL.feed = {
 
         }
       } catch (err) {
+
+        console.error('err: (%s)', err,);
         
         $feedBody
           .empty()

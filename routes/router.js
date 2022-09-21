@@ -64,7 +64,7 @@ router.get('/localfeeds', function(req, res) {
       res.status(404).send(err);
     } else if (data && !res.headersSent) {
 
-      console.error('data: ', data);
+      // console.error('data: ', data);
       
       res.status(200).send(data);
     }
@@ -75,7 +75,7 @@ router.get('/localfeeds', function(req, res) {
 
 router.post('/localfeeds', function(req, res) {
   
-  console.error('req.body: (%s)', JSON.stringify(req.body));
+  // console.error('req.body: (%s)', JSON.stringify(req.body));
   
   try {
     
