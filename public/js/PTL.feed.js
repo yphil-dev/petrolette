@@ -259,6 +259,10 @@ PTL.feed = {
           }
         }
 
+        if (!summary) {
+          summary = PTL.tr('(no summary)');
+        }
+        
         const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
               $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
               $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
@@ -267,11 +271,11 @@ PTL.feed = {
               $feedItem = $('<li>').attr('class', 'feedItem');
 
         let $image,
-            $summary = $('<null>').append(PTL.util.sanitizeInput(pubDate + '\n' + summary.replace(/^\s*$(?:\r\n?|\n)/gm, ''))).text(),              
+            $summary = $('<null>').append(PTL.util.sanitizeInput(summary.replace(/^\s*$(?:\r\n?|\n)/gm, ''))).text(),              
             $imageSummary = '';
 
         if (summary && typeof summary !== 'undefined') {
-          $feedItem.attr('title', $summary.trim());
+          $feedItem.attr('title', pubDate + '\n' + $summary.trim());
         }
 
         const $tempDom = $('<null>').append($description);
@@ -646,12 +650,10 @@ PTL.feed = {
 
         }
       } catch (err) {
-
-        console.error('err: (%s)', err,);
         
         $feedBody
           .empty()
-          // .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
+          .append(PTL.feed.errorFeed(err, feedUrl))
           .css('height', '');
         $feedLink.addClass('danger');
         $refreshButton.removeClass('spin');
