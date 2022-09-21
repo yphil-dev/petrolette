@@ -47,8 +47,17 @@ Read [the changelog](https://framagit.org/yphil/petrolette/-/blob/master/CHANGEL
 
 ## Configuration
 
-Pétrolette can be use both locally on an http, or a https server. To spawn the HTTP server, start Pétrolette using `npm run dev`.
-Pétrolette can be started in mono-user mode, where a single feeds file is read & written directly on the server.
+### Server type ("dev" mode)
+Pétrolette can be use both locally on an http, or a https server. To spawn the HTTP server and avoid SSL errors, start Pétrolette using `npm run dev`.
+
+### Instance type
+Pétrolette can be started in mono-user mode, where a single feeds file is read & written directly on the server. To do this place a file named `petrolette.config.json` in the root dir, containing exactly this :
+
+``` javascript
+{
+  "instanceType" : "monoUser"
+}
+```
 
 ### Install
 

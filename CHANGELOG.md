@@ -2,12 +2,12 @@
 
 ## v1.6.0
 - New `NODE_ENV` launch argument defining two environemnts: `production` and `development`
-- Pétrolette is now installable in "mono-user" mode, where feeds are saved in a unique file on the server
+- Pétrolette is now installable in "mono-user" mode, where feeds are saved in one unique file on the server (#122)
 - New config system (BREAKING: See README.md) un-versioned, so as to ease updates
-- HTTP server now (in `production` mode) redirects to HTTPS 
-- All paths relative, Pétrolette is now installable in a sub-dir
+- HTTP server now (in `production` mode) redirects to HTTPS (#132)
+- All paths relative, Pétrolette is now installable in a sub-dir (#50)
 - New (mouse / Kb) focus management system
-- Publication date (if applicable) in item's tooltip
+- Publication date (if applicable) in item's tooltip (#135)
 - Translation improvement (in dates, notably)
 - Console messages unified, both on server and client
 
@@ -34,7 +34,6 @@
 - Feed timestamp: `substr()` is now deprecated (?) so heck, full timestamp for now #83a22f6
 
 ## v1.4.0
-
 - New "New feed" dialog, streamlined w/ only the feed URL #b57887be
     - Auto / transparent search / build / add of the feed at the URL
     - Override function to force-add errored feed anyway
@@ -50,7 +49,6 @@
 - Few messages in the console (`isSilent` bool param added to PTL.tab.saveTabs()) #c1308ed4
 
 ### Bugfixes
-
 - Feed number of items was off - 1 #7f7366c6
 - In the feedPrefs dialog both height & nBItems slider handle texts were not refreshed when their value was changed using the spinner buttons #4ee945db
 - Proper URL construction when building the bookmarklet to avoid catching anything but protocol + domain #8f3a0e69
@@ -59,16 +57,13 @@
 - The help tour functions are now in PTL.dialog #dd1df3bb
 
 ## v1.3.3
-
 - Default search engine update (because of various instances searx RSS restrictions) #8870f07e
 
 ### Bugfixes
-
 - A legacy db call was left in dialog's killFeed
 - Removed lingering (sync) debug symbols
 
 ## v1.3.2
-
 - One big squashed commit #b92f6cb6
     - New favicon error handling
     - New favicon saving routine
@@ -78,7 +73,6 @@
     - Default feeds update
 
 ## v1.3.0
-
 - New feed items indicator / badge #96
 - New help system #104
 - Number of items hard limit #81
@@ -89,14 +83,12 @@
 - Dialog KB control
 
 ### Bugfixes
-
 - Better (faster) server (fetch) error handling
 - Sister libs Licence change
 - Finalized name refactoring
 - Explicit CSS vars names
 
 ## v1.2.8
-
 - New function / dialog to merge the imported / open feeds with existing ones #e38691d5
 - Server ports now set in [the config file](https://framagit.org/yphil/petrolette/-/blob/master/package.json) #c46149d8
 - Separate [default feeds file](https://framagit.org/yphil/petrolette/-/blob/master/public/js/default-feeds.json) #dae9e932
@@ -104,7 +96,6 @@
 - General UI makeover & optimization (dialogs, wording, misc options, speed) #dae9e932
 
 ### Bugfixes
-
 - Deselected selected feeds on delete / edit / reload #5f3b8f1a
     - Before I can find the time to code the "bulk" logic to delete / edit / reload all selected feeds in batch, we unselect on drop to ensure UX consistency
 - Better item layout (Media/comment icons) and wrapping #c8158af2
@@ -133,31 +124,26 @@
 - [Valid HTML](https://validator.w3.org/nu/?doc=https%3A%2F%2Fpetrolette.space%2F) #c6c5bfc2 to #140685b4
 
 ## v1.2.7
-
 - The feed's favicon file name / path is now saved along, so as to avoid re-requesting it, then re-computing the (hash) name, and only *then* re-rend it back from the server favicon cache, so everybody wins #1e5f4c20
 - The Logging strategy has been slightly adjusted: We now log the access to /feed and not to /favicon #1e5f4c20
 - External (ie froml the feeds) asset (typically imgs but not only) calls are now forcefully https #d4782908
 - Re-enabled server compression #941dac8a
 
 ### Bugfixes
-
 - Update feed's checkbox/select icon after drag & drop #7d7db00f
 - Mobile: Removed transparency on hover #98d979c7
 - New dialog options #7895970c
 
 ## v1.2.6
-
 - Removed all sync calls on the server #71e24de1
 - Error feeds keep their title #4e00f880
 
 ### Bugfixes
-
 - Sensible defaults for NV imported feeds (status:off, height:220) #4412c6b9
 - CSS rules update / cleanup #4412c6b9
 - XML is not an object when nbGroups / nbFeeds < 2 (#93)
 
 ## v1.2.5
-
 - Feed name is now saved along #037426a8
 - Completely revamped the favicon (client) display system from a bg-img to a plain img with a fallback #47923bfb to #13f63af5
 - HTTPS #84f8bead
@@ -168,17 +154,17 @@
 - Site (fav)icon in "folded" feeds #bbc6ab5e
 
 ## v1.2.1
-
 - MediaRSS audio & video (plain HTML5) player #3800c2a0 to #ffcfcfb6
 - Infinite scrolling within the feeds #0f760e9b to #b2cf0f86
 - OPML (NVibes) import #9066a3d2 to #a0cc0013
 - Beggar dialog "because we're no good, lowdown money grabbers" ;) #89ada899
 
 ### Bugfixes
-
 - Relative imageUrl #8a63acaf
 - Global sanitization of new inputs #a0cc0013
 
 ## v1.2.0
-
 - Complete revamp of the image loading strategy #5bdd9341
+
+## v1.0.0
+- Nodejs version, before that Pétrolette was a server-side only PHP app, see commits for history
