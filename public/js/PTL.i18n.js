@@ -131,6 +131,12 @@ PTL.i18n.translations = {
 
   "Error fetching icon" : { fr: "Erreur au téléchargement de l'icône" , ja: "アイコンのフェッチエラー", es: "Error al buscar icono" },
 
+  "Syntax" : { fr: "Syntaxe" , ja: "構文", es: "Sintaxis" },
+
+  "Message" : { fr: "Message" , ja: "メッセージ", es: "Mensaje" },
+
+  "Feed OK, but empty" : { fr: "Flux valide, mais vide" , ja: "フィードは有効ですが空です", es: "Feed válido, pero vacío" },
+
   "Theme" : { fr: "Thème" , ja: "テーマ", es: "Tema" },
   "Language" : { fr: "Langue" , ja: "言語", es: "Idioma" },
   "Image gallery" : { fr: "Galerie d'images" , ja: "イメージギャラリー", es: "Galería de imágenes" },

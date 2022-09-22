@@ -13,6 +13,7 @@ PTL.dialog = {
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),
             $feedBody = $dataStore.parent().next('div.feedBody'),
+            $feedTileDivA = $dataStore.parent().find('div.feedTitle a'),
             allGroups = PTL.tab.list('all'),
             $thisGroup = $feed.parent().parent(),
             $groupMenu = $dialog.find('select#feedTabSelect');
@@ -67,11 +68,18 @@ PTL.dialog = {
                   newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
                   newType = $('#feedTypeDiv :radio:checked').attr('id');
 
+              console.error('newName: (%s)', newName,);
+
+
+              $feedTileDivA.text(newName);
+              
               $dataStore
                 .data('url', newUrl)
                 .data('name', newName)
                 .data('type', newType);
 
+              console.error('$dataStore in dialog: (%s)', JSON.stringify($dataStore), feedUrl);
+              
               if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
                 $feed.hide('fade', 250, function() {
                   $feed.remove();

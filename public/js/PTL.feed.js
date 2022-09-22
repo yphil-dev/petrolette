@@ -4,6 +4,8 @@ PTL.feed = {
   
   add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
 
+    console.error('name start: (%s)', name);
+
     const $feed = $('<li>')
           .attr('class', 'feed');
 
@@ -154,7 +156,7 @@ PTL.feed = {
             target: '_blank',
             title: name || PTL.tr('New feed')
           })
-          .html(name || PTL.tr('New feed'));
+          .text(name || PTL.tr('New feed'));
     
     $feedHeader.hover(function() {
 
@@ -208,6 +210,8 @@ PTL.feed = {
 
     $refreshIcon.click();
 
+    // console.error('name End: (%s)', name);
+    
   },
   lastItems: function(feedItems, $dataStore) {
 
@@ -476,8 +480,9 @@ PTL.feed = {
           .text(PTL.tr('Message'));
 
     const $errValue = $('<strong>')
-          .attr('class', 'value')
-          .text(error.type);
+          .attr({'class': 'value translate',
+                 'data-content': error.type})
+          .text(PTL.tr(error.type));
 
     const $errStatus = $('<span>')
           .append('&nbsp;(')
@@ -486,11 +491,12 @@ PTL.feed = {
                   .text(error.status))
           .append(')');
 
-    if (error.status != 0) $errValue.append($errStatus);
+    // if (error.status != 0) $errValue.append($errStatus);
     
     const $msgValue = $('<strong>')
-          .attr('class', 'value')
-          .text(error.message);
+          .attr({'class': 'value translate',
+                 'data-content': error.message})
+          .text(PTL.tr(error.message));
 
     const $errorItem = $('<li>')
           .attr('class', 'feedItem error')
@@ -499,6 +505,8 @@ PTL.feed = {
           .append($errKey)
           .append('&nbsp;:&nbsp;')
           .append($errValue)
+          .append('&nbsp;')
+          .append($errStatus)
           .append('<br>')
           .append($msgKey)
           .append('&nbsp;:&nbsp;')
@@ -566,6 +574,8 @@ PTL.feed = {
           $feedIcon = $feedToggle.children('.feedIcon').removeClass('fold'),
           $favIcon = $feedToggle.children('.favicon');
 
+    console.error('$dataStore in populate: (%s)', JSON.stringify($dataStore), feedUrl);
+    
     const l = PTL.util.getLocation(feedUrl),
           feedProtocol = l.protocol ? l.protocol + '//' : '//',
           feedHost = feedProtocol + l.hostname,
@@ -610,6 +620,8 @@ PTL.feed = {
           $feedLink.addClass('danger');
           $refreshButton.removeClass('spin');
 
+          console.error('feedName in error: (%s)', fetchFeed.feedTitle);
+          
         } else {
 
           let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
@@ -618,6 +630,8 @@ PTL.feed = {
 
           const feedName = fetchFeed.feedTitle;
 
+          console.error('feedName else: (%s)', feedName);
+          
           let $insecureIcon = $('<i>')
               .attr('class', 'icon-lock-open insecureIcon warning')
               .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
