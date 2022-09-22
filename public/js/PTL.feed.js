@@ -628,7 +628,7 @@ PTL.feed = {
 
           let isInsecureLinks = lastItems[2];
 
-          const feedName = fetchFeed.feedTitle;
+          const feedName = $dataStore.data('name') ? $dataStore.data('name') : fetchFeed.feedTitle;
 
           console.error('feedName else: (%s)', feedName);
           

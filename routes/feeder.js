@@ -101,10 +101,6 @@ function getFeed(feedUrl, lastItem, callback) {
     });
 
   }).catch((error) => {
-
-    
-    // console.error('whopop: %s (%s)', error, feedUrl);
     callback(formatError({type: error.type, status: error.status, message: error.message}));
-
   });
 }
