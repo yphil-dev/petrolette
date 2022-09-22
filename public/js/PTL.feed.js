@@ -4,8 +4,6 @@ PTL.feed = {
   
   add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
 
-    console.error('name start: (%s)', name);
-
     const $feed = $('<li>')
           .attr('class', 'feed');
 
@@ -209,8 +207,6 @@ PTL.feed = {
     }
 
     $refreshIcon.click();
-
-    // console.error('name End: (%s)', name);
     
   },
   lastItems: function(feedItems, $dataStore) {
@@ -547,11 +543,8 @@ PTL.feed = {
         lastItem: lastItem,
         nbItems: nbItems
       }).done(function(data, _textStatus, jqXHR) {
-        // console.error('data, _textStatus, jqXHR: %s %s (%s)', JSON.stringify(data), _textStatus, jqXHR);
         resolve(data);
       }).fail(function(jqXHR, textStatus, errorThrown) {
-
-        // console.error('jqXHR, textStatus, errorThrown: %s %s (%s)', JSON.stringify(jqXHR), textStatus, errorThrown);
         reject(jqXHR, textStatus, errorThrown);
       });
     });
@@ -573,8 +566,6 @@ PTL.feed = {
           $feedToggle = $feedHeader.children('.feedToggle'),
           $feedIcon = $feedToggle.children('.feedIcon').removeClass('fold'),
           $favIcon = $feedToggle.children('.favicon');
-
-    console.error('$dataStore in populate: (%s)', JSON.stringify($dataStore), feedUrl);
     
     const l = PTL.util.getLocation(feedUrl),
           feedProtocol = l.protocol ? l.protocol + '//' : '//',
@@ -610,8 +601,6 @@ PTL.feed = {
         let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
         if (fetchFeed.error) {
-
-          // console.error('fetchFeed error: %s (%s)', fetchFeed.error.message, feedUrl);
           
           $feedBody
             .empty()
@@ -619,8 +608,6 @@ PTL.feed = {
             .css('height', '');
           $feedLink.addClass('danger');
           $refreshButton.removeClass('spin');
-
-          console.error('feedName in error: (%s)', fetchFeed.feedTitle);
           
         } else {
 
@@ -629,8 +616,6 @@ PTL.feed = {
           let isInsecureLinks = lastItems[2];
 
           const feedName = $dataStore.data('name') ? $dataStore.data('name') : fetchFeed.feedTitle;
-
-          console.error('feedName else: (%s)', feedName);
           
           let $insecureIcon = $('<i>')
               .attr('class', 'icon-lock-open insecureIcon warning')

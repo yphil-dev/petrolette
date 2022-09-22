@@ -161,13 +161,13 @@ PTL.util = {
       console.info("%cPétrolette: %c" + text, "color: aqua", "color: DeepSkyBlue");
       break;
     case 'warning':
-      console.log("%cPétrolette: %c" + text, "color: aqua", "color: orange");
+      console.info("%cPétrolette: %c" + text, "color: aqua", "color: orange");
       break;
     case 'error':
-      console.log("%cPétrolette: %c" + text, "color: aqua", "color: red");
+      console.info("%cPétrolette: %c" + text, "color: aqua", "color: red");
       break;
     case 'success':
-      console.log("%cPétrolette: %c" + text, "color: aqua", "color: green");
+      console.info("%cPétrolette: %c" + text, "color: aqua", "color: green");
       break;
     }
     
