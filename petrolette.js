@@ -51,10 +51,10 @@ app.set('view engine', 'html');
 
 app.use(compression());
 
-// app.use(bodyParser.json());
-app.use(bodyParser.json({ limit: "50mb" }));
-// app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
+app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Comment out for cert renewal, then back in
 // app.use(express.static(__dirname + '/public', { dotfiles: 'allow' }));
