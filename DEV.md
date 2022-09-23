@@ -2,7 +2,7 @@
 
 > #### Preamble
 > - Please read [the Pétrolette licence file](./LICENCE).
-> - The Pétrolette development team have *no* Code Of Conduct, just act responsibly, as in every aspect of life.
+> - The Pétrolette development team have *no* Code Of Conduct, just act responsibly, as in every aspect of adult life.
 > - If you use Pétrolette, both on your own server or on the test instance, please consider [a donation](https://liberapay.com/yPhil/) for its development.
 
 ## Log
@@ -26,8 +26,8 @@ All work is done on `dev` or its child branches, then merged into `server` and p
 
 ## Installation notes & caveats
 
+- Remember to start Pétrolette with `npm run dev` for any local development, to avoid SSL error
 - To investigate any problem, start by running `npm run errors` on the server ; it logs any error from both dev & production instances
-- The two libs [Feedrat](https://framagit.org/yphil/feedrat) (to discover a RSS/Atom feed at a given URL) and [Favrat](https://framagit.org/yphil/favrat) (to discover a favicon at a given URL) are no longer hosted on npm, but installed directly from the repo ; their dependancies are installed and updated using a `postinstall` command.
 
 ## Under the hood
 
@@ -62,10 +62,10 @@ The ports are set up in [the config file](./package.json). To redirect on a vani
 
 ### SSL certificate renewal
 
-- Un-comment line 33 in petrolette.js
-- `certbot certonly --manual` (as root)
+- Un-comment line 60 in petrolette.js
+- Run `certbot certonly --manual` (as root)
 - The auth file lives in `./public/.well-known/acme-challenge/`
-- Comment out line 33 in petrolette.js
+- Comment out line 60 in petrolette.js
 
 ### Logging
 

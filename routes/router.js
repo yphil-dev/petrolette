@@ -19,7 +19,7 @@ console.error('### Pétrolette (re)START ## Version (%s)', pjson.version);
 
 const localFeedsFilePath = path.resolve(__dirname, '../petrolette.feeds');
 
-// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 router.use(sanitize);
 
