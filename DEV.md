@@ -57,8 +57,15 @@ Pm2 automatically restarts both Pétrolette when its files are edited (excluding
 
 The ports are set up in [the config file](./package.json). To redirect on a vanilla Linux box :
 
+Redirect HTTP
 `iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8000`
+Redirect HTTPS
 `iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8001`
+Save the rules
+`sudo apt install iptables-persistent`
+
+### Restart Pétrolette when the server boots up
+Run `pm2 startup` and follow the instructions.
 
 ### SSL certificate renewal
 

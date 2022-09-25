@@ -9,6 +9,9 @@ PTL.dialog = {
 
     $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {
 
+
+
+      
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),
@@ -19,7 +22,7 @@ PTL.dialog = {
             $groupMenu = $dialog.find('select#feedTabSelect');
 
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
-
+    
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
