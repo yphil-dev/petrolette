@@ -31,7 +31,7 @@ function getParams(str) {
 
 function formatError(error) {
 
-  let message = (error.message) ? error.message : 'Can\'t read this feed';
+  let message = (error.message) ? error.message : 'A network error has occured';
   let type = (error.type) ? error.type : 'Network';
   let status = (error.status && Number.isInteger(error.status)) ? error.status : 0;
 

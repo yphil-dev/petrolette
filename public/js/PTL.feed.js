@@ -403,11 +403,14 @@ PTL.feed = {
     });
 
   },
-  appendAudioPlayer: function($itemDiv, audioUrl, audioType) {
+  appendAudioPlayer: ($itemDiv, audioUrl, audioType) => {
 
-    const $audioLink = $('<a>').attr('target', '_blank').attr('class', 'audioLink'),
-          $audioIcon = $('<i>'),
-          audioPlayer = document.createElement('audio');
+    const $audioLink = $('<a>').attr({
+      'target': '_blank',
+      'class': 'audioLink translate',
+      'data-title': 'Drag & drop this link to your audio player',
+      'title': PTL.tr('Drag & drop this link to your audio player')
+    }), $audioIcon = $('<i>'), audioPlayer = document.createElement('audio');
 
     audioPlayer.controls = 'controls';
     audioPlayer.src = audioUrl;
@@ -611,6 +614,8 @@ PTL.feed = {
           
         } else {
 
+          $feedLink.removeClass('danger');
+          
           let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
 
           let isInsecureLinks = lastItems[2];

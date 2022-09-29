@@ -133,9 +133,15 @@ PTL.i18n.translations = {
 
   "Syntax" : { fr: "Syntaxe" , ja: "構文", es: "Sintaxis" },
 
-  "Message" : { fr: "Message" , ja: "メッセージ", es: "Mensaje" },
+  "Network" : { fr: "Syntaxe" , ja: "構文", es: "La red" },
+  
+  "Message" : { fr: "Réseau" , ja: "通信網", es: "Mensaje" },
 
   "Feed OK, but empty" : { fr: "Flux valide, mais vide" , ja: "フィードは有効ですが空です", es: "Feed válido, pero vacío" },
+
+  "A network error has occured" : { fr: "Une erreur réseau s'est produite" , ja: "ネットワークエラーが発生しました", es: "Ha ocurrido un error de red" },
+
+  "Drag & drop this link to your audio player" : { fr: "Glisser / déposer ce lien sur votre lecteur audio'est produite" , ja: "このリンクをオーディオ プレーヤーにドラッグ アンド ドロップします", es: "Arrastra y suelta este enlace a tu reproductor de audio" },
 
   "Theme" : { fr: "Thème" , ja: "テーマ", es: "Tema" },
   "Language" : { fr: "Langue" , ja: "言語", es: "Idioma" },
