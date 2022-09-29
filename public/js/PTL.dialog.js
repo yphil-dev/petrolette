@@ -7,11 +7,8 @@ PTL.dialog = {
   },
   feedPrefs: function($button, isNewFeed) {
 
-    $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {
-
-
-
-      
+    $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {      
+     
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),

@@ -53,8 +53,8 @@ app.use(compression());
 
 app.use(helmet({contentSecurityPolicy: false, crossOriginEmbedderPolicy: false}));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '200kb' }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Comment out for cert renewal, then back in
 // app.use(express.static(__dirname + '/public', { dotfiles: 'allow' }));
