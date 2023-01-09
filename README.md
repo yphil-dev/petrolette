@@ -68,18 +68,29 @@ Pétrolette can be started in mono-user mode, where a single feeds file is read 
 git clone https://framagit.org/yphil/petrolette
 cd petrolette
 npm install
-npm start
 ```
 
-`xdg-open http://localhost:8000` (in `dev` mode) or `xdg-open https://localhost:8001` (in `production` default mode)
+### Server start
 
+#### Production (default) mode
+
+`npm start`
+
+#### Dev / local mode
+
+`npm run dev`
+
+### Ok, what now? Where are the news?
+
+Direct your favorite browser to the local URL:
+
+`xdg-open http://localhost:8000` (in `dev` mode) or `xdg-open https://localhost:8001` (in `production` default mode)
 
 ### Update
 
 ```sh
-cd petrolette
 git pull
-npm i
+npm install
 ```
 ### Test
 
@@ -94,4 +105,4 @@ npm test
 
 *Icon by yPhil*
 
-Brought to you ♫ by [yPhil](http://yphil.bitbucket.io/) Please consider ♥ [helping](https://liberapay.com/yPhil/donate) icon by yPhil
+Brought to you by [yPhil](http://yphil.bitbucket.io/) Please consider ♥ [helping](https://liberapay.com/yPhil/donate) icon by yPhil ♫
