@@ -13,6 +13,7 @@
 
 ### Bugfixes
 - Image captions (if applicable) are now managed separately from item's description #0457d6c
+- Transparency / z-index problem of the menu's sync widget (#142)
 
 ## v1.5.0
 - New feature:  Find/discover all the feeds in the URI #3ba52686
