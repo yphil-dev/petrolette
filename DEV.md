@@ -38,10 +38,10 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
 - `npm start` launches `pm2` as per [package.json](package.json)
 - `pm2` launches [http/server.js](http/server.js) as per [pm2.config.json](pm2.config.json)
 - [http/server.js](http/server.js) launches [petrolette.js](petrolette.js)
-- [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 5 routes: `/` for the actual Pétrolette page, `/feed` for the actual feed retrieving & parsing, `/discover` for the RSS searching (see [Feedrat](https://framagit.org/yphil/feedrat)), `/favicon` for the site icon searching (see [Favrat](https://framagit.org/yphil/favrat)) and `static` for serving the static (CSS, icons, fonts, etc.) files.
+- [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 5 routes: `/` for the actual Pétrolette page, `/feed` for the actual feed retrieving & parsing, `/discover` for the RSS searching (see [Feedrat](https://framagit.org/yphil/feedrat)), `/favicon` for the site icon searching (see [Favrat](https://framagit.org/yphil/favrat)) and `/static` for serving the client-side (CSS, icons, fonts, robots.txt, etc.) files.
 - As of 1.5 a route is also defined for each client-side `/node_dependancies/[lib]`.
-- The client sends the (RSS / favicon / discover / static) request to the server
-- The server returns the formatted feed to the client
+- The client sends the (RSS / favicon / discover / static / system / anything else) request to the server
+- The server returns the payload to the client, that deals with it.
 
 At first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
@@ -86,7 +86,7 @@ Those logs are also rotated by pm2, using the [pm2-logrotate](https://github.com
 
 ### Fonts
 
-The [glyph font](public/font/fontello) is a custom one, containing only the dozen of glyphs used throughout the app, made with [Fontello](https://fontello.com/) and Pétrolette's own logo / glyph. To edit this font, juste load (or just D&Drop) [fontello-config.json](public/font/fontello-config.json) into [Fontello](https://fontello.com/), make the changes, then DLoad the archive into petrolette/tmp/fontello.zip, then
+The [glyph font](public/font/fontello) is a custom one, containing only the dozen of glyphs used throughout the app, made with [Fontello](https://fontello.com/) and Pétrolette's own logo / glyph. To edit this font, just load (or D&Drop directly in the web page) [fontello-config.json](public/font/fontello-config.json) into [Fontello](https://fontello.com/), make the changes, then DLoad the archive into petrolette/tmp/fontello.zip and
 
 `cd petrolette/tmp`
 
@@ -96,4 +96,4 @@ Extract and copy the relevant files:
 
 For any question, please [use the repo](https://framagit.org/yphil/petrolette/-/issues/new?issue%5Bmilestone_id%5D=) itself.
 
-Thank you **very much** for [any love you give](https://liberapay.com/yPhil/) to this project.
+Pétrolette whishes to thank you **very much** for [any help you give](https://liberapay.com/yPhil/) to her mission.

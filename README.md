@@ -71,7 +71,7 @@ npm install
 npm start
 ```
 
-`xdg-open http://localhost:8000` or `xdg-open https://localhost:8001`
+`xdg-open http://localhost:8000` (in `dev` mode) or `xdg-open https://localhost:8001` (in `production` default mode)
 
 
 ### Update
