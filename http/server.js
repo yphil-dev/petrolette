@@ -41,8 +41,8 @@ if (process.env.NODE_ENV == 'development') {
   }
 
   http.createServer(function (req, res) {
-    console.error('## Pétrolette HTTP server running on %s and redirecting to %s', portHttp, portHttps);
-    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+			console.error('## Pétrolette HTTP server running on %s and NOT redirecting to %s', portHttp, portHttps);
+			res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();
   }).listen(portHttp);
 
