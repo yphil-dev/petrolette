@@ -15,7 +15,7 @@
 
 Add, delete, move feeds and tabs, close your browser, come back tomorrow, everything is how you left it.
 
-Feeds - there's feeds for everything: News sites, but also podcasts, video channels, blogs, social media, weather, phases of the moon, issue trackers, etc. - are organized into tabs, which can contain an infinite number of columns; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal ([Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/), [5apps](https://5apps.com/storage) (much better) etc.) cloud.
+*Feeds* - there are [feeds](https://en.wikipedia.org/wiki/Web_feed) for everything: News sites, but also podcasts, video channels, blogs, social media, weather, phases of the moon, issue trackers, etc. - are organized into *tabs*, which can contain an infinite number of *columns*; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal ([Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/), [5apps](https://5apps.com/storage) (much better) etc.) cloud.
 You don't have to know the specifics of a given feed ; Just enter a website's URL / Adress (or [use the bookmark](https://exode.me/w/tafJ9bmAYDFRV7aBLRjvot)) and Pétrolette will find it.
 
 ## Escape from GAFAM central
