@@ -275,7 +275,7 @@ PTL.feed = {
             $imageSummary = '';
 
         if (summary && typeof summary !== 'undefined') {
-          $feedItem.attr('title', '(' + pubDate + ')\n' + $summary.trim());
+          $feedItem.attr('title', pubDate + '\n--------------------------\n' + $summary.trim());
         }
 
         const $tempDom = $('<null>').append($description);
