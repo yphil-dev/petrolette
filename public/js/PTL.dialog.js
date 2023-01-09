@@ -1393,21 +1393,26 @@ PTL.dialog = {
 
     if (step) {
 
+				console.log("step:", step);
+				
       if (type === 'feedPrefs') {
         PTL.sideMenu('close');
         ui.exit();
         menu.exit();
-        feedPrefs.goToStepNumber(step).start();
+					feedPrefs.goToStepNumber(step);
+					feedPrefs.start();
       }
 
       if (type === 'menu') {
         ui.exit();
         feedPrefs.exit();
-        menu.goToStepNumber(step).start();
+					menu.goToStepNumber(step);
+					menu.start();
       }
 
     } else if (type == 'ui') {
-      PTL.sideMenu('close');
+
+			PTL.sideMenu('close');
       feedPrefs.exit();
       menu.exit();
       $('#menu > .handle').click();
@@ -1415,12 +1420,9 @@ PTL.dialog = {
       $('.feed').first().find('.collapsible').show('fade', 'fast');
       ui.start();
     } else {
-      // feedNew.start();
-      feedNew.goToStepNumber(1).start();
-
+				console.log("NO step:");
+				feedNew.start();
     }
-
-    // $('.introjs-button').button();
 
   }
 };
