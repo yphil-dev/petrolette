@@ -98,7 +98,7 @@ npm install
 npm test
 ```
 
-## Contribute / HELP!
+## Participate
 
 - Read the [development guidelines](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md)
 - Pétrolette is [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://framagit.org/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) by sending a donation. Even the smallest amount will help a lot.
