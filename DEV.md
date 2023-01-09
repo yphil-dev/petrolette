@@ -38,14 +38,14 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
 - `npm start` launches `pm2` as per [package.json](package.json)
 - `pm2` launches [http/server.js](http/server.js) as per [pm2.config.json](pm2.config.json)
 - [http/server.js](http/server.js) launches [petrolette.js](petrolette.js)
-- [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 4 routes: `/` for the actual Pétrolette page, `/discover` for the RSS searching (see [Feedrat](https://framagit.org/yphil/feedrat)), `/favicon` for the site icon searching (see [Favrat](https://framagit.org/yphil/favrat)) and `static` for serving the static (CSS, icons, fonts, etc.) files.
-- As of 1.5 a route is defined for each `node_dependancies` lib also
-- The client send the (RSS / favicon / discover / static) request to the server
+- [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 5 routes: `/` for the actual Pétrolette page, `/feed` for the actual feed retrieving & parsing, `/discover` for the RSS searching (see [Feedrat](https://framagit.org/yphil/feedrat)), `/favicon` for the site icon searching (see [Favrat](https://framagit.org/yphil/favrat)) and `static` for serving the static (CSS, icons, fonts, etc.) files.
+- As of 1.5 a route is also defined for each client-side `/node_dependancies/[lib]`.
+- The client sends the (RSS / favicon / discover / static) request to the server
 - The server returns the formatted feed to the client
 
-At the first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
+At first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
-If `instanceType` is `monoUser` as per the config file (see [README.md "Install"](./README.md#install)) then the feeds are saved in a single `petrolette.feeds` file in the root dir.
+If `instanceType` is `monoUser` as per the config file (see [README.md "Install"](./README.md#install)) then the feeds are saved in a single `petrolette.feeds` file in the root dir, and all visitors see the same tabs and feeds.
 
 ## Why is there a server in the first place ?
 
