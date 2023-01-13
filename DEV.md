@@ -42,11 +42,12 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
 - As of 1.5 a route is also defined for each client-side `/node_dependancies/[lib]`.
 - The client sends the (RSS / favicon / discover / static / system / anything else) request to the server
 - The server returns the payload to the client, that deals with it as per both the (client) general configuration (defined in [PTL.prefs.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.prefs.js)) and the feed configuration, defined at startup in [default-feeds.json](https://framagit.org/yphil/petrolette/-/blob/dev/public/js/default-feeds.json).
-  - [PTL.tab.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.tab.js) manages the tabs 
+  - [PTL.tab.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.tab.js) manages the tab
   - [PTL.col.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.col.js) the column
-  - [PTL.feed.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.feed.js) the feeds and the item, and yes #TODO there should be a `PTL.item.js`.
+  - [PTL.feed.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.feed.js) the feed and the item, and yes #TODO there should be a `PTL.item.js`.
+  Those client-side files are required by the (mostly one, the index) pages defined in the [views](https://framagit.org/yphil/petrolette/-/tree/master/views) ; BTW this is EJS, the simplest existing templating system, which uses transparent, full plain HTML. The dialogs templates - also in plain HTML - are [here](https://framagit.org/yphil/petrolette/-/blob/master/public/templates/dialogs.html).
 
-At first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
+At the first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
 If `instanceType` is `monoUser` as per the config file (see [README.md "Install"](./README.md#install)) then the feeds are saved in a single `petrolette.feeds` file in the root dir, and all visitors see the same tabs and feeds.
 
