@@ -1579,6 +1579,7 @@ button.ui-state-success {
 }
 
 .newItemsBadge {
+	cursor: default;
   flex-basis: content;
   flex-grow: 1;
   flex-shrink: 1;
