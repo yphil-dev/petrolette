@@ -269,7 +269,7 @@ PTL.feed = {
               $commentsIcon = $('<i>'),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
               $feedItem = $('<li>').attr('class', 'feedItem'),
-              author = (item.author) ? item.author : PTL.tr('Anonymous');
+              author = (item.author) ? '(' + item.author + ') ' : '';
 
         let $image,
             regexNoBr = /(&lt;|<)br\s*\/?(&gt;|>)/gi,
@@ -280,7 +280,7 @@ PTL.feed = {
             $imageSummary = '';
 
         if (summary && typeof summary !== 'undefined') {
-          $feedItem.attr('title', pubDate + '\n--------------------------\n' + '(' + author + ') ' + $summary.trim());
+          $feedItem.attr('title', pubDate + '\n--------------------------\n' + author + $summary.trim());
         }
 
         const $tempDom = $('<null>').append($description);

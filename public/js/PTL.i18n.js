@@ -21,9 +21,7 @@ PTL.i18n.translations = {
   "Reload": { fr: "Recharger", ja: "リロード", es: "Recargar" },
   "Refresh": { fr: "Rafraîchir", ja: "更新", es: "Actualizar" },
   "Reset": { fr: "Réinitialiser", ja: "リセット", es: "Reiniciar" },
-  "Anonymous": { fr: "Anonyme", ja: "匿名", es: "Anónimo" },
   "Later": { fr: "Plus tard", ja: "後で", es: "Luego" },
-
   
   "Name": { fr: "Nom", ja: "姓", es: "Nombre" },
   "Names": { fr: "Noms", ja: "お名前 (必須)", es: "Nombres" },
