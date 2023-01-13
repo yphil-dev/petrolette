@@ -211,6 +211,8 @@ PTL.feed = {
   },
   lastItems: function(feedItems, $dataStore) {
 
+		// console.log('feedItems: ', JSON.stringify(feedItems));
+			
     return new Promise((resolve, reject) => {
 
       const $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
@@ -231,6 +233,9 @@ PTL.feed = {
 
         const item = feedItems[key];
 
+					console.log('author: ', item.author);
+							
+					
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
         const $description = $.parseHTML(item.description),
@@ -274,8 +279,17 @@ PTL.feed = {
             $summary = $('<null>').append(PTL.util.sanitizeInput(summary.replace(/^\s*$(?:\r\n?|\n)/gm, ''))).text(),              
             $imageSummary = '';
 
+
+				var author;
+				
+				if (item.author) {
+					author = item.author;
+				} else {
+					author = 'Anonymous';
+				}
+					
         if (summary && typeof summary !== 'undefined') {
-          $feedItem.attr('title', pubDate + '\n--------------------------\n' + $summary.trim());
+          $feedItem.attr('title', pubDate + '\n--------------------------\n' + '(' + author + ') ' + $summary.trim());
         }
 
         const $tempDom = $('<null>').append($description);
