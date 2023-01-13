@@ -8,7 +8,7 @@ PTL.dialog = {
   feedPrefs: function($button, isNewFeed) {
 
     $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {      
-     
+			
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),
@@ -19,7 +19,7 @@ PTL.dialog = {
             $groupMenu = $dialog.find('select#feedTabSelect');
 
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
-    
+			
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
@@ -1393,26 +1393,26 @@ PTL.dialog = {
 
     if (step) {
 
-				console.log("step:", step);
-				
+      console.log("step:", step);
+      
       if (type === 'feedPrefs') {
         PTL.sideMenu('close');
         ui.exit();
         menu.exit();
-					feedPrefs.goToStepNumber(step);
-					feedPrefs.start();
+        feedPrefs.goToStepNumber(step);
+        feedPrefs.start();
       }
 
       if (type === 'menu') {
         ui.exit();
         feedPrefs.exit();
-					menu.goToStepNumber(step);
-					menu.start();
+        menu.goToStepNumber(step);
+        menu.start();
       }
 
     } else if (type == 'ui') {
 
-			PTL.sideMenu('close');
+      PTL.sideMenu('close');
       feedPrefs.exit();
       menu.exit();
       $('#menu > .handle').click();
@@ -1420,8 +1420,8 @@ PTL.dialog = {
       $('.feed').first().find('.collapsible').show('fade', 'fast');
       ui.start();
     } else {
-				console.log("NO step:");
-				feedNew.start();
+      console.log("NO step:");
+      feedNew.start();
     }
 
   }

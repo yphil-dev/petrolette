@@ -557,7 +557,7 @@ PTL.i18n.translations = {
   "Edit this feed parameters" : { fr: "Modifier les paramètres de ce flux", ja: "このソースパラメータを変更する", es: "Establezca estos parámetros feed" },
 
   "Reload this feed" : { fr: "Recharger ce flux", ja: "このフィードを再読み込みします", es: "Recargar este feed" },
-	
+  
   "This feed is closed" : { fr: "Ce flux est fermé", ja: "このフィードは閉じられています", es: "Este feed está cerrado" },
   
   "Select this feed" : { fr: "Sélectionner ce flux", ja: "RSS(%1)フィードを選択", es: "Selecciona este feed" },
