@@ -230,7 +230,7 @@ PTL.feed = {
       for (const key in feedItems) {
         newItems++;
 
-        const item = feedItems[key];						
+        const item = feedItems[key];
 					
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
@@ -372,9 +372,11 @@ PTL.feed = {
 
         }
 
+				const itemLink = item.link || item.enclosures[0].url;
+				
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
-          .attr('href', item.link || item.enclosures[0].url)
+          .attr('href', itemLink.replace('https://www.bitchute.com/embed', 'https://www.bitchute.com/video'))
           .append(item.title);
 
         if (!mediaUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
