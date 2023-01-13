@@ -41,7 +41,10 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
 - [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 5 routes: `/` for the actual Pétrolette page, `/feed` for the actual feed retrieving & parsing, `/discover` for the RSS searching (see [Feedrat](https://framagit.org/yphil/feedrat)), `/favicon` for the site icon searching (see [Favrat](https://framagit.org/yphil/favrat)) and `/static` for serving the client-side (CSS, icons, fonts, robots.txt, etc.) files.
 - As of 1.5 a route is also defined for each client-side `/node_dependancies/[lib]`.
 - The client sends the (RSS / favicon / discover / static / system / anything else) request to the server
-- The server returns the payload to the client, that deals with it.
+- The server returns the payload to the client, that deals with it as per both the (client) general configuration (defined in [PTL.prefs.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.prefs.js)) and the feed configuration.
+  - [PTL.col.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.col.js) manages the column
+  - [PTL.tab.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.tab.js) the tabs 
+  - [PTL.feed.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.feed.js) the feeds 
 
 At first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
