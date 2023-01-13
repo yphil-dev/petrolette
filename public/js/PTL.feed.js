@@ -1,7 +1,7 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.feed = {
-  
+
   add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
 
     const $feed = $('<li>')
@@ -14,7 +14,7 @@ PTL.feed = {
             width: '16px',
             height: '16px',
             onerror: "this.src='static/images/rss.gif';"
-          }).on("error", function() {       
+          }).on("error", function() {
             $(this).parent().parent().children('div.dataStore').data('iconhash', '');
             PTL.tab.saveTabs(true);
           });
@@ -44,7 +44,7 @@ PTL.feed = {
 
             PTL.tab.saveTabs();
             PTL.feed.populate($refreshIcon);
-            
+
           });
 
     const $selectIcon = $('<i>')
@@ -112,7 +112,7 @@ PTL.feed = {
 
       $refreshIcon.removeClass('icon-pin')
         .addClass('icon-refresh');
-      
+
     } else {
 
       $feedIcon
@@ -140,7 +140,7 @@ PTL.feed = {
 
     const $warningIconSpan = $('<span>')
           .attr('class', 'warningIconSpan');
-    
+
     const $titleDiv = $('<div>')
           .attr({
             title: name || PTL.tr('New feed'),
@@ -155,7 +155,7 @@ PTL.feed = {
             title: name || PTL.tr('New feed')
           })
           .text(name || PTL.tr('New feed'));
-    
+
     $feedHeader.hover(function() {
 
       $(this).find('img.favicon').hide();
@@ -207,11 +207,10 @@ PTL.feed = {
     }
 
     $refreshIcon.click();
-    
+
   },
   lastItems: function(feedItems, $dataStore) {
 
-			
     return new Promise((resolve, reject) => {
 
       const $feedBodyUl = $('<ul>').attr('class', 'feedBody'),
@@ -226,12 +225,12 @@ PTL.feed = {
       let newItems = 0;
 
       var isInsecureLinks = false;
-      
+
       for (const key in feedItems) {
         newItems++;
 
         const item = feedItems[key];
-					
+
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
         const $description = $.parseHTML(item.description),
@@ -263,23 +262,23 @@ PTL.feed = {
         if (!summary) {
           summary = PTL.tr('(no summary)');
         }
-        
+
         const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
               $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
               $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
               $commentsIcon = $('<i>'),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
               $feedItem = $('<li>').attr('class', 'feedItem'),
-							author = (item.author) ? item.author : PTL.tr('Anonymous');
+              author = (item.author) ? item.author : PTL.tr('Anonymous');
 
         let $image,
-						regexNoBr = /(&lt;|<)br\s*\/?(&gt;|>)/gi,
-						regexDoubleSpaces = /\s\s/g,
-						inputNobr = summary.replace(regexNoBr, ' '),
-						inputSingleSpace = inputNobr.replace(regexDoubleSpaces, ' '),
+            regexNoBr = /(&lt;|<)br\s*\/?(&gt;|>)/gi,
+            regexDoubleSpaces = /\s\s/g,
+            inputNobr = summary.replace(regexNoBr, ' '),
+            inputSingleSpace = inputNobr.replace(regexDoubleSpaces, ' '),
             $summary = $('<null>').append(PTL.util.sanitizeInput(inputSingleSpace)).text(),
             $imageSummary = '';
-					
+
         if (summary && typeof summary !== 'undefined') {
           $feedItem.attr('title', pubDate + '\n--------------------------\n' + '(' + author + ') ' + $summary.trim());
         }
@@ -304,8 +303,8 @@ PTL.feed = {
         }
 
         $tempDom.empty();
-				// $summary.empty();
-				
+        // $summary.empty();
+
         if (item['media:group'] && item['media:group']['media:content'] && item['media:group']['media:content'][0] && item['media:group']['media:content'][0]['@'] && item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
           mediaUrl = item['media:group']['media:content'][0]['@'].url;
           mediaType = item['media:group']['media:content'][0]['@'].type;
@@ -326,54 +325,54 @@ PTL.feed = {
           if (item.enclosures[0].url && !item.enclosures[0].url.startsWith('https')) {
             isInsecureLinks = true;
           }
-          
+
           if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3|\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
             mediaUrl = item.enclosures[0].url;
-						mediaEncoding = item.enclosures[0].type;
-						mediaType = mediaEncoding.substring(0, mediaEncoding.indexOf('/'));
-						console.log('mediaEncoding:', mediaEncoding);
+            mediaEncoding = item.enclosures[0].type;
+            mediaType = mediaEncoding.substring(0, mediaEncoding.indexOf('/'));
           }
 
-					if (mediaType) {
+          if (mediaType) {
 
-						const $mediaIcon = $('<i>'),
-									$mediaLink = $('<a>').attr('target', '_blank'),
-									mediaIcon = 'icon-' + mediaType;
-						
-						$mediaLink
-							.attr({
-								'href': mediaUrl,
-								'target': '_blank',
-								'class': 'translate',
-								'data-title': 'Drag & drop this link in your player',
-								'title': PTL.tr('Drag & drop this link in your player')
-							})
-							.appendTo($itemDiv);
-						$mediaIcon
-							.attr('class', 'itemIcon')
-							.addClass(mediaIcon)
-							.appendTo($mediaLink);						
-						
-						if (feedType != 'text') {
+            const $mediaIcon = $('<i>'),
+                  $mediaLink = $('<a>').attr('target', '_blank'),
+                  mediaIcon = 'icon-' + mediaType;
 
-							const mediaPlayer = document.createElement(mediaType);
+            $mediaLink
+              .attr({
+                'href': mediaUrl,
+                'target': '_blank',
+                'class': 'translate',
+                'data-title': 'Drag & drop this link in your player',
+                'title': PTL.tr('Drag & drop this link in your player')
+              })
+              .appendTo($itemDiv);
 
-							mediaPlayer.classList.add(feedType);
-							mediaPlayer.controls = 'controls';
-							mediaPlayer.src = mediaUrl;
-							mediaPlayer.type = mediaEncoding;
-							mediaPlayer.preload = PTL.prefs.readConfig('mediaPreload');
+            $mediaIcon
+              .attr('class', 'itemIcon')
+              .addClass(mediaIcon)
+              .appendTo($mediaLink);
 
-							$itemDiv.append(mediaPlayer);
-							
-						}
+            if (feedType != 'text') {
 
-					}
+              const mediaPlayer = document.createElement(mediaType);
+
+              mediaPlayer.classList.add(feedType);
+              mediaPlayer.controls = 'controls';
+              mediaPlayer.src = mediaUrl;
+              mediaPlayer.type = mediaEncoding;
+              mediaPlayer.preload = PTL.prefs.readConfig('mediaPreload');
+
+              $itemDiv.append(mediaPlayer);
+
+            }
+
+          }
 
         }
 
-				const itemLink = item.link || item.enclosures[0].url;
-				
+        const itemLink = item.link || item.enclosures[0].url;
+
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', itemLink.replace('https://www.bitchute.com/embed', 'https://www.bitchute.com/video'))
@@ -388,10 +387,10 @@ PTL.feed = {
 
           const protocols = ['https://', 'http://', '//'];
 
-          let isAbsolute = protocols.some(p => imageUrl.startsWith(p));                   
-          
+          let isAbsolute = protocols.some(p => imageUrl.startsWith(p));
+
           if (!isAbsolute) imageUrl = feedHost + '/' + imageUrl;
-          
+
           $image = $('<img>')
             .attr('src', 'static/images/loading.gif')
             .attr('data-srcset', imageUrl.replace('http://', 'https://'))
@@ -430,7 +429,7 @@ PTL.feed = {
 
   },
   errorFeed: function(error, feedUrl) {
-    
+
     const $validateLink = $('<a>')
           .attr('href', 'https://validator.w3.org/feed/check.cgi?url=' + feedUrl);
 
@@ -470,7 +469,7 @@ PTL.feed = {
           .append(')');
 
     // if (error.status != 0) $errValue.append($errStatus);
-    
+
     const $msgValue = $('<strong>')
           .attr({'class': 'value translate',
                  'data-content': error.message})
@@ -548,7 +547,7 @@ PTL.feed = {
           $feedToggle = $feedHeader.children('.feedToggle'),
           $feedIcon = $feedToggle.children('.feedIcon').removeClass('fold'),
           $favIcon = $feedToggle.children('.favicon');
-    
+
     const l = PTL.util.getLocation(feedUrl),
           feedProtocol = l.protocol ? l.protocol + '//' : '//',
           feedHost = feedProtocol + l.hostname,
@@ -558,7 +557,7 @@ PTL.feed = {
     let feedLastItem = $dataStore.data('lastitem');
 
     $feedBodyUl.css('border', '1px solid red');
-    
+
     if (feedIconHash && feedIconHash !== 'noicon') {
       $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
     } else if (!feedIconHash) {
@@ -573,7 +572,7 @@ PTL.feed = {
           $favIcon.attr('src', 'static/images/rss.gif');
         });
     }
-    
+
     if ($dataStore.data('status') == 'on') {
 
       $refreshButton.addClass('spin');
@@ -583,43 +582,43 @@ PTL.feed = {
         let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
         if (fetchFeed.error) {
-          
+
           $feedBody
             .empty()
             .append(PTL.feed.errorFeed(fetchFeed.error, feedUrl))
             .css('height', '');
           $feedLink.addClass('danger');
           $refreshButton.removeClass('spin');
-          
+
         } else {
 
           $feedLink.removeClass('danger');
-          
+
           let lastItems = await PTL.feed.lastItems(fetchFeed.feedItems, $dataStore);
 
           let isInsecureLinks = lastItems[2];
 
           const feedName = $dataStore.data('name') ? $dataStore.data('name') : fetchFeed.feedTitle;
-          
+
           let $insecureIcon = $('<i>')
               .attr('class', 'icon-lock-open insecureIcon warning')
               .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
-          
+
           if (isInsecureLinks) $warningIconSpan.html($insecureIcon);
-          
+
           $feedBody.html(lastItems[0]);
 
           $refreshButton
             .attr('title', PTL.tr('Reload this feed') + '\n' + feedUrl + '\n' + timeStamp)
             .removeClass('spin');
-          
+
           $feedLink
             .attr('href', fetchFeed.feedLink)
             .attr('title', feedName)
             .text(feedName);
-          
-          if ($dataStore.data('name') == '') $dataStore.data('name', feedName);          
-          
+
+          if ($dataStore.data('name') == '') $dataStore.data('name', feedName);
+
           if (fetchFeed.totalNewItems > 0) {
             $dataStore.data('lastitem', fetchFeed.lastItem);
             PTL.tab.saveTabs();
@@ -633,7 +632,7 @@ PTL.feed = {
 
         }
       } catch (err) {
-        
+
         $feedBody
           .empty()
           .append(PTL.feed.errorFeed(err, feedUrl))
@@ -642,20 +641,20 @@ PTL.feed = {
         $refreshButton.removeClass('spin');
 
       }
-      
+
     } else {
 
       $feedBody.addClass('folded');
 
       $feedIcon.addClass('fold');
-      
+
       $refreshButton
         .addClass('icon-pin')
         .removeClass('icon-refresh spin')
         .attr('title', PTL.tr('This feed is closed'));
-      
+
     }
-    
+
     if (progress) progress.increment();
 
   }
