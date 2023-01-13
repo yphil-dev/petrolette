@@ -276,16 +276,19 @@ PTL.feed = {
               $feedItem = $('<li>').attr('class', 'feedItem');
 
         let $image,
-            $summary = $('<null>').append(PTL.util.sanitizeInput(summary.replace(/^\s*$(?:\r\n?|\n)/gm, ''))).text(),              
+						regexNoBr = /(&lt;|<)br\s*\/?(&gt;|>)/gi,
+						regexDoubleSpaces = /\s\s/g,
+						inputNobr = summary.replace(regexNoBr, ' '),
+						inputSingleSpace = inputNobr.replace(regexDoubleSpaces, ' '),
+            $summary = $('<null>').append(PTL.util.sanitizeInput(inputSingleSpace)).text(),
             $imageSummary = '';
-
 
 				var author;
 				
 				if (item.author) {
 					author = item.author;
 				} else {
-					author = 'Anonymous';
+					author = PTL.tr('Anonymous');
 				}
 					
         if (summary && typeof summary !== 'undefined') {
