@@ -610,7 +610,7 @@ PTL.feed = {
           $feedBody.html(lastItems[0]);
 
           $refreshButton
-            .attr('title', PTL.tr('Refresh this feed') + ' (' + feedUrl + ', ' + timeStamp + ')')
+            .attr('title', PTL.tr('Reload this feed') + '\n' + feedUrl + '\n' + timeStamp)
             .removeClass('spin');
           
           $feedLink
