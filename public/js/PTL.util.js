@@ -194,9 +194,7 @@ PTL.util = {
     }
   },
   sanitizeInput: function(i) {
-		console.log('Getting: ', i);
     var doc = new DOMParser().parseFromString(i, 'text/html');
-		console.log('Returning: ', doc.body.textContent);
     return doc.body.textContent || "";
   },
   isValidJson: function(o) {

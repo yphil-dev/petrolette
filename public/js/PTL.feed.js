@@ -211,7 +211,6 @@ PTL.feed = {
   },
   lastItems: function(feedItems, $dataStore) {
 
-		// console.log('feedItems: ', JSON.stringify(feedItems));
 			
     return new Promise((resolve, reject) => {
 
@@ -231,10 +230,7 @@ PTL.feed = {
       for (const key in feedItems) {
         newItems++;
 
-        const item = feedItems[key];
-
-					console.log('author: ', item.author);
-							
+        const item = feedItems[key];						
 					
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
@@ -242,7 +238,7 @@ PTL.feed = {
               imgTypes = ['image', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
         let summary = '',
-            imageUrl, audioUrl, audioType, videoUrl, videoType, pubDate;
+            imageUrl, mediaType, mediaEncoding, mediaUrl, pubDate;
 
         if (item.pubDate && typeof item.pubDate !== 'undefined') {
           pubDate = PTL.util.dateFormat(item.pubDate);
@@ -273,7 +269,8 @@ PTL.feed = {
               $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
               $commentsIcon = $('<i>'),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
-              $feedItem = $('<li>').attr('class', 'feedItem');
+              $feedItem = $('<li>').attr('class', 'feedItem'),
+							author = (item.author) ? item.author : PTL.tr('Anonymous');
 
         let $image,
 						regexNoBr = /(&lt;|<)br\s*\/?(&gt;|>)/gi,
@@ -282,14 +279,6 @@ PTL.feed = {
 						inputSingleSpace = inputNobr.replace(regexDoubleSpaces, ' '),
             $summary = $('<null>').append(PTL.util.sanitizeInput(inputSingleSpace)).text(),
             $imageSummary = '';
-
-				var author;
-				
-				if (item.author) {
-					author = item.author;
-				} else {
-					author = PTL.tr('Anonymous');
-				}
 					
         if (summary && typeof summary !== 'undefined') {
           $feedItem.attr('title', pubDate + '\n--------------------------\n' + '(' + author + ') ' + $summary.trim());
@@ -318,8 +307,8 @@ PTL.feed = {
 				// $summary.empty();
 				
         if (item['media:group'] && item['media:group']['media:content'] && item['media:group']['media:content'][0] && item['media:group']['media:content'][0]['@'] && item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
-          videoUrl = item['media:group']['media:content'][0]['@'].url;
-          videoType = item['media:group']['media:content'][0]['@'].type;
+          mediaUrl = item['media:group']['media:content'][0]['@'].url;
+          mediaType = item['media:group']['media:content'][0]['@'].type;
         }
 
         if (item.enclosures && typeof item.enclosures[0] !== 'undefined' && item.enclosures[0].url) {
@@ -334,79 +323,52 @@ PTL.feed = {
             imageUrl = item.enclosures[0].url;
           }
 
-          if (!videoUrl && item.enclosures[0].url && item.enclosures[0].url.match(/(\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
-
-            
-            videoUrl = item.enclosures[0].url;
-            videoType = item.enclosures[0].type;
-          }
-
           if (item.enclosures[0].url && !item.enclosures[0].url.startsWith('https')) {
             isInsecureLinks = true;
           }
           
-          if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3)/) && item.enclosures[0].url.startsWith('https')) {
-            audioUrl = item.enclosures[0].url;
-            audioType = item.enclosures[0].type;
+          if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3|\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
+            mediaUrl = item.enclosures[0].url;
+						mediaEncoding = item.enclosures[0].type;
+						mediaType = mediaEncoding.substring(0, mediaEncoding.indexOf('/'));
+						console.log('mediaEncoding:', mediaEncoding);
           }
-          
 
-					console.log('feedType:', feedType);
-					
-          if (videoUrl && videoType) {
+					if (mediaType) {
 
-						let videoClass;
-
-						if (feedType == 'photo') {
-							videoClass = 'bigVideo';
-						}
-
-						if (feedType == 'mixed') {
-							videoClass = 'smallVideo';
-						}
-
-						if (feedType != 'text') 
-							PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType, feedType);
-
-						const $videoIcon = $('<i>'),
-									$videoLink = $('<a>').attr('target', '_blank');
+						const $mediaIcon = $('<i>'),
+									$mediaLink = $('<a>').attr('target', '_blank'),
+									mediaIcon = 'icon-' + mediaType;
 						
-						$videoLink
+						$mediaLink
 							.attr({
-								'href': videoUrl,
+								'href': mediaUrl,
 								'target': '_blank',
-								'class': 'audioLink translate',
+								'class': 'translate',
 								'data-title': 'Drag & drop this link in your player',
 								'title': PTL.tr('Drag & drop this link in your player')
 							})
 							.appendTo($itemDiv);
-						$videoIcon
-							.attr('class', 'itemIcon icon-video')
-							.appendTo($videoLink);
+						$mediaIcon
+							.attr('class', 'itemIcon')
+							.addClass(mediaIcon)
+							.appendTo($mediaLink);						
 						
-          }
+						if (feedType != 'text') {
 
-          if (audioUrl && audioType) {
+							const mediaPlayer = document.createElement(mediaType);
 
-						const $audioLink = $('<a>').attr({
-							'target': '_blank',
-							'class': 'audioLink translate',
-							'data-title': 'Drag & drop this link in your player',
-							'title': PTL.tr('Drag & drop this link in your player')
-						}),
-									$audioIcon = $('<i>');
-						
-						$audioLink
-							.attr('href', audioUrl)
-							.appendTo($itemDiv);
-						$audioIcon
-							.attr('class', 'itemIcon icon-audio')
-							.appendTo($audioLink);
+							mediaPlayer.classList.add(feedType);
+							mediaPlayer.controls = 'controls';
+							mediaPlayer.src = mediaUrl;
+							mediaPlayer.type = mediaEncoding;
+							mediaPlayer.preload = PTL.prefs.readConfig('mediaPreload');
 
-						if (feedType != 'text') 
-							PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType, feedType);
-						
-          }
+							$itemDiv.append(mediaPlayer);
+							
+						}
+
+					}
 
         }
 
@@ -415,7 +377,7 @@ PTL.feed = {
           .attr('href', item.link || item.enclosures[0].url)
           .append(item.title);
 
-        if (!videoUrl && !audioUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
+        if (!mediaUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
           $imageLink
             .attr('href', imageUrl)
@@ -463,34 +425,6 @@ PTL.feed = {
       resolve([$feedBodyUl.html(), newItems, isInsecureLinks]);
 
     });
-
-  },
-  appendAudioPlayer: ($itemDiv, audioUrl, audioType, feedType) => {
-
-    const audioPlayer = document.createElement('audio');
-
-		audioPlayer.classList.add(feedType);
-    audioPlayer.controls = 'controls';
-    audioPlayer.src = audioUrl;
-    audioPlayer.type = audioType;
-    audioPlayer.preload = PTL.prefs.readConfig('mediaPreload');
-
-    $itemDiv.append(audioPlayer);
-
-  },
-  appendVideoPlayer: function($itemDiv, videoUrl, videoType, feedType) {
-
-    const videoPlayer = document.createElement('video');
-
-		videoPlayer.classList.add(feedType);
-    videoPlayer.controls = 'controls';
-    videoPlayer.src = videoUrl;
-    videoPlayer.type = videoType;
-    videoPlayer.preload = PTL.prefs.readConfig('mediaPreload');
-
-    $itemDiv.append(videoPlayer);
-
-    return $itemDiv;
 
   },
   errorFeed: function(error, feedUrl) {
