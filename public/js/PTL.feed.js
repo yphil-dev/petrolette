@@ -315,7 +315,8 @@ PTL.feed = {
         }
 
         $tempDom.empty();
-
+				// $summary.empty();
+				
         if (item['media:group'] && item['media:group']['media:content'] && item['media:group']['media:content'][0] && item['media:group']['media:content'][0]['@'] && item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
           videoUrl = item['media:group']['media:content'][0]['@'].url;
           videoType = item['media:group']['media:content'][0]['@'].type;
@@ -351,9 +352,22 @@ PTL.feed = {
           
           if (feedType !== 'text') {
 
+						console.log('feedType:', feedType);
+						
             if (videoUrl && videoType) {
 
-              PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType);
+							let videoClass;
+
+							if (feedType == 'photo') {
+								videoClass = 'bigVideo';
+							}
+
+							if (feedType == 'mixed') {
+								videoClass = 'smallVideo';
+							}
+
+							PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType, videoClass);
+
             }
 
             if (audioUrl && audioType) {
@@ -444,14 +458,15 @@ PTL.feed = {
       .appendTo($audioLink);
 
   },
-  appendVideoPlayer: function($itemDiv, videoUrl, videoType) {
+  appendVideoPlayer: function($itemDiv, videoUrl, videoType, videoClass) {
 
     const videoPlayer = document.createElement('video'),
           $videoIcon = $('<i>'),
-          $videoLink = $('<a>').attr('target', '_blank').attr('class', 'videoLink');
+          $videoLink = $('<a>').attr('target', '_blank');
 
+		videoPlayer.classList.add(videoClass);
     videoPlayer.controls = 'controls';
-    videoPlayer.src = videoUrl + '#t=0.5';
+    videoPlayer.src = videoUrl;
     videoPlayer.type = videoType;
     videoPlayer.preload = PTL.prefs.readConfig('mediaPreload');
 

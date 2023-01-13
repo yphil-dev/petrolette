@@ -1334,6 +1334,14 @@ video {
   height: auto !important;
 }
 
+video.smallVideo {
+	float: left;
+	resize:both;
+  width: 40% !important;
+  height: auto !important;
+	margin-right: 2px;
+}
+
 #ptlSearch {
   display: flex;
   flex-direction: row;
