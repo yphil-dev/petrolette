@@ -350,31 +350,39 @@ PTL.feed = {
             audioType = item.enclosures[0].type;
           }
           
-          if (feedType !== 'text') {
 
-						console.log('feedType:', feedType);
+					console.log('feedType:', feedType);
+					
+          if (videoUrl && videoType) {
+
+						let videoClass;
+
+						if (feedType == 'photo') {
+							videoClass = 'bigVideo';
+						}
+
+						if (feedType == 'mixed') {
+							videoClass = 'smallVideo';
+						}
+
+						if (feedType != 'text') 
+							PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType, feedType);
+
+						const $videoIcon = $('<i>'),
+									$videoLink = $('<a>').attr('target', '_blank');
 						
-            if (videoUrl && videoType) {
+						$videoLink
+							.attr('href', videoUrl)
+							.appendTo($itemDiv);
+						$videoIcon
+							.attr('class', 'itemIcon icon-video')
+							.appendTo($videoLink);
+						
+          }
 
-							let videoClass;
-
-							if (feedType == 'photo') {
-								videoClass = 'bigVideo';
-							}
-
-							if (feedType == 'mixed') {
-								videoClass = 'smallVideo';
-							}
-
-							PTL.feed.appendVideoPlayer($itemDiv, videoUrl, videoType, videoClass);
-
-            }
-
-            if (audioUrl && audioType) {
-              
-              PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType);
-            }
-
+          if (audioUrl && audioType) {
+            
+            PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType);
           }
 
         }
@@ -458,26 +466,17 @@ PTL.feed = {
       .appendTo($audioLink);
 
   },
-  appendVideoPlayer: function($itemDiv, videoUrl, videoType, videoClass) {
+  appendVideoPlayer: function($itemDiv, videoUrl, videoType, feedType) {
 
-    const videoPlayer = document.createElement('video'),
-          $videoIcon = $('<i>'),
-          $videoLink = $('<a>').attr('target', '_blank');
+    const videoPlayer = document.createElement('video');
 
-		videoPlayer.classList.add(videoClass);
+		videoPlayer.classList.add(feedType);
     videoPlayer.controls = 'controls';
     videoPlayer.src = videoUrl;
     videoPlayer.type = videoType;
     videoPlayer.preload = PTL.prefs.readConfig('mediaPreload');
 
     $itemDiv.append(videoPlayer);
-
-    $videoLink
-      .attr('href', videoUrl)
-      .appendTo($itemDiv);
-    $videoIcon
-      .attr('class', 'itemIcon icon-video')
-      .appendTo($videoLink);
 
     return $itemDiv;
 

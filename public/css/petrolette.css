@@ -1334,7 +1334,7 @@ video {
   height: auto !important;
 }
 
-video.smallVideo {
+video.mixed {
 	float: left;
 	resize:both;
   width: 40% !important;
