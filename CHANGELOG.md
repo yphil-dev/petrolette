@@ -10,11 +10,15 @@
 - Publication date (if applicable) in item's tooltip #2720e25 (#135)
 - Translation improvement (in dates, notably) #3271ad6
 - Console messages unified, both on server and client #f9aee65
+- Direct link to media (audio & video) now also in feedType == text #9bb5d93f & #5388f5d0
 
 ### Bugfixes
 - Image captions (if applicable) are now managed separately from item's description #0457d6c
 - Transparency / z-index problem of the menu's sync widget (#142)
 - Help tour direct access to specific help item was broken (#143)
+- Better mediaRss (both audio & video) players ergonomics, specifically when `feedType` is 'mixed' #975201fd
+- Better formatting of the item's `title` (displayed in the item's *tooltip*) added author and sorted HTML prettyfying problems (no space, db space, etc.) #d23061f7
+- Code cleanup #66f76986
 
 ## v1.5.0
 - New feature:  Find/discover all the feeds in the URI #3ba52686
