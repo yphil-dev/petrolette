@@ -1,7 +1,7 @@
 # Dev notes
 
 > #### Preamble
-> - Please read [the Pétrolette licence file](blob/master/LICENSE).
+> - Please read [the Pétrolette licence file](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE).
 > - The Pétrolette development team have *no* Code Of Conduct, just act responsibly, as in every aspect of adult life.
 > - If you use Pétrolette, both on your own server or on the test instance, please consider [a donation](https://liberapay.com/yPhil/) for its development.
 
