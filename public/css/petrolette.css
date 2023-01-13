@@ -1325,8 +1325,12 @@ span.imageLegend {
 audio {
   background-color: var(--color-ui-pri);
   border-radius: 0;
-  height: 24px;
+  height: auto !important;
   width: 100% !important;
+}
+
+audio.mixed {
+  width: 70% !important;
 }
 
 video {

@@ -141,7 +141,7 @@ PTL.i18n.translations = {
 
   "A network error has occured" : { fr: "Une erreur réseau s'est produite" , ja: "ネットワークエラーが発生しました", es: "Ha ocurrido un error de red" },
 
-  "Drag & drop this link to your audio player" : { fr: "Glisser / déposer ce lien sur votre lecteur audio'est produite" , ja: "このリンクをオーディオ プレーヤーにドラッグ アンド ドロップします", es: "Arrastra y suelta este enlace a tu reproductor de audio" },
+  "Drag & drop this link in your player" : { fr: "Glisser / déposer ce lien dans votre lecteur" , ja: "このリンクをプレーヤーにドラッグ アンド ドロップします", es: "Arrastra y suelta este enlace en tu reproductor" },
 
   "Theme" : { fr: "Thème" , ja: "テーマ", es: "Tema" },
   "Language" : { fr: "Langue" , ja: "言語", es: "Idioma" },

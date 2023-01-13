@@ -372,7 +372,13 @@ PTL.feed = {
 									$videoLink = $('<a>').attr('target', '_blank');
 						
 						$videoLink
-							.attr('href', videoUrl)
+							.attr({
+								'href': videoUrl,
+								'target': '_blank',
+								'class': 'audioLink translate',
+								'data-title': 'Drag & drop this link in your player',
+								'title': PTL.tr('Drag & drop this link in your player')
+							})
 							.appendTo($itemDiv);
 						$videoIcon
 							.attr('class', 'itemIcon icon-video')
@@ -381,8 +387,25 @@ PTL.feed = {
           }
 
           if (audioUrl && audioType) {
-            
-            PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType);
+
+						const $audioLink = $('<a>').attr({
+							'target': '_blank',
+							'class': 'audioLink translate',
+							'data-title': 'Drag & drop this link in your player',
+							'title': PTL.tr('Drag & drop this link in your player')
+						}),
+									$audioIcon = $('<i>');
+						
+						$audioLink
+							.attr('href', audioUrl)
+							.appendTo($itemDiv);
+						$audioIcon
+							.attr('class', 'itemIcon icon-audio')
+							.appendTo($audioLink);
+
+						if (feedType != 'text') 
+							PTL.feed.appendAudioPlayer($itemDiv, audioUrl, audioType, feedType);
+						
           }
 
         }
@@ -442,28 +465,17 @@ PTL.feed = {
     });
 
   },
-  appendAudioPlayer: ($itemDiv, audioUrl, audioType) => {
+  appendAudioPlayer: ($itemDiv, audioUrl, audioType, feedType) => {
 
-    const $audioLink = $('<a>').attr({
-      'target': '_blank',
-      'class': 'audioLink translate',
-      'data-title': 'Drag & drop this link to your audio player',
-      'title': PTL.tr('Drag & drop this link to your audio player')
-    }), $audioIcon = $('<i>'), audioPlayer = document.createElement('audio');
+    const audioPlayer = document.createElement('audio');
 
+		audioPlayer.classList.add(feedType);
     audioPlayer.controls = 'controls';
     audioPlayer.src = audioUrl;
     audioPlayer.type = audioType;
     audioPlayer.preload = PTL.prefs.readConfig('mediaPreload');
 
     $itemDiv.append(audioPlayer);
-
-    $audioLink
-      .attr('href', audioUrl)
-      .appendTo($itemDiv);
-    $audioIcon
-      .attr('class', 'itemIcon icon-audio')
-      .appendTo($audioLink);
 
   },
   appendVideoPlayer: function($itemDiv, videoUrl, videoType, feedType) {
