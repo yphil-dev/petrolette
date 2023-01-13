@@ -45,7 +45,8 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
   - [PTL.tab.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.tab.js) manages the tab
   - [PTL.col.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.col.js) the column
   - [PTL.feed.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.feed.js) the feed and the item, and yes #TODO there should be a `PTL.item.js`.
-  Those client-side files are required by the (mostly one, the index) pages defined in the [views](https://framagit.org/yphil/petrolette/-/tree/master/views) ; BTW this is EJS, the simplest existing templating system, which uses transparent, full plain HTML. The dialogs templates - also in plain HTML - are [here](https://framagit.org/yphil/petrolette/-/blob/master/public/templates/dialogs.html).
+  
+Those client-side files are required by the (mostly one, the index) pages defined in the [views](https://framagit.org/yphil/petrolette/-/tree/master/views) ; BTW this is EJS, the simplest existing templating system, which uses transparent, full plain HTML. The dialogs templates - also in plain HTML - are [here](https://framagit.org/yphil/petrolette/-/blob/master/public/templates/dialogs.html).
 
 At the first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
