@@ -77,8 +77,6 @@ PTL.dialog = {
                 .data('url', newUrl)
                 .data('name', newName)
                 .data('type', newType);
-
-              console.error('$dataStore in dialog: (%s)', JSON.stringify($dataStore), feedUrl);
               
               if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
                 $feed.hide('fade', 250, function() {
