@@ -327,12 +327,12 @@ PTL.feed = {
           }
 
           if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3|\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
-            mediaUrl = item.enclosures[0].url;
-            mediaEncoding = item.enclosures[0].type;
-            mediaType = mediaEncoding.substring(0, mediaEncoding.indexOf('/'));
+            mediaUrl = (item.enclosures[0].url) ? item.enclosures[0].url : null;
+            mediaEncoding = (item.enclosures[0].type) ? item.enclosures[0].type : null;
+            mediaType = (mediaEncoding) ? mediaEncoding.substring(0, mediaEncoding.indexOf('/')) : null;
           }
 
-          if (mediaType) {
+          if (mediaUrl && mediaType && mediaEncoding) {
 
             const $mediaIcon = $('<i>'),
                   $mediaLink = $('<a>').attr('target', '_blank'),
@@ -360,7 +360,7 @@ PTL.feed = {
               mediaPlayer.classList.add(feedType);
               mediaPlayer.controls = 'controls';
               mediaPlayer.src = mediaUrl;
-              mediaPlayer.type = mediaEncoding;
+              // mediaPlayer.type = mediaEncoding || '';
               mediaPlayer.preload = PTL.prefs.readConfig('mediaPreload');
 
               $itemDiv.append(mediaPlayer);
