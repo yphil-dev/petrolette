@@ -93,6 +93,8 @@ PTL.i18n.translations = {
   
   "Click to focus current tab" : { fr: "Cliquer pour sélectionner l'onglet courant", ja: "カレントタブを焦点を合わせるにはクリックしてください", es: "Haga clic para enfocar la pestaña actual" },
 
+  "Click to reset the feed's icon (See help for details)" : { fr: "Cliquez pour réinitialiser l'icône du flux (voir l'aide pour plus de détails)", ja: "クリックしてフィードのアイコンをリセットします (詳細はヘルプを参照してください)", es: "Haga clic para restablecer el ícono de la fuente (Consulte la ayuda para obtener más detalles)" },
+	
   "A click on the Pétrolette logo puts the focus on the current tab" : { fr: "Un clic sur le logo Pétrolette met l'accent sur l'onglet en cours", ja: "Pétroletteのロゴをクリックすると、現在のタブに焦点が合わせる", es: "Un clic en el logotipo de Pétrolette pone el enfoque en la pestaña actual" },
 
   "Feed name (optional)" : { fr: "Nom du flux (optionnel)", ja: "フロー名（オプション）", es: "Nombre de la feed (Opcional)" },

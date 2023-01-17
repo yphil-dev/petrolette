@@ -527,7 +527,6 @@ PTL.feed = {
         lastItem: lastItem,
         nbItems: nbItems
       }).done(function(data, _textStatus, jqXHR) {
-				console.log('data:', data);
         resolve(data);
       }).fail(function(jqXHR, textStatus, errorThrown) {
         reject(jqXHR, textStatus, errorThrown);
@@ -558,29 +557,14 @@ PTL.feed = {
           dateObj = new Date(),
           timeStamp = dateObj.toTimeString();
 
-    let feedLastItem = $dataStore.data('lastitem');
+    let feedLastItem = $dataStore.data('lastitem'),
+				feedIconUrl;
 
     $feedBodyUl.css('border', '1px solid red');
-
-    if (feedIconHash && feedIconHash !== 'noicon') {
-      $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
-    } else if (!feedIconHash) {
-      PTL.feed.fetchIcon(feedHost)
-        .then(hash => {
-          $dataStore.data('iconhash', hash);
-          PTL.tab.saveTabs(true);
-        })
-        .catch(e => {
-          $dataStore.data('iconhash', 'noicon');
-          PTL.tab.saveTabs(true);
-          $favIcon.attr('src', 'static/images/rss.gif');
-        });
-    }
 
     if ($dataStore.data('status') == 'on') {
 
       $refreshButton.addClass('spin');
-
 
       try {
         let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
@@ -604,8 +588,14 @@ PTL.feed = {
 
           const feedName = $dataStore.data('name') ? $dataStore.data('name') : fetchFeed.feedTitle;
 
-					console.log('fetchFeed.feedTitle', fetchFeed.somethingElse);
+					if (fetchFeed.feedIcon) {
+						feedIconUrl = fetchFeed.feedIcon;
+						// $dataStore.data('iconhash', fetchFeed.feedIcon);
+					}
 					
+					else {
+						console.log('fetchFeed.feedIcon NOPE!', feedIconHash);}
+						
           let $insecureIcon = $('<i>')
               .attr('class', 'icon-lock-open insecureIcon warning')
               .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
@@ -662,6 +652,37 @@ PTL.feed = {
     }
 
     if (progress) progress.increment();
+
+		if (feedIconUrl)
+			console.log('kayn');
+		else
+			console.log('ma kayn');
+		
+    if (feedIconHash && feedIconHash !== 'noicon') {
+      $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
+    } else if (!feedIconHash) {
+      PTL.feed.fetchIcon(feedHost)
+        .then(hash => {
+          $dataStore.data('iconhash', hash);
+          PTL.tab.saveTabs(true);
+        })
+        .catch(e => {
+          $dataStore.data('iconhash', 'noicon');
+          PTL.tab.saveTabs(true);
+          $favIcon.attr('src', 'static/images/rss.gif');
+        });
+    } else if (feedIconUrl) {
+      PTL.feed.fetchIcon(feedIconUrl)
+        .then(hash => {
+          $dataStore.data('iconhash', hash);
+          PTL.tab.saveTabs(true);
+        })
+        .catch(e => {
+          $dataStore.data('iconhash', 'noicon');
+          PTL.tab.saveTabs(true);
+          $favIcon.attr('src', 'static/images/rss.gif');
+        });
+    }
 
   }
 
