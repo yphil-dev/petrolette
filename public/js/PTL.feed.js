@@ -231,6 +231,8 @@ PTL.feed = {
 
         const item = feedItems[key];
 
+				// console.log('item: ', item);
+
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
         const $description = $.parseHTML(item.description),
@@ -376,7 +378,8 @@ PTL.feed = {
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', itemLink.replace('https://www.bitchute.com/embed', 'https://www.bitchute.com/video'))
-          .append(item.title);
+				  // .append(PTL.util.clickableLinks(item.title))
+          .append(item.title || PTL.util.clickableLinks(PTL.util.sanitizeInput(item.description)));
 
         if (!mediaUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
@@ -524,6 +527,7 @@ PTL.feed = {
         lastItem: lastItem,
         nbItems: nbItems
       }).done(function(data, _textStatus, jqXHR) {
+				console.log('data:', data);
         resolve(data);
       }).fail(function(jqXHR, textStatus, errorThrown) {
         reject(jqXHR, textStatus, errorThrown);
@@ -600,6 +604,8 @@ PTL.feed = {
 
           const feedName = $dataStore.data('name') ? $dataStore.data('name') : fetchFeed.feedTitle;
 
+					console.log('fetchFeed.feedTitle', fetchFeed.somethingElse);
+					
           let $insecureIcon = $('<i>')
               .attr('class', 'icon-lock-open insecureIcon warning')
               .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));

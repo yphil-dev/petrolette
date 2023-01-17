@@ -101,7 +101,7 @@ router.use(morgan('combined'));
 
 router.get('/feed', function(req, res) {
 
-  feeder.getFeed(req.query.url, req.query.lastItem, function(error, feedItems, feedTitle, feedLink, lastItem, totalNewItems) {
+  feeder.getFeed(req.query.url, req.query.lastItem, function(error, feedItems, feedTitle, feedLink, lastItem, totalNewItems, somethingElse) {
 
     if (feedItems && !res.headersSent) {
       res.send({
@@ -109,7 +109,8 @@ router.get('/feed', function(req, res) {
         feedLink: feedLink,
         feedTitle: feedTitle,
         lastItem: lastItem,
-        totalNewItems: totalNewItems
+        totalNewItems: totalNewItems,
+				somethingElse: somethingElse
       });
 
     } else if (error && !res.headersSent) {

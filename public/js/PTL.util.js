@@ -7,6 +7,11 @@ PTL.util = {
              .attr('href'))
       .find('.column').first();
   },
+  clickableLinks: function(text) {
+		let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+    text = text.replace(exp, '<object><a class="docLink" target:"_blank" href="$1">$1</a></object>');
+    return text;
+	},
   XMLtoJSON: function() {
 
     
