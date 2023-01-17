@@ -657,12 +657,11 @@ PTL.feed = {
 			console.log('kayn');
 		else
 			console.log('ma kayn');
-		
-    if (feedIconHash && feedIconHash !== 'noicon') {
-      $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
-    } else if (!feedIconHash) {
-      PTL.feed.fetchIcon(feedHost)
+
+		if (feedIconUrl) {
+      PTL.feed.fetchIcon(feedIconUrl)
         .then(hash => {
+					feedIconHash = hash;
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs(true);
         })
@@ -671,8 +670,12 @@ PTL.feed = {
           PTL.tab.saveTabs(true);
           $favIcon.attr('src', 'static/images/rss.gif');
         });
-    } else if (feedIconUrl) {
-      PTL.feed.fetchIcon(feedIconUrl)
+    }
+		
+    if (feedIconHash && feedIconHash !== 'noicon') {
+      $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
+    } else if (!feedIconHash) {
+      PTL.feed.fetchIcon(feedHost)
         .then(hash => {
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs(true);
