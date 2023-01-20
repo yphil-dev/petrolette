@@ -15,6 +15,7 @@ PTL.feed = {
             height: '16px',
             onerror: "this.src='static/images/rss.gif';"
           }).on("error", function() {
+						console.log('onError');
             $(this).parent().parent().children('div.dataStore').data('iconhash', '');
             PTL.tab.saveTabs(true);
           });
@@ -50,7 +51,7 @@ PTL.feed = {
     const $selectIcon = $('<i>')
           .attr('class', 'feed-control translate icon-checkbox feedSelect')
           .data('title', 'Select this feed for moving and deletion')
-          .attr('title', PTL.tr('Select this feed for moving and deletion'))
+          .attr('title', PTL.tr('Select this feed for moving and deletion') + 'hash: ' + iconhash)
           .click(function() {
             $(this).toggleClass('icon-checked icon-checkbox')
               .parent().parent().parent().parent()
@@ -500,6 +501,8 @@ PTL.feed = {
   },
   fetchIcon: function(feedHost) {
 
+		console.log('Getting:', feedHost)
+		
     return new Promise((resolve, reject) => {
       $.get("/favicon", {
         url: decodeURI(feedHost),
@@ -511,6 +514,7 @@ PTL.feed = {
         else
           reject();
       }).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log('errorThrown', textStatus);
         reject(jqXHR);
       });
 
@@ -546,7 +550,6 @@ PTL.feed = {
           $feedBody = $dataStore.parent().next('div.feedBody').removeClass('folded'),
           $feedBodyUl = $feedBody.find('ul.feedBody'),
           feedUrl = $dataStore.data('url'),
-          feedIconHash = $dataStore.data('iconhash'),
           $feedToggle = $feedHeader.children('.feedToggle'),
           $feedIcon = $feedToggle.children('.feedIcon').removeClass('fold'),
           $favIcon = $feedToggle.children('.favicon');
@@ -558,6 +561,7 @@ PTL.feed = {
           timeStamp = dateObj.toTimeString();
 
     let feedLastItem = $dataStore.data('lastitem'),
+        feedIconHash = $dataStore.data('iconhash'),
 				feedIconUrl;
 
     $feedBodyUl.css('border', '1px solid red');
@@ -626,6 +630,13 @@ PTL.feed = {
             $badge.fadeOut('slow');
           }
 
+
+					if (feedIconUrl)
+						console.log('kayn:', feedIconUrl);
+					else
+						console.log('ma kayn');
+
+					
         }
       } catch (err) {
 
@@ -653,19 +664,17 @@ PTL.feed = {
 
     if (progress) progress.increment();
 
-		if (feedIconUrl)
-			console.log('kayn');
-		else
-			console.log('ma kayn');
-
 		if (feedIconUrl) {
+			console.log('feedIconUrl DL', feedIconUrl);
       PTL.feed.fetchIcon(feedIconUrl)
         .then(hash => {
 					feedIconHash = hash;
+					console.log('feedIconHash DL', feedIconHash);
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs(true);
         })
         .catch(e => {
+					console.log('feedIconHash DL err', e);
           $dataStore.data('iconhash', 'noicon');
           PTL.tab.saveTabs(true);
           $favIcon.attr('src', 'static/images/rss.gif');
@@ -673,6 +682,7 @@ PTL.feed = {
     }
 		
     if (feedIconHash && feedIconHash !== 'noicon') {
+			// console.log('feedIconHash:', feedIconHash);
       $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
     } else if (!feedIconHash) {
       PTL.feed.fetchIcon(feedHost)

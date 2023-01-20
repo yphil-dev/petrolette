@@ -31,6 +31,8 @@ router.get('/favicon', function(req, res) {
       res.status(500).send(error);
     } else if (url) {
 
+			console.error('My url:', url);
+			
       const hash = crypto.createHash('md5').update(url).digest('hex'),
             fileName = hash + '.favicon',
             filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
