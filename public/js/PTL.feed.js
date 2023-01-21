@@ -218,6 +218,14 @@ PTL.feed = {
             nbItems = $dataStore.data('nbitems'),
             feedType = $dataStore.data('type');
 
+      const $seenToggle = $('<div>')
+            .attr({
+              'data-seen': 'true',
+              'class': 'check',
+              'title': 'Click to mark as hidden'
+            })
+            .html('&check;');
+
       const l = PTL.util.getLocation(feedUrl),
             p = l.protocol ? l.protocol + '//' : '//',
             feedHost = p + l.hostname;
@@ -372,6 +380,8 @@ PTL.feed = {
           }
 
         }
+
+        $itemDiv.append($seenToggle.clone());
 
         const itemLink = item.link || item.enclosures[0].url;
 
@@ -613,6 +623,10 @@ PTL.feed = {
           if (isInsecureLinks) $warningIconSpan.html($insecureIcon);
 
           $feedBody.html(lastItems[0]);
+
+          $('li.feedItem div.itemDiv div.check').on('click', function () {
+            $(this).parent().parent().remove();
+          });
 
           $refreshButton
             .attr('title', PTL.tr('Reload this feed') + '\n' + feedUrl + '\n' + timeStamp)

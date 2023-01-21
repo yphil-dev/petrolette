@@ -1142,6 +1142,17 @@ li.feed div.feedBody::-webkit-scrollbar-thumb {
   background-color: var(--color-fg4);
 }
 
+li.feed div.itemDiv div.check {
+  float: right;
+  visibility: hidden;
+}
+
+li.feed div.itemDiv:hover div.check {
+  float: right;
+  visibility: visible;
+  cursor: pointer;
+}
+
 .folded {
   height: 0 !important;
   border-bottom: var(--color-background) !important;
