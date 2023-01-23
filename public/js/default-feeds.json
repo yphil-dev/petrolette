@@ -9,7 +9,7 @@
           "type": "mixed",
           "limit": 279,
           "status": "on",
-          "iconhash": "8bc287c07a81c603df02cdb780d46681",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": "https://news.google.com/__i/rss/rd/articles/CBMieGh0dHBzOi8vd3d3LnVzYXRvZGF5LmNvbS9zdG9yeS9uZXdzL3BvbGl0aWNzLzIwMjMvMDEvMTMvcGF1bC1yeWFuLWdlb3JnZS1zYW50b3MtcmVzaWduLWdvcC1sZWFkZXJzLWNvbmdyZXNzLzExMDQ3NDA0MDAyL9IBAA?oc=5"
         },
@@ -82,7 +82,7 @@
           "type": "photo",
           "limit": 107,
           "status": "on",
-          "iconhash": "0973ea8ce7121c320f68413e2a2f23ab",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": "https://dilbert.com/strip/2023-01-14"
         },
@@ -104,7 +104,7 @@
           "type": "mixed",
           "limit": 83,
           "status": "on",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 1,
           "lastitem": ""
         },
@@ -151,7 +151,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "9aa8c839f619e2bdaf062d625a5d92f2",
+          "iconhash": "",
           "nbitems": 16,
           "lastitem": ""
         },
@@ -179,7 +179,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "182bc4d2924eb5bdbc00678941fbbe44",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -188,7 +188,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -215,7 +215,7 @@
           "type": "mixed",
           "limit": 352,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -224,7 +224,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -242,7 +242,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "736fa288fadad36571864939aa5d2b6d",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -251,7 +251,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         }
       ],
@@ -272,7 +272,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "cd94bf8fa4fcdac9b1014afc2473988c",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -281,7 +281,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "11140a8864aff897f9575e45fdd41fbd",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -290,7 +290,7 @@
           "type": "mixed",
           "limit": 231,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -308,7 +308,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "ca6dac61e177ad445f09480e0a141ad1",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -344,7 +344,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "9aa8c839f619e2bdaf062d625a5d92f2",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -409,7 +409,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "0decfab7eba32f75a2a5a31bca7a66b8",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -418,7 +418,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "5af80f898b33f7fde8a07bff2475213b",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -470,7 +470,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "72c1d34fe80ec9ed3c59108f50ed9258",
+          "iconhash": "",
           "nbitems": 16,
           "lastitem": "http://nitter.c-r-t.tk/elonmusk/status/1614184244703793152#m"
         },
@@ -498,7 +498,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "334221f783688b439dac85a514814695",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -534,7 +534,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "d7e163fb85872f9d48b2f0f16b4d7101",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -592,7 +592,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "099e413606d8eb97eb3a7ac89f3b730f",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -610,7 +610,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "5af80f898b33f7fde8a07bff2475213b",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -637,7 +637,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "8bd69a1c59a63dab5d9f3e319ea46b6a",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -646,7 +646,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         }
       ],
@@ -727,7 +727,7 @@
           "type": "photo",
           "limit": 220,
           "status": "off",
-          "iconhash": "23d56c83c7d6fdfda79cf69c1d29ed1b",
+          "iconhash": "",
           "nbitems": 16,
           "lastitem": ""
         },
@@ -746,7 +746,7 @@
           "type": "photo",
           "limit": 600,
           "status": "off",
-          "iconhash": "69bf437ea6a712b4b0b8b6c67798d5df",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -793,7 +793,7 @@
           "type": "photo",
           "limit": 600,
           "status": "off",
-          "iconhash": "e29bb7abee6ccca717d71a1e2884028b",
+          "iconhash": "",
           "nbitems": 10
         }
       ],
@@ -804,7 +804,7 @@
           "type": "photo",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -865,7 +865,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "0bb6f8d4b288622337962cfcabe9e56e",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -892,7 +892,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "264e995c5ffe050828220d266da97ead",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": "https://www.youtube.com/watch?v=Cg3HTairH5g"
         },
@@ -911,7 +911,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "a71a3fd2acefc7f46d339669dd136af9",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -920,7 +920,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "7c866278088a8ccad0a092e7a19507e1",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -929,7 +929,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "c4e98b94c10dad6feaea886253a36952",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -938,7 +938,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "001eb70eacd197f95cc4f18ad7eaf3db",
+          "iconhash": "",
           "nbitems": 10
         }
       ],
@@ -969,7 +969,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "c2af35cc0a15334601c03d10d6715b95",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -987,7 +987,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "5b3194816c9b7f4857e27a33a471ddac",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1014,7 +1014,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "298fe062c61b0a1fc9b342a64555242f",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": "https://musical-artifacts.com/artifacts/2637"
         }
@@ -1026,7 +1026,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "c5b0a7789e507eb7f1fbf06492ed9136",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1044,7 +1044,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "fd1c28b1153316249defb72699e472ed",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1071,7 +1071,7 @@
           "type": "text",
           "limit": 316,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1080,7 +1080,7 @@
           "type": "mixed",
           "limit": 267,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1107,7 +1107,7 @@
           "type": "text",
           "limit": 220,
           "status": "off",
-          "iconhash": "fc94e0c9213fd36e0afe2eb380f29b89",
+          "iconhash": "",
           "nbitems": 10
         }
       ]
@@ -1150,7 +1150,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "0a26a4aebedb4e2c636fa7f3b56d7ae2",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1159,7 +1159,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "63a9ba52f7e6b0fdd5a14620e09d6a93",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1186,7 +1186,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "1fe897a7ceb41bf289502a77b260c72e",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1195,7 +1195,7 @@
           "type": "mixed",
           "limit": 221,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         }
       ],
@@ -1206,7 +1206,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "07ac623ab555ca14939e45f03c27868f",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1233,7 +1233,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1242,7 +1242,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "f122eb5a057b4c3231937bd78fd9c688",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1296,7 +1296,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "e9978290d0bd393b9423bea5f18b8108",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1305,7 +1305,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "036abb42e9d1f533fa2f2a42db5724af",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1334,7 +1334,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "6d88b9b93f770e6e1a9e4c31e8673b57",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1343,7 +1343,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "c01522f405d38557f226b8afbf802354",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1361,7 +1361,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1388,7 +1388,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "5c38aa97a2a7a8d9f177527922accb62",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1397,7 +1397,7 @@
           "type": "mixed",
           "limit": 378,
           "status": "off",
-          "iconhash": "c935e81cc049a9de394d2eefd14dd1d8",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -1406,7 +1406,7 @@
           "type": "mixed",
           "limit": 241,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         }
       ]
@@ -2002,7 +2002,7 @@
           "type": "photo",
           "limit": 400,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2020,7 +2020,7 @@
           "type": "photo",
           "limit": 220,
           "status": "off",
-          "iconhash": "c681f29a0aa8c04a09c1dbc092bf7b64",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2518,7 +2518,7 @@
           "type": "mixed",
           "limit": 237,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2629,7 +2629,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2717,7 +2717,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2726,7 +2726,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2735,7 +2735,7 @@
           "type": "mixed",
           "limit": 350,
           "status": "off",
-          "iconhash": "8b154c574a7144f1c3d5ed9ba8076349",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -2791,7 +2791,7 @@
           "type": "mixed",
           "limit": 181,
           "status": "off",
-          "iconhash": "e58af372b08d620c311b90b1c3f5c24a",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3042,7 +3042,7 @@
           "type": "mixed",
           "limit": 242,
           "status": "off",
-          "iconhash": "a9fccf0ff3a0c558e16fd696ca702579",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3060,7 +3060,7 @@
           "type": "mixed",
           "limit": 339,
           "status": "off",
-          "iconhash": "9aa8c839f619e2bdaf062d625a5d92f2",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3146,7 +3146,7 @@
           "type": "mixed",
           "limit": 118,
           "status": "off",
-          "iconhash": "e60fd1c9f70ba442aa916b6522b9b46f",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3202,7 +3202,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {
@@ -3256,7 +3256,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3266,7 +3266,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3296,7 +3296,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3315,7 +3315,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3377,7 +3377,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3387,7 +3387,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3427,7 +3427,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3437,7 +3437,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3459,7 +3459,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3489,7 +3489,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10,
           "lastitem": ""
         },
@@ -3537,7 +3537,7 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "noicon",
+          "iconhash": "",
           "nbitems": 10
         },
         {

@@ -380,7 +380,7 @@ PTL.feed = {
           .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', itemLink.replace('https://www.bitchute.com/embed', 'https://www.bitchute.com/video'))
 				  // .append(PTL.util.clickableLinks(item.title))
-          .append(item.title || PTL.util.clickableLinks(PTL.util.sanitizeInput(item.description)));
+          .append(PTL.util.clickableLinks(item.title) || PTL.util.clickableLinks(PTL.util.sanitizeInput(item.description)));
 
         if (!mediaUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
 
@@ -632,9 +632,9 @@ PTL.feed = {
 
 
 					if (feedIconUrl)
-						console.log('kayn:', feedIconUrl);
+						console.log('kayn: (%s)', feedName, feedIconUrl);
 					else
-						console.log('ma kayn');
+						console.log('ma kayn (%s)', feedName);
 
 					
         }
@@ -688,6 +688,7 @@ PTL.feed = {
       PTL.feed.fetchIcon(feedHost)
         .then(hash => {
           $dataStore.data('iconhash', hash);
+					$favIcon.attr('src', 'favicons/' + hash + '.favicon');
           PTL.tab.saveTabs(true);
         })
         .catch(e => {
