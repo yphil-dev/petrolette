@@ -334,25 +334,29 @@ PTL.feed = {
 
           if (mediaUrl && mediaType && mediaEncoding) {
 
-            const $mediaIcon = $('<i>'),
-                  $mediaLink = $('<a>').attr('target', '_blank'),
-                  mediaIcon = 'icon-' + mediaType;
+            if (feedType != 'photo') {
 
-            $mediaLink
-              .attr({
-                'href': mediaUrl,
-                'target': '_blank',
-                'class': 'translate',
-                'data-title': 'Drag & drop this link in your player',
-                'title': PTL.tr('Drag & drop this link in your player')
-              })
-              .appendTo($itemDiv);
+							const $mediaIcon = $('<i>'),
+										$mediaLink = $('<a>').attr('target', '_blank'),
+										mediaIcon = 'icon-' + mediaType;
 
-            $mediaIcon
-              .attr('class', 'itemIcon')
-              .addClass(mediaIcon)
-              .appendTo($mediaLink);
+							$mediaLink
+								.attr({
+									'href': mediaUrl,
+									'target': '_blank',
+									'class': 'translate',
+									'data-title': 'Drag & drop this link in your player',
+									'title': PTL.tr('Drag & drop this link in your player')
+								})
+								.appendTo($itemDiv);
 
+							$mediaIcon
+								.attr('class', 'itemIcon')
+								.addClass(mediaIcon)
+								.appendTo($mediaLink);
+
+						}
+						
             if (feedType != 'text') {
 
               const mediaPlayer = document.createElement(mediaType);
