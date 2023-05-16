@@ -58,6 +58,7 @@ var PTL = (function() {
       const $sideMenu = $('nav#sideMenu'),
             $overlay = $('#overlay'),
             $feedCodeButton = $('button#feedCode'),
+            $iconResetButton = $('button#iconResetButton'),
             $importButton = $("button#fileImportButton"),
             $fileImportInput = $("input#fileImport"),
             $saveButton = $('#saveTabs'),
@@ -93,6 +94,11 @@ var PTL = (function() {
       $searchPrefixRestoreButton.click(function(){
         $searchPrefixInput.val(PTL.prefs.readConfig('searchPrefixDefault'));
         PTL.util.say(PTL.tr('Restored search prefix to default value'), 'success', true);
+      });
+
+      $iconResetButton.click(function(){
+				console.log('YOO!!');
+				return false;
       });
 
       $searchPrefixOkButton.click(function(){

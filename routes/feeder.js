@@ -96,7 +96,8 @@ function getFeed(feedUrl, lastItem, callback) {
       if (totalNewItems == undefined) totalNewItems = i;
 
       const meta = this.meta;
-      return callback(null, feedItems, meta.title || feedUrl, meta.link || feedUrl, newLastItem, totalNewItems, 'somethingElseEntirely');
+			
+      return callback(null, feedItems, meta.title || feedUrl, meta.link || feedUrl, newLastItem, totalNewItems, meta.image.url || null);
 
     });
 

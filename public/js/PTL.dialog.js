@@ -16,8 +16,25 @@ PTL.dialog = {
             $feedTileDivA = $dataStore.parent().find('div.feedTitle a'),
             allGroups = PTL.tab.list('all'),
             $thisGroup = $feed.parent().parent(),
+						$iconResetButton = $dialog.find('button#iconResetButton'),
             $groupMenu = $dialog.find('select#feedTabSelect');
 
+			let iconResetNeeded = false;
+
+			
+			console.log('iconhash', $dataStore.data('iconhash'));
+
+			if ($dataStore.data('iconhash'))
+				$iconResetButton.append($('<img>').attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
+																								 'class' : 'favicon', 'title' : 'hash: ' + $dataStore.data('iconhash')}));
+
+      $iconResetButton.on('click', function() {
+				console.log('Icon reset!');
+				iconResetNeeded = true;
+				// $dataStore.data('iconhash', '');
+      });
+
+			
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
 			
       $dialog.dialog({
@@ -72,7 +89,13 @@ PTL.dialog = {
 
 
               $feedTileDivA.text(newName);
-              
+
+							if (iconResetNeeded){
+								console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
+								$dataStore.data('iconhash', '');
+								console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
+							}
+							
               $dataStore
                 .data('url', newUrl)
                 .data('name', newName)
@@ -1329,7 +1352,7 @@ PTL.dialog = {
         {
           title: PTL.tr('Feeds'),
           element: 'fieldset.feedsMenuForm',
-          intro: '<h4>' + PTL.tr('Open') + '</h4>' + PTL.tr('Load / import a feeds file') + ' ; ' + PTL.tr('to append to or replace the existing feeds.') + '<h4>' + PTL.tr('Save') + '</h4>' + PTL.tr('Save / export a feeds file.') + '<h4>' + PTL.tr('Reset') + '</h4>' + PTL.tr('Reset Pétrolette with the default feeds.') + '<h4>' + PTL.tr('Connection to storage') + '</h4>' + PTL.tr('Connection to the cloud to synchronize tabs and feeds on all devices.'),
+          intro: '<h4>' + PTL.tr('Open') + '</h4>' + PTL.tr('Load / import a feeds file') + ' ; ' + PTL.tr('to append to or replace the existing feeds.') + '<h4>' + PTL.tr('Save') + '</h4>' + PTL.tr('Save / export a feeds file.') + '<h4>' + PTL.tr('Reset') + '</h4>' + PTL.tr('Reset Pétrolette with the default feeds.') + '<button id="iconResetButton" class="grow translate ui-button ui-corner-all ui-widget">Reset all favicons</button>' + '<h4>' + PTL.tr('Connection to storage') + '</h4>' + PTL.tr('Connection to the cloud to synchronize tabs and feeds on all devices.'),
           position: 'right'
         },
         {
