@@ -27,7 +27,7 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 ## Features
 
 - No ads, no trackers, **just the news**
-- Displays all modern feeds (Atom, RSS 1/2, **MediaRSS**, etc.)
+- Displays all modern feeds (Atom, RSS 1/2, **MediaRSS**, Social networks, etc.)
 - New items indicator / badge
 - **Video / Audio playing** directly in Pétrolette
 - **Discovery of the feed** in a page / website
@@ -98,7 +98,7 @@ npm install
 npm test
 ```
 
-## Participate
+## Help
 
 - Read the [development guidelines](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md)
 - Pétrolette is [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://framagit.org/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) or by [sending a donation](https://ko-fi.com/yphil/) ; Even the smallest amount will help *a lot*.

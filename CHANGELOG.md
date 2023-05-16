@@ -6,7 +6,7 @@
 - Links in the feed item are now clickable (and abbreviated)
 - Small script to test each feed URL for any errors (like the feed simply doesn't exist anymore) in one command
 
-## Bugfixes
+### Bugfixes
 - Don't remember, so probably not a lot
 - Removed some debug symbols
 

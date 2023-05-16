@@ -1309,9 +1309,9 @@ PTL.dialog = {
           position: 'bottom'
         },
         {
-          title: PTL.tr('Feed name (optional)'),
+          title: PTL.tr('Name and icon'),
           element: 'input#feedNameInput',
-          intro: '<h4>' + 'Name' + '</h4>' + PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.') + '<h4>' + 'Feed Icon' + '</h4>' + "Reset the cached favicon and request a new one",
+          intro: '<h4>' + PTL.tr('Feed name (optional)') + '</h4>' + PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.') + '<h4>' + PTL.tr('Icon') + '</h4>' + PTL.tr("Refresh the feed icon."),
           position: 'left'
         },
         {
