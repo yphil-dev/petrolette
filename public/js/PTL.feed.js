@@ -663,6 +663,16 @@ PTL.feed = {
         });
     } else {
 			console.log('NOTHING, feedUrl: ', feedUrl);
+      PTL.feed.fetchIcon(feedHost)
+        .then(hash => {
+					feedIconHash = false;
+          $dataStore.data('iconhash', hash);
+          PTL.tab.saveTabs(true);
+					$favIcon.attr('src', 'favicons/' + hash + '.favicon');
+        })
+        .catch(e => {
+					feedIconHash = true;
+        });
 		}
   }
 
