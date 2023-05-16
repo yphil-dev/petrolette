@@ -661,7 +661,9 @@ PTL.feed = {
         .catch(e => {
 					feedIconHash = true;
         });
-    }
+    } else {
+			console.log('NOTHING');
+		}
   }
 
 };
