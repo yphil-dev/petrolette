@@ -15,7 +15,6 @@ PTL.feed = {
             height: '16px',
             onerror: "this.src='static/images/rss.gif';"
           }).on("error", function() {
-						console.log('onError');
             $(this).parent().parent().children('div.dataStore').data('iconhash', '');
             PTL.tab.saveTabs(true);
           });
@@ -231,8 +230,6 @@ PTL.feed = {
         newItems++;
 
         const item = feedItems[key];
-
-				// console.log('item: ', item);
 
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
@@ -501,8 +498,6 @@ PTL.feed = {
   },
   fetchIcon: function(feedHost) {
 
-		console.log('Getting:', feedHost)
-		
     return new Promise((resolve, reject) => {
       $.get("/favicon", {
         url: decodeURI(feedHost),
@@ -514,7 +509,6 @@ PTL.feed = {
         else
           reject();
       }).fail(function(jqXHR, textStatus, errorThrown) {
-				console.log('errorThrown', textStatus);
         reject(jqXHR);
       });
 
@@ -592,12 +586,7 @@ PTL.feed = {
 
           const feedName = $dataStore.data('name') ? $dataStore.data('name') : fetchFeed.feedTitle;
 
-					if (fetchFeed.feedIcon) {
-						feedIconUrl = fetchFeed.feedIcon;
-						// $dataStore.data('iconhash', fetchFeed.feedIcon);
-					} else {
-						console.log('fetchFeed.feedIcon NOPE!', feedIconHash);
-					}
+					if (fetchFeed.feedIcon) feedIconUrl = fetchFeed.feedIcon;
 						
           let $insecureIcon = $('<i>')
               .attr('class', 'icon-lock-open insecureIcon warning')
@@ -628,13 +617,6 @@ PTL.feed = {
           } else {
             $badge.fadeOut('slow');
           }
-
-
-					if (feedIconUrl)
-						console.log('kayn: (%s)', feedName, feedIconUrl);
-					else
-						console.log('ma kayn (%s)', feedName);
-
 					
         }
       } catch (err) {
@@ -665,40 +647,19 @@ PTL.feed = {
 
 		
     if (feedIconHash && feedIconHash !== 'noicon') {
-			// console.log('feedIconHash:', feedIconHash);
       $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
     } else if (feedIconUrl) {
-			console.log('feedIconUrl DL', feedIconUrl);
       PTL.feed.fetchIcon(feedIconUrl)
         .then(hash => {
 					feedIconHash = false;
-					// console.log('feedIconHash DL', hash);
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs(true);
 					$favIcon.attr('src', 'favicons/' + hash + '.favicon');
         })
         .catch(e => {
 					feedIconHash = true;
-					console.log('feedIconURL DL err', e);
-          // $dataStore.data('iconhash', 'noicon');
-          // PTL.tab.saveTabs(true);
         });
     }
-		// else if (!feedIconHash) {
-    //   PTL.feed.fetchIcon(feedHost)
-    //     .then(hash => {
-    //       $dataStore.data('iconhash', hash);
-		// 			$favIcon.attr('src', 'favicons/' + hash + '.favicon');
-    //       PTL.tab.saveTabs(true);
-    //     })
-    //     .catch(e => {
-		// 			console.log('feedIconHASH DL err', e);
-    //       $dataStore.data('iconhash', 'noicon');
-    //       PTL.tab.saveTabs(true);
-    //       // $favIcon.attr('src', 'static/images/rss.gif');
-    //     });
-    // }
-
   }
 
 };
