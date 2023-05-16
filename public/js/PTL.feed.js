@@ -662,7 +662,7 @@ PTL.feed = {
 					feedIconHash = true;
         });
     } else {
-			console.log('NOTHING, feedIconHash: ', feedIconHash);
+			console.log('NOTHING, feedUrl: ', feedUrl);
 		}
   }
 
