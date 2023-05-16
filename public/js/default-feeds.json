@@ -11,7 +11,7 @@
           "status": "on",
           "iconhash": "",
           "nbitems": 10,
-          "lastitem": "https://news.google.com/__i/rss/rd/articles/CBMieGh0dHBzOi8vd3d3LnVzYXRvZGF5LmNvbS9zdG9yeS9uZXdzL3BvbGl0aWNzLzIwMjMvMDEvMTMvcGF1bC1yeWFuLWdlb3JnZS1zYW50b3MtcmVzaWduLWdvcC1sZWFkZXJzLWNvbmdyZXNzLzExMDQ3NDA0MDAyL9IBAA?oc=5"
+          "lastitem": "https://news.google.com/rss/articles/CBMiigFodHRwczovL3dsb3MuY29tL25ld3MvbG9jYWwvYWJkdWN0ZWQta2F5bGEtdW5iZWhhdW4taGVhdGhlci1tb3RoZXItYXJyZXN0ZWQtbmV0ZmxpeC11bnNvbHZlZC1teXN0ZXJpZXMtZm91bmQtc2FmZS1hc2hldmlsbGUtbm9ydGgtY2Fyb2xpbmHSAY4BaHR0cHM6Ly93bG9zLmNvbS9hbXAvbmV3cy9sb2NhbC9hYmR1Y3RlZC1rYXlsYS11bmJlaGF1bi1oZWF0aGVyLW1vdGhlci1hcnJlc3RlZC1uZXRmbGl4LXVuc29sdmVkLW15c3Rlcmllcy1mb3VuZC1zYWZlLWFzaGV2aWxsZS1ub3J0aC1jYXJvbGluYQ?oc=5"
         },
         {
           "url": "https://www.yahoo.com/news/rss",
@@ -19,9 +19,9 @@
           "type": "mixed",
           "limit": 220,
           "status": "on",
-          "iconhash": "",
+          "iconhash": "09e69944c4dbc89f6b439c26b6548ad1",
           "nbitems": 10,
-          "lastitem": "https://news.yahoo.com/robbie-knievel-daredevil-son-evel-192148966.html"
+          "lastitem": "https://news.yahoo.com/12-old-texas-boy-arrested-161418066.html"
         },
         {
           "url": "https://feeds.feedburner.com/thechangelog",
@@ -31,7 +31,7 @@
           "status": "on",
           "iconhash": "",
           "nbitems": 10,
-          "lastitem": "https://scribe.rip/medium-embraces-mastodon-19dcb873eb11"
+          "lastitem": "https://changelog.com/practicalai/223"
         }
       ],
       [
@@ -43,7 +43,7 @@
           "status": "on",
           "iconhash": "",
           "nbitems": 10,
-          "lastitem": "http://www.nasa.gov/image-feature/atlanta-shines-at-night"
+          "lastitem": "http://www.nasa.gov/image-feature/moon-over-the-southern-atlantic"
         },
         {
           "url": "https://feeds.arstechnica.com/arstechnica/index",
@@ -51,9 +51,9 @@
           "type": "text",
           "limit": 452,
           "status": "on",
-          "iconhash": "",
+          "iconhash": "5d81b97433efbdc7bc479aa65c11cb82",
           "nbitems": 10,
-          "lastitem": "https://arstechnica.com/?p=1910046"
+          "lastitem": "https://arstechnica.com/?p=1939628"
         }
       ],
       [
@@ -65,7 +65,7 @@
           "status": "on",
           "iconhash": "",
           "nbitems": 10,
-          "lastitem": "https://xkcd.com/2724/"
+          "lastitem": "https://xkcd.com/2776/"
         },
         {
           "url": "https://explainxkcd.com/rss.xml",
@@ -84,7 +84,7 @@
           "status": "on",
           "iconhash": "",
           "nbitems": 10,
-          "lastitem": "https://dilbert.com/strip/2023-01-14"
+          "lastitem": "https://www.cnn.com/2023/02/27/media/dilbert-distributor-scott-adams/index.html"
         },
         {
           "url": "https://feeds.feedburner.com/hackaday/LgoM/",
@@ -94,7 +94,7 @@
           "status": "on",
           "iconhash": "",
           "nbitems": 10,
-          "lastitem": "https://hackaday.com/2023/01/13/swap-the-clock-chip-on-the-mac-se-30-with-an-attiny85/"
+          "lastitem": "https://hackaday.com/2023/05/16/hackaday-prize-2023-learn-dsp-with-the-portable-all-in-one-workstation/"
         }
       ],
       [
@@ -116,7 +116,7 @@
           "status": "on",
           "iconhash": "",
           "nbitems": 10,
-          "lastitem": "https://www.youtube.com/watch?v=GDQnA1LVCWA"
+          "lastitem": "https://www.youtube.com/watch?v=03eL9bh9EoU"
         },
         {
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCdI8MAC5HoPJSJ4zrgDDI-Q",
@@ -136,7 +136,7 @@
           "status": "on",
           "iconhash": "",
           "nbitems": 10,
-          "lastitem": "https://www.youtube.com/watch?v=iHdj3uWoJc8"
+          "lastitem": "https://www.youtube.com/watch?v=fCPslr_1pb0"
         }
       ]
     ]
@@ -176,15 +176,6 @@
         {
           "url": "https://www.cnbc.com/id/100727362/device/rss/rss.html",
           "name": "cnbc - International",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
-        },
-        {
-          "url": "https://worldnewssuperfast.blogspot.com/feeds/posts/default?alt=rss",
-          "name": "WORLD NEWS SUPERFAST - LATEST BREAKING NEWS",
           "type": "mixed",
           "limit": 350,
           "status": "off",
@@ -413,13 +404,14 @@
           "nbitems": 10
         },
         {
-          "url": "https://www.vox.com/rss/world/index.xml",
-          "name": "Vox -  World",
+          "url": "https://www.vox.com/rss/index.xml",
+          "name": "Vox -  All",
           "type": "mixed",
-          "limit": 350,
+          "limit": 220,
           "status": "off",
           "iconhash": "",
-          "nbitems": 10
+          "nbitems": 16,
+          "lastitem": "https://www.vox.com/politics/2023/5/16/23725788/philadelphia-mayor-primary-helen-gym-rebecca-rhynhart-cherelle-parker"
         },
         {
           "url": "https://trends.gab.com/trend-feed/rss",
@@ -605,13 +597,14 @@
           "nbitems": 10
         },
         {
-          "url": "https://www.vox.com/rss/recode/index.xml",
-          "name": "Vox -  Recode",
+          "url": "https://www.vox.com/rss/technology/index.xml",
+          "name": "Vox -  Technology",
           "type": "mixed",
           "limit": 220,
           "status": "off",
           "iconhash": "",
-          "nbitems": 10
+          "nbitems": 16,
+          "lastitem": "https://www.vox.com/technology/2023/5/11/23717408/ai-dc-laws-congress-google-microsoft"
         },
         {
           "url": "https://www.techrepublic.com/rssfeeds/articles/",
@@ -1329,13 +1322,14 @@
           "nbitems": 10
         },
         {
-          "url": "https://www.eurekalert.org/rss.xml",
-          "name": "EurekAlert! - Breaking News",
+          "url": "https://nitter.c-r-t.tk/EurekAlert/rss",
+          "name": "EurekAlert! / @EurekAlert",
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
-          "nbitems": 10
+          "iconhash": "e56f4b151881741538c1532760b7c973",
+          "nbitems": 16,
+          "lastitem": "http://nitter.c-r-t.tk/EurekAlert/status/1658560448688533504#m"
         },
         {
           "url": "https://www.sciencemag.org/rss/current.xml",
@@ -2549,15 +2543,6 @@
           "nbitems": 10
         },
         {
-          "url": "https://feeds.feedburner.com/cyclingtipsblog/TJog?x=1",
-          "name": "CyclingTips",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
-        },
-        {
           "url": "https://www.bikeexif.com/feed",
           "name": "Bike EXIF",
           "type": "mixed",
@@ -3296,9 +3281,9 @@
           "type": "mixed",
           "limit": 220,
           "status": "off",
-          "iconhash": "",
+          "iconhash": "8a9c68ddc8a16755e874c8694bca4488",
           "nbitems": 10,
-          "lastitem": ""
+          "lastitem": "https://www.outsideonline.com/podcast/why-hold-climbing-gym-community/"
         },
         {
           "url": "https://feeds.megaphone.fm/heavyweight",
