@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-list=`jq '.[] | .[]' ../public/js/default-feeds.json | jq --raw-output '.[] | .[] .url' 2> /dev/null`
+read -e -p "Feeds file to check: " -i "../public/js/default-feeds.json" FEEDSFILE
+echo $FEEDSFILE
+
+list=`jq '.[] | .[]' $FEEDSFILE | jq --raw-output '.[] | .[] .url' 2> /dev/null`
 
 while IFS= read -r URL; do
 		STATUS=`curl -LIs $URL | head -n 1|cut -d$' ' -f2`
