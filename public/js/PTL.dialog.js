@@ -26,7 +26,7 @@ PTL.dialog = {
 
 			if ($dataStore.data('iconhash'))
 				$iconResetButton.append($('<img>').attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
-																								 'class' : 'favicon', 'title' : 'hash: ' + $dataStore.data('iconhash')}));
+																								 'class' : 'favicon'}));
 
       $iconResetButton.on('click', function() {
 				console.log('Icon reset!');
@@ -1311,7 +1311,7 @@ PTL.dialog = {
         {
           title: PTL.tr('Feed name (optional)'),
           element: 'input#feedNameInput',
-          intro: PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.'),
+          intro: '<h4>' + 'Name' + '</h4>' + PTL.tr('Name the feed of this website, if it is not informative enough ; leave blank to get the default feed title.') + '<h4>' + 'Feed Icon' + '</h4>' + "Reset the cached favicon and request a new one",
           position: 'left'
         },
         {
