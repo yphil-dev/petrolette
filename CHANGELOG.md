@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.7.0
+- Pétrolette now gets the specific icon from the feed, not just the one of the main website ; This is particularly useful for social media feeds, where the icon is different for each feed / user. If you use such "main site and not specific user's icon" feeds, read on.
+- New "Reset icon" button to request (and thus cache) a newer icon than the one referenced in the cache
+- Links in the feed item are now clickable (and abbreviated)
+- Small script to test each feed URL for any errors (like the feed simply doesn't exist anymore) in one command
+
+## Bugfixes
+- Don't remember, so probably not a lot
+- Removed some debug symbols
+
 ## v1.6.0
 - New `NODE_ENV` launch argument defining two environements: `production` and `development` #71d4a9e
 - Pétrolette is now installable in "mono-user" mode, where feeds are saved in one unique file on the server #546af06 (#122)
