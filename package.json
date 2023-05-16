@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "The news page that doesn't know you",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "private": true,
   "license": "GPL-3.0-only",
   "HTTP_PORT": 8000,
@@ -22,7 +22,7 @@
     "stop": "pm2 stop all",
     "show": "pm2 show petrolette",
     "logs": "pm2 logs petrolette",
-    "errors": "pm2 logs all --err",
+    "errors": "pm2 logs all --err --lines 50",
     "test": "mocha --timeout 30s",
     "coverage": "nyc npm test",
     "postinstall": "pm2 install pm2-logrotate"

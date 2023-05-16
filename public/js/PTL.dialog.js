@@ -26,7 +26,7 @@ PTL.dialog = {
 
 			if ($dataStore.data('iconhash'))
 				$iconResetButton.append($('<img>').attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
-																								 'class' : 'favicon'}));
+																								 'class' : 'favicon', 'title' : 'hash: ' + $dataStore.data('iconhash')}));
 
       $iconResetButton.on('click', function() {
 				console.log('Icon reset!');
