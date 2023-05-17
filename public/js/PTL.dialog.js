@@ -19,18 +19,22 @@ PTL.dialog = {
 						$iconResetButton = $dialog.find('button#iconResetButton'),
             $groupMenu = $dialog.find('select#feedTabSelect');
 
-			let iconResetNeeded = false;
-
+			let iconResetNeeded = false,
+					$iconResetButtonImage;
 			
 			console.log('iconhash', $dataStore.data('iconhash'));
 
-			if ($dataStore.data('iconhash'))
-				$iconResetButton.append($('<img>').attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
-																								 'class' : 'favicon'}));
-
+			if ($dataStore.data('iconhash')) {
+				$iconResetButtonImage = $('<img>')
+																.attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
+																			 'class' : 'favicon'});
+				$iconResetButton.append($iconResetButtonImage);
+			}
+			
       $iconResetButton.on('click', function() {
 				console.log('Icon reset!');
 				iconResetNeeded = true;
+				$iconResetButtonImage.attr('src', 'static/images/rss.gif');
 				// $dataStore.data('iconhash', '');
       });
 
