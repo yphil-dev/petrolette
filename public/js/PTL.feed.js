@@ -336,27 +336,27 @@ PTL.feed = {
 
             if (feedType != 'photo') {
 
-							const $mediaIcon = $('<i>'),
-										$mediaLink = $('<a>').attr('target', '_blank'),
-										mediaIcon = 'icon-' + mediaType;
+              const $mediaIcon = $('<i>'),
+                    $mediaLink = $('<a>').attr('target', '_blank'),
+                    mediaIcon = 'icon-' + mediaType;
 
-							$mediaLink
-								.attr({
-									'href': mediaUrl,
-									'target': '_blank',
-									'class': 'translate',
-									'data-title': 'Drag & drop this link in your player',
-									'title': PTL.tr('Drag & drop this link in your player')
-								})
-								.appendTo($itemDiv);
+              $mediaLink
+                .attr({
+                  'href': mediaUrl,
+                  'target': '_blank',
+                  'class': 'translate',
+                  'data-title': 'Drag & drop this link in your player',
+                  'title': PTL.tr('Drag & drop this link in your player')
+                })
+                .appendTo($itemDiv);
 
-							$mediaIcon
-								.attr('class', 'itemIcon')
-								.addClass(mediaIcon)
-								.appendTo($mediaLink);
+              $mediaIcon
+                .attr('class', 'itemIcon')
+                .addClass(mediaIcon)
+                .appendTo($mediaLink);
 
-						}
-						
+            }
+            
             if (feedType != 'text') {
 
               const mediaPlayer = document.createElement(mediaType);
@@ -380,7 +380,7 @@ PTL.feed = {
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', itemLink.replace('https://www.bitchute.com/embed', 'https://www.bitchute.com/video'))
-				  // .append(PTL.util.clickableLinks(item.title))
+          // .append(PTL.util.clickableLinks(item.title))
           .append(PTL.util.clickableLinks(item.title) || PTL.util.clickableLinks(PTL.util.sanitizeInput(item.description)));
 
         if (!mediaUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
@@ -560,7 +560,7 @@ PTL.feed = {
 
     let feedLastItem = $dataStore.data('lastitem'),
         feedIconHash = $dataStore.data('iconhash'),
-				feedIconUrl;
+        feedIconUrl;
 
     $feedBodyUl.css('border', '1px solid red');
 
@@ -590,8 +590,8 @@ PTL.feed = {
 
           const feedName = $dataStore.data('name') ? $dataStore.data('name') : fetchFeed.feedTitle;
 
-					if (fetchFeed.feedIcon) feedIconUrl = fetchFeed.feedIcon;
-						
+          if (fetchFeed.feedIcon) feedIconUrl = fetchFeed.feedIcon;
+            
           let $insecureIcon = $('<i>')
               .attr('class', 'icon-lock-open insecureIcon warning')
               .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
@@ -621,7 +621,7 @@ PTL.feed = {
           } else {
             $badge.fadeOut('slow');
           }
-					
+          
         }
       } catch (err) {
 
@@ -649,32 +649,33 @@ PTL.feed = {
 
     if (progress) progress.increment();
 
-		
+    
     if (feedIconHash && feedIconHash !== 'noicon') {
       $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
     } else if (feedIconUrl) {
       PTL.feed.fetchIcon(feedIconUrl)
         .then(hash => {
-					feedIconHash = false;
+          feedIconHash = false;
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs(true);
-					$favIcon.attr('src', 'favicons/' + hash + '.favicon');
+          $favIcon.attr('src', 'favicons/' + hash + '.favicon');
         })
         .catch(e => {
-					feedIconHash = true;
+          feedIconHash = true;
         });
     } else {
       PTL.feed.fetchIcon(feedHost)
         .then(hash => {
-					feedIconHash = false;
+          feedIconHash = false;
           $dataStore.data('iconhash', hash);
           PTL.tab.saveTabs(true);
-					$favIcon.attr('src', 'favicons/' + hash + '.favicon');
+          $favIcon.attr('src', 'favicons/' + hash + '.favicon');
         })
         .catch(e => {
-					feedIconHash = true;
+          feedIconHash = true;
         });
-		}
+    }
+    
   }
 
 };

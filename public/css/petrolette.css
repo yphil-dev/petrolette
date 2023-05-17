@@ -1523,6 +1523,10 @@ select#gallerySlideTransition {
   border-radius: 3px;
 }
 
+.nameFieldDiv {
+	align-items: flex-start;
+}
+
 #feedLimit,
 #gallerySpeedSlider,
 .ui-slider,

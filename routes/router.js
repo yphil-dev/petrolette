@@ -156,6 +156,10 @@ router.get('/about/javascript', function(req, res) {
   res.render('javascript');
 });
 
+router.get('/about/privacy-policy', function(req, res) {
+  res.render('privacy');
+});
+
 router.get('/', function(req, res) {
   res.render('index', {
     instanceType: req.instanceType,

@@ -8,7 +8,7 @@ PTL.dialog = {
   feedPrefs: function($button, isNewFeed) {
 
     $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {      
-			
+      
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),
@@ -16,31 +16,31 @@ PTL.dialog = {
             $feedTileDivA = $dataStore.parent().find('div.feedTitle a'),
             allGroups = PTL.tab.list('all'),
             $thisGroup = $feed.parent().parent(),
-						$iconResetButton = $dialog.find('button#iconResetButton'),
+            $iconResetButton = $dialog.find('button#iconResetButton'),
             $groupMenu = $dialog.find('select#feedTabSelect');
 
-			let iconResetNeeded = false,
-					$iconResetButtonImage;
-			
-			console.log('iconhash', $dataStore.data('iconhash'));
+      let iconResetNeeded = false,
+          $iconResetButtonImage;
+      
+      console.log('iconhash', $dataStore.data('iconhash'));
 
-			if ($dataStore.data('iconhash')) {
-				$iconResetButtonImage = $('<img>')
-																.attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
-																			 'class' : 'favicon'});
-				$iconResetButton.append($iconResetButtonImage);
-			}
-			
+      if ($dataStore.data('iconhash')) {
+        $iconResetButtonImage = $('<img>')
+          .attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
+                 'class' : 'faviconButton'});
+        $iconResetButton.append($iconResetButtonImage);
+      }
+      
       $iconResetButton.on('click', function() {
-				console.log('Icon reset!');
-				iconResetNeeded = true;
-				$iconResetButtonImage.attr('src', 'static/images/rss.gif');
-				// $dataStore.data('iconhash', '');
+        PTL.util.say(PTL.tr('The feed icon has been reset'), 'success', true);
+        iconResetNeeded = true;
+        $iconResetButtonImage.attr('src', 'static/images/rss.gif');
+        // $dataStore.data('iconhash', '');
       });
 
-			
+      
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
-			
+      
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
@@ -94,12 +94,12 @@ PTL.dialog = {
 
               $feedTileDivA.text(newName);
 
-							if (iconResetNeeded){
-								console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
-								$dataStore.data('iconhash', '');
-								console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
-							}
-							
+              if (iconResetNeeded){
+                console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
+                $dataStore.data('iconhash', '');
+                console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
+              }
+              
               $dataStore
                 .data('url', newUrl)
                 .data('name', newName)

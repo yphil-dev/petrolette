@@ -100,6 +100,8 @@ PTL.i18n.translations = {
 
   "Refresh the feed icon." : { fr: "Actualiser l'icône", ja: "フィードアイコンを更新します。", es: "Actualizar el icono." },
 
+  "The feed icon has been reset" : { fr: "L'icône du flux a été réinitialisée", ja: "フィードアイコンがリセットされました", es: "El icono de feed se ha restablecido" },
+	
   "Reset the feed's icon (see help for details)" : { fr: "Réinitialiser l'icône du flux (voir l'aide pour plus de détails)", ja: "クリックしてフィードのアイコンをリセットします (詳細はヘルプを参照してください)", es: "Restablecer el ícono de la fuente (Consulte la ayuda para obtener más detalles)" },
 	
   "A click on the Pétrolette logo puts the focus on the current tab" : { fr: "Un clic sur le logo Pétrolette met l'accent sur l'onglet en cours", ja: "Pétroletteのロゴをクリックすると、現在のタブに焦点が合わせる", es: "Un clic en el logotipo de Pétrolette pone el enfoque en la pestaña actual" },
