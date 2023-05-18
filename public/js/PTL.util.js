@@ -74,6 +74,9 @@ PTL.util = {
   isNV: function(xml) {
     return xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>');
   },
+  truncateStr: function(str, n) {
+		return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
+  },
   importNV: function(xml) {
 
     var xml2json = new PTL.util.XMLtoJSON(),
@@ -197,9 +200,10 @@ PTL.util = {
       return false;
     }
   },
-  sanitizeInput: function(i) {
-    var doc = new DOMParser().parseFromString(i, 'text/html');
-    return doc.body.textContent || "";
+  sanitizeInput: function(s) {
+		const doc = new DOMParser().parseFromString(s, 'text/html');
+		const str = doc.body.textContent.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim();
+		return str;
   },
   isValidJson: function(o) {
 

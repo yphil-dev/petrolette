@@ -17,27 +17,25 @@ PTL.dialog = {
             allGroups = PTL.tab.list('all'),
             $thisGroup = $feed.parent().parent(),
             $iconResetButton = $dialog.find('button#iconResetButton'),
-            $groupMenu = $dialog.find('select#feedTabSelect');
-
-      let iconResetNeeded = false,
-          $iconResetButtonImage;
+            $groupMenu = $dialog.find('select#feedTabSelect'),
+						$iconResetButtonImage = $('<img>')
+						.attr({'src' : 'static/images/rss.gif', 'class' : 'faviconButton'});          
       
-      console.log('iconhash', $dataStore.data('iconhash'));
+			$iconResetButton.append($iconResetButtonImage);
 
-      if ($dataStore.data('iconhash')) {
-        $iconResetButtonImage = $('<img>')
-          .attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
-                 'class' : 'faviconButton'});
-        $iconResetButton.append($iconResetButtonImage);
+      if ($dataStore.data('iconhash') && $dataStore.data('iconhash') !== 'noicon') {
+        $iconResetButtonImage.attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon'});
       }
       
       $iconResetButton.on('click', function() {
-        PTL.util.say(PTL.tr('The feed icon has been reset'), 'success', true);
-        iconResetNeeded = true;
-        $iconResetButtonImage.attr('src', 'static/images/rss.gif');
-        // $dataStore.data('iconhash', '');
-      });
+        PTL.util.say(PTL.tr('The feed icon has been reset'), 'success');
+        
+        console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
+        $dataStore.data('iconhash', '');
+        console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
 
+        $iconResetButtonImage.attr('src', 'static/images/rss.gif');
+      });
       
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
       
@@ -93,12 +91,6 @@ PTL.dialog = {
 
 
               $feedTileDivA.text(newName);
-
-              if (iconResetNeeded){
-                console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
-                $dataStore.data('iconhash', '');
-                console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
-              }
               
               $dataStore
                 .data('url', newUrl)
