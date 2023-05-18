@@ -667,7 +667,7 @@ PTL.feed = {
 			console.log('icon');
 			$favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
 		} else if (feedIconHash && feedIconHash == 'noicon') {
-			console.log('noicon');
+			// pass
 		} else {
 			const iconUrl = feedIconUrl || feedHost;
 			PTL.feed.fetchIcon(iconUrl)
