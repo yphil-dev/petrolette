@@ -376,7 +376,7 @@ PTL.feed = {
 
         const itemLink = item.link || item.enclosures[0].url;
 				
-				if (item.description && (item.title.slice(0, 15) == item.description.slice(0, 15)) && (item.title.slice(-3) == '...')) {
+				if (item.title && item.description && (item.title.slice(0, 15) == item.description.slice(0, 15)) && (item.title.slice(-3) == '...')) {
 					itemText = PTL.util.clickableLinks(PTL.util.sanitizeInput(PTL.util.truncateStr(item.description, 350)));
 				} else {
 					itemText = item.title;
