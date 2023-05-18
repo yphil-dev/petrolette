@@ -230,8 +230,6 @@ PTL.feed = {
         newItems++;
 
         const item = feedItems[key];
-
-				console.log('item: ', item);
 				
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
@@ -668,7 +666,7 @@ PTL.feed = {
 		if (feedIconHash && feedIconHash !== 'noicon') {
 			$favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
 		} else if (feedIconHash && feedIconHash == 'noicon') {
-			console.log('noicon');
+			// pass
 		} else {
 			const iconUrl = feedIconUrl || feedHost;
 			PTL.feed.fetchIcon(iconUrl)
