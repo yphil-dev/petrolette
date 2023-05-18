@@ -230,8 +230,6 @@ PTL.feed = {
         newItems++;
 
         const item = feedItems[key];
-
-				console.log('item: ', item);
 				
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
@@ -292,7 +290,6 @@ PTL.feed = {
 
         if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
           if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
-						console.log('item.image.url: ', item.image.url);
             imageUrl = $tempDom.find('span a').attr('href');
           }
         }
