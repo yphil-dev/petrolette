@@ -34,7 +34,7 @@
     "dompurify": "^3.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "favrat": "^0.4.6",
+    "favrat": "^0.4.8",
     "feedparser": "^2.2.10",
     "feedrat": "^0.4.12",
     "helmet": "^7.0.0",
