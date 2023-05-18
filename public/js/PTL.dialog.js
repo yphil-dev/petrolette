@@ -514,7 +514,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Suggestions'),
             title: PTL.tr('Suggestions'),
-            class: 'translate ui-state-success',
+            class: 'translate ui-state-highlight',
             click: function() {
               clearWindow(function() {
                 $('i.clearWindowSpinner').remove();
