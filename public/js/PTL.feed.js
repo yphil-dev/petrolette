@@ -230,6 +230,8 @@ PTL.feed = {
         newItems++;
 
         const item = feedItems[key];
+
+				console.log('item: ', item);
 				
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
@@ -282,12 +284,15 @@ PTL.feed = {
 
         const $tempDom = $('<null>').append($description);
 
+				// console.log('$description: ', $description);
+				
         if (item.image && typeof item.image.url !== 'undefined') {
           imageUrl = item.image.url;
         }
 
         if (!imageUrl && typeof $tempDom.find('span a').attr('href') !== 'undefined') {
           if (PTL.util.isImage($tempDom.find('span a').attr('href'))) {
+						console.log('item.image.url: ', item.image.url);
             imageUrl = $tempDom.find('span a').attr('href');
           }
         }
@@ -377,7 +382,7 @@ PTL.feed = {
 				if (item.title && item.description && (item.title.slice(0, 15) == item.description.slice(0, 15)) && (item.title.slice(-3) == '...')) {
 					itemText = PTL.util.clickableLinks(PTL.util.sanitizeInput(PTL.util.truncateStr(item.description, 350)));
 				} else {
-					itemText = item.title;
+					itemText = PTL.util.clickableLinks(item.title);
 				} 
 				
         $itemLink
