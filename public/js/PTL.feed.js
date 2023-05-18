@@ -664,7 +664,6 @@ PTL.feed = {
 		}
 
 		if (feedIconHash && feedIconHash !== 'noicon') {
-			console.log('icon');
 			$favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
 		} else if (feedIconHash && feedIconHash == 'noicon') {
 			// pass
