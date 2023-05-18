@@ -89,6 +89,7 @@ Direct your favorite browser to the local URL:
 ### Update
 
 ```sh
+git checkout server
 git pull
 npm install
 ```

@@ -8,7 +8,7 @@ PTL.dialog = {
   feedPrefs: function($button, isNewFeed) {
 
     $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {      
-			
+      
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),
@@ -16,27 +16,29 @@ PTL.dialog = {
             $feedTileDivA = $dataStore.parent().find('div.feedTitle a'),
             allGroups = PTL.tab.list('all'),
             $thisGroup = $feed.parent().parent(),
-						$iconResetButton = $dialog.find('button#iconResetButton'),
-            $groupMenu = $dialog.find('select#feedTabSelect');
+            $iconResetButton = $dialog.find('button#iconResetButton'),
+            $groupMenu = $dialog.find('select#feedTabSelect'),
+						$iconResetButtonImage = $('<img>')
+						.attr({'src' : 'static/images/rss.gif', 'class' : 'faviconButton'});          
+      
+			$iconResetButton.append($iconResetButtonImage);
 
-			let iconResetNeeded = false;
-
-			
-			console.log('iconhash', $dataStore.data('iconhash'));
-
-			if ($dataStore.data('iconhash'))
-				$iconResetButton.append($('<img>').attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon',
-																								 'class' : 'favicon'}));
-
+      if ($dataStore.data('iconhash') && $dataStore.data('iconhash') !== 'noicon') {
+        $iconResetButtonImage.attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon'});
+      }
+      
       $iconResetButton.on('click', function() {
-				console.log('Icon reset!');
-				iconResetNeeded = true;
-				// $dataStore.data('iconhash', '');
-      });
+        PTL.util.say(PTL.tr('The feed icon has been reset'), 'success');
+        
+        console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
+        $dataStore.data('iconhash', '');
+        console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
 
-			
+        $iconResetButtonImage.attr('src', 'static/images/rss.gif');
+      });
+      
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
-			
+      
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
@@ -89,13 +91,7 @@ PTL.dialog = {
 
 
               $feedTileDivA.text(newName);
-
-							if (iconResetNeeded){
-								console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
-								$dataStore.data('iconhash', '');
-								console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
-							}
-							
+              
               $dataStore
                 .data('url', newUrl)
                 .data('name', newName)
@@ -518,7 +514,7 @@ PTL.dialog = {
           {
             text: PTL.tr('Suggestions'),
             title: PTL.tr('Suggestions'),
-            class: 'translate',
+            class: 'translate ui-state-highlight',
             click: function() {
               clearWindow(function() {
                 $('i.clearWindowSpinner').remove();
