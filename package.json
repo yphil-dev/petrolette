@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "The news page that doesn't know you",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "private": true,
   "license": "GPL-3.0-only",
   "HTTP_PORT": 8000,
@@ -44,7 +44,7 @@
     "morgan": "^1.10.0",
     "mousetrap": "1.6.5",
     "node-fetch": "^2.6.7",
-    "npm": "^8.19.1",
+    "npm": "^9.6.6",
     "pm2": "^5.2.2",
     "remotestorage-widget": "^1.5.5",
     "remotestoragejs": "2.0.0-beta.3",
