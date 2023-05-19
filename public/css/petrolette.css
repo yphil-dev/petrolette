@@ -1488,6 +1488,10 @@ li.ui-tabs-tab {
   border: unset !important;
 }
 
+div.fancybox-caption__body a.ui-button.ui-corner-all {
+	  color: var(--color-button-text);
+}
+
 .introjs-button:hover,
 .ui-button:hover {
   background: var(--color-button-hover);
