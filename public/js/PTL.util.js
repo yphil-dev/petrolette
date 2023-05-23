@@ -202,7 +202,10 @@ PTL.util = {
   },
   sanitizeInput: function(s) {
 		const doc = new DOMParser().parseFromString(s, 'text/html');
-		const str = doc.body.textContent.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim();
+		const str = doc.body.textContent
+					.replace(/<br\s*\/?>/gi, ' ')
+					.replace(/\s+/g, ' ')
+					.trim();
 		return str;
   },
   isValidJson: function(o) {

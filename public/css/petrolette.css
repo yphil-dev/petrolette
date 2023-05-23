@@ -1049,6 +1049,7 @@ img.favicon {
 
 img.faviconButton {
 	max-width: 150px;
+  transition: width 2s, height 2s;
 }
 
 i.feedIcon {
@@ -1486,6 +1487,10 @@ li.ui-tabs-tab {
   background: var(--color-button-bg);
   color: var(--color-button-text);
   border: unset !important;
+}
+
+div.fancybox-caption__body a.ui-button.ui-corner-all {
+	  color: var(--color-button-text);
 }
 
 .introjs-button:hover,

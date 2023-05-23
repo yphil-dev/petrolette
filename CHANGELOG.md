@@ -5,10 +5,12 @@
 - New "Reset icon" button to request (and thus cache) a newer icon than the one referenced in the cache
 - Links in the feed item are now clickable (and abbreviated)
 - Small script to test each feed URL for any errors (like the feed simply doesn't exist anymore) in one command
+- New ([favrat](https://framagit.org/yphil/favrat)) possible feed icon type: `webm`
 
 ### Bugfixes
 - Don't remember, so probably not a lot
 - Removed some debug symbols
+- Small refactoring with a little help from AI
 
 ## v1.6.0
 - New `NODE_ENV` launch argument defining two environements: `production` and `development` #71d4a9e
