@@ -87,9 +87,6 @@ PTL.dialog = {
                   newName = DOMPurify.sanitize($(this).find('input#feedNameInput').val()),
                   newType = $('#feedTypeDiv :radio:checked').attr('id');
 
-              console.error('newName: (%s)', newName,);
-
-
               $feedTileDivA.text(newName);
               
               $dataStore
