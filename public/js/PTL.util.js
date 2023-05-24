@@ -8,16 +8,18 @@ PTL.util = {
       .find('.column').first();
   },
   clickableLinks: function(text) {
-		if (text) {
-		let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-			return text.replace(exp, '<object><a class="docLink" target:"_blank" href="$1">(' + PTL.tr('link') + ')</a></object>') || '';
+		if (!text) {
+			return '';
 		}
-		else {
-			return
-		}
+		
+		const linkRegex = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+		
+		return text.replace(linkRegex, (match, url) => {
+			const linkText = PTL.tr('link');
+			return `<object><a class="docLink" target="_blank" href="${url}">${linkText}</a></object>`;
+		});
 	},
   XMLtoJSON: function() {
-
     
     this.fromStr = function(xml, rstr) {
       var xmlDoc;
