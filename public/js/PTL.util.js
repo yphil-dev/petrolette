@@ -8,8 +8,13 @@ PTL.util = {
       .find('.column').first();
   },
   clickableLinks: function(text) {
+		if (text) {
 		let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-    return text.replace(exp, '<object><a class="docLink" target:"_blank" href="$1">(' + PTL.tr('link') + ')</a></object>');
+			return text.replace(exp, '<object><a class="docLink" target:"_blank" href="$1">(' + PTL.tr('link') + ')</a></object>') || '';
+		}
+		else {
+			return
+		}
 	},
   XMLtoJSON: function() {
 
