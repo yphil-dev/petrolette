@@ -19,7 +19,7 @@ console.error('### Pétrolette (re)START ## Version (%s)', pjson.version);
 
 const localFeedsFilePath = path.resolve(__dirname, '../petrolette.feeds');
 
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 router.use(sanitize);
 
@@ -101,26 +101,44 @@ router.post('/localfeeds', function(req, res) {
 
 router.use(morgan('combined'));
 
-router.get('/feed', function(req, res) {
 
-  feeder.getFeed(req.query.url, req.query.lastItem, function(error, feedItems, feedTitle, feedLink, lastItem, totalNewItems, feedIcon) {
+router.get('/feed', async function (req, res) {
+  try {
+    const { feedItems, feedLink, feedTitle, lastItem, totalNewItems, feedIcon } = await feeder.getFeed(req.query.url, req.query.lastItem);
 
-    if (feedItems && !res.headersSent) {
-      res.send({
-        feedItems: feedItems,
-        feedLink: feedLink,
-        feedTitle: feedTitle,
-        lastItem: lastItem,
-        totalNewItems: totalNewItems,
-				feedIcon: feedIcon
-      });
-
-    } else if (error && !res.headersSent) {
-      res.send({ error: error });
-    }
-
-  });
+    res.send({
+      feedItems,
+      feedLink,
+      feedTitle,
+      lastItem,
+      totalNewItems,
+      feedIcon
+    });
+  } catch (error) {
+    res.send({ error });
+  }
 });
+
+// router.get('/feed', function(req, res) {
+
+//   feeder.getFeed(req.query.url, req.query.lastItem, function(error, feedItems, feedTitle, feedLink, lastItem, totalNewItems, feedIcon) {
+
+//     if (feedItems && !res.headersSent) {
+//       res.send({
+//         feedItems: feedItems,
+//         feedLink: feedLink,
+//         feedTitle: feedTitle,
+//         lastItem: lastItem,
+//         totalNewItems: totalNewItems,
+// 				feedIcon: feedIcon
+//       });
+
+//     } else if (error && !res.headersSent) {
+//       res.send({ error: error });
+//     }
+
+//   });
+// });
 
 router.get('/robots.txt', function(req, res) {
   res.type('text/plain');
