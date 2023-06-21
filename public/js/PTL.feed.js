@@ -4,6 +4,8 @@ PTL.feed = {
 
   add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
 
+		console.log('lastitem!: ', lastitem);
+		
     const $feed = $('<li>')
           .attr('class', 'feed');
 
@@ -574,6 +576,7 @@ PTL.feed = {
       $refreshButton.addClass('spin');
 
       try {
+				console.log('feedLastItem: ', feedLastItem);
         let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
         if (fetchFeed.error) {

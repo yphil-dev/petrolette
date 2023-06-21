@@ -1105,6 +1105,43 @@ PTL.dialog = {
 
       const $dialog = $(this);
 
+			const assetsUrl = 'https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/',
+						petroleuses = {'1895-Crank_Drive_Motorcycle-500_New_Imperial_Twin.jpg':'1895-Crank Drive Motorcycle-500 New Imperial Twin',
+													 'Germany1920.jpg':'1920: Four women motorcycle racers in Germany, including Marjorie Cottle',
+													 'aid-ww1.webp':'August 1917: Woman dispatch rider for the A.I.D during WW1',
+													 'Shrimpton-Lambretta-1967.jpg':'Shrimpton-Lambretta, 1967',
+													 '1917.jpg':'1917',
+													 'Lambretta_pinups-03.jpg':'Lambretta pinups 03',
+													 'UK1938.jpg':'UK1938',
+													 'quadrophenia.jpg':'Steph & Jimmy, Quadrophenia, UK 1979',
+													 'quadrophenia2.jpg':'Steph & Jimmy, Quadrophenia, UK 1979',
+													 'quadrophenia3.jpg':'Steph & Jimmy, Quadrophenia, UK 1979',
+													 '23_September_1925-Photo_H.F.Davis.jpg':'23 September 1925-Photo H.F.Davis',
+													 'Le_Touquet-France.1921.jpg':'Le Touquet-France, 1921',
+													 'US-40s.jpg':'US, 1940',
+													 'Children-London1926.jpg':'Children in London, 1926',
+													 'Rally-1933.jpg':'Rally in Germany, 1933',
+													 'Wren_Dispatch_Riders-WWI.jpg':'Wren dispatch riders group, WWI'
+													};
+
+			let imagePetroleuse,
+					imagePetroleuseLegend;
+
+			function getRandomInt(min, max) {
+				min = Math.ceil(min);
+				max = Math.floor(max);
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			var petroleuse = Object.entries(petroleuses)[getRandomInt(0, Object.keys(petroleuses).length)];
+
+			for (let key in petroleuse) {
+				imagePetroleuse = key;
+				imagePetroleuseLegend = petroleuse[key];
+			}
+
+			console.log(petroleuse[0]);
+			
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
         width: PTL.util.isMobile() ? 'auto' : 430,
@@ -1132,6 +1169,13 @@ PTL.dialog = {
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
           });
+
+					$dialog
+						.find('#beggarImg')
+						.attr({'src': assetsUrl + petroleuse[0],
+									 'alt':petroleuse[1]});
+					$dialog
+						.find('span.imageLegend').text(petroleuse[1]);
 
         }
       });
