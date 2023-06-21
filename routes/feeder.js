@@ -39,69 +39,72 @@ function formatError(error) {
 
 }
 
-function getFeed(feedUrl, lastItem, callback) {
-  
-  fetch(feedUrl, {
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36',
-    'accept': 'text/html,application/xhtml+xml',
-    redirect: 'follow'
-  }).then(function(res) {
-
-    if (res.status != 200) {
-      // console.error('whoaaaa: %o (%s)', res.statusText, feedUrl);
-      callback(formatError({type: res.type, status: res.status, message: res.statusText}));
-    }
-      
-    var feedparser = new FeedParser();
-    var feedItems = [];
-    var charset = getParams(res.headers.get('content-type') || '').charset;
-    var responseStream = res.body;
-    responseStream = maybeTranslate(responseStream, charset);
-    responseStream.pipe(feedparser);
-
-    feedparser.on('error', function(error) {
-
-      callback(formatError(error));
-
-    }).on('readable', function() {
-
-      try {
-        var item = this.read();
-        if (item !== null) {
-          feedItems.push(item);
-        }
-      }
-      catch (error) {
-        callback(formatError(error));
-      }
-
-    }).on('end', function() {
-
-      if (feedItems.length === 0) {
-        callback(formatError({ type: 'Syntax', status: res.status, message: 'Feed OK, but empty' }));
-      }
-
-      var newLastItem;
-      var totalNewItems;
-      var i = 0;
-
-      feedItems.forEach(countItems);
-
-      function countItems(item) {
-        i++;
-        if (newLastItem == undefined) newLastItem = item.link;
-        if (item.link == lastItem) totalNewItems = i - 1;
-      }
-
-      if (totalNewItems == undefined) totalNewItems = i;
-
-      const meta = this.meta;
-			
-      return callback(null, feedItems, meta.title || feedUrl, meta.link || feedUrl, newLastItem, totalNewItems, meta.image.url || null);
-
+async function getFeed(feedUrl, lastItem) {
+  try {
+    const res = await fetch(feedUrl, {
+			headers: {
+				'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0'},
+			'compress': true,
+      'redirect': 'follow'
     });
 
-  }).catch((error) => {
-    callback(formatError({type: error.type, status: error.status, message: error.message}));
-  });
+    if (res.status != 200) {
+			console.error('AAAAAAH', res);
+      throw formatError({ type: res.type, status: res.status, message: res.statusText });
+    } else {
+			console.error('OK:', res);
+		}
+
+    const feedparser = new FeedParser();
+    const feedItems = [];
+    const charset = getParams(res.headers.get('content-type') || '').charset;
+    const responseStream = maybeTranslate(res.body, charset);
+    responseStream.pipe(feedparser);
+
+    return new Promise((resolve, reject) => {
+      feedparser.on('error', error => reject(formatError(error)))
+        .on('readable', function () {
+          try {
+            let item;
+            while (item = this.read()) {
+              feedItems.push(item);
+            }
+          } catch (error) {
+						console.error('AAAH', error);
+            reject(formatError(error));
+          }
+        })
+        .on('end', function () {
+          if (feedItems.length === 0) {
+            reject(formatError({ type: 'Syntax', status: res.status, message: 'Feed OK, but empty' }));
+          }
+
+          let newLastItem;
+          let totalNewItems;
+          let i = 0;
+          feedItems.forEach(countItems);
+
+          function countItems(item) {
+            i++;
+            if (newLastItem == undefined) newLastItem = item.link;
+            if (item.link == lastItem) totalNewItems = i - 1;
+          }
+
+          if (totalNewItems == undefined) totalNewItems = i;
+          const meta = this.meta;
+
+          resolve({
+            feedItems,
+            feedTitle: meta.title || feedUrl,
+            feedLink: meta.link || feedUrl,
+            newLastItem,
+            totalNewItems,
+            feedIcon: meta.image.url || null
+          });
+        });
+    });
+  } catch (error) {
+		console.error('AAAH', error);
+    throw formatError({ type: error.type, status: error.status, message: error.message });
+  }
 }

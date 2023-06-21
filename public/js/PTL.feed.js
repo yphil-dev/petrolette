@@ -361,7 +361,8 @@ PTL.feed = {
               const mediaPlayer = document.createElement(mediaType);
 
               mediaPlayer.classList.add(feedType);
-              mediaPlayer.controls = 'controls';
+              // mediaPlayer.controls = 'controls';
+              mediaPlayer.controlslist = 'play';
               mediaPlayer.src = mediaUrl;
               // mediaPlayer.type = mediaEncoding || '';
               mediaPlayer.preload = PTL.prefs.readConfig('mediaPreload');
