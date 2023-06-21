@@ -1166,10 +1166,6 @@ PTL.dialog = {
         ],
         open: function() {
 
-          $('.ui-widget-overlay').on('click', function() {
-            PTL.dialog.kill($dialog);
-          });
-
 					$dialog
 						.find('#beggarImg')
 						.attr({'src': assetsUrl + petroleuse[0],
@@ -1244,6 +1240,10 @@ PTL.dialog = {
           }
         ],
         open: function() {
+					
+          $('.ui-widget-overlay').on('click', function() {
+            PTL.dialog.kill($dialog);
+          });
 
           $dialog.find('#petroletteVersion').text(petroletteVersion);
           $dialog.find('#feedratVersion').text(feedratVersion);
