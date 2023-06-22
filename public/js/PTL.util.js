@@ -7,17 +7,34 @@ PTL.util = {
              .attr('href'))
       .find('.column').first();
   },
-  clickableLinks: function(text) {
+  clickableLinks: function(text, isReturnHtml) {
 		if (!text) {
 			return '';
 		}
 		
-		const linkRegex = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-		
+		const linkRegex = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)(?!\S)/gim;
+
 		return text.replace(linkRegex, (match, url) => {
 			const linkText = PTL.tr('link');
-			return `<object><a class="docLink" target="_blank" href="${url}">${linkText}</a></object>`;
+			if (isReturnHtml)
+				return `<a class="docLink" target="_blank" href="${url}">${linkText}</a>`;
+			else
+				return `(${url})`;
 		});
+	},
+	truncateStr: function(str, n) {
+		return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
+  },
+  sanitizeInput: function(s) {
+		const input = s.replace(/&lt;br\s*\/?&gt;/gi, ' ').replace(/<br\s*\/?>/gi, ' ');
+		const doc = new DOMParser().parseFromString(input, 'text/html').querySelector('html');
+		const str = doc.textContent
+          .replace(/&lt;br\s*\/?&gt;/gi, ' ')
+          .replace(/\s{2,}/g, ' ');
+		return str;
+  },
+	unescape: function (string) {
+		return new DOMParser().parseFromString(string,'text/html').querySelector('html').textContent;
 	},
   XMLtoJSON: function() {
     
@@ -80,9 +97,6 @@ PTL.util = {
   },
   isNV: function(xml) {
     return xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>');
-  },
-  truncateStr: function(str, n) {
-		return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
   },
   importNV: function(xml) {
 
@@ -206,14 +220,6 @@ PTL.util = {
     } catch (e) {
       return false;
     }
-  },
-  sanitizeInput: function(s) {
-		const doc = new DOMParser().parseFromString(s, 'text/html');
-		const str = doc.body.textContent
-					.replace(/<br\s*\/?>/gi, ' ')
-					.replace(/\s+/g, ' ')
-					.trim();
-		return str;
   },
   isValidJson: function(o) {
 
