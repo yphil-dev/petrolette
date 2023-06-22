@@ -3,8 +3,6 @@
 PTL.feed = {
 
   add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
-
-		console.log('lastitem!: ', lastitem);
 		
     const $feed = $('<li>')
           .attr('class', 'feed');
@@ -278,10 +276,6 @@ PTL.feed = {
         let itemText,
             imageSummary = '';
 
-        if (summary && typeof summary !== 'undefined') {
-          $feedItem.attr('title', pubDate + '\n--------------------------\n' + author + $summary.trim());
-        }
-
         const $tempDom = $('<null>').append($description);
 
 				// console.log('$description: ', $description);
@@ -378,11 +372,19 @@ PTL.feed = {
         }
 
         const itemLink = item.link || item.enclosures[0].url;
+
+
+        if (summary && typeof summary !== 'undefined') {
+          // $feedItem.attr('title', pubDate + '\n--------------------------\n' + author + summary.replace(/&lt;br\s*\/?&gt;/gi, ' ').replace(/<br\s*\/?>/gi, ' '));
+          $feedItem.attr('title', pubDate + '\n--------------------------\n' + author + PTL.util.clickableLinks(PTL.util.sanitizeInput(summary), false));
+        }
+
 				
 				if (item.title && item.description && (item.title.slice(0, 10) == item.description.slice(0, 10)) && (item.title.slice(-3) == '...')) {
-					itemText = PTL.util.clickableLinks(PTL.util.sanitizeInput(PTL.util.truncateStr(item.description, 350)));
+					itemText = PTL.util.clickableLinks(PTL.util.sanitizeInput(PTL.util.truncateStr(item.description, 300)), true);
+					
 				} else {
-					itemText = PTL.util.clickableLinks(item.title);
+					itemText = PTL.util.clickableLinks(item.title, true);
 				} 
 				
         $itemLink
@@ -395,7 +397,7 @@ PTL.feed = {
           $imageLink
             .attr('href', imageUrl)
             .attr('data-fancybox', 'gallery')
-            .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary.trim() + '">' + item.title + '</a>');
+            .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary + '">' + item.title + '</a>');
 
           const protocols = ['https://', 'http://', '//'];
 
@@ -576,7 +578,6 @@ PTL.feed = {
       $refreshButton.addClass('spin');
 
       try {
-				console.log('feedLastItem: ', feedLastItem);
         let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
 
         if (fetchFeed.error) {
