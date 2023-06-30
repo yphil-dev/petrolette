@@ -1110,6 +1110,7 @@ PTL.dialog = {
 													 'Germany1920.jpg':'1920: Four women motorcycle racers in Germany, including Marjorie Cottle',
 													 'aid-ww1.webp':'August 1917: Woman dispatch rider for the A.I.D during WW1',
 													 'Shrimpton-Lambretta-1967.jpg':'Shrimpton-Lambretta, 1967',
+													 'Kristen_the_Brave-pic_by_Kate_Disher-Quill.jpg':'Kristen the Brave - pic by Kate Disher - Quill, 2023',
 													 '1917.jpg':'1917',
 													 'Lambretta_pinups-03.jpg':'Lambretta pinups 03',
 													 'UK1938.jpg':'UK1938',
