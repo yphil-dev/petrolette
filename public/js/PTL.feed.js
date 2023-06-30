@@ -300,6 +300,7 @@ PTL.feed = {
         $tempDom.empty();
         // $summary.empty();
 
+				
         if (item['media:group'] && item['media:group']['media:content'] && item['media:group']['media:content'][0] && item['media:group']['media:content'][0]['@'] && item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
           mediaUrl = item['media:group']['media:content'][0]['@'].url;
           mediaType = item['media:group']['media:content'][0]['@'].type;
@@ -321,6 +322,8 @@ PTL.feed = {
             isInsecureLinks = true;
           }
 
+					// console.log('item: ', item.enclosures[0].url);
+
           if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3|\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
             mediaUrl = (item.enclosures[0].url) ? item.enclosures[0].url : null;
             mediaEncoding = (item.enclosures[0].type) ? item.enclosures[0].type : null;
@@ -329,7 +332,10 @@ PTL.feed = {
 
           if (mediaUrl && mediaType && mediaEncoding) {
 
+
             if (feedType != 'photo') {
+
+							console.log('YO: ', mediaUrl || mediaType || mediaEncoding, feedType);
 
               const $mediaIcon = $('<i>'),
                     $mediaLink = $('<a>').attr('target', '_blank'),
@@ -357,7 +363,7 @@ PTL.feed = {
               const mediaPlayer = document.createElement(mediaType);
 
               mediaPlayer.classList.add(feedType);
-              // mediaPlayer.controls = 'controls';
+              mediaPlayer.controls = 'controls';
               mediaPlayer.controlslist = 'play';
               mediaPlayer.src = mediaUrl;
               // mediaPlayer.type = mediaEncoding || '';
@@ -573,6 +579,24 @@ PTL.feed = {
 
     $feedBodyUl.css('border', '1px solid red');
 
+		async function fetchFeedData(feedUrl, feedLastItem) {
+			let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
+			if (fetchFeed.error) {
+				handleFeedError(fetchFeed.error, feedUrl);
+			} else {
+				handleFeedSuccess(fetchFeed);
+			}
+		}
+
+		function handleFeedError(error, feedUrl) {
+			$feedBody
+				.empty()
+				.append(PTL.feed.errorFeed(error, feedUrl))
+				.css('height', '');
+			$feedLink.addClass('danger');
+			$refreshButton.removeClass('spin');
+		}
+		
     if ($dataStore.data('status') == 'on') {
 
       $refreshButton.addClass('spin');

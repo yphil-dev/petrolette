@@ -106,4 +106,4 @@ npm test
 
 *Icon by yPhil*
 
-Brought to you by [yPhil](https://yphil.gitlab.io) Please consider ♥ [helping](https://liberapay.com/yPhil/donate) icon by yPhil ♫
+Brought to you by [yPhil](https://yphil.gitlab.io/blog) Please consider ♥ [helping](https://liberapay.com/yPhil/donate) icon by yPhil ♫
