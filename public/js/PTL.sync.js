@@ -61,48 +61,32 @@ PTL.sync = (function() {
 
       return widget.attach('syncBox');
     },
-    readSync:function() {
+    readSync: async function() {
+      let data;
 
       if (PTL.instanceType == 'monoUser') {
-        
-        $.get('localfeeds', 'text')
-          .then(function(data, err) {
-
-            try {
-              PTL.tab.populate(JSON.parse(data));
-            } catch (err) {
-              console.error('err: (%s)', err);
-            } 
-            
-          })
-          .fail(function(jqXHR, textStatus, errorThrown) {
-            console.log('feeds NOT read, using defs (%s)', JSON.stringify(jqXHR), JSON.stringify(textStatus), JSON.stringify(errorThrown));
-            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-          });
-        
+        try {
+          data = await $.get('localfeeds', 'text');
+        } catch (err) {
+          console.error('err: (%s)', err);
+          data = PTL.prefs.readConfig('feeds');
+        }
       } else {
-        
-        remoteStorage.petrolette.read()
-          .then((data) => {
+        try {
+          data = await remoteStorage.petrolette.read();
+          if (!PTL.util.isValidPTLFile(JSON.parse(data))) {
+            throw new Error('Invalid PTL file');
+          }
+        } catch (err) {
+          console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults', err));
+          data = PTL.prefs.readConfig('feeds');
+        }
+      }
 
-            if (PTL.util.isValidPTLFile(JSON.parse(data))) {
-              
-              PTL.tab.populate(JSON.parse(data));
-
-            } else {
-
-              console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults'));
-              PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-
-            }
-
-          })
-          .catch((err) => {
-
-            PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
-            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-
-          });
+      try {
+        PTL.tab.populate(JSON.parse(data));
+      } catch (err) {
+        console.error('Failed to parse data: (%s)', err);
       }
     },
     writeSync:function(feeds) {

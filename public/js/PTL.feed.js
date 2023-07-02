@@ -3,7 +3,7 @@
 PTL.feed = {
 
   add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
-		
+    
     const $feed = $('<li>')
           .attr('class', 'feed');
 
@@ -230,7 +230,7 @@ PTL.feed = {
         newItems++;
 
         const item = feedItems[key];
-				
+        
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
         const $description = $.parseHTML(item.description),
@@ -239,47 +239,30 @@ PTL.feed = {
         let summary = '',
             imageUrl, mediaType, mediaEncoding, mediaUrl, pubDate;
 
-        if (item.pubDate && typeof item.pubDate !== 'undefined') {
-          pubDate = PTL.util.dateFormat(item.pubDate);
-        } else {
-          pubDate = '';
-        }
+        pubDate = item.pubDate ? PTL.util.dateFormat(item.pubDate) : '';
+        summary = item.summary || item.description || PTL.tr('(no summary)');
 
-        if (item.summary && typeof item.summary !== 'undefined') {
-          summary = item.summary;
+        if (item['media:group'] && item['media:group']['media:description']) {
+          summary = item['media:group']['media:description']["#"];
         }
-
-        if (item.description && typeof item.description !== 'undefined') {
-          summary = item.description;
-        }
-
-        if (item['media:group']) {
-          if (item['media:group']['media:description']) {
-            summary = item['media:group']['media:description']["#"];
-          }
-        }
-
-        if (!summary) {
-          summary = PTL.tr('(no summary)');
-        }
-
+        
         const $imageLink = $('<a>').attr('target', '_blank').attr('class', 'imageLink'),
               $itemLink = $('<a>').attr('target', '_blank').attr('class', 'itemLink'),
               $commentsLink = $('<a>').attr('target', '_blank').attr('class', 'commentsLink'),
               $commentsIcon = $('<i>'),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
               $feedItem = $('<li>').attr('class', 'feedItem'),
-							$image = $('<img>'),
+              $image = $('<img>'),
               author = (item.author) ? '(' + item.author + ') ' : '',
-							$summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text();
+              $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text();
 
         let itemText,
             imageSummary = '';
 
         const $tempDom = $('<null>').append($description);
 
-				// console.log('$description: ', $description);
-				
+        // console.log('$description: ', $description);
+        
         if (item.image && typeof item.image.url !== 'undefined') {
           imageUrl = item.image.url;
         }
@@ -300,19 +283,19 @@ PTL.feed = {
         $tempDom.empty();
         // $summary.empty();
 
-				
+        
         if (item['media:group']?.['media:content']?.[0]?.['@']?.medium === 'video') {
-					mediaUrl = item['media:group']['media:content'][0]['@'].url;
-					mediaType = item['media:group']['media:content'][0]['@'].type;
-				}
+          mediaUrl = item['media:group']['media:content'][0]['@'].url;
+          mediaType = item['media:group']['media:content'][0]['@'].type;
+        }
 
         if (item.enclosures?.[0]?.url) {
 
 
-					const url = item.enclosures?.[0]?.url;
-					if (url?.match(/(\.jpg|\.png|\.gif|\.jpeg)/)) {
-						imageUrl = url;
-					}
+          const url = item.enclosures?.[0]?.url;
+          if (url?.match(/(\.jpg|\.png|\.gif|\.jpeg)/)) {
+            imageUrl = url;
+          }
 
           if (imgTypes.indexOf(item.enclosures[0].type) > -1) {
             imageUrl = item.enclosures[0].url;
@@ -322,57 +305,45 @@ PTL.feed = {
             isInsecureLinks = true;
           }
 
-					// console.log('item: ', item.enclosures[0].url);
+          // console.log('item: ', item.enclosures[0].url);
 
-          if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3|\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
-            mediaUrl = (item.enclosures[0].url) ? item.enclosures[0].url : null;
-            mediaEncoding = (item.enclosures[0].type) ? item.enclosures[0].type : null;
-            mediaType = (mediaEncoding) ? mediaEncoding.substring(0, mediaEncoding.indexOf('/')) : null;
-          }
+          if (item.enclosures && item.enclosures[0] && item.enclosures[0].url) {
+            const url = item.enclosures[0].url;
+            const type = item.enclosures[0].type;
 
-          if (mediaUrl && mediaType && mediaEncoding) {
-
-
-            if (feedType != 'photo') {
-
-							console.log('YO: ', mediaUrl || mediaType || mediaEncoding, feedType);
-
-              const $mediaIcon = $('<i>'),
-                    $mediaLink = $('<a>').attr('target', '_blank'),
-                    mediaIcon = 'icon-' + mediaType;
-
-              $mediaLink
-                .attr({
-                  'href': mediaUrl,
-                  'target': '_blank',
-                  'class': 'translate',
-                  'data-title': 'Drag & drop this link in your player',
-                  'title': PTL.tr('Drag & drop this link in your player')
-                })
-                .appendTo($itemDiv);
-
-              $mediaIcon
-                .attr('class', 'itemIcon')
-                .addClass(mediaIcon)
-                .appendTo($mediaLink);
-
+            if (url.match(/(\.ogg|\.mp3|\.mp4|\.webm)/) && url.startsWith('https')) {
+              mediaUrl = url;
+              mediaEncoding = type;
+              mediaType = type ? type.substring(0, type.indexOf('/')) : null;
             }
             
-            if (feedType != 'text') {
+          } 
 
-              const mediaPlayer = document.createElement(mediaType);
+          if (mediaUrl && mediaType && mediaEncoding) {
+            if (feedType != 'photo') {
+              const $mediaLink = $('<a>').attr({
+                'href': mediaUrl,
+                'target': '_blank',
+                'class': 'translate',
+                'data-title': 'Drag & drop this link in your player',
+                'title': PTL.tr('Drag & drop this link in your player')
+              }).appendTo($itemDiv);
 
-              mediaPlayer.classList.add(feedType);
-              mediaPlayer.controls = 'controls';
-              mediaPlayer.controlslist = 'play';
-              mediaPlayer.src = mediaUrl;
-              // mediaPlayer.type = mediaEncoding || '';
-              mediaPlayer.preload = PTL.prefs.readConfig('mediaPreload');
-
-              $itemDiv.append(mediaPlayer);
-
+              $('<i>').attr('class', 'itemIcon icon-' + mediaType).appendTo($mediaLink);
             }
 
+            if (feedType != 'text') {
+              const mediaPlayer = document.createElement(mediaType);
+              Object.assign(mediaPlayer, {
+                classList: feedType,
+                controls: 'controls',
+                controlslist: 'play',
+                src: mediaUrl,
+                preload: PTL.prefs.readConfig('mediaPreload')
+              });
+
+              $itemDiv.append(mediaPlayer);
+            }
           }
 
         }
@@ -380,62 +351,44 @@ PTL.feed = {
         const itemLink = item.link || item.enclosures[0].url;
 
 
-        if (summary && typeof summary !== 'undefined') {
-          // $feedItem.attr('title', pubDate + '\n--------------------------\n' + author + summary.replace(/&lt;br\s*\/?&gt;/gi, ' ').replace(/<br\s*\/?>/gi, ' '));
-          $feedItem.attr('title', pubDate + '\n--------------------------\n' + author + PTL.util.clickableLinks(PTL.util.sanitizeInput(summary), false));
-        }
-
-				
-				if (item.title && item.description && (item.title.slice(0, 10) == item.description.slice(0, 10)) && (item.title.slice(-3) == '...')) {
-					itemText = PTL.util.clickableLinks(PTL.util.sanitizeInput(PTL.util.truncateStr(item.description, 300)), true);
-					
-				} else {
-					itemText = PTL.util.clickableLinks(item.title, true);
-				} 
-				
+        $feedItem.attr('title', summary ? pubDate + '\n--------------------------\n' + author + PTL.util.clickableLinks(PTL.util.sanitizeInput(summary), false) : $feedItem.attr('title'));
+        
+        const hasMatchingTitleAndDescription = item.title && item.description && item.title.startsWith(item.description.slice(0, 10)) && item.title.endsWith('...');
+        itemText = PTL.util.clickableLinks(hasMatchingTitleAndDescription ? PTL.util.sanitizeInput(PTL.util.truncateStr(item.description, 300)) : item.title, true); 
+        
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', itemLink.replace('https://www.bitchute.com/embed', 'https://www.bitchute.com/video'))
           .append(itemText);
 
-        if (!mediaUrl && imageUrl && typeof imageUrl !== 'undefined' && !imageUrl.includes('pixel')) {
+        if (!mediaUrl && imageUrl && !imageUrl.includes('pixel')) {
+          $imageLink.attr({
+            'href': imageUrl,
+            'data-fancybox': 'gallery',
+            'data-caption': `<a href="${item.link}" class="ui-button ui-corner-all" title="${$summary}">${item.title}</a>`
+          });
 
-          $imageLink
-            .attr('href', imageUrl)
-            .attr('data-fancybox', 'gallery')
-            .attr('data-caption', '<a href="' + item.link + '" class="ui-button ui-corner-all" title="' + $summary + '">' + item.title + '</a>');
+          imageUrl = ['https://', 'http://', '//'].some(p => imageUrl.startsWith(p)) ? imageUrl : feedHost + '/' + imageUrl;
 
-          const protocols = ['https://', 'http://', '//'];
-
-          let isAbsolute = protocols.some(p => imageUrl.startsWith(p));
-
-          if (!isAbsolute) imageUrl = feedHost + '/' + imageUrl;
-
-          $image
-            .attr('src', 'static/images/loading.gif')
-            .attr('data-srcset', imageUrl.replace('http://', 'https://'))
-            .attr('srcset', 'static/images/loading.gif')
-            .attr('title', imageSummary ? imageSummary.trim() : $summary.trim())
-            .attr('alt', imageSummary ? imageSummary.trim() : $summary.trim())
-            .attr('class', 'ptl-img responsively-lazy')
-            .attr('onerror', "this.style.display='none'")
-            .appendTo($imageLink);
-
+          $image.attr({
+            'src': 'static/images/loading.gif',
+            'data-srcset': imageUrl.replace('http://', 'https://'),
+            'srcset': 'static/images/loading.gif',
+            'title': imageSummary ? imageSummary.trim() : $summary.trim(),
+            'alt': imageSummary ? imageSummary.trim() : $summary.trim(),
+            'class': 'ptl-img responsively-lazy',
+            'onerror': "this.style.display='none'"
+          }).appendTo($imageLink);
         }
 
         if (item.comments) {
-          $commentsIcon
-            .attr('class', 'itemIcon icon-comments')
-            .appendTo($commentsLink);
-
-          $commentsLink
-            .attr('href', item.comments)
-            .appendTo($itemDiv);
+          $commentsIcon.attr('class', 'itemIcon icon-comments').appendTo($commentsLink);
+          $commentsLink.attr('href', item.comments).appendTo($itemDiv);
         }
 
-        if ($image && feedType == 'photo') $image.addClass('full');
-        if (feedType !== 'text') $imageLink.appendTo($itemDiv);
-
+        $image && feedType == 'photo' && $image.addClass('full');
+        feedType !== 'text' && $imageLink.appendTo($itemDiv);
+        
         $itemLink.appendTo($itemDiv);
         $itemDiv.appendTo($feedItem);
         $feedItem.appendTo($feedBodyUl);
@@ -579,24 +532,24 @@ PTL.feed = {
 
     $feedBodyUl.css('border', '1px solid red');
 
-		async function fetchFeedData(feedUrl, feedLastItem) {
-			let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
-			if (fetchFeed.error) {
-				handleFeedError(fetchFeed.error, feedUrl);
-			} else {
-				handleFeedSuccess(fetchFeed);
-			}
-		}
+    async function fetchFeedData(feedUrl, feedLastItem) {
+      let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
+      if (fetchFeed.error) {
+        handleFeedError(fetchFeed.error, feedUrl);
+      } else {
+        handleFeedSuccess(fetchFeed);
+      }
+    }
 
-		function handleFeedError(error, feedUrl) {
-			$feedBody
-				.empty()
-				.append(PTL.feed.errorFeed(error, feedUrl))
-				.css('height', '');
-			$feedLink.addClass('danger');
-			$refreshButton.removeClass('spin');
-		}
-		
+    function handleFeedError(error, feedUrl) {
+      $feedBody
+        .empty()
+        .append(PTL.feed.errorFeed(error, feedUrl))
+        .css('height', '');
+      $feedLink.addClass('danger');
+      $refreshButton.removeClass('spin');
+    }
+    
     if ($dataStore.data('status') == 'on') {
 
       $refreshButton.addClass('spin');
@@ -682,28 +635,28 @@ PTL.feed = {
 
     if (progress) progress.increment();
     
-		function updateFavIcon(hash) {
-			feedIconHash = false;
-			$dataStore.data('iconhash', hash);
-			PTL.tab.saveTabs(true);
-			$favIcon.attr('src', 'favicons/' + hash + '.favicon');
-		}
+    function updateFavIcon(hash) {
+      feedIconHash = false;
+      $dataStore.data('iconhash', hash);
+      PTL.tab.saveTabs(true);
+      $favIcon.attr('src', 'favicons/' + hash + '.favicon');
+    }
 
-		function handleFetchIconError(e) {
-			$dataStore.data('iconhash', 'noicon');
-			PTL.tab.saveTabs(true);
-		}
+    function handleFetchIconError(e) {
+      $dataStore.data('iconhash', 'noicon');
+      PTL.tab.saveTabs(true);
+    }
 
-		if (feedIconHash && feedIconHash !== 'noicon') {
-			$favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
-		} else if (feedIconHash && feedIconHash == 'noicon') {
-			// pass
-		} else {
-			const iconUrl = feedIconUrl || feedHost;
-			PTL.feed.fetchIcon(iconUrl)
-				.then(updateFavIcon)
-				.catch(handleFetchIconError);
-		}
+    if (feedIconHash && feedIconHash !== 'noicon') {
+      $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
+    } else if (feedIconHash && feedIconHash == 'noicon') {
+      // pass
+    } else {
+      const iconUrl = feedIconUrl || feedHost;
+      PTL.feed.fetchIcon(iconUrl)
+        .then(updateFavIcon)
+        .catch(handleFetchIconError);
+    }
     
   }
 
