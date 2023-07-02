@@ -1121,7 +1121,7 @@ PTL.dialog = {
 													 'Le_Touquet-France.1921.jpg':'Le Touquet-France, 1921',
 													 'US-40s.jpg':'US, 1940',
 													 'Children-London1926.jpg':'Children in London, 1926',
-													 'Rally-1933.jpg':'Rally in Germany, 1933',
+													 'Rally-1933.jpg':'Scottish Six Days Motorcycle Trial, 1933',
 													 'Wren_Dispatch_Riders-WWI.jpg':'Wren dispatch riders group, WWI'
 													};
 
