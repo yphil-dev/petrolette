@@ -7,8 +7,8 @@ PTL.dialog = {
   },
   feedPrefs: function($button, isNewFeed) {
 
-    $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {      
-      
+    $('div#ptlDialogs').load('static/templates/dialogs.html #feedPrefsDialog', function() {
+
       const $dialog = $(this),
             $dataStore = $button.parent().parent(),
             $feed = $dataStore.parent().parent(),
@@ -18,27 +18,27 @@ PTL.dialog = {
             $thisGroup = $feed.parent().parent(),
             $iconResetButton = $dialog.find('button#iconResetButton'),
             $groupMenu = $dialog.find('select#feedTabSelect'),
-						$iconResetButtonImage = $('<img>')
-						.attr({'src' : 'static/images/rss.gif', 'class' : 'faviconButton'});          
-      
-			$iconResetButton.append($iconResetButtonImage);
+            $iconResetButtonImage = $('<img>')
+            .attr({'src' : 'static/images/rss.gif', 'class' : 'faviconButton'});
+
+      $iconResetButton.append($iconResetButtonImage);
 
       if ($dataStore.data('iconhash') && $dataStore.data('iconhash') !== 'noicon') {
         $iconResetButtonImage.attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon'});
       }
-      
+
       $iconResetButton.on('click', function() {
         PTL.util.say(PTL.tr('The feed icon has been reset'), 'success');
-        
+
         console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
         $dataStore.data('iconhash', '');
         console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
 
         $iconResetButtonImage.attr('src', 'static/images/rss.gif');
       });
-      
+
       $('.help-rss').attr('href', 'https://' + PTL.language + '.wikipedia.org/wiki/RSS');
-      
+
       $dialog.dialog({
         title: isNewFeed ? PTL.tr('New feed') : PTL.tr('Feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
@@ -88,12 +88,12 @@ PTL.dialog = {
                   newType = $('#feedTypeDiv :radio:checked').attr('id');
 
               $feedTileDivA.text(newName);
-              
+
               $dataStore
                 .data('url', newUrl)
                 .data('name', newName)
                 .data('type', newType);
-              
+
               if ($('input[name=killFeedCheckbox]:checked').val() === 'on') {
                 $feed.hide('fade', 250, function() {
                   $feed.remove();
@@ -397,24 +397,24 @@ PTL.dialog = {
   feedsListItem: function(feed) {
 
     let feedName = (feed.name == 'none') ? feed.url : feed.name;
-    
+
     let $feedLi = $('<li>')
         .attr('class', 'flexBox feedLi');
-    
+
     let $imageDiv = $('<div>')
         .attr('class', 'suggestionListFavicon shrink')
         .append($('<img>')
                 .attr({'src': 'favicons/' + feed.iconhash + '.favicon',
                        onerror: "this.src='static/images/rss.gif';",
                        'class': 'favicon'}))
-        .appendTo($feedLi);  
+        .appendTo($feedLi);
 
     let $linkDiv = $('<div>')
         .attr('class', 'suggestionListLink grow')
         .append($('<a>')
                 .attr({'class': 'docLink', 'href': feed.url})
                 .text(feedName))
-        .appendTo($feedLi);  
+        .appendTo($feedLi);
 
     let $button = $('<button>')
         .attr('class', 'suggestionListButton')
@@ -424,15 +424,15 @@ PTL.dialog = {
         })
         .append($('<i>')
                 .attr({'class': 'icon-plus', 'title': 'Add ' + feedName}))
-        .appendTo($feedLi);  
+        .appendTo($feedLi);
 
     return $feedLi;
-    
+
   },
   suggestionList: function(tabs, $dialog) {
 
     const $masterList = $('<ul>').attr('class', 'suggestionListFavicon');
-    
+
     tabs.forEach(function(tab) {
 
       if (tab.name == 'rename me') tab.name = 'General';
@@ -468,10 +468,10 @@ PTL.dialog = {
                           .slideDown('fast');
                       }
 
-                      
-                    }));                
+
+                    }));
       $.each(tab.columns, function(i, col) {
-        
+
         $.each(col, function(i, feed) {
           $feedsGroupLi.append(PTL.dialog.feedsListItem(feed));
         });
@@ -479,7 +479,7 @@ PTL.dialog = {
       });
 
       $feedsGroupLi.appendTo($tabUl);
-      
+
     });
 
     return $masterList;
@@ -502,7 +502,7 @@ PTL.dialog = {
           .append(PTL.dialog.suggestionList(PTL.prefs.getDefaultFeeds(), $dialog));
         callback();
       }
-      
+
       $dialog.dialog({
         title: PTL.tr('New feed'),
         width: PTL.util.isMobile() ? 'auto' : 630,
@@ -546,7 +546,7 @@ PTL.dialog = {
           $dialog.find("form").on("submit", function(e) {
             e.preventDefault();
           });
-          
+
           $('.helpTourDialogItem')
             .append($('<i>')
                     .attr('class', 'icon-help helpIcon')
@@ -560,7 +560,7 @@ PTL.dialog = {
           });
 
           $addButton.click(function(e) {
-            
+
             e.preventDefault();
 
             let feedUrl = DOMPurify.sanitize($feedAddInput.val());;
@@ -630,7 +630,7 @@ PTL.dialog = {
               }
             });
           });
-          
+
           if (url) $addButton.click();
 
         }
@@ -1105,44 +1105,32 @@ PTL.dialog = {
 
       const $dialog = $(this);
 
-			const assetsUrl = 'https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/',
-						petroleuses = {'1895-Crank_Drive_Motorcycle-500_New_Imperial_Twin.jpg':'1895-Crank Drive Motorcycle-500 New Imperial Twin',
-													 'Germany1920.jpg':'1920: Four women motorcycle racers in Germany, including Marjorie Cottle',
-													 'aid-ww1.webp':'August 1917: Woman dispatch rider for the A.I.D during WW1',
-													 'Shrimpton-Lambretta-1967.jpg':'Shrimpton-Lambretta, 1967',
-													 'Kristen_the_Brave-pic_by_Kate_Disher-Quill.jpg':'Kristen the Brave - pic by Kate Disher - Quill, 2023',
-													 '1917.jpg':'1917',
-													 'Lambretta_pinups-03.jpg':'Lambretta pinups 03',
-													 'UK1938.jpg':'UK1938',
-													 'quadrophenia.jpg':'Steph & Jimmy, Quadrophenia, UK 1979',
-													 'quadrophenia2.jpg':'Steph & Jimmy, Quadrophenia, UK 1979',
-													 'quadrophenia3.jpg':'Steph & Jimmy, Quadrophenia, UK 1979',
-													 '23_September_1925-Photo_H.F.Davis.jpg':'23 September 1925-Photo H.F.Davis',
-													 'Le_Touquet-France.1921.jpg':'Le Touquet-France, 1921',
-													 'US-40s.jpg':'US, 1940',
-													 'Children-London1926.jpg':'Children in London, 1926',
-													 'Rally-1933.jpg':'Scottish Six Days Motorcycle Trial, 1933',
-													 'Wren_Dispatch_Riders-WWI.jpg':'Wren dispatch riders group, WWI'
-													};
+        const assetsUrl = 'https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/',
+              petroleuses = {
+                  'mobilohm-apps-x-card.png':'MobilOhm Collection',
+                  'UK1938.jpg':'UK1938',
+                  'Rally-1933.jpg':'Scottish Six Days Motorcycle Trial, 1933',
+                  'Wren_Dispatch_Riders-WWI.jpg':'Wren dispatch riders group, WWI'
+              };
 
-			let imagePetroleuse,
-					imagePetroleuseLegend;
+      let imagePetroleuse,
+          imagePetroleuseLegend;
 
-			function getRandomInt(min, max) {
-				min = Math.ceil(min);
-				max = Math.floor(max);
-				return Math.floor(Math.random() * (max - min + 1)) + min;
-			}
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
 
-			var petroleuse = Object.entries(petroleuses)[getRandomInt(0, Object.keys(petroleuses).length)];
+      var petroleuse = Object.entries(petroleuses)[getRandomInt(0, Object.keys(petroleuses).length)];
 
-			for (let key in petroleuse) {
-				imagePetroleuse = key;
-				imagePetroleuseLegend = petroleuse[key];
-			}
+      for (let key in petroleuse) {
+        imagePetroleuse = key;
+        imagePetroleuseLegend = petroleuse[key];
+      }
 
-			console.log(petroleuse[0]);
-			
+      console.log(petroleuse[0]);
+
       $dialog.dialog({
         title: PTL.tr('Pétrolette needs you'),
         width: PTL.util.isMobile() ? 'auto' : 430,
@@ -1167,12 +1155,12 @@ PTL.dialog = {
         ],
         open: function() {
 
-					$dialog
-						.find('#beggarImg')
-						.attr({'src': assetsUrl + petroleuse[0],
-									 'alt':petroleuse[1]});
-					$dialog
-						.find('span.imageLegend').text(petroleuse[1]);
+          $dialog
+            .find('#beggarImg')
+            .attr({'src': assetsUrl + petroleuse[0],
+                   'alt':petroleuse[1]});
+          $dialog
+            .find('span.imageLegend').text(petroleuse[1]);
 
         }
       });
@@ -1241,7 +1229,7 @@ PTL.dialog = {
           }
         ],
         open: function() {
-					
+
           $('.ui-widget-overlay').on('click', function() {
             PTL.dialog.kill($dialog);
           });
@@ -1453,7 +1441,7 @@ PTL.dialog = {
     if (step) {
 
       console.log("step:", step);
-      
+
       if (type === 'feedPrefs') {
         PTL.sideMenu('close');
         ui.exit();
