@@ -40,11 +40,11 @@ function formatError(error) {
 }
 
 function getFeed(feedUrl, lastItem, callback) {
-  
+
   fetch(feedUrl, {
-			headers: {
-				'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0'},
-			'compress': true,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0'},
+      'compress': true,
       'redirect': 'follow'
   }).then(function(res) {
 
@@ -52,7 +52,7 @@ function getFeed(feedUrl, lastItem, callback) {
       // console.error('whoaaaa: %o (%s)', res.statusText, feedUrl);
       callback(formatError({type: res.type, status: res.status, message: res.statusText}));
     }
-      
+
     var feedparser = new FeedParser();
     var feedItems = [];
     var charset = getParams(res.headers.get('content-type') || '').charset;
@@ -78,9 +78,9 @@ function getFeed(feedUrl, lastItem, callback) {
 
     }).on('end', function() {
 
-      if (feedItems.length === 0) {
-        callback(formatError({ type: 'Syntax', status: res.status, message: 'Feed OK, but empty' }));
-      }
+      // if (feedItems.length === 0) {
+      //   callback(formatError({ type: 'Syntax', status: res.status, message: 'Feed OK, but empty' }));
+      // }
 
       var newLastItem;
       var totalNewItems;
@@ -97,7 +97,7 @@ function getFeed(feedUrl, lastItem, callback) {
       if (totalNewItems == undefined) totalNewItems = i;
 
       const meta = this.meta;
-			
+
       return callback(null, feedItems, meta.title || feedUrl, meta.link || feedUrl, newLastItem, totalNewItems, meta.image.url || null);
 
     });
