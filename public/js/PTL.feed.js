@@ -3,7 +3,7 @@
 PTL.feed = {
 
   add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
-		
+
     const $feed = $('<li>')
           .attr('class', 'feed');
 
@@ -230,7 +230,7 @@ PTL.feed = {
         newItems++;
 
         const item = feedItems[key];
-				
+
         if (nbItems > 0 && newItems -1 == nbItems) break;
 
         const $description = $.parseHTML(item.description),
@@ -269,17 +269,17 @@ PTL.feed = {
               $commentsIcon = $('<i>'),
               $itemDiv = $('<div>').attr('class', 'itemDiv'),
               $feedItem = $('<li>').attr('class', 'feedItem'),
-							$image = $('<img>'),
+              $image = $('<img>'),
               author = (item.author) ? '(' + item.author + ') ' : '',
-							$summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text();
+              $summary = $('<null>').append(PTL.util.sanitizeInput(summary)).text();
 
         let itemText,
             imageSummary = '';
 
         const $tempDom = $('<null>').append($description);
 
-				// console.log('$description: ', $description);
-				
+        // console.log('$description: ', $description);
+
         if (item.image && typeof item.image.url !== 'undefined') {
           imageUrl = item.image.url;
         }
@@ -300,7 +300,7 @@ PTL.feed = {
         $tempDom.empty();
         // $summary.empty();
 
-				
+
         if (item['media:group'] && item['media:group']['media:content'] && item['media:group']['media:content'][0] && item['media:group']['media:content'][0]['@'] && item['media:group']['media:content'][0]['@'].medium && item['media:group']['media:content'][0]['@'].medium === 'video') {
           mediaUrl = item['media:group']['media:content'][0]['@'].url;
           mediaType = item['media:group']['media:content'][0]['@'].type;
@@ -322,7 +322,7 @@ PTL.feed = {
             isInsecureLinks = true;
           }
 
-					// console.log('item: ', item.enclosures[0].url);
+          // console.log('item: ', item.enclosures[0].url);
 
           if (item.enclosures[0].url && item.enclosures[0].url.match(/(\.ogg|\.mp3|\.mp4|\.webm)/) && item.enclosures[0].url.startsWith('https')) {
             mediaUrl = (item.enclosures[0].url) ? item.enclosures[0].url : null;
@@ -334,8 +334,6 @@ PTL.feed = {
 
 
             if (feedType != 'photo') {
-
-							console.log('YO: ', mediaUrl || mediaType || mediaEncoding, feedType);
 
               const $mediaIcon = $('<i>'),
                     $mediaLink = $('<a>').attr('target', '_blank'),
@@ -357,7 +355,7 @@ PTL.feed = {
                 .appendTo($mediaLink);
 
             }
-            
+
             if (feedType != 'text') {
 
               const mediaPlayer = document.createElement(mediaType);
@@ -385,14 +383,14 @@ PTL.feed = {
           $feedItem.attr('title', pubDate + '\n--------------------------\n' + author + PTL.util.clickableLinks(PTL.util.sanitizeInput(summary), false));
         }
 
-				
-				if (item.title && item.description && (item.title.slice(0, 10) == item.description.slice(0, 10)) && (item.title.slice(-3) == '...')) {
-					itemText = PTL.util.clickableLinks(PTL.util.sanitizeInput(PTL.util.truncateStr(item.description, 300)), true);
-					
-				} else {
-					itemText = PTL.util.clickableLinks(item.title, true);
-				} 
-				
+
+        if (item.title && item.description && (item.title.slice(0, 10) == item.description.slice(0, 10)) && (item.title.slice(-3) == '...')) {
+          itemText = PTL.util.clickableLinks(PTL.util.sanitizeInput(PTL.util.truncateStr(item.description, 300)), true);
+
+        } else {
+          itemText = PTL.util.clickableLinks(item.title, true);
+        }
+
         $itemLink
           .attr('class', 'ui-helper-clearfix feed-link')
           .attr('href', itemLink.replace('https://www.bitchute.com/embed', 'https://www.bitchute.com/video'))
@@ -579,24 +577,24 @@ PTL.feed = {
 
     $feedBodyUl.css('border', '1px solid red');
 
-		async function fetchFeedData(feedUrl, feedLastItem) {
-			let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
-			if (fetchFeed.error) {
-				handleFeedError(fetchFeed.error, feedUrl);
-			} else {
-				handleFeedSuccess(fetchFeed);
-			}
-		}
+    async function fetchFeedData(feedUrl, feedLastItem) {
+      let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
+      if (fetchFeed.error) {
+        handleFeedError(fetchFeed.error, feedUrl);
+      } else {
+        handleFeedSuccess(fetchFeed);
+      }
+    }
 
-		function handleFeedError(error, feedUrl) {
-			$feedBody
-				.empty()
-				.append(PTL.feed.errorFeed(error, feedUrl))
-				.css('height', '');
-			$feedLink.addClass('danger');
-			$refreshButton.removeClass('spin');
-		}
-		
+    function handleFeedError(error, feedUrl) {
+      $feedBody
+        .empty()
+        .append(PTL.feed.errorFeed(error, feedUrl))
+        .css('height', '');
+      $feedLink.addClass('danger');
+      $refreshButton.removeClass('spin');
+    }
+
     if ($dataStore.data('status') == 'on') {
 
       $refreshButton.addClass('spin');
@@ -624,7 +622,7 @@ PTL.feed = {
           const feedName = $dataStore.data('name') ? $dataStore.data('name') : fetchFeed.feedTitle;
 
           if (fetchFeed.feedIcon) feedIconUrl = fetchFeed.feedIcon;
-            
+
           let $insecureIcon = $('<i>')
               .attr('class', 'icon-lock-open insecureIcon warning')
               .attr('title', PTL.tr("Some linked elements (image, audio or video) within this feed's items could not be loaded because they were served insecurely"));
@@ -654,7 +652,7 @@ PTL.feed = {
           } else {
             $badge.fadeOut('slow');
           }
-          
+
         }
       } catch (err) {
 
@@ -681,30 +679,30 @@ PTL.feed = {
     }
 
     if (progress) progress.increment();
-    
-		function updateFavIcon(hash) {
-			feedIconHash = false;
-			$dataStore.data('iconhash', hash);
-			PTL.tab.saveTabs(true);
-			$favIcon.attr('src', 'favicons/' + hash + '.favicon');
-		}
 
-		function handleFetchIconError(e) {
-			$dataStore.data('iconhash', 'noicon');
-			PTL.tab.saveTabs(true);
-		}
+    function updateFavIcon(hash) {
+      feedIconHash = false;
+      $dataStore.data('iconhash', hash);
+      PTL.tab.saveTabs(true);
+      $favIcon.attr('src', 'favicons/' + hash + '.favicon');
+    }
 
-		if (feedIconHash && feedIconHash !== 'noicon') {
-			$favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
-		} else if (feedIconHash && feedIconHash == 'noicon') {
-			// pass
-		} else {
-			const iconUrl = feedIconUrl || feedHost;
-			PTL.feed.fetchIcon(iconUrl)
-				.then(updateFavIcon)
-				.catch(handleFetchIconError);
-		}
-    
+    function handleFetchIconError(e) {
+      $dataStore.data('iconhash', 'noicon');
+      PTL.tab.saveTabs(true);
+    }
+
+    if (feedIconHash && feedIconHash !== 'noicon') {
+      $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
+    } else if (feedIconHash && feedIconHash == 'noicon') {
+      // pass
+    } else {
+      const iconUrl = feedIconUrl || feedHost;
+      PTL.feed.fetchIcon(iconUrl)
+        .then(updateFavIcon)
+        .catch(handleFetchIconError);
+    }
+
   }
 
 };
