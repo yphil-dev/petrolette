@@ -1107,8 +1107,9 @@ PTL.dialog = {
 
         const assetsUrl = 'https://framagit.org/yphil/assets/-/raw/master/img/petroleuses/',
               petroleuses = {
-                  'mobilohm-apps-x-card.png':'MobilOhm Collection',
+                  'mobilohm-apps-x-card.png':'MobilOhm Collection!',
                   'UK1938.jpg':'UK1938',
+                  'mobilohm-water.jpg':'http://mobilohm.gitlab.io/',
                   'Rally-1933.jpg':'Scottish Six Days Motorcycle Trial, 1933',
                   'Wren_Dispatch_Riders-WWI.jpg':'Wren dispatch riders group, WWI'
               };
