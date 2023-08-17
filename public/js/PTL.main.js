@@ -11,7 +11,7 @@ var PTL = (function() {
     language: 'en',
     languages: ['en', 'fr', 'ja', 'es'],
     start : function() {
-      
+
       Mousetrap.bind('?', PTL.dialog.kbShortcuts);
       Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
       Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
@@ -34,12 +34,12 @@ var PTL = (function() {
       PTL.util.say(PTL.tr('Pétrolette init'), 'info');
 
       let instanceTypeText;
-      
+
       if (PTL.instanceType == 'monoUser') {
         instanceTypeText = 'This Pétrolette instance is single user ; Your feeds are saved on the server';
       } else {
         instanceTypeText = 'This Pétrolette instance is multi-user ; Your feeds are saved in this browser';
-        
+
       }
 
       if (!PTL.prefs.readConfig('nagBarOk')) {
@@ -51,10 +51,10 @@ var PTL = (function() {
       } else {
         PTL.util.say(PTL.tr(instanceTypeText), 'info');
       }
-      
+
 
       PTL.util.translate();
-      
+
       const $sideMenu = $('nav#sideMenu'),
             $overlay = $('#overlay'),
             $feedCodeButton = $('button#feedCode'),
@@ -86,9 +86,8 @@ var PTL = (function() {
       if (!PTL.util.isDomStorageEnabled()) {
         $('#noDomStorage').show();
       }
-      
+
       $searchPrefixInput
-        .attr('onclick', 'this.select()')
         .val(PTL.prefs.readConfig('searchPrefix'));
 
       $searchPrefixRestoreButton.click(function(){
@@ -97,8 +96,8 @@ var PTL = (function() {
       });
 
       $iconResetButton.click(function(){
-				console.log('YOO!!');
-				return false;
+        console.log('YOO!!');
+        return false;
       });
 
       $searchPrefixOkButton.click(function(){
@@ -136,9 +135,9 @@ var PTL = (function() {
       //                 .find('a')
       //                 .attr('href'))
       //       .find('.column').first();
-      
+
       //   PTL.feed.add($column, $(this).data('url'), '', 'mixed', 220, 'on', '', 16, '', false);
-      
+
       // });
 
       // $('a.feedsAddDivName').click(function(event){
@@ -148,10 +147,10 @@ var PTL = (function() {
       //                 .find('a')
       //                 .attr('href'))
       //       .find('.column').first();
-      
+
       //   PTL.feed.add($column, $(this).data('url'), '', 'mixed', 220, 'on', '', 16, '', false);
       // });
-      
+
       $logoType.click(function(){
         PTL.dialog.about($logoType.attr('data-version'), $logoType.attr('data-favratversion'), $logoType.attr('data-feedratversion'));
       });
@@ -192,18 +191,18 @@ var PTL = (function() {
         const item = document.querySelector('li.feedItem.results');
         item.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
       }
-      
+
       $('#ptlSearch i').click(function() {
 
         if ($(this).attr('class') == 'icon-reset') {
           $(this).prev('input').val('');
           $('.results').removeClass('results');
           $(this).removeClass('icon-reset')
-            .addClass('icon-search-circled');          
+            .addClass('icon-search-circled');
         } else {
           searchReturn();
         }
-        
+
       });
 
       $searchField.on('keypress',function(e) {
@@ -236,7 +235,7 @@ var PTL = (function() {
           });
         }
       });
-      
+
       if (PTL.instanceType == 'multiUser') {
         PTL.sync.attachWidget();
       } else {
@@ -251,10 +250,10 @@ var PTL = (function() {
       $('button').not('.htmlButtonOnly').button();
 
       const ptlUrl = [location.protocol, '//', location.host, location.pathname].join('');
-      
+
       $('.helpBookmarklet')
         .attr('href', 'javascript:void(window.open("' + ptlUrl + '?add="+encodeURIComponent(location.href)))');
-      
+
       $('body').on('click','#menuButton', function() {
         PTL.sideMenu('toggle');
       });
@@ -276,7 +275,7 @@ var PTL = (function() {
 
         PTL.dialog.feedNew();
       }
-      
+
       $('body').on('click','div#newFeedButton', newFeed);
 
       $feedCodeButton.click(function(event) {
@@ -293,7 +292,7 @@ var PTL = (function() {
           $('.column' ).sortable('cancel');
         }
       });
-      
+
       $langMenu.val(PTL.language).prop('selected', true);
 
       const $readMore = $('<a>')
@@ -549,7 +548,7 @@ var PTL = (function() {
       $.ui.dialog.prototype._init = function() {
         PTL.util.translate();
       };
-      
+
       const $debugHiddenButton = $('<span>')
             .attr('title', '>debug')
             .addClass('debug')
@@ -557,7 +556,7 @@ var PTL = (function() {
             .click(function () {
               PTL.dialog.beg();
             });
-      
+
       $debugHiddenButton.appendTo('body');
 
     },
