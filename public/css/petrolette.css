@@ -1733,3 +1733,7 @@ input#fileImport {
 .feedBody::-webkit-scrollbar {
     width: 4px;
 }
+
+.ui-tabs-nav::-webkit-scrollbar {
+    height: 4px;
+}
