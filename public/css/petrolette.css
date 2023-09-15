@@ -1713,10 +1713,10 @@ input#fileImport {
 
 
 ::-webkit-scrollbar {
-    height: 12px;
-    width: 12px;
+    /* height: 12px; */
+    /* width: 4px; */
     background: var(--color-scrollbar-track);
-    scrollbar-width: thin;
+    /* width: thin; */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1727,4 +1727,9 @@ input#fileImport {
 
 ::-webkit-scrollbar-corner {
     background: #000;
+}
+
+
+.feedBody::-webkit-scrollbar {
+    width: 4px;
 }
