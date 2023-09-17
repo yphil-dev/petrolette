@@ -531,7 +531,7 @@ kbd:not(.keyGroup) {
   font-weight: 600;
 
   line-height: initial;
-  
+
   /* This two work */
   /* letter-spacing: 0.5px; */
   letter-spacing: 1px;
@@ -1044,7 +1044,7 @@ img.favicon {
 }
 
 img.faviconButton {
-	max-width: 150px;
+  max-width: 150px;
   transition: width 2s, height 2s;
 }
 
@@ -1127,21 +1127,21 @@ li.feed div.feedBody {
   border-right: 1px solid var(--color-border);
   margin: 0;
   overflow-y: auto;
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
 }
 
-li.feed div.feedBody::-webkit-scrollbar {
-  width: 4px;
-}
+/* li.feed div.feedBody::-webkit-scrollbar { */
+/*   width: 4px; */
+/* } */
 
-li.feed div.feedBody::-webkit-scrollbar-track {
-  color: var(--color-scrollbar);
-  background: var(--color-bg1);
-}
+/* li.feed div.feedBody::-webkit-scrollbar-track { */
+/*   color: var(--color-scrollbar); */
+/*   background: var(--color-bg1); */
+/* } */
 
-li.feed div.feedBody::-webkit-scrollbar-thumb {
-  background-color: var(--color-fg4);
-}
+/* li.feed div.feedBody::-webkit-scrollbar-thumb { */
+/*   background-color: var(--color-fg4); */
+/* } */
 
 .folded {
   height: 0 !important;
@@ -1198,7 +1198,7 @@ div.fancybox-caption a.ui-button.ui-corner-all:hover {
 }
 
 #remotestorage-widget > .rs-widget {
-	z-index: 12;
+  z-index: 12;
   margin: 0.2em 0 0.4em;
   padding-left: 0;
   border-radius: 3px;
@@ -1302,7 +1302,7 @@ li.feedsGroupLi {
 span.imageLegend {
   font-size: 9pt;
   margin-bottom: 0.3em;
-	color: var(--color-link-visited);
+  color: var(--color-link-visited);
 }
 
 #beggar > p {
@@ -1341,11 +1341,11 @@ video {
 }
 
 video.mixed {
-	float: left;
-	resize:both;
+  float: left;
+  resize:both;
   width: 40% !important;
   height: auto !important;
-	margin-right: 2px;
+  margin-right: 2px;
 }
 
 #ptlSearch {
@@ -1387,7 +1387,7 @@ video.mixed {
 #tabs > ul {
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
 }
 
 #tabs > ul > li {
@@ -1487,7 +1487,7 @@ li.ui-tabs-tab {
 }
 
 div.fancybox-caption__body a.ui-button.ui-corner-all {
-	  color: var(--color-button-text);
+    color: var(--color-button-text);
 }
 
 .introjs-button:hover,
@@ -1530,7 +1530,7 @@ select#gallerySlideTransition {
 }
 
 .nameFieldDiv {
-	align-items: flex-start;
+  align-items: flex-start;
 }
 
 #feedLimit,
@@ -1563,7 +1563,7 @@ select#gallerySlideTransition {
 }
 
 .ui-widget-content {
-	border: 1px solid #0b4f6f;
+  border: 1px solid #0b4f6f;
 }
 
 .ui-progressbar .ui-progressbar-value {
@@ -1589,7 +1589,7 @@ button.ui-state-success {
 }
 
 .newItemsBadge {
-	cursor: default;
+  cursor: default;
   flex-basis: content;
   flex-grow: 1;
   flex-shrink: 1;
@@ -1671,16 +1671,16 @@ div#nagBar > div#nagTwo {
 }
 
 div#nagBar > div#nagTwo > button {
-	padding: .4em 1em;
-	display: inline-block;
-	position: relative;
-	line-height: normal;
-	margin-right: .1em;
-	cursor: pointer;
-	vertical-align: middle;
-	text-align: center;
-	user-select: none;
-	overflow: visible;
+  padding: .4em 1em;
+  display: inline-block;
+  position: relative;
+  line-height: normal;
+  margin-right: .1em;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  user-select: none;
+  overflow: visible;
 }
 
 .insecureIcon {
@@ -1697,15 +1697,43 @@ input#fileImport {
   border: 1px solid var(--color-ui-pri);
 }
 
-/* :focus { */
-/*   outline: none; */
+/* body::-webkit-scrollbar { */
+/*   width: 12px;               /\* width of the entire scrollbar *\/ */
 /* } */
 
-/* a:focus, */
-/* a:focus-visible, */
-/* a:focus-within { */
-/*   /\* outline: none; *\/ */
-/*   outline: 1px solid green !important; */
+/* *::-webkit-scrollbar-track { */
+/*   background: var(--color-scrollbar-track);        /\* color of the tracking area *\/ */
 /* } */
 
-/* html body main div#tabs.ui-tabs.ui-corner-all.ui-widget.ui-widget-content ul#tabNamesUl.ui-tabs-nav.ui-corner-all.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-sortable li.modal.tabName.translate.ui-droppable.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active a#ui-id-1.ui-tabs-anchor */
+/* *::-webkit-scrollbar-thumb { */
+/*   background-color: red;    /\* color of the scroll thumb *\/ */
+/*   border-radius: 20px;       /\* roundness of the scroll thumb *\/ */
+/*   border: 3px solid var(--color-scrollbar-thumb);  /\* creates padding around scroll thumb *\/ */
+/* } */
+
+
+::-webkit-scrollbar {
+    /* height: 12px; */
+    /* width: 4px; */
+    background: var(--color-scrollbar-track);
+    /* width: thin; */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb);
+    /* -webkit-border-radius: 1ex; */
+    /* -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75); */
+}
+
+::-webkit-scrollbar-corner {
+    background: #000;
+}
+
+
+.feedBody::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ui-tabs-nav::-webkit-scrollbar {
+    height: 4px;
+}
