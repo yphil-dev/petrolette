@@ -31,8 +31,6 @@ router.get('/favicon', function(req, res) {
             res.status(500).send(error);
         } else if (url) {
 
-            console.error('My url:', url);
-
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
