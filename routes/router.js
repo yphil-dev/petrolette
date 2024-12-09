@@ -25,62 +25,60 @@ router.use(sanitize);
 
 router.get('/favicon', function(req, res) {
 
-  favrat(req.query.url, async function(error, url) {
+    favrat(req.query.url, async function(error, url) {
 
-    if (error) {
-      res.status(500).send(error);
-    } else if (url) {
+        if (error) {
+            res.status(500).send(error);
+        } else if (url) {
 
-			console.error('My url:', url);
-			
-      const hash = crypto.createHash('md5').update(url).digest('hex'),
-            fileName = hash + '.favicon',
-            filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
+            console.error('My url:', url);
 
-      try {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    return res.status(500).send('Failed to fetch favicon');
+                }
 
-        const response = await fetch(url);
-        const fileStream = fs.createWriteStream(filePath);
+                // Pipe the favicon directly to the response
+                response.body.pipe(res);
 
-        response.body.pipe(fileStream);
-        response.body.on("error", () => {
-          res.status(500).send(error);
-        });
-        fileStream.on("finish", () => {
-          res.send(hash);
-        });
+                // Handle potential errors during the fetch
+                response.body.on("error", () => {
+                    res.status(500).send('Error piping the favicon');
+                });
 
-      } catch (err) {
-        res.status(500).send(error);
-      }
+            } catch (err) {
+                res.status(500).send('Error fetching favicon');
+            }
 
-    }
+        }
 
-  });
+    });
 });
 
+
 router.get('/localfeeds', function(req, res) {
-  
+
   fs.readFile(localFeedsFilePath, 'utf8', (err, data) => {
     if (err && !res.headersSent) {
       res.status(404).send(err);
     } else if (data && !res.headersSent) {
 
       // console.error('data: ', data);
-      
+
       res.status(200).send(data);
     }
-    
+
   });
 
 });
 
 router.post('/localfeeds', function(req, res) {
-  
+
   // console.error('req.body: (%s)', JSON.stringify(req.body));
-  
+
   try {
-    
+
     fs.writeFile(localFeedsFilePath, JSON.stringify(req.body), function (err) {
       if (err && !res.headersSent) {
         console.error('ERR: (%s)', err);
@@ -89,7 +87,7 @@ router.post('/localfeeds', function(req, res) {
         res.status(200).send('OK');
       }
     });
-    
+
   } catch (err) {
     console.error('EERR: %s (%s)',err);
     if (!res.headersSent) {
