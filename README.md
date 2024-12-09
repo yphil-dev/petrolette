@@ -1,7 +1,7 @@
 # Pétrolette
 
 [![pipeline status](https://framagit.org/yphil/petrolette/badges/master/pipeline.svg)](https://framagit.org/yphil/petrolette/-/pipelines)
-[![website](https://img.shields.io/website?down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fpetrolette.space)](https://petrolette.space)
+[![website](https://img.shields.io/website?down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fpetrolette.space)](https://petrolette.onrender.com)
 [![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![Liberapay](https://img.shields.io/liberapay/receives/yPhil?logo=liberapay)](https://liberapay.com/yPhil/donate)
 [![Liberapay](https://img.shields.io/liberapay/goal/yPhil?logo=liberapay)](https://liberapay.com/yPhil/donate)
@@ -11,7 +11,7 @@
 
 ## Good morning, what's up? ☕ 📰
 
-[Pétrolette](https://petrolette.space) is a news home page, immediately usable **without registration** with the **same URL** on any computer, TV or mobile device.
+[Pétrolette](https://petrolette.onrender.com/) is a news home page, immediately usable **without registration** with the **same URL** on any computer, TV or mobile device.
 
 Add, delete, move feeds and tabs, close your browser, come back tomorrow, everything is how you left it.
 
