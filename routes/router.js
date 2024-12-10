@@ -25,35 +25,39 @@ router.use(sanitize);
 
 router.get('/favicon', function(req, res) {
 
-    favrat(req.query.url, async function(error, url) {
+  favrat(req.query.url, async function(error, url) {
 
-        if (error) {
-            res.status(500).send(error);
-        } else if (url) {
+    if (error) {
+      res.status(500).send(error);
+    } else if (url) {
 
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    return res.status(500).send('Failed to fetch favicon');
-                }
+			console.error('My url:', url);
 
-                // Pipe the favicon directly to the response
-                response.body.pipe(res);
+      const hash = crypto.createHash('md5').update(url).digest('hex'),
+            fileName = hash + '.favicon',
+            filePath = path.join(pjson.FAVICONS_CACHE_DIR, fileName);
 
-                // Handle potential errors during the fetch
-                response.body.on("error", () => {
-                    res.status(500).send('Error piping the favicon');
-                });
+      try {
 
-            } catch (err) {
-                res.status(500).send('Error fetching favicon');
-            }
+        const response = await fetch(url);
+        const fileStream = fs.createWriteStream(filePath);
 
-        }
+        response.body.pipe(fileStream);
+        response.body.on("error", () => {
+          res.status(500).send(error);
+        });
+        fileStream.on("finish", () => {
+          res.send(hash);
+        });
 
-    });
+      } catch (err) {
+        res.status(500).send(error);
+      }
+
+    }
+
+  });
 });
-
 
 router.get('/localfeeds', function(req, res) {
 
