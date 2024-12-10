@@ -687,9 +687,9 @@ PTL.feed = {
       $favIcon.attr('src', 'favicons/' + hash + '.favicon');
     }
 
-    function handleFetchIconError(e) {
-      $dataStore.data('iconhash', 'noicon');
-      PTL.tab.saveTabs(true);
+    function handleFetchIconError() {
+      // $dataStore.data('iconhash', 'noicon');
+      // PTL.tab.saveTabs(true);
     }
 
     if (feedIconHash && feedIconHash !== 'noicon') {
