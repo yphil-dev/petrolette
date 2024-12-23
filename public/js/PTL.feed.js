@@ -576,6 +576,7 @@ PTL.feed = {
         feedIconUrl;
 
     $feedBodyUl.css('border', '1px solid red');
+    $feedBody.css('height', $dataStore.data('limit'));
 
     async function fetchFeedData(feedUrl, feedLastItem) {
       let fetchFeed = await PTL.feed.fetchFeed(feedUrl, feedLastItem);
