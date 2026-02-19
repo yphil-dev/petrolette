@@ -134,8 +134,8 @@ a.docLink.icon:link {
   text-decoration: none !important;
 }
 
-a:visited {
-  color: var(--color-link-visited);
+a.feed-link:visited {
+  color: var(--color-link-visited) !important;
 }
 
 a:hover,
