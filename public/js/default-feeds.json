@@ -4,16 +4,6 @@
     "columns": [
       [
         {
-          "url": "https://news.google.com/news/rss/rss",
-          "name": "Top stories - Google News",
-          "type": "mixed",
-          "limit": 279,
-          "status": "on",
-          "iconhash": "8bc287c07a81c603df02cdb780d46681",
-          "nbitems": 10,
-          "lastitem": "https://news.google.com/rss/articles/CBMiYWh0dHBzOi8vd3d3LmNubi5jb20vMjAyMy8wNS8xNi9wb2xpdGljcy9iaWRlbi1jYW5jZWxzLWF1c3RyYWxpYS1wYXB1YS1uZXctZ3VpbmVhLXZpc2l0L2luZGV4Lmh0bWzSAWVodHRwczovL2FtcC5jbm4uY29tL2Nubi8yMDIzLzA1LzE2L3BvbGl0aWNzL2JpZGVuLWNhbmNlbHMtYXVzdHJhbGlhLXBhcHVhLW5ldy1ndWluZWEtdmlzaXQvaW5kZXguaHRtbA?oc=5"
-        },
-        {
           "url": "https://feeds.feedburner.com/thechangelog",
           "name": "Changelog",
           "type": "text",
@@ -357,15 +347,6 @@
           "nbitems": 10
         },
         {
-          "url": "https://www.nationalreview.com/corner/feed/",
-          "name": "The Corner | National Review",
-          "type": "mixed",
-          "limit": 301,
-          "status": "off",
-          "iconhash": "d21250c320efa4ca982ad3809b6dc14a",
-          "nbitems": 10
-        },
-        {
           "url": "https://thehill.com/rss/syndicator/19109",
           "name": "TheHill - The Hill News",
           "type": "mixed",
@@ -399,16 +380,6 @@
           "iconhash": "",
           "nbitems": 10,
           "lastitem": "https://savannah.gnu.org/forum/forum.php?forum_id=0"
-        },
-        {
-          "url": "https://kerneltalks.com/feed",
-          "name": "Kernel Talks",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "eed833264667f024c3a529f5e8071d16",
-          "nbitems": 10,
-          "lastitem": "https://kerneltalks.com/documentation/github-dos-and-donts/"
         },
         {
           "url": "https://www.gamingonlinux.com/article_rss.php",
@@ -469,15 +440,6 @@
           "iconhash": "120e95fb72cd479a8804391be443104b",
           "nbitems": 10,
           "lastitem": "https://www.youtube.com/watch?v=Dy8XTvOTkME"
-        },
-        {
-          "url": "https://www.linux-magazine.com/rss/feed/lmi_full",
-          "name": "Linux Magazine Full Feed",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
         }
       ],
       [
@@ -490,16 +452,6 @@
           "iconhash": "cbe4bee22ffcc640e3e0ca318ae1656b",
           "nbitems": 10,
           "lastitem": "https://www.phoronix.com/news/Rocky-Linux-9.2"
-        },
-        {
-          "url": "https://mainframed767.tumblr.com/rss",
-          "name": "Soldier of FORTRAN / @mainframed767",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10,
-          "lastitem": "https://mainframed767.tumblr.com/post/614528681113763840"
         },
         {
           "url": "https://blog.slaks.net/feeds/posts/default.xml",
@@ -679,15 +631,6 @@
       ],
       [
         {
-          "url": "https://www.nanpa.org/feed/",
-          "name": "NANPA®",
-          "type": "photo",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "6114490267a15ae7861a826248e08f0a",
-          "nbitems": 10
-        },
-        {
           "url": "https://loadedlandscapes.com/feed",
           "name": "Loaded Landscapes",
           "type": "photo",
@@ -795,15 +738,6 @@
           "status": "off",
           "iconhash": "7c866278088a8ccad0a092e7a19507e1",
           "nbitems": 10
-        },
-        {
-          "url": "https://musewire.com/feed/",
-          "name": "MuseWire",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "001eb70eacd197f95cc4f18ad7eaf3db",
-          "nbitems": 10
         }
       ],
       [
@@ -823,24 +757,6 @@
           "limit": 350,
           "status": "off",
           "iconhash": "907d4694ba7a4297137383e88bccd224",
-          "nbitems": 10
-        },
-        {
-          "url": "https://audiohertz.com/feed/",
-          "name": "Audio Hertz",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "42e9456a1005cd8f0ac013ffb4a4f43d",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.waves.com/blog?rss=magazine",
-          "name": "Waves  Blog",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "dfba8a692e785283fac478f7bc37d1b1",
           "nbitems": 10
         }
       ],
@@ -907,15 +823,6 @@
     "columns": [
       [
         {
-          "url": "https://blog.explore.org/feed/",
-          "name": "Explore",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
-        },
-        {
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwmZiChSryoWQCZMIQezgTg",
           "name": "BBC Earth",
           "type": "mixed",
@@ -931,24 +838,6 @@
           "limit": 220,
           "status": "off",
           "iconhash": "ae67bcbb8081099e668921eccb171261",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.labbulletin.com/feed.rdf",
-          "name": "Laboratory News from Lab Bulletin",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "0a26a4aebedb4e2c636fa7f3b56d7ae2",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.scidev.net/global/global_rss.xml",
-          "name": "SciDev - Global",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "63a9ba52f7e6b0fdd5a14620e09d6a93",
           "nbitems": 10
         },
         {
@@ -1044,15 +933,6 @@
           "nbitems": 10
         },
         {
-          "url": "https://www.esa.int/rssfeed/TopNews",
-          "name": "ESA Top News",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "742041007faee107177211e6259bf598",
-          "nbitems": 10
-        },
-        {
           "url": "https://earthsky.org/feed",
           "name": "EarthSky",
           "type": "mixed",
@@ -1068,24 +948,6 @@
           "limit": 220,
           "status": "off",
           "iconhash": "e1884c173b9625ab3445a6b969e038d2",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.spaceflightinsider.com/feed/",
-          "name": "SpaceFlight Insider",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "e9978290d0bd393b9423bea5f18b8108",
-          "nbitems": 10
-        },
-        {
-          "url": "https://spacenews.com/feed/",
-          "name": "SpaceNews",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "8f88b85d413032d5ea09e88abe1f4a44",
           "nbitems": 10
         },
         {
@@ -1140,33 +1002,6 @@
           "name": "SciTechDaily",
           "type": "mixed",
           "limit": 220,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.livescience.com/home/feed/site.xml",
-          "name": "Livescience.com",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "5c38aa97a2a7a8d9f177527922accb62",
-          "nbitems": 10
-        },
-        {
-          "url": "https://ask-open-science.org/feed/qa.rss",
-          "name": "Ask Open Science - Recent questions and answers",
-          "type": "mixed",
-          "limit": 378,
-          "status": "off",
-          "iconhash": "c935e81cc049a9de394d2eefd14dd1d8",
-          "nbitems": 10
-        },
-        {
-          "url": "https://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk",
-          "name": "BBC News - Technology",
-          "type": "mixed",
-          "limit": 241,
           "status": "off",
           "iconhash": "",
           "nbitems": 10
@@ -1823,42 +1658,6 @@
       ],
       [
         {
-          "url": "https://thisisindexed.com/feed",
-          "name": "Indexed",
-          "type": "photo",
-          "limit": 180,
-          "status": "off",
-          "iconhash": "03d29d1ad2118426f4be1922e91dc140",
-          "nbitems": 10
-        },
-        {
-          "url": "https://moonbeard.com/feed/atom/",
-          "name": "Moonbeard",
-          "type": "photo",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "c681f29a0aa8c04a09c1dbc092bf7b64",
-          "nbitems": 10
-        },
-        {
-          "url": "https://blog.xkcd.com/rss",
-          "name": "xkcd Blog",
-          "type": "mixed",
-          "limit": 180,
-          "status": "off",
-          "iconhash": "bf28a4a1c79e578e5f559f6d49efceba",
-          "nbitems": 10
-        },
-        {
-          "url": "https://what-if.xkcd.com/feed.atom",
-          "name": "What If?",
-          "type": "photo",
-          "limit": 79,
-          "status": "off",
-          "iconhash": "62bb1c3504fc77aadb008d62ec8cb68b",
-          "nbitems": 10
-        },
-        {
           "url": "https://www.comicsrss.com/rss/lug-nuts.rss",
           "name": "Lug Nuts",
           "type": "photo",
@@ -2126,70 +1925,6 @@
     "columns": [
       [
         {
-          "url": "https://circuits-diy.com/feed/",
-          "name": "Circuits DIY",
-          "type": "mixed",
-          "limit": 126,
-          "status": "off",
-          "iconhash": "c9ee218031fe9711382d42cac0cfda9a",
-          "nbitems": 10
-        },
-        {
-          "url": "https://gearjunkie.com/feed",
-          "name": "GearJunkie",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "b3bf057969afedb3053b302ae0c03838",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.ny-engineers.com/blog/rss.xml",
-          "name": "New York Engineers Blog",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "d67f2c623a0f0c950e2df4575a42ce7d",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.mechanicalpost.site/feeds/posts/default",
-          "name": "The Mechanical Post",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.dpreview.com/feeds/news.xml",
-          "name": "DP Review",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.divephotoguide.com/rss/news",
-          "name": "Dive photo guide",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "d9012e59ea633f6a012d43f9ac57ed13",
-          "nbitems": 10,
-          "lastitem": "https://www.divephotoguide.com/news/nauticam-reveals-housing-nikon-z8/"
-        },
-        {
-          "url": "https://www.forgottenweapons.com/rss",
-          "name": "Forgotten Weapons",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "0e4fea3f6caf8c339492c4f6197a133e",
-          "nbitems": 10
-        },
-        {
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCgigsJ3nP2jRoI8Ci-N6Lmw",
           "name": "Troy and Jerry Think Dank",
           "type": "mixed",
@@ -2228,49 +1963,12 @@
           "nbitems": 10
         },
         {
-          "url": "https://www.tomshardware.com/feeds/all",
-          "name": "Tom's Hardware",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "afa3cda4bd95df21faa1e36dee19c585",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.ibm.com/blogs/research/category/quantcomp/rss",
-          "name": "Quantum Computing – IBM Research Blog",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "3ff47a2213cf1e92faa9529162e93865",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.raspberrypi.org/blog/feed",
-          "name": "Raspberry Pi Blog – Raspberry Pi",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "3db3d35cca929aaa46d15bb23508bba2",
-          "nbitems": 10,
-          "lastitem": "https://www.raspberrypi.org/blog/uk-schools-attitudes-to-coding-code-club/"
-        },
-        {
           "url": "https://magpi.raspberrypi.org/feed",
           "name": "The MagPi",
           "type": "mixed",
           "limit": 220,
           "status": "off",
           "iconhash": "6608d0747e183b307c01ad84d6bf31ef",
-          "nbitems": 10
-        },
-        {
-          "url": "https://retropie.org.uk/feed/",
-          "name": "RetroPie",
-          "type": "mixed",
-          "limit": 296,
-          "status": "off",
-          "iconhash": "ab062aa242c235ffcdd53da0cd7ec07a",
           "nbitems": 10
         },
         {
@@ -2299,27 +1997,6 @@
           "status": "off",
           "iconhash": "120e95fb72cd479a8804391be443104b",
           "nbitems": 10
-        }
-      ],
-      [
-        {
-          "url": "https://hushkit.net/rss",
-          "name": "Hush-Kit",
-          "type": "text",
-          "limit": 190,
-          "status": "off",
-          "iconhash": "bf28a4a1c79e578e5f559f6d49efceba",
-          "nbitems": 10,
-          "lastitem": ""
-        },
-        {
-          "url": "https://simpleflying.com/feed/",
-          "name": "Simple Flying",
-          "type": "mixed",
-          "limit": 237,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
         },
         {
           "url": "https://www.icebike.org/feed/",
@@ -2329,34 +2006,6 @@
           "status": "off",
           "iconhash": "9657d63d0e7271320562d2f5951246fb",
           "nbitems": 10
-        },
-        {
-          "url": "https://bikesnobnyc.com/feed/",
-          "name": "Bike Snob NYC",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "3cf849fab1623b3ac7c5d939823d813b",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.bikeexif.com/feed",
-          "name": "Bike EXIF",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "4c0d895d70131cbef10b1bea4e6d4f94",
-          "nbitems": 10
-        },
-        {
-          "url": "https://feeds.feedburner.com/MotorAuthority2",
-          "name": "Motor Authority",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "8a8accb1f53be0188d2db1ca40416736",
-          "nbitems": 10,
-          "lastitem": "https://www.motorauthority.com/news/1139666_mercedes-is-bringing-a-luxury-mid-size-electric-van-to-us"
         },
         {
           "url": "https://blogs.nvidia.com/blog/category/auto/feed/",
@@ -2370,14 +2019,34 @@
       ],
       [
         {
-          "url": "https://www.premierguitar.com/rss/1",
-          "name": "Premier Guitar",
+          "url": "https://www.icebike.org/feed/",
+          "name": "Icebike.org",
           "type": "mixed",
-          "limit": 268,
+          "limit": 220,
           "status": "off",
-          "iconhash": "e223d14b8ef01b0bc5211b875e0ed848",
+          "iconhash": "9657d63d0e7271320562d2f5951246fb",
           "nbitems": 10
         },
+        {
+          "url": "https://blogs.nvidia.com/blog/category/auto/feed/",
+          "name": "Driving – The Official NVIDIA Blog",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "03ba81b3b0157d550745f5fdf80c8249",
+          "nbitems": 10
+        },
+        {
+          "url": "https://www.synthtopia.com/feed/",
+          "name": "Synthtopia",
+          "type": "mixed",
+          "limit": 220,
+          "status": "off",
+          "iconhash": "",
+          "nbitems": 10
+        }
+      ],
+      [
         {
           "url": "https://www.kr-homestudio.fr/feed/",
           "name": "KR home-studio",
@@ -2387,42 +2056,6 @@
           "iconhash": "",
           "nbitems": 10,
           "lastitem": "https://www.kr-homestudio.fr/krdecouvertes2023/"
-        },
-        {
-          "url": "https://www.gearnews.com/zone/synth/feed/",
-          "name": "Synths – gearnews.com",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "fffcdb3a25d4b60bbe613c1dcb4d1c41",
-          "nbitems": 10
-        },
-        {
-          "url": "https://greatsynthesizers.com/en/feed/",
-          "name": "GreatSynthesizers",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "b5bdcd9e3f4a70065eba6a1e80217139",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.matrixsynth.com/feeds/posts/default",
-          "name": "MATRIXSYNTH",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "6059a00afb68a9957e0d726c68d8d17a",
-          "nbitems": 10
-        },
-        {
-          "url": "https://www.synthanatomy.com/feed/atom",
-          "name": "SYNTH ANATOMY",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "e2c7157b9479ebf32d9bc74d58648bdd",
-          "nbitems": 10
         },
         {
           "url": "https://www.synthtopia.com/feed/",
@@ -2469,6 +2102,15 @@
           "nbitems": 10
         },
         {
+          "url": "https://www.thecipherbrief.com/feed",
+          "name": "The Cipher Brief",
+          "type": "mixed",
+          "limit": 350,
+          "status": "off",
+          "iconhash": "8b154c574a7144f1c3d5ed9ba8076349",
+          "nbitems": 10
+        },
+        {
           "url": "https://csdl-api.computer.org/api/rss/periodicals/mags/sp/rss.xml",
           "name": "IEEE Security & Privacy",
           "type": "mixed",
@@ -2477,37 +2119,9 @@
           "iconhash": "c93d28423d67f4310431986a43f7d353",
           "nbitems": 10,
           "lastitem": "https://www.computer.org/csdl/magazine/sp/2023/02/10005837/1JF3UJpL440"
-        },
-        {
-          "url": "https://feeds.feedburner.com/TheHackersNews?format=xml",
-          "name": "The Hacker News",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10,
-          "lastitem": "https://thehackernews.com/2023/05/chinas-mustang-panda-hackers-exploit-tp.html"
         }
       ],
       [
-        {
-          "url": "https://threatpost.com/feed/",
-          "name": "Threatpost",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "6c0819c147b11da477b11009786e49d8",
-          "nbitems": 10
-        },
-        {
-          "url": "https://spectrum.ieee.org/rss",
-          "name": "IEEE Spectrum Recent Content",
-          "type": "mixed",
-          "limit": 277,
-          "status": "off",
-          "iconhash": "b8ce0e804c00ac94f191a08088182d3c",
-          "nbitems": 10
-        },
         {
           "url": "https://www.techrepublic.com/rssfeeds/topic/security/?feedType=rssfeeds",
           "name": "Security on TechRepublic",
@@ -2527,78 +2141,13 @@
           "nbitems": 10
         }
       ],
-      [
-        {
-          "url": "https://feeds.feedburner.com/eset/blog",
-          "name": "WeLiveSecurity",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
-        },
-        {
-          "url": "https://nakedsecurity.sophos.com/feed/",
-          "name": "Naked Security",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "15bcd3137b942c92a9419bf2d37e9f8c",
-          "nbitems": 10
-        },
-        {
-          "url": "https://feeds.feedburner.com/GoogleOnlineSecurityBlog",
-          "name": "Google Online Security Blog",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10
-        },
-        {
-          "url": "https://krebsonsecurity.com/feed/atom/",
-          "name": "Krebs on Security",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "3ff0967d6c59365ef7e74b6cd9c77b2f",
-          "nbitems": 10
-        },
-        {
-          "url": "https://blogs.cisco.com/security/feed",
-          "name": "Security – Cisco Blogs",
-          "type": "mixed",
-          "limit": 350,
-          "status": "off",
-          "iconhash": "67f59e7557858dbe3fcb71a896131ed3",
-          "nbitems": 10
-        }
-      ]
+      []
     ]
   },
   {
     "name": "src",
     "columns": [
       [
-        {
-          "url": "https://tracker.ardour.org/issues_rss.php",
-          "name": "Ardour Bug Tracker - Issues",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "d2b80f8e2c0882559cdbe51ec75b8ff9",
-          "nbitems": 10,
-          "lastitem": "https://tracker.ardour.org/view.php?id=9334"
-        },
-        {
-          "url": "https://www.rncbc.org/drupal/rss.xml",
-          "name": "rncbc.org",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "ee391021c37580074aa23e9ef36bf0bf",
-          "nbitems": 10
-        },
         {
           "url": "https://lkml.org/rss.php",
           "name": "lkml.org",
@@ -2675,16 +2224,6 @@
           "lastitem": "https://beta.prx.org/stories/468881"
         },
         {
-          "url": "https://ww2.kqed.org/news/programs/the-leap/feed/podcast",
-          "name": "The Leap",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "69cbda6ff43b7d33071fb305c48cb3c8",
-          "nbitems": 10,
-          "lastitem": ""
-        },
-        {
           "url": "https://feeds.megaphone.fm/heavyweight",
           "name": "Heavyweight",
           "type": "photo",
@@ -2703,29 +2242,9 @@
           "iconhash": "445e4b78e01306185a0fdadc8a427ce3",
           "nbitems": 10,
           "lastitem": "https://switchedonpop.com/episodes/benee-and-the-art-of-the-sad-banger"
-        },
-        {
-          "url": "https://soundopinions.org/podcast/feed",
-          "name": "Sound Opinions",
-          "type": "photo",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "3d75f35e7a79cfc81b9c87328e996d1e",
-          "nbitems": 10,
-          "lastitem": "https://omny.fm/shows/sound-opinions/songs-about-the-end-of-the-world"
         }
       ],
       [
-        {
-          "url": "https://rss.art19.com/sean-carrolls-mindscape",
-          "name": "Sean Carroll's Mindscape: Science, Society, Philosophy, Culture, Arts, and Ideas",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "b4bbe316f0c19cb5fd0aa37ba9042dea",
-          "nbitems": 10,
-          "lastitem": ""
-        },
         {
           "url": "https://feeds.soundcloud.com/users/soundcloud:users:52492923/sounds.rss",
           "name": "The Broken Meeple",
@@ -2829,26 +2348,6 @@
           "lastitem": "https://beta.prx.org/stories/468338"
         },
         {
-          "url": "https://audioboom.com/channels/4997220.rss",
-          "name": "Morbid: A True Crime Podcast",
-          "type": "photo",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "cf13ff59fa5e4a0f8755c83f2f1a8eef",
-          "nbitems": 10,
-          "lastitem": "http://morbidpodcast.blubrry.net/?p=224"
-        },
-        {
-          "url": "https://thisiscriminal.com/feed",
-          "name": "Criminal",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "815e5ee5582eea0c21dd40f6889eec10",
-          "nbitems": 16,
-          "lastitem": "https://thisiscriminal.com/episode-218-did-we-get-it-right-5-12-2023/"
-        },
-        {
           "url": "https://feeds.megaphone.fm/crimetown",
           "name": "Crimetown",
           "type": "mixed",
@@ -2856,26 +2355,6 @@
           "status": "off",
           "iconhash": "26f895f61dc3c9d1903806d710c9e2ce",
           "nbitems": 10
-        },
-        {
-          "url": "https://feeds.megaphone.fm/PPY8359579005",
-          "name": "Flash Forward",
-          "type": "mixed",
-          "limit": 220,
-          "status": "off",
-          "iconhash": "26f895f61dc3c9d1903806d710c9e2ce",
-          "nbitems": 10,
-          "lastitem": "https://share.transistor.fm/s/85aec549"
-        },
-        {
-          "url": "https://faif.us/feeds/cast-ogg/",
-          "name": "Free as in Freedom",
-          "type": "mixed",
-          "limit": 394,
-          "status": "off",
-          "iconhash": "",
-          "nbitems": 10,
-          "lastitem": ""
         }
       ]
     ]
