@@ -182,7 +182,7 @@ PTL.dialog = {
               .parent()
               .prev()
               .append($('<i>')
-                      .attr('class', 'icon-help helpIcon')
+                      .attr('class', 'icon-help help-icon')
                       .attr('title', step)
                       .on('click', function() {
                         PTL.dialog.tour('feedPrefs', step);
@@ -549,7 +549,7 @@ PTL.dialog = {
 
           $('.helpTourDialogItem')
             .append($('<i>')
-                    .attr('class', 'icon-help helpIcon')
+                    .attr('class', 'icon-help help-icon')
                     .attr('title', PTL.tr('Help') + ' - ' + PTL.tr('Three options'))
                     .on('click', function() {
                       PTL.dialog.tour('feedNew');

@@ -20,7 +20,7 @@ PTL.feed = {
           });
 
     const $newItemsBadge = $('<div>')
-          .attr('class', 'newItemsBadge hidden');
+          .attr('class', 'new-items-badge hidden');
 
     const $feedIcon = $('<i>')
           .attr('class', 'feed-control feedIcon translate')
@@ -557,7 +557,7 @@ PTL.feed = {
           $feedTitle = $feedHeader.children('div.feedTitle'),
           $warningIconSpan = $feedTitle.children('span.warningIconSpan'),
           $feedLink = $feedTitle.children('a'),
-          $badge = $feedHeader.children('.newItemsBadge'),
+          $badge = $feedHeader.children('.new-items-badge'),
           $feedBody = $dataStore.parent().next('div.feedBody').removeClass('folded'),
           $feedBodyUl = $feedBody.find('ul.feedBody'),
           feedUrl = $dataStore.data('url'),

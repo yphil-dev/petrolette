@@ -166,7 +166,7 @@ var PTL = (function() {
                     .parent()
                     .parent()
                     .append($('<i>')
-                            .attr('class', 'icon-help helpIcon')
+                            .attr('class', 'icon-help help-icon')
                             .on('click', function() {
                                 PTL.dialog.tour('menu', step);
                             }));

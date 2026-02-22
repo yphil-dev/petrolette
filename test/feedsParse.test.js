@@ -19,17 +19,17 @@ const TEST_FEEDS = [
   'https://www.theguardian.com/rss'
 ];
 
-describe('Feeds via App', function() {
+describe('Feeds parsing test', function() {
 
   this.timeout(120000); // 2 minutes per feed should be enough
 
   TEST_FEEDS.forEach((feedUrl, index) => {
-    
-    it(`feed #${index + 1}: should be parseable by the app - ${feedUrl}`, function(done) {
+
+    it(`feed #${index + 1}: should be parseable by Pétrolette - ${feedUrl}`, function(done) {
       this.timeout(60000); // 60 seconds per feed
-      
+
       const url = `${BASE_URL}/feed/?url=${encodeURIComponent(feedUrl)}`;
-      
+
       fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -55,7 +55,7 @@ describe('Feeds via App', function() {
           done();
         });
     });
-    
+
   });
 
 });

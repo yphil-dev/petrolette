@@ -1588,7 +1588,7 @@ button.ui-state-success {
   background: var(--color-ui-success) !important;
 }
 
-.newItemsBadge {
+.new-items-badge {
   cursor: default;
   flex-basis: content;
   flex-grow: 1;
@@ -1610,13 +1610,13 @@ button.ui-state-success {
   display: none;
 }
 
-.helpIcon {
+.help-icon {
   margin: 0 0 0 0.3em;
   cursor: pointer;
   color: var(--color-ui-sec);
 }
 
-.helpIcon:hover {
+.help-icon:hover {
   color: var(--color-ui-success);
 }
 

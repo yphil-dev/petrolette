@@ -1,6 +1,6 @@
 # Pétrolette
 
-[![pipeline status](https://framagit.org/yphil/petrolette/badges/master/pipeline.svg)](https://framagit.org/yphil/petrolette/-/pipelines)
+[![pipeline status](https://gitlab.com/yphil/petrolette/badges/master/pipeline.svg)](https://gitlab.com/yphil/petrolette/-/pipelines)
 [![website](https://img.shields.io/website?down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fpetrolette.space)](https://petrolette.onrender.com)
 [![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![Liberapay](https://img.shields.io/liberapay/receives/yPhil?logo=liberapay)](https://liberapay.com/yPhil/donate)
@@ -44,7 +44,7 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 
 ### What's new?
 
-Read [the changelog](https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md).
+Read [the changelog](https://gitlab.com/yphil/petrolette/-/blob/master/CHANGELOG.md).
 
 ## Usage
 
@@ -65,7 +65,7 @@ Pétrolette can be started in mono-user mode, where a single feeds file is read 
 ### Install
 
 ```sh
-git clone https://framagit.org/yphil/petrolette
+git clone https://gitlab.com/yphil/petrolette
 cd petrolette
 npm install
 ```
@@ -101,8 +101,8 @@ npm test
 
 ## Help
 
-- Read the [development guidelines](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md)
-- Pétrolette is [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://framagit.org/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) or by [sending a donation](https://ko-fi.com/yphil/) ; Even the smallest amount will help *a lot*.
+- Read the [development guidelines](https://gitlab.com/yphil/petrolette/-/blob/master/DEV.md)
+- Pétrolette is [Free, Libre, and Open-Source Software](https://gitlab.com/yphil/petrolette/-/blob/master/LICENSE). However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://gitlab.com/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) or by [sending a donation](https://ko-fi.com/yphil/) ; Even the smallest amount will help *a lot*.
 
 *Icon by yPhil*
 
