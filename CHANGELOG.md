@@ -96,7 +96,7 @@
 - New help system #104
 - Number of items hard limit #81
 - New theming engine / logic #75
-    - Full "Light / Dark" UI 
+    - Full "Light / Dark" UI
     - New icon set
 - Rendering (CSS, transitions, JQ, etc.) optimizations
 - Dialog KB control
@@ -109,8 +109,8 @@
 
 ## v1.2.8
 - New function / dialog to merge the imported / open feeds with existing ones #e38691d5
-- Server ports now set in [the config file](https://framagit.org/yphil/petrolette/-/blob/master/package.json) #c46149d8
-- Separate [default feeds file](https://framagit.org/yphil/petrolette/-/blob/master/public/js/default-feeds.json) #dae9e932
+- Server ports now set in [the config file](https://gitlab.com/yphil/petrolette/-/blob/master/package.json) #c46149d8
+- Separate [default feeds file](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/default-feeds.json) #dae9e932
     - It's a pretty big deal : instead of being included and loaded at **each visit of the frigging page**, the ever-growing (nearly 100K as of tonight) default list of feeds is now requested on-demand via a `GET` on the server, only one unique time.
 - General UI makeover & optimization (dialogs, wording, misc options, speed) #dae9e932
 
@@ -133,7 +133,7 @@
     - I'm not sure we even need it at all to renew certificates
 - The Pétrolette logo is no longer a `a href="#"` but a plain DIV to avoid location re-write onclick (A click on it puts focus on the 1st tab, very handy when you read Pétrolette from the couch with a lousy touchpad) #5f3b8f1a
 - Refactoring #dae9e932
-    - Enforce [own coding conventions](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md) :|
+    - Enforce [own coding conventions](https://gitlab.com/yphil/petrolette/-/blob/master/DEV.md) :|
     - PTL.prefs.js is now a 1st class module
     - s/var/const on all objects
     - Even **More** CSS streamlining

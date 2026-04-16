@@ -2179,7 +2179,7 @@
           "lastitem": "https://github.com/systemd/systemd/commit/79567763a26d70ffbfaefadb4bafdb4920c47d2c"
         },
         {
-          "url": "https://framagit.org/yphil/petrolette/-/issues.atom?feed_token=YWcFEkVxV7CWsy9qsCUg&state=opened",
+          "url": "https://gitlab.com/yphil/petrolette/-/issues.atom?feed_token=YWcFEkVxV7CWsy9qsCUg&state=opened",
           "name": "Pétrolette issues",
           "type": "text",
           "limit": 192,

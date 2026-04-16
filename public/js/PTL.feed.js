@@ -457,7 +457,7 @@ PTL.feed = {
       .appendTo($validateLink);
 
     const $reportLink = $('<a>')
-          .attr('href', 'https://framagit.org/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + error.type + ')');
+          .attr('href', 'https://gitlab.com/yphil/petrolette/-/issues/new?issue[title]=Feed%20error&issue[description]=' + feedUrl + ' (' + error.type + ')');
 
     $('<i>')
       .attr('class', 'itemIcon icon-petrolette')

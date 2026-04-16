@@ -1,7 +1,7 @@
 # Dev notes
 
 > #### Preamble
-> - Please read [the Pétrolette licence file](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE).
+> - Please read [the Pétrolette licence file](https://gitlab.com/yphil/petrolette/-/blob/master/LICENSE).
 > - The Pétrolette development team have *no* Code Of Conduct, just act responsibly, as in every aspect of adult life.
 > - If you use Pétrolette, both on your own server or on the test instance, please consider [a donation](https://liberapay.com/yPhil/) for its development.
 
@@ -41,12 +41,12 @@ Pétrolette is its own server, a standard [express](https://github.com/expressjs
 - [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 5 routes: `/` for the actual Pétrolette page, `/feed` for the actual feed retrieving & parsing, `/discover` for the RSS searching (see [Feedrat](https://framagit.org/yphil/feedrat)), `/favicon` for the site icon searching (see [Favrat](https://framagit.org/yphil/favrat)) and `/static` for serving the client-side (CSS, icons, fonts, robots.txt, etc.) files.
 - As of 1.5 a route is also defined for each client-side `/node_dependancies/[lib]`.
 - The client sends the (RSS / favicon / discover / static / system / anything else) request to the server
-- The server returns the payload to the client, that deals with it as per both the (client) general configuration (defined in [PTL.prefs.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.prefs.js)) and the feed configuration, defined at startup in [default-feeds.json](https://framagit.org/yphil/petrolette/-/blob/dev/public/js/default-feeds.json).
-  - [PTL.tab.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.tab.js) manages the tab
-  - [PTL.col.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.col.js) the column
-  - [PTL.feed.js](https://framagit.org/yphil/petrolette/-/blob/master/public/js/PTL.feed.js) the feed and the item, and yes #TODO there should be a `PTL.item.js`.
-  
-Those client-side files are required by the (mostly one, the index) pages defined in the [views](https://framagit.org/yphil/petrolette/-/tree/master/views) ; BTW this is EJS, the simplest existing templating system, which uses transparent, full plain HTML. The dialogs templates - also in plain HTML - are [here](https://framagit.org/yphil/petrolette/-/blob/master/public/templates/dialogs.html).
+- The server returns the payload to the client, that deals with it as per both the (client) general configuration (defined in [PTL.prefs.js](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/PTL.prefs.js)) and the feed configuration, defined at startup in [default-feeds.json](https://gitlab.com/yphil/petrolette/-/blob/dev/public/js/default-feeds.json).
+  - [PTL.tab.js](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/PTL.tab.js) manages the tab
+  - [PTL.col.js](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/PTL.col.js) the column
+  - [PTL.feed.js](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/PTL.feed.js) the feed and the item, and yes #TODO there should be a `PTL.item.js`.
+
+Those client-side files are required by the (mostly one, the index) pages defined in the [views](https://gitlab.com/yphil/petrolette/-/tree/master/views) ; BTW this is EJS, the simplest existing templating system, which uses transparent, full plain HTML. The dialogs templates - also in plain HTML - are [here](https://gitlab.com/yphil/petrolette/-/blob/master/public/templates/dialogs.html).
 
 At the first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
@@ -99,6 +99,6 @@ Extract and copy the relevant files:
 
 `rm -rfv fontello-* ; unzip fontello.zip && cp -fv fontello-*/config.json ../public/font/fontello-config.json && cp -fv fontello-*/css/fontello.css ../public/css/ && cp -fv fontello-*/font/* ../public/font/ && cp -fv fontello-*/font/fontello.ttf ~/.fonts/ && fc-cache -f -v`
 
-For any question, please [use the repo](https://framagit.org/yphil/petrolette/-/issues/new?issue%5Bmilestone_id%5D=) itself.
+For any question, please [use the repo](https://gitlab.com/yphil/petrolette/-/issues/new?issue%5Bmilestone_id%5D=) itself.
 
 Pétrolette whishes to thank you **very much** for [any help you give](https://liberapay.com/yPhil/) to her mission.

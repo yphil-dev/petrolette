@@ -280,7 +280,7 @@ var PTL = (function() {
 
             $feedCodeButton.click(function(event) {
                 event.preventDefault();
-                window.open('https://framagit.org/yphil/petrolette');
+                window.open('https://gitlab.com/yphil/petrolette');
             });
 
             $overlay.click(function() {

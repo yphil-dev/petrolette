@@ -1208,7 +1208,7 @@ PTL.dialog = {
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);
-              window.open('https://framagit.org/yphil/petrolette');
+              window.open('https://gitlab.com/yphil/petrolette');
             }
           },
           {
@@ -1217,7 +1217,7 @@ PTL.dialog = {
             class: 'translate',
             click: function() {
               PTL.dialog.kill($dialog);
-              window.open('https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md');
+              window.open('https://gitlab.com/yphil/petrolette/-/blob/master/CHANGELOG.md');
             }
           },
           {
@@ -1368,7 +1368,7 @@ PTL.dialog = {
         {
           title: PTL.tr('Have a nice read ☕ 📰'),
           element: '.button-ok',
-          intro: PTL.tr('I think that\'s about it...') + ' <a href="https://framagit.org/yphil/petrolette/-/issues">' + PTL.tr('Any questions?') + '</a>',
+          intro: PTL.tr('I think that\'s about it...') + ' <a href="https://gitlab.com/yphil/petrolette/-/issues">' + PTL.tr('Any questions?') + '</a>',
           position: 'left'
         }
       ]
@@ -1397,7 +1397,7 @@ PTL.dialog = {
         {
           title: PTL.tr('Pétrolette needs you'),
           element: 'fieldset#support',
-          intro: '<p>' + PTL.tr('Pétrolette is free software. However the development requires') + ' <a class="docLink" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">' + PTL.tr('a lot of time') + '</a> ' + PTL.tr('and') + ' <a class="translate docLink" data-content="a lot of work." href="https://framagit.org/yphil/petrolette/-/commits/master">' + PTL.tr('a lot of work.') + '</a> ' + PTL.tr('In order to keep maintaining Pétrolette and developing her with new features I need your help.') + '</p>' + '<p>' + PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.') + '</p>',
+          intro: '<p>' + PTL.tr('Pétrolette is free software. However the development requires') + ' <a class="docLink" href="https://www.youtube.com/watch?v=JlbMEx9H6FE">' + PTL.tr('a lot of time') + '</a> ' + PTL.tr('and') + ' <a class="translate docLink" data-content="a lot of work." href="https://gitlab.com/yphil/petrolette/-/commits/master">' + PTL.tr('a lot of work.') + '</a> ' + PTL.tr('In order to keep maintaining Pétrolette and developing her with new features I need your help.') + '</p>' + '<p>' + PTL.tr('Please consider to support the Pétrolette project by sending a donation. Even the smallest amount will help a lot.') + '</p>',
           position: 'right'
         }
       ]
