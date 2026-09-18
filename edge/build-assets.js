@@ -20,21 +20,14 @@ async function copyIfPresent(source, target) {
   }
 }
 
-async function readPackageVersion(name) {
-  const packagePath = require.resolve(`${name}/package.json`, { paths: [root] });
-  const packageData = JSON.parse(await fs.readFile(packagePath, 'utf8'));
-  return packageData.version;
-}
-
 async function renderIndex() {
   let html = await fs.readFile(path.join(root, 'views', 'index.html'), 'utf8');
-  const favratVersion = await readPackageVersion('favrat');
-  const feedratVersion = await readPackageVersion('feedrat');
+  const discoveryVersion = 'Edge Worker';
 
   html = html
     .replaceAll('<%= version %>', pkg.version)
-    .replaceAll('<%= favratversion %>', favratVersion)
-    .replaceAll('<%= feedratversion %>', feedratVersion)
+    .replaceAll('<%= favratversion %>', discoveryVersion)
+    .replaceAll('<%= feedratversion %>', discoveryVersion)
     .replace(
       "        PTL.queryString = DOMPurify.sanitize('<%= queryString %>');;",
       "        const addParam = new URLSearchParams(window.location.search).get('add');\n        PTL.queryString = addParam ? DOMPurify.sanitize(addParam) : '';"

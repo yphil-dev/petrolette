@@ -7,11 +7,9 @@
 
 ## Log
 
-### Library / dependancies upgrade conlicts - read before editing package.json
+### Edge dependency policy
 
-- As of #v1.5.5 all dependancies are now installed with NPM ;
-- The `node-fetch` 3.n branch requires that the whole Pétrolette project be ported to ESM ; **help wanted please** ;
-- The `helmet` 5.n branch apparently breaks CORS for images, investigating.
+Dependencies used by the Worker or the browser bundle are declared in `package.json`. Node/Express server dependencies are not retained.
 
 ## Conventions & style guide
 
@@ -22,70 +20,25 @@
 
 ## VC workflow
 
-All work is done on `dev` or its child branches, then merged into `server` and pushed for testing, then merged into `master` at each release or critical bugfix. Pull Requests on `dev`, please.
+All work is done on a feature branch, then reviewed and merged into the main branch. Pull Requests are welcome.
 
 ## Installation notes & caveats
 
-- Remember to start Pétrolette with `npm run dev` for any local development, to avoid SSL error
-- To investigate any problem, start by running `npm run errors` on the server ; it logs any error from both dev & production instances
+- Run `npm run dev:edge` for local development.
+- Run `npm test` to build and validate the Worker bundle.
+- Run `npm run deploy:edge` to publish the Worker.
 
 ## Under the hood
 
-On the front side, Pétrolette is a web app that serves HTML using plain Javascript ES8 and JQueryUI for the user interface.
+Pétrolette is a serverless Edge application. The Worker entrypoint is `edge/index.js`; the same code runs locally with `npm run dev:edge` and online with `npm run deploy:edge`.
 
-Pétrolette is its own server, a standard [express](https://github.com/expressjs/express) app, "process-managed" by [pm2](https://pm2.keymetrics.io) ; Here is the basic operational sequence :
+The frontend source remains in `public/`. `edge/build-assets.js` assembles the static deployment bundle from that source and the frontend dependencies. Feed fetching, feed discovery, and favicon discovery are handled by Edge modules under `edge/`.
 
-- `npm start` launches `pm2` as per [package.json](package.json)
-- `pm2` launches [http/server.js](http/server.js) as per [pm2.config.json](pm2.config.json)
-- [http/server.js](http/server.js) launches [petrolette.js](petrolette.js)
-- [petrolette.js](petrolette.js) uses [routes/router.js](routes/router.js) to define 5 routes: `/` for the actual Pétrolette page, `/feed` for the actual feed retrieving & parsing, `/discover` for the RSS searching (see [Feedrat](https://framagit.org/yphil/feedrat)), `/favicon` for the site icon searching (see [Favrat](https://framagit.org/yphil/favrat)) and `/static` for serving the client-side (CSS, icons, fonts, robots.txt, etc.) files.
-- As of 1.5 a route is also defined for each client-side `/node_dependancies/[lib]`.
-- The client sends the (RSS / favicon / discover / static / system / anything else) request to the server
-- The server returns the payload to the client, that deals with it as per both the (client) general configuration (defined in [PTL.prefs.js](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/PTL.prefs.js)) and the feed configuration, defined at startup in [default-feeds.json](https://gitlab.com/yphil/petrolette/-/blob/dev/public/js/default-feeds.json).
-  - [PTL.tab.js](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/PTL.tab.js) manages the tab
-  - [PTL.col.js](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/PTL.col.js) the column
-  - [PTL.feed.js](https://gitlab.com/yphil/petrolette/-/blob/master/public/js/PTL.feed.js) the feed and the item, and yes #TODO there should be a `PTL.item.js`.
+At the first startup, Pétrolette generates its main page using the default tabs and feeds list. Feed changes are stored by RemoteStorage and its browser cache, allowing the same contents on desktop, laptop, and phone.
 
-Those client-side files are required by the (mostly one, the index) pages defined in the [views](https://gitlab.com/yphil/petrolette/-/tree/master/views) ; BTW this is EJS, the simplest existing templating system, which uses transparent, full plain HTML. The dialogs templates - also in plain HTML - are [here](https://gitlab.com/yphil/petrolette/-/blob/master/public/templates/dialogs.html).
+## Edge runtime
 
-At the first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
-
-## Why is there a server in the first place ?
-
-**why can't the client do all the RSS requests?** Because of [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), that's why and it's actually the *only* reason, if you exclude my desire to learn server-side JS :)
-
-Pm2 automatically restarts both Pétrolette when its files are edited (excluding cache and module/lib directories, of course, see [pm2.config.json](pm2.config.json)) and itself if the host machine restarts.
-
-### Server configuration
-
-The ports are set up in [the config file](./package.json). To redirect on a vanilla Linux box :
-
-Redirect HTTP
-`iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8000`
-Redirect HTTPS
-`iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8001`
-Save the rules
-`sudo apt install iptables-persistent`
-
-### Restart Pétrolette when the server boots up
-Run `pm2 startup` and follow the instructions.
-
-### SSL certificate renewal
-
-- Un-comment line 60 in petrolette.js
-- Run `certbot certonly --manual` (as root)
-- The auth file lives in `./public/.well-known/acme-challenge/`
-- Comment out line 60 in petrolette.js
-
-### Logging
-
-Pétrolette outputs a standard [Apache CLF](http://httpd.apache.org/docs/2.4/logs.html) formated log to `~/.pm2/logs/petrolette-out.log` and `~/.pm2/logs/petrolette-error.log`.
-
-### Time stamps
-
-Those logs are outputted by pm2 without a time stamp, as per the directive `"time" : false,` in the [pm2.config.json](pm2.config.json) file. For pm2 to take this var into account, should you want to change it, a simple restart is not enough, you have to kill `pm2 kill` it and restart `npm restart` it.
-
-Those logs are also rotated by pm2, using the [pm2-logrotate](https://github.com/keymetrics/pm2-logrotate) module with the default values. NOTE this module is installed *by pm2* at the first `npm start` ; Do **not** try to install it with npm.
+The Worker handles CORS-sensitive feed requests at the edge. Wrangler provides local development, deployment, and runtime logs; no process manager or server configuration is required.
 
 ### Fonts
 

@@ -49,9 +49,6 @@ Read [the changelog](https://gitlab.com/yphil/petrolette/-/blob/master/CHANGELOG
 
 ### Configuration
 
-#### Server type ("dev" mode)
-Pétrolette can be use both locally on an http, or a https server. To spawn the HTTP server and avoid SSL errors, start Pétrolette using `npm run dev`.
-
 ### Install
 
 ```sh
@@ -90,25 +87,24 @@ The public instance is:
 
 `https://petrolette.xaccrocheur.workers.dev`
 
-### Legacy Node server
-
-The old Express server remains available temporarily with:
-
-```sh
-npm start
-```
-
 ### Update
 
 ```sh
-git checkout server
 git pull
 npm install
 ```
 ### Test
 
-```javascript
+Validate the Edge bundle:
+
+```sh
 npm test
+```
+
+Test the default feed URLs separately:
+
+```sh
+npm run test:feeds
 ```
 
 ## Help

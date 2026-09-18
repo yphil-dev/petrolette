@@ -1,9 +1,4 @@
-const should = require('should'),
-      fs = require('fs'),
-      pjson = require('../package.json'),
-      fetch = require('node-fetch');
-
-const PORT = pjson.HTTP_PORT;
+const should = require('should');
 
 // Load default feeds
 const defaultFeeds = require('../public/js/default-feeds.json');
@@ -41,8 +36,7 @@ describe('Default Feeds', function() {
     feedUrls.forEach((url) => {
       fetch(url, {
         method: 'GET',
-        redirect: 'follow',
-        timeout: 15000
+        redirect: 'follow'
       })
       .then(res => {
         processedCount++;

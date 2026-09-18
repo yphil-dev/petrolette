@@ -12,15 +12,21 @@ export default {
       });
     }
 
-    if (url.pathname === '/feed' && request.method === 'GET') {
+    if (url.pathname === '/robots.txt') {
+      return new Response('User-agent: *\nDisallow: /feed\nDisallow: /discover\nDisallow: /favicon', {
+        headers: { 'content-type': 'text/plain; charset=UTF-8' }
+      });
+    }
+
+    if ((url.pathname === '/feed' || url.pathname === '/feed/') && request.method === 'GET') {
       return handleFeed(url);
     }
 
-    if (url.pathname === '/discover' && request.method === 'GET') {
+    if ((url.pathname === '/discover' || url.pathname === '/discover/') && request.method === 'GET') {
       return handleDiscover(url);
     }
 
-    if (url.pathname === '/favicon' && request.method === 'GET') {
+    if ((url.pathname === '/favicon' || url.pathname === '/favicon/') && request.method === 'GET') {
       return handleFavicon(url);
     }
 

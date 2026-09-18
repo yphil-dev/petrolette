@@ -4,9 +4,6 @@
   "version": "1.8.0",
   "private": true,
   "license": "GPL-3.0-only",
-  "HTTP_PORT": 8000,
-  "HTTPS_PORT": 8001,
-  "FAVICONS_CACHE_DIR": "favicons-cache",
   "engines": {
     "node": "*"
   },
@@ -15,41 +12,27 @@
     "url": "https://gitlab.com/yphil/petrolette"
   },
   "scripts": {
-    "start": "node ./http/server.js",
     "build:edge": "node ./edge/build-assets.js",
     "dev:edge": "npm run build:edge && npx wrangler dev --config edge/wrangler.jsonc",
     "deploy:edge": "npm run build:edge && npx wrangler deploy --config edge/wrangler.jsonc",
-    "test": "mocha --timeout 30s",
-    "coverage": "nyc npm test"
+    "test": "npm run build:edge && npx wrangler deploy --config edge/wrangler.jsonc --dry-run",
+    "test:feeds": "mocha --timeout 600s test/defaultFeeds.test.js"
   },
   "dependencies": {
     "@fancyapps/fancybox": "3.5.7",
-    "body-parser": "^1.20.4",
-    "compression": "^1.8.1",
+    "cheerio": "^1.2.0",
     "dompurify": "^3.3.1",
-    "ejs": "^3.1.10",
-    "express": "^4.22.1",
-    "favrat": "^0.4.8",
     "feedparser": "^2.2.10",
-    "feedrat": "^0.4.12",
-    "helmet": "^7.2.0",
-    "iconv-lite": "^0.6.3",
     "intro.js": "^7.2.0",
     "jquery": "^3.6.3",
     "jquery-ui-dist": "^1.13.3",
-    "morgan": "^1.10.1",
     "mousetrap": "1.6.5",
-    "node-fetch": "^2.7.0",
-    "npm": "^9.9.4",
     "remotestorage-widget": "^1.8.0",
     "remotestoragejs": "^2.0.0-beta.8",
-    "responsively-lazy": "^2.0.2",
-    "sanitize": "^2.1.0"
+    "responsively-lazy": "^2.0.2"
   },
   "devDependencies": {
-    "connect": "3.7.0",
     "mocha": "^10.8.2",
-    "nyc": "^15.1.0",
     "should": "^13.2.3"
   }
 }
