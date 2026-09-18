@@ -7,9 +7,43 @@
 
 ## Log
 
-### Edge dependency policy
+## Pétrolette is now an Edge app
 
-Dependencies used by the Worker or the browser bundle are declared in `package.json`. Node/Express server dependencies are not retained.
+Pétrolette no longer runs as a traditional, always-on Node/Express application. It runs as a [Cloudflare Worker](https://developers.cloudflare.com/workers/): a small program that is invoked when an HTTP request arrives and can run at Cloudflare locations close to users.
+
+This is what that means in practice:
+
+- There is no application server, persistent Node process, PM2 process, or server port to maintain.
+- The Worker receives browser requests and returns responses for the application, feed retrieval, feed discovery, favicon discovery, and `robots.txt`.
+- CORS-sensitive feed requests are handled by the Worker instead of directly by the browser.
+- Static frontend files are served through Cloudflare's `env.ASSETS` binding.
+- Feed configuration is stored by RemoteStorage and its browser cache; it is not stored in a server filesystem.
+- Cloudflare manages request routing, process availability, and horizontal scaling.
+
+The Worker entrypoint is `edge/index.js`. Feed fetching, feed discovery, and favicon discovery are implemented in the modules under `edge/`. The frontend source remains in `public/`, and `edge/build-assets.js` assembles the deployment assets.
+
+### Local development and deployment
+
+The local and online runtimes use the same `edge/` Worker code:
+
+- `npm start` or `npm run dev:edge` starts Wrangler's local Worker runtime.
+- `npm test` builds the assets and validates the Wrangler deployment bundle.
+- `npm run deploy:edge` builds and publishes the Worker.
+
+At first startup, Pétrolette generates the main page using the default tabs and feeds list. Feed changes are synchronized through RemoteStorage and its browser cache, allowing the same contents on desktop, laptop, and phone.
+
+### Deployment platform
+
+The current online deployment is Cloudflare-specific. It depends on `edge/wrangler.jsonc`, Wrangler, and Cloudflare's `env.ASSETS` static-assets binding.
+
+The request handlers otherwise use standard Web APIs such as `Request`, `Response`, and `fetch`. They could run on another Edge platform after adding that platform's entrypoint, asset binding, and deployment configuration.
+
+Official documentation:
+
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/)
+- [Workers runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
+- [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)
 
 ## Conventions & style guide
 
@@ -27,33 +61,6 @@ All work is done on a feature branch, then reviewed and merged into the main bra
 - Run `npm run dev:edge` for local development.
 - Run `npm test` to build and validate the Worker bundle.
 - Run `npm run deploy:edge` to publish the Worker.
-
-## Under the hood
-
-Pétrolette is a serverless Edge application. The Worker entrypoint is `edge/index.js`; the same code runs locally with `npm run dev:edge` and online with `npm run deploy:edge`.
-
-The frontend source remains in `public/`. `edge/build-assets.js` assembles the static deployment bundle from that source and the frontend dependencies. Feed fetching, feed discovery, and favicon discovery are handled by Edge modules under `edge/`.
-
-At the first startup, Pétrolette generates its main page using the default tabs and feeds list. Feed changes are stored by RemoteStorage and its browser cache, allowing the same contents on desktop, laptop, and phone.
-
-## Edge runtime
-
-“Serverless Edge application” is an architectural description, not a separate product name. Pétrolette runs as a [Cloudflare Worker](https://developers.cloudflare.com/workers/), with no application server to manage. The Worker handles CORS-sensitive feed requests at the edge.
-
-Official documentation:
-
-- [Cloudflare Workers](https://developers.cloudflare.com/workers/)
-- [Workers runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
-- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
-- [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)
-
-Wrangler provides local development, deployment, and runtime logs; no process manager or server configuration is required.
-
-### Deployment platform
-
-As currently configured, the online application runs on Cloudflare. The deployment depends on `edge/wrangler.jsonc`, Wrangler, and Cloudflare's `env.ASSETS` static-assets binding.
-
-The request handlers otherwise use standard Web APIs such as `Request`, `Response`, and `fetch`. They could run on another Edge platform after adding that platform's entrypoint, asset binding, and deployment configuration.
 
 ### Fonts
 
