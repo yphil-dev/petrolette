@@ -23,16 +23,17 @@ PTL.dialog = {
 
       $iconResetButton.append($iconResetButtonImage);
 
-      if ($dataStore.data('iconhash') && $dataStore.data('iconhash') !== 'noicon') {
+      if ($dataStore.data('iconurl')) {
+        $iconResetButtonImage.attr({'src' : $dataStore.data('iconurl')});
+      } else if ($dataStore.data('iconhash') && $dataStore.data('iconhash') !== 'noicon') {
         $iconResetButtonImage.attr({'src' : 'favicons/' + $dataStore.data('iconhash') + '.favicon'});
       }
 
       $iconResetButton.on('click', function() {
         PTL.util.say(PTL.tr('The feed icon has been reset'), 'success');
 
-        console.log('iconhash before reset: (', $dataStore.data('iconhash') + ')');
         $dataStore.data('iconhash', '');
-        console.log('iconhash after reset: (', $dataStore.data('iconhash') + ')');
+        $dataStore.data('iconurl', '');
 
         $iconResetButtonImage.attr('src', 'static/images/rss.gif');
       });
@@ -383,7 +384,7 @@ PTL.dialog = {
 
         const feedUrl = DOMPurify.sanitize($feedAddInput.val());
         if (feedUrl == '') PTL.dialog.feedAddError($dialog, feedUrl, 'empty');
-        PTL.feed.add(PTL.util.firstColumn(), feedUrl, '', 'mixed', 220, 'on', '', 16, '', true);
+        PTL.feed.add(PTL.util.firstColumn(), feedUrl, '', 'mixed', 220, 'on', '', '', 16, '', true);
         PTL.dialog.kill($dialog);
 
       });
@@ -404,7 +405,7 @@ PTL.dialog = {
     let $imageDiv = $('<div>')
         .attr('class', 'suggestionListFavicon shrink')
         .append($('<img>')
-                .attr({'src': 'favicons/' + feed.iconhash + '.favicon',
+                .attr({'src': feed.iconurl || (feed.iconhash ? 'favicons/' + feed.iconhash + '.favicon' : 'static/images/rss.gif'),
                        onerror: "this.src='static/images/rss.gif';",
                        'class': 'favicon'}))
         .appendTo($feedLi);
@@ -420,7 +421,7 @@ PTL.dialog = {
         .attr('class', 'suggestionListButton')
         .on('click', function(e) {
           e.preventDefault();
-          PTL.feed.add(PTL.util.firstColumn(), feed.url, '', 'mixed', 220, 'on', '', 16, '', true);
+          PTL.feed.add(PTL.util.firstColumn(), feed.url, '', 'mixed', 220, 'on', '', '', 16, '', true);
         })
         .append($('<i>')
                 .attr({'class': 'icon-plus', 'title': 'Add ' + feedName}))
@@ -615,7 +616,7 @@ PTL.dialog = {
                           .data('content', 'Pétrolette found %1 feeds at this URL'));
 
                 feeds.forEach(function(feed) {
-                  $feedsAddDivList.append(PTL.dialog.feedsListItem({iconhash: 'node', url: feed, name: 'none'}));
+                  $feedsAddDivList.append(PTL.dialog.feedsListItem({iconhash: '', iconurl: '', url: feed, name: 'none'}));
                 });
 
                 $('div#feedNewListDiv').append($feedsAddDivList);
@@ -624,7 +625,7 @@ PTL.dialog = {
 
               } else {
 
-                PTL.feed.add(PTL.util.firstColumn(), feeds[0], '', 'mixed', 220, 'on', '', 16, '', true);
+                PTL.feed.add(PTL.util.firstColumn(), feeds[0], '', 'mixed', 220, 'on', '', '', 16, '', true);
                 PTL.dialog.kill($dialog);
 
               }

@@ -1,7 +1,7 @@
 {
   "name": "petrolette",
   "description": "The news page that doesn't know you",
-  "version": "1.7.10",
+  "version": "1.8.0",
   "private": true,
   "license": "GPL-3.0-only",
   "HTTP_PORT": 8000,
@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "node ./http/server.js",
+    "build:edge": "node ./edge/build-assets.js",
     "test": "mocha --timeout 30s",
     "coverage": "nyc npm test"
   },

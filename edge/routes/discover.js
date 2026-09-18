@@ -1,4 +1,4 @@
-import feedrat from 'feedrat';
+import feedrat from '../feed-discover.js';
 
 function errorResponse(error) {
   return Response.json(error, { status: 500 });

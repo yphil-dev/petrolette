@@ -4,6 +4,9 @@ favicons-cache
 # Wrangler local state
 edge/.wrangler/
 
+# Generated Worker assets
+dist/
+
 # Logs
 logs
 *.log

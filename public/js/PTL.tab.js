@@ -146,6 +146,7 @@ PTL.tab = {
           thisFeed.limit = v.limit;
           thisFeed.status = v.status;
           thisFeed.iconhash = v.iconhash;
+          thisFeed.iconurl = v.iconurl;
           thisFeed.nbitems = v.nbitems;
           thisFeed.lastitem = v.lastitem;
 
@@ -263,7 +264,7 @@ PTL.tab = {
             lastItem = feed.lastitem;
 
           if (!feed.url == "") {
-            PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, nbitems, lastItem, false, progress);
+            PTL.feed.add($column, feed.url, feed.name, type, limit, feed.status, feed.iconhash, feed.iconurl, nbitems, lastItem, false, progress);
           }
 
         });
@@ -310,6 +311,7 @@ PTL.tab = {
           feed.limit = $dataStore.data('limit');
           feed.status = $dataStore.data('status');
           feed.iconhash = $dataStore.data('iconhash');
+          feed.iconurl = $dataStore.data('iconurl');
           feed.nbitems = $dataStore.data('nbitems');
           feed.lastitem = $dataStore.data('lastitem');
 

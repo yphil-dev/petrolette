@@ -2,7 +2,7 @@
 
 PTL.feed = {
 
-  add: function($column, url, name, type, limit, status, iconhash, nbitems, lastitem, isNewFeed, progress) {
+  add: function($column, url, name, type, limit, status, iconhash, iconurl, nbitems, lastitem, isNewFeed, progress) {
 
     const $feed = $('<li>')
           .attr('class', 'feed');
@@ -15,7 +15,9 @@ PTL.feed = {
             height: '16px',
             onerror: "this.src='static/images/rss.gif';"
           }).on("error", function() {
-            $(this).parent().parent().children('div.dataStore').data('iconhash', '');
+            $(this).parent().parent().children('div.dataStore')
+              .data('iconhash', '')
+              .data('iconurl', '');
             PTL.tab.saveTabs(true);
           });
 
@@ -91,6 +93,7 @@ PTL.feed = {
           .data('limit', limit)
           .data('status', status)
           .data('iconhash', iconhash)
+          .data('iconurl', iconurl)
           .data('nbitems', nbitems)
           .data('lastitem', lastitem);
 
@@ -101,6 +104,7 @@ PTL.feed = {
       .attr('data-limit', limit)
       .attr('data-status', status)
       .attr('data-iconhash', iconhash)
+      .attr('data-iconurl', iconurl)
       .attr('data-nbitems', nbitems)
       .attr('data-lastitem', lastitem);
 
@@ -572,8 +576,7 @@ PTL.feed = {
           timeStamp = dateObj.toTimeString();
 
     let feedLastItem = $dataStore.data('lastitem'),
-        feedIconHash = $dataStore.data('iconhash'),
-        feedIconUrl;
+        feedIconUrl = $dataStore.data('iconurl');
 
     $feedBodyUl.css('border', '1px solid red');
     $feedBody.css('height', $dataStore.data('limit'));
@@ -681,11 +684,11 @@ PTL.feed = {
 
     if (progress) progress.increment();
 
-    function updateFavIcon(hash) {
-      feedIconHash = false;
-      $dataStore.data('iconhash', hash);
+    function updateFavIcon(iconUrl) {
+      $dataStore.data('iconurl', iconUrl);
+      $dataStore.data('iconhash', '');
       PTL.tab.saveTabs(true);
-      $favIcon.attr('src', 'favicons/' + hash + '.favicon');
+      $favIcon.attr('src', iconUrl);
     }
 
     function handleFetchIconError() {
@@ -693,13 +696,10 @@ PTL.feed = {
       // PTL.tab.saveTabs(true);
     }
 
-    if (feedIconHash && feedIconHash !== 'noicon') {
-      $favIcon.attr('src', 'favicons/' + feedIconHash + '.favicon');
-    } else if (feedIconHash && feedIconHash == 'noicon') {
-      // pass
+    if (feedIconUrl) {
+      $favIcon.attr('src', feedIconUrl);
     } else {
-      const iconUrl = feedIconUrl || feedHost;
-      PTL.feed.fetchIcon(iconUrl)
+      PTL.feed.fetchIcon(feedHost)
         .then(updateFavIcon)
         .catch(handleFetchIconError);
     }

@@ -1,6 +1,6 @@
 import { handleFeed } from './routes/feed.js';
 import { handleDiscover } from './routes/discover.js';
-import { handleFavicon, handleCachedFavicon } from './routes/favicon.js';
+import { handleFavicon } from './routes/favicon.js';
 
 export default {
   async fetch(request, env) {
@@ -22,10 +22,6 @@ export default {
 
     if (url.pathname === '/favicon' && request.method === 'GET') {
       return handleFavicon(url);
-    }
-
-    if (url.pathname.startsWith('/favicons/') && request.method === 'GET') {
-      return handleCachedFavicon(request, env);
     }
 
     if (env.ASSETS) {
