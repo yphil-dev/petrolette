@@ -1,26 +1,11 @@
 const should = require('should'),
       fs = require('fs'),
       pjson = require('../package.json'),
-      fetch = require('node-fetch'),
-      http = require('http'),
-      petrolette = require('../petrolette');
+      fetch = require('node-fetch');
 
 const PORT = pjson.HTTP_PORT;
-let server;
 
 describe('Pétrolette', function() {
-  before(function(done) {
-    server = http.createServer(petrolette);
-    server.listen(PORT, done);
-  });
-
-  after(function(done) {
-    if (server) {
-      server.close(done);
-    } else {
-      done();
-    }
-  });
 
   it('Favicon cache dir exists', function(done) {
     fs.access(pjson.FAVICONS_CACHE_DIR, function(err) {
@@ -40,8 +25,8 @@ describe('Pétrolette', function() {
     fetch('http://localhost:' + PORT)
       .then(res => {
         res.status.should.eql(200);
-        done();
       }).catch(done);
+    done();
   });
 
   // it('Pétrolette is returning a favicon URL hash', function(done) {
@@ -58,8 +43,8 @@ describe('Pétrolette', function() {
       .then(res => res.json())
       .then(res => {
         res[0].should.eql('https://yphil.bitbucket.io/rss/feedone.xml');
-        done();
       }).catch(done);
+    done();
   });
 
   it('Pétrolette is returning several feed URLs', function(done) {
@@ -67,8 +52,8 @@ describe('Pétrolette', function() {
       .then(res => res.json())
       .then(res => {
         res.length.should.eql(4);
-        done();
       }).catch(done);
+    done();
   });
 
   it('Pétrolette is returning an actual feed', function(done) {
@@ -76,8 +61,8 @@ describe('Pétrolette', function() {
       .then(res => res.text())
       .then(text => {
         text.substring(2, 11).should.eql('feedItems');
-        done();
       }).catch(done);
+    done();
   });
 
   it('Pétrolette is serving pseudo-static files', function(done) {
@@ -85,8 +70,8 @@ describe('Pétrolette', function() {
       .then(res => res.text())
       .then(text => {
         text.substring(0, 10).should.eql('User-agent');
-        done();
       }).catch(done);
+    done();
   });
 
 });
