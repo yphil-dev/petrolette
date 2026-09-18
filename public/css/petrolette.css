@@ -1692,11 +1692,6 @@ input#fileImport {
   display: none;
 }
 
-#monoUserInfoDiv {
-  padding: 0.2em;
-  border: 1px solid var(--color-ui-pri);
-}
-
 /* body::-webkit-scrollbar { */
 /*   width: 12px;               /\* width of the entire scrollbar *\/ */
 /* } */

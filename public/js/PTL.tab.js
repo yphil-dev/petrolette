@@ -94,7 +94,6 @@ PTL.tab = {
   },
   saveTabs: function(isSilent) {
     const feeds = PTL.tab.list();
-    PTL.prefs.writeConfig('feeds', JSON.stringify(feeds));
     PTL.sync.writeSync(JSON.stringify(feeds));
     if (!isSilent) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
   },

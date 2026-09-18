@@ -5,7 +5,7 @@ const fetch = require('node-fetch'),
 exports.getFeed = getFeed;
 
 function maybeTranslate(res, charset) {
-  var iconvStream;
+  let iconvStream;
   if (!iconvStream && charset && !/utf-*8/i.test(charset)) {
     try {
       iconvStream = iconv.decodeStream(charset);
@@ -19,8 +19,8 @@ function maybeTranslate(res, charset) {
 }
 
 function getParams(str) {
-  var params = str.split(';').reduce(function(params, param) {
-    var parts = param.split('=').map(function(part) { return part.trim(); });
+  const params = str.split(';').reduce(function(params, param) {
+    const parts = param.split('=').map(function(part) { return part.trim(); });
     if (parts.length === 2) {
       params[parts[0]] = parts[1];
     }
@@ -53,10 +53,10 @@ function getFeed(feedUrl, lastItem, callback) {
       callback(formatError({type: res.type, status: res.status, message: res.statusText}));
     }
 
-    var feedparser = new FeedParser();
-    var feedItems = [];
-    var charset = getParams(res.headers.get('content-type') || '').charset;
-    var responseStream = res.body;
+    const feedparser = new FeedParser();
+    const feedItems = [];
+    const charset = getParams(res.headers.get('content-type') || '').charset;
+    let responseStream = res.body;
     responseStream = maybeTranslate(responseStream, charset);
     responseStream.pipe(feedparser);
 
@@ -67,7 +67,7 @@ function getFeed(feedUrl, lastItem, callback) {
     }).on('readable', function() {
 
       try {
-        var item = this.read();
+        const item = this.read();
         if (item !== null) {
           feedItems.push(item);
         }
@@ -82,9 +82,9 @@ function getFeed(feedUrl, lastItem, callback) {
         callback(formatError({ type: 'Syntax', status: res.status, message: 'Feed OK, but empty' }));
       }
 
-      var newLastItem;
-      var totalNewItems;
-      var i = 0;
+      let newLastItem;
+      let totalNewItems;
+      let i = 0;
 
       feedItems.forEach(countItems);
 

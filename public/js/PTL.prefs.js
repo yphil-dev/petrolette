@@ -36,13 +36,7 @@ PTL.prefs = {
         };
 
         if (typeof localStorage.getItem(key) === 'undefined' || !localStorage.getItem(key)) {
-
-            if (key === 'feeds') {
-                return JSON.stringify(PTL.prefs.getDefaultFeeds());
-            } else {
-                return defaults[key];
-            }
-
+            return defaults[key];
         } else {
             return localStorage.getItem(key);
         }
@@ -52,16 +46,30 @@ PTL.prefs = {
 
         $('div#logoTitle i').addClass('writing');
 
-        if (key === 'feeds') {
-            localStorage.setItem('writeTime', Date.now());
-        }
-
         localStorage.setItem(key, val);
 
         setTimeout(function() {
             $('div#logoTitle i').delay('slow').removeClass('writing');
         }, 300);
 
+    },
+    clearConfig: function() {
+        [
+            'gallerySlideTransition',
+            'gallerySlideshowSpeed',
+            'lang',
+            'userSetLang',
+            'nagBarOk',
+            'searchPrefix',
+            'searchPrefixDefault',
+            'tabDropActivate',
+            'brokenImages',
+            'mediaPreload',
+            'theme',
+            'nextNag',
+            'writeTime',
+            'feeds'
+        ].forEach((key) => localStorage.removeItem(key));
     },
     exportConfig: function(data, fileName) {
 

@@ -12,7 +12,7 @@ PTL.sync = (function() {
       return {
         exports: {
           read: function () {
-            return privateClient.getFile('petrolette.conf', (Date.now() - PTL.prefs.readConfig('writeTime')))
+            return privateClient.getFile('petrolette.conf')
               .then(function (file) {
                 return file.data;
               });
@@ -63,87 +63,37 @@ PTL.sync = (function() {
     },
     readSync:function() {
 
-      if (PTL.instanceType == 'monoUser') {
-        
-        $.get('localfeeds', 'text')
-          .then(function(data, err) {
+      remoteStorage.petrolette.read()
+        .then((data) => {
 
-            try {
-              PTL.tab.populate(JSON.parse(data));
-            } catch (err) {
-              console.error('err: (%s)', err);
-            } 
-            
-          })
-          .fail(function(jqXHR, textStatus, errorThrown) {
-            console.log('feeds NOT read, using defs (%s)', JSON.stringify(jqXHR), JSON.stringify(textStatus), JSON.stringify(errorThrown));
-            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-          });
-        
-      } else {
-        
-        remoteStorage.petrolette.read()
-          .then((data) => {
+          if (PTL.util.isValidPTLFile(JSON.parse(data))) {
+            PTL.tab.populate(JSON.parse(data));
 
-            if (PTL.util.isValidPTLFile(JSON.parse(data))) {
-              
-              PTL.tab.populate(JSON.parse(data));
+          } else {
 
-            } else {
+            console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults'));
+            PTL.tab.populate(PTL.prefs.getDefaultFeeds());
 
-              console.warn('Pétrolette | ' + PTL.tr('Remote file validation NOT OK (error [%1]) now reading defaults'));
-              PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
+          }
 
-            }
+        })
+        .catch((err) => {
 
-          })
-          .catch((err) => {
+          PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
+          PTL.tab.populate(PTL.prefs.getDefaultFeeds());
 
-            PTL.util.say(PTL.tr('Remote file validation NOT OK (error [%1]) now reading from browser storage', err), 'warning');
-            PTL.tab.populate(JSON.parse(PTL.prefs.readConfig('feeds')));
-
-          });
-      }
+        });
     },
     writeSync:function(feeds) {
 
-      if (PTL.instanceType == 'monoUser') {
-        PTL.sync.writeLocal(PTL.tab.list());        
-      } else {
-        remoteStorage.petrolette.write(feeds)
-          .catch((err) => {
-            PTL.util.say(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
-          });
-      }
+      remoteStorage.petrolette.write(feeds)
+        .catch((err) => {
+          PTL.util.say(PTL.tr('There was a problem writing to remote storage: %1', err), 'warning');
+        });
     },
-    attachMonoUserButton:function() {
+    resetSync:function() {
 
-      const $monoUserButton = $('<button>')
-            .attr({'id': 'monoUserButton',
-                   'class': 'grow ui-button ui-corner-all translate unique',
-                   'data-content' : 'Save feeds'})
-            .text('Save feeds')
-            .click(function(){
-              PTL.sync.writeLocal(PTL.tab.list());
-            });
-
-      return $monoUserButton;
+      return remoteStorage.petrolette.write(JSON.stringify(PTL.prefs.getDefaultFeeds()));
     },
-    writeLocal:function(feeds) {
-
-      $.post({
-        url        : 'localfeeds',
-        data       : JSON.stringify(feeds),
-        contentType: 'application/json; charset=utf-8',
-        dataType   : 'json',
-        success    : function(res) {
-          if(res.status === "success") {
-            console.log('Pure jQuery Pure JS object');
-          } else if(res.status === "error") {
-            console.error('jqXHR, textStatus, errorThrown: (%s)');
-          }
-        }
-      });
-    }
   };
 }());

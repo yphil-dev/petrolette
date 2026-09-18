@@ -50,8 +50,6 @@ Those client-side files are required by the (mostly one, the index) pages define
 
 At the first startup, Pétrolette generates its main page using a default tabs and feeds list, then copies this structured list the the client's [local storage persistent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). The user can (should) also use a third party cloud storage to write / read his / her tabs and feeds, in order to have the same contents on all machines : Desktop, laptop, phone, etc.
 
-If `instanceType` is `monoUser` as per the config file (see [README.md "Install"](./README.md#install)) then the feeds are saved in a single `petrolette.feeds` file in the root dir, and all visitors see the same tabs and feeds.
-
 ## Why is there a server in the first place ?
 
 **why can't the client do all the RSS requests?** Because of [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), that's why and it's actually the *only* reason, if you exclude my desire to learn server-side JS :)

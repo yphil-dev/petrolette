@@ -40,7 +40,6 @@ Pétrolette is fully self-contained, makes **no external call** whatsoever, and 
 - Building of **Search terms feeds** [example](https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=zombie,attack) using a configurable search engine
 - Bookmarklet to **add the feed of any website to Pétrolette** on the fly
 - Compatible with [FLOSS browsers](https://www.gnu.org/software/librejs/) (links to all uncompressed executable files, licenses available directly and in standard format)
-- Installable in mono-user, fully contained mode
 
 ### What's new?
 
@@ -53,15 +52,6 @@ Read [the changelog](https://gitlab.com/yphil/petrolette/-/blob/master/CHANGELOG
 #### Server type ("dev" mode)
 Pétrolette can be use both locally on an http, or a https server. To spawn the HTTP server and avoid SSL errors, start Pétrolette using `npm run dev`.
 
-#### Instance type
-Pétrolette can be started in mono-user mode, where a single feeds file is read & written directly on the server. To do this place a file named `petrolette.config.json` in the root dir, containing exactly this :
-
-``` javascript
-{
-  "instanceType" : "monoUser"
-}
-```
-
 ### Install
 
 ```sh
@@ -70,21 +60,43 @@ cd petrolette
 npm install
 ```
 
-### Server start
+### Run locally
 
-#### Production (default) mode
+The local development runtime is the same Edge runtime used for deployment:
 
-`npm start`
+```sh
+npm run dev:edge
+```
 
-#### Dev / local mode
+Open:
 
-`npm run dev`
+`http://localhost:8787`
 
-### Ok, what now? Where are the news?
+### Deploy
 
-Direct your favorite browser to the local URL:
+Authenticate Wrangler once:
 
-`xdg-open http://localhost:8000` (in `dev` mode) or `xdg-open https://localhost:8001` (in `production` default mode)
+```sh
+npx wrangler login
+```
+
+Build and deploy:
+
+```sh
+npm run deploy:edge
+```
+
+The public instance is:
+
+`https://petrolette.xaccrocheur.workers.dev`
+
+### Legacy Node server
+
+The old Express server remains available temporarily with:
+
+```sh
+npm start
+```
 
 ### Update
 

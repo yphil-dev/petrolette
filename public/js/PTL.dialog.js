@@ -767,7 +767,7 @@ PTL.dialog = {
               PTL.tab.saveTabs();
               PTL.dialog.kill($dialog);
 
-              if ($.parseJSON(PTL.prefs.readConfig('feeds')).length > 0) {
+              if ($('li.feed').length > 0) {
                 $tabs.tabs('option', 'active', previousTabIndex).tabs('refresh');
               }
             }
@@ -1075,10 +1075,16 @@ PTL.dialog = {
             title: PTL.tr('Wait! Are you sure?'),
             class: 'dangerous translate',
             click: function() {
-              localStorage.clear();
-              PTL.util.say(PTL.tr('All tabs and feeds restored to defaults'), 'success', true);
-              PTL.dialog.kill($dialog);
-              window.location.reload();
+              PTL.sync.resetSync()
+                .then(function() {
+                  PTL.prefs.clearConfig();
+                  PTL.util.say(PTL.tr('All tabs and feeds restored to defaults'), 'success', true);
+                  PTL.dialog.kill($dialog);
+                  window.location.reload();
+                })
+                .catch(function(error) {
+                  PTL.util.say(PTL.tr('There was a problem resetting tabs and feeds: %1', error), 'error');
+                });
             }
           }
         ],

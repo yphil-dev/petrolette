@@ -17,8 +17,6 @@ const express = require('express'),
 
 console.error('### Pétrolette (re)START ## Version (%s)', pjson.version);
 
-const localFeedsFilePath = path.resolve(__dirname, '../petrolette.feeds');
-
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 router.use(sanitize);
@@ -55,46 +53,6 @@ router.get('/favicon', function(req, res) {
     }
 
   });
-});
-
-router.get('/localfeeds', function(req, res) {
-
-  fs.readFile(localFeedsFilePath, 'utf8', (err, data) => {
-    if (err && !res.headersSent) {
-      res.status(404).send(err);
-    } else if (data && !res.headersSent) {
-
-      // console.error('data: ', data);
-
-      res.status(200).send(data);
-    }
-
-  });
-
-});
-
-router.post('/localfeeds', function(req, res) {
-
-  // console.error('req.body: (%s)', JSON.stringify(req.body));
-
-  try {
-
-    fs.writeFile(localFeedsFilePath, JSON.stringify(req.body), function (err) {
-      if (err && !res.headersSent) {
-        console.error('ERR: (%s)', err);
-        res.status(500).send(err);
-      } else if (!res.headersSent) {
-        res.status(200).send('OK');
-      }
-    });
-
-  } catch (err) {
-    console.error('EERR: %s (%s)',err);
-    if (!res.headersSent) {
-      res.status(500).send(err);
-    }
-  }
-
 });
 
 router.use(morgan('combined'));
@@ -152,10 +110,6 @@ router.get('/discover', function(req, res) {
 
 router.get('/about/javascript', function(req, res) {
   res.render('javascript');
-});
-
-router.get('/about/privacy-policy', function(req, res) {
-  res.render('privacy');
 });
 
 router.get('/', function(req, res) {

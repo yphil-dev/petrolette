@@ -33,14 +33,7 @@ var PTL = (function() {
 
             PTL.util.say(PTL.tr('Pétrolette init'), 'info');
 
-            let instanceTypeText;
-
-            if (PTL.instanceType == 'monoUser') {
-                instanceTypeText = 'This Pétrolette instance is single user ; Your feeds are saved on the server';
-            } else {
-                instanceTypeText = 'This Pétrolette instance is multi-user ; Your feeds are saved in this browser';
-
-            }
+            const instanceTypeText = 'This Pétrolette instance is multi-user ; Your feeds are saved in this browser';
 
             if (!PTL.prefs.readConfig('nagBarOk')) {
                 $('span#nagText')
@@ -236,16 +229,7 @@ var PTL = (function() {
                 }
             });
 
-            if (PTL.instanceType == 'multiUser') {
-                PTL.sync.attachWidget();
-            } else {
-                const $monoUserInfoDiv = $('<div>')
-                      .attr({'id': 'monoUserInfoDiv',
-                             'class': 'grow ui-corner-all translate unique',
-                             'data-content' : 'This Pétrolette instance is single user ; Your feeds are saved on the server'})
-                      .text(PTL.tr('This Pétrolette instance is single user ; Your feeds are saved on the server'))
-                      .appendTo($feedsMenuForm);
-            }
+            PTL.sync.attachWidget();
 
             $('button').not('.htmlButtonOnly').button();
 
