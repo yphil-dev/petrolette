@@ -1,6 +1,9 @@
 # Fav/Website icon cache directory on the Pétrolette server
 favicons-cache
 
+# Wrangler local state
+edge/.wrangler/
+
 # Logs
 logs
 *.log
