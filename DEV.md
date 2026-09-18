@@ -38,7 +38,22 @@ At the first startup, Pétrolette generates its main page using the default tabs
 
 ## Edge runtime
 
-The Worker handles CORS-sensitive feed requests at the edge. Wrangler provides local development, deployment, and runtime logs; no process manager or server configuration is required.
+“Serverless Edge application” is an architectural description, not a separate product name. Pétrolette runs as a [Cloudflare Worker](https://developers.cloudflare.com/workers/), with no application server to manage. The Worker handles CORS-sensitive feed requests at the edge.
+
+Official documentation:
+
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/)
+- [Workers runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
+- [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)
+
+Wrangler provides local development, deployment, and runtime logs; no process manager or server configuration is required.
+
+### Deployment platform
+
+As currently configured, the online application runs on Cloudflare. The deployment depends on `edge/wrangler.jsonc`, Wrangler, and Cloudflare's `env.ASSETS` static-assets binding.
+
+The request handlers otherwise use standard Web APIs such as `Request`, `Response`, and `fetch`. They could run on another Edge platform after adding that platform's entrypoint, asset binding, and deployment configuration.
 
 ### Fonts
 
