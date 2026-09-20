@@ -26,9 +26,13 @@ The Worker entrypoint is `edge/index.js`. Feed fetching, feed discovery, and fav
 
 The local and online runtimes use the same `edge/` Worker code:
 
-- `npm start` or `npm run dev:edge` starts Wrangler's local Worker runtime.
+- `npm start` or `npm run dev:edge` starts Wrangler's local Worker runtime. Requests stay in the local process; they do not invoke Cloudflare's online network.
 - `npm test` builds the assets and validates the Wrangler deployment bundle.
-- `npm run deploy:edge` builds and publishes the Worker.
+- `npm run deploy:edge` builds and publishes the Worker. After deployment, browser requests invoke the Worker on Cloudflare's network.
+
+[Wrangler](https://developers.cloudflare.com/workers/wrangler/) is Cloudflare's command-line tool for developing and operating Workers. In this project it builds the asset bundle, starts the local Worker runtime, validates deployment bundles, publishes the Worker, and provides access to deployment logs.
+
+Wrangler locally reproduces the Worker programming model and local asset binding; it is not a connection to the deployed Worker. Requests from the local Worker to external feeds and RemoteStorage still use the internet from the local machine.
 
 At first startup, Pétrolette generates the main page using the default tabs and feeds list. Feed changes are synchronized through RemoteStorage and its browser cache, allowing the same contents on desktop, laptop, and phone.
 

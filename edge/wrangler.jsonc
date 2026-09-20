@@ -4,6 +4,9 @@
   "main": "./index.js",
   "compatibility_date": "2025-01-01",
   "compatibility_flags": ["nodejs_compat"],
+  "dev": {
+    "port": 8788
+  },
   "assets": {
     "directory": "../dist",
     "binding": "ASSETS"
