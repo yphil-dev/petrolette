@@ -94,7 +94,7 @@ Build and deploy:
 ```sh
 npm run deploy:edge
 ```
-The former custom-domain instance at `petrolette.space` may not be restored.
+The former custom-domain instance at `petrolette.space` [may not be restored](https://yphil.gitlab.io/2026/09/20/Petrolette-is-now-on-the-Edge/).
 
 ### Update
 
