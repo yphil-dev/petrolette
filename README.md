@@ -94,11 +94,6 @@ Build and deploy:
 ```sh
 npm run deploy:edge
 ```
-
-The current Worker endpoint is:
-
-<https://petrolette.xaccrocheur.workers.dev>
-
 The former custom-domain instance at `petrolette.space` may not be restored.
 
 ### Update
