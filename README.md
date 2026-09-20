@@ -1,73 +1,85 @@
 # Pétrolette
 
 [![pipeline status](https://gitlab.com/yphil/petrolette/badges/master/pipeline.svg)](https://gitlab.com/yphil/petrolette/-/pipelines)
-[![website](https://img.shields.io/website?down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fpetrolette.space)](https://petrolette.onrender.com)
-[![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
-[![Liberapay](https://img.shields.io/liberapay/receives/yPhil?logo=liberapay)](https://liberapay.com/yPhil/donate)
-[![Liberapay](https://img.shields.io/liberapay/goal/yPhil?logo=liberapay)](https://liberapay.com/yPhil/donate)
+[![website](https://img.shields.io/website?down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fpetrolette.xaccrocheur.workers.dev)](https://petrolette.xaccrocheur.workers.dev)
+[![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
+[![Liberapay](https://img.shields.io/liberapay/receives/yPhil?logo=liberapay)](https://liberapay.com/yphil/donate)
+[![Liberapay goal](https://img.shields.io/liberapay/goal/yPhil?logo=liberapay)](https://liberapay.com/yphil/donate)
 [![Ko-Fi](https://img.shields.io/badge/Ko--fi-F16061?label=buy+me+a&style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/yphil/tiers)
 
 ---
 
 ## Good morning, what's up? ☕ 📰
 
-[Pétrolette](https://petrolette.onrender.com/) is a news home page, immediately usable **without registration** with the **same URL** on any computer, TV or mobile device.
+[Pétrolette](https://petrolette.xaccrocheur.workers.dev) is a configurable news dashboard for feeds, podcasts, video channels, blogs, social media, weather, issue trackers, and anything else that speaks RSS or Atom.
 
-Add, delete, move feeds and tabs, close your browser, come back tomorrow, everything is how you left it.
+It works without registration. Tabs and feeds are synchronized through RemoteStorage and its browser cache, so the same setup can be used across devices after connecting a storage provider. Local interface preferences remain in the browser.
 
-*Feeds* - there are [feeds](https://en.wikipedia.org/wiki/Web_feed) for everything: News sites, but also podcasts, video channels, blogs, social media, weather, phases of the moon, issue trackers, etc. - are organized into *tabs*, which can contain an infinite number of *columns*; everything is configurable, and saved directly in the browser [permanent cache](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). To view the same feeds on your phone, either export / import your `petrolette.conf` file, or (recommended) use the synchronization feature with your personal ([Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/), [5apps](https://5apps.com/storage) (much better) etc.) cloud.
-You don't have to know the specifics of a given feed ; Just enter a website's URL / Adress (or [use the bookmark](https://exode.me/w/tafJ9bmAYDFRV7aBLRjvot)) and Pétrolette will find it.
+Add, delete, and move feeds and tabs, close the browser, and come back later. To discover a feed, enter a website URL or [use the bookmarklet](https://exode.me/w/tafJ9bmAYDFRV7aBLRjvot).
 
-## Escape from GAFAM central
+## Escape from surveillance capitalism
 
-Pétrolette is fully self-contained, makes **no external call** whatsoever, and embarks a total of **zero tracker or "analysis" tool**. Needless to say she is also **completely ad-free**.
+Pétrolette has no advertising or analytics trackers. It does make the external requests required to retrieve feeds and, when enabled, synchronize data through RemoteStorage. Feed requests are handled by the Cloudflare Worker so browsers do not have to fight CORS directly.
 
-![Petrolette](https://yphil.bitbucket.io/images/petrolette.png)
+![Pétrolette](https://yphil.bitbucket.io/images/petrolette.png)
 
 ## Features
 
-- No ads, no trackers, **just the news**
-- Displays all modern feeds (Atom, RSS 1/2, **MediaRSS**, Social networks, etc.)
-- New items indicator / badge
-- **Video / Audio playing** directly in Pétrolette
-- **Discovery of the feed** in a page / website
-- Mobile / **phone** / tablet / responsive interface
-- Direct link to all the article / item's resources (image, video, sound)
-- **Search** within all the feeds
-- Advanced image management (download, gallery, slideshow, etc.)
-- Import / export of the tabs & feeds file (replace / merge)
-- Online **synchronization** ([5apps](https://5apps.com/storage), [Google Drive](https://www.google.com/drive/), [Dropbox](https://www.dropbox.com/)) on all your devices
-- Building of **Search terms feeds** [example](https://search.modalogi.com/searx/search?categories=news&language=en-US&format=rss&q=zombie,attack) using a configurable search engine
-- Bookmarklet to **add the feed of any website to Pétrolette** on the fly
-- Compatible with [FLOSS browsers](https://www.gnu.org/software/librejs/) (links to all uncompressed executable files, licenses available directly and in standard format)
+- No ads or analytics trackers
+- RSS, Atom, MediaRSS, and social feeds
+- Tabs, columns, unread indicators, search, and responsive layouts
+- Direct audio and video playback
+- Feed and favicon discovery
+- Image galleries, slideshows, and configurable media loading
+- Import and export of tab/feed configuration
+- RemoteStorage synchronization across devices
+- Search-term feeds using a configurable search engine
+- Bookmarklet for adding feeds from any website
+- FLOSS-friendly links to uncompressed executable files and licenses
 
 ### What's new?
 
-Read [the changelog](https://gitlab.com/yphil/petrolette/-/blob/master/CHANGELOG.md).
+Read the [changelog](https://framagit.org/yphil/petrolette/-/blob/master/CHANGELOG.md).
 
-## Usage
+## Development
 
-### Configuration
+Pétrolette is a Cloudflare Worker application. The Worker source is in `edge/`, frontend source is in `public/`, and `edge/build-assets.js` creates the static deployment bundle.
+
+The local runtime and deployed runtime use the same Worker code. [Wrangler](https://developers.cloudflare.com/workers/wrangler/) runs the Worker locally; it does not connect local requests to Cloudflare's online network.
 
 ### Install
 
 ```sh
-git clone https://gitlab.com/yphil/petrolette
+git clone https://framagit.org/yphil/petrolette.git
 cd petrolette
 npm install
 ```
 
 ### Run locally
 
-The local development runtime is the same Edge runtime used for deployment:
-
 ```sh
-npm run dev:edge
+npm start
 ```
 
-Open:
+This runs `npm run dev:edge` through Wrangler. Open:
 
-`http://localhost:8787`
+<http://localhost:8788>
+
+The local Worker can still make internet requests to external feeds and RemoteStorage.
+
+### Test
+
+Validate the generated Edge bundle and Wrangler deployment configuration:
+
+```sh
+npm test
+```
+
+Test the external URLs listed in the default feed configuration separately:
+
+```sh
+npm run test:feeds
+```
 
 ### Deploy
 
@@ -83,9 +95,11 @@ Build and deploy:
 npm run deploy:edge
 ```
 
-The public instance is:
+The current Worker endpoint is:
 
-`https://petrolette.xaccrocheur.workers.dev`
+<https://petrolette.xaccrocheur.workers.dev>
+
+The former custom-domain instance at `petrolette.space` may not be restored.
 
 ### Update
 
@@ -93,25 +107,16 @@ The public instance is:
 git pull
 npm install
 ```
-### Test
 
-Validate the Edge bundle:
+## Documentation
 
-```sh
-npm test
-```
+- [Development notes](https://framagit.org/yphil/petrolette/-/blob/master/DEV.md)
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/)
+- [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)
+- [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 
-Test the default feed URLs separately:
-
-```sh
-npm run test:feeds
-```
-
-## Help
-
-- Read the [development guidelines](https://gitlab.com/yphil/petrolette/-/blob/master/DEV.md)
-- Pétrolette is [Free, Libre, and Open-Source Software](https://gitlab.com/yphil/petrolette/-/blob/master/LICENSE). However the development requires [a lot of time](https://www.youtube.com/watch?v=JlbMEx9H6FE) and [a lot of work](https://gitlab.com/yphil/petrolette/-/commits/master). In order to keep developing it with new features I need your help ; Please consider to [support the Pétrolette project](https://liberapay.com/yPhil/donate) or by [sending a donation](https://ko-fi.com/yphil/) ; Even the smallest amount will help *a lot*.
+Pétrolette is [Free, Libre, and Open-Source Software](https://framagit.org/yphil/petrolette/-/blob/master/LICENSE). Contributions, feedback, and bug reports are welcome.
 
 *Icon by yPhil*
 
-Brought to you by [yPhil](https://yphil.gitlab.io/blog) Please consider ♥ [helping](https://liberapay.com/yPhil/donate) icon by yPhil ♫
+Brought to you by [yPhil](https://yphil.gitlab.io/blog).
