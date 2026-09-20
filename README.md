@@ -17,7 +17,7 @@ It works without registration. Tabs and feeds are synchronized through RemoteSto
 
 Add, delete, and move feeds and tabs, close the browser, and come back later. To discover a feed, enter a website URL or [use the bookmarklet](https://exode.me/w/tafJ9bmAYDFRV7aBLRjvot).
 
-## Escape from surveillance capitalism
+## Escape from GAFAM Central
 
 Pétrolette has no advertising or analytics trackers. It does make the external requests required to retrieve feeds and, when enabled, synchronize data through RemoteStorage. Feed requests are handled by the Cloudflare Worker so browsers do not have to fight CORS directly.
 
