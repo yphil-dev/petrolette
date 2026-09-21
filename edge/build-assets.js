@@ -65,8 +65,6 @@ async function main() {
     ['node_modules/remotestorage-widget/build/widget.js', 'rs-widget/widget.js'],
     ['node_modules/dompurify/dist/purify.js', 'dompurify/purify.js'],
     ['node_modules/dompurify/dist/purify.min.js', 'dompurify/purify.min.js'],
-    ['node_modules/mousetrap/mousetrap.js', 'mousetrap/mousetrap.js'],
-    ['node_modules/mousetrap/mousetrap.min.js', 'mousetrap/mousetrap.min.js']
   ];
 
   for (const [source, target] of vendorFiles) {

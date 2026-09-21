@@ -97,6 +97,11 @@ PTL.tab = {
     PTL.sync.writeSync(JSON.stringify(feeds));
     if (!isSilent) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
   },
+  reloadCurrentTab: function() {
+    $('#tabs .ui-tabs-panel:visible i.feedRefresh').each(function() {
+      PTL.feed.populate($(this));
+    });
+  },
   populate: function(feeds) {
 
     const $tabs = $('#tabs');

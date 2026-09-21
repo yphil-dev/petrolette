@@ -239,6 +239,8 @@ PTL.i18n.translations = {
 
   "Focus the current tab." : { fr: "Focus sur l'onglet courant." , ja: "現在のタブにフォーカスします。", es: "Enfoca la pestaña actual." },
 
+  "Reload feeds in the current tab." : { fr: "Recharger les flux de l'onglet courant." , ja: "現在のタブのフィードを再読み込みします。", es: "Recargar los feeds de la pestaña actual." },
+
   "Focus the search input field." : { fr: "Mettre le curseur dans le champ de recherche." , ja: "検索入力フィールドにフォーカスします。", es: "Enfoque el campo de entrada de búsqueda." },
 
   "Very useful to browse tabs using the arrow keys." : { fr: "Très utile pour parcourir les onglets à l'aide des touches fléchées." , ja: "矢印キーを使用してタブを参照するのに非常に便利です。", es: "Muy útil para navegar por las pestañas usando las teclas de flecha." },

@@ -6,22 +6,42 @@ var PTL = (function() {
         feedTypes: ['text', 'mixed', 'photo'],
         kbShortcutNewFeed: 'n',
         kbShortcutMenuToggle: 'm',
+        kbShortcutReloadTab: 'r',
         kbShortcutFocusTab: 't',
         kbShortcutFocusSearch: 'f',
         language: 'en',
         languages: ['en', 'fr', 'ja', 'es'],
         start : function() {
 
-            Mousetrap.bind('?', PTL.dialog.kbShortcuts);
-            Mousetrap.bind(PTL.kbShortcutNewFeed, newFeed);
-            Mousetrap.bind(PTL.kbShortcutFocusTab, () => {
-                $('.ui-state-active').focus();
-            });
-            Mousetrap.bind(PTL.kbShortcutFocusSearch, () => {
-                $('div#ptlSearch > input').focus();
-            });
-            Mousetrap.bind(PTL.kbShortcutMenuToggle, () => {
-                PTL.sideMenu('toggle');
+            const shortcutHandlers = {
+                '?': PTL.dialog.kbShortcuts,
+                [PTL.kbShortcutNewFeed]: newFeed,
+                [PTL.kbShortcutFocusTab]: () => {
+                    $('.ui-state-active').focus();
+                },
+                [PTL.kbShortcutFocusSearch]: () => {
+                    $('div#ptlSearch > input').focus();
+                },
+                [PTL.kbShortcutMenuToggle]: () => {
+                    PTL.sideMenu('toggle');
+                },
+                [PTL.kbShortcutReloadTab]: () => {
+                    PTL.tab.reloadCurrentTab();
+                }
+            };
+
+            document.addEventListener('keydown', function(event) {
+                const target = event.target;
+                const isTextField = target && typeof target.matches === 'function' && target.matches('input, textarea, select');
+                if (isTextField || (target && target.isContentEditable)) return;
+                if (event.ctrlKey || event.altKey || event.metaKey) return;
+
+                const shortcut = event.key.toLowerCase();
+                const handler = shortcutHandlers[shortcut];
+                if (!handler) return;
+
+                event.preventDefault();
+                handler();
             });
 
             if (PTL.prefs.readConfig('userSetLang') !== 'true') {

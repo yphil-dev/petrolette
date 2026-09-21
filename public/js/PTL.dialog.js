@@ -723,6 +723,7 @@ PTL.dialog = {
           });
 
           $('kbd#kbShortcutNewFeed').text(PTL.kbShortcutNewFeed);
+          $('kbd#kbShortcutReloadTab').text(PTL.kbShortcutReloadTab);
           $('kbd#kbShortcutFocusTab').text(PTL.kbShortcutFocusTab);
           $('kbd#kbShortcutFocusSearch').text(PTL.kbShortcutFocusSearch);
         }

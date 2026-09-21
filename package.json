@@ -27,7 +27,6 @@
     "intro.js": "^7.2.0",
     "jquery": "^3.6.3",
     "jquery-ui-dist": "^1.13.3",
-    "mousetrap": "1.6.5",
     "remotestorage-widget": "^1.8.0",
     "remotestoragejs": "^2.0.0-beta.8",
     "responsively-lazy": "^2.0.2"
