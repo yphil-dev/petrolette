@@ -18,7 +18,7 @@ PTL.feed = {
             $(this).parent().parent().children('div.dataStore')
               .data('iconhash', '')
               .data('iconurl', '');
-            PTL.tab.saveTabs(true);
+            PTL.tab.deferSaveTabs();
           });
 
     const $newItemsBadge = $('<div>')
@@ -648,7 +648,7 @@ PTL.feed = {
 
           if (fetchFeed.totalNewItems > 0) {
             $dataStore.data('lastitem', fetchFeed.lastItem);
-            PTL.tab.saveTabs();
+            PTL.tab.deferSaveTabs();
             $badge
               .text(fetchFeed.totalNewItems)
               .attr('title', PTL.tr('There are %1 new items in this feed', fetchFeed.totalNewItems))
@@ -687,7 +687,7 @@ PTL.feed = {
     function updateFavIcon(iconUrl) {
       $dataStore.data('iconurl', iconUrl);
       $dataStore.data('iconhash', '');
-      PTL.tab.saveTabs(true);
+      PTL.tab.deferSaveTabs();
       $favIcon.attr('src', iconUrl);
     }
 

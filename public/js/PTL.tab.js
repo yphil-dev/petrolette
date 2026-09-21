@@ -1,6 +1,7 @@
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 PTL.tab = {
+  saveTimer: null,
   init: function() {
 
     $('div#newFeedButton').attr('title', PTL.tr('New feed') + ' (' + PTL.kbShortcutNewFeed + ')');
@@ -93,9 +94,19 @@ PTL.tab = {
 
   },
   saveTabs: function(isSilent) {
+    clearTimeout(PTL.tab.saveTimer);
+    PTL.tab.saveTimer = null;
+
     const feeds = PTL.tab.list();
     PTL.sync.writeSync(JSON.stringify(feeds));
     if (!isSilent) PTL.util.say(PTL.tr('Tabs and feeds saved'), 'success');
+  },
+  deferSaveTabs: function() {
+    clearTimeout(PTL.tab.saveTimer);
+    PTL.tab.saveTimer = setTimeout(function() {
+      PTL.tab.saveTimer = null;
+      PTL.tab.saveTabs(true);
+    }, 1000);
   },
   reloadCurrentTab: function() {
     $('#tabs .ui-tabs-panel:visible i.feedRefresh').each(function() {
@@ -169,7 +180,7 @@ PTL.tab = {
 
     PTL.util.say(PTL.tr('Pétrolette init finished'), 'success');
 
-    PTL.tab.saveTabs();
+    PTL.tab.deferSaveTabs();
 
   },
   empty: function(callback) {
