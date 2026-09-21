@@ -324,31 +324,34 @@ PTL.util = {
   },
   buildProgress: function() {
 
-    const progress = { step: 0 };
+    const progress = { completed: 0, total: 0 };
 
-    progress.init = function(steps) {
+    progress.init = function(total) {
 
       const $progressBar = $('#progressBar');
       this.progressBar = $progressBar;
+      this.total = Math.max(0, total);
+      this.completed = 0;
 
       const $progressLabel = $('.progress-label');
       this.progressLabel = $progressLabel.removeClass('on');
 
       $progressBar.progressbar({
-        value: 1,
+        value: this.total === 0 ? 100 : 0,
         complete: function() {
           $progressLabel.addClass('on');
         }
       });
 
-      this.steps = steps - 1;
+      this.progressLabel.text('0/' + this.total + ' ' + PTL.tr('feeds loaded'));
     };
     progress.increment = function() {
 
-      this.progressBar.progressbar('value', Math.ceil(100 * this.step / this.steps));
-      this.progressLabel.text(this.step + '/' + this.steps + ' ' + PTL.tr('feeds loaded'));
+      if (this.completed >= this.total) return;
 
-      this.step++;
+      this.completed++;
+      this.progressBar.progressbar('value', Math.round(100 * this.completed / this.total));
+      this.progressLabel.text(this.completed + '/' + this.total + ' ' + PTL.tr('feeds loaded'));
 
     };
 
