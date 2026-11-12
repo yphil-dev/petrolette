@@ -414,12 +414,12 @@ PTL.feed = {
           if (!isAbsolute) imageUrl = feedHost + '/' + imageUrl;
 
           $image
-            .attr('src', 'static/images/loading.gif')
-            .attr('data-srcset', imageUrl.replace('http://', 'https://'))
-            .attr('srcset', 'static/images/loading.gif')
+            .attr('src', imageUrl.replace('http://', 'https://'))
+            .attr('loading', 'lazy')
+            .attr('decoding', 'async')
             .attr('title', imageSummary ? imageSummary.trim() : $summary.trim())
             .attr('alt', imageSummary ? imageSummary.trim() : $summary.trim())
-            .attr('class', 'ptl-img responsively-lazy')
+            .attr('class', 'ptl-img')
             .attr('onerror', "this.style.display='none'")
             .appendTo($imageLink);
 
